@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "meaning": "Expected defects reproduced; local corrections and scoped historical reconstruction checks pass",
+  "commit": "e168a2c825be0c3e28c300b8f6277dda1d999c4d",
+  "integrity_files_checked": 14,
+  "original_dispatch": {
+    "exit_code": 0,
+    "counter_calls": 0,
+    "datasets": 33,
+    "strategies": 2,
+    "replicates": 3
+  },
+  "patched_dispatch": {
+    "exit_code": 0,
+    "counter_calls": 198,
+    "datasets": 33,
+    "strategies": 2,
+    "replicates": 3
+  },
+  "original_setup_error": "split_data() got an unexpected keyword argument 'train_pct'",
+  "patched_setup_checks": [
+    {
+      "replicate": 1,
+      "seed": 1759551619,
+      "train_rows": 1139,
+      "validation_rows": 300,
+      "sites_disjoint": true,
+      "all_rows_preserved": true,
+      "matches_Lasso_fold": true,
+      "original_Lasso_LoRA_helpers_agree": true
+    },
+    {
+      "replicate": 2,
+      "seed": 3466369807,
+      "train_rows": 1139,
+      "validation_rows": 300,
+      "sites_disjoint": true,
+      "all_rows_preserved": true,
+      "matches_Lasso_fold": true,
+      "original_Lasso_LoRA_helpers_agree": true
+    },
+    {
+      "replicate": 3,
+      "seed": 4190061613,
+      "train_rows": 1140,
+      "validation_rows": 299,
+      "sites_disjoint": true,
+      "all_rows_preserved": true,
+      "matches_Lasso_fold": true,
+      "original_Lasso_LoRA_helpers_agree": true
+    }
+  ],
+  "negative_control": "Original Lasso and LoRA helper splits agree; unfair-fold allegation is not supported",
+  "missing_entrypoint": {
+    "path": "scripts/LitESM2ne_partial_trainer.py",
+    "absent_in_pinned_tree": true,
+    "resolved_by_local_fixes": false,
+    "restored_by_reconstruction_patch": true
+  },
+  "historical_reconstruction": {
+    "source_commit": "e0c2d6ae06903cb356abb7e1b579058115e5623a",
+    "historical_source_hashes_verified": true,
+    "documented_device_selection_adaptation": "logical device 0; visible-GPU override preserved",
+    "wrapper_syntax_checked": true,
+    "checkpoint_CLI_compatible": true,
+    "training_method_replaced_by_LoRA": false,
+    "data_setup_checks": [
+      {
+        "replicate": 1,
+        "validation_rows": 300,
+        "matches_reference_fold": true
+      },
+      {
+        "replicate": 2,
+        "validation_rows": 300,
+        "matches_reference_fold": true
+      },
+      {
+        "replicate": 3,
+        "validation_rows": 299,
+        "matches_reference_fold": true
+      }
+    ]
+  },
+  "full_training_run": false,
+  "paper_results_reproduced": false,
+  "external_human_confirmation": false
+}

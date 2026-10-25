@@ -1,0 +1,21 @@
+{
+  "current_commit": "e168a2c825be0c3e28c300b8f6277dda1d999c4d",
+  "restoration_commit": "e0c2d6ae06903cb356abb7e1b579058115e5623a",
+  "deletion_commit": "8cd64d647a4841b56d4aa9f6d160c05d03b35b09",
+  "source_files": {
+    "scripts/LitESM2ne_partial_trainer.py": {
+      "url": "https://raw.githubusercontent.com/ziul-bio/DMS-SiteEffect-PLM/e0c2d6ae06903cb356abb7e1b579058115e5623a/scripts/LitESM2ne_partial_trainer.py",
+      "sha256": "c1fae081f4ed6663ba3d0a0e30560c2e67b314d815530bf57ae083da3643767d"
+    },
+    "scripts/ESM2ne_partial.py": {
+      "url": "https://raw.githubusercontent.com/ziul-bio/DMS-SiteEffect-PLM/e0c2d6ae06903cb356abb7e1b579058115e5623a/scripts/ESM2ne_partial.py",
+      "sha256": "61747e1822f554d19815e34698e161b50210826b94b4bc2c9933e4a8446257d2"
+    }
+  },
+  "scope": "Exact restoration of public historical partial-finetuning source, not replacement by LoRA or current masked-language-model implementations; no training result validation.",
+  "documented_runtime_adaptations": [
+    "Use module invocation from repository root",
+    "Default to one visible GPU while preserving CUDA_VISIBLE_DEVICES override",
+    "Select logical device 0 inside the visible-device namespace; historical trainer used 1"
+  ]
+}

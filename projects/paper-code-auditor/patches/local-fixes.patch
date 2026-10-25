@@ -1,0 +1,22 @@
+--- a/scripts/run_ESM2ne_cellular.sh
++++ b/scripts/run_ESM2ne_cellular.sh
+@@ -43,7 +43,7 @@
+ do
+     for strategy in "${strategies[@]}"
+     do
+-        for dts in "${viral[@]}"
++        for dts in "${cellular[@]}"
+         do
+             seed=$(make_seed $dts $rep)
+ 
+--- a/scripts/LitESM2ne_Lora_trainer.py
++++ b/scripts/LitESM2ne_Lora_trainer.py
+@@ -116,7 +116,7 @@
+         data = data.query("mutant != 'WT'")
+ 
+         if self.split_strategy == 'site_split':
+-            train_df, val_df = split_data(data, seed=args.seed, train_pct=0.8, val_pct=0.2)
++            train_df, val_df = split_data(data, seed=args.seed, test_size=0.2)
+         elif self.split_strategy == 'pool_split':
+             train_df, val_df = train_test_split(data, test_size=0.2, random_state=args.seed)
+         

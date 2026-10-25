@@ -1,0 +1,29 @@
+name: Reproducibility audit checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  paper-code:
+    name: Paper-code audit (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: projects/paper-code-auditor/requirements.txt
+      - run: python -m pip install -r projects/paper-code-auditor/requirements.txt
+      - run: python projects/paper-code-auditor/audit.py

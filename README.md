@@ -8,6 +8,13 @@ Led by [Zijian Zeng / ArtificialZeng](https://github.com/ArtificialZeng). The la
 
 The ambition is to produce discoveries worth reporting. Each public claim is accompanied by its scope, evidence, and unresolved limitations.
 
+## Research and engineering projects
+
+| Project | Deliverable | Evidence status |
+| --- | --- | --- |
+| [Mixed-mechanism phosphorylation](projects/mixed-phosphorylation/README.md) | Exact finite-kinase instability bound | Exact certificate; novelty and external review pending |
+| [Paper-Code Auditor](projects/paper-code-auditor/README.md) | Reproducible software defects and a history-grounded reconstruction patch | Offline CPU regression checks; no training-result or author confirmation |
+
 ## First project: can a biochemical oscillator resist changes in enzyme concentration?
 
 The mixed-mechanism phosphorylation model studied by Conradi, Mincheva, and Shiu has a unique positive equilibrium. Their 2019 paper asks whether it can remain unstable as total kinase grows arbitrarily large.

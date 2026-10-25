@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/ziul-bio/DMS-SiteEffect-PLM",
+  "commit": "e168a2c825be0c3e28c300b8f6277dda1d999c4d",
+  "original_assay_sha256": "64a9ee04534c58abef20f3f8f11c41fd758ab7eee958d5f286203c067a6006b0",
+  "derived_fixture_columns": [
+    "ID",
+    "mutant"
+  ],
+  "source_files": {
+    "scripts/run_ESM2ne_cellular.sh": {
+      "url": "https://raw.githubusercontent.com/ziul-bio/DMS-SiteEffect-PLM/e168a2c825be0c3e28c300b8f6277dda1d999c4d/scripts/run_ESM2ne_cellular.sh",
+      "sha256": "3da2f88e89d4ecf972dbcdc7b1d141e02a2d79a8c3afaa64e4c24b82a809ffd1"
+    },
+    "scripts/run_ESM2ne_viral.sh": {
+      "url": "https://raw.githubusercontent.com/ziul-bio/DMS-SiteEffect-PLM/e168a2c825be0c3e28c300b8f6277dda1d999c4d/scripts/run_ESM2ne_viral.sh",
+      "sha256": "1c28977bf54a42d88049faa1d5079ef09b4044f921a6aa64b7709d819e0500c0"
+    },
+    "scripts/LitESM2ne_Lora_trainer.py": {
+      "url": "https://raw.githubusercontent.com/ziul-bio/DMS-SiteEffect-PLM/e168a2c825be0c3e28c300b8f6277dda1d999c4d/scripts/LitESM2ne_Lora_trainer.py",
+      "sha256": "5a13166cac837bb429c18a3df8905fc78e91b263690ec166f344d56b9881ae50"
+    },
+    "scripts/lassoCV_SS.py": {
+      "url": "https://raw.githubusercontent.com/ziul-bio/DMS-SiteEffect-PLM/e168a2c825be0c3e28c300b8f6277dda1d999c4d/scripts/lassoCV_SS.py",
+      "sha256": "163c1bef427ffd0b8b2acaf38230742c9937fe56165a133311fe34517659f49a"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/ziul-bio/DMS-SiteEffect-PLM/e168a2c825be0c3e28c300b8f6277dda1d999c4d/README.md",
+      "sha256": "30649618a2ca7a8616f8c4dbbae143f385d204670a2bd55db2b5f968d7a69d31"
+    }
+  }
+}

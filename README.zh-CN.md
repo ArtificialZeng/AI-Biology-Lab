@@ -6,6 +6,13 @@
 
 由 [Zijian Zeng / ArtificialZeng](https://github.com/ArtificialZeng) 发起。我们希望做出值得科技媒体报道的科学成果，以明确的问题、可复现的结果和外部验证来支撑传播。
 
+## 项目目录
+
+| 项目 | 当前交付 | 证据范围 |
+| --- | --- | --- |
+| [混合机制生化振荡](projects/mixed-phosphorylation/README.md) | 有限激酶失稳界与精确证书 | 数学部分结果；新颖性与外审待确认 |
+| [Paper-Code Auditor](projects/paper-code-auditor/README.md) | 复现入口缺陷、历史源码恢复与补丁 | 离线CPU检查通过；未完成训练结果复现或作者确认 |
+
 ## 首个结果
 
 在 Conradi、Mincheva、Shiu 的混合机制双磷酸化模型中，固定原文 Table 1 速率、总磷酸酶 8、总底物 40，我们给出精确证明：

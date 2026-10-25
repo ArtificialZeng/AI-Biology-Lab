@@ -1,0 +1,19 @@
+{
+  "scope": "Integrity of pinned inputs and proposed patches; not scientific-result validation",
+  "sha256": {
+    "evidence/provenance.json": "899ae841e806a31c42fff2f01d194be98082d82d4696f83c462e3f2ed368485a",
+    "evidence/restoration_provenance.json": "21eca7c1e7c4726e2cf82098cf9e498915deb84b438ee539800e24669d0a16ef",
+    "evidence/upstream_inventory.json": "8ce8b7d11ab6f7fd2f8991158c859aee5433adff9abeeb8e87378b24f7b5d853",
+    "fixtures/data/IF1_ECOLI_identifiers.csv": "55ac09288a8deb0950c0fdb1bbfcd689f26d391ccc6d6679d4a4e8f607f5f946",
+    "fixtures/historical/scripts/ESM2ne_partial.py": "61747e1822f554d19815e34698e161b50210826b94b4bc2c9933e4a8446257d2",
+    "fixtures/historical/scripts/LitESM2ne_partial_trainer.py": "c1fae081f4ed6663ba3d0a0e30560c2e67b314d815530bf57ae083da3643767d",
+    "fixtures/upstream/LICENSE.txt": "62bd3b345e173b8f780e3c1ed17d9a20125582a99f45c176b6f8409dc295a985",
+    "fixtures/upstream/README.md": "30649618a2ca7a8616f8c4dbbae143f385d204670a2bd55db2b5f968d7a69d31",
+    "fixtures/upstream/scripts/LitESM2ne_Lora_trainer.py": "5a13166cac837bb429c18a3df8905fc78e91b263690ec166f344d56b9881ae50",
+    "fixtures/upstream/scripts/lassoCV_SS.py": "163c1bef427ffd0b8b2acaf38230742c9937fe56165a133311fe34517659f49a",
+    "fixtures/upstream/scripts/run_ESM2ne_cellular.sh": "3da2f88e89d4ecf972dbcdc7b1d141e02a2d79a8c3afaa64e4c24b82a809ffd1",
+    "fixtures/upstream/scripts/run_ESM2ne_viral.sh": "1c28977bf54a42d88049faa1d5079ef09b4044f921a6aa64b7709d819e0500c0",
+    "patches/local-fixes.patch": "26e5f61f177bd4874e5552a776cf5e926f759964ee62e811179710944af72520",
+    "patches/reproduction-fixes.patch": "06b7f8525fdee6cad8aa87efe96687af809465cd569f893b8e05eab9a6c05dc6"
+  }
+}
