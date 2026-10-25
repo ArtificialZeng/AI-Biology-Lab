@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "Independent exact polynomial reconstruction and exact rational postprocessing of widened serialized Linux interval bounds. Does not independently reimplement CAPD integration or establish priority.",
+  "polynomial_checks": {
+    "slow_rhs_equal_checker": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "fast_identity": true,
+    "dependent_p_identity": true,
+    "dependent_s_identity": true
+  },
+  "interval_checks": {
+    "strict_krawczyk_inclusion": true,
+    "all_logged_derivative_residual_intervals_widened_by": "10^-14 * max(1, abs(lower), abs(upper)) on each side",
+    "exact_rational_values": {
+      "determinant_binary_preconditioner": "1151219621157704841220229891059971527537074033222353442313603666895/421249166674228746791672110734681729275580381602196445017243910144",
+      "correction_norm_upper": "1340097275319536230202361831071915977081351/1125899906842624000000000000000000000000000000",
+      "fourth_power_norm_upper": "45263272133586573951690909173759086963747776261428487768800018965316807139126828243813053819330173276824615761986337601/62500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "krawczyk_displacement_upper": "63560027000987448815385590018704875005085624103681108485323/340282366920938463463374607431768211456000000000000000000000000000000",
+      "ideal_binary_radius": "3022314549036573/302231454903657293676544"
+    },
+    "decimal_display_only": {
+      "determinant_binary_preconditioner": 2.7328709757377294,
+      "correction_norm_upper": 0.0011902454802377492,
+      "fourth_power_norm_upper": 0.7242123541373852,
+      "krawczyk_displacement_upper": 1.86786131694432e-10,
+      "ideal_binary_radius": 1e-08
+    }
+  },
+  "input_sha256": {
+    "projects/mixed-phosphorylation/validated-cycle/verify_cycle.cpp": "0668f75206003e60e162e541aa41f25725408fb2acb29c66cdf84d5d7e0191c4",
+    "projects/mixed-phosphorylation/validated-cycle/seed.h": "02c3ca0350bfe9e6b0b09302b8e16e80bf15610a3f3cb93965065ae2a4bf7691",
+    "projects/mixed-phosphorylation/validated-cycle/CMakeLists.txt": "4cbcc762895c80b08b56f063087b0252d9e85655321e92fb40843f3ff2bda172",
+    "projects/mixed-phosphorylation/validated-cycle/build_and_run.sh": "f43304d468906eb6b5088cd4493cecfb59d5147ff99cb75c67670316cd5ed090",
+    "projects/mixed-phosphorylation/validated-cycle/candidate_lemma.md": "9408a4047ec0cc721dae5b126111b8c8a5b731bd32781f95ce5a86b5313cd4f6",
+    "projects/mixed-phosphorylation/validated-cycle/finite_kinase_persistence.md": "2d8f7587b38559d242aef46fbb5600f15f170f1b6c63a8ebe163c36f5a4b2046",
+    "projects/mixed-phosphorylation/validated-cycle/evidence/linux-interval-output.txt": "58999187cc4a7c2e50327301624bcadb056c108a1d50ad047729ccccac51ed0a"
+  },
+  "implementation_sha256": "6a45428ecfceb9a83616967c0d001fd1f96aad85801096894dcf0a440e9c8657"
+}

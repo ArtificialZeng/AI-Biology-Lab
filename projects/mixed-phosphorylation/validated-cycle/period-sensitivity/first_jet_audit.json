@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "arithmetic": "exact rational polynomial identities",
+  "invariance_coefficients_orders_0_1_zero": [
+    true,
+    true
+  ],
+  "CPP_equal_F0_plus_eF1_and_eprime_zero": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "h0": "100*b + u",
+  "h1": "-300*a**2 - 600*a*b - 300*a*u - 300*a*v - 300*a*w + 14400*a - 300*b**2 - 200*b*u - 200*b*v - 300*b*w + 24400*b + u**2 + u*v + 2401*u + 2400*v + 2400*w - 96000",
+  "F1": [
+    "-300*a**2 - 600*a*b - 300*a*u - 300*a*v - 300*a*w + 14400*a - 300*b**2 - 300*b*u - 300*b*v - 300*b*w + 24400*b + 2401*u + 2400*v + 2400*w - 96000",
+    "0",
+    "0",
+    "0",
+    "300*a*b + 3*a*u + 300*b**2 + 3*b*u - 2400*b - 24*u"
+  ],
+  "CPP_sha256": "6fc64be961c439bc06af1efc692a770a811e280177ced99fe55ed377d3143dae",
+  "scope": "First-order jet identities only; smooth slow-manifold existence and periodic-branch linkage require analytic audit"
+}

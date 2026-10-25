@@ -1,0 +1,21 @@
+{
+  "status": "Linux interval inequalities passed; fresh mathematical review pending",
+  "workflow": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40244276619",
+  "code_commit": "c2cbaa8",
+  "platform": "Ubuntu24.04 x86_64",
+  "compiler": "GCC13.3.0",
+  "interval_backend": "FILIB",
+  "CAPD_revision": "37057e5899bccaa6cd5701057b7e6ea5e232ef8b",
+  "inputs_sha256": {
+    "verify_cycle.cpp": "0668f75206003e60e162e541aa41f25725408fb2acb29c66cdf84d5d7e0191c4",
+    "seed.h": "02c3ca0350bfe9e6b0b09302b8e16e80bf15610a3f3cb93965065ae2a4bf7691",
+    "CMakeLists.txt": "4cbcc762895c80b08b56f063087b0252d9e85655321e92fb40843f3ff2bda172",
+    "build_and_run.sh": "f43304d468906eb6b5088cd4493cecfb59d5147ff99cb75c67670316cd5ed090"
+  },
+  "certificate_output_sha256": "58999187cc4a7c2e50327301624bcadb056c108a1d50ad047729ccccac51ed0a",
+  "scope": [
+    "Strict-interior locally attracting periodic orbit of five-dimensional high-kinase limit",
+    "Finite-K persistence requires separate analytic review",
+    "No explicit K0, complete-conjecture or novelty claim"
+  ]
+}

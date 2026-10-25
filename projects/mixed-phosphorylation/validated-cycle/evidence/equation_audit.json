@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "arithmetic": "exact rational symbolic identities",
+  "slow_equations_equal_CPP": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "fast_equation_identity": true,
+  "physical_dependent_equation_identities": [
+    true,
+    true
+  ],
+  "archived_independent_source_sha256": "6aecd5c7c8b7dbdc8ce860d2c5910b58de3adc663592bab52a9807f323f3885b",
+  "CPP_sha256": "0668f75206003e60e162e541aa41f25725408fb2acb29c66cdf84d5d7e0191c4",
+  "scope": "Equation identity only; does not certify numerical return map, interval rounding or novelty"
+}

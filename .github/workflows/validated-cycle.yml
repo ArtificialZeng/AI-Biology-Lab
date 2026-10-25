@@ -29,10 +29,27 @@ jobs:
         run: |
           set -euo pipefail
           bash projects/mixed-phosphorylation/validated-cycle/build_and_run.sh | tee "$RUNNER_TEMP/validated-cycle.log"
+      - name: Check exact reduction and widened interval consequences
+        run: |
+          python projects/mixed-phosphorylation/validated-cycle/independent-audit/independent_check.py --log "$RUNNER_TEMP/validated-cycle.log" --output "$RUNNER_TEMP/independent-check.json"
+      - name: Check first slow-manifold jet
+        run: |
+          python -m pip install -r requirements-exact.txt
+          python projects/mixed-phosphorylation/validated-cycle/period-sensitivity/verify_first_jet.py --output "$RUNNER_TEMP/first-jet-audit.json"
+      - name: Enclose nonzero period correction
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash projects/mixed-phosphorylation/validated-cycle/period-sensitivity/build_and_run.sh | tee "$RUNNER_TEMP/period-sensitivity.log"
+
       - name: Save text verification output
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: validated-cycle-text-output
-          path: ${{ runner.temp }}/validated-cycle.log
+          path: |
+            ${{ runner.temp }}/validated-cycle.log
+            ${{ runner.temp }}/period-sensitivity.log
+            ${{ runner.temp }}/first-jet-audit.json
+            ${{ runner.temp }}/independent-check.json
           if-no-files-found: ignore
