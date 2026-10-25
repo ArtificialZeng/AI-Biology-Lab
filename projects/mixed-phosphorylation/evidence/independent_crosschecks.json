@@ -1,0 +1,51 @@
+{
+  "status": "floating_point_only_not_proof",
+  "cross_solver_checks": [
+    {
+      "K": 100.0,
+      "period_difference_Radau_vs_BDF": 3.9614178604097106e-10,
+      "S2_max_difference_Radau_vs_BDF": 1.690918516317197e-09,
+      "S2_min_difference_Radau_vs_BDF": 1.2812059746458715e-10,
+      "amplitude_difference_Radau_vs_BDF": 1.8190391415373597e-09,
+      "K_times_period_minus_limit": 8.618474890607697,
+      "K_times_S2_max_minus_limit": 24.499410793162603,
+      "K_times_S2_min_minus_limit": -2.276970539200174,
+      "K_times_S2_peak_to_peak_minus_limit": 26.776381332362753
+    },
+    {
+      "K": 1000.0,
+      "period_difference_Radau_vs_BDF": 3.842615114990622e-10,
+      "S2_max_difference_Radau_vs_BDF": 2.13290363149099e-09,
+      "S2_min_difference_Radau_vs_BDF": 1.633897739328205e-10,
+      "amplitude_difference_Radau_vs_BDF": 2.296293377668235e-09,
+      "K_times_period_minus_limit": 7.755452922772577,
+      "K_times_S2_max_minus_limit": 24.05038025718831,
+      "K_times_S2_min_minus_limit": -2.3099791052551275,
+      "K_times_S2_peak_to_peak_minus_limit": 26.360359362443297
+    },
+    {
+      "K": 10000.0,
+      "period_difference_Radau_vs_BDF": 2.3851498553995043e-10,
+      "S2_max_difference_Radau_vs_BDF": 2.2475337146943275e-09,
+      "S2_min_difference_Radau_vs_BDF": 1.811925887107435e-10,
+      "amplitude_difference_Radau_vs_BDF": 2.4287265532052515e-09,
+      "K_times_period_minus_limit": 7.679213325939571,
+      "K_times_S2_max_minus_limit": 23.976165251737847,
+      "K_times_S2_min_minus_limit": -2.3120656212291535,
+      "K_times_S2_peak_to_peak_minus_limit": 26.288230872966167
+    },
+    {
+      "K": null,
+      "period_difference_Radau_vs_BDF": 2.730189407884609e-10,
+      "S2_max_difference_Radau_vs_BDF": 1.685308781418371e-09,
+      "S2_min_difference_Radau_vs_BDF": 1.2244288916107848e-10,
+      "amplitude_difference_Radau_vs_BDF": 1.8077517260906006e-09
+    }
+  ],
+  "max_conservation_error": 2.510205376893282e-10,
+  "minimum_sampled_species": 0.0,
+  "max_period_cross_solver_difference": 3.9614178604097106e-10,
+  "max_amplitude_cross_solver_difference": 2.4287265532052515e-09,
+  "max_shooting_residual": 7.238654120556021e-14,
+  "max_neutral_multiplier_error": 3.921307722976053e-13
+}

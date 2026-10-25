@@ -1,0 +1,44 @@
+{
+  "status": "floating-point numerical evidence, not rigorous enclosure",
+  "shoot_success": true,
+  "shoot_residual": 1.6608936448392342e-13,
+  "T_limit": 4.692096001431565,
+  "peak_state": [
+    4.182444573681498,
+    7.142086118236168,
+    3.892262760485736,
+    7.941939668363564,
+    0.019306458337508114
+  ],
+  "w_max": 3.892262760485736,
+  "w_min": 0.2457796633441587,
+  "minimum_time": 2.4291195491601845,
+  "monodromy_eigenvalues": [
+    [
+      0.6340814186044927,
+      0.0
+    ],
+    [
+      0.9999999999938017,
+      0.0
+    ],
+    [
+      8.270498339256537e-06,
+      0.0
+    ],
+    [
+      -1.407019542945506e-19,
+      0.0
+    ],
+    [
+      5.218033574132069e-18,
+      0.0
+    ]
+  ],
+  "period_first_order_coefficient": 7.670841466568112,
+  "maximum_first_order_coefficient": 23.96770931012703,
+  "minimum_first_order_coefficient": -2.312287547685339,
+  "response_BVP_residual": 2.220446049250313e-15,
+  "phase_condition": "d(S2)/dt=0 at maximum",
+  "slow_flow_first_order": "F1=(-F0_u-100F0_b,0,0,0,-3*(u+100b)*(8-a-b))"
+}

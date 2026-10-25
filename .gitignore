@@ -1,0 +1,16 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+artifacts/
+*.npz
+**/build/
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+**/certificate_check.json
+.env
+.env.*

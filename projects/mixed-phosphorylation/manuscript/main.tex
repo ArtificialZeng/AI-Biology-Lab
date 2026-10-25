@@ -1,0 +1,338 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\Delta}
+\title{An explicit finite-kinase instability bound\protect\\
+for a mixed-mechanism phosphorylation system}
+\author{Zijian Zeng}
+\date{}
+\hypersetup{pdftitle={An explicit finite-kinase instability bound for a mixed-mechanism phosphorylation system},pdfauthor={Zijian Zeng}}
+\begin{document}
+\maketitle
+\begin{abstract}
+For the mass-action mixed-mechanism phosphorylation system of Conradi,
+Mincheva and Shiu, at their Table~1 rates and fixed phosphatase and substrate
+totals $8$ and $40$, we prove that the unique positive equilibrium has exactly
+two unstable and four stable compatibility-class eigenvalues whenever the
+kinase total is at least $4660166/209569<23$. A rational equilibrium
+parameterization converts the unbounded range of kinase totals into a bounded
+interval. Exact Bernstein certificates for six Hurwitz determinants then
+give a uniform Routh root count. The bound is sufficient; sharpness is not
+asserted. This proves the first assertion of their Conjecture~6.2 with explicit
+witness totals. Its periodic-orbit assertion, and hence the full original
+problem, remain unresolved here.
+\end{abstract}
+
+\section{Model, statement and relation to prior work}
+
+Consider processive phosphorylation and distributive dephosphorylation:
+\begin{align*}
+ S_0+K&\mathrel{\mathop{\rightleftarrows}^{k_1}_{k_2}}S_0K
+       \xrightarrow{k_3}S_1K\xrightarrow{k_4}S_2+K,\\
+ S_2+P&\mathrel{\mathop{\rightleftarrows}^{k_5}_{k_6}}S_2P
+       \xrightarrow{k_7}S_1+P
+       \mathrel{\mathop{\rightleftarrows}^{k_8}_{k_9}}S_1P
+       \xrightarrow{k_{10}}S_0+P.
+\end{align*}
+Use the species order
+\[
+ (x_1,\ldots,x_9)=(S_0,K,S_0K,S_1K,S_2,P,S_2P,S_1,S_1P)
+\]
+and the fixed rate vector
+\begin{equation}\label{eq:rates}
+ (k_1,\ldots,k_{10})=(1,1,1,1,100,1,9/10,3,1,100).
+\end{equation}
+Thus, in the notation of Conradi--Mincheva--Shiu~\cite{CMS}, the equations are
+\begin{equation}\label{eq:odes}
+\begin{aligned}
+ \dot x_1&=-x_1x_2+x_3+100x_9,&
+ \dot x_2&=-x_1x_2+x_3+x_4,\\
+ \dot x_3&=x_1x_2-2x_3,& \dot x_4&=x_3-x_4,\\
+ \dot x_5&=x_4-100x_5x_6+x_7,&
+ \dot x_7&=100x_5x_6-\tfrac{19}{10}x_7,\\
+ \dot x_6&=-100x_5x_6-3x_8x_6+\tfrac{19}{10}x_7+101x_9,\\
+ \dot x_8&=\tfrac9{10}x_7-3x_6x_8+x_9,&
+ \dot x_9&=3x_6x_8-101x_9.
+\end{aligned}
+\end{equation}
+The conserved totals are
+\begin{equation}\label{eq:totals}
+ \kappa=x_2+x_3+x_4,\qquad P_{\rm tot}=x_6+x_7+x_9,\qquad
+ S_{\rm tot}=x_1+x_3+x_4+x_5+x_7+x_8+x_9.
+\end{equation}
+Here $\kappa$ denotes the total kinase, to distinguish it from free kinase.
+The three independent conservation laws define a six-dimensional
+compatibility class in the nonnegative orthant.
+
+\begin{theorem}\label{thm:main}
+For \eqref{eq:odes} with $P_{\rm tot}=8$ and $S_{\rm tot}=40$, and every finite
+\[
+ \kappa\ge B:=\frac{4660166}{209569},
+\]
+the unique positive equilibrium has exactly two eigenvalues in
+$\{\lambda:\operatorname{Re}\lambda>0\}$ and four in
+$\{\lambda:\operatorname{Re}\lambda<0\}$ on its compatibility class,
+counted with algebraic multiplicity. In particular, this holds for every
+$\kappa\ge23$.
+\end{theorem}
+
+The source paper~\cite{CMS}, especially Proposition~3.1, Proposition~4.1 and
+Section~6, provides equilibrium uniqueness, a stability-surface analysis and
+large-kinase simulations. Its Conjecture~6.2(1) asks for fixed phosphatase and
+substrate totals admitting unstable equilibria at arbitrarily large kinase
+totals. Theorem~\ref{thm:main} supplies these witnesses and certifies an entire
+unbounded ray, excluding restabilization on that ray. Equilibrium
+parameterization and the Hurwitz method themselves are established tools.
+
+There is direct subsequent topical overlap: Grasse's 2023 poster-programme
+entry concerns kinase-total robustness~\cite{Grasse2023}, and the 2025 abstract
+of Grasse and Conradi considers the reversed processive/distributive
+arrangement~\cite{GC2025}. The inspected programme and abstract give no
+equivalent finite bound or complete proof. The poster itself and possible
+follow-up texts were unavailable to this comparison. No priority claim is
+made. The contribution here is the explicit bound and exact certificate for
+the stated fixed totals, rather than the prior observation of oscillations.
+
+\section{Equilibrium parameter and coverage of the kinase ray}
+
+Put $z=x_9$ and define
+\begin{equation}\label{eq:param}
+\begin{aligned}
+ p(z)&=8-\frac{1009}{9}z,&
+ G(z)&=\frac{2809}{9}z+\frac{322z}{9p(z)},\\
+ r(z)&=40-G(z),&
+ \kappa(z)&=200z+\frac{200z}{r(z)}.
+\end{aligned}
+\end{equation}
+At a positive equilibrium, direct balance in \eqref{eq:odes} yields
+\begin{equation}\label{eq:eq}
+ x^*(z)=\left(r,\frac{200z}{r},100z,100z,
+       \frac{19z}{9p},p,\frac{1000z}{9},\frac{101z}{3p},z\right).
+\end{equation}
+For example, $\dot x_4=\dot x_1=\dot x_3=0$ gives
+$x_4=x_3=100z$ and $x_1x_2=200z$.
+The $x_5,x_7$ balances give $x_7=1000z/9$ and
+$x_5=19z/(9p)$; the $x_9$ balance gives $x_8=101z/(3p)$.
+The phosphatase and substrate totals then give $p$ and $r$.
+Conversely, substitution of \eqref{eq:eq} into all nine equations and
+\eqref{eq:totals} verifies all these identities.
+
+On $0<z<72/1009$ we have $p>0$ and
+\[
+ G'(z)=\frac{2809}{9}+\frac{2576}{9p(z)^2}>0.
+\]
+Since $G(0)=0$ and $G(z)\to\infty$ at the right endpoint, there is exactly
+one $\alpha$ in this interval satisfying $G(\alpha)=40$.
+The positive equilibria correspond precisely to $0<z<\alpha$.
+On this interval,
+\[
+ \kappa'(z)=200+\frac{200}{r(z)}
+                 +\frac{200zG'(z)}{r(z)^2}>0.
+\]
+The endpoint limits of $\kappa(z)$ are $0$ and $\infty$.
+Thus \eqref{eq:eq} gives exactly one positive equilibrium for every positive
+finite total kinase. No interval of totals is omitted.
+
+For an explicit enclosure define
+\begin{equation}\label{eq:interval}
+ Q(z)=2834281z^2-568386z+25920,\qquad
+ L=\frac7{100},\qquad U=\frac{70122383355}{10^{12}}.
+\end{equation}
+Then $r=Q/[9(72-1009z)]$, and exact evaluation gives
+\[
+ Q(L)=\frac{209569}{10000}>0,\qquad
+ Q(U)=-\frac{6175117557936279}{40000000000000000000000}<0.
+\]
+Moreover $0<L<U<72/1009$ and $Q'(U)<0$.
+Because $Q''>0$, the polynomial is strictly decreasing on $[0,U]$.
+Consequently $L<\alpha<U$, and $Q>0$ on $[L,\alpha)$.
+Finally $\kappa(L)=B<23$. Strict monotonicity proves that
+$[L,\alpha)$ maps bijectively onto $[B,\infty)$.
+
+\section{Exact signs and eigenvalue count}
+
+In the compatibility class retain coordinates
+$(x_3,x_4,x_5,x_7,x_8,x_9)$ and eliminate
+\[
+ x_1=40-x_3-x_4-x_5-x_7-x_8-x_9,\quad
+ x_2=\kappa-x_3-x_4,\quad x_6=8-x_7-x_9.
+\]
+Differentiate at fixed $\kappa$, then substitute \eqref{eq:eq} and
+$\kappa=\kappa(z)$. With $u=200z/r$, $w=19z/(9p)$ and $v=101z/(3p)$,
+the resulting Jacobian is
+\begin{equation}\label{eq:jac}
+ J(z)=\begin{pmatrix}
+ -u-r-2&-u-r&-u&-u&-u&-u\\
+ 1&-1&0&0&0&0\\
+ 0&1&-100p&100w+1&0&100w\\
+ 0&0&100p&-100w-19/10&0&-100w\\
+ 0&0&0&9/10+3v&-3p&1+3v\\
+ 0&0&0&-3v&3p&-3v-101
+ \end{pmatrix}.
+\end{equation}
+This is a restriction to the tangent space of the conservation laws, so its
+six eigenvalues exclude the three conservation zeros of the full system.
+In particular, $\kappa(z)$ is not differentiated as a function of state.
+
+Write
+\[
+ \det(\lambda I-J(z))=\sum_{i=0}^{6}c_i(z)\lambda^{6-i},\qquad c_0=1,
+ \qquad
+ \dd_j(z)=\det\big[c_{2b-a+1}(z)\big]_{a,b=0}^{j-1},
+\]
+where $c_i=0$ outside $0\le i\le6$. This is the usual Hurwitz convention;
+its transpose gives the same leading determinants.
+Let $A=1009z-72$ and use the denominators $D_j$ in Table~\ref{tab:signs}.
+Define the polynomials $N_j=D_j\dd_j$ and
+\[
+ h_j=-N_j\quad(1\le j\le5),\qquad h_6=N_6.
+\]
+The displayed Jacobian and these definitions specify every polynomial without
+the need for expanded, large integer expressions.
+
+\begin{lemma}\label{lem:sign}
+For all $z\in[L,\alpha)$,
+\[
+ (\operatorname{sgn}\dd_1,\ldots,\operatorname{sgn}\dd_6)
+       =(+,+,+,+,-,-).
+\]
+\end{lemma}
+
+\begin{proof}
+For a polynomial $h$ of degree $n$, put
+\[
+ a_\ell=\frac{h^{(\ell)}(L)}{\ell!}(U-L)^\ell,\qquad
+ b_k=\sum_{\ell=0}^{k}a_\ell
+                  \frac{\binom{k}{\ell}}{\binom{n}{\ell}}.
+\]
+The exact change of basis is
+\begin{equation}\label{eq:bernstein}
+ h(L+(U-L)t)=\sum_{k=0}^{n}b_k\binom nk t^k(1-t)^{n-k}.
+\end{equation}
+The basis functions on the right are nonnegative and sum to one on $[0,1]$.
+Strict positivity of every $b_k$ therefore proves strict positivity of $h$
+on the closed interval $[L,U]$.
+
+Exact rational arithmetic applied to \eqref{eq:jac} gives
+Table~\ref{tab:signs}. Its last two columns are conservative rational lower
+bounds, not rounded estimates: for each row, $b_0=h_j(L)>10^{m_j}$ and
+$b_k/b_0>\eta_j$ for every $0\le k\le n_j$. Thus all
+$5+11+18+25+31+35=125$ Bernstein coefficients are strictly positive.
+The supplementary verifier reconstructs these calculations from
+\eqref{eq:jac}; expanded polynomials and all rational coefficients accompany
+the note.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}clrrrr@{}}
+\toprule
+$j$& $D_j$ & $\operatorname{sgn}D_j$ & $n_j$ & $m_j$ & $\eta_j$\\
+\midrule
+1&$90AQ$&$-$&4&5&$24/1000$\\
+2&$72900A^3Q^2$&$-$&10&14&$28/10000$\\
+3&$177147000A^5Q^3$&$-$&17&24&$14/10000$\\
+4&$71744535000A^7Q^4$&$-$&24&34&$8/10000$\\
+5&$871696100250A^8Q^5$&$+$&30&41&$4/10000$\\
+6&$94143178827A^7Q^6$&$-$&34&47&$4/10000$\\
+\bottomrule
+\end{tabular}
+\caption{Exact sign certificate. Denominator signs are used only on
+$[L,\alpha)$; numerator positivity is certified on $[L,U]$. The exponent
+$m_j$ means $b_0>10^{m_j}$, and $\eta_j$ is a strict lower bound for every
+$b_k/b_0$.}\label{tab:signs}
+\end{table}
+
+On the physical interval, $A<0$ and $Q>0$, so the denominator signs in the
+table follow directly. The signs of $N_1,\ldots,N_6$ are
+$(-,-,-,-,-,+)$ by \eqref{eq:bernstein}. Division gives the claimed signs.
+Only the numerator polynomials are certified beyond $\alpha$: no determinant
+is evaluated across its pole there.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The Routh array is regular because every leading Hurwitz determinant is
+nonzero. Its first column is
+\[
+ 1,\quad \dd_1,\quad\frac{\dd_2}{\dd_1},\quad
+ \frac{\dd_3}{\dd_2},\quad\frac{\dd_4}{\dd_3},\quad
+ \frac{\dd_5}{\dd_4},\quad\frac{\dd_6}{\dd_5}.
+\]
+By Lemma~\ref{lem:sign}, its signs are $(+,+,+,+,+,-,+)$, with exactly
+two sign changes. The classical Routh root-count theorem gives two roots in
+the open right half-plane, counted with algebraic multiplicity.
+There are no imaginary-axis roots: $c_6=0$ would force $\dd_6=0$;
+a nonzero imaginary conjugate pair would give a common root of the even
+and odd parts of the characteristic polynomial, forcing $\dd_5=0$.
+Both alternatives are excluded. Thus the other four roots lie in the open
+left half-plane. The bijection $[L,\alpha)\to[B,\infty)$ proves the result
+for every total stated in the theorem, including $\kappa=B$.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The supplementary file \texttt{verify\_certificate.py} constructs
+\eqref{eq:jac}, computes the characteristic polynomial and the six Hurwitz
+determinants over rational functions, and checks every bound in
+Table~\ref{tab:signs}. Specifically, it checks the displayed denominator
+factorizations and degrees, computes the derivatives defining $a_\ell$,
+forms every $b_k$, and compares them with the exact rational lower bounds.
+It also checks its reconstructed characteristic polynomial and all 125
+coefficients against the supplied full certificates.
+All sign decisions are exact; no integration, fitted asymptotic law,
+floating-point eigenvalue calculation or exchange of limits is used.
+The calculations were performed with Python and SymPy~1.13.3. A separate
+verification pass reconstructed the published nine equations in a different
+affine coordinate chart and checked the complete polynomial identities using
+rational arithmetic, including a standard-library \texttt{Fraction}
+expansion of the Bernstein certificates.
+
+The theorem is restricted to \eqref{eq:rates} and the fixed totals $8,40$.
+The threshold is sufficient and is not asserted to be the stability boundary.
+An unstable equilibrium in six dimensions does not by itself establish a
+periodic orbit. Neither periodic-orbit existence for all sufficiently large
+kinase totals nor invariance of its $S_2$ projection is proved here. These are
+the additional requirements of Conjecture~6.2(2) in~\cite{CMS}; the full
+original problem remains unresolved by this note.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted the symbolic derivation, exact-verification code,
+literature screening, drafting and editing. A separate model context checked
+the frozen mathematical argument and independently reconstructed its algebra.
+This assistance and the executable checks are not formal proof-assistant
+verification, human peer review or a guarantee of priority. The mathematical
+argument and exact certificate specify the claims supported here.
+
+\begin{thebibliography}{9}
+\bibitem{CMS}
+C.~Conradi, M.~Mincheva and A.~Shiu,
+Emergence of oscillations in a mixed-mechanism phosphorylation system,
+\emph{Bulletin of Mathematical Biology} \textbf{81} (2019), 1829--1852.
+\href{https://doi.org/10.1007/s11538-019-00580-6}{doi:10.1007/s11538-019-00580-6}.
+Model and conjecture numbering follow
+\href{https://arxiv.org/abs/1809.02886v2}{arXiv:1809.02886v2}.
+
+\bibitem{Grasse2023}
+K.-J.~Grasse,
+Analysis of the robustness of oscillations in a mixed mechanism double
+phosphorylation system with respect to total kinase concentrations,
+\emph{Systems Biology of Human Disease 2023}, poster programme,
+poster~48, p.~52 (2023).
+\href{https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf}{Official poster programme}.
+Programme entry only; the poster text was not inspected.
+
+\bibitem{GC2025}
+K.-J.~Grasse and C.~Conradi,
+On the robustness of oscillations in a mixed mechanism phosphorylation system
+against perturbations in the total amount of the processive enzyme,
+\emph{BIOMATH 2025 Conference Abstracts}, Sofia, 15--20 June 2025.
+\href{https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828}{Official abstract}.
+Conference abstract.
+\end{thebibliography}
+\end{document}

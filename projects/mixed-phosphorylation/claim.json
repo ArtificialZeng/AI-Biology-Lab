@@ -1,0 +1,24 @@
+{
+  "kind": "result-note",
+  "statement": "For the Conradi-Mincheva-Shiu mixed-mechanism mass-action model, at Table 1 rates (1,1,1,1,100,1,9/10,3,1,100), total phosphatase 8 and total substrate 40, every finite total kinase K >= 4660166/209569 has a unique positive equilibrium with exactly two right-half-plane and four left-half-plane eigenvalues on the six-dimensional compatibility class, counting algebraic multiplicity.",
+  "bound": {
+    "numerator": 4660166,
+    "denominator": 209569,
+    "sufficient_integer_bound": 23,
+    "sharpness_claimed": false
+  },
+  "scope": "Explicit witnesses and quantitative partial resolution of original Conjecture 6.2(1); no proof of the periodic-orbit assertion.",
+  "evidence": {
+    "arithmetic": "exact rational",
+    "positive_Bernstein_coefficients": 125,
+    "hurwitz_determinants": 6,
+    "numerical_periodic_orbits": "floating-point evidence only"
+  },
+  "status": {
+    "full_original_conjecture": "unresolved in this project",
+    "internal_AI_assisted_checks": "completed",
+    "external_human_review": "not reported",
+    "novelty_and_priority": "unconfirmed; direct 2023/2025 conference overlap",
+    "biological_experiments": "none"
+  }
+}

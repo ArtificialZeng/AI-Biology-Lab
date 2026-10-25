@@ -1,0 +1,18 @@
+{
+  "scope": "Public artifact integrity; not external review or novelty certification",
+  "date_prepared": "2026-10-26",
+  "sha256": {
+    "source.md": "b392da9e2435ebc9edb765903a7fe43e7ab25eaff4534c1831c4cc6f0e3788a6",
+    "claim.json": "fef2f1c0c97915d17e24e5d985d6904c53620e81970be8f70a9a666a10c4f8b8",
+    "evidence/finite_kinase_algebra.json": "34966540e4ebd64c45034261f53dcffe6165b93a6bc33c3130688a47f0621ee6",
+    "evidence/finite_kinase_sign_certificate.json": "23202f5e8bd3c0ff556375a239a60c6bbffdeef36f4c1e3c748fb36559e1c04d",
+    "evidence/finite_kinase_proof.md": "bb560fc1cd6627a3e1619d9d8169d0df92ffa76ede371ffef3e139f24c928ca3",
+    "manuscript/main.tex": "91ee0098ba364ef5d34be3ff687640505faf3017ade98e08366185fda7c18dbe",
+    "manuscript/main.pdf": "26ae95e67d7d4583f15f393552c8f9323c944b49b546faef69960c0234a3b2f3",
+    "src/finite_kinase_exact.py": "ae3dbbaa58d8f2f78993e6bc773554052373cc6e2171a3958ee8b9848708c938",
+    "src/finite_kinase_signs.py": "45b3a92396033cfc188f585c3aee2bcc2c10244d452c03769697a1a522d5d7d7",
+    "src/verify_finite_kinase.py": "4feaf19b8b9e1ae920c62f97eb8c9f6dc5b3780858e145a022e6e8ce7b081823",
+    "manuscript/verify_certificate.py": "faee57942d50454879f20502e6d6a2e8d0ac0c8e0b5894110d40a0e6b105a43d",
+    "audit/verify_reduction.py": "d0825383755fca81792e0bb5d5ae638fa428a13bbbc356e0def5752566cb03a7"
+  }
+}
