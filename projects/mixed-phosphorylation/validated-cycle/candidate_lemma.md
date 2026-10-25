@@ -1,6 +1,6 @@
 # Candidate computer-assisted lemma and analytic argument
 
-Status: candidate for independent review. The native Mac interval run passed its inequalities; Linux x86/FILIB reproduction and an independent mathematical audit remain required. No paper or priority claim is made.
+Status: base-cycle scope accepted by a fresh AI-assisted mathematical audit after Linux x86/FILIB reproduction. [Linux evidence](evidence/linux-interval-output.txt), [independent exact audit](independent-audit/independent_check.json), and the [finite-K persistence argument](finite_kinase_persistence.md) are available. This is not external human peer review or priority confirmation.
 
 ## Frozen ODE and intended conclusion
 
@@ -36,9 +36,9 @@ The return map's output lies in a time interval bounded away from zero, and its 
 
 D encloses DP(X). Interval multiplication encloses the fourth power of every one of these matrices, including the derivative DP(z*) at the certified fixed point. If its infinity norm bound is <1, then rho(DP(z*))^4 <= ||DP(z*)^4||_inf <1. Thus all four transverse multipliers have modulus <1, giving orbital asymptotic stability. Numerically tiny multipliers are never declared exact zeros.
 
-## Consequence that still needs a separate audit
+## Separately audited finite-K consequence
 
-The exact six-dimensional singular reduction in the repository has epsilon=1/K and epsilon*y'=-y+epsilon*(u+v)*y+u+100b. At epsilon=0 its critical graph is y=u+100b with fast normal derivative -1. Once the above strict-interior hyperbolic limiting orbit is certified and the local compact-neighborhood hypotheses are independently checked, local Fenichel persistence plus hyperbolic-cycle persistence supplies an attracting orbit for every sufficiently small positive epsilon. This would imply existence for every sufficiently large finite K, without a numerical K0. The existing instability threshold 4660166/209569 is not such a K0. This paragraph does not independently certify that conclusion or the complete original conjecture.
+The exact six-dimensional singular reduction in the repository has epsilon=1/K and epsilon*y'=-y+epsilon*(u+v)*y+u+100b. At epsilon=0 its critical graph is y=u+100b with fast normal derivative -1. The strict-interior hyperbolic limiting orbit and the local compact-neighborhood hypotheses have been checked. The separate argument uses local Fenichel persistence and hyperbolic-cycle persistence to obtain an attracting orbit within each fixed six-dimensional compatibility class for every sufficiently large finite K, without a numerical K0. The existing instability threshold 4660166/209569 is not such a K0. The full argument is in finite_kinase_persistence.md; the complete original conjecture remains unresolved.
 
 ## Literature and method credit
 

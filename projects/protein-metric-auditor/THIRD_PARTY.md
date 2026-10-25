@@ -1,0 +1,11 @@
+# Third-party materials and credit
+
+ProteinGym was developed by Pascal Notin and collaborators in the OATML/Marks Lab teams. Cite their original work when using the underlying benchmark: Notin et al., *ProteinGym: Large-Scale Benchmarks for Protein Fitness Prediction and Design*, NeurIPS 2023. [Official repository](https://github.com/OATML-Markslab/ProteinGym), [proceedings](https://proceedings.neurips.cc/paper_files/paper/2023/hash/cac723e5ff29f65e3fcbb0739ae91bee-Abstract-Datasets_and_Benchmarks.html).
+
+`vendor/proteingym/performance_DMS_benchmarks.py` is an unchanged snapshot from commit `144fe22b07dfaeec2b366f2346203a9838a55b4c`. Its MIT license and copyright notice are retained in `vendor/proteingym/LICENSE`. The pinned configuration, constants and assay-level NDCG table are ProteinGym materials; the numeric fixture is a documented projection of one member of its public v1.3 score release. The full original CSV hash and projection hash are in `fixtures/manifest.json`; archive metadata and member hashes are in `provenance/download_manifest.json`.
+
+The dataset's experimental measurements originate with the assay authors. The fixture is `GAL4_YEAST_Kitzman_2015`; its experimental citation and benchmark provenance should be retained in downstream use. No ownership of those measurements or third-party model scores is claimed. This project adds audit code, transformations and descriptive result tables, rather than new experimental measurements.
+
+Prior work includes Tan et al., *A General Harness for Protein Foundation Model Fitness Prediction*, arXiv:2609.34654 (2026), whose Appendix B.1 explicitly describes ordinal tie handling, and Tim Richardson's [September 24, 2026 first-party audit](https://rewirebio.io/blog/what-our-biology-benchmark-scores-actually-counted/), which reports separate constant-prediction controls. Standard tie-averaged NDCG and rearrangement bounds are not claimed as new methods.
+
+The archived independent formula-review JSON records an earlier implementation hash and computational checks. It is an internal computational review record, not endorsement by ProteinGym, model authors, assay authors or an external human reviewer. No correspondence, credentials, private logs or model checkpoints are included.

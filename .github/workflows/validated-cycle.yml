@@ -41,6 +41,8 @@ jobs:
         run: |
           set -euo pipefail
           bash projects/mixed-phosphorylation/validated-cycle/period-sensitivity/build_and_run.sh | tee "$RUNNER_TEMP/period-sensitivity.log"
+      - name: Independently reconstruct period sensitivity with rational intervals
+        run: python projects/mixed-phosphorylation/validated-cycle/period-sensitivity/independent-audit/independent_period_check.py --output "$RUNNER_TEMP/independent-period-check.json"
 
       - name: Save text verification output
         if: always()
@@ -52,4 +54,5 @@ jobs:
             ${{ runner.temp }}/period-sensitivity.log
             ${{ runner.temp }}/first-jet-audit.json
             ${{ runner.temp }}/independent-check.json
+            ${{ runner.temp }}/independent-period-check.json
           if-no-files-found: ignore

@@ -12,11 +12,21 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 
 | Project | Deliverable | Evidence status |
 | --- | --- | --- |
-| [Mixed-mechanism phosphorylation](projects/mixed-phosphorylation/README.md) | Exact finite-kinase instability bound | Exact certificate; novelty and external review pending |
+| [Mixed-mechanism phosphorylation](projects/mixed-phosphorylation/README.md) | Exact instability bound, validated attracting cycles and nonzero period correction | Linux interval certificates and independent exact audits; priority/human review pending |
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | Reproducible software defects and a history-grounded reconstruction patch | Offline CPU regression checks; no training-result or author confirmation |
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | Identifier guard, frozen-sample audit, and a checksum warning patch | 42 datasets / 20,720 reactions reproduced; no chemical-identity or upstream-acceptance claim |
+| [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | Full released-score NDCG order audit | 217 assays / 95 configurations; secondary-metric rank shifts only |
+| [MEMOTE direction audit](projects/memote-direction-auditor/README.md) | Equivalent-reaction counterexamples and a two-line direction fix | Real complete ATP detector integration; maintainer acceptance pending |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
+
+## New validated result: robust oscillations have a nonzero period correction
+
+For the fixed published rates, P=8 and S=40, an attracting periodic branch exists in each fixed compatibility class for every sufficiently large finite kinase total K. In original model time,
+
+$$T(K)=T_\infty+T_1/K+O(K^{-2}),\qquad T_1\in[7.65771717,7.68396573].$$
+
+The positive coefficient certifies a finite-concentration bias: this local branch approaches its limiting period from above. No numerical K0 or remainder constant is given. [Proofs, Linux interval runs, exact independent audits, and figure](projects/mixed-phosphorylation/validated-cycle/README.md). Qualitative robustness overlaps existing conference work; novelty of the strict model-specific period certificate remains pending expert confirmation. The full source conjecture is unresolved.
 
 ## First project: can a biochemical oscillator resist changes in enzyme concentration?
 
@@ -31,8 +41,8 @@ In particular, the result holds for every **K ≥ 23**. The bound is sufficient 
 | Evidence level | Current status |
 | --- | --- |
 | Equilibrium instability over the stated range | Exact proof and executable certificate |
-| Periodic trajectories and concentration corrections | Floating-point numerical evidence |
-| Stable periodic orbits for every sufficiently large K | Open in this project |
+| Selected finite-K trajectories and extrema | Floating-point numerical evidence |
+| Attracting periodic branch for every sufficiently large K | Interval limiting-cycle certificate plus local persistence; no explicit K0 |
 | Original Conjecture 6.2 | First assertion addressed; full conjecture unresolved |
 | Novelty and priority | Unconfirmed; directly related 2023/2025 conference work exists |
 | External human peer review / biological experiments | None reported |
@@ -70,10 +80,10 @@ python scripts/reproduce.py figure
 
 ## What we are working toward
 
-1. Certify an attracting periodic orbit, including rigorous stability bounds.
-2. Prove persistence for an unbounded range of finite kinase totals.
-3. Bound how period and amplitude change with concentration.
-4. Identify an interpretable parameter region and where robustness fails.
+1. Obtain an explicit finite-K threshold and a usable remainder constant.
+2. Certify amplitude corrections and clarify scalar-projection invariance.
+3. Extend the validated parameter region.
+4. Clarify priority with directly overlapping research and obtain external human review.
 
 These are research targets, not completed discoveries. [The roadmap](docs/RESEARCH_ROADMAP.md) defines their acceptance criteria. [External validation](docs/VALIDATION.md) comes before claims of priority or resolution of the full conjecture.
 

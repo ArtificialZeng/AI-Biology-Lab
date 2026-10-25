@@ -84,7 +84,7 @@ def main() -> int:
         result["archive_files_checked"] = check_archive()
         with tempfile.TemporaryDirectory(prefix="ai-biology-") as temporary:
             work = Path(temporary) / "project"
-            shutil.copytree(PROJECT, work, ignore=shutil.ignore_patterns("__pycache__", "build"))
+            shutil.copytree(PROJECT, work, ignore=shutil.ignore_patterns("__pycache__", "build", "build-*", "CAPD"))
             for index, command in enumerate(plans[args.mode], start=1):
                 command_started = time.monotonic()
                 print(f"[{index}/{len(plans[args.mode])}] python {' '.join(command)}", flush=True)

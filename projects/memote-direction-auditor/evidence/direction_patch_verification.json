@@ -1,0 +1,1615 @@
+{
+  "status": "passed",
+  "source_commit": "bf76477b4087feefc8ad429ebd492e30ef10eebc",
+  "source_URL": "https://github.com/opencobra/memote/blob/bf76477b4087feefc8ad429ebd492e30ef10eebc/src/memote/support/helpers.py#L676-L703",
+  "original_helpers_sha256": "bbb3112dd94f8e6b92853a38483e9c623396d03dd8091e240a24420822963311",
+  "candidate_helpers_sha256": "da39de45a7004ef16ac7e7036b516cef25ee8c5c8e20a6ea2c067da1eabaaff1",
+  "patch_sha256": "f80eb3fe28a5b138de4df7410eabf4e5d1b72b490c7a68714abd180d2dd126a2",
+  "variants": {
+    "original": {
+      "python": "3.11.15",
+      "versions": {
+        "memote": "0.17.0",
+        "cobra": "0.30.0",
+        "optlang": "1.9.1",
+        "swiglpk": "5.0.13"
+      },
+      "GLPK_version": "5.0",
+      "helpers_sha256": "bbb3112dd94f8e6b92853a38483e9c623396d03dd8091e240a24420822963311",
+      "consistency_sha256": "161d4b0471e50b33570f5b63332e3a816f0c6ca779002995e7854b93a0a78f54",
+      "ATP_function_sha256": "d0ed7ae482f58eb8ec52cba239a267e1bb98840c0e48ceef2c6e703f73c9d7c0",
+      "cases": [
+        {
+          "case": "hydrolysis_forward",
+          "sigma": 1,
+          "original_bounds": [
+            0,
+            1000
+          ],
+          "native_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "hydrolysis_reverse",
+          "sigma": -1,
+          "original_bounds": [
+            -1000,
+            0
+          ],
+          "native_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              0
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "charging_forward",
+          "sigma": -1,
+          "original_bounds": [
+            0,
+            1000
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "charging_reverse",
+          "sigma": 1,
+          "original_bounds": [
+            -1000,
+            0
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              0
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "reversible_forward",
+          "sigma": 1,
+          "original_bounds": [
+            -1000,
+            1000
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "reversible_reverse",
+          "sigma": -1,
+          "original_bounds": [
+            -1000,
+            1000
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        }
+      ],
+      "relaxed_equivalent_cases": [
+        {
+          "case": "strict_one_way_hydrolysis_forward",
+          "original_bounds": [
+            2,
+            1000
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "strict_one_way_hydrolysis_reverse",
+          "original_bounds": [
+            -1000,
+            -2
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "strict_one_way_charging_forward",
+          "original_bounds": [
+            2,
+            1000
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "strict_one_way_charging_reverse",
+          "original_bounds": [
+            -1000,
+            -2
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "fixed_nonzero_hydrolysis_forward",
+          "original_bounds": [
+            5,
+            5
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "fixed_nonzero_hydrolysis_reverse",
+          "original_bounds": [
+            -5,
+            -5
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "fixed_nonzero_charging_forward",
+          "original_bounds": [
+            5,
+            5
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "fixed_nonzero_charging_reverse",
+          "original_bounds": [
+            -5,
+            -5
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        }
+      ],
+      "normalization_cases": [
+        {
+          "input": [
+            -1000,
+            0
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            -1000,
+            -2
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            -5,
+            -5
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            -1000,
+            1000
+          ],
+          "output": [
+            -1,
+            1
+          ]
+        },
+        {
+          "input": [
+            0,
+            1000
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            5,
+            1000
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            5,
+            5
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            0,
+            0
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "boundary_input": [
+            -1000,
+            0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "boundary_input": [
+            0,
+            1000
+          ],
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "boundary_input": [
+            -1000,
+            1000
+          ],
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "boundary_input": [
+            0,
+            0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "candidate": {
+      "python": "3.11.15",
+      "versions": {
+        "memote": "0.17.0",
+        "cobra": "0.30.0",
+        "optlang": "1.9.1",
+        "swiglpk": "5.0.13"
+      },
+      "GLPK_version": "5.0",
+      "helpers_sha256": "da39de45a7004ef16ac7e7036b516cef25ee8c5c8e20a6ea2c067da1eabaaff1",
+      "consistency_sha256": "161d4b0471e50b33570f5b63332e3a816f0c6ca779002995e7854b93a0a78f54",
+      "ATP_function_sha256": "d0ed7ae482f58eb8ec52cba239a267e1bb98840c0e48ceef2c6e703f73c9d7c0",
+      "cases": [
+        {
+          "case": "hydrolysis_forward",
+          "sigma": 1,
+          "original_bounds": [
+            0,
+            1000
+          ],
+          "native_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "hydrolysis_reverse",
+          "sigma": -1,
+          "original_bounds": [
+            -1000,
+            0
+          ],
+          "native_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              0
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "D": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "charging_forward",
+          "sigma": -1,
+          "original_bounds": [
+            0,
+            1000
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "charging_reverse",
+          "sigma": 1,
+          "original_bounds": [
+            -1000,
+            0
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              0
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "reversible_forward",
+          "sigma": 1,
+          "original_bounds": [
+            -1000,
+            1000
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "reversible_reverse",
+          "sigma": -1,
+          "original_bounds": [
+            -1000,
+            1000
+          ],
+          "native_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1000,
+              1000
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "normalized_manual": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0,
+              1
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "D": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": null
+          },
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        }
+      ],
+      "relaxed_equivalent_cases": [
+        {
+          "case": "strict_one_way_hydrolysis_forward",
+          "original_bounds": [
+            2,
+            1000
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "strict_one_way_hydrolysis_reverse",
+          "original_bounds": [
+            -1000,
+            -2
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "strict_one_way_charging_forward",
+          "original_bounds": [
+            2,
+            1000
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "strict_one_way_charging_reverse",
+          "original_bounds": [
+            -1000,
+            -2
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "fixed_nonzero_hydrolysis_forward",
+          "original_bounds": [
+            5,
+            5
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "fixed_nonzero_hydrolysis_reverse",
+          "original_bounds": [
+            -5,
+            -5
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 0.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 0.0,
+              "Dissipation": 0.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": []
+          }
+        },
+        {
+          "case": "fixed_nonzero_charging_forward",
+          "original_bounds": [
+            5,
+            5
+          ],
+          "sigma": -1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              0,
+              1
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": 1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        },
+        {
+          "case": "fixed_nonzero_charging_reverse",
+          "original_bounds": [
+            -5,
+            -5
+          ],
+          "sigma": 1,
+          "complete_ATP_entry": {
+            "objective": 1.0,
+            "status": "optimal",
+            "R_bounds": [
+              -1,
+              0
+            ],
+            "diagnostic_bounds": [
+              0.0,
+              1000.0
+            ],
+            "fluxes": {
+              "R": -1.0,
+              "Dissipation": 1.0
+            },
+            "max_stoichiometric_residual": 0.0,
+            "all_reactions_element_charge_balanced": true,
+            "boundary_count": 0,
+            "support": [
+              "R"
+            ]
+          }
+        }
+      ],
+      "normalization_cases": [
+        {
+          "input": [
+            -1000,
+            0
+          ],
+          "output": [
+            -1,
+            0
+          ]
+        },
+        {
+          "input": [
+            -1000,
+            -2
+          ],
+          "output": [
+            -1,
+            0
+          ]
+        },
+        {
+          "input": [
+            -5,
+            -5
+          ],
+          "output": [
+            -1,
+            0
+          ]
+        },
+        {
+          "input": [
+            -1000,
+            1000
+          ],
+          "output": [
+            -1,
+            1
+          ]
+        },
+        {
+          "input": [
+            0,
+            1000
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            5,
+            1000
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            5,
+            5
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "input": [
+            0,
+            0
+          ],
+          "output": [
+            0,
+            1
+          ]
+        },
+        {
+          "boundary_input": [
+            -1000,
+            0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "boundary_input": [
+            0,
+            1000
+          ],
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "boundary_input": [
+            -1000,
+            1000
+          ],
+          "output": [
+            0,
+            0
+          ]
+        },
+        {
+          "boundary_input": [
+            0,
+            0
+          ],
+          "output": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "equivalent_orientation_pairs": [
+    [
+      "hydrolysis_forward",
+      "hydrolysis_reverse"
+    ],
+    [
+      "charging_forward",
+      "charging_reverse"
+    ],
+    [
+      "reversible_forward",
+      "reversible_reverse"
+    ]
+  ],
+  "assertions": [
+    "Original reverse-only false positive 0 -> 1 reproduced",
+    "Original reverse-only false negative 1 -> 0 reproduced",
+    "Candidate restores all six original-model ATP-LP optima under diagnostic cap one",
+    "All three equivalent-orientation ATP outcome pairs agree after fix",
+    "Four strict-one-way/fixed-nonzero equivalent-orientation pairs agree after documented magnitude relaxation",
+    "Positive, reversible, fixed-zero and boundary normalization unchanged",
+    "Fixed-negative magnitudes relaxed while retaining negative direction"
+  ],
+  "scope": [
+    "Real COBRApy models, real complete MEMOTE ATP function, GLPK",
+    "Installed packages untouched; temporary full-package copy imports candidate source",
+    "Fixed-zero reopening remains the documented intentional normalization policy",
+    "No full MEMOTE test suite, CLI report, genome-scale claim or maintainer confirmation",
+    "LP floating-point checks supplement earlier exact integer toy certificates",
+    "Original native diagnostic bounds [0,1]; MEMOTE diagnostic [0,1000], normalized R caps objective at one"
+  ]
+}

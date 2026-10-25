@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-26",
+  "target": "CMS2019 Table1 rates; P=8,S=40; physical-time T(K)=T_inf+T1/K+O(K^-2)",
+  "priority_status": "uncertain; no equivalent first-order coefficient/nonzero rigorous certificate located in examined public sources",
+  "project_float_inputs_not_literature_or_certificates": {
+    "T_inf": "approximately 4.692096",
+    "T1": "approximately 7.67084147"
+  },
+  "do_not_claim": [
+    "First study of kinase robustness",
+    "First proof of qualitative robustness",
+    "An established open-problem identity",
+    "A refutation of the weakest x5 set-projection interpretation",
+    "A new general period-sensitivity method",
+    "Guaranteed media value"
+  ],
+  "main_sources": [
+    {
+      "url": "https://arxiv.org/html/1809.02886v2",
+      "year": 2019,
+      "access": "full text §6 reread",
+      "overlap": "High K numerical oscillations and proposed period/amplitude sensitivity; no first-order period correction/certificate in inspected section"
+    },
+    {
+      "url": "https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf",
+      "year": 2023,
+      "access": "official poster programme; no poster body obtained",
+      "overlap": "ID48 directly concerns robustness with total kinase concentrations; mathematical result scope unknown"
+    },
+    {
+      "url": "https://biomath.math.bas.bg/biomath/index.php/bmcs/article/view/1787",
+      "publication_date": "2025-05-09",
+      "pdf": "https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828",
+      "access": "full one-page primary abstract read",
+      "overlap": "Claims prior kinase robustness and studies reverse mechanism/processive phosphatase; no coefficient, remainder proof or interval certificate in abstract"
+    },
+    {
+      "url": "https://www.asim-gi.org/fileadmin/user_upload/WS_Bayreuth_2023_Programm.pdf",
+      "date": "2023-03-02",
+      "access": "full programme read; no proceedings chapter obtained",
+      "overlap": "Parameter study of circadian-clock robustness"
+    },
+    {
+      "url": "https://www.asim-gi.org/fileadmin/user_upload_asim/ASIM_OA/FG_SUG/WS_G%C3%B6ttingen_2025_Program_final.pdf",
+      "date": "2025-03-28",
+      "access": "full programme read; no proceedings chapter obtained",
+      "overlap": "Cyclic distributive vs mixed-mechanism robustness"
+    },
+    {
+      "url": "https://www.f2.htw-berlin.de/forschung/promotionen",
+      "access": "full official current-project page read",
+      "overlap": "Kim Grasse/Conradi current Hopf-detection doctoral project; no thesis/result attached"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17052116/",
+      "year": 2004,
+      "doi": "10.1049/sb:20045005",
+      "access": "official indexed abstract/metadata",
+      "overlap": "General period/extrema sensitivity predates the target model"
+    }
+  ],
+  "candidate_increment_if_validated": "Model-specific first finite-K physical-time period coefficient with a rigorous interval excluding zero and reproducible certificate; requires rigorous continuation and remainder conditions for full asymptotic statement",
+  "unresolved_priority_materials": [
+    "Grasse2023 poster body",
+    "Grasse-Conradi2023/2025 proceedings or slides",
+    "Possible unpublished thesis/manuscript",
+    "Full nonindexed citation graph"
+  ],
+  "external_contact": "none"
+}

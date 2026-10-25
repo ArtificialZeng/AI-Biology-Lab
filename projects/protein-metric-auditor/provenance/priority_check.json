@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-26",
+  "queries": [
+    {
+      "url": "https://github.com/OATML-Markslab/ProteinGym/issues?q=is%3Aissue%20NDCG",
+      "query": "is:issue NDCG",
+      "html_bytes": 266367,
+      "results": [
+        {
+          "number": 118,
+          "title": "New baseline: Delta V (ensemble) for DMS substitution zero-shot",
+          "permalink": "https://github.com/OATML-Markslab/ProteinGym/issues/118",
+          "state": "REPO_ISSUE_STATE_CLOSED"
+        },
+        {
+          "number": 113,
+          "title": "New model: XSignal",
+          "permalink": "https://github.com/OATML-Markslab/ProteinGym/issues/113",
+          "state": "REPO_ISSUE_STATE_OPEN"
+        },
+        {
+          "number": 111,
+          "title": "New model: XSignal",
+          "permalink": "https://github.com/OATML-Markslab/ProteinGym/issues/111",
+          "state": "REPO_ISSUE_STATE_CLOSED"
+        },
+        {
+          "number": 78,
+          "title": "Add new baseline model: AIDO.Protein-RAG-proteingym-dms-zeroshot",
+          "permalink": "https://github.com/OATML-Markslab/ProteinGym/issues/78",
+          "state": "REPO_ISSUE_STATE_CLOSED"
+        }
+      ],
+      "page_information": [
+        {
+          "currentPage": 1,
+          "totalPages": 1,
+          "totalCount": 4
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/OATML-Markslab/ProteinGym/pulls?q=is%3Apr%20NDCG",
+      "query": "is:pr NDCG",
+      "html_bytes": 249317,
+      "results": [
+        {
+          "number": 117,
+          "title": "Add Delta V baseline, model for DMS Substitution Zeroshot",
+          "permalink": "https://github.com/OATML-Markslab/ProteinGym/pull/117",
+          "state": "REPO_PULL_REQUEST_STATE_OPEN"
+        },
+        {
+          "number": 112,
+          "title": "Add XSignal zero-shot baseline",
+          "permalink": "https://github.com/OATML-Markslab/ProteinGym/pull/112",
+          "state": "REPO_PULL_REQUEST_STATE_OPEN"
+        },
+        {
+          "number": 110,
+          "title": "Add XSignal zero-shot substitution baseline",
+          "permalink": "https://github.com/OATML-Markslab/ProteinGym/pull/110",
+          "state": "REPO_PULL_REQUEST_STATE_CLOSED"
+        }
+      ],
+      "page_information": [
+        {
+          "currentPage": 1,
+          "totalPages": 1,
+          "totalCount": 3,
+          "openCount": 2,
+          "closedCount": 1
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/OATML-Markslab/ProteinGym/issues?q=is%3Aissue%20tie",
+      "query": "is:issue tie",
+      "html_bytes": 251554,
+      "results": [],
+      "page_information": []
+    },
+    {
+      "url": "https://github.com/OATML-Markslab/ProteinGym/pulls?q=is%3Apr%20tie",
+      "query": "is:pr tie",
+      "html_bytes": 238381,
+      "results": [],
+      "page_information": []
+    }
+  ],
+  "important_prior": {
+    "source": "https://arxiv.org/html/2609.34654v1#A2.SS1",
+    "date": "2026-09-28",
+    "finding": "Appendix B.1 already explicitly describes ordinal array-sort tie ordering for ProteinGym NDCG rather than tie averaging. This is prior disclosure of the mechanism; any contribution must be a quantified reproducibility/impact audit, not discovery of tie handling itself."
+  },
+  "scope": "Bounded public title/body issue and PR search; does not exhaust comments, code review, deleted/unindexed reports or outside publications. No messages posted."
+}

@@ -1,0 +1,40 @@
+name: Evaluation invariance checks
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  protein-metric:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: projects/protein-metric-auditor/requirements.txt
+      - run: python -m pip install -r projects/protein-metric-auditor/requirements.txt
+      - run: python -B projects/protein-metric-auditor/scripts/reproduce_sample.py
+      - run: python -B projects/protein-metric-auditor/scripts/verify_results.py
+  memote-direction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: projects/memote-direction-auditor/requirements.txt
+      - run: python -m pip install -r projects/memote-direction-auditor/requirements.txt
+      - run: python projects/memote-direction-auditor/verify.py

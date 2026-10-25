@@ -50,3 +50,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build manuscript/ma
 ```
 
 The archived `manuscript/main.pdf` is the original five-page note. The mathematical model, coefficients, and assumptions are described in it and in the proof. Original third-party articles are linked in the bibliography rather than bundled.
+
+## New interval orbit and period correction
+
+The equilibrium-only Python command above does not rerun the new periodic-orbit integration. For that claim, use the [separate validated-cycle instructions](../projects/mixed-phosphorylation/validated-cycle/README.md): pinned CAPD, Linux x86/FILIB, then the parameter-sensitivity checker. Independent exact postprocessors verify the archived widened interval bounds; they complement the fresh integration. No explicit finite-K threshold or remainder constant is claimed.

@@ -1,0 +1,54 @@
+{
+  "scope": "Complete released v1.3 score-archive census; secondary NDCG metric only",
+  "assays": 217,
+  "models": 95,
+  "finite_assay_model_cells": 20615,
+  "status_counts": {
+    "ok": 20615
+  },
+  "models_in_current_config_not_in_archive": [
+    "AIDO.Protein-RAG-16B",
+    "Protriever"
+  ],
+  "mutation_rows_in_distinct_assays": 2465767,
+  "cells_tie_range_gt_1e_10": 5006,
+  "cells_common_permutation_change_gt_1e_10": 4656,
+  "assays_common_permutation_change_gt_1e_10": 217,
+  "models_common_permutation_change_gt_1e_10": 92,
+  "max_common_permutation_range": 0.0422547865975342,
+  "max_per_model_tie_order_envelope": 0.2949864519668554,
+  "max_aggregate_tie_average_shift": 0.00034298871008164866,
+  "aggregate_models_changing_rank_under_reversal": 5,
+  "aggregate_models_changing_rank_under_shuffle": 6,
+  "aggregate_models_changing_rank_under_tie_average": 6,
+  "largest_aggregate_rank_change_common_permutations": 2,
+  "assay_pairwise_rank_reversals": {
+    "reversed": 591,
+    "shuffle_seed_1": 603
+  },
+  "assays_with_pairwise_rank_reversals": {
+    "reversed": 153,
+    "shuffle_seed_1": 159
+  },
+  "original_panel_top5": {
+    "S3F_MSA": 0.7918337221895357,
+    "S2F_MSA": 0.790403455063685,
+    "TranceptEVE_L": 0.7861419543291028,
+    "TranceptEVE_M": 0.7840122605427731,
+    "TranceptEVE_S": 0.7839718044744948
+  },
+  "tie_averaged_panel_top5": {
+    "S3F_MSA": 0.7918337385285605,
+    "S2F_MSA": 0.7904034573594634,
+    "TranceptEVE_L": 0.7861419835977361,
+    "TranceptEVE_M": 0.7840121856804869,
+    "TranceptEVE_S": 0.7839718501093458
+  },
+  "limits": [
+    "AIDO Protein-RAG and Protriever are not in this released archive",
+    "No effect on primary Spearman ranking has been established",
+    "Each per-model extremal envelope uses its own permutation; it is not a jointly attainable leaderboard",
+    "Tie handling is documented prior work; this census quantifies its effect",
+    "No statistical generalization, biological mechanism, new sequence, or wet-lab result claimed"
+  ]
+}

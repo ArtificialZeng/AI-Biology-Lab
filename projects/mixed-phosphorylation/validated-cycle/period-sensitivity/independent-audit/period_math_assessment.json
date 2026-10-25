@@ -1,0 +1,66 @@
+{
+  "mathematical_assessment": "valid_exact_scope",
+  "release_workflow_scope": "Direct read-only mathematical audit. No runner job identity or frozen period-claim snapshot was supplied; this is not a release_gate.py check-math attestation.",
+  "accepted_exact_statement": "At the published Table 1 rates and totals P=8, S=40, the local strictly positive attracting finite-kinase periodic branch that continues the certified limiting cycle has a physical-time return period T(K)=T_infinity+T1/K+O(K^-2) for all sufficiently large finite K, with T1 in the exact rational interval [7.65771717,7.68396573]. Thus its return period approaches T_infinity from above and is strictly decreasing in K for all sufficiently large K.",
+  "must_fixes": [],
+  "decisive_steps": [
+    "The exact singular coordinates and positive hyperbolic limiting cycle are the previously audited baseline, not inferred from equilibrium instability.",
+    "Invariance epsilon*Dh*f=-h+epsilon*A*h+h0 uniquely forces h_epsilon(q,0)=A*h0-Dh0*F0. Here Dh0*F0=-u-10000*b+300*p*s, hence F1=(u+10000*b-300*p*s,0,0,0,-3*p*(u+100*b)). Fresh exact polynomial expansion matches the encoded C++ family, including e-prime=0.",
+    "The C1 augmented (q,e) flow includes the constant-parameter variational column. The four-dimensional fixed-point sensitivity excludes the neutral e direction and solves (D_zP-I)z_e=-D_eP with the correct sign.",
+    "The audited CAPD source explicitly returns the flow derivative before the section correction. Coordinate-section differentiation gives tau_j=-M[0,j]/f_u and DP[i,j]=M[i,j]+f_i*tau_j. Both signs and indices match the implementation.",
+    "Krawczyk strict inclusion is recomputed in the smaller radius-1e-9 box. The source formula is correct; the serialized K enclosure is strictly inside the exact center/radius box. Its fixed point is the same base orbit by containment in the earlier uniqueness box. The Linux text log omits the center residual, so the fresh postprocessor does not independently reconstruct the Krawczyk enclosure from primitive residual data.",
+    "For interval A and rhs, det(R) is nonzero and ||I-RA||_infinity<1. Neumann initialization using ||R*rhs||/(1-eta) encloses the unique actual solution; intersecting with R*rhs+(I-RA)Z preserves it. No unvalidated floating approximation is used to initialize the solution box.",
+    "Fresh Fraction arithmetic widens every serialized endpoint by 10^-14*max(1,abs(lower),abs(upper)). It independently reconstructs the crossing correction from the flow and return box, solves the branch sensitivity, and proves T1>0. This does not independently reimplement CAPD integration.",
+    "In fast time and eta=y-h0(q), the regular signed-epsilon family has eta_dot=-eta+epsilon*G and q_dot=epsilon*f. After smooth cutoff and compactification outside the cycle neighborhood, the critical graph is compact and normally attracting with stationary tangent layer dynamics and normal exponent -1. Parameter-dependent finite-r Fenichel with r>=3 gives a joint C^r local graph. The physical-time induced field has the computed first jet and O(epsilon^2) remainder in C1. The transverse return map/time and its IFT branch are C2, so scalar Taylor gives an unspecified finite O(epsilon^2) remainder.",
+    "The artificial and actual reduced fields have the same F0 and first parameter derivative F1. Their flow, return-map, return-time and implicit branch derivatives at zero therefore agree, proving that the checked T1 belongs to the actual finite-K branch.",
+    "A graph choice does not affect the first jet. More strongly, eta=y-h(q,epsilon) obeys exactly eta_t=[-1/epsilon+A-Dh*f_y]eta. For small positive epsilon the coefficient is negative uniformly near the cycle, forcing every nearby periodic solution onto the invariant graph.",
+    "T is C2 and T_epsilon(0)=T1>0. Hence T(K)-T_infinity>0 and dT/dK=-K^-2*T_epsilon(1/K)<0 eventually. An explicit remainder constant is not needed for these quantified existential conclusions."
+  ],
+  "presentation_notes_not_mathematical_blockers": [
+    "The expanded analytic section in proof_link.md closes its former conditional link. A primary parameter-smooth Fenichel/Jones citation and an explicit compact slow base (such as a torus) would improve exposition.",
+    "Retain the wording continued return period; no new minimal-period certification is needed or claimed.",
+    "Update development/pending status text after archiving the Linux evidence and this audit."
+  ],
+  "not_established": [
+    "No numerical K0 or explicit second-order remainder constant.",
+    "No global cycle uniqueness or attraction.",
+    "No disproof of the source conjecture about existential scalar-coordinate projections.",
+    "No novelty, priority, media, biological experiment or external human-review assessment."
+  ],
+  "numerical_recomputation_summary": {
+    "logged_return_map_derivative": [
+      7.657717181842537,
+      7.683965717713615
+    ],
+    "fresh_section_correction_from_flow": [
+      7.6577171759722305,
+      7.683965723583841
+    ]
+  },
+  "source_provenance": {
+    "metadata": {
+      "conclusion": "success",
+      "created_at": "2026-10-25T23:37:46Z",
+      "head_branch": "codex/validated-oscillator-study",
+      "head_sha": "6fc647c677d09aa57b26fd8a59d3910d50dc0e6c",
+      "html_url": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40245625102",
+      "id": 40245625102,
+      "status": "completed",
+      "updated_at": "2026-10-25T23:39:30Z"
+    },
+    "four_numerical_build_input_files_identical_to_run_commit": true
+  },
+  "input_sha256": {
+    "artifacts/validated-cycle-2026-10-26/linux-sensitivity/period-sensitivity.log": "1e35bd6428e4f1c944ef4bd1718c93aaba5ec2096716de5e62dbef9d6915ec3f",
+    "artifacts/validated-cycle-2026-10-26/linux-sensitivity/run-metadata.json": "f36d593d5d359dbfbadd506c8f1b2bbd85bc2bde95904aa5401185dc44409764",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/verify_period_sensitivity.cpp": "6fc64be961c439bc06af1efc692a770a811e280177ced99fe55ed377d3143dae",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/seed.h": "02c3ca0350bfe9e6b0b09302b8e16e80bf15610a3f3cb93965065ae2a4bf7691",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/proof_link.md": "a725eca4334bfac36cf91d7781ff108252ba3a253ae869fa89cbf5b46e8d9fc1",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/verify_first_jet.py": "e4762197e392a61386f47898caac773520296a149cec9c3cc694a360e3e6692e"
+  },
+  "supporting_artifacts": [
+    "independent_period_check.py",
+    "independent_period_check.json",
+    "smooth_link_audit.md"
+  ]
+}

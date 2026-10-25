@@ -1,0 +1,22 @@
+{
+  "conclusion": "success",
+  "created_at": "2026-10-25T23:37:46Z",
+  "head_branch": "codex/validated-oscillator-study",
+  "head_sha": "6fc647c677d09aa57b26fd8a59d3910d50dc0e6c",
+  "html_url": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40245625102",
+  "id": 40245625102,
+  "updated_at": "2026-10-25T23:39:30Z",
+  "platform": "Ubuntu24.04 x86_64",
+  "compiler": "GCC13.3.0",
+  "interval_backend": "FILIB",
+  "CAPD_revision": "37057e5899bccaa6cd5701057b7e6ea5e232ef8b",
+  "source_sha256": {
+    "verify_period_sensitivity.cpp": "6fc64be961c439bc06af1efc692a770a811e280177ced99fe55ed377d3143dae",
+    "seed.h": "02c3ca0350bfe9e6b0b09302b8e16e80bf15610a3f3cb93965065ae2a4bf7691",
+    "CMakeLists.txt": "8b5ca5a598051321b7c8b8e5e5fa77132b601990240dcf7c32ebed6463f6c743",
+    "build_and_run.sh": "4a2288a4f7762a6164e083a2ddb918d28c0a12be4f1d468411657df70ca5adb3"
+  },
+  "output_sha256": "ee83af94e025b87270df108a40491177056e701e89ac7fae5c06f2589ea8b274",
+  "statement_status": "Numerical checks and fresh AI-assisted mathematical audit accepted for documented scope; no external human review or priority confirmation",
+  "no_explicit_K0_or_remainder_constant": true
+}

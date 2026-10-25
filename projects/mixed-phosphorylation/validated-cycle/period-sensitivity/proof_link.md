@@ -1,6 +1,6 @@
 # Period-sensitivity candidate: formula, enclosure and analytic link
 
-Status: Mac interval development checks; Linux x86/FILIB reproduction and a fresh audit are pending. This is a proposed addition to the previously certified limiting periodic orbit, not a replacement for that certificate.
+Status: Linux x86/FILIB reproduction and a fresh AI-assisted mathematical audit passed. Conservative exact decimal enclosure: T1 in [7.65771717, 7.68396573]. External human review and priority confirmation remain pending. This is a proposed addition to the previously certified limiting periodic orbit, not a replacement for that certificate.
 
 ## Objects
 
@@ -39,10 +39,15 @@ The checker revalidates a Krawczyk strict inclusion in its own smaller X at e=0.
 
 ## Link to the real finite-K period
 
-The additional analytic assumptions to audit are: a C² slow graph exists jointly in q and ε on a fixed local compact neighborhood of the strictly positive certified limit cycle; the induced slow vector field has the displayed first jet in C¹; and the hyperbolic periodic branch and transverse return time inherit C² parameter dependence. These are the local smooth Fenichel and implicit-function steps, with fast normal derivative -1.
+In fast time, the vector field is (y,q)'=(g(y,q,ε),ε f(y,q,ε)); this is a regular smooth parameter family at ε=0. Work in a slow tubular neighborhood of the compact certified cycle, with closure strictly inside the physical domain. A smooth cutoff and compact extension outside a slightly larger neighborhood can make the critical graph compact over a compact slow base (for example, a torus) without changing this local vector field. At ε=0 its tangent layer dynamics are stationary and its single normal derivative is exactly -1. Thus normal contraction dominates tangent dynamics to any prescribed finite differentiability order. Apply parameter-dependent finite-r Fenichel persistence with r at least 3, shrinking the ε interval if necessary. It gives a locally invariant graph h(q,ε), jointly C^r on a smaller fixed neighborhood.
 
-If these hypotheses are accepted, the exact finite-K orbit and the artificial family F0+eF1 have identical value and first derivative at ε=e=0. The periodic-branch implicit derivative is determined by those data, so the checked T1 is the actual coefficient in
+Differentiating its exact invariance equation at ε=0 proves the displayed h1 and F1 identities. Taylor expansion on the compact neighborhood gives the slow vector field F0+εF1+O(ε²) in C¹; no numerical remainder constant is supplied. The slow flow and its transverse return map/time have C² parameter dependence near the certified orbit. The fixed-point derivative D_zP-I is invertible by the certificate, so the implicit-function theorem yields a C² local periodic branch and period T(ε). These assertions concern a neighborhood of this cycle, not a global slow manifold at physical boundaries.
+
+The exact finite-K slow field and the artificial family F0+eF1 therefore have identical value and first parameter derivative at ε=e=0. Their flow, return-map and return-time first parameter derivatives satisfy the same variational equations, and the periodic-branch implicit derivative is determined by those data. Thus the checked T1 is the actual coefficient in
 
 T(K)=T∞+T1/K+O(K^-2), K→∞.
 
 The variable t is the original model's time, not fast time. The nonzero T1 establishes eventual period dependence for this fixed parameter choice and this local periodic branch. It does not give an explicit remainder constant, numerical K0, global uniqueness, or a disproof of the source's existential statement about scalar orbit projections. If T1>0, the local branch approaches T∞ from above and, with the stated smoothness, its period eventually decreases as K grows.
+
+
+Sources for the established persistence machinery: N. Fenichel, *Geometric singular perturbation theory for ordinary differential equations*, J. Differential Equations 31 (1979), 53–98, https://doi.org/10.1016/0022-0396(79)90152-9; CAPD interval Poincare methods, https://arxiv.org/abs/2010.07097. Full Fenichel text access was unavailable during this audit; the use of the standard finite-r theorem and all model-specific hypotheses is stated explicitly above.

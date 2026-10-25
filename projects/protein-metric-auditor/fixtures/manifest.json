@@ -1,0 +1,17 @@
+{
+  "assay": "GAL4_YEAST_Kitzman_2015",
+  "rows": 1195,
+  "columns": [
+    "DMS_score",
+    "ESCOTT",
+    "GEMME",
+    "ESMC-300M",
+    "ESMC-600M",
+    "VenusREM"
+  ],
+  "fixture_sha256": "ca5a6ff871fad4927d0bbd41e3f3d53966fdcd957017475b06b956fb63f4165d",
+  "source_archive": "https://marks.hms.harvard.edu/proteingym/ProteinGym_v1.3/zero_shot_substitutions_scores.zip",
+  "source_member": "GAL4_YEAST_Kitzman_2015.csv",
+  "source_member_sha256": "ed74b9104b9926585099fa22f798e0e206b3372f4b6bf7206d76d4b2e563cfa0",
+  "transformation": "Read CSV, project only the six listed numeric columns, retain row order, write with pandas 2.2.3; no sequence or mutation columns retained."
+}

@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "scope": "Final read-only review of public presentation and portable checker adaptation; no change to the previously accepted mathematical conclusion.",
+  "public_files_sha256": {
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/proof_link.md": "798542ba2395b54a81e115f902f1049ac0f16a2f5bd7bf8e38238e2be94ff253",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/independent-audit/independent_period_check.py": "a2b492b397d5998b65cda5ca55b7c51260338b4ae6a29aaabfc1e33acc0f4d01",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/evidence/linux-run.json": "09ecb568075d373a899b17ad14dd21f6bfe25d2a6a86bdbf0e84c108ca3fe507",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/evidence/run-metadata.json": "f36d593d5d359dbfbadd506c8f1b2bbd85bc2bde95904aa5401185dc44409764",
+    "projects/mixed-phosphorylation/validated-cycle/period-sensitivity/evidence/linux-sensitivity-output.txt": "ee83af94e025b87270df108a40491177056e701e89ac7fae5c06f2589ea8b274"
+  },
+  "checks": {
+    "all_non_main_numerical_function_and_class_ASTs_identical_to_original_fresh_checker": true,
+    "main_arithmetic_core_identical": true,
+    "all_serialized_interval_pairs_identical_after_log_trimming": true,
+    "archived_output_hash_matches_linux_run_record": true,
+    "four_original_numerical_build_sources_match_archived_CI_hashes": true,
+    "public_checker_rerun_passed": true,
+    "both_exact_sensitivity_outcomes_identical_to_original_fresh_audit": true
+  },
+  "proof_text_review": "Added compact slow base, primary Fenichel/CAPD references, and audit status are consistent with the prior analytic assessment. Finite r>=3 joint slow graph, C1 first-jet remainder, C2 return-map/IFT period, and limitations remain explicit.",
+  "provenance_limit": "Current portable checker validates local numerical inputs against archived evidence/linux-run.json source hashes and reads original successful run metadata; it does not rerun git show or independently authenticate GitHub. The earlier direct source-to-commit comparison remains a historical check recorded in the original fresh audit.",
+  "integration_limit": "The portable checker consumes CAPD interval enclosures and does not independently reproduce integration. It verifies logged Krawczyk inclusion against X, not reconstruction from the center residual absent from the text log.",
+  "accepted_bound": [
+    "7.65771717",
+    "7.68396573"
+  ],
+  "not_claimed": [
+    "Explicit K0",
+    "Explicit remainder constant",
+    "Global cycle uniqueness",
+    "Minimal-period certificate",
+    "Disproof of scalar-coordinate projection conjecture",
+    "External human review",
+    "Priority confirmation"
+  ],
+  "fresh_run_report": "artifacts/validated-cycle-2026-10-26/period-fresh-audit/final_public_checker_run.json",
+  "formal_release_gate_attestation": false
+}

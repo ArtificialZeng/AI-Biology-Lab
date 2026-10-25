@@ -11,3 +11,9 @@ The second-reduction verifier is adapted from an AI review pass. Its checks reco
 The root reproducibility script checks the public archive's mathematical-input checksums before running the verifiers in a temporary copy. `projects/mixed-phosphorylation/archive_manifest.json` records the public artifact hashes. This is integrity metadata, not a proof of novelty or external approval.
 
 Future releases should describe substantive AI and human contributions, unsuccessful approaches that affect interpretation, and the evidence supporting each promoted claim. Public model names, cost claims, and autonomy claims should be backed by records before they are reported.
+
+## Validated-cycle and evaluation follow-up
+
+The new period-correction work used AI for exact reduction, construction of interval verifiers, and separate skeptical mathematical audits. CAPD performs the validated integration; independent rational implementations reconstruct equations and postprocess deliberately widened interval output. They do not replace or independently implement CAPD's integrator. Linux CI provides a separate platform run. These checks do not constitute external human peer review or establish priority.
+
+Protein Metric Auditor operates on frozen public numeric scores without model inference or sequence design. MEMOTE direction auditing tests a small exact software invariant and real library entry points; it does not establish genome-scale biological impact. Public descriptions retain these limits and no new third-party messages were sent for these studies.

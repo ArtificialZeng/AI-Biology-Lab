@@ -10,11 +10,21 @@
 
 | 项目 | 当前交付 | 证据范围 |
 | --- | --- | --- |
-| [混合机制生化振荡](projects/mixed-phosphorylation/README.md) | 有限激酶失稳界与精确证书 | 数学部分结果；新颖性与外审待确认 |
+| [混合机制生化振荡](projects/mixed-phosphorylation/README.md) | 精确失稳界、吸引周期轨道及非零周期修正 | Linux区间证书与独立精确复算；优先权和外审待确认 |
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | 复现入口缺陷、历史源码恢复与补丁 | 离线CPU检查通过；未完成训练结果复现或作者确认 |
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |
+| [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | NDCG行顺序敏感性全量审计 | 217实验／95配置；副指标排名变动，未推翻主榜单 |
+| [MEMOTE方向审计](projects/memote-direction-auditor/README.md) | 等价反应写法反例与两行候选修复 | 真实完整ATP检测入口验证通过；待维护者确认 |
 
 上游核验申请（按顺序提交，尚待维护者审核）：[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165)。
+
+## 新结果：稳定振荡的周期仍有可量化偏差
+
+固定原文速率、P=8、S=40，已证明：每个充分大的有限激酶总量K对应的守恒类内都有吸引周期轨道。其局部分支在模型时间下满足
+
+$$T(K)=T_\infty+\frac{T_1}{K}+O(K^{-2}),\qquad T_1\in[7.65771717,7.68396573].$$
+
+T1严格为正，说明周期从上方趋近极限，并非完全不变。结论经过Linux区间积分、新上下文数学审查及独立有理数复算；没有给出明确K0或余项常数。[完整证明与复现](projects/mixed-phosphorylation/validated-cycle/README.md) · [中文研究简报](projects/mixed-phosphorylation/validated-cycle/docs/BRIEF.zh-CN.md)。质性鲁棒性已有直接相关会议研究，优先权尚未确认；完整原猜想仍未解决。
 
 ## 首个结果
 
@@ -28,7 +38,7 @@
 - [完整证明](projects/mixed-phosphorylation/evidence/finite_kinase_proof.md)
 - [机器可检查证书](projects/mixed-phosphorylation/evidence/finite_kinase_sign_certificate.json)
 
-**当前只处理原文猜想 6.2 的第一项。** 平衡点不稳定不能直接推出存在稳定周期轨道。周期、振幅与浓度变化目前有数值证据；完整猜想仍未解决。已有直接相关的 2023/2025 会议工作，新颖性与优先权待原作者确认。当前没有外部人类同行审稿或细胞实验。
+这份早期精确证书处理原文猜想6.2的第一项；单凭平衡点不稳定不能推出周期轨道。上面的新工作另行给出了周期轨道及周期修正证明，振幅的严格修正与完整猜想仍未解决。已有直接相关的 2023/2025 会议工作，新颖性与优先权待原作者确认。当前没有外部人类同行审稿或细胞实验。
 
 ![浓度变化的数值结果](projects/mixed-phosphorylation/evidence/concentration_effects.png)
 
@@ -51,9 +61,9 @@ python scripts/reproduce.py verify
 
 ## 接下来真正要做出的成果
 
-1. 严格认证吸引周期轨道及其稳定性。
-2. 证明所有充分大有限 K 下周期振荡持续存在。
-3. 给出周期、振幅对酶浓度变化的严格误差界。
-4. 解释哪些参数区域支持这种鲁棒性，在哪里失效。
+1. 算出明确的有限K阈值及可用的余项常数。
+2. 严格认证振幅修正，并澄清标量投影的不变性。
+3. 扩展经过认证的参数区域。
+4. 与相关研究核对优先权，取得外部人类复核。
 
 这些是待完成目标。[研究路线](docs/RESEARCH_ROADMAP.md)列出验收条件；[外部验证说明](docs/VALIDATION.md)列出专家可以复核的问题。AI 参与推导和审查的范围见 [AI 使用说明](docs/AI_USE.md)。

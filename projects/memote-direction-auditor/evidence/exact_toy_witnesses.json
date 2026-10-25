@@ -1,0 +1,465 @@
+{
+  "status": "passed",
+  "source_commit": "bf76477b4087feefc8ad429ebd492e30ef10eebc",
+  "source_sha256": "bbb3112dd94f8e6b92853a38483e9c623396d03dd8091e240a24420822963311",
+  "executed_function": "Actual pinned close_boundaries_sensibly AST",
+  "model_objects": "Minimal attribute-compatible objects; not actual COBRApy classes",
+  "reversibility_definition": "lower_bound < 0 and upper_bound > 0",
+  "stoichiometric_metabolite_order": [
+    "ATP",
+    "H2O",
+    "ADP",
+    "H+",
+    "HPO4(2-)"
+  ],
+  "element_and_charge_row_order": [
+    "C",
+    "H",
+    "N",
+    "O",
+    "P",
+    "charge"
+  ],
+  "element_and_charge_matrix": [
+    [
+      10,
+      0,
+      10,
+      0,
+      0
+    ],
+    [
+      12,
+      2,
+      12,
+      1,
+      1
+    ],
+    [
+      5,
+      0,
+      5,
+      0,
+      0
+    ],
+    [
+      13,
+      1,
+      10,
+      0,
+      4
+    ],
+    [
+      3,
+      0,
+      2,
+      0,
+      1
+    ],
+    [
+      -4,
+      0,
+      -3,
+      1,
+      -2
+    ]
+  ],
+  "hydrolysis_stoichiometry": [
+    -1,
+    -1,
+    1,
+    1,
+    1
+  ],
+  "all_columns_element_and_charge_balanced_exactly": true,
+  "no_external_exchange_or_source": true,
+  "cases": [
+    {
+      "case": "reverse_only_false_positive",
+      "hydrolysis_column_multiplier_for_internal_reaction": -1,
+      "original_bounds": [
+        -1000,
+        0
+      ],
+      "after_actual_helper_bounds": [
+        0,
+        1
+      ],
+      "before": {
+        "exact_optimum_dissipation": 0,
+        "integer_optimal_witness": {
+          "internal_flux": 0,
+          "diagnostic_flux": 0
+        },
+        "exact_upper_bound_reason": "sigma*v >= 0 from the displayed bound; sigma*v+d=0 and d>=0 force d=0",
+        "HiGHS_optimum": -0.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      },
+      "after": {
+        "exact_optimum_dissipation": 1,
+        "integer_optimal_witness": {
+          "internal_flux": 1,
+          "diagnostic_flux": 1
+        },
+        "exact_upper_bound_reason": "d <= 1 and the displayed integer witness attains 1",
+        "HiGHS_optimum": 1.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "case": "reverse_only_false_negative",
+      "hydrolysis_column_multiplier_for_internal_reaction": 1,
+      "original_bounds": [
+        -1000,
+        0
+      ],
+      "after_actual_helper_bounds": [
+        0,
+        1
+      ],
+      "before": {
+        "exact_optimum_dissipation": 1,
+        "integer_optimal_witness": {
+          "internal_flux": -1,
+          "diagnostic_flux": 1
+        },
+        "exact_upper_bound_reason": "d <= 1 and the displayed integer witness attains 1",
+        "HiGHS_optimum": 1.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "after": {
+        "exact_optimum_dissipation": 0,
+        "integer_optimal_witness": {
+          "internal_flux": 0,
+          "diagnostic_flux": 0
+        },
+        "exact_upper_bound_reason": "sigma*v >= 0 from the displayed bound; sigma*v+d=0 and d>=0 force d=0",
+        "HiGHS_optimum": -0.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "case": "disabled_internal_false_positive",
+      "hydrolysis_column_multiplier_for_internal_reaction": -1,
+      "original_bounds": [
+        0,
+        0
+      ],
+      "after_actual_helper_bounds": [
+        0,
+        1
+      ],
+      "before": {
+        "exact_optimum_dissipation": 0,
+        "integer_optimal_witness": {
+          "internal_flux": 0,
+          "diagnostic_flux": 0
+        },
+        "exact_upper_bound_reason": "sigma*v >= 0 from the displayed bound; sigma*v+d=0 and d>=0 force d=0",
+        "HiGHS_optimum": -0.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      },
+      "after": {
+        "exact_optimum_dissipation": 1,
+        "integer_optimal_witness": {
+          "internal_flux": 1,
+          "diagnostic_flux": 1
+        },
+        "exact_upper_bound_reason": "d <= 1 and the displayed integer witness attains 1",
+        "HiGHS_optimum": 1.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "case": "forward_hydrolysis_negative_control",
+      "hydrolysis_column_multiplier_for_internal_reaction": 1,
+      "original_bounds": [
+        0,
+        1000
+      ],
+      "after_actual_helper_bounds": [
+        0,
+        1
+      ],
+      "before": {
+        "exact_optimum_dissipation": 0,
+        "integer_optimal_witness": {
+          "internal_flux": 0,
+          "diagnostic_flux": 0
+        },
+        "exact_upper_bound_reason": "sigma*v >= 0 from the displayed bound; sigma*v+d=0 and d>=0 force d=0",
+        "HiGHS_optimum": -0.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "after": {
+        "exact_optimum_dissipation": 0,
+        "integer_optimal_witness": {
+          "internal_flux": 0,
+          "diagnostic_flux": 0
+        },
+        "exact_upper_bound_reason": "sigma*v >= 0 from the displayed bound; sigma*v+d=0 and d>=0 force d=0",
+        "HiGHS_optimum": -0.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "case": "reversible_positive_control",
+      "hydrolysis_column_multiplier_for_internal_reaction": 1,
+      "original_bounds": [
+        -1000,
+        1000
+      ],
+      "after_actual_helper_bounds": [
+        -1,
+        1
+      ],
+      "before": {
+        "exact_optimum_dissipation": 1,
+        "integer_optimal_witness": {
+          "internal_flux": -1,
+          "diagnostic_flux": 1
+        },
+        "exact_upper_bound_reason": "d <= 1 and the displayed integer witness attains 1",
+        "HiGHS_optimum": 1.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "after": {
+        "exact_optimum_dissipation": 1,
+        "integer_optimal_witness": {
+          "internal_flux": -1,
+          "diagnostic_flux": 1
+        },
+        "exact_upper_bound_reason": "d <= 1 and the displayed integer witness attains 1",
+        "HiGHS_optimum": 1.0,
+        "max_mass_balance_residual": 0.0,
+        "stoichiometry_columns": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    }
+  ],
+  "claims_excluded": [
+    "No actual Yeast-GEM energy-generating cycle was found in this task.",
+    "No claim that every MEMOTE check or complete report is wrong.",
+    "No full MEMOTE/COBRApy integration execution was performed.",
+    "Reopening [0,0] reactions may partly reflect intended normalization policy; reversing a reverse-only reaction is the clearer constraint-semantic problem.",
+    "These are software diagnostic counterexamples, not biological experiment results."
+  ]
+}

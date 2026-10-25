@@ -7,18 +7,34 @@
     "sufficient_integer_bound": 23,
     "sharpness_claimed": false
   },
-  "scope": "Explicit witnesses and quantitative partial resolution of original Conjecture 6.2(1); no proof of the periodic-orbit assertion.",
+  "scope": "Exact equilibrium bound plus interval-certified local attracting cycle, eventual finite-K persistence and a strictly positive first period correction. Full original conjecture unresolved.",
   "evidence": {
     "arithmetic": "exact rational",
     "positive_Bernstein_coefficients": 125,
     "hurwitz_determinants": 6,
-    "numerical_periodic_orbits": "floating-point evidence only"
+    "numerical_periodic_orbits": "Selected finite-K trajectories and extrema remain floating-point illustrations; the separate limiting cycle/period coefficient is interval-certified",
+    "validated_periodic_orbit": "CAPD Linux x86/GCC/FILIB, interval Krawczyk/derivative certificate and independently widened exact postprocessing"
   },
   "status": {
     "full_original_conjecture": "unresolved in this project",
     "internal_AI_assisted_checks": "completed",
     "external_human_review": "not reported",
-    "novelty_and_priority": "unconfirmed; direct 2023/2025 conference overlap",
+    "novelty_and_priority": "unconfirmed; qualitative robustness overlaps 2023/2025 conference work; no strict model-specific T1 enclosure found in inspected sources",
     "biological_experiments": "none"
+  },
+  "additional_results": {
+    "attracting_periodic_orbit": "There exists K0 such that every finite K>K0 admits a strictly positive orbitally asymptotically stable periodic orbit within its fixed compatibility class (K,8,40).",
+    "period_expansion": "T(K)=T_infinity+T1/K+O(K^-2) on the continued local branch in physical model time",
+    "T_infinity_exact_decimal_enclosure": [
+      "4.69209598",
+      "4.69209603"
+    ],
+    "T1_exact_decimal_enclosure": [
+      "7.65771717",
+      "7.68396573"
+    ],
+    "explicit_K0": false,
+    "explicit_remainder_constant": false,
+    "proof": "validated-cycle/README.md"
   }
 }
