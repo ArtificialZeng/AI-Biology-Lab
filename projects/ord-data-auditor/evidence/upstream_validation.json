@@ -1,0 +1,51 @@
+{
+  "date_local": "2026-10-26",
+  "timezone": "Asia/Shanghai",
+  "upstream_base": "a9c1603a4fb040f251c1f174548d1747838fb247",
+  "upstream_head": "4e524972a7d4b321d65369f76b7f049655b5079d",
+  "pull_request": "https://github.com/open-reaction-database/ord-schema/pull/1165",
+  "status_at_submission": "OPEN; acceptance pending",
+  "environment": {
+    "platform": "macOS arm64",
+    "python": "3.11.15",
+    "lockfile": "upstream uv.lock; uv sync --extra tests --frozen",
+    "ruff": "0.15.10",
+    "ty": "0.0.29",
+    "rdkit": "2026.3.5"
+  },
+  "checks": [
+    {
+      "command": "uv run --frozen pytest ord_schema/validations_test.py -q",
+      "exit_code": 0,
+      "passed": 322,
+      "duration_seconds": 44.58
+    },
+    {
+      "command": "uv run --frozen ruff check ord_schema/validations.py ord_schema/validations_test.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen ruff format --check ord_schema/validations.py ord_schema/validations_test.py",
+      "exit_code": 0
+    },
+    {
+      "command": "uv run --frozen ty check ord_schema",
+      "exit_code": 0
+    },
+    {
+      "command": "ORD_LIVE_RESOLVERS=false uv run --frozen pytest -q --maxfail=1 --timeout=60",
+      "exit_code": 1,
+      "passed_before_stop": 72,
+      "setup_errors": 1,
+      "duration_seconds": 23.94,
+      "stopped_at": "ord_schema/artifacts/history_test.py::TestWalk::test_each_reaction_reads_its_first_commit_on_main",
+      "reason": "Git LFS executable unavailable in fixture setup"
+    }
+  ],
+  "limitations": [
+    "Full upstream suite attempted but not completed",
+    "No complete reaction semantic validation of frozen corpus",
+    "No registry identity lookup or automatic identity correction"
+  ],
+  "formatting_change": "Candidate patch formatted by the upstream locked Ruff; arithmetic unchanged; offline regression rerun passed"
+}

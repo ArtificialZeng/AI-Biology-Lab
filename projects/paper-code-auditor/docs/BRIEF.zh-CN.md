@@ -32,6 +32,6 @@ python projects/paper-code-auditor/audit.py
 
 这些证据支持固定公开版本存在复现入口问题，以及补丁在检查范围内有效。公开历史恢复不等于证明原作者实际使用了这些精确脚本。兼容训练依赖、真实GPU训练和论文指标复现仍未完成；替代的作者自定义checkpoint不在此次恢复范围内。
 
-目前没有原作者背书、上游接受或独立外部人类复核。公开记录中未找到相关报告，不构成穷尽优先权证明。不据此宣称新的生物学发现、模型性能反转或完整复现了论文。
+已在实验室负责人授权后于2026年10月26日提交[上游PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1)，等待维护者核验。目前没有原作者背书、上游接受或独立外部人类复核。公开记录中未找到相关报告，不构成穷尽优先权证明。不据此宣称新的生物学发现、模型性能反转或完整复现了论文。
 
 [完整说明](../README.md) · [恢复补丁](../patches/reproduction-fixes.patch) · [来源与哈希](../evidence/restoration_provenance.json) · [记录的验证结果](../evidence/verification.json) · [供上游审核的材料](UPSTREAM_REVIEW.md)

@@ -41,7 +41,7 @@ git apply --check /absolute/path/to/AI-Biology-Lab/projects/paper-code-auditor/p
 git apply /absolute/path/to/AI-Biology-Lab/projects/paper-code-auditor/patches/reproduction-fixes.patch
 ```
 
-This is a local proposed reconstruction, not an upstream-accepted fix. Compatible training dependencies, memory, and an actual GPU run still need verification. The original alternative custom checkpoint refers to author-specific files and is outside this reconstruction. An output directory is not evidence of successful scientific reproduction.
+This reconstruction was submitted as [upstream PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) on 2026-10-26; maintainer review and acceptance remain pending. Compatible training dependencies, memory, and an actual GPU run still need verification. The original alternative custom checkpoint refers to author-specific files and is outside this reconstruction. An output directory is not evidence of successful scientific reproduction.
 
 ## Limits and negative control
 

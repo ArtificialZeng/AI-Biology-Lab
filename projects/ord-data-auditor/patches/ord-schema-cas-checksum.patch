@@ -1,15 +1,18 @@
 --- a/ord_schema/validations.py
 +++ b/ord_schema/validations.py
-@@ -998,6 +998,14 @@
+@@ -998,6 +998,17 @@
              context.warn(
                  f"CAS number {message.value} is malformed (expected e.g. 64-17-5)"
              )
 +        else:
 +            digits = message.value.replace("-", "")
-+            check_digit = sum(
-+                weight * int(digit)
-+                for weight, digit in enumerate(reversed(digits[:-1]), start=1)
-+            ) % 10
++            check_digit = (
++                sum(
++                    weight * int(digit)
++                    for weight, digit in enumerate(reversed(digits[:-1]), start=1)
++                )
++                % 10
++            )
 +            if check_digit != int(digits[-1]):
 +                context.warn(f"CAS number {message.value} has an invalid check digit")
      elif message.type == message.INCHI_KEY:

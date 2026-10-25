@@ -16,6 +16,8 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | Reproducible software defects and a history-grounded reconstruction patch | Offline CPU regression checks; no training-result or author confirmation |
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | Identifier guard, frozen-sample audit, and a checksum warning patch | 42 datasets / 20,720 reactions reproduced; no chemical-identity or upstream-acceptance claim |
 
+Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
+
 ## First project: can a biochemical oscillator resist changes in enzyme concentration?
 
 The mixed-mechanism phosphorylation model studied by Conradi, Mincheva, and Shiu has a unique positive equilibrium. Their 2019 paper asks whether it can remain unstable as total kinase grows arbitrarily large.

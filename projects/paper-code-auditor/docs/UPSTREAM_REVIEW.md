@@ -1,6 +1,6 @@
 # Review packet: execution-route corrections
 
-This packet is prepared for review; no issue, pull request, or message has been sent to the original authors.
+Submitted with the lab owner's authorization on 2026-10-26: [upstream PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1). Head commit: `9e924cc7ad5fd52a1e8dca02470b30448e58a665`. Open at submission; maintainer acceptance and training validation remain pending.
 
 ## Version and scope
 

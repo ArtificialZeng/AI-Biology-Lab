@@ -1,6 +1,6 @@
 # Review packet: CAS check-digit warning
 
-Prepared for review; no upstream submission or outreach has occurred.
+Submitted second with the lab owner's authorization on 2026-10-26: [upstream PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165). Head commit: `4e524972a7d4b321d65369f76b7f049655b5079d`. Open at submission; acceptance remains pending.
 
 Target: `open-reaction-database/ord-schema` commit `a9c1603a4fb040f251c1f174548d1747838fb247`.
 
@@ -17,7 +17,7 @@ The candidate adds a `context.warn` in the existing format-valid branch. It reta
 - Positive/negative/boundary controls and 1,200 artificial arithmetic cases, checked against a separate arithmetic formulation.
 - Full frozen convenience-sample rerun: 42 files, 20,720 reactions, 11,949 CAS occurrences; each input hash verified.
 
-The offline test isolates the type-specific CAS body. It does not exercise message dispatch, shared prechecks, all `validate_message` behavior, RDKit chemistry validation, or the full upstream test suite. The proposed upstream tests still need to run in the project's full development environment.
+The offline checker isolates the CAS-specific body. Before submission, a separate development environment was synced from the upstream lockfile: all 322 tests in `ord_schema/validations_test.py` passed, including the five added cases and the helper's unchanged-message checks. Ruff check/format and `ty check ord_schema` passed. The full suite was attempted with live resolvers disabled and stopped on a missing Git LFS dependency in a history fixture (72 passed, 1 setup error). Full-suite success and complete semantic validation of the frozen corpus are not claimed. See `evidence/upstream_validation.json`. The candidate patch was formatted by the upstream pinned Ruff version before submission; its arithmetic is unchanged.
 
 ## Known overlap and unresolved identity
 

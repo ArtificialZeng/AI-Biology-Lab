@@ -14,6 +14,8 @@
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | 复现入口缺陷、历史源码恢复与补丁 | 离线CPU检查通过；未完成训练结果复现或作者确认 |
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |
 
+上游核验申请（按顺序提交，尚待维护者审核）：[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165)。
+
 ## 首个结果
 
 在 Conradi、Mincheva、Shiu 的混合机制双磷酸化模型中，固定原文 Table 1 速率、总磷酸酶 8、总底物 40，我们给出精确证明：
