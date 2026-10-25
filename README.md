@@ -14,6 +14,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | --- | --- | --- |
 | [Mixed-mechanism phosphorylation](projects/mixed-phosphorylation/README.md) | Exact finite-kinase instability bound | Exact certificate; novelty and external review pending |
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | Reproducible software defects and a history-grounded reconstruction patch | Offline CPU regression checks; no training-result or author confirmation |
+| [ORD Data Auditor](projects/ord-data-auditor/README.md) | Identifier guard, frozen-sample audit, and a checksum warning patch | 42 datasets / 20,720 reactions reproduced; no chemical-identity or upstream-acceptance claim |
 
 ## First project: can a biochemical oscillator resist changes in enzyme concentration?
 
@@ -91,4 +92,4 @@ The project uses AI for derivation, coding, search, and review. Separate AI revi
 - Suwanmajo and Krishnan (2015), [*Mixed mechanisms of multi-site phosphorylation*](https://doi.org/10.1098/rsif.2014.1405).
 - Related work requiring priority clarification: [Grasse, SBHD 2023, poster 48](https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf); [Grasse and Conradi, BIOMATH 2025 abstract](https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828).
 
-Third-party papers are linked, not redistributed. Original repository material is available under the [MIT license](LICENSE). Citation metadata is in [CITATION.cff](CITATION.cff).
+Third-party papers are linked, not redistributed. Original repository code is available under the [MIT license](LICENSE); third-party code and data retain their own licenses, recorded in each project's `THIRD_PARTY.md`. Citation metadata is in [CITATION.cff](CITATION.cff).

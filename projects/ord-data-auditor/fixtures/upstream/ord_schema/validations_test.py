@@ -1,0 +1,1803 @@
+# Copyright 2020 Open Reaction Database Project Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""Tests for ord_schema.validations."""
+
+import re
+
+import pytest
+
+from ord_schema import message_helpers, validations
+from ord_schema.proto import dataset_pb2, reaction_pb2
+
+
+def _run_validation(message, **kwargs):
+    original = type(message)()
+    original.CopyFrom(message)
+    if "options" not in kwargs:
+        kwargs["options"] = validations.ValidationOptions(require_provenance=False)
+    output = validations.validate_message(message, **kwargs)
+    # Verify that `message` is unchanged by the validation process.
+    assert original == message
+    return output
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        reaction_pb2.ReactionNotes(),
+        reaction_pb2.StirringConditions(type="UNSPECIFIED"),
+        reaction_pb2.ReactionNotes(safety_notes=""),
+    ],
+)
+def test_is_empty(message):
+    assert validations.is_empty(message)
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        reaction_pb2.StirringConditions(type="STIR_BAR"),
+        reaction_pb2.ReactionNotes(is_heterogeneous=False),
+        reaction_pb2.ReactionNotes(is_heterogeneous=True),
+    ],
+)
+def test_is_not_empty(message):
+    assert not validations.is_empty(message)
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        reaction_pb2.Volume(value=15.0, units=reaction_pb2.Volume.MILLILITER),
+        reaction_pb2.Time(value=24, units=reaction_pb2.Time.HOUR),
+        reaction_pb2.Mass(value=32.1, units=reaction_pb2.Mass.GRAM),
+        reaction_pb2.Temperature(value=25.0, units=reaction_pb2.Temperature.CELSIUS),
+    ],
+)
+def test_units(message):
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize(
+    ("message", "expected"),
+    [
+        (
+            reaction_pb2.Volume(value=-15.0, units=reaction_pb2.Volume.MILLILITER),
+            "non-negative",
+        ),
+        (reaction_pb2.Time(value=-24, units=reaction_pb2.Time.HOUR), "non-negative"),
+        (reaction_pb2.Mass(value=-32.1, units=reaction_pb2.Mass.GRAM), "non-negative"),
+        (reaction_pb2.FlowRate(value=5), "units"),
+        (reaction_pb2.Temperature(value=-5, units="KELVIN"), "between"),
+        (reaction_pb2.Temperature(value=-500, units="CELSIUS"), "between"),
+    ],
+)
+def test_units_should_fail(message, expected):
+    with pytest.raises(validations.ValidationError, match=expected):
+        _run_validation(message)
+
+
+def test_orcid():
+    message = reaction_pb2.Person(orcid="0000-0002-1825-0097")
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize(
+    "orcid",
+    [
+        "abcd-0001-2345-678X",  # Non-numeric.
+        "0000-0001-2345-678X",  # Well-formed but incorrect checksum.
+    ],
+)
+def test_orcid_should_fail(orcid):
+    message = reaction_pb2.Person(orcid=orcid)
+    with pytest.raises(validations.ValidationError, match="Invalid"):
+        _run_validation(message)
+
+
+@pytest.mark.parametrize(
+    "email", ["ord+test@gmail.com", "student@alumni.mit.edu", "hypen-ated@gmail.com"]
+)
+def test_email(email):
+    message = reaction_pb2.Person(email=email)
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize(
+    "email", ["bad&character@gmail.com", "not-an-email", "bad@domain"]
+)
+def test_email_should_fail(email):
+    message = reaction_pb2.Person(email=email)
+    with pytest.raises(validations.ValidationError, match="Invalid"):
+        _run_validation(message)
+
+
+def test_synthesized_compound():
+    message = reaction_pb2.CompoundPreparation(
+        type="SYNTHESIZED", reaction_id="dummy_reaction_id"
+    )
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+    message = reaction_pb2.CompoundPreparation(
+        type="NONE", reaction_id="dummy_reaction_id"
+    )
+    with pytest.raises(validations.ValidationError, match=r"only .* when SYNTHESIZED"):
+        _run_validation(message)
+
+
+def test_unmeasured_amount():
+    message = reaction_pb2.ReactionInput()
+    message.components.add().CopyFrom(
+        reaction_pb2.Compound(
+            identifiers=[{"type": "SMILES", "value": "c1ccccc1"}],
+            amount={"unmeasured": {"type": "SATURATED"}},
+        )
+    )
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    message.components.add().CopyFrom(
+        reaction_pb2.Compound(identifiers=[{"type": "SMILES", "value": "O"}])
+    )
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_texture_in_reaction_input():
+    def _make_dummy_reaction_input(component_texture_types, input_texture_type):
+        message = reaction_pb2.ReactionInput(
+            texture=reaction_pb2.Texture(type=input_texture_type)
+        )
+        for texture_type in component_texture_types:
+            message.components.add().CopyFrom(
+                reaction_pb2.Compound(
+                    identifiers=[{"type": "SMILES", "value": "c1ccccc1"}],
+                    texture=reaction_pb2.Texture(type=texture_type),
+                )
+            )
+        return message
+
+    # (1) a foam and a gas are unlikely to give a crystal
+    c_texture_types = ["FOAM", "GAS"]
+    i_texture_type = "CRYSTAL"
+    output = _run_validation(
+        _make_dummy_reaction_input(c_texture_types, i_texture_type)
+    )
+    assert len(output.warnings) == 1
+
+    # (2) a wax and a liquid may give a liquid
+    c_texture_types = ["WAX", "LIQUID"]
+    i_texture_type = "LIQUID"
+    output = _run_validation(
+        _make_dummy_reaction_input(c_texture_types, i_texture_type)
+    )
+    assert len(output.warnings) == 0
+
+    # (3) an oil and a liquid are unlikely to give a solid
+    c_texture_types = ["OIL", "LIQUID"]
+    i_texture_type = "SOLID"
+    output = _run_validation(
+        _make_dummy_reaction_input(c_texture_types, i_texture_type)
+    )
+    assert len(output.warnings) == 1
+
+    # (4) a gas and a liquid may give a liquid
+    c_texture_types = ["GAS", "LIQUID"]
+    i_texture_type = "LIQUID"
+    output = _run_validation(
+        _make_dummy_reaction_input(c_texture_types, i_texture_type)
+    )
+    assert len(output.warnings) == 0
+
+
+def test_crude_component():
+    message = reaction_pb2.CrudeComponent()
+    with pytest.raises(validations.ValidationError, match="reaction_id"):
+        _run_validation(message)
+    message = reaction_pb2.CrudeComponent(reaction_id="my_reaction_id")
+    with pytest.raises(validations.ValidationError, match="amount"):
+        _run_validation(message)
+    message = reaction_pb2.CrudeComponent(
+        reaction_id="my_reaction_id", has_derived_amount=False
+    )
+    with pytest.raises(validations.ValidationError, match="amount"):
+        _run_validation(message)
+    message = reaction_pb2.CrudeComponent(
+        reaction_id="my_reaction_id", has_derived_amount=True
+    )
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_product_measurement():
+    message = reaction_pb2.ProductMeasurement(
+        analysis_key="my_analysis", type="YIELD", float_value={"value": 60}
+    )
+    output = _run_validation(message)
+    assert "percentage" in output.warnings[0]
+    message = reaction_pb2.ProductMeasurement(
+        analysis_key="my_analysis", type="AREA", string_value="35.221"
+    )
+    with pytest.raises(validations.ValidationError, match="numeric"):
+        _run_validation(message)
+    message = reaction_pb2.ProductMeasurement(
+        analysis_key="my_analysis",
+        type="YIELD",
+        percentage={"value": 60},
+        selectivity={"type": "EE"},
+    )
+    with pytest.raises(validations.ValidationError, match="selectivity"):
+        _run_validation(message)
+
+
+def test_reaction():
+    message = reaction_pb2.Reaction()
+    with pytest.raises(validations.ValidationError, match="reaction input"):
+        _run_validation(message)
+
+
+def test_reaction_smiles():
+    message = reaction_pb2.Reaction()
+    message.identifiers.add(value="C>>C", type="REACTION_SMILES")
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+    # With allow_reaction_smiles_only off, the same message must fail.
+    options = validations.ValidationOptions()
+    options.allow_reaction_smiles_only = False
+    with pytest.raises(validations.ValidationError, match="reaction input"):
+        _run_validation(message, options=options)
+
+
+def test_bad_reaction_smiles():
+    message = reaction_pb2.Reaction()
+    message.identifiers.add(value="test", type="REACTION_SMILES")
+    with pytest.raises(
+        validations.ValidationError, match="requires at least two > characters"
+    ):
+        _run_validation(message)
+
+
+@pytest.mark.parametrize(
+    ("identifier_type", "value"),
+    [
+        ("SMILES", "CO"),
+        ("INCHI", "InChI=1S/CH4O/c1-2/h2H,1H3"),
+        (
+            "MOLBLOCK",
+            "\n     RDKit          2D\n\n"
+            "  2  1  0  0  0  0  0  0  0  0999 V2000\n"
+            "    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
+            "    1.2990    0.7500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n"
+            "  1  2  1  0\n"
+            "M  END\n",
+        ),
+    ],
+)
+def test_compound_identifier(identifier_type, value):
+    message = reaction_pb2.CompoundIdentifier(type=identifier_type, value=value)
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize(
+    ("identifier_type", "value"),
+    [
+        (
+            "SMILES",
+            "[O-]1(C)[Ir+]234([O-](C)[Ir+]1567[CH]=8CC[CH]7=[CH]6CC[CH]85)[CH]=9CC[CH]4=[CH]3CC[CH]92",
+        ),
+        ("SMILES", "CO(C)(C)(C)C"),
+        ("SMILES", "On1c(-c2ccccc2)c(-c2c(-c3ccccc3)nc3ccccc23)c2ccccc21"),
+    ],
+)
+def test_bad_compound_identifier(identifier_type, value):
+    message = reaction_pb2.CompoundIdentifier(type=identifier_type, value=value)
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 1
+    assert "could not sanitize" in output.warnings[0]
+
+
+@pytest.mark.parametrize(
+    ("identifier_type", "value"),
+    [
+        ("SMILES", "###"),
+        ("INCHI", "###"),
+        ("MOLBLOCK", "###"),
+    ],
+)
+def test_invalid_compound_identifier(identifier_type, value):
+    message = reaction_pb2.CompoundIdentifier(type=identifier_type, value=value)
+    with pytest.raises(validations.ValidationError, match="could not validate"):
+        _run_validation(message)
+
+
+def _compound_with_two_identifiers():
+    """Builds a Compound whose SMILES and InChI describe the same molecule."""
+    compound = reaction_pb2.Compound()
+    compound.identifiers.add(type="SMILES", value="c1ccccc1")
+    compound.identifiers.add(type="INCHI", value="InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H")
+    return compound
+
+
+def test_the_two_identifier_checks_share_one_parse():
+    """Validity and consistency need the same parse, so they must not repeat it.
+
+    ``_validate_compound_identifier`` checks that an identifier parses and
+    ``check_compound_identifiers`` canonicalizes it to compare against its
+    siblings. Parsing InChI is the single most expensive thing validation does,
+    so a regression that unshares these is worth catching.
+    """
+    message_helpers.canonical_smiles_for_identifier.cache_clear()
+    _run_validation(_compound_with_two_identifiers())
+    info = message_helpers.canonical_smiles_for_identifier.cache_info()
+    # One miss per distinct identifier, and a hit where the other check reuses it.
+    # A third call site would push these up; that is a prompt to check the new
+    # caller shares the parse, not to relax the counts.
+    assert info.misses == 2
+    assert info.hits == 2
+
+
+def test_a_warm_cache_does_not_change_what_validation_reports():
+    message_helpers.canonical_smiles_for_identifier.cache_clear()
+    validations.parse_date_time.cache_clear()
+    cold = _run_validation(_compound_with_two_identifiers())
+    warm = _run_validation(_compound_with_two_identifiers())
+    assert (cold.errors, cold.warnings) == (warm.errors, warm.warnings)
+
+
+def test_provenance_and_the_message_walk_share_one_datetime_parse():
+    """Both the per-message walk and the ordering check need the same parse."""
+    validations.parse_date_time.cache_clear()
+    message = reaction_pb2.ReactionProvenance()
+    message.experiment_start.value = "2024-01-01"
+    message.record_created.time.value = "2024-01-02T09:30:00+01:00"
+    message.record_created.person.name = "test"
+    message.record_created.person.email = "test@example.com"
+    _run_validation(message)
+    info = validations.parse_date_time.cache_info()
+    # Two distinct strings, each parsed once by the walk; the ordering check reads
+    # each twice, once to look for unparseable values and once to order them, and
+    # the record event check reads record_created once more.
+    assert info.misses == 2
+    assert info.hits == 5
+
+
+@pytest.mark.parametrize(
+    ("identifier_type", "value"),
+    [
+        ("CAS_NUMBER", "64-17-5"),
+        ("INCHI_KEY", "LFQSCWFLJHTTHZ-UHFFFAOYSA-N"),
+        ("PUBCHEM_CID", "702"),
+        ("CHEMSPIDER_ID", "682"),
+    ],
+)
+def test_compound_identifier_format(identifier_type, value):
+    message = reaction_pb2.CompoundIdentifier(type=identifier_type, value=value)
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize(
+    ("identifier_type", "value", "expected"),
+    [
+        ("CAS_NUMBER", "64175", "CAS number"),
+        ("INCHI_KEY", "not-a-key", "InChIKey"),
+        ("PUBCHEM_CID", "abc", "PubChem CID"),
+        ("CHEMSPIDER_ID", "12x", "ChemSpider ID"),
+    ],
+)
+def test_bad_compound_identifier_format(identifier_type, value, expected):
+    message = reaction_pb2.CompoundIdentifier(type=identifier_type, value=value)
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 1
+    assert expected in output.warnings[0]
+
+
+@pytest.mark.parametrize("ph_value", [7.0, 0.0, 14.0])
+def test_reaction_conditions_ph(ph_value):
+    message = reaction_pb2.ReactionConditions(ph=ph_value)
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize("ph_value", [-1.0, 15.0])
+def test_reaction_conditions_bad_ph(ph_value):
+    message = reaction_pb2.ReactionConditions(ph=ph_value)
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "outside the expected range" in output.warnings[0]
+
+
+def test_electrochemistry_missing_current():
+    message = reaction_pb2.ElectrochemistryConditions(type="CONSTANT_CURRENT")
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "should specify the current" in output.warnings[0]
+
+
+def test_electrochemistry_missing_voltage():
+    message = reaction_pb2.ElectrochemistryConditions(type="CONSTANT_VOLTAGE")
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "should specify the voltage" in output.warnings[0]
+
+
+def test_mass_spec_mz_range():
+    message = reaction_pb2.ProductMeasurement.MassSpecMeasurementDetails(
+        type="TIC", tic_minimum_mz=100.0, tic_maximum_mz=50.0
+    )
+    with pytest.raises(validations.ValidationError, match="tic_minimum_mz"):
+        _run_validation(message)
+
+
+def test_mass_spec_eic_requires_masses():
+    message = reaction_pb2.ProductMeasurement.MassSpecMeasurementDetails(type="EIC")
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "should specify eic_masses" in output.warnings[0]
+
+
+def test_mass_spec_negative_eic_mass():
+    message = reaction_pb2.ProductMeasurement.MassSpecMeasurementDetails(
+        type="EIC", eic_masses=[-1.0]
+    )
+    with pytest.raises(
+        validations.ValidationError, match="eic_masses must be non-negative"
+    ):
+        _run_validation(message)
+
+
+def test_mass_spec_tic_with_eic_masses():
+    message = reaction_pb2.ProductMeasurement.MassSpecMeasurementDetails(
+        type="TIC", eic_masses=[100.0]
+    )
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "should only be specified for EIC" in output.warnings[0]
+
+
+def test_provenance_bad_url():
+    message = reaction_pb2.ReactionProvenance(
+        record_created={
+            "time": {"value": "2021-01-01"},
+            "person": {"username": "test", "email": "a@b.com"},
+        },
+        publication_url="not a url",
+    )
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "valid URL" in output.warnings[0]
+
+
+def test_illumination_dark_with_wavelength():
+    message = reaction_pb2.IlluminationConditions(
+        type="DARK", peak_wavelength={"value": 450.0, "units": "NANOMETER"}
+    )
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "DARK or AMBIENT" in output.warnings[0]
+
+
+@pytest.mark.parametrize(
+    ("value", "is_mapped", "expected"),
+    [
+        # Atom maps present but the flag is not set.
+        ("[CH4:1]>>[CH4:1]", False, "is_mapped is not set"),
+        # Flag is set but the SMILES contains no atom maps.
+        ("CO>>CO", True, "no atom maps"),
+    ],
+)
+def test_reaction_identifier_atom_mapping(value, is_mapped, expected):
+    message = reaction_pb2.ReactionIdentifier(
+        type="REACTION_SMILES", value=value, is_mapped=is_mapped
+    )
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert expected in output.warnings[0]
+
+
+_CXSMILES = "CC(=O)O.CCO>>CC(=O)OCC |f:0.1|"
+
+
+def test_reaction_smiles_carrying_a_cxsmiles_extension_warns():
+    message = reaction_pb2.ReactionIdentifier(type="REACTION_SMILES", value=_CXSMILES)
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "use REACTION_CXSMILES" in output.warnings[0]
+
+
+def test_cxsmiles_under_its_own_type_is_not_flagged():
+    message = reaction_pb2.ReactionIdentifier(type="REACTION_CXSMILES", value=_CXSMILES)
+    output = _run_validation(message)
+    assert not output.warnings
+    assert not output.errors
+
+
+@pytest.mark.parametrize(
+    ("identifier_type", "value"),
+    [
+        ("REACTION_SMILES", "CCO>>CCO |garbage|"),
+        ("REACTION_SMILES", "notareaction |f:0.1|"),
+        # A malformed block is an error under its own type too.
+        ("REACTION_CXSMILES", "CCO>>CCO |garbage|"),
+        ("REACTION_CXSMILES", "notareaction |f:0.1|"),
+    ],
+)
+def test_reaction_identifier_is_validated_as_recorded(identifier_type, value):
+    # Stripping the block before parsing would let a malformed one through with only
+    # an advisory warning.
+    message = reaction_pb2.ReactionIdentifier(type=identifier_type, value=value)
+    output = _run_validation(message, raise_on_error=False)
+    assert any("bad reaction SMILES" in error for error in output.errors)
+
+
+@pytest.mark.parametrize("value", ["c1ccccc1 |garbage|", "c1ccccc1 |$|"])
+def test_compound_identifier_is_validated_as_recorded(value):
+    message = reaction_pb2.CompoundIdentifier(type="SMILES", value=value)
+    output = _run_validation(message, raise_on_error=False)
+    assert any("could not validate SMILES" in error for error in output.errors)
+
+
+@pytest.mark.parametrize("identifier_type", ["REACTION_SMILES", "REACTION_CXSMILES"])
+def test_empty_reaction_identifier_reports_rather_than_raises(identifier_type):
+    # An empty value tokenizes to nothing, so the check must report it rather than
+    # indexing off the end of the token list.
+    message = reaction_pb2.ReactionIdentifier(type=identifier_type, value="")
+    output = _run_validation(message, raise_on_error=False)
+    assert any("value must be set" in error for error in output.errors)
+
+
+_COMPOUND_CXSMILES = "c1ccccc1 |f:0.1|"
+
+
+def test_compound_smiles_carrying_a_cxsmiles_extension_warns():
+    message = reaction_pb2.CompoundIdentifier(type="SMILES", value=_COMPOUND_CXSMILES)
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "use CXSMILES" in output.warnings[0]
+
+
+def test_compound_cxsmiles_under_its_own_type_is_not_flagged():
+    message = reaction_pb2.CompoundIdentifier(type="CXSMILES", value=_COMPOUND_CXSMILES)
+    output = _run_validation(message)
+    assert not output.warnings
+    assert not output.errors
+
+
+def test_compound_cxsmiles_is_validated():
+    # CXSMILES identifiers were parsed by nothing, so an unparseable one passed.
+    message = reaction_pb2.CompoundIdentifier(type="CXSMILES", value="notamolecule")
+    output = _run_validation(message, raise_on_error=False)
+    assert any("could not validate CXSMILES" in error for error in output.errors)
+
+
+def test_compound_smiles_is_validated_without_its_extension():
+    message = reaction_pb2.CompoundIdentifier(
+        type="SMILES", value="notamolecule |f:0.1|"
+    )
+    output = _run_validation(message, raise_on_error=False)
+    assert any("could not validate SMILES" in error for error in output.errors)
+
+
+@pytest.mark.parametrize("identifier_type", ["SMILES", "CXSMILES"])
+def test_trailing_whitespace_is_not_treated_as_an_extension(identifier_type):
+    # Parsing only up to the whitespace would strip a stray byte off the SMILES and
+    # turn these into errors. It is still worth a warning, but not a parse failure.
+    message = reaction_pb2.CompoundIdentifier(
+        type=identifier_type, value="CCC(C)(C)[O-].[K+]\xc2\xa0\xc2\xa0"
+    )
+    output = _run_validation(message, raise_on_error=False)
+    assert not output.errors
+    assert output.warnings == [
+        "CompoundIdentifier: value has leading or trailing whitespace"
+    ]
+
+
+@pytest.mark.parametrize(
+    ("value", "expected_warning"),
+    [
+        ("c1ccccc1 ", True),
+        (" c1ccccc1", True),
+        ("c1ccccc1\xa0", True),
+        ("c1ccccc1\n", True),
+        ("c1ccccc1", False),
+        ("", False),
+    ],
+)
+def test_compound_identifier_surrounding_whitespace(value, expected_warning):
+    message = reaction_pb2.CompoundIdentifier(type="SMILES", value=value)
+    output = _run_validation(message, raise_on_error=False)
+    warned = any("whitespace" in warning for warning in output.warnings)
+    assert warned is expected_warning
+
+
+def test_reaction_identifier_surrounding_whitespace():
+    message = reaction_pb2.ReactionIdentifier(type="REACTION_SMILES", value=" CO>>CC ")
+    output = _run_validation(message, raise_on_error=False)
+    assert any("whitespace" in warning for warning in output.warnings)
+
+
+def test_data_bad_url():
+    message = reaction_pb2.Data(url="not a url")
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert "valid URL" in output.warnings[0]
+
+
+_ADDITION_INPUT = {
+    "components": [
+        {
+            "identifiers": [{"value": "CCO", "type": "SMILES"}],
+            "amount": {"mass": {"value": 10.0, "units": "GRAM"}},
+        }
+    ]
+}
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        reaction_pb2.ReactionWorkup(
+            type="ALIQUOT", amount={"mass": {"value": 1.0, "units": "GRAM"}}
+        ),
+        reaction_pb2.ReactionWorkup(type="ADDITION", input=_ADDITION_INPUT),
+    ],
+)
+def test_reaction_workup(message):
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize(
+    ("message", "error_msg"),
+    [
+        (reaction_pb2.ReactionWorkup(type="ALIQUOT"), "missing volume/mass"),
+        (
+            reaction_pb2.ReactionWorkup(
+                type="ADDITION",
+                amount={"mass": {"value": 1.0, "units": "GRAM"}},
+                input=_ADDITION_INPUT,
+            ),
+            "should only be specified",
+        ),
+    ],
+)
+def test_bad_reaction_workup(message, error_msg):
+    output = _run_validation(message)
+    assert len(output.warnings) == 1
+    assert error_msg in output.warnings[0]
+
+
+def test_reaction_recursive():
+    message = reaction_pb2.Reaction()
+    # Reactions must have at least one input
+    with pytest.raises(validations.ValidationError, match="reaction input"):
+        _run_validation(message, recurse=False)
+    dummy_input = message.inputs["dummy_input"]
+    # Reactions must have at least one outcome
+    with pytest.raises(validations.ValidationError, match="reaction outcome"):
+        _run_validation(message, recurse=False)
+    outcome = message.outcomes.add()
+    output = _run_validation(message, recurse=False)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+    # Inputs must have at least one component
+    with pytest.raises(validations.ValidationError, match="component"):
+        _run_validation(message)
+    dummy_component = dummy_input.components.add()
+    # Components must have at least one identifier
+    with pytest.raises(validations.ValidationError, match="identifier"):
+        _run_validation(message)
+    dummy_component.identifiers.add(type="CUSTOM")
+    # Custom identifiers must have details specified
+    with pytest.raises(validations.ValidationError, match="details"):
+        _run_validation(message)
+    dummy_component.identifiers[0].details = "custom_identifier"
+    dummy_component.identifiers[0].value = "custom_value"
+    # Components of reaction inputs must have a defined amount
+    with pytest.raises(validations.ValidationError, match="require an amount"):
+        _run_validation(message)
+    dummy_component.amount.mass.value = 1
+    dummy_component.amount.mass.units = reaction_pb2.Mass.GRAM
+    # Reactions don't require defined products or conversion because they
+    # can be used to prepare crude for a second Reaction
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 1
+    outcome.conversion.value = 75
+    # If converseions are defined, must have limiting reagent flag
+    with pytest.raises(validations.ValidationError, match="is_limiting"):
+        _run_validation(message)
+    dummy_component.is_limiting = True
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+    # If a measurement uses an internal standard, a component must have
+    # an INTERNAL_STANDARD reaction role
+    outcome.analyses["dummy_analysis"].CopyFrom(
+        reaction_pb2.Analysis(type="CUSTOM", details="test")
+    )
+    product = outcome.products.add(
+        identifiers=[{"type": "SMILES", "value": "c1ccccc1"}]
+    )
+    product.measurements.add(
+        analysis_key="dummy_analysis",
+        type="YIELD",
+        percentage={"value": 75},
+        uses_internal_standard=True,
+    )
+    with pytest.raises(validations.ValidationError, match="INTERNAL_STANDARD"):
+        _run_validation(message)
+    # Assigning internal standard role to input should resolve the error
+    message_input_istd = reaction_pb2.Reaction()
+    message_input_istd.CopyFrom(message)
+    message_input_istd.inputs["dummy_input"].components[
+        0
+    ].reaction_role = reaction_pb2.ReactionRole.INTERNAL_STANDARD
+    output = _run_validation(message_input_istd)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+    # Assigning internal standard role to workup should resolve the error
+    message_workup_istd = reaction_pb2.Reaction()
+    message_workup_istd.CopyFrom(message)
+    workup = message_workup_istd.workups.add(type="CUSTOM", details="test")
+    istd = workup.input.components.add()
+    istd.identifiers.add(type="SMILES", value="CCO")
+    istd.amount.mass.value = 1
+    istd.amount.mass.units = reaction_pb2.Mass.GRAM
+    istd.reaction_role = reaction_pb2.ReactionRole.INTERNAL_STANDARD
+    output = _run_validation(message_workup_istd)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_reaction_recursive_noraise_on_error():
+    message = reaction_pb2.Reaction()
+    message.inputs["dummy_input"].components.add()
+    output = _run_validation(message, raise_on_error=False)
+    expected = [
+        'Reaction.inputs["dummy_input"].components[0]: Compounds must have '
+        "at least one identifier",
+        "Reaction: Reactions should have at least 1 reaction outcome",
+        "Reaction: All reaction input components require an amount",
+    ]
+    assert output.errors == expected
+    assert len(output.warnings) == 1
+
+
+def test_datetimes():
+    message = reaction_pb2.ReactionProvenance()
+    message.experiment_start.value = "2020-01-02"
+    message.record_created.time.value = "2020-01-01"
+    message.record_created.person.name = "test"
+    message.record_created.person.email = "test@example.com"
+    with pytest.raises(validations.ValidationError, match="after"):
+        _run_validation(message)
+    message.record_created.time.value = "2020-01-03"
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_reaction_id():
+    message = reaction_pb2.Reaction()
+    _ = message.inputs["test"]
+    message.outcomes.add()
+    message.reaction_id = "ord-c0bbd41f095a44a78b6221135961d809"
+    options = validations.ValidationOptions(validate_ids=True, require_provenance=False)
+    output = _run_validation(message, recurse=False, options=options)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+@pytest.mark.parametrize(
+    "reaction_id",
+    [
+        "ord-c0bbd41f095a4",
+        "ord-c0bbd41f095a4c0bbd41f095a4c0bbd41f095a4",
+        "foo-c0bbd41f095a44a78b6221135961d809",
+        "ord-C0BBD41F095A44A78B6221135961D809",
+        "ord-h0bbd41f095a44a78b6221135961d809",
+        "ord-notARealId",
+        "",
+    ],
+)
+def test_bad_reaction_id(reaction_id):
+    message = reaction_pb2.Reaction(reaction_id=reaction_id)
+    _ = message.inputs["test"]
+    message.outcomes.add()
+    options = validations.ValidationOptions(validate_ids=True)
+    with pytest.raises(validations.ValidationError, match="malformed"):
+        _run_validation(message, recurse=False, options=options)
+
+
+def _reaction_with_source(**provenance) -> reaction_pb2.Reaction:
+    message = reaction_pb2.Reaction(provenance=provenance)
+    _ = message.inputs["test"]
+    message.outcomes.add()
+    return message
+
+
+def test_a_reaction_without_a_source_is_only_suggested_one():
+    output = _run_validation(_reaction_with_source(), recurse=False)
+    assert output.errors == []
+    assert output.warnings == []
+    assert len(output.info) == 1
+    assert output.info[0] == (
+        "Reaction: Suggestion: add a doi, patent, or publication_url to the "
+        "reaction provenance"
+    )
+
+
+@pytest.mark.parametrize(
+    "provenance",
+    [
+        {"doi": "10.1126/science.aap9112"},
+        {"patent": "US20100000001A1"},
+        {"publication_url": "https://example.com"},
+    ],
+)
+def test_any_source_satisfies_the_suggestion(provenance):
+    output = _run_validation(_reaction_with_source(**provenance), recurse=False)
+    assert output.errors == []
+    assert output.info == []
+
+
+def test_info_never_raises_and_is_carried_by_extend():
+    output = validations.ValidationOutput()
+    for _ in range(2):
+        output.extend(
+            _run_validation(_reaction_with_source(), recurse=False, raise_on_error=True)
+        )
+    assert output.errors == []
+    assert len(output.info) == 2
+    assert all(text.startswith("Reaction: Suggestion: ") for text in output.info)
+
+
+def test_missing_provenance():
+    message = reaction_pb2.Reaction()
+    _ = message.inputs["test"]
+    message.outcomes.add()
+    options = validations.ValidationOptions(require_provenance=True)
+    with pytest.raises(validations.ValidationError, match="requires provenance"):
+        _run_validation(message, recurse=False, options=options)
+
+
+def test_bad_doi():
+    message = reaction_pb2.ReactionProvenance()
+    message.record_created.time.value = "2023-07-01"
+    message.record_created.person.email = "test@example.com"
+    message.doi = "149"
+    options = validations.ValidationOptions(require_provenance=True)
+    with pytest.raises(validations.ValidationError, match="could not parse DOI"):
+        _run_validation(message, recurse=False, options=options)
+
+
+def test_data():
+    message = reaction_pb2.Data()
+    with pytest.raises(validations.ValidationError, match="requires one of"):
+        _run_validation(message)
+    message.bytes_value = b"test data"
+    with pytest.raises(validations.ValidationError, match="format is required"):
+        _run_validation(message)
+    message.string_value = "test data"
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_dataset_missing_name():
+    message = dataset_pb2.Dataset()
+    options = validations.ValidationOptions(validate_ids=True)
+    with pytest.raises(validations.ValidationError, match="name is required"):
+        _run_validation(message, options=options)
+
+
+def test_dataset_bad_reaction_id():
+    message = dataset_pb2.Dataset(name="test", description="test", reaction_ids=["foo"])
+    options = validations.ValidationOptions(validate_ids=True)
+    with pytest.raises(validations.ValidationError, match="malformed"):
+        _run_validation(message, options=options)
+
+
+def test_dataset_records_and_ids():
+    message = dataset_pb2.Dataset(
+        name="test",
+        description="test",
+        reactions=[reaction_pb2.Reaction()],
+        reaction_ids=["ord-c0bbd41f095a44a78b6221135961d809"],
+    )
+    options = validations.ValidationOptions(validate_ids=True)
+    with pytest.raises(validations.ValidationError, match="not both"):
+        _run_validation(message, recurse=False, options=options)
+
+
+def test_dataset_bad_id():
+    message = dataset_pb2.Dataset(
+        name="test",
+        description="test",
+        reactions=[reaction_pb2.Reaction()],
+        dataset_id="foo",
+    )
+    options = validations.ValidationOptions(validate_ids=True)
+    with pytest.raises(validations.ValidationError, match="malformed"):
+        _run_validation(message, recurse=False, options=options)
+
+
+def test_dataset_example():
+    message = dataset_pb2.DatasetExample()
+    with pytest.raises(validations.ValidationError, match="description is required"):
+        _run_validation(message)
+    message.description = "test example"
+    with pytest.raises(validations.ValidationError, match="url is required"):
+        _run_validation(message)
+    message.url = "example.com"
+    with pytest.raises(validations.ValidationError, match="created is required"):
+        _run_validation(message)
+    message.created.time.value = "2020-01-01T11:00:00Z"
+    message.created.person.name = "test"
+    message.created.person.email = "test@example.com"
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_dataset_cross_references():
+    message = dataset_pb2.Dataset(name="test", description="test")
+    reaction1 = message.reactions.add()
+    reaction2 = message.reactions.add()
+    reaction3 = message.reactions.add()
+    # Minimal reaction 1
+    dummy_input = reaction1.inputs["dummy_input"]
+    reaction1.outcomes.add()
+    dummy_component = dummy_input.components.add()
+    dummy_component.identifiers.add(type="CUSTOM")
+    dummy_component.identifiers[0].details = "custom_identifier"
+    dummy_component.identifiers[0].value = "custom_value"
+    dummy_component.amount.mass.value = 1
+    dummy_component.amount.mass.units = reaction_pb2.Mass.GRAM
+    reaction2.CopyFrom(reaction1)
+    reaction3.CopyFrom(reaction1)
+    # It is not required to cross-reference SYNTHESIZED compounds.
+    dummy_component.preparations.add(type="SYNTHESIZED")
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 3
+    # References must refer to ID within this dataset.
+    dummy_component.preparations[0].reaction_id = "placeholder_id"
+    with pytest.raises(validations.ValidationError, match="undefined reaction_ids"):
+        _run_validation(message)
+    # Self-references aren't allowed
+    reaction1.reaction_id = "placeholder_id"
+    with pytest.raises(validations.ValidationError, match="own ID"):
+        _run_validation(message)
+    # Valid reference
+    reaction1.reaction_id = ""
+    reaction2.reaction_id = "placeholder_id"
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 3
+    # Duplicate IDs not allowed
+    reaction3.reaction_id = "placeholder_id"
+    with pytest.raises(validations.ValidationError, match="same IDs"):
+        _run_validation(message)
+    reaction3.reaction_id = ""
+    # Crude component also needs valid IDs
+    dummy_input.crude_components.add(
+        reaction_id="crude-making step", has_derived_amount=True
+    )
+    with pytest.raises(validations.ValidationError, match="undefined reaction_ids"):
+        _run_validation(message)
+    reaction3.reaction_id = "crude-making step"
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 3
+
+
+@pytest.mark.parametrize("message_cls", list(validations._VALIDATOR_SWITCH))
+def test_validator_switch_dispatches(message_cls):
+    """Default-empty instance of every dispatched type should validate without raising.
+
+    Most validators emit warnings (e.g. missing required fields) on an empty proto; we
+    only care that dispatch reaches the validator and returns without crashing.
+    """
+    message = message_cls()
+    output = validations.validate_message(
+        message,
+        raise_on_error=False,
+        options=validations.ValidationOptions(require_provenance=False),
+    )
+    assert isinstance(output, validations.ValidationOutput)
+
+
+def _capture_findings(func, *args, **kwargs):
+    """Calls a validator directly and returns the findings it reported.
+
+    Used for branches that are shadowed by recursion in ``validate_message`` (e.g.
+    provenance-level DateTime parsing, which the DateTime validator would otherwise flag
+    first).
+    """
+    context = validations.ValidationContext()
+    func(*args, context, **kwargs)
+    return [text for text, _ in context.findings]
+
+
+def test_type_and_details_missing_type():
+    # Non-empty TypeDetailsMessage with an unset type.
+    message = reaction_pb2.Texture(details="fine needles")
+    with pytest.raises(validations.ValidationError, match="requires `type`"):
+        _run_validation(message)
+
+
+def test_type_and_details_custom_without_details():
+    message = reaction_pb2.Texture(type="CUSTOM")
+    with pytest.raises(validations.ValidationError, match="CUSTOM but details"):
+        _run_validation(message)
+
+
+def test_reaction_cxsmiles():
+    message = reaction_pb2.ReactionIdentifier(
+        type="REACTION_CXSMILES", value="CO>>CO |f:0|"
+    )
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_amount_volume_includes_solutes_non_volume():
+    message = reaction_pb2.Amount(
+        mass=reaction_pb2.Mass(value=1.0, units="GRAM"),
+        volume_includes_solutes=True,
+    )
+    with pytest.raises(validations.ValidationError, match="only be set for volume"):
+        _run_validation(message)
+
+
+@pytest.mark.parametrize(
+    ("message", "expected"),
+    [
+        (
+            reaction_pb2.CrudeComponent(
+                reaction_id="r",
+                has_derived_amount=True,
+                amount={"mass": {"value": 1.0, "units": "GRAM"}},
+            ),
+            "cannot have their mass",
+        ),
+        (
+            reaction_pb2.CrudeComponent(
+                reaction_id="r", amount={"moles": {"value": 1.0, "units": "MOLE"}}
+            ),
+            "must be specified by mass or volume",
+        ),
+        (
+            reaction_pb2.CrudeComponent(
+                reaction_id="r",
+                amount={
+                    "volume": {"value": 1.0, "units": "LITER"},
+                    "volume_includes_solutes": True,
+                },
+            ),
+            "only be used for input Compounds",
+        ),
+    ],
+)
+def test_crude_component_amounts(message, expected):
+    with pytest.raises(validations.ValidationError, match=expected):
+        _run_validation(message)
+
+
+def test_compound_inconsistent_identifiers():
+    message = reaction_pb2.Compound(
+        identifiers=[
+            {"type": "SMILES", "value": "CO"},  # methanol
+            {"type": "INCHI", "value": "InChI=1S/CH4/h1H4"},  # methane
+        ]
+    )
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert any(
+        "could not validate that" in warning.lower() or "consistent" in warning.lower()
+        for warning in output.warnings
+    )
+
+
+@pytest.mark.parametrize(
+    ("message", "raises", "expected"),
+    [
+        (reaction_pb2.ReactionConditions(conditions_are_dynamic=True), True, "dynamic"),
+        (reaction_pb2.ReactionConditions(details="ramped"), False, "details provided"),
+    ],
+)
+def test_reaction_conditions_dynamic(message, raises, expected):
+    if raises:
+        with pytest.raises(validations.ValidationError, match=expected):
+            _run_validation(message)
+    else:
+        output = _run_validation(message)
+        assert len(output.warnings) == 1
+        assert expected in output.warnings[0]
+
+
+@pytest.mark.parametrize(
+    ("message", "expected"),
+    [
+        (reaction_pb2.ReactionWorkup(type="WAIT"), "WAIT workup"),
+        (reaction_pb2.ReactionWorkup(type="TEMPERATURE"), "temperature conditions"),
+        (reaction_pb2.ReactionWorkup(type="EXTRACTION"), "keep_phase"),
+        (reaction_pb2.ReactionWorkup(type="WASH"), "missing recommended inputs"),
+        (reaction_pb2.ReactionWorkup(type="STIRRING"), "Stirring workup"),
+        (
+            reaction_pb2.ReactionWorkup(
+                type="PH_ADJUST",
+                input={
+                    "components": [
+                        {
+                            "identifiers": [{"value": "O", "type": "SMILES"}],
+                            "amount": {"volume": {"value": 1.0, "units": "LITER"}},
+                        }
+                    ]
+                },
+            ),
+            "missing target pH",
+        ),
+        (
+            reaction_pb2.ReactionWorkup(
+                type="ALIQUOT", amount={"moles": {"value": 1.0, "units": "MOLE"}}
+            ),
+            "specified by mass or volume",
+        ),
+        (
+            reaction_pb2.ReactionWorkup(
+                type="ALIQUOT",
+                amount={
+                    "volume": {"value": 1.0, "units": "LITER"},
+                    "volume_includes_solutes": True,
+                },
+            ),
+            "only be used for input Compounds",
+        ),
+        (
+            reaction_pb2.ReactionWorkup(
+                type="CONCENTRATION", amount={"mass": {"value": 1.0, "units": "GRAM"}}
+            ),
+            "only be specified if workup type",
+        ),
+    ],
+)
+def test_reaction_workup_recommendations(message, expected):
+    output = _run_validation(message)
+    assert any(expected in warning for warning in output.warnings)
+
+
+def test_reaction_outcome_bad_analysis_key():
+    message = reaction_pb2.ReactionOutcome(
+        products=[
+            {
+                "identifiers": [{"value": "CO", "type": "SMILES"}],
+                "measurements": [{"type": "IDENTITY", "analysis_key": "missing"}],
+            }
+        ]
+    )
+    with pytest.raises(
+        validations.ValidationError, match="does not match any known analysis"
+    ):
+        _run_validation(message)
+
+
+def test_product_compound_side_product_desired():
+    message = reaction_pb2.ProductCompound(
+        identifiers=[{"value": "CO", "type": "SMILES"}],
+        is_desired_product=True,
+        reaction_role="SIDE_PRODUCT",
+    )
+    with pytest.raises(validations.ValidationError, match="SIDE_PRODUCT"):
+        _run_validation(message)
+
+
+def test_product_compound_inconsistent_identifiers():
+    message = reaction_pb2.ProductCompound(
+        identifiers=[
+            {"type": "SMILES", "value": "CO"},  # methanol
+            {"type": "INCHI", "value": "InChI=1S/CH4/h1H4"},  # methane
+        ],
+        is_desired_product=True,  # Also exercises the desired/not-SIDE_PRODUCT branch.
+    )
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert any(
+        "could not validate that" in warning.lower() or "consistent" in warning.lower()
+        for warning in output.warnings
+    )
+
+
+@pytest.mark.parametrize(
+    ("message", "raises", "expected"),
+    [
+        (
+            reaction_pb2.ProductMeasurement(
+                type="IDENTITY", analysis_key="x", percentage={"value": 50.0}
+            ),
+            True,
+            "IDENTITY should not have",
+        ),
+        (
+            reaction_pb2.ProductMeasurement(
+                type="YIELD", analysis_key="x", float_value={"value": 5.0}
+            ),
+            False,
+            "YIELD measurements",
+        ),
+        (
+            reaction_pb2.ProductMeasurement(
+                type="AREA", analysis_key="x", string_value="big"
+            ),
+            True,
+            "must use numeric values",
+        ),
+    ],
+)
+def test_product_measurement_values(message, raises, expected):
+    if raises:
+        with pytest.raises(validations.ValidationError, match=expected):
+            _run_validation(message)
+    else:
+        output = _run_validation(message)
+        assert any(expected in warning for warning in output.warnings)
+
+
+def test_bad_datetime():
+    message = reaction_pb2.DateTime(value="definitely not a date")
+    with pytest.raises(validations.ValidationError, match="Could not parse DateTime"):
+        _run_validation(message)
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        # Times in any other shape.
+        "2022-12-02 17:42:01.780701",
+        "2022-12-02 17:42:01+00:00",
+        "2024-07-06 17:42:01 UTC",
+        "Fri Oct 22 22:19:55 2021",
+        "10/19/2021, 12:16:25 PM",
+        "10:30",
+        # Dates in any other shape, ambiguous or not.
+        "07/01/2008",
+        "18/09/2024",
+        "2024/07/06",
+        "2024-7-6",
+        "20240706",
+        "1 Jul 2021",
+        # Close to a valid value, but not one.
+        "2024-13-01",
+        "2024-07-06T23:25Z",
+        "2024-07-06t23:25:41z",
+        "2024-07-06T23:25:41+25:00",
+        "2024-07-06T23:25:41+00:60",
+        "2024-07-06T23:25:41+05",
+        "2024-07-06T23:25:41+0530",
+        "2024-07-06T23:25:41.1234567Z",
+        "2024-07-06T23:25:41.1234567",
+        "2024-07-06T23:25",
+        "2024-07-06T24:00:00",
+        "2024-07-06T24:00:00Z",
+        " 2024-07-06",
+        "2024-07-06T23:25:41 ",
+        # Instants outside the years datetime holds once read in UTC.
+        "0001-01-01T00:00:00+01:00",
+        "9999-12-31T23:00:00-05:00",
+    ],
+)
+def test_datetime_must_be_an_iso_date_or_time(value):
+    message = reaction_pb2.DateTime(value=value)
+    with pytest.raises(
+        validations.ValidationError,
+        match=re.escape(f"Could not parse DateTime string {value}: write a date"),
+    ):
+        _run_validation(message)
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "2024-07-06",
+        "2024-07-06T23:25:41Z",
+        "2024-07-06T23:25:41+00:00",
+        "2024-07-06T23:25:41.780701-05:00",
+        "2024-07-06T23:25:41.5+05:30",
+        # The first and last instants datetime holds in UTC.
+        "0001-01-01T01:00:00+01:00",
+        "9999-12-31T18:59:59.999999-05:00",
+    ],
+)
+def test_datetime_iso_date_or_time(value):
+    output = _run_validation(reaction_pb2.DateTime(value=value))
+    assert not output.errors
+    assert not output.warnings
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "2024-07-06T23:25:41",
+        "2024-07-06T23:25:41.780701",
+        "0001-01-01T00:00:00",
+        "2030-01-01T00:00:00",
+    ],
+)
+def test_datetime_time_without_offset_warns(value):
+    output = _run_validation(reaction_pb2.DateTime(value=value))
+    assert not output.errors
+    assert output.warnings == [
+        f"DateTime: Time {value} has no UTC offset, so the instant it names is "
+        "ambiguous; add the offset it was written under (+00:00) where known"
+    ]
+
+
+def _record_event(value):
+    """Builds a RecordEvent at the given time, with an identifiable person."""
+    return reaction_pb2.RecordEvent(
+        time={"value": value}, person={"username": "u", "email": "a@b.com"}
+    )
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "2026-10-23T00:00:00",
+        "2026-10-23T09:30:00.5",
+        "2030-01-01T12:00:00",
+    ],
+)
+def test_record_event_after_cutoff_requires_offset(value):
+    output = _run_validation(_record_event(value), raise_on_error=False)
+    assert output.errors == [
+        "RecordEvent: Record event times after 2026-10-22 must carry a UTC offset "
+        f"(+00:00): {value}"
+    ]
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        # Times with their offset, and dates, on any day.
+        "2026-10-23T00:00:00Z",
+        "2026-10-23T00:00:00-05:00",
+        "2026-10-23",
+        "2030-01-01",
+        # Times without an offset, dated on or before the cutoff.
+        "2026-10-22T23:59:59",
+        "2021-10-22T22:19:55",
+    ],
+)
+def test_record_event_offset_not_required(value):
+    output = _run_validation(_record_event(value))
+    assert not output.errors
+
+
+def test_experiment_start_after_cutoff_without_offset_only_warns():
+    message = _provenance_with_times(
+        "2026-10-24T00:00:00Z", experiment_start="2026-10-23T08:00:00"
+    )
+    output = _run_validation(message)
+    assert not output.errors
+    assert output.warnings == [
+        "ReactionProvenance.experiment_start: Time 2026-10-23T08:00:00 has no UTC "
+        "offset, so the instant it names is ambiguous; add the offset it was written "
+        "under (+00:00) where known"
+    ]
+
+
+def test_provenance_record_modified_before_created():
+    message = reaction_pb2.ReactionProvenance(
+        record_created={
+            "time": {"value": "2021-06-01"},
+            "person": {"username": "u", "email": "a@b.com"},
+        },
+        record_modified=[
+            {
+                "time": {"value": "2021-01-01"},
+                "person": {"username": "u", "email": "a@b.com"},
+            }
+        ],
+    )
+    with pytest.raises(validations.ValidationError, match="after creation"):
+        _run_validation(message)
+
+
+def test_provenance_doi_should_be_trimmed():
+    message = reaction_pb2.ReactionProvenance(
+        record_created={
+            "time": {"value": "2021-01-01"},
+            "person": {"username": "u", "email": "a@b.com"},
+        },
+        doi="https://doi.org/10.1234/foo",
+    )
+    with pytest.raises(validations.ValidationError, match="trimmed"):
+        _run_validation(message)
+
+
+def test_provenance_unparseable_datetime_direct():
+    # Shadowed by the DateTime validator under recursion, so call directly.
+    message = reaction_pb2.ReactionProvenance()
+    message.record_created.time.value = "garbage"
+    message.record_created.person.username = "u"
+    message.record_created.person.email = "a@b.com"
+    findings = _capture_findings(validations._validate_reaction_provenance, message)
+    assert any("Failed to parse" in finding for finding in findings)
+
+
+def _provenance_with_times(created, modified=None, experiment_start=None):
+    """Builds a ReactionProvenance with the given record and experiment times."""
+    person = {"username": "u", "email": "a@b.com"}
+    message = reaction_pb2.ReactionProvenance(
+        record_created={"time": {"value": created}, "person": person}
+    )
+    if modified is not None:
+        message.record_modified.add(time={"value": modified}, person=person)
+    if experiment_start is not None:
+        message.experiment_start.value = experiment_start
+    return message
+
+
+@pytest.mark.parametrize(
+    ("value", "other", "expected"),
+    [
+        # Two dates compare as dates.
+        ("2024-01-01", "2024-01-02", True),
+        ("2024-01-02", "2024-01-01", False),
+        ("2024-01-01", "2024-01-01", False),
+        # Two times with offsets compare by instant: 12:00+09:00 is 03:00Z.
+        ("2024-01-01T12:00:00+09:00", "2024-01-01T04:00:00Z", True),
+        ("2024-01-01T04:00:00Z", "2024-01-01T12:00:00+09:00", False),
+        ("2024-01-01T04:00:00Z", "2024-01-01T13:00:00+09:00", False),
+        # A date and a time compare by date, the time's as it was written.
+        ("2024-01-01", "2024-01-02T00:30:00+09:00", True),
+        ("2024-01-02", "2024-01-01T23:59:59Z", False),
+        ("2024-01-01", "2024-01-01T23:59:59-05:00", False),
+        ("2024-01-01T23:59:59Z", "2024-01-02", True),
+        ("2024-01-02T00:30:00+09:00", "2024-01-02", False),
+        ("2024-01-01", "2024-01-02T00:00:00", True),
+        ("2024-01-01T12:00:00", "2024-01-01", False),
+        # A time without an offset names no instant, so it compares by date even
+        # against another time: read as UTC, 04:00 would follow 12:00+09:00.
+        ("2024-01-01T12:00:00+09:00", "2024-01-01T04:00:00", False),
+        ("2024-01-01T04:00:00", "2024-01-01T12:00:00+09:00", False),
+        ("2024-01-01T01:00:00", "2024-01-01T23:00:00", False),
+        ("2024-01-01T23:00:00", "2024-01-02T01:00:00", True),
+        ("2024-01-01T23:00:00Z", "2024-01-02T00:30:00", True),
+        ("2024-01-02T00:30:00", "2024-01-01T23:00:00Z", False),
+    ],
+)
+def test_is_before(value, other, expected):
+    parsed_value = validations.parse_date_time(value)
+    parsed_other = validations.parse_date_time(other)
+    assert parsed_value is not None
+    assert parsed_other is not None
+    assert validations._is_before(parsed_value, parsed_other) is expected
+
+
+@pytest.mark.parametrize(
+    ("created", "modified", "error"),
+    [
+        ("2024-01-01", "2024-01-02", None),
+        ("2024-01-02", "2024-01-01", "after creation"),
+        ("2024-01-01T12:00:00+09:00", "2024-01-01T04:00:00Z", None),
+        ("2024-01-01T04:00:00Z", "2024-01-01T12:00:00+09:00", "after creation"),
+        # A date and a time on the same day are in order.
+        ("2024-01-01", "2024-01-01T00:00:00Z", None),
+        ("2024-01-01T12:00:00+00:00", "2024-01-01", None),
+        ("2024-01-02", "2024-01-01T23:59:59Z", "after creation"),
+        ("2024-01-03T12:00:00Z", "2024-01-01", "after creation"),
+        # A time without an offset is ordered by its date, against any value.
+        ("2021-10-22T22:19:55", "2026-10-20T02:33:38+00:00", None),
+        ("2024-01-01T12:00:00Z", "2024-01-01T08:00:00", None),
+        ("2024-01-01T23:00:00", "2024-01-01T01:00:00", None),
+        ("2024-01-02T00:00:00", "2024-01-01T23:00:00Z", "after creation"),
+        ("2024-01-02T00:00:00", "2024-01-01T23:00:00", "after creation"),
+    ],
+)
+def test_provenance_record_modified_order(created, modified, error):
+    output = _run_validation(
+        _provenance_with_times(created, modified), raise_on_error=False
+    )
+    assert output.errors == (
+        [f"ReactionProvenance: Record modified time should be {error}"] if error else []
+    )
+    # A time without an offset draws its own warning; see
+    # test_datetime_time_without_offset_warns.
+    assert all("has no UTC offset" in warning for warning in output.warnings)
+
+
+@pytest.mark.parametrize(
+    ("experiment_start", "created", "error"),
+    [
+        ("2024-01-03", "2024-01-01T00:00:00Z", "after experiment"),
+        ("2024-01-01", "2024-01-01T10:00:00Z", None),
+        ("2023-12-31", "2024-01-01T10:00:00Z", None),
+        ("2024-01-03T00:00:00Z", "2024-01-01", "after experiment"),
+        ("2024-01-01T10:00:00Z", "2024-01-01", None),
+    ],
+)
+def test_provenance_record_created_order(experiment_start, created, error):
+    output = _run_validation(
+        _provenance_with_times(created, experiment_start=experiment_start),
+        raise_on_error=False,
+    )
+    assert output.errors == (
+        [f"ReactionProvenance: Record creation time should be {error}"] if error else []
+    )
+    assert not output.warnings
+
+
+def test_provenance_orders_the_last_record_modified():
+    """The most recent modification is the last record, not the latest time."""
+    message = _provenance_with_times("2024-01-02", "2024-01-05")
+    message.record_modified.add(
+        time={"value": "2024-01-01"}, person={"username": "u", "email": "a@b.com"}
+    )
+    output = _run_validation(message, raise_on_error=False)
+    assert output.errors == [
+        "ReactionProvenance: Record modified time should be after creation"
+    ]
+
+
+def test_provenance_skips_ordering_an_unparseable_time():
+    message = _provenance_with_times("2024-01-02", "Mon Jan  1 00:00:00 2024")
+    output = _run_validation(message, raise_on_error=False)
+    assert len(output.errors) == 1
+    assert (
+        "Could not parse DateTime string Mon Jan  1 00:00:00 2024" in output.errors[0]
+    )
+    assert output.warnings == ["ReactionProvenance: Failed to parse DateTime string(s)"]
+
+
+def test_temperature_fahrenheit_below_absolute_zero():
+    message = reaction_pb2.Temperature(value=-500.0, units="FAHRENHEIT")
+    with pytest.raises(validations.ValidationError, match="between"):
+        _run_validation(message)
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        (0.5, "not fractions"),
+        (150.0, "outside the expected range"),
+    ],
+)
+def test_percentage_ranges(value, expected):
+    message = reaction_pb2.Percentage(value=value)
+    output = _run_validation(message)
+    assert any(expected in warning for warning in output.warnings)
+
+
+def test_cross_ref_state_merge():
+    state_a = validations.DatasetCrossRefState(defined_ids={"a", "shared"})
+    state_b = validations.DatasetCrossRefState(
+        defined_ids={"b", "shared"}, referenced_ids={"a"}, self_reference_count=1
+    )
+    state_a.merge(state_b)
+    assert state_a.defined_ids == {"a", "b", "shared"}
+    assert state_a.referenced_ids == {"a"}
+    assert state_a.duplicate_count == 1  # "shared" defined in both.
+    assert state_a.self_reference_count == 1
+
+
+def test_validators_default_options():
+    """A context built without options validates under the defaults."""
+    context = validations.ValidationContext()
+    assert context.options == validations.ValidationOptions()
+    validations._validate_reaction(reaction_pb2.Reaction(), context)
+    validations._validate_dataset(dataset_pb2.Dataset(), context)
+    validations.validate_dataset_streaming(
+        context=context,
+        name="n",
+        description="d",
+        dataset_id="",
+        reaction_ids=[],
+        has_reactions=True,
+        state=validations.DatasetCrossRefState(),
+    )
+
+
+def test_streaming_and_in_memory_dataset_agree_on_options():
+    """Both dataset entry points validate under the context's options.
+
+    The streaming path once took its own ``options`` argument, so a context
+    carrying ``validate_ids=True`` was honored by ``_validate_dataset`` and
+    silently ignored here.
+    """
+    options = validations.ValidationOptions(validate_ids=True)
+
+    in_memory = validations.ValidationContext(options=options)
+    validations._validate_dataset(
+        dataset_pb2.Dataset(name="n", description="d", dataset_id="bogus"), in_memory
+    )
+
+    streaming = validations.ValidationContext(options=options)
+    validations.validate_dataset_streaming(
+        context=streaming,
+        name="n",
+        description="d",
+        dataset_id="bogus",
+        reaction_ids=[],
+        has_reactions=True,
+        state=validations.DatasetCrossRefState(),
+    )
+
+    malformed = [
+        text for text, _ in streaming.findings if "Dataset ID is malformed" in text
+    ]
+    assert malformed
+    assert malformed == [
+        text for text, _ in in_memory.findings if "Dataset ID is malformed" in text
+    ]
+
+
+def test_a_severity_above_error_still_fails_validation(monkeypatch):
+    """Findings are thresholded, not matched, so a new level cannot slip through.
+
+    Severity is ordered so a level can be added above ERROR. Comparing for
+    equality would file such a finding under warnings, and validation would
+    report success for something more serious than an error.
+    """
+
+    def _catastrophe(message, context):
+        del message
+        context.findings.append(("catastrophe", validations.Severity.ERROR + 1))
+
+    monkeypatch.setitem(
+        validations._VALIDATOR_SWITCH, reaction_pb2.ReactionNotes, _catastrophe
+    )
+    message = reaction_pb2.ReactionNotes()
+    output = validations.validate_message(message, raise_on_error=False)
+    assert any("catastrophe" in error for error in output.errors)
+    assert not output.warnings
+    with pytest.raises(validations.ValidationError, match="catastrophe"):
+        validations.validate_message(message)
+
+
+def test_workup_target_ph_out_of_range():
+    message = reaction_pb2.ReactionWorkup(
+        type="PH_ADJUST",
+        target_ph=20.0,
+        input={
+            "components": [
+                {
+                    "identifiers": [{"value": "O", "type": "SMILES"}],
+                    "amount": {"mass": {"value": 1.0, "units": "GRAM"}},
+                }
+            ]
+        },
+    )
+    output = _run_validation(message)
+    assert any("outside the expected range" in warning for warning in output.warnings)
+
+
+def test_reaction_outcome_multiple_desired_products():
+    product = {
+        "identifiers": [{"value": "CO", "type": "SMILES"}],
+        "is_desired_product": True,
+        "reaction_role": "PRODUCT",
+    }
+    message = reaction_pb2.ReactionOutcome(products=[product, product])
+    output = _run_validation(message)
+    assert any("at most one" in warning for warning in output.warnings)
+
+
+@pytest.mark.parametrize(
+    ("measurement", "expects_warning"),
+    [
+        (
+            reaction_pb2.ProductMeasurement(
+                type="PURITY", analysis_key="x", float_value={"value": 5.0}
+            ),
+            True,
+        ),
+        (
+            reaction_pb2.ProductMeasurement(
+                type="AREA", analysis_key="x", float_value={"value": 5.0}
+            ),
+            False,
+        ),
+    ],
+)
+def test_product_measurement_purity_and_area(measurement, expects_warning):
+    output = _run_validation(measurement)
+    has_purity_warning = any(
+        "PURITY measurements" in warning for warning in output.warnings
+    )
+    assert has_purity_warning == expects_warning
+
+
+def test_provenance_clean():
+    # A fully valid provenance: record_modified after record_created and a DOI
+    # that needs no trimming (exercises the "no warning" branches).
+    message = reaction_pb2.ReactionProvenance(
+        record_created={
+            "time": {"value": "2021-01-01"},
+            "person": {"username": "u", "email": "a@b.com"},
+        },
+        record_modified=[
+            {
+                "time": {"value": "2021-06-01"},
+                "person": {"username": "u", "email": "a@b.com"},
+            }
+        ],
+        doi="10.1234/foo",
+    )
+    output = _run_validation(message)
+    assert len(output.errors) == 0
+    assert len(output.warnings) == 0
+
+
+def test_provenance_record_modified_missing_email_direct():
+    # Shadowed by _validate_record_event under recursion, so call directly.
+    message = reaction_pb2.ReactionProvenance()
+    message.record_created.time.value = "2021-01-01"
+    message.record_created.person.email = "a@b.com"
+    record = message.record_modified.add()
+    record.time.value = "2021-06-01"
+    record.person.username = "u"
+    findings = _capture_findings(validations._validate_reaction_provenance, message)
+    assert any("email is required for record_modified" in f for f in findings)
+
+
+def test_validate_datasets(tmp_path):
+    options = validations.ValidationOptions(require_provenance=False)
+    good = dataset_pb2.Dataset(
+        name="test",
+        description="test",
+        reactions=[
+            reaction_pb2.Reaction(
+                identifiers=[{"type": "REACTION_SMILES", "value": "CO>>CC"}]
+            )
+        ],
+    )
+    # A clean dataset does not raise.
+    validations.validate_datasets({"good.pbtxt": good}, options=options)
+    # This dataset has both a reaction-level error (an empty Reaction) and a
+    # dataset-level error (reactions and reaction_ids are mutually exclusive);
+    # with write_errors it also writes a sidecar file.
+    bad = dataset_pb2.Dataset(
+        name="test",
+        description="test",
+        reactions=[reaction_pb2.Reaction()],
+        reaction_ids=["ord-c0bbd41f095a44a78b6221135961d809"],
+    )
+    bad_path = tmp_path / "bad.pbtxt"
+    with pytest.raises(
+        validations.ValidationError, match="validation encountered errors"
+    ):
+        validations.validate_datasets(
+            {str(bad_path): bad}, write_errors=True, options=options
+        )
+    assert bad_path.with_suffix(".pbtxt.error").exists()

@@ -1,0 +1,348 @@
+{
+  "status": "passed",
+  "scope": "CAS-only audit; not complete ORD semantic or reaction validation",
+  "mirror_commit": "b6c89761dacf809d4082acbdbebe72042a08db91",
+  "sample_selection": "All 42 active mirror parquet files below 250000 bytes in retrieved tree; size-selected convenience sample, not representative",
+  "counts": {
+    "datasets": 42,
+    "reactions": 20720,
+    "CAS_identifiers": 11949,
+    "malformed": 9,
+    "checksum_mismatch": 1
+  },
+  "datasets": [
+    {
+      "filename": "ord_dataset-0316886541d9435489859c2ad7edc863.parquet",
+      "dataset_id": "ord_dataset-0316886541d9435489859c2ad7edc863",
+      "rows": 96
+    },
+    {
+      "filename": "ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+      "dataset_id": "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+      "rows": 256
+    },
+    {
+      "filename": "ord_dataset-10b940e7982c4622b1e1ac879394aba6.parquet",
+      "dataset_id": "ord_dataset-10b940e7982c4622b1e1ac879394aba6",
+      "rows": 384
+    },
+    {
+      "filename": "ord_dataset-172039a759a440219a68af62d203b79b.parquet",
+      "dataset_id": "ord_dataset-172039a759a440219a68af62d203b79b",
+      "rows": 104
+    },
+    {
+      "filename": "ord_dataset-1d3a1a6fb70d46c084602d0688967afc.parquet",
+      "dataset_id": "ord_dataset-1d3a1a6fb70d46c084602d0688967afc",
+      "rows": 96
+    },
+    {
+      "filename": "ord_dataset-1ec2807f02fa4beda27d2a81b86eb843.parquet",
+      "dataset_id": "ord_dataset-1ec2807f02fa4beda27d2a81b86eb843",
+      "rows": 1227
+    },
+    {
+      "filename": "ord_dataset-2038a3c967db4a32a8fbce288437e929.parquet",
+      "dataset_id": "ord_dataset-2038a3c967db4a32a8fbce288437e929",
+      "rows": 96
+    },
+    {
+      "filename": "ord_dataset-2be11f57f3304e678ea8469baf6dd1bc.parquet",
+      "dataset_id": "ord_dataset-2be11f57f3304e678ea8469baf6dd1bc",
+      "rows": 1152
+    },
+    {
+      "filename": "ord_dataset-2be30f5d8dcd471aa6ad410bdee05902.parquet",
+      "dataset_id": "ord_dataset-2be30f5d8dcd471aa6ad410bdee05902",
+      "rows": 97
+    },
+    {
+      "filename": "ord_dataset-31989f1b2b9d4885b1dd2d9982da4517.parquet",
+      "dataset_id": "ord_dataset-31989f1b2b9d4885b1dd2d9982da4517",
+      "rows": 96
+    },
+    {
+      "filename": "ord_dataset-35a5a513f1dd44a3a97c88da99f81a00.parquet",
+      "dataset_id": "ord_dataset-35a5a513f1dd44a3a97c88da99f81a00",
+      "rows": 7
+    },
+    {
+      "filename": "ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.parquet",
+      "dataset_id": "ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72",
+      "rows": 450
+    },
+    {
+      "filename": "ord_dataset-3b8a2ef300e145468579027f206a3ac8.parquet",
+      "dataset_id": "ord_dataset-3b8a2ef300e145468579027f206a3ac8",
+      "rows": 1440
+    },
+    {
+      "filename": "ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6.parquet",
+      "dataset_id": "ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6",
+      "rows": 90
+    },
+    {
+      "filename": "ord_dataset-52bd3b0ec72c443aab113bcea09bf3f4.parquet",
+      "dataset_id": "ord_dataset-52bd3b0ec72c443aab113bcea09bf3f4",
+      "rows": 96
+    },
+    {
+      "filename": "ord_dataset-5415f83da68e4797856ddd330dda5c61.parquet",
+      "dataset_id": "ord_dataset-5415f83da68e4797856ddd330dda5c61",
+      "rows": 48
+    },
+    {
+      "filename": "ord_dataset-5540e162c09f4c04905ddc8ba9c931c6.parquet",
+      "dataset_id": "ord_dataset-5540e162c09f4c04905ddc8ba9c931c6",
+      "rows": 3
+    },
+    {
+      "filename": "ord_dataset-55de08a995554f558c25fc43eac62359.parquet",
+      "dataset_id": "ord_dataset-55de08a995554f558c25fc43eac62359",
+      "rows": 48
+    },
+    {
+      "filename": "ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c.parquet",
+      "dataset_id": "ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c",
+      "rows": 24
+    },
+    {
+      "filename": "ord_dataset-5eb7f2689f4a42eba63ad9e37e49a5cd.parquet",
+      "dataset_id": "ord_dataset-5eb7f2689f4a42eba63ad9e37e49a5cd",
+      "rows": 39
+    },
+    {
+      "filename": "ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08.parquet",
+      "dataset_id": "ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08",
+      "rows": 1536
+    },
+    {
+      "filename": "ord_dataset-6a0bfcdf53a64c07987822162ae591e2.parquet",
+      "dataset_id": "ord_dataset-6a0bfcdf53a64c07987822162ae591e2",
+      "rows": 3
+    },
+    {
+      "filename": "ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5.parquet",
+      "dataset_id": "ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5",
+      "rows": 960
+    },
+    {
+      "filename": "ord_dataset-7d8f5fd922d4497d91cb81489b052746.parquet",
+      "dataset_id": "ord_dataset-7d8f5fd922d4497d91cb81489b052746",
+      "rows": 1536
+    },
+    {
+      "filename": "ord_dataset-89b083710e2d441aa0040c361d63359f.parquet",
+      "dataset_id": "ord_dataset-89b083710e2d441aa0040c361d63359f",
+      "rows": 24
+    },
+    {
+      "filename": "ord_dataset-8d1e28ec1f6b4ee8ad372e0b5ed7a62e.parquet",
+      "dataset_id": "ord_dataset-8d1e28ec1f6b4ee8ad372e0b5ed7a62e",
+      "rows": 27
+    },
+    {
+      "filename": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet",
+      "dataset_id": "ord_dataset-99c23cf435dc42f1af884053bc8b11c7",
+      "rows": 1111
+    },
+    {
+      "filename": "ord_dataset-9b8aa9a7835143ef8ce3f70abfab7545.parquet",
+      "dataset_id": "ord_dataset-9b8aa9a7835143ef8ce3f70abfab7545",
+      "rows": 1762
+    },
+    {
+      "filename": "ord_dataset-a12fa15d036d489c971b0b514caeae52.parquet",
+      "dataset_id": "ord_dataset-a12fa15d036d489c971b0b514caeae52",
+      "rows": 288
+    },
+    {
+      "filename": "ord_dataset-ac78456835404910b3a4c840248b6ac9.parquet",
+      "dataset_id": "ord_dataset-ac78456835404910b3a4c840248b6ac9",
+      "rows": 1728
+    },
+    {
+      "filename": "ord_dataset-b440f8c90b6343189093770060fc4098.parquet",
+      "dataset_id": "ord_dataset-b440f8c90b6343189093770060fc4098",
+      "rows": 1152
+    },
+    {
+      "filename": "ord_dataset-bc349c19b4384756a2aee8aa525b6c2a.parquet",
+      "dataset_id": "ord_dataset-bc349c19b4384756a2aee8aa525b6c2a",
+      "rows": 96
+    },
+    {
+      "filename": "ord_dataset-c5b00523487a4211a194160edf45e9ab.parquet",
+      "dataset_id": "ord_dataset-c5b00523487a4211a194160edf45e9ab",
+      "rows": 1430
+    },
+    {
+      "filename": "ord_dataset-c703268ea43a4c7e802c6048b6166b34.parquet",
+      "dataset_id": "ord_dataset-c703268ea43a4c7e802c6048b6166b34",
+      "rows": 120
+    },
+    {
+      "filename": "ord_dataset-cbcc4048add7468e850b6ec42549c70d.parquet",
+      "dataset_id": "ord_dataset-cbcc4048add7468e850b6ec42549c70d",
+      "rows": 288
+    },
+    {
+      "filename": "ord_dataset-ce5045aceb214cfc8bfd0ef3031e2737.parquet",
+      "dataset_id": "ord_dataset-ce5045aceb214cfc8bfd0ef3031e2737",
+      "rows": 96
+    },
+    {
+      "filename": "ord_dataset-d26118acda314269becc35db5c22dc59.parquet",
+      "dataset_id": "ord_dataset-d26118acda314269becc35db5c22dc59",
+      "rows": 1728
+    },
+    {
+      "filename": "ord_dataset-d319c2a22ecf4ce59db1a18ae71d529c.parquet",
+      "dataset_id": "ord_dataset-d319c2a22ecf4ce59db1a18ae71d529c",
+      "rows": 264
+    },
+    {
+      "filename": "ord_dataset-dc0249930af34d17a3c76881a762aebf.parquet",
+      "dataset_id": "ord_dataset-dc0249930af34d17a3c76881a762aebf",
+      "rows": 136
+    },
+    {
+      "filename": "ord_dataset-eeba974d3c284aed86d1c1d442260a1e.parquet",
+      "dataset_id": "ord_dataset-eeba974d3c284aed86d1c1d442260a1e",
+      "rows": 376
+    },
+    {
+      "filename": "ord_dataset-fc83743b978f4deea7d6856deacbfe53.parquet",
+      "dataset_id": "ord_dataset-fc83743b978f4deea7d6856deacbfe53",
+      "rows": 80
+    },
+    {
+      "filename": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "dataset_id": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc",
+      "rows": 130
+    }
+  ],
+  "findings": [
+    {
+      "value": "unknown",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-5415f83da68e4797856ddd330dda5c61.parquet",
+      "reaction_id": "ord-459f03ebc3d1406ca38e2c9ab9de9eba",
+      "path": "inputs[pd_catalyst].components[0].identifiers[2]"
+    },
+    {
+      "value": "unknown",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-5415f83da68e4797856ddd330dda5c61.parquet",
+      "reaction_id": "ord-874e1f60a2284c1b86382b424c7af978",
+      "path": "inputs[pd_catalyst].components[0].identifiers[2]"
+    },
+    {
+      "value": "977739-46-3",
+      "format_valid": true,
+      "checksum_valid": false,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "checksum_mismatch",
+      "weighted_sum": 251,
+      "arithmetic_expected_digit": 1,
+      "dataset_file": "ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c.parquet",
+      "reaction_id": "ord-04b7893fc4e441518687949508e32cdc",
+      "path": "inputs[Ligand].components[0].identifiers[2]"
+    },
+    {
+      "value": "01.03.5337",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "reaction_id": "ord-029e21a5d69442eea78ff2cd2e29af14",
+      "path": "inputs[startingmat_2].components[0].identifiers[1]"
+    },
+    {
+      "value": "06.05.6493",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "reaction_id": "ord-42c53d95efa4494796212f716a9695f9",
+      "path": "inputs[startingmat_1].components[0].identifiers[1]"
+    },
+    {
+      "value": "06.05.6493",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "reaction_id": "ord-675568410f3c47a9bf2bc7dfaa98f542",
+      "path": "inputs[startingmat_1].components[0].identifiers[1]"
+    },
+    {
+      "value": "06.05.6493",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "reaction_id": "ord-0ee895cc6b304408a98aafaa9be5173d",
+      "path": "inputs[startingmat_1].components[0].identifiers[1]"
+    },
+    {
+      "value": "91247-08-04",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "reaction_id": "ord-7d0af1e8b8cd4df4a01ddbc9214d4058",
+      "path": "outcomes[0].products[1].identifiers[1]"
+    },
+    {
+      "value": "06.05.6493",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "reaction_id": "ord-bdeec1bafae146b6a3bcdf380f3b333b",
+      "path": "inputs[startingmat_1].components[0].identifiers[1]"
+    },
+    {
+      "value": "06.05.6493",
+      "format_valid": false,
+      "checksum_valid": null,
+      "registry_identity_verified": false,
+      "automatic_replacement": null,
+      "status": "malformed",
+      "dataset_file": "ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.parquet",
+      "reaction_id": "ord-aff7dcedb0bd47c1bdd70b0572644e6a",
+      "path": "inputs[startingmat_1].components[0].identifiers[1]"
+    }
+  ],
+  "reader": {
+    "name": "fastparquet",
+    "version": "2026.9.0"
+  },
+  "known_existing_format_warnings": 9,
+  "checksum_gap_occurrences": 1,
+  "automatic_data_changes": 0,
+  "registry_identity_verified": false,
+  "population_error_rate_estimated": false
+}

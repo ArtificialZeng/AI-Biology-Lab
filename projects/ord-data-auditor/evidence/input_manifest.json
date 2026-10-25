@@ -1,0 +1,14 @@
+{
+  "scope": "Pinned inputs and candidate patch integrity; no identity or reaction certification",
+  "sha256": {
+    "evidence/provenance.json": "c777d7390bceb96a6bf0666aab3e59440d119e9dc7c63e3dbdacc6fec6e648b1",
+    "evidence/sample_manifest.json": "027e0325b05ea11505e70dd48af7ae61b0bbcd156fe8365d34e9561c7f85c42e",
+    "fixtures/data/LICENSE-CC-BY-SA-4.0.txt": "5e436ff8ffbb77d8607220e9bce20c8915d860010feeb6c1ebef5a85688e9b39",
+    "fixtures/data/cas_findings.jsonl": "64f39d5a6c20d6da2ec327fc74ce766286166f0ff9b02590b2089ac6ed6aaf4f",
+    "fixtures/data/retired_datasets.csv": "680aa6729d47709704468ef514d2cb8df8ccda662782b1f1a511dcff81d613a8",
+    "fixtures/upstream/LICENSE-APACHE-2.0.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "fixtures/upstream/ord_schema/validations.py": "4e45c1a7193f194a8059f25e5c981cdb0d4d72452f3ae2fbfa75556664746633",
+    "fixtures/upstream/ord_schema/validations_test.py": "59267975b1942617cfa253c4dfe6b949a7a91f8751b055deeea5d5359937f2dc",
+    "patches/ord-schema-cas-checksum.patch": "4159d4dec0ce51826107f1133f691f05ba60e9d8432042e82003052a4a3bf786"
+  }
+}

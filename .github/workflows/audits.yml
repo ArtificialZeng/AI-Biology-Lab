@@ -27,3 +27,35 @@ jobs:
           cache-dependency-path: projects/paper-code-auditor/requirements.txt
       - run: python -m pip install -r projects/paper-code-auditor/requirements.txt
       - run: python projects/paper-code-auditor/audit.py
+  ord-identifiers:
+    name: ORD identifier checks (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python projects/ord-data-auditor/verify.py
+  ord-sample:
+    name: Frozen ORD sample (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: projects/ord-data-auditor/requirements-sample.txt
+      - uses: actions/cache@v4
+        with:
+          path: artifacts/ord-data-auditor/datasets
+          key: ord-sample-${{ hashFiles('projects/ord-data-auditor/evidence/sample_manifest.json') }}
+      - run: python -m pip install -r projects/ord-data-auditor/requirements-sample.txt
+      - run: python -m pip install --no-deps ord-schema==0.9.6
+      - run: python projects/ord-data-auditor/audit_sample.py --download

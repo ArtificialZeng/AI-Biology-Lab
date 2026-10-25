@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "meaning": "Scoped identifier checks and candidate patch pass offline regression",
+  "integrity_files_checked": 9,
+  "known_positive_controls": 4,
+  "malformed_controls": 10,
+  "checksum_negative_controls": 2,
+  "invalid_type_controls": 2,
+  "artificial_arithmetic_cases": 1200,
+  "fixture_counts": {
+    "malformed": 9,
+    "checksum_mismatch": 1
+  },
+  "original_CAS_branch_fixture_warnings": 9,
+  "patched_CAS_branch_fixture_warnings": 10,
+  "candidate_patch_applies": true,
+  "candidate_test_file_syntax_valid": true,
+  "upstream_legacy_format_behavior_preserved": true,
+  "input_values_modified": false,
+  "automatic_identity_corrections": 0,
+  "full_ORD_semantic_validation_run": false,
+  "full_upstream_test_suite_run": false,
+  "scope": "Actual extracted CAS-specific branch only; no RDKit, reaction validation, or registry lookup"
+}

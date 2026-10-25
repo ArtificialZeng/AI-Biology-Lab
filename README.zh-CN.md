@@ -12,6 +12,7 @@
 | --- | --- | --- |
 | [混合机制生化振荡](projects/mixed-phosphorylation/README.md) | 有限激酶失稳界与精确证书 | 数学部分结果；新颖性与外审待确认 |
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | 复现入口缺陷、历史源码恢复与补丁 | 离线CPU检查通过；未完成训练结果复现或作者确认 |
+| [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |
 
 ## 首个结果
 

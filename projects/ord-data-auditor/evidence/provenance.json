@@ -1,0 +1,12 @@
+{
+  "schema_repository": "https://github.com/open-reaction-database/ord-schema",
+  "schema_commit": "a9c1603a4fb040f251c1f174548d1747838fb247",
+  "schema_source_sha256": "4e45c1a7193f194a8059f25e5c981cdb0d4d72452f3ae2fbfa75556664746633",
+  "data_repository": "https://github.com/open-reaction-database/ord-data",
+  "mirror_commit": "b6c89761dacf809d4082acbdbebe72042a08db91",
+  "data_license": "CC-BY-SA-4.0",
+  "schema_license": "Apache-2.0",
+  "algorithm_reference": "https://www.cas.org/ja/training/documentation/chemical-substances/checkdig",
+  "known_same_dataset_issue": "https://github.com/open-reaction-database/ord-data/issues/300",
+  "scope": "Identifier validation only; no reaction chemistry or compound identity verification"
+}
