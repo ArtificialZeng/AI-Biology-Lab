@@ -1,0 +1,38 @@
+name: Validated limiting oscillator
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'projects/mixed-phosphorylation/validated-cycle/**'
+      - '.github/workflows/validated-cycle.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  interval-return-map:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify x86 Linux environment
+        run: |
+          test "$(uname -m)" = x86_64
+          uname -srmo
+          g++ --version
+          cmake --version
+      - name: Build pinned CAPD and check interval inequalities
+        env:
+          BUILD_JOBS: '4'
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash projects/mixed-phosphorylation/validated-cycle/build_and_run.sh | tee "$RUNNER_TEMP/validated-cycle.log"
+      - name: Save text verification output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validated-cycle-text-output
+          path: ${{ runner.temp }}/validated-cycle.log
+          if-no-files-found: ignore
