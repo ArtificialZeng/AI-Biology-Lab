@@ -27,3 +27,9 @@ Set
 Orientation is fixed: Delta>0 means 0-to-2 ancestral current exceeds 2-to-0. On the symmetric triangle the other oriented cycle currents equal it by conservation.
 
 The target is the complete sign and zero locus on this entire positive domain. Primary sources and current review status are documented separately.
+
+## Four-particle extension
+
+Retain the same graph, current orientation, and same-site copying convention; set N=4, so the donor divisor is three. The candidate path is exactly k=(1,t,t+1), t>1. `four_particle_model.py` implements the source's general count/founder equations for this path, while `verify_four_particle_independent.py` independently enumerates victim/donor events on six colour/site categories. The 15 count states and 30 founder states, polynomial solutions, current formula, and phase polynomial are under `evidence/four-particle/`. See `four-particle-proof.md` for the exact threshold, minimality, and local geometry.
+
+Only killing-rate order is fixed along the path; ratios change. The original broader questions about full N4 phase structure, fixed-ratio scale reversal, general graphs, and arbitrary populations remain unresolved.

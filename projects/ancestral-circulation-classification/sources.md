@@ -9,3 +9,11 @@ The current [arXiv history](https://arxiv.org/abs/2610.12589) was inspected on 2
 The two-particle/spine context was checked against [Bieniek–Burdzy](https://arxiv.org/html/1507.06855v1) Section 6 and the related-work discussion in the [later Lin–Lu Brownian paper](https://arxiv.org/html/2610.18802v1). Neither inspected passage supplied this finite N=3 global sign/zero classification. These limited inspections do not establish historical priority.
 
 The optional comparison between N=3 and N=4 uses the target source's N=4 cubic coefficient. It is an asymptotic corollary under the same rate perturbation and orientation, not a new N=4 all-rate theorem or a biological measurement. Current review status is recorded separately. Fresh AI review and executable certificates are not author confirmation, external human peer review or proof-assistant formalization.
+
+## N4 extension and significant nearby overlap
+
+The discrete source's Eq. (3.6) includes the founder factor 2/(N−1) and donor exclusion; Eq. (3.11) includes same-site copying between distinct colours. Its Proposition 3.3 gives analyticity, its Theorem 4.2 supplies N2 balance, and its Section 5/Appendix B gives the local negative N4 cubic. The added N4 content is the two opposite signs within k0<k1<k2, the exact univariate threshold on k=(1,t,t+1), and—using the companion N3 theorem—the minimum population four for that property. Generic nonvanishing and local sign persistence do not supply this chamber reversal.
+
+The [Lin–Lu Brownian preprint](https://arxiv.org/html/2610.18802v1), Appendix A.3, explicitly changes the neutral copying rate. Its alternative cubic coefficient is (N−2)(2495N−8103)/(1445850(N−1)²), negative at N3 and positive at every integer N≥4, whereas its default normalization is positive for every N≥3. Thus general rate-dependent ancestral direction is already known and is credited here. That result concerns Brownian displacement, rather than this discrete triangle chamber classification.
+
+The bounded primary-source screen located no equivalent chamber-minimum or one-path threshold theorem in the inspected sources; historical priority remains unverified. The extension is kept in the same project and existing contribution, with no new standalone paper or broad first-mechanism claim.

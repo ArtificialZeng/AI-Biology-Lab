@@ -40,6 +40,12 @@ jobs:
           python -B verify_independent.py verify > "$RUNNER_TEMP/ancestral-independent.json"
           python -O -B verify_independent.py verify > "$RUNNER_TEMP/ancestral-independent-O.json"
           cmp "$RUNNER_TEMP/ancestral-independent.json" "$RUNNER_TEMP/ancestral-independent-O.json"
+          python -B verify_four_particle.py verify > "$RUNNER_TEMP/four-primary.json"
+          python -O -B verify_four_particle.py verify > "$RUNNER_TEMP/four-primary-O.json"
+          cmp "$RUNNER_TEMP/four-primary.json" "$RUNNER_TEMP/four-primary-O.json"
+          python -B verify_four_particle_independent.py verify > "$RUNNER_TEMP/four-independent.json"
+          python -O -B verify_four_particle_independent.py verify > "$RUNNER_TEMP/four-independent-O.json"
+          cmp "$RUNNER_TEMP/four-independent.json" "$RUNNER_TEMP/four-independent-O.json"
           python -B colour_reference.py > "$RUNNER_TEMP/ancestral-colour-reference.json"
           cmp evidence/colour-reference.json "$RUNNER_TEMP/ancestral-colour-reference.json"
           git diff --exit-code
