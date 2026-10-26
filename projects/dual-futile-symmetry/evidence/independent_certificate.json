@@ -36,5 +36,5 @@
   "determinant_factorization": "a*(f*w - f*z + v*w + w*z)*(2*a*b*w + 2*a*b*z + a*f*w + a*f*z + a*v*w + a*w*z + 2*b*e*w + 2*b*e*z + 2*b*u*z + 2*b*w*z)",
   "boundary_odd_derivative_at_zero": "(a*f**2 + 2*a*f*v + 3*a*f*z + a*v**2 + 2*a*v*z + a*z**2 + e*f*v + e*f*z + e*v**2 + 2*e*v*z + e*z**2 + f**2*u + f**2*z + 2*f*u*v + 2*f*u*z + f*v*z + f*z**2 + u*v**2 + 2*u*v*z + u*z**2)/(f + v + z)",
   "checks_passed": true,
-  "limitation": "Exact polynomial identities; analytical root count is in the referee report."
+  "limitation": "Exact polynomial identities; analytical root count is in PROOF.md."
 }

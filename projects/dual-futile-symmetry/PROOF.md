@@ -107,7 +107,7 @@ since both characteristic factors have odd degree and \(G\) has even dimension. 
 
 ## Exact reproduction
 
-Run from any directory with Python 3. No third-party package is required:
+Run from this project directory with Python 3. No third-party package is required:
 
 ```sh
 python3 verify_symmetry_slice.py --self-test

@@ -123,6 +123,6 @@ report = {
     'determinant_factorization':str(s.factor(ca[3]*cb[3])),
     'boundary_odd_derivative_at_zero':str(boundary_derivative),
     'checks_passed':True,
-    'limitation':'Exact polynomial identities; analytical root count is in the referee report.',
+    'limitation':'Exact polynomial identities; analytical root count is in PROOF.md.',
 }
 print(json.dumps(report,indent=2,ensure_ascii=False))
