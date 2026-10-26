@@ -1,0 +1,9 @@
+# Review status
+
+A new AI context accepted the substantive mathematics and bounded contribution after independently rebuilding the process from victim/donor events. It verified all ten population stationarity identities, ten founder-normalization identities and thirty-six mixed two-colour Dirichlet identities as polynomial identities. Its generator retains 288 directed mixed-state transitions, including 36 same-site colour-change edges. The current cross-product, positive denominator scalar, quotient symmetry and all 94 ordered positive coefficients also pass.
+
+The separate standard-library Fraction oracle reproduces all source Appendix A tables and checks fifteen rational-rate cases. These finite tests establish regression agreement; they do not by themselves prove a global classification. The exact N=3 quintic response was independently checked. The comparison with N=4 explicitly uses the source's cubic expansion, which was inspected but not rederived for all population sizes.
+
+The separate trusted-runner gate could not certify this run because injected job provenance was unavailable. The substantive mathematical review requires no mathematical revision; no trusted-runner acceptance, proof-assistant certificate, author confirmation, external human peer review or historical priority is claimed. This package is reproducible research code and evidence, not a formally certified manuscript release.
+
+The frozen research model and polynomial data are unchanged. The portable proof only renames its verifier reference. The primary checker is refactored into a deterministic builder with explicit dependency pins, a positive overall denominator-scalar guard, and the displayed quintic identity check. The independent checker wraps the referee's separate event construction with archive I/O; it shares the closed-form candidate data but imports no primary mathematical implementation. Every project input is bound by the public manifest.

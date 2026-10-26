@@ -1,0 +1,35 @@
+{
+  "Q_symmetric": true,
+  "Q_total_degree": 7,
+  "candidate_code_imported": false,
+  "candidate_data_read": [
+    "state-ordering.json",
+    "population-solution.json",
+    "founder-solution.json",
+    "symbolic-current.json"
+  ],
+  "current_cross_product_identity": true,
+  "denominator_factor_overall_scalar": "1",
+  "denominator_factor_positive_terms": [
+    105,
+    153
+  ],
+  "domain": "all real a,b,c; physical conclusion on a,b,c>0",
+  "founder_denominator_negative_terms": 680,
+  "founder_normalization_polynomial_identities": 10,
+  "method": "independent victim/donor event generator; full polynomial residuals",
+  "mixed_colour_Dirichlet_polynomial_residuals_zero": 36,
+  "mixed_colour_directed_edges": 288,
+  "mixed_colour_states": 36,
+  "ok": true,
+  "ordered_Q_coefficient_groups": 30,
+  "ordered_Q_positive_scalar_coefficients": 94,
+  "population_denominator_positive_terms": 105,
+  "population_directed_edges": 36,
+  "population_normalization": true,
+  "population_states": 10,
+  "population_stationary_polynomial_residuals_zero": 10,
+  "positive_quadratic_bound": "(t + 3)**2*(27*t + 54)*(3*t**2 + 26*t + 60)",
+  "same_site_colour_change_edges_retained": 36,
+  "sympy_version": "1.13.3"
+}

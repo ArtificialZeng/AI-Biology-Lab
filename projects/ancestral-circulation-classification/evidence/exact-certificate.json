@@ -1,0 +1,20 @@
+{
+  "N3_symmetric_perturbation_coefficient": "89/56010528",
+  "N3_symmetric_perturbation_first_power": 5,
+  "all_positive_domain": true,
+  "archived_evidence_modified": false,
+  "current_at_source_point": "421413160/139117744582101",
+  "denominator_factor_terms": [
+    105,
+    153
+  ],
+  "founder_unknowns": 18,
+  "kind": "exact polynomial identities plus positive-coefficient certificate",
+  "ok": true,
+  "ordered_Q_coefficient_groups": 30,
+  "ordered_Q_positive_scalar_coefficients": 94,
+  "population_states": 10,
+  "proof_assistant_formalization": false,
+  "sign": "sign(-(k0-k1)*(k0-k2)*(k1-k2))",
+  "zero_locus": "k0=k1 or k0=k2 or k1=k2"
+}

@@ -1,0 +1,46 @@
+name: Ancestral circulation exact classification
+permissions:
+  contents: read
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'projects/ancestral-circulation-classification/**'
+      - '.github/workflows/ancestral-circulation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'projects/ancestral-circulation-classification/**'
+      - '.github/workflows/ancestral-circulation.yml'
+jobs:
+  exact-classification:
+    timeout-minutes: 15
+    name: '${{ matrix.os }} / Python 3.13'
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: projects/ancestral-circulation-classification
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements.txt
+      - name: Verify full polynomial domain and finite reference without writes
+        shell: bash
+        run: |
+          set -eu
+          python -B verify.py verify > "$RUNNER_TEMP/ancestral-primary.json"
+          python -O -B verify.py verify > "$RUNNER_TEMP/ancestral-primary-O.json"
+          cmp "$RUNNER_TEMP/ancestral-primary.json" "$RUNNER_TEMP/ancestral-primary-O.json"
+          python -B verify_independent.py verify > "$RUNNER_TEMP/ancestral-independent.json"
+          python -O -B verify_independent.py verify > "$RUNNER_TEMP/ancestral-independent-O.json"
+          cmp "$RUNNER_TEMP/ancestral-independent.json" "$RUNNER_TEMP/ancestral-independent-O.json"
+          python -B colour_reference.py > "$RUNNER_TEMP/ancestral-colour-reference.json"
+          cmp evidence/colour-reference.json "$RUNNER_TEMP/ancestral-colour-reference.json"
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
