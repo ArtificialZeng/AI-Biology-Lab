@@ -1,0 +1,48 @@
+name: Boundary-relay isola exact checks
+
+on:
+  push:
+    paths:
+      - 'projects/relay-isola-auditor/**'
+      - '.github/workflows/relay-isola.yml'
+  pull_request:
+    paths:
+      - 'projects/relay-isola-auditor/**'
+      - '.github/workflows/relay-isola.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact:
+    name: '${{ matrix.os }} / Python ${{ matrix.python }}'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '${{ matrix.python }}'
+          cache: pip
+          cache-dependency-path: projects/relay-isola-auditor/requirements.txt
+      - run: python -m pip install -r projects/relay-isola-auditor/requirements.txt
+      - name: Verify both implementations with optimization enabled and disabled
+        shell: bash
+        run: |
+          set -eu
+          python projects/relay-isola-auditor/verify.py verify > "$RUNNER_TEMP/relay-symbolic.json"
+          python -O projects/relay-isola-auditor/verify.py verify > "$RUNNER_TEMP/relay-symbolic-optimized.json"
+          cmp "$RUNNER_TEMP/relay-symbolic.json" "$RUNNER_TEMP/relay-symbolic-optimized.json"
+          python projects/relay-isola-auditor/verify_independent.py > "$RUNNER_TEMP/relay-independent.json"
+          python -O projects/relay-isola-auditor/verify_independent.py > "$RUNNER_TEMP/relay-independent-optimized.json"
+          cmp "$RUNNER_TEMP/relay-independent.json" "$RUNNER_TEMP/relay-independent-optimized.json"
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
