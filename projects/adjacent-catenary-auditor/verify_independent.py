@@ -29,9 +29,9 @@ def build(n,ell):
 def inspect(n,ell,vals,label):
  pars,p,q,e,M,D,B,R,N,J=build(n,ell)
  sub=dict(zip(pars,vals));a=p[0]+(e if ell==1 else 0)
- C=S.factor(R.subs(z,-a));T=S.cancel((B-q[0]*R)/z) if ell==1 else None
+ C=S.expand(R.subs(z,-a));T=S.cancel((B-q[0]*R)/z) if ell==1 else None
  K=S.expand(q[0]*R.subs(z,-a)-e*T.subs(z,-a)) if ell==1 else C
- det=S.factor(J.det(method='domain-ge')) if n<=4 else None
+ det=J.subs(sub).det(method='domain-ge') if n<=4 else None
  rj=J.subs(sub).rank()
  # No division/cancellation is used in the rational differential.  Its exact
  # coefficient matrix is equivalent to delta H after multiplying by D^2.
