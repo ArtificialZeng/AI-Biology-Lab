@@ -1,0 +1,115 @@
+{
+  "snapshot_sha256": "d79e93edca83cfa650e944e1de5545197537d5d510d93678185258e33ced7675",
+  "files": [
+    {
+      "path": "repo/src/cogent3/evolve/fast_distance.py",
+      "sha256": "643e54b3cad43d4b31f99fb6ffcd9ebbf3761a8ae582a631569988c661fbdce7",
+      "bytes": 30544
+    },
+    {
+      "path": "repo/tests/test_evolve/test_distance_missing.py",
+      "sha256": "d782c030907d245044c403d3553e317fbc35a73371d45e32c030f1544f3648ba",
+      "bytes": 5676
+    },
+    {
+      "path": "evidence/baseline_cogent3.py",
+      "sha256": "fdf35a8ce43f8fe8660aa1ee9e4651b0bd44b9aa71bba071d66ae9d239cfdf45",
+      "bytes": 952
+    },
+    {
+      "path": "evidence/baseline-cogent3.json",
+      "sha256": "43adbca37e52a59b18d9e1076f97f40a72d939f12be1cdae45440b7f4d7e2cc8",
+      "bytes": 1352
+    },
+    {
+      "path": "evidence/candidate-cogent3.json",
+      "sha256": "cee87c1c5c985c7c359c28d264d9a898a4b49012af9c69efe563ec9a32f10608",
+      "bytes": 1352
+    },
+    {
+      "path": "evidence/exhaustive_oracle.py",
+      "sha256": "3c48bc87bd080304add8bbbea91c2a4c0b353eddeb20503285837931b1975f09",
+      "bytes": 1940
+    },
+    {
+      "path": "evidence/exhaustive-unpatched.json",
+      "sha256": "7029ada4b8aa2538ddd46ba1451c6394be43b29e4bfa52bbf6e98bc35f35e6c6",
+      "bytes": 3800
+    },
+    {
+      "path": "evidence/exhaustive-patched.json",
+      "sha256": "6231e8571761518fd1930061ff463cb3bc5be89db2a8425cf8ad9b117c9bc43a",
+      "bytes": 883
+    },
+    {
+      "path": "evidence/runtime-identity.json",
+      "sha256": "af15c2bed878a068461f4542d5713bb1bc7e62a481f389252fcff66d270be831",
+      "bytes": 1375
+    },
+    {
+      "path": "evidence/final-targeted-tests.txt",
+      "sha256": "27832ad3f9b4e989624a42eb6b9cf7da51442b2759c9e2d96fa103c712f423ba",
+      "bytes": 272
+    },
+    {
+      "path": "evidence/upstream-targeted-tests.txt",
+      "sha256": "129a2a1f67c34dc6b0a89e189ec9d69e9bd71172a8fad5ee2d81b2d6d5d60a1c",
+      "bytes": 261
+    },
+    {
+      "path": "evidence/regression-unpatched.txt",
+      "sha256": "93cbd3acf56a918aa4f0735747a040a26f17a44e028e976c79eb932dab7f114a",
+      "bytes": 1824
+    },
+    {
+      "path": "candidate.patch",
+      "sha256": "522e35d54a41e1427185ac0c6ff7aadd69d922b8f77c093513aa5f543c8971a4",
+      "bytes": 8284
+    },
+    {
+      "path": "problem.md",
+      "sha256": "b2d2e70df52c03ac7441b39776eef89e46646cfa227bea8f8bad866aed8f87dc",
+      "bytes": 2726
+    },
+    {
+      "path": "source.md",
+      "sha256": "b992a5c66786ed45bb42bed9d17542eea368ff315e437c681bdb187b098730ac",
+      "bytes": 4520
+    },
+    {
+      "path": "policy-and-overlap.md",
+      "sha256": "712ad32c4b8ef304225091e752e2db8d7f36a9b92e94cf08a9a78a219e1c0830",
+      "bytes": 2372
+    },
+    {
+      "path": "README.md",
+      "sha256": "a501ef2924dba0432791a3b168cb4f2fdaf7fd66de4b4fbebc67a82269c11eff",
+      "bytes": 2281
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "e4e34c20e4fd44b712f6a63bb61361ed52b2696bf5eece50be367564f98dc174",
+      "bytes": 507
+    },
+    {
+      "path": "evidence/lint.txt",
+      "sha256": "afa20b27dacc9bf0aba3c1d265964c21e04ab42f6e39e2dd4769718ceded003a",
+      "bytes": 45
+    },
+    {
+      "path": "evidence/replay_public_api.py",
+      "sha256": "9064a6855323224a12934f182e387bd230c259069e88113954e01b021689a95e",
+      "bytes": 1158
+    },
+    {
+      "path": "evidence/baseline-replay.json",
+      "sha256": "844b79ee821558b2b67c4ad5f040c171e02573ac41b647a6e64053a47e3cdf16",
+      "bytes": 1631
+    },
+    {
+      "path": "evidence/candidate-replay.json",
+      "sha256": "321352cf6bfdf69edccdc189ad53ea9af06a95db47a75235d77fe5ffa21adcab",
+      "bytes": 1637
+    }
+  ]
+}

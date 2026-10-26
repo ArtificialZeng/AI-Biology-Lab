@@ -1,0 +1,65 @@
+{
+  "actual_package": "cogent3==2026.10.22",
+  "candidate_regression_tests": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 53,
+    "skipped": 2,
+    "tests": 55
+  },
+  "edges": {
+    "baseline": {
+      "checks": 138,
+      "checks_failed": 102,
+      "exceptions": 0
+    },
+    "candidate": {
+      "checks": 138,
+      "checks_failed": 0,
+      "exceptions": 0
+    }
+  },
+  "exhaustive": {
+    "baseline": [
+      {
+        "checked_pair_values": 1512,
+        "method": "pdist",
+        "mismatch_count": 648,
+        "ordered_triples": 504
+      },
+      {
+        "checked_pair_values": 1512,
+        "method": "hamming",
+        "mismatch_count": 648,
+        "ordered_triples": 504
+      }
+    ],
+    "candidate": [
+      {
+        "checked_pair_values": 1512,
+        "method": "pdist",
+        "mismatch_count": 0,
+        "ordered_triples": 504
+      },
+      {
+        "checked_pair_values": 1512,
+        "method": "hamming",
+        "mismatch_count": 0,
+        "ordered_triples": 504
+      }
+    ]
+  },
+  "fresh": {
+    "baseline_checks": 4698,
+    "baseline_discrepancies": 1162,
+    "candidate_checks": 6204,
+    "candidate_inherited_StopIteration": 84,
+    "candidate_new_discrepancies": 0
+  },
+  "loaded_source_sha256": {
+    "baseline": "6088541cdcb01c9c351651244534037260dfae987cc5995c9ba3b41cab6dff4a",
+    "candidate": "643e54b3cad43d4b31f99fb6ffcd9ebbf3761a8ae582a631569988c661fbdce7"
+  },
+  "public_witness": "baseline discrepancy reproduced; candidate exact in both orders",
+  "schema": 1
+}
