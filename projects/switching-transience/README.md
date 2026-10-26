@@ -4,8 +4,11 @@ This original proof note addresses Example 44/Conjecture 46 of Cappelletti,
 Howells and Xu, arXiv:2507.09421v2. For the exact three-species process,
 it establishes transience for every alpha>0 and every 0<kappa<=1, with total
 population tending to infinity almost surely from every finite initial state.
-This sufficient switching interval is not claimed sharp. General Conjecture 43
-remains unresolved.
+This sufficient switching interval is not claimed sharp. This proof concerns
+Example 44 only. The separate [common-support counterexample](../switching-common-support/README.md)
+refutes the literal general Conjecture 43 with a different six-reaction model.
+The fixed scientific certificates here describe Example 44; their earlier scope
+label about Conjecture 43 is superseded by that separate proof note.
 
 The mechanism is a labelled subpopulation retaining only the common species S2
 at environment switches. Conditional on IID holding times it is a one-type

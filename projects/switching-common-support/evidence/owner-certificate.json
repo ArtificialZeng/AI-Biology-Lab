@@ -1,0 +1,383 @@
+{
+  "checker_sha256": "7af11ee012c5694e0abbe17a4bb6af671cf9d5b3b8c5e6ff5cee65451623e85f",
+  "dependencies": "Python 3 standard library only; fractions.Fraction exact arithmetic",
+  "finite_checks": {
+    "B_structure": {
+      "conversion_products": {
+        "1": "A",
+        "2": "C"
+      },
+      "initially_only_particle": true,
+      "never_produced": true,
+      "no_other_particles_before_conversion": true,
+      "sole_consumption_rate_each_environment": "1"
+    },
+    "arrows_and_derived_contributions": {
+      "1": [
+        {
+          "delta": [
+            1,
+            0,
+            0
+          ],
+          "drift_column_contribution": [
+            "1",
+            "0",
+            "0"
+          ],
+          "product": [
+            2,
+            0,
+            0
+          ],
+          "rate": "1",
+          "source": [
+            1,
+            0,
+            0
+          ],
+          "source_species": "A"
+        },
+        {
+          "delta": [
+            1,
+            -1,
+            0
+          ],
+          "drift_column_contribution": [
+            "1",
+            "-1",
+            "0"
+          ],
+          "product": [
+            1,
+            0,
+            0
+          ],
+          "rate": "1",
+          "source": [
+            0,
+            1,
+            0
+          ],
+          "source_species": "B"
+        },
+        {
+          "delta": [
+            0,
+            0,
+            -1
+          ],
+          "drift_column_contribution": [
+            "0",
+            "0",
+            "-2"
+          ],
+          "product": [
+            0,
+            0,
+            0
+          ],
+          "rate": "2",
+          "source": [
+            0,
+            0,
+            1
+          ],
+          "source_species": "C"
+        }
+      ],
+      "2": [
+        {
+          "delta": [
+            -1,
+            0,
+            0
+          ],
+          "drift_column_contribution": [
+            "-2",
+            "0",
+            "0"
+          ],
+          "product": [
+            0,
+            0,
+            0
+          ],
+          "rate": "2",
+          "source": [
+            1,
+            0,
+            0
+          ],
+          "source_species": "A"
+        },
+        {
+          "delta": [
+            0,
+            -1,
+            1
+          ],
+          "drift_column_contribution": [
+            "0",
+            "-1",
+            "1"
+          ],
+          "product": [
+            0,
+            0,
+            1
+          ],
+          "rate": "1",
+          "source": [
+            0,
+            1,
+            0
+          ],
+          "source_species": "B"
+        },
+        {
+          "delta": [
+            0,
+            0,
+            1
+          ],
+          "drift_column_contribution": [
+            "0",
+            "0",
+            "1"
+          ],
+          "product": [
+            0,
+            0,
+            2
+          ],
+          "rate": "1",
+          "source": [
+            0,
+            0,
+            1
+          ],
+          "source_species": "C"
+        }
+      ]
+    },
+    "checks_passed": true,
+    "convention": "column population x; drift M_i x; left weights v_i M_i",
+    "drift_matrices": {
+      "1": [
+        [
+          "1",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "-2"
+        ]
+      ],
+      "2": [
+        [
+          "-2",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "1"
+        ]
+      ]
+    },
+    "environment_algebra": {
+      "Q_coefficient": [
+        [
+          -1,
+          1
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "generator": "kappa times Q_coefficient, kappa > 0",
+      "off_diagonal_coefficients_positive": true,
+      "stationary_distribution": [
+        "1/2",
+        "1/2"
+      ]
+    },
+    "exact_small_tuple_cross_checks": {
+      "all_passed": true,
+      "state_environment_pairs": 250,
+      "states": "{0,1,2,3,4}^3 in both environments"
+    },
+    "growth_algebra": {
+      "ergodic_occupation_fractions_used_by_human_proof": [
+        "1/2",
+        "1/2"
+      ],
+      "ergodic_theorem_proved_by_checker": false,
+      "formula": "1 * good_environment_time - 2 * bad_environment_time",
+      "occupation_weighted_per_capita_exponents": {
+        "A": "-1/2",
+        "C": "-1/2"
+      }
+    },
+    "initial_support": [
+      "B"
+    ],
+    "left_products": {
+      "1": [
+        "2",
+        "1",
+        "0"
+      ],
+      "2": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "left_vectors": {
+      "1": [
+        2,
+        1,
+        0
+      ],
+      "2": [
+        0,
+        1,
+        2
+      ]
+    },
+    "lineage_rates": {
+      "1": {
+        "A": {
+          "birth_rate": "1",
+          "death_rate": "0",
+          "net_per_capita_growth": "1"
+        },
+        "C": {
+          "birth_rate": "0",
+          "death_rate": "2",
+          "net_per_capita_growth": "-2"
+        }
+      },
+      "2": {
+        "A": {
+          "birth_rate": "0",
+          "death_rate": "2",
+          "net_per_capita_growth": "-2"
+        },
+        "C": {
+          "birth_rate": "1",
+          "death_rate": "0",
+          "net_per_capita_growth": "1"
+        }
+      }
+    },
+    "population_domination_algebra": {
+      "human_argument": "linear Yule pure-birth domination; environment has constant rate kappa",
+      "including_environment_jump_rate_bound": "2 * N + kappa",
+      "max_absolute_population_jump": 1,
+      "population_increase_rate_bound": "N",
+      "population_increase_rate_coefficients": {
+        "1": [
+          "1",
+          "0",
+          "0"
+        ],
+        "2": [
+          "0",
+          "0",
+          "1"
+        ]
+      },
+      "total_molecular_jump_rate_bound": "2 * N",
+      "total_molecular_jump_rate_coefficients": {
+        "1": [
+          "1",
+          "1",
+          "2"
+        ],
+        "2": [
+          "2",
+          "1",
+          "1"
+        ]
+      }
+    },
+    "reaction_count": 6,
+    "shared_support": [
+      "B"
+    ],
+    "structural_checks": {
+      "all_A_and_C_offspring_retain_lineage_type": true,
+      "all_existing_rate_constants_strictly_positive": true,
+      "all_sources_unimolecular": true,
+      "inflows_absent": true,
+      "initially_one_B_in_either_environment": true
+    },
+    "support_species": {
+      "1": [
+        "A",
+        "B"
+      ],
+      "2": [
+        "B",
+        "C"
+      ]
+    }
+  },
+  "formalization": false,
+  "input_sha256": "8f1b8ecb4dc277f15ca5bb698deb600fcfb523bc7ee44efda84349164de99827",
+  "meaningful_negative_controls": [
+    {
+      "name": "zero_existing_rate",
+      "reason": "every existing reaction rate must be strictly positive",
+      "rejected": true
+    },
+    {
+      "name": "altered_positive_birth_rate",
+      "reason": "derived drift matrices differ from frozen candidate",
+      "rejected": true
+    },
+    {
+      "name": "b_consumption_rate_changed",
+      "reason": "sole B consumption rate must be one in each environment",
+      "rejected": true
+    },
+    {
+      "name": "zero_source_inflow_arrow",
+      "reason": "every source must be unimolecular (no zero source)",
+      "rejected": true
+    },
+    {
+      "name": "b_regeneration",
+      "reason": "B must never be produced",
+      "rejected": true
+    },
+    {
+      "name": "lineage_type_changes",
+      "reason": "A/C offspring must retain lineage type",
+      "rejected": true
+    }
+  ],
+  "probability_theorem_proved": false,
+  "schema": "conj43-owner-exact-finite-checks-v1",
+  "scientific_admission_or_acceptance": false,
+  "scope_limit": "This certificate does not prove any probability theorem, nonexplosion, ergodic theorem, extinction, source interpretation, novelty, or acceptance. Those require the human-readable proof and independent review.",
+  "status": "finite_algebra_and_structure_verified_only"
+}
