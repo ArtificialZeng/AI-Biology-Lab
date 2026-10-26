@@ -1,0 +1,12 @@
+{
+  "purpose": "Detect drift in frozen mathematical inputs and receipts; hashes are not proof.",
+  "sha256": {
+    "SOURCE.md": "25645a45bfc5ed4934035de18928b8595d374636bdc77ec7f8eafe63bdfed139",
+    "SCOPE.md": "50dd489f0e2f8b6267e16071a27dafe9a49e6f76b5d04584d0a815d6bb255f34",
+    "PROOF.md": "4a69962dd547e2e4b3b4e0523c8c2f3c1f53373d805e523d1473f2d18f8d1e4a",
+    "verify.py": "9fa7d8563b36ed3431103df4d65a73c1c2b5db980a2e3c0c79ac08843afdc976",
+    "independent_verify.py": "0f9481eaefb75ff1ff40a16f4eef2fc16eeb8aa961b5bf8b621a3ac06f7addc9",
+    "evidence/certificate.json": "e3255028cf397b7f899b00075ad4838474923f810b87353b75e01236c26e9c54",
+    "evidence/independent_certificate.json": "070da1b0f0039b361c31577fb24c6c56f490e70f5a7ba7a7243ada463f8151b6"
+  }
+}

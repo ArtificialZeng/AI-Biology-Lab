@@ -1,0 +1,22 @@
+{
+  "pinned_upstream": "a9c5ced29670bed5035fb19e87e7b0b588adb62d",
+  "source_sha256": {
+    "src/cobra/flux_analysis/loopless.py": "abee45fc8174803fc5f396a60ba4ee02bbc679626bf89313a413ba152cb29fc1",
+    "src/cobra/flux_analysis/find_cyclic_reactions.py": "5b27b03619d7d84bac3beced3d4beebdd38fe785dc566d08bd47d5b0f46b7455"
+  },
+  "patch_sha256": "266e2c8493eec85ff035eb989527385423c51c4fe53cc02612c84b62b875ceeb",
+  "independent_tests_sha256": "a6c40e371927fd52be2e8c4337b00273f409ca659158a6353530cfd0cf001cdb",
+  "baseline": {
+    "failed": 24,
+    "passed": 23,
+    "indexing_exceptions": 24
+  },
+  "candidate": {
+    "failed": 0,
+    "passed": 47,
+    "indexing_exceptions": 0
+  },
+  "arithmetic_and_solver": "analytic flux oracles, GLPK numerical LP/MILP",
+  "scope": "empty internal selections, cyclic finder, and downstream FVA; GLPK only",
+  "limitation": "Software regression evidence; not a new biological mechanism or proof about all metabolic models."
+}

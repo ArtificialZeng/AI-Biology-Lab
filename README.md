@@ -105,3 +105,7 @@ The project uses AI for derivation, coding, search, and review. Separate AI revi
 - Related work requiring priority clarification: [Grasse, SBHD 2023, poster 48](https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf); [Grasse and Conradi, BIOMATH 2025 abstract](https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828).
 
 Third-party papers are linked, not redistributed. Original repository code is available under the [MIT license](LICENSE); third-party code and data retain their own licenses, recorded in each project's `THIRD_PARTY.md`. Citation metadata is in [CITATION.cff](CITATION.cff).
+
+## Two-leak compartment models and loopless regression
+
+[Round 002](docs/RESEARCH_ROUND_002.md) adds exact complex/positive fiber counts for two-leak directed cycles, a necessary-and-sufficient extra-sensor criterion for two-leak bidirected trees, and a narrowly scoped COBRApy loopless-selection repair. Each package includes executable evidence and review limitations; original-author confirmation and priority remain pending.
