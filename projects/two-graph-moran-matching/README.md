@@ -1,27 +1,36 @@
-# A fixation bound for every matching complement
+# Complete-graph fixation bounds: regular graphs and matching deletions
 
-For integers N≥3 and 1≤m≤⌊N/2⌋, residents reproduce on K_N and neutral mutants on K_N minus a matching of m edges under type-specific Moran birth–death. The proposed theorem bounds fixation from **every singleton vertex** v:
+This project studies neutral **type-specific Moran birth–death**: a parent is chosen uniformly; its type determines the graph on which its offspring replaces a uniformly chosen neighbor. All graphs here are simple, connected, undirected and unweighted.
+
+For every noncomplete d-regular graph G on N vertices and every starting vertex v, put q=N−1−d>0. The proposed exact bounds are
+
+    h_v(G,K_N) ≤ 1/N − q/(d N³) < 1/N,
+    h_v(K_N,G) ≥ 1/N + 2q/[d N⁴(N−1)] > 1/N.
+
+The first argument gives the mutant graph and the second gives the resident graph. No vertex-transitivity or asymptotic limit is assumed. These bounds come from an exact squared-drift identity on every labelled configuration, finite absorption and one- or two-step comparison. They do not assert that all regular graphs have the same fixation probability or give sharp fixation formulas. See the [regular-graph proof](regular-graphs/proof.md), [scope](regular-graphs/problem.md), [primary sources](regular-graphs/source.md), and [bounded overlap review](regular-graphs/literature.md).
+
+The earlier matching-deletion theorem remains a complementary subclass. For all N≥3 and 1≤m≤⌊N/2⌋, every singleton mutant on K_N minus m disjoint edges, against complete-graph residents, satisfies
 
     h_v ≤ 1/N − 2m/[N²(N−1)(N(N−2)+2m−2)] < 1/N.
 
-Uniform averaging over the starting vertex inherits the bound. The proof covers unbounded m, including perfect matchings. It combines an exact superharmonic identity with absorption; finite labelled-state audits are supplementary. The arbitrary connected noncomplete mutant-graph conjecture remains unresolved. The bound is not claimed sharp.
+See [all-matching proof](all-matchings/proof.md). Except for perfect matchings, these complements are generally irregular, so the regular-graph theorem does not replace the full matching theorem. The historical m=2 [proof](proof.md) and all earlier scientific workers and certificates are preserved byte-for-byte. Historical wording that calls larger matching cases unresolved is superseded by the all-matching proof. This is a single augmentation of existing lab PR18.
 
-[All-matching proof](all-matchings/proof.md), [precise scope](all-matchings/problem.md), [source/model credit](all-matchings/source.md), and [bounded literature search](all-matchings/literature.md) give the scientific argument. The new range is m≥3. The exact m=1 formula is due to Tkadlec, Kaveh, Chatterjee and Nowak (2023), [Evolutionary dynamics of mutants that modify population structure](https://doi.org/10.1098/rsif.2023.0355); their N=6 numerical enumeration already includes all matching complements at that size. Their official [Figshare deposit](https://doi.org/10.6084/m9.figshare.16910170) is credited. No author GitHub submission endpoint was verified. No third-party PDF or source code is included.
+The broader conjectures for arbitrary irregular graphs remain unresolved. The biological model, known single-edge exact formulas and numerical regular-graph examples are due to Tkadlec, Kaveh, Chatterjee and Nowak, [Evolutionary dynamics of mutants that modify population structure](https://doi.org/10.1098/rsif.2023.0355) (2023). Their [official Figshare deposit](https://doi.org/10.6084/m9.figshare.16910170) is credited. The earlier type-specific model is due to Melissourgos et al., [An extension of the Moran process using type-specific connection graphs](https://doi.org/10.1016/j.jcss.2021.07.007). No appropriate author GitHub submission endpoint was verified, and no author paper or software is redistributed.
 
-The earlier m=2 [proof](proof.md), scientific checkers, and both certificates remain byte-identical. The old proof/problem/literature/provenance describe the historical state in which m≥3 was unresolved. That limitation is superseded by this proposed all-matching argument; those historical bytes are retained as evidence. This is an augmentation of the existing lab PR18, not a separate result split. `all-matchings/proof.md` names the owner scripts `certificate.py` and `labelled_check.py`; their public locations are `science/all_matching_owner.py` and `science/all_matching_labelled.py`.
+The derivation and checks used AI. A separate fresh AI context independently reconstructs the argument, checks held-out labelled graphs and solves selected finite fixation systems. This is computational and mathematical AI review, not human peer review or proof-assistant certification. Trusted runner provenance was unavailable; the formal workflow gate did not certify the work. Neither passing checks nor a bounded literature search establishes universal priority. Frozen proof documents retain their pre-review status wording; current review scope and reproduction mappings are recorded under `provenance/`.
 
-The derivation and checks used AI. A separate fresh AI context independently derives the drift from event counts and audits held-out labelled configurations. Mathematical/package review status is recorded in accompanying receipts, and neither AI review nor successful reproduction is human peer review or formal proof-assistant certification. The formal workflow gate lacked trusted runner provenance and did not certify this work; no synthetic job IDs are supplied. Current priority is limited to the inspected primary-source set.
+## Reproduce
 
-Use Python 3.12 with the pinned dependencies:
+Use Python3.12 and pinned SymPy1.13.3/mpmath1.3.0:
 
     python -m pip install -r requirements.txt
     python -B verify.py verify
     python -B -O verify.py verify
 
-The wrapper runs all five scientific workers with PYTHONOPTIMIZE=0 in external disposable directories, retaining their assertions even when the wrapper is optimized. It recomputes the two historical certificates, the new symbolic certificate, the owner's separate labelled audit, and the fresh independent certificate, then compares exact bytes. The complete public inventory is hash-checked before and after computation; missing, unexpected, changed, or symlink inputs are rejected. Verification writes no project files. Direct scientific-script execution in this archive is unsupported because the original checkers write beside themselves.
+Both wrapper modes run eight scientific workers with PYTHONOPTIMIZE=0 in external disposable directories, retaining assertions. Verification checks the complete manifest before and after recomputing all eight exact certificates; it rejects altered, missing, unexpected or symlink inputs. Project files are never output targets. The finite graph fixtures are explicitly fixed checks, not exhaustive classification of all regular graphs. The infinite statements depend on the written proof.
 
-Regeneration requires a new absolute directory outside this project with an existing parent:
+To regenerate all certificates and the entire manifest, choose a new absolute directory outside the project, whose parent already exists:
 
     python -B verify.py regenerate --output-dir /absolute/new-directory
 
-It writes all five certificates and an entire project manifest, and refuses existing or in-project destinations. All six outputs must compare byte-for-byte with the archive. The manifest covers every public input except itself; it is a consistency inventory, not a signature or mathematical proof. No GPU, network, author software, or special arithmetic backend is required. New original code is MIT licensed. The existing Linux/macOS Python3.12 workflow remains applicable.
+The wrapper refuses existing and in-project destinations. The resulting certificates and manifest must match the archive byte-for-byte. The manifest is a consistency inventory, not a signature or mathematical proof. Direct worker execution in the archive is unsupported; use the wrapper for output isolation. No network, GPU or author software is needed after installing dependencies. Original code is MIT licensed. Linux/macOS CI replays the read-only normal and optimized wrappers.

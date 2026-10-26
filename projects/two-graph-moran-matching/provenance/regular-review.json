@@ -1,0 +1,14 @@
+{
+  "schema": "manual-AI-review-receipt-v1",
+  "scope": "Connected simple undirected unweighted noncomplete regular G; neutral type-specific BD; both singleton bounds in regular-graphs/proof.md; arbitrary irregular G unresolved",
+  "substantive_review": "ACCEPT",
+  "research_snapshot_sha256": "c50a742c503531e600aaed18e4719c1509c53ef52b2db5ea3240bd0557553e18",
+  "review_content_digest": "ff9fb03809e70b127aec3ffe7579e565c1c21a6950d83eb49b6fcf84e25a6a82",
+  "independent_checker_sha256": "a81cf99b74ab58b6974a6834ca38b16d3cd995c2380d202585536814d100ec79",
+  "independent_certificate_sha256": "497d72b290b2e594c5ea69ea70db5334445700d92b3302503aef212dc698dd8a",
+  "finite_coverage": "2916 raw labelled states per orientation; five held-out regular graphs; exact fixation solves on three new N8 graphs and boundary controls; not exhaustive over regular graphs",
+  "human_peer_review": false,
+  "formal_trusted_runner_certification": false,
+  "provenance_limitation": "No genuine proposer job ID was injected; no formal workflow certification is claimed",
+  "priority": "Bounded inspected primary-source set only"
+}

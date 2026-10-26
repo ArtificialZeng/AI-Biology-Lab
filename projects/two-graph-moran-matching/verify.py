@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Read-only verification of historical m=2 and all-matching certificates."""
+"""Read-only verification of matching and regular-graph fixation certificates."""
 from pathlib import Path
 import argparse, hashlib, json, os, shutil, subprocess, sys, tempfile
 ROOT=Path(__file__).resolve().parent
 MANIFEST='archive_manifest.json'
 CERTS=('evidence/owner-certificate.json','evidence/independent-certificate.json',
        'evidence/all-matching-owner-certificate.json','evidence/all-matching-labelled-certificate.json',
-       'evidence/all-matching-independent-certificate.json')
+       'evidence/all-matching-independent-certificate.json',
+       'evidence/regular-owner-certificate.json','evidence/regular-labelled-certificate.json',
+       'evidence/regular-independent-certificate.json')
 class VerificationError(Exception): pass
 def require(condition,message):
     if not condition: raise VerificationError(message)
@@ -42,14 +44,24 @@ def compute():
               ('fresh','science/independent_checker.py','independent_checker.py','results.json',CERTS[1]),
               ('all-owner','science/all_matching_owner.py','certificate.py','evidence/uniform-certificate.json',CERTS[2]),
               ('all-labelled','science/all_matching_labelled.py','labelled_check.py','evidence/labelled-check.json',CERTS[3]),
-              ('all-fresh','science/all_matching_independent.py','independent_check.py','results.json',CERTS[4]))
+              ('all-fresh','science/all_matching_independent.py','independent_check.py','results.json',CERTS[4]),
+              ('regular-owner','science/regular_owner.py','certificate.py','evidence/symbolic-certificate.json',CERTS[5]),
+              ('regular-labelled','science/regular_labelled.py','labelled_check.py','evidence/labelled-check.json',CERTS[6]),
+              ('regular-fresh','science/regular_independent.py','independent_check.py','results.json',CERTS[7]))
         for label,source,script,output,destination in jobs:
             job=work/label;job.mkdir();(job/'evidence').mkdir()
             shutil.copyfile(ROOT/source,job/script)
             if label in ('all-labelled','all-fresh'):
                 (job/'evidence/uniform-certificate.json').write_bytes(computed[CERTS[2]])
-            run=subprocess.run([sys.executable,'-B',str(job/script)],cwd=job,env=env,capture_output=True,text=True)
+            args=[sys.executable,'-B',str(job/script)]
+            if label=='regular-labelled':
+                shutil.copyfile(ROOT/'evidence/regular-graphs.json',job/'evidence/graphs.json')
+            if label in ('regular-owner','regular-labelled'):
+                args.extend(['--output',str(job/output)])
+            run=subprocess.run(args,cwd=job,env=env,capture_output=True,text=True)
             require(run.returncode==0,'Worker failed '+label+': '+run.stderr+run.stdout)
+            if label=='regular-fresh':
+                (job/output).write_text(run.stdout)
             require((job/output).is_file(),'Missing worker output: '+label)
             computed[destination]=(job/output).read_bytes()
         require(set(computed)==set(CERTS),'Incomplete certificate computation')

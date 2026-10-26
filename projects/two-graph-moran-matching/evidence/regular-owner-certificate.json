@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "generator_sum_of_squares",
+    "extinction",
+    "fixation",
+    "singleton_calibration",
+    "singleton_square_sum",
+    "singleton_gap",
+    "nearfix_calibration",
+    "nearfix_next_square_sum",
+    "reverse_two_step_gap",
+    "deleted_graph_potential_equivalence"
+  ],
+  "identity": "N(P-I)V=-sum_resident(g_j-d*k/(N-1))^2/d",
+  "potential": "V=d*k*(2*N-1+k)/(2*(N-1))-e",
+  "reverse_singleton_surplus": "2*(N-1-d)/(d*N^4*(N-1))",
+  "schema": "regular-opponent-symbolic-v1",
+  "singleton_deficit": "(N-1-d)/(d*N^3)",
+  "status": "exact-symbolic-identities; graph-domain and optional-stopping proof in proof.md"
+}
