@@ -33,21 +33,31 @@ jobs:
           cache: pip
           cache-dependency-path: projects/compartment-beta-gap/requirements.txt
       - run: python -m pip install -r projects/compartment-beta-gap/requirements.txt
-      - name: Compare normal and optimized read-only verification
+      - name: Compare both normal and optimized read-only checkers
         shell: bash
         run: |
           set -euo pipefail
-          python -B projects/compartment-beta-gap/verify.py verify > "$RUNNER_TEMP/beta-normal.json"
-          python -B -O projects/compartment-beta-gap/verify.py verify > "$RUNNER_TEMP/beta-optimized.json"
-          diff -u "$RUNNER_TEMP/beta-normal.json" "$RUNNER_TEMP/beta-optimized.json"
-      - name: Check explicit external regeneration and unchanged archive
+          for checker in verify verify_stages; do
+            python -B "projects/compartment-beta-gap/${checker}.py" verify > "$RUNNER_TEMP/beta-${checker}-normal.json"
+            python -B -O "projects/compartment-beta-gap/${checker}.py" verify > "$RUNNER_TEMP/beta-${checker}-optimized.json"
+            diff -u "$RUNNER_TEMP/beta-${checker}-normal.json" "$RUNNER_TEMP/beta-${checker}-optimized.json"
+          done
+      - name: Check both external regenerations and unchanged archives
         shell: bash
         run: |
           set -euo pipefail
-          python -B projects/compartment-beta-gap/verify.py regenerate --output "$RUNNER_TEMP/beta-regenerated.json"
-          diff -u projects/compartment-beta-gap/evidence/certificate.json "$RUNNER_TEMP/beta-regenerated.json"
-          if python -B projects/compartment-beta-gap/verify.py regenerate --output "$RUNNER_TEMP/beta-regenerated.json"; then
-            exit 1
-          fi
+          for checker in verify verify_stages; do
+            if [ "$checker" = verify ]; then
+              archive=certificate.json
+            else
+              archive=stage-certificate.json
+            fi
+            output="$RUNNER_TEMP/beta-${checker}-regenerated.json"
+            python -B "projects/compartment-beta-gap/${checker}.py" regenerate --output "$output"
+            diff -u "projects/compartment-beta-gap/evidence/$archive" "$output"
+            if python -B "projects/compartment-beta-gap/${checker}.py" regenerate --output "$output"; then
+              exit 1
+            fi
+          done
           git diff --exit-code -- projects/compartment-beta-gap
           test -z "$(git status --porcelain --untracked-files=all -- projects/compartment-beta-gap)"
