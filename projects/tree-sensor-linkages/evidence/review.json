@@ -1,0 +1,25 @@
+{
+  "status": "accepted within stated mathematical scope; historical priority and external human review pending",
+  "review_type": "separate AI mathematical review and independently implemented rational checks",
+  "findings": [
+    "Jacobi complement and row-Laplacian forest orientation reconstructed",
+    "all-positive harmonic rank and exact ambiguity family accepted",
+    "physical rank and full fiber dimension are generic, not every-positive claims",
+    "first-leak truncation and known root-rank dependency verified"
+  ],
+  "public_packaging_repairs": [
+    "explicit exceptions retain all checks under python -O",
+    "stdout by default; explicit --output needed for writes"
+  ],
+  "independent_counts": {
+    "harmonic_placements": 8390,
+    "full_forest_minor_checks": 1986,
+    "physical_cases": 16,
+    "nonzero_gauge_directions": 22
+  },
+  "limits": [
+    "not external human peer review",
+    "not a formal proof-assistant certificate",
+    "bounded novelty comparison, with inaccessible dissertation chapter"
+  ]
+}

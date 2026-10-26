@@ -109,3 +109,9 @@ Third-party papers are linked, not redistributed. Original repository code is av
 ## Two-leak compartment models and loopless regression
 
 [Round 002](docs/RESEARCH_ROUND_002.md) adds exact complex/positive fiber counts for two-leak directed cycles, a necessary-and-sufficient extra-sensor criterion for two-leak bidirected trees, and a narrowly scoped COBRApy loopless-selection repair. Each package includes executable evidence and review limitations; original-author confirmation and priority remain pending.
+
+## Tree sensor result extended to arbitrary nonempty leak sets
+
+The [retained-root tree classification](projects/tree-sensor-linkages/README.md) replaces the two-leak restriction by any known set of L leak locations. If q is the maximum number of vertex-disjoint observation-to-leak paths, the generic transfer-data rank is 2n−2+q and the generic ambiguity dimension is L−q. Thus full generic local identifiability holds exactly when q=L. The earlier two-leak path rule is a corollary of this same contribution.
+
+The proof passed a separate AI mathematical review, with independent rational forest, resolvent and positive-similarity checks. The public verifiers retain their checks under `python -O` and preserve archived evidence. Historical priority and external human review remain pending; the broad multiple-input/output problem remains unresolved.
