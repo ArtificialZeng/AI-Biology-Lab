@@ -50,5 +50,11 @@ jobs:
           python -B verify_elementary_independent.py verify > "$RUNNER_TEMP/sunlet-elementary-independent.json"
           python -O -B verify_elementary_independent.py verify > "$RUNNER_TEMP/sunlet-elementary-independent-O.json"
           cmp "$RUNNER_TEMP/sunlet-elementary-independent.json" "$RUNNER_TEMP/sunlet-elementary-independent-O.json"
+          python -B verify_inversion.py verify > "$RUNNER_TEMP/sunlet-inversion.json"
+          python -O -B verify_inversion.py verify > "$RUNNER_TEMP/sunlet-inversion-O.json"
+          cmp "$RUNNER_TEMP/sunlet-inversion.json" "$RUNNER_TEMP/sunlet-inversion-O.json"
+          python -B verify_inversion_independent.py verify > "$RUNNER_TEMP/sunlet-inversion-independent.json"
+          python -O -B verify_inversion_independent.py verify > "$RUNNER_TEMP/sunlet-inversion-independent-O.json"
+          cmp "$RUNNER_TEMP/sunlet-inversion-independent.json" "$RUNNER_TEMP/sunlet-inversion-independent-O.json"
           git diff --exit-code
           test -z "$(git status --porcelain --untracked-files=all)"

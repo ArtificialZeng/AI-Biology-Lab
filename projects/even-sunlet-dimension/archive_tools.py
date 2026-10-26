@@ -16,6 +16,8 @@ BUILDERS = (
     ('evidence/elementary-certificate.json', 'verify_elementary.py'),
     ('evidence/scalar-certificate.json', 'verify_scalar.py'),
     ('evidence/elementary-independent-certificate.json', 'verify_elementary_independent.py'),
+    ('evidence/inversion-certificate.json', 'verify_inversion.py'),
+    ('evidence/inversion-independent-certificate.json', 'verify_inversion_independent.py'),
 )
 CERTIFICATES = tuple(certificate for certificate, _ in BUILDERS)
 
@@ -51,7 +53,7 @@ def public_paths():
 
 def check_archive():
     manifest = json.loads((ROOT / MANIFEST).read_bytes())
-    require(manifest.get('schema') == 'sunlet-even-dimension-archive-v2', 'Unknown manifest schema')
+    require(manifest.get('schema') == 'sunlet-dimension-archive-v3', 'Unknown manifest schema')
     require(manifest.get('algorithm') == 'sha256', 'Unknown digest algorithm')
     require(sorted(manifest.get('files', {})) == public_paths(), 'Manifest must cover every public project input')
     for name, expected in manifest['files'].items():
@@ -88,7 +90,7 @@ def regenerate(directory):
     candidates = {certificate: encode(load_builder(relative)()) for certificate, relative in BUILDERS}
     paths = public_paths()
     require(all(name in paths for name in CERTIFICATES), 'All archived certificates are required')
-    manifest = {'schema': 'sunlet-even-dimension-archive-v2', 'algorithm': 'sha256',
+    manifest = {'schema': 'sunlet-dimension-archive-v3', 'algorithm': 'sha256',
                 'files': {name: sha256(candidates.get(name, (ROOT / name).read_bytes())) for name in paths}}
     output.mkdir(parents=False, exist_ok=False)
     for name, data in candidates.items():
