@@ -1,0 +1,208 @@
+[
+  {
+    "A": "Matrix([[-e - p1, q1], [p1, -q1]])",
+    "D": "e*q1 + z**2 + z*(e + p1 + q1)",
+    "N": "p1",
+    "coefficient_map": [
+      "e + p1 + q1",
+      "e*q1",
+      "p1"
+    ],
+    "ell": 1,
+    "jacobian_determinant": "-e + q1",
+    "n": 2,
+    "parameters": [
+      "p1",
+      "q1",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-p1, q1], [p1, -e - q1]])",
+    "D": "e*p1 + z**2 + z*(e + p1 + q1)",
+    "N": "p1",
+    "coefficient_map": [
+      "e + p1 + q1",
+      "e*p1",
+      "p1"
+    ],
+    "ell": 2,
+    "jacobian_determinant": "p1",
+    "n": 2,
+    "parameters": [
+      "p1",
+      "q1",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-e - p1, q1, 0], [p1, -p2 - q1, q2], [0, p2, -q2]])",
+    "D": "e*q1*q2 + z**3 + z**2*(e + p1 + p2 + q1 + q2) + z*(e*p2 + e*q1 + e*q2 + p1*p2 + p1*q2 + q1*q2)",
+    "N": "p1*(q2 + z)",
+    "coefficient_map": [
+      "e + p1 + p2 + q1 + q2",
+      "e*p2 + e*q1 + e*q2 + p1*p2 + p1*q2 + q1*q2",
+      "e*q1*q2",
+      "p1",
+      "p1*q2"
+    ],
+    "ell": 1,
+    "jacobian_determinant": "-p1*q2*(-e**2 - e*p1 + e*p2 + e*q1 + e*q2 + p1*q1 - q1*q2)",
+    "n": 3,
+    "parameters": [
+      "p1",
+      "p2",
+      "q1",
+      "q2",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-p1, q1, 0], [p1, -e - p2 - q1, q2], [0, p2, -q2]])",
+    "D": "e*p1*q2 + z**3 + z**2*(e + p1 + p2 + q1 + q2) + z*(e*p1 + e*q2 + p1*p2 + p1*q2 + q1*q2)",
+    "N": "p1*(q2 + z)",
+    "coefficient_map": [
+      "e + p1 + p2 + q1 + q2",
+      "e*p1 + e*q2 + p1*p2 + p1*q2 + q1*q2",
+      "e*p1*q2",
+      "p1",
+      "p1*q2"
+    ],
+    "ell": 2,
+    "jacobian_determinant": "-p1**2*q2*(p1 - q2)",
+    "n": 3,
+    "parameters": [
+      "p1",
+      "p2",
+      "q1",
+      "q2",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-p1, q1, 0], [p1, -p2 - q1, q2], [0, p2, -e - q2]])",
+    "D": "e*p1*p2 + z**3 + z**2*(e + p1 + p2 + q1 + q2) + z*(e*p1 + e*p2 + e*q1 + p1*p2 + p1*q2 + q1*q2)",
+    "N": "p1*(e + q2 + z)",
+    "coefficient_map": [
+      "e + p1 + p2 + q1 + q2",
+      "e*p1 + e*p2 + e*q1 + p1*p2 + p1*q2 + q1*q2",
+      "e*p1*p2",
+      "p1",
+      "e*p1 + p1*q2"
+    ],
+    "ell": 3,
+    "jacobian_determinant": "-p1**2*p2*(-e + p1 - q2)",
+    "n": 3,
+    "parameters": [
+      "p1",
+      "p2",
+      "q1",
+      "q2",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-e - p1, q1, 0, 0], [p1, -p2 - q1, q2, 0], [0, p2, -p3 - q2, q3], [0, 0, p3, -q3]])",
+    "D": "e*q1*q2*q3 + z**4 + z**3*(e + p1 + p2 + p3 + q1 + q2 + q3) + z**2*(e*p2 + e*p3 + e*q1 + e*q2 + e*q3 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3) + z*(e*p2*p3 + e*p2*q3 + e*p3*q1 + e*q1*q2 + e*q1*q3 + e*q2*q3 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3)",
+    "N": "p1*(p3*z + q2*q3 + q2*z + q3*z + z**2)",
+    "coefficient_map": [
+      "e + p1 + p2 + p3 + q1 + q2 + q3",
+      "e*p2 + e*p3 + e*q1 + e*q2 + e*q3 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3",
+      "e*p2*p3 + e*p2*q3 + e*p3*q1 + e*q1*q2 + e*q1*q3 + e*q2*q3 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3",
+      "e*q1*q2*q3",
+      "p1",
+      "p1*p3 + p1*q2 + p1*q3",
+      "p1*q2*q3"
+    ],
+    "ell": 1,
+    "jacobian_determinant": "p1**2*p2*q2**2*q3*(-e**3 - 2*e**2*p1 + e**2*p2 + e**2*p3 + e**2*q1 + e**2*q2 + e**2*q3 - e*p1**2 + e*p1*p2 + e*p1*p3 + 2*e*p1*q1 + e*p1*q2 + e*p1*q3 - e*p2*p3 - e*p2*q3 - e*p3*q1 - e*q1*q2 - e*q1*q3 - e*q2*q3 + p1**2*q1 - p1*p3*q1 - p1*q1*q2 - p1*q1*q3 + q1*q2*q3)",
+    "n": 4,
+    "parameters": [
+      "p1",
+      "p2",
+      "p3",
+      "q1",
+      "q2",
+      "q3",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-p1, q1, 0, 0], [p1, -e - p2 - q1, q2, 0], [0, p2, -p3 - q2, q3], [0, 0, p3, -q3]])",
+    "D": "e*p1*q2*q3 + z**4 + z**3*(e + p1 + p2 + p3 + q1 + q2 + q3) + z**2*(e*p1 + e*p3 + e*q2 + e*q3 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3) + z*(e*p1*p3 + e*p1*q2 + e*p1*q3 + e*q2*q3 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3)",
+    "N": "p1*(p3*z + q2*q3 + q2*z + q3*z + z**2)",
+    "coefficient_map": [
+      "e + p1 + p2 + p3 + q1 + q2 + q3",
+      "e*p1 + e*p3 + e*q2 + e*q3 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3",
+      "e*p1*p3 + e*p1*q2 + e*p1*q3 + e*q2*q3 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3",
+      "e*p1*q2*q3",
+      "p1",
+      "p1*p3 + p1*q2 + p1*q3",
+      "p1*q2*q3"
+    ],
+    "ell": 2,
+    "jacobian_determinant": "p1**3*p2*q2**2*q3*(p1**2 - p1*p3 - p1*q2 - p1*q3 + q2*q3)",
+    "n": 4,
+    "parameters": [
+      "p1",
+      "p2",
+      "p3",
+      "q1",
+      "q2",
+      "q3",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-p1, q1, 0, 0], [p1, -p2 - q1, q2, 0], [0, p2, -e - p3 - q2, q3], [0, 0, p3, -q3]])",
+    "D": "e*p1*p2*q3 + z**4 + z**3*(e + p1 + p2 + p3 + q1 + q2 + q3) + z**2*(e*p1 + e*p2 + e*q1 + e*q3 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3) + z*(e*p1*p2 + e*p1*q3 + e*p2*q3 + e*q1*q3 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3)",
+    "N": "p1*(e*q3 + e*z + p3*z + q2*q3 + q2*z + q3*z + z**2)",
+    "coefficient_map": [
+      "e + p1 + p2 + p3 + q1 + q2 + q3",
+      "e*p1 + e*p2 + e*q1 + e*q3 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3",
+      "e*p1*p2 + e*p1*q3 + e*p2*q3 + e*q1*q3 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3",
+      "e*p1*p2*q3",
+      "p1",
+      "e*p1 + p1*p3 + p1*q2 + p1*q3",
+      "e*p1*q3 + p1*q2*q3"
+    ],
+    "ell": 3,
+    "jacobian_determinant": "p1**3*p2**2*q2*q3*(-e*p1 + e*q3 + p1**2 - p1*p3 - p1*q2 - p1*q3 + q2*q3)",
+    "n": 4,
+    "parameters": [
+      "p1",
+      "p2",
+      "p3",
+      "q1",
+      "q2",
+      "q3",
+      "e"
+    ]
+  },
+  {
+    "A": "Matrix([[-p1, q1, 0, 0], [p1, -p2 - q1, q2, 0], [0, p2, -p3 - q2, q3], [0, 0, p3, -e - q3]])",
+    "D": "e*p1*p2*p3 + z**4 + z**3*(e + p1 + p2 + p3 + q1 + q2 + q3) + z**2*(e*p1 + e*p2 + e*p3 + e*q1 + e*q2 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3) + z*(e*p1*p2 + e*p1*p3 + e*p1*q2 + e*p2*p3 + e*p3*q1 + e*q1*q2 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3)",
+    "N": "p1*(e*p3 + e*q2 + e*z + p3*z + q2*q3 + q2*z + q3*z + z**2)",
+    "coefficient_map": [
+      "e + p1 + p2 + p3 + q1 + q2 + q3",
+      "e*p1 + e*p2 + e*p3 + e*q1 + e*q2 + p1*p2 + p1*p3 + p1*q2 + p1*q3 + p2*p3 + p2*q3 + p3*q1 + q1*q2 + q1*q3 + q2*q3",
+      "e*p1*p2 + e*p1*p3 + e*p1*q2 + e*p2*p3 + e*p3*q1 + e*q1*q2 + p1*p2*p3 + p1*p2*q3 + p1*q2*q3 + q1*q2*q3",
+      "e*p1*p2*p3",
+      "p1",
+      "e*p1 + p1*p3 + p1*q2 + p1*q3",
+      "e*p1*p3 + e*p1*q2 + p1*q2*q3"
+    ],
+    "ell": 4,
+    "jacobian_determinant": "p1**3*p2**2*p3*q2*(-e*p1 + e*p3 + e*q2 + p1**2 - p1*p3 - p1*q2 - p1*q3 + q2*q3)",
+    "n": 4,
+    "parameters": [
+      "p1",
+      "p2",
+      "p3",
+      "q1",
+      "q2",
+      "q3",
+      "e"
+    ]
+  }
+]
