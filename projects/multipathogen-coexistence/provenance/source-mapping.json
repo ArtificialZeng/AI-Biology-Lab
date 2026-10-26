@@ -1,0 +1,26 @@
+{
+  "schema": "scientific-source-mapping-v1",
+  "research_snapshot_sha256": "0f08ce067f4ae4370798632ca06e840b9e09f0d16f15615e42145df6ebda7d80",
+  "source_scope": "Source-specific Conjecture5 simultaneous-endemic equilibrium correction",
+  "mapping": {
+    "science/owner_checker.py": {
+      "research_input": "certificate.py",
+      "byte_identical": true,
+      "sha256": "28d8a08e0943e641cddad065a5f2b1559c0d3042fc1170032f6bafc3083ccb6f"
+    },
+    "proof.md": {
+      "research_input": "proof.md",
+      "byte_identical": true,
+      "sha256": "5a5cb5b2171fa972a4084b0bddd06b1b9153e985d96a9866abad7ebb525201e9"
+    },
+    "science/independent_checker.py": {
+      "fresh_review_input": "independent_check.py",
+      "byte_identical": true,
+      "sha256": "0f4ea93c6b1fb91e4093b18b73b77a24d66aea0cde9b962911d38ecd4497e4c5"
+    }
+  },
+  "mathematical_AST_changes": false,
+  "third_party_inputs_redistributed": false,
+  "source_excerpt": "Public source.md is a paraphrase with exact source locations and links; private full PDF and exact wording excluded",
+  "limits": "Content hashes attest a particular review/implementation binding, not a trusted runner signature, human review or mathematical priority."
+}
