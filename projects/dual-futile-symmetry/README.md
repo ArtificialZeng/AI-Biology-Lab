@@ -20,6 +20,10 @@ Thus positive determinant is equivalent to Hurwitz stability **on this slice**. 
 
 This is a subsidiary result. The unrestricted sixteen-parameter Conjecture 3.1 remains unresolved. The source already proves the separate mass-action no-Hopf theorem. This project neither reproves that as a new discovery nor excludes periodic orbits in nonlinear systems.
 
+## Additional full-parameter partial lemma
+
+The [full-parameter extension](full-parameter-delta4/README.md) proves `det(G)>=0 => Delta4>0` for all sixteen independent positive Jacobian parameters, using an exact positive quartic multiplier and a separately reconstructed certificate. This removes the fourth Hurwitz inequality from the determinant-positive stability gap; the full conjecture still requires `Delta5>0`. The source mass-action result retains its credit and has a different hypothesis domain.
+
 ## Reproduce
 
 The main checker needs only the Python standard library:

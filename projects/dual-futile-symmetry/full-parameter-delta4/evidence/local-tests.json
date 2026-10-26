@@ -1,0 +1,68 @@
+{
+  "local_platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "python": "3.13.5",
+  "python_flint": "0.9.0",
+  "sympy": "1.13.3",
+  "corruption_probes": [
+    {
+      "probe": "changed_Q_coefficient",
+      "optimized": true,
+      "rejected": true,
+      "message": "RuntimeError: Multiplier differs from compact formula"
+    },
+    {
+      "probe": "duplicate_Q_monomial",
+      "optimized": true,
+      "rejected": true,
+      "message": "RuntimeError: Duplicate multiplier monomial"
+    },
+    {
+      "probe": "changed_parameter_order",
+      "optimized": true,
+      "rejected": true,
+      "message": "RuntimeError: Certificate convention mismatch"
+    }
+  ],
+  "all_manifest_inputs_unchanged": true,
+  "matrix_source_scope": "Sixteen independent positive parameters; det>=0 implies Delta4>0 only",
+  "hosted_CI": "configured Ubuntu/macOS x Python3.12/3.13; not run by this local preparation",
+  "runs": [
+    {
+      "script": "verify_certificate.py",
+      "optimized": false,
+      "verified": true
+    },
+    {
+      "script": "verify_certificate.py",
+      "optimized": true,
+      "verified": true
+    },
+    {
+      "script": "independent_reconstruction.py",
+      "optimized": false,
+      "verified": true
+    },
+    {
+      "script": "independent_reconstruction.py",
+      "optimized": true,
+      "verified": true
+    },
+    {
+      "script": "integrity.py",
+      "optimized": false,
+      "verified": true
+    },
+    {
+      "script": "integrity.py",
+      "optimized": true,
+      "verified": true
+    }
+  ],
+  "relocation_verified": true,
+  "historical_math_corruption_probes_note": "Recorded before the shared integrity wrapper; mathematical checker guards and polynomial inputs are unchanged.",
+  "normal_and_optimized_outputs_identical": true,
+  "integrity_self_test": "Six mutations rejected; see integrity-guards.json",
+  "complete_inventory_includes_archived_evidence": true,
+  "receipts_have_no_current_manifest_digest_or_runtime_field": true,
+  "independent_implementations_agree_on_all_common_polynomial_statistics": true
+}

@@ -1,0 +1,31 @@
+{
+  "integrity_verified": true,
+  "all_archived_files_in_inventory": true,
+  "source_proof_archive_and_inventory_mutations_rejected": [
+    {
+      "probe": "SOURCE.md",
+      "rejected": true
+    },
+    {
+      "probe": "PROOF.md",
+      "rejected": true
+    },
+    {
+      "probe": "evidence/exact-verification.json",
+      "rejected": true
+    },
+    {
+      "probe": "unexpected-file",
+      "rejected": true
+    },
+    {
+      "probe": "missing-file",
+      "rejected": true
+    },
+    {
+      "probe": "symlink",
+      "rejected": true
+    }
+  ],
+  "optimization_mode_preserves_checks": true
+}

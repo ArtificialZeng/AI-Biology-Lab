@@ -1,0 +1,120 @@
+{
+  "arithmetic": "FLINT arbitrary precision integers; no floating arithmetic",
+  "construction": "c_k via principal-minor sums of -G; Delta4 via 4x4 Leibniz determinant",
+  "names": [
+    "a",
+    "b4",
+    "b10",
+    "c",
+    "e1",
+    "e4",
+    "f7",
+    "f10",
+    "u2",
+    "u3",
+    "v5",
+    "v6",
+    "x8",
+    "x9",
+    "y11",
+    "y12"
+  ],
+  "characteristic_coefficients": [
+    {
+      "terms": 1,
+      "degree": 0,
+      "negative_coefficients": 0,
+      "coefficient_sum": "1"
+    },
+    {
+      "terms": 16,
+      "degree": 1,
+      "negative_coefficients": 0,
+      "coefficient_sum": "16"
+    },
+    {
+      "terms": 97,
+      "degree": 2,
+      "negative_coefficients": 0,
+      "coefficient_sum": "97"
+    },
+    {
+      "terms": 280,
+      "degree": 3,
+      "negative_coefficients": 0,
+      "coefficient_sum": "280"
+    },
+    {
+      "terms": 394,
+      "degree": 4,
+      "negative_coefficients": 0,
+      "coefficient_sum": "394"
+    },
+    {
+      "terms": 240,
+      "degree": 5,
+      "negative_coefficients": 2,
+      "coefficient_sum": "236"
+    },
+    {
+      "terms": 50,
+      "degree": 6,
+      "negative_coefficients": 9,
+      "coefficient_sum": "32"
+    }
+  ],
+  "Delta4": {
+    "terms": 1712913,
+    "degree": 10,
+    "negative_coefficients": 266,
+    "coefficient_sum": "75039056"
+  },
+  "c6": {
+    "terms": 50,
+    "degree": 6,
+    "negative_coefficients": 9,
+    "coefficient_sum": "32"
+  },
+  "Q": {
+    "terms": 266,
+    "degree": 4,
+    "negative_coefficients": 0,
+    "coefficient_sum": "756"
+  },
+  "R": {
+    "terms": 1712869,
+    "degree": 10,
+    "negative_coefficients": 0,
+    "coefficient_sum": "75014864"
+  },
+  "identities": {
+    "Q_equals_compact_formula": true,
+    "negative_part_Delta4_equals_core_times_Q": true,
+    "Delta4_equals_Q_times_c6_plus_R": true
+  },
+  "positive_remainder_witness": {
+    "powers": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      0,
+      3,
+      0,
+      4
+    ],
+    "coefficient": 1
+  },
+  "certificate_sha256": "f6cc2c96cd78588ffb2a01737a096b50bf6e6e8d6761a3aebf32aa7fa96b4d8e",
+  "integrity_verified": true,
+  "optimization_mode_preserves_checks": true,
+  "verified": true
+}
