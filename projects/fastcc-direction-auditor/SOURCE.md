@@ -1,0 +1,14 @@
+# Sources and prior work
+
+Inspected 2026-10-26.
+
+- **Baseline:** [COBRApy devel a9c5ced](https://github.com/opencobra/cobrapy/tree/a9c5ced29670bed5035fb19e87e7b0b588adb62d). `source_hashes.json` records SHA-256 hashes for the full 78-file `src/cobra` inventory, its license and its build configuration. No complete upstream tree or solver binary is redistributed.
+- **Implementation:** [fastcc.py](https://github.com/opencobra/cobrapy/blob/a9c5ced29670bed5035fb19e87e7b0b588adb62d/src/cobra/flux_analysis/fastcc.py). `_add_lp7_vars` builds the auxiliary inequality. Negative-only reactions are irreversible under `Reaction.reversibility`, so the later reversible-direction flip does not correct their sign. `Reaction *= -1` explicitly negates stoichiometry and maps bounds `[l,u]` to `[-u,-l]`.
+- **API:** [consistency tutorial](https://cobrapy.readthedocs.io/en/latest/consistency.html), section 10.2, and the frozen FASTCC docstring. The inspected locations contain no requirement for callers to normalize negative-only irreversible reactions before invoking FASTCC. This is a bounded observation about these locations, not an exhaustive documentation claim.
+- **Algorithm:** Vlassis, Pacheco and Sauter (2014), [Fast Reconstruction of Compact Context-Specific Metabolic Network Models](https://doi.org/10.1371/journal.pcbi.1003424), Methods: Background and Fast consistency testing. LP-7 detects nonnegative fluxes; the algorithm assumes an appropriate orientation of irreversible reactions. The mathematical normalization is elementary and is not presented as a new result or a correction of the paper.
+- **Earlier FASTCC repair:** [PR1428](https://github.com/opencobra/cobrapy/pull/1428), merged 2025-10-14. Its coefficient and singleton repair is already in the baseline. The present patch addresses negative-only irreversible representation separately.
+- **Related current work:** [PR1495](https://github.com/opencobra/cobrapy/pull/1495), inspected head `31a94cf455c71910c3c9516d287827fe45ea02f1`. Its SPECTRA sibling has negative-only pathway coverage and its discussion reports FASTCC false negatives on larger models. The inspected file list changes no FASTCC source. This prior coverage is credited; no first-discovery claim is made. The independent test implementation here was written during the separate AI review and uses its own rational witness and state-preservation checks.
+
+The reviewed existing-API repair was submitted as [PR1500](https://github.com/opencobra/cobrapy/pull/1500), candidate head `93209e26`; maintainer acceptance remains pending.
+
+The production patch was exported only for `src/cobra/flux_analysis/fastcc.py` from the reviewed candidate relative to the frozen baseline. It excludes candidate test additions and release-note edits. All sources retain their original authorship and licensing.

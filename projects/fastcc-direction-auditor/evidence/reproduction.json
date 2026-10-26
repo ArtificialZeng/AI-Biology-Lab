@@ -1,0 +1,39 @@
+{
+  "pinned_upstream": "a9c5ced29670bed5035fb19e87e7b0b588adb62d",
+  "source_hashes_sha256": "d351b089f6557f752fa95a3521f7aa7de0133bf1b9789018b525076f7b384b44",
+  "baseline_fastcc_sha256": "f1e8883ca8aafe3ac90f41cd93bbf671e9c28be5dcc7625a18193213e3ed7c93",
+  "candidate_fastcc_sha256": "b248763e1e6d03a6f6e0ed5023a82f783559fce967f5f50c9880a78481bd1057",
+  "patch_sha256": "d451945381f301c255d882ac5ab910c5910e587bc2f77353b110e88c1751dd82",
+  "tests_sha256": "ec9ac43a15117d667f4f1135d78d32142a348de38711254666ba8d9942d03b11",
+  "baseline": {
+    "returncode": 1,
+    "failed": 1,
+    "passed": 4,
+    "warnings": 0
+  },
+  "candidate": {
+    "returncode": 0,
+    "failed": 0,
+    "passed": 5,
+    "warnings": 0
+  },
+  "source_import_checks": "cobra and FASTCC matched each temporary source copy",
+  "environment_allowlist": [
+    "HOME",
+    "LANG",
+    "PATH",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONPATH",
+    "TMPDIR"
+  ],
+  "versions": {
+    "numpy": "2.4.6",
+    "optlang": "1.9.1",
+    "swiglpk": "5.0.13",
+    "pytest": "9.1.1",
+    "sympy": "1.14.0"
+  },
+  "scope": "Sv=0 and reaction interval bounds; GLPK regression coverage",
+  "evidence_level": "Independent AI review and deterministic software checks; no external human peer review"
+}

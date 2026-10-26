@@ -105,3 +105,5 @@ The project uses AI for derivation, coding, search, and review. Separate AI revi
 - Related work requiring priority clarification: [Grasse, SBHD 2023, poster 48](https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf); [Grasse and Conradi, BIOMATH 2025 abstract](https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828).
 
 Third-party papers are linked, not redistributed. Original repository code is available under the [MIT license](LICENSE); third-party code and data retain their own licenses, recorded in each project's `THIRD_PARTY.md`. Citation metadata is in [CITATION.cff](CITATION.cff).
+
+[FASTCC direction auditor](projects/fastcc-direction-auditor/README.md) reproduces a negative-only reaction constraint defect and a minimal existing-API repair ([COBRApy PR1500](https://github.com/opencobra/cobrapy/pull/1500)): independent baseline 1 failed / 4 passed, candidate 5 passed, plus 24 exact finite cases. GLPK coverage; AI review is not maintainer acceptance or external human peer review. Related SPECTRA PR1495 is credited.

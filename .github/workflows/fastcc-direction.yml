@@ -1,0 +1,43 @@
+name: FASTCC signed-direction audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  signed-direction:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: projects/fastcc-direction-auditor/requirements.txt
+      - uses: actions/checkout@v4
+        with:
+          repository: opencobra/cobrapy
+          ref: a9c5ced29670bed5035fb19e87e7b0b588adb62d
+          path: artifacts/fastcc-upstream
+          persist-credentials: false
+      - run: python -m pip install -r projects/fastcc-direction-auditor/requirements.txt
+      - run: >-
+          python -B projects/fastcc-direction-auditor/reproduce.py
+          --checkout artifacts/fastcc-upstream
+          --output artifacts/fastcc-direction/receipt.json
+          --logs artifacts/fastcc-direction/logs
+      - run: >-
+          python -B projects/fastcc-direction-auditor/exact_oracle.py
+          --output artifacts/fastcc-direction/exact-oracle.json
