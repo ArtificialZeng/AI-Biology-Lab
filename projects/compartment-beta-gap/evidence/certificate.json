@@ -1,0 +1,27 @@
+{
+  "arithmetic": "exact rational/integer/symbolic",
+  "coverage": {
+    "outside_compartments": [
+      0,
+      4
+    ],
+    "outside_enzymes_per_compartment": [
+      0,
+      3
+    ]
+  },
+  "example": {
+    "L": 589824,
+    "M": 37748800,
+    "N": "2^37748800",
+    "a": "1/589825",
+    "beta": "11/12",
+    "r": "1/12"
+  },
+  "finite_event_configurations": 70,
+  "identity": "A D^2 H^4 J^4; weights (1,2,4,4), total exponent 11",
+  "limitations": "Finite algebra and event checks only. Logarithmic inequalities, infinite-state localization, compensator, marked CTMC coupling and reachability depend on proof.md; this script does not prove explosion.",
+  "proof_sha256": "fd81b15dbfa52034d60b4f4de6c467ec25905f412df0c6e88780a36f07324d3c",
+  "status": "pass",
+  "sympy": "1.13.3"
+}

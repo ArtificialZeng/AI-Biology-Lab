@@ -15,6 +15,7 @@
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |
 | [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | NDCG行顺序敏感性全量审计 | 217实验／95配置；副指标排名变动，未推翻主榜单 |
 | [MEMOTE方向审计](projects/memote-direction-auditor/README.md) | 等价反应写法反例与两行候选修复 | 真实完整ATP检测入口验证通过；待维护者确认 |
+| [区室分配 beta 区间](projects/compartment-beta-gap/README.md) | 10/11 < beta < 1 正概率爆炸定理 | 独立 AI 数学复核及有限精确检查通过；待专家与优先性确认；未声称几乎必然爆炸 |
 
 上游核验申请（按顺序提交，尚待维护者审核）：[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165)。
 

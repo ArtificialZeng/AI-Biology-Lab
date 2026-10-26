@@ -1,0 +1,18 @@
+{
+  "evidence_scope": "Finite exact checking supports algebra and event counts; the infinite-state probability conclusion depends on proof.md.",
+  "external_human_review": "not reported",
+  "kernel": "psi_beta=(1-c/(1+s)^beta)psi_b+[c/(1+s)^beta]kappa_p",
+  "model": {
+    "coagulation": "2 per unordered pair",
+    "compartment_exit": false,
+    "enzyme_immigration": "1 per compartment",
+    "external_compartment_inflow": false,
+    "fragmentation": "s per compartment",
+    "substrate_birth": "e*s per compartment"
+  },
+  "prior_credit": "Yoo v1.1.0 already gives beta=0 and beta>=1 endpoints; original Open Problem 3.8 is not newly resolved here.",
+  "remaining": "0<beta<=10/11 unresolved here; no almost-sure claim; no sharp threshold claim",
+  "statement": "For every beta in (10/11,1), c in (0,1), p in (0,1), the exact polynomial-decay allocation mixture has strictly positive probability of finite-time explosion from every finite initial state with positive total substrate.",
+  "status": "mathematics accepted in fresh substantive AI review; external human review and priority pending",
+  "upstream_code_pr_target": "unverified; directly overlapping source package is on Zenodo"
+}
