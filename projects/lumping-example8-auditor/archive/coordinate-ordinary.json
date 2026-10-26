@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "sympy_version": "1.13.3",
+  "printed_minus_actual": "Matrix([[0, 0, 0], [c2*(-k2 + k3), 0, 0], [0, 0, 0]])",
+  "witness_parameters": {
+    "c1": "1",
+    "c2": "1",
+    "k1": "7",
+    "k2": "7",
+    "km2": "7",
+    "k3": "1",
+    "k4": "1",
+    "km1": "1",
+    "km3": "1",
+    "km4": "1"
+  },
+  "printed_witness_matrix": "Matrix([[-15, -7, 0], [-7, -3, 0], [7, 1, -8]])",
+  "actual_witness_matrix": "Matrix([[-15, -7, 0], [-1, -3, 0], [7, 1, -8]])",
+  "printed_characteristic_polynomial": "(lambda + 8)*(lambda**2 + 18*lambda - 4)",
+  "actual_characteristic_polynomial": "(lambda + 8)*(lambda**2 + 18*lambda + 38)",
+  "printed_positive_eigenvalue": "-9 + sqrt(85)",
+  "actual_general_jacobian": "Matrix([[-c1*k1 - c2*k2 - km1, -c1*k1, -c1*k1 + km2], [-c2*k3, -c1*k4 - c2*k3 - km3, -c2*k3 + km4], [c2*k2, c1*k4, -km2 - km4]])",
+  "generator": "Matrix([[-a - c, e, g, 0], [a, -b - e, 0, f], [c, 0, -d - g, h], [0, b, d, -f - h]])",
+  "coordinate_change": "Matrix([[1, 1, 1, 1], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])",
+  "conjugated_generator": "Matrix([[0, 0, 0, 0], [a, -a - b - e, -a, -a + f], [c, -c, -c - d - g, -c + h], [0, b, d, -f - h]])",
+  "optional_initial_condition": "Matrix([[1/2], [1/2], [13/6], [13/12], [13/12], [13/24]])",
+  "optional_initial_lumped_values": "Matrix([[39/8], [0], [7]])",
+  "optional_alltime_error": "17/8, proved analytically in PROOF.md"
+}

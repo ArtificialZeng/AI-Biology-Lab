@@ -1,0 +1,44 @@
+{
+  "schema": "example8-exact-replay-v1",
+  "source": "https://arxiv.org/abs/2606.28895v2",
+  "sympy_version": "1.13.3",
+  "files": {
+    "PROOF.md": "adbff9441bd1b350719252755b2edbdd8e20de404f1e952c5f319646af1a840f",
+    "README.md": "c8cfae86f30f3b6184b3dea022dad554d819874092bc0c9d908f2b8883754968",
+    "SCOPE.md": "320ec3ea1be5fbcb45bf1d45d8f2c9cc6fafd2da49113c64ee6f885d18502acf",
+    "SOURCE.md": "effa97cedce1584704ceea5ed4ee33a98022a795d61a0a02d43395cbaaf12ec6",
+    "THIRD_PARTY.md": "79d27f1fa3340fb70a37793b18daec64e48d2a46af5a404033893f4879c045fb",
+    "VERIFICATION.md": "d33f5834256e893901fd93808d04841f7b2142f19899ab1b867a7077896a01d1",
+    "archive/coordinate-optimized.json": "305dee64d2eff321c4ebf1651f1585b3bf5423e91fbf7841dd9d81144fcb7acc",
+    "archive/coordinate-ordinary.json": "305dee64d2eff321c4ebf1651f1585b3bf5423e91fbf7841dd9d81144fcb7acc",
+    "archive/reaction-optimized.json": "ad7f3fd81520ef08db142f20e2400412c78d49a22b437da9e0cb46d828528cd1",
+    "archive/reaction-ordinary.json": "ad7f3fd81520ef08db142f20e2400412c78d49a22b437da9e0cb46d828528cd1",
+    "independent_verify.py": "41ade0a6c6b1a8deb52062e6d32f4a78fbd79c671280cc965a3a6cc87c1bd786",
+    "replay.py": "d7aeecb3011e84d12989b71b9ea3b63fc544c02f9c4e3616b3443130e1ce912e",
+    "requirements.txt": "d78165cb12250fa5bb897d2026515b89ddb8d6a88aaa152e5d62ff2e36028d11",
+    "verify.py": "82f3f80d71718f56923dbe6fde02b36414140f0ec8b59014c9a98be39f8e903b"
+  },
+  "runs": [
+    {
+      "script": "verify.py",
+      "optimized": false,
+      "archive": "archive/coordinate-ordinary.json"
+    },
+    {
+      "script": "verify.py",
+      "optimized": true,
+      "archive": "archive/coordinate-optimized.json"
+    },
+    {
+      "script": "independent_verify.py",
+      "optimized": false,
+      "archive": "archive/reaction-ordinary.json"
+    },
+    {
+      "script": "independent_verify.py",
+      "optimized": true,
+      "archive": "archive/reaction-optimized.json"
+    }
+  ],
+  "scope": "Symbolic identities and coefficient certificates; see PROOF.md for analytic arguments"
+}
