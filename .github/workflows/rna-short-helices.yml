@@ -1,0 +1,34 @@
+name: RNA short-helix exact replay
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'projects/rna-short-helix-placements/**'
+      - '.github/workflows/rna-short-helices.yml'
+  pull_request:
+    paths:
+      - 'projects/rna-short-helix-placements/**'
+      - '.github/workflows/rna-short-helices.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact:
+    name: RNA exact replay (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify manifest and replay all checkers in ordinary and optimized Python
+        run: python -I -B projects/rna-short-helix-placements/replay.py

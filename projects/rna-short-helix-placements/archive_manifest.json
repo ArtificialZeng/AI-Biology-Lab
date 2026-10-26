@@ -1,0 +1,21 @@
+{
+  "schema": "rna-short-helix-archive-v1",
+  "date_prepared": "2026-10-26",
+  "scope": "Public artifact integrity and exact replay; not human peer review, formal theorem-prover certification, or novelty certification",
+  "sha256": {
+    "LITERATURE.md": "5616bd5f4efaf60b24a7bde9af795810b06be21bad886ba56e3a4aaa07245c12",
+    "PROOF.md": "b3a7344feb999c65ae1fe777df15b04f9b4ad3ebb49602b6426781d81194d718",
+    "README.md": "9c8724ee509af6c6204b60c35ba1bf24c26f0caae24f8e0d5c043d9252d93976",
+    "SCOPE.md": "73634ea08ae5d946fbd4ec9a30b80f220f7ec6ea452fde44c69aee54128c4cc4",
+    "SOURCE.md": "ee2f3f44b2d413d639a58836343ac38317ce89b9f311bf34b09e645bc18300a3",
+    "THIRD_PARTY.md": "d2de827f74c851519abb60a6984bfbd51b97b37e471d8c06958294ea39f1934e",
+    "VERIFICATION.md": "18e23bdb608a9274c1b25ef8db36480f2d267fd8bb6a3a3319b6850379f499bd",
+    "evidence/designs.json": "2e9f754d40ad3220d1e0abd15109268d77a002c322b04be42fbaadb3317172e0",
+    "evidence/independent.json": "3fdd818a918139b09170abef52272231f79da3fdb2e2ab2161bfb9b64b072d8c",
+    "evidence/states.json": "b1c9c4deef248e92c1eda086909e3f7ca007499701b1d4e1f04a17efd018f64d",
+    "independent_verify.py": "1cf769294556e8da0de0c1070cab061a22629d444bd48b0eb4076cc5aaeaf196",
+    "replay.py": "ad360bf6fbfb569ddf45214a40f36412291f4529c1d06fdd0053df27983d2949",
+    "verify_designs.py": "c5e468f4f07ccebebd3a120140e106e3b421c9c04d14359056f3a33cae756578",
+    "verify_states.py": "9a25b2699ec538590e64259b85cda7b3dadef02abcbf076f742d6fcf4e8b5751"
+  }
+}
