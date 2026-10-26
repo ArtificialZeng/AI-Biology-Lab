@@ -1,0 +1,34 @@
+name: MEMOTE sequential API cache audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - projects/memote-cache-auditor/**
+      - .github/workflows/memote-cache-audit.yml
+  pull_request:
+    paths:
+      - projects/memote-cache-auditor/**
+      - .github/workflows/memote-cache-audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cache-lifecycle:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: projects/memote-cache-auditor/requirements.txt
+      - run: python -m pip install -r projects/memote-cache-auditor/requirements.txt
+      - run: python -B projects/memote-cache-auditor/verify.py

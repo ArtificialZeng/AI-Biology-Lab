@@ -1,0 +1,43 @@
+{
+  "arithmetic": "integer/Fraction",
+  "cases": [
+    {
+      "multiplier": 2,
+      "transposed_stoichiometry": [
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "determinant": -1,
+      "single_reaction_positive_mass": [
+        "1",
+        "1"
+      ],
+      "both_reactions_positive_mass_exists": false
+    },
+    {
+      "multiplier": 3,
+      "transposed_stoichiometry": [
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          3
+        ]
+      ],
+      "determinant": -2,
+      "single_reaction_positive_mass": [
+        "1",
+        "1"
+      ],
+      "both_reactions_positive_mass_exists": false
+    }
+  ]
+}

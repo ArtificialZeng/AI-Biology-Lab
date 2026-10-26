@@ -1,0 +1,129 @@
+{
+  "cobra": "0.30.0",
+  "solver": "glpk",
+  "models": [
+    {
+      "model": "textbook",
+      "reactions": 95,
+      "metabolites": 72,
+      "trials": 5,
+      "all_ten_once_cold_median_s": 0.0017476249486207962,
+      "populated_clear_median_s": 9.416951797902584e-06,
+      "empty_clear_median_s": 2.0830193534493446e-06,
+      "per_function": [
+        {
+          "function": "memote.support.helpers.find_transport_reactions",
+          "cold_median_s": 0.0006362920394167304,
+          "warm_mean_s": 6.847950862720609e-07
+        },
+        {
+          "function": "memote.support.helpers.find_biomass_reaction",
+          "cold_median_s": 6.824999582022429e-05,
+          "warm_mean_s": 6.002100417390466e-07
+        },
+        {
+          "function": "memote.support.helpers.find_demand_reactions",
+          "cold_median_s": 0.00013729208149015903,
+          "warm_mean_s": 5.737500032410026e-07
+        },
+        {
+          "function": "memote.support.helpers.find_sink_reactions",
+          "cold_median_s": 0.00017612497322261333,
+          "warm_mean_s": 4.57915011793375e-07
+        },
+        {
+          "function": "memote.support.helpers.find_exchange_rxns",
+          "cold_median_s": 0.00013229204341769218,
+          "warm_mean_s": 6.710400339215993e-07
+        },
+        {
+          "function": "memote.support.helpers.find_bounds",
+          "cold_median_s": 0.00011754198931157589,
+          "warm_mean_s": 7.595849456265569e-07
+        },
+        {
+          "function": "memote.support.consistency_helpers.get_interface",
+          "cold_median_s": 1.166015863418579e-06,
+          "warm_mean_s": 3.8624973967671396e-07
+        },
+        {
+          "function": "memote.support.consistency_helpers.get_internals",
+          "cold_median_s": 6.362504791468382e-05,
+          "warm_mean_s": 5.289551336318254e-07
+        },
+        {
+          "function": "memote.support.basic.find_pure_metabolic_reactions",
+          "cold_median_s": 0.0005717090098187327,
+          "warm_mean_s": 3.8791506085544824e-07
+        },
+        {
+          "function": "memote.support.basic.find_duplicate_metabolites_in_compartments",
+          "cold_median_s": 0.0004300830187276006,
+          "warm_mean_s": 5.04585332237184e-07
+        }
+      ]
+    },
+    {
+      "model": "iJO1366",
+      "reactions": 2583,
+      "metabolites": 1805,
+      "trials": 5,
+      "all_ten_once_cold_median_s": 0.24009016598574817,
+      "populated_clear_median_s": 0.0001206250162795186,
+      "empty_clear_median_s": 3.2499665394425392e-06,
+      "per_function": [
+        {
+          "function": "memote.support.helpers.find_transport_reactions",
+          "cold_median_s": 0.01789449993520975,
+          "warm_mean_s": 8.066702866926789e-07
+        },
+        {
+          "function": "memote.support.helpers.find_biomass_reaction",
+          "cold_median_s": 0.002933416049927473,
+          "warm_mean_s": 7.041695062071085e-07
+        },
+        {
+          "function": "memote.support.helpers.find_demand_reactions",
+          "cold_median_s": 0.006154167000204325,
+          "warm_mean_s": 5.729153053835035e-07
+        },
+        {
+          "function": "memote.support.helpers.find_sink_reactions",
+          "cold_median_s": 0.006153665948659182,
+          "warm_mean_s": 4.316651029512286e-07
+        },
+        {
+          "function": "memote.support.helpers.find_exchange_rxns",
+          "cold_median_s": 0.00613025005441159,
+          "warm_mean_s": 4.747946513816714e-07
+        },
+        {
+          "function": "memote.support.helpers.find_bounds",
+          "cold_median_s": 0.0007760419975966215,
+          "warm_mean_s": 4.4041487853974106e-07
+        },
+        {
+          "function": "memote.support.consistency_helpers.get_interface",
+          "cold_median_s": 9.59029421210289e-07,
+          "warm_mean_s": 7.872947026044131e-07
+        },
+        {
+          "function": "memote.support.consistency_helpers.get_internals",
+          "cold_median_s": 0.0018000829732045531,
+          "warm_mean_s": 1.0354153346270322e-06
+        },
+        {
+          "function": "memote.support.basic.find_pure_metabolic_reactions",
+          "cold_median_s": 0.018977707950398326,
+          "warm_mean_s": 4.6916538849473e-07
+        },
+        {
+          "function": "memote.support.basic.find_duplicate_metabolites_in_compartments",
+          "cold_median_s": 0.20528920902870595,
+          "warm_mean_s": 6.629194831475616e-07
+        }
+      ]
+    }
+  ],
+  "limit": "Single-process local diagnostics; not end-to-end suite runtime, allocation or production upper bound."
+}

@@ -1,0 +1,35 @@
+{
+  "python": "3.11",
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "--tb=short",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_for_suite/test_for_api.py",
+    "-k",
+    "reaudits_added or recollects_changed or reuses_classification or retry_after_configuration or covers_existing_wrappers or test_test_model_code or test_test_model_result or test_test_model_timeout"
+  ],
+  "environment_allowlist": [
+    "HOME",
+    "LANG",
+    "PATH",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONPATH",
+    "TMPDIR"
+  ],
+  "returncode": 0,
+  "summary": [
+    "9 passed, 4 deselected, 2 warnings in 18.12s"
+  ],
+  "warnings": [
+    "Existing invalid escape sequence in results/__init__.py",
+    "Existing SQLAlchemy declarative_base deprecation"
+  ],
+  "scope": "six new parametrized cases plus three related existing API tests; GLPK only"
+}
