@@ -1,0 +1,15 @@
+{
+  "byte_identical_inputs": {
+    "evidence/independent-certificate.json": "414759b23c2afe7b956b640bd2b2cf11bcc411e41be10cc8d513dd54a6badd00",
+    "evidence/owner-certificate.json": "1451c773db2aa1b188768a93a912755e5231649c7a2134672ed8e86618efe1a4",
+    "model.json": "2102a8b0c0f49abd6a8969a8bf697b34b19bf290e0acb7f773b129a37693e31a",
+    "proof.md": "c557f687601012c34a99d15da610f2c5594f53847524eca882686e5d03c8374f",
+    "science/independent_checker.py": "ecb30ac62e27d5fe36a1b2e6b7f8e36576169e7f0dd07cc80db1429de227f4cd",
+    "science/owner_checker.py": "0c9bcb803c6e2f277166b8b015d5e2609f7717be5e202086e5a1c5156cc59ae0"
+  },
+  "checker_execution": "Each frozen checker is copied unchanged to an external directory with model.json and proof.md. Outputs are original full JSON evidence, without projection; Python optimization is forced to0.",
+  "probability_scope": "Finite algebra/path checks support only their encoded statements; universal stochastic arguments remain in proof.md and were assessed substantively in prose.",
+  "research_snapshot_digest": "930f8e2af59997fe098e9fdcd646c2c4d2f55d1a5f5f847615bb8574d3f404ce",
+  "schema": "source-to-public-mapping-v1",
+  "source_note": "Public source.md condenses the immutable private multi-lead intake into this exact source example. Original equations/arrows are unchanged. Other screened topics and private audit inputs are not copied."
+}

@@ -1,0 +1,130 @@
+{
+  "active_pair": "A->4A+B at rateA; B->A at rateB; active total increments4 or0",
+  "delta_positive_finite_K_checks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "external_BPRE_survival_theorem_required": false,
+  "finite_path_checks": {
+    "all_nonnegative_count_triples_in_0_to3": 64,
+    "generic_all_count_proof": "proof.md Section6; this finite check alone is not a generic theorem",
+    "two_paths_each": 128
+  },
+  "floating_tests": 0,
+  "human_or_formal_review_asserted": false,
+  "identity_count": 46,
+  "probability_proof_status": "Not formalized by this script; conditional branching, SLLN/Borel-Cantelli, survival and transience rely on the complete argument in proof.md",
+  "schema": "switching-shared-species-exact-checks-v1",
+  "scope": "Exact source Example44; proof candidate all alpha>0, 0<kappa<=1; generalConjecture43 unresolved",
+  "source_inflows": [
+    [
+      "0",
+      "0",
+      "1"
+    ],
+    [
+      "1",
+      "0",
+      "0"
+    ]
+  ],
+  "source_mean_matrices": [
+    [
+      [
+        "3",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "-1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "-alpha"
+      ]
+    ],
+    [
+      [
+        "-alpha",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "-1",
+        "1"
+      ],
+      [
+        "0",
+        "1",
+        "3"
+      ]
+    ]
+  ],
+  "source_reaction_count": 8,
+  "strict_exact_inequalities": {
+    "c_plus_gt_1_over20": true,
+    "exp3_positive_partial_sum": "89641/4480",
+    "implies_log20_lt3": true,
+    "lambda_plus_gt3": true,
+    "partial_sum_minus20": "41/4480",
+    "sqrt5_gt_20_over9": true
+  },
+  "symbolic_identity_residuals": {
+    "Yule_plus4_first_initial": "0",
+    "Yule_plus4_first_moment_ODE": "0",
+    "Yule_plus4_second_initial": "0",
+    "Yule_plus4_second_moment_ODE": "0",
+    "active_eigenvector_minus_0": "0",
+    "active_eigenvector_minus_1": "0",
+    "active_eigenvector_plus_0": "0",
+    "active_eigenvector_plus_1": "0",
+    "active_initial_condition_0": "0",
+    "active_initial_condition_1": "0",
+    "env1_active_entry_0_0": "0",
+    "env1_active_entry_0_1": "0",
+    "env1_active_entry_1_0": "0",
+    "env1_active_entry_1_1": "0",
+    "env1_inflow_0": "0",
+    "env1_inflow_1": "0",
+    "env1_inflow_2": "0",
+    "env1_mean_entry_0_0": "0",
+    "env1_mean_entry_0_1": "0",
+    "env1_mean_entry_0_2": "0",
+    "env1_mean_entry_1_0": "0",
+    "env1_mean_entry_1_1": "0",
+    "env1_mean_entry_1_2": "0",
+    "env1_mean_entry_2_0": "0",
+    "env1_mean_entry_2_1": "0",
+    "env1_mean_entry_2_2": "0",
+    "env1_total_drift": "0",
+    "env2_active_entry_0_0": "0",
+    "env2_active_entry_0_1": "0",
+    "env2_active_entry_1_0": "0",
+    "env2_active_entry_1_1": "0",
+    "env2_inflow_0": "0",
+    "env2_inflow_1": "0",
+    "env2_inflow_2": "0",
+    "env2_mean_entry_0_0": "0",
+    "env2_mean_entry_0_1": "0",
+    "env2_mean_entry_0_2": "0",
+    "env2_mean_entry_1_0": "0",
+    "env2_mean_entry_1_1": "0",
+    "env2_mean_entry_1_2": "0",
+    "env2_mean_entry_2_0": "0",
+    "env2_mean_entry_2_1": "0",
+    "env2_mean_entry_2_2": "0",
+    "env2_total_drift": "0",
+    "positive_coefficients_sum": "0",
+    "quenched_second_moment_recurrence": "0"
+  }
+}
