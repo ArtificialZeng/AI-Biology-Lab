@@ -1,0 +1,44 @@
+name: Native GLPK presolver audit
+on:
+  pull_request:
+    paths:
+      - projects/glpk-presolver-auditor/**
+      - .github/workflows/glpk-native-audit.yml
+  push:
+    branches: [main]
+    paths:
+      - projects/glpk-presolver-auditor/**
+      - .github/workflows/glpk-native-audit.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download pinned official source
+        run: |
+          mkdir -p artifacts/glpk-native
+          curl --fail --location --retry 2 https://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz -o artifacts/glpk-native/glpk-5.0.tar.gz
+      - name: Verify archive, build matched libraries, and check both grids and residual
+        run: >-
+          python projects/glpk-presolver-auditor/reproduce_native.py
+          --archive artifacts/glpk-native/glpk-5.0.tar.gz
+          --output artifacts/glpk-native/receipt.json
+          --logs artifacts/glpk-native/logs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-glpk-evidence-${{ matrix.os }}
+          path: |
+            artifacts/glpk-native/receipt.json
+            artifacts/glpk-native/logs

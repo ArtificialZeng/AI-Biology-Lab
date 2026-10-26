@@ -1,0 +1,14 @@
+--- a/src/npp/npp3.c
++++ b/src/npp/npp3.c
+@@ -915,8 +915,9 @@
+       if (uu == +DBL_MAX)
+          ub_changed = 0;
+       else if (lb_changed == 3)
+-      {  /* column was fixed on its upper bound due to l'[q] = u[q] */
+-         /* note that L[p] < U[p], so l'[q] = u[q] < u'[q] */
++      {  /* column was fixed on its upper bound, possibly after rounding */
++         /* integer rounding can make the lower bound exceed uu */
++         if (q->is_int && q->ub > uu + 1e-5) return 4;
+          ub_changed = 0;
+       }
+       else

@@ -11,3 +11,5 @@ projects/protein-metric-auditor/** -text
 projects/memote-direction-auditor/fixtures/** -text
 projects/mixed-phosphorylation/validated-cycle/** -text
 projects/protein-metric-auditor/vendor/** whitespace=-blank-at-eol
+projects/glpk-presolver-auditor/native-guard.patch -whitespace
+projects/glpk-presolver-auditor/wrapper/optlang-mip-validation.patch -whitespace
