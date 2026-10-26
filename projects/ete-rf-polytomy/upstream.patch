@@ -1,0 +1,128 @@
+--- a/ete4/core/tree.pyx
++++ b/ete4/core/tree.pyx
+@@ -1295,14 +1295,6 @@
+             target_trees = [target_t]
+ 
+         polytomy_correction = 0
+-        if correct_by_polytomy_size:
+-            corr1 = sum(len(n.children) - 2 for n in origin_t.traverse() if len(n.children) > 2)
+-            corr2 = sum(len(n.children) - 2 for n in target_t.traverse() if len(n.children) > 2)
+-
+-            if corr1 > 0 and corr2 > 0:
+-                raise TreeError('Both trees contain polytomies! Try expand_polytomies=True instead.')
+-
+-            polytomy_correction = max(corr1, corr2)
+ 
+         def from_common(nodes, prop):  # helper function
+             """Yield values (if existing in both trees) for property prop."""
+@@ -1311,6 +1303,28 @@
+                     value = node.get_prop(prop)
+                     if value in common:
+                         yield value
++
++        if correct_by_polytomy_size:
++            def unresolved_parts(tree, prop):
++                # Missing resolutions of the induced tree on common labels.
++                # Sets suppress unary paths and the two halves of an unrooted
++                # degree-two master root, so its representation is immaterial.
++                parts = set()
++                for leaves in tree.get_cached_content().values():
++                    clade = frozenset(from_common(leaves, prop))
++                    if unrooted_trees:
++                        if 1 < len(clade) < len(common) - 1:
++                            parts.add(frozenset((clade, frozenset(common - clade))))
++                    elif 1 < len(clade) < len(common):
++                        parts.add(clade)
++                maximum = max(0, len(common) - (3 if unrooted_trees else 2))
++                return maximum - len(parts)
++
++            corr1 = unresolved_parts(origin_t, prop_t1)
++            corr2 = unresolved_parts(target_t, prop_t2)
++            if corr1 > 0 and corr2 > 0:
++                raise TreeError('Both trees contain polytomies! Try expand_polytomies=True instead.')
++            polytomy_correction = max(corr1, corr2)
+ 
+         min_comparison = None
+         for t1 in origin_trees:
+--- a/tests/test_rf_polytomy_correction.py
++++ b/tests/test_rf_polytomy_correction.py
+@@ -0,0 +1,68 @@
++"""Regression checks for common-leaf RF polytomy correction (issue745)."""
++import unittest
++from ete4 import Tree
++from ete4.core.tree import TreeError
++
++class TestRFPolytomyCorrection(unittest.TestCase):
++    def test_unrooted_root_representations(self):
++        forms = ['((A,B),(C,D));', '(A,B,(C,D));', '((A,B),C,D);']
++        for left in forms:
++            for right in forms:
++                with self.subTest(left=left, right=right):
++                    result = Tree(left).robinson_foulds(
++                        Tree(right), unrooted_trees=True,
++                        correct_by_polytomy_size=True)
++                    self.assertEqual(result[:2], [0, 2])
++
++    def test_common_leaf_projection(self):
++        cases = [
++            ('((A,B,X),(C,D));', '((A,B),(C,D));', False),
++            ('((A,B,X),C,D);', '(A,B,(C,D));', True),
++            ('((A,B,X),C,D);', '((A,B),(C,D));', True),
++            ('((A,B,X),(C,D));', '((A,B,Y),(C,D));', False),
++            ('((A,B,X),C,D);', '((A,B,Y),C,D);', True),
++        ]
++        for left, right, unrooted in cases:
++            with self.subTest(left=left, right=right, unrooted=unrooted):
++                result = Tree(left).robinson_foulds(
++                    Tree(right), unrooted_trees=unrooted,
++                    correct_by_polytomy_size=True)
++                self.assertEqual(result[0], 0)
++
++    def test_true_polytomy_still_counts(self):
++        for left, right, unrooted in [
++            ('(A,B,C,D);', '(A,B,(C,D));', True),
++            ('((A,B,C),D);', '(((A,B),C),D);', False),
++        ]:
++            with self.subTest(unrooted=unrooted):
++                self.assertEqual(Tree(left).robinson_foulds(
++                    Tree(right), unrooted_trees=unrooted,
++                    correct_by_polytomy_size=True)[0], 0)
++                with self.assertRaisesRegex(TreeError, 'Both trees contain polytomies'):
++                    Tree(left).robinson_foulds(
++                        Tree(left), unrooted_trees=unrooted,
++                        correct_by_polytomy_size=True)
++
++    def test_small_common_leaf_sets(self):
++        for right in ['A;', '(A,B);', '(X,Y);']:
++            with self.subTest(right=right):
++                self.assertEqual(Tree('(A,B,C,D);').robinson_foulds(
++                    Tree(right), unrooted_trees=True,
++                    correct_by_polytomy_size=True)[0], 0)
++
++    def test_unary_paths_and_custom_labels(self):
++        left=Tree('((((A),B)),((C,D)));')
++        right=Tree('(A,B,(C,D));')
++        for index, tree in enumerate([left,right]):
++            for tip in tree:
++                tip.add_prop('taxon', tip.name)
++                tip.name += '_gene' + str(index)
++        old_left, old_right=left.write(props=['taxon']), right.write(props=['taxon'])
++        self.assertEqual(left.robinson_foulds(
++            right, prop_t1='taxon', prop_t2='taxon', unrooted_trees=True,
++            correct_by_polytomy_size=True)[:2], [0,2])
++        self.assertEqual(left.write(props=['taxon']), old_left)
++        self.assertEqual(right.write(props=['taxon']), old_right)
++
++if __name__ == '__main__':
++    unittest.main()
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -12,7 +12,7 @@
+ # Test files to run.
+ tests = {
+     'fast': [
+-        'test_tree.py',
++        'test_tree.py', 'test_rf_polytomy_correction.py',
+         'test_ncbiquery.py', 'test_gtdbquery.py',
+         'test_interop.py', 'test_phylotree.py',
+         'test_nexus.py', 'test_indent.py',

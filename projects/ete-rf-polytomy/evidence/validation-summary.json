@@ -1,0 +1,46 @@
+{
+  "research_snapshot": "2026-10-26T22:53:43.627298+00:00",
+  "current_commit": "9562dfb6a02795dfda3975be5025f83b8dc884b1",
+  "native_API_cases": 189204,
+  "expected_both_induced_poly_rejections": 14991,
+  "focused_methods_passed": 6,
+  "baseline_focused_failures": 10,
+  "baseline_focused_errors": 8,
+  "default_fast_runner": {
+    "baseline": "10failed71passed",
+    "candidate_initial": "10failed71passed",
+    "same_failed_testIDs": [
+      "test_orthologs_group_delineation.py::test_orthologs_group_delineation",
+      "test_treediff.py::Test_Treediff::test_treediff_EUCL_DIST_1",
+      "test_treediff.py::Test_Treediff::test_treediff_EUCL_DIST_2",
+      "test_treediff.py::Test_Treediff::test_treediff_EUCL_DIST_3",
+      "test_treediff.py::Test_Treediff::test_treediff_RF_DIST_1",
+      "test_treediff.py::Test_Treediff::test_treediff_RF_DIST_2",
+      "test_treediff.py::Test_Treediff::test_treediff_basic",
+      "test_treediff.py::Test_Treediff::test_treediff_extendend_be",
+      "test_treediff.py::Test_Treediff::test_treediff_extendend_cc",
+      "test_treediff.py::Test_Treediff::test_treediff_reports"
+    ],
+    "failed_testIDs_identical": true,
+    "causes": {
+      "nine_treediff": "missingoptional lapjv",
+      "one_orthologgroup": "annotation serialization length mismatch against downloaded fixture"
+    },
+    "newtestfile_not_in_initialdefaultlist": true,
+    "one_line_fastlist_integration_added_after_this_run": true,
+    "not_all_upstreamtests_passed": true,
+    "external_fixture_cache": "Both actual runs used same default ETE cache; candidate populated it, baseline reused it; comparator does not isolate external data-version effects."
+  },
+  "support_interactions": 24,
+  "support_filter_still_broken": true,
+  "fresh_AI_review": {
+    "verdict": "ACCEPT",
+    "independent_oracle_calls": 1682,
+    "contract_calls": 18,
+    "candidate_mismatches": 0,
+    "human_peer_review": false,
+    "formal_gate": false
+  },
+  "local_python": "3.13.5",
+  "CI_target": "3.12; hosted results belong to actual PR checks"
+}
