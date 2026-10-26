@@ -2,6 +2,7 @@ name: Boundary-relay isola exact checks
 
 on:
   push:
+    branches: [main]
     paths:
       - 'projects/relay-isola-auditor/**'
       - '.github/workflows/relay-isola.yml'
