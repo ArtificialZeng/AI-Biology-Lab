@@ -18,6 +18,8 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | Full released-score NDCG order audit | 217 assays / 95 configurations; secondary-metric rank shifts only |
 | [MEMOTE direction audit](projects/memote-direction-auditor/README.md) | Equivalent-reaction counterexamples and a two-line direction fix | Real complete ATP detector integration; maintainer acceptance pending |
 
+| [GillesPy2 ODE failure propagation](projects/gillespy-ode-failure/README.md) | Reject failed backend steps before publishing future-labelled results | Analytic baseline/candidate replay and independent AI review; upstream maintainer confirmation pending |
+
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
 ## New validated result: robust oscillations have a nonzero period correction

@@ -1,0 +1,7 @@
+# Attribution and licensing
+
+Vendored GillesPy2 baseline and candidate sources originate from [StochSS/GillesPy2](https://github.com/StochSS/GillesPy2), pinned main f1957c65b6cb318bdd3701af14297892583b4297. GPLv3 LICENSE, COPYRIGHT and each source notice are preserved separately under vendor/baseline and vendor/candidate; the root LICENSE is the same GPLv3 text. The candidate differs only by the included two-file patch. Package replay additions are distributed under GPLv3-or-later consistently with those notices.
+
+The analytic transfer oracle is elementary mathematics. The separately written observation script uses the real SciPy solver and was prepared with AI assistance; it is not copied author software or a formal proof-assistant certificate. SciPy, NumPy, Matplotlib, Plotly and setuptools keep their respective licenses. No third-party paper, private correspondence, credentials, generated binary or paid service is redistributed.
+
+Primary API references: [GillesPy2](https://github.com/StochSS/GillesPy2), [SciPy ode.successful](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.ode.successful.html), and [SciPy ode options](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.ode.html). Nearby issues [968](https://github.com/StochSS/GillesPy2/issues/968), [690](https://github.com/StochSS/GillesPy2/issues/690), and pending [PR964](https://github.com/StochSS/GillesPy2/pull/964) are credited in VERIFICATION.md.

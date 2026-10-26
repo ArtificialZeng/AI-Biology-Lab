@@ -1,0 +1,30 @@
+{
+  "baseline": {
+    "analytic_and_conservation_controls_verified": true,
+    "backend_time_and_failure_status_verified": true,
+    "false_success_reproduced": true,
+    "genuine_failure_cases": 4,
+    "same_instance_retry_verified": true,
+    "successful_control_cases": 3
+  },
+  "baseline_regression_failed_assertions": 6,
+  "candidate": {
+    "analytic_and_conservation_controls_verified": true,
+    "backend_time_and_failure_status_verified": true,
+    "failed_rows_rejected": true,
+    "genuine_failure_cases": 4,
+    "same_instance_retry_verified": true,
+    "successful_control_cases": 3
+  },
+  "candidate_acceptance_or_human_review_implied": false,
+  "candidate_whole_ODE_test_methods": 13,
+  "ok": true,
+  "schema": "gillespy-ode-replay-certificate-v1",
+  "scope": "finite real-backend failure and analytic controls; no universal ODE accuracy claim",
+  "targeted_regression_methods": 7,
+  "temporary_outputs_outside_archive": true,
+  "vendored_frozen_file_counts": {
+    "baseline": 142,
+    "candidate": 142
+  }
+}
