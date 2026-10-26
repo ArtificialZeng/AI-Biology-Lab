@@ -1,27 +1,27 @@
-# A fixation bound for two deleted mutant edges
+# A fixation bound for every matching complement
 
-For every integer n≥4, residents reproduce on K_n and neutral mutants on K_n minus two vertex-disjoint edges under type-specific birth–death. Every singleton starting vertex satisfies
+For integers N≥3 and 1≤m≤⌊N/2⌋, residents reproduce on K_N and neutral mutants on K_N minus a matching of m edges under type-specific Moran birth–death. The proposed theorem bounds fixation from **every singleton vertex** v:
 
-    rho_v ≤ 1/n − 4/[n²(n−1)(n(n−2)+2)] < 1/n.
+    h_v ≤ 1/N − 2m/[N²(N−1)(N(N−2)+2m−2)] < 1/N.
 
-The proof is an all-n symbolic superharmonic certificate, followed by an absorption argument; finite state audits are supplementary. The general arbitrary-graph conjecture and matching deletions m≥3 remain unresolved here. Positive drift of a proposed potential at n=6,m=3 is a failure of that method, not a counterexample to the conjecture.
+Uniform averaging over the starting vertex inherits the bound. The proof covers unbounded m, including perfect matchings. It combines an exact superharmonic identity with absorption; finite labelled-state audits are supplementary. The arbitrary connected noncomplete mutant-graph conjecture remains unresolved. The bound is not claimed sharp.
 
-Tkadlec, Kaveh, Chatterjee and Nowak (2023), [Evolutionary dynamics of mutants that modify population structure](https://doi.org/10.1098/rsif.2023.0355), supplies the model, the known one-deleted-edge Theorem A.1 and numerical n=6 evidence. Their official [Figshare deposit](https://doi.org/10.6084/m9.figshare.16910170) is credited; no author GitHub submission endpoint was verified. No third-party paper PDF or source code is redistributed. See literature.md for the bounded priority search; priority is not established.
+[All-matching proof](all-matchings/proof.md), [precise scope](all-matchings/problem.md), [source/model credit](all-matchings/source.md), and [bounded literature search](all-matchings/literature.md) give the scientific argument. The new range is m≥3. The exact m=1 formula is due to Tkadlec, Kaveh, Chatterjee and Nowak (2023), [Evolutionary dynamics of mutants that modify population structure](https://doi.org/10.1098/rsif.2023.0355); their N=6 numerical enumeration already includes all matching complements at that size. Their official [Figshare deposit](https://doi.org/10.6084/m9.figshare.16910170) is credited. No author GitHub submission endpoint was verified. No third-party PDF or source code is included.
 
-The original proof and checkers were AI-assisted. A fresh AI context accepted the mathematical scope and independently derived the raw parent-target drift. This is not human peer review. The formal workflow gate could not certify the work because trusted runner provenance was absent. `provenance/research-claim.json` preserves the original intake status and its private evidence inventory; it is provenance, not a public file inventory or release certificate. Publication readiness requires separate mathematical and package acceptance.
+The earlier m=2 [proof](proof.md), scientific checkers, and both certificates remain byte-identical. The old proof/problem/literature/provenance describe the historical state in which m≥3 was unresolved. That limitation is superseded by this proposed all-matching argument; those historical bytes are retained as evidence. This is an augmentation of the existing lab PR18, not a separate result split. `all-matchings/proof.md` names the owner scripts `certificate.py` and `labelled_check.py`; their public locations are `science/all_matching_owner.py` and `science/all_matching_labelled.py`.
 
-Use Python 3.12 with pinned dependencies:
+The derivation and checks used AI. A separate fresh AI context independently derives the drift from event counts and audits held-out labelled configurations. Mathematical/package review status is recorded in accompanying receipts, and neither AI review nor successful reproduction is human peer review or formal proof-assistant certification. The formal workflow gate lacked trusted runner provenance and did not certify this work; no synthetic job IDs are supplied. Current priority is limited to the inspected primary-source set.
+
+Use Python 3.12 with the pinned dependencies:
 
     python -m pip install -r requirements.txt
     python -B verify.py verify
     python -B -O verify.py verify
 
-Both wrapper modes explicitly run the two scientific workers with PYTHONOPTIMIZE=0, retaining their assertions. This does not claim that their assertions survive direct optimized execution. Workers write only in a disposable directory. Verification recomputes both complete certificates, compares exact bytes, and hashes every public file. Unexpected files, missing files, changed bytes and symlinks are rejected. Do not run science/owner_checker.py directly in the archive: the frozen original writes beside itself.
+The wrapper runs all five scientific workers with PYTHONOPTIMIZE=0 in external disposable directories, retaining their assertions even when the wrapper is optimized. It recomputes the two historical certificates, the new symbolic certificate, the owner's separate labelled audit, and the fresh independent certificate, then compares exact bytes. The complete public inventory is hash-checked before and after computation; missing, unexpected, changed, or symlink inputs are rejected. Verification writes no project files. Direct scientific-script execution in this archive is unsupported because the original checkers write beside themselves.
 
-Regeneration requires a new absolute directory outside this project, whose parent exists:
+Regeneration requires a new absolute directory outside this project with an existing parent:
 
     python -B verify.py regenerate --output-dir /absolute/new-directory
 
-It recomputes both certificates and an entire project manifest; it never overwrites an existing output directory. Compare all three outputs with their archived counterparts. The manifest covers every public input except itself and is a consistency inventory, not a signature or proof of mathematical correctness.
-
-The owner checker is byte-identical to the frozen research input. The independent checker preserves all mathematical functions and assertions; only private snapshot/path/provenance plumbing was removed. Its original byte-identical source and adaptation mapping are in provenance/. New code is MIT licensed under the repository license. No special arithmetic backend, GPU, network access or author software is required for verification.
+It writes all five certificates and an entire project manifest, and refuses existing or in-project destinations. All six outputs must compare byte-for-byte with the archive. The manifest covers every public input except itself; it is a consistency inventory, not a signature or mathematical proof. No GPU, network, author software, or special arithmetic backend is required. New original code is MIT licensed. The existing Linux/macOS Python3.12 workflow remains applicable.

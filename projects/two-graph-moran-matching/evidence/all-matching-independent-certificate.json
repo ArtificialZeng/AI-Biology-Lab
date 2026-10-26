@@ -1,0 +1,167 @@
+{
+  "status": "all assertions passed",
+  "method": "independent birth/death/full-pair event counts, no owner transition-table import",
+  "symbolic_QW": "(16*a**3*m + 24*a**2*b*m + 16*a**2*c*m - 8*a**2*m*n - 8*a**2*m + 8*a**2*n - 8*a**2 + 12*a*b**2*m + 16*a*b*c*m - 4*a*b*m*n - 12*a*b*m + 2*a*b*n**2 + 6*a*b*n - 8*a*b + 4*a*c**2*m - 12*a*c*m + 4*a*c*n - 4*a*c + 4*a*m*n - 4*a*n**2 + 4*a*n + 2*b**3*m + 4*b**2*c*m - 4*b**2*m + b**2*n**2 + b**2*n - 2*b**2 + 2*b*c**2*m + 2*b*c*m*n - 8*b*c*m + 2*b*c*n - 2*b*c - 2*b*m*n**2 + 6*b*m*n - 2*b*m - b*n**2 - b*n + 2*b + 2*c**2*m*n - 4*c**2*m - 2*c*m*n**2 + 4*c*m*n)/(n*(n - 2)*(n - 1)**2)",
+  "independent_polynomial_terms": 72,
+  "eight_coefficient_identities": {
+    "2,1": true,
+    "1,2": true,
+    "2,0": true,
+    "0,2": true,
+    "1,1": true,
+    "1,0": true,
+    "0,1": true,
+    "0,0": true
+  },
+  "integer_regions": [
+    {
+      "a": "0",
+      "b": "0",
+      "d": "0",
+      "terms": 1,
+      "minimum_coefficient": 0
+    },
+    {
+      "a": "0",
+      "b": "0",
+      "d": "E + 1",
+      "terms": 13,
+      "minimum_coefficient": 2
+    },
+    {
+      "a": "0",
+      "b": "1",
+      "d": "0",
+      "terms": 5,
+      "minimum_coefficient": 2
+    },
+    {
+      "a": "0",
+      "b": "1",
+      "d": "E + 1",
+      "terms": 23,
+      "minimum_coefficient": 2
+    },
+    {
+      "a": "0",
+      "b": "B + 2",
+      "d": "0",
+      "terms": 26,
+      "minimum_coefficient": 1
+    },
+    {
+      "a": "0",
+      "b": "B + 2",
+      "d": "E + 1",
+      "terms": 56,
+      "minimum_coefficient": 1
+    },
+    {
+      "a": "A + 1",
+      "b": "0",
+      "d": "0",
+      "terms": 13,
+      "minimum_coefficient": 2
+    },
+    {
+      "a": "A + 1",
+      "b": "0",
+      "d": "E + 1",
+      "terms": 46,
+      "minimum_coefficient": 2
+    },
+    {
+      "a": "A + 1",
+      "b": "1",
+      "d": "0",
+      "terms": 13,
+      "minimum_coefficient": 2
+    },
+    {
+      "a": "A + 1",
+      "b": "1",
+      "d": "E + 1",
+      "terms": 49,
+      "minimum_coefficient": 2
+    },
+    {
+      "a": "A + 1",
+      "b": "B + 2",
+      "d": "0",
+      "terms": 44,
+      "minimum_coefficient": 1
+    },
+    {
+      "a": "A + 1",
+      "b": "B + 2",
+      "d": "E + 1",
+      "terms": 98,
+      "minimum_coefficient": 1
+    }
+  ],
+  "calibration_and_two_singleton_drifts": true,
+  "m0_control_drift_zero": true,
+  "source_m1_hitting_function_verified": true,
+  "raw_labelled_cases": [
+    {
+      "N": 3,
+      "m": 1,
+      "states": 8,
+      "parent_target_events": 40,
+      "zero_drift_states": 4,
+      "all_singletons_checked": 3
+    },
+    {
+      "N": 4,
+      "m": 2,
+      "states": 16,
+      "parent_target_events": 160,
+      "zero_drift_states": 6,
+      "all_singletons_checked": 4
+    },
+    {
+      "N": 12,
+      "m": 5,
+      "states": 4096,
+      "parent_target_events": 520192,
+      "zero_drift_states": 12,
+      "all_singletons_checked": 12
+    },
+    {
+      "N": 12,
+      "m": 6,
+      "states": 4096,
+      "parent_target_events": 516096,
+      "zero_drift_states": 14,
+      "all_singletons_checked": 12
+    },
+    {
+      "N": 13,
+      "m": 6,
+      "states": 8192,
+      "parent_target_events": 1228800,
+      "zero_drift_states": 14,
+      "all_singletons_checked": 13
+    },
+    {
+      "N": 3,
+      "m": 0,
+      "states": 8,
+      "parent_target_events": 48,
+      "zero_drift_states": 8,
+      "all_singletons_checked": 3
+    },
+    {
+      "N": 7,
+      "m": 0,
+      "states": 128,
+      "parent_target_events": 5376,
+      "zero_drift_states": 128,
+      "all_singletons_checked": 7
+    }
+  ],
+  "total_raw_labelled_states": 16544,
+  "total_parent_target_events": 2270712,
+  "scope": "all N>=3,1<=m<=floor(N/2) proved by general event-count identities and integer positivity; finite labels are supplementary",
+  "MATH_JOB_ID_present": false
+}

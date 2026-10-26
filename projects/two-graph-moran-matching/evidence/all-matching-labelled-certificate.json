@@ -1,0 +1,99 @@
+{
+  "status": "exact integer labelled-event checks passed",
+  "independence": "separate implementation; no import of quotient rates, certificate generator or R14 checkers; checks the supplied symbolic polynomial against direct labelled parent-target sums",
+  "scaled_potential": "n(n-1)W, integer",
+  "scaled_generator": "D QW where D=n(n-2)(n-1)^2, integer",
+  "labelled_configurations": 6152,
+  "parent_target_events": 575480,
+  "cases": [
+    {
+      "N": 3,
+      "m": 1,
+      "labelled_configurations": 8,
+      "parent_target_events": 40,
+      "zero_drift_configurations": 4,
+      "singletons_checked": 3
+    },
+    {
+      "N": 4,
+      "m": 1,
+      "labelled_configurations": 16,
+      "parent_target_events": 176,
+      "zero_drift_configurations": 4,
+      "singletons_checked": 4
+    },
+    {
+      "N": 4,
+      "m": 2,
+      "labelled_configurations": 16,
+      "parent_target_events": 160,
+      "zero_drift_configurations": 6,
+      "singletons_checked": 4
+    },
+    {
+      "N": 5,
+      "m": 2,
+      "labelled_configurations": 32,
+      "parent_target_events": 576,
+      "zero_drift_configurations": 6,
+      "singletons_checked": 5
+    },
+    {
+      "N": 6,
+      "m": 3,
+      "labelled_configurations": 64,
+      "parent_target_events": 1728,
+      "zero_drift_configurations": 8,
+      "singletons_checked": 6
+    },
+    {
+      "N": 7,
+      "m": 3,
+      "labelled_configurations": 128,
+      "parent_target_events": 4992,
+      "zero_drift_configurations": 8,
+      "singletons_checked": 7
+    },
+    {
+      "N": 8,
+      "m": 4,
+      "labelled_configurations": 256,
+      "parent_target_events": 13312,
+      "zero_drift_configurations": 10,
+      "singletons_checked": 8
+    },
+    {
+      "N": 9,
+      "m": 3,
+      "labelled_configurations": 512,
+      "parent_target_events": 35328,
+      "zero_drift_configurations": 8,
+      "singletons_checked": 9
+    },
+    {
+      "N": 10,
+      "m": 5,
+      "labelled_configurations": 1024,
+      "parent_target_events": 87040,
+      "zero_drift_configurations": 12,
+      "singletons_checked": 10
+    },
+    {
+      "N": 11,
+      "m": 4,
+      "labelled_configurations": 2048,
+      "parent_target_events": 217088,
+      "zero_drift_configurations": 10,
+      "singletons_checked": 11
+    },
+    {
+      "N": 11,
+      "m": 5,
+      "labelled_configurations": 2048,
+      "parent_target_events": 215040,
+      "zero_drift_configurations": 12,
+      "singletons_checked": 11
+    }
+  ],
+  "limit": "finite supplemental check; uniform proof depends on exact symbolic certificate and general lumpability argument"
+}
