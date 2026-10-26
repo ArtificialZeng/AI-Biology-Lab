@@ -4,12 +4,19 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import importlib.util
 from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parent
 MANIFEST = 'archive_manifest.json'
-CERTIFICATES = ('evidence/exact-population-certificate.json', 'evidence/independent-certificate.json')
+BUILDERS = (
+    ('evidence/exact-population-certificate.json', 'verify.py'),
+    ('evidence/independent-certificate.json', 'verify_independent.py'),
+    ('root-count/evidence/exact-root-certificate.json', 'root-count/check.py'),
+    ('root-count/evidence/heldout-certificate.json', 'root-count/check_heldout.py'),
+)
+CERTIFICATES = tuple(certificate for certificate, _ in BUILDERS)
 
 
 class VerificationError(Exception):
@@ -61,23 +68,32 @@ def verify(builder, certificate, implementation):
             'certificate_sha256': sha256(archived)}
 
 
+def load_builder(relative):
+    """Load an entry point by its local path; mathematical implementations stay separate."""
+    name = '_waning_builder_' + relative.replace('/', '_').replace('.', '_')
+    spec = importlib.util.spec_from_file_location(name, ROOT / relative)
+    require(spec is not None and spec.loader is not None, 'Cannot load builder: ' + relative)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.build_certificate
+
+
 def regenerate(directory):
     require(directory.is_absolute(), 'Regeneration output must be an absolute path')
     output = directory.expanduser().resolve()
     require(output != ROOT and ROOT not in output.parents, 'Regeneration output must be outside the project')
     require(not output.exists(), 'Regeneration output must be a new exclusive directory')
-    # Deliberate regeneration computes both derivations, without changing an archive.
-    from verify import build_certificate as original
-    from verify_independent import build_certificate as independent
-    candidates = {CERTIFICATES[0]: encode(original()), CERTIFICATES[1]: encode(independent())}
+    # Explicit regeneration independently recomputes all four certificates.
+    candidates = {certificate: encode(load_builder(relative)()) for certificate, relative in BUILDERS}
     paths = public_paths()
-    require(all(name in paths for name in CERTIFICATES), 'Both existing archived certificates are required')
+    require(all(name in paths for name in CERTIFICATES), 'All four archived certificates are required')
     manifest = {'schema': 'waning-coexistence-archive-v1', 'algorithm': 'sha256',
                 'files': {name: sha256(candidates.get(name, (ROOT / name).read_bytes())) for name in paths}}
     output.mkdir(parents=False, exist_ok=False)
-    (output / 'evidence').mkdir()
     for name, data in candidates.items():
-        (output / name).write_bytes(data)
+        target = output / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
     (output / MANIFEST).write_bytes(encode(manifest))
     return {'ok': True, 'mode': 'regenerate', 'archive_modified': False,
             'exclusive_output': str(output),
@@ -88,10 +104,14 @@ def run(builder, certificate, implementation):
     parser = argparse.ArgumentParser(description='Read-only exact verification; explicit external regeneration only.')
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('verify')
+    sub.add_parser('compute')
     regen = sub.add_parser('regenerate')
     regen.add_argument('--output-dir', type=Path, required=True)
     args = parser.parse_args()
     try:
+        if args.command == 'compute':
+            print(encode(builder()).decode(), end='')
+            return 0
         result = verify(builder, certificate, implementation) if args.command == 'verify' else regenerate(args.output_dir)
     except Exception as exc:
         print(json.dumps({'ok': False, 'error': str(exc)}, sort_keys=True))

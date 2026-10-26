@@ -45,5 +45,11 @@ jobs:
           python projects/waning-coexistence-auditor/verify_independent.py verify > "$RUNNER_TEMP/waning-independent.json"
           python -O projects/waning-coexistence-auditor/verify_independent.py verify > "$RUNNER_TEMP/waning-independent-O.json"
           cmp "$RUNNER_TEMP/waning-independent.json" "$RUNNER_TEMP/waning-independent-O.json"
+          python projects/waning-coexistence-auditor/root-count/check.py verify > "$RUNNER_TEMP/waning-roots.json"
+          python -O projects/waning-coexistence-auditor/root-count/check.py verify > "$RUNNER_TEMP/waning-roots-O.json"
+          cmp "$RUNNER_TEMP/waning-roots.json" "$RUNNER_TEMP/waning-roots-O.json"
+          python projects/waning-coexistence-auditor/root-count/check_heldout.py verify > "$RUNNER_TEMP/waning-roots-heldout.json"
+          python -O projects/waning-coexistence-auditor/root-count/check_heldout.py verify > "$RUNNER_TEMP/waning-roots-heldout-O.json"
+          cmp "$RUNNER_TEMP/waning-roots-heldout.json" "$RUNNER_TEMP/waning-roots-heldout-O.json"
           git diff --exit-code
           test -z "$(git status --porcelain --untracked-files=all)"

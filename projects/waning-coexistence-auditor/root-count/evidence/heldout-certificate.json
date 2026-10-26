@@ -1,0 +1,862 @@
+{
+  "cases": [
+    {
+      "D": "170*s**2/171 + s/57 - 2/171",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "202*s**3/285 - 7442*s**2/48735 + 161*s/6498 + 67/9747",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": -1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "1/10",
+      "name": "rational-pole-0-half",
+      "parameters": {
+        "eta1": "30",
+        "eta2": "114/5",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1/2",
+        "sig2": "1/2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [],
+      "s0": "67/114"
+    },
+    {
+      "D": "170*s**2/171 + s/57 - 2/171",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "202*s**3/285 - 35917*s**2/48735 + 47*s/3249 + 134/9747",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": -1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 0,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "4/25",
+            "9/56"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "1/10",
+      "name": "rational-pole-0-endpoint",
+      "parameters": {
+        "eta1": "30",
+        "eta2": "114/5",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1/2",
+        "sig2": "1/2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [
+        1
+      ],
+      "s0": "67/57"
+    },
+    {
+      "D": "170*s**2/171 + s/57 - 2/171",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "202*s**3/285 - 84367*s**2/48735 - 10*s/3249 + 248/9747",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": -1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": -1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "10/81",
+            "11/89"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "1/10",
+      "name": "rational-pole-0-above",
+      "parameters": {
+        "eta1": "30",
+        "eta2": "114/5",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1/2",
+        "sig2": "1/2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [
+        1
+      ],
+      "s0": "124/57"
+    },
+    {
+      "D": "170*s**2/171 + s/57 - 2/171",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "202*s**3/285 - 14453*s**2/32490 + 85*s/4332 + 67/6498",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": -1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "8/35",
+            "11/48"
+          ],
+          "multiplicity": 1
+        },
+        {
+          "interval": [
+            "25/48",
+            "12/23"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "1/10",
+      "name": "rational-pole-0-three_quarters",
+      "parameters": {
+        "eta1": "30",
+        "eta2": "114/5",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1/2",
+        "sig2": "1/2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [
+        1,
+        1
+      ],
+      "s0": "67/76"
+    },
+    {
+      "D": "75*s - 90",
+      "D_degree": 1,
+      "D_leading_sign": 1,
+      "P": "-36*s**3 + 1234*s**2/7 - 4105*s/14 + 3075/7",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": -1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-1-half",
+      "parameters": {
+        "eta1": "7",
+        "eta2": "1/3",
+        "g1": "3",
+        "g2": "5",
+        "mu": "2",
+        "p": "2",
+        "q": "3",
+        "sig1": "3",
+        "sig2": "2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "4"
+      },
+      "predicted_multiplicities": [],
+      "s0": "9/4"
+    },
+    {
+      "D": "75*s - 90",
+      "D_degree": 1,
+      "D_leading_sign": 1,
+      "P": "-36*s**3 + 1234*s**2/7 - 4415*s/7 + 5910/7",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": -1,
+      "endpoint_a_sign": 0,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-1-endpoint",
+      "parameters": {
+        "eta1": "7",
+        "eta2": "1/3",
+        "g1": "3",
+        "g2": "5",
+        "mu": "2",
+        "p": "2",
+        "q": "3",
+        "sig1": "3",
+        "sig2": "2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "4"
+      },
+      "predicted_multiplicities": [],
+      "s0": "9/2"
+    },
+    {
+      "D": "75*s - 90",
+      "D_degree": 1,
+      "D_leading_sign": 1,
+      "P": "-36*s**3 + 1234*s**2/7 - 5465*s/7 + 7170/7",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": -1,
+      "endpoint_a_sign": -1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "44/25",
+            "81/46"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-1-above",
+      "parameters": {
+        "eta1": "7",
+        "eta2": "1/3",
+        "g1": "3",
+        "g2": "5",
+        "mu": "2",
+        "p": "2",
+        "q": "3",
+        "sig1": "3",
+        "sig2": "2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "4"
+      },
+      "predicted_multiplicities": [
+        1
+      ],
+      "s0": "11/2"
+    },
+    {
+      "D": "75*s - 90",
+      "D_degree": 1,
+      "D_leading_sign": 1,
+      "P": "-36*s**3 + 1234*s**2/7 - 12935*s/28 + 8985/14",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": -1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-1-three_quarters",
+      "parameters": {
+        "eta1": "7",
+        "eta2": "1/3",
+        "g1": "3",
+        "g2": "5",
+        "mu": "2",
+        "p": "2",
+        "q": "3",
+        "sig1": "3",
+        "sig2": "2",
+        "theta1": "0",
+        "theta12": "0",
+        "theta2": "4"
+      },
+      "predicted_multiplicities": [],
+      "s0": "27/8"
+    },
+    {
+      "D": "-280*s**2/13 + 1536*s/13 - 1440/13",
+      "D_degree": 2,
+      "D_leading_sign": -1,
+      "P": "80051*s**3/4875 - 4697809*s**2/126750 - 25856*s/169 + 246936/845",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-2-half",
+      "parameters": {
+        "eta1": "2",
+        "eta2": "65/256",
+        "g1": "2",
+        "g2": "4",
+        "mu": "1",
+        "p": "3/2",
+        "q": "5/2",
+        "sig1": "1/3",
+        "sig2": "5",
+        "theta1": "3",
+        "theta12": "2",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [],
+      "s0": "2511/1300"
+    },
+    {
+      "D": "-280*s**2/13 + 1536*s/13 - 1440/13",
+      "D_degree": 2,
+      "D_leading_sign": -1,
+      "P": "80051*s**3/4875 + 575291*s**2/126750 - 1610624*s/4225 + 427728/845",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 0,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-2-endpoint",
+      "parameters": {
+        "eta1": "2",
+        "eta2": "65/256",
+        "g1": "2",
+        "g2": "4",
+        "mu": "1",
+        "p": "3/2",
+        "q": "5/2",
+        "sig1": "1/3",
+        "sig2": "5",
+        "theta1": "3",
+        "theta12": "2",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [],
+      "s0": "2511/650"
+    },
+    {
+      "D": "-280*s**2/13 + 1536*s/13 - 1440/13",
+      "D_degree": 2,
+      "D_leading_sign": -1,
+      "P": "80051*s**3/4875 + 3305291*s**2/126750 - 2109824*s/4225 + 521328/845",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": -1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "101/70",
+            "114/79"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-2-above",
+      "parameters": {
+        "eta1": "2",
+        "eta2": "65/256",
+        "g1": "2",
+        "g2": "4",
+        "mu": "1",
+        "p": "3/2",
+        "q": "5/2",
+        "sig1": "1/3",
+        "sig2": "5",
+        "theta1": "3",
+        "theta12": "2",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [
+        1
+      ],
+      "s0": "3161/650"
+    },
+    {
+      "D": "-280*s**2/13 + 1536*s/13 - 1440/13",
+      "D_degree": 2,
+      "D_leading_sign": -1,
+      "P": "80051*s**3/4875 - 2061259*s**2/126750 - 1128512*s/4225 + 337332/845",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "6/5",
+      "name": "rational-pole-2-three_quarters",
+      "parameters": {
+        "eta1": "2",
+        "eta2": "65/256",
+        "g1": "2",
+        "g2": "4",
+        "mu": "1",
+        "p": "3/2",
+        "q": "5/2",
+        "sig1": "1/3",
+        "sig2": "5",
+        "theta1": "3",
+        "theta12": "2",
+        "theta2": "0"
+      },
+      "predicted_multiplicities": [],
+      "s0": "7533/2600"
+    },
+    {
+      "D": "16*s**2/9 + 4*s/9 - 2/9",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "-271*s**3/1944 + 175*s**2/648 + 461*s/648 + 307/1944",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "1/4",
+      "name": "rational-pole-3-half",
+      "parameters": {
+        "eta1": "4",
+        "eta2": "27/4",
+        "g1": "1",
+        "g2": "2",
+        "mu": "1",
+        "p": "1",
+        "q": "1",
+        "sig1": "2",
+        "sig2": "1/3",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [],
+      "s0": "1/2"
+    },
+    {
+      "D": "16*s**2/9 + 4*s/9 - 2/9",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "-271*s**3/1944 - 401*s**2/648 + 317*s/648 + 523/1944",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 0,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "1/4",
+      "name": "rational-pole-3-endpoint",
+      "parameters": {
+        "eta1": "4",
+        "eta2": "27/4",
+        "g1": "1",
+        "g2": "2",
+        "mu": "1",
+        "p": "1",
+        "q": "1",
+        "sig1": "2",
+        "sig2": "1/3",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [],
+      "s0": "1"
+    },
+    {
+      "D": "16*s**2/9 + 4*s/9 - 2/9",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "-271*s**3/1944 - 1553*s**2/648 + 29*s/648 + 955/1944",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": -1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "31/68",
+            "26/57"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "1/4",
+      "name": "rational-pole-3-above",
+      "parameters": {
+        "eta1": "4",
+        "eta2": "27/4",
+        "g1": "1",
+        "g2": "2",
+        "mu": "1",
+        "p": "1",
+        "q": "1",
+        "sig1": "2",
+        "sig2": "1/3",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [
+        1
+      ],
+      "s0": "2"
+    },
+    {
+      "D": "16*s**2/9 + 4*s/9 - 2/9",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "-271*s**3/1944 - 113*s**2/648 + 389*s/648 + 415/1944",
+      "P_degree": 3,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "1/4",
+      "name": "rational-pole-3-three_quarters",
+      "parameters": {
+        "eta1": "4",
+        "eta2": "27/4",
+        "g1": "1",
+        "g2": "2",
+        "mu": "1",
+        "p": "1",
+        "q": "1",
+        "sig1": "2",
+        "sig2": "1/3",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [],
+      "s0": "3/4"
+    },
+    {
+      "D": "49*s**2/50 + 3*s/50 - 1/25",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "1071*s**3/2096 - 5619*s**2/10480 + 22*s/655 + 169/2620",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 0,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "2/3",
+            "2/3"
+          ],
+          "multiplicity": 2
+        }
+      ],
+      "feasible_pole": "-3/98 + sqrt(401)/98",
+      "name": "fold",
+      "parameters": {
+        "eta1": "20",
+        "eta2": "10",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "535/262",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [
+        2
+      ],
+      "s0": "872/655"
+    },
+    {
+      "D": "49*s**2/50 + 3*s/50 - 1/25",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "1071*s**3/2096 - 689537*s**2/1310000 + 22393*s/655000 + 10497/163750",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": -1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "-3/98 + sqrt(401)/98",
+      "name": "fold-below",
+      "parameters": {
+        "eta1": "20",
+        "eta2": "10",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "535/262",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [],
+      "s0": "17309/13100"
+    },
+    {
+      "D": "49*s**2/50 + 3*s/50 - 1/25",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "1071*s**3/2096 - 715213*s**2/1310000 + 21607*s/655000 + 5314/81875",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "18/31",
+            "25/43"
+          ],
+          "multiplicity": 1
+        },
+        {
+          "interval": [
+            "37/48",
+            "27/35"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "-3/98 + sqrt(401)/98",
+      "name": "fold-above",
+      "parameters": {
+        "eta1": "20",
+        "eta2": "10",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "535/262",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [
+        1,
+        1
+      ],
+      "s0": "17571/13100"
+    },
+    {
+      "D": "49*s**2/50 + 3*s/50 - 1/25",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "427*s**3/900 - 5753*s**2/10800 + 857*s/21600 + 251/3600",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "2/3",
+            "2/3"
+          ],
+          "multiplicity": 1
+        },
+        {
+          "interval": [
+            "3/4",
+            "3/4"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "-3/98 + sqrt(401)/98",
+      "name": "two-rational-roots",
+      "parameters": {
+        "eta1": "20",
+        "eta2": "10",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "535/216",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [
+        1,
+        1
+      ],
+      "s0": "2011/1440"
+    },
+    {
+      "D": "49*s**2/50 + 3*s/50 - 1/25",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "5943*s**3/22000 - 2443*s**2/5500 + 343*s/4400 + 1057/11000",
+      "P_degree": 3,
+      "b_sign": 0,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 0,
+      "endpoint_a_sign": 0,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "-3/98 + sqrt(401)/98",
+      "name": "endpoint-a-b-zero",
+      "parameters": {
+        "eta1": "20",
+        "eta2": "10",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "54/11",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [],
+      "s0": "93/55"
+    },
+    {
+      "D": "24*s**2/25 + 2*s/25 - 1/25",
+      "D_degree": 2,
+      "D_leading_sign": 1,
+      "P": "62*s**3/125 - 137*s**2/250 + s/125 + 11/250",
+      "P_degree": 3,
+      "b_sign": -1,
+      "c_sign": -1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": 0,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "11/31",
+            "11/31"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "1/6",
+      "name": "equal-critical-thresholds",
+      "parameters": {
+        "eta1": "10",
+        "eta2": "10",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "1",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [
+        1
+      ],
+      "s0": "1"
+    },
+    {
+      "D": "-s**2 + 6*s - 4",
+      "D_degree": 2,
+      "D_leading_sign": -1,
+      "P": "s**2/2 - 17*s + 16",
+      "P_degree": 2,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 1,
+      "endpoint_a_sign": -1,
+      "exact_isolated_feasible_roots": [
+        {
+          "interval": [
+            "31/32",
+            "32/33"
+          ],
+          "multiplicity": 1
+        }
+      ],
+      "feasible_pole": "3 - sqrt(5)",
+      "name": "P-degree-two",
+      "parameters": {
+        "eta1": "1",
+        "eta2": "2",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [
+        1
+      ],
+      "s0": "3"
+    },
+    {
+      "D": "-s**2 + 6*s - 4",
+      "D_degree": 2,
+      "D_leading_sign": -1,
+      "P": "14 - 14*s",
+      "P_degree": 1,
+      "b_sign": 1,
+      "c_sign": 1,
+      "cubic_discriminant_sign": 0,
+      "endpoint_a_sign": 0,
+      "exact_isolated_feasible_roots": [],
+      "feasible_pole": "3 - sqrt(5)",
+      "name": "P-degree-one-endpoint",
+      "parameters": {
+        "eta1": "1",
+        "eta2": "2",
+        "g1": "1",
+        "g2": "1",
+        "mu": "1",
+        "p": "1",
+        "q": "2",
+        "sig1": "1",
+        "sig2": "1",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "predicted_multiplicities": [],
+      "s0": "5/2"
+    }
+  ],
+  "method": "exact rational polynomial root isolation and Sturm separation from D-poles; exact algebraic coefficient signs",
+  "ok": true,
+  "scope": "24 exact rational held-out parameter cases; no infinite theorem certification",
+  "sympy": "1.13.3"
+}
