@@ -1,0 +1,7 @@
+# Primary sources and bounded comparison
+
+Cox, Gross and Martin, *Group-based phylogenetic models on 3-sunlet networks*, Bulletin of Mathematical Biology 87:132 (2025), [publisher](https://link.springer.com/article/10.1007/s11538-025-01506-1), [arXiv:2409.17894](https://arxiv.org/abs/2409.17894). Theorem 1.1 proves the odd-order n≥5 result. Section 2.1 gives the map; Lemma 2.1 the upper bound; Section 2.2 the tropical lower bound; Lemma 2.3 the strict selection inequalities. Section 4.4/Table 7 supplies finite even examples. Section 5 discusses the remaining even-order problem.
+
+The weight pattern follows the source's modified odd construction, including the placement of nonzero involutions in X. Reusing that pattern or adding finite examples is not the claimed advance. The proposed addition is the uniform all-group kernel argument for even n≥6 with exponent>2. Elementary abelian 2-groups remain outside this proof; no full even-order resolution is claimed.
+
+The paper-linked [author repository](https://github.com/shelbycox/3-Sunlet), main a08c47448636657b4174dec53826068931379aec, and selected Julia weight/rank/row-reordering files were inspected on 26 October 2026 UTC. All-state issue/PR lists were empty. No matching uniform proof was located in those files or bounded title/equivalent-language primary searches. This is not an exhaustive historical audit or a priority certificate. No root license/contributing/AGENTS file was visible; the original standalone additions here do not redistribute the author's implementation or paper.

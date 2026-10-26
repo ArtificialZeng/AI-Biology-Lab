@@ -1,0 +1,537 @@
+{
+  "cases": [
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "597de057c5ea081c86354c2121525f7dadc26fd8fd8c0d3e9a889a05db725a30",
+      "expected_5n_minus_4": 26,
+      "first_count": 17,
+      "left_nullity": 10,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        6
+      ],
+      "n": 6,
+      "no_ties": true,
+      "orientation": 0,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 10,
+      "rank_Q": 26,
+      "second_count": 19,
+      "shape": [
+        36,
+        36
+      ]
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "1f6fdb175cdfee1787071602a34bbcf782c4f21f1c134778ec9482a6256d007f",
+      "expected_5n_minus_4": 36,
+      "first_count": 37,
+      "left_nullity": 12,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        2,
+        4
+      ],
+      "n": 8,
+      "no_ties": true,
+      "orientation": 0,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 12,
+      "rank_Q": 36,
+      "second_count": 27,
+      "shape": [
+        48,
+        64
+      ]
+    },
+    {
+      "X": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "aa3b70f3870c2f98a797ee8df673e71c765029d9956426d8bb4fd2ff696d4f63",
+      "expected_5n_minus_4": 36,
+      "first_count": 37,
+      "left_nullity": 12,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        2,
+        4
+      ],
+      "n": 8,
+      "no_ties": true,
+      "orientation": 1,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 12,
+      "rank_Q": 36,
+      "second_count": 27,
+      "shape": [
+        48,
+        64
+      ]
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "05e1bf1d18311d640f4daae80637b04f7f3725e60c5407a8a715bd7b584b16be",
+      "expected_5n_minus_4": 36,
+      "first_count": 37,
+      "left_nullity": 12,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        2,
+        4
+      ],
+      "n": 8,
+      "no_ties": true,
+      "orientation": 2,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 12,
+      "rank_Q": 36,
+      "second_count": 27,
+      "shape": [
+        48,
+        64
+      ]
+    },
+    {
+      "X": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "d4e012993cf1428a48e38c91fc870f292ce8189642752f36a3c8538913c97e67",
+      "expected_5n_minus_4": 36,
+      "first_count": 37,
+      "left_nullity": 12,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        2,
+        4
+      ],
+      "n": 8,
+      "no_ties": true,
+      "orientation": 3,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 12,
+      "rank_Q": 36,
+      "second_count": 27,
+      "shape": [
+        48,
+        64
+      ]
+    },
+    {
+      "X": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "193daf6c344ded6bd2a99563ac76a476a01fe78e002dc1f9f920588a1ef301ba",
+      "expected_5n_minus_4": 56,
+      "first_count": 81,
+      "left_nullity": 16,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        2,
+        2,
+        3
+      ],
+      "n": 12,
+      "no_ties": true,
+      "orientation": 0,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 16,
+      "rank_Q": 56,
+      "second_count": 63,
+      "shape": [
+        72,
+        144
+      ]
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "d9d71f3d8e8492163b6d4ae7e7075938e72cc3223021e42e9d9d4f99c5beb8a6",
+      "expected_5n_minus_4": 76,
+      "first_count": 141,
+      "left_nullity": 20,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        4,
+        4
+      ],
+      "n": 16,
+      "no_ties": true,
+      "orientation": 0,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 20,
+      "rank_Q": 76,
+      "second_count": 115,
+      "shape": [
+        96,
+        256
+      ]
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "X_generates": true,
+      "Y": [
+        [
+          3
+        ]
+      ],
+      "Y_generates": true,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "7903bb1c21077d90e2d200b743c672757ad62baa033e85df91e3a8be22c9a0fb",
+      "expected_5n_minus_4": 16,
+      "first_count": 7,
+      "left_nullity": 9,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        4
+      ],
+      "n": 4,
+      "no_ties": true,
+      "orientation": 0,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 8,
+      "rank_Q": 15,
+      "second_count": 9,
+      "shape": [
+        24,
+        16
+      ]
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "X_generates": true,
+      "Y": [],
+      "Y_generates": false,
+      "all_branch_predictions_match": true,
+      "all_weights_positive": true,
+      "column_major_matrix_sha256": "dabeffde089f4395142cb0e1f49f0c2933a0faed6909738cdfcf10ede86ee2ce",
+      "expected_5n_minus_4": 16,
+      "first_count": 9,
+      "left_nullity": 11,
+      "minimum_absolute_margin": 1,
+      "moduli": [
+        2,
+        2
+      ],
+      "n": 4,
+      "no_ties": true,
+      "orientation": 0,
+      "proposed_basis_annihilates": true,
+      "proposed_kernel_basis_rank_Q": 8,
+      "rank_Q": 13,
+      "second_count": 7,
+      "shape": [
+        24,
+        16
+      ]
+    }
+  ],
+  "finite_diagnostics_only": true,
+  "method": "integer row elimination with gcd normalization over Q; separate monomial construction from literal parameterization; no candidate code imported or executed"
+}
