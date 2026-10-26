@@ -15,6 +15,7 @@
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |
 | [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | NDCG行顺序敏感性全量审计 | 217实验／95配置；副指标排名变动，未推翻主榜单 |
 | [MEMOTE方向审计](projects/memote-direction-auditor/README.md) | 等价反应写法反例与两行候选修复 | 真实完整ATP检测入口验证通过；待维护者确认 |
+| [免疫衰减下的双毒株共存](projects/waning-coexistence-auditor/README.md) | 完整模型的共存存在性与条件逆命题，允许任意非负免疫衰减 | 新上下文AI数学审查与两套精确复算；广义猜想和根计数仍未解决 |
 
 上游核验申请（按顺序提交，尚待维护者审核）：[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165)。
 

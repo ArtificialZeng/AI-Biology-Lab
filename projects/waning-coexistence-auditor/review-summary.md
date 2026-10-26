@@ -1,0 +1,9 @@
+# Review and provenance
+
+On 26 October 2026, a fresh AI context manually reviewed the exact theorem, proof, published Eq. (6), parameter assumptions, positive reconstruction, IVT step, conditional converse, rational delimiter and closest inspected primary literature. It recommended acceptance of the scoped mathematics as a result note. A separately written checker reconstructed the model from reactions and independently derived the recovery amplitudes; normal and optimized execution agreed.
+
+The accepted scope is all finite positive `Lambda, mu, beta_i, gamma_i, eta_i, sigma_i`, finite nonnegative waning rates, and ordered thresholds `p<q`: ordered invasion suffices for positive coexistence; it is also necessary if `q<=s0`. The proof does not settle the general abstract A1–A5 Conjecture 1, Question 2's root-count/multiple-root classification, equal thresholds, uniqueness, stability or persistence.
+
+The reviewed research snapshot had SHA-256 digest `3d8848b2461d9f4f6d3c0bb4733d5cbe0714a31367c6d0db5161bc7019342af9`. The reviewed proof file had SHA-256 `374e40d79c01c9216fadc6dad0b98a3a34e9e2bb060e3207af0d6c5549888a3d`. The public archive manifest records the packaged bytes. Packaging adapts checker paths and archive handling for a self-contained read-only project; it does not change the accepted mathematical argument.
+
+The review was a manual fresh AI mathematical recommendation. It is **not external human peer review, journal acceptance, a proof of priority, or a passing formal release gate**. Literature coverage is bounded, particularly because the final JTB full text was inaccessible; [source.md](source.md) records the versions actually inspected. Symbolic identity checks complement the analytic proof; they do not formally encode its positivity, continuity, IVT, or novelty claims.
