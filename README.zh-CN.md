@@ -67,3 +67,7 @@ python scripts/reproduce.py verify
 4. 与相关研究核对优先权，取得外部人类复核。
 
 这些是待完成目标。[研究路线](docs/RESEARCH_ROADMAP.md)列出验收条件；[外部验证说明](docs/VALIDATION.md)列出专家可以复核的问题。AI 参与推导和审查的范围见 [AI 使用说明](docs/AI_USE.md)。
+
+## 2026-10-26：开放问题研究
+
+新增两个精确研究包：[分舱模型猜想端点反例](projects/directed-cycle-identifiability/README.md)与[双磷酸化循环八参数对称子类的稳定性分类](projects/dual-futile-symmetry/README.md)。前者针对猜想的边界条件，原文主定理不受影响；后者留下完整十六参数猜想未解。优先权和原作者确认仍待核验。[筛选与范围记录](docs/OPEN_RESEARCH_2026-10-26.md)。

@@ -1,0 +1,74 @@
+{
+  "basis_determinant": "8",
+  "checks": [
+    "invertible parity basis",
+    "GP=PD",
+    "six-dimensional charpoly factorization",
+    "cubic coefficient identities",
+    "strict positive-coefficient Routh polynomials",
+    "compact positive-group identities",
+    "three exact threshold regimes"
+  ],
+  "domain": "a,b,e,f,u,w,v,z strictly positive; paired-rate Z2-equivariant slice",
+  "even_Routh": {
+    "min_coefficient": "1",
+    "monomials": 86,
+    "sha256": "52918cd32ab36899e3ee23b0b7ec221d6fa914a19a101f2f7754bb10949481b5"
+  },
+  "examples": [
+    {
+      "delta": "2",
+      "detG": "32",
+      "parameters": {
+        "a": "1",
+        "b": "1",
+        "e": "1",
+        "f": "1",
+        "u": "1",
+        "v": "1",
+        "w": "1",
+        "z": "1"
+      }
+    },
+    {
+      "delta": "-7",
+      "detG": "-427",
+      "parameters": {
+        "a": "1",
+        "b": "1",
+        "e": "1",
+        "f": "4",
+        "u": "1",
+        "v": "1",
+        "w": "1",
+        "z": "4"
+      }
+    },
+    {
+      "delta": "0",
+      "detG": "0",
+      "parameters": {
+        "a": "1",
+        "b": "1",
+        "e": "1",
+        "f": "4",
+        "u": "1",
+        "v": "1",
+        "w": "16/9",
+        "z": "4"
+      }
+    }
+  ],
+  "limitation": "Algebraic certificate for a symmetry subcase; no novelty or unrestricted-conjecture certification.",
+  "odd_Routh": {
+    "min_coefficient": "1",
+    "monomials": 56,
+    "sha256": "c7369af24cb49f6706a06507131803dbe069523fd7e0e372cb5c76c358634198"
+  },
+  "rejected_negative_controls": [
+    "matrix_entry",
+    "parity_block",
+    "threshold_sign"
+  ],
+  "source": "https://arxiv.org/html/2608.27081v2"
+}
