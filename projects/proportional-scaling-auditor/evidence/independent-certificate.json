@@ -1,0 +1,54 @@
+{
+  "arithmetic": "exact QQ polynomial identities and rational interval bounds",
+  "elimination_resultant": "-800*v*(10*v - 1)*(41464*v**2 - 72863*v + 9180)",
+  "growth_rate_expression": "4*u - 12*v + 9/5",
+  "mortality_limitation": "mu1<muS; no claim for all mu_j>=muS or a calibrated disease mechanism",
+  "normalized_rhs": [
+    "-32*u**2/5 + 19*u*v/2 - 2*u/5 - v**2/10 + v/10",
+    "-108*u**2/5 - 53*u*v/2 + 108*u/5 + 111*v**2/10 - 179*v/10"
+  ],
+  "positive_sink": {
+    "determinant": "66266*v/377 - 16165/754",
+    "determinant_lower_bound": "13302/9425",
+    "isolating_interval": [
+      "13/100",
+      "7/50"
+    ],
+    "polynomial": "41464*v**2 - 72863*v + 9180",
+    "trace": "13405*v/377 - 187107/7540",
+    "trace_upper_bound": "-149573/7540",
+    "u_expression": "125/754 - 37*v/377"
+  },
+  "rational_tests": {
+    "disease_free": {
+      "Jacobian": [
+        [
+          "-2/5",
+          "1/10"
+        ],
+        [
+          "108/5",
+          "-179/10"
+        ]
+      ],
+      "determinant": "5",
+      "trace": "-183/10"
+    },
+    "positive_saddle": {
+      "Jacobian": [
+        [
+          "-73/100",
+          "103/100"
+        ],
+        [
+          "1463/100",
+          "-1833/100"
+        ]
+      ],
+      "determinant": "-211/125",
+      "trace": "-953/50"
+    }
+  },
+  "schema": "independent-proportional-scaling-v1",
+  "scope": "counterexample to the named unqualified proportional-scaling extension only; all stability is in fractions"
+}
