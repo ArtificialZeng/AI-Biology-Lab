@@ -14,7 +14,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent
 BASE = "6088541cdcb01c9c351651244534037260dfae987cc5995c9ba3b41cab6dff4a"
-CAND = "643e54b3cad43d4b31f99fb6ffcd9ebbf3761a8ae582a631569988c661fbdce7"
+CAND = "cb6bd15dac34e9ca6074da73ff69c627e1c6ca50cf78302897110ff26dcceb52"
 
 def canonical(obj):
     return (json.dumps(obj, sort_keys=True, indent=2, allow_nan=False) + "\n").encode()
