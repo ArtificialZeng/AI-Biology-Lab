@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "constant_annihilates": true,
+      "constraint_count": 1,
+      "constraint_rank_Q": 0,
+      "highest_bit_annihilates": true,
+      "order": 2,
+      "ordering": "hamming_then_integer",
+      "r": 1,
+      "scalar_solution_dimension": 2
+    },
+    {
+      "constant_annihilates": true,
+      "constraint_count": 6,
+      "constraint_rank_Q": 2,
+      "highest_bit_annihilates": true,
+      "order": 4,
+      "ordering": "hamming_then_integer",
+      "r": 2,
+      "scalar_solution_dimension": 2
+    },
+    {
+      "constant_annihilates": true,
+      "constraint_count": 28,
+      "constraint_rank_Q": 7,
+      "highest_bit_annihilates": false,
+      "order": 8,
+      "ordering": "hamming_then_integer",
+      "r": 3,
+      "scalar_solution_dimension": 1
+    },
+    {
+      "constant_annihilates": true,
+      "constraint_count": 120,
+      "constraint_rank_Q": 15,
+      "highest_bit_annihilates": false,
+      "order": 16,
+      "ordering": "hamming_then_integer",
+      "r": 4,
+      "scalar_solution_dimension": 1
+    },
+    {
+      "constant_annihilates": true,
+      "constraint_count": 496,
+      "constraint_rank_Q": 31,
+      "highest_bit_annihilates": false,
+      "order": 32,
+      "ordering": "hamming_then_integer",
+      "r": 5,
+      "scalar_solution_dimension": 1
+    },
+    {
+      "constant_annihilates": true,
+      "constraint_count": 2016,
+      "constraint_rank_Q": 63,
+      "highest_bit_annihilates": false,
+      "order": 64,
+      "ordering": "hamming_then_integer",
+      "r": 6,
+      "scalar_solution_dimension": 1
+    },
+    {
+      "constant_annihilates": true,
+      "constraint_count": 28,
+      "constraint_rank_Q": 6,
+      "highest_bit_annihilates": true,
+      "order": 8,
+      "ordering": "integer_order",
+      "r": 3,
+      "scalar_solution_dimension": 2
+    },
+    {
+      "constant_annihilates": true,
+      "constraint_count": 120,
+      "constraint_rank_Q": 14,
+      "highest_bit_annihilates": true,
+      "order": 16,
+      "ordering": "integer_order",
+      "r": 4,
+      "scalar_solution_dimension": 2
+    }
+  ],
+  "finite_diagnostics_only": true,
+  "method": "exact integer elimination of all oriented-XOR scalar equations with t_g eliminated"
+}

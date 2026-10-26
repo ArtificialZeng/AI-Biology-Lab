@@ -1,5 +1,9 @@
 # Exact scope
 
-Let G be a finite abelian group of even order n≥6 and exponent greater than two. For the general group-based model B={id} on the Cox–Gross–Martin 3-sunlet network, the complex affine-cone dimension is 5n−4. The literal source map, strict weights and full characteristic-zero left-kernel proof are in proof.md.
+Over characteristic zero, for every finite abelian group G with q=|G|≥5 and B={id}, the source 3-sunlet complex affine cone has dimension 5q−4. Even groups of exponent>2 use proof.md; elementary-two groups G=(C2)^r,r≥3 use elementary_two_proof.md; odd q≥5 use the published Cox–Gross–Martin theorem. These cases exhaust the scope.
 
-The new proposed contribution is a uniform proof for this even-order class. The source's odd-order theorem, modified weight pattern and finite even examples are prior. The excluded elementary abelian 2-groups, all order-four cases, model topology identifiability and biological experiments are not claimed resolved. Finite selected-matrix negative controls do not establish variety dimensions. Priority and external human validation remain pending.
+The new elementary-two theorem is uniform in r. Published full-dimension finite cases r3,4,5 are prior work. The selected Hamming chamber's order-four rank14 is not a variety dimension claim; the known corresponding variety dimension15 is credited. The older exponent>2 chamber's elementary-two negative controls remain accurate for that particular construction.
+
+A credited consequence for exactly the source's binary semi-directed level-1 class, at least3leaves, cycles≥3 and root-suppressed uncontracted m edges, c cycles, is dimension(q−1)(m−c)+1. This applies the published cut-edge dimension formula and is not presented as a second new method.
+
+No nontrivial-B model, groups≤4, higher-level/nonbinary network, full topology identifiability, or biological experiment is claimed. Historical priority and external human confirmation remain pending. The ambiguous lm+1 notation in Gross2024 Conjecture25 is not silently reinterpreted as an all-B assertion.

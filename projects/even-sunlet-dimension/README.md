@@ -1,27 +1,28 @@
-# Even-order 3-sunlet dimensions
+# General group-based 3-sunlet dimensions
 
-For every finite abelian group G of even order n≥6 and exponent greater than two, the general group-based model (B={id}) on the source's 3-sunlet network has complex affine-cone dimension **5n−4**.
+For every finite abelian group G with order q≥5, the general group-based model (B={id}) on the source 3-sunlet has complex affine-cone dimension **5q−4**. The published odd-order theorem is credited to Cox–Gross–Martin. The contribution here supplies strict tropical proofs for the even-order groups: [exponent greater than two](proof.md), and [elementary abelian two groups](elementary_two_proof.md).
 
-The [proof](proof.md) constructs a strict tropical chamber and parameterizes its entire left kernel, uniformly for this infinite class. The known odd-order theorem, weight pattern, upper bound and finite even examples are credited to Cox–Gross–Martin. Elementary abelian 2-groups and order four are excluded. This is a partial result on the even-order problem; dimension alone does not establish topology identifiability or a biological experiment.
+The elementary-two proof uses a Hamming-order chamber and its complete characteristic-zero left kernel for every r≥3. The source already computed the cases r=3, 4, 5; those finite cases are credited rather than claimed as new. The same source cut-edge induction consequently gives dimension **(q−1)(m−c)+1** for its binary semi-directed level-1 network class, counting m in the root-suppressed, uncontracted representation. The model with nontrivial B, groups of order≤4, and topology identifiability are outside this uniform theorem.
 
-Fresh AI mathematical review found no gap. Historical priority, author confirmation and external human review remain pending. No trusted-runner or proof-assistant certificate is claimed. See [statement](statement.md), [sources](sources.md) and [review status](review-summary.md).
+This is one coherent extension of the existing even-order research contribution. [Statement](statement.md), [sources](sources.md), and [review status](review-summary.md) separate the known results, new proof and limitations. Finite matrices are diagnostics, not proofs of infinite quantifiers.
 
 ## Reproduce
 
-The primary exact-rational checker uses CPython 3.13 and python-flint 0.9.0. The independent checker uses only the Python standard library; it constructs literal monomial exponents separately and performs integer elimination over Q.
+Use CPython 3.13 and python-flint 0.9.0 for the full exact-rational matrices; the scalar and separate literal-monomial checkers use only the standard library.
 
 ```sh
 python -m pip install -r requirements.txt
 python -B verify.py verify
-python -O -B verify.py verify
 python -B verify_independent.py verify
-python -O -B verify_independent.py verify
+python -B verify_elementary.py verify
+python -B verify_scalar.py verify
+python -B verify_elementary_independent.py verify
 ```
 
-These finite matrices are diagnostics, not the proof of the infinite quantifiers. Every verify command hashes all project inputs and compares its recomputed certificate without writing files. `compute` prints a certificate to stdout. Explicit regeneration proposes both certificates and a manifest in a new absolute directory outside this project:
+Each command also works with `python -O -B`. Verification hashes every input and compares recomputed certificates without writing files. `compute` prints a certificate. Explicit regeneration proposes all certificates and the manifest in a new absolute directory outside the project:
 
 ```sh
 python -B verify.py regenerate --output-dir /absolute/outside/path/new-sunlet-proposal
 ```
 
-The parent must exist and the output must not exist. Changed mathematics requires review as well as new hashes. Original additions have a directory-scoped MIT license; no author Julia source, paper or private correspondence is redistributed.
+The output must not exist and its parent must exist. Mathematical changes need new review as well as new hashes. `prior-r11-proof.md` is an identical dependency copy of `proof.md`, retained to preserve the frozen elementary-two proof's file reference. Original additions use the directory-scoped MIT license. No author Julia source, paper or private correspondence is redistributed.
