@@ -1,0 +1,323 @@
+{
+  "statement": "m=2,N>=4,all states c,r=N-4-c nonnegative; Q=N(P-I)",
+  "symbolic_identities": [
+    {
+      "a": 0,
+      "b": 0,
+      "factorized_polynomial": "4*c*(r + 4)*(c + r + 2)",
+      "terms": [
+        {
+          "powers": [
+            2,
+            1
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            2,
+            0
+          ],
+          "coefficient": 16
+        },
+        {
+          "powers": [
+            1,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            1
+          ],
+          "coefficient": 24
+        },
+        {
+          "powers": [
+            1,
+            0
+          ],
+          "coefficient": 32
+        }
+      ]
+    },
+    {
+      "a": 0,
+      "b": 1,
+      "factorized_polynomial": "2*(c + r + 3)*(2*c*r + 5*c + 2*r + 4)",
+      "terms": [
+        {
+          "powers": [
+            2,
+            1
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            2,
+            0
+          ],
+          "coefficient": 10
+        },
+        {
+          "powers": [
+            1,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            1
+          ],
+          "coefficient": 26
+        },
+        {
+          "powers": [
+            1,
+            0
+          ],
+          "coefficient": 38
+        },
+        {
+          "powers": [
+            0,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            0,
+            1
+          ],
+          "coefficient": 20
+        },
+        {
+          "powers": [
+            0,
+            0
+          ],
+          "coefficient": 24
+        }
+      ]
+    },
+    {
+      "a": 0,
+      "b": 2,
+      "factorized_polynomial": "2*(2*c**2*r + c**2 + 2*c*r**2 + 12*c*r + 5*c + 3*r**2 + 11*r + 2)",
+      "terms": [
+        {
+          "powers": [
+            2,
+            1
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            2,
+            0
+          ],
+          "coefficient": 2
+        },
+        {
+          "powers": [
+            1,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            1
+          ],
+          "coefficient": 24
+        },
+        {
+          "powers": [
+            1,
+            0
+          ],
+          "coefficient": 10
+        },
+        {
+          "powers": [
+            0,
+            2
+          ],
+          "coefficient": 6
+        },
+        {
+          "powers": [
+            0,
+            1
+          ],
+          "coefficient": 22
+        },
+        {
+          "powers": [
+            0,
+            0
+          ],
+          "coefficient": 4
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "b": 0,
+      "factorized_polynomial": "4*(r + 2)*(c**2 + c*r + 5*c + r + 5)",
+      "terms": [
+        {
+          "powers": [
+            2,
+            1
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            2,
+            0
+          ],
+          "coefficient": 8
+        },
+        {
+          "powers": [
+            1,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            1
+          ],
+          "coefficient": 28
+        },
+        {
+          "powers": [
+            1,
+            0
+          ],
+          "coefficient": 40
+        },
+        {
+          "powers": [
+            0,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            0,
+            1
+          ],
+          "coefficient": 28
+        },
+        {
+          "powers": [
+            0,
+            0
+          ],
+          "coefficient": 40
+        }
+      ]
+    },
+    {
+      "a": 1,
+      "b": 1,
+      "factorized_polynomial": "2*r*(2*c**2 + 2*c*r + 13*c + 3*r + 17)",
+      "terms": [
+        {
+          "powers": [
+            2,
+            1
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            1
+          ],
+          "coefficient": 26
+        },
+        {
+          "powers": [
+            0,
+            2
+          ],
+          "coefficient": 6
+        },
+        {
+          "powers": [
+            0,
+            1
+          ],
+          "coefficient": 34
+        }
+      ]
+    },
+    {
+      "a": 2,
+      "b": 0,
+      "factorized_polynomial": "4*r*(c**2 + c*r + 8*c + 2*r + 18)",
+      "terms": [
+        {
+          "powers": [
+            2,
+            1
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            2
+          ],
+          "coefficient": 4
+        },
+        {
+          "powers": [
+            1,
+            1
+          ],
+          "coefficient": 32
+        },
+        {
+          "powers": [
+            0,
+            2
+          ],
+          "coefficient": 8
+        },
+        {
+          "powers": [
+            0,
+            1
+          ],
+          "coefficient": 72
+        }
+      ]
+    }
+  ],
+  "singleton_actual_drift": "-4/[N^2(N-1)]",
+  "singleton_upper_bound": "1/N-4/[N^2(N-1)(N(N-2)+2)]",
+  "sympy_version": "1.13.3"
+}

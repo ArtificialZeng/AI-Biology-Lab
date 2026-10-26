@@ -1,0 +1,8 @@
+{
+  "frozen_research_snapshot_digest": "05f7c523ce0acd1fa21cca215c1b15259f90c6d7839a4b0142bcad98aaabf237",
+  "owner_checker_sha256": "ef3379189a88cba867238351784c51f02aaaf268e144acc65e3b1f3c79ef6699",
+  "fresh_original_sha256": "3e214d340ff31203041b4d5555735ef0cb499c3588c47702c255e1787eb62830",
+  "fresh_adapter_sha256": "64168784d572068059815cf24b75041ad9e82b457274334ee1145815389b26b8",
+  "adaptation": "Remove private snapshot/path/digest plumbing and corresponding output provenance only; preserve mathematical functions and assertions. Public manifest supplies binding.",
+  "excluded": "Author paper PDF, third-party source code, unrelated triage source, private workflow state; these remain private research inputs."
+}
