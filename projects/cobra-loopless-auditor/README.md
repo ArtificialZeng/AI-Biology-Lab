@@ -22,7 +22,7 @@ git -C /tmp/cobrapy-source checkout a9c5ced29670bed5035fb19e87e7b0b588adb62d
 python projects/cobra-loopless-auditor/reproduce.py --checkout /tmp/cobrapy-source
 ```
 
-The runner checks source bytes, applies the patch in a temporary copy, and runs
+The runner checks the two implicated source files, applies the patch in a temporary copy, and runs
 an independent diamond-network contract suite against both sources. Expected:
 baseline **24 failed / 23 passed**, patched **47 passed**. It verifies the exact
 exception type, not just a failing exit code. `--logs DIR` preserves separate

@@ -1,13 +1,2 @@
-* text=auto
-*.py text eol=lf
-*.json text eol=lf
-*.md text eol=lf
-*.tex text eol=lf
-*.pdf binary
-*.png binary
-projects/paper-code-auditor/fixtures/** -text
-projects/ord-data-auditor/fixtures/** -text
-projects/protein-metric-auditor/** -text
-projects/memote-direction-auditor/fixtures/** -text
-projects/mixed-phosphorylation/validated-cycle/** -text
-projects/protein-metric-auditor/vendor/** whitespace=-blank-at-eol
+# Unified-diff blank context lines contain one required space.
+projects/cobra-loopless-auditor/upstream.patch -whitespace

@@ -309,7 +309,7 @@ def main():
                "rational_scope": {"n": [3, args.max_n], "placements": "all allowed", "m": "all 1..p"},
                "exact_full_column_rank": "n+2 on every rational source fixture and all special cases",
                "symbolic_ode_scope": {"n": [3, max(args.max_n, args.symbolic_max_n)], "placements": "all allowed"},
-               "special_cases": special, "fixtures": fibers, 
+               "special_cases": special, "fixtures": fibers,
                "checker_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                "limitations": "Finite checks do not prove arbitrary-n completeness or novelty. This is not a runner release-gate receipt."}
     rendered = json.dumps(receipt, indent=2, ensure_ascii=False) + "\n"
