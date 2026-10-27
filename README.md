@@ -105,3 +105,7 @@ The project uses AI for derivation, coding, search, and review. Separate AI revi
 - Related work requiring priority clarification: [Grasse, SBHD 2023, poster 48](https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf); [Grasse and Conradi, BIOMATH 2025 abstract](https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828).
 
 Third-party papers are linked, not redistributed. Original repository code is available under the [MIT license](LICENSE); third-party code and data retain their own licenses, recorded in each project's `THIRD_PARTY.md`. Citation metadata is in [CITATION.cff](CITATION.cff).
+
+## Density-triggered serial-transfer dynamics
+
+[Proof and reproducible checks](projects/serial-transfer-global-dynamics/) for the strict two-environment full-basin exclusion question in Schreiber (2025), with a finite-period classification. Exact analytic claims, finite computational checks, and limits of source/author verification are distinguished in the packet.
