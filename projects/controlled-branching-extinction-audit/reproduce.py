@@ -9,7 +9,7 @@ import sys
 def main():
     root = Path(__file__).resolve().parent
     manifest = json.loads((root / "manifest.json").read_text())
-    expected = {"README.md", "proof.md", "sources.md", "witness.json", "check.py", "reproduce.py", "status.json", "LICENSE"}
+    expected = {"README.md", "proof.md", "first-moment-proof.md", "sources.md", "witness.json", "check.py", "reproduce.py", "status.json", "LICENSE"}
     if set(manifest["files"]) != expected:
         raise ValueError("manifest file-set mismatch")
     for name, digest in manifest["files"].items():
