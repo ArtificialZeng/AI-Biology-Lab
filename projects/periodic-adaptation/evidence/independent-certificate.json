@@ -1,0 +1,60 @@
+{
+  "conservation_basis_source_species_1_2_3": [
+    [
+      1,
+      0,
+      1
+    ]
+  ],
+  "formal_freeze_passed": false,
+  "job_id": null,
+  "proposer_job_id": null,
+  "reaction_stoichiometry_source_species_1_2_3": [
+    [
+      "-1",
+      "1",
+      "-1",
+      "1"
+    ],
+    [
+      "0",
+      "0",
+      "1",
+      "-1"
+    ],
+    [
+      "1",
+      "-1",
+      "1",
+      "-1"
+    ]
+  ],
+  "scope": "Symbolic identities and exact file hashes only; analytic ODE steps require the written referee argument. No finite grid is used as evidence of a universal statement.",
+  "source_binding_type": "fixed-reviewed-model-and-proof-byte-hashes-only",
+  "symbolic_check_count": 19,
+  "symbolic_checks": {
+    "Hurwitz determinant": "zero rational function",
+    "Hurwitz trace": "zero rational function",
+    "constant equilibrium x": "zero rational function",
+    "constant equilibrium y": "zero rational function",
+    "first difference equation": "zero rational function",
+    "first-column worst-case": "zero rational function",
+    "frequency derivative numerator": "zero rational function",
+    "input-eliminated w dynamics": "zero rational function",
+    "log identity numerator": "zero rational function",
+    "reaction-derived x": "zero rational function",
+    "reaction-derived y": "zero rational function",
+    "second difference equation": "zero rational function",
+    "sinusoidal squared gain": "zero rational function",
+    "slanted boundary decomposition": "zero rational function",
+    "upper-x boundary decomposition": "zero rational function",
+    "weighted first column": "zero rational function",
+    "weighted second column": "zero rational function",
+    "y harmonic response": "zero rational function",
+    "z derivative": "zero rational function"
+  },
+  "verified_sha256": {
+    "model.json": "bf8a492e3824eea0e3a0f0ef493810a079a18d541d9984bf832b02245f8556c5",
+    "proof.md": "3084f8f5f0a0fc1c41fc7b1fb560ba5711e17e99f38b2b4f3bdef9851a96a05c"
+  }
+}
