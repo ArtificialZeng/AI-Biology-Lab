@@ -1,0 +1,13 @@
+# Review boundary and assistance
+
+On28October2026 local time(27OctoberUTC), a separate fresh-context AI mathematical/source reviewer found all three frozen mathematical claims valid without changes: the finite rational comparison, the fixed-parameter small-rate expansion for0<q<1/4, and the larger fast-rate limit. Its overall recommendation required prior-work and framing revisions. The review independently reconstructed symbolic and rational identities and read the analytic limiting arguments; it did not treat the candidate's scripts as proof.
+
+This technical note incorporates the requested neutral framing and the exact equivalence to Evans–Ralph–Schreiber–Sen2013. This local review does not establish human peer review, priority or formal runner certification. Positive mathematical review does not establish publication value or historical priority. No external human peer review, public source-author endorsement, proof-assistant certificate or formal runner-certified release pass is claimed.
+
+The proposed use is a short fixed-target example for clarification in the author repository, rather than a claimed standalone journal contribution. The complete2025prose conjecture remains ambiguous/unresolved; only the subsidiary fixed-target assertion is disproved. The optimized-over-target envelope is not resolved. General stochastic dispersal models, invariant densities, stationary growth formulas, ideal allocation and generic nonmonotone rate responses are established prior work. No new general biological mechanism or broad asymptotic priority is claimed.
+
+AI assisted model reconstruction, derivation, counterexample discovery, exact arithmetic implementation and local checking. Separate contexts provide useful checks with shared model inputs; they are not external human peer review. Scope excludes colored environments, continuous phenotype spaces, demographic extinction/survival and empirical biological efficacy.
+
+The public checkers are original symbolic/rational reconstructions. The model certificate checks exact identities; the bounds certificate checks rational implications of analytic inequalities supplied in proof.md. They do not automatically establish every analytic lemma. Numerical quadrature is not a decisive proof input, and no native Julia execution or author-software fix is claimed.
+
+The archive manifest binds every public project file except itself. Ordinary verification is read-only; explicit regeneration writes to an exclusive external directory. Replacing a digest alone does not validate changed mathematics. No private correspondence, internal prompts, review transcripts, third-party papers or source-author software is redistributed.

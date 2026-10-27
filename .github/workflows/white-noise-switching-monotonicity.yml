@@ -1,0 +1,44 @@
+name: White-noise switching exact checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - projects/white-noise-switching-monotonicity/**
+      - .github/workflows/white-noise-switching-monotonicity.yml
+  pull_request:
+    paths:
+      - projects/white-noise-switching-monotonicity/**
+      - .github/workflows/white-noise-switching-monotonicity.yml
+
+permissions:
+  contents: read
+
+jobs:
+  exact:
+    name: Exact checks (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r projects/white-noise-switching-monotonicity/requirements.txt
+      - name: Compare normal and optimized read-only exact checks
+        shell: bash
+        run: |
+          set -eu
+          python -B projects/white-noise-switching-monotonicity/verify_model.py verify > "$RUNNER_TEMP/switching-model.json"
+          python -O -B projects/white-noise-switching-monotonicity/verify_model.py verify > "$RUNNER_TEMP/switching-model-O.json"
+          cmp "$RUNNER_TEMP/switching-model.json" "$RUNNER_TEMP/switching-model-O.json"
+          python -B projects/white-noise-switching-monotonicity/verify_bounds.py verify > "$RUNNER_TEMP/switching-bounds.json"
+          python -O -B projects/white-noise-switching-monotonicity/verify_bounds.py verify > "$RUNNER_TEMP/switching-bounds-O.json"
+          cmp "$RUNNER_TEMP/switching-bounds.json" "$RUNNER_TEMP/switching-bounds-O.json"
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"
