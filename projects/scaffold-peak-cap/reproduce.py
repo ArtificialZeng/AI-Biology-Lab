@@ -51,7 +51,8 @@ def main():
     results = {'dependency': json.loads(version.stdout), 'checks': {}}
     checks = [('coefficient', 'verify_peak_cap.py', []),
               ('sharpness-bisection', 'exact_verifier.py', ['source-baseline.json']),
-              ('sharpness-radical', 'exact_verifier.py', ['source-baseline-radical.json'])]
+              ('sharpness-radical', 'exact_verifier.py', ['source-baseline-radical.json']),
+              ('one-vacancy', 'check_certificates.py', ['cases.json'])]
     for label, script, inputs in checks:
         command = [sys.executable, '-B', '-c', bootstrap, str(ROOT / script)]
         command += [str(ROOT / item) for item in inputs]
@@ -65,14 +66,33 @@ def main():
                     doc.get('integer_coefficients') == 322 and
                     doc.get('all_strictly_negative') is True,
                     'Coefficient reconstruction returned an unexpected result.')
+        elif label == 'one-vacancy':
+            entries = doc.get('cases', [])
+            require(doc.get('status') == 'exact finite certificates valid' and
+                    [entry.get('p') for entry in entries] == [2, 3, 4, 5, 6] and
+                    all(entry.get('exact_valid') is True and
+                        entry.get('certified_disjoint_maximum_intervals') == entry.get('p') and
+                        entry.get('certified_signs') == [1, -1] * entry.get('p')
+                        for entry in entries),
+                    'One-vacancy certificates returned an unexpected result.')
         else:
             require(doc.get('exact_valid') is True and
                     doc.get('signs') == [1, -1, 1, -1] and
                     doc.get('at_least_strict_maxima') == 2,
                     'Sharpness certificate returned an unexpected result.')
         results['checks'][label] = doc
+    regenerated = work / 'generated-cases.json'
+    command = [sys.executable, '-B', '-c', bootstrap,
+               str(ROOT / 'generate_certificates.py'), '--output', str(regenerated)]
+    child = subprocess.run(command, cwd=work, env=env, text=True, capture_output=True)
+    (work / 'one-vacancy-regeneration.stdout').write_text(child.stdout)
+    (work / 'one-vacancy-regeneration.stderr').write_text(child.stderr)
+    require(child.returncode == 0, 'One-vacancy regeneration failed.')
+    require(regenerated.read_bytes() == (ROOT / 'cases.json').read_bytes(),
+            'Regenerated one-vacancy certificates differ from frozen cases.')
+    results['checks']['one-vacancy-regeneration'] = {'byte_identical': True}
     results['status'] = 'exact-checks-passed'
-    results['scope'] = 'Finite coefficient identity and rational sharpness checks; read the analytic proof separately.'
+    results['scope'] = 'Finite coefficient identity, rational sharpness and one-vacancy case checks; read the universal cap proof and all-p construction proof separately.'
     (work / 'result.json').write_text(json.dumps(results, indent=2) + '\n')
     print(json.dumps(results))
 
