@@ -17,25 +17,25 @@
   "files": {
     ".gitignore": "5226b38e1fb7350f9aceff815cd25380cec400f438e21b865e1b370fa869a7dc",
     "LICENSE": "c94cb3e4308c5f123b2182dd6d691daa649f71e88e089994d143af162e38410e",
-    "README.md": "f09a1659ecd52f397fe493acb5293ec7342726b03b18989f6ed6daebb313753d",
+    "README.md": "45718509fba30cc3c68ca42575cb1a0ab1931ab7be7e600d8266c7c7a464e406",
     "THIRD_PARTY.md": "d661327e448290260296951769c0b87453f1ec26aeed20dfd98705c3cee32ebc",
     "bootstrap.py": "4b0c4c63511467dcc449044d9514f17766c04ca8f3b9f11c723381e513fb32ad",
     "ci/native-replay.yml": "e4854b45979f924796382b6549106d252c18587654a614c1dc11dbc873d9d167",
     "evidence/attempt-history.json": "d9efdc93cb46ecb09d062cb8cb261fcb24e9b850175594031fe25f76b8de4d33",
+    "evidence/format-synchronization.json": "a16cf97faf024767459578021d5f7c1db029339fa4d2e533d9d5595b4993055e",
     "evidence/local-paired-summary.json": "add72547aee13b94a3ddc8444a048b42df87ef61e786df42f7dac0326fea864d",
     "evidence/mixture-taylor-bound.json": "cfe72d4fb77d242c679c51f2ab9f3862edaebc8f756d4900abaca46fc11cd005",
-    "frozen/__pycache__/test_terminal_contract.cpython-313-pytest-9.1.1.pyc": "a4f3974d72454d71bfd0a163fb5f3b8c0386d5fbb3c080bff9ca28dc227e9ce7",
+    "evidence/upstream-acceptance.json": "22204f3ad43de2df75cb40c07d571450447c122da65cf207cd1b3abd24a4fb76",
     "frozen/candidate.patch": "ec7315e725b3d7c2e8c9f0aff596fd1398f490a8231b0edc16ba5cf4394595fa",
     "frozen/check_public_api.py": "36c9c932774192f1375bebed35bd71701f75599f134103df82ddc20fb32df0ca",
     "frozen/run_source_pytest.py": "288f9c03e2e25569736ab0cb9e165fa4ea485faf21df1c4364cab650452219b4",
     "frozen/test_terminal_contract.py": "94baf8949fd91d5be89bddf458ab0eac339dbedc205ce3532724f1500750b60c",
     "licenses/tskit-LICENSE": "bfd95c5469100b9755555e120412ec6bdb21aabdb62170db45e751a28f6fd480",
-    "manifest.json": "455497672aa67ae658dcb715b87ceeec49228a0304a2000798a11499f2b538e8",
+    "manifest.json": "5fa9709bbe2502637d0ee9a6585db67437a8b2eedefcf65488daeb9f0e1d7ce8",
     "neutral_replay.py": "c567dbbbace89e0a4d94baa7edc84f0983ca92a9c0e2c271d69571ccb5f97c6d",
     "requirements-observed.txt": "7af7b77724197d57f0164a49d4264d12532c763e8eee0ce4b1b27cb56677a0e8",
     "source.md": "ecf6beb5379c3f37f17277d7ea92768035d79135318443bbf487ce04ef2718ae",
-    "verify_variant.py": "93c70e9134226963f62123d2845d0090ad14e4d2f7a56d878e552154249b376b",
-    "evidence/format-synchronization.json": "a16cf97faf024767459578021d5f7c1db029339fa4d2e533d9d5595b4993055e"
+    "verify_variant.py": "93c70e9134226963f62123d2845d0090ad14e4d2f7a56d878e552154249b376b"
   },
   "manifest_self_hash": "Excluded to avoid circular hashing",
   "revision": "v3-format-only",
@@ -125,5 +125,96 @@
       }
     ],
     "scope": "New native builds from locked source; reused observed Python/GSL; no fresh environment or hosted CI claimed before publication"
+  },
+  "historical_packaging_scope": "Packaging timestamps, remaining_gaps, and actual_execution_state_v1/v2 describe the original packaging phase before hosted publication. Their false execution flags are historical, not current acceptance status.",
+  "integrity_audit": {
+    "checked_at_utc": "2026-10-27T14:53:31.355048+00:00",
+    "base_head": "94b4e1f6a1d1c69986d964fc65478dc0d7732ff2",
+    "anomalies": [
+      {
+        "path": "frozen/__pycache__/test_terminal_contract.cpython-313-pytest-9.1.1.pyc",
+        "tracked": false,
+        "exists": true,
+        "recorded_sha256": "a4f3974d72454d71bfd0a163fb5f3b8c0386d5fbb3c080bff9ca28dc227e9ce7",
+        "observed_sha256": "d9fe859a0e2e3ca1833562085511771c8b982b6a010b9497ac3177d70beeb6ef",
+        "action": "Retained only in historical_packaging_file_set_v3; excluded from current tracked-files integrity. No cache file was modified."
+      }
+    ],
+    "method": "Current files are derived from git ls-files for this project plus explicitly added evidence/upstream-acceptance.json; archive_manifest.json is excluded to avoid circular hashing. Historical cache hashes were not refreshed.",
+    "scientific_files_changed": false
+  },
+  "upstream_acceptance": {
+    "checked_at_utc": "2026-10-27T14:48:49.259204+00:00",
+    "upstream_pr": "https://github.com/tskit-dev/msprime/pull/2547",
+    "state": "MERGED",
+    "merged_at_utc": "2026-10-27T14:09:01Z",
+    "merged_by": "jeromekelleher",
+    "merge_commit": "7954a7285c1738e1395a11f9e41446ec8f3ce610",
+    "reviewed_head": "56427173f6c013dc11903a9e0d641f83e514ea51",
+    "approval": {
+      "reviewer": "jeromekelleher",
+      "state": "APPROVED",
+      "submitted_at_utc": "2026-10-27T13:59:54Z",
+      "url": "https://github.com/tskit-dev/msprime/pull/2547#pullrequestreview-5668256579"
+    },
+    "additional_maintainer_feedback": {
+      "reviewer": "apragsdale",
+      "kind": "positive issue comment",
+      "url": "https://github.com/tskit-dev/msprime/pull/2547#issuecomment-6443634777"
+    },
+    "upstream_checks": {
+      "success": 13,
+      "total": 13
+    },
+    "merged_demography_sha256": "415c7b43d43043e0966af33817dab59ce073a1a95b18d96019324ec817d9bb37",
+    "matches_frozen_candidate": true,
+    "main_at_check": "7954a7285c1738e1395a11f9e41446ec8f3ce610",
+    "main_contains_merge": true,
+    "scope": "Upstream maintainer acceptance of the bounded numerical diagnostic correction; not experimental biological validation or journal peer review."
+  },
+  "historical_lab_hosted_ci": {
+    "scope": "Historical hosted checks for lab PR #33 head 94b4e1f6a1d1c69986d964fc65478dc0d7732ff2, completed 2026-10-27; these do not validate the subsequent acceptance metadata update.",
+    "source_record": "R35 msprime-lint-repair/lab-final.json",
+    "source_record_sha256": "3aba5c9b1728088a940bba075ba874b8a3dfc0c72633479b6fe3f8ae8e84a220",
+    "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/33",
+    "head_commit": "94b4e1f6a1d1c69986d964fc65478dc0d7732ff2",
+    "success": 9,
+    "total": 9,
+    "native_paired_success": 2,
+    "completed_at_utc": "2026-10-27T10:26:09Z"
+  },
+  "current_metadata_revision_ci": {
+    "scope": "Preparation-time snapshot at2026-10-27T14:53:31UTC, before commit. Current revision checks are shown on labPR33.",
+    "hosted_ci_executed": false,
+    "status": "not-run-at-metadata-preparation-time",
+    "base_head": "94b4e1f6a1d1c69986d964fc65478dc0d7732ff2"
+  },
+  "metadata_revision": "v4-upstream-acceptance-metadata-only",
+  "metadata_revision_utc": "2026-10-27T14:53:31.355048+00:00",
+  "historical_packaging_file_set_v3": {
+    "scope": "Previous v3-format-only archive file map preserved verbatim; includes the stale ignored cache entry disclosed by integrity_audit.",
+    "files": {
+      ".gitignore": "5226b38e1fb7350f9aceff815cd25380cec400f438e21b865e1b370fa869a7dc",
+      "LICENSE": "c94cb3e4308c5f123b2182dd6d691daa649f71e88e089994d143af162e38410e",
+      "README.md": "f09a1659ecd52f397fe493acb5293ec7342726b03b18989f6ed6daebb313753d",
+      "THIRD_PARTY.md": "d661327e448290260296951769c0b87453f1ec26aeed20dfd98705c3cee32ebc",
+      "bootstrap.py": "4b0c4c63511467dcc449044d9514f17766c04ca8f3b9f11c723381e513fb32ad",
+      "ci/native-replay.yml": "e4854b45979f924796382b6549106d252c18587654a614c1dc11dbc873d9d167",
+      "evidence/attempt-history.json": "d9efdc93cb46ecb09d062cb8cb261fcb24e9b850175594031fe25f76b8de4d33",
+      "evidence/local-paired-summary.json": "add72547aee13b94a3ddc8444a048b42df87ef61e786df42f7dac0326fea864d",
+      "evidence/mixture-taylor-bound.json": "cfe72d4fb77d242c679c51f2ab9f3862edaebc8f756d4900abaca46fc11cd005",
+      "frozen/__pycache__/test_terminal_contract.cpython-313-pytest-9.1.1.pyc": "a4f3974d72454d71bfd0a163fb5f3b8c0386d5fbb3c080bff9ca28dc227e9ce7",
+      "frozen/candidate.patch": "ec7315e725b3d7c2e8c9f0aff596fd1398f490a8231b0edc16ba5cf4394595fa",
+      "frozen/check_public_api.py": "36c9c932774192f1375bebed35bd71701f75599f134103df82ddc20fb32df0ca",
+      "frozen/run_source_pytest.py": "288f9c03e2e25569736ab0cb9e165fa4ea485faf21df1c4364cab650452219b4",
+      "frozen/test_terminal_contract.py": "94baf8949fd91d5be89bddf458ab0eac339dbedc205ce3532724f1500750b60c",
+      "licenses/tskit-LICENSE": "bfd95c5469100b9755555e120412ec6bdb21aabdb62170db45e751a28f6fd480",
+      "manifest.json": "455497672aa67ae658dcb715b87ceeec49228a0304a2000798a11499f2b538e8",
+      "neutral_replay.py": "c567dbbbace89e0a4d94baa7edc84f0983ca92a9c0e2c271d69571ccb5f97c6d",
+      "requirements-observed.txt": "7af7b77724197d57f0164a49d4264d12532c763e8eee0ce4b1b27cb56677a0e8",
+      "source.md": "ecf6beb5379c3f37f17277d7ea92768035d79135318443bbf487ce04ef2718ae",
+      "verify_variant.py": "93c70e9134226963f62123d2845d0090ad14e4d2f7a56d878e552154249b376b",
+      "evidence/format-synchronization.json": "a16cf97faf024767459578021d5f7c1db029339fa4d2e533d9d5595b4993055e"
+    }
   }
 }

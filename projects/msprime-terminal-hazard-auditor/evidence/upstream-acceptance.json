@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-27T14:53:31.355048+00:00",
+  "provenance": {
+    "source_record": "R44 msprime-acceptance-verified.json",
+    "source_record_sha256": "6734f47f6eadbc4b4455eec465796b7e6442c3b215e9fd9bdfbd5193d4efa0cb",
+    "basis": "Recorded read-only GitHub PR, review, check and upstream-main comparison evidence."
+  },
+  "acceptance": {
+    "checked_at_utc": "2026-10-27T14:48:49.259204+00:00",
+    "upstream_pr": "https://github.com/tskit-dev/msprime/pull/2547",
+    "state": "MERGED",
+    "merged_at_utc": "2026-10-27T14:09:01Z",
+    "merged_by": "jeromekelleher",
+    "merge_commit": "7954a7285c1738e1395a11f9e41446ec8f3ce610",
+    "reviewed_head": "56427173f6c013dc11903a9e0d641f83e514ea51",
+    "approval": {
+      "reviewer": "jeromekelleher",
+      "state": "APPROVED",
+      "submitted_at_utc": "2026-10-27T13:59:54Z",
+      "url": "https://github.com/tskit-dev/msprime/pull/2547#pullrequestreview-5668256579"
+    },
+    "additional_maintainer_feedback": {
+      "reviewer": "apragsdale",
+      "kind": "positive issue comment",
+      "url": "https://github.com/tskit-dev/msprime/pull/2547#issuecomment-6443634777"
+    },
+    "upstream_checks": {
+      "success": 13,
+      "total": 13
+    },
+    "merged_demography_sha256": "415c7b43d43043e0966af33817dab59ce073a1a95b18d96019324ec817d9bb37",
+    "matches_frozen_candidate": true,
+    "main_at_check": "7954a7285c1738e1395a11f9e41446ec8f3ce610",
+    "main_contains_merge": true,
+    "scope": "Upstream maintainer acceptance of the bounded numerical diagnostic correction; not experimental biological validation or journal peer review."
+  },
+  "upstream_checks": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:25:13Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617851/job/122134859182",
+      "name": "Docs / Build docs",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Docs"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:23:56Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617863/job/122134862831",
+      "name": "Lint / Lint",
+      "startedAt": "2026-10-27T10:23:42Z",
+      "status": "COMPLETED",
+      "workflowName": "Lint"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:25:02Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858748",
+      "name": "Python packaging / Python packaging tests",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:27:23Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858105",
+      "name": "C tests / C unit tests",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:25:32Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858424",
+      "name": "Python-C tests / Python-C unit tests",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:25:40Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134857737",
+      "name": "Python (3.11, macos-latest)",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:26:05Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858213",
+      "name": "Python (3.11, ubuntu-24.04)",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:27:35Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858315",
+      "name": "Python (3.11, windows-latest)",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:25:33Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858139",
+      "name": "Python (3.14, macos-latest)",
+      "startedAt": "2026-10-27T10:23:42Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:25:08Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858229",
+      "name": "Python (3.14, ubuntu-24.04)",
+      "startedAt": "2026-10-27T10:23:41Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:27:15Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tskit-dev/msprime/actions/runs/40487617820/job/122134858408",
+      "name": "Python (3.14, windows-latest)",
+      "startedAt": "2026-10-27T10:23:43Z",
+      "status": "COMPLETED",
+      "workflowName": "Tests"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:25:40Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://app.codecov.io/gh/tskit-dev/msprime/pull/2547",
+      "name": "codecov/patch",
+      "startedAt": "2026-10-27T10:25:39Z",
+      "status": "COMPLETED",
+      "workflowName": ""
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-27T10:27:21Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://app.codecov.io/gh/tskit-dev/msprime/pull/2547",
+      "name": "codecov/project",
+      "startedAt": "2026-10-27T10:27:21Z",
+      "status": "COMPLETED",
+      "workflowName": ""
+    }
+  ],
+  "historical_lab_hosted_ci": {
+    "scope": "Historical hosted checks for lab PR #33 head 94b4e1f6a1d1c69986d964fc65478dc0d7732ff2, completed 2026-10-27; these do not validate the subsequent acceptance metadata update.",
+    "source_record": "R35 msprime-lint-repair/lab-final.json",
+    "source_record_sha256": "3aba5c9b1728088a940bba075ba874b8a3dfc0c72633479b6fe3f8ae8e84a220",
+    "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/33",
+    "head_commit": "94b4e1f6a1d1c69986d964fc65478dc0d7732ff2",
+    "success": 9,
+    "total": 9,
+    "native_paired_success": 2,
+    "completed_at_utc": "2026-10-27T10:26:09Z",
+    "checks": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:24:37Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488185985/job/122135149648",
+        "name": "Exact proof checks (ubuntu-latest)",
+        "startedAt": "2026-10-27T10:24:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Exact certificate verification"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:26:02Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488186021/job/122135150536",
+        "name": "native-paired-evidence (baseline)",
+        "startedAt": "2026-10-27T10:24:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Native msprime terminal hazard paired replay"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:24:31Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488185980/job/122135149656",
+        "name": "Paper-code audit (ubuntu-latest)",
+        "startedAt": "2026-10-27T10:24:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Reproducibility audit checks"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:24:41Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488185985/job/122135150096",
+        "name": "Exact proof checks (macos-latest)",
+        "startedAt": "2026-10-27T10:24:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Exact certificate verification"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:26:09Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488186021/job/122135150800",
+        "name": "native-paired-evidence (candidate)",
+        "startedAt": "2026-10-27T10:24:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Native msprime terminal hazard paired replay"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:24:37Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488185980/job/122135149726",
+        "name": "Paper-code audit (macos-latest)",
+        "startedAt": "2026-10-27T10:24:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Reproducibility audit checks"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:24:22Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488185980/job/122135149063",
+        "name": "ORD identifier checks (ubuntu-latest)",
+        "startedAt": "2026-10-27T10:24:17Z",
+        "status": "COMPLETED",
+        "workflowName": "Reproducibility audit checks"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:24:24Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488185980/job/122135149777",
+        "name": "ORD identifier checks (macos-latest)",
+        "startedAt": "2026-10-27T10:24:17Z",
+        "status": "COMPLETED",
+        "workflowName": "Reproducibility audit checks"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-27T10:24:45Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/ArtificialZeng/AI-Biology-Lab/actions/runs/40488185980/job/122135149280",
+        "name": "Frozen ORD sample (Linux)",
+        "startedAt": "2026-10-27T10:24:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Reproducibility audit checks"
+      }
+    ]
+  },
+  "current_metadata_revision_ci": {
+    "scope": "Preparation-time snapshot at2026-10-27T14:53:31UTC, before commit. Current revision checks are shown on labPR33.",
+    "hosted_ci_executed": false,
+    "status": "not-run-at-metadata-preparation-time",
+    "base_head": "94b4e1f6a1d1c69986d964fc65478dc0d7732ff2"
+  },
+  "limits": [
+    "Acceptance concerns the bounded numerical diagnostic correction.",
+    "No experimental biological validation or journal peer review is claimed.",
+    "Earlier local packaging execution flags retain their historical scope."
+  ]
+}

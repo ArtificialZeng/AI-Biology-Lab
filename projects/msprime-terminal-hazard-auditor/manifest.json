@@ -1,6 +1,6 @@
 {
   "project": "msprime-terminal-hazard-auditor",
-  "status": "v2-independently-reviewed-and-public-native-paired-replay-matched",
+  "status": "upstream-maintainer-approved-and-merged",
   "base_commit": "45cfa59d828757352f7ab1a55c19b55102d40d22",
   "tskit_submodule_commit": "f1b139edb376fbffb2978a5da2c9e4b948930b0c",
   "sources": [
@@ -146,5 +146,55 @@
       }
     ],
     "scope": "New native builds from locked source; reused observed Python/GSL; no fresh environment or hosted CI claimed before publication"
-  }
+  },
+  "historical_packaging_flags_scope": "The top-level native_ci_executed/fresh_environment_replay_executed flags and v1/v2 packaging records describe the original packaging worker before hosted publication; later hosted/upstream checks are recorded separately.",
+  "upstream_acceptance": {
+    "checked_at_utc": "2026-10-27T14:48:49.259204+00:00",
+    "upstream_pr": "https://github.com/tskit-dev/msprime/pull/2547",
+    "state": "MERGED",
+    "merged_at_utc": "2026-10-27T14:09:01Z",
+    "merged_by": "jeromekelleher",
+    "merge_commit": "7954a7285c1738e1395a11f9e41446ec8f3ce610",
+    "reviewed_head": "56427173f6c013dc11903a9e0d641f83e514ea51",
+    "approval": {
+      "reviewer": "jeromekelleher",
+      "state": "APPROVED",
+      "submitted_at_utc": "2026-10-27T13:59:54Z",
+      "url": "https://github.com/tskit-dev/msprime/pull/2547#pullrequestreview-5668256579"
+    },
+    "additional_maintainer_feedback": {
+      "reviewer": "apragsdale",
+      "kind": "positive issue comment",
+      "url": "https://github.com/tskit-dev/msprime/pull/2547#issuecomment-6443634777"
+    },
+    "upstream_checks": {
+      "success": 13,
+      "total": 13
+    },
+    "merged_demography_sha256": "415c7b43d43043e0966af33817dab59ce073a1a95b18d96019324ec817d9bb37",
+    "matches_frozen_candidate": true,
+    "main_at_check": "7954a7285c1738e1395a11f9e41446ec8f3ce610",
+    "main_contains_merge": true,
+    "scope": "Upstream maintainer acceptance of the bounded numerical diagnostic correction; not experimental biological validation or journal peer review."
+  },
+  "acceptance_evidence": "evidence/upstream-acceptance.json",
+  "historical_lab_hosted_ci": {
+    "scope": "Historical hosted checks for lab PR #33 head 94b4e1f6a1d1c69986d964fc65478dc0d7732ff2, completed 2026-10-27; these do not validate the subsequent acceptance metadata update.",
+    "source_record": "R35 msprime-lint-repair/lab-final.json",
+    "source_record_sha256": "3aba5c9b1728088a940bba075ba874b8a3dfc0c72633479b6fe3f8ae8e84a220",
+    "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/33",
+    "head_commit": "94b4e1f6a1d1c69986d964fc65478dc0d7732ff2",
+    "success": 9,
+    "total": 9,
+    "native_paired_success": 2,
+    "completed_at_utc": "2026-10-27T10:26:09Z"
+  },
+  "current_metadata_revision_ci": {
+    "scope": "Preparation-time snapshot at2026-10-27T14:53:31UTC, before commit. Current revision checks are shown on labPR33.",
+    "hosted_ci_executed": false,
+    "status": "not-run-at-metadata-preparation-time",
+    "base_head": "94b4e1f6a1d1c69986d964fc65478dc0d7732ff2"
+  },
+  "metadata_revision": "v4-upstream-acceptance-metadata-only",
+  "metadata_revision_utc": "2026-10-27T14:53:31.355048+00:00"
 }
