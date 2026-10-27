@@ -1,0 +1,22 @@
+# Opt-in template: copy to .github/workflows/hill-renyi-reproduce.yml only after review.
+name: Hill Renyi pinned-source reproduction
+on: [workflow_dispatch]
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download verified source, build, audit baseline and candidate
+        working-directory: projects/hill-renyi-stability-auditor
+        run: python reproduce.py --work-dir "${{ runner.temp }}/hill-renyi-replay"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hill-renyi-reproduction
+          path: |
+            ${{ runner.temp }}/hill-renyi-replay/*.json
+            ${{ runner.temp }}/hill-renyi-replay/commands.log

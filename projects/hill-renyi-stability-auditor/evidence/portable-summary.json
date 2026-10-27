@@ -1,0 +1,51 @@
+{
+  "status": "observed normal-Python portable replay PASS; compact derivative evidence",
+  "observation_date_utc": "2026-10-27",
+  "source_commit": "2f573b9a9411c3c41465d9abcd41c3ad3a7dc077",
+  "archive_sha256": "293c5789a59b352ebb69644d9f51070f598b404864370f63cd718ded654cbf04",
+  "patch_sha256": "2e41dd0c59c2dbc1b51ff0140936662803022df5c00184c110c7f4fc8f762f58",
+  "native_builds": 1,
+  "second_independent_native_build": false,
+  "method": "one genuine editable pinned-source native build; baseline public API in fresh process; pure-Python patch; candidate public API in a new process",
+  "python": "3.13.5",
+  "platform": "macOS ARM64",
+  "dependency_check": "All installed packages are compatible",
+  "build_log_excerpt": "Prepared 1 package in 22.47s",
+  "baseline": "genuine public APIs before patch; uniform richness2 order2000 and richness1024 order128 return positive infinity for both metrics",
+  "candidate": {
+    "decimal_definition_cases": 110,
+    "extreme_limiting_bound_cases": 20,
+    "uniform_and_empty_controls": "PASS",
+    "upstream_test_base": "36 passed, 32 subtests passed in 3.20s"
+  },
+  "fresh_subprocesses": [
+    "baseline before patch",
+    "candidate after patch"
+  ],
+  "raw_evidence_sha256": {
+    "portable-result.json": "1203b5bfbeb68ee45582cdb0de2ab6444a772be85205c1fbe971e5a8b3fe67fd",
+    "portable-commands.log": "aa62d38103d12fdd6cfd0105f940748c22d86338764bdd76c3134a0ed2c9c604",
+    "portable-baseline.json": "dba2363e3513a2a2b7ed602aee87c8a3b04ecee8f4b5400b8094d1caa44462d5",
+    "portable-candidate.json": "6b038e7a6c5ecd7c41caced076df619dfd2b340ebf6b83312d68cdbc5d05f320"
+  },
+  "export_binding": {
+    "original_export_archive_sha256": "91055e2ed06bcced9c5cf6d6090e4b3ab1a6bc59a718624b34a31da07fc00ae4",
+    "public_core_matches_tested_inputs_sha256": {
+      "reproduce.py": "7a350ea9da48e0eceb2448b4c80038e51b00fecba79d7dd3b62df3f9b71df873",
+      "audit_api.py": "03a84789984feb4a3f85e6a20cde0a3f44f1c7591a2a9f4c6192670fb406de1f",
+      "requirements.txt": "d6ca85ba0a29f1f3e05d2ed4d375cbc7b4100d8630d563561841483a9f445680",
+      "pin.json": "145ef7e6fcf08fae3f8a9bfafc5f4aaecef819d64ebeb73b6472caa418a9d866",
+      "hill-renyi-stable-order.patch": "2e41dd0c59c2dbc1b51ff0140936662803022df5c00184c110c7f4fc8f762f58"
+    },
+    "note": "Executable and reproduction input bytes match the previously replayed export; public documentation and sanitized evidence are newly curated. The original export archive and raw logs are not included."
+  },
+  "not_performed": [
+    "cross-platform or other-Python validation",
+    "full test suite",
+    "GitHub Actions execution",
+    "external human peer review",
+    "maintainer review"
+  ],
+  "optimized_mode": "FAILED before auditor/API execution in unmodified upstream import; no optimized API support claimed",
+  "scope": "finite-high-order numerical correction using established identities; no new ecological theorem or demonstrated biological impact"
+}
