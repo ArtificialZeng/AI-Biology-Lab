@@ -1,0 +1,14 @@
+{
+  "algorithm": "sha256",
+  "scope": "All eight project inputs; archive_manifest.json is excluded to avoid circular hashing.",
+  "files": {
+    "LICENSE": "fa9e8539a9046d070158a7cbb74c484704cbf2b162249e49210167277db5c678",
+    "README.md": "c9c7553e50013720570d4226f33611ead4a7896fd01d6b54aa5107bf61dcd0bd",
+    "certificate.json": "6cd89d09bfe95f3213e82695fc38adcf756c4bbe4d3fe4507185fff88354cfd5",
+    "proof.md": "4749c0e83a1c6f0daf69f456bb0d1e6ba805347e6fc710611c3bb31b24a08d98",
+    "requirements.txt": "d78165cb12250fa5bb897d2026515b89ddb8d6a88aaa152e5d62ff2e36028d11",
+    "sources.md": "ddfd515769909e5acf819a1fba09bc1253af0b4f8837285eee8e10962f7c25a9",
+    "verify.py": "cc87589d2a1bb39d2077c274eecd91687670fc0dc4705b3d1c705c256534a512",
+    "witness.json": "00eac2917457eb6dd2c99a717680e596ec80564afef8ffe1e4fb869849414193"
+  }
+}
