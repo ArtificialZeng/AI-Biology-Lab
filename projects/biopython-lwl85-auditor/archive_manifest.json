@@ -1,0 +1,20 @@
+{
+  "schema": "original-code-audit-manifest-v1",
+  "files": {
+    "LICENSE": "fa9e8539a9046d070158a7cbb74c484704cbf2b162249e49210167277db5c678",
+    "README.md": "7e3b6354c93a61f0de5c0639ce627a1cedf4e36c8633a1d958e8680b3f517d1f",
+    "THIRD_PARTY.md": "84289b15f3ebf5a1dd45c3793d5ad7d4bb1f051eba5cd15f0393eeefff367e86",
+    "certificate.json": "c10cb8b206e23095b5ebdc6d3e1ef72cd54152f638b2564008dd23e4e1470aa0",
+    "exercise.py": "92bc2805039525dd4edc31598f0f0192ce5af34702abf96a431be9e31ff80f73",
+    "independent_oracle.py": "856f3b44f7c622a1f2b8915192e981db5c29ee8473c0f75ec0c463af01884e52",
+    "requirements.txt": "c45fc9aa7c57a3b2e392c158733beed7856324af8bc211814e77674aed5cb7d0",
+    "review-summary.md": "d2c0697608e4c9d162492820009523f60dccd4839f70d8fc821a1e7466859c4e",
+    "sources.md": "888a62f2bb6de0ab3dd4c508e1cdb923e0d7be417dabd7d3fc4db4076248db5b",
+    "statement.md": "dd772ad1309812d131373a7e0b184f0e7cdde83dbe8a49a12e04331439204f4c",
+    "upstream.patch": "746a57c81098659b39ca10581838de2e5852e63d2f3383deabb6fa8628dc6298",
+    "verify.py": "168cd0d96dcf6aaf156860cadf47c2a8beaa5db7471931c4681f2a5dfc16fa4a",
+    ".gitattributes": "fa20e3caf928f030fc4660d0cbcdb14cf61f1d20ab85626a43bec6e6f4d35f1f"
+  },
+  "source_patch_sha256": "746a57c81098659b39ca10581838de2e5852e63d2f3383deabb6fa8628dc6298",
+  "scope": "Read-only bounded Biopython1.88 before/after audit; no formal runner or human certification."
+}
