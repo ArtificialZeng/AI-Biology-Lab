@@ -41,3 +41,9 @@ The test is a standard floating-point stability correction. It makes no claim of
 The frozen v2 packet was also replayed from a fresh public source download under parent `python -O`; both independent native builds completed and the expected baseline/candidate split reproduced. Portable receipts are in [validation.json](validation.json). Generated third-party source archives, source trees and native build directories are not bundled.
 
 Upstream correction: [tskit PR3494](https://github.com/tskit-dev/tskit/pull/3494), commit `369ff4fce5eda3ab4dd25366c8812af9df3a8149`. The default work directory is `/tmp/tskit-trait-native-replay`; choose `--workdir` to retain separate runs.
+
+## Upstream validation and review status
+
+On 27 October 2026, all 17 upstream PR checks passed at candidate commit `369ff4fce5eda3ab4dd25366c8812af9df3a8149`, including the 13-job [Tests workflow](https://github.com/tskit-dev/tskit/actions/runs/40505067326), lint and documentation builds. This hosted validation supplements the bounded packet audit; it does not establish correctness for every floating-point input.
+
+In a [public comment](https://github.com/tskit-dev/tskit/pull/3494#issuecomment-6442764401), maintainer Jerome Kelleher gave an initial positive assessment and invited original code author Peter Ralph to review. This is a preliminary comment, with formal author review and merge still pending. The scientific witness, patch, and reproduction code are unchanged.

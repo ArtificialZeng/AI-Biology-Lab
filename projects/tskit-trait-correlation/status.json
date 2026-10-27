@@ -14,7 +14,7 @@
   "mathematical_novelty_claim": false,
   "universal_finite_double_guarantee": false,
   "biological_discovery_claim": false,
-  "upstream_regression_suite": "Root reports 12 new tests fail on baseline and pass on candidate; 52 existing correlation tests pass; full optional suite not run",
+  "upstream_regression_suite": "Locally:12newregressions and52existingcorrelationtests passed. Upstream exact candidatecommit Tests workflow (13jobs), Lint and BuildDocs passed; all17PRstatuschecks successful on27October2026. This is hostedCI, not an all-input correctness guarantee.",
   "limitations": [
     "Finite fixture set and floating-point tolerance",
     "Extreme residual ranges may overflow or underflow",
@@ -33,5 +33,25 @@
     "cases_each": 396,
     "patch_sha256": "0cf31cc6a2fca3a648d2b60f907b0158c78c5fe85c81e78da392a533de8cc9dd",
     "validation": "validation.json"
+  },
+  "upstream_hosted_validation": {
+    "checked_at_utc": "2026-10-27T13:46:44.440825+00:00",
+    "candidate_commit": "369ff4fce5eda3ab4dd25366c8812af9df3a8149",
+    "rollup_success": 17,
+    "rollup_total": 17,
+    "tests_run": "https://github.com/tskit-dev/tskit/actions/runs/40505067326",
+    "attempt": 2,
+    "tests_jobs": 13,
+    "scope": "Current-head upstreamhostedchecks; separatefrompacketfiniteoracle andnotformalhumanapproval"
+  },
+  "maintainer_feedback": {
+    "kind": "preliminarypositivepublicissuecomment",
+    "author": "jeromekelleher",
+    "date": "2026-10-27",
+    "url": "https://github.com/tskit-dev/tskit/pull/3494#issuecomment-6442764401",
+    "interpretation": "MaintainerfindspatchpromisingandasksoriginalauthorPeterRalph(petrelharp)toreview.",
+    "formal_review_submitted": false,
+    "original_author_review_obtained": false,
+    "merged": false
   }
 }
