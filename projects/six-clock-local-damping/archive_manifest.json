@@ -1,0 +1,24 @@
+{
+  "files": {
+    "LICENSE": "8a62db57c270a659b7172496aba75702cfabaf290440b9235532e1b7bb1781bf",
+    "README.md": "3ab240e0c9c0fc43bc08e9465f0efd03205dc2df77d8ad39eaeb75a55e00c168",
+    "REVIEW-SUMMARY.md": "023216aa56e3a7b9000671fee114f1197b5bd109f3d79e1e54409df5e6f23f66",
+    "SOURCES.md": "da3f4949d0cccfcd61fa48be5d5282ef149d88e858b1749dc131bfd89ff6f0c1",
+    "STATEMENT.md": "c773d370dcb0dfe64707a19628f5f354cd81a2eb43ebedf0fe7fc9143b2ced1d",
+    "independent-certificate.json": "64e79d966017a99f79423ebe6a9ffb5e6f8d1e2ec623cf56122b9c0fa9247b86",
+    "independent_checker.py": "31271dad752e7d5de8311a774a85a74ab227871a62fbacd4ba9f3588502b9729",
+    "local-algebra.json": "b522bc08d299e7ef8f92b04be266d284c072a8ca1b13e72bc984c45bab2a9500",
+    "local_algebra.py": "1677c2fe43439ba6bfb7dad3e3678412a80f1e0fa285105051940a69ad784a49",
+    "proof.md": "4a37610e845e1a7a8c9e62ad9b258b9983a6a358542a014475cf0d389c2a4db4",
+    "requirements.txt": "d78165cb12250fa5bb897d2026515b89ddb8d6a88aaa152e5d62ff2e36028d11",
+    "verify.py": "2b548699ed13cd25704c40e3b6220ec32cc00fa4c3d04ffb52ac836bce6086f3"
+  },
+  "formal_workflow_status": "revise; no invented job provenance",
+  "priority_verified": false,
+  "schema": "six-clock-local-immutable-archive-v1",
+  "scope": "local nonlinear asymptotic stability only; original H6 unresolved",
+  "workflow": {
+    "path": ".github/workflows/six-clock-local.yml",
+    "sha256": "d1c3dd6a8dc17f1c6ded453033904c607c9e546b5ac7f086f8930e44687af188"
+  }
+}
