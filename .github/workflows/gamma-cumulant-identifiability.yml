@@ -1,0 +1,28 @@
+name: Gamma cumulant identifiability exact checks
+on:
+  pull_request:
+    paths:
+      - 'projects/gamma-cumulant-identifiability/**'
+      - '.github/workflows/gamma-cumulant-identifiability.yml'
+permissions:
+  contents: read
+jobs:
+  exact-checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r projects/gamma-cumulant-identifiability/requirements.txt
+      - name: Normal exact replay
+        run: python projects/gamma-cumulant-identifiability/reproduce.py
+      - name: Optimized parent exact replay
+        env:
+          PYTHONOPTIMIZE: '2'
+        run: python -O projects/gamma-cumulant-identifiability/reproduce.py
