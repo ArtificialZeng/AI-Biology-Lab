@@ -1,6 +1,8 @@
+diff --git a/msprime/demography.py b/msprime/demography.py
+index 6e4f016..9c518e0 100644
 --- a/msprime/demography.py
 +++ b/msprime/demography.py
-@@ -4357,16 +4357,17 @@
+@@ -4357,16 +4357,17 @@ class DemographyDebugger:
          # recall that steps_b[0] = 0.0
          r = np.zeros(num_steps)
          p_t = np.zeros(num_steps)
@@ -22,7 +24,7 @@
                      a = mmo.source
                      b = mmo.dest
                      p = mmo.proportion
-@@ -4386,14 +4387,10 @@
+@@ -4386,14 +4387,10 @@ class DemographyDebugger:
                  r[j] = np.sum(np.matmul(P, C)) / np.sum(P)
              else:
                  r[j] = np.nan
@@ -41,14 +43,14 @@
          return r[keep_steps], p_t[keep_steps]
  
      def _pop_size_and_migration_at_t(self, t):
+diff --git a/tests/test_demography.py b/tests/test_demography.py
+index 7d14256..6940de1 100644
 --- a/tests/test_demography.py
 +++ b/tests/test_demography.py
-@@ -1824,6 +1824,83 @@
-         assert np.allclose(0.5 / R[2021], 2985.125, rtol=1e-3)
-         assert np.allclose(0.5 / R[608], 9500, rtol=1e-3)
+@@ -1826,6 +1826,81 @@ class TestDemographyTrajectories(unittest.TestCase):
          assert np.allclose(0.5 / R[0], 29725.3435, rtol=1e-3)
-+
-+
+ 
+ 
 +class TestTerminalCoalescenceRate:
 +    @pytest.mark.parametrize("validation", [False, True])
 +    @pytest.mark.parametrize("steps", [[100], [0, 100], [0, 50, 100]])
@@ -69,9 +71,7 @@
 +        )
 +        np.testing.assert_allclose(rates, extended_rates[:-1])
 +        np.testing.assert_allclose(survival, extended_survival[:-1])
-+        assert rates[-1] == pytest.approx(
-+            1 / (2 * max(1, new_size)), rel=1e-12, abs=0
-+        )
++        assert rates[-1] == pytest.approx(1 / (2 * max(1, new_size)), rel=1e-12, abs=0)
 +        assert survival[-1] == pytest.approx(np.exp(-100 / (2 * max(1, old_size))))
 +
 +    @pytest.mark.parametrize("validation", [False, True])
@@ -124,6 +124,8 @@
 +        rates, survival = debugger.coalescence_rate_trajectory([0, 2000], {0: 2})
 +        assert survival[-1] == 0
 +        assert np.isnan(rates[-1])
- 
- 
++
++
  class TestEventTimes:
+     """
+     Tests that demographic events occur when they should.
