@@ -1,0 +1,16 @@
+{
+  "scope": "Public packaging only; original research core unchanged",
+  "project_name_suggestion": "pypesto-relative-nan-auditor",
+  "archive_verify": "passed",
+  "light_utility_and_independent_oracle": "passed; this is not native API execution",
+  "bootstrap": "passed with optional local pinned-source checkout; network-fetch route provided but not executed",
+  "native_replay": "Executed packaged full native route and final source-provenance-assertion runners on fresh pinned clones: baseline6failed33passed, candidate39passed, no skips/errors; macOS Apple Silicon.",
+  "environment": "Reused existing private Python3.12.13/AMICI1.1.0 environment; no fresh dependency install claimed",
+  "platform": "macOS Apple Silicon; Linux not executed",
+  "github_actions": "No run claimed; CI_COMMANDS.txt proposes light checks only",
+  "full_upstream_ci": "not executed",
+  "maintainer_confirmation": "not claimed",
+  "independent_review": "Fresh independent computational review separately reported by parent; this is not external human endorsement.",
+  "boundary": "Manual sigma=0 perfect-fit compute_nllh changes legacy \u2212inf to NaN; actual profiled perfect-fit remains AssertionError in both. No solved degeneracy or identical edge-policy claim.",
+  "frozen_at_utc": "2026-10-27T05:26:40Z"
+}

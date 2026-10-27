@@ -1,0 +1,25 @@
+name: pyPESTO relative likelihood archive and utility checks
+on:
+  pull_request:
+    paths:
+      - 'projects/pypesto-relative-nan-auditor/**'
+      - '.github/workflows/pypesto-relative-audit.yml'
+  push:
+    branches: ['codex/pypesto-measured-nan']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  scoped-utility-oracle:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r projects/pypesto-relative-nan-auditor/requirements-light.txt
+      - run: python -B projects/pypesto-relative-nan-auditor/reproduce.py verify
+      - run: python -B projects/pypesto-relative-nan-auditor/reproduce.py light

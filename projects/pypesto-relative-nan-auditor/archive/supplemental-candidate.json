@@ -1,0 +1,318 @@
+[
+  {
+    "kind": "invalid",
+    "method": "forward",
+    "orders": [],
+    "fval": "+Infinity",
+    "gradient": [],
+    "inner_parameters": null,
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "invalid",
+    "method": "adjoint",
+    "orders": [
+      0
+    ],
+    "fval": "+Infinity",
+    "gradient": [],
+    "inner_parameters": null,
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "invalid",
+    "method": "adjoint",
+    "orders": [
+      1
+    ],
+    "fval": "+Infinity",
+    "gradient": [
+      "NaN"
+    ],
+    "inner_parameters": null,
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "invalid",
+    "method": "adjoint",
+    "orders": [
+      0,
+      1
+    ],
+    "fval": "+Infinity",
+    "gradient": [
+      "NaN"
+    ],
+    "inner_parameters": null,
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "invalid",
+    "method": "adjoint",
+    "hessian_supported": false
+  },
+  {
+    "kind": "unmeasured",
+    "method": "forward",
+    "orders": [],
+    "fval": 0.07293614550008132,
+    "gradient": [],
+    "inner_parameters": [
+      0.15811388300841892
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "unmeasured",
+    "method": "adjoint",
+    "orders": [
+      0
+    ],
+    "fval": 0.07293614550008132,
+    "gradient": [],
+    "inner_parameters": [
+      0.15811388300841892
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "unmeasured",
+    "method": "adjoint",
+    "orders": [
+      1
+    ],
+    "fval": 0.07293614550008132,
+    "gradient": [
+      -1.0
+    ],
+    "inner_parameters": [
+      0.15811388300841892
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "unmeasured",
+    "method": "adjoint",
+    "orders": [
+      0,
+      1
+    ],
+    "fval": 0.07293614550008132,
+    "gradient": [
+      -1.0
+    ],
+    "inner_parameters": [
+      0.15811388300841892
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "unmeasured",
+    "method": "adjoint",
+    "hessian_supported": false
+  },
+  {
+    "kind": "finite",
+    "method": "forward",
+    "orders": [],
+    "fval": -0.6872803753235294,
+    "gradient": [],
+    "inner_parameters": [
+      0.14142135623730948
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "finite",
+    "method": "adjoint",
+    "orders": [
+      0
+    ],
+    "fval": -0.6872803753235294,
+    "gradient": [],
+    "inner_parameters": [
+      0.14142135623730948
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "finite",
+    "method": "adjoint",
+    "orders": [
+      1
+    ],
+    "fval": -0.6872803753235291,
+    "gradient": [
+      -1.0416666666666665
+    ],
+    "inner_parameters": [
+      0.14142135623730948
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "finite",
+    "method": "adjoint",
+    "orders": [
+      0,
+      1
+    ],
+    "fval": -0.6872803753235291,
+    "gradient": [
+      -1.0416666666666665
+    ],
+    "inner_parameters": [
+      0.14142135623730948
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "finite",
+    "method": "adjoint",
+    "hessian_supported": false
+  },
+  {
+    "kind": "failed_integration",
+    "orders": [
+      0
+    ],
+    "fval": "+Infinity",
+    "statuses": [
+      -1
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "failed_integration",
+    "orders": [
+      0,
+      1
+    ],
+    "fval": "+Infinity",
+    "statuses": [
+      -1
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "failed_integration",
+    "orders": [
+      0,
+      1,
+      2
+    ],
+    "fval": "+Infinity",
+    "statuses": [
+      -1
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "zero",
+    "method": "forward",
+    "orders": [],
+    "fval": 3.547761196096278,
+    "gradient": [],
+    "inner_parameters": [
+      0.5802298395176404
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "zero",
+    "method": "adjoint",
+    "orders": [
+      0
+    ],
+    "fval": 3.547761196096278,
+    "gradient": [],
+    "inner_parameters": [
+      0.5802298395176404
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "zero",
+    "method": "adjoint",
+    "orders": [
+      1
+    ],
+    "fval": 3.5477611960962787,
+    "gradient": [
+      -1.9801980198019793
+    ],
+    "inner_parameters": [
+      0.5802298395176404
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "zero",
+    "method": "adjoint",
+    "orders": [
+      0,
+      1
+    ],
+    "fval": 3.5477611960962787,
+    "gradient": [
+      -1.9801980198019793
+    ],
+    "inner_parameters": [
+      0.5802298395176404
+    ],
+    "statuses": [
+      0
+    ],
+    "assertions_passed": true
+  },
+  {
+    "kind": "zero",
+    "method": "adjoint",
+    "hessian_supported": false
+  }
+]
