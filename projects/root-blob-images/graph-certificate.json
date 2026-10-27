@@ -1,0 +1,669 @@
+{
+  "attachment_vertices": [
+    "a",
+    "b"
+  ],
+  "blob": [
+    "a",
+    "b",
+    "u",
+    "v"
+  ],
+  "claim_scope": "Finite graph/domain certificate only; no kernel or image nonmembership claim",
+  "collapsed_quartet_edges": [
+    [
+      "s",
+      "t"
+    ],
+    [
+      "s",
+      "1"
+    ],
+    [
+      "s",
+      "2"
+    ],
+    [
+      "t",
+      "3"
+    ],
+    [
+      "t",
+      "4"
+    ]
+  ],
+  "cut_edges": [
+    [
+      "a",
+      "s"
+    ],
+    [
+      "b",
+      "t"
+    ],
+    [
+      "s",
+      "1"
+    ],
+    [
+      "s",
+      "2"
+    ],
+    [
+      "t",
+      "3"
+    ],
+    [
+      "t",
+      "4"
+    ]
+  ],
+  "directed_reticulation_edges": [
+    [
+      "u",
+      "a"
+    ],
+    [
+      "v",
+      "a"
+    ],
+    [
+      "u",
+      "b"
+    ],
+    [
+      "v",
+      "b"
+    ]
+  ],
+  "displayed_path_count": 20,
+  "edge_insertion_rootings": [
+    {
+      "directed_edges": [
+        [
+          "a",
+          "s"
+        ],
+        [
+          "b",
+          "t"
+        ],
+        [
+          "rho",
+          "a"
+        ],
+        [
+          "rho",
+          "u"
+        ],
+        [
+          "s",
+          "1"
+        ],
+        [
+          "s",
+          "2"
+        ],
+        [
+          "t",
+          "3"
+        ],
+        [
+          "t",
+          "4"
+        ],
+        [
+          "u",
+          "b"
+        ],
+        [
+          "u",
+          "v"
+        ],
+        [
+          "v",
+          "a"
+        ],
+        [
+          "v",
+          "b"
+        ]
+      ],
+      "displayed_trees": [
+        {
+          "a_parent": "rho",
+          "attachment_path": [
+            "a",
+            "rho",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 3
+        },
+        {
+          "a_parent": "rho",
+          "attachment_path": [
+            "a",
+            "rho",
+            "u",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 4
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 3
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 2
+        }
+      ],
+      "root_edge": [
+        "u",
+        "a"
+      ]
+    },
+    {
+      "directed_edges": [
+        [
+          "a",
+          "s"
+        ],
+        [
+          "b",
+          "t"
+        ],
+        [
+          "rho",
+          "a"
+        ],
+        [
+          "rho",
+          "v"
+        ],
+        [
+          "s",
+          "1"
+        ],
+        [
+          "s",
+          "2"
+        ],
+        [
+          "t",
+          "3"
+        ],
+        [
+          "t",
+          "4"
+        ],
+        [
+          "u",
+          "a"
+        ],
+        [
+          "u",
+          "b"
+        ],
+        [
+          "v",
+          "b"
+        ],
+        [
+          "v",
+          "u"
+        ]
+      ],
+      "displayed_trees": [
+        {
+          "a_parent": "rho",
+          "attachment_path": [
+            "a",
+            "rho",
+            "v",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 4
+        },
+        {
+          "a_parent": "rho",
+          "attachment_path": [
+            "a",
+            "rho",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 3
+        },
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 2
+        },
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 3
+        }
+      ],
+      "root_edge": [
+        "v",
+        "a"
+      ]
+    },
+    {
+      "directed_edges": [
+        [
+          "a",
+          "s"
+        ],
+        [
+          "b",
+          "t"
+        ],
+        [
+          "rho",
+          "b"
+        ],
+        [
+          "rho",
+          "u"
+        ],
+        [
+          "s",
+          "1"
+        ],
+        [
+          "s",
+          "2"
+        ],
+        [
+          "t",
+          "3"
+        ],
+        [
+          "t",
+          "4"
+        ],
+        [
+          "u",
+          "a"
+        ],
+        [
+          "u",
+          "v"
+        ],
+        [
+          "v",
+          "a"
+        ],
+        [
+          "v",
+          "b"
+        ]
+      ],
+      "displayed_trees": [
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "rho",
+            "b"
+          ],
+          "b_parent": "rho",
+          "original_edge_count": 3
+        },
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 3
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "u",
+            "rho",
+            "b"
+          ],
+          "b_parent": "rho",
+          "original_edge_count": 4
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 2
+        }
+      ],
+      "root_edge": [
+        "u",
+        "b"
+      ]
+    },
+    {
+      "directed_edges": [
+        [
+          "a",
+          "s"
+        ],
+        [
+          "b",
+          "t"
+        ],
+        [
+          "rho",
+          "b"
+        ],
+        [
+          "rho",
+          "v"
+        ],
+        [
+          "s",
+          "1"
+        ],
+        [
+          "s",
+          "2"
+        ],
+        [
+          "t",
+          "3"
+        ],
+        [
+          "t",
+          "4"
+        ],
+        [
+          "u",
+          "a"
+        ],
+        [
+          "u",
+          "b"
+        ],
+        [
+          "v",
+          "a"
+        ],
+        [
+          "v",
+          "u"
+        ]
+      ],
+      "displayed_trees": [
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "v",
+            "rho",
+            "b"
+          ],
+          "b_parent": "rho",
+          "original_edge_count": 4
+        },
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 2
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "rho",
+            "b"
+          ],
+          "b_parent": "rho",
+          "original_edge_count": 3
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 3
+        }
+      ],
+      "root_edge": [
+        "v",
+        "b"
+      ]
+    },
+    {
+      "directed_edges": [
+        [
+          "a",
+          "s"
+        ],
+        [
+          "b",
+          "t"
+        ],
+        [
+          "rho",
+          "u"
+        ],
+        [
+          "rho",
+          "v"
+        ],
+        [
+          "s",
+          "1"
+        ],
+        [
+          "s",
+          "2"
+        ],
+        [
+          "t",
+          "3"
+        ],
+        [
+          "t",
+          "4"
+        ],
+        [
+          "u",
+          "a"
+        ],
+        [
+          "u",
+          "b"
+        ],
+        [
+          "v",
+          "a"
+        ],
+        [
+          "v",
+          "b"
+        ]
+      ],
+      "displayed_trees": [
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 2
+        },
+        {
+          "a_parent": "u",
+          "attachment_path": [
+            "a",
+            "u",
+            "rho",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 4
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "rho",
+            "u",
+            "b"
+          ],
+          "b_parent": "u",
+          "original_edge_count": 4
+        },
+        {
+          "a_parent": "v",
+          "attachment_path": [
+            "a",
+            "v",
+            "b"
+          ],
+          "b_parent": "v",
+          "original_edge_count": 2
+        }
+      ],
+      "root_edge": [
+        "u",
+        "v"
+      ]
+    }
+  ],
+  "excluded_outside_root_edges": [
+    [
+      "a",
+      "s"
+    ],
+    [
+      "b",
+      "t"
+    ],
+    [
+      "s",
+      "1"
+    ],
+    [
+      "s",
+      "2"
+    ],
+    [
+      "t",
+      "3"
+    ],
+    [
+      "t",
+      "4"
+    ]
+  ],
+  "graph_kind": "own explicit level-2 binary semidirected construction",
+  "maximum_displayed_attachment_path_edges": 4,
+  "minimum_displayed_attachment_path_edges": 2,
+  "reticulations": [
+    "a",
+    "b"
+  ],
+  "rooting_count": 5,
+  "source": "Brits et al. arXiv:2607.12919v3 Definitions2.1 and5.1",
+  "undirected_edges": [
+    [
+      "u",
+      "v"
+    ],
+    [
+      "a",
+      "s"
+    ],
+    [
+      "b",
+      "t"
+    ],
+    [
+      "s",
+      "1"
+    ],
+    [
+      "s",
+      "2"
+    ],
+    [
+      "t",
+      "3"
+    ],
+    [
+      "t",
+      "4"
+    ]
+  ],
+  "vertices": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "a",
+    "b",
+    "s",
+    "t",
+    "u",
+    "v"
+  ]
+}
