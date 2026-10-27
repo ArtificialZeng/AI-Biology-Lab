@@ -41,7 +41,7 @@ index 6e4f016..9c518e0 100644
 +                G = (np.kron(M - dM, Identity) + np.kron(Identity, M - dM)) - C
 +                P = np.matmul(P, _matrix_exponential(dt * G))
          return r[keep_steps], p_t[keep_steps]
- 
+
      def _pop_size_and_migration_at_t(self, t):
 diff --git a/tests/test_demography.py b/tests/test_demography.py
 index 7d14256..6940de1 100644
@@ -49,8 +49,8 @@ index 7d14256..6940de1 100644
 +++ b/tests/test_demography.py
 @@ -1826,6 +1826,81 @@ class TestDemographyTrajectories(unittest.TestCase):
          assert np.allclose(0.5 / R[0], 29725.3435, rtol=1e-3)
- 
- 
+
+
 +class TestTerminalCoalescenceRate:
 +    @pytest.mark.parametrize("validation", [False, True])
 +    @pytest.mark.parametrize("steps", [[100], [0, 100], [0, 50, 100]])
