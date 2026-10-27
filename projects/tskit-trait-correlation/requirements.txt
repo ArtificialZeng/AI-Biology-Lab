@@ -1,0 +1,6 @@
+# Reference native replay used Python 3.13.5 and NumPy 2.5.4.
+# Pin the tested numerical dependency; other dependencies have compatible bounds.
+numpy==2.5.4
+jsonschema>=4.18,<5
+setuptools>=77,<85
+wheel>=0.45,<1
