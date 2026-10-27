@@ -105,3 +105,7 @@ The project uses AI for derivation, coding, search, and review. Separate AI revi
 - Related work requiring priority clarification: [Grasse, SBHD 2023, poster 48](https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf); [Grasse and Conradi, BIOMATH 2025 abstract](https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828).
 
 Third-party papers are linked, not redistributed. Original repository code is available under the [MIT license](LICENSE); third-party code and data retain their own licenses, recorded in each project's `THIRD_PARTY.md`. Citation metadata is in [CITATION.cff](CITATION.cff).
+
+## Positive regular CRN elimination fixture
+
+[Proof and exact checks](projects/groebner-positive-counterfamily/) for an indecomposable all-positive-rate reaction family with a globally stable positive state and regular complex zeros, yet without species-coordinate lex shape. The packet credits prior obstructions and distinguishes the mixed-coordinate repair.

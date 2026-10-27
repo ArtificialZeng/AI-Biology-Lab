@@ -1,0 +1,142 @@
+{
+  "checker_origin": "reconstructed from reactions; owner checker not read",
+  "global_asymptotic_stability": "analytic compact-sublevel/inward-boundary argument in math.md",
+  "ideal_identity_verified": true,
+  "jacobian_determinant": "4*x*y*(c*d + c*q + d*p)",
+  "lyapunov_expression": "p*(-s + x)**2*(2*s + x)/3 + q*(-h + y)**2*(2*h + y)/3",
+  "lyapunov_factorization_verified": true,
+  "mixed_bad_slopes": "ell=0 or ell^2*v=u (u,v>0)",
+  "mixed_eliminant": "t**4 - t**2*(2*U + 2*V*ell**2) + (U - V*ell**2)**2",
+  "mixed_eliminant_discriminant": "4096*U**2*V**2*ell**4*(U - V*ell**2)**2",
+  "mixed_reconstruction_both_directions_verified": true,
+  "native_lex_bases": {
+    "(x, y)": [
+      "x**2 + (-a*d - a*q - b*q)/(c*d + c*q + d*p)",
+      "y**2 + (-a*p - b*c - b*p)/(c*d + c*q + d*p)"
+    ],
+    "(y, x)": [
+      "y**2 + (-a*p - b*c - b*p)/(c*d + c*q + d*p)",
+      "x**2 + (-a*d - a*q - b*q)/(c*d + c*q + d*p)"
+    ]
+  },
+  "negative_derivative_sum_of_squares": "p*(c + p)*(-q*(-h**2 + y**2)/(c + p) - s**2 + x**2)**2 + q*(-h**2 + y**2)**2*(c*d + c*q + d*p)/(c + p)",
+  "nontrivial_unordered_partitions_checked": 31,
+  "ok": true,
+  "partition_intersection_dimension_histogram": {
+    "1": 9,
+    "2": 22
+  },
+  "positivity_certificates": {
+    "Delta": "c*d + c*q + d*p",
+    "u_numerator": "a*d + a*q + b*q",
+    "v_numerator": "a*p + b*c + b*p"
+  },
+  "quotient_standard_monomials": [
+    "1",
+    "x",
+    "y",
+    "x*y"
+  ],
+  "radicality_certificate": "square-free x^2-u and y^2-v; u,v>0",
+  "rate_order": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "p",
+    "q"
+  ],
+  "saturation_elimination_verified": true,
+  "schema": "fresh-exact-computational-evidence-v1",
+  "scope": "Exact symbolic identities plus stated analytic argument; no novelty or formal gate certification.",
+  "serialized_reactions": [
+    [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    [
+      [
+        2,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    [
+      [
+        2,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        1
+      ]
+    ]
+  ],
+  "stoichiometric_columns": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      0,
+      -1
+    ],
+    [
+      -1,
+      1
+    ],
+    [
+      1,
+      -1
+    ]
+  ],
+  "stoichiometric_rank": 2,
+  "sympy_version": "1.13.3"
+}
