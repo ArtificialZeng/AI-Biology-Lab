@@ -76,10 +76,15 @@ s'=ν−νs−sβᵀy,
 
 y'=s(βᵀy)P−[M+(ν−μ)I]y.
 
-The new PIT matrix has off-diagonal entries −mij and column sums ν>0. This is exactly the source constant-recruitment class with susceptible mortality ν, so its main theorem applies to proportions. This is a sufficient repaired assumption, not a claimed necessary condition. The witness does not decide whether the weaker inequalities μj>=μS suffice.
+The new PIT matrix has off-diagonal entries −mij and column sums ν>0. This is exactly the source constant-recruitment class with susceptible mortality ν, so its main theorem applies to proportions. This is a sufficient repaired assumption, not a claimed necessary condition. This original witness alone does not decide whether the weaker inequalities μj>=μS suffice. The separate [ordered-mortality addendum](natural-mortality.md) supplies exact counterexamples within that subclass, including a fully strict saddle witness; it does not assert that common mortality is necessary.
 
 ## Verification and logical scope
 
 `check_candidate.py` independently reconstructs the numbers equations, their total derivative and quotient-rule reduction; verifies every rational witness condition; and checks the second equilibrium using exact polynomial remainders and rational interval bounds. Normal and optimized Python executions produce byte-identical certificates. Discovery script `search_normalized.py` used floating point only to find a lead; no claim depends on its numerical eigenvalues.
 
-The mathematical statement proposed for fresh review is: the source's unqualified §Proportional scaling extension fails for its literal arbitrary-positive-mortality domain. The source main theorem remains valid as far as this work addresses; no independent audit of that main proof is claimed. The paper-specific correction and its priority remain subject to fresh source/scope review. Classical epidemic bistability is not claimed as a new phenomenon.
+The scoped mathematical conclusion is that the source's unqualified §Proportional scaling extension fails for its literal arbitrary-positive-mortality domain. The source main theorem remains valid as far as this work addresses; no independent audit of that main proof is claimed. The separate AI mathematical/source reviews and their limits are described in the [review summary](review-summary.md); historical priority remains unestablished. Classical epidemic bistability is not claimed as a new phenomenon.
+
+
+## Ordered-mortality extension
+
+See [natural-mortality.md](natural-mortality.md) for the exact additional witnesses, source assumptions and proof. The original two exact derivations and their certificate bytes are unchanged. A separate fresh-context AI mathematical/source review accepted the addendum on 28 October 2026 local time (27 October UTC); its acceptance is separate from the original review and has the limits stated in the [review summary](review-summary.md).

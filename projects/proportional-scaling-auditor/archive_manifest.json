@@ -2,19 +2,22 @@
   "algorithm": "sha256",
   "files": {
     "LICENSE": "d52928f4b3047814dfe20a0a3eb81d72b892adb61d632926ebda3193338c7cfa",
-    "README.md": "7018cab8ff208c223c1edbfa7466b3c853e2eb903805dcdd0bd1d5b6980fca31",
+    "README.md": "10f2e97c3177aa611f4fc94b439a42d4b0035d02fcdcca276f584bfb730ef7db",
     "THIRD_PARTY.md": "5b6fd323a4bdb968b73466c18e89bfd159ed1177d978cd59556481b066f10f9f",
-    "archive_tools.py": "9a964eebc8500cde70887a6364b70a48f6e61743e70521b816b604fcbc71d7fa",
+    "archive_tools.py": "1b371847cc4cfa5866c0c6bde29bd7e9481faa456d03010357648bf56a30ea01",
     "check_candidate.py": "dd8e6281385585c7a4a7b13eebcdd87f1dde03852f3c3f5746e590ac15627930",
     "evidence/exact-certificate.json": "af3a81e38b3394dc16e0dc73ed18ec9c0d6579acad085d0c0ec58b4cef4ec6e3",
     "evidence/independent-certificate.json": "675d28453d1bd2571f465312d89968fd37bd8b8e8fe4c1f48d3120ca75d091ff",
-    "proof.md": "9ed2df111270c45a546ad1dcb1be11ca84958567022c6ffc51f41eea16ed5656",
+    "evidence/natural-mortality-certificate.json": "7f2d4ffec41f18302c1c01857e01278c3c76ee09f666c117ebbb3618095b10df",
+    "natural-mortality.md": "7758c60d970d2347f4b5b817d7feb64bdb201be20b381dbb45ac5b0e321868bb",
+    "proof.md": "9a40a11a8c1d7ba269e7499d608d91cf7c7649e3b31b51347178894242b9fe42",
     "requirements.txt": "d78165cb12250fa5bb897d2026515b89ddb8d6a88aaa152e5d62ff2e36028d11",
-    "review-summary.md": "22704e4fa107b981506241df5e101d41ce4a1a20c2e92c0085a0f0861fc9bbfa",
-    "sources.md": "ac5cde06073adec9e15350695124f82ebb8a5dc80e8e1abc9b7504b6f41b246a",
-    "statement.md": "b808eb3e131442fc68d8ecb9254c6ee9c8db9f282d323104d704144329659851",
+    "review-summary.md": "a144e88381fad81f68b00741fd28a929a13bca1cb1c3c6ceb2d3f53df664f607",
+    "sources.md": "35639558a9edf6282aebc76558ffb79faccaf0f7e8933f2223ef7e32c943a566",
+    "statement.md": "16d1a89fe666f69d6107d9f49337ee42eaeb42f80f30222ec8384ad184dd4009",
     "verify.py": "30219567172f761ec1ccc9c8178973307471f36fc9ed0ef42fd39a402e574152",
-    "verify_independent.py": "822914362858be6e573da6c3f3308beee59085acb97aec099ba7a388fe841e8d"
+    "verify_independent.py": "822914362858be6e573da6c3f3308beee59085acb97aec099ba7a388fe841e8d",
+    "verify_natural.py": "294e4bd65f5687df9826c4fdc5585b3874e0d236f7e0d63a9efed161bc8a7003"
   },
   "schema": "proportional-scaling-archive-v1"
 }

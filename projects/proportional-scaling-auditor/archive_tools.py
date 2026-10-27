@@ -1,4 +1,4 @@
-"""Shared archive I/O only; the two exact derivations live in separate files."""
+"""Shared archive I/O only; the exact calculations live in separate files."""
 from __future__ import annotations
 
 import argparse
@@ -13,6 +13,7 @@ MANIFEST = 'archive_manifest.json'
 BUILDERS = (
     ('evidence/exact-certificate.json', 'verify.py'),
     ('evidence/independent-certificate.json', 'verify_independent.py'),
+    ('evidence/natural-mortality-certificate.json', 'verify_natural.py'),
 )
 CERTIFICATES = tuple(certificate for certificate, _ in BUILDERS)
 
@@ -81,10 +82,10 @@ def regenerate(directory):
     output = directory.expanduser().resolve()
     require(output != ROOT and ROOT not in output.parents, 'Regeneration output must be outside the project')
     require(not output.exists(), 'Regeneration output must be a new exclusive directory')
-    # Explicit regeneration independently recomputes both certificates.
+    # Explicit regeneration recomputes all archived certificates.
     candidates = {certificate: encode(load_builder(relative)()) for certificate, relative in BUILDERS}
     paths = public_paths()
-    require(all(name in paths for name in CERTIFICATES), 'Both archived certificates are required')
+    require(all(name in paths for name in CERTIFICATES), 'All archived certificates are required')
     manifest = {'schema': 'proportional-scaling-archive-v1', 'algorithm': 'sha256',
                 'files': {name: sha256(candidates.get(name, (ROOT / name).read_bytes())) for name in paths}}
     output.mkdir(parents=False, exist_ok=False)
