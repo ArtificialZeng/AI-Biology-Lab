@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "scope": "Bounded scientific-software correction and native paired replay",
+  "project": "msprime-terminal-hazard-auditor",
+  "base_commit": "45cfa59d828757352f7ab1a55c19b55102d40d22",
+  "tskit_submodule_commit": "f1b139edb376fbffb2978a5da2c9e4b948930b0c",
+  "root_freeze_utc": "2026-10-27T05:59:08.933346+00:00",
+  "packaging_actual_start_utc": "2026-10-27T05:50:57Z",
+  "post_freeze_binding_start_utc": "2026-10-27T06:00:38Z",
+  "packaging_completed_utc": "2026-10-27T06:04:28.488064+00:00",
+  "remaining_gaps": [
+    "No fresh pip environment execution",
+    "Ubuntu workflow staged but not executed by packaging worker",
+    "No full upstream or CUnit suite",
+    "Root independent source/value/technical review and public release remain separate"
+  ],
+  "files": {
+    ".gitignore": "5226b38e1fb7350f9aceff815cd25380cec400f438e21b865e1b370fa869a7dc",
+    "LICENSE": "c94cb3e4308c5f123b2182dd6d691daa649f71e88e089994d143af162e38410e",
+    "README.md": "8673baaa51fab96a6b559bb5b57cdb1fa1608b082e7d91f8c4fc703677c2c4aa",
+    "THIRD_PARTY.md": "d661327e448290260296951769c0b87453f1ec26aeed20dfd98705c3cee32ebc",
+    "bootstrap.py": "4b0c4c63511467dcc449044d9514f17766c04ca8f3b9f11c723381e513fb32ad",
+    "ci/native-replay.yml": "e4854b45979f924796382b6549106d252c18587654a614c1dc11dbc873d9d167",
+    "evidence/attempt-history.json": "d9efdc93cb46ecb09d062cb8cb261fcb24e9b850175594031fe25f76b8de4d33",
+    "evidence/local-paired-summary.json": "add72547aee13b94a3ddc8444a048b42df87ef61e786df42f7dac0326fea864d",
+    "evidence/mixture-taylor-bound.json": "cfe72d4fb77d242c679c51f2ab9f3862edaebc8f756d4900abaca46fc11cd005",
+    "frozen/__pycache__/test_terminal_contract.cpython-313-pytest-9.1.1.pyc": "a4f3974d72454d71bfd0a163fb5f3b8c0386d5fbb3c080bff9ca28dc227e9ce7",
+    "frozen/candidate.patch": "d0b30195a693126fc0cb725877436ddbf1c58fc0202bd0c6d1e32f8c461b3f1a",
+    "frozen/check_public_api.py": "36c9c932774192f1375bebed35bd71701f75599f134103df82ddc20fb32df0ca",
+    "frozen/run_source_pytest.py": "288f9c03e2e25569736ab0cb9e165fa4ea485faf21df1c4364cab650452219b4",
+    "frozen/test_terminal_contract.py": "f68b851a963dc821a568b640e1384bc11553d4b9231fbddf56ad40f0811ee180",
+    "licenses/tskit-LICENSE": "bfd95c5469100b9755555e120412ec6bdb21aabdb62170db45e751a28f6fd480",
+    "manifest.json": "20a53bfade28a0cdd0fe7616e2688e5719569e218315fd6f35a513463eb85386",
+    "neutral_replay.py": "c567dbbbace89e0a4d94baa7edc84f0983ca92a9c0e2c271d69571ccb5f97c6d",
+    "requirements-observed.txt": "7af7b77724197d57f0164a49d4264d12532c763e8eee0ce4b1b27cb56677a0e8",
+    "source.md": "ecf6beb5379c3f37f17277d7ea92768035d79135318443bbf487ce04ef2718ae",
+    "verify_variant.py": "93c70e9134226963f62123d2845d0090ad14e4d2f7a56d878e552154249b376b"
+  },
+  "manifest_self_hash": "Excluded to avoid circular hashing",
+  "revision": "v2-test-only-portability",
+  "revision_utc": "2026-10-27T06:05:12.151638+00:00",
+  "actual_execution_state_v1": {
+    "archive_download_and_checksum_validation": "passed",
+    "native_bootstrap_baseline": "passed-with-reused-environment",
+    "native_existing_suite": {
+      "collected": 16,
+      "pytest_exit_code": 0
+    },
+    "fresh_environment_replay_executed": false,
+    "hosted_ci_executed": false,
+    "root_frozen_candidate_replay_executed": true,
+    "paired_replay": {
+      "baseline": {
+        "variant": "baseline",
+        "matched_expected_outcome": true,
+        "demography_sha256": "2fffad5c13ed755864f31330b90249cf421873eac90dc1e0d945620267d295f4",
+        "native_sha256": "b845214c07cda59385e12f0cca163e1ba26c87c16ff67cfec875972d33c71fe9",
+        "new_cases": 30,
+        "new_counts": {
+          "failed": 20,
+          "passed": 10
+        },
+        "new_pytest_exit": 1,
+        "existing_passed": 16,
+        "analytic_cases": 68,
+        "analytic_failed": 42,
+        "skips_allowed": false,
+        "fresh_dependency_environment_claimed": false
+      },
+      "candidate": {
+        "variant": "candidate",
+        "matched_expected_outcome": true,
+        "demography_sha256": "415c7b43d43043e0966af33817dab59ce073a1a95b18d96019324ec817d9bb37",
+        "native_sha256": "b845214c07cda59385e12f0cca163e1ba26c87c16ff67cfec875972d33c71fe9",
+        "new_cases": 30,
+        "new_counts": {
+          "passed": 30
+        },
+        "new_pytest_exit": 0,
+        "existing_passed": 16,
+        "analytic_cases": 68,
+        "analytic_failed": 0,
+        "skips_allowed": false,
+        "fresh_dependency_environment_claimed": false
+      }
+    },
+    "native_ci_executed": false,
+    "fresh_dependency_environment_executed": false
+  },
+  "actual_execution_state_v2": {
+    "paired_replay": [
+      {
+        "variant": "baseline",
+        "matched_expected_outcome": true,
+        "demography_sha256": "2fffad5c13ed755864f31330b90249cf421873eac90dc1e0d945620267d295f4",
+        "native_sha256": "b845214c07cda59385e12f0cca163e1ba26c87c16ff67cfec875972d33c71fe9",
+        "new_cases": 30,
+        "new_counts": {
+          "failed": 20,
+          "passed": 10
+        },
+        "new_pytest_exit": 1,
+        "existing_passed": 16,
+        "analytic_cases": 68,
+        "analytic_failed": 42,
+        "skips_allowed": false,
+        "fresh_dependency_environment_claimed": false
+      },
+      {
+        "variant": "candidate",
+        "matched_expected_outcome": true,
+        "demography_sha256": "415c7b43d43043e0966af33817dab59ce073a1a95b18d96019324ec817d9bb37",
+        "native_sha256": "b845214c07cda59385e12f0cca163e1ba26c87c16ff67cfec875972d33c71fe9",
+        "new_cases": 30,
+        "new_counts": {
+          "passed": 30
+        },
+        "new_pytest_exit": 0,
+        "existing_passed": 16,
+        "analytic_cases": 68,
+        "analytic_failed": 0,
+        "skips_allowed": false,
+        "fresh_dependency_environment_claimed": false
+      }
+    ],
+    "scope": "New native builds from locked source; reused observed Python/GSL; no fresh environment or hosted CI claimed before publication"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "checked_at_utc": "2026-10-27T06:03:17.257362+00:00",
+  "platform": "macOS26.5 arm64 CPython3.13.5",
+  "native_source_builds": "Separately downloaded, checksum-verified and compiled baseline/candidate trees outside package",
+  "dependency_environment": "Existing Python environment and local GSL reused; no fresh pip environment claim",
+  "baseline": {
+    "variant": "baseline",
+    "matched_expected_outcome": true,
+    "demography_sha256": "2fffad5c13ed755864f31330b90249cf421873eac90dc1e0d945620267d295f4",
+    "native_sha256": "b845214c07cda59385e12f0cca163e1ba26c87c16ff67cfec875972d33c71fe9",
+    "new_cases": 30,
+    "new_counts": {
+      "failed": 20,
+      "passed": 10
+    },
+    "new_pytest_exit": 1,
+    "existing_passed": 16,
+    "analytic_cases": 68,
+    "analytic_failed": 42,
+    "skips_allowed": false,
+    "fresh_dependency_environment_claimed": false
+  },
+  "candidate": {
+    "variant": "candidate",
+    "matched_expected_outcome": true,
+    "demography_sha256": "415c7b43d43043e0966af33817dab59ce073a1a95b18d96019324ec817d9bb37",
+    "native_sha256": "b845214c07cda59385e12f0cca163e1ba26c87c16ff67cfec875972d33c71fe9",
+    "new_cases": 30,
+    "new_counts": {
+      "passed": 30
+    },
+    "new_pytest_exit": 0,
+    "existing_passed": 16,
+    "analytic_cases": 68,
+    "analytic_failed": 0,
+    "skips_allowed": false,
+    "fresh_dependency_environment_claimed": false
+  },
+  "hosted_ci_executed": false,
+  "full_upstream_suite_executed": false,
+  "review_status": "Root owns independent technical/source/value review and publication"
+}
