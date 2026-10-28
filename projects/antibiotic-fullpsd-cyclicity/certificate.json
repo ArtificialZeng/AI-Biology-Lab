@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "claim_scope": "three-strain fullPSD; arbitrary finiteM; positiveconstant rates and commonpositive KP/KD; necessarycyclicpair for locallyasymptoticallystable interiorfixedpoint only",
+  "support_counts": {
+    "all_nonempty": 63,
+    "no_cyclic_pair": 15,
+    "singleton": 6,
+    "two_type": 9,
+    "two_type_common_roles": {
+      "P": 3,
+      "S": 3,
+      "D": 3
+    }
+  },
+  "symbolic_identity_count": 4,
+  "floating_native_fixtures": 60,
+  "exact_ordered_cost_equilibria": 2,
+  "prior_invasion_multipliers": [
+    "3/4",
+    "2/3"
+  ],
+  "global_theorem_mechanically_certified": false
+}
