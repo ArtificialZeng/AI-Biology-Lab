@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "part_sizes": [
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      2,
+      2
+    ],
+    [
+      1,
+      1,
+      2
+    ]
+  ],
+  "fitness": [
+    "1/2",
+    "1",
+    "2"
+  ],
+  "lambda_Bd": [
+    "0",
+    "1/2",
+    "1"
+  ],
+  "obstruction": {
+    "part_sizes": [
+      1,
+      1,
+      2
+    ],
+    "fitness": "20",
+    "lambda_Bd": "1/2",
+    "lower_counts": [
+      0,
+      0,
+      1
+    ],
+    "upper_counts": [
+      1,
+      0,
+      1
+    ],
+    "target_part": 1
+  }
+}
