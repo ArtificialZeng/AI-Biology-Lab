@@ -1,0 +1,33 @@
+name: Verify JC triangle rate-mixture note
+on:
+  pull_request:
+    paths:
+      - 'projects/jc-triangle-rate-mixtures/**'
+      - '.github/workflows/jc-triangle-rate-mixtures.yml'
+  push:
+    paths:
+      - 'projects/jc-triangle-rate-mixtures/**'
+      - '.github/workflows/jc-triangle-rate-mixtures.yml'
+jobs:
+  verify:
+    name: Exact JC checks (${{ matrix.os }}, Python ${{ matrix.python }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: projects/jc-triangle-rate-mixtures
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Exact original-state probability checks
+        run: python verify.py
+      - name: Optimized interpreter exact checks
+        run: python -O verify.py
