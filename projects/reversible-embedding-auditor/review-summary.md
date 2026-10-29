@@ -1,0 +1,9 @@
+# Review status
+
+A fresh AI review accepted the frozen theorem-specific counterexample after independently reading the source definitions and Theorem 3.16 and reconstructing the exact algebra from the literal rational matrix. The reviewer recovered its spectral projectors with standard-library rational arithmetic rather than importing the construction. All generator signs and the negative principal-logarithm entry passed. The review also compared the primary sources listed in sources.md, including selected portions of the newly retrieved Roca thesis.
+
+This is a separate AI review pass, not external human peer review. No author confirmation, proof-assistant certificate, trusted-runner gate, historical priority, minimum dimension or general embedding classification is claimed.
+
+The frozen research proof is preserved byte-for-byte. The original exact construction is refactored into a deterministic builder with every assertion converted to an explicit check active under Python optimization; archive writes are removed. Its canonical JSON certificate has the same parsed mathematical data as the research certificate. A second implementation starts from literal matrix entries and reconstructs spectral projectors independently. Both verifiers pass normally and under optimization, including a pure-Python SymPy backend; checks also cover relocation, read-only inputs, tampering and exclusive external regeneration. The package manifest binds every public project input.
+
+The final public source notes update the earlier thesis-access limitation and record that the current institutional PDF retains the same target statement. No decisive mathematical evidence changed after review. The original proof's closing reference to future fresh review records its frozen research stage; this file records the completed review and its limits.
