@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "author_density_zero_current": "0",
+    "author_fitness_integrand": "0",
+    "dimensionless_log_density": "0",
+    "fixed_optimum_ratio_drift": "0",
+    "general_ratio_drift": "0",
+    "general_ratio_variance": "0",
+    "instantaneous_log_growth": "0",
+    "ordered_fitness_branch": "0",
+    "potential_derivative": "0",
+    "quadratic_growth_penalty": "0"
+  },
+  "derivative_discriminator": "d/dlambda E_lambda[(X-q)^2]=-2 Cov_lambda((X-q)^2,D_q(X))",
+  "dimensionless_stationary_density": "p_lambda(x) proportional to x^(-2(1-q))*(1-x)^(-2q)*exp(-2lambda*D_q(x))",
+  "limits": "q in (0,1/2), lambda>0; covariance sign not established by this script; no finite population extinction or Julia execution",
+  "log_population_drift": "(-2*mu1*x + 2*mu1 + 2*mu2*x + 2*rho*sigma1*sigma2*x**2 - 2*rho*sigma1*sigma2*x - sigma1**2*x**2 + 2*sigma1**2*x - sigma1**2 - sigma2**2*x**2)/2",
+  "method": "Ito generator applied to R2/(R1+R2) and log(R1+R2), full covariance",
+  "objective": "F(omega)=h(q)-V/2*E_lambda[(X-q)^2], lambda=omega/V",
+  "potential": "D_q(x)=(1-2q)log(x/(1-x))+q/x+(1-q)/(1-x)",
+  "ratio_drift": "mu1*x**2 - mu1*x - mu2*x**2 + mu2*x + omega*q - omega*x - 2*rho*sigma1*sigma2*x**3 + 3*rho*sigma1*sigma2*x**2 - rho*sigma1*sigma2*x + sigma1**2*x**3 - 2*sigma1**2*x**2 + sigma1**2*x + sigma2**2*x**3 - sigma2**2*x**2",
+  "ratio_variance": "-x**2*(x - 1)**2*(2*rho*sigma1*sigma2 - sigma1**2 - sigma2**2)"
+}

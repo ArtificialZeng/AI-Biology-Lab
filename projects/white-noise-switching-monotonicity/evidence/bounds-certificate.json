@@ -1,0 +1,52 @@
+{
+  "analytic_dependencies": [
+    "Original-number Ito generator and stationary-law reconstruction",
+    "Positive odds density and finite moments",
+    "Stationary identity F=phi1+omega*((1-q)E[R]-q)",
+    "Integral rescalings and elementary exponential bounds in proof.md"
+  ],
+  "arithmetic": "fractions.Fraction, no floating computation or assert gates",
+  "fitness_bounds": {
+    "F1_strict_lower_separator": "499899/1000000",
+    "F2_strict_upper": "16157863729989/32322268000000",
+    "separator_minus_F2_upper": "5720943/32322268000000"
+  },
+  "limitations": [
+    "No Julia execution",
+    "Not a formal proof-assistant certificate",
+    "Not finite-population extinction or survival",
+    "Not optimized-q envelope or full ambiguous source conjecture",
+    "No novelty or human-review certification"
+  ],
+  "odds_density_lambda2": {
+    "A": "9/2500",
+    "B": "1/2500",
+    "nu": "502/625"
+  },
+  "rates": {
+    "lambda1": "1/1000",
+    "lambda2": "1/500",
+    "omega1": "101/100000",
+    "omega2": "101/50000"
+  },
+  "rational_integral_bounds": {
+    "D_lower_minus_18N_upper": "2209077/4100000",
+    "D_strict_lower": "7686393/25000",
+    "ER_strict_upper": "32265625/581800824",
+    "N_strict_upper": "134225/7872",
+    "one_eighteenth": "1/18"
+  },
+  "schema": "white-noise-fixed-target-finite-pair-v1",
+  "source_parameters": {
+    "V": "101/100",
+    "mu1": "1",
+    "mu2": "101/1000",
+    "phi1": "1/2",
+    "phi2": "12/125",
+    "q_fixed_q_infinity": "1/10",
+    "rho": "0",
+    "sigma1": "1",
+    "sigma2": "1/10"
+  },
+  "strict_order": "F(omega2) < F2_upper < 499899/1000000 < F(omega1)"
+}

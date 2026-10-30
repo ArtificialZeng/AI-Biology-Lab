@@ -42,6 +42,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [ETE RF polytomy correction](projects/ete-rf-polytomy/README.md) | Correct shared-leaf topology correction and invalid negative distances | Genuine native baseline/candidate checks; known upstream issue credited; inherited full-suite failures disclosed |
 | [Periodic adaptation](projects/periodic-adaptation/README.md) | Exact all-waveform mean deficit and attracting periodic response for a published reversible motif | Complete ODE argument and two exact checkers; fresh AI review, human/priority verification pending |
 | [Forward-response scope audit](projects/nonreciprocal-response-audit/README.md) | Exact moment twins and a local finite-jet repair of subsidiary source claims | Independent exact recomputation and AI mathematical review; author verification pending |
+| [Fixed-target switching clarification](projects/white-noise-switching-monotonicity/README.md) | Exact finite switching-rate example for a specified target proportion | Two exact checks; equivalent dispersal theory credited; local AI review is not human peer review |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
