@@ -1,0 +1,23 @@
+{
+  "current_commit": "9562dfb6a02795dfda3975be5025f83b8dc884b1",
+  "source_archive_sha256": "2fef8ae7575aa633f4b966bd7431a8a74ace78b82e578045c43560bd269cfda7",
+  "source_url": "https://codeload.github.com/etetoolkit/ete/legacy.tar.gz/9562dfb6a02795dfda3975be5025f83b8dc884b1",
+  "production_baseline_sha256": "ce1dee28ba54a5130a3dd782c18129ee7fb3b93e7860393f5545607d15136bc4",
+  "patched_files": {
+    "ete4/core/tree.pyx": "c548be75fc42e972235c928636e07f9d5eb38c3f4b5727773ae04d49ebd06361",
+    "tests/test_rf_polytomy_correction.py": "98917254ee1f5052df5214f048446a30084d34cee76f1ed67c9b98d23bd57b42",
+    "run_tests.py": "ad8e30f1347711954b044a4168cc8aecbf4fc56ecad9115448d8909bdf22c72c"
+  },
+  "original17_digest": "dfed4df04d1c4f2ca8043d156baa72d71c3665d09388c03b189ae644496c89e5",
+  "integration19_digest": "da761bac7e275f6c1ce03eae4ec1f0e6a819a2c2e36340d740b7cdbee096effd",
+  "owner_worker_mapping": {
+    "owner_native_audit.py": "independent_audit.py",
+    "owner_upstream_tests.py": "run_upstream_tests.py",
+    "owner_support_residual.py": "support_residual.py"
+  },
+  "worker_copy_bytes_unchanged": true,
+  "offline_mode": "AST extracts only seven pure graph functions from byte-identical owner checker; no ETE API is simulated or claimed executed",
+  "native_mode": "Copies all three original workers into external working layout, fetches exact pinned source archive, verifies checksum, compiles both real Cython source trees and runs original workers",
+  "formal_trusted_runner_gate": false,
+  "human_confirmation": false
+}
