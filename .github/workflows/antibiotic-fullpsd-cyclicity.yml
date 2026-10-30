@@ -1,0 +1,35 @@
+name: Verify full-PSD cyclicity note
+on:
+  pull_request:
+    paths:
+      - 'projects/antibiotic-fullpsd-cyclicity/**'
+      - '.github/workflows/antibiotic-fullpsd-cyclicity.yml'
+  push:
+    paths:
+      - 'projects/antibiotic-fullpsd-cyclicity/**'
+      - '.github/workflows/antibiotic-fullpsd-cyclicity.yml'
+jobs:
+  verify:
+    name: Full-PSD checks (${{ matrix.os }}, Python ${{ matrix.python }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: projects/antibiotic-fullpsd-cyclicity
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install pinned symbolic dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Exact identities and finite native-map checks
+        run: python verify.py
+      - name: Optimized interpreter checks
+        run: python -O verify.py
