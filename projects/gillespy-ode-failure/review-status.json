@@ -1,0 +1,12 @@
+{
+  "accepted_scope": "Raise through the existing SimulationError policy on an unsuccessful SciPy ODE integration, before advancing the output clock or publishing its returned state as a requested-time sample; clear per-run result/status/exception state for reuse; preserve ordinary successful, resume and timeout behavior without changing backend defaults.",
+  "external_human_peer_review": false,
+  "independent_observations_per_tree": 32,
+  "maintainer_approval": false,
+  "package_review_status": "accepted by a separate fresh independent AI packaging review",
+  "patch_review_verdict": "accept",
+  "review_type": "fresh independent AI software correctness review",
+  "reviewed_snapshot_digest": "181d033d39cf3632ce4d3e2ebb25fcc327e7cc933807167d4f12acff30fe99a8",
+  "reviewed_utc": "2026-10-26T18:15:19.106899+00:00",
+  "trusted_runner_certification": false
+}

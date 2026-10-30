@@ -32,6 +32,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Three- and four-particle ancestral circulation](projects/ancestral-circulation-classification/README.md) | Complete N3 sign law and exact N4 reversal with a fixed rate ordering | Full polynomial identities and two-colour verification; human review and priority pending |
 | [3-sunlet dimension proofs](projects/even-sunlet-dimension/README.md) | General group-based models and cyclic inversion-symmetric models | Uniform kernel proofs and independent exact certificates; author review and priority pending |
 | [Mantis conditioned stationary support](projects/mantis-stationary-auditor/README.md) | Reachable-class and outside-support correction for finite initial-conditioned laws | Exact component oracles and actual API replay; one disclosed pre-existing full-suite numerical failure |
+| [GillesPy2 ODE failure propagation](projects/gillespy-ode-failure/README.md) | Reject failed backend steps before publishing future-labelled results | Analytic baseline/candidate replay and independent AI review; upstream maintainer confirmation pending |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
