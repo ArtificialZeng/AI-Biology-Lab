@@ -1,0 +1,267 @@
+{
+  "all_full_state_moments_equal_orders0to3": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "circulant": [
+    [
+      "-4",
+      "1",
+      "1",
+      "2"
+    ],
+    [
+      "2",
+      "-4",
+      "1",
+      "1"
+    ],
+    [
+      "1",
+      "2",
+      "-4",
+      "1"
+    ],
+    [
+      "1",
+      "1",
+      "2",
+      "-4"
+    ]
+  ],
+  "circulant_reduced_responses": [
+    {
+      "denominator_coefficients": [
+        "1",
+        "16",
+        "86",
+        "156",
+        "0"
+      ],
+      "gcd": "1",
+      "numerator_coefficients": [
+        "2",
+        "18",
+        "39"
+      ],
+      "output_species": 2,
+      "quadratic_remainder": "-2*s - 13"
+    },
+    {
+      "denominator_coefficients": [
+        "1",
+        "16",
+        "86",
+        "156",
+        "0"
+      ],
+      "gcd": "1",
+      "numerator_coefficients": [
+        "1",
+        "13",
+        "39"
+      ],
+      "output_species": 3,
+      "quadratic_remainder": "3*s + 13"
+    }
+  ],
+  "cycle_imbalance": "1/100",
+  "directional_identity_cases": 18,
+  "epsilon": "1/1000",
+  "fourth_full_state_moment_difference": [
+    "0",
+    "139/125",
+    "-139/125",
+    "0"
+  ],
+  "generic_derivative": [
+    [
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "-18",
+      "3",
+      "4",
+      "1",
+      "2",
+      "0"
+    ],
+    [
+      "255",
+      "-87",
+      "-136",
+      "-35",
+      "-80",
+      "-1"
+    ],
+    [
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "2",
+      "-22",
+      "4",
+      "-1",
+      "0",
+      "1"
+    ],
+    [
+      "-56",
+      "390",
+      "-152",
+      "37",
+      "-4",
+      "-47"
+    ]
+  ],
+  "generic_determinant": "800",
+  "generic_rank": 6,
+  "irreducible_quadratic_discriminant": -4,
+  "krylov_v": [
+    "0",
+    "11",
+    "-16",
+    "7"
+  ],
+  "model_sha256": "b8e83c0cfbffd1dbfbc76c7fe51e48f00e2c346c19a975a0c4f76f693a0a16c1",
+  "mutation_controls_rejected": [
+    "omit_Markov_diagonal_derivatives",
+    "zero_offdiagonal_breaks_complete_graph",
+    "perturbation_column_sum_not_zero",
+    "wrong_Krylov_annihilator",
+    "large_perturbation_loses_positivity",
+    "changed_resolvent_numerator"
+  ],
+  "perturbation_b": [
+    "0",
+    "1",
+    "-1",
+    "0"
+  ],
+  "perturbed_generator": [
+    [
+      "-6",
+      "1",
+      "2",
+      "3"
+    ],
+    [
+      "1",
+      "-9989/1000",
+      "498/125",
+      "5007/1000"
+    ],
+    [
+      "2",
+      "3989/1000",
+      "-1498/125",
+      "5993/1000"
+    ],
+    [
+      "3",
+      "5",
+      "6",
+      "-14"
+    ]
+  ],
+  "positive_symmetric_base": [
+    [
+      "-6",
+      "1",
+      "2",
+      "3"
+    ],
+    [
+      "1",
+      "-10",
+      "4",
+      "5"
+    ],
+    [
+      "2",
+      "4",
+      "-12",
+      "6"
+    ],
+    [
+      "3",
+      "5",
+      "6",
+      "-14"
+    ]
+  ],
+  "proof_sha256": "3ce451c6bf1ef4b104a91e053a8436a822c78b20448fffc921f7136355ca416d",
+  "rate_order": [
+    "12",
+    "13",
+    "14",
+    "23",
+    "24",
+    "34"
+  ],
+  "scope": "Exact symbolic/fixed-witness algebra; no new general reversible spectral theorem or human/formal certification",
+  "sympy_version": "1.13.3",
+  "uniform_derivative": [
+    [
+      "1",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "-8",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "48",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "1",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "-8",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "48",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  ],
+  "uniform_rank": 2
+}

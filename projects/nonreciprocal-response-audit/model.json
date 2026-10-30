@@ -1,0 +1,54 @@
+{
+  "positive_symmetric_rates": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "krylov_v": [
+    "0",
+    "11",
+    "-16",
+    "7"
+  ],
+  "perturbation_b": [
+    "0",
+    "1",
+    "-1",
+    "0"
+  ],
+  "epsilon": "1/1000",
+  "circulant": [
+    [
+      -4,
+      1,
+      1,
+      2
+    ],
+    [
+      2,
+      -4,
+      1,
+      1
+    ],
+    [
+      1,
+      2,
+      -4,
+      1
+    ],
+    [
+      1,
+      1,
+      2,
+      -4
+    ]
+  ],
+  "response_convention": "R12=e2^Texp(tA)e1,R13=e3^Texp(tA)e1, following displayed sourceSection8",
+  "generator_convention": "column sums zero; all offdiagonal rates strictlypositive",
+  "uniform_point": "J-4I, symmetric-six-rate restriction",
+  "general_source_main_theorem_challenged": false,
+  "spectral_obstruction_claimed_new": false
+}
