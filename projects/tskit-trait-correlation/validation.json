@@ -1,0 +1,48 @@
+{
+  "checked_at_utc": "2026-10-27T12:36:33.710969+00:00",
+  "mode": "fresh_pinned_source_builds",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+  "python_executable": "<reference Python 3.13.5 environment>",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "jsonschema": "4.26.0",
+    "setuptools": "84.2.1",
+    "wheel": "0.48.0"
+  },
+  "source": {
+    "url": "https://codeload.github.com/tskit-dev/tskit/tar.gz/f154d1190e0142c0499d2698d76eed0fe6429876",
+    "commit": "f154d1190e0142c0499d2698d76eed0fe6429876",
+    "archive_sha256": "b29e5503fcc221e62ddff33827ee482b433ef980fc93ba588581cf305430efb6",
+    "baseline_c_sha256": "2c5e9f77ad5901d6c05801abf7d46d2e8782187fe68551b7556138d27f21a616"
+  },
+  "native_patch_sha256": "0cf31cc6a2fca3a648d2b60f907b0158c78c5fe85c81e78da392a533de8cc9dd",
+  "results": {
+    "baseline": {
+      "cases": 396,
+      "passes": 84,
+      "failures": 312,
+      "extension_sha256": "108baed1b0159192bccd20e2eecb751eb3220dc95f35898c2abb9bdf004e9005",
+      "tskit_version": "1.0.4.dev0",
+      "tskit_module": "<fresh-baseline-native-build>/tskit/__init__.py",
+      "extension": "<fresh-baseline-native-build>/_tskit.cpython-313-darwin.so"
+    },
+    "candidate": {
+      "cases": 396,
+      "passes": 396,
+      "failures": 0,
+      "extension_sha256": "7274fb06f649c1c10fabb046a31f0b55ebb8000575b5002bec8b070bbcd95348",
+      "tskit_version": "1.0.4.dev0",
+      "tskit_module": "<fresh-candidate-native-build>/tskit/__init__.py",
+      "extension": "<fresh-candidate-native-build>/_tskit.cpython-313-darwin.so"
+    }
+  },
+  "scientific_audit_executed": true,
+  "bounded_reproduction_pass": true,
+  "import_paths_verified_at_runtime": true,
+  "invocation": "python -O reproduce.py --workdir <new-empty-directory>",
+  "receipt_display_paths": "Machine-specific absolute paths replaced for portability; runtime checked imports were inside each requested native build.",
+  "raw_audit_receipt_sha256": {
+    "baseline": "a87aaded0dcbf3c30ca4c3f3bafb5e15d25be33ff699986857c18bff815593f5",
+    "candidate": "f8d5f21fcd643e183e01b4f6b725f91cc180666f33aefe45b40185ec2c09ec2b"
+  }
+}

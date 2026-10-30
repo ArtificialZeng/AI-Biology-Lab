@@ -1,0 +1,27 @@
+name: tskit trait correlation native audit
+on:
+  pull_request:
+    paths:
+      - 'projects/tskit-trait-correlation/**'
+      - '.github/workflows/tskit-trait-correlation.yml'
+permissions:
+  contents: read
+jobs:
+  native-audit:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r projects/tskit-trait-correlation/requirements.txt
+      - name: Fresh baseline and candidate native replay
+        run: python projects/tskit-trait-correlation/reproduce.py --workdir "${{ runner.temp }}/tskit-trait-normal"
+      - name: Optimized parent fresh native replay
+        env:
+          PYTHONOPTIMIZE: '2'
+        run: python -O projects/tskit-trait-correlation/reproduce.py --workdir "${{ runner.temp }}/tskit-trait-optimized"
