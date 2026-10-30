@@ -1,0 +1,10 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every integer N>=3 and 1<=m<=floor(N/2), residents on K_N and neutral mutants on K_N minus any matching of m edges under type-specific Moran birth-death have, for every singleton starting vertex v, h_v<=1/N-2m/[N^2(N-1)(N(N-2)+2m-2)]<1/N. Uniform singleton averaging inherits the bound. Source arbitrary connected noncomplete mutant-G question remains unresolved.",
+  "contribution": "Uniform unbounded-m matching-complement theorem and pointwise quantitative bound extending R14/PR18 m=2; m=1 source exact result and source N=6 numerics explicitly credited. New range m>=3. Bounded primary novelty screen only.",
+  "related_lab_pr": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/18",
+  "known_gaps": [],
+  "status": "Fresh AI substantive mathematical review accepted; final public package audit pending; trusted-runner formal gate failed Missing claim.proposer_job_id",
+  "historical_m2": "The retained m=2 theorem is a corollary of the proposed all-matching theorem; prior m>=3 unknown language is historical."
+}

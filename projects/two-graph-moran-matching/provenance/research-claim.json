@@ -1,0 +1,33 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every integer N>=4, residents dispersing on K_N and neutral mutants dispersing on K_N minus two vertex-disjoint edges under type-specific Moran birth-death have, at every singleton starting vertex, fixation probability <=1/N-4/[N^2(N-1)(N(N-2)+2)]<1/N. Uniform singleton averaging inherits the bound. Full arbitrary-G and matching-size>=3 questions remain unresolved.",
+  "contribution": "Uniform all-N two-disjoint-deletion subclass theorem and a pointwise quantitative bound, extending the published one-deleted-edge Theorem A.1. Published N=6 numerical evidence is credited; the primary-source novelty search is bounded.",
+  "proposer_job_id": null,
+  "proposer_agent_task": "/root/mathbio_r14_stochastic_triage",
+  "runner_provenance_available": false,
+  "workflow_note": "No injected runner job ID; no synthetic role or acceptance records. This content snapshot requests a fresh mathematical review and is not release-gate certification.",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "proof.md",
+    "literature.md",
+    "README.md",
+    "verify_certificate.py",
+    "evidence/six-polynomial-certificates.json",
+    "baseline.py",
+    "explore.py",
+    "evidence/exact-baseline.json",
+    "author_reproduce.py",
+    "evidence/author-reproduction.json",
+    "evidence/source-2023.pdf",
+    "evidence/figshare-metadata.json",
+    "evidence/_README-two-graphs.txt",
+    "evidence/numerics-small-pairs.py",
+    "proof-attack/argument.md",
+    "proof-attack/independent_verify.py",
+    "proof-attack/independent-verification.json"
+  ],
+  "candidate_status": "candidate-awaiting-fresh-referee",
+  "research_pass": 1
+}

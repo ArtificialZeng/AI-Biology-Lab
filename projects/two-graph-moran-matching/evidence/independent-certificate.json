@@ -1,0 +1,32 @@
+{
+  "input_binding": "public archive_manifest.json",
+  "raw_generator": "Q=N(P-I); parent weights 1/d_type(parent)",
+  "symbolic_scope": "all n>=4, exactly two vertex-disjoint deletions",
+  "six_polynomials": {
+    "(0, 0)": "4*c**2*r + 16*c**2 + 4*c*r**2 + 24*c*r + 32*c",
+    "(0, 1)": "4*c**2*r + 10*c**2 + 4*c*r**2 + 26*c*r + 38*c + 4*r**2 + 20*r + 24",
+    "(0, 2)": "4*c**2*r + 2*c**2 + 4*c*r**2 + 24*c*r + 10*c + 6*r**2 + 22*r + 4",
+    "(1, 0)": "4*c**2*r + 8*c**2 + 4*c*r**2 + 28*c*r + 40*c + 4*r**2 + 28*r + 40",
+    "(1, 1)": "4*c**2*r + 4*c*r**2 + 26*c*r + 6*r**2 + 34*r",
+    "(2, 0)": "4*c**2*r + 4*c*r**2 + 32*c*r + 8*r**2 + 72*r"
+  },
+  "boundaries_and_singleton_drift": true,
+  "heldout_labelled_audit": [
+    {
+      "n": 9,
+      "labelled_states": 512,
+      "singleton_states": 9,
+      "maximum_drift": "0",
+      "zero_drift_states": 6
+    },
+    {
+      "n": 10,
+      "labelled_states": 1024,
+      "singleton_states": 10,
+      "maximum_drift": "0",
+      "zero_drift_states": 6
+    }
+  ],
+  "identical_complete_graph_k_drift_control": "zero for every n=4,9 state",
+  "sympy_version": "1.13.3"
+}

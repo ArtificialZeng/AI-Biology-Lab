@@ -1,0 +1,96 @@
+{
+  "research_snapshot_digest": "591883c030289c4ac5c38941af44a1af9bbeff551775a011b785bad057544bd5",
+  "fresh_original_sha256": "54cb52958b5dc1503daa4ef514b345cc813f4f5d91c8aa99e38a9b6f1b73cb67",
+  "fresh_adapter_sha256": "654b94eefc2dbf0957fbd7afd04b87a6b9f4023661cb02d07bf0ed087c555b72",
+  "normalized_AST_equal": true,
+  "removed_private_plumbing": [
+    {
+      "lines": [
+        8,
+        8
+      ],
+      "reason": "local dependency path",
+      "source": "sys.path.insert(0, '/Users/mac/Documents/ChatGPT/math/tmp/research/pydeps')"
+    },
+    {
+      "lines": [
+        13,
+        13
+      ],
+      "reason": "private snapshot path/state",
+      "source": "PRIOR = ROOT.parent.parent / 'round-014' / 'matching-fixation-research'"
+    },
+    {
+      "lines": [
+        15,
+        15
+      ],
+      "reason": "private snapshot helper",
+      "source": "def digest(b): return hashlib.sha256(b).hexdigest()"
+    },
+    {
+      "lines": [
+        16,
+        21
+      ],
+      "reason": "private snapshot helper",
+      "source": "def check_snapshot(base):\n    snap=json.loads((base/'snapshot.json').read_text())\n    observed={p:digest((base/p).read_bytes()) for p in snap['files']}\n    canonical=digest(json.dumps(snap['files'],sort_keys=True,separators=(',',':')).encode())\n    return {'files_checked':len(observed),'mismatches':[p for p in observed if observed[p]!=snap['files'][p]],\n            'digest':snap['digest'],'canonical_digest_matches':canonical==snap['digest'],'observed':observed}"
+    },
+    {
+      "lines": [
+        23,
+        23
+      ],
+      "reason": "private snapshot path/state",
+      "source": "before={'current':check_snapshot(RESEARCH),'prior':check_snapshot(PRIOR)}"
+    },
+    {
+      "lines": [
+        24,
+        24
+      ],
+      "reason": "private snapshot assertion",
+      "source": "assert all(not v['mismatches'] and v['canonical_digest_matches'] for v in before.values())"
+    },
+    {
+      "lines": [
+        25,
+        25
+      ],
+      "reason": "private snapshot receipt output",
+      "source": "(ROOT/'prehashes.json').write_text(json.dumps(before,indent=2)+'\\n')"
+    },
+    {
+      "lines": [
+        117,
+        117
+      ],
+      "reason": "private snapshot path/state",
+      "source": "after={'current':check_snapshot(RESEARCH),'prior':check_snapshot(PRIOR)}"
+    },
+    {
+      "lines": [
+        118,
+        118
+      ],
+      "reason": "private snapshot assertion",
+      "source": "assert before==after"
+    },
+    {
+      "lines": [
+        119,
+        119
+      ],
+      "reason": "private snapshot receipt output",
+      "source": "(ROOT/'posthashes.json').write_text(json.dumps(after,indent=2)+'\\n')"
+    }
+  ],
+  "path_substitution": "RESEARCH = ROOT; each worker receives recomputed uniform certificate in its external evidence directory",
+  "mathematical_AST": "All remaining statements, expressions, functions, assertions, event cases and outputs unchanged, including the fresh m=1 hitting-function harmonicity block. Wrapper removes MATH_JOB_ID from worker environment to retain historical false field deterministically.",
+  "old_m2_preservation": "All old files except README.md, verify.py and archive_manifest.json remain byteexact.",
+  "excluded_new_inputs": [
+    "third-party source PDF",
+    "private 17-file inventory and job prompts",
+    "author source code"
+  ]
+}

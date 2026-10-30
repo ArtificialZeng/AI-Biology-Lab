@@ -1,0 +1,9 @@
+# Bounded overlap audit, 2026-10-26 UTC
+
+- JRSI2023 source §§2–3,Discussion first question,AppendicesA–C: single-edge exact formula, particular regular island/lattice results, and explicit broader complete-graph conjectures. It neither states nor proves the proposed all-regular finite neutral theorem in the inspected text. Full frozen primary text is included privately.
+- JCSS2022, arXiv1710.07365v3 (last revised26July2021): Theorem16 and adjacent regular-mutant consequence apply in nonneutral asymptotic regimes; Corollary18 concerns complete mutants andcirculants with r>2. They do not imply the proposed finite r=1 inequalities. Resident/mutant argument order differs from this dossier and the2023 source.
+- arXiv2111.10890v1 remains its only version as of this check. The journal2023 text controls.
+- arXiv2605.26411v3 (28June2026), primary HTML https://arxiv.org/html/2605.26411v3 : model, regular-graph discussion, and Discussion inspected. This work studies where the last resident is located in common-graph evolution, not the two-graph extremality assertion. Its author GitHub is not an appropriate upstream for this distinct2023-model contribution.
+- Exact and related searches: “type-specific regular graph fixation complete neutral bound”; “two-graph Moran regular 1/n”; “Evolutionary dynamics of mutants regular proof fixation2024 2025 2026”; “fixation complete supermartingale two graphs”. Retrieved original source, predecessor and common-graph works; no equivalent all-regular result located in these sources.
+
+No exhaustive literature coverage, novelty priority, human confirmation, or journal suitability is certified. A knowledgeable source author could still identify prior work. If an equivalent result is later found, this record must be revised as rediscovery, not kept as an original discovery. The public material should make this limitation explicit.
