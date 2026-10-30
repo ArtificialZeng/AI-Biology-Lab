@@ -1,0 +1,108 @@
+--- a/skbio/diversity/alpha/_base.py
++++ b/skbio/diversity/alpha/_base.py
+@@ -568,6 +568,8 @@
+         return _perplexity(probs)
+     elif np.isposinf(order):
+         return 1 / probs.max()
++    elif order >= 2:
++        return np.exp(_renyi_entropy(probs, order))
+     else:
+         return (probs**order).sum() ** (1 / (1 - order))
+ 
+@@ -1150,6 +1152,8 @@
+     # min-entropy
+     elif np.isposinf(order):
+         qH = -np.log(probs.max())
++    elif order >= 2:
++        qH = _renyi_entropy(probs, order)
+     else:
+         qH = np.log((probs**order).sum()) / (1 - order)
+ 
+@@ -1200,6 +1204,17 @@
+ 
+     """
+     return (counts == 1).sum() / counts.sum()
++
++
++def _renyi_entropy(probs, order):
++    """Calculate Renyi entropy at finite orders >= 2."""
++    # Scale by the largest probability so the power sum is at least one,
++    # even when each unscaled probability raised to this order underflows.
++    max_p = probs.max()
++    power_sum = ((probs / max_p) ** order).sum()
++    # Divide the order before multiplying the logarithm to avoid overflow
++    # at large finite orders.
++    return np.log(max_p) * (order / (1 - order)) + np.log(power_sum) / (1 - order)
+ 
+ 
+ def _entropy(probs):
+--- a/skbio/diversity/alpha/tests/test_base.py
++++ b/skbio/diversity/alpha/tests/test_base.py
+@@ -226,6 +226,30 @@
+ 
+         self.assertTrue(np.isnan(inv_simpson([0, 0])))
+ 
++    def test_hill_large_order(self):
++        # Equally abundant taxa have Hill number equal to observed richness
++        # at every order, including when all unscaled powers underflow.
++        for order in (128, 2000, 1e308, np.finfo(float).max):
++            for size in (1, 2, 1024):
++                counts = [0] + [5] * size + [0]
++                with self.subTest(order=order, size=size):
++                    with np.errstate(divide='raise', invalid='raise', over='raise'):
++                        obs = hill(counts, order=order)
++                    npt.assert_allclose(obs, size, rtol=1e-13)
++
++        # Nonuniform examples evaluated from the defining formula using
++        # 90-digit decimal arithmetic.
++        self.assertAlmostEqual(hill([1, 3, 4], order=128), 2.010945546044426)
++        self.assertAlmostEqual(hill([1, 3, 4], order=2000), 2.0006936141748786)
++        self.assertAlmostEqual(hill([1, 10, 10], order=2000), 2.100051255925534)
++
++        # At these finite orders the correction to inverse dominance is
++        # below binary64 precision. This also checks tied maxima.
++        for counts in ([1, 3, 4], [1, 10, 10], [1, 2, 3, 4, 5]):
++            with np.errstate(divide='raise', invalid='raise', over='raise'):
++                obs = hill(counts, order=np.finfo(float).max)
++            npt.assert_allclose(obs, sum(counts) / max(counts), rtol=1e-13)
++
+     def test_kempton_taylor_q(self):
+         # Approximate Magurran 1998 calculation p143.
+         arr = np.array([2, 3, 3, 3, 3, 3, 4, 4, 4, 6, 6, 7, 7, 9, 9, 11, 14,
+@@ -386,6 +410,26 @@
+         # empty community
+         self.assertTrue(np.isnan(renyi([0, 0])))
+ 
++    def test_renyi_large_order(self):
++        # Equally abundant taxa have Renyi entropy log(S) at every order.
++        for order in (128, 2000, 1e308, np.finfo(float).max):
++            for size in (1, 2, 1024):
++                counts = [0] + [5] * size + [0]
++                with self.subTest(order=order, size=size):
++                    with np.errstate(divide='raise', invalid='raise', over='raise'):
++                        obs = renyi(counts, order=order, base=2)
++                    npt.assert_allclose(obs, np.log2(size), atol=1e-13)
++
++        # Independent 90-digit decimal evaluations of the defining formula.
++        self.assertAlmostEqual(renyi([1, 3, 4], order=128), 0.698605032375378)
++        self.assertAlmostEqual(renyi([1, 3, 4], order=2000), 0.6934939275237072)
++        self.assertAlmostEqual(renyi([1, 10, 10], order=2000), 0.741961752015105)
++
++        for counts in ([1, 3, 4], [1, 10, 10], [1, 2, 3, 4, 5]):
++            with np.errstate(divide='raise', invalid='raise', over='raise'):
++                obs = renyi(counts, order=np.finfo(float).max)
++            npt.assert_allclose(obs, -np.log(max(counts) / sum(counts)), rtol=1e-13)
++
+     def test_robbins(self):
+         self.assertEqual(robbins(np.array([1, 2, 3, 0, 1])), 2 / 7)
+         self.assertTrue(np.isnan(robbins([0, 0])))
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -16,6 +16,7 @@
+ 
+ ### Bug Fixes
+ 
++* Fixed Hill number (`hill`) and Renyi entropy (`renyi`) returning infinity at large finite orders when probability powers underflowed.
+ * Fixed `checklist.py` raising `UnicodeDecodeError` on platforms whose preferred encoding is not UTF-8, by explicitly reading source files as UTF-8 as declared in `.editorconfig` ([#2607](https://github.com/scikit-bio/scikit-bio/issues/2607)).
+ * Fixed `ancombc2` producing NaN results when Gaussian mixture densities underflow to zero during bias estimation ([#2631](https://github.com/scikit-bio/scikit-bio/issues/2631)).
+ * Fixed `GrammaredSequence` subclasses with extended alphabets incorrectly inheriting cached character masks from their parent class ([#2620](https://github.com/scikit-bio/scikit-bio/pull/2620)).

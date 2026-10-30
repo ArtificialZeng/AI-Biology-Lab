@@ -1,0 +1,78 @@
+{
+  "algorithm": "SHA256",
+  "excludes": [
+    "MANIFEST.json",
+    "__pycache__/",
+    "external runtime work directories"
+  ],
+  "files": {
+    ".gitignore": {
+      "bytes": 35,
+      "sha256": "bcb45b56bcfa92fb0ad29474b8c7aa41befd7ee8fadaf3a4b8529d4a03e85db5"
+    },
+    "LICENSE": {
+      "bytes": 1068,
+      "sha256": "fa9e8539a9046d070158a7cbb74c484704cbf2b162249e49210167277db5c678"
+    },
+    "README.md": {
+      "bytes": 6834,
+      "sha256": "0e872e05272bf15b68ba20b6e9c982405d95f3aaa4bb1a5f7e28fa5c21466e9c"
+    },
+    "THIRD_PARTY_LICENSE.txt": {
+      "bytes": 1515,
+      "sha256": "bd113b93ac18e79ccf11a3f69eb3047d8af6a10bb9e9215c49af4b27301c0bd6"
+    },
+    "VALIDATION.md": {
+      "bytes": 4496,
+      "sha256": "ffaa34c8ccdd6c93cbd3c2d422d4221c79d05783799be0fc753ef008fcff8748"
+    },
+    "audit_api.py": {
+      "bytes": 5132,
+      "sha256": "03a84789984feb4a3f85e6a20cde0a3f44f1c7591a2a9f4c6192670fb406de1f"
+    },
+    "ci/reproduce.yml": {
+      "bytes": 833,
+      "sha256": "04d2660fd4057092e3f4fba3ec50c862f94e3e5cd68469b995984fe64680bcdc"
+    },
+    "evidence/optimized-failure-summary.json": {
+      "bytes": 1026,
+      "sha256": "a93d8a35b79eb23766d8f245cfc6c757ab72bf52df9cf61547986e9a812e3388"
+    },
+    "evidence/portable-baseline.json": {
+      "bytes": 2792,
+      "sha256": "b91422adfb443c91ed2f873c4dc77603e050734c5b03de50fc2592a3c9b9fcc8"
+    },
+    "evidence/portable-candidate.json": {
+      "bytes": 2630,
+      "sha256": "b357764385785d6f485b934646c08a997698f1332381d9098789d1775ae536e0"
+    },
+    "evidence/portable-export.json": {
+      "bytes": 600,
+      "sha256": "c673770b74d07b4b0384edd7f88d628637d64605347a62584fadc15112ad9aa1"
+    },
+    "evidence/portable-summary.json": {
+      "bytes": 2950,
+      "sha256": "eb4c94ceffad494e14138b49b8af7e30b5cdfdbc4a445fed4edcd5af6525becd"
+    },
+    "evidence/upstream-submission.json": {
+      "bytes": 884,
+      "sha256": "f1c665c8c7937a6f8ef54a52ba99d218640033028d1447a83eb49613f3af5c57"
+    },
+    "hill-renyi-stable-order.patch": {
+      "bytes": 5190,
+      "sha256": "2e41dd0c59c2dbc1b51ff0140936662803022df5c00184c110c7f4fc8f762f58"
+    },
+    "pin.json": {
+      "bytes": 1020,
+      "sha256": "145ef7e6fcf08fae3f8a9bfafc5f4aaecef819d64ebeb73b6472caa418a9d866"
+    },
+    "reproduce.py": {
+      "bytes": 4841,
+      "sha256": "7a350ea9da48e0eceb2448b4c80038e51b00fecba79d7dd3b62df3f9b71df873"
+    },
+    "requirements.txt": {
+      "bytes": 778,
+      "sha256": "d6ca85ba0a29f1f3e05d2ed4d375cbc7b4100d8630d563561841483a9f445680"
+    }
+  }
+}

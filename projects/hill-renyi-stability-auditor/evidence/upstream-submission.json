@@ -1,0 +1,12 @@
+{
+  "upstream_issue": "https://github.com/scikit-bio/scikit-bio/issues/2651",
+  "upstream_pr": "https://github.com/scikit-bio/scikit-bio/pull/2652",
+  "head": "9536feae2e5cdf3578100ea8115004877bb2f179",
+  "state_at_publication": "OPEN DRAFT, awaiting issue-first discussion and maintainer review",
+  "original_source_commit": "2f573b9a9411c3c41465d9abcd41c3ad3a7dc077",
+  "frozen_patch_sha256": "2e41dd0c59c2dbc1b51ff0140936662803022df5c00184c110c7f4fc8f762f58",
+  "implementation_sha256": "520346c75a143c462df215261089c35db69c1ce89720e322bd5aa62607744187",
+  "tests_sha256": "9f2464dd98c3ea4e82465b422d70dec100bddde1464e032c9e0b33a94d977096",
+  "submitted_changelog_sha256": "28288943c03d8e34c592b44c3d4d4699741b3fab5f8ecd10c7745973242d8c04",
+  "difference": "Only the changelog adds the newly assigned issue link; implementation and regression test bytes equal frozen candidate."
+}

@@ -1,0 +1,120 @@
+{
+  "mode": "baseline",
+  "all_pass": true,
+  "python": "3.13.5",
+  "executable": "<REPLAY_WORKDIR>/venv/bin/python",
+  "skbio": "0.7.5-dev",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "module": "<REPLAY_WORKDIR>/scikit-bio-2f573b9a9411c3c41465d9abcd41c3ad3a7dc077/skbio/diversity/alpha/_base.py",
+  "source_sha256": "04401c1c15fd2a94c54a059b624e590e072d4fc5889d3e5dd453e5ce4dcb2a90",
+  "native_module": "<REPLAY_WORKDIR>/scikit-bio-2f573b9a9411c3c41465d9abcd41c3ad3a7dc077/skbio/diversity/_phylogenetic.cpython-313-darwin.so",
+  "native_sha256": "b28bafb3bda063de47e41339cb03655c2ac8b3288273d93c5cddcb02eb877566",
+  "uniform_rows": [
+    {
+      "richness": 2,
+      "order": "0",
+      "observed": [
+        "2.0",
+        "1.0"
+      ],
+      "analytic_expected": [
+        2,
+        1.0
+      ],
+      "warnings": []
+    },
+    {
+      "richness": 2,
+      "order": "1",
+      "observed": [
+        "2.0000000000000004",
+        "1.0"
+      ],
+      "analytic_expected": [
+        2,
+        1.0
+      ],
+      "warnings": []
+    },
+    {
+      "richness": 2,
+      "order": "2",
+      "observed": [
+        "2.0",
+        "1.0"
+      ],
+      "analytic_expected": [
+        2,
+        1.0
+      ],
+      "warnings": []
+    },
+    {
+      "richness": 2,
+      "order": "10",
+      "observed": [
+        "2.0",
+        "1.0"
+      ],
+      "analytic_expected": [
+        2,
+        1.0
+      ],
+      "warnings": []
+    },
+    {
+      "richness": 2,
+      "order": "inf",
+      "observed": [
+        "2.0",
+        "1.0"
+      ],
+      "analytic_expected": [
+        2,
+        1.0
+      ],
+      "warnings": []
+    },
+    {
+      "richness": 2,
+      "order": "2000",
+      "observed": [
+        "inf",
+        "inf"
+      ],
+      "analytic_expected": [
+        2,
+        1.0
+      ],
+      "warnings": [
+        "divide by zero encountered in scalar power",
+        "divide by zero encountered in log"
+      ]
+    },
+    {
+      "richness": 1024,
+      "order": "128",
+      "observed": [
+        "inf",
+        "inf"
+      ],
+      "analytic_expected": [
+        1024,
+        10.0
+      ],
+      "warnings": [
+        "divide by zero encountered in scalar power",
+        "divide by zero encountered in log"
+      ]
+    }
+  ],
+  "decimal_cases": 0,
+  "extreme_limit_bound_cases": 0,
+  "oracle": "analytic uniform values; direct 100-digit Decimal probability powers; independent limiting bound",
+  "_provenance_sanitization": {
+    "status": "sanitized derivative; not the raw run record",
+    "replacement": "Only the absolute replay-work-directory prefix in executable, module, and native_module was replaced with <REPLAY_WORKDIR>; all numerical outcomes and hashes are unchanged.",
+    "raw_record_sha256": "dba2363e3513a2a2b7ed602aee87c8a3b04ecee8f4b5400b8094d1caa44462d5"
+  }
+}

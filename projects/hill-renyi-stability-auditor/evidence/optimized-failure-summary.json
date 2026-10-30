@@ -1,0 +1,17 @@
+{
+  "status": "FAILED before auditor/API checks; no workaround applied",
+  "invocation": "python -I -B -O audit_api.py --mode candidate (remaining arguments identify the replay source and expected hash)",
+  "upstream_module": "skbio/sequence/_substitution.py",
+  "function": "_vector_to_matrix",
+  "line": 494,
+  "statement": "mat = np.zeros((n, n), dtype=dtype)",
+  "exception": "TypeError: 'numpy.float64' object cannot be interpreted as an integer",
+  "relation_to_patch": "unmodified upstream import outside finite-order Hill/Renyi correction",
+  "optimized_api_support": "not verified; not claimed",
+  "full_optimized_driver_replay": "not performed",
+  "raw_evidence_sha256": {
+    "optimized-command.json": "631244e7a1938c6a21b105f72e82e222c2699e126208639d172fc10c944a5706",
+    "optimized-import-failure.log": "4c899dd210e0320f8dcf89b029a339eaa8be0b3e3f109bb0e23879cfc20a3e88"
+  },
+  "sanitization": "Compact summary omits all absolute runtime paths and the full traceback; no exception text or outcome was altered."
+}

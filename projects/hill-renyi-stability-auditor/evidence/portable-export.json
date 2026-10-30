@@ -1,0 +1,12 @@
+{
+  "method": "tar.gz packet export and extraction to an unrelated temporary directory; no Git metadata, research venv or local source copied",
+  "export_archive_sha256": "91055e2ed06bcced9c5cf6d6090e4b3ab1a6bc59a718624b34a31da07fc00ae4",
+  "executed_files_match_final_packet": {
+    "reproduce.py": true,
+    "audit_api.py": true,
+    "requirements.txt": true,
+    "pin.json": true,
+    "hill-renyi-stable-order.patch": true
+  },
+  "documentation_note": "README and repository-consistent MIT license were clarified after export; executable/reproduction inputs are byte-identical to tested export"
+}

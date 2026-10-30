@@ -1,0 +1,49 @@
+name: Hill Renyi native reproduction
+on:
+  pull_request:
+    paths:
+      - 'projects/hill-renyi-stability-auditor/**'
+      - '.github/workflows/hill-renyi-stability.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Verify public packet manifest
+        working-directory: projects/hill-renyi-stability-auditor
+        run: |
+          python - <<'PYCODE'
+          import hashlib, json
+          from pathlib import Path
+          root = Path.cwd()
+          manifest = json.loads((root / 'MANIFEST.json').read_text())
+          actual = {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file() and p.name != 'MANIFEST.json'}
+          if actual != set(manifest['files']):
+              raise SystemExit('packet file set mismatch')
+          for name, expected in manifest['files'].items():
+              data = (root / name).read_bytes()
+              if len(data) != expected['bytes'] or hashlib.sha256(data).hexdigest() != expected['sha256']:
+                  raise SystemExit('packet hash mismatch: ' + name)
+          print('Public packet integrity verified')
+          PYCODE
+      - name: Download verified source, build, audit baseline and candidate
+        working-directory: projects/hill-renyi-stability-auditor
+        run: python -B reproduce.py --work-dir "${{ runner.temp }}/hill-renyi-replay"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hill-renyi-${{ matrix.os }}
+          path: |
+            ${{ runner.temp }}/hill-renyi-replay/*.json
+            ${{ runner.temp }}/hill-renyi-replay/commands.log

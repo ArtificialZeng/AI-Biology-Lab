@@ -1,0 +1,16 @@
+{
+  "commit": "2f573b9a9411c3c41465d9abcd41c3ad3a7dc077",
+  "archive_url": "https://codeload.github.com/scikit-bio/scikit-bio/tar.gz/2f573b9a9411c3c41465d9abcd41c3ad3a7dc077",
+  "archive_sha256": "293c5789a59b352ebb69644d9f51070f598b404864370f63cd718ded654cbf04",
+  "patch_sha256": "2e41dd0c59c2dbc1b51ff0140936662803022df5c00184c110c7f4fc8f762f58",
+  "before_sha256": {
+    "skbio/diversity/alpha/_base.py": "04401c1c15fd2a94c54a059b624e590e072d4fc5889d3e5dd453e5ce4dcb2a90",
+    "skbio/diversity/alpha/tests/test_base.py": "f5ca7e89104f04052e654ea895db1ccf0191b0e0e16063145f20fd65aee93604",
+    "CHANGELOG.md": "40f01f1881aeaecc245a3136bd957766aba8cd9d4075214f0569103ebd8752ef"
+  },
+  "after_sha256": {
+    "skbio/diversity/alpha/_base.py": "520346c75a143c462df215261089c35db69c1ce89720e322bd5aa62607744187",
+    "skbio/diversity/alpha/tests/test_base.py": "9f2464dd98c3ea4e82465b422d70dec100bddde1464e032c9e0b33a94d977096",
+    "CHANGELOG.md": "32458913913d12bd2c2e8afa141fbb4a727f240cac7527a8cc520adbee64d28c"
+  }
+}
