@@ -1,0 +1,86 @@
+{
+  "arithmetic": "exact integer/rational/symbolic",
+  "beta_range": "7/8<beta<1",
+  "finite_coverage": {
+    "outside_compartments": [
+      0,
+      4
+    ],
+    "outside_enzymes_per_compartment": [
+      0,
+      3
+    ]
+  },
+  "finite_event_configurations": 70,
+  "limitations": "These finite checks do not prove the guarded couplings, stage iteration, finite-compensator implication, conditional mark product, reachability or infinite-state explosion theorem; those require stage-proof.md and mathematical review.",
+  "occupation": "delta<1/8; sum of x_n^(8delta-1) converges",
+  "proof_sha256": "251624caa93980f22f55aa14067493c3c7af82535b721b48c1e6d8bf16e6cd8d",
+  "shifted_positive_coefficients": {
+    "B_tail_x_ge_16": [
+      "1",
+      "48",
+      "768",
+      "2048"
+    ],
+    "C_tail_x_ge_16": [
+      "1",
+      "112",
+      "5376",
+      "143360",
+      "2293760",
+      "22020096",
+      "117440512",
+      "268435392"
+    ],
+    "carrier_birth_x_ge_4": [
+      "1/8",
+      "2",
+      "95/8",
+      "31",
+      "29"
+    ],
+    "carrier_death_x_ge_4": [
+      "1/64",
+      "1/4",
+      "11/8",
+      "3",
+      "2"
+    ],
+    "fill_before_half_window_x_ge_16": [
+      "1",
+      "40",
+      "512",
+      "2044"
+    ],
+    "four_power_induction_r_ge_4": [
+      "3",
+      "44",
+      "234",
+      "524",
+      "399"
+    ],
+    "summed_stage_error_x_ge_16": [
+      "64",
+      "7126",
+      "340032",
+      "9013750",
+      "143359360",
+      "1367983104",
+      "7251787776",
+      "16474570750"
+    ]
+  },
+  "stage": {
+    "all_stages_success_probability_at_least": "3/4",
+    "all_stages_time_at_most": 2048,
+    "enzyme_level": "x/1024",
+    "failure_bound": "128/x",
+    "initial_tag_enzymes": 1,
+    "initial_tag_substrate": "2^80",
+    "length": "2^20/x",
+    "next_enzyme_level": "x/512",
+    "substrate_exponent": 8,
+    "x0": 1024
+  },
+  "status": "pass"
+}

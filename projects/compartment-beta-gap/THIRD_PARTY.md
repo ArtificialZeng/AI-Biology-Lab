@@ -1,0 +1,9 @@
+# Third-party sources and attribution
+
+This package contains original proof exposition and checking code. It does not redistribute third-party TeX, PDFs or program files.
+
+- Anderson, Howells and Rojas La Luz (2026), [DOI 10.1007/s11538-026-01659-7](https://doi.org/10.1007/s11538-026-01659-7): source model, equation (7), original question, rate convention and published totals-only Lyapunov obstruction. Proposition 3.10 already uses an inverse-log function for an auxiliary aggregate CRN; inverse-log test functions themselves are not claimed as new here. The publisher article is distributed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). No changes to the original article are implied.
+- Byungwoong Yoo (2026), *Fragmentation perturbations and explosion in interacting compartments*, v1.1.0, [DOI 10.5281/zenodo.22728357](https://doi.org/10.5281/zenodo.22728357): prior enzyme-pair separation nonexplosion theorem, empty-budding explosion proof, bounded-diversion theorem, exact one-hot carrier event rates, and the polynomial-mixture family and its unclassified intermediate range. The Zenodo record identifies [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This package's partial proof uses a bounded occupation drift and marked-fragmentation transfer; it does not claim authorship of the source model, mixture family or endpoint results.
+- SymPy 1.13.3 is an installed dependency rather than vendored code; see its [license](https://github.com/sympy/sympy/blob/sympy-1.13.3/LICENSE).
+
+This attribution file applies only to this project directory. Original package materials follow the included [MIT license](LICENSE). Linked third-party works retain their respective licenses. Public preprints and separate AI checks do not establish external peer review or priority recognition.

@@ -1,0 +1,11 @@
+# Review and evidence scope
+
+A new fresh model context independently reconstructed the current stage extension and accepted this precise scope: every `7/8 < beta < 1` and `0 < c,p < 1`, in the exact source mixture, every finite positive-substrate initial state has strictly positive probability of finite-time explosion. There is no almost-sure, sharp-threshold or `beta <= 7/8` conclusion. This is the same partial-result contribution previously checked for `beta > 10/11`.
+
+The review reconstructed the complete-state carrier rates; adapted guarded lower-occupancy comparison; fill, import and stage-time bounds; the Yule bound against premature substrate escape; stopped upper-substrate occupation control; the localized finite-compensator implication; conditional no-mark product; and finite-path accessibility from arbitrary positive-substrate states. It checked the current primary source and exact mixture. During review an omitted justification was made explicit: bounded substrate prevents baseline explosion before a finite substrate target. The refreshed proof including that lemma was then checked before acceptance.
+
+The accepted stage proof is retained byte-for-byte in `stage-proof.md`; its introductory candidate label records its research freeze. Current status is stated here and in the README. The earlier `proof.md`, `verify.py` and `evidence/certificate.json` are also retained byte-for-byte, including their original narrower scope. They are not silently relabelled as proofs of the extension.
+
+The exact checkers cover finite event configurations, symbolic identities, positive-coefficient stage inequalities and constants. Their successful output does not establish the infinite-state probabilistic theorem by enumeration. The separate substantive reconstruction is a manual AI audit, not external human peer review, proof-assistant formalization, journal acceptance or confirmation of priority. No formal release-gate acceptance or invented job provenance is claimed.
+
+Gap attribution is to the Zenodo v1.1.0 primary TeX and official metadata, not an explicit sentence on the author webpage. The source model, inverse-log prototype and source-credited occupancy/stage methods retain their stated attribution.
