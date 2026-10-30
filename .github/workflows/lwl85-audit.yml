@@ -1,0 +1,25 @@
+name: Verify LWL85 site-weight audit
+on:
+  pull_request:
+    paths:
+      - 'projects/biopython-lwl85-auditor/**'
+      - '.github/workflows/lwl85-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r projects/biopython-lwl85-auditor/requirements.txt
+      - run: python -B projects/biopython-lwl85-auditor/verify.py verify
+      - run: python -O -B projects/biopython-lwl85-auditor/verify.py verify
