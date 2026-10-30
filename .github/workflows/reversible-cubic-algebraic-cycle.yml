@@ -1,0 +1,28 @@
+name: Reversible cubic algebraic cycle exact checks
+on:
+  pull_request:
+    paths:
+      - 'projects/reversible-cubic-algebraic-cycle/**'
+      - '.github/workflows/reversible-cubic-algebraic-cycle.yml'
+permissions:
+  contents: read
+jobs:
+  exact-checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r projects/reversible-cubic-algebraic-cycle/requirements.txt
+      - name: Normal exact replay
+        run: python projects/reversible-cubic-algebraic-cycle/reproduce.py --work-dir "${{ runner.temp }}/reversible-cubic-normal"
+      - name: Optimized parent exact replay
+        env:
+          PYTHONOPTIMIZE: '2'
+        run: python -O projects/reversible-cubic-algebraic-cycle/reproduce.py --work-dir "${{ runner.temp }}/reversible-cubic-optimized"
