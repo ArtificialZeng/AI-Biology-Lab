@@ -24,6 +24,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Example 8 stability audit](projects/lumping-example8-auditor/README.md) | Source-specific Jacobian correction and full-domain local stability proof | Exact witness, two symbolic implementations, ordinary/optimized archive replay; no broad open-problem resolution |
 | [MEMOTE API cache audit](projects/memote-cache-auditor/README.md) | Sequential API cache-lifecycle repair | Real API red/green checks; same-suite mutation and concurrency outside scope |
 | [Native GLPK presolver audit](projects/glpk-presolver-auditor/README.md) | Exact-input false-optimal solver counterexamples and a limited branch guard | Two independent grids; scaled tolerance residual explicitly retained; upstream confirmation pending |
+| [Boundary-relay isola](projects/relay-isola-auditor/README.md) | Exact mass-action counterexample for a given one-parameter family | Fresh AI scope review and two exact implementations; human review and priority unconfirmed |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 

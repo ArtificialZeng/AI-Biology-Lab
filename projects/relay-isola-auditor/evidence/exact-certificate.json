@@ -1,0 +1,184 @@
+{
+  "arithmetic": "exact symbolic rational arithmetic",
+  "boundary_eigenvalues": [
+    "-3-(lambda-2)^2",
+    "-1"
+  ],
+  "boundary_equilibrium": "(0,lambda)",
+  "compact_box": "[0,4]^2 invariant for lambda in [1/2,7/2]",
+  "component_coordinate_bounds": [
+    1,
+    3
+  ],
+  "count": "two for 1<lambda<3; one double at lambda=1,3; zero otherwise",
+  "folds": [
+    {
+      "jacobian": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "lambda": 1,
+      "left_kernel": [
+        1,
+        4
+      ],
+      "parameter_coefficient": 4,
+      "quadratic_coefficient": -4,
+      "state": [
+        2,
+        1
+      ]
+    },
+    {
+      "jacobian": [
+        [
+          0,
+          -4
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "lambda": 3,
+      "left_kernel": [
+        1,
+        -4
+      ],
+      "parameter_coefficient": -4,
+      "quadratic_coefficient": -4,
+      "state": [
+        2,
+        3
+      ]
+    }
+  ],
+  "full_rate_space_path": {
+    "X_loss_rate": "4+4*x-x^2=4+x*(4-x)>0",
+    "boundary_limit": "x=0, X_loss=4; all kinetic rates still positive",
+    "consequence": "This witness does not refute a full independent kinetic-rate-space version.",
+    "domain": "0<x<=3; y=lambda=2",
+    "start": "x=3, X_loss=7 lies on original isola"
+  },
+  "invasion_number": "4*lambda/(7+lambda^2)<1",
+  "limitations": [
+    "Isolas are classical; this is a source-specific given-family counterexample.",
+    "The local relay theorem and Feng-Gavish model are unaffected.",
+    "Fresh substantive AI review accepted the stated mathematics; no formal release-gate certification, external human peer review or priority guarantee."
+  ],
+  "parameter_domain": "lambda>0; only the emptyset->Y rate varies",
+  "positive_component": "y=lambda; (x-2)^2+(lambda-2)^2=1; complete closed connected circle",
+  "positive_equilibrium_eigenvalues": [
+    "2*x*(2-x)",
+    "-1"
+  ],
+  "positive_equilibrium_identity": "-lambda**2 + 4*lambda - x**2 + 4*x - 7",
+  "reactions": [
+    {
+      "constant": "7",
+      "product": [
+        0,
+        0
+      ],
+      "source": [
+        1,
+        0
+      ]
+    },
+    {
+      "constant": "4",
+      "product": [
+        3,
+        0
+      ],
+      "source": [
+        2,
+        0
+      ]
+    },
+    {
+      "constant": "1",
+      "product": [
+        2,
+        0
+      ],
+      "source": [
+        3,
+        0
+      ]
+    },
+    {
+      "constant": "4",
+      "product": [
+        2,
+        1
+      ],
+      "source": [
+        1,
+        1
+      ]
+    },
+    {
+      "constant": "1",
+      "product": [
+        0,
+        0
+      ],
+      "source": [
+        1,
+        2
+      ]
+    },
+    {
+      "constant": "1",
+      "product": [
+        1,
+        4
+      ],
+      "source": [
+        1,
+        2
+      ]
+    },
+    {
+      "constant": "lambda",
+      "product": [
+        0,
+        1
+      ],
+      "source": [
+        0,
+        0
+      ]
+    },
+    {
+      "constant": "1",
+      "product": [
+        0,
+        0
+      ],
+      "source": [
+        0,
+        1
+      ]
+    }
+  ],
+  "schema": "relay-isola-exact-v1",
+  "siphons_zero_based": [
+    [
+      0
+    ]
+  ],
+  "stoichiometric_rank": 2,
+  "sympy_version": "1.13.3",
+  "vector_field": [
+    "-x**3 + 4*x**2 - x*y**2 + 4*x*y - 7*x",
+    "lambda - y"
+  ]
+}
