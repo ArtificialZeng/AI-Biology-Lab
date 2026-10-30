@@ -1,0 +1,52 @@
+{
+  "frozen_research_inputs": {
+    "claim.json": "b6c08d212d783e9fa7572ae15fcce187d0fd190d734cc473c7c3f48b42731ff4",
+    "evidence/verification.json": "dad8d7748e6417c43ebd635edd2bd4795e2a2d5e88c06c0ab4692add3340785c",
+    "problem.md": "6a373e330b06c15f7776c43460ce9c7b1bbfb81a0fbad2d8ef0a8e88a43772d8",
+    "proof.md": "efbee3f178c0a6dc1590b21dba4ab22a4f61987c0098806cac7aa794bccd028e",
+    "source.md": "f68a15f0ca1190af0517a26e798e29e975c8d4d3a558bb523d39990fae651ae6",
+    "verify.py": "10fd079ad414a5ccc6e57659e6e70c7813bd95b982dc5904504c7c9b01fcaa10"
+  },
+  "limits": "Hashes bind implementations and review scope, not trusted signatures, human peer review or priority.",
+  "mapping": {
+    "evidence/independent-certificate.json": {
+      "byte_identical": true,
+      "fresh_review_input": "independent-exact-checks.json",
+      "sha256": "d9ccefb8d2c0800143697f45858a432d3d807ab926176ba3bb63f60a4f290ba8"
+    },
+    "evidence/owner-certificate.json": {
+      "byte_identical": false,
+      "not_claimed": "Floating checks do not certify the theorem and raw floating values are not compared across operating systems.",
+      "omitted_platform_dependent_observations": [
+        "max_scaled_ode_residual",
+        "max_scaled_sensitivity_discrepancy",
+        "noncancelling_derivative_sign_agreements"
+      ],
+      "projection": "All exact identity/witness data and SymPy version retained. After complete owner subprocess exit0, original assertions and wrapper finite/nonnegative strict tolerance checks, replace numerical observations with deterministic PASS metadata, seed, count, ranges and tolerances.",
+      "research_input": "evidence/verification.json",
+      "source_sha256": "dad8d7748e6417c43ebd635edd2bd4795e2a2d5e88c06c0ab4692add3340785c"
+    },
+    "proof.md": {
+      "byte_identical": true,
+      "research_input": "proof.md",
+      "sha256": "efbee3f178c0a6dc1590b21dba4ab22a4f61987c0098806cac7aa794bccd028e"
+    },
+    "science/independent_checker.py": {
+      "byte_identical": true,
+      "fresh_review_input": "check_math.py",
+      "sha256": "5f5c4f3cafeaaeace4ffa16991d87cc9c4200d6f744fffbe93f42f8530c772e4"
+    },
+    "science/owner_checker.py": {
+      "byte_identical": true,
+      "research_input": "verify.py",
+      "sha256": "10fd079ad414a5ccc6e57659e6e70c7813bd95b982dc5904504c7c9b01fcaa10"
+    }
+  },
+  "mathematical_owner_AST_changes": false,
+  "public_source_note": "Public source.md/problem.md/literature.md are original paraphrases with exact equations, locations, attribution and links. Third-party PDFs/notebooks and private input paths excluded.",
+  "research_snapshot_sha256": "0790621edcb09171cacaaa93a5a4be1231325669e518f01a5ff07c2c543e8eb0",
+  "schema": "scientific-source-mapping-v1",
+  "source_audit_sha256": "77fea2e88be86ab854ca2be99ee8e85ccbc0bed10cf0a64f8a5c0d96159fbe08",
+  "source_scope": "Exact catalytic source SI14B model, full six-positive-rate classification only",
+  "third_party_inputs_redistributed": false
+}
