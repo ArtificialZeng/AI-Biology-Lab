@@ -1,0 +1,55 @@
+{
+  "invariant_polygon_face_cases": 648,
+  "model_sha256": "bf8a492e3824eea0e3a0f0ef493810a079a18d541d9984bf832b02245f8556c5",
+  "mutation_controls_rejected": [
+    "lose_X_in_split",
+    "lose_Y_consumption",
+    "catalytic_reverse_X",
+    "wrong_baseline",
+    "wrong_adapted_output_X",
+    "decrease_second_weight_breaks_contraction"
+  ],
+  "proof_sha256": "3084f8f5f0a0fc1c41fc7b1fb560ba5711e17e99f38b2b4f3bdef9851a96a05c",
+  "reaction_grid": {
+    "cases": 2025,
+    "parameter_tuples": 81,
+    "rate_values": [
+      "1/2",
+      "1",
+      "2"
+    ],
+    "states_per_parameter": 25,
+    "xy_values": [
+      "0",
+      "1/3",
+      "1",
+      "2",
+      "5"
+    ]
+  },
+  "scope": "Exact algebra and complete declared finite grids; no probability/ODE/formal proof certification",
+  "source_output_mapping": {
+    "S": 1,
+    "X": 3,
+    "Y": 2
+  },
+  "symbolic_zero_identities": {
+    "constant_equilibrium_x": "0",
+    "constant_equilibrium_y": "0",
+    "first_column_at_Y": "0",
+    "incremental_product": "0",
+    "input_cancels_in_w": "0",
+    "jacobian_determinant": "0",
+    "jacobian_trace": "0",
+    "leading_deficit_peak_derivative": "0",
+    "log_identity_numerator": "0",
+    "slanted_face": "0",
+    "upper_x_face_decomposition": "0",
+    "weighted_first_column": "0",
+    "weighted_second_column": "0",
+    "y_transfer_denominator": "0",
+    "y_transfer_numerator": "0",
+    "z_derivative": "0"
+  },
+  "sympy_version": "1.13.3"
+}

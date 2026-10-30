@@ -1,0 +1,21 @@
+{
+  "parameters": {
+    "a": "S->X",
+    "b": "X->S",
+    "c": "S->X+Y",
+    "d": "X+Y->S"
+  },
+  "all_rate_constants": "strictly positive",
+  "input": "u(t)>0 continuous T-periodic, T>0",
+  "source_species_mapping": {
+    "S": 1,
+    "X": 3,
+    "Y": 2
+  },
+  "equations": {
+    "dx": "(a+c)*u-b*x-d*x*y",
+    "dy": "c*u-d*x*y"
+  },
+  "completion": "S+Z <-> X+Y, S<->X with Z chemostat1; not claimed new",
+  "original_problem_status": "unresolved-general-source-periodic-question"
+}

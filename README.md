@@ -40,6 +40,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Catalytic response threshold](projects/catalytic-response/README.md) | Complete six-positive-rate steady-response classification for source Fig. 14B | Exact proof, two checkers and fresh AI review; priority and author confirmation pending |
 | Random-switching reaction networks: [common-support counterexample](projects/switching-common-support/README.md) · [Example 44 proof](projects/switching-transience/README.md) | Literal Conjecture 43 fails; Conjecture 46 holds on an explicit slow-switching interval | Two distinct models, complete probability arguments and exact checks; fresh AI review, source-author confirmation pending |
 | [ETE RF polytomy correction](projects/ete-rf-polytomy/README.md) | Correct shared-leaf topology correction and invalid negative distances | Genuine native baseline/candidate checks; known upstream issue credited; inherited full-suite failures disclosed |
+| [Periodic adaptation](projects/periodic-adaptation/README.md) | Exact all-waveform mean deficit and attracting periodic response for a published reversible motif | Complete ODE argument and two exact checkers; fresh AI review, human/priority verification pending |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
