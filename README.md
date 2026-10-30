@@ -36,6 +36,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Two-graph Moran fixation bounds](projects/two-graph-moran-matching) | Every connected noncomplete regular graph, both type orientations; all matching deletions retained | Exact sum-of-squares and polynomial proofs; arbitrary irregular graphs unresolved; human review pending |
 | [TreeSwift gamma audit](projects/treeswift-gamma) | Correct branching intervals, label dependence and crown-stem handling | Exact sign-flip witness; 714 + 1,774 generated cases; upstream review requested; GPL-3.0 subproject |
 | [Cogent3 gap-distance audit](projects/cogent-gap-distance) | Correct row-order-dependent distances under pairwise deletion | Exact shared-column oracle and real public API reproduction; upstream review requested; BSD3 source notices retained |
+| [Multi-pathogen coexistence correction](projects/multipathogen-coexistence) | Exact all-positive counterexamples to the simultaneous-endemic-equilibrium assertion in Djuikem–Arino2025 Conjecture5 | Full16D ODE/NGM replay and separate AI proof check; classical exclusion credited; author review pending |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 

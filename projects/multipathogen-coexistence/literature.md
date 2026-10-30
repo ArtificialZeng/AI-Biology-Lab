@@ -1,0 +1,9 @@
+# Primary-source comparison
+
+The inspected primary source is the final2025Djuikem–Arino article, [DOI10.1007/s11538-025-01469-3](https://doi.org/10.1007/s11538-025-01469-3), especially Conjecture 5 and model (1). The [current arXiv page](https://arxiv.org/abs/2405.20264) listsv2 and links that journal article. The [author's project index](https://julien-arino.github.io/modelling-aquatic-pathogens-transmission/) still links this exact paper. A bounded title/DOI/conjecture search and inspection of those primary sources on2026-10-26 found no correction to the exact assertion. This does not establish that no correction or equivalent observation exists anywhere.
+
+The mathematical explanation is classical: strains compete for a shared susceptible pool, and an entrywise larger positive next-generation kernel has strictly larger Perron eigenvalue. We claim an exact correction to this particular conjecture, not discovery of competitive exclusion or a new general multi-pathogen theorem. The source's other conclusions and empirical motivation are outside this audit's claim.
+
+The related [author repository](https://github.com/julien-arino/modelling-aquatic-pathogens-transmission) hosts this project's index and links the exact paper. Its inspected main head isc9300750de3116da7736432dc005b5144111d1a8. It contains project-page content rather than model code. Repository connection does not imply author acceptance of this result.
+
+Classical background: H. J. Bremermann and H. R. Thieme, *A competitive exclusion principle for pathogen virulence*, Journal of Mathematical Biology 27:179–190 (1989), [DOI 10.1007/BF00276102](https://doi.org/10.1007/BF00276102). This is background for the established exclusion principle, not an assertion that its different model directly resolves the source conjecture.

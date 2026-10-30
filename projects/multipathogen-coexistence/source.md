@@ -1,0 +1,11 @@
+# Source and exact scope
+
+Clotilde Djuikem and Julien Arino, *Transmission of Multiple Pathogens Across Species*, Bulletin of Mathematical Biology 87:87 (2025), [DOI](https://doi.org/10.1007/s11538-025-01469-3). The [final author PDF](https://julien-arino.github.io/assets/pdf/papers/2025_DjuikemArino-BMB87.pdf) contains model (1), reproduction numbers(8)–(9), Theorem 4 and Conjecture 5. The [preprint](https://arxiv.org/abs/2405.20264) currently listsv2,2025-04-09. Source locations: modelpp3–4, reproduction numbersp6, Theorem 4p27, Conjecture 5p29, AppendixDpp34–35. No third-party PDF or manuscript is redistributed here.
+
+The conjecture, paraphrased, asserts the following: when one collection of pathogens has reproduction numbers below1 and the remaining pathogens have reproduction numbers above1, an unstable equilibrium exists with all pathogens in the second collection endemic and those in the first absent. Our counterexamples refute existence of the simultaneous-endemic equilibrium itself; they do not depend on whether the word unstable was intended. The printed k-range uses an undefined n; we choosek=1, valid under natural positive-n interpretations.
+
+We interpret endemicity minimally: the total infectious population of each named pathogen is positive in at least one host. Requiring positivity in every host only strengthens the conjecture. Both examples use two distinguishable, mutually transmitting hosts and three pathogens. Every model rate is strictly positive. The source permits equal host demographic or progression rates and does not require a full-rank contact matrix; one example additionally has full-rank contact matrices.
+
+The original mechanism assumes no coinfection and immunity to all pathogens after recovery, so pathogens share susceptible hosts. The model's disease-free reproduction numbers describe invasion of fully susceptible hosts. They do not, by themselves, establish simultaneous endemicity after susceptible depletion.
+
+This is a paper-specific mathematical audit. Competitive exclusion and positive-matrix comparison are established ideas. We have no author confirmation, human peer review, universal priority certification, experimental finding or journal acceptance. We do not resolve general heterogeneous coexistence or prove global convergence.

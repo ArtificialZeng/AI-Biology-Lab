@@ -1,0 +1,297 @@
+{
+  "bezout_contradiction": "4*(3*T-4)-3*(4*T-4)=-4",
+  "controls": {
+    "additional_host_sizes": [
+      1,
+      3,
+      4,
+      5
+    ],
+    "all_six_pathogen_permutations": 6,
+    "equal_lambda_coexistence": true
+  },
+  "equilibrium_support_classification": [
+    {
+      "active_strains": [],
+      "classification": "disease-free equilibrium",
+      "required_S_total": null
+    },
+    {
+      "active_strains": [
+        3
+      ],
+      "classification": "feasible singleton-strain equilibrium",
+      "required_S_total": "1"
+    },
+    {
+      "active_strains": [
+        2
+      ],
+      "classification": "feasible singleton-strain equilibrium",
+      "required_S_total": "4/3"
+    },
+    {
+      "active_strains": [
+        2,
+        3
+      ],
+      "classification": "impossible: incompatible required susceptible sums",
+      "required_S_total": null
+    },
+    {
+      "active_strains": [
+        1
+      ],
+      "classification": "impossible: required susceptible mass >= disease-free host total",
+      "required_S_total": "4"
+    },
+    {
+      "active_strains": [
+        1,
+        3
+      ],
+      "classification": "impossible: incompatible required susceptible sums",
+      "required_S_total": null
+    },
+    {
+      "active_strains": [
+        1,
+        2
+      ],
+      "classification": "impossible: incompatible required susceptible sums",
+      "required_S_total": null
+    },
+    {
+      "active_strains": [
+        1,
+        2,
+        3
+      ],
+      "classification": "impossible: incompatible required susceptible sums",
+      "required_S_total": null
+    }
+  ],
+  "evidence_kind": "exact identities and exact symbolic linear algebra; no floating point inference",
+  "exact_polynomial_infection_identities": [
+    "(I1_1 + I2_1)*(S1 + S2 - 4)",
+    "(I1_2 + I2_2)*(3*S1 + 3*S2 - 4)",
+    "4*(I1_3 + I2_3)*(S1 + S2 - 1)"
+  ],
+  "feasible_endemic_equilibria": [
+    {
+      "active_strain": 2,
+      "point": {
+        "I1_1": "0",
+        "I1_2": "1/12",
+        "I1_3": "0",
+        "I2_1": "0",
+        "I2_2": "1/12",
+        "I2_3": "0",
+        "L1_1": "0",
+        "L1_2": "1/6",
+        "L1_3": "0",
+        "L2_1": "0",
+        "L2_2": "1/6",
+        "L2_3": "0",
+        "R1": "1/12",
+        "R2": "1/12",
+        "S1": "2/3",
+        "S2": "2/3"
+      },
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "active_strain": 3,
+      "point": {
+        "I1_1": "0",
+        "I1_2": "0",
+        "I1_3": "1/8",
+        "I2_1": "0",
+        "I2_2": "0",
+        "I2_3": "1/8",
+        "L1_1": "0",
+        "L1_2": "0",
+        "L1_3": "1/4",
+        "L2_1": "0",
+        "L2_2": "0",
+        "L2_3": "1/4",
+        "R1": "1/8",
+        "R2": "1/8",
+        "S1": "1/2",
+        "S2": "1/2"
+      },
+      "residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ],
+  "fullrank_positive_witness": {
+    "R0": [
+      "3/8",
+      "5/4",
+      "7/4"
+    ],
+    "all_contact_matrices_full_rank": true,
+    "beta": [
+      [
+        [
+          "1",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1"
+        ]
+      ],
+      [
+        [
+          "4",
+          "1"
+        ],
+        [
+          "1",
+          "4"
+        ]
+      ],
+      [
+        [
+          "5",
+          "2"
+        ],
+        [
+          "2",
+          "5"
+        ]
+      ]
+    ],
+    "det_I_minus_T2": "(15*s1*s2 - 16*s1 - 16*s2 + 16)/16",
+    "det_I_minus_T3": "(21*s1*s2 - 20*s1 - 20*s2 + 16)/16",
+    "elimination": "d3-(5/4)*d2=(9/64)*S1*S2-1/4; d2=d3=0 force S1*S2=16/9 and S1+S2=8/3>2",
+    "strict_effective_kernel_dominance": true
+  },
+  "host_total_identity_residuals": [
+    "0",
+    "0"
+  ],
+  "incompatible_susceptible_sums": [
+    "4/3",
+    "1"
+  ],
+  "invasion_R_ratios": [
+    "1/4",
+    "3/4"
+  ],
+  "limits": [
+    "Source-specific counterexample; competitive exclusion is established biology",
+    "General heterogeneous multi-pathogen dynamics not classified",
+    "No global convergence or wet-lab prediction",
+    "No author confirmation or universal priority claim"
+  ],
+  "next_generation": [
+    {
+      "B": [
+        [
+          "1/4",
+          "1/4"
+        ],
+        [
+          "1/4",
+          "1/4"
+        ]
+      ],
+      "R0": "1/2",
+      "eigenvalues": [
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "B": [
+        [
+          "3/4",
+          "3/4"
+        ],
+        [
+          "3/4",
+          "3/4"
+        ]
+      ],
+      "R0": "3/2",
+      "eigenvalues": [
+        "0",
+        "3/2"
+      ]
+    },
+    {
+      "B": [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "R0": "2",
+      "eigenvalues": [
+        "0",
+        "2"
+      ]
+    }
+  ],
+  "parameters": {
+    "b_p": "1",
+    "beta_pqv": "lambda_v for every p,q",
+    "d_p": "1",
+    "epsilon_pv": "1",
+    "gamma_pv": "1",
+    "lambda_v": [
+      "1",
+      "3",
+      "4"
+    ]
+  },
+  "schema": "exact-multipathogen-counterexample-v1",
+  "scope": "P=2,V=3,k=1; all model parameters strictly positive; beta_pqv=lambda_v including cross-host contacts",
+  "source_model": "Djuikem-Arino2025 equation(1), sourceR0 equations(8)-(9), Conjecture5",
+  "state_dimension": 16,
+  "target_support": [
+    2,
+    3
+  ],
+  "winning_equilibrium_charpoly": "(z + 1)**3*(z + 2)**7*(z + 3)*(z**2 + 4*z + 1)*(z**3 + 6*z**2 + 8*z + 4)",
+  "winning_equilibrium_stability": "all16 eigenvalues have strictly negative real part, exact factor and Routh-Hurwitz proof"
+}
