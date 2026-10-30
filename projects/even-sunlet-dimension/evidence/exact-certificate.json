@@ -1,0 +1,1280 @@
+{
+  "cases": [
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "Y": [
+        [
+          3
+        ],
+        [
+          4
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 5,
+      "first_monomial_columns": 10,
+      "group": [
+        5
+      ],
+      "kernel_basis_rank": 9,
+      "order": 5,
+      "parameter_upper_target": 21,
+      "rank_QQ": 21,
+      "second_monomial_columns": 15,
+      "strict_margin": 1,
+      "target_class": false
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "Y": [
+        [
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 6,
+      "first_monomial_columns": 17,
+      "group": [
+        6
+      ],
+      "kernel_basis_rank": 10,
+      "order": 6,
+      "parameter_upper_target": 26,
+      "rank_QQ": 26,
+      "second_monomial_columns": 19,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ]
+      ],
+      "Y": [
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 8,
+      "first_monomial_columns": 31,
+      "group": [
+        8
+      ],
+      "kernel_basis_rank": 12,
+      "order": 8,
+      "parameter_upper_target": 36,
+      "rank_QQ": 36,
+      "second_monomial_columns": 33,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "Y": [
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 10,
+      "first_monomial_columns": 49,
+      "group": [
+        10
+      ],
+      "kernel_basis_rank": 14,
+      "order": 10,
+      "parameter_upper_target": 46,
+      "rank_QQ": 46,
+      "second_monomial_columns": 51,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ]
+      ],
+      "Y": [
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 12,
+      "first_monomial_columns": 71,
+      "group": [
+        12
+      ],
+      "kernel_basis_rank": 16,
+      "order": 12,
+      "parameter_upper_target": 56,
+      "rank_QQ": 56,
+      "second_monomial_columns": 73,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ]
+      ],
+      "Y": [
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ],
+        [
+          12
+        ],
+        [
+          13
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 14,
+      "first_monomial_columns": 97,
+      "group": [
+        14
+      ],
+      "kernel_basis_rank": 18,
+      "order": 14,
+      "parameter_upper_target": 66,
+      "rank_QQ": 66,
+      "second_monomial_columns": 99,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ]
+      ],
+      "Y": [
+        [
+          10
+        ],
+        [
+          11
+        ],
+        [
+          12
+        ],
+        [
+          13
+        ],
+        [
+          14
+        ],
+        [
+          15
+        ],
+        [
+          16
+        ],
+        [
+          17
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 18,
+      "first_monomial_columns": 161,
+      "group": [
+        18
+      ],
+      "kernel_basis_rank": 22,
+      "order": 18,
+      "parameter_upper_target": 86,
+      "rank_QQ": 86,
+      "second_monomial_columns": 163,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ]
+      ],
+      "Y": [
+        [
+          11
+        ],
+        [
+          12
+        ],
+        [
+          13
+        ],
+        [
+          14
+        ],
+        [
+          15
+        ],
+        [
+          16
+        ],
+        [
+          17
+        ],
+        [
+          18
+        ],
+        [
+          19
+        ]
+      ],
+      "cyclic": true,
+      "exponent": 20,
+      "first_monomial_columns": 199,
+      "group": [
+        20
+      ],
+      "kernel_basis_rank": 24,
+      "order": 20,
+      "parameter_upper_target": 96,
+      "rank_QQ": 96,
+      "second_monomial_columns": 201,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "Y": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "cyclic": false,
+      "exponent": 4,
+      "first_monomial_columns": 37,
+      "group": [
+        2,
+        4
+      ],
+      "kernel_basis_rank": 12,
+      "order": 8,
+      "parameter_upper_target": 36,
+      "rank_QQ": 36,
+      "second_monomial_columns": 27,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "Y": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "cyclic": false,
+      "exponent": 6,
+      "first_monomial_columns": 81,
+      "group": [
+        2,
+        2,
+        3
+      ],
+      "kernel_basis_rank": 16,
+      "order": 12,
+      "parameter_upper_target": 56,
+      "rank_QQ": 56,
+      "second_monomial_columns": 63,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "Y": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "cyclic": false,
+      "exponent": 3,
+      "first_monomial_columns": 36,
+      "group": [
+        3,
+        3
+      ],
+      "kernel_basis_rank": 13,
+      "order": 9,
+      "parameter_upper_target": 41,
+      "rank_QQ": 41,
+      "second_monomial_columns": 45,
+      "strict_margin": 1,
+      "target_class": false
+    },
+    {
+      "X": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "Y": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          2,
+          2
+        ]
+      ],
+      "cyclic": false,
+      "exponent": 6,
+      "first_monomial_columns": 161,
+      "group": [
+        2,
+        3,
+        3
+      ],
+      "kernel_basis_rank": 22,
+      "order": 18,
+      "parameter_upper_target": 86,
+      "rank_QQ": 86,
+      "second_monomial_columns": 163,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "Y": [
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "cyclic": false,
+      "exponent": 4,
+      "first_monomial_columns": 141,
+      "group": [
+        4,
+        4
+      ],
+      "kernel_basis_rank": 20,
+      "order": 16,
+      "parameter_upper_target": 76,
+      "rank_QQ": 76,
+      "second_monomial_columns": 115,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "Y": [
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          1,
+          0,
+          3
+        ],
+        [
+          1,
+          1,
+          3
+        ]
+      ],
+      "cyclic": false,
+      "exponent": 4,
+      "first_monomial_columns": 169,
+      "group": [
+        2,
+        2,
+        4
+      ],
+      "kernel_basis_rank": 20,
+      "order": 16,
+      "parameter_upper_target": 76,
+      "rank_QQ": 76,
+      "second_monomial_columns": 87,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          2
+        ],
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          2
+        ]
+      ],
+      "Y": [
+        [
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          1,
+          0,
+          3
+        ],
+        [
+          0,
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          0,
+          0,
+          3
+        ],
+        [
+          1,
+          0,
+          1,
+          3
+        ],
+        [
+          1,
+          1,
+          0,
+          3
+        ],
+        [
+          1,
+          1,
+          1,
+          3
+        ]
+      ],
+      "cyclic": false,
+      "exponent": 4,
+      "first_monomial_columns": 721,
+      "group": [
+        2,
+        2,
+        2,
+        4
+      ],
+      "kernel_basis_rank": 36,
+      "order": 32,
+      "parameter_upper_target": 156,
+      "rank_QQ": 156,
+      "second_monomial_columns": 303,
+      "strict_margin": 1,
+      "target_class": true
+    },
+    {
+      "X": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "Y": [],
+      "cyclic": false,
+      "exponent": 2,
+      "first_monomial_columns": 9,
+      "group": [
+        2,
+        2
+      ],
+      "kernel_basis_rank": 8,
+      "order": 4,
+      "parameter_upper_target": 16,
+      "rank_QQ": 13,
+      "second_monomial_columns": 7,
+      "strict_margin": 1,
+      "target_class": false
+    },
+    {
+      "X": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "Y": [],
+      "cyclic": false,
+      "exponent": 2,
+      "first_monomial_columns": 49,
+      "group": [
+        2,
+        2,
+        2
+      ],
+      "kernel_basis_rank": 12,
+      "order": 8,
+      "parameter_upper_target": 36,
+      "rank_QQ": 29,
+      "second_monomial_columns": 15,
+      "strict_margin": 1,
+      "target_class": false
+    },
+    {
+      "X": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "Y": [],
+      "cyclic": false,
+      "exponent": 2,
+      "first_monomial_columns": 225,
+      "group": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "kernel_basis_rank": 20,
+      "order": 16,
+      "parameter_upper_target": 76,
+      "rank_QQ": 61,
+      "second_monomial_columns": 31,
+      "strict_margin": 1,
+      "target_class": false
+    }
+  ],
+  "elementary2_not_resolved_by_this_argument": true,
+  "finite_named_groups": 18,
+  "finite_tests_not_infinite_proof": true,
+  "floating_point_used": false,
+  "method": "exact rational ranks and explicit integer left-kernel vectors; global theorem supplied separately",
+  "ok": true
+}
