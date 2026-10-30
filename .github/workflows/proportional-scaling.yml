@@ -1,0 +1,47 @@
+name: Proportional-scaling exact audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - projects/proportional-scaling-auditor/**
+      - .github/workflows/proportional-scaling.yml
+  pull_request:
+    paths:
+      - projects/proportional-scaling-auditor/**
+      - .github/workflows/proportional-scaling.yml
+
+permissions:
+  contents: read
+
+jobs:
+  exact:
+    name: Exact replay (${{ matrix.os }}, Python ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r projects/proportional-scaling-auditor/requirements.txt
+      - name: Compare normal and optimized read-only checks
+        shell: bash
+        run: |
+          set -eu
+          python -B projects/proportional-scaling-auditor/verify.py verify > "$RUNNER_TEMP/scaling-primary.json"
+          python -O -B projects/proportional-scaling-auditor/verify.py verify > "$RUNNER_TEMP/scaling-primary-O.json"
+          cmp "$RUNNER_TEMP/scaling-primary.json" "$RUNNER_TEMP/scaling-primary-O.json"
+          python -B projects/proportional-scaling-auditor/verify_independent.py verify > "$RUNNER_TEMP/scaling-independent.json"
+          python -O -B projects/proportional-scaling-auditor/verify_independent.py verify > "$RUNNER_TEMP/scaling-independent-O.json"
+          cmp "$RUNNER_TEMP/scaling-independent.json" "$RUNNER_TEMP/scaling-independent-O.json"
+          python -B projects/proportional-scaling-auditor/verify_natural.py verify > "$RUNNER_TEMP/scaling-natural.json"
+          python -O -B projects/proportional-scaling-auditor/verify_natural.py verify > "$RUNNER_TEMP/scaling-natural-O.json"
+          cmp "$RUNNER_TEMP/scaling-natural.json" "$RUNNER_TEMP/scaling-natural-O.json"
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"

@@ -1,0 +1,257 @@
+{
+  "arithmetic": "fractions.Fraction rational dual differentiation of original population equations",
+  "same_model_DFE": {
+    "Jacobian": [
+      [
+        "-35/62",
+        "0"
+      ],
+      [
+        "243/62",
+        "-10"
+      ]
+    ],
+    "determinant": "175/31",
+    "g_numbers_growth": "9/10",
+    "stable": true,
+    "trace": "-655/62"
+  },
+  "same_model_positive_sink": {
+    "Jacobian": [
+      [
+        "-525/2728",
+        "10325/2728"
+      ],
+      [
+        "27/248",
+        "-2515/248"
+      ]
+    ],
+    "M": [
+      [
+        "1/10",
+        "0"
+      ],
+      [
+        "0",
+        "91/10"
+      ]
+    ],
+    "P": [
+      "1/10",
+      "9/10"
+    ],
+    "all_classes_in_N": true,
+    "all_nodes_directly_reachable": true,
+    "beta": [
+      "135/31",
+      "0"
+    ],
+    "characteristic_discriminant": "187211425/1860496",
+    "determinant": "525/341",
+    "fraction_rhs": [
+      "0",
+      "0"
+    ],
+    "g_numbers_growth": "23/220",
+    "mortality_order_verified": true,
+    "mu": [
+      "1/10",
+      "91/10"
+    ],
+    "muS": "1/10",
+    "name": "same_model_second_positive_sink",
+    "no_infected_births": true,
+    "no_return_to_S": true,
+    "nu": "1",
+    "original_numbers_dual_agrees_explicit_Jacobian": true,
+    "raw_numbers_balanced_growth_residual": [
+      "0",
+      "0",
+      "0"
+    ],
+    "s": "31/66",
+    "same_per_capita_recruitment_into_S": true,
+    "strict_excess_beta_and_transfer_requested": false,
+    "trace": "-14095/1364",
+    "transfers": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "y": [
+      "175/396",
+      "35/396"
+    ]
+  },
+  "schema": "natural-mortality-exact-certificate-v1",
+  "scope": "Exact witnesses refute universal fraction GAS under ordered mortality. Two sinks are certified only for the simple model. No oscillations, new biological mechanism, priority or external human validation is claimed.",
+  "simple_saddle": {
+    "Jacobian": [
+      [
+        "-37/248",
+        "2183/744"
+      ],
+      [
+        "225/248",
+        "-2441/248"
+      ]
+    ],
+    "M": [
+      [
+        "1/10",
+        "0"
+      ],
+      [
+        "0",
+        "91/10"
+      ]
+    ],
+    "P": [
+      "1/10",
+      "9/10"
+    ],
+    "all_classes_in_N": true,
+    "all_nodes_directly_reachable": true,
+    "beta": [
+      "135/31",
+      "0"
+    ],
+    "characteristic_discriminant": "1608529/15376",
+    "determinant": "-37/31",
+    "fraction_rhs": [
+      "0",
+      "0"
+    ],
+    "g_numbers_growth": "3/20",
+    "mortality_order_verified": true,
+    "mu": [
+      "1/10",
+      "91/10"
+    ],
+    "muS": "1/10",
+    "name": "simple_positive_growth_saddle",
+    "no_infected_births": true,
+    "no_return_to_S": true,
+    "nu": "1",
+    "original_numbers_dual_agrees_explicit_Jacobian": true,
+    "raw_numbers_balanced_growth_residual": [
+      "0",
+      "0",
+      "0"
+    ],
+    "s": "31/54",
+    "same_per_capita_recruitment_into_S": true,
+    "strict_excess_beta_and_transfer_requested": false,
+    "trace": "-1239/124",
+    "transfers": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "y": [
+      "37/108",
+      "1/12"
+    ]
+  },
+  "strict_saddle": {
+    "DFE": {
+      "Jacobian": [
+        [
+          "-1620905226289/2872810610000",
+          "2760871/2504630000"
+        ],
+        [
+          "11265010592219/2872810610000",
+          "-25071602541/2504630000"
+        ]
+      ],
+      "determinant": "817187986178/144798921875",
+      "g_numbers_growth": "9/10",
+      "stable": true,
+      "trace": "-1898627083801/179550663125"
+    },
+    "Jacobian": [
+      [
+        "-2583852240761/17236863660000",
+        "12304661900441/4192750620000"
+      ],
+      [
+        "15672169495631/17236863660000",
+        "-41292370395311/4192750620000"
+      ]
+    ],
+    "M": [
+      [
+        "111/1000",
+        "-1/1000"
+      ],
+      [
+        "-1/1000",
+        "9111/1000"
+      ]
+    ],
+    "P": [
+      "256241/2504630",
+      "2248389/2504630"
+    ],
+    "all_classes_in_N": true,
+    "all_nodes_directly_reachable": true,
+    "beta": [
+      "5008981/1147000",
+      "1/1000"
+    ],
+    "characteristic_discriminant": "157535862470007898689965742121/1504116685969232265225000000",
+    "determinant": "-1155754208768357/969573580875000",
+    "fraction_rhs": [
+      "0",
+      "0"
+    ],
+    "g_numbers_growth": "787/5400",
+    "mortality_order_verified": true,
+    "mu": [
+      "11/100",
+      "911/100"
+    ],
+    "muS": "1/10",
+    "name": "strict_positive_growth_saddle",
+    "no_infected_births": true,
+    "no_return_to_S": true,
+    "nu": "1",
+    "original_numbers_dual_agrees_explicit_Jacobian": true,
+    "positive_sink_claimed": false,
+    "raw_numbers_balanced_growth_residual": [
+      "0",
+      "0",
+      "0"
+    ],
+    "s": "31/54",
+    "same_per_capita_recruitment_into_S": true,
+    "strict_excess_beta_and_transfer_requested": true,
+    "trace": "-387768093698339/38782943235000",
+    "transfers": [
+      [
+        "0",
+        "1/1000"
+      ],
+      [
+        "1/1000",
+        "0"
+      ]
+    ],
+    "y": [
+      "37/108",
+      "1/12"
+    ]
+  }
+}

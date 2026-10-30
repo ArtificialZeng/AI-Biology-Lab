@@ -1,0 +1,83 @@
+{
+  "disease_free_sink": {
+    "J": [
+      [
+        "-2/5",
+        "1/10"
+      ],
+      [
+        "108/5",
+        "-179/10"
+      ]
+    ],
+    "det": "5",
+    "s": "1",
+    "trace": "-183/10",
+    "u": "0",
+    "v": "0"
+  },
+  "limits": [
+    "mu_1=1 < mu_S=5 is within literal source assumptions but is not a calibrated disease-mortality mechanism",
+    "stable states refer to fractions, not equilibria in absolute population numbers",
+    "no full finite-parameter classification, periodic-orbit claim, or historical-first claim"
+  ],
+  "normalized_rhs": [
+    "-(64*u**2 - 95*u*v + 4*u + v**2 - v)/10",
+    "-(216*u**2 + 265*u*v - 216*u - 111*v**2 + 179*v)/10"
+  ],
+  "parameters": {
+    "M": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "17"
+      ]
+    ],
+    "P": [
+      "1/10",
+      "9/10"
+    ],
+    "beta": [
+      "24",
+      "1"
+    ],
+    "mu": [
+      "1",
+      "17"
+    ],
+    "mu_S": "5",
+    "nu": "34/5"
+  },
+  "positive_saddle": {
+    "J": [
+      [
+        "-73/100",
+        "103/100"
+      ],
+      [
+        "1463/100",
+        "-1833/100"
+      ]
+    ],
+    "det": "-211/125",
+    "population_growth_rate": "1",
+    "s": "4/5",
+    "trace": "-953/50",
+    "u": "1/10",
+    "v": "1/10"
+  },
+  "positive_sink": {
+    "det_lower_bound": "13302/9425",
+    "det_reduction": "66266*v/377 - 16165/754",
+    "s": "1-u-alpha",
+    "trace_reduction": "13405*v/377 - 187107/7540",
+    "trace_upper_bound": "-149573/7540",
+    "u": "125/754-37*alpha/377",
+    "v_definition": "unique root alpha in (13/100,7/50) of 41464*alpha^2-72863*alpha+9180"
+  },
+  "scope": "only unqualified proportional-recruitment/standard-incidence extension; base constant-recruitment theorem untouched",
+  "status": "exact-candidate-replay-passed; independent review required"
+}

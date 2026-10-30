@@ -28,6 +28,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Compartment allocation beta gap](projects/compartment-beta-gap/README.md) | Positive-probability explosion theorem for 7/8 < beta < 1 | Fresh substantive AI mathematical review and finite exact checks; human review/priority pending; no almost-sure claim |
 | [Coexistence with waning immunity](projects/waning-coexistence-auditor/README.md) | Full-parameter feasible-root classification and uniqueness under ordered invasion | Fresh AI mathematical review and four exact checkers; actual-model Question 2 answered, abstract Conjecture 1 unresolved |
 | [Adjacent-port catenary audit](projects/adjacent-catenary-auditor/README.md) | Exact singular-locus and transfer-differential classification for all chain lengths | Fresh AI math review and two exact checkers; human review/priority pending |
+| [Proportional-scaling audit](projects/proportional-scaling-auditor/README.md) | Exact counterexamples including strictly increased postinfection mortality | Three exact certificate checks; known bistability credited, main constant-recruitment theorem untouched |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
