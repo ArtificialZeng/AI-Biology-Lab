@@ -29,6 +29,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Coexistence with waning immunity](projects/waning-coexistence-auditor/README.md) | Full-parameter feasible-root classification and uniqueness under ordered invasion | Fresh AI mathematical review and four exact checkers; actual-model Question 2 answered, abstract Conjecture 1 unresolved |
 | [Adjacent-port catenary audit](projects/adjacent-catenary-auditor/README.md) | Exact singular-locus and transfer-differential classification for all chain lengths | Fresh AI math review and two exact checkers; human review/priority pending |
 | [Proportional-scaling audit](projects/proportional-scaling-auditor/README.md) | Exact counterexamples including strictly increased postinfection mortality | Three exact certificate checks; known bistability credited, main constant-recruitment theorem untouched |
+| [Three- and four-particle ancestral circulation](projects/ancestral-circulation-classification/README.md) | Complete N3 sign law and exact N4 reversal with a fixed rate ordering | Full polynomial identities and two-colour verification; human review and priority pending |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
