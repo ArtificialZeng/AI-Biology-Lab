@@ -1,0 +1,29 @@
+name: Example 8 exact stability replay
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  example8:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: projects/lumping-example8-auditor/requirements.txt
+      - run: python -m pip install -r projects/lumping-example8-auditor/requirements.txt
+      - run: python -B projects/lumping-example8-auditor/replay.py
