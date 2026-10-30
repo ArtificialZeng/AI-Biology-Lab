@@ -1,0 +1,484 @@
+{
+  "status": "exact-algebraic-checks-passed",
+  "source": "Ahmed et al., SIAM J Appl Dyn Syst 25(1):304-350 (2026), Conjecture4.6",
+  "model": {
+    "n": 3,
+    "input": [
+      1
+    ],
+    "output": [
+      2
+    ],
+    "leaks": [
+      2
+    ]
+  },
+  "parameter_order": [
+    "k1",
+    "k2",
+    "k3",
+    "e2"
+  ],
+  "positive_rational_point": {
+    "k1": 2,
+    "k2": 1,
+    "k3": 3,
+    "e2": 1
+  },
+  "hyperplane": "k2 + e2 = k1",
+  "coefficient_order": [
+    "C2",
+    "C1",
+    "C0",
+    "B1",
+    "B0"
+  ],
+  "coefficient_polynomials": [
+    "e2 + k1 + k2 + k3",
+    "e2*k1 + e2*k3 + k1*k2 + k1*k3 + k2*k3",
+    "e2*k1*k3",
+    "k1",
+    "k1*k3"
+  ],
+  "coefficient_values": [
+    7,
+    16,
+    6,
+    2,
+    6
+  ],
+  "jacobian": [
+    [
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    [
+      "e2 + k2 + k3",
+      "k1 + k3",
+      "e2 + k1 + k2",
+      "k1 + k3"
+    ],
+    [
+      "e2*k3",
+      "0",
+      "e2*k1",
+      "k1*k3"
+    ],
+    [
+      "1",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "k3",
+      "0",
+      "k1",
+      "0"
+    ]
+  ],
+  "jacobian_at_point": [
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      5,
+      5,
+      4,
+      5
+    ],
+    [
+      3,
+      0,
+      2,
+      6
+    ],
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      3,
+      0,
+      2,
+      0
+    ]
+  ],
+  "jacobian_rank_at_point": 4,
+  "selected_rows_zero_based": [
+    0,
+    2,
+    3,
+    4
+  ],
+  "selected_minor": "-k1**2*k3",
+  "selected_minor_point_value": -12,
+  "all_maximal_minors": [
+    {
+      "coefficient_rows_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "polynomial": "-k1*k3*(e2 + k2 - k3)",
+      "point_value": 6
+    },
+    {
+      "coefficient_rows_zero_based": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "polynomial": "k1*k3*(k1 - k3)*(e2 - k1 + k2 - k3)",
+      "point_value": 18
+    },
+    {
+      "coefficient_rows_zero_based": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "polynomial": "0",
+      "point_value": 0
+    },
+    {
+      "coefficient_rows_zero_based": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "polynomial": "-k1**2*k3",
+      "point_value": -12
+    },
+    {
+      "coefficient_rows_zero_based": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "polynomial": "-k1**2*k3*(k1 + k3)",
+      "point_value": -60
+    }
+  ],
+  "denominator": "e2*k1*k3 + e2*k1*s + e2*k3*s + e2*s**2 + k1*k2*s + k1*k3*s + k1*s**2 + k2*k3*s + k2*s**2 + k3*s**2 + s**3",
+  "numerator": "k1*k3 + k1*s",
+  "denominator_numerator_gcd_at_point": "1",
+  "rational_inverse_order": [
+    "k1",
+    "k2",
+    "k3",
+    "e2"
+  ],
+  "rational_inverse": [
+    "B1",
+    "-B0/B1 - B1 + C2 - C0/B0",
+    "B0/B1",
+    "C0/B0"
+  ],
+  "inverse_domain": "B1 * B0 != 0; holds for every positive k1,k3",
+  "construction_checks": [
+    "state-space determinant",
+    "adjugate numerator",
+    "direct ODE elimination",
+    "rational inverse composition"
+  ],
+  "corrected_interior_kernel_checks": {
+    "exact_case_count": 28,
+    "scope": "n=3,4; leak sets size1,2; all p,a,ell with a not in Leak and a,ell<p",
+    "cases": [
+      {
+        "n": 3,
+        "p": 3,
+        "leaks": [
+          1
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 3,
+        "p": 3,
+        "leaks": [
+          2
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 3,
+        "p": 3,
+        "leaks": [
+          1,
+          3
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 3,
+        "p": 3,
+        "leaks": [
+          2,
+          3
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 3,
+        "leaks": [
+          1
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1
+        ],
+        "a": 3,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 3,
+        "leaks": [
+          2
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          2
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          2
+        ],
+        "a": 3,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          3
+        ],
+        "a": 1,
+        "ell": 3
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          3
+        ],
+        "a": 2,
+        "ell": 3
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1,
+          2
+        ],
+        "a": 3,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1,
+          2
+        ],
+        "a": 3,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 3,
+        "leaks": [
+          1,
+          3
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1,
+          3
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1,
+          3
+        ],
+        "a": 2,
+        "ell": 3
+      },
+      {
+        "n": 4,
+        "p": 3,
+        "leaks": [
+          1,
+          4
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1,
+          4
+        ],
+        "a": 2,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          1,
+          4
+        ],
+        "a": 3,
+        "ell": 1
+      },
+      {
+        "n": 4,
+        "p": 3,
+        "leaks": [
+          2,
+          3
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          2,
+          3
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          2,
+          3
+        ],
+        "a": 1,
+        "ell": 3
+      },
+      {
+        "n": 4,
+        "p": 3,
+        "leaks": [
+          2,
+          4
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          2,
+          4
+        ],
+        "a": 1,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          2,
+          4
+        ],
+        "a": 3,
+        "ell": 2
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          3,
+          4
+        ],
+        "a": 1,
+        "ell": 3
+      },
+      {
+        "n": 4,
+        "p": 4,
+        "leaks": [
+          3,
+          4
+        ],
+        "a": 2,
+        "ell": 3
+      }
+    ]
+  },
+  "limitations": [
+    "Exact script checks do not establish external mathematical review.",
+    "No researcher or journal has confirmed it.",
+    "No absolute priority claim: source-version and follow-up search can miss corrections.",
+    "Interior-leak general proof is written separately; finite checks do not prove it."
+  ],
+  "rejected_negative_controls": [
+    "off_hyperplane",
+    "minor_sign",
+    "numerator_sign"
+  ]
+}

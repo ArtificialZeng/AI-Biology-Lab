@@ -1,0 +1,40 @@
+{
+  "method": "N times formal rate-gradient matrix, then compatibility injection/projection",
+  "source": "https://arxiv.org/html/2608.27081v2",
+  "species_order": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "U",
+    "V",
+    "X",
+    "Y"
+  ],
+  "full_reduced_matrix": "Matrix([[0, 0, -u3, 0, y12, 0], [0, 0, 0, v6, 0, -x9], [a, 0, -a - e1 - u2 - u3, -e1, 0, 0], [-b4, -b4, -e4, -b4 - e4 - v5 - v6, -b4, 0], [-b10, -b10, 0, -b10, -b10 - f10 - y11 - y12, -f10], [0, c, 0, 0, -f7, -c - f7 - x8 - x9]])",
+  "equivariance_linear_rank": 8,
+  "equivariance_solution": "{(c, b10, b10, c, f7, f10, f7, f10, x8, x9, y11, y12, x8, x9, y11, y12)}",
+  "basis_determinant": "-8",
+  "candidate_basis_determinant": "8",
+  "parity_basis": "Matrix([[1, 0, 0, -1, 0, 0], [1, 0, 0, 1, 0, 0], [0, 0, 1, 0, 0, -1], [0, 1, 0, 0, -1, 0], [0, 1, 0, 0, 1, 0], [0, 0, 1, 0, 0, 1]])",
+  "parity_blocks": "Matrix([[0, z, -w, 0, 0, 0], [-2*b, -2*b - f - v - z, -f, 0, 0, 0], [a, -e, -a - e - u - w, 0, 0, 0], [0, 0, 0, 0, -z, -w], [0, 0, 0, 0, -f - v - z, -f], [0, 0, 0, a, -e, -a - e - u - w]])",
+  "cubics": [
+    "2*a*b*lam + 2*a*b*w + 2*a*b*z + a*f*lam + a*f*w + a*f*z + a*lam**2 + a*lam*v + a*lam*w + a*lam*z + a*v*w + a*w*z + 2*b*e*lam + 2*b*e*w + 2*b*e*z + 2*b*lam**2 + 2*b*lam*u + 2*b*lam*w + 2*b*lam*z + 2*b*u*z + 2*b*w*z + e*lam**2 + e*lam*v + e*lam*z + f*lam**2 + f*lam*u + f*lam*w + lam**3 + lam**2*u + lam**2*v + lam**2*w + lam**2*z + lam*u*v + lam*u*z + lam*v*w + lam*w*z",
+    "a*f*lam + a*f*w - a*f*z + a*lam**2 + a*lam*v + a*lam*w + a*lam*z + a*v*w + a*w*z + e*lam**2 + e*lam*v + e*lam*z + f*lam**2 + f*lam*u + f*lam*w + lam**3 + lam**2*u + lam**2*v + lam**2*w + lam**2*z + lam*u*v + lam*u*z + lam*v*w + lam*w*z"
+  ],
+  "Routh_monomials": [
+    86,
+    56
+  ],
+  "minimum_Routh_coefficients": [
+    "1",
+    "1"
+  ],
+  "fresh_even_positive_identity": "a*w*(a + e + u + w) + a*(-f*z + (2*b + f + v + z)**2) + 2*b*z*(2*b + f + v + z) + e*w*(v + z) + e*(2*b + v + z)*(a + 2*b + e + f + u + v + z) + (u + w)*(2*b + f + v + z)**2 + (a + u + w)*(a + e + u + w)*(2*b + f + v + z)",
+  "odd_positive_identity": "a*f*z + a*w*(a + e + u + w) + (e*(v + z) + (a + u + w)*(f + v + z))*(a + e + f + u + v + w + z)",
+  "determinant_factorization": "a*(f*w - f*z + v*w + w*z)*(2*a*b*w + 2*a*b*z + a*f*w + a*f*z + a*v*w + a*w*z + 2*b*e*w + 2*b*e*z + 2*b*u*z + 2*b*w*z)",
+  "boundary_odd_derivative_at_zero": "(a*f**2 + 2*a*f*v + 3*a*f*z + a*v**2 + 2*a*v*z + a*z**2 + e*f*v + e*f*z + e*v**2 + 2*e*v*z + e*z**2 + f**2*u + f**2*z + 2*f*u*v + 2*f*u*z + f*v*z + f*z**2 + u*v**2 + 2*u*v*z + u*z**2)/(f + v + z)",
+  "checks_passed": true,
+  "limitation": "Exact polynomial identities; analytical root count is in PROOF.md."
+}

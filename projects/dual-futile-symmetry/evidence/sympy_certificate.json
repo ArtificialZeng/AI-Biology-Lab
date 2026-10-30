@@ -1,0 +1,28 @@
+{
+  "basis_determinant": "8",
+  "blocks": {
+    "even": {
+      "Routh_monomials": 86,
+      "coefficients": [
+        "1",
+        "a + 2*b + e + f + u + v + w + z",
+        "2*a*b + a*f + a*v + a*w + a*z + 2*b*e + 2*b*u + 2*b*w + 2*b*z + e*v + e*z + f*u + f*w + u*v + u*z + v*w + w*z",
+        "2*a*b*w + 2*a*b*z + a*f*w + a*f*z + a*v*w + a*w*z + 2*b*e*w + 2*b*e*z + 2*b*u*z + 2*b*w*z"
+      ],
+      "matrix": "Matrix([[0, -w, z], [a, -a - e - u - w, -e], [-2*b, -f, -2*b - f - v - z]])",
+      "min_Routh_coefficient": "1"
+    },
+    "odd": {
+      "Routh_monomials": 56,
+      "coefficients": [
+        "1",
+        "a + e + f + u + v + w + z",
+        "a*f + a*v + a*w + a*z + e*v + e*z + f*u + f*w + u*v + u*z + v*w + w*z",
+        "a*(f*w - f*z + v*w + w*z)"
+      ],
+      "matrix": "Matrix([[0, -w, -z], [a, -a - e - u - w, -e], [0, -f, -f - v - z]])",
+      "min_Routh_coefficient": "1"
+    }
+  },
+  "sympy_version": "1.13.3"
+}

@@ -18,8 +18,12 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | Full released-score NDCG order audit | 217 assays / 95 configurations; secondary-metric rank shifts only |
 | [MEMOTE direction audit](projects/memote-direction-auditor/README.md) | Equivalent-reaction counterexamples and a two-line direction fix | Real complete ATP detector integration; maintainer acceptance pending |
 | [Reversible Markov embedding audit](projects/reversible-embedding-auditor/README.md) | Exact rational four-state counterexample to one positive-spectrum embedding implication | Two exact checkers and fresh AI review; author review and priority pending |
+| [Directed-cycle identifiability](projects/directed-cycle-identifiability/README.md) | Exact endpoint counterexample to Conjecture 4.6 and interior-leak inclusion proof | Nonzero exact minor and rational inverse; original-author confirmation pending |
+| [Dual-futile-cycle partial results](projects/dual-futile-symmetry/README.md) | Eight-parameter spectral classification; full-parameter determinant-conditioned positivity of Delta4 | Separate exact reconstructions; general sixteen-parameter stability conjecture unresolved |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
+
+New open-problem research: [selection, results, and parked leads](docs/OPEN_RESEARCH_2026-10-26.md).
 
 ## New validated result: robust oscillations have a nonzero period correction
 
