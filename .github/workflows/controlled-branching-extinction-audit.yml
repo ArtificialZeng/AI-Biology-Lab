@@ -1,0 +1,25 @@
+name: Controlled branching exact algebra checks
+on:
+  pull_request:
+    paths:
+      - 'projects/controlled-branching-extinction-audit/**'
+      - '.github/workflows/controlled-branching-extinction-audit.yml'
+permissions:
+  contents: read
+jobs:
+  exact-checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Normal exact algebra replay
+        run: python projects/controlled-branching-extinction-audit/reproduce.py
+      - name: Optimized parent exact algebra replay
+        run: python -O projects/controlled-branching-extinction-audit/reproduce.py

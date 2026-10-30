@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "dimension": 2,
+  "individual_rates": [1, 1],
+  "type2_offspring": [1, 0],
+  "type1_support": [[0, 0], [2, 0]],
+  "inaccessible_example": {
+    "carrying_capacity": 2,
+    "type1_mean": "2 if 0<=z<=1; 3-z if 1<z<3; 0 if z>=3",
+    "closed_states": [[1, 0], [2, 0], [3, 0]],
+    "generator": [[-1, 1, 0], [1, -2, 1], [0, 3, -3]],
+    "limiting_matrix": [[-1, 0], [1, -1]]
+  },
+  "critical_limit_example": {
+    "carrying_capacity": 1,
+    "type1_mean": "1+(1-z)/(1+z)^3",
+    "limiting_matrix": [[0, 0], [1, -1]],
+    "a_n": "(n-1)/(n+1)^3",
+    "sum_a_upper_bound": "10/27",
+    "all_finite_products_lower_bound": "7/27",
+    "occupation_lower_bound": "7/(27*n)"
+  },
+  "scope": "Exact finite algebra certificates only; infinite-state extinction, divergence, and the general exponential-moment theorem require the analytic proof."
+}
