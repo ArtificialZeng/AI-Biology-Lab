@@ -38,6 +38,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Cogent3 gap-distance audit](projects/cogent-gap-distance) | Correct row-order-dependent distances under pairwise deletion | Exact shared-column oracle and real public API reproduction; upstream review requested; BSD3 source notices retained |
 | [Multi-pathogen coexistence correction](projects/multipathogen-coexistence) | Exact all-positive counterexamples to the simultaneous-endemic-equilibrium assertion in Djuikem–Arino2025 Conjecture5 | Full16D ODE/NGM replay and separate AI proof check; classical exclusion credited; author review pending |
 | [Catalytic response threshold](projects/catalytic-response/README.md) | Complete six-positive-rate steady-response classification for source Fig. 14B | Exact proof, two checkers and fresh AI review; priority and author confirmation pending |
+| Random-switching reaction networks: [common-support counterexample](projects/switching-common-support/README.md) · [Example 44 proof](projects/switching-transience/README.md) | Literal Conjecture 43 fails; Conjecture 46 holds on an explicit slow-switching interval | Two distinct models, complete probability arguments and exact checks; fresh AI review, source-author confirmation pending |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 

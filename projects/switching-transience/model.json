@@ -1,0 +1,134 @@
+{
+  "species": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "parameters": {
+    "alpha": "strictly positive",
+    "kappa": "0 < kappa <= 1"
+  },
+  "initial_states": "all x in Z_nonnegative^3 and either environment",
+  "environment": {
+    "states": [
+      1,
+      2
+    ],
+    "rate_1_to_2": "kappa",
+    "rate_2_to_1": "kappa",
+    "independent_of_reaction_clocks": true
+  },
+  "reactions": {
+    "1": [
+      {
+        "source": [
+          1,
+          0,
+          0
+        ],
+        "product": [
+          4,
+          1,
+          0
+        ],
+        "rate_constant": "1"
+      },
+      {
+        "source": [
+          0,
+          1,
+          0
+        ],
+        "product": [
+          1,
+          0,
+          0
+        ],
+        "rate_constant": "1"
+      },
+      {
+        "source": [
+          0,
+          0,
+          1
+        ],
+        "product": [
+          0,
+          0,
+          0
+        ],
+        "rate_constant": "alpha"
+      },
+      {
+        "source": [
+          0,
+          0,
+          0
+        ],
+        "product": [
+          0,
+          0,
+          1
+        ],
+        "rate_constant": "1"
+      }
+    ],
+    "2": [
+      {
+        "source": [
+          1,
+          0,
+          0
+        ],
+        "product": [
+          0,
+          0,
+          0
+        ],
+        "rate_constant": "alpha"
+      },
+      {
+        "source": [
+          0,
+          0,
+          0
+        ],
+        "product": [
+          1,
+          0,
+          0
+        ],
+        "rate_constant": "1"
+      },
+      {
+        "source": [
+          0,
+          1,
+          0
+        ],
+        "product": [
+          0,
+          0,
+          1
+        ],
+        "rate_constant": "1"
+      },
+      {
+        "source": [
+          0,
+          0,
+          1
+        ],
+        "product": [
+          0,
+          1,
+          4
+        ],
+        "rate_constant": "1"
+      }
+    ]
+  },
+  "mass_action": "rate_constant times source-species count for unimolecular sources; constant rate for empty source",
+  "source": "arXiv2507.09421v2 Example44, printed page30, original reaction diagram visually checked",
+  "not_claimed": "No result for general sourceConjecture43 or kappa>1."
+}

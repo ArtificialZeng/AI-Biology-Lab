@@ -1,0 +1,149 @@
+{
+  "annealed_stress_at_kappa1": {
+    "determinant": "-1",
+    "matrix": [
+      [
+        "0",
+        "1"
+      ],
+      [
+        "1",
+        "-3"
+      ]
+    ],
+    "positive_eigenvalue": true
+  },
+  "bridge": {
+    "1": {
+      "products": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "total_conversion_hazard": "1"
+    },
+    "2": {
+      "products": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "total_conversion_hazard": "1"
+    }
+  },
+  "common_support_1_based": [
+    2
+  ],
+  "generator_coordinate_checks": 432,
+  "input_hashes": {
+    "model.json": "8f1b8ecb4dc277f15ca5bb698deb600fcfb523bc7ee44efda84349164de99827",
+    "proof.md": "b978df02bb0b902489066d21cfff2b27106aacf557d79fca2ca18d4ef4747c68"
+  },
+  "left_products": {
+    "1": [
+      "2",
+      "1",
+      "0"
+    ],
+    "2": [
+      "0",
+      "1",
+      "2"
+    ]
+  },
+  "left_vectors": {
+    "1": [
+      2,
+      1,
+      0
+    ],
+    "2": [
+      0,
+      1,
+      2
+    ]
+  },
+  "matrices": {
+    "1": [
+      [
+        "1",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "-1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "-2"
+      ]
+    ],
+    "2": [
+      [
+        "-2",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "-1",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "1"
+      ]
+    ]
+  },
+  "method": "independent stdlib exact arithmetic; no probability proof encoded",
+  "ok": true,
+  "post_conversion_rates": {
+    "1": {
+      "A": {
+        "birth": "1",
+        "death": "0"
+      },
+      "C": {
+        "birth": "0",
+        "death": "2"
+      }
+    },
+    "2": {
+      "A": {
+        "birth": "0",
+        "death": "2"
+      },
+      "C": {
+        "birth": "1",
+        "death": "0"
+      }
+    }
+  },
+  "quenched_asymptotic_log_mean_per_time": {
+    "A": "-1/2",
+    "C": "-1/2"
+  },
+  "scope_limit": "Finite algebra checks hypotheses/invariants only. Almost-sure extinction requires the analytical argument in proof.md.",
+  "stationary_distribution": [
+    "1/2",
+    "1/2"
+  ],
+  "supports_1_based": {
+    "1": [
+      1,
+      2
+    ],
+    "2": [
+      2,
+      3
+    ]
+  }
+}

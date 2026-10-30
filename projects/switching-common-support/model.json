@@ -1,0 +1,100 @@
+{
+  "species": [
+    "A",
+    "B",
+    "C"
+  ],
+  "kappa": "every strictly positive value",
+  "environment": "independent symmetric1<->2 ratekappa",
+  "initial_state": [
+    0,
+    1,
+    0
+  ],
+  "initial_environment": "either",
+  "reactions": {
+    "1": [
+      {
+        "source": [
+          1,
+          0,
+          0
+        ],
+        "product": [
+          2,
+          0,
+          0
+        ],
+        "rate": 1
+      },
+      {
+        "source": [
+          0,
+          1,
+          0
+        ],
+        "product": [
+          1,
+          0,
+          0
+        ],
+        "rate": 1
+      },
+      {
+        "source": [
+          0,
+          0,
+          1
+        ],
+        "product": [
+          0,
+          0,
+          0
+        ],
+        "rate": 2
+      }
+    ],
+    "2": [
+      {
+        "source": [
+          1,
+          0,
+          0
+        ],
+        "product": [
+          0,
+          0,
+          0
+        ],
+        "rate": 2
+      },
+      {
+        "source": [
+          0,
+          1,
+          0
+        ],
+        "product": [
+          0,
+          0,
+          1
+        ],
+        "rate": 1
+      },
+      {
+        "source": [
+          0,
+          0,
+          1
+        ],
+        "product": [
+          0,
+          0,
+          2
+        ],
+        "rate": 1
+      }
+    ]
+  },
+  "inflows": false
+}
