@@ -1,0 +1,25 @@
+name: Scaffold peak cap exact checks
+on:
+  pull_request:
+    paths:
+      - 'projects/scaffold-peak-cap/**'
+      - '.github/workflows/scaffold-peak-cap.yml'
+permissions:
+  contents: read
+jobs:
+  exact:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r projects/scaffold-peak-cap/requirements.txt
+      - run: python projects/scaffold-peak-cap/reproduce.py --work-dir "$RUNNER_TEMP/scaffold-normal"
+      - run: python -O projects/scaffold-peak-cap/reproduce.py --work-dir "$RUNNER_TEMP/scaffold-optimized"
+        env:
+          PYTHONOPTIMIZE: '2'

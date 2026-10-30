@@ -1,0 +1,54 @@
+{
+  "schema": "scaffold-exact-packet-v2",
+  "files": {
+    "LICENSE": "b58239b6e323394741c4b8d071d24ce575069c466f59d796894b5bf447fe7474",
+    "README.md": "05358216c6926f71ab8eb67d7eff62d8d5d377bcc992368130e31236a40376d8",
+    "cases.json": "e4c0303d1c33cd27cfe68bd387f9819861b209f4f9b7f16b33235d859a04d4b4",
+    "check_certificates.py": "fc06a35ace493550802b273d5484450a28d6b7d3c8d1ad8e8f06a0bfb8a43e1a",
+    "coefficient-certificate.json": "2c50e360837b7b63833b235d922b30986ac3af50cef23832bbdab3af30e7ec3d",
+    "coefficient-table.md": "7750c36792d084c3fdcfb78d9f7a5d5feebd0758aaa6e768517364bda5cfae18",
+    "exact_verifier.py": "f13b8fb80bdd62c5f807af4a4acf99bf92bc5e159831da5cd2a3a4973ecc2082",
+    "generate_certificates.py": "1e489f550aea56339d74772c3bc7b6b5c6d5582ea5e3c124a162d8f426d96886",
+    "one-vacancy-proof.md": "29e0952dd5af528e3fcc5b8cd6e74d47098e1c4abf3d160a06050129f4345f56",
+    "proof.md": "02cfd0154225b1cd16c39f0c10e53e3ed58cc4252cd44363f983362d49de8347",
+    "reproduce.py": "7b293ad4c15cca8c76cfba168286186b650e98d80c88a5f042d25f1917c7e204",
+    "requirements.txt": "d78165cb12250fa5bb897d2026515b89ddb8d6a88aaa152e5d62ff2e36028d11",
+    "source-baseline-radical.json": "a52b9beab8447b480cc02c1c00812141475556a3be67963b2ba498a2924ce288",
+    "source-baseline.json": "dc11e1f42941a49f36d9526e048b1c4bd2d7fd42a6d48f94f0aef9058334b14d",
+    "verify_peak_cap.py": "e673e2b3b34544465fd84093e7a30a0893c757362bed769416a2520c403928c6"
+  },
+  "provenance": {
+    "original_proof_sha256": "bea54299b0e3be55c9b0520078e66ea55e791dadc7b01de0ff594cb9016a4cfb",
+    "public_proof_sha256": "02cfd0154225b1cd16c39f0c10e53e3ed58cc4252cd44363f983362d49de8347",
+    "removed_or_replaced_lines": [
+      {
+        "line": 1,
+        "text": "# Candidate full-class cap proof \u2014 collaborative research, unrefereed",
+        "reason": "administrative candidate title replaced"
+      },
+      {
+        "line": 3,
+        "text": "This proof was developed by two collaborative researchers in the same first research pass; neither is a fresh referee. The calculation below appears to settle the frozen cap2 problem. Its algebra and source scope still require independent review. No MATH_JOB_ID was supplied.",
+        "reason": "administrative research/review provenance excluded from public mathematical prose"
+      },
+      {
+        "line": 111,
+        "text": "- Novelty/source coverage is owned by the root source audit; this helper does not assert literature priority.",
+        "reason": "administrative research/review provenance excluded from public mathematical prose"
+      }
+    ],
+    "other_lines_changed": false,
+    "review_status": "fresh mathematical and value reviews pending at package creation; no acceptance assumed",
+    "formal_runner_approval": false
+  },
+  "core_digest": "5e9e7bcdea36fe18300121a062bf39d7bc4dc23b16d02b6da7106b6087fb0bfd",
+  "validation_status": "Separate all-p AI audit found no mathematical gap; value review accepted scoped contribution. Exact public checks passed. Formal manuscript pipeline unapproved; no human theorem/priority confirmation.",
+  "one_vacancy_provenance": {
+    "frozen_development_proof_sha256": "ded41deaddca0d2bdb428f1b66410b81cef4d1c8c49996a5bd95222b1a7b834f",
+    "public_proof_sha256": "29e0952dd5af528e3fcc5b8cd6e74d47098e1c4abf3d160a06050129f4345f56",
+    "public_derivation": "Administrative-only deletion; full mapping retained in packaging audit. Mathematical lines unchanged.",
+    "frozen_code_and_cases_byte_identical": true,
+    "review_status": "Independent all-p mathematical reconstruction found no gap, including heldoutp7,p11; formal gate still fails genuineproposer provenance afterschema normalization.",
+    "publication_whitespace_adjustment": "Removed only trailing blank EOF line; mathematical text unchanged."
+  }
+}
