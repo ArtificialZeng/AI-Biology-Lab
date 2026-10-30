@@ -1,12 +1,14 @@
 # AI Biology Lab
 
-**AI-assisted discovery in mathematical and computational biology, with inspectable proofs, code, and evidence.**
+**Preserved mathematical and computational biology work: proofs, code, and reproducibility evidence.**
+
+**Research status — 2026-10-31:** biological research and autonomous research runs have stopped at the owner's request. This repository preserves the existing work for inspection and reproduction. [Project status](docs/PROJECT_STATUS.md) · [Complete project index](docs/PROJECT_INDEX.md) · [Consolidated PR history](docs/CONSOLIDATION_2026-10-31.json).
 
 [中文](README.zh-CN.md) · [First result](projects/mixed-phosphorylation/README.md) · [Research roadmap](docs/RESEARCH_ROADMAP.md) · [For reviewers](docs/VALIDATION.md) · [媒体资料](docs/MEDIA_BRIEF.zh-CN.md)
 
-Led by [Zijian Zeng / ArtificialZeng](https://github.com/ArtificialZeng). The lab pursues questions a small computational team can investigate and others can independently check: biochemical oscillations, molecular switches, reaction networks, and rigorous scientific computing.
+Maintained by [Shawn Zeng (Zijian Zeng) / ArtificialZeng](https://github.com/ArtificialZeng). The retained work concerns biochemical oscillations, molecular switches, reaction networks, and scientific computing.
 
-The ambition is to produce discoveries worth reporting. Each public claim is accompanied by its scope, evidence, and unresolved limitations.
+Each public claim retains its scope, evidence, and unresolved limitations. Merging a packet into this repository does not establish biological novelty, external peer review, or upstream acceptance.
 
 ## Research and engineering projects
 
@@ -46,9 +48,9 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
-New open-problem research: [selection, results, and parked leads](docs/OPEN_RESEARCH_2026-10-26.md).
+Historical open-problem research: [selection, results, and parked leads](docs/OPEN_RESEARCH_2026-10-26.md). The [complete index](docs/PROJECT_INDEX.md) also includes later packets absent from the introductory table above.
 
-## New validated result: robust oscillations have a nonzero period correction
+## Retained result: robust oscillations have a nonzero period correction
 
 For the fixed published rates, P=8 and S=40, an attracting periodic branch exists in each fixed compatibility class for every sufficiently large finite kinase total K. In original model time,
 
@@ -106,14 +108,14 @@ python scripts/reproduce.py numerics
 python scripts/reproduce.py figure
 ```
 
-## What we are working toward
+## Historical research targets — inactive
 
 1. Obtain an explicit finite-K threshold and a usable remainder constant.
 2. Certify amplitude corrections and clarify scalar-projection invariance.
 3. Extend the validated parameter region.
 4. Clarify priority with directly overlapping research and obtain external human review.
 
-These are research targets, not completed discoveries. [The roadmap](docs/RESEARCH_ROADMAP.md) defines their acceptance criteria. [External validation](docs/VALIDATION.md) comes before claims of priority or resolution of the full conjecture.
+These remain uncompleted historical targets; no autonomous work is scheduled to pursue them. [The roadmap](docs/RESEARCH_ROADMAP.md) preserves their acceptance criteria. [External validation](docs/VALIDATION.md) is required before claims of priority or resolution of the full conjecture.
 
 ## Repository map
 

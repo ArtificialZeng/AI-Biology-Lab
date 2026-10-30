@@ -1,5 +1,9 @@
 # Working in AI Biology Lab
 
+## Current status — 2026-10-31
+
+The owner has stopped biological research and autonomous research runs. Preserve existing results, source branches, evidence, failed attempts, and limitations. Do not restart research, create new scientific candidates, or initiate outreach from historical plans. Carry out repository maintenance only when requested. The research guidance below describes historical work and is not authorization to resume it.
+
 ## Purpose
 
 Pursue original, externally checkable results in mathematical and computational biology. The lab aims for discoveries with a clear scientific and public story. Prefer one useful, verified contribution to a large collection of unsupported claims.

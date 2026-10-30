@@ -1,10 +1,12 @@
 # AI Biology Lab｜AI 数学生物学与计算生物学实验室
 
-**用 AI 研究生化振荡、分子开关和反应网络，公开别人能够检查的证明、代码和证据。**
+**保存已有的数学生物学与计算生物学工作，保留可检查的证明、代码和复现证据。**
+
+**项目状态（2026-10-31）：已按所有者要求停止生物研究及自主研究任务。** 仓库保留已有成果供查阅和复现。[项目状态](docs/PROJECT_STATUS.md) · [完整项目索引](docs/PROJECT_INDEX.md) · [PR 整合记录](docs/CONSOLIDATION_2026-10-31.json)。
 
 [English](README.md) · [首个课题](projects/mixed-phosphorylation/README.md) · [研究路线](docs/RESEARCH_ROADMAP.md) · [媒体资料](docs/MEDIA_BRIEF.zh-CN.md)
 
-由 [Zijian Zeng / ArtificialZeng](https://github.com/ArtificialZeng) 发起。我们希望做出值得科技媒体报道的科学成果，以明确的问题、可复现的结果和外部验证来支撑传播。
+由 [Shawn Zeng (Zijian Zeng) / ArtificialZeng](https://github.com/ArtificialZeng) 维护。各研究包保留原有的问题、证据和限制；合入本仓库不代表生物学突破、外部同行评审或上游维护者采纳。
 
 ## 项目目录
 
@@ -21,7 +23,7 @@
 
 上游核验申请（按顺序提交，尚待维护者审核）：[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165)。
 
-## 新结果：稳定振荡的周期仍有可量化偏差
+## 已有结果：稳定振荡的周期仍有可量化偏差
 
 固定原文速率、P=8、S=40，已证明：每个充分大的有限激酶总量K对应的守恒类内都有吸引周期轨道。其局部分支在模型时间下满足
 
@@ -62,14 +64,14 @@ python scripts/reproduce.py verify
 
 验证在临时副本中执行，不改动归档证据。详细命令见[复现说明](docs/REPRODUCIBILITY.md)。
 
-## 接下来真正要做出的成果
+## 历史研究目标（已停止推进）
 
 1. 算出明确的有限K阈值及可用的余项常数。
 2. 严格认证振幅修正，并澄清标量投影的不变性。
 3. 扩展经过认证的参数区域。
 4. 与相关研究核对优先权，取得外部人类复核。
 
-这些是待完成目标。[研究路线](docs/RESEARCH_ROADMAP.md)列出验收条件；[外部验证说明](docs/VALIDATION.md)列出专家可以复核的问题。AI 参与推导和审查的范围见 [AI 使用说明](docs/AI_USE.md)。
+这些目标尚未完成，当前不安排自主研究继续推进。[研究路线](docs/RESEARCH_ROADMAP.md)保留验收条件；[外部验证说明](docs/VALIDATION.md)列出专家可以复核的问题。AI 参与推导和审查的范围见 [AI 使用说明](docs/AI_USE.md)。上面的简介表不是完整目录，请以[完整项目索引](docs/PROJECT_INDEX.md)查阅全部研究包。
 
 ## 2026-10-26：开放问题研究
 

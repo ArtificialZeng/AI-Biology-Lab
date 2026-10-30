@@ -1,5 +1,7 @@
 # Research roadmap
 
+> Status 2026-10-31: research stopped at the owner's request. The plan below is historical and inactive; it does not authorize new autonomous work. / 已停止研究，以下路线仅作历史记录。
+
 Updated 26 October 2026. Current results are mathematical statements about a published model; novelty and external human review remain pending.
 
 ## Completed within the stated scope

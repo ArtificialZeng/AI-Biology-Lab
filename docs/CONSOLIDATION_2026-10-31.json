@@ -1,0 +1,415 @@
+{
+  "date": "2026-10-31",
+  "repository": "ArtificialZeng/AI-Biology-Lab",
+  "base_before_consolidation": "b27432ac57076dcddb6c7002a7f31b9dab738752",
+  "operation": "Preserve existing PR heads by merge commits; stop further biological research",
+  "existing_merged_prs": 1,
+  "open_prs_at_start": 43,
+  "project_directories": 54,
+  "source_file_blob_comparisons": 1221,
+  "source_file_blob_mismatches": 0,
+  "shared_conflict_files": [
+    "README.md",
+    "README.zh-CN.md",
+    ".gitattributes"
+  ],
+  "scope_note": "Check totals refer to source heads before consolidation; no upstream acceptance, external peer review or new biological discovery is implied.",
+  "pull_requests": [
+    {
+      "number": 1,
+      "title": "Exact cycle counterexample and dual-futile stability certificates",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/1",
+      "headRefName": "codex/open-biology-exact-results",
+      "headRefOid": "d63c448026ca788ddb4009bb038f6f3c23e56c34",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 2,
+      "title": "research: exact cycle fibers, arbitrary-leak tree sensors, and loopless repair",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/2",
+      "headRefName": "codex/compartment-fibers-and-tree-sensors",
+      "headRefOid": "6d47fcb792d9488c504e6bfcd9f72db4c787bd8f",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 12
+    },
+    {
+      "number": 3,
+      "title": "research: exact RNA short-helix placement refinements",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/3",
+      "headRefName": "codex/rna-short-helix-placements",
+      "headRefOid": "79cd31351ccbe476fd5d3789517116f032680bba",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 4,
+      "title": "audit: FASTCC negative-only direction repair and exact reproduction",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/4",
+      "headRefName": "codex/fastcc-signed-consistency",
+      "headRefOid": "051cf7a018c015a931286d52e8c507be02bf8c6b",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 5,
+      "title": "research: Example 8 Jacobian correction and full-domain stability verification",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/5",
+      "headRefName": "codex/lumping-example8-stability",
+      "headRefOid": "249e7905a022a946e46eae76b820f1efe2005289",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 6,
+      "title": "audit: stale MEMOTE results across sequential API calls",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/6",
+      "headRefName": "codex/memote-cache-lifecycle",
+      "headRefOid": "4d6d4f1cfd3e1e7373bfe2f25d83457ee147b4c7",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 7,
+      "title": "audit: GLPK false-optimal counterexamples and Optlang primal validation",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/7",
+      "headRefName": "codex/glpk-presolve-audit",
+      "headRefOid": "d35b6a27f4e0adc8296fd4103869cca5cb3b7bc5",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 8,
+      "title": "Exact mass-action isola counterexample in a given parameter family",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/8",
+      "headRefName": "codex/relay-generation-isola",
+      "headRefOid": "fef14487f936a463c0998e2d40ebd7fc2a15f7b6",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 9,
+      "title": "Prove positive-probability explosion for beta greater than seven eighths",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/9",
+      "headRefName": "codex/compartment-beta-gap",
+      "headRefOid": "7f5128abab3efa319a42f3358d4823ddce5144de",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 10,
+      "title": "Classify full-waning coexistence roots and ordered-invasion uniqueness",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/10",
+      "headRefName": "codex/waning-coexistence",
+      "headRefOid": "88c7d7530954787f25d447dd654ca28a84960112",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 11,
+      "title": "Classify positive singular loci of adjacent-port catenary models",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/11",
+      "headRefName": "codex/adjacent-catenary-audit",
+      "headRefOid": "accc0cbc988ed9d87ed784c8bb05f9d717db5091",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 12,
+      "title": "Exact proportional-scaling counterexamples with ordered infection mortality",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/12",
+      "headRefName": "codex/proportional-scaling-audit",
+      "headRefOid": "05492b5770ed782fe689d2842a9ce2467dddf731",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 13,
+      "title": "Exact counterexample to a reversible Markov embedding implication",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/13",
+      "headRefName": "codex/reversible-embedding-counterexample",
+      "headRefOid": "494708f914e23f43a8e02ba507f3bfdc5a109320",
+      "state_at_start": "MERGED",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 14,
+      "title": "Classify three-particle ancestry and prove a four-particle ordering reversal",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/14",
+      "headRefName": "codex/ancestral-circulation-classification",
+      "headRefOid": "85be5a3388798b475bb798b26e1578d14a8dc4ec",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 15,
+      "title": "Uniform 3-sunlet dimensions for general and cyclic-inversion models",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/15",
+      "headRefName": "codex/even-sunlet-dimension",
+      "headRefOid": "846668f3c1dfb38fd84219fe0566ff1a047ba90a",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 16,
+      "title": "Audit Mantis finite stationary laws on their reachable initial class",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/16",
+      "headRefName": "codex/mantis-stationary-support",
+      "headRefOid": "80ddccbb494eaa5ea7bc7a3b163a32aa747f5256",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 8
+    },
+    {
+      "number": 17,
+      "title": "Audit and repair false-success NumPy ODE results in GillesPy2",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/17",
+      "headRefName": "codex/gillespy2-ode-failure",
+      "headRefOid": "3893c163bd8462bc21e9a3b63ca504e5cdb6a13c",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 18,
+      "title": "Prove complete-graph fixation bounds for regular graphs and matching deletions",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/18",
+      "headRefName": "codex/two-graph-moran-matching",
+      "headRefOid": "1beabc8caf415756c38da6848d1cb3386ddde83b",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 19,
+      "title": "Audit and fix TreeSwift gamma intervals and label dependence",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/19",
+      "headRefName": "codex/treeswift-gamma",
+      "headRefOid": "2477d5e90f3612b6dcac426e5dd23069c7035629",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 20,
+      "title": "Audit and fix row-order-dependent Cogent3 distances",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/20",
+      "headRefName": "codex/cogent-gap-distance",
+      "headRefOid": "6e0cb51da2fcb335dbc557dd762243d23a240427",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 21,
+      "title": "Give exact positive-rate counterexamples to a multi-pathogen coexistence conjecture",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/21",
+      "headRefName": "codex/pathogen-coexistence-counterexample",
+      "headRefOid": "7965e707a51884302a94465bd79e2b91c2c0d7b6",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 22,
+      "title": "Classify the six-rate catalytic steady response",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/22",
+      "headRefName": "codex/catalytic-response-threshold",
+      "headRefOid": "17d053e329e98d98d2befd6f36f593502c8e1183",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 23,
+      "title": "Random-switching networks: Conjecture 43 counterexample and Example 44 proof",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/23",
+      "headRefName": "codex/switching-shared-species-transience",
+      "headRefOid": "13483fda511a42452c75f6796454ed5cb7f1d84d",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 24,
+      "title": "Correct ETE RF polytomy handling after common-leaf projection",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/24",
+      "headRefName": "codex/ete-unrooted-polytomy-correction",
+      "headRefOid": "a01cc24dc5764715ece255b8b0d8f89949861ba0",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 25,
+      "title": "Periodic adaptation: exact mean deficit for a published reversible motif",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/25",
+      "headRefName": "codex/periodic-adaptation-mean",
+      "headRefOid": "0a78348e096cceca0cde7ca6b2861bf96dc6a3cf",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 26,
+      "title": "Audit forward response claims with moment twins and a local jet repair",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/26",
+      "headRefName": "codex/nonreciprocal-response-audit",
+      "headRefOid": "73fcdc2b7af74de6fa696ef3c46e60e80c82e701",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 27,
+      "title": "research: global exclusion and finite-period serial-transfer dynamics",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/27",
+      "headRefName": "codex/serial-transfer-global-dynamics",
+      "headRefOid": "2098b64a567b66e97944c1fcbcb2359b94dbc7d5",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 28,
+      "title": "research: positive regular CRN diagnostic for species-coordinate shape",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/28",
+      "headRefName": "codex/groebner-positive-counterfamily",
+      "headRefOid": "ab7687c7fde7aa5c92e13dec462b09b44a5b0575",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 29,
+      "title": "Audit and correct LWL85 twofold-site weighting",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/29",
+      "headRefName": "codex/lwl85-site-weight-audit",
+      "headRefOid": "34823f3f7ab6ef47b8a9f6d5d3c8751bccce0915",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 30,
+      "title": "Certify local damping in the six-species chemical clock",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/30",
+      "headRefName": "codex/six-clock-local-damping",
+      "headRefOid": "84156fec94dc62807084c5dc129491cce0153f3c",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 31,
+      "title": "research: exact uniform-root two-sink images and Kimura boundary obstruction",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/31",
+      "headRefName": "codex/root-blob-image-audit",
+      "headRefOid": "435841cbdd3c1a0f51725d662d8a4f17b276ea2b",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 32,
+      "title": "Audit and repair measured nonfinite outputs in pyPESTO hierarchical likelihoods",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/32",
+      "headRefName": "codex/pypesto-measured-nan",
+      "headRefOid": "824a338eeca5f28eec4eb46cae34acb4471005fa",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 33,
+      "title": "Reproduce and repair terminal coalescence-rate diagnostics",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/33",
+      "headRefName": "codex/msprime-terminal-hazard",
+      "headRefOid": "76b7c16073bc91f7282f1092314432edea3f1baa",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 34,
+      "title": "Prove scaffold peak bounds and unbounded one-vacancy dose complexity",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/34",
+      "headRefName": "codex/scaffold-peak-cap",
+      "headRefOid": "b802f046ea8d5a084ac9c6ccf2da0699200ab04b",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 35,
+      "title": "Construct a reversible cubic network with a certified algebraic limit cycle",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/35",
+      "headRefName": "codex/reversible-cubic-algebraic-cycle",
+      "headRefOid": "222040dc55bbf3fb68b444e25f433d55ddd54d0a",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 36,
+      "title": "Controlled branching: extinction hypothesis audit and a first-moment theorem",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/36",
+      "headRefName": "codex/controlled-branching-extinction-audit",
+      "headRefOid": "73038e5a9d79f0123aa63749d86b2dba35109ce7",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 37,
+      "title": "Classify gamma-spike cumulant fibers and prove a sharp four-cumulant threshold",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/37",
+      "headRefName": "codex/gamma-cumulant-identifiability",
+      "headRefOid": "3e010de5a1f4ec425737552b2c5401b65ab724d5",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 38,
+      "title": "Audit and repair tskit trait correlation under large phenotype offsets",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/38",
+      "headRefName": "codex/tskit-trait-correlation",
+      "headRefOid": "a478a224128f791b38f933159426a90c2b06ac6f",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 39,
+      "title": "Audit and repair finite-order Hill and Renyi diversity underflow",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/39",
+      "headRefName": "codex/hill-renyi-stability",
+      "headRefOid": "8a9ed1ea64e20cba23623b6dc31b70b79fe76ee7",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 9
+    },
+    {
+      "number": 40,
+      "title": "Fixed-target switching-rate example for clarification",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/40",
+      "headRefName": "codex/white-noise-switching-clarification",
+      "headRefOid": "2d6907c4e96abc025c8da45b5d9c431a3cae1d9f",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 41,
+      "title": "Add exact counterexample to resource-spectrum stability conjecture",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/41",
+      "headRefName": "codex/essential-resource-spectrum-counterexample",
+      "headRefOid": "e71b3d4c486d512862bf728381f0dcfbee5f54ea",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 11
+    },
+    {
+      "number": 42,
+      "title": "Prove a scalar-rate compatibility dichotomy for JC triangles",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/42",
+      "headRefName": "codex/jc-triangle-rate-mixtures",
+      "headRefOid": "51f895710e6cfa0110d616bfd20cf8db74f7cd98",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 15
+    },
+    {
+      "number": 43,
+      "title": "Prove cyclic-pair necessity in three-strain full-PSD communities",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/43",
+      "headRefName": "codex/antibiotic-fullpsd-cyclicity",
+      "headRefOid": "275fbc3620b48e2e2da5030b49968e7dba6f1447",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 15
+    },
+    {
+      "number": 44,
+      "title": "Classify multipartite count coupling for mixed Moran updating",
+      "url": "https://github.com/ArtificialZeng/AI-Biology-Lab/pull/44",
+      "headRefName": "codex/multipartite-moran-order",
+      "headRefOid": "630e87b452ccf987d658fd9b1af5e321f33d3c7c",
+      "state_at_start": "OPEN",
+      "successful_source_checks": 15
+    }
+  ]
+}
