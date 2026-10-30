@@ -35,6 +35,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [GillesPy2 ODE failure propagation](projects/gillespy-ode-failure/README.md) | Reject failed backend steps before publishing future-labelled results | Analytic baseline/candidate replay and independent AI review; upstream maintainer confirmation pending |
 | [Two-graph Moran fixation bounds](projects/two-graph-moran-matching) | Every connected noncomplete regular graph, both type orientations; all matching deletions retained | Exact sum-of-squares and polynomial proofs; arbitrary irregular graphs unresolved; human review pending |
 | [TreeSwift gamma audit](projects/treeswift-gamma) | Correct branching intervals, label dependence and crown-stem handling | Exact sign-flip witness; 714 + 1,774 generated cases; upstream review requested; GPL-3.0 subproject |
+| [Cogent3 gap-distance audit](projects/cogent-gap-distance) | Correct row-order-dependent distances under pairwise deletion | Exact shared-column oracle and real public API reproduction; upstream review requested; BSD3 source notices retained |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
