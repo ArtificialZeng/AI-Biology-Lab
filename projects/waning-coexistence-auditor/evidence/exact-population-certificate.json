@@ -1,0 +1,46 @@
+{
+  "arithmetic": "exact rational and symbolic identities",
+  "converse_bound": "N>s+(v1+theta1)*r1/gamma1 at every strictly positive coexistence equilibrium",
+  "denominator_cleared_identity": "P_G=mu*((s+r1+r2-Lambda/mu)*Delta+A1*W1+A2*W2)",
+  "endpoint_identity": "P_G(p)=-gamma2*p^2*mu*(v1+theta1)*q/(eta2*sigma2)*(R2(E1)-1)",
+  "full_population_identity": "sum(f)=Lambda-mu*N",
+  "limitations": [
+    "Existence and conditional converse only; no uniqueness, stability or full Question2 root-count classification.",
+    "The general A1-A5 Conjecture1 remains unresolved."
+  ],
+  "reaction_count": 24,
+  "reduced_population_identity": "F_G(s)=Lambda-mu*N(s)",
+  "seven_reconstructed_balances": "all exactly zero",
+  "verified": true,
+  "witness": {
+    "Jacobian_determinant": "416/243",
+    "R1_DFE": "23/18",
+    "R2_DFE": "23/36",
+    "R2_E1": "61/72",
+    "parameters": {
+      "Lambda": "23/18",
+      "beta1": "2",
+      "beta2": "1",
+      "eta1": "30",
+      "eta2": "10",
+      "gamma1": "1",
+      "gamma2": "1",
+      "mu": "1",
+      "sigma1": "1/2",
+      "sigma2": "1/2",
+      "theta1": "0",
+      "theta12": "0",
+      "theta2": "0"
+    },
+    "state": {
+      "i1": "1/3",
+      "i12": "1/60",
+      "i2": "1/18",
+      "i21": "1/90",
+      "r1": "3/10",
+      "r12": "1/36",
+      "r2": "1/30",
+      "s": "1/2"
+    }
+  }
+}

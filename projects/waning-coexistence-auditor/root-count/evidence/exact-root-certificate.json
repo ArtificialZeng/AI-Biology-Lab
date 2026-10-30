@@ -1,0 +1,159 @@
+{
+  "arithmetic": "exact symbolic and rational arithmetic",
+  "classification": {
+    "a<0": "one simple",
+    "a=0 and b<0": "one simple",
+    "a=0 and b>=0": "none",
+    "a>0 and (b<0 or c<0) and discriminant=0": "one double",
+    "a>0 and (b<0 or c<0) and discriminant>0": "two simple",
+    "other a>0 cases": "none"
+  },
+  "examples": {
+    "all_positive_waning_double_root": {
+      "PG": "(3*s - 2)**2*(595*s + 169)/10480",
+      "degree": 3,
+      "parameters": {
+        "Lambda": "872/655",
+        "beta1": "2",
+        "beta2": "1",
+        "eta1": "20",
+        "eta2": "10",
+        "gamma1": "1",
+        "gamma2": "1",
+        "mu": "1",
+        "sigma1": "1",
+        "sigma2": "1",
+        "theta1": "535/262",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "roots": [
+        {
+          "multiplicity": 2,
+          "s": "2/3",
+          "state": {
+            "i1": "56/131",
+            "i12": "43/3930",
+            "i2": "43/786",
+            "i21": "7/655",
+            "r1": "2/15",
+            "r12": "17/1572",
+            "r2": "1/60",
+            "s": "2/3"
+          }
+        }
+      ]
+    },
+    "all_positive_waning_two_roots": {
+      "PG": "(3*s - 2)*(4*s - 3)*(854*s + 251)/21600",
+      "degree": 3,
+      "parameters": {
+        "Lambda": "2011/1440",
+        "beta1": "2",
+        "beta2": "1",
+        "eta1": "20",
+        "eta2": "10",
+        "gamma1": "1",
+        "gamma2": "1",
+        "mu": "1",
+        "sigma1": "1",
+        "sigma2": "1",
+        "theta1": "535/216",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "roots": [
+        {
+          "multiplicity": 1,
+          "s": "2/3",
+          "state": {
+            "i1": "3863/7938",
+            "i12": "1831/158760",
+            "i2": "1831/31752",
+            "i21": "3863/317520",
+            "r1": "2/15",
+            "r12": "215/18144",
+            "r2": "1/60",
+            "s": "2/3"
+          }
+        },
+        {
+          "multiplicity": 1,
+          "s": "3/4",
+          "state": {
+            "i1": "43/96",
+            "i12": "23/3456",
+            "i2": "23/576",
+            "i21": "43/5760",
+            "r1": "1/8",
+            "r12": "61/8640",
+            "r2": "1/80",
+            "s": "3/4"
+          }
+        }
+      ]
+    },
+    "coincident_critical_threshold": {
+      "PG": "(s - 1)*(4*s + 1)*(31*s - 11)/250",
+      "degree": 3,
+      "parameters": {
+        "Lambda": "1",
+        "beta1": "2",
+        "beta2": "2",
+        "eta1": "10",
+        "eta2": "10",
+        "gamma1": "1",
+        "gamma2": "1",
+        "mu": "1",
+        "sigma1": "1",
+        "sigma2": "1",
+        "theta1": "1",
+        "theta12": "1",
+        "theta2": "1"
+      },
+      "roots": [
+        {
+          "multiplicity": 1,
+          "s": "11/31",
+          "state": {
+            "i1": "44/217",
+            "i12": "8/217",
+            "i2": "44/217",
+            "i21": "8/217",
+            "r1": "2/31",
+            "r12": "8/217",
+            "r2": "2/31",
+            "s": "11/31"
+          }
+        }
+      ]
+    }
+  },
+  "fold_population_second_derivative": "229095/102704",
+  "generic_checks": [
+    "reaction and source ODE reconstruction",
+    "population identity",
+    "all seven reconstructed balances",
+    "source PG=-Delta*FG exactly",
+    "degree at most three",
+    "convex-factor identities",
+    "coincident endpoint identities",
+    "Mobius coefficient identities",
+    "cubic discriminant"
+  ],
+  "limits": [
+    "Sign/convexity/real-root arguments are analytic proof, not formally encoded by symbolic identities.",
+    "Broad abstract Conjecture1 remains unresolved.",
+    "Scalar multiplicity makes no ODE stability, persistence or dynamical saddle-node claim.",
+    "Fresh review of this pass is pending; no formal runner identity or human acceptance."
+  ],
+  "positive_parameter_degree_collapse": {
+    "degree1": "-14*(s - 1)",
+    "degree2": "(s**2 - 34*s + 32)/2"
+  },
+  "reaction_count": 24,
+  "schema": "waning-root-count-v1",
+  "source_PG_degree_bound": 3,
+  "sympy": "1.13.3",
+  "verified": true
+}

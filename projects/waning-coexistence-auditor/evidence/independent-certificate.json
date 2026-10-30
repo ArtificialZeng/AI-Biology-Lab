@@ -1,0 +1,23 @@
+{
+  "limits": "Analytic positivity, IVT, quantifiers, and novelty need the accompanying manual report.",
+  "ok": true,
+  "reaction_count": 24,
+  "snapshot_digest": "3d8848b2461d9f4f6d3c0bb4733d5cbe0714a31367c6d0db5161bc7019342af9",
+  "symbolic_checks": [
+    "independent reaction/source equation reconstruction",
+    "demographic mass identity",
+    "matrix-derived infected amplitudes and all seven balances",
+    "reduced mass equation",
+    "right endpoint and invasion factor",
+    "full-waning converse identity"
+  ],
+  "sympy": "1.13.3",
+  "witness": {
+    "invasion": "61/72",
+    "jacobian_determinant": "416/243",
+    "p": "1",
+    "q": "2",
+    "s0": "23/18"
+  },
+  "writes": "stdout only"
+}
