@@ -1,0 +1,6573 @@
+{
+  "status": "PASS",
+  "arithmetic": "integer symbolic polynomials and exact rational arithmetic only",
+  "imports_candidate_checker": false,
+  "symbolic_ode_cases": 182,
+  "symbolic_case_scope": [
+    [
+      3,
+      2,
+      1,
+      2
+    ],
+    [
+      3,
+      2,
+      1,
+      3
+    ],
+    [
+      4,
+      2,
+      1,
+      2
+    ],
+    [
+      4,
+      2,
+      1,
+      3
+    ],
+    [
+      4,
+      2,
+      1,
+      4
+    ],
+    [
+      4,
+      3,
+      1,
+      3
+    ],
+    [
+      4,
+      3,
+      1,
+      4
+    ],
+    [
+      4,
+      3,
+      2,
+      3
+    ],
+    [
+      4,
+      3,
+      2,
+      4
+    ],
+    [
+      5,
+      2,
+      1,
+      2
+    ],
+    [
+      5,
+      2,
+      1,
+      3
+    ],
+    [
+      5,
+      2,
+      1,
+      4
+    ],
+    [
+      5,
+      2,
+      1,
+      5
+    ],
+    [
+      5,
+      3,
+      1,
+      3
+    ],
+    [
+      5,
+      3,
+      1,
+      4
+    ],
+    [
+      5,
+      3,
+      1,
+      5
+    ],
+    [
+      5,
+      3,
+      2,
+      3
+    ],
+    [
+      5,
+      3,
+      2,
+      4
+    ],
+    [
+      5,
+      3,
+      2,
+      5
+    ],
+    [
+      5,
+      4,
+      1,
+      4
+    ],
+    [
+      5,
+      4,
+      1,
+      5
+    ],
+    [
+      5,
+      4,
+      2,
+      4
+    ],
+    [
+      5,
+      4,
+      2,
+      5
+    ],
+    [
+      5,
+      4,
+      3,
+      4
+    ],
+    [
+      5,
+      4,
+      3,
+      5
+    ],
+    [
+      6,
+      2,
+      1,
+      2
+    ],
+    [
+      6,
+      2,
+      1,
+      3
+    ],
+    [
+      6,
+      2,
+      1,
+      4
+    ],
+    [
+      6,
+      2,
+      1,
+      5
+    ],
+    [
+      6,
+      2,
+      1,
+      6
+    ],
+    [
+      6,
+      3,
+      1,
+      3
+    ],
+    [
+      6,
+      3,
+      1,
+      4
+    ],
+    [
+      6,
+      3,
+      1,
+      5
+    ],
+    [
+      6,
+      3,
+      1,
+      6
+    ],
+    [
+      6,
+      3,
+      2,
+      3
+    ],
+    [
+      6,
+      3,
+      2,
+      4
+    ],
+    [
+      6,
+      3,
+      2,
+      5
+    ],
+    [
+      6,
+      3,
+      2,
+      6
+    ],
+    [
+      6,
+      4,
+      1,
+      4
+    ],
+    [
+      6,
+      4,
+      1,
+      5
+    ],
+    [
+      6,
+      4,
+      1,
+      6
+    ],
+    [
+      6,
+      4,
+      2,
+      4
+    ],
+    [
+      6,
+      4,
+      2,
+      5
+    ],
+    [
+      6,
+      4,
+      2,
+      6
+    ],
+    [
+      6,
+      4,
+      3,
+      4
+    ],
+    [
+      6,
+      4,
+      3,
+      5
+    ],
+    [
+      6,
+      4,
+      3,
+      6
+    ],
+    [
+      6,
+      5,
+      1,
+      5
+    ],
+    [
+      6,
+      5,
+      1,
+      6
+    ],
+    [
+      6,
+      5,
+      2,
+      5
+    ],
+    [
+      6,
+      5,
+      2,
+      6
+    ],
+    [
+      6,
+      5,
+      3,
+      5
+    ],
+    [
+      6,
+      5,
+      3,
+      6
+    ],
+    [
+      6,
+      5,
+      4,
+      5
+    ],
+    [
+      6,
+      5,
+      4,
+      6
+    ],
+    [
+      7,
+      2,
+      1,
+      2
+    ],
+    [
+      7,
+      2,
+      1,
+      3
+    ],
+    [
+      7,
+      2,
+      1,
+      4
+    ],
+    [
+      7,
+      2,
+      1,
+      5
+    ],
+    [
+      7,
+      2,
+      1,
+      6
+    ],
+    [
+      7,
+      2,
+      1,
+      7
+    ],
+    [
+      7,
+      3,
+      1,
+      3
+    ],
+    [
+      7,
+      3,
+      1,
+      4
+    ],
+    [
+      7,
+      3,
+      1,
+      5
+    ],
+    [
+      7,
+      3,
+      1,
+      6
+    ],
+    [
+      7,
+      3,
+      1,
+      7
+    ],
+    [
+      7,
+      3,
+      2,
+      3
+    ],
+    [
+      7,
+      3,
+      2,
+      4
+    ],
+    [
+      7,
+      3,
+      2,
+      5
+    ],
+    [
+      7,
+      3,
+      2,
+      6
+    ],
+    [
+      7,
+      3,
+      2,
+      7
+    ],
+    [
+      7,
+      4,
+      1,
+      4
+    ],
+    [
+      7,
+      4,
+      1,
+      5
+    ],
+    [
+      7,
+      4,
+      1,
+      6
+    ],
+    [
+      7,
+      4,
+      1,
+      7
+    ],
+    [
+      7,
+      4,
+      2,
+      4
+    ],
+    [
+      7,
+      4,
+      2,
+      5
+    ],
+    [
+      7,
+      4,
+      2,
+      6
+    ],
+    [
+      7,
+      4,
+      2,
+      7
+    ],
+    [
+      7,
+      4,
+      3,
+      4
+    ],
+    [
+      7,
+      4,
+      3,
+      5
+    ],
+    [
+      7,
+      4,
+      3,
+      6
+    ],
+    [
+      7,
+      4,
+      3,
+      7
+    ],
+    [
+      7,
+      5,
+      1,
+      5
+    ],
+    [
+      7,
+      5,
+      1,
+      6
+    ],
+    [
+      7,
+      5,
+      1,
+      7
+    ],
+    [
+      7,
+      5,
+      2,
+      5
+    ],
+    [
+      7,
+      5,
+      2,
+      6
+    ],
+    [
+      7,
+      5,
+      2,
+      7
+    ],
+    [
+      7,
+      5,
+      3,
+      5
+    ],
+    [
+      7,
+      5,
+      3,
+      6
+    ],
+    [
+      7,
+      5,
+      3,
+      7
+    ],
+    [
+      7,
+      5,
+      4,
+      5
+    ],
+    [
+      7,
+      5,
+      4,
+      6
+    ],
+    [
+      7,
+      5,
+      4,
+      7
+    ],
+    [
+      7,
+      6,
+      1,
+      6
+    ],
+    [
+      7,
+      6,
+      1,
+      7
+    ],
+    [
+      7,
+      6,
+      2,
+      6
+    ],
+    [
+      7,
+      6,
+      2,
+      7
+    ],
+    [
+      7,
+      6,
+      3,
+      6
+    ],
+    [
+      7,
+      6,
+      3,
+      7
+    ],
+    [
+      7,
+      6,
+      4,
+      6
+    ],
+    [
+      7,
+      6,
+      4,
+      7
+    ],
+    [
+      7,
+      6,
+      5,
+      6
+    ],
+    [
+      7,
+      6,
+      5,
+      7
+    ],
+    [
+      8,
+      2,
+      1,
+      2
+    ],
+    [
+      8,
+      2,
+      1,
+      3
+    ],
+    [
+      8,
+      2,
+      1,
+      4
+    ],
+    [
+      8,
+      2,
+      1,
+      5
+    ],
+    [
+      8,
+      2,
+      1,
+      6
+    ],
+    [
+      8,
+      2,
+      1,
+      7
+    ],
+    [
+      8,
+      2,
+      1,
+      8
+    ],
+    [
+      8,
+      3,
+      1,
+      3
+    ],
+    [
+      8,
+      3,
+      1,
+      4
+    ],
+    [
+      8,
+      3,
+      1,
+      5
+    ],
+    [
+      8,
+      3,
+      1,
+      6
+    ],
+    [
+      8,
+      3,
+      1,
+      7
+    ],
+    [
+      8,
+      3,
+      1,
+      8
+    ],
+    [
+      8,
+      3,
+      2,
+      3
+    ],
+    [
+      8,
+      3,
+      2,
+      4
+    ],
+    [
+      8,
+      3,
+      2,
+      5
+    ],
+    [
+      8,
+      3,
+      2,
+      6
+    ],
+    [
+      8,
+      3,
+      2,
+      7
+    ],
+    [
+      8,
+      3,
+      2,
+      8
+    ],
+    [
+      8,
+      4,
+      1,
+      4
+    ],
+    [
+      8,
+      4,
+      1,
+      5
+    ],
+    [
+      8,
+      4,
+      1,
+      6
+    ],
+    [
+      8,
+      4,
+      1,
+      7
+    ],
+    [
+      8,
+      4,
+      1,
+      8
+    ],
+    [
+      8,
+      4,
+      2,
+      4
+    ],
+    [
+      8,
+      4,
+      2,
+      5
+    ],
+    [
+      8,
+      4,
+      2,
+      6
+    ],
+    [
+      8,
+      4,
+      2,
+      7
+    ],
+    [
+      8,
+      4,
+      2,
+      8
+    ],
+    [
+      8,
+      4,
+      3,
+      4
+    ],
+    [
+      8,
+      4,
+      3,
+      5
+    ],
+    [
+      8,
+      4,
+      3,
+      6
+    ],
+    [
+      8,
+      4,
+      3,
+      7
+    ],
+    [
+      8,
+      4,
+      3,
+      8
+    ],
+    [
+      8,
+      5,
+      1,
+      5
+    ],
+    [
+      8,
+      5,
+      1,
+      6
+    ],
+    [
+      8,
+      5,
+      1,
+      7
+    ],
+    [
+      8,
+      5,
+      1,
+      8
+    ],
+    [
+      8,
+      5,
+      2,
+      5
+    ],
+    [
+      8,
+      5,
+      2,
+      6
+    ],
+    [
+      8,
+      5,
+      2,
+      7
+    ],
+    [
+      8,
+      5,
+      2,
+      8
+    ],
+    [
+      8,
+      5,
+      3,
+      5
+    ],
+    [
+      8,
+      5,
+      3,
+      6
+    ],
+    [
+      8,
+      5,
+      3,
+      7
+    ],
+    [
+      8,
+      5,
+      3,
+      8
+    ],
+    [
+      8,
+      5,
+      4,
+      5
+    ],
+    [
+      8,
+      5,
+      4,
+      6
+    ],
+    [
+      8,
+      5,
+      4,
+      7
+    ],
+    [
+      8,
+      5,
+      4,
+      8
+    ],
+    [
+      8,
+      6,
+      1,
+      6
+    ],
+    [
+      8,
+      6,
+      1,
+      7
+    ],
+    [
+      8,
+      6,
+      1,
+      8
+    ],
+    [
+      8,
+      6,
+      2,
+      6
+    ],
+    [
+      8,
+      6,
+      2,
+      7
+    ],
+    [
+      8,
+      6,
+      2,
+      8
+    ],
+    [
+      8,
+      6,
+      3,
+      6
+    ],
+    [
+      8,
+      6,
+      3,
+      7
+    ],
+    [
+      8,
+      6,
+      3,
+      8
+    ],
+    [
+      8,
+      6,
+      4,
+      6
+    ],
+    [
+      8,
+      6,
+      4,
+      7
+    ],
+    [
+      8,
+      6,
+      4,
+      8
+    ],
+    [
+      8,
+      6,
+      5,
+      6
+    ],
+    [
+      8,
+      6,
+      5,
+      7
+    ],
+    [
+      8,
+      6,
+      5,
+      8
+    ],
+    [
+      8,
+      7,
+      1,
+      7
+    ],
+    [
+      8,
+      7,
+      1,
+      8
+    ],
+    [
+      8,
+      7,
+      2,
+      7
+    ],
+    [
+      8,
+      7,
+      2,
+      8
+    ],
+    [
+      8,
+      7,
+      3,
+      7
+    ],
+    [
+      8,
+      7,
+      3,
+      8
+    ],
+    [
+      8,
+      7,
+      4,
+      7
+    ],
+    [
+      8,
+      7,
+      4,
+      8
+    ],
+    [
+      8,
+      7,
+      5,
+      7
+    ],
+    [
+      8,
+      7,
+      5,
+      8
+    ],
+    [
+      8,
+      7,
+      6,
+      7
+    ],
+    [
+      8,
+      7,
+      6,
+      8
+    ]
+  ],
+  "rational_fixture_count": 182,
+  "rational_branch_count": 8864,
+  "rational_scope": {
+    "n": [
+      3,
+      6
+    ],
+    "placements": "all allowed",
+    "m": "all 1..p"
+  },
+  "exact_full_column_rank": "n+2 on every rational source fixture and all special cases",
+  "symbolic_ode_scope": {
+    "n": [
+      3,
+      8
+    ],
+    "placements": "all allowed"
+  },
+  "special_cases": [
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_affine_count": 2,
+      "positive_count": 1,
+      "all_parameters_nonzero_count": 1,
+      "interval": [
+        "3/2",
+        "3"
+      ],
+      "D_ascending": [
+        "12",
+        "26",
+        "9",
+        "1"
+      ],
+      "N_ascending": [
+        "8",
+        "2"
+      ],
+      "tag": "upper_endpoint_zero_leak_in_other_preimage",
+      "all_preimages": [
+        [
+          "2",
+          "3/2",
+          "4",
+          "0",
+          "3/2"
+        ],
+        [
+          "2",
+          "3/2",
+          "4",
+          "1",
+          "1/2"
+        ]
+      ]
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_affine_count": 2,
+      "positive_count": 1,
+      "all_parameters_nonzero_count": 1,
+      "interval": [
+        "2",
+        "4"
+      ],
+      "D_ascending": [
+        "12",
+        "26",
+        "9",
+        "1"
+      ],
+      "N_ascending": [
+        "6",
+        "3/2"
+      ],
+      "tag": "lower_endpoint_zero_leak_in_other_preimage",
+      "all_preimages": [
+        [
+          "3/2",
+          "2",
+          "4",
+          "1/2",
+          "1"
+        ],
+        [
+          "3/2",
+          "2",
+          "4",
+          "3/2",
+          "0"
+        ]
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 4,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "D_ascending": [
+        "360/7",
+        "123",
+        "61",
+        "13",
+        "1"
+      ],
+      "N_ascending": [
+        "180/7",
+        "96/7",
+        "12/7"
+      ],
+      "tag": "cross_block_coincident_root"
+    }
+  ],
+  "fixtures": [
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_affine_count": 2,
+      "positive_count": 1,
+      "all_parameters_nonzero_count": 2,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4040/3",
+        "1353",
+        "114",
+        "1"
+      ],
+      "N_ascending": [
+        "2020/3",
+        "20/3"
+      ]
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_affine_count": 2,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 2,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "20200/9",
+        "1353",
+        "114",
+        "1"
+      ],
+      "N_ascending": [
+        "4040/9",
+        "40/9"
+      ]
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 2,
+      "positive_count": 1,
+      "all_parameters_nonzero_count": 2,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4040/3",
+        "1353",
+        "114",
+        "1"
+      ],
+      "N_ascending": [
+        "2020/3",
+        "20/3"
+      ]
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 2,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 2,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "20200/9",
+        "1353",
+        "114",
+        "1"
+      ],
+      "N_ascending": [
+        "4040/9",
+        "40/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_affine_count": 4,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 4,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "416120/3",
+        "143399",
+        "13095",
+        "217",
+        "1"
+      ],
+      "N_ascending": [
+        "208060/3",
+        "1360",
+        "20/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_affine_count": 4,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 4,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "2080600/9",
+        "143399",
+        "13095",
+        "217",
+        "1"
+      ],
+      "N_ascending": [
+        "416120/9",
+        "2720/3",
+        "40/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 4,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 4,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "416120/3",
+        "143399",
+        "13095",
+        "217",
+        "1"
+      ],
+      "N_ascending": [
+        "208060/3",
+        "1360",
+        "20/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 4,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 4,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "2080600/9",
+        "143399",
+        "13095",
+        "217",
+        "1"
+      ],
+      "N_ascending": [
+        "416120/9",
+        "2720/3",
+        "40/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 4,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 4,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "416120/3",
+        "143399",
+        "13095",
+        "217",
+        "1"
+      ],
+      "N_ascending": [
+        "208060/3",
+        "1360",
+        "20/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 4,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 4,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "2080600/9",
+        "143399",
+        "13095",
+        "217",
+        "1"
+      ],
+      "N_ascending": [
+        "416120/9",
+        "2720/3",
+        "40/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 6,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "44440/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "22220/3",
+        "220/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 6,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "222200/9",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "44440/9",
+        "440/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_affine_count": 6,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "88880/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "11110/3",
+        "110/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 6,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "44440/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "22220/3",
+        "220/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 6,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "222200/9",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "44440/9",
+        "440/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 6,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "88880/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "11110/3",
+        "110/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 6,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "44440/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "22220/3",
+        "220/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 6,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "222200/9",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "44440/9",
+        "440/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 3,
+      "complex_affine_count": 6,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "88880/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "11110/3",
+        "110/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 6,
+      "positive_count": 2,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "44440/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "22220/3",
+        "220/3"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 6,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "222200/9",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "44440/9",
+        "440/9"
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 6,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 6,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "88880/3",
+        "18923",
+        "2607",
+        "125",
+        "1"
+      ],
+      "N_ascending": [
+        "11110/3",
+        "110/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "14564200",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "7282100",
+        "636460/3",
+        "2060",
+        "20/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "72821000/3",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "14564200/3",
+        "1272920/9",
+        "4120/3",
+        "40/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "14564200",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "7282100",
+        "636460/3",
+        "2060",
+        "20/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "72821000/3",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "14564200/3",
+        "1272920/9",
+        "4120/3",
+        "40/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "14564200",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "7282100",
+        "636460/3",
+        "2060",
+        "20/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "72821000/3",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "14564200/3",
+        "1272920/9",
+        "4120/3",
+        "40/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "14564200",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "7282100",
+        "636460/3",
+        "2060",
+        "20/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "72821000/3",
+        "15473015",
+        "1518374",
+        "35880",
+        "322",
+        "1"
+      ],
+      "N_ascending": [
+        "14564200/3",
+        "1272920/9",
+        "4120/3",
+        "40/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4577320/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "2288660/3",
+        "14960",
+        "220/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 8,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "22886600/9",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "4577320/9",
+        "29920/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "9154640/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "1144330/3",
+        "7480",
+        "110/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4577320/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "2288660/3",
+        "14960",
+        "220/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 8,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "22886600/9",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "4577320/9",
+        "29920/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "9154640/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "1144330/3",
+        "7480",
+        "110/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4577320/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "2288660/3",
+        "14960",
+        "220/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 8,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "22886600/9",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "4577320/9",
+        "29920/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "9154640/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "1144330/3",
+        "7480",
+        "110/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4577320/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "2288660/3",
+        "14960",
+        "220/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 8,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "22886600/9",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "4577320/9",
+        "29920/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 3,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "9154640/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "1144330/3",
+        "7480",
+        "110/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4577320/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "2288660/3",
+        "14960",
+        "220/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 8,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "22886600/9",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "4577320/9",
+        "29920/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "9154640/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "1144330/3",
+        "7480",
+        "110/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 12,
+      "positive_count": 4,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "4577320/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "2288660/3",
+        "14960",
+        "220/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 12,
+      "positive_count": 8,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "22886600/9",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "4577320/9",
+        "29920/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 12,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 12,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "9154640/3",
+        "1993509",
+        "287444",
+        "15482",
+        "228",
+        "1"
+      ],
+      "N_ascending": [
+        "1144330/3",
+        "7480",
+        "110/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 24,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "622160/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "311080/3",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 24,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "3110800/9",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "622160/9",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 24,
+      "positive_count": 18,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "1244320/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "155540/3",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 4,
+      "complex_affine_count": 24,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "1368752/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "124432/3",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 24,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "622160/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "311080/3",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 24,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "3110800/9",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "622160/9",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 24,
+      "positive_count": 18,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "1244320/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "155540/3",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 24,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "1368752/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "124432/3",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 24,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "622160/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "311080/3",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 24,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "3110800/9",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "622160/9",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 24,
+      "positive_count": 18,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "1244320/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "155540/3",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 4,
+      "complex_affine_count": 24,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "1368752/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "124432/3",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 24,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "622160/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "311080/3",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 24,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "3110800/9",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "622160/9",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 24,
+      "positive_count": 18,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "1244320/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "155540/3",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 24,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "1368752/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "124432/3",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 24,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "622160/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "311080/3",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 24,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "3110800/9",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "622160/9",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 24,
+      "positive_count": 18,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "1244320/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "155540/3",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 4,
+      "complex_affine_count": 24,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "1368752/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "124432/3",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 24,
+      "positive_count": 6,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "622160/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "311080/3",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 24,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "3110800/9",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "622160/9",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 24,
+      "positive_count": 18,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "1244320/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "155540/3",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 24,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 24,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "1368752/3",
+        "309362",
+        "55421",
+        "4357",
+        "139",
+        "1"
+      ],
+      "N_ascending": [
+        "124432/3",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "1558369400",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "779184700",
+        "89947520/3",
+        "1297720/3",
+        "8320/3",
+        "20/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "7791847000/3",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "1558369400/3",
+        "179895040/9",
+        "2595440/9",
+        "16640/9",
+        "40/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "1558369400",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "779184700",
+        "89947520/3",
+        "1297720/3",
+        "8320/3",
+        "20/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "7791847000/3",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "1558369400/3",
+        "179895040/9",
+        "2595440/9",
+        "16640/9",
+        "40/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "1558369400",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "779184700",
+        "89947520/3",
+        "1297720/3",
+        "8320/3",
+        "20/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "7791847000/3",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "1558369400/3",
+        "179895040/9",
+        "2595440/9",
+        "16640/9",
+        "40/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "1558369400",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "779184700",
+        "89947520/3",
+        "1297720/3",
+        "8320/3",
+        "20/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "7791847000/3",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "1558369400/3",
+        "179895040/9",
+        "2595440/9",
+        "16640/9",
+        "40/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "1558369400",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "779184700",
+        "89947520/3",
+        "1297720/3",
+        "8320/3",
+        "20/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "7791847000/3",
+        "1699305205",
+        "177939033",
+        "5357534",
+        "70334",
+        "429",
+        "1"
+      ],
+      "N_ascending": [
+        "1558369400/3",
+        "179895040/9",
+        "2595440/9",
+        "16640/9",
+        "40/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 36,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "160206200",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "80103100",
+        "7001060/3",
+        "22660",
+        "220/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 36,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "801031000/3",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "160206200/3",
+        "14002120/9",
+        "45320/3",
+        "440/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 36,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 36,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "320412400",
+        "213895765",
+        "32175129",
+        "1913054",
+        "39422",
+        "333",
+        "1"
+      ],
+      "N_ascending": [
+        "40051550",
+        "3500530/3",
+        "11330",
+        "110/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 48,
+      "positive_count": 12,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "64082480/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "32041240/3",
+        "209440",
+        "3080/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 48,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "320412400/9",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "64082480/9",
+        "418880/3",
+        "6160/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 48,
+      "positive_count": 36,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "128164960/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "16020620/3",
+        "104720",
+        "1540/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 4,
+      "complex_affine_count": 48,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 48,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "140981456/3",
+        "32486446",
+        "6017725",
+        "504192",
+        "18674",
+        "242",
+        "1"
+      ],
+      "N_ascending": [
+        "12816496/3",
+        "83776",
+        "1232/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 1,
+      "complex_affine_count": 120,
+      "positive_count": 24,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "6"
+      ],
+      "D_ascending": [
+        "10576720/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/3",
+        "52360/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 2,
+      "complex_affine_count": 120,
+      "positive_count": 48,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "9"
+      ],
+      "D_ascending": [
+        "52883600/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "10576720/9",
+        "104720/9"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 3,
+      "complex_affine_count": 120,
+      "positive_count": 72,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "12"
+      ],
+      "D_ascending": [
+        "21153440/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2644180/3",
+        "26180/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 4,
+      "complex_affine_count": 120,
+      "positive_count": 96,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "15"
+      ],
+      "D_ascending": [
+        "23268784/3",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "2115344/3",
+        "20944/3"
+      ]
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 5,
+      "complex_affine_count": 120,
+      "positive_count": 120,
+      "all_parameters_nonzero_count": 120,
+      "interval": [
+        "4",
+        "18"
+      ],
+      "D_ascending": [
+        "74037040/9",
+        "5881314",
+        "1251519",
+        "129490",
+        "6720",
+        "156",
+        "1"
+      ],
+      "N_ascending": [
+        "5288360/9",
+        "52360/9"
+      ]
+    }
+  ],
+  "checker_sha256": "e6497a4c5b17c0f569125dd21899ce994ed788bf4e880ca58ee535c83b4ce321",
+  "limitations": "Finite checks do not prove arbitrary-n completeness or novelty. This is not a runner release-gate receipt."
+}

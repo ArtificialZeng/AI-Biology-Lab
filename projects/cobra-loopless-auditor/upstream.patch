@@ -1,0 +1,174 @@
+--- a/src/cobra/flux_analysis/loopless.py
++++ b/src/cobra/flux_analysis/loopless.py
+@@ -82,6 +82,9 @@
+             for i, r in enumerate(model.reactions)
+             if not r.boundary and r.id in reactions_set
+         ]
++
++    if not reactions_to_constrain:
++        return
+ 
+     s_int = create_stoichiometric_matrix(model)[:, np.array(reactions_to_constrain)]
+ 
+--- a/src/cobra/flux_analysis/find_cyclic_reactions.py
++++ b/src/cobra/flux_analysis/find_cyclic_reactions.py
+@@ -125,6 +125,9 @@
+     zero_cutoff = normalize_cutoff(model, zero_cutoff)
+ 
+     internal = [i for i, r in enumerate(model.reactions) if not r.boundary]
++    if not internal:
++        return [], []
++
+     s_int = create_stoichiometric_matrix(model)[:, np.array(internal)]
+     n = s_int.shape[1]
+ 
+--- a/tests/test_flux_analysis/test_loopless.py
++++ b/tests/test_flux_analysis/test_loopless.py
+@@ -92,3 +92,56 @@
+     infeasible_status = ll_test_model.solver.status
+     assert feasible_status == OPTIMAL
+     assert infeasible_status == INFEASIBLE
++
++
++def test_add_loopless_acyclic(ll_test_model: Model) -> None:
++    """A model without internal cycles needs no loopless constraints."""
++    ll_test_model.remove_reactions(["v3"])
++    expected_objective = ll_test_model.slim_optimize()
++    variables = list(ll_test_model.variables)
++    constraints = list(ll_test_model.constraints)
++
++    add_loopless(ll_test_model)
++
++    assert ll_test_model.slim_optimize() == pytest.approx(expected_objective)
++    assert list(ll_test_model.variables) == variables
++    assert list(ll_test_model.constraints) == constraints
++
++
++@pytest.mark.parametrize("method", ["fastSNP", "original"])
++def test_add_loopless_boundary_only(ll_test_model: Model, method: str) -> None:
++    """Boundary-only models cannot contain an internal cycle."""
++    ll_test_model.remove_reactions(["v1", "v2", "v3"])
++    expected_objective = ll_test_model.slim_optimize()
++
++    add_loopless(ll_test_model, method=method)
++
++    assert ll_test_model.slim_optimize() == pytest.approx(expected_objective)
++
++
++@pytest.mark.parametrize("method", ["fastSNP", "original"])
++@pytest.mark.parametrize("reactions", [[], ["EX_A", "DM_C"]])
++def test_add_loopless_empty_internal_selection(
++    ll_test_model: Model, method: str, reactions: list
++) -> None:
++    """Selecting no internal reactions leaves the feasible flux space intact."""
++    ll_test_model.reactions.v3.lower_bound = 1
++    expected_objective = ll_test_model.slim_optimize()
++    variables = list(ll_test_model.variables)
++    constraints = list(ll_test_model.constraints)
++
++    add_loopless(ll_test_model, method=method, reactions=reactions)
++
++    assert ll_test_model.slim_optimize() == pytest.approx(expected_objective)
++    assert list(ll_test_model.variables) == variables
++    assert list(ll_test_model.constraints) == constraints
++
++
++def test_add_loopless_all_blocked(ll_test_model: Model) -> None:
++    """Reactions fixed to zero have no feasible cyclic directions."""
++    for reaction in ll_test_model.reactions:
++        reaction.bounds = (0, 0)
++
++    add_loopless(ll_test_model)
++
++    assert ll_test_model.slim_optimize() == 0
+--- a/tests/test_flux_analysis/test_find_cyclic_reactions.py
++++ b/tests/test_flux_analysis/test_find_cyclic_reactions.py
+@@ -4,7 +4,7 @@
+ 
+ import pytest
+ 
+-from cobra import Model
++from cobra import Metabolite, Model, Reaction
+ from cobra.flux_analysis.find_cyclic_reactions import find_cyclic_reactions
+ 
+ 
+@@ -35,3 +35,20 @@
+         assert reaction in cyclic_reactions, f"Expected {reaction} in cyclic reactions"
+     for directions in cyclic_directions:
+         assert directions == (False, True)
++
++
++@pytest.mark.parametrize("method", ["basic", "optimized"])
++@pytest.mark.parametrize("boundary_only", [False, True])
++def test_find_cyclic_reactions_no_internal(method: str, boundary_only: bool) -> None:
++    """No internal reactions means no internal cyclic directions."""
++    model = Model()
++    model.solver = "glpk"
++    if boundary_only:
++        metabolite = Metabolite("A")
++        uptake = Reaction("uptake")
++        uptake.add_metabolites({metabolite: 1})
++        drain = Reaction("drain")
++        drain.add_metabolites({metabolite: -1})
++        model.add_reactions([uptake, drain])
++
++    assert find_cyclic_reactions(model, method=method) == ([], [])
+--- a/tests/test_flux_analysis/test_variability.py
++++ b/tests/test_flux_analysis/test_variability.py
+@@ -7,7 +7,7 @@
+ import pandas as pd
+ import pytest
+ 
+-from cobra import Model
++from cobra import Metabolite, Model, Reaction
+ from cobra.exceptions import Infeasible
+ from cobra.flux_analysis.loopless import add_loopless
+ from cobra.flux_analysis.variability import (
+@@ -100,6 +100,37 @@
+ 
+ 
+ # Loopless FVA
++@pytest.mark.parametrize("internal_reaction", [False, True])
++@pytest.mark.parametrize("all_fluxes", [False, True])
++def test_flux_variability_loopless_acyclic(
++    internal_reaction: bool, all_fluxes: bool
++) -> None:
++    """Loopless FVA preserves bounds for networks without internal cycles."""
++    model = Model()
++    model.solver = "glpk"
++    a, b = Metabolite("A"), Metabolite("B")
++    uptake, drain = Reaction("uptake"), Reaction("drain")
++    uptake.add_metabolites({a: 1})
++    drain.add_metabolites({b if internal_reaction else a: -1})
++    uptake.bounds = drain.bounds = (0, 10)
++    model.add_reactions([uptake, drain])
++    if internal_reaction:
++        internal = Reaction("internal")
++        internal.add_metabolites({a: -1, b: 1})
++        internal.bounds = (0, 10)
++        model.add_reactions([internal])
++    model.objective = drain
++
++    result = flux_variability_analysis(
++        model, loopless="fastSNP", all_fluxes=all_fluxes, processes=1
++    )
++
++    bounds = result[0] if all_fluxes else result
++    assert np.allclose(bounds, 10)
++    if all_fluxes:
++        assert all(np.allclose(fluxes, 10) for fluxes in result[1].values())
++
++
+ @pytest.mark.parametrize("loopless", ["fastSNP", "cycleFreeFlux"])
+ def test_flux_variability_loopless_benchmark(
+     model: Model, benchmark: Callable, all_solvers: List[str], loopless: str
+--- a/release-notes/next-release.md
++++ b/release-notes/next-release.md
+@@ -8,6 +8,7 @@
+ 
+ ## Fixes
+ 
++- `add_loopless` now handles models and reaction selections without internal cycles, and `find_cyclic_reactions` returns empty results when there are no internal reactions.
+ - type-annotations on resetable properties fixed.
+ - fixed the URL for the BIGG repository
+ - fixed the URL for the BioModels repository

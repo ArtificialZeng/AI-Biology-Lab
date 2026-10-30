@@ -1,0 +1,9407 @@
+{
+  "status": "PASS",
+  "arithmetic": "exact rational / symbolic integer polynomials",
+  "finite_scope": {
+    "min_n": 3,
+    "max_n": 7,
+    "placements": "every 1<=r<p<=t<=n, 2<=p<n",
+    "m": "every 1<=m<=p"
+  },
+  "symbolic_matrix_count": 25,
+  "symbolic_matrix_scope": [
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ]
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ]
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ]
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ]
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ]
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ]
+    }
+  ],
+  "rational_fixture_count": 392,
+  "preimage_vectors_checked": 80576,
+  "fixtures": [
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_fiber_count": 2,
+      "positive_fiber_count": 1,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_fiber_count": 2,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 1,
+        "3": 1
+      }
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 2,
+      "positive_fiber_count": 1,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 1,
+        "3": 0
+      }
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 2,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 1,
+        "3": 1
+      }
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_fiber_count": 4,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_fiber_count": 4,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2
+      }
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 4,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 4,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2
+      }
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 4,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 4,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 2
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 2
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 2
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 0
+      }
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 2
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 8,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 4
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 8,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 4
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 8,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 4
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 8,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 4
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 8,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 4
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 8,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 12,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 4,
+        "3": 4,
+        "4": 4
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 18,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 18,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 18,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 18,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 18,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 6
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 18,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 0
+      }
+    },
+    {
+      "n": 5,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 24,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 6
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 2,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 36,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 12,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 48,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 12,
+        "3": 12,
+        "4": 12,
+        "5": 12
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 24,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 0
+      }
+    },
+    {
+      "n": 6,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 120,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 24,
+        "3": 24,
+        "4": 24,
+        "5": 24,
+        "6": 24
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 2,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 3,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        4
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 36,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 72,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 0,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 108,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 4,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 144,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 36,
+        "3": 36,
+        "4": 36,
+        "5": 36
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        5
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 48,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 96,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 144,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 0,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 192,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 5,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 240,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 48,
+        "3": 48,
+        "4": 48,
+        "5": 48,
+        "6": 48
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        6
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        1,
+        7
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        6
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        2,
+        7
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        6
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        3,
+        7
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        6
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        4,
+        7
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        6
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        6
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        6
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        6
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        6
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        6
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        7
+      ],
+      "m": 1,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 120,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        7
+      ],
+      "m": 2,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 240,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        7
+      ],
+      "m": 3,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 360,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 0,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        7
+      ],
+      "m": 4,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 480,
+      "interval": [
+        "3/2",
+        "11/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 0,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        7
+      ],
+      "m": 5,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 600,
+      "interval": [
+        "3/2",
+        "13/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 0
+      }
+    },
+    {
+      "n": 7,
+      "p": 6,
+      "leaks": [
+        5,
+        7
+      ],
+      "m": 6,
+      "complex_fiber_count": 720,
+      "positive_fiber_count": 720,
+      "interval": [
+        "3/2",
+        "15/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 120,
+        "3": 120,
+        "4": 120,
+        "5": 120,
+        "6": 120,
+        "7": 120
+      }
+    }
+  ],
+  "exact_examples": [
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 1,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0,
+        "4": 0
+      },
+      "D_ascending": [
+        "48",
+        "154",
+        "71",
+        "14",
+        "1"
+      ],
+      "N_ascending": [
+        "48",
+        "48/5"
+      ],
+      "kappa": "48/5",
+      "C": "72",
+      "U_roots_negated": [
+        "2",
+        "3",
+        "4"
+      ],
+      "T_roots_negated": [
+        "5"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "16/5",
+            "3",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "-6/5",
+            "3": "5/2"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/5",
+            "4",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "-2/5",
+            "3": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "24/5",
+            "2",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "-9/5",
+            "3": "5/2"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/5",
+            "4",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "3/5",
+            "3": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "24/5",
+            "2",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "-4/5",
+            "3": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "16/5",
+            "3",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "4/5",
+            "3": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 2,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 0
+      },
+      "D_ascending": [
+        "480/7",
+        "154",
+        "71",
+        "14",
+        "1"
+      ],
+      "N_ascending": [
+        "240/7",
+        "48/7"
+      ],
+      "kappa": "48/7",
+      "C": "360/7",
+      "U_roots_negated": [
+        "2",
+        "3",
+        "4"
+      ],
+      "T_roots_negated": [
+        "5"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "16/7",
+            "3",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "-2/7",
+            "3": "5/2"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/7",
+            "4",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "2/7",
+            "3": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "24/7",
+            "2",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "-3/7",
+            "3": "5/2"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/7",
+            "4",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "9/7",
+            "3": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "24/7",
+            "2",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "4/7",
+            "3": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "16/7",
+            "3",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "12/7",
+            "3": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        3
+      ],
+      "m": 3,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 2
+      },
+      "D_ascending": [
+        "80",
+        "154",
+        "71",
+        "14",
+        "1"
+      ],
+      "N_ascending": [
+        "80/3",
+        "16/3"
+      ],
+      "kappa": "16/3",
+      "C": "40",
+      "U_roots_negated": [
+        "2",
+        "3",
+        "4"
+      ],
+      "T_roots_negated": [
+        "5"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "16/9",
+            "3",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "2/9",
+            "3": "5/2"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "4/3",
+            "4",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "2/3",
+            "3": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "8/3",
+            "2",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "1/3",
+            "3": "5/2"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "4/3",
+            "4",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "5/3",
+            "3": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "8/3",
+            "2",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "4/3",
+            "3": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "16/9",
+            "3",
+            "3/2",
+            "5"
+          ],
+          "leak_rates": {
+            "1": "20/9",
+            "3": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 1,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 0,
+        "4": 0
+      },
+      "D_ascending": [
+        "48",
+        "154",
+        "71",
+        "14",
+        "1"
+      ],
+      "N_ascending": [
+        "48",
+        "48/5"
+      ],
+      "kappa": "48/5",
+      "C": "72",
+      "U_roots_negated": [
+        "2",
+        "3",
+        "4"
+      ],
+      "T_roots_negated": [
+        "5"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "16/5",
+            "3",
+            "4",
+            "15/8"
+          ],
+          "leak_rates": {
+            "1": "-6/5",
+            "4": "25/8"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/5",
+            "4",
+            "3",
+            "5/2"
+          ],
+          "leak_rates": {
+            "1": "-2/5",
+            "4": "5/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "24/5",
+            "2",
+            "4",
+            "15/8"
+          ],
+          "leak_rates": {
+            "1": "-9/5",
+            "4": "25/8"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/5",
+            "4",
+            "2",
+            "15/4"
+          ],
+          "leak_rates": {
+            "1": "3/5",
+            "4": "5/4"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "24/5",
+            "2",
+            "3",
+            "5/2"
+          ],
+          "leak_rates": {
+            "1": "-4/5",
+            "4": "5/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "16/5",
+            "3",
+            "2",
+            "15/4"
+          ],
+          "leak_rates": {
+            "1": "4/5",
+            "4": "5/4"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 2,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 4,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 0
+      },
+      "D_ascending": [
+        "480/7",
+        "154",
+        "71",
+        "14",
+        "1"
+      ],
+      "N_ascending": [
+        "240/7",
+        "48/7"
+      ],
+      "kappa": "48/7",
+      "C": "360/7",
+      "U_roots_negated": [
+        "2",
+        "3",
+        "4"
+      ],
+      "T_roots_negated": [
+        "5"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "16/7",
+            "3",
+            "4",
+            "15/8"
+          ],
+          "leak_rates": {
+            "1": "-2/7",
+            "4": "25/8"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/7",
+            "4",
+            "3",
+            "5/2"
+          ],
+          "leak_rates": {
+            "1": "2/7",
+            "4": "5/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "24/7",
+            "2",
+            "4",
+            "15/8"
+          ],
+          "leak_rates": {
+            "1": "-3/7",
+            "4": "25/8"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/7",
+            "4",
+            "2",
+            "15/4"
+          ],
+          "leak_rates": {
+            "1": "9/7",
+            "4": "5/4"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "24/7",
+            "2",
+            "3",
+            "5/2"
+          ],
+          "leak_rates": {
+            "1": "4/7",
+            "4": "5/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "16/7",
+            "3",
+            "2",
+            "15/4"
+          ],
+          "leak_rates": {
+            "1": "12/7",
+            "4": "5/4"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "p": 3,
+      "leaks": [
+        1,
+        4
+      ],
+      "m": 3,
+      "complex_fiber_count": 6,
+      "positive_fiber_count": 6,
+      "interval": [
+        "3/2",
+        "9/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 2,
+        "3": 2,
+        "4": 2
+      },
+      "D_ascending": [
+        "80",
+        "154",
+        "71",
+        "14",
+        "1"
+      ],
+      "N_ascending": [
+        "80/3",
+        "16/3"
+      ],
+      "kappa": "16/3",
+      "C": "40",
+      "U_roots_negated": [
+        "2",
+        "3",
+        "4"
+      ],
+      "T_roots_negated": [
+        "5"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "16/9",
+            "3",
+            "4",
+            "15/8"
+          ],
+          "leak_rates": {
+            "1": "2/9",
+            "4": "25/8"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "4/3",
+            "4",
+            "3",
+            "5/2"
+          ],
+          "leak_rates": {
+            "1": "2/3",
+            "4": "5/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "8/3",
+            "2",
+            "4",
+            "15/8"
+          ],
+          "leak_rates": {
+            "1": "1/3",
+            "4": "25/8"
+          },
+          "output_diagonal": "4",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "4/3",
+            "4",
+            "2",
+            "15/4"
+          ],
+          "leak_rates": {
+            "1": "5/3",
+            "4": "5/4"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "8/3",
+            "2",
+            "3",
+            "5/2"
+          ],
+          "leak_rates": {
+            "1": "4/3",
+            "4": "5/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "16/9",
+            "3",
+            "2",
+            "15/4"
+          ],
+          "leak_rates": {
+            "1": "20/9",
+            "4": "5/4"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 1,
+      "complex_fiber_count": 2,
+      "positive_fiber_count": 1,
+      "interval": [
+        "3/2",
+        "5/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 1,
+        "3": 0
+      },
+      "D_ascending": [
+        "48/5",
+        "26",
+        "9",
+        "1"
+      ],
+      "N_ascending": [
+        "48/5",
+        "12/5"
+      ],
+      "kappa": "12/5",
+      "C": "72/5",
+      "U_roots_negated": [
+        "2",
+        "3"
+      ],
+      "T_roots_negated": [
+        "4"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "12/5",
+            "3/2",
+            "4"
+          ],
+          "leak_rates": {
+            "1": "-2/5",
+            "2": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": false
+        },
+        {
+          "edge_rates": [
+            "12/5",
+            "3/2",
+            "4"
+          ],
+          "leak_rates": {
+            "1": "3/5",
+            "2": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "p": 2,
+      "leaks": [
+        1,
+        2
+      ],
+      "m": 2,
+      "complex_fiber_count": 2,
+      "positive_fiber_count": 2,
+      "interval": [
+        "3/2",
+        "7/2"
+      ],
+      "eligible_root_branch_counts": {
+        "2": 1,
+        "3": 1
+      },
+      "D_ascending": [
+        "96/7",
+        "26",
+        "9",
+        "1"
+      ],
+      "N_ascending": [
+        "48/7",
+        "12/7"
+      ],
+      "kappa": "12/7",
+      "C": "72/7",
+      "U_roots_negated": [
+        "2",
+        "3"
+      ],
+      "T_roots_negated": [
+        "4"
+      ],
+      "all_preimages": [
+        {
+          "edge_rates": [
+            "12/7",
+            "3/2",
+            "4"
+          ],
+          "leak_rates": {
+            "1": "2/7",
+            "2": "3/2"
+          },
+          "output_diagonal": "3",
+          "strictly_positive": true
+        },
+        {
+          "edge_rates": [
+            "12/7",
+            "3/2",
+            "4"
+          ],
+          "leak_rates": {
+            "1": "9/7",
+            "2": "1/2"
+          },
+          "output_diagonal": "2",
+          "strictly_positive": true
+        }
+      ]
+    }
+  ],
+  "limitations": "Completeness for arbitrary n follows from PROOF.md, not finite tests. No novelty or independent peer-review claim.",
+  "rejected_negative_controls": [
+    "prefix_product",
+    "downstream_product",
+    "root_partition"
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "finite_checks": {
+    "status": "finite-checks-passed",
+    "prime": 1000003,
+    "arithmetic": "exact modular integer arithmetic; each rank equality is a finite observation; theorem proof is separate",
+    "harmonic_max_n": 7,
+    "physical_jacobian_max_n": 5,
+    "heldout_n_range": [
+      6,
+      16
+    ],
+    "coverage": "one representative of every unlabelled tree; every nonempty leak set and every nonempty observation set; every retained root for physical checks; labelled placements on each representative",
+    "counts": {
+      "harmonic_placements": 204625,
+      "physical_jacobian_placements": 8497,
+      "heldout_cases": 100,
+      "trees_by_n": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 2,
+        "5": 3,
+        "6": 6,
+        "7": 11
+      },
+      "physical_seed_retries": 2
+    },
+    "result_digest_sha256": "f4bddccd4d3828fde04ef1fc6764c88589456c9bf58a56062a69c120ff1215b4"
+  },
+  "rational_witness": {
+    "n": 7,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "root": 1,
+    "leaks": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "rates": {
+      "0->1": 28,
+      "1->0": 72,
+      "1->2": 65,
+      "1->3": 81,
+      "2->1": 64,
+      "3->1": 24,
+      "3->4": 36,
+      "3->5": 33,
+      "4->3": 23,
+      "5->3": 32,
+      "5->6": 7,
+      "6->5": 14
+    },
+    "leak_rates": {
+      "0": 87,
+      "2": 51,
+      "4": 55,
+      "6": 50
+    },
+    "harmonic_matrix": [
+      [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "30852/80777",
+        "55705/161554",
+        "18954/80777",
+        "6237/161554"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "11232/80777",
+        "10140/80777",
+        "51012/80777",
+        "8393/80777"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "9216/80777",
+        "8320/80777",
+        "41856/80777",
+        "21385/80777"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "placements": [
+      {
+        "observations": [
+          1
+        ],
+        "harmonic_rank": 1,
+        "generic_physical_rank": 13,
+        "generic_ambiguity_dimension": 3
+      },
+      {
+        "observations": [
+          1,
+          3
+        ],
+        "harmonic_rank": 2,
+        "generic_physical_rank": 14,
+        "generic_ambiguity_dimension": 2
+      },
+      {
+        "observations": [
+          1,
+          3,
+          5
+        ],
+        "harmonic_rank": 3,
+        "generic_physical_rank": 15,
+        "generic_ambiguity_dimension": 1
+      },
+      {
+        "observations": [
+          0,
+          1,
+          3,
+          5
+        ],
+        "harmonic_rank": 4,
+        "generic_physical_rank": 16,
+        "generic_ambiguity_dimension": 0
+      },
+      {
+        "observations": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "harmonic_rank": 4,
+        "generic_physical_rank": 16,
+        "generic_ambiguity_dimension": 0
+      },
+      {
+        "observations": [
+          0,
+          1,
+          2,
+          4,
+          6
+        ],
+        "harmonic_rank": 4,
+        "generic_physical_rank": 16,
+        "generic_ambiguity_dimension": 0
+      }
+    ],
+    "arithmetic": "exact rational harmonic ranks; physical rank labels follow theorem, not independently rational Jacobians"
+  }
+}
