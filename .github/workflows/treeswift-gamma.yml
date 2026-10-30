@@ -1,0 +1,29 @@
+name: TreeSwift gamma verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['projects/treeswift-gamma/**', '.github/workflows/treeswift-gamma.yml']
+  pull_request:
+    paths: ['projects/treeswift-gamma/**', '.github/workflows/treeswift-gamma.yml']
+jobs:
+  verify:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify normal and optimized wrappers without repository writes
+        shell: bash
+        run: |
+          cd projects/treeswift-gamma
+          chmod -R a-w .
+          python -B verify.py verify > "$RUNNER_TEMP/treeswift-normal.json"
+          python -O -B verify.py verify > "$RUNNER_TEMP/treeswift-optimized.json"
+          cmp "$RUNNER_TEMP/treeswift-normal.json" "$RUNNER_TEMP/treeswift-optimized.json"
+          test -z "$(git status --porcelain)"
