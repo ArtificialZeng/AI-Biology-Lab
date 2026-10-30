@@ -1,0 +1,23 @@
+..F..                                                                    [100%]
+=================================== FAILURES ===================================
+__________________ test_exact_signed_path_and_context[True-1] __________________
+<project>/test_independent.py:64: in test_exact_signed_path_and_context
+    consistent = fastcc(model)
+                 ^^^^^^^^^^^^^
+<temporary>/baseline/src/cobra/flux_analysis/fastcc.py:172: in fastcc
+    rxns_to_keep = _find_sparse_mode(model, rxns_to_check, zero_cutoff)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<temporary>/baseline/src/cobra/flux_analysis/fastcc.py:80: in _find_sparse_mode
+    sol = model.optimize(objective_sense="max")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<temporary>/baseline/src/cobra/core/model.py:1235: in optimize
+    solution = get_solution(self, raise_error=raise_error)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<temporary>/baseline/src/cobra/core/solution.py:166: in get_solution
+    check_solver_status(model.solver.status, raise_error=raise_error)
+<temporary>/baseline/src/cobra/util/solver.py:554: in check_solver_status
+    warn(f"Solver status is '{status}'.", UserWarning)
+E   UserWarning: Solver status is 'infeasible'.
+=========================== short test summary info ============================
+FAILED ../../../../../../..<temporary>::test_exact_signed_path_and_context[True-1]
+1 failed, 4 passed in 0.11s

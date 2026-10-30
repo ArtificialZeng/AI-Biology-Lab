@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "policy": "Frozen evidence; ordinary runs verify hashes and write only requested outputs outside this project",
+  "sha256": {
+    "LICENSE.upstream": "f545869994ddac0ef10e761fe5d2c061e483c040216d29dd81ab5ce1d2a41645",
+    "README.md": "9de9f6bb341bad36b044cc060f06885c88aa7e7327ecf484ab0929777c858eae",
+    "SCOPE.md": "117ea7e3f5795efc0f07bfd2abda912d42f8a28c9ee7a7a5985731f4c24f19fe",
+    "SOURCE.md": "2ea9052c9935163091c03e239f736e309da7b8a8a759c795ecc163dd1cf4eda4",
+    "THIRD_PARTY.md": "f8d562356beb936a36091d56e6333708e111b1bad5c6d2cff37fa2f376c2cc8b",
+    "evidence/baseline.txt": "b242cc9ed6f3cbafce7ffdfb38dc330cd7f7958cb1c171165f176e2a18491ab0",
+    "evidence/candidate.txt": "f805bf70b312b54eca19641a411d14f3254397f23fa0e6d5aa13f3a97682bf05",
+    "evidence/exact-oracle.json": "e6327bb08802d43b61ff3592d79faf4680f45b1b02cc98dd9c4ba839245f3732",
+    "evidence/independent-review.md": "ba4392503228fcf2144d2290b6a1fac8c1770ed63a500a950d37622991ff7d7c",
+    "evidence/reproduction.json": "0a2c3feaa319488be0865531a704515e22e4cdd4315032b56426742430ec1c4e",
+    "exact_oracle.py": "0d0266a7f4dab4cc6edac14b959fb8f0837f411359a0b084ba23d34d4cb90836",
+    "reproduce.py": "ffcb1448fba55e914bb13fcc96c1679dba20ffeeb41d7b5ca673c42dac1125af",
+    "requirements.txt": "a9c5ad5a89308b4f32dd80d7d60e640e92e54b8e4e6898450da3efb4c652455f",
+    "source_hashes.json": "d351b089f6557f752fa95a3521f7aa7de0133bf1b9789018b525076f7b384b44",
+    "test_independent.py": "ec9ac43a15117d667f4f1135d78d32142a348de38711254666ba8d9942d03b11",
+    "upstream.patch": "d451945381f301c255d882ac5ab910c5910e587bc2f77353b110e88c1751dd82"
+  }
+}
