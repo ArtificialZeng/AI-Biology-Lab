@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "fixture_count": 27,
+  "fine_state_rows": 1008,
+  "count_state_rows": 459,
+  "finite_joint_order_comparisons": 5940,
+  "obstruction": {
+    "lower_birth_rate": "335/1012",
+    "upper_birth_rate": "1655/5166",
+    "upper_minus_lower_birth_rate": "-27875/2613996",
+    "fixation_lower": "1015463620779209651900/1243178519205529924639",
+    "fixation_upper": "3688254807710756250595/3729535557616589773917",
+    "upper_minus_lower_fixation": "641863945373127294895/3729535557616589773917",
+    "is_fixation_counterexample": false
+  },
+  "CLI_example": {
+    "all_fitness_native_count_attractivity_criterion": true,
+    "binary_vertex_states": 32,
+    "count_states": 12,
+    "fitness": "2",
+    "fixation_probability_exact": "45106070908855/98566887245837",
+    "initial_counts": [
+      1,
+      0
+    ],
+    "lambda_Bd": "1/2",
+    "part_sizes": [
+      2,
+      3
+    ],
+    "theorem_mechanically_certified": false
+  },
+  "theorem_mechanically_certified": false,
+  "general_graph_fixation_question_resolved": false
+}

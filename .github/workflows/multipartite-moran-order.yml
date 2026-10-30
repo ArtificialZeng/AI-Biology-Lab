@@ -1,0 +1,33 @@
+name: Verify multipartite Moran order note
+on:
+  pull_request:
+    paths:
+      - 'projects/multipartite-moran-order/**'
+      - '.github/workflows/multipartite-moran-order.yml'
+  push:
+    paths:
+      - 'projects/multipartite-moran-order/**'
+      - '.github/workflows/multipartite-moran-order.yml'
+jobs:
+  verify:
+    name: Exact multipartite checks (${{ matrix.os }}, Python ${{ matrix.python }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: projects/multipartite-moran-order
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Exact native fine-count and order checks
+        run: python verify.py
+      - name: Optimized interpreter exact checks
+        run: python -O verify.py
