@@ -1,0 +1,28 @@
+{
+  "upstream": "https://github.com/ICB-DCM/pyPESTO",
+  "head": "053079aa71710a62c1db17f3d0342e96499a3768",
+  "reported_issue": "https://github.com/ICB-DCM/pyPESTO/issues/1794",
+  "reported_by": "Fabian Fr\u00f6hlich (FFroehlich)",
+  "source_core_digest": "f80a49e831c0672834be7ed354f74c940c6424bf3008e38dfbb83888a2c3beee",
+  "patch_sha256": "6ca3c00f863e9d6b9cf57b6c88850b64e35b5381e337890914a467052a81a920",
+  "native_test_sha256": "31e137a15ffa74ef7080befeef7e2b6201c300664010a88d124791c992128b68",
+  "licenses": {
+    "original_audit_code": "MIT; LICENSE (including the original native regression)",
+    "archived_upstream_source_and_patch_context": "BSD-3-Clause; licenses/pyPESTO-BSD-3-Clause.txt"
+  },
+  "native_findings": {
+    "platform": "macOS Apple Silicon; Python3.12.13",
+    "amici": "1.1.0",
+    "baseline": {
+      "failed": 6,
+      "passed": 33,
+      "skipped": 0
+    },
+    "candidate": {
+      "failed": 0,
+      "passed": 39,
+      "skipped": 0
+    },
+    "caveat": "Four Hessian-containing requests already reject baseline. Native suite was run during research; portable packaging route is a separate replay and must report its own execution status."
+  }
+}

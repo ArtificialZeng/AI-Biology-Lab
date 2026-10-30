@@ -1,0 +1,6 @@
+python -m pip install -r projects/pypesto-relative-nan-auditor/requirements-light.txt
+python projects/pypesto-relative-nan-auditor/reproduce.py verify
+python projects/pypesto-relative-nan-auditor/reproduce.py light
+
+These commands verify archived inputs and scoped utility/analytic checks only.
+They do not execute native AMICI integration. No GitHub Actions run is claimed.
