@@ -1,0 +1,19 @@
+{
+  "revision": "v3-format-only",
+  "upstream_PR": "https://github.com/tskit-dev/msprime/pull/2547",
+  "upstream_commit": "56427173f6c013dc11903a9e0d641f83e514ea51",
+  "test_AST_unchanged": true,
+  "candidate_patch_applies_to_original_frozen_base_and_matches_upstream_twofiles": true,
+  "demography_sha256_unchanged": "415c7b43d43043e0966af33817dab59ce073a1a95b18d96019324ec817d9bb37",
+  "oracle_sha256_unchanged": "36c9c932774192f1375bebed35bd71701f75599f134103df82ddc20fb32df0ca",
+  "scientific_scope_unchanged": true,
+  "new_head_hosted_checks": "pending; inspect exacthead status",
+  "not_new_discovery": true,
+  "local_paired_replay": {
+    "baseline": true,
+    "candidate": true
+  },
+  "upstream_current_head_hosted_checks": "Awaiting maintainer approval: GitHub runs40487617820/851/863 action_required, notpassing",
+  "previous_upstream_head_checks": "68f6dea: fullTestsandDocs success;Lintonlyfailedassertionlinewrap; no claimnewheadpassed",
+  "blank_patch_context_normalization": "Emptycontextlines normalized to zero-length lines; defaultgitapply independentlychecked and bothresults byteequalupstream, no sourceorASTchange"
+}

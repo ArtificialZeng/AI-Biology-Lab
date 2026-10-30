@@ -1,0 +1,45 @@
+# Install at repository .github/workflows/msprime-terminal-hazard.yml.
+name: Native msprime terminal hazard paired replay
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "projects/msprime-terminal-hazard-auditor/**"
+      - ".github/workflows/msprime-terminal-hazard.yml"
+permissions:
+  contents: read
+jobs:
+  native-paired-evidence:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [baseline, candidate]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Native prerequisites
+        run: sudo apt-get update && sudo apt-get install -y build-essential libgsl-dev
+      - name: Download exact sources and build native extension
+        run: |
+          python projects/msprime-terminal-hazard-auditor/bootstrap.py --work "$RUNNER_TEMP/msprime-${{ matrix.variant }}" --variant "${{ matrix.variant }}"
+      - name: Replay frozen 30-case regressions, 68 analytic cases, and 16 existing cases
+        env:
+          VARIANT: ${{ matrix.variant }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, subprocess
+          project = pathlib.Path("projects/msprime-terminal-hazard-auditor")
+          work = pathlib.Path(os.environ["RUNNER_TEMP"]) / ("msprime-" + os.environ["VARIANT"])
+          info = json.loads((work / "bootstrap-result.json").read_text())
+          subprocess.run([info["python"], str(project / "verify_variant.py"), "--source", info["source"], "--variant", os.environ["VARIANT"], "--output-dir", str(work / "verified-replay")], check=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: msprime-${{ matrix.variant }}-native-evidence
+          path: |
+            ${{ runner.temp }}/msprime-${{ matrix.variant }}/bootstrap-result.json
+            ${{ runner.temp }}/msprime-${{ matrix.variant }}/verified-replay/**

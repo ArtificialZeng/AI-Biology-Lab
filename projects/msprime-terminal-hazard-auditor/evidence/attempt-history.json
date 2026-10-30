@@ -1,0 +1,70 @@
+{
+  "research_attempts": [
+    {
+      "attempt": "first local install_name_tool path",
+      "status": "failed",
+      "reason": "Relative research path mistakenly resolved beneath baseline; corrected absolute local path; initial error appeared in tool output."
+    },
+    {
+      "attempt": "initial native link",
+      "status": "failed import",
+      "reason": "Bottle placeholder install name in extension; longer replacement lacked header padding and import could not resolve gsl symbol. Original baseline-build logs retained."
+    },
+    {
+      "attempt": "setup invocation from research parent",
+      "status": "failed",
+      "reason": "setup.py expected project working directory; baseline-build-attempt2.stderr retained."
+    },
+    {
+      "attempt": "baseline build3",
+      "status": "success",
+      "reason": "Local GSL @rpath IDs and header padding; current-source native import established."
+    },
+    {
+      "attempt": "initial candidate copytree",
+      "status": "failed",
+      "reason": "Default copytree followed cyclic upstream tskit symlinks and hit filename-too-long; failed candidate removed within own dossier, retried preserving symlinks. This was file staging, not a scientific experiment."
+    },
+    {
+      "attempt": "independent oracle v1",
+      "status": "two candidate failures",
+      "reason": "Only isolated-mixture survival differed1.39e-11 due documented existing finite Taylor approximation; original outputs preserved and analytic remainder bound derived before using5e-11 survival atol."
+    },
+    {
+      "attempt": "supplemental explicit doubled-grid staging",
+      "status": "failed invocation, no experiment run",
+      "reason": "Used research-relative venv path while command working directory was baseline; supplemental experiment abandoned. Default validation already supplies doubled-grid evidence; problem wording narrowed to directly logged public grids. Patch dry-run in same command independently succeeded."
+    }
+  ],
+  "packaging_attempts": [
+    {
+      "id": "prepare-check",
+      "result": "failed",
+      "reason": "copytree followed upstream internal circular test symlinks; preserved log",
+      "corrected": "copytree symlinks=True"
+    },
+    {
+      "id": "neutral-baseline",
+      "result": "failed-before-tests",
+      "reason": "pytest hook parameter named event instead of required report; preserved log",
+      "corrected": "proper report hook argument"
+    },
+    {
+      "id": "prepare-check-attempt2",
+      "result": "passed; downloaded both exact source archives"
+    },
+    {
+      "id": "neutral-baseline-attempt2",
+      "result": "16 existing upstream cases passed on researcher built baseline"
+    },
+    {
+      "id": "native-bootstrap-check",
+      "result": "downloaded/verified/prepared/native-compiled a new baseline tree; reused researcher Python environment and GSL prefix; warnings retained"
+    },
+    {
+      "id": "native-bootstrap-neutral",
+      "result": "16 existing upstream cases passed on freshly compiled baseline tree"
+    }
+  ],
+  "preservation": "Original detailed failed-attempt and replay logs remain in the local round dossier; this compact record does not replace them"
+}
