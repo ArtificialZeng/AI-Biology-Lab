@@ -1,0 +1,384 @@
+{
+  "baseline": {
+    "annotation_sequence": [
+      {
+        "cases": {
+          "test_current_biomass": {
+            "result": {
+              "NOTSET": "skipped"
+            }
+          },
+          "test_stoichiometric_consistency": {
+            "data": false,
+            "metric": 1.0,
+            "result": "failed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 1
+      },
+      {
+        "cases": {
+          "test_current_biomass": {
+            "result": {
+              "NOTSET": "skipped"
+            }
+          },
+          "test_stoichiometric_consistency": {
+            "data": false,
+            "metric": 1.0,
+            "result": "failed"
+          }
+        },
+        "classification_computations": 0,
+        "returncode": 1
+      },
+      {
+        "cases": {
+          "test_current_biomass": {
+            "result": {
+              "branch": "passed"
+            }
+          },
+          "test_stoichiometric_consistency": {
+            "data": true,
+            "metric": 0.0,
+            "result": "passed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 0
+      }
+    ],
+    "checks": {
+      "add_refresh": false,
+      "annotation_fresh_copy_oracle": true,
+      "annotation_initial_oracle": true,
+      "annotation_refresh": false,
+      "collection_refresh": false,
+      "controlled_exception_seen": true,
+      "exception_retry_refresh": false,
+      "initial_exact_oracle": true,
+      "remove_refresh": false,
+      "ten_wrappers_retained": true,
+      "within_run_reuse": true
+    },
+    "environment_allowlist": [
+      "HOME",
+      "LANG",
+      "PATH",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD",
+      "PYTHONDONTWRITEBYTECODE",
+      "PYTHONPATH",
+      "TMPDIR"
+    ],
+    "imported_temporary_source": true,
+    "inventory": [
+      "memote.support.basic.find_duplicate_metabolites_in_compartments",
+      "memote.support.basic.find_pure_metabolic_reactions",
+      "memote.support.consistency_helpers.get_interface",
+      "memote.support.consistency_helpers.get_internals",
+      "memote.support.helpers.find_biomass_reaction",
+      "memote.support.helpers.find_bounds",
+      "memote.support.helpers.find_demand_reactions",
+      "memote.support.helpers.find_exchange_rxns",
+      "memote.support.helpers.find_sink_reactions",
+      "memote.support.helpers.find_transport_reactions"
+    ],
+    "reaction_sequence": [
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": true,
+            "metric": 0.0,
+            "result": "passed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 0
+      },
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": true,
+            "metric": 0.0,
+            "result": "passed"
+          }
+        },
+        "classification_computations": 0,
+        "returncode": 0
+      },
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": false,
+            "metric": 1.0,
+            "result": "failed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 1
+      },
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": false,
+            "metric": 1.0,
+            "result": "failed"
+          }
+        },
+        "classification_computations": 0,
+        "returncode": 1
+      }
+    ],
+    "retry": {
+      "cases": {
+        "test_stoichiometric_consistency": {
+          "data": true,
+          "metric": 0.0,
+          "result": "passed"
+        }
+      },
+      "classification_computations": 0,
+      "returncode": 0
+    },
+    "reuse": {
+      "cases": {
+        "test_reuse_first": {
+          "result": "passed"
+        },
+        "test_reuse_second": {
+          "result": "passed"
+        }
+      },
+      "classification_computations": 1,
+      "returncode": 0
+    },
+    "versions": {
+      "cobra": "0.30.0",
+      "memote": "0.17.0",
+      "optlang": "1.9.1",
+      "pylru": "1.3.3",
+      "pytest": "9.1.1",
+      "swiglpk": "5.0.13"
+    }
+  },
+  "baseline_expected_failures": [
+    "add_refresh",
+    "annotation_refresh",
+    "collection_refresh",
+    "exception_retry_refresh",
+    "remove_refresh"
+  ],
+  "candidate": {
+    "annotation_sequence": [
+      {
+        "cases": {
+          "test_current_biomass": {
+            "result": {
+              "NOTSET": "skipped"
+            }
+          },
+          "test_stoichiometric_consistency": {
+            "data": false,
+            "metric": 1.0,
+            "result": "failed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 1
+      },
+      {
+        "cases": {
+          "test_current_biomass": {
+            "result": {
+              "branch": "passed"
+            }
+          },
+          "test_stoichiometric_consistency": {
+            "data": true,
+            "metric": 0.0,
+            "result": "passed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 0
+      },
+      {
+        "cases": {
+          "test_current_biomass": {
+            "result": {
+              "branch": "passed"
+            }
+          },
+          "test_stoichiometric_consistency": {
+            "data": true,
+            "metric": 0.0,
+            "result": "passed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 0
+      }
+    ],
+    "checks": {
+      "add_refresh": true,
+      "all_current_caches_cleared": true,
+      "annotation_fresh_copy_oracle": true,
+      "annotation_initial_oracle": true,
+      "annotation_refresh": true,
+      "collection_refresh": true,
+      "controlled_exception_seen": true,
+      "exception_retry_refresh": true,
+      "initial_exact_oracle": true,
+      "remove_refresh": true,
+      "ten_wrappers_retained": true,
+      "within_run_reuse": true
+    },
+    "environment_allowlist": [
+      "HOME",
+      "LANG",
+      "PATH",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD",
+      "PYTHONDONTWRITEBYTECODE",
+      "PYTHONPATH",
+      "TMPDIR"
+    ],
+    "imported_temporary_source": true,
+    "inventory": [
+      "memote.support.basic.find_duplicate_metabolites_in_compartments",
+      "memote.support.basic.find_pure_metabolic_reactions",
+      "memote.support.consistency_helpers.get_interface",
+      "memote.support.consistency_helpers.get_internals",
+      "memote.support.helpers.find_biomass_reaction",
+      "memote.support.helpers.find_bounds",
+      "memote.support.helpers.find_demand_reactions",
+      "memote.support.helpers.find_exchange_rxns",
+      "memote.support.helpers.find_sink_reactions",
+      "memote.support.helpers.find_transport_reactions"
+    ],
+    "reaction_sequence": [
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": true,
+            "metric": 0.0,
+            "result": "passed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 0
+      },
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": false,
+            "metric": 1.0,
+            "result": "failed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 1
+      },
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": false,
+            "metric": 1.0,
+            "result": "failed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 1
+      },
+      {
+        "cases": {
+          "test_stoichiometric_consistency": {
+            "data": true,
+            "metric": 0.0,
+            "result": "passed"
+          }
+        },
+        "classification_computations": 1,
+        "returncode": 0
+      }
+    ],
+    "retry": {
+      "cases": {
+        "test_stoichiometric_consistency": {
+          "data": false,
+          "metric": 1.0,
+          "result": "failed"
+        }
+      },
+      "classification_computations": 1,
+      "returncode": 1
+    },
+    "reuse": {
+      "cases": {
+        "test_reuse_first": {
+          "result": "passed"
+        },
+        "test_reuse_second": {
+          "result": "passed"
+        }
+      },
+      "classification_computations": 1,
+      "returncode": 0
+    },
+    "versions": {
+      "cobra": "0.30.0",
+      "memote": "0.17.0",
+      "optlang": "1.9.1",
+      "pylru": "1.3.3",
+      "pytest": "9.1.1",
+      "swiglpk": "5.0.13"
+    }
+  },
+  "exact_oracle": {
+    "arithmetic": "integer/Fraction",
+    "cases": [
+      {
+        "both_reactions_positive_mass_exists": false,
+        "determinant": -1,
+        "multiplier": 2,
+        "single_reaction_positive_mass": [
+          "1",
+          "1"
+        ],
+        "transposed_stoichiometry": [
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            2
+          ]
+        ]
+      },
+      {
+        "both_reactions_positive_mass_exists": false,
+        "determinant": -2,
+        "multiplier": 3,
+        "single_reaction_positive_mass": [
+          "1",
+          "1"
+        ],
+        "transposed_stoichiometry": [
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            3
+          ]
+        ]
+      }
+    ]
+  },
+  "result": "PASS",
+  "source_commit": "bf76477b4087feefc8ad429ebd492e30ef10eebc",
+  "source_hashes_verified": true
+}

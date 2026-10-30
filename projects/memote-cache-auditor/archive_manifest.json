@@ -1,0 +1,65 @@
+{
+  "upstream_commit": "bf76477b4087feefc8ad429ebd492e30ef10eebc",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "ef41dcc2401abb70726c65ab1de1fa265e98b65b6774665e4bdb4363929bd3d9"
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "sha256": "0c7c036f392aaec0404b491273e195a8424c4aa2b15588f7376d3d5983122edc"
+    },
+    {
+      "path": "evidence/exact-oracle.json",
+      "sha256": "aa17e2b420b428447f62295a37a4ef2b4d64967d8bd82ad23f57dcf66c168586"
+    },
+    {
+      "path": "evidence/lint-checks.json",
+      "sha256": "f1f7b12ba806a0e61f9c86dc265e580098b1ab1f67115f3f1a53316e1c924d3a"
+    },
+    {
+      "path": "evidence/performance.json",
+      "sha256": "e8c78e140c5728db5d49ef91066a044f63cbe7ea90e5814212e1a7058a66ba7e"
+    },
+    {
+      "path": "evidence/red-green.json",
+      "sha256": "44715e4f0918c211da6a3c70c10662b4df90d4760fe8598b19b0c128b5fe9685"
+    },
+    {
+      "path": "evidence/upstream-tests.json",
+      "sha256": "9b8c37a37317c266f39bc32698a09e5808e4972212a9649dce183510d70024e2"
+    },
+    {
+      "path": "fixtures/LICENSE-APACHE-2.0.txt",
+      "sha256": "89e10a27e55ccdf1e96f3000441939701c0df907eee3f8e328b3699c7d49c808"
+    },
+    {
+      "path": "patches/clear-caches-between-api-runs.patch",
+      "sha256": "65bb9ab61f3cc08c65c4a679fc42fb8485bdc4a5e24a9570f46d1b9f28792ea3"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "b3ff0e842ef83898d096056871cb58b7976fde0d0ac48250564ddc00aee4d5d8"
+    },
+    {
+      "path": "scripts/custom_cases.py",
+      "sha256": "0b20beeb8f5342918dd089f4c28c2e116c96fdbcf2fb607c0371cdedd83dd13a"
+    },
+    {
+      "path": "scripts/exact_oracle.py",
+      "sha256": "3c0c6cf74f08e086f004ab579298c66f1db096cf093894cee1442f45e0e77727"
+    },
+    {
+      "path": "scripts/probe.py",
+      "sha256": "741c2b9b57f8199be0a9595d83412ecb74cd65d8660cb8dc024fe03a594a5a17"
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "17a102613e09e4449105abbc6a1fd5ed1a2595446120cbc1f3c2965bc3a1451a"
+    },
+    {
+      "path": "verify.py",
+      "sha256": "eaf3b90ce2d6ab7f5ee8db90e8694aa0f003febe601b0feeec0855f1f4d8a7ff"
+    }
+  ]
+}

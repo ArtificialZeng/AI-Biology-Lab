@@ -22,6 +22,7 @@ The ambition is to produce discoveries worth reporting. Each public claim is acc
 | [Dual-futile-cycle partial results](projects/dual-futile-symmetry/README.md) | Eight-parameter spectral classification; full-parameter determinant-conditioned positivity of Delta4 | Separate exact reconstructions; general sixteen-parameter stability conjecture unresolved |
 | [RNA short-helix placements](projects/rna-short-helix-placements/README.md) | Exact three-helix coloring classification and a comparable-short corollary | 288 normalized cases; exact unique-fold checks; AI review completed, human review and priority pending |
 | [Example 8 stability audit](projects/lumping-example8-auditor/README.md) | Source-specific Jacobian correction and full-domain local stability proof | Exact witness, two symbolic implementations, ordinary/optimized archive replay; no broad open-problem resolution |
+| [MEMOTE API cache audit](projects/memote-cache-auditor/README.md) | Sequential API cache-lifecycle repair | Real API red/green checks; same-suite mutation and concurrency outside scope |
 
 Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
 
