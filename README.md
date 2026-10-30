@@ -146,3 +146,6 @@ The proof passed a separate AI mathematical review, with independent rational fo
 ## Density-triggered serial-transfer dynamics
 
 [Proof and reproducible checks](projects/serial-transfer-global-dynamics/) for the strict two-environment full-basin exclusion question in Schreiber (2025), with a finite-period classification. Exact analytic claims, finite computational checks, and limits of source/author verification are distinguished in the packet.
+## Positive regular CRN elimination fixture
+
+[Proof and exact checks](projects/groebner-positive-counterfamily/) for an indecomposable all-positive-rate reaction family with a globally stable positive state and regular complex zeros, yet without species-coordinate lex shape. The packet credits prior obstructions and distinguishes the mixed-coordinate repair.

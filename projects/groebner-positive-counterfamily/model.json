@@ -1,0 +1,14 @@
+{
+  "schema": "groebner-positive-regular-crn-v1",
+  "species": ["X", "Y"],
+  "rate_domain": "Every a,b,c,d,p,q is strictly positive. Deterministic mass-action propensities use k*x^2 for a two-X reactant; a stochastic combinatorial convention is not substituted.",
+  "reactions": [
+    {"reactant": [0, 0], "product": [1, 0], "rate": "a"},
+    {"reactant": [0, 0], "product": [0, 1], "rate": "b"},
+    {"reactant": [2, 0], "product": [1, 0], "rate": "c"},
+    {"reactant": [0, 2], "product": [0, 1], "rate": "d"},
+    {"reactant": [2, 0], "product": [1, 1], "rate": "p"},
+    {"reactant": [0, 2], "product": [1, 1], "rate": "q"}
+  ],
+  "exact_witness_rates": {"a": "1", "b": "1", "c": "1", "d": "1", "p": "1", "q": "1"}
+}
