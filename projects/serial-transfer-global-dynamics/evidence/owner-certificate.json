@@ -1,0 +1,453 @@
+{
+  "exact": {
+    "endpoint_gap_identity": "0",
+    "exact_constructed_transfers": 450,
+    "maximum_slope": "1",
+    "minimum_slope": "121/301",
+    "scope": "Two polynomial identities checked symbolically; 450 rational transfer witnesses, not an exhaustive real-parameter proof.",
+    "strict_transfers": 360,
+    "symbolic_identity": "0"
+  },
+  "numerical": {
+    "cases": [
+      {
+        "U_over_L": "-1/4",
+        "V_over_L": "-8/3",
+        "classification": "species2_exclusion",
+        "name": "strict_species2_exclusion",
+        "phases": [
+          {
+            "runs": [
+              {
+                "final_log_odds": "-18.363952760508179219",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-12.51624436213698748",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-12.212901962343038137",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-11.7491648748540324",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-11.268480599398257362",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 0
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "-18.362252680121137052",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-11.863024579032237848",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-11.352292355218739875",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-10.688731249299540757",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-10.18960962925101273",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 1
+          }
+        ]
+      },
+      {
+        "U_over_L": "8/3",
+        "V_over_L": "1/4",
+        "classification": "species1_exclusion",
+        "name": "strict_species1_exclusion",
+        "phases": [
+          {
+            "runs": [
+              {
+                "final_log_odds": "11.268480599398257362",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "12.012252822834829608",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "12.212901962343038137",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "13.648211518731732516",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "18.363952760508179219",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 0
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "10.18960962925101273",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "11.031806192973839106",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "11.352292355218739875",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "13.449033376803099229",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "18.362252680121137052",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 1
+          }
+        ]
+      },
+      {
+        "U_over_L": "0",
+        "V_over_L": "-2/3",
+        "classification": "species2_exclusion",
+        "name": "critical_species2_exclusion",
+        "phases": [
+          {
+            "runs": [
+              {
+                "final_log_odds": "-8.0129631064098740118",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-3.5973028366982956151",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-3.5022704622967674481",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-3.3307591506230996787",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-3.0625268264408556641",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 0
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "-8.0041194346598114625",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-2.6390592316855183285",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-2.4690753687305290855",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-2.25194478884138869",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-1.9981960576350565415",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 1
+          }
+        ]
+      },
+      {
+        "U_over_L": "2/3",
+        "V_over_L": "0",
+        "classification": "species1_exclusion",
+        "name": "critical_species1_exclusion",
+        "phases": [
+          {
+            "runs": [
+              {
+                "final_log_odds": "3.0625268264408556641",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "3.435669704592605562",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "3.5022704622967674481",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "4.0408264962198132661",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "8.0129631064098740118",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 0
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "1.9981960576350565415",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "2.3711230515237973549",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "2.4690753687305290855",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "3.4685150720442880734",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "8.0041194346598114625",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 1
+          }
+        ]
+      },
+      {
+        "U_over_L": "9/4",
+        "V_over_L": "-9/4",
+        "classification": "interior_cycle",
+        "name": "interior_coexistence",
+        "phases": [
+          {
+            "runs": [
+              {
+                "final_log_odds": "-1.3815510558118032545",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-1.3815510557957298053",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-1.3815510557936300829",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-1.381551055784250682",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-1.3815510557422324135",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 0
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "1.3815510557422324135",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "1.3815510557910562164",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "1.3815510557936300829",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "1.3815510557990847487",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "1.3815510558118032545",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 1
+          }
+        ]
+      },
+      {
+        "U_over_L": "0",
+        "V_over_L": "0",
+        "classification": "neutral",
+        "name": "neutral",
+        "phases": [
+          {
+            "runs": [
+              {
+                "final_log_odds": "-8.0",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-1.0",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "0.0",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "3.0",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "8.0",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 0
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "-8.0",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-1.0",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "0.0",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "3.0",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "8.0",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 1
+          }
+        ]
+      },
+      {
+        "U_over_L": "-1/4",
+        "V_over_L": "-4/5",
+        "classification": "species2_exclusion",
+        "name": "three_phase_exclusion",
+        "phases": [
+          {
+            "runs": [
+              {
+                "final_log_odds": "-18.361942051526050278",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-11.635823279092393895",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-10.941312855635444588",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-9.6299649007576993888",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-8.0396203264914859194",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 0
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "-18.362247736912274808",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-11.821144053967597697",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-11.228814178593386812",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-10.050417683829873363",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-8.4711907773008547149",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 1
+          },
+          {
+            "runs": [
+              {
+                "final_log_odds": "-18.361942051526050278",
+                "initial_log_odds": -8
+              },
+              {
+                "final_log_odds": "-11.635823279092393895",
+                "initial_log_odds": -1
+              },
+              {
+                "final_log_odds": "-10.941312855635444588",
+                "initial_log_odds": 0
+              },
+              {
+                "final_log_odds": "-9.6299649007576993888",
+                "initial_log_odds": 3
+              },
+              {
+                "final_log_odds": "-8.0396203264914859194",
+                "initial_log_odds": 8
+              }
+            ],
+            "starting_phase": 2
+          }
+        ]
+      }
+    ],
+    "decimal_precision": 60,
+    "kind": "floating-point-observation",
+    "periods_per_run": 18,
+    "scope": "Seven finite examples, every phase and five initial log odds; not proof of infinite-time convergence or universal quantifiers.",
+    "transfers_replayed": 2970,
+    "waiting_time_bisections": 112
+  },
+  "schema": "serial-transfer-owner-certificate-v1"
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "serial-transfer-independent-finite-checks-v1",
+  "dependencies": [
+    "mpmath",
+    "sympy"
+  ],
+  "symbolic_derivative_numerator_remainder": "0",
+  "exact_coexistence_cycle": [
+    {
+      "a": 1,
+      "b": 2,
+      "u": "2/3",
+      "v": "1/3",
+      "exp_tau": "4",
+      "derivative": "4/5"
+    },
+    {
+      "a": 2,
+      "b": 1,
+      "u": "1/3",
+      "v": "2/3",
+      "exp_tau": "4",
+      "derivative": "4/5"
+    }
+  ],
+  "exact_return_derivative": "16/25",
+  "phase_checks": 252,
+  "schedule_phase_initial_checks": 680,
+  "mpmath_decimal_digits": 90,
+  "max_threshold_residual": "4.7480564e-60",
+  "max_odds_identity_error": "1.5709099e-89",
+  "status": "finite checks completed; no counterexample found",
+  "proof_status": "supplementary only; no formal or quantified certification"
+}

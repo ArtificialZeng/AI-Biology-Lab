@@ -1,0 +1,16 @@
+{
+  "schema": "serial-transfer-model-v1",
+  "dilution": "1/10",
+  "threshold": "1",
+  "species": 2,
+  "contract": "Strictly positive constant growth within each prescribed phase, common dilution, stop at total density one. Frequencies are measured immediately after dilution. These examples do not replace the universal proof.",
+  "examples": [
+    {"name": "strict_species2_exclusion", "rates": [["3", "2"], ["1", "4"]]},
+    {"name": "strict_species1_exclusion", "rates": [["2", "3"], ["4", "1"]]},
+    {"name": "critical_species2_exclusion", "rates": [["3", "2"], ["1", "2"]]},
+    {"name": "critical_species1_exclusion", "rates": [["2", "3"], ["2", "1"]]},
+    {"name": "interior_coexistence", "rates": [["4", "1"], ["1", "4"]]},
+    {"name": "neutral", "rates": [["1", "1"], ["3", "3"]]},
+    {"name": "three_phase_exclusion", "rates": [["1", "2"], ["5", "4"], ["1", "1"]]}
+  ]
+}

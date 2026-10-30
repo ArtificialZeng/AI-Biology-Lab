@@ -143,3 +143,6 @@ The [retained-root tree classification](projects/tree-sensor-linkages/README.md)
 
 The proof passed a separate AI mathematical review, with independent rational forest, resolvent and positive-similarity checks. The public verifiers retain their checks under `python -O` and preserve archived evidence. Historical priority and external human review remain pending; the broad multiple-input/output problem remains unresolved.
 [FASTCC direction auditor](projects/fastcc-direction-auditor/README.md) reproduces a negative-only reaction constraint defect and a minimal existing-API repair ([COBRApy PR1500](https://github.com/opencobra/cobrapy/pull/1500)): independent baseline 1 failed / 4 passed, candidate 5 passed, plus 24 exact finite cases. GLPK coverage; AI review is not maintainer acceptance or external human peer review. Related SPECTRA PR1495 is credited.
+## Density-triggered serial-transfer dynamics
+
+[Proof and reproducible checks](projects/serial-transfer-global-dynamics/) for the strict two-environment full-basin exclusion question in Schreiber (2025), with a finite-period classification. Exact analytic claims, finite computational checks, and limits of source/author verification are distinguished in the packet.

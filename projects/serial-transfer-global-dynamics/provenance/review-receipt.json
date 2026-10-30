@@ -1,0 +1,23 @@
+{
+  "schema": "serial-transfer-review-receipt-v1",
+  "public_proof_sha256": "7f0851e061b2afce24188c44e3443434ae2ea2c7e8a03e5485826dde0ffc9850",
+  "private_frozen_content_digest": "b0fdb8d411dd239d71fb5644161a90022e65c59210f1b719ad113e7fef9e9e1d",
+  "mathematical_verdict": "accept",
+  "mathematical_scope": "Frozen strictly positive two-species common-dilution model; affirmative strict alternating-environment exclusion, pathwise odds envelope, and all prescribed finite-period positive-growth schedules including thresholds and interior-cycle classification.",
+  "mathematical_report_sha256": "4ee7d834895485b6d710a53f4853943eb6e96dc697bfe571b0b9798b0153d49b",
+  "mathematical_record_sha256": "5df6522d2c80c23cdaebfb9a995f601bffa051310f683f32f1a7a4dd4d5db790",
+  "source_audit_sha256": "1d85fb72216e5a8d815903a534735d3d25b7601427acb6a6e8ba475127e9d3ca",
+  "owner_certificate_sha256": "08d7e41ccd3e7e06b9021c1d6b1860d78578fbc3bbb68a3afcc2c06bde2d7857",
+  "independent_checker_sha256": "0cf54893cb6d75015eb632a2f15e3b0e5522481a4cf4ec40644ba9627879e033",
+  "independent_certificate_sha256": "80a9b05371db61db2d4db441f5e7226ce4ebf361f63b91ec1a87996a4d8e8534",
+  "proposer_job_id": null,
+  "reviewer_job_id": null,
+  "manual_overall_workflow_verdict": "revise",
+  "formal_gate_pass": false,
+  "formal_gate_reason": "Genuine trusted-runner proposer/reviewer IDs and role metadata are unavailable; actual freeze failed Missing claim.proposer_job_id. No IDs or formal acceptance are manufactured.",
+  "independence_scope": "Separate AI context independently derived and checked the proof; not statistically independent evidence or external human peer review.",
+  "priority_status": "No exact equivalent found in bounded inspected primary-source passages; older theory coverage incomplete; no priority certification.",
+  "author_confirmation": false,
+  "manuscript_or_PDF_included": false,
+  "delivery_type": "original source-specific code/proof packet for technical review"
+}
