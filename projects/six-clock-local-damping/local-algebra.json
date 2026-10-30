@@ -1,0 +1,94 @@
+{
+  "Fourier_convention": "w_i=sum_k c_k*exp(i*pi*k*i/3); c_(6-k)=conj(c_k)",
+  "H_quadratic_mode2": "(sqrt(3) + I)/(3*sqrt(3) - I)",
+  "Im_g": "sqrt(3)/7",
+  "Re_g": "-3/14",
+  "analytic_payoff": "Using W=|A|^2+K||Y||^2 gives Wprime<=-3|A|^4/14-K||Y||^2/4 within the stated small-coordinate neighborhood; proof must justify the estimates.",
+  "center_cubic_coefficient_g": "(-sqrt(3) + 3*I)/(2*(3*sqrt(3) - I))",
+  "center_term_degrees": [
+    {
+      "center_degree_0_stable_degree_2": 1,
+      "center_degree_1_stable_degree_1": 3,
+      "center_degree_2_stable_degree_1": 3
+    },
+    {
+      "center_degree_0_stable_degree_2": 1,
+      "center_degree_1_stable_degree_1": 3,
+      "center_degree_2_stable_degree_1": 3
+    }
+  ],
+  "certified_small_coordinate_radius": "1/100000",
+  "coefficient_majorant_C": 61,
+  "delta_requirements": [
+    "delta<=1/16",
+    "delta<=K/(8*C*(1+2*K))",
+    "delta^2<=3/(56*K*C^2)"
+  ],
+  "entropy_candidate_failure": {
+    "RQ_minus_S_squared": "-1059907587/1625000",
+    "positive_entropy_derivative": "1059907587/1813825",
+    "profile": [
+      "1/50",
+      "1/50",
+      "1/25",
+      "26",
+      "5/4",
+      "1/50"
+    ],
+    "scale_for_positive_entropy_derivative": "136750/5581",
+    "scope": "Refutes this proposed entropy route only; not the original periodic-orbit question."
+  },
+  "global_H6_status": "unresolved; no stable closed orbit certified",
+  "kind": "exact-polynomial-and-method-obstruction-certificates",
+  "linear_eigenvalues": [
+    "-1",
+    "-sqrt(3)*I/2",
+    "(-sqrt(3) - 5*I)/(2*(sqrt(3) + I))",
+    "-3",
+    "(-sqrt(3) + 5*I)/(2*(sqrt(3) - I))",
+    "(-sqrt(3) + 3*I)/(2*(sqrt(3) + I))"
+  ],
+  "quadratic_Lyapunov_weight_K": 34730,
+  "real_center_remainders": [
+    "ai**2*v/7 + sqrt(3)*ai*ar*v/7 + ai*bi - ar**2*v/7 + ar*br - ar*u/2 - br*v/2",
+    "-sqrt(3)*ai**2*v/14 + 2*ai*ar*v/7 - ai*br - ai*u/2 + sqrt(3)*ar**2*v/14 + ar*bi + bi*v/2"
+  ],
+  "real_stable_remainders": [
+    "-3*ai**4/7 + sqrt(3)*ai**3*v/7 - 6*ai**2*ar**2/7 - 6*ai**2*ar*v/7 - 2*sqrt(3)*ai**2*bi/7 + 10*ai**2*br/7 - ai**2*u - 3*sqrt(3)*ai*ar**2*v/7 - 20*ai*ar*bi/7 - 4*sqrt(3)*ai*ar*br/7 - ai*bi*v - 3*ar**4/7 + 2*ar**3*v/7 + 2*sqrt(3)*ar**2*bi/7 - 10*ar**2*br/7 - ar**2*u + ar*br*v + bi**2 + br**2 - u**2 - v**2",
+    "2*sqrt(3)*ai**3/7 - 12*ai**2*ar/7 - 2*ai**2*v - 6*sqrt(3)*ai*ar**2/7 - 2*ai*bi + 4*ar**3/7 - 2*ar**2*v + 2*ar*br - 2*u*v",
+    "-9*ai**4/98 + 17*sqrt(3)*ai**3*ar/49 - 3*ai**2*ar**2/49 + ai**2*ar*v/7 + 3*sqrt(3)*ai**2*bi/7 - 19*ai**2*br/14 - ai**2*u/7 + sqrt(3)*ai*ar**3/49 - 4*ai*ar*bi/7 - 2*sqrt(3)*ai*ar*br/7 - sqrt(3)*ai*ar*u/7 + 2*ai*bi*v/7 - sqrt(3)*ai*br*v/7 + 11*ar**4/98 + ar**3*v/7 + sqrt(3)*ar**2*bi/7 - 11*ar**2*br/14 + ar**2*u/7 + sqrt(3)*ar*bi*v/7 + 2*ar*br*v/7 - ar*v/2 - bi**2/2 + br**2/2 - br*u/2",
+    "5*sqrt(3)*ai**4/98 + 12*ai**3*ar/49 - ai**3*v/7 + 12*sqrt(3)*ai**2*ar**2/49 - 11*ai**2*bi/14 - sqrt(3)*ai**2*br/7 - sqrt(3)*ai**2*u/14 + 8*ai*ar**3/49 - ai*ar**2*v/7 + 2*sqrt(3)*ai*ar*bi/7 - 4*ai*ar*br/7 + 2*ai*ar*u/7 + sqrt(3)*ai*bi*v/7 + 2*ai*br*v/7 + ai*v/2 - 13*sqrt(3)*ar**4/98 - 19*ar**2*bi/14 - 3*sqrt(3)*ar**2*br/7 + sqrt(3)*ar**2*u/14 - 2*ar*bi*v/7 + sqrt(3)*ar*br*v/7 - bi*br - bi*u/2"
+  ],
+  "schema": "six-clock-local-algebra-v1",
+  "stable_term_degrees": [
+    {
+      "center_degree_0_stable_degree_2": 4,
+      "center_degree_1_stable_degree_2": 2,
+      "center_degree_2_stable_degree_1": 8,
+      "center_degree_3_stable_degree_1": 4,
+      "center_degree_4_stable_degree_0": 3
+    },
+    {
+      "center_degree_0_stable_degree_2": 1,
+      "center_degree_1_stable_degree_1": 2,
+      "center_degree_2_stable_degree_1": 2,
+      "center_degree_3_stable_degree_0": 4
+    },
+    {
+      "center_degree_0_stable_degree_2": 3,
+      "center_degree_1_stable_degree_1": 1,
+      "center_degree_1_stable_degree_2": 4,
+      "center_degree_2_stable_degree_1": 9,
+      "center_degree_3_stable_degree_1": 2,
+      "center_degree_4_stable_degree_0": 5
+    },
+    {
+      "center_degree_0_stable_degree_2": 2,
+      "center_degree_1_stable_degree_1": 1,
+      "center_degree_1_stable_degree_2": 4,
+      "center_degree_2_stable_degree_1": 9,
+      "center_degree_3_stable_degree_1": 2,
+      "center_degree_4_stable_degree_0": 5
+    }
+  ]
+}
