@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mantis-delta"
+dynamic = ["version"]
+description = "Mass-Action Network Theory, Inference, and Stability — structural and numerical analysis of chemical reaction networks"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Emilio Venegas", email = "emiliovenegas10@gmail.com" },
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "sympy>=1.12",
+    "matplotlib>=3.6",
+    "networkx>=3.0",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.optional-dependencies]
+# SBML interoperability (import/export).
+sbml = ["python-libsbml>=5.19"]
+# JIT-accelerated stochastic kernels (Gillespie SSA / tau-leap).
+fast = ["numba>=0.57"]
+# Optional exhaustive steady-state backend via polynomial homotopy continuation.
+homotopy = ["phcpy>=1.1"]
+# Everything optional, for users who want the full feature set.
+all = ["python-libsbml>=5.19", "numba>=0.57"]
+# Development / test tooling.
+dev = ["pytest>=7", "pytest-cov>=4", "python-libsbml>=5.19", "numba>=0.57"]
+
+[project.urls]
+Homepage = "https://github.com/emiliovenegas/mantis-delta"
+Repository = "https://github.com/emiliovenegas/mantis-delta"
+Issues = "https://github.com/emiliovenegas/mantis-delta/issues"
+
+[tool.setuptools.packages.find]
+include = ["mantis*"]
+
+[tool.setuptools_scm]
+# Version is derived from git tags (vX.Y.Z). Between tags, builds get a
+# PEP 440 dev version (e.g. 0.2.1.devN+g<hash>). No manual version bumps.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["mantis"]
+branch = true
+omit = ["mantis/plot.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]

@@ -1,0 +1,12536 @@
+{
+  "complete_bounded_family": {
+    "cases": 352,
+    "initial_a": "every0..total",
+    "rate_pairs": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "steps": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "totals": "1..8"
+  },
+  "end_to_end_cases": [
+    {
+      "exact_pi": [
+        "1/4",
+        "1/2",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-07,
+      "initial": [
+        2,
+        0
+      ],
+      "reaction": "A <-> B",
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-07,
+      "initial": [
+        2,
+        0
+      ],
+      "reaction": "2A <-> 2B",
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-07,
+      "initial": [
+        1,
+        1
+      ],
+      "reaction": "2A <-> 2B",
+      "support": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "exact_pi": [
+        "112/457",
+        "336/457",
+        "9/457"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-07,
+      "initial": [
+        8,
+        0
+      ],
+      "reaction": "3A <-> 3B",
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          8,
+          0
+        ]
+      ]
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-07,
+      "initial": [
+        2,
+        0,
+        1
+      ],
+      "reaction": "A + 2C <-> B + 2C",
+      "support": [
+        [
+          2,
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "end_to_end_float_comparison_tolerance": 1e-07,
+  "float_comparisons_all_passed": true,
+  "helper_and_product_law_cases": [
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1/4",
+        "1/2",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1/4",
+        "1/2",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1/4",
+        "1/2",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "3/8",
+        "3/8",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "3/8",
+        "3/8",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "3/8",
+        "3/8",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "3/8",
+        "3/8",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "1/4",
+        "3/8",
+        "1/4",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "1/4",
+        "3/8",
+        "1/4",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "1/4",
+        "3/8",
+        "1/4",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "1/4",
+        "3/8",
+        "1/4",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "1/4",
+        "3/8",
+        "1/4",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "5/32",
+        "5/16",
+        "5/16",
+        "5/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "5/32",
+        "5/16",
+        "5/16",
+        "5/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "5/32",
+        "5/16",
+        "5/16",
+        "5/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "5/32",
+        "5/16",
+        "5/16",
+        "5/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "5/32",
+        "5/16",
+        "5/16",
+        "5/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "5/32",
+        "5/16",
+        "5/16",
+        "5/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "3/32",
+        "15/64",
+        "5/16",
+        "15/64",
+        "3/32",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "3/32",
+        "15/64",
+        "5/16",
+        "15/64",
+        "3/32",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "3/32",
+        "15/64",
+        "5/16",
+        "15/64",
+        "3/32",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "3/32",
+        "15/64",
+        "5/16",
+        "15/64",
+        "3/32",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "3/32",
+        "15/64",
+        "5/16",
+        "15/64",
+        "3/32",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "3/32",
+        "15/64",
+        "5/16",
+        "15/64",
+        "3/32",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "3/32",
+        "15/64",
+        "5/16",
+        "15/64",
+        "3/32",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/128",
+        "21/128",
+        "35/128",
+        "35/128",
+        "21/128",
+        "7/128",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/256",
+        "1/32",
+        "7/64",
+        "7/32",
+        "35/128",
+        "7/32",
+        "7/64",
+        "1/32",
+        "1/256"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "4/25",
+        "12/25",
+        "9/25"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "4/25",
+        "12/25",
+        "9/25"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "4/25",
+        "12/25",
+        "9/25"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "8/125",
+        "36/125",
+        "54/125",
+        "27/125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "8/125",
+        "36/125",
+        "54/125",
+        "27/125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "8/125",
+        "36/125",
+        "54/125",
+        "27/125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "8/125",
+        "36/125",
+        "54/125",
+        "27/125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "16/625",
+        "96/625",
+        "216/625",
+        "216/625",
+        "81/625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "16/625",
+        "96/625",
+        "216/625",
+        "216/625",
+        "81/625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "16/625",
+        "96/625",
+        "216/625",
+        "216/625",
+        "81/625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "16/625",
+        "96/625",
+        "216/625",
+        "216/625",
+        "81/625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "16/625",
+        "96/625",
+        "216/625",
+        "216/625",
+        "81/625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "32/3125",
+        "48/625",
+        "144/625",
+        "216/625",
+        "162/625",
+        "243/3125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "32/3125",
+        "48/625",
+        "144/625",
+        "216/625",
+        "162/625",
+        "243/3125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "32/3125",
+        "48/625",
+        "144/625",
+        "216/625",
+        "162/625",
+        "243/3125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "32/3125",
+        "48/625",
+        "144/625",
+        "216/625",
+        "162/625",
+        "243/3125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "32/3125",
+        "48/625",
+        "144/625",
+        "216/625",
+        "162/625",
+        "243/3125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "32/3125",
+        "48/625",
+        "144/625",
+        "216/625",
+        "162/625",
+        "243/3125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "64/15625",
+        "576/15625",
+        "432/3125",
+        "864/3125",
+        "972/3125",
+        "2916/15625",
+        "729/15625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "64/15625",
+        "576/15625",
+        "432/3125",
+        "864/3125",
+        "972/3125",
+        "2916/15625",
+        "729/15625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "64/15625",
+        "576/15625",
+        "432/3125",
+        "864/3125",
+        "972/3125",
+        "2916/15625",
+        "729/15625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "64/15625",
+        "576/15625",
+        "432/3125",
+        "864/3125",
+        "972/3125",
+        "2916/15625",
+        "729/15625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "64/15625",
+        "576/15625",
+        "432/3125",
+        "864/3125",
+        "972/3125",
+        "2916/15625",
+        "729/15625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "64/15625",
+        "576/15625",
+        "432/3125",
+        "864/3125",
+        "972/3125",
+        "2916/15625",
+        "729/15625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "64/15625",
+        "576/15625",
+        "432/3125",
+        "864/3125",
+        "972/3125",
+        "2916/15625",
+        "729/15625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "128/78125",
+        "1344/78125",
+        "6048/78125",
+        "3024/15625",
+        "4536/15625",
+        "20412/78125",
+        "10206/78125",
+        "2187/78125"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "256/390625",
+        "3072/390625",
+        "16128/390625",
+        "48384/390625",
+        "18144/78125",
+        "108864/390625",
+        "81648/390625",
+        "34992/390625",
+        "6561/390625"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 1,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          1
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          1
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1/4",
+        "3/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "3/4",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/4",
+        "3/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "3/4",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "3/4",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "3/4",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "3/4",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "5/8",
+        "5/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "5/16",
+        "5/8",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "5/8",
+        "5/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "5/16",
+        "5/8",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "5/8",
+        "5/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "5/16",
+        "5/8",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "15/32",
+        "15/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "3/16",
+        "5/8",
+        "3/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "15/32",
+        "15/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "3/16",
+        "5/8",
+        "3/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "15/32",
+        "15/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "3/16",
+        "5/8",
+        "3/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/32",
+        "15/32",
+        "15/32",
+        "1/32"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "21/64",
+        "35/64",
+        "7/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "7/64",
+        "35/64",
+        "21/64",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "21/64",
+        "35/64",
+        "7/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "7/64",
+        "35/64",
+        "21/64",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "21/64",
+        "35/64",
+        "7/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "7/64",
+        "35/64",
+        "21/64",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/64",
+        "21/64",
+        "35/64",
+        "7/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "7/64",
+        "35/64",
+        "21/64",
+        "1/64"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/32",
+        "35/64",
+        "7/32",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "7/16",
+        "7/16",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/32",
+        "35/64",
+        "7/32",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "7/16",
+        "7/16",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/32",
+        "35/64",
+        "7/32",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "7/16",
+        "7/16",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/32",
+        "35/64",
+        "7/32",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "7/16",
+        "7/16",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/128",
+        "7/32",
+        "35/64",
+        "7/32",
+        "1/128"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          1
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          1
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "2/11",
+        "9/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "2/3",
+        "1/3"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "2/11",
+        "9/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "2/3",
+        "1/3"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "4/49",
+        "36/49",
+        "9/49"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "4/49",
+        "36/49",
+        "9/49"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "4/49",
+        "36/49",
+        "9/49"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "4/109",
+        "60/109",
+        "45/109"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "20/89",
+        "60/89",
+        "9/89"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "4/109",
+        "60/109",
+        "45/109"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "20/89",
+        "60/89",
+        "9/89"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "4/109",
+        "60/109",
+        "45/109"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "20/89",
+        "60/89",
+        "9/89"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "8/485",
+        "36/97",
+        "54/97",
+        "27/485"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/33",
+        "20/33",
+        "3/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "8/485",
+        "36/97",
+        "54/97",
+        "27/485"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/33",
+        "20/33",
+        "3/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "8/485",
+        "36/97",
+        "54/97",
+        "27/485"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/33",
+        "20/33",
+        "3/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "8/485",
+        "36/97",
+        "54/97",
+        "27/485"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "8/1079",
+        "252/1079",
+        "630/1079",
+        "189/1079"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "56/881",
+        "420/881",
+        "378/881",
+        "27/881"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "8/1079",
+        "252/1079",
+        "630/1079",
+        "189/1079"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "56/881",
+        "420/881",
+        "378/881",
+        "27/881"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "8/1079",
+        "252/1079",
+        "630/1079",
+        "189/1079"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "56/881",
+        "420/881",
+        "378/881",
+        "27/881"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "8/1079",
+        "252/1079",
+        "630/1079",
+        "189/1079"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "56/881",
+        "420/881",
+        "378/881",
+        "27/881"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "16/4801",
+        "672/4801",
+        "2520/4801",
+        "1512/4801",
+        "81/4801"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "8/245",
+        "12/35",
+        "18/35",
+        "27/245"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "16/4801",
+        "672/4801",
+        "2520/4801",
+        "1512/4801",
+        "81/4801"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "8/245",
+        "12/35",
+        "18/35",
+        "27/245"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "16/4801",
+        "672/4801",
+        "2520/4801",
+        "1512/4801",
+        "81/4801"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "8/245",
+        "12/35",
+        "18/35",
+        "27/245"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "16/4801",
+        "672/4801",
+        "2520/4801",
+        "1512/4801",
+        "81/4801"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "8/245",
+        "12/35",
+        "18/35",
+        "27/245"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "16/4801",
+        "672/4801",
+        "2520/4801",
+        "1512/4801",
+        "81/4801"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 2,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          1
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          2
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          1
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          2
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/5",
+        "4/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "4/5",
+        "1/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          2
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/5",
+        "4/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "4/5",
+        "1/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/11",
+        "10/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "10/11",
+        "1/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/11",
+        "10/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "10/11",
+        "1/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/22",
+        "10/11",
+        "1/22"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "2/7",
+        "5/7"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "5/7",
+        "2/7"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/22",
+        "10/11",
+        "1/22"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "2/7",
+        "5/7"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "5/7",
+        "2/7"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/22",
+        "10/11",
+        "1/22"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/43",
+        "35/43",
+        "7/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "7/43",
+        "35/43",
+        "1/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/43",
+        "35/43",
+        "7/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "7/43",
+        "35/43",
+        "1/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/43",
+        "35/43",
+        "7/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "7/43",
+        "35/43",
+        "1/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/85",
+        "56/85",
+        "28/85"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "4/43",
+        "35/43",
+        "4/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "28/85",
+        "56/85",
+        "1/85"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/85",
+        "56/85",
+        "28/85"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "4/43",
+        "35/43",
+        "4/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "28/85",
+        "56/85",
+        "1/85"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/85",
+        "56/85",
+        "28/85"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "4/43",
+        "35/43",
+        "4/43"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "28/85",
+        "56/85",
+        "1/85"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          1
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          2
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          1
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          2
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/7",
+        "6/7"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "8/11",
+        "3/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          2
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/7",
+        "6/7"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "8/11",
+        "3/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "15/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "20/23",
+        "3/23"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "15/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "20/23",
+        "3/23"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "4/133",
+        "120/133",
+        "9/133"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/19",
+        "15/19"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "5/8",
+        "3/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/133",
+        "120/133",
+        "9/133"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/19",
+        "15/19"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "5/8",
+        "3/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/133",
+        "120/133",
+        "9/133"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "4/277",
+        "210/277",
+        "63/277"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "28/247",
+        "210/247",
+        "9/247"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "4/277",
+        "210/277",
+        "63/277"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "28/247",
+        "210/247",
+        "9/247"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "4/277",
+        "210/277",
+        "63/277"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "28/247",
+        "210/247",
+        "9/247"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/148",
+        "21/37",
+        "63/148"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "8/131",
+        "105/131",
+        "18/131"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "112/457",
+        "336/457",
+        "9/457"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/148",
+        "21/37",
+        "63/148"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "8/131",
+        "105/131",
+        "18/131"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "112/457",
+        "336/457",
+        "9/457"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/148",
+        "21/37",
+        "63/148"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "8/131",
+        "105/131",
+        "18/131"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "112/457",
+        "336/457",
+        "9/457"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 3,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          1
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          2
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          1
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          3
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          2
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          3
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          2
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1/6",
+        "5/6"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "5/6",
+        "1/6"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          3
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          2
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/6",
+        "5/6"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "5/6",
+        "1/6"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "15/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "15/16",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          3
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/16",
+        "15/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "15/16",
+        "1/16"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1/36",
+        "35/36"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/4",
+        "3/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "3/4",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "35/36",
+        "1/36"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          4
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/36",
+        "35/36"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/4",
+        "3/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "3/4",
+        "1/4"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "35/36",
+        "1/36"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          4
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "1/72",
+        "35/36",
+        "1/72"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "7/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "7/8",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          5
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/72",
+        "35/36",
+        "1/72"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/8",
+        "7/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/2",
+        "1/2"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "7/8",
+        "1/8"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          5
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1/72",
+        "35/36",
+        "1/72"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        1,
+        1
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          1
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          0
+        ]
+      ],
+      "total": 1
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          2
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          1
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          0
+        ]
+      ],
+      "total": 2
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          3
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          2
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          1
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          0
+        ]
+      ],
+      "total": 3
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          3
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          2
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          1
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "total": 4
+    },
+    {
+      "exact_pi": [
+        "2/17",
+        "15/17"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "10/13",
+        "3/13"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          3
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          2
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "2/17",
+        "15/17"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "10/13",
+        "3/13"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          4
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "total": 5
+    },
+    {
+      "exact_pi": [
+        "2/47",
+        "45/47"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "10/11",
+        "1/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "1"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          3
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "2/47",
+        "45/47"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          6
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          5
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "10/11",
+        "1/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "total": 6
+    },
+    {
+      "exact_pi": [
+        "2/107",
+        "105/107"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "2/11",
+        "9/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "2/3",
+        "1/3"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "70/73",
+        "3/73"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          4
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "2/107",
+        "105/107"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          7
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "2/11",
+        "9/11"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          6
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "2/3",
+        "1/3"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          5
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "70/73",
+        "3/73"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          4
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "total": 7
+    },
+    {
+      "exact_pi": [
+        "4/433",
+        "420/433",
+        "9/433"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        0,
+        8
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "2/23",
+        "21/23"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        1,
+        7
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        2,
+        6
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "14/17",
+        "3/17"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        3,
+        5
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          5
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "4/433",
+        "420/433",
+        "9/433"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        4,
+        4
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "2/23",
+        "21/23"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        5,
+        3
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          1,
+          7
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "2/5",
+        "3/5"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        6,
+        2
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          2,
+          6
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "14/17",
+        "3/17"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        7,
+        1
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          3,
+          5
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "total": 8
+    },
+    {
+      "exact_pi": [
+        "4/433",
+        "420/433",
+        "9/433"
+      ],
+      "float_comparison_passed": true,
+      "float_comparison_tolerance": 1e-10,
+      "initial": [
+        8,
+        0
+      ],
+      "rates": [
+        2,
+        3
+      ],
+      "step": 4,
+      "support": [
+        [
+          0,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "total": 8
+    }
+  ],
+  "helper_float_comparison_tolerance": 1e-10,
+  "helper_only_absent_catalyst": true,
+  "legacy_stationarity_negative_control": {
+    "initial_component_variance_A": "1",
+    "legacy_full_plane_stationarity_residuals": [
+      "0",
+      "0",
+      "0"
+    ],
+    "legacy_pi": [
+      "1/4",
+      "1/2",
+      "1/4"
+    ],
+    "legacy_variance_A": "1/2",
+    "lesson": "Stationarity alone cannot identify the initial-state-conditioned law.",
+    "states": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ]
+  },
+  "ok": true,
+  "oracle": "independent integer BFS and exact Fraction CTMC stationary equations",
+  "scope": "finite complete conditioned class, valid integer queries; no infinite-component or new ACK theorem claim"
+}

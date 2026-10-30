@@ -1,0 +1,36 @@
+name: Mantis finite stationary support audit
+permissions:
+  contents: read
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'projects/mantis-stationary-auditor/**'
+      - '.github/workflows/mantis-stationary-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'projects/mantis-stationary-auditor/**'
+      - '.github/workflows/mantis-stationary-audit.yml'
+jobs:
+  exact-support-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: projects/mantis-stationary-auditor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Replay actual library and independent finite component oracles
+        shell: bash
+        run: |
+          set -eu
+          python -B verify.py verify > "$RUNNER_TEMP/mantis-normal.json"
+          python -O -B verify.py verify > "$RUNNER_TEMP/mantis-optimized.json"
+          cmp "$RUNNER_TEMP/mantis-normal.json" "$RUNNER_TEMP/mantis-optimized.json"
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"

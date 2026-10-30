@@ -1,0 +1,226 @@
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -678,8 +678,13 @@
+ 
+ For a **complex-balanced** network, Anderson–Craciun–Kurtz (2010) give the *exact*
+ chemical-master-equation stationary distribution in closed form — a product of Poissons
+-with means `λᵢ = N_A·V·cᵢ*` (`c*` the Birch point), conditioned on the conserved totals.
+-For a single moiety this is exactly a Binomial.
++with means `λᵢ = N_A·V·cᵢ*` (`c*` the Birch point). For a completely enumerated finite
++conservation class, the product is conditioned on the communicating class reachable
++from the initial counts, and probabilities outside that support are zero. Conserved
++totals alone need not determine that class: `2A <-> 2B` also preserves parity.
++For first-order interconversions with one conserved moiety this reduces to a Binomial.
++Without conservation laws the API retains the full product-Poisson invariant law;
++that invariant law need not be unique or conditioned on the initial communicating class.
+ 
+ ```python
+ rn = CRNetwork.from_string(["A <-> B"], rates={"A -> B": 2.0, "B -> A": 3.0})
+diff --git a/docs/advanced.md b/docs/advanced.md
+--- a/docs/advanced.md
++++ b/docs/advanced.md
+@@ -189,9 +189,13 @@
+ 
+ For a complex-balanced network the chemical master equation has an *exact* stationary
+ distribution in closed form (ACK, *Bull. Math. Biol.* 2010): a product of independent
+-Poissons with means $\lambda_i = N_A V c_i^*$, supported on the reachable state space.
+-With conservation laws it is that product conditioned on the conserved totals — a
+-Binomial for a single moiety. You can therefore **write down the stationary
++Poissons with means $\lambda_i = N_A V c_i^*$. A completely enumerated finite
++conservation class is restricted further to states reachable from the initial counts.
++The conditioning can include discrete invariants beyond the conserved totals — it is
++a Binomial for first-order interconversions with a single moiety. Discrete invariants
++such as parity can split one conserved-total class into several communicating classes.
++With no conservation laws the API returns the full product-Poisson invariant law,
++which need not be the initial-state-conditioned law. You can therefore **write down the stationary
+ distribution from structure alone, with no simulation**.
+ 
+ ```python
+diff --git a/mantis/network.py b/mantis/network.py
+--- a/mantis/network.py
++++ b/mantis/network.py
+@@ -519,8 +519,12 @@
+         For a complex-balanced network the chemical master equation has a closed-form
+         product-of-Poissons stationary distribution with means ``λ_i = N_A·V·c_i*``
+         (``c*`` the complex-balanced equilibrium) — written down *from structure
+-        alone, with no simulation*. With conservation laws it is that product
+-        conditioned on the conserved totals (e.g. a Binomial for a single moiety).
++        alone, with no simulation*. For a fully enumerated finite conservation
++        class, it is conditioned on the communicating class reachable from the
++        initial counts; conserved totals alone may miss discrete invariants.
++        First-order interconversions with a single moiety give a Binomial.
++        Without conservation laws the full product-Poisson invariant law is
++        returned, not necessarily the initial-state-conditioned invariant law.
+ 
+         Parameters
+         ----------
+diff --git a/mantis/stochastic_stationary.py b/mantis/stochastic_stationary.py
+--- a/mantis/stochastic_stationary.py
++++ b/mantis/stochastic_stationary.py
+@@ -8,11 +8,12 @@
+ 
+     π(x) = M · Π_i  λ_i^{x_i} / x_i!,        λ_i = (N_A · V) · c_i*,
+ 
+-supported on the reachable state space (the stoichiometric compatibility class).
+-With no conservation laws the state space is all of ℤ≥0ⁿ and π factorises into
+-independent ``Poisson(λ_i)``; with conservation laws π is that product *conditioned*
+-on the conserved totals (for a single moiety this is exactly a Binomial /
+-multinomial).  This lets you write the stationary distribution down **from network
++For a fully enumerated finite conservation class, the product is restricted to
++the communicating class reachable from the initial counts. Linear conservation
++laws alone need not determine that class (for example, 2A ⇌ 2B preserves parity).
++Without conservation laws this API returns the full independent-Poisson invariant
++law, which need not be the unique or initial-state-conditioned invariant law.
++This lets you write the stationary distribution down **from network
+ structure alone — no simulation** — for any weakly reversible deficiency-zero
+ network, the regime where SSA is noisiest.
+ """
+@@ -80,6 +81,50 @@
+     return np.array(states, dtype=np.int64).reshape(-1, n_species), True
+ 
+ 
++def _reachable_finite_class(states, n0, reactions, species, rate_values, chem):
++    """Select the reachable component of a completely enumerated finite class.
++
++    Only integer reaction enabling is needed; propensity magnitudes and volume
++    scaling do not affect reachability. Reuse the FSP state traversal, but avoid
++    numerical propensity underflow when deciding whether an edge exists.
++    """
++    from .fsp import _enumerate_reachable
++
++    sp_idx = {name: i for i, name in enumerate(species)}
++    change = np.zeros((len(reactions), len(species)), dtype=np.int64)
++    requirements = []
++    active = []
++    for j, rxn in enumerate(reactions):
++        required = []
++        enabled = float(rate_values.get(rxn.rate_key, 0.0)) > 0.0
++        for name, coefficient in rxn.reactants:
++            if name in chem:
++                enabled = enabled and (coefficient == 0 or chem[name] > 0.0)
++            else:
++                i = sp_idx[name]
++                required.append((i, coefficient))
++                change[j, i] -= coefficient
++        for name, coefficient in rxn.products:
++            if name in sp_idx:
++                change[j, sp_idx[name]] += coefficient
++        requirements.append(required)
++        active.append(enabled)
++
++    def enabled_reactions(counts):
++        return np.array([
++            live and all(counts[i] >= coefficient for i, coefficient in required)
++            for live, required in zip(active, requirements)
++        ], dtype=bool)
++
++    reachable, index, truncated = _enumerate_reachable(
++        n0, change, enabled_reactions, max_states=len(states),
++    )
++    allowed = {tuple(int(v) for v in row) for row in states}
++    if truncated or any(tuple(int(v) for v in row) not in allowed for row in reachable):
++        raise ValueError("Reachable states exceed the enumerated conservation class.")
++    return states[[tuple(int(v) for v in row) in index for row in states]]
++
++
+ @dataclass
+ class StationaryDistribution:
+     """Exact product-form stationary distribution of a complex-balanced network.
+@@ -104,6 +149,7 @@
+     is_exact: bool
+     _states: np.ndarray | None = field(default=None, repr=False)
+     _logZ: float | None = field(default=None, repr=False)
++    _support: set[tuple[int, ...]] | None = field(default=None, init=False, repr=False)
+ 
+     # ── core ────────────────────────────────────────────────────────────────────
+     def poisson_means(self) -> dict[str, float]:
+@@ -127,6 +173,10 @@
+             # Could not enumerate the class → independent-Poisson approximation.
+             return float(np.prod([poisson.pmf(xi, li)
+                                   for xi, li in zip(x, self.means)]))
++        if self._support is None:
++            self._support = {tuple(int(v) for v in row) for row in self._states}
++        if tuple(int(v) for v in x) not in self._support:
++            return 0.0
+         from scipy.special import logsumexp
+         if self._logZ is None:
+             self._logZ = float(logsumexp([self._log_weight(s) for s in self._states]))
+@@ -225,6 +275,10 @@
+         cons_totals = [float(v @ n0) for v in cons_vectors]
+         states, exact = _enumerate_class(cons_vectors, cons_totals, len(species), max_states)
+         is_exact = exact
++        if exact:
++            states = _reachable_finite_class(
++                states, n0, reactions, species, rate_values, chem,
++            )
+ 
+     return StationaryDistribution(
+         species=list(species),
+diff --git a/tests/test_stochastic_stationary.py b/tests/test_stochastic_stationary.py
+--- a/tests/test_stochastic_stationary.py
++++ b/tests/test_stochastic_stationary.py
+@@ -28,6 +28,33 @@
+     sd = net.stationary_distribution({"A": N, "B": 0}, volume_L=UNIT_VOL, initial_as="count")
+     total = sum(sd.probability({"A": a, "B": N - a}) for a in range(N + 1))
+     assert total == pytest.approx(1.0, abs=1e-10)
++
++
++def test_conditioned_probability_is_zero_outside_support():
++    net = CRNetwork.from_string(["A <-> B"], rates={"A -> B": 1.0, "B -> A": 1.0})
++    sd = net.stationary_distribution({"A": 2, "B": 0}, volume_L=UNIT_VOL, initial_as="count")
++    assert sd.probability({"A": 0, "B": 0}) == 0.0
++    assert sd.probability({"A": 3, "B": 0}) == 0.0
++
++
++@pytest.mark.parametrize("initial_a, expected_states", [(2, {(2, 0), (0, 2)}), (1, {(1, 1)})])
++def test_stationary_support_preserves_discrete_communicating_class(initial_a, expected_states):
++    net = CRNetwork.from_string(["2A <-> 2B"], rates={"2A -> 2B": 1.0, "2B -> 2A": 1.0})
++    sd = net.stationary_distribution(
++        {"A": initial_a, "B": 2 - initial_a}, volume_L=UNIT_VOL, initial_as="count",
++    )
++    assert sd.is_exact and sd.is_conditioned
++    assert {tuple(row) for row in sd._states} == expected_states
++    assert sum(sd.probability({"A": a, "B": b}) for a, b in expected_states) == pytest.approx(1.0)
++    for a in range(3):
++        if (a, 2 - a) not in expected_states:
++            assert sd.probability({"A": a, "B": 2 - a}) == 0.0
++    values, probabilities = sd.marginal("A")
++    mean = values @ probabilities
++    variance = (values - mean) ** 2 @ probabilities
++    assert variance == pytest.approx(0.0 if initial_a == 1 else 1.0)
++    draws = sd.sample(size=40, seed=17)
++    assert set(zip(draws["A"], draws["B"])) <= expected_states
+ 
+ 
+ def test_conditioned_expected_counts_match_binomial_mean():
+@@ -69,3 +96,29 @@
+     )
+     with pytest.raises(ValueError, match="not complex-balanced"):
+         mm.stationary_distribution({"E": 10, "S": 10}, volume_L=UNIT_VOL, initial_as="count")
++
++
++def test_catalyst_below_required_count_blocks_reachability():
++    net = CRNetwork.from_string(
++        ["A + 2C <-> B + 2C"],
++        rates={"A + 2C -> B + 2C": 1.0, "B + 2C -> A + 2C": 1.0},
++    )
++    sd = net.stationary_distribution(
++        {"A": 2, "B": 0, "C": 1}, volume_L=UNIT_VOL, initial_as="count",
++    )
++    assert {tuple(row) for row in sd._states} == {(2, 0, 1)}
++    assert sd.probability({"A": 2, "B": 0, "C": 1}) == pytest.approx(1.0)
++    assert sd.probability({"A": 0, "B": 2, "C": 1}) == 0.0
++
++
++def test_chemostatted_catalyst_uses_fixed_concentration_not_count_threshold():
++    net = CRNetwork.from_string(
++        ["A + 2C <-> B + 2C"],
++        rates={"A + 2C -> B + 2C": 1.0, "B + 2C -> A + 2C": 1.0},
++        chemostatted={"C": 1.0},
++    )
++    sd = net.stationary_distribution(
++        {"A": 2, "B": 0}, volume_L=UNIT_VOL, initial_as="count",
++    )
++    assert {tuple(row) for row in sd._states} == {(0, 2), (1, 1), (2, 0)}
++    assert sd.probability({"A": 1, "B": 1}) == pytest.approx(0.5)
