@@ -1,0 +1,5708 @@
+{
+  "classification": {
+    "targets": 288,
+    "nested_targets": 72,
+    "nonseparable_uniform": 4,
+    "nussinov_positive_witnesses": 284,
+    "results": [
+      {
+        "target": "(((())(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 72,
+        "shorts_nested": false,
+        "sequence": "GGGGCCAGCUCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())(())(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 72,
+        "shorts_nested": false,
+        "sequence": "GGCCCCGGAGCU",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((())(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GAGGCCCCGGUCA",
+        "colors": [
+          0,
+          2,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((())((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGGGCCAGACUCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.))(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGAGACUGGCCCC",
+        "colors": [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGCCCCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())(())((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGCCCCGGAGACU",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGCCAGACUCCGG",
+        "colors": [
+          0,
+          0,
+          2,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(())))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))(())(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "AGACUGGCCCCGG",
+        "colors": [
+          2,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((())(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "AGAGGCCCCGGUC",
+        "colors": [
+          0,
+          2,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((((()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGGGGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((())((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GAGGCCAGACUUCA",
+        "colors": [
+          0,
+          2,
+          0,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 12,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.(()))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGCCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.))(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GAAGACUGGCCUCA",
+        "colors": [
+          0,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.))((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGAGACUUGACACC",
+        "colors": [
+          0,
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.)).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 14,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCCCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 14,
+        "shorts_nested": false,
+        "sequence": "GGCCCCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 14,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCAGACUUGACA",
+        "colors": [
+          0,
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCACCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(((()).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGCCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(())))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(())))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 12,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()))).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(())))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCCCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.))))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 14,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 12,
+        "shorts_nested": false,
+        "sequence": "GGACCCCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))(())((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGACUGGCCUGACA",
+        "colors": [
+          2,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 12,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGACUUGACAGGCC",
+        "colors": [
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((())(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 28,
+        "shorts_nested": false,
+        "sequence": "AGAGGCCCCGGUCA",
+        "colors": [
+          0,
+          2,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((())((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGAGGCCAGACUUC",
+        "colors": [
+          0,
+          2,
+          0,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.))(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGAAGACUGGCCUC",
+        "colors": [
+          0,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(())))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((((()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGGGGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGGGGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.(()))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGCCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.(()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.((.)))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGACCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.))((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 0,
+        "shorts_nested": false
+      },
+      {
+        "target": "((((.)).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.)).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 6,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.)).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCCCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 14,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCACCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCACCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(((()).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGCCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(((()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((((.)).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGACCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(())))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()))).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()))).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 12,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(()))))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCCCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(()))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(()).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.))))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCCCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.))))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.))))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 6,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)))).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 14,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCCCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 6,
+        "shorts_nested": false,
+        "sequence": "GGACCCCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 12,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 6,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 0,
+        "shorts_nested": false
+      },
+      {
+        "target": "((.)).(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCACCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((((()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGGGGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((())((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGAGGCCAGACUUCA",
+        "colors": [
+          0,
+          2,
+          0,
+          0,
+          2,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.(()))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGCCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.))(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGAAGACUGGCCUCA",
+        "colors": [
+          0,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.))((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 0,
+        "shorts_nested": false
+      },
+      {
+        "target": ".((((.)).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(((()).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGCCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(())))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(())))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()))).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(())))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCCCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.))))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGGGGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(((()).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGGGCCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.(()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.((.)))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGACCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.)).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.)).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.)).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(())((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCCCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCACCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(((()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((((.)).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGACCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()))).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCCCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(()))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(()).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.)))))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCCCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.)))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.)).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.))))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)))).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)))).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 6,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCCCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 6,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCACCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCACCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((((()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGGGGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGGGGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.(()))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGCCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.(()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.((.)))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGACCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.))((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 0,
+        "shorts_nested": false
+      },
+      {
+        "target": ".((((.)).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.)).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.)).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(((()).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGCCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(((()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((((.)).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGACCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(())))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()))).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()))).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(()))))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCCCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(()))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(()).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.))))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCCCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.))))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.))))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)))).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).))(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCCCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).(((()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCCCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.(())))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGGGAGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((((.)).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGGGACCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "(()).((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGCCACCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGAGGGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.(()).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGCCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.(()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.)))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.)).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)))).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCCCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.))((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCCCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCACCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGGGGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(((()).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGCCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.(()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.((.)))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGACCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.)).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.)).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.)).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(())((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCCCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(((()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((((.)).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGACCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()))).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCCCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 8,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(()))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(()).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(()).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.)))))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCCCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.)))).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCCCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.)).))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCACCCC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.))))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)))).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)))).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).))(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCCCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).))((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCCCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).)).(())",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCACCGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).(((()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCCCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCCCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.(()))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.(()).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.((.))))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCAGGGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "GGAGGAGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.((.)).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGAGGACCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": "((.)).((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "GGACCACCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGGGAGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((((.)).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGGGACCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".(()).((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGCCACCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.(()).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGCCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.(()).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGCCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.)))).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCCCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.)).)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCACCCCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.)).)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCACCACC",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)))).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCCCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).))((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCCCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).)).(()).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCACCGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).)).((.))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCACCAGG",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.))((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCCCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCCCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.(()).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 4,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.((.)))).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCAGGGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.((.)).))",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCAGGAGG",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.((.)).)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": true,
+        "sequence": "AGGAGGAGGACCACCACCA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.((.)).)).((.)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGAGGACCACCACCAGGA",
+        "colors": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      },
+      {
+        "target": ".((.)).((.((.)).)).",
+        "colorings_checked": 729,
+        "uniform_colorings": 2,
+        "shorts_nested": false,
+        "sequence": "AGGACCACCACCAGGAGGA",
+        "colors": [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        "optimum_and_count": [
+          6,
+          1
+        ]
+      }
+    ]
+  },
+  "held_out": [
+    {
+      "target": ".(((.(((((((...)))((...))))((((...)))))).))).",
+      "short_helices": 3,
+      "sequence": "AGAGAGAGGGGGAAACCCAGAAACUCCCCAGAAACUGGUCACUCA",
+      "optimum": 16,
+      "optimum_count": 1,
+      "length": 45,
+      "coloring": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "target": ".(((.(((((...)))(((((((...)))((...))))((((...)))))))).))).",
+      "short_helices": 4,
+      "sequence": "AGAGAGAGGGAAACCCCCCCCCCAAAGGGAGAAACUGGAGGGAAACCCUGGUCACUCA",
+      "optimum": 21,
+      "optimum_count": 1,
+      "length": 58,
+      "coloring": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "target": ".(((.(((((((...)))(((((((...)))((...))))((((...))))))))((((...)))))).))).",
+      "short_helices": 5,
+      "sequence": "AGAGAGAGGGGGAAACCCAAGGGGGAAACCCAGAAACUCCCCAGAAACUGGUUCCCCAGAAACUGGUCACUCA",
+      "optimum": 27,
+      "optimum_count": 1,
+      "length": 73,
+      "coloring": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "target": ".(((.(((((((...)))(((((((...)))(((((((...)))((...))))((((...))))))))((((...))))))))((((...)))))).))).",
+      "short_helices": 7,
+      "sequence": "AGAGAGAGGGGGAAACCCAAGGGGGAAACCCAAGGGGGAAACCCAGAAACUCCCCAGAAACUGGUUCCCCAGAAACUGGUUCCCCAGAAACUGGUCACUCA",
+      "optimum": 38,
+      "optimum_count": 1,
+      "length": 101,
+      "coloring": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "target": ".(((.(((((((...)))(((((((...)))(((((((...)))(((((((...)))((...))))((((...))))))))((((...))))))))((((...))))))))((((...)))))).))).",
+      "short_helices": 9,
+      "sequence": "AGAGAGAGGGGGAAACCCAAGGGGGAAACCCAAGGGGGAAACCCAAGGGGGAAACCCAGAAACUCCCCAGAAACUGGUUCCCCAGAAACUGGUUCCCCAGAAACUGGUUCCCCAGAAACUGGUCACUCA",
+      "optimum": 49,
+      "optimum_count": 1,
+      "length": 129,
+      "coloring": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "target": ".(((.(((((...)))(((((((...)))(((((((...)))(((((((...)))(((((((...)))(((((((...)))((...))))((((...))))))))((((...))))))))((((...))))))))((((...))))))))((((...)))))))).))).",
+      "short_helices": 12,
+      "sequence": "AGAGAGAGGGAAACCCCCCCCCCAAAGGGAAGGGGGAAACCCAAGGGGGAAACCCAAGGGGGAAACCCAAGGGGGAAACCCAGAAACUCCCCAGAAACUGGUUCCCCAGAAACUGGUUCCCCAGAAACUGGUUCCCCAGAAACUGGUUGGAGGGAAACCCUGGUCACUCA",
+      "optimum": 65,
+      "optimum_count": 1,
+      "length": 170,
+      "coloring": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1,
+        1,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}
