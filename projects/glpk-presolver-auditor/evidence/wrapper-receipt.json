@@ -1,0 +1,69 @@
+{
+  "optlang_commit": "6427c6c10220ebff56b1e72591bc4ee43549d81b",
+  "baseline_glpk_interface_sha256": "7932237d98ee07c344cc6cf12d067aa8b0496132a46d83fce5c45893e500b8e8",
+  "wrapper_patch_sha256": "ea17ec066680352cab3b4f85b04eac234e74c2285f20d151c6ff63295c1faa4c",
+  "test_sha256": "5c7b153eee2edc94542dcc294bf1c492fc309c32ae72c1d30d517436cf2aca08",
+  "source_method": "git archive of pinned commit; worktree changes ignored",
+  "python": "3.12",
+  "scope": "GLPK-only primal residual validation and one disabled-presolve recovery per _optimize",
+  "native_library_modified": false,
+  "checks": {
+    "baseline": {
+      "counts": {
+        "tests": 54,
+        "failures": 27,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 27,
+        "deselected": 8
+      },
+      "import": {
+        "versions": {
+          "swiglpk": "5.0.13",
+          "sympy": "1.14.0",
+          "mpmath": "1.3.0",
+          "pytest": "9.1.1",
+          "iniconfig": "2.3.1",
+          "packaging": "26.3",
+          "pluggy": "1.7.0",
+          "Pygments": "2.21.0"
+        },
+        "glpk": "5.0",
+        "source_import_verified": true
+      }
+    },
+    "candidate": {
+      "counts": {
+        "tests": 62,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 62,
+        "deselected": 0
+      },
+      "import": {
+        "versions": {
+          "swiglpk": "5.0.13",
+          "sympy": "1.14.0",
+          "mpmath": "1.3.0",
+          "pytest": "9.1.1",
+          "iniconfig": "2.3.1",
+          "packaging": "26.3",
+          "pluggy": "1.7.0",
+          "Pygments": "2.21.0"
+        },
+        "glpk": "5.0",
+        "source_import_verified": true
+      }
+    }
+  },
+  "environment_allowlist": [
+    "HOME",
+    "LANG",
+    "PATH",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONPATH",
+    "TMPDIR"
+  ]
+}

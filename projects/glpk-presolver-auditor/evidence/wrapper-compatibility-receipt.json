@@ -1,0 +1,21 @@
+{
+  "source_commit": "6427c6c10220ebff56b1e72591bc4ee43549d81b",
+  "candidate_glpk_interface_sha256": "272597aad3b9755aae540f28b4042b1784465e68337c631f680995bb18d3d0b8",
+  "test_targets": [
+    "src/optlang/tests/test_glpk_interface.py",
+    "src/optlang/tests/test_glpk_exact_interface.py"
+  ],
+  "environment_allowlist": [
+    "HOME",
+    "LANG",
+    "PATH",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONPATH",
+    "TMPDIR"
+  ],
+  "returncode": 0,
+  "stdout": ".......s................................................................ [ 36%]\n....................................s..............s.................... [ 73%]\ns....................s....ssss.......s...............                    [100%]\n=============================== warnings summary ===============================\nsrc/optlang/tests/test_glpk_interface.py::ModelTestCase::test_clone_model_with_lp\nsrc/optlang/tests/test_glpk_exact_interface.py::ModelTestCase::test_clone_model_with_lp\n  <checkout>/src/optlang/interface.py:1125: UserWarning: Cloning with LP formats can change variable and constraint ID's.\n    warnings.warn(\"Cloning with LP formats can change variable and constraint ID's.\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n187 passed, 10 skipped, 2 warnings in 8.17s\n",
+  "python": "3.11",
+  "existing_suite_only": true
+}

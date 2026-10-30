@@ -1,0 +1,21 @@
+{
+  "review_type": "separate AI source review and independent native/wrapper checks",
+  "verdict": "accepted only within stated primal-residual defense scope",
+  "accepted_production_sha256": "272597aad3b9755aae540f28b4042b1784465e68337c631f680995bb18d3d0b8",
+  "independent_tests_passed": 80,
+  "compatibility_passed": 187,
+  "compatibility_skipped": 10,
+  "scope": [
+    "GLPK MIP PE/PB diagnostics; absolute-or-relative tolerance",
+    "finite nonnegative diagnostic requirement",
+    "preserve prior working presolve recovery",
+    "one extra disabled-presolve recovery per invocation; at most six MIP calls through shared auto retry"
+  ],
+  "limits": [
+    "not external human peer review",
+    "not a full exact MIP feasibility or optimality certificate",
+    "native KKT overflow can conceal a loaded bad assignment as zero residuals",
+    "nonoptimal value access and preexisting simplex/shared exception policy are unchanged",
+    "native C branch guard retains a near-column-tolerance scaled residual"
+  ]
+}

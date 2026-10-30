@@ -15,3 +15,5 @@ projects/protein-metric-auditor/vendor/** whitespace=-blank-at-eol
 projects/cobra-loopless-auditor/upstream.patch -whitespace
 projects/fastcc-direction-auditor/upstream.patch -whitespace
 projects/memote-cache-auditor/patches/clear-caches-between-api-runs.patch -whitespace
+projects/glpk-presolver-auditor/native-guard.patch -whitespace
+projects/glpk-presolver-auditor/wrapper/optlang-mip-validation.patch -whitespace

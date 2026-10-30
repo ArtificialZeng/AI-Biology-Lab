@@ -1,0 +1,50 @@
+name: Optlang GLPK wrapper validation audit
+on:
+  pull_request:
+    paths:
+      - projects/glpk-presolver-auditor/wrapper/**
+      - projects/glpk-presolver-auditor/reproduce_wrapper.py
+      - projects/glpk-presolver-auditor/archive_manifest.json
+      - .github/workflows/glpk-wrapper-audit.yml
+  push:
+    branches: [main]
+    paths:
+      - projects/glpk-presolver-auditor/wrapper/**
+      - projects/glpk-presolver-auditor/reproduce_wrapper.py
+      - projects/glpk-presolver-auditor/archive_manifest.json
+      - .github/workflows/glpk-wrapper-audit.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wrapper:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: opencobra/optlang
+          ref: 6427c6c10220ebff56b1e72591bc4ee43549d81b
+          path: artifacts/frozen-optlang
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned minimal test dependencies
+        run: python -m pip install -r projects/glpk-presolver-auditor/wrapper/requirements.txt
+      - name: Verify frozen source imports and baseline/candidate outcomes
+        run: >-
+          python projects/glpk-presolver-auditor/reproduce_wrapper.py
+          --checkout artifacts/frozen-optlang
+          --output artifacts/glpk-wrapper/receipt.json
+          --logs artifacts/glpk-wrapper/logs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: optlang-glpk-wrapper-evidence-${{ matrix.os }}
+          path: artifacts/glpk-wrapper

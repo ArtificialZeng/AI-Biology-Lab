@@ -1,0 +1,86 @@
+{
+  "source_archive_sha256": "4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15",
+  "patch_sha256": "74467f974f6980c99fcc3dbe53ee1f2a2442bf1fe20e74d88ceb056bf21619b7",
+  "evidence_level": "finite exact-input solver tests; native algorithm uses floating arithmetic",
+  "scope": "integer singleton lower-rounding branch; existing near-integer tolerance remains",
+  "builds": {
+    "baseline": {
+      "grid": {
+        "cases": 72000,
+        "expected_feasible": 47528,
+        "expected_infeasible": 24472,
+        "wrong_status": 2600,
+        "invalid_optimal": 2600,
+        "unexpected_return": 0
+      },
+      "known_residual": {
+        "residual_control": 1,
+        "split": 0,
+        "presolve": 1,
+        "a": 1000000,
+        "lower": 250000,
+        "upper": 999995,
+        "simplex_return": -1,
+        "return": 0,
+        "status": 5,
+        "x": 1,
+        "row": 1000000,
+        "upper_violation": 5
+      },
+      "independent_grid": {
+        "summary": true,
+        "cases": 24000,
+        "feasible": 6134,
+        "infeasible": 17866,
+        "binary": 8000,
+        "negative_coefficient": 12000,
+        "cross_zero_domain": 16000,
+        "wrong_status": 12030,
+        "invalid_optimal": 12030,
+        "bad_objective": 0,
+        "bad_recovered_row": 0,
+        "optimal_solutions_checked": 18164,
+        "unexpected_return": 0
+      }
+    },
+    "candidate": {
+      "grid": {
+        "cases": 72000,
+        "expected_feasible": 47528,
+        "expected_infeasible": 24472,
+        "wrong_status": 0,
+        "invalid_optimal": 0,
+        "unexpected_return": 0
+      },
+      "known_residual": {
+        "residual_control": 1,
+        "split": 0,
+        "presolve": 1,
+        "a": 1000000,
+        "lower": 250000,
+        "upper": 999995,
+        "simplex_return": -1,
+        "return": 0,
+        "status": 5,
+        "x": 1,
+        "row": 1000000,
+        "upper_violation": 5
+      },
+      "independent_grid": {
+        "summary": true,
+        "cases": 24000,
+        "feasible": 6134,
+        "infeasible": 17866,
+        "binary": 8000,
+        "negative_coefficient": 12000,
+        "cross_zero_domain": 16000,
+        "wrong_status": 0,
+        "invalid_optimal": 0,
+        "bad_objective": 0,
+        "bad_recovered_row": 0,
+        "optimal_solutions_checked": 6134,
+        "unexpected_return": 0
+      }
+    }
+  }
+}
