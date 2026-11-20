@@ -1,86 +1,75 @@
-# Residual-Space Cross-Line Perturbation Modeling for Unseen CRISPRi Knockdowns: Metric Trade-Offs and External Generalization
+# Residual-Space Cross-Line Perturbation Modeling for Unseen CRISPRi Knockdowns: Metric Trade-Offs, Leave-One-Out Transferability, and External Validation
 
-**Working Manuscript Draft (Round 6 Phase A — T1/T3/T7 Complete; Phase B T2/T4 Pending)**  
+**Working Manuscript Draft (Round 6 Complete — All T0–T7 Integrated)**  
 **Primary Benchmark**: BioXArena-Pro `perturbation/xatlas-orion-perturb` (HCT116, HEK293T)  
 **External Independent Dataset**: Replogle et al. (*Cell* 2022) Perturb-seq (K562 GWPS, RPE1 Essential; Figshare+ 20029387)  
-**Official Codabench Private Test (Single Frozen Submission `1062221`)**: `0.0998` (leading within the `0.02` noise band; human-AI multi-round iteration, NOT directly comparable to single-shot 2h autonomous agents)
+**Official Codabench Private Test (Single Frozen Submission `1062221`)**: `0.0998` (leading within the `0.02` noise band; human-AI multi-round iteration, NOT comparable to single-shot 2h autonomous agents)
 
 ---
 
 ## Abstract
 
-Evaluating transcriptional response predictors for unseen CRISPRi gene knockdowns depends critically on whether dominant systemic stress axes are retained or projected out. Under standard unprojected $\Delta$-expression Pearson correlation, simple low-rank linear baselines outperform many deep-learning models (Ahlmann-Eltze et al., *Nature Methods* 2025). Conversely, the BioXArena-Pro `xatlas-orion-perturb` v5 evaluation metric projects both predictions and ground truth onto the orthogonal complement of $\mathrm{span}\{\mathbf{1}, b_c, a_c\}$, isolating perturbation-specific residual responses.
+Evaluating transcriptional response predictors for unseen CRISPRi gene knockdowns exposes a fundamental metric trade-off between **unprojected global correlation** (which retains dominant shared stress variation across perturbations) and **residualized or retrieval-based specificity** (which evaluates whether a model distinguishes one gene knockdown from another). Under standard unprojected $\Delta$-expression Pearson correlation, simple low-rank linear baselines outperform many deep models (Ahlmann-Eltze et al., *Nature Methods* 2025). Here we systematically evaluate a frozen, cell-line-agnostic residual-space kernel and cross-line bridging pipeline (`Cross-Line Perturb-Bridge`, `PanPerturbBridgeModel`) across two independent human Perturb-seq atlases—BioXArena-Pro `xatlas-orion-perturb` (HCT116, HEK293T) and Replogle et al. (*Cell* 2022; K562, RPE1)—using **per-split row-level stratified paired bootstrap 95% confidence intervals (4,000 resamples)** and **five complementary metrics** (v5 orthogonal-residual Pearson, unprojected $\Delta$-expression Pearson, Top-50 DE Pearson, Top-50 sign accuracy, and v5-independent raw-space perturbation discrimination rank percentile `disc_raw`).
 
-We evaluate a frozen, cell-line-agnostic kernel and cross-line bridging pipeline (`Cross-Line Perturb-Bridge`, implemented in `PanPerturbBridgeModel`) across two human Perturb-seq atlases (HCT116/HEK293T in `xatlas-orion-perturb`; K562/RPE1 in Replogle et al., *Cell* 2022). Because random splits share overlapping training sets, we quantify statistical uncertainty strictly via **per-split row-level stratified paired bootstrap 95% confidence intervals (4,000 resamples)**.
-
-On BioXArena-Pro `xatlas-orion-perturb`, across 10 development splits, S7 increases official v5 orthogonal-residual Pearson correlation from `0.0613 ± 0.0040` (`100-SVD + Ridge`, S0) and `0.0672 ± 0.0052` (Ahlmann-Eltze bilinear linear baseline, AE) to **`0.1099 ± 0.0087`** (S7 vs S0 mean Δ `+0.0485`, median 95% CI `[+0.0318, +0.0677]`, 10/10 splits CI > 0; S7 vs AE mean Δ `+0.0427`, median 95% CI `[+0.0256, +0.0606]`, 10/10 splits CI > 0). Under strict simultaneous union-held-out + refitted-axis evaluation, S7 reaches `0.1115 ± 0.0089` vs S0 `0.0658 ± 0.0033` (mean Δ `+0.0457`, median 95% CI `[+0.0276, +0.0635]`, 10/10 splits CI > 0). On a single official Codabench private test submission (`Submission ID 1062221`, frozen at commit `2a8b2e0`), S7 scored **`0.0998`** (measured validation-to-test shift `−0.0101`), `+0.0173` above the best 2-hour autonomous agent run (`0.0825`), which lies within the official `0.02` noise threshold and represents a different development category (human-AI multi-round iteration with ~25 tuned constants).
-
-Evaluated **zero-shot with 100% frozen hyperparameters** on the independent **Replogle et al. (*Cell* 2022) K562 & RPE1** atlas (10 strict simultaneous union-held-out splits with training-only refitted axes), we report **S5 and S7 as co-primary external variants** alongside all four computed metrics:
-1. **Residual vs. traditional metric trade-off**: On the v5 residual metric, frozen **S5** (`0.1401 ± 0.0057`; S5 vs AE mean Δ `+0.0434`, median 95% CI `[+0.0323, +0.0549]`, 10/10 CI > 0; S5 vs simplified GNN `+0.0168`, median 95% CI `[+0.0038, +0.0302]`, 7/10 CI > 0) and **S7** (`0.1359 ± 0.0076`; S7 vs AE `+0.0392`, median 95% CI `[+0.0240, +0.0537]`, 10/10 CI > 0; S7 vs simplified GNN `+0.0126`, median 95% CI `[-0.0041, +0.0286]`, only 3/10 CI > 0) substantially outperform linear baselines (`S0 0.0883`, `AE 0.0967`, `30-kNN 0.0971`). However, on **traditional unprojected metrics**, S7 **underperforms** linear baselines: standard $\Delta$-expression Pearson (`0.1162` vs `30-kNN 0.1479`, `AE 0.1470`, `S0 0.1408`), Top-50 DE Pearson (`0.2013` vs `S0 0.2119`, `AE 0.2026`; S5 reaches `0.2170`), and Top-50 sign accuracy (`0.5962` vs `S0 0.6256`, `AE 0.6255`).
-2. **Module transferability**: Externally on Replogle 2022, v5 gains transfer primarily from **S1** (`+0.0356`, median 95% CI `[+0.0256, +0.0450]`, 10/10 CI > 0) and **S5 cross-line bridging** (`+0.0134`), whereas **S2 spectral deflation (`−0.0024`)** and **S6 Reciprocal Response Borrowing (`−0.0109`, median 95% CI `[-0.0169, -0.0050]`, 9/10 CI < 0)** are **negative contributors**.
+Our findings establish four concrete, boundary-aware conclusions:
+1. **Metric trade-off across both atlases**: On `xatlas-orion-perturb` (10 development splits), full model S7 improves v5 residual Pearson over `100-SVD + Ridge` (`0.0613 → 0.1099`, median 95% CI `[+0.0318, +0.0677]`, 10/10 CI > 0) and the Ahlmann-Eltze bilinear baseline (`0.0672 → 0.1099`, `[+0.0256, +0.0606]`, 10/10 CI > 0); on a single official Codabench private test submission (`Submission ID 1062221`), S7 achieved **`0.0998`** (measured validation-to-test shift `−0.0101`), `+0.0173` above the best 2-hour autonomous agent run (`0.0825`), which lies within the official `0.02` noise threshold and represents a different development category (human-AI multi-round iteration with ~25 tuned constants). Evaluated **zero-shot with frozen hyperparameters** on Replogle 2022 (10 strict simultaneous union-held-out splits), co-primary variants **S5** (`0.1401`) and **S7** (`0.1359`) both exceed linear baselines on v5 (`AE 0.0967`: S5 `[+0.0323, +0.0549]`, 10/10 CI > 0; S7 `[+0.0240, +0.0537]`, 10/10 CI > 0), and **S5** also exceeds linear baselines on **v5-independent raw-space perturbation discrimination (`disc_raw`)** (`0.6884` vs `AE 0.6468`, `+0.0417`, `[+0.0198, +0.0721]`, 9/10 CI > 0; S7 `+0.0268`, 4/10 CI > 0). Conversely, against a self-implemented untuned simplified GNN (`0.1233`), **S7** CI excludes 0 on only **3/10 splits** (`[-0.0041, +0.0286]`), while **S5** excludes 0 on **7/10 splits** (`[+0.0038, +0.0302]`). Critically, on **unprojected $\Delta$-expression Pearson, Top-50 DE Pearson, and Top-50 sign accuracy**, both S5 and S7 **lose to linear baselines** (`Replogle delta_r S7−AE = −0.0308`, 8/10 CI < 0; `S5−AE = −0.0277`, 8/10 CI < 0) because orthogonal residual projection deliberately forfeits the shared stress axis.
+2. **Leave-one-module-out (LOMO) transferability**: Across both atlases, only **four modules** are consistently positive in LOMO: **soft-power `HybridTOM(p=1.5)`** (`+0.0109` xatlas / `+0.0103` Replogle, 10/10 CI > 0 on Replogle), **output SVD Wiener + manifold snapping** (`+0.0072` / `+0.0067` on v5, but reduces `disc_raw` on both datasets), **cross-line bridging (`S5`)** (`+0.0020` / `+0.0061`, 9/10 CI > 0 on Replogle), and **multi-scale spectral deflation (`S2`)** (`+0.0108` / `+0.0035`, Replogle 1/10 CI > 0). In contrast, **Reciprocal Response Borrowing (`S6`)** is strongly dataset-specific (`+0.0130`, 8/10 CI > 0 on xatlas, but **`−0.0153`, 9/10 CI < 0** on Replogle; omitting `S6` raises Replogle v5 to `0.1512`), and non-reproducible anchors (`S4`) benefit xatlas only (`+0.0043` vs `−0.0006`).
+3. **Evaluated-background pathway enrichment & CRISPRi cis-proximity audit**: Local `ReactomePathways.gmt` hypergeometric testing strictly within the 1,784 evaluated Replogle genes confirms that top-predicted sets of S7 and S0 overlap heavily (`113/164`, `68.9%`), whereas gain-ranked cohorts enrich **mRNA Splicing** (`S7−S0` Top-150: `3.12×`, `FDR = 1.18e-08`) and **Mitochondrial translation** (`S5−S2` Top-150: `2.90×`, `FDR = 2.76e-03`). On Replogle GRCh38 TSS coordinates (GENCODE v46), negative-z (`z < −4`) reciprocal donor pairs show a **474×** enrichment for `< 10 kb` genomic proximity (`1.422%` vs `0.003%` null, `3.32%` weight), though removing `< 10 kb` donors retains `97.41%` of Replogle's top-40 positive gains. Because xatlas gene identities are anonymized and cannot be inspected under benchmark rules, CRISPRi local cis-repression remains an **unexcluded alternative explanation** for xatlas's S6 gain (where 78% of top-40 gain genes have strong negative-z donors).
 
 ---
 
-## 1. Main Quantitative Results (All Metrics Including Unfavorable Outcomes)
+## 1. Main Quantitative Results: Residual Metrics vs. Traditional Metrics (T2 & T3)
 
-### 1.1 BioXArena-Pro `xatlas-orion-perturb` (HCT116 & HEK293T)
+### 1.1 Five-Metric External Benchmark on Replogle et al. (*Cell* 2022, 10 Strict Union Splits, Zero Retuning)
 
-#### Table 1. Progressive Ablation on `xatlas-orion-perturb` (10 Development Splits, Seeds `42..31337`)
+**Preprocessing Disclosure (`src/prepare_replogle2022_cache.py`)**: Top 5,000 finite readout genes per line were selected via `var/clean_mean` (`4,991/5,000` RPE1 and `4,996/5,000` K562 overlap with `var/mean`); `reproducible = 1` iff `ad_counts >= 50` AND `energy_test_p_value < 0.001`. When multiple guides targeted the same Ensembl gene, a single row was selected maximizing `(reproducible, ad_counts, num_cells_filtered)`, which uses perturbation-level summary statistics across the screen.
 
-| Stage | Component Added | 10-Split v5 Mean ± SD | HCT116 | HEK293T | Δ vs S0 | Row-Level Median 95% CI (Splits > 0) |
-|:---:|:---|:---:|:---:|:---:|:---:|:---:|
-| **S0** | `100-SVD + Ridge (α=10)` (Official Ref) | 0.0613 ± 0.0040 | 0.0767 | 0.0460 | — | — |
-| **S1** | `+ SelfMask + BaseSub + √n + HybridTOM(1.5)` | 0.0677 ± 0.0068 | 0.0866 | 0.0487 | +0.0063 | `[-0.0015, +0.0174]` (4/10) |
-| **S2** | `+ Multi-Scale Spectral Deflation (d0..d10)` | 0.0722 ± 0.0061 | 0.0935 | 0.0509 | +0.0109 | — |
-| **S3** | `+ Cross-Line Gene Graph (4,040 shared genes)` | 0.0748 ± 0.0053 | 0.0941 | 0.0555 | +0.0135 | — |
-| **S4** | `+ Empirical-SNR Non-Reproducible Anchors` | 0.0811 ± 0.0038 | 0.1033 | 0.0589 | +0.0197 | — |
-| **S5** | `+ GeneSlope-CosKRR Cross-Line Bridge` | 0.0887 ± 0.0046 | 0.1138 | 0.0635 | +0.0273 | vs AE: `[+0.0091, +0.0317]` (10/10) |
-| **S6** | `+ Reciprocal Response Borrowing (6,018 rep)` | 0.1027 ± 0.0065 | 0.1371 | 0.0682 | +0.0413 | vs S5: `[+0.0050, +0.0244]` (9/10) |
-| **S7** | `+ SVD Wiener Denoise + Manifold Snapping` | **0.1099 ± 0.0087** | **0.1462** | **0.0736** | **+0.0485** | vs S0: **`[+0.0318, +0.0677]`** (10/10) |
+| Method (Frozen / Untuned; **S5 & S7 Co-Primary**) | v5 Residual $r$ | Δ-Expr $r$ | Top-50 DE $r$ | Top-50 Sign | `Discrim(Delta)` (raw) | `Discrim(v5)` | Row-Level Median 95% CI (v5 / `disc_raw`) |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| Constant Mean | 0.0009 | −0.0322 | −0.0531 | 0.4992 | 0.5000 | 0.4999 | — |
+| `30-kNN` | 0.0971 | **0.1479** | 0.1822 | 0.6095 | 0.6365 | 0.6329 | — |
+| Ahlmann-Eltze Bilinear (AE) | 0.0967 | 0.1470 | 0.2026 | 0.6255 | 0.6461 | 0.6375 | — |
+| `100-SVD + Ridge (S0)` | 0.0883 | 0.1408 | 0.2119 | **0.6256** | 0.6505 | 0.6404 | — |
+| Self-implemented untuned simplified ResMLP | 0.1091 | 0.0876 | 0.1896 | 0.5901 | 0.6447 | 0.6529 | — |
+| Self-implemented untuned simplified GNN | 0.1233 | 0.0971 | 0.1892 | 0.5999 | 0.6403 | 0.6499 | — |
+| **S5** (`+ Cross-Line Bridge`, **external peak**) | **0.1401** | 0.1193 | **0.2170** | 0.6064 | 0.6890 | 0.6893 | v5 vs AE `[+0.0323, +0.0549]` (10/10); vs GNN `[+0.0038, +0.0302]` (7/10); `disc_raw` vs AE `[+0.0198, +0.0721]` (9/10) |
+| S6 (`+ Reciprocal Borrowing`, **v5 negative**) | 0.1292 | 0.1106 | 0.2155 | 0.6020 | **0.6993** | **0.7001** | v5 vs S5 `[-0.0169, -0.0050]` (9/10 CI < 0) |
+| **S7** (`+ Wiener + Manifold Snap`, full frozen) | 0.1359 | 0.1162 | 0.2013 | 0.5962 | 0.6762 | 0.6771 | v5 vs AE `[+0.0240, +0.0537]` (10/10); vs GNN `[-0.0041, +0.0286]` (3/10); `disc_raw` vs AE `[-0.0011, +0.0546]` (4/10) |
 
-#### Table 2. Baseline Comparisons, Additional Random Resplits, Strict Refit Audit & Official Private Test (`xatlas-orion-perturb`)
+### 1.2 Five-Metric Benchmark & Official Private Test on `xatlas-orion-perturb`
 
-*(Neural baselines below are self-implemented, untuned simplified baselines, NOT official GEARS / scGPT / STATE implementations. The 10 development splits were also used during hyperparameter selection.)*
+| Method / Protocol | v5 (`dev10`) | Δ-Expr $r$ | Top-50 DE $r$ | Top-50 Sign | `Discrim(Delta)` (raw) | `Discrim(v5)` | `resplit10` v5 / `Discrim(Delta)` |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Constant Mean | 0.0090 | 0.0608 | 0.0941 | 0.5420 | 0.5000 | 0.4999 | 0.0073 / 0.5000 |
+| `30-kNN` | 0.0410 | 0.0832 | 0.1327 | 0.5669 | 0.5698 | 0.5664 | 0.0391 / 0.5639 |
+| AE Bilinear Baseline | 0.0672 | **0.1367** | 0.2039 | **0.6048** | 0.5856 | 0.5952 | 0.0646 / 0.5829 |
+| `100-SVD + Ridge (S0)` | 0.0613 | 0.1327 | **0.2050** | 0.6046 | 0.5891 | 0.5993 | 0.0596 / 0.5870 |
+| Self-implemented untuned ResMLP / GNN | `0.0486 / 0.0543` | `0.0390 / 0.0432` | `0.0964 / 0.1025` | `0.5425 / 0.5464` | `0.5951 / 0.5900` | `0.5962 / 0.5922` | — |
+| **S5** (`+ Cross-Line Bridge`) | 0.0887 | 0.0813 | 0.1576 | 0.5768 | 0.6262 | 0.6262 | 0.0878 / 0.6237 |
+| S6 (`+ Reciprocal Borrowing`) | 0.1027 | 0.0937 | 0.1885 | 0.5875 | **0.6453** | **0.6471** | 0.1006 / **0.6439** |
+| **S7** (Full Frozen) | **0.1099** | 0.0995 | 0.1789 | 0.5857 | 0.6286 | 0.6313 | **0.1073** / 0.6263 |
+| **Codabench Official Private Test (`1062221`)** | **`0.0998`** | — | — | — | — | — | `+0.0173` vs best 2h agent `0.0825` (within `0.02` noise; human-AI multi-round) |
 
-| Method / Evaluation Protocol | v5 Score | Δ (`S7` vs Method) | Row-Level Median 95% CI (Splits > 0) |
-|:---|:---:|:---:|:---:|
-| Self-implemented untuned simplified ResMLP (10 dev splits) | 0.0482 ± 0.0052 | +0.0617 | — |
-| Self-implemented untuned simplified single-line GNN (10 dev splits) | 0.0528 ± 0.0088 | +0.0571 | — |
-| Self-implemented untuned simplified cross-line GNN (10 dev splits) | 0.0538 ± 0.0086 | +0.0561 | — |
-| Official `100-SVD + Ridge` (10 dev splits) | 0.0613 ± 0.0040 | +0.0485 | `[+0.0318, +0.0677]` (10/10) |
-| Ahlmann-Eltze Bilinear Linear Baseline (10 dev splits) | 0.0672 ± 0.0052 | +0.0427 | `[+0.0256, +0.0606]` (10/10) |
-| **S7 (10 dev splits)** | **0.1099 ± 0.0087** | — | — |
-| **额外随机重切分（与开发分割共享基因池，Seeds 101–110）：S0 → S7** | `0.0596` → `0.1073 ± 0.0072` | +0.0477 | — |
-| **Strict Simultaneous Union (~360 genes) + Refit Axis (10 splits): S0 → S7** | `0.0658` → `0.1115 ± 0.0089` | +0.0457 | `[+0.0276, +0.0635]` (10/10) |
-| **Official Codabench Private Test (Single Submission `1062221`, human-AI multi-round)** | **`0.0998`** | `+0.0173` vs best 2h agent `0.0825` | Within `0.02` noise margin (different dev category) |
-
----
-
-### 1.2 External Independent Evaluation on Replogle et al. (*Cell* 2022) K562 & RPE1 (Zero Hyperparameter Retuning)
-
-**Preprocessing Disclosure (`src/prepare_replogle2022_cache.py`)**: Top 5,000 finite readout genes per line were selected via `var/clean_mean` from the published `h5ad` (unsupervised expression-level filter; `4,991/5,000` RPE1 and `4,996/5,000` K562 overlap with `var/mean`). Perturbations are labeled `reproducible = 1` iff `anderson_darling_counts >= 50` AND `energy_test_p_value < 0.001`. When multiple guides targeted the same Ensembl gene, a single row was retained maximizing `(reproducible, ad_counts, num_cells_filtered)`—note that this deduplication rule uses perturbation-level summary statistics across the screen and is disclosed here for full methodological transparency.
-
-#### Table 3. Full Four-Metric External Validation on Replogle et al. (*Cell* 2022, 10 Strict Union Splits; S5 & S7 Co-Primary)
-
-| Method (Frozen / Untuned) | v5 Residual $r$ | Δ-Expr Pearson $r$ | Top-50 DE Pearson $r$ | Top-50 Sign Acc | Row-Level Median 95% CI (v5) |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| Constant Mean | 0.0009 ± 0.0074 | -0.0322 ± 0.0166 | -0.0531 | 0.4992 | — |
-| `100-SVD + Ridge (S0)` | 0.0883 ± 0.0048 | 0.1408 ± 0.0055 | 0.2119 | **0.6256** | — |
-| Ahlmann-Eltze Bilinear Linear (AE) | 0.0967 ± 0.0053 | 0.1470 ± 0.0068 | 0.2026 | 0.6255 | — |
-| `30-kNN` Co-expression | 0.0971 ± 0.0059 | **0.1479 ± 0.0080** | 0.1822 | 0.6095 | — |
-| Self-implemented untuned simplified ResMLP | 0.1091 ± 0.0067 | 0.0876 ± 0.0062 | 0.1896 | 0.5901 | — |
-| Self-implemented untuned simplified GNN | 0.1233 ± 0.0061 | 0.0971 ± 0.0055 | 0.1892 | 0.5999 | — |
-| **S1** (`+ SelfMask + BaseSub + √n + HybridTOM`) | 0.1239 ± 0.0066 | 0.1054 ± 0.0062 | 0.1917 | 0.5968 | S1 vs S0: `[+0.0256, +0.0450]` (10/10) |
-| **S2** (`+ Spectral Deflation`, **negative −0.0024**) | 0.1215 ± 0.0052 | 0.1033 ± 0.0050 | 0.1918 | 0.5922 | — |
-| **S3** (`+ Cross-Line Graph`) | 0.1267 ± 0.0051 | 0.1079 ± 0.0049 | 0.2067 | 0.5996 | — |
-| **S4** (`+ Non-Rep Anchors`, **flat 0.0000**) | 0.1267 ± 0.0057 | 0.1077 ± 0.0053 | 0.2088 | 0.5995 | — |
-| **S5** (`+ Cross-Line Bridge`, **co-primary / external peak**) | **0.1401 ± 0.0057** | 0.1193 ± 0.0053 | **0.2170** | 0.6064 | S5 vs AE: `[+0.0323, +0.0549]` (10/10); S5 vs GNN: `[+0.0038, +0.0302]` (7/10) |
-| **S6** (`+ Reciprocal Borrowing`, **negative −0.0109**) | 0.1292 ± 0.0064 | 0.1106 ± 0.0057 | 0.2155 | 0.6020 | S6 vs S5: `[-0.0169, -0.0050]` (9/10 CI < 0) |
-| **S7** (`+ Wiener + Manifold Snap`, **co-primary / full frozen**) | 0.1359 ± 0.0076 | 0.1162 ± 0.0066 | 0.2013 | 0.5962 | S7 vs AE: `[+0.0240, +0.0537]` (10/10); S7 vs GNN: `[-0.0041, +0.0286]` (3/10) |
+**Why Residual Methods Lose on Traditional Metrics (`DeltaR`, `Top-50 DE`, `Sign`) While Gaining on Perturbation Discrimination**: Shared systemic stress variation across CRISPRi perturbations accounts for a large fraction of unprojected variance and disproportionately populates each knockdown's Top-50 differentially expressed genes (as evidenced by `Constant Mean` alone reaching `DE50 = 0.0941` and `Sign = 0.5420` on xatlas). Because `S1–S7` explicitly project training targets orthogonal to `residual_axis` ($P_Q$), they discard the shared stress component, systematically lowering unprojected `DeltaR`, `Top-50 DE`, and `Sign Accuracy` relative to linear models that predict along the stress axis. In contrast, cross-perturbation retrieval (`disc_raw`) cannot exploit a constant stress direction shared across perturbations, revealing a genuine specificity advantage for `S5` (`+0.0417`, 9/10 CI > 0 on Replogle) and exposing `S7` manifold snapping's bias-variance trade-off (higher average v5 cosine at the expense of reduced individual distinctiveness).
 
 ---
 
-## 2. Pathway Enrichment Re-Evaluation (T5) & CRISPRi Proximity Audit (T6)
+## 2. Leave-One-Module-Out (LOMO) Ablation Across Both Atlases (T4)
 
-- **T5 Local `ReactomePathways.gmt` Enrichment (`M_bg = 1,784` evaluated unique genes)**: Confirms that `S7_top_164` and `S0_top_164` overlap heavily (`113/164`, `68.9%`) and both enrich the same amino-acid/ribosome/proteasome pathways (prior whole-genome enrichment claims withdrawn). Strictly against the 1,784-gene evaluated background, `S7 − S0` Top-150 yields 6 pathways at BH-FDR < 0.05 (`mRNA Splicing - Major Pathway`, `38/145`, `3.12×`, `FDR = 1.18e-08`), `S6 − S5` Top-150 yields 21 pathways (`mRNA Splicing`, `34/150`, `2.70×`, `FDR = 9.64e-06`), and `S5 − S2` Top-150 yields 5 pathways (`Mitochondrial translation`, `20/82`, `2.90×`, `FDR = 2.76e-03`).
-- **T6 CRISPRi Genomic Proximity Audit (Replogle 2022 + GENCODE v46 GRCh38 GTF, 10,530/10,539 genes mapped)**: Active `z < −4` donor-query pairs (`n = 3,939`) are enriched **474×** for `< 10 kb` TSS proximity (`1.422%` vs `0.003%` random null, `3.32%` of negative-z weight), confirming real CRISPRi local cis-repression/bidirectional-promoter confounding in negative-z pairs. On Replogle itself, removing all `< 10 kb` (and `< 100 kb`) donors retains **`97.41%`** of top-40 ownRec gains (`0.2536 → 0.2471`), while overall `S6` remains negative (`−0.0105 → −0.0108`). Because xatlas gene identities cannot be examined, local cis-repression remains an unexcluded confounder for xatlas's `S6` gain (where 78% of top-40 winners have negative-z top donors).
+| Module Left Out from Full `S7` | xatlas Contrib (`Full − LOO`, med CI) | Replogle Contrib (`Full − LOO`, med CI) | Classification |
+|:---|:---:|:---:|:---|
+| **`S1_HybridTOM` ($p=1.5$)** | **`+0.0109`** (`[+0.0027, +0.0193]`, 7/10 CI>0) | **`+0.0103`** (`[+0.0038, +0.0155]`, **10/10 CI>0**) | **Transferable core contribution** |
+| **`S7_WienerSnap`** | **`+0.0072`** (`[+0.0008, +0.0142]`, 6/10 CI>0) | **`+0.0067`** (`[+0.0006, +0.0114]`, **8/10 CI>0**) | **Transferable for v5** (hurts `disc_raw`) |
+| **`S5_CrossLineBridge`** | `+0.0020` (`[-0.0058, +0.0098]`, 8/10 pos) | **`+0.0061`** (`[+0.0022, +0.0103]`, **9/10 CI>0**) | **Transferable core contribution** |
+| **`S2_Deflation` (`d0..d10`)** | **`+0.0108`** (`[+0.0004, +0.0198]`, 5/10 CI>0) | `+0.0035` (`[-0.0051, +0.0113]`, 9/10 pos, 1/10 CI>0) | **Transferable (weaker on Replogle)** |
+| `S1_SqrtNCells` | `+0.0011` (`[-0.0020, +0.0050]`) | **`+0.0068`** (`[+0.0009, +0.0123]`, 6/10 CI>0) | Replogle-strong, xatlas-mild |
+| `S1_SelfMask` / `S1_BaseSub` / `S3_CrossLineGraph` | `+0.0004` / `−0.0007` / `−0.0002` | `+0.0006` / `+0.0007` / `+0.0016` | Minor / redundant in full system |
+| `S4_NonRepAnchors` | **`+0.0043`** (`[+0.0006, +0.0073]`, 6/10 CI>0) | `−0.0006` (`[-0.0018, +0.0008]`, 2/10 CI<0) | **Dataset-specific (xatlas only)** |
+| **`S6_Reciprocal`** | **`+0.0130`** (`[+0.0016, +0.0253]`, **8/10 CI>0**) | **`−0.0153`** (`[-0.0240, -0.0080]`, **9/10 CI<0**) | **Dataset-specific / externally negative** (LOO `v5 = 0.1512`) |
+
+---
+
+## 3. Pathway Enrichment (T5) & CRISPRi Proximity Confounding Audit (T6)
+
+- **T5 Local `ReactomePathways.gmt` (`M_bg = 1,784` evaluated unique Replogle genes)**: Top-accuracy genes of `S7` and `S0` overlap `113/164` (`68.9%`) and enrich the same housekeeping pathways. Gain-ranked sets against the evaluated background yield **mRNA Splicing - Major Pathway** (`S7−S0` Top-150: `38/145`, `3.12×`, `FDR = 1.18e-08`; `1,452` GMT-annotated background `FDR = 1.7e-08`; random 150-gene control `0/50`) and **Mitochondrial translation** (`S5−S2` Top-150: `20/82`, `2.90×`, `FDR = 2.76e-03`).
+- **T6 CRISPRi Proximity Audit (Replogle GRCh38 GENCODE v46, `10,530/10,539` mapped)**: Negative-z donor pairs (`z < −4`, `n = 3,939`) exhibit a **474×** enrichment for `< 10 kb` TSS proximity (`1.422%` vs `0.003%` null, `3.32%` weight; `< 1 kb` `1.371%`, 685×). On Replogle, removing `< 10 kb` donors retains `97.41%` of top-40 ownRec positive gains (`0.2536 → 0.2471`), showing that selected Replogle qualitative cases (`DICER1–DGCR8/DROSHA`, `NUDT21–CPSF6`, `MYC–TELO2/TTI1/TRRAP`) are trans rather than cis. However, on anonymized `xatlas`, 78% of top-40 `S6`-gain genes have strong negative-z top donors, and because benchmark rules forbid inspecting xatlas gene identities or coordinates, **CRISPRi local cis-repression cannot be excluded as a contributor to xatlas's S6 gain**.

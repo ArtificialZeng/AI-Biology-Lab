@@ -1,0 +1,226 @@
+{
+  "xatlas": {
+    "Full_S7": {
+      "mean_v5": 0.1099,
+      "mean_contrib": 0.0,
+      "sd_contrib": 0.0,
+      "median_ci95_lo": 0.0,
+      "median_ci95_hi": 0.0,
+      "splits_pos": "0/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S1_SelfMask": {
+      "mean_v5": 0.1095,
+      "mean_contrib": 0.0004,
+      "sd_contrib": 0.0005,
+      "median_ci95_lo": -0.0012,
+      "median_ci95_hi": 0.0022,
+      "splits_pos": "9/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S1_BaseSub": {
+      "mean_v5": 0.1106,
+      "mean_contrib": -0.0007,
+      "sd_contrib": 0.0027,
+      "median_ci95_lo": -0.0032,
+      "median_ci95_hi": 0.0035,
+      "splits_pos": "5/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "2/10"
+    },
+    "LOO_S1_SqrtNCells": {
+      "mean_v5": 0.1088,
+      "mean_contrib": 0.0011,
+      "sd_contrib": 0.0014,
+      "median_ci95_lo": -0.002,
+      "median_ci95_hi": 0.005,
+      "splits_pos": "8/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S1_HybridTOM": {
+      "mean_v5": 0.0989,
+      "mean_contrib": 0.0109,
+      "sd_contrib": 0.0056,
+      "median_ci95_lo": 0.0027,
+      "median_ci95_hi": 0.0193,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "7/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S2_Deflation": {
+      "mean_v5": 0.099,
+      "mean_contrib": 0.0108,
+      "sd_contrib": 0.0057,
+      "median_ci95_lo": 0.0004,
+      "median_ci95_hi": 0.0198,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "5/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S3_CrossLineGraph": {
+      "mean_v5": 0.11,
+      "mean_contrib": -0.0002,
+      "sd_contrib": 0.0028,
+      "median_ci95_lo": -0.0055,
+      "median_ci95_hi": 0.004,
+      "splits_pos": "4/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S4_NonRepAnchors": {
+      "mean_v5": 0.1055,
+      "mean_contrib": 0.0043,
+      "sd_contrib": 0.0024,
+      "median_ci95_lo": 0.0006,
+      "median_ci95_hi": 0.0073,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "6/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S5_CrossLineBridge": {
+      "mean_v5": 0.1078,
+      "mean_contrib": 0.002,
+      "sd_contrib": 0.0026,
+      "median_ci95_lo": -0.0058,
+      "median_ci95_hi": 0.0098,
+      "splits_pos": "8/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S6_Reciprocal": {
+      "mean_v5": 0.0969,
+      "mean_contrib": 0.013,
+      "sd_contrib": 0.0041,
+      "median_ci95_lo": 0.0016,
+      "median_ci95_hi": 0.0253,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "8/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S7_WienerSnap": {
+      "mean_v5": 0.1027,
+      "mean_contrib": 0.0072,
+      "sd_contrib": 0.0033,
+      "median_ci95_lo": 0.0008,
+      "median_ci95_hi": 0.0142,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "6/10",
+      "splits_ci_lt_zero": "0/10"
+    }
+  },
+  "replogle2022": {
+    "Full_S7": {
+      "mean_v5": 0.1359,
+      "mean_contrib": 0.0,
+      "sd_contrib": 0.0,
+      "median_ci95_lo": 0.0,
+      "median_ci95_hi": 0.0,
+      "splits_pos": "0/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S1_SelfMask": {
+      "mean_v5": 0.1353,
+      "mean_contrib": 0.0006,
+      "sd_contrib": 0.0006,
+      "median_ci95_lo": -0.0003,
+      "median_ci95_hi": 0.0018,
+      "splits_pos": "9/10",
+      "splits_ci_gt_zero": "1/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S1_BaseSub": {
+      "mean_v5": 0.1352,
+      "mean_contrib": 0.0007,
+      "sd_contrib": 0.001,
+      "median_ci95_lo": -0.0018,
+      "median_ci95_hi": 0.0031,
+      "splits_pos": "8/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S1_SqrtNCells": {
+      "mean_v5": 0.1291,
+      "mean_contrib": 0.0068,
+      "sd_contrib": 0.0031,
+      "median_ci95_lo": 0.0009,
+      "median_ci95_hi": 0.0123,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "6/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S1_HybridTOM": {
+      "mean_v5": 0.1255,
+      "mean_contrib": 0.0103,
+      "sd_contrib": 0.003,
+      "median_ci95_lo": 0.0038,
+      "median_ci95_hi": 0.0155,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "10/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S2_Deflation": {
+      "mean_v5": 0.1324,
+      "mean_contrib": 0.0035,
+      "sd_contrib": 0.003,
+      "median_ci95_lo": -0.0051,
+      "median_ci95_hi": 0.0113,
+      "splits_pos": "9/10",
+      "splits_ci_gt_zero": "1/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S3_CrossLineGraph": {
+      "mean_v5": 0.1343,
+      "mean_contrib": 0.0016,
+      "sd_contrib": 0.0012,
+      "median_ci95_lo": -0.0029,
+      "median_ci95_hi": 0.0059,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S4_NonRepAnchors": {
+      "mean_v5": 0.1365,
+      "mean_contrib": -0.0006,
+      "sd_contrib": 0.0008,
+      "median_ci95_lo": -0.0018,
+      "median_ci95_hi": 0.0008,
+      "splits_pos": "1/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "2/10"
+    },
+    "LOO_S5_CrossLineBridge": {
+      "mean_v5": 0.1298,
+      "mean_contrib": 0.0061,
+      "sd_contrib": 0.0017,
+      "median_ci95_lo": 0.0022,
+      "median_ci95_hi": 0.0103,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "9/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "LOO_S6_Reciprocal": {
+      "mean_v5": 0.1512,
+      "mean_contrib": -0.0153,
+      "sd_contrib": 0.005,
+      "median_ci95_lo": -0.024,
+      "median_ci95_hi": -0.008,
+      "splits_pos": "0/10",
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "9/10"
+    },
+    "LOO_S7_WienerSnap": {
+      "mean_v5": 0.1292,
+      "mean_contrib": 0.0067,
+      "sd_contrib": 0.0026,
+      "median_ci95_lo": 0.0006,
+      "median_ci95_hi": 0.0114,
+      "splits_pos": "10/10",
+      "splits_ci_gt_zero": "8/10",
+      "splits_ci_lt_zero": "0/10"
+    }
+  }
+}
