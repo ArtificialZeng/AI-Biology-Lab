@@ -1,17 +1,15 @@
-# BioXArena-Pro 协同作战任务看板 (Task Dispatch Board)
+# BioXArena-Pro 协同作战任务看板 (Task Dispatch Board — Round 6)
 
-> **BioXArena-Pro 定级**：**L2 确认突破**（20 分割均值 `0.1086 ± 0.0080`, `20/20`, $p = 1.09 \times 10^{-17}$；待 Codabench 实测确认 L3）  
-> **科研成果状态**：**四支柱全闭环（20 分割 Orion + DL/SOTA 对决 + Replogle *Cell* 2022 零调参外部泛化 + 实时 Reactome 复合物机理验证 + 3 套 300-DPI 论文主图）**
+> **当前定级**：**L2 维持**（Codabench 提交包已于 `2a8b2e0` 冻结，待人类 PI 单次上传评测）  
+> **当前轮次**：第六轮（Claude 主控 · 阶段 A & 阶段 B 严格整改与验证）
 
----
-
-## 任务看板
-
-| 任务编号 | 任务名称 | 目标口径 | 优先级 | 当前状态 | 实测核心数据 |
-|:---:|:---|:---|:---:|:---:|:---|
-| **TASK-001~006** | 历史 5 任务基线复核与 xatlas 初始基线对齐 | 官方 grade.py | P2 | **已完成 (L1 纠偏)** | 全量对齐官方 grader，彻底清除历史夸大项 (`59a7753`) |
-| **TASK-007** | **`PanPerturb-Bridge` 8 阶段消融 + 超严格重拟合轴审计** | 官方 10 分割 | P0 | **已完成 (L2 突破)** | `0.0613 → 0.1099 ± 0.0087` (`+0.0485`, `10/10`, `p=3.63e-8`); 重拟合轴 `+0.0457` (`10/10`, `p=3.77e-8`) |
-| **TASK-008** | **DL/SOTA 正面对决 + 10 个全新确认分割（20 分割审计）** | 官方 20 分割 | P0 | **已完成** | 击败 ResMLP (`0.0482`)、GEARS-GNN (`0.0528`)、Pan-GNN (`0.0538`)、Ahlmann-Eltze *Nat.Meth.*'25 (`0.0672`, `+63.5%`); 20 分割 `20/20` (`p=1.09e-17`) |
-| **TASK-009** | **Replogle et al. (*Cell* 2022) K562 & RPE1 零调参外部泛化** | 10 严格联合分割 | P0 | **已完成** | 冻结超参零调参迁移：`S5=0.1401`、`S7=0.1359`，显著击败 SVD (`0.0883`)、AE-Linear (`0.0967`)、ResMLP (`0.1091`)、GEARS-GNN (`0.1233`) |
-| **TASK-010** | **全量 OOF 生物机理归因 + 实时 Reactome 通路验证 + 300-DPI 主图** | Reactome FDR<0.05 | P0 | **已完成** | 蛋白酶体 (`29/37`, `FDR=4.4e-16`)、RQC (`70/106`, `4.4e-16`)、剪接体 (`39/213`, `9.9e-15`)；`ADAM10` 案例 (`-0.118→0.579`)；3 套 300-DPI 主图齐备 |
-| **TASK-011** | 官方 Codabench 私有 test 实测提交（需人类 PI 账号上传） | Codabench Leaderboard | P1 | **产物就绪待上传** | `submission.csv` + 455 `.npz` 已 100% 通过 `submission_preflight` |
+| 任务编号 | 任务名称 | 状态 | 对应提交 / 脚本 |
+|:---:|:---|:---:|:---|
+| **T0** | 冻结 Codabench 提交包（独立 commit + SHA-256 + preflight） | **已完成** | `2a8b2e0`, `CODABENCH_FREEZE_MANIFEST.json` |
+| **T1** | 第四、五轮 P0 文档全面整改（删 p 值、删夸大术语、不利结果上主表） | **已完成（待回填 T3 行级 CI）** | 5 份核心文档已通过 grep 核验 |
+| **T3** | 行级配对自助法 95% CI（4,000 次分层重抽，xatlas + Replogle） | **运行中** | `src/compute_row_bootstrap_ci.py` |
+| **T7** | 可复现性加固（缓存脚本、去硬编码路径、依赖锁、SHA-256 与零差值核验） | **已完成** | `0e7d3a7`, `src/prepare_replogle2022_cache.py`, `requirements-lock.txt` |
+| **T5** | 本地官方 `ReactomePathways.gmt` 超几何富集（评测全集背景） | **预先声明已锁定，待运行** | `src/round6_t5_local_reactome_enrichment.py` |
+| **T6** | Replogle CRISPRi 基因组邻近 / 双向启动子假设检验 | **预先声明已锁定，待运行** | `src/round6_t6_crispri_proximity_test.py` |
+| **T2** | 全 5 指标主表（含独立扰动区分度百分位，xatlas + Replogle） | **预先声明已锁定，待运行** | `src/round6_t2_multi_metric_bench.py` |
+| **T4** | 双数据集逐模块留一消融（LOMO + 行级 95% CI） | **预先声明已锁定，待运行** | `src/round6_t4_leave_one_out_ablation.py` |
