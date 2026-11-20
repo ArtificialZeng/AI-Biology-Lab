@@ -1,32 +1,21 @@
 # BioXArena-Pro 协同作战任务看板 (Task Dispatch Board)
 
-> **指挥官**：Antigravity (研发总指挥)  
-> **作战模式**：全自动自主科研 (Muse 依赖已依用户指令彻底剥离)  
-> **当前战役状态**：Phase 1-3 全面告捷 (6大核心任务 100% 官方预检通过)  
-> **成果落地**：论文草案 (`docs/PAPER_DRAFT.md`) + 媒体特稿 (`docs/PRESS_RELEASE_CN.md`) + 统一审计报告 (`reports/unified_evaluation_summary.csv`)
+> **当前阶段**：L1 -> L2/L3 攻坚转向  
+> **核心战役**：全力主攻 `xatlas-orion-perturb`（全基准最大突破空间任务）  
+> **纪律准则**：
+> 1. 评分 100% 走官方 grader；
+> 2. 数字必须可追溯到文件；
+> 3. 创新点必须带消融；
+> 4. 格式合规绝不等于成绩。
 
 ---
 
-## 一、 任务总览与完成状态
+## 任务看板
 
-| 任务编号 | 任务名称 | 负责成员 | 优先级 | 当前状态 | 对应成果 | 验收结论 |
-|:---:|:---|:---:|:---:|:---:|:---|:---:|
-| **TASK-001** | 化学生物学域基线适配与预检工具链对齐 | **Antigravity (自主完成)** | **P0** | **COMPLETED** | `src/chembio_fast_baseline.py` | **PASS_100%** |
-| **TASK-002** | 模态感知特征生成与疾病表型流水线 | **Antigravity (自主完成)** | **P1** | **COMPLETED** | `src/disease_fast_baseline.py` | **PASS_100%** |
-| **TASK-003** | 严格 OOD 验证闭环与 SLSQP 凸优化融合 | **Antigravity (自主完成)** | **P1** | **COMPLETED** | `src/ood_ensemble_selector.py` | **PASS_100% (+2.55% CV)** |
-| **TASK-004** | 细胞扰动域跨谱系药物响应与冷靶点匹配 | **Antigravity (自主完成)** | **P1** | **COMPLETED** | `src/perturbation_fast_baseline.py` | **PASS_100% (+31.2% OOD)** |
-| **TASK-005** | 全自动化审计体系与主控评估器 | **Antigravity (自主完成)** | **P0** | **COMPLETED** | `src/master_evaluator.py` | **PASS_100%** |
-| **TASK-006** | 顶刊论文撰写与三大 AI 科技媒体发稿特稿 | **Antigravity (自主完成)** | **P0** | **COMPLETED** | `docs/PAPER_DRAFT.md`, `docs/PRESS_RELEASE_CN.md` | **READY** |
-
----
-
-## 二、 核心战果速报 (Verification Summary)
-
-经 `src/master_evaluator.py` 自动化调取官方 `submission_preflight.validate_public_submission` 严格审计：
-
-1. **`solubility`** (化学生物): HistGradientBoosting + Morgan(1024)，单任务耗时 29.5s，OOD CV 0.7150，**PASS_100%**。
-2. **`tdc-dti-binding-affinity`** (化学生物): 分源独立标度校准 Ridge，单任务耗时 4.65s，OOD CV 0.2511，**PASS_100%**。
-3. **`gutcrc-cross-cohort-detection`** (疾病表型): 跨队列留一 (LOCO) 标准化逻辑回归，单任务耗时 1.17s，LOCO 0.4453，**PASS_100%**。
-4. **`msk-met-tumor-origin`** (疾病表型): 1021 维驱动变异类别平衡正则化，单任务耗时 1.03s，Macro-F1 0.4443，**PASS_100%**。
-5. **`cpjump-genetic-matching`** (细胞扰动): 多情境 Cell Painting 成像跨模态余弦对齐，单任务耗时 0.59s，AUC 0.6112，**PASS_100%**。
-6. **`gdsc-lineage-holdout-response`** (细胞扰动): 多模态 SVD 融合 + 结构零和归一化投影，单任务耗时 0.81s，5折留出谱系皮尔逊相关系数 **0.1942** (对比官方基准 0.148，**相对提升 +31.2%**)，**PASS_100%**。
+| 任务编号 | 任务名称 | 目标口径 | 优先级 | 当前状态 | 验收标准 |
+|:---:|:---|:---|:---:|:---:|:---|
+| **TASK-001~004** | 历史 6 任务基线工程化实现 | 官方参考基线 | P2 | **L1 完成 (已复核纠偏)** | 建立合规流水线与环境验证 |
+| **TASK-005** | xatlas-orion-perturb 官方基线复现 | 官方 grade.py | **P0 (关键)** | **进行中** | 准确复现 0.047 (kNN) 与 0.051 (SVD-Ridge) 到 ±0.01 |
+| **TASK-006** | 靶基因效应矩阵无监督指纹挖掘 | 官方 grade.py | **P0** | **待启动** | 利用 15000 敲除中该基因自身响应列作为特征 |
+| **TASK-007** | 通路共响应先验与结构正则化模型 | 官方 grade.py | **P0** | **待启动** | 实测突破 0.083，冲击 > 0.12 (有效 SOTA) |
+| **TASK-008** | 全流程消融实验与真实手稿更新 | 官方 grade.py | **P1** | **待启动** | 形成真实扎实的学术图表与报告 |
