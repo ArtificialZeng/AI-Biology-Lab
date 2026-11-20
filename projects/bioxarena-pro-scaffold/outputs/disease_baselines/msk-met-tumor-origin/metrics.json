@@ -1,0 +1,9 @@
+{
+  "solution_generation_time_sec": 0.84,
+  "train_time_sec": 0.18,
+  "test_time_sec": 0.02,
+  "code_total_time_sec": 1.03,
+  "model_used": "Class-Balanced Logistic Regression (C=0.05) on 1021 Genomics Features",
+  "model_param_count": 22462,
+  "notes": "Assay-generation OOD classification. 5-Fold Stratified Macro-F1: 0.4443"
+}

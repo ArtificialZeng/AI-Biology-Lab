@@ -1,0 +1,9 @@
+{
+  "solution_generation_time_sec": 1.03,
+  "train_time_sec": 0.13,
+  "test_time_sec": 0.0,
+  "code_total_time_sec": 1.17,
+  "model_used": "Cohort-Standardized Logistic Regression (C=0.05) on log10(Taxa)",
+  "model_param_count": 1744,
+  "notes": "Cross-cohort metagenomic detection. Leave-One-Cohort-Out Sens@90%Spec: 0.4453"
+}
