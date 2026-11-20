@@ -76,3 +76,29 @@ All three hypotheses compare **Primary Method `S5`** against **`AE` (Ahlmann-Elt
 ---
 
 **Pre-Registration Signed & Locked**: `R7-0` (standalone commit prior to any Nadig et al. 2025 data download or inspection).
+
+
+---
+
+## Addendum A: Pre-Registration Errata & Metadata-Only Lock Rule (Prior to Data Download)
+
+- **Date**: 2026-11-21 (following Master Controller audit of commit `c5294c0`; original text above preserved unmodified for full auditability)
+- **Data-State Audit Note**: Following `c5294c0`, two background `curl` downloads of `GSE264667` were briefly initiated (~10 seconds), immediately cancelled upon receiving Master Controller's Addendum A instruction, and completely deleted (`rm -rf external_data/nadig2025`). Zero Nadig et al. (2025) files exist on disk and zero expression data has been opened or inspected prior to this Addendum A commit.
+
+### Errata (Code-Authoritative Corrections)
+1. **Exact Split Seeds (`src/xatlas_panhuman_solver.py:58`)**:
+   - Original text erroneously listed `[0, 1, 2, 3, 7, 13, 21, 42, 99, 2024]`.
+   - **Authoritative code value**: `SEEDS_10 = [42, 0, 1, 2, 3, 7, 11, 99, 2024, 31337]`. All 10 confirmatory splits will use `SEEDS_10` imported directly from `src/xatlas_panhuman_solver.py`.
+2. **Exact Strict Union Holdout Split Definition (`src/replogle_external_validation.py:150-165`)**:
+   - Original text loosely described "20% of unique target genes across the union".
+   - **Authoritative code behavior (`make_strict_union_split`)**: For each cell line independently (`line0`, `line1`), sample `round(0.20 * len(unique_reproducible_in_readout_targets))` unique target genes as that line's validation targets; then take the **union** of the two cell lines' validation target sets (`union_val_targets`) and simultaneously exclude `union_val_targets` from **both** cell lines' training sets (zero cross-line target leakage).
+3. **Exact Stage Naming & Method Signature (`src/xatlas_panhuman_solver.py:282, 543`)**:
+   - Original text erroneously referred to `S3` as "Precision Weighting" and the method as `fit_predict(..., stage=5)`.
+   - **Authoritative code definitions**:
+     - `S3` is **Pan-Human Cross-Line Gene Graph** (`+ Pan-Human Cross-Line Gene Graph` over shared readout genes).
+     - The frozen solver method is `PanPerturbBridgeModel.predict_for_source_all_stages(..., stages_to_run=("S0", ..., "S7"))`.
+     - Primary method `S5` therefore consists of: `S0` (baseline ridge) + `S1` (HybridTOM $p=1.5$) + `S2` (Multi-Scale Spectral Deflation) + `S3` (Pan-Human Cross-Line Gene Graph) + `S4` (Non-Reproducible Anchors) + `S5` (Cross-Line Perturb-Bridge); excluding `S6` (Reciprocal Borrowing) and `S7` (Output SVD Wiener + Manifold Snapping).
+
+### Additional Lock Rule: Reproducibility Label Definition on Nadig et al. (2025)
+4. **Metadata-Only Lock Before Modeling**:
+   - If the official Nadig et al. (2025) files do **not** include the exact `anderson_darling_counts` and `energy_test_p_value` columns present in Replogle et al. (2022), the equivalent `reproducible` threshold (and readout-gene selection column) **MUST** be decided strictly by inspecting file schema / `obs` & `var` metadata only — **without inspecting any expression matrix values or running any model** — and **MUST be locked in a dedicated standalone git commit (`Addendum B`) BEFORE building predictions or running any evaluation script**.
