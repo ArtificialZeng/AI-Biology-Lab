@@ -2,6 +2,7 @@
 """
 TASK-007: Official Baseline Reproduction for xatlas-orion-perturb.
 Strictly adheres to official scoring logic and validation split definition.
+Imports official strict_group_mean_from_row_scores from tasks.utils.
 """
 
 import os
@@ -10,6 +11,10 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 from sklearn.linear_model import Ridge
+
+# Import official scoring logic
+sys.path.insert(0, "BioXArena-Pro")
+from tasks.utils import strict_group_mean_from_row_scores
 
 DATA_DIR = "BioXArena-Pro/data/perturbation/xatlas-orion-perturb/public"
 
@@ -33,31 +38,19 @@ def score_prediction(true, pred, baseline, axis, scoring_indices, target_idx=Non
         v = float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
     return float(np.clip(v, -1.0, 1.0)) if np.isfinite(v) else 0.0
 
-def evaluate_model_on_val(val_preds, val_rows, train_y, baselines, axes, score_indices, gene2idx):
-    scores_by_line = {"HCT116": [], "HEK293T": []}
-    for r_id, pred in val_preds.items():
-        row = val_rows[r_id]
-        source = row["source"]
-        target_gene = row["perturbation"]
+def evaluate_model_on_val(val_preds, val_df, train_y, baselines, axes, score_indices, gene2idx):
+    row_scores = []
+    for _, r in val_df.iterrows():
+        rid = r["id"]
+        source = r["source"]
+        target_gene = r["perturbation"]
         target_idx = gene2idx[source].get(target_gene)
-        
-        baseline = baselines[source]
-        axis = axes[source]
-        s_idx = score_indices[f"{source}_indices"]
-        true = np.asarray(train_y[r_id], dtype=np.float64)
-        
-        s = score_prediction(true, pred, baseline, axis, s_idx, target_idx)
-        scores_by_line[source].append(s)
-        
-    res = {}
-    line_means = []
-    for line, s_list in scores_by_line.items():
-        m = float(np.mean(s_list))
-        se = float(np.std(s_list) / np.sqrt(len(s_list)))
-        res[line] = (m, se)
-        line_means.append(max(0.0, m))
-    res["overall"] = float(np.mean(line_means))
-    return res
+        s = score_prediction(
+            train_y[rid], val_preds[rid], baselines[source], axes[source],
+            score_indices[f"{source}_indices"], target_idx
+        )
+        row_scores.append(s)
+    return strict_group_mean_from_row_scores(val_df, row_scores, "source")
 
 def main():
     print("Loading xatlas-orion-perturb data...")
@@ -66,7 +59,7 @@ def main():
     baselines_npz = np.load(f"{DATA_DIR}/context_baseline.npz")
     axes_npz = np.load(f"{DATA_DIR}/residual_axis.npz")
     score_idx_npz = np.load(f"{DATA_DIR}/score_gene_indices.npz")
-    train_y = np.load(f"{DATA_DIR}/train_y.npz")
+    train_y_npz = np.load(f"{DATA_DIR}/train_y.npz")
     
     gene2idx = {
         "HCT116": {g: i for i, g in enumerate(genes_npz["HCT116_genes"])},
@@ -76,83 +69,113 @@ def main():
     baselines = {k: np.asarray(baselines_npz[k], dtype=np.float64) for k in baselines_npz.files}
     axes = {k: np.asarray(axes_npz[k], dtype=np.float64) for k in axes_npz.files}
     score_indices = {k: np.asarray(score_idx_npz[k], dtype=np.int64) for k in score_idx_npz.files}
+    all_train_y = {k: np.asarray(train_y_npz[k], dtype=np.float32) for k in train_y_npz.files}
     
-    # Validation split construction:
-    # 20% of reproducible measured-target rows (129 HCT116, 247 HEK293T)
-    val_rows = {}
-    train_meas_rows = {"HCT116": [], "HEK293T": []}
+    # Validation split construction (seed 42 reference split: 129 HCT116, 247 HEK293T)
+    val_rids = []
+    train_meas_rids = {"HCT116": [], "HEK293T": []}
     
     rng = np.random.RandomState(42)
     for source, n_val in [("HCT116", 129), ("HEK293T", 247)]:
         source_genes = set(gene2idx[source].keys())
-        sub_df = train_df[(train_df["source"] == source) & (train_df["reproducible"] == 1) & (train_df["perturbation"].isin(source_genes))].copy()
+        sub_df = train_df[
+            (train_df["source"] == source) &
+            (train_df["reproducible"] == 1) &
+            (train_df["perturbation"].isin(source_genes))
+        ].copy()
         
-        # Unique target genes (1 row per target gene)
         unique_targets = sub_df["perturbation"].unique()
         perm = rng.permutation(unique_targets)
         val_targets = set(perm[:n_val])
         
         for _, r in sub_df.iterrows():
-            rid = r["id"]
             if r["perturbation"] in val_targets:
-                val_rows[rid] = r.to_dict()
+                val_rids.append(r["id"])
             else:
-                train_meas_rows[source].append(rid)
+                train_meas_rids[source].append(r["id"])
                 
-    print(f"Validation set: {len(val_rows)} rows (HCT116: {sum(1 for r in val_rows.values() if r['source'] == 'HCT116')}, HEK293T: {sum(1 for r in val_rows.values() if r['source'] == 'HEK293T')})")
+    val_df = train_df[train_df["id"].isin(val_rids)].copy().reset_index(drop=True)
+    print(f"Validation set: {len(val_df)} rows (HCT116: {sum(val_df['source'] == 'HCT116')}, HEK293T: {sum(val_df['source'] == 'HEK293T')})")
     
     # 1. Baseline: Constant Baseline Vector
-    pred_base = {rid: baselines[row["source"]] for rid, row in val_rows.items()}
-    res_base = evaluate_model_on_val(pred_base, val_rows, train_y, baselines, axes, score_indices, gene2idx)
-    print(f"Baseline (Zeros/Baseline): Overall = {res_base['overall']:.4f} (Ref: 0.000)")
+    pred_base = {r["id"]: baselines[r["source"]] for _, r in val_df.iterrows()}
+    s_base = evaluate_model_on_val(pred_base, val_df, all_train_y, baselines, axes, score_indices, gene2idx)
+    print(f"Baseline (Zeros/Baseline): Overall = {s_base:.4f} (Ref: 0.000)")
     
     # 2. Baseline: Constant Training Mean of Reproducible Measured Targets
-    mean_effects = {}
-    for source in ["HCT116", "HEK293T"]:
-        rids = train_meas_rows[source]
-        vecs = [train_y[r] for r in rids]
-        mean_effects[source] = np.mean(vecs, axis=0).astype(np.float64)
-        
-    pred_const = {rid: mean_effects[row["source"]] for rid, row in val_rows.items()}
-    res_const = evaluate_model_on_val(pred_const, val_rows, train_y, baselines, axes, score_indices, gene2idx)
-    print(f"Constant Mean: Overall = {res_const['overall']:.4f} | HCT116 = {res_const['HCT116'][0]:.4f}±{res_const['HCT116'][1]:.4f} | HEK293T = {res_const['HEK293T'][0]:.4f}±{res_const['HEK293T'][1]:.4f} (Ref: 0.009)")
+    mean_effects = {s: np.mean([all_train_y[rid] for rid in train_meas_rids[s]], axis=0) for s in ["HCT116", "HEK293T"]}
+    pred_const = {r["id"]: mean_effects[r["source"]] for _, r in val_df.iterrows()}
+    s_const = evaluate_model_on_val(pred_const, val_df, all_train_y, baselines, axes, score_indices, gene2idx)
+    print(f"Constant Mean: Overall = {s_const:.4f} (Ref: 0.009)")
 
-    # 3. Baseline: 100-component SVD + Ridge(alpha=10)
-    print("\nTraining 100-SVD + Ridge baseline...")
+    # 3. Baseline: 30-kNN co-expression
+    pred_knn = {}
+    for source in ["HCT116", "HEK293T"]:
+        line_train_df = train_df[(train_df["source"] == source) & (~train_df["id"].isin(val_rids))]
+        tr_rids = line_train_df["id"].tolist()
+        Y_all = np.array([all_train_y[rid] for rid in tr_rids], dtype=np.float32)
+        
+        C = Y_all.T
+        C_norm = C - C.mean(axis=1, keepdims=True)
+        C_norm /= (np.linalg.norm(C_norm, axis=1, keepdims=True) + 1e-12)
+        
+        tr_meas_sub = train_df[train_df["id"].isin(train_meas_rids[source])]
+        tr_targets = tr_meas_sub["perturbation"].tolist()
+        tr_target_idx = [gene2idx[source][t] for t in tr_targets]
+        tr_Y = np.array([all_train_y[rid] for rid in tr_meas_sub["id"]], dtype=np.float32)
+        
+        val_sub = val_df[val_df["source"] == source]
+        val_targets = val_sub["perturbation"].tolist()
+        val_target_idx = [gene2idx[source][t] for t in val_targets]
+        
+        C_tr = C_norm[tr_target_idx]
+        C_val = C_norm[val_target_idx]
+        corr = C_val @ C_tr.T
+        
+        k = 30
+        for i, (_, r) in enumerate(val_sub.iterrows()):
+            c_i = corr[i]
+            top_k = np.argsort(c_i)[-k:]
+            w = np.maximum(0.0, c_i[top_k])
+            if w.sum() > 0:
+                w /= w.sum()
+                pred = np.sum(tr_Y[top_k] * w[:, None], axis=0)
+            else:
+                pred = np.mean(tr_Y[top_k], axis=0)
+            pred_knn[r["id"]] = pred.astype(np.float64)
+            
+    s_knn = evaluate_model_on_val(pred_knn, val_df, all_train_y, baselines, axes, score_indices, gene2idx)
+    print(f"30-kNN Co-expression: Overall = {s_knn:.4f} (Ref: 0.047)")
+
+    # 4. Baseline: 100-component SVD + Ridge(alpha=10)
     pred_ridge = {}
     for source in ["HCT116", "HEK293T"]:
-        # Build training effect matrix for the line (all training rows of the line that are NOT in validation)
-        line_train_df = train_df[(train_df["source"] == source) & (~train_df["id"].isin(val_rows.keys()))]
+        line_train_df = train_df[(train_df["source"] == source) & (~train_df["id"].isin(val_rids))]
         tr_rids = line_train_df["id"].tolist()
-        print(f"  [{source}] Loading {len(tr_rids)} training knock-downs for gene embedding...")
+        Y_all = np.array([all_train_y[rid] for rid in tr_rids], dtype=np.float32)
         
-        # Load effect matrix in batches
-        Y_all = np.array([train_y[rid] for rid in tr_rids], dtype=np.float32)  # (N_tr, 5000)
-        
-        # SVD of the column matrix (5000 genes x N_tr)
-        print(f"  [{source}] Computing 100-component SVD of gene columns...")
         svd = TruncatedSVD(n_components=100, random_state=42)
-        Z_genes = svd.fit_transform(Y_all.T)  # (5000, 100)
+        Z_genes = svd.fit_transform(Y_all.T)
         
-        # Training instances: reproducible measured targets
-        tr_meas_rids = [rid for rid in train_meas_rows[source]]
-        tr_target_indices = [gene2idx[source][train_df.loc[train_df["id"] == rid, "perturbation"].values[0]] for rid in tr_meas_rids]
+        tr_meas_sub = train_df[train_df["id"].isin(train_meas_rids[source])]
+        tr_targets = tr_meas_sub["perturbation"].tolist()
+        tr_target_idx = [gene2idx[source][t] for t in tr_targets]
+        tr_Y = np.array([all_train_y[rid] for rid in tr_meas_sub["id"]], dtype=np.float32)
         
-        X_tr = Z_genes[tr_target_indices]  # (N_meas, 100)
-        Y_tr = np.array([train_y[rid] for rid in tr_meas_rids], dtype=np.float32)  # (N_meas, 5000)
+        X_tr = Z_genes[tr_target_idx]
+        val_sub = val_df[val_df["source"] == source]
+        val_targets = val_sub["perturbation"].tolist()
+        val_target_idx = [gene2idx[source][t] for t in val_targets]
+        X_val = Z_genes[val_target_idx]
         
         ridge = Ridge(alpha=10.0)
-        ridge.fit(X_tr, Y_tr)
-        
-        # Predict on validation rows
-        for rid, row in val_rows.items():
-            if row["source"] == source:
-                t_idx = gene2idx[source][row["perturbation"]]
-                x_val = Z_genes[t_idx:t_idx+1]
-                pred_ridge[rid] = ridge.predict(x_val)[0].astype(np.float64)
+        ridge.fit(X_tr, tr_Y)
+        p_val = ridge.predict(X_val)
+        for i, (_, r) in enumerate(val_sub.iterrows()):
+            pred_ridge[r["id"]] = p_val[i].astype(np.float64)
                 
-    res_ridge = evaluate_model_on_val(pred_ridge, val_rows, train_y, baselines, axes, score_indices, gene2idx)
-    print(f"\n100-SVD + Ridge (alpha=10): Overall = {res_ridge['overall']:.4f} | HCT116 = {res_ridge['HCT116'][0]:.4f}±{res_ridge['HCT116'][1]:.4f} | HEK293T = {res_ridge['HEK293T'][0]:.4f}±{res_ridge['HEK293T'][1]:.4f} (Ref: 0.051 [HCT: 0.060±0.013, HEK: 0.042±0.008])")
+    s_ridge = evaluate_model_on_val(pred_ridge, val_df, all_train_y, baselines, axes, score_indices, gene2idx)
+    print(f"100-SVD + Ridge (alpha=10): Overall = {s_ridge:.4f} (Ref: 0.051; 10-split mean is 0.0613)")
 
 if __name__ == "__main__":
     main()

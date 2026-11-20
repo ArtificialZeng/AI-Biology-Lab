@@ -1,16 +1,33 @@
 {
   "task": "xatlas-orion-perturb",
-  "elapsed_seconds": 18.944287061691284,
-  "val_score_cosine_ridge": 0.0804,
-  "val_score_svd_ridge": 0.0702,
-  "val_score_knn": 0.0503,
-  "val_score_constant": 0.0195,
-  "official_ref_svd_ridge": 0.051,
-  "official_ref_knn": 0.047,
-  "official_sota_22_configs": 0.0825,
-  "n_test_rows": 455,
-  "status": "L2_ADVANCED",
-  "cv_score": 0.0804,
-  "model_used": "Target-Column Cosine Similarity Ridge (alpha=5.0)",
-  "notes": "Val Score: 0.0804 (HCT: 0.1061, HEK: 0.0548) vs Baseline Ref 0.051 and 22-agent SOTA 0.0825"
+  "elapsed_seconds": 21.89599585533142,
+  "status": "L1_BASELINE_REPRODUCED",
+  "evaluation_protocol": "10-Split Independent Random Validation (Seeds: [42, 0, 1, 2, 3, 7, 11, 99, 2024, 31337])",
+  "official_grader": "tasks.utils.strict_group_mean_from_row_scores",
+  "seed_42_computed_score": 0.08043239699137641,
+  "metrics_10split": {
+    "constant_mean": {
+      "mean": 0.009,
+      "sd": 0.004,
+      "official_ref": 0.009
+    },
+    "knn_30": {
+      "mean": 0.0413,
+      "sd": 0.0054,
+      "official_ref": 0.047
+    },
+    "svd100_ridge": {
+      "mean": 0.0613,
+      "sd": 0.004,
+      "official_ref": 0.051
+    },
+    "cosine_ridge": {
+      "mean": 0.0655,
+      "sd": 0.0044,
+      "delta_vs_svd_baseline": 0.0041,
+      "delta_sd": 0.0023,
+      "exceeds_noise_threshold_0_02": false
+    }
+  },
+  "notes": "10-split mean gain (+0.0041) is within official 0.02 noise margin. Internal validation split is ~0.010 easier than private test set. Comparing with test leaderboard 0.0825 is invalid."
 }
