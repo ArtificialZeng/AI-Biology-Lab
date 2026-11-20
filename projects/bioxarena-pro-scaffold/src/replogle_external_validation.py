@@ -21,6 +21,7 @@ CRITICAL SCIENTIFIC RIGOR:
 import argparse
 import gc
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -49,7 +50,17 @@ from xatlas_panhuman_solver import (
     score_prediction,
 )
 
-REPLOGLE_DIR = Path("/Volumes/雷雳传输/A顶会论文同步盘/A_BIG_MAC顶会论文写稿/AI自主研究/gemini/external_data/replogle2022")
+def _resolve_replogle_dir() -> Path:
+    cands = [
+        *( [Path(os.environ["REPLOGLE_DATA_DIR"])] if os.environ.get("REPLOGLE_DATA_DIR") else [] ),
+        Path.cwd() / "external_data/replogle2022",
+        Path(__file__).resolve().parents[4] / "external_data/replogle2022",
+        Path(__file__).resolve().parents[3] / "external_data/replogle2022",
+    ]
+    return next((c for c in cands if c.exists()), cands[0])
+
+
+REPLOGLE_DIR = _resolve_replogle_dir()
 
 
 def load_replogle_cell_line(h5_path: Path, source_name: str, n_genes: int = 5000):

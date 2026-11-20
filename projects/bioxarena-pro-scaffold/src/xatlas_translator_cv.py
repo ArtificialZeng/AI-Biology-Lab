@@ -20,7 +20,7 @@ import pandas as pd
 from sklearn.model_selection import KFold
 
 candidate_dirs = [
-    Path("/Volumes/雷雳传输/A顶会论文同步盘/A_BIG_MAC顶会论文写稿/AI自主研究/gemini/BioXArena-Pro"),
+    *( [Path(os.environ["BIOXARENA_DIR"])] if os.environ.get("BIOXARENA_DIR") else [] ),
     Path.cwd() / "BioXArena-Pro",
     Path(__file__).resolve().parents[4] / "BioXArena-Pro",
 ]

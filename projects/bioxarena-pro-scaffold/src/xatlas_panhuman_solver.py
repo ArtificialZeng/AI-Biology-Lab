@@ -30,11 +30,12 @@ from scipy.stats import ttest_rel
 from sklearn.decomposition import TruncatedSVD
 from sklearn.linear_model import Ridge
 
-# Resolve BioXArena-Pro benchmark directory robustly
+# Resolve BioXArena-Pro benchmark directory robustly via BIOXARENA_DIR env var or relative paths
 candidate_dirs = [
-    Path("/Volumes/雷雳传输/A顶会论文同步盘/A_BIG_MAC顶会论文写稿/AI自主研究/gemini/BioXArena-Pro"),
+    *( [Path(os.environ["BIOXARENA_DIR"])] if os.environ.get("BIOXARENA_DIR") else [] ),
     Path.cwd() / "BioXArena-Pro",
     Path(__file__).resolve().parents[4] / "BioXArena-Pro",
+    Path(__file__).resolve().parents[3] / "BioXArena-Pro",
 ]
 BENCHMARK_DIR = next(
     (c for c in candidate_dirs if (c / "data/perturbation/xatlas-orion-perturb/public").exists()),

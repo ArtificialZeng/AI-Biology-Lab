@@ -42,7 +42,7 @@ from xatlas_panhuman_solver import (
     score_prediction,
 )
 
-REACTOME_CLI = Path("/Users/mac/.gemini/config/plugins/structural-biology/skills/reactome_database/scripts/reactome_analysis.py")
+REACTOME_CLI = Path(os.environ["REACTOME_CLI_PATH"]) if os.environ.get("REACTOME_CLI_PATH") else None
 
 
 def get_projected_vectors(true, pred, baseline, axis, scoring_indices, target_idx=None):
@@ -57,7 +57,7 @@ def get_projected_vectors(true, pred, baseline, axis, scoring_indices, target_id
 
 
 def run_reactome_enrichment(genes: list[str], out_json: Path, label: str):
-    if not genes or not REACTOME_CLI.exists():
+    if not genes or REACTOME_CLI is None or not REACTOME_CLI.exists():
         return []
     gene_str = ",".join(sorted(set(genes)))
     cmd = [
