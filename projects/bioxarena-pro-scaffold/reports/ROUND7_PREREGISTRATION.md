@@ -102,3 +102,45 @@ All three hypotheses compare **Primary Method `S5`** against **`AE` (Ahlmann-Elt
 ### Additional Lock Rule: Reproducibility Label Definition on Nadig et al. (2025)
 4. **Metadata-Only Lock Before Modeling**:
    - If the official Nadig et al. (2025) files do **not** include the exact `anderson_darling_counts` and `energy_test_p_value` columns present in Replogle et al. (2022), the equivalent `reproducible` threshold (and readout-gene selection column) **MUST** be decided strictly by inspecting file schema / `obs` & `var` metadata only — **without inspecting any expression matrix values or running any model** — and **MUST be locked in a dedicated standalone git commit (`Addendum B`) BEFORE building predictions or running any evaluation script**.
+
+
+---
+
+## Addendum B: Locked Nadig et al. (2025) Single-Cell-to-Pseudobulk Preprocessing & Reproducibility Protocol (Prior to Reading Any Expression Matrix Values)
+
+- **Date**: 2026-11-21
+- **Zero-Expression-Read Audit Guarantee**: Prior to this commit, ONLY HDF5 schema and `obs`/`var` metadata keys/categories of the downloaded Nadig et al. (2025) files were inspected; **zero expression entries (`X`) have been read and zero models have been run**.
+
+### 1. Official Data Provenance, Author Bulk Audit, License & SHA-256
+- **Author Normalized-Bulk Audit**: Inspected NCBI GEO `GSE264667/suppl/`, Figshare (`29498366`, which contains only DESeq2 LFC/SE/p summary tables, not normalized bulk matrices), and Zenodo. **No author-published `normalized_bulk_01.h5ad` exists** for Nadig et al. (2025) HepG2 or Jurkat; the primary official author release is the raw single-cell UMI count `.h5ad` pair on NCBI GEO (`GSE264667`, Nadig, Replogle, O'Connor, Weissman et al., *Nature Genetics* 2025, PMID `40259084`; public NIH GEO open-access release):
+  1. **`GSE264667_hepg2_raw_singlecell_01.h5ad`**
+     - URL: `https://ftp.ncbi.nlm.nih.gov/geo/series/GSE264nnn/GSE264667/suppl/GSE264667_hepg2_raw_singlecell_01.h5ad`
+     - SHA-256: `e1ad7c3c5a201c861a207a858aa7e59f5e6ac1955674c415f7de0d1dadadb52e`
+     - Metadata schema: `145,473` cells × `9,624` readout genes, `56` `gem_group`s (all 56 contain `non-targeting` controls; `4,976` total NT cells), `2,390` unique `ENSG` target genes (`2,549` non-NT `gene_transcript`s).
+  2. **`GSE264667_jurkat_raw_singlecell_01.h5ad`**
+     - URL: `https://ftp.ncbi.nlm.nih.gov/geo/series/GSE264nnn/GSE264667/suppl/GSE264667_jurkat_raw_singlecell_01.h5ad`
+     - SHA-256: `ffbe15f2c8f7ffcfd7b0ba9e6937d4ebc2d03b0179fa8234648a59bcb82c04a3`
+     - Metadata schema: `262,956` cells × `8,882` readout genes, `55` `gem_group`s (all 55 contain `non-targeting` controls; `12,013` total NT cells), `2,390` unique `ENSG` target genes (`2,549` non-NT `gene_transcript`s).
+
+### 2. Single-Cell Normalization & Pseudobulk Aggregation (Exact Replogle et al. 2022 Method)
+Strictly reproducing Replogle et al. (*Cell* 2022, STAR Methods "Normalization and z-scoring of expression data", `normalize_to_gemgroup_control`):
+1. **Control cell definition**: cells with `obs/gene == "non-targeting"`.
+2. **UMI library-size normalization**: within each `gem_group` $g$, scale each cell $c \in g$'s raw UMI count vector $x_c$ by $M_g / \text{UMI}_c$, where $\text{UMI}_c$ is `obs/UMI_count` and $M_g = \text{median}_{c' \in g}(\text{UMI}_{c'})$.
+3. **Per-`gem_group` control z-scoring**: within each `gem_group` $g$ and for each gene $j$, compute mean $\mu_{g,j}$ and standard deviation $\sigma_{g,j}$ across `non-targeting` control cells in `gem_group` $g$, then compute $z_{c,j} = (\tilde{x}_{c,j} - \mu_{g,j}) / \sigma_{g,j}$. Any gene $j$ with $\sigma_{g,j} == 0$ (or non-finite z-score) in any `gem_group` is flagged non-finite and excluded before readout gene selection.
+4. **Pseudobulk averaging**: average $z_{c,\cdot}$ across all cells sharing each non-control `obs/gene_transcript` with valid `ENSG` `obs/gene_id`.
+5. **Minimum cell count**: retain perturbations with `n_cells >= 10` in the pseudobulk cache; require `n_cells >= 25` (Replogle 2022 QC criterion) for eligibility as `reproducible = 1`.
+
+### 3. Locked 5,000 Readout Gene Selection (Matching Replogle `var/clean_mean`)
+- Drop any gene flagged non-finite during per-`gem_group` z-scoring.
+- Rank all remaining finite genes by **mean library-size-normalized expression across `non-targeting` control cells** (`control_mean`, directly corresponding to Replogle 2022 `var/clean_mean`) and select the **top `5,000` genes** per cell line.
+
+### 4. Locked `reproducible` Definition & Target Deduplication (Exact Replogle 2022 Thresholds)
+Because raw single-cell files lack precomputed `anderson_darling_counts` and `energy_test_p_value`, we lock the exact equivalent statistical tests with **identical numerical thresholds** prior to any computation:
+1. **Two-sample Anderson-Darling test (`ad_counts`)**: for each non-control perturbation `gene_transcript` with `n_cells >= 25`, test its gemgroup-normalized single-cell z-scores against a fixed `gem_group`-stratified reference subsample of `1,000` `non-targeting` control cells (`RandomState(42)`) across all `5,000` selected readout genes using the exact two-sample Anderson-Darling $A^2_{nm}$ statistic (Scholz & Stephens 1987 asymptotic $p$-value, verified against `scipy.stats.anderson_ksamp`), followed by Benjamini-Hochberg FDR correction across the 5,000 genes; `ad_counts = #(genes with BH FDR < 0.05)`.
+2. **Energy-distance permutation test (`energy_test_p_value`)**: project gemgroup-normalized single-cell profiles (over the 5,000 selected readout genes) into their top-20 PCA space (`TruncatedSVD(n_components=20, random_state=42)` fit on all `non-targeting` cells + perturbation cells in chunked/batched or cell-standardized form), compute Euclidean two-sample energy distance between perturbation $p$'s cells and a fixed `gem_group`-stratified subsample of `500` `non-targeting` control cells, and run `n_perm = 2,000` random label permutations (`RandomState(42)`): `energy_test_p_value = (n_exceed + 1) / (2000 + 1)`.
+3. **Locked label rule**: `reproducible = 1` iff **`n_cells >= 25` AND `ad_counts >= 50` AND `energy_test_p_value < 0.001`**; otherwise `reproducible = 0`. Thresholds are strictly locked and will NOT be adjusted after viewing results.
+4. **Target deduplication**: keep strictly 1 row per unique Ensembl target gene `ENSG...` per cell line, choosing the highest tuple `(reproducible, ad_counts, n_cells)`.
+
+### 5. Ensembl Harmonization & Memory-Safe Chunked Processing
+- **ID unification**: Both HepG2 (solver slot `HCT116`) and Jurkat (solver slot `HEK293T`) use Ensembl Gene IDs (`ENSG...`) for both readout genes (`var/gene_id`, `7,632` raw shared) and perturbation targets (`obs/gene_id`, `2,389` shared).
+- **Memory safety**: `src/prepare_nadig2025_cache.py` processes `X` strictly **chunked by `gem_group`** (1 `gem_group` at a time, ~2,500–5,000 cells per chunk, well within 36 GB RAM), verifying input file SHA-256 and writing cache output SHA-256 digests to `cache_manifest.json`.
