@@ -1,0 +1,9 @@
+{
+  "solution_generation_time_sec": 4.54,
+  "train_time_sec": 0.11,
+  "test_time_sec": 0.0,
+  "code_total_time_sec": 4.65,
+  "model_used": "Source-Separated Ridge Regressor + Morgan(512) + AAC",
+  "model_param_count": 538,
+  "notes": "Source-separated double-cold training. Estimated OOD score: 0.2511 (kiba=0.302, bdb=0.209, davis=0.234)"
+}
