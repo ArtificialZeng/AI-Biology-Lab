@@ -1,0 +1,110 @@
+{
+  "n_total_oof_perturbations": 1882,
+  "hct116_n": 646,
+  "hek293t_n": 1236,
+  "oof_means": {
+    "S0": 0.0604,
+    "S2": 0.0714,
+    "S5": 0.0845,
+    "S6": 0.101,
+    "S7": 0.1073
+  },
+  "reciprocal_stratification": {
+    "n_with_any_hit_gt4z": 1817,
+    "mean_S6_minus_S5_with_hit": 0.0135,
+    "mean_S6_minus_S5_no_hit": -0.0012,
+    "n_with_unmeasured_donor_gt4z": 1624,
+    "mean_S6_minus_S5_with_unmeasured_donor": 0.0133,
+    "mean_S0_with_unmeasured_donor": 0.0543,
+    "mean_S7_with_unmeasured_donor": 0.0945
+  },
+  "reactome_enrichments": {
+    "bridge_winners_S5_vs_S2": [],
+    "reciprocal_winners_S6_vs_S5": [],
+    "high_accuracy_S7_gt030": [],
+    "hard_boundary_S7_lt002": []
+  },
+  "case_studies_meta": [
+    {
+      "source": "HCT116",
+      "id": "r_af4ae1d32777d180",
+      "perturbation": "g_f7c3d51640a64efc",
+      "r_S0": 0.00471,
+      "r_S5": 0.01276,
+      "r_S6": 0.75877,
+      "r_S7": 0.8529,
+      "top_recip_donors": "g_f8c41a103c7baca4(-7.3z*); g_449ff725181905b0(-5.6z*); g_22cd0b632c8b803a(-4.2z*); g_63dbd2a91f0798a9(-4.1z*)",
+      "top_de_genes": [
+        "g_f618675c6a5c3fa7",
+        "g_47c93cf6989a2a92",
+        "g_8c3db29988bd5a52",
+        "g_979e5af2b029585d",
+        "g_5a8889e189d0d0f7",
+        "g_bb33226b02065d2a",
+        "g_d632cc426a12f035",
+        "g_bb781c422f72cf78"
+      ]
+    },
+    {
+      "source": "HCT116",
+      "id": "r_3c96f5dcce4d336c",
+      "perturbation": "g_88538cfc9d544616",
+      "r_S0": -0.14408,
+      "r_S5": 0.08498,
+      "r_S6": 0.54885,
+      "r_S7": 0.63742,
+      "top_recip_donors": "g_1cabae8a330ba7a0(-11.3z*); g_0b774e5eadf86238(-6.1z); g_19a133389baeb42e(-5.7z); g_78b179a9fd7d1c1f(+5.6z); g_bd849fbf9aab09b6(+4.8z*)",
+      "top_de_genes": [
+        "g_47c93cf6989a2a92",
+        "g_f618675c6a5c3fa7",
+        "g_8c3db29988bd5a52",
+        "g_5a8889e189d0d0f7",
+        "g_bb33226b02065d2a",
+        "g_d632cc426a12f035",
+        "g_3e2f68f27e84d499",
+        "g_90137f230e496d7e"
+      ]
+    },
+    {
+      "source": "HEK293T",
+      "id": "r_84cdb116cdf4688c",
+      "perturbation": "g_f7c3d51640a64efc",
+      "r_S0": -0.14221,
+      "r_S5": 0.09283,
+      "r_S6": 0.70784,
+      "r_S7": 0.83934,
+      "top_recip_donors": "g_22cd0b632c8b803a(-10.3z*); g_f8c41a103c7baca4(-9.3z*); g_63dbd2a91f0798a9(-6.5z*); g_46b4c05deda7bd6a(-5.0z*); g_2a5c7512d75b0f18(+4.7z)",
+      "top_de_genes": [
+        "g_13a6dcca48519b7b",
+        "g_bb33226b02065d2a",
+        "g_f13872a7ccfd59bf",
+        "g_b1ae7c48834ddbc1",
+        "g_9c6747fc5984840e",
+        "g_381d024d374b7ebb",
+        "g_84dd0197c47caccc",
+        "g_e58a13a9c25d3335"
+      ]
+    },
+    {
+      "source": "HEK293T",
+      "id": "r_d528ad3fe49f9422",
+      "perturbation": "g_60075ac01b51a8b2",
+      "r_S0": 0.11597,
+      "r_S5": 0.06454,
+      "r_S6": 0.73338,
+      "r_S7": 0.73932,
+      "top_recip_donors": "g_a8d7bde747a06cca(-8.7z*); g_073777e23f775aae(-6.2z); g_11437659a1656c58(+5.1z*); g_6ab32479a020dc33(-5.0z*); g_1efac0bb794363be(+4.7z)",
+      "top_de_genes": [
+        "g_cbf2bfb5739d094b",
+        "g_78e1dd247b580077",
+        "g_2d3655309061d384",
+        "g_69c23f12e8eebb2f",
+        "g_230862ed7cb9a558",
+        "g_2ec7386ba3b0cdf1",
+        "g_4339126755d3aaf9",
+        "g_22d35295c4ae4c8b"
+      ]
+    }
+  ],
+  "runtime_seconds": 1290.9
+}

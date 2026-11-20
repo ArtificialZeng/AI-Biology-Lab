@@ -1,0 +1,7580 @@
+{
+  "summary": {
+    "token": "MjAyNjExMjAxNTQwMzhfMTczODc%3D",
+    "projection": true,
+    "interactors": false,
+    "type": "OVERREPRESENTATION",
+    "sampleName": "",
+    "text": true,
+    "includeDisease": true
+  },
+  "expression": {
+    "columnNames": []
+  },
+  "identifiersNotFound": 20,
+  "pathwaysFound": 279,
+  "pathways": [
+    {
+      "stId": "R-HSA-72163",
+      "dbId": 72163,
+      "name": "mRNA Splicing - Major Pathway",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 213,
+        "found": 26,
+        "ratio": 0.013087557603686637,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 11,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72172",
+      "dbId": 72172,
+      "name": "mRNA Splicing",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 224,
+        "found": 27,
+        "ratio": 0.013763440860215054,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 16,
+        "found": 16,
+        "ratio": 0.000989547900303049
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72203",
+      "dbId": 72203,
+      "name": "Processing of Capped Intron-Containing Pre-mRNA",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 317,
+        "found": 28,
+        "ratio": 0.019477726574500767,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 52,
+        "found": 35,
+        "ratio": 0.0032160306759849095
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72766",
+      "dbId": 72766,
+      "name": "Translation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 423,
+        "found": 37,
+        "ratio": 0.02599078341013825,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 121,
+        "found": 72,
+        "ratio": 0.007483455996041808
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8953854",
+      "dbId": 8953854,
+      "name": "Metabolism of RNA",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 862,
+        "found": 55,
+        "ratio": 0.05296466973886329,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 244,
+        "found": 95,
+        "ratio": 0.015090605479621499
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9839923",
+      "dbId": 9839923,
+      "name": "Dengue Virus Infection",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 411,
+        "found": 27,
+        "ratio": 0.025253456221198158,
+        "pValue": 3.7414515929867775e-14,
+        "fdr": 4.676814491233472e-12,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 142,
+        "found": 13,
+        "ratio": 0.00878223761518956
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-392499",
+      "dbId": 392499,
+      "name": "Metabolism of proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 2405,
+        "found": 65,
+        "ratio": 0.1477726574500768,
+        "pValue": 6.039613253960852e-14,
+        "fdr": 6.462386181738111e-12,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 923,
+        "found": 318,
+        "ratio": 0.05708454449873214
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69206",
+      "dbId": 69206,
+      "name": "G1/S Transition",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 141,
+        "found": 17,
+        "ratio": 0.008663594470046084,
+        "pValue": 2.531308496145357e-13,
+        "fdr": 2.354116901415182e-11,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 61,
+        "found": 18,
+        "ratio": 0.0037726513699053747
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72165",
+      "dbId": 72165,
+      "name": "mRNA Splicing - Minor Pathway",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 54,
+        "found": 12,
+        "ratio": 0.0033179723502304147,
+        "pValue": 8.970602038971265e-13,
+        "fdr": 7.44559969234615e-11,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 5,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-453279",
+      "dbId": 453279,
+      "name": "Mitotic G1 phase and G1/S transition",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 165,
+        "found": 17,
+        "ratio": 0.010138248847926268,
+        "pValue": 2.957412092996492e-12,
+        "fdr": 2.218059069747369e-10,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 101,
+        "found": 21,
+        "ratio": 0.0062465211206629975
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9918481",
+      "dbId": 9918481,
+      "name": "Dengue Virus-Host Interactions",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 273,
+        "found": 20,
+        "ratio": 0.016774193548387096,
+        "pValue": 1.460831455801781e-11,
+        "fdr": 9.93365389945211e-10,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 59,
+        "found": 4,
+        "ratio": 0.0036489578823674933
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9824446",
+      "dbId": 9824446,
+      "name": "Viral Infection Pathways",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1411,
+        "found": 44,
+        "ratio": 0.0866973886328725,
+        "pValue": 3.186606534200109e-11,
+        "fdr": 1.9092505354478817e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 897,
+        "found": 80,
+        "ratio": 0.05547652916073969
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-8854050",
+      "dbId": 8854050,
+      "name": "FBXL7 down-regulates AURKA during mitotic entry and in early mitosis",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 42,
+        "found": 10,
+        "ratio": 0.0025806451612903226,
+        "pValue": 3.8185010708957634e-11,
+        "fdr": 1.9092505354478817e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 6,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-174113",
+      "dbId": 174113,
+      "name": "SCF-beta-TrCP mediated degradation of Emi1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 42,
+        "found": 10,
+        "ratio": 0.0025806451612903226,
+        "pValue": 3.8185010708957634e-11,
+        "fdr": 1.9092505354478817e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-169911",
+      "dbId": 169911,
+      "name": "Regulation of Apoptosis",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 42,
+        "found": 10,
+        "ratio": 0.0025806451612903226,
+        "pValue": 3.8185010708957634e-11,
+        "fdr": 1.9092505354478817e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 2,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-450408",
+      "dbId": 450408,
+      "name": "AUF1 (hnRNP D0) binds and destabilizes mRNA",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 43,
+        "found": 10,
+        "ratio": 0.002642089093701997,
+        "pValue": 4.7885806431224864e-11,
+        "fdr": 2.1757657897580884e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 3,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9010553",
+      "dbId": 9010553,
+      "name": "Regulation of expression of SLITs and ROBOs",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 170,
+        "found": 16,
+        "ratio": 0.010445468509984639,
+        "pValue": 4.944922249450201e-11,
+        "fdr": 2.1757657897580884e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 5,
+        "ratio": 0.0012369348753788114
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9762114",
+      "dbId": 9762114,
+      "name": "GSK3B and BTRC:CUL1-mediated-degradation of NFE2L2",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 10,
+        "ratio": 0.0027035330261136713,
+        "pValue": 5.97271121449694e-11,
+        "fdr": 2.280972632995315e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 3,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-68949",
+      "dbId": 68949,
+      "name": "Orc1 removal from chromatin",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 60,
+        "found": 11,
+        "ratio": 0.003686635944700461,
+        "pValue": 6.164790899987338e-11,
+        "fdr": 2.280972632995315e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 3,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9929356",
+      "dbId": 9929356,
+      "name": "GSK3B-mediated proteasomal degradation of PD-L1(CD274)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 46,
+        "found": 10,
+        "ratio": 0.00282642089093702,
+        "pValue": 9.150968871551868e-11,
+        "fdr": 3.2028391050431537e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 4,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9604323",
+      "dbId": 9604323,
+      "name": "Negative regulation of NOTCH4 signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 47,
+        "found": 10,
+        "ratio": 0.0028878648233486943,
+        "pValue": 1.1245793185565844e-10,
+        "fdr": 3.823569683092387e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 2,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5676590",
+      "dbId": 5676590,
+      "name": "NIK-->noncanonical NF-kB signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 48,
+        "found": 10,
+        "ratio": 0.0029493087557603687,
+        "pValue": 1.3757706085471e-10,
+        "fdr": 4.40246594735072e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 3,
+        "ratio": 0.0005566206939204651
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9932298",
+      "dbId": 9932298,
+      "name": "Degradation of CRY and PER proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 49,
+        "found": 10,
+        "ratio": 0.003010752688172043,
+        "pValue": 1.675780625376433e-10,
+        "fdr": 4.524607688516369e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 9,
+        "ratio": 0.0005566206939204651
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5610780",
+      "dbId": 5610780,
+      "name": "Degradation of GLI1 by the proteasome",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 49,
+        "found": 10,
+        "ratio": 0.003010752688172043,
+        "pValue": 1.675780625376433e-10,
+        "fdr": 4.524607688516369e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 3,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5610785",
+      "dbId": 5610785,
+      "name": "GLI3 is processed to GLI3R by the proteasome",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 49,
+        "found": 10,
+        "ratio": 0.003010752688172043,
+        "pValue": 1.675780625376433e-10,
+        "fdr": 4.524607688516369e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 2,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5610783",
+      "dbId": 5610783,
+      "name": "Degradation of GLI2 by the proteasome",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 49,
+        "found": 10,
+        "ratio": 0.003010752688172043,
+        "pValue": 1.675780625376433e-10,
+        "fdr": 4.524607688516369e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 2,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9907900",
+      "dbId": 9907900,
+      "name": "Proteasome assembly",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 52,
+        "found": 10,
+        "ratio": 0.003195084485407066,
+        "pValue": 2.955682365524126e-10,
+        "fdr": 7.073281960146005e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 40,
+        "found": 32,
+        "ratio": 0.002473869750757623
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-187577",
+      "dbId": 187577,
+      "name": "SCF(Skp2)-mediated degradation of p27/p21",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 52,
+        "found": 10,
+        "ratio": 0.003195084485407066,
+        "pValue": 2.955682365524126e-10,
+        "fdr": 7.073281960146005e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 4,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-176408",
+      "dbId": 176408,
+      "name": "Regulation of APC/C activators between G1/S and early anaphase",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 70,
+        "found": 11,
+        "ratio": 0.004301075268817204,
+        "pValue": 3.072290200023531e-10,
+        "fdr": 7.073281960146005e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 14,
+        "found": 5,
+        "ratio": 0.000865854412765168
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-211733",
+      "dbId": 211733,
+      "name": "Regulation of activated PAK-2p34 by proteasome mediated degradation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 37,
+        "found": 9,
+        "ratio": 0.002273425499231951,
+        "pValue": 3.075339982672176e-10,
+        "fdr": 7.073281960146005e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 1,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5607761",
+      "dbId": 5607761,
+      "name": "Dectin-1 mediated noncanonical NF-kB signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 53,
+        "found": 10,
+        "ratio": 0.0032565284178187404,
+        "pValue": 3.5440994583524343e-10,
+        "fdr": 7.442608862540112e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 3,
+        "ratio": 0.0005566206939204651
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69601",
+      "dbId": 69601,
+      "name": "Ubiquitin-Mediated Degradation of Phosphorylated Cdc25A",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 53,
+        "found": 10,
+        "ratio": 0.0032565284178187404,
+        "pValue": 3.5440994583524343e-10,
+        "fdr": 7.442608862540112e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 2,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69613",
+      "dbId": 69613,
+      "name": "p53-Independent G1/S DNA Damage Checkpoint",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 53,
+        "found": 10,
+        "ratio": 0.0032565284178187404,
+        "pValue": 3.5440994583524343e-10,
+        "fdr": 7.442608862540112e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 2,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-350562",
+      "dbId": 350562,
+      "name": "Regulation of ornithine decarboxylase (ODC)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 38,
+        "found": 9,
+        "ratio": 0.002334869431643625,
+        "pValue": 3.8749736752663466e-10,
+        "fdr": 7.749947350532693e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 1,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69481",
+      "dbId": 69481,
+      "name": "G2/M Checkpoints",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 142,
+        "found": 14,
+        "ratio": 0.008725038402457757,
+        "pValue": 4.6282710997047616e-10,
+        "fdr": 9.218936947164025e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 24,
+        "found": 11,
+        "ratio": 0.0014843218504545736
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9909615",
+      "dbId": 9909615,
+      "name": "Regulation of PD-L1(CD274) Post-translational modification",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 94,
+        "found": 12,
+        "ratio": 0.005775729646697389,
+        "pValue": 4.85207207745475e-10,
+        "fdr": 9.218936947164025e-09,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 25,
+        "found": 7,
+        "ratio": 0.001546168594223514
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-180534",
+      "dbId": 180534,
+      "name": "Vpu mediated degradation of CD4",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 40,
+        "found": 9,
+        "ratio": 0.002457757296466974,
+        "pValue": 6.039961863990584e-10,
+        "fdr": 1.147592754158211e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 1,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-75815",
+      "dbId": 75815,
+      "name": "Ubiquitin-dependent degradation of Cyclin D",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 41,
+        "found": 9,
+        "ratio": 0.0025192012288786482,
+        "pValue": 7.476325114552651e-10,
+        "fdr": 1.3457385206194772e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 1,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-349425",
+      "dbId": 349425,
+      "name": "Autodegradation of the E3 ubiquitin ligase COP1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 41,
+        "found": 9,
+        "ratio": 0.0025192012288786482,
+        "pValue": 7.476325114552651e-10,
+        "fdr": 1.3457385206194772e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 1,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1234176",
+      "dbId": 1234176,
+      "name": "Oxygen-dependent proline hydroxylation of Hypoxia-inducible Factor Alpha",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 59,
+        "found": 10,
+        "ratio": 0.0036251920122887865,
+        "pValue": 9.817628932040634e-10,
+        "fdr": 1.6689969184469078e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 12,
+        "found": 9,
+        "ratio": 0.0007421609252272868
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1169091",
+      "dbId": 1169091,
+      "name": "Activation of NF-kappaB in B cells",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 59,
+        "found": 10,
+        "ratio": 0.0036251920122887865,
+        "pValue": 9.817628932040634e-10,
+        "fdr": 1.6689969184469078e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 3,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-453276",
+      "dbId": 453276,
+      "name": "Regulation of mitotic cell cycle",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 79,
+        "found": 11,
+        "ratio": 0.004854070660522273,
+        "pValue": 1.0722653875916421e-09,
+        "fdr": 1.6912959366344182e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 40,
+        "found": 16,
+        "ratio": 0.002473869750757623
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-174143",
+      "dbId": 174143,
+      "name": "APC/C-mediated degradation of cell cycle proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 79,
+        "found": 11,
+        "ratio": 0.004854070660522273,
+        "pValue": 1.0722653875916421e-09,
+        "fdr": 1.6912959366344182e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 40,
+        "found": 16,
+        "ratio": 0.002473869750757623
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69202",
+      "dbId": 69202,
+      "name": "Cyclin E associated events during G1/S transition ",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 79,
+        "found": 11,
+        "ratio": 0.004854070660522273,
+        "pValue": 1.0722653875916421e-09,
+        "fdr": 1.6912959366344182e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 5,
+        "ratio": 0.0012369348753788114
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-180585",
+      "dbId": 180585,
+      "name": "Vif-mediated degradation of APOBEC3G",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 43,
+        "found": 9,
+        "ratio": 0.002642089093701997,
+        "pValue": 1.1275306244229455e-09,
+        "fdr": 1.6912959366344182e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 1,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-174184",
+      "dbId": 174184,
+      "name": "Cdc20:Phospho-APC/C mediated degradation of Cyclin A",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 60,
+        "found": 10,
+        "ratio": 0.003686635944700461,
+        "pValue": 1.1511251951645818e-09,
+        "fdr": 1.7266877927468727e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-450531",
+      "dbId": 450531,
+      "name": "Regulation of mRNA stability by proteins that bind AU-rich elements",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 80,
+        "found": 11,
+        "ratio": 0.004915514592933948,
+        "pValue": 1.2204156574213698e-09,
+        "fdr": 1.8026447334840157e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 26,
+        "found": 6,
+        "ratio": 0.0016080153379924547
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-179419",
+      "dbId": 179419,
+      "name": "APC:Cdc20 mediated degradation of cell cycle proteins prior to satisfation of the cell cycle checkpoint",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 61,
+        "found": 10,
+        "ratio": 0.003748079877112135,
+        "pValue": 1.3459596770459825e-09,
+        "fdr": 1.8026447334840157e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 3,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9974237",
+      "dbId": 9974237,
+      "name": "Negative Regulation of DNA Double Strand Break Response",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 9,
+        "ratio": 0.0027035330261136713,
+        "pValue": 1.374440561363599e-09,
+        "fdr": 1.8026447334840157e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 1,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-4641258",
+      "dbId": 4641258,
+      "name": "Degradation of DVL",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 9,
+        "ratio": 0.0027035330261136713,
+        "pValue": 1.374440561363599e-09,
+        "fdr": 1.8026447334840157e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 2,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-4641257",
+      "dbId": 4641257,
+      "name": "Degradation of AXIN",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 9,
+        "ratio": 0.0027035330261136713,
+        "pValue": 1.374440561363599e-09,
+        "fdr": 1.8026447334840157e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 8,
+        "found": 2,
+        "ratio": 0.0004947739501515245
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69052",
+      "dbId": 69052,
+      "name": "Switching of origins to a post-replicative state",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 81,
+        "found": 11,
+        "ratio": 0.004976958525345622,
+        "pValue": 1.3866497949877044e-09,
+        "fdr": 1.8026447334840157e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 5,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69656",
+      "dbId": 69656,
+      "name": "Cyclin A:Cdk2-associated events at S phase entry",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 81,
+        "found": 11,
+        "ratio": 0.004976958525345622,
+        "pValue": 1.3866497949877044e-09,
+        "fdr": 1.8026447334840157e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 19,
+        "found": 5,
+        "ratio": 0.0011750881316098707
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-176409",
+      "dbId": 176409,
+      "name": "APC/C:Cdc20 mediated degradation of mitotic proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 63,
+        "found": 10,
+        "ratio": 0.003870967741935484,
+        "pValue": 1.8255207345774238e-09,
+        "fdr": 2.373176954950651e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 13,
+        "found": 7,
+        "ratio": 0.0008040076689962274
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1236978",
+      "dbId": 1236978,
+      "name": "Cross-presentation of soluble exogenous antigens (endosomes)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 46,
+        "found": 9,
+        "ratio": 0.00282642089093702,
+        "pValue": 2.0144296231094927e-09,
+        "fdr": 2.4173155477313912e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 2,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69541",
+      "dbId": 69541,
+      "name": "Stabilization of p53",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 46,
+        "found": 9,
+        "ratio": 0.00282642089093702,
+        "pValue": 2.0144296231094927e-09,
+        "fdr": 2.4173155477313912e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 1,
+        "ratio": 0.0009277011565341084
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-176814",
+      "dbId": 176814,
+      "name": "Activation of APC/C and APC/C:Cdc20 mediated degradation of mitotic proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 64,
+        "found": 10,
+        "ratio": 0.003932411674347158,
+        "pValue": 2.1178976350455514e-09,
+        "fdr": 2.5414771620546617e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 8,
+        "ratio": 0.0009277011565341084
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-376176",
+      "dbId": 376176,
+      "name": "Signaling by ROBO receptors",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 222,
+        "found": 16,
+        "ratio": 0.013640552995391705,
+        "pValue": 2.2210978611880705e-09,
+        "fdr": 2.6653174334256846e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 60,
+        "found": 5,
+        "ratio": 0.0037108046261364338
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8941858",
+      "dbId": 8941858,
+      "name": "Regulation of RUNX3 expression and activity",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 47,
+        "found": 9,
+        "ratio": 0.0028878648233486943,
+        "pValue": 2.4229945827514143e-09,
+        "fdr": 2.9075934993016972e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 1,
+        "ratio": 0.0005566206939204651
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5362768",
+      "dbId": 5362768,
+      "name": "Hh mutants are degraded by ERAD",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 48,
+        "found": 9,
+        "ratio": 0.0029493087557603687,
+        "pValue": 2.9025728487397373e-09,
+        "fdr": 3.192830133613711e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 1,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9929491",
+      "dbId": 9929491,
+      "name": "SPOP-mediated proteasomal degradation of PD-L1(CD274)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 48,
+        "found": 9,
+        "ratio": 0.0029493087557603687,
+        "pValue": 2.9025728487397373e-09,
+        "fdr": 3.192830133613711e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 1,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9020702",
+      "dbId": 9020702,
+      "name": "Interleukin-1 signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 112,
+        "found": 12,
+        "ratio": 0.006881720430107527,
+        "pValue": 3.380306812239553e-09,
+        "fdr": 3.718337493463508e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 59,
+        "found": 8,
+        "ratio": 0.0036489578823674933
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69242",
+      "dbId": 69242,
+      "name": "S Phase",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 167,
+        "found": 14,
+        "ratio": 0.010261136712749617,
+        "pValue": 3.581562157961571e-09,
+        "fdr": 3.939718373757728e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 55,
+        "found": 20,
+        "ratio": 0.003401570907291731
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9937383",
+      "dbId": 9937383,
+      "name": "Mitochondrial ribosome-associated quality control",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 114,
+        "found": 12,
+        "ratio": 0.007004608294930876,
+        "pValue": 4.105960127454011e-09,
+        "fdr": 4.5165561401994125e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 5,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8939902",
+      "dbId": 8939902,
+      "name": "Regulation of RUNX2 expression and activity",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 69,
+        "found": 10,
+        "ratio": 0.00423963133640553,
+        "pValue": 4.297514344386855e-09,
+        "fdr": 4.72726577882554e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 29,
+        "found": 5,
+        "ratio": 0.0017935555692992764
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5387390",
+      "dbId": 5387390,
+      "name": "Hh mutants abrogate ligand secretion",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 51,
+        "found": 9,
+        "ratio": 0.0031336405529953917,
+        "pValue": 4.877141246417693e-09,
+        "fdr": 4.877141246417693e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 1,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-8852276",
+      "dbId": 8852276,
+      "name": "The role of GTSE1 in G2/M progression after G2 checkpoint",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 70,
+        "found": 10,
+        "ratio": 0.004301075268817204,
+        "pValue": 4.918485174698617e-09,
+        "fdr": 4.918485174698617e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 2,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69615",
+      "dbId": 69615,
+      "name": "G1/S DNA Damage Checkpoints",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 72,
+        "found": 10,
+        "ratio": 0.004423963133640553,
+        "pValue": 6.4036167479741835e-09,
+        "fdr": 6.403616747974183e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 33,
+        "found": 3,
+        "ratio": 0.0020409425443750386
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69239",
+      "dbId": 69239,
+      "name": "Synthesis of DNA",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 119,
+        "found": 12,
+        "ratio": 0.007311827956989247,
+        "pValue": 6.571462374260761e-09,
+        "fdr": 6.556866249951554e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 27,
+        "found": 10,
+        "ratio": 0.0016698620817613952
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5678895",
+      "dbId": 5678895,
+      "name": "Defective CFTR causes cystic fibrosis",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 53,
+        "found": 9,
+        "ratio": 0.0032565284178187404,
+        "pValue": 6.773272387405882e-09,
+        "fdr": 6.556866249951554e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 8,
+        "found": 1,
+        "ratio": 0.0004947739501515245
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9824272",
+      "dbId": 9824272,
+      "name": "Somitogenesis",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 53,
+        "found": 9,
+        "ratio": 0.0032565284178187404,
+        "pValue": 6.773272387405882e-09,
+        "fdr": 6.556866249951554e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 19,
+        "found": 1,
+        "ratio": 0.0011750881316098707
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1234174",
+      "dbId": 1234174,
+      "name": "Cellular response to hypoxia",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 73,
+        "found": 10,
+        "ratio": 0.004485407066052227,
+        "pValue": 7.2854069443906155e-09,
+        "fdr": 6.556866249951554e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 9,
+        "ratio": 0.0012369348753788114
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-174084",
+      "dbId": 174084,
+      "name": "Autodegradation of Cdh1 by Cdh1:APC/C",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 54,
+        "found": 9,
+        "ratio": 0.0033179723502304147,
+        "pValue": 7.94329657605175e-09,
+        "fdr": 7.148966918446575e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 1,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-174154",
+      "dbId": 174154,
+      "name": "APC/C:Cdc20 mediated degradation of Securin",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 55,
+        "found": 9,
+        "ratio": 0.003379416282642089,
+        "pValue": 9.286723945400865e-09,
+        "fdr": 8.358051550860779e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 1,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-162906",
+      "dbId": 162906,
+      "name": "HIV Infection",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 247,
+        "found": 16,
+        "ratio": 0.015176651305683565,
+        "pValue": 9.791671029546478e-09,
+        "fdr": 8.81250392659183e-08,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 160,
+        "found": 52,
+        "ratio": 0.009895479003030491
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-4608870",
+      "dbId": 4608870,
+      "name": "Asymmetric localization of PCP proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 57,
+        "found": 9,
+        "ratio": 0.003502304147465438,
+        "pValue": 1.2582162867147417e-08,
+        "fdr": 1.0811527229037665e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 1,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9766229",
+      "dbId": 9766229,
+      "name": "Degradation of CDH1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 57,
+        "found": 9,
+        "ratio": 0.003502304147465438,
+        "pValue": 1.2582162867147417e-08,
+        "fdr": 1.0811527229037665e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 1,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9948299",
+      "dbId": 9948299,
+      "name": "Ribosome-associated quality control",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 155,
+        "found": 13,
+        "ratio": 0.009523809523809525,
+        "pValue": 1.3133470644355327e-08,
+        "fdr": 1.0811527229037665e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 16,
+        "ratio": 0.0012369348753788114
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1168372",
+      "dbId": 1168372,
+      "name": "Downstream signaling events of B Cell Receptor (BCR)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 78,
+        "found": 10,
+        "ratio": 0.004792626728110599,
+        "pValue": 1.3514409036297081e-08,
+        "fdr": 1.0811527229037665e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 3,
+        "ratio": 0.0009277011565341084
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9943411",
+      "dbId": 9943411,
+      "name": "CHD1 and CHD2 subfamily",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 78,
+        "found": 10,
+        "ratio": 0.004792626728110599,
+        "pValue": 1.3514409036297081e-08,
+        "fdr": 1.0811527229037665e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 1,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-195253",
+      "dbId": 195253,
+      "name": "Degradation of beta-catenin by the destruction complex",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 78,
+        "found": 10,
+        "ratio": 0.004792626728110599,
+        "pValue": 1.3514409036297081e-08,
+        "fdr": 1.0811527229037665e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 23,
+        "found": 3,
+        "ratio": 0.001422475106685633
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5658442",
+      "dbId": 5658442,
+      "name": "Regulation of RAS by GAPs",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 58,
+        "found": 9,
+        "ratio": 0.003563748079877112,
+        "pValue": 1.4583958596325886e-08,
+        "fdr": 1.1667166877060708e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 1,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69580",
+      "dbId": 69580,
+      "name": "p53-Dependent G1/S DNA damage checkpoint",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 58,
+        "found": 9,
+        "ratio": 0.003563748079877112,
+        "pValue": 1.4583958596325886e-08,
+        "fdr": 1.1667166877060708e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 22,
+        "found": 1,
+        "ratio": 0.0013606283629166924
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69563",
+      "dbId": 69563,
+      "name": "p53-Dependent G1 DNA Damage Response",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 58,
+        "found": 9,
+        "ratio": 0.003563748079877112,
+        "pValue": 1.4583958596325886e-08,
+        "fdr": 1.1667166877060708e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 22,
+        "found": 1,
+        "ratio": 0.0013606283629166924
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5358346",
+      "dbId": 5358346,
+      "name": "Hedgehog ligand biogenesis",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 59,
+        "found": 9,
+        "ratio": 0.0036251920122887865,
+        "pValue": 1.6859070695041112e-08,
+        "fdr": 1.348725655603289e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 1,
+        "ratio": 0.0009277011565341084
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9931269",
+      "dbId": 9931269,
+      "name": "AMPK-induced ERAD and lysosome mediated degradation of PD-L1(CD274)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 60,
+        "found": 9,
+        "ratio": 0.003686635944700461,
+        "pValue": 1.9438779474967305e-08,
+        "fdr": 1.5551023579973844e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 1,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9954709",
+      "dbId": 9954709,
+      "name": "Ribosome Quality Control (RQC) complex extracts and degrades nascent peptide",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 106,
+        "found": 11,
+        "ratio": 0.006513056835637481,
+        "pValue": 2.137254284662049e-08,
+        "fdr": 1.5650083895479838e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 13,
+        "found": 9,
+        "ratio": 0.0008040076689962274
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9013694",
+      "dbId": 9013694,
+      "name": "Signaling by NOTCH4",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 82,
+        "found": 10,
+        "ratio": 0.0050384024577572965,
+        "pValue": 2.1502656211147553e-08,
+        "fdr": 1.5650083895479838e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 2,
+        "ratio": 0.0012369348753788114
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-174178",
+      "dbId": 174178,
+      "name": "APC/C:Cdh1 mediated degradation of Cdc20 and other APC/C:Cdh1 targeted proteins in late mitosis/early G1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 61,
+        "found": 9,
+        "ratio": 0.003748079877112135,
+        "pValue": 2.235726270782834e-08,
+        "fdr": 1.5650083895479838e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 2,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8948751",
+      "dbId": 8948751,
+      "name": "Regulation of PTEN stability and activity",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 61,
+        "found": 9,
+        "ratio": 0.003748079877112135,
+        "pValue": 2.235726270782834e-08,
+        "fdr": 1.5650083895479838e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 13,
+        "found": 1,
+        "ratio": 0.0008040076689962274
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5389840",
+      "dbId": 5389840,
+      "name": "Mitochondrial translation elongation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 107,
+        "found": 11,
+        "ratio": 0.006574500768049155,
+        "pValue": 2.3487046196812855e-08,
+        "fdr": 1.6440932337768999e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 8,
+        "found": 5,
+        "ratio": 0.0004947739501515245
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69017",
+      "dbId": 69017,
+      "name": "CDK-mediated phosphorylation and removal of Cdc6",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 62,
+        "found": 9,
+        "ratio": 0.0038095238095238095,
+        "pValue": 2.565180112767962e-08,
+        "fdr": 1.7956260789375733e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 1,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5689603",
+      "dbId": 5689603,
+      "name": "UCH proteinases",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 84,
+        "found": 10,
+        "ratio": 0.005161290322580645,
+        "pValue": 2.6878087977522114e-08,
+        "fdr": 1.881466158426548e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 6,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5368286",
+      "dbId": 5368286,
+      "name": "Mitochondrial translation initiation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 109,
+        "found": 11,
+        "ratio": 0.006697388632872504,
+        "pValue": 2.8283219877245358e-08,
+        "fdr": 1.979825391407175e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 3,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5663205",
+      "dbId": 5663205,
+      "name": "Infectious disease",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1968,
+        "found": 47,
+        "ratio": 0.12092165898617512,
+        "pValue": 3.4840986096185134e-08,
+        "fdr": 2.4388690267329594e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 1225,
+        "found": 90,
+        "ratio": 0.0757622611169522
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9770562",
+      "dbId": 9770562,
+      "name": "mRNA Polyadenylation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 139,
+        "found": 12,
+        "ratio": 0.008540706605222735,
+        "pValue": 3.543640714198659e-08,
+        "fdr": 2.4805484999390615e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 14,
+        "ratio": 0.0012369348753788114
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9764561",
+      "dbId": 9764561,
+      "name": "Regulation of CDH1 Function",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 65,
+        "found": 9,
+        "ratio": 0.0039938556067588326,
+        "pValue": 3.8215672515384824e-08,
+        "fdr": 2.6750970760769377e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 16,
+        "found": 1,
+        "ratio": 0.000989547900303049
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69275",
+      "dbId": 69275,
+      "name": "G2/M Transition",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 205,
+        "found": 14,
+        "ratio": 0.012596006144393242,
+        "pValue": 4.493646277303753e-08,
+        "fdr": 3.1455523941126273e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 88,
+        "found": 54,
+        "ratio": 0.0054425134516667695
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-453274",
+      "dbId": 453274,
+      "name": "Mitotic G2-G2/M phases",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 207,
+        "found": 14,
+        "ratio": 0.01271889400921659,
+        "pValue": 5.056374219325477e-08,
+        "fdr": 3.539461953527834e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 90,
+        "found": 54,
+        "ratio": 0.0055662069392046504
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5668541",
+      "dbId": 5668541,
+      "name": "TNFR2 non-canonical NF-kB pathway",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 91,
+        "found": 10,
+        "ratio": 0.005591397849462366,
+        "pValue": 5.6221783562016014e-08,
+        "fdr": 3.935524849341121e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 5,
+        "ratio": 0.0027212567258333847
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9793380",
+      "dbId": 9793380,
+      "name": "Formation of paraxial mesoderm",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 69,
+        "found": 9,
+        "ratio": 0.00423963133640553,
+        "pValue": 6.313017597570081e-08,
+        "fdr": 4.4191123182990566e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 29,
+        "found": 1,
+        "ratio": 0.0017935555692992764
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5687128",
+      "dbId": 5687128,
+      "name": "MAPK6/MAPK4 signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 93,
+        "found": 10,
+        "ratio": 0.005714285714285714,
+        "pValue": 6.863949730817609e-08,
+        "fdr": 4.804764811572326e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 40,
+        "found": 2,
+        "ratio": 0.002473869750757623
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5419276",
+      "dbId": 5419276,
+      "name": "Mitochondrial translation termination",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 121,
+        "found": 11,
+        "ratio": 0.007434715821812596,
+        "pValue": 8.014289465396729e-08,
+        "fdr": 4.808573679238037e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 7,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69002",
+      "dbId": 69002,
+      "name": "DNA Replication Pre-Initiation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 121,
+        "found": 11,
+        "ratio": 0.007434715821812596,
+        "pValue": 8.014289465396729e-08,
+        "fdr": 4.808573679238037e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 32,
+        "found": 16,
+        "ratio": 0.001979095800606098
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-111367",
+      "dbId": 111367,
+      "name": "SLBP independent Processing of Histone Pre-mRNAs",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 5,
+        "ratio": 0.0006144393241167435,
+        "pValue": 8.974837606423591e-08,
+        "fdr": 5.384902563854155e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-351202",
+      "dbId": 351202,
+      "name": "Metabolism of polyamines",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 73,
+        "found": 9,
+        "ratio": 0.004485407066052227,
+        "pValue": 1.01176011901849e-07,
+        "fdr": 6.07056071411094e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 18,
+        "found": 1,
+        "ratio": 0.0011132413878409302
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1236974",
+      "dbId": 1236974,
+      "name": "ER-Phagosome pathway",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 98,
+        "found": 10,
+        "ratio": 0.006021505376344086,
+        "pValue": 1.1082612294543992e-07,
+        "fdr": 6.649567376726395e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 3,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5368287",
+      "dbId": 5368287,
+      "name": "Mitochondrial translation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 155,
+        "found": 12,
+        "ratio": 0.009523809523809525,
+        "pValue": 1.1350086837058626e-07,
+        "fdr": 6.810052102235176e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 24,
+        "found": 20,
+        "ratio": 0.0014843218504545736
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-202424",
+      "dbId": 202424,
+      "name": "Downstream TCR signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 99,
+        "found": 10,
+        "ratio": 0.00608294930875576,
+        "pValue": 1.215796894271648e-07,
+        "fdr": 7.294781365629888e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 24,
+        "found": 2,
+        "ratio": 0.0014843218504545736
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-77588",
+      "dbId": 77588,
+      "name": "SLBP Dependent Processing of Replication-Dependent Histone Pre-mRNAs",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 5,
+        "ratio": 0.0006758832565284178,
+        "pValue": 1.4332707443109882e-07,
+        "fdr": 8.599624465865929e-07,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 2,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-68867",
+      "dbId": 68867,
+      "name": "Assembly of the pre-replicative complex",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 103,
+        "found": 10,
+        "ratio": 0.006328725038402458,
+        "pValue": 1.7433849819337155e-07,
+        "fdr": 1.0460309891602293e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 23,
+        "found": 8,
+        "ratio": 0.001422475106685633
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5632684",
+      "dbId": 5632684,
+      "name": "Hedgehog 'on' state",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 79,
+        "found": 9,
+        "ratio": 0.004854070660522273,
+        "pValue": 1.9529261352513316e-07,
+        "fdr": 1.171755681150799e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 37,
+        "found": 2,
+        "ratio": 0.002288329519450801
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8878166",
+      "dbId": 8878166,
+      "name": "Transcriptional regulation by RUNX2",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 133,
+        "found": 11,
+        "ratio": 0.008172043010752689,
+        "pValue": 2.0370064279795486e-07,
+        "fdr": 1.2222038567877291e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 81,
+        "found": 6,
+        "ratio": 0.005009586245284186
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72187",
+      "dbId": 72187,
+      "name": "mRNA 3'-end processing",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 164,
+        "found": 12,
+        "ratio": 0.010076804915514593,
+        "pValue": 2.0612523587981713e-07,
+        "fdr": 1.2367514152789028e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 21,
+        "found": 15,
+        "ratio": 0.0012987816191477519
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5607764",
+      "dbId": 5607764,
+      "name": "CLEC7A (Dectin-1) signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 107,
+        "found": 10,
+        "ratio": 0.006574500768049155,
+        "pValue": 2.46247989665882e-07,
+        "fdr": 1.477487937995292e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 45,
+        "found": 5,
+        "ratio": 0.0027831034696023252
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69278",
+      "dbId": 69278,
+      "name": "Cell Cycle, Mitotic",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 588,
+        "found": 22,
+        "ratio": 0.03612903225806452,
+        "pValue": 2.678680350864937e-07,
+        "fdr": 1.6072082105189622e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 367,
+        "found": 140,
+        "ratio": 0.022697754963201186
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-446652",
+      "dbId": 446652,
+      "name": "Interleukin-1 family signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 170,
+        "found": 12,
+        "ratio": 0.010445468509984639,
+        "pValue": 3.0064301936860716e-07,
+        "fdr": 1.7149461928323007e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 92,
+        "found": 8,
+        "ratio": 0.005689900426742532
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69620",
+      "dbId": 69620,
+      "name": "Cell Cycle Checkpoints",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 279,
+        "found": 15,
+        "ratio": 0.017142857142857144,
+        "pValue": 3.0942776929610005e-07,
+        "fdr": 1.7149461928323007e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 63,
+        "found": 14,
+        "ratio": 0.0038963448574432557
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69306",
+      "dbId": 69306,
+      "name": "DNA Replication",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 171,
+        "found": 12,
+        "ratio": 0.010506912442396314,
+        "pValue": 3.196887635725787e-07,
+        "fdr": 1.7149461928323007e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 73,
+        "found": 26,
+        "ratio": 0.004514812295132661
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5610787",
+      "dbId": 5610787,
+      "name": "Hedgehog 'off' state",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 111,
+        "found": 10,
+        "ratio": 0.0068202764976958525,
+        "pValue": 3.4298923856646013e-07,
+        "fdr": 1.7149461928323007e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 32,
+        "found": 7,
+        "ratio": 0.001979095800606098
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-382556",
+      "dbId": 382556,
+      "name": "ABC-family protein mediated transport",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 111,
+        "found": 10,
+        "ratio": 0.0068202764976958525,
+        "pValue": 3.4298923856646013e-07,
+        "fdr": 1.7149461928323007e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 27,
+        "found": 2,
+        "ratio": 0.0016698620817613952
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9754678",
+      "dbId": 9754678,
+      "name": "SARS-CoV-2 modulates host translation machinery",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 62,
+        "found": 8,
+        "ratio": 0.0038095238095238095,
+        "pValue": 3.7551343745612087e-07,
+        "fdr": 1.8775671872806043e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 2,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-5619084",
+      "dbId": 5619084,
+      "name": "ABC transporter disorders",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 86,
+        "found": 9,
+        "ratio": 0.005284178187403994,
+        "pValue": 3.9405003016135254e-07,
+        "fdr": 1.9702501508067627e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 23,
+        "found": 1,
+        "ratio": 0.001422475106685633
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9958825",
+      "dbId": 9958825,
+      "name": "Activation of STAT3 by cadherin engagement",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 86,
+        "found": 9,
+        "ratio": 0.005284178187403994,
+        "pValue": 3.9405003016135254e-07,
+        "fdr": 1.9702501508067627e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 33,
+        "found": 1,
+        "ratio": 0.0020409425443750386
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5693606",
+      "dbId": 5693606,
+      "name": "DNA Double Strand Break Response",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 114,
+        "found": 10,
+        "ratio": 0.007004608294930876,
+        "pValue": 4.360008595272191e-07,
+        "fdr": 2.1800042976360956e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 53,
+        "found": 2,
+        "ratio": 0.00327787741975385
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-4086400",
+      "dbId": 4086400,
+      "name": "PCP/CE pathway",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 88,
+        "found": 9,
+        "ratio": 0.0054070660522273425,
+        "pValue": 4.76105673552496e-07,
+        "fdr": 2.38052836776248e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 24,
+        "found": 1,
+        "ratio": 0.0014843218504545736
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-109581",
+      "dbId": 109581,
+      "name": "Apoptosis",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 180,
+        "found": 12,
+        "ratio": 0.011059907834101382,
+        "pValue": 5.458027492188933e-07,
+        "fdr": 2.7290137460944663e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 142,
+        "found": 6,
+        "ratio": 0.00878223761518956
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8939236",
+      "dbId": 8939236,
+      "name": "RUNX1 regulates transcription of genes involved in differentiation of HSCs",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 92,
+        "found": 9,
+        "ratio": 0.00565284178187404,
+        "pValue": 6.855513128289914e-07,
+        "fdr": 3.427756564144957e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 1,
+        "ratio": 0.0009277011565341084
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1236975",
+      "dbId": 1236975,
+      "name": "Antigen processing-Cross presentation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 120,
+        "found": 10,
+        "ratio": 0.007373271889400922,
+        "pValue": 6.902889264637224e-07,
+        "fdr": 3.451444632318612e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 25,
+        "found": 5,
+        "ratio": 0.001546168594223514
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-202403",
+      "dbId": 202403,
+      "name": "TCR signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 122,
+        "found": 10,
+        "ratio": 0.00749615975422427,
+        "pValue": 7.999772482225609e-07,
+        "fdr": 3.9998862411128044e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 52,
+        "found": 2,
+        "ratio": 0.0032160306759849095
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-983168",
+      "dbId": 983168,
+      "name": "Antigen processing: Ubiquitination & Proteasome degradation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 302,
+        "found": 15,
+        "ratio": 0.018556067588325655,
+        "pValue": 8.260177365437826e-07,
+        "fdr": 4.130088682718913e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 8,
+        "ratio": 0.0005566206939204651
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5357801",
+      "dbId": 5357801,
+      "name": "Programmed Cell Death",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 225,
+        "found": 13,
+        "ratio": 0.013824884792626729,
+        "pValue": 8.90926578289708e-07,
+        "fdr": 4.45463289144854e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 194,
+        "found": 8,
+        "ratio": 0.01199826829117447
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9909648",
+      "dbId": 9909648,
+      "name": "Regulation of PD-L1(CD274) expression",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 191,
+        "found": 12,
+        "ratio": 0.011735791090629801,
+        "pValue": 1.0078193758422671e-06,
+        "fdr": 5.0390968792113355e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 56,
+        "found": 7,
+        "ratio": 0.003463417651060672
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5689880",
+      "dbId": 5689880,
+      "name": "Ub-specific processing proteases",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 192,
+        "found": 12,
+        "ratio": 0.011797235023041475,
+        "pValue": 1.063427568559483e-06,
+        "fdr": 5.317137842797415e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 40,
+        "found": 3,
+        "ratio": 0.002473869750757623
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-983169",
+      "dbId": 983169,
+      "name": "Class I MHC mediated antigen processing & presentation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 402,
+        "found": 17,
+        "ratio": 0.02470046082949309,
+        "pValue": 1.3331765235102822e-06,
+        "fdr": 6.665882617551411e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 52,
+        "found": 18,
+        "ratio": 0.0032160306759849095
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5688426",
+      "dbId": 5688426,
+      "name": "Deubiquitination",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 275,
+        "found": 14,
+        "ratio": 0.016897081413210446,
+        "pValue": 1.4655158298015891e-06,
+        "fdr": 7.327579149007946e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 77,
+        "found": 10,
+        "ratio": 0.004762199270208423
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-68882",
+      "dbId": 68882,
+      "name": "Mitotic Anaphase",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 236,
+        "found": 13,
+        "ratio": 0.014500768049155146,
+        "pValue": 1.5013859315793354e-06,
+        "fdr": 7.506929657896677e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 32,
+        "found": 12,
+        "ratio": 0.001979095800606098
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-2555396",
+      "dbId": 2555396,
+      "name": "Mitotic Metaphase and Anaphase",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 237,
+        "found": 13,
+        "ratio": 0.014562211981566821,
+        "pValue": 1.572066845589859e-06,
+        "fdr": 7.860334227949295e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 33,
+        "found": 12,
+        "ratio": 0.0020409425443750386
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9937848",
+      "dbId": 9937848,
+      "name": "CHD chromatin remodelers",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 165,
+        "found": 11,
+        "ratio": 0.010138248847926268,
+        "pValue": 1.639571495237746e-06,
+        "fdr": 8.19785747618873e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 3,
+        "ratio": 0.0027212567258333847
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9759194",
+      "dbId": 9759194,
+      "name": "Nuclear events mediated by NFE2L2",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 135,
+        "found": 10,
+        "ratio": 0.008294930875576038,
+        "pValue": 1.9612160512272325e-06,
+        "fdr": 9.806080256136163e-06,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 85,
+        "found": 3,
+        "ratio": 0.005256973220359948
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8878159",
+      "dbId": 8878159,
+      "name": "Transcriptional regulation by RUNX3",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 108,
+        "found": 9,
+        "ratio": 0.0066359447004608295,
+        "pValue": 2.5185718312004113e-06,
+        "fdr": 1.2592859156002056e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 47,
+        "found": 1,
+        "ratio": 0.0029067969571402066
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1640170",
+      "dbId": 1640170,
+      "name": "Cell Cycle",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 730,
+        "found": 23,
+        "ratio": 0.04485407066052227,
+        "pValue": 2.6114104429986185e-06,
+        "fdr": 1.3057052214993092e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 474,
+        "found": 165,
+        "ratio": 0.02931535654647783
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-389948",
+      "dbId": 389948,
+      "name": "Co-inhibition by PD-1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 219,
+        "found": 12,
+        "ratio": 0.013456221198156683,
+        "pValue": 4.0498134303845745e-06,
+        "fdr": 2.0249067151922873e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 61,
+        "found": 7,
+        "ratio": 0.0037726513699053747
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5358351",
+      "dbId": 5358351,
+      "name": "Signaling by Hedgehog",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 155,
+        "found": 10,
+        "ratio": 0.009523809523809525,
+        "pValue": 6.533984367007584e-06,
+        "fdr": 2.8640455433492917e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 82,
+        "found": 10,
+        "ratio": 0.005071432989053127
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9764265",
+      "dbId": 9764265,
+      "name": "Regulation of CDH1 Expression and Function",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 193,
+        "found": 11,
+        "ratio": 0.01185867895545315,
+        "pValue": 7.160113858373229e-06,
+        "fdr": 2.8640455433492917e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 92,
+        "found": 2,
+        "ratio": 0.005689900426742532
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9764274",
+      "dbId": 9764274,
+      "name": "Regulation of Expression and Function of Type I Classical Cadherins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 193,
+        "found": 11,
+        "ratio": 0.01185867895545315,
+        "pValue": 7.160113858373229e-06,
+        "fdr": 2.8640455433492917e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 92,
+        "found": 2,
+        "ratio": 0.005689900426742532
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-429914",
+      "dbId": 429914,
+      "name": "Deadenylation-dependent mRNA decay",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 67,
+        "found": 7,
+        "ratio": 0.004116743471582181,
+        "pValue": 8.017091814638277e-06,
+        "fdr": 3.206836725855311e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 9,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9932444",
+      "dbId": 9932444,
+      "name": "ATP-dependent chromatin remodelers",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 196,
+        "found": 11,
+        "ratio": 0.012043010752688172,
+        "pValue": 8.259869800797404e-06,
+        "fdr": 3.3039479203189615e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 65,
+        "found": 3,
+        "ratio": 0.004020038344981137
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-390450",
+      "dbId": 390450,
+      "name": "Folding of actin by CCT/TriC",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 13,
+        "found": 4,
+        "ratio": 0.0007987711213517665,
+        "pValue": 1.2298675611699394e-05,
+        "fdr": 4.919470244679758e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8868773",
+      "dbId": 8868773,
+      "name": "rRNA processing in the nucleus and cytosol",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 207,
+        "found": 11,
+        "ratio": 0.01271889400921659,
+        "pValue": 1.3651594459540561e-05,
+        "fdr": 5.4606377838162246e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 9,
+        "ratio": 0.0009277011565341084
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9755511",
+      "dbId": 9755511,
+      "name": "KEAP1-NFE2L2 pathway",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 169,
+        "found": 10,
+        "ratio": 0.010384024577572966,
+        "pValue": 1.3697269845569515e-05,
+        "fdr": 5.478907938227806e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 117,
+        "found": 7,
+        "ratio": 0.007236069020966046
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-2871837",
+      "dbId": 2871837,
+      "name": "FCERI mediated NF-kB activation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 171,
+        "found": 10,
+        "ratio": 0.010506912442396314,
+        "pValue": 1.5135708751223831e-05,
+        "fdr": 6.0542835004895323e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 19,
+        "found": 2,
+        "ratio": 0.0011750881316098707
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5693532",
+      "dbId": 5693532,
+      "name": "DNA Double-Strand Break Repair",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 210,
+        "found": 11,
+        "ratio": 0.012903225806451613,
+        "pValue": 1.5570160096345376e-05,
+        "fdr": 6.22806403853815e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 124,
+        "found": 19,
+        "ratio": 0.00766899622734863
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-162909",
+      "dbId": 162909,
+      "name": "Host Interactions of HIV factors",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 137,
+        "found": 9,
+        "ratio": 0.008417818740399386,
+        "pValue": 1.656873695088379e-05,
+        "fdr": 6.627494780353516e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 54,
+        "found": 2,
+        "ratio": 0.0033397241635227904
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-73856",
+      "dbId": 73856,
+      "name": "RNA Polymerase II Transcription Termination",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 30,
+        "found": 5,
+        "ratio": 0.0018433179723502304,
+        "pValue": 1.843038097482097e-05,
+        "fdr": 7.372152389928388e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 2,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-75067",
+      "dbId": 75067,
+      "name": "Processing of Capped Intronless Pre-mRNA",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 30,
+        "found": 5,
+        "ratio": 0.0018433179723502304,
+        "pValue": 1.843038097482097e-05,
+        "fdr": 7.372152389928388e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 4,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9759476",
+      "dbId": 9759476,
+      "name": "Regulation of Homotypic Cell-Cell Adhesion",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 216,
+        "found": 11,
+        "ratio": 0.013271889400921659,
+        "pValue": 2.0119516820571448e-05,
+        "fdr": 8.047806728228579e-05,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 125,
+        "found": 2,
+        "ratio": 0.007730842971117571
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-2467813",
+      "dbId": 2467813,
+      "name": "Separation of Sister Chromatids",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 182,
+        "found": 10,
+        "ratio": 0.011182795698924731,
+        "pValue": 2.5602216424225333e-05,
+        "fdr": 0.00010240886569690133,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 8,
+        "found": 4,
+        "ratio": 0.0004947739501515245
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8949664",
+      "dbId": 8949664,
+      "name": "Processing of SMDT1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 17,
+        "found": 4,
+        "ratio": 0.001044546850998464,
+        "pValue": 3.481514251113538e-05,
+        "fdr": 0.0001392605700445415,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 3,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-6791226",
+      "dbId": 6791226,
+      "name": "Major pathway of rRNA processing in the nucleolus and cytosol",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 189,
+        "found": 10,
+        "ratio": 0.011612903225806452,
+        "pValue": 3.5088145543316074e-05,
+        "fdr": 0.0001403525821732643,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 7,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5621481",
+      "dbId": 5621481,
+      "name": "C-type lectin receptors (CLRs)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 190,
+        "found": 10,
+        "ratio": 0.011674347158218126,
+        "pValue": 3.666222802090058e-05,
+        "fdr": 0.0001466489120836023,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 68,
+        "found": 5,
+        "ratio": 0.004205578576287958
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-388841",
+      "dbId": 388841,
+      "name": "Regulation of T cell activation by CD28 family",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 276,
+        "found": 12,
+        "ratio": 0.01695852534562212,
+        "pValue": 3.904095473139524e-05,
+        "fdr": 0.00015616381892558096,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 91,
+        "found": 7,
+        "ratio": 0.005628053682973592
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-983705",
+      "dbId": 983705,
+      "name": "Signaling by the B Cell Receptor (BCR)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 193,
+        "found": 10,
+        "ratio": 0.01185867895545315,
+        "pValue": 4.175210215329184e-05,
+        "fdr": 0.00016700840861316735,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 55,
+        "found": 3,
+        "ratio": 0.003401570907291731
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-3858494",
+      "dbId": 3858494,
+      "name": "Beta-catenin independent WNT signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 155,
+        "found": 9,
+        "ratio": 0.009523809523809525,
+        "pValue": 4.2919089191517656e-05,
+        "fdr": 0.00017167635676607063,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 51,
+        "found": 1,
+        "ratio": 0.003154183932215969
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-6807070",
+      "dbId": 6807070,
+      "name": "PTEN Regulation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 156,
+        "found": 9,
+        "ratio": 0.009585253456221198,
+        "pValue": 4.5076238947894254e-05,
+        "fdr": 0.00018030495579157702,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 56,
+        "found": 1,
+        "ratio": 0.003463417651060672
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8951664",
+      "dbId": 8951664,
+      "name": "Neddylation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 241,
+        "found": 11,
+        "ratio": 0.014807987711213519,
+        "pValue": 5.3698732763174384e-05,
+        "fdr": 0.00021479493105269754,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 16,
+        "ratio": 0.0027212567258333847
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72649",
+      "dbId": 72649,
+      "name": "Translation initiation complex formation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 62,
+        "found": 6,
+        "ratio": 0.0038095238095238095,
+        "pValue": 5.4984056683582416e-05,
+        "fdr": 0.00021993622673432967,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9909396",
+      "dbId": 9909396,
+      "name": "Circadian clock",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 202,
+        "found": 10,
+        "ratio": 0.012411674347158218,
+        "pValue": 6.079884429899263e-05,
+        "fdr": 0.0002431953771959705,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 112,
+        "found": 9,
+        "ratio": 0.006926835302121344
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72702",
+      "dbId": 72702,
+      "name": "Ribosomal scanning and start codon recognition",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 64,
+        "found": 6,
+        "ratio": 0.003932411674347158,
+        "pValue": 6.539266752381145e-05,
+        "fdr": 0.0002615706700952458,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-4839726",
+      "dbId": 4839726,
+      "name": "Chromatin organization",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 389,
+        "found": 14,
+        "ratio": 0.02390168970814132,
+        "pValue": 6.768147202074193e-05,
+        "fdr": 0.0002707258880829677,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 150,
+        "found": 5,
+        "ratio": 0.009277011565341085
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-390471",
+      "dbId": 390471,
+      "name": "Association of TriC/CCT with target proteins during biosynthesis",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 40,
+        "found": 5,
+        "ratio": 0.002457757296466974,
+        "pValue": 7.14150312550732e-05,
+        "fdr": 0.0002856601250202928,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9758941",
+      "dbId": 9758941,
+      "name": "Gastrulation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 167,
+        "found": 9,
+        "ratio": 0.010261136712749617,
+        "pValue": 7.551994004162399e-05,
+        "fdr": 0.00030207976016649596,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 104,
+        "found": 1,
+        "ratio": 0.006432061351969819
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72662",
+      "dbId": 72662,
+      "name": "Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 66,
+        "found": 6,
+        "ratio": 0.004055299539170507,
+        "pValue": 7.731746809569451e-05,
+        "fdr": 0.00030926987238277803,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 5,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-430039",
+      "dbId": 430039,
+      "name": "mRNA decay by 5' to 3' exoribonuclease",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 21,
+        "found": 4,
+        "ratio": 0.0012903225806451613,
+        "pValue": 7.847914460656913e-05,
+        "fdr": 0.0003139165784262765,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72312",
+      "dbId": 72312,
+      "name": "rRNA processing",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 252,
+        "found": 11,
+        "ratio": 0.015483870967741935,
+        "pValue": 7.954129247755848e-05,
+        "fdr": 0.0003181651699102339,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 22,
+        "found": 9,
+        "ratio": 0.0013606283629166924
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-191859",
+      "dbId": 191859,
+      "name": "snRNP Assembly",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 67,
+        "found": 6,
+        "ratio": 0.004116743471582181,
+        "pValue": 8.389692976096264e-05,
+        "fdr": 0.00033558771904385054,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 5,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-194441",
+      "dbId": 194441,
+      "name": "Metabolism of non-coding RNA",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 67,
+        "found": 6,
+        "ratio": 0.004116743471582181,
+        "pValue": 8.389692976096264e-05,
+        "fdr": 0.00033558771904385054,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 5,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69478",
+      "dbId": 69478,
+      "name": "G2/M DNA replication checkpoint",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 3,
+        "ratio": 0.0005529953917050691,
+        "pValue": 0.0001269524240717912,
+        "fdr": 0.0005078096962871648,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-73894",
+      "dbId": 73894,
+      "name": "DNA Repair",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 414,
+        "found": 14,
+        "ratio": 0.02543778801843318,
+        "pValue": 0.00012936281633146862,
+        "fdr": 0.0005174512653258745,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 350,
+        "found": 84,
+        "ratio": 0.0216463603191292
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-418990",
+      "dbId": 418990,
+      "name": "Adherens junctions interactions",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 267,
+        "found": 11,
+        "ratio": 0.01640552995391705,
+        "pValue": 0.0001314494615662909,
+        "fdr": 0.0005257978462651636,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 164,
+        "found": 3,
+        "ratio": 0.010142865978106253
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-2454202",
+      "dbId": 2454202,
+      "name": "Fc epsilon receptor (FCERI) signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 231,
+        "found": 10,
+        "ratio": 0.014193548387096775,
+        "pValue": 0.00017976784512185873,
+        "fdr": 0.0006128335967012788,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 65,
+        "found": 2,
+        "ratio": 0.004020038344981137
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-379716",
+      "dbId": 379716,
+      "name": "Cytosolic tRNA aminoacylation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 50,
+        "found": 5,
+        "ratio": 0.0030721966205837174,
+        "pValue": 0.0002004369083099533,
+        "fdr": 0.0006128335967012788,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 21,
+        "found": 11,
+        "ratio": 0.0012987816191477519
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8949215",
+      "dbId": 8949215,
+      "name": "Mitochondrial calcium ion transport",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 27,
+        "found": 4,
+        "ratio": 0.0016589861751152074,
+        "pValue": 0.00020427786556709293,
+        "fdr": 0.0006128335967012788,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 3,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-389957",
+      "dbId": 389957,
+      "name": "Prefoldin mediated transfer of substrate  to CCT/TriC",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 29,
+        "found": 4,
+        "ratio": 0.001781874039938556,
+        "pValue": 0.0002675038232535787,
+        "fdr": 0.0008025114697607361,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 1,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72695",
+      "dbId": 72695,
+      "name": "Formation of the ternary complex, and subsequently, the 43S complex",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 54,
+        "found": 5,
+        "ratio": 0.0033179723502304147,
+        "pValue": 0.00028482195861634363,
+        "fdr": 0.0008544658758490309,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 1,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-389960",
+      "dbId": 389960,
+      "name": "Formation of tubulin folding intermediates by CCT/TriC",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 30,
+        "found": 4,
+        "ratio": 0.0018433179723502304,
+        "pValue": 0.0003038858895645369,
+        "fdr": 0.0009116576686936106,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-422475",
+      "dbId": 422475,
+      "name": "Axon guidance",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 565,
+        "found": 16,
+        "ratio": 0.034715821812596005,
+        "pValue": 0.0003171394390890647,
+        "fdr": 0.0009514183172671942,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 295,
+        "found": 5,
+        "ratio": 0.018244789411837468
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-201681",
+      "dbId": 201681,
+      "name": "TCF dependent signaling in response to WNT",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 204,
+        "found": 9,
+        "ratio": 0.012534562211981567,
+        "pValue": 0.00032999897474261797,
+        "fdr": 0.000989996924227854,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 71,
+        "found": 4,
+        "ratio": 0.00439111880759478
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-68886",
+      "dbId": 68886,
+      "name": "M Phase",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 403,
+        "found": 13,
+        "ratio": 0.024761904761904763,
+        "pValue": 0.000353074125011954,
+        "fdr": 0.001059222375035862,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 96,
+        "found": 34,
+        "ratio": 0.005937287401818294
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-421270",
+      "dbId": 421270,
+      "name": "Cell-cell junction organization",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 300,
+        "found": 11,
+        "ratio": 0.018433179723502304,
+        "pValue": 0.00035307429330488915,
+        "fdr": 0.0010592228799146675,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 169,
+        "found": 3,
+        "ratio": 0.010452099696950955
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-3215018",
+      "dbId": 3215018,
+      "name": "Processing and activation of SUMO",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 13,
+        "found": 3,
+        "ratio": 0.0007987711213517665,
+        "pValue": 0.000371059453553646,
+        "fdr": 0.001113178360660938,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 6,
+        "ratio": 0.0005566206939204651
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1643685",
+      "dbId": 1643685,
+      "name": "Disease",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 3094,
+        "found": 51,
+        "ratio": 0.19010752688172042,
+        "pValue": 0.0003774094135198247,
+        "fdr": 0.0011322282405594741,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2174,
+        "found": 104,
+        "ratio": 0.13445482095367678
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-157118",
+      "dbId": 157118,
+      "name": "Signaling by NOTCH",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 260,
+        "found": 10,
+        "ratio": 0.01597542242703533,
+        "pValue": 0.0004536254127998074,
+        "fdr": 0.0013608762383994222,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 165,
+        "found": 4,
+        "ratio": 0.010204712721875193
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72737",
+      "dbId": 72737,
+      "name": "Cap-dependent Translation Initiation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 130,
+        "found": 7,
+        "ratio": 0.007987711213517665,
+        "pValue": 0.0004804329915425454,
+        "fdr": 0.0014412989746276361,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 18,
+        "found": 15,
+        "ratio": 0.0011132413878409302
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72613",
+      "dbId": 72613,
+      "name": "Eukaryotic Translation Initiation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 130,
+        "found": 7,
+        "ratio": 0.007987711213517665,
+        "pValue": 0.0004804329915425454,
+        "fdr": 0.0014412989746276361,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 21,
+        "found": 16,
+        "ratio": 0.0012987816191477519
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9684482",
+      "dbId": 9684482,
+      "name": "IFIT antiviral response",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 93,
+        "found": 6,
+        "ratio": 0.005714285714285714,
+        "pValue": 0.0004805745664793193,
+        "fdr": 0.0014417236994379579,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 17,
+        "found": 5,
+        "ratio": 0.0010513946440719895
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9694516",
+      "dbId": 9694516,
+      "name": "SARS-CoV-2 Infection",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 367,
+        "found": 12,
+        "ratio": 0.022549923195084486,
+        "pValue": 0.0005291369668872781,
+        "fdr": 0.0015874109006618342,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 211,
+        "found": 5,
+        "ratio": 0.013049662935246458
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-5684996",
+      "dbId": 5684996,
+      "name": "MAPK1/MAPK3 signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 316,
+        "found": 11,
+        "ratio": 0.019416282642089094,
+        "pValue": 0.0005423528345933626,
+        "fdr": 0.0016270585037800878,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 82,
+        "found": 3,
+        "ratio": 0.005071432989053127
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9675108",
+      "dbId": 9675108,
+      "name": "Nervous system development",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 602,
+        "found": 16,
+        "ratio": 0.036989247311827955,
+        "pValue": 0.0006276331820957992,
+        "fdr": 0.0018828995462873976,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 322,
+        "found": 5,
+        "ratio": 0.01991465149359886
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-389958",
+      "dbId": 389958,
+      "name": "Cooperation of Prefoldin and TriC/CCT  in actin and tubulin folding",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 37,
+        "found": 4,
+        "ratio": 0.002273425499231951,
+        "pValue": 0.0006644707474922074,
+        "fdr": 0.001993412242476622,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 5,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-446728",
+      "dbId": 446728,
+      "name": "Cell junction organization",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 327,
+        "found": 11,
+        "ratio": 0.020092165898617512,
+        "pValue": 0.0007166058866918679,
+        "fdr": 0.0021498176600756036,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 185,
+        "found": 3,
+        "ratio": 0.011441647597254004
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-379724",
+      "dbId": 379724,
+      "name": "tRNA Aminoacylation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 68,
+        "found": 5,
+        "ratio": 0.004178187403993856,
+        "pValue": 0.000802451894816425,
+        "fdr": 0.002407355684449275,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 42,
+        "found": 12,
+        "ratio": 0.0025975632382955038
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1268020",
+      "dbId": 1268020,
+      "name": "Mitochondrial protein import",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 70,
+        "found": 5,
+        "ratio": 0.004301075268817204,
+        "pValue": 0.0009122847300181425,
+        "fdr": 0.0027368541900544274,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 14,
+        "found": 9,
+        "ratio": 0.000865854412765168
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9711123",
+      "dbId": 9711123,
+      "name": "Cellular response to chemical stress",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 287,
+        "found": 10,
+        "ratio": 0.01763440860215054,
+        "pValue": 0.000959426847308209,
+        "fdr": 0.002878280541924627,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 173,
+        "found": 7,
+        "ratio": 0.010699486672026718
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-6814122",
+      "dbId": 6814122,
+      "name": "Cooperation of PDCL (PhLP1) and TRiC/CCT in G-protein beta folding",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 41,
+        "found": 4,
+        "ratio": 0.0025192012288786482,
+        "pValue": 0.0009700554283348373,
+        "fdr": 0.002910166285004512,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 8,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1169410",
+      "dbId": 1169410,
+      "name": "Antimicrobial mechanism of IFN-stimulated genes",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 288,
+        "found": 10,
+        "ratio": 0.017695852534562212,
+        "pValue": 0.000984640121975855,
+        "fdr": 0.002953920365927565,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 111,
+        "found": 10,
+        "ratio": 0.006864988558352402
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-69205",
+      "dbId": 69205,
+      "name": "G1/S-Specific Transcription",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 43,
+        "found": 4,
+        "ratio": 0.002642089093701997,
+        "pValue": 0.001154882392986667,
+        "fdr": 0.003464647178960001,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 28,
+        "found": 4,
+        "ratio": 0.001731708825530336
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8878171",
+      "dbId": 8878171,
+      "name": "Transcriptional regulation by RUNX1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 247,
+        "found": 9,
+        "ratio": 0.015176651305683565,
+        "pValue": 0.0012641848965441183,
+        "fdr": 0.0037925546896323548,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 133,
+        "found": 1,
+        "ratio": 0.008225616921269096
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1280218",
+      "dbId": 1280218,
+      "name": "Adaptive Immune System",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1247,
+        "found": 25,
+        "ratio": 0.07662058371735792,
+        "pValue": 0.0012918610349280657,
+        "fdr": 0.003875583104784197,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 371,
+        "found": 34,
+        "ratio": 0.02294514193827695
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9912633",
+      "dbId": 9912633,
+      "name": "Antigen processing: Ub, ATP-independent proteasomal degradation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 21,
+        "found": 3,
+        "ratio": 0.0012903225806451613,
+        "pValue": 0.0014714584527879548,
+        "fdr": 0.0044143753583638645,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-162599",
+      "dbId": 162599,
+      "name": "Late Phase of HIV Life Cycle",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 160,
+        "found": 7,
+        "ratio": 0.009831029185867896,
+        "pValue": 0.0015863991266471533,
+        "fdr": 0.00475919737994146,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 78,
+        "found": 50,
+        "ratio": 0.004824046013977364
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-5673001",
+      "dbId": 5673001,
+      "name": "RAF/MAP kinase cascade",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 309,
+        "found": 10,
+        "ratio": 0.018986175115207372,
+        "pValue": 0.0016532798195808551,
+        "fdr": 0.004959839458742565,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 75,
+        "found": 2,
+        "ratio": 0.004638505782670542
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1500931",
+      "dbId": 1500931,
+      "name": "Cell-Cell communication",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 365,
+        "found": 11,
+        "ratio": 0.022427035330261136,
+        "pValue": 0.0017136811486442305,
+        "fdr": 0.0051410434459326915,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 208,
+        "found": 3,
+        "ratio": 0.012864122703939638
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72706",
+      "dbId": 72706,
+      "name": "GTP hydrolysis and joining of the 60S ribosomal subunit",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 120,
+        "found": 6,
+        "ratio": 0.007373271889400922,
+        "pValue": 0.0017629380365989933,
+        "fdr": 0.00528881410979698,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-156827",
+      "dbId": 156827,
+      "name": "L13a-mediated translational silencing of Ceruloplasmin expression",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 120,
+        "found": 6,
+        "ratio": 0.007373271889400922,
+        "pValue": 0.0017629380365989933,
+        "fdr": 0.00528881410979698,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 1,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5683057",
+      "dbId": 5683057,
+      "name": "MAPK family signaling cascades",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 367,
+        "found": 11,
+        "ratio": 0.022549923195084486,
+        "pValue": 0.0017878443587001636,
+        "fdr": 0.005363533076100491,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 122,
+        "found": 5,
+        "ratio": 0.007545302739810749
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-674695",
+      "dbId": 674695,
+      "name": "RNA Polymerase II Pre-transcription Events",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 83,
+        "found": 5,
+        "ratio": 0.005099846390168971,
+        "pValue": 0.0019190609537010905,
+        "fdr": 0.005757182861103272,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 17,
+        "found": 12,
+        "ratio": 0.0010513946440719895
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-927802",
+      "dbId": 927802,
+      "name": "Nonsense-Mediated Decay (NMD)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 124,
+        "found": 6,
+        "ratio": 0.007619047619047619,
+        "pValue": 0.002074656955891263,
+        "fdr": 0.006223970867673789,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 6,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-975957",
+      "dbId": 975957,
+      "name": "Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 124,
+        "found": 6,
+        "ratio": 0.007619047619047619,
+        "pValue": 0.002074656955891263,
+        "fdr": 0.006223970867673789,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 5,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5619115",
+      "dbId": 5619115,
+      "name": "Disorders of transmembrane transporters",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 266,
+        "found": 9,
+        "ratio": 0.016344086021505378,
+        "pValue": 0.0020847147847325997,
+        "fdr": 0.006254144354197799,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 87,
+        "found": 1,
+        "ratio": 0.005380666707897829
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-195721",
+      "dbId": 195721,
+      "name": "Signaling by WNT",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 322,
+        "found": 10,
+        "ratio": 0.01978494623655914,
+        "pValue": 0.00222579021039504,
+        "fdr": 0.00667737063118512,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 157,
+        "found": 8,
+        "ratio": 0.009709938771723669
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-73857",
+      "dbId": 73857,
+      "name": "RNA Polymerase II Transcription",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1679,
+        "found": 30,
+        "ratio": 0.10316436251920123,
+        "pValue": 0.002489701335674832,
+        "fdr": 0.007469104007024496,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 940,
+        "found": 82,
+        "ratio": 0.058135939142804134
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-3065678",
+      "dbId": 3065678,
+      "name": "SUMO is transferred from E1 to E2 (UBE2I, UBC9)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 2,
+        "ratio": 0.00043010752688172043,
+        "pValue": 0.0025327872412767016,
+        "fdr": 0.007598361723830105,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-162587",
+      "dbId": 162587,
+      "name": "HIV Life Cycle",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 175,
+        "found": 7,
+        "ratio": 0.010752688172043012,
+        "pValue": 0.0026108094114085656,
+        "fdr": 0.007832428234225697,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 117,
+        "found": 50,
+        "ratio": 0.007236069020966046
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9609507",
+      "dbId": 9609507,
+      "name": "Protein localization",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 332,
+        "found": 10,
+        "ratio": 0.020399385560675883,
+        "pValue": 0.0027669421232975333,
+        "fdr": 0.0083008263698926,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 65,
+        "found": 21,
+        "ratio": 0.004020038344981137
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-390466",
+      "dbId": 390466,
+      "name": "Chaperonin-mediated protein folding",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 96,
+        "found": 5,
+        "ratio": 0.005898617511520737,
+        "pValue": 0.0035666084910648266,
+        "fdr": 0.01069982547319448,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 19,
+        "found": 15,
+        "ratio": 0.0011750881316098707
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-71291",
+      "dbId": 71291,
+      "name": "Metabolism of amino acids and derivatives",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 658,
+        "found": 15,
+        "ratio": 0.04043010752688172,
+        "pValue": 0.004010310434653386,
+        "fdr": 0.012030931303960157,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 302,
+        "found": 5,
+        "ratio": 0.018677716618220052
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8869496",
+      "dbId": 8869496,
+      "name": "TFAP2A acts as a transcriptional repressor during retinoic acid induced cell differentiation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 2,
+        "ratio": 0.0005529953917050691,
+        "pValue": 0.004129994328077924,
+        "fdr": 0.012389982984233772,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 2,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-975956",
+      "dbId": 975956,
+      "name": "Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 101,
+        "found": 5,
+        "ratio": 0.006205837173579109,
+        "pValue": 0.004411085474338439,
+        "fdr": 0.013233256423015316,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 1,
+        "found": 1,
+        "ratio": 6.184674376894056e-05
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-391251",
+      "dbId": 391251,
+      "name": "Protein folding",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 102,
+        "found": 5,
+        "ratio": 0.006267281105990783,
+        "pValue": 0.004595681941746532,
+        "fdr": 0.013787045825239597,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 28,
+        "found": 15,
+        "ratio": 0.001731708825530336
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9705683",
+      "dbId": 9705683,
+      "name": "SARS-CoV-2-host interactions",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 247,
+        "found": 8,
+        "ratio": 0.015176651305683565,
+        "pValue": 0.004722961436499196,
+        "fdr": 0.014168884309497587,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 68,
+        "found": 2,
+        "ratio": 0.004205578576287958
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-74160",
+      "dbId": 74160,
+      "name": "Gene expression (Transcription)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1924,
+        "found": 32,
+        "ratio": 0.11821812596006144,
+        "pValue": 0.00528625449241682,
+        "fdr": 0.01585876347725046,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 1149,
+        "found": 119,
+        "ratio": 0.07106190859051272
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-72689",
+      "dbId": 72689,
+      "name": "Formation of a pool of free 40S subunits",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 106,
+        "found": 5,
+        "ratio": 0.006513056835637481,
+        "pValue": 0.005389261878645191,
+        "fdr": 0.016167785635935572,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-77387",
+      "dbId": 77387,
+      "name": "Insulin receptor recycling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 34,
+        "found": 3,
+        "ratio": 0.002089093701996928,
+        "pValue": 0.0056578117511814074,
+        "fdr": 0.016973435253544222,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 2,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-917729",
+      "dbId": 917729,
+      "name": "Endosomal Sorting Complex Required For Transport (ESCRT)",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 35,
+        "found": 3,
+        "ratio": 0.002150537634408602,
+        "pValue": 0.006125324448126412,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 4,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9615710",
+      "dbId": 9615710,
+      "name": "Late endosomal microautophagy",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 35,
+        "found": 3,
+        "ratio": 0.002150537634408602,
+        "pValue": 0.006125324448126412,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 1,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1257604",
+      "dbId": 1257604,
+      "name": "PIP3 activates AKT signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 315,
+        "found": 9,
+        "ratio": 0.01935483870967742,
+        "pValue": 0.006218214402604061,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 89,
+        "found": 1,
+        "ratio": 0.00550436019543571
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-2262752",
+      "dbId": 2262752,
+      "name": "Cellular responses to stress",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1039,
+        "found": 20,
+        "ratio": 0.06384024577572965,
+        "pValue": 0.006249958548752765,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 521,
+        "found": 42,
+        "ratio": 0.03222215350361803
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1280215",
+      "dbId": 1280215,
+      "name": "Cytokine Signaling in Immune system",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1197,
+        "found": 22,
+        "ratio": 0.07354838709677419,
+        "pValue": 0.0070675642638151626,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 831,
+        "found": 28,
+        "ratio": 0.05139464407198961
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-162588",
+      "dbId": 162588,
+      "name": "Budding and maturation of HIV virion",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 37,
+        "found": 3,
+        "ratio": 0.002273425499231951,
+        "pValue": 0.007127899848521468,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 2,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9918487",
+      "dbId": 9918487,
+      "name": "Dengue Virus Genome Translation and Replication",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 116,
+        "found": 5,
+        "ratio": 0.007127496159754224,
+        "pValue": 0.007788964265168841,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 64,
+        "found": 6,
+        "ratio": 0.003958191601212196
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-69273",
+      "dbId": 69273,
+      "name": "Cyclin A/B1/B2 associated events during G2/M transition",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 39,
+        "found": 3,
+        "ratio": 0.0023963133640552995,
+        "pValue": 0.008222206689795342,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 35,
+        "found": 29,
+        "ratio": 0.00216463603191292
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-382551",
+      "dbId": 382551,
+      "name": "Transport of small molecules",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 996,
+        "found": 19,
+        "ratio": 0.06119815668202765,
+        "pValue": 0.008383149014654312,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 463,
+        "found": 13,
+        "ratio": 0.028635042365019483
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-597592",
+      "dbId": 597592,
+      "name": "Post-translational protein modification",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1675,
+        "found": 28,
+        "ratio": 0.10291858678955453,
+        "pValue": 0.00859092584319121,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 605,
+        "found": 221,
+        "ratio": 0.037417279980209044
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-167172",
+      "dbId": 167172,
+      "name": "Transcription of the HIV genome",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 77,
+        "found": 4,
+        "ratio": 0.004731182795698925,
+        "pValue": 0.00904446369862677,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 47,
+        "found": 46,
+        "ratio": 0.0029067969571402066
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9918432",
+      "dbId": 9918432,
+      "name": "Maturation of DENV proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 77,
+        "found": 4,
+        "ratio": 0.004731182795698925,
+        "pValue": 0.00904446369862677,
+        "fdr": 0.01808892739725354,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 41,
+        "found": 5,
+        "ratio": 0.0025357164945265633
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9856649",
+      "dbId": 9856649,
+      "name": "Transcriptional and post-translational regulation of MITF-M expression and activity",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 79,
+        "found": 4,
+        "ratio": 0.004854070660522273,
+        "pValue": 0.009863148862759297,
+        "fdr": 0.019726297725518593,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 37,
+        "found": 2,
+        "ratio": 0.002288329519450801
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-917977",
+      "dbId": 917977,
+      "name": "Transferrin endocytosis and recycling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 42,
+        "found": 3,
+        "ratio": 0.0025806451612903226,
+        "pValue": 0.010039504741868543,
+        "fdr": 0.020079009483737087,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 2,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-381183",
+      "dbId": 381183,
+      "name": "ATF6 (ATF6-alpha) activates chaperone genes",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 2,
+        "ratio": 0.0009216589861751152,
+        "pValue": 0.0110126484299371,
+        "fdr": 0.0220252968598742,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 1,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-5663202",
+      "dbId": 5663202,
+      "name": "Diseases of signal transduction by growth factor receptors and second messengers",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 536,
+        "found": 12,
+        "ratio": 0.03293394777265745,
+        "pValue": 0.011090164670930713,
+        "fdr": 0.022180329341861427,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 516,
+        "found": 9,
+        "ratio": 0.031912919784773335
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9938024",
+      "dbId": 9938024,
+      "name": "Somatic hypermutation of immunoglobulin genes",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 178,
+        "found": 6,
+        "ratio": 0.010937019969278034,
+        "pValue": 0.011510372519301426,
+        "fdr": 0.023020745038602852,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 28,
+        "found": 4,
+        "ratio": 0.001731708825530336
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-917937",
+      "dbId": 917937,
+      "name": "Iron uptake and transport",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 84,
+        "found": 4,
+        "ratio": 0.005161290322580645,
+        "pValue": 0.012116134133569267,
+        "fdr": 0.024232268267138535,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 33,
+        "found": 6,
+        "ratio": 0.0020409425443750386
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-6798695",
+      "dbId": 6798695,
+      "name": "Neutrophil degranulation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 478,
+        "found": 11,
+        "ratio": 0.02937019969278034,
+        "pValue": 0.012258321528256344,
+        "fdr": 0.024516643056512688,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 4,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-879415",
+      "dbId": 879415,
+      "name": "Advanced glycosylation endproduct receptor signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 16,
+        "found": 2,
+        "ratio": 0.0009831029185867896,
+        "pValue": 0.012445109727100334,
+        "fdr": 0.02489021945420067,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 3,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9861559",
+      "dbId": 9861559,
+      "name": "PDH complex synthesizes acetyl-CoA from PYR",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 17,
+        "found": 2,
+        "ratio": 0.001044546850998464,
+        "pValue": 0.013954317914302572,
+        "fdr": 0.027908635828605144,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-174490",
+      "dbId": 174490,
+      "name": "Membrane binding and targetting of GAG proteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 17,
+        "found": 2,
+        "ratio": 0.001044546850998464,
+        "pValue": 0.013954317914302572,
+        "fdr": 0.027908635828605144,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 2,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-75035",
+      "dbId": 75035,
+      "name": "Chk1/Chk2(Cds1) mediated inactivation of Cyclin B:Cdk1 complex",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 17,
+        "found": 2,
+        "ratio": 0.001044546850998464,
+        "pValue": 0.013954317914302572,
+        "fdr": 0.027908635828605144,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 2,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-381033",
+      "dbId": 381033,
+      "name": "ATF6 (ATF6-alpha) activates chaperones",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 17,
+        "found": 2,
+        "ratio": 0.001044546850998464,
+        "pValue": 0.013954317914302572,
+        "fdr": 0.027908635828605144,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 2,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-73779",
+      "dbId": 73779,
+      "name": "RNA Polymerase II Transcription Pre-Initiation And Promoter Opening",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 48,
+        "found": 3,
+        "ratio": 0.0029493087557603687,
+        "pValue": 0.01432430631423387,
+        "fdr": 0.02864861262846774,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 5,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9006925",
+      "dbId": 9006925,
+      "name": "Intracellular signaling by second messengers",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 363,
+        "found": 9,
+        "ratio": 0.02230414746543779,
+        "pValue": 0.01466997831227923,
+        "fdr": 0.02933995662455846,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 117,
+        "found": 1,
+        "ratio": 0.007236069020966046
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-174495",
+      "dbId": 174495,
+      "name": "Synthesis And Processing Of GAG, GAGPOL Polyproteins",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 18,
+        "found": 2,
+        "ratio": 0.0011059907834101382,
+        "pValue": 0.015538542772776331,
+        "fdr": 0.031077085545552663,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 5,
+        "found": 2,
+        "ratio": 0.00030923371884470285
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-167162",
+      "dbId": 167162,
+      "name": "RNA Polymerase II HIV Promoter Escape",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 50,
+        "found": 3,
+        "ratio": 0.0030721966205837174,
+        "pValue": 0.015949070747236505,
+        "fdr": 0.03189814149447301,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 9,
+        "found": 9,
+        "ratio": 0.0005566206939204651
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-167161",
+      "dbId": 167161,
+      "name": "HIV Transcription Initiation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 50,
+        "found": 3,
+        "ratio": 0.0030721966205837174,
+        "pValue": 0.015949070747236505,
+        "fdr": 0.03189814149447301,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 4,
+        "found": 4,
+        "ratio": 0.00024738697507576226
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-75953",
+      "dbId": 75953,
+      "name": "RNA Polymerase II Transcription Initiation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 50,
+        "found": 3,
+        "ratio": 0.0030721966205837174,
+        "pValue": 0.015949070747236505,
+        "fdr": 0.03189814149447301,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9918485",
+      "dbId": 9918485,
+      "name": "Dengue Virus Attachment and Entry",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 50,
+        "found": 3,
+        "ratio": 0.0030721966205837174,
+        "pValue": 0.015949070747236505,
+        "fdr": 0.03189814149447301,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 10,
+        "found": 2,
+        "ratio": 0.0006184674376894057
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-73780",
+      "dbId": 73780,
+      "name": "RNA Polymerase III Chain Elongation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 19,
+        "found": 2,
+        "ratio": 0.0011674347158218126,
+        "pValue": 0.017196081385072448,
+        "fdr": 0.034392162770144896,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 3,
+        "found": 3,
+        "ratio": 0.0001855402313068217
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-73776",
+      "dbId": 73776,
+      "name": "RNA Polymerase II Promoter Escape",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 52,
+        "found": 3,
+        "ratio": 0.003195084485407066,
+        "pValue": 0.017673304581295124,
+        "fdr": 0.03534660916259025,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 7,
+        "found": 7,
+        "ratio": 0.000432927206382584
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8864260",
+      "dbId": 8864260,
+      "name": "Transcriptional regulation by the AP-2 (TFAP2) family of transcription factors",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 52,
+        "found": 3,
+        "ratio": 0.003195084485407066,
+        "pValue": 0.017673304581295124,
+        "fdr": 0.03534660916259025,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 44,
+        "found": 5,
+        "ratio": 0.0027212567258333847
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-6804756",
+      "dbId": 6804756,
+      "name": "Regulation of TP53 Activity through Phosphorylation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 96,
+        "found": 4,
+        "ratio": 0.005898617511520737,
+        "pValue": 0.01879463379413837,
+        "fdr": 0.03758926758827674,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 26,
+        "found": 3,
+        "ratio": 0.0016080153379924547
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-1362300",
+      "dbId": 1362300,
+      "name": "Transcription of E2F targets under negative control by p107 (RBL1) and p130 (RBL2) in complex with HDAC1",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 2,
+        "ratio": 0.001228878648233487,
+        "pValue": 0.01892525775999454,
+        "fdr": 0.03785051551998908,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 8,
+        "found": 2,
+        "ratio": 0.0004947739501515245
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-913531",
+      "dbId": 913531,
+      "name": "Interferon Signaling",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 511,
+        "found": 11,
+        "ratio": 0.03139784946236559,
+        "pValue": 0.019108445748344582,
+        "fdr": 0.038216891496689165,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 165,
+        "found": 12,
+        "ratio": 0.010204712721875193
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-76042",
+      "dbId": 76042,
+      "name": "RNA Polymerase II Transcription Initiation And Promoter Clearance",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 54,
+        "found": 3,
+        "ratio": 0.0033179723502304147,
+        "pValue": 0.019497470553979768,
+        "fdr": 0.038994941107959535,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 11,
+        "found": 11,
+        "ratio": 0.0006803141814583462
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-168249",
+      "dbId": 168249,
+      "name": "Innate Immune System",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1395,
+        "found": 23,
+        "ratio": 0.08571428571428572,
+        "pValue": 0.019671290545754894,
+        "fdr": 0.03934258109150979,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 782,
+        "found": 51,
+        "ratio": 0.04836415362731152
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-8953897",
+      "dbId": 8953897,
+      "name": "Cellular responses to stimuli",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 1166,
+        "found": 20,
+        "ratio": 0.07164362519201228,
+        "pValue": 0.020009785983066353,
+        "fdr": 0.040019571966132705,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 613,
+        "found": 42,
+        "ratio": 0.03791205393036057
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9679506",
+      "dbId": 9679506,
+      "name": "SARS-CoV Infections",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": false,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 584,
+        "found": 12,
+        "ratio": 0.03588325652841782,
+        "pValue": 0.020303864973241104,
+        "fdr": 0.04060772994648221,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 402,
+        "found": 9,
+        "ratio": 0.024862390995114107
+      },
+      "inDisease": true
+    },
+    {
+      "stId": "R-HSA-9909505",
+      "dbId": 9909505,
+      "name": "Modulation of host responses by IFN-stimulated genes",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 22,
+        "found": 2,
+        "ratio": 0.0013517665130568356,
+        "pValue": 0.022591952247083658,
+        "fdr": 0.045183904494167315,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 6,
+        "found": 2,
+        "ratio": 0.0003710804626136434
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-9837999",
+      "dbId": 9837999,
+      "name": "Mitochondrial protein degradation",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 104,
+        "found": 4,
+        "ratio": 0.006390168970814132,
+        "pValue": 0.024302528141032065,
+        "fdr": 0.04860505628206413,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 20,
+        "found": 8,
+        "ratio": 0.0012369348753788114
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-73980",
+      "dbId": 73980,
+      "name": "RNA Polymerase III Transcription Termination",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 23,
+        "found": 2,
+        "ratio": 0.00141321044546851,
+        "pValue": 0.024526249698920366,
+        "fdr": 0.04905249939784073,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 2,
+        "found": 2,
+        "ratio": 0.00012369348753788113
+      },
+      "inDisease": false
+    },
+    {
+      "stId": "R-HSA-156711",
+      "dbId": 156711,
+      "name": "Polo-like kinase mediated events",
+      "species": {
+        "dbId": 48887,
+        "taxId": "9606",
+        "name": "Homo sapiens"
+      },
+      "llp": true,
+      "entities": {
+        "resource": "TOTAL",
+        "total": 23,
+        "found": 2,
+        "ratio": 0.00141321044546851,
+        "pValue": 0.024526249698920366,
+        "fdr": 0.04905249939784073,
+        "exp": []
+      },
+      "reactions": {
+        "resource": "TOTAL",
+        "total": 15,
+        "found": 2,
+        "ratio": 0.0009277011565341084
+      },
+      "inDisease": false
+    }
+  ],
+  "resourceSummary": [
+    {
+      "resource": "TOTAL",
+      "pathways": 689,
+      "filtered": 689
+    },
+    {
+      "resource": "UNIPROT",
+      "pathways": 689,
+      "filtered": 689
+    },
+    {
+      "resource": "ENSEMBL",
+      "pathways": 24,
+      "filtered": 24
+    }
+  ],
+  "speciesSummary": [
+    {
+      "dbId": 48887,
+      "taxId": "9606",
+      "name": "Homo sapiens",
+      "pathways": 689,
+      "filtered": 689
+    }
+  ],
+  "warnings": [
+    "Missing header. Using a default one."
+  ]
+}

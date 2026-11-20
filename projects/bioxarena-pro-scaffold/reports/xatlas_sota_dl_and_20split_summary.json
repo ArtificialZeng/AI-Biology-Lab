@@ -1,0 +1,82 @@
+{
+  "device": "mps",
+  "runtime_seconds": 1932.56,
+  "part1_head2head_10split": {
+    "S0_SVD_Ridge": {
+      "mean": 0.0613,
+      "sd": 0.004,
+      "s7_advantage_mean": 0.0485,
+      "s7_wins": "10/10",
+      "paired_p_vs_S7": 3.627686314613293e-08
+    },
+    "AhlmannEltze_Bilinear": {
+      "mean": 0.0672,
+      "sd": 0.0052,
+      "s7_advantage_mean": 0.0427,
+      "s7_wins": "10/10",
+      "paired_p_vs_S7": 1.921580656831104e-07
+    },
+    "PyTorch_ResMLP": {
+      "mean": 0.0482,
+      "sd": 0.0052,
+      "s7_advantage_mean": 0.0617,
+      "s7_wins": "10/10",
+      "paired_p_vs_S7": 9.8533142559995e-10
+    },
+    "PyTorch_GEARS_GNN": {
+      "mean": 0.0528,
+      "sd": 0.0088,
+      "s7_advantage_mean": 0.0571,
+      "s7_wins": "10/10",
+      "paired_p_vs_S7": 3.3374536341720676e-08
+    },
+    "PyTorch_PanHuman_GNN": {
+      "mean": 0.0538,
+      "sd": 0.0086,
+      "s7_advantage_mean": 0.0561,
+      "s7_wins": "10/10",
+      "paired_p_vs_S7": 8.148104180042254e-08
+    },
+    "PanPerturb_Bridge_S7": {
+      "mean": 0.1099,
+      "sd": 0.0087,
+      "s7_advantage_mean": 0.0,
+      "s7_wins": "0/10",
+      "paired_p_vs_S7": 1.0
+    }
+  },
+  "part2_brand_new_10split": {
+    "seeds": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110
+    ],
+    "S0_mean": 0.0596,
+    "S0_sd": 0.0056,
+    "S7_mean": 0.1073,
+    "S7_sd": 0.0072,
+    "delta_mean": 0.0477,
+    "delta_sd": 0.0044,
+    "positive_splits": "10/10",
+    "paired_t": 32.2873,
+    "paired_p": 1.2891889951389818e-10
+  },
+  "combined_20split_audit": {
+    "S0_mean": 0.0605,
+    "S0_sd": 0.0049,
+    "S7_mean": 0.1086,
+    "S7_sd": 0.008,
+    "delta_mean": 0.0481,
+    "delta_sd": 0.0068,
+    "positive_splits": "20/20",
+    "paired_t": 30.8346,
+    "paired_p": 1.085245663593888e-17
+  }
+}

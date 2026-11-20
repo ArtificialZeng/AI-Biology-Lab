@@ -1,0 +1,601 @@
+{
+  "dataset": "Replogle et al. (Cell 2022) K562 + RPE1",
+  "n_total_oof": 2614,
+  "oof_means_by_line": {
+    "RPE1": {
+      "S0": 0.109,
+      "S2": 0.1423,
+      "S5": 0.1615,
+      "S6": 0.148,
+      "S7": 0.1516
+    },
+    "K562": {
+      "S0": 0.0816,
+      "S2": 0.11,
+      "S5": 0.1229,
+      "S6": 0.1148,
+      "S7": 0.1251
+    }
+  },
+  "reactome_enrichments": {
+    "bridge_winners_S5_vs_S2": [
+      {
+        "stId": "R-HSA-72163",
+        "name": "mRNA Splicing - Major Pathway",
+        "found": 26,
+        "total": 213,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14
+      },
+      {
+        "stId": "R-HSA-72172",
+        "name": "mRNA Splicing",
+        "found": 27,
+        "total": 224,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14
+      },
+      {
+        "stId": "R-HSA-72203",
+        "name": "Processing of Capped Intron-Containing Pre-mRNA",
+        "found": 28,
+        "total": 317,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14
+      },
+      {
+        "stId": "R-HSA-72766",
+        "name": "Translation",
+        "found": 37,
+        "total": 423,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14
+      },
+      {
+        "stId": "R-HSA-8953854",
+        "name": "Metabolism of RNA",
+        "found": 55,
+        "total": 862,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 1.6653345369377348e-14
+      },
+      {
+        "stId": "R-HSA-9839923",
+        "name": "Dengue Virus Infection",
+        "found": 27,
+        "total": 411,
+        "pValue": 3.7414515929867775e-14,
+        "fdr": 4.676814491233472e-12
+      },
+      {
+        "stId": "R-HSA-392499",
+        "name": "Metabolism of proteins",
+        "found": 65,
+        "total": 2405,
+        "pValue": 6.039613253960852e-14,
+        "fdr": 6.462386181738111e-12
+      },
+      {
+        "stId": "R-HSA-69206",
+        "name": "G1/S Transition",
+        "found": 17,
+        "total": 141,
+        "pValue": 2.531308496145357e-13,
+        "fdr": 2.354116901415182e-11
+      },
+      {
+        "stId": "R-HSA-72165",
+        "name": "mRNA Splicing - Minor Pathway",
+        "found": 12,
+        "total": 54,
+        "pValue": 8.970602038971265e-13,
+        "fdr": 7.44559969234615e-11
+      },
+      {
+        "stId": "R-HSA-453279",
+        "name": "Mitotic G1 phase and G1/S transition",
+        "found": 17,
+        "total": 165,
+        "pValue": 2.957412092996492e-12,
+        "fdr": 2.218059069747369e-10
+      },
+      {
+        "stId": "R-HSA-9918481",
+        "name": "Dengue Virus-Host Interactions",
+        "found": 20,
+        "total": 273,
+        "pValue": 1.460831455801781e-11,
+        "fdr": 9.93365389945211e-10
+      },
+      {
+        "stId": "R-HSA-9824446",
+        "name": "Viral Infection Pathways",
+        "found": 44,
+        "total": 1411,
+        "pValue": 3.186606534200109e-11,
+        "fdr": 1.9092505354478817e-09
+      },
+      {
+        "stId": "R-HSA-8854050",
+        "name": "FBXL7 down-regulates AURKA during mitotic entry and in early mitosis",
+        "found": 10,
+        "total": 42,
+        "pValue": 3.8185010708957634e-11,
+        "fdr": 1.9092505354478817e-09
+      },
+      {
+        "stId": "R-HSA-174113",
+        "name": "SCF-beta-TrCP mediated degradation of Emi1",
+        "found": 10,
+        "total": 42,
+        "pValue": 3.8185010708957634e-11,
+        "fdr": 1.9092505354478817e-09
+      },
+      {
+        "stId": "R-HSA-169911",
+        "name": "Regulation of Apoptosis",
+        "found": 10,
+        "total": 42,
+        "pValue": 3.8185010708957634e-11,
+        "fdr": 1.9092505354478817e-09
+      }
+    ],
+    "reciprocal_winners_S6_vs_S5": [
+      {
+        "stId": "R-HSA-72163",
+        "name": "mRNA Splicing - Major Pathway",
+        "found": 39,
+        "total": 213,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-72172",
+        "name": "mRNA Splicing",
+        "found": 40,
+        "total": 224,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-72203",
+        "name": "Processing of Capped Intron-Containing Pre-mRNA",
+        "found": 47,
+        "total": 317,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-72187",
+        "name": "mRNA 3'-end processing",
+        "found": 27,
+        "total": 164,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-9770562",
+        "name": "mRNA Polyadenylation",
+        "found": 25,
+        "total": 139,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-8953854",
+        "name": "Metabolism of RNA",
+        "found": 67,
+        "total": 862,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-9824446",
+        "name": "Viral Infection Pathways",
+        "found": 54,
+        "total": 1411,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-9839923",
+        "name": "Dengue Virus Infection",
+        "found": 36,
+        "total": 411,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-9918481",
+        "name": "Dengue Virus-Host Interactions",
+        "found": 29,
+        "total": 273,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 9.880984919163893e-15
+      },
+      {
+        "stId": "R-HSA-5663205",
+        "name": "Infectious disease",
+        "found": 57,
+        "total": 1968,
+        "pValue": 1.0268452754758073e-12,
+        "fdr": 8.214762203806458e-11
+      },
+      {
+        "stId": "R-HSA-72165",
+        "name": "mRNA Splicing - Minor Pathway",
+        "found": 10,
+        "total": 54,
+        "pValue": 5.617943887870069e-10,
+        "fdr": 4.1010990381451506e-08
+      },
+      {
+        "stId": "R-HSA-9943411",
+        "name": "CHD1 and CHD2 subfamily",
+        "found": 11,
+        "total": 78,
+        "pValue": 1.2778680336111847e-09,
+        "fdr": 8.561715825194938e-08
+      },
+      {
+        "stId": "R-HSA-74160",
+        "name": "Gene expression (Transcription)",
+        "found": 50,
+        "total": 1924,
+        "pValue": 1.8526471468049976e-09,
+        "fdr": 1.1301147595510486e-07
+      },
+      {
+        "stId": "R-HSA-6807505",
+        "name": "RNA polymerase II transcribes snRNA genes",
+        "found": 11,
+        "total": 95,
+        "pValue": 9.556059055171318e-09,
+        "fdr": 5.446953661447651e-07
+      },
+      {
+        "stId": "R-HSA-167172",
+        "name": "Transcription of the HIV genome",
+        "found": 10,
+        "total": 77,
+        "pValue": 1.5799094810198255e-08,
+        "fdr": 8.056820044455293e-07
+      }
+    ],
+    "high_accuracy_S7_gt045": [
+      {
+        "stId": "R-HSA-211733",
+        "name": "Regulation of activated PAK-2p34 by proteasome mediated degradation",
+        "found": 29,
+        "total": 37,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-9954709",
+        "name": "Ribosome Quality Control (RQC) complex extracts and degrades nascent peptide",
+        "found": 70,
+        "total": 106,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-9974237",
+        "name": "Negative Regulation of DNA Double Strand Break Response",
+        "found": 29,
+        "total": 44,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-9912633",
+        "name": "Antigen processing: Ub, ATP-independent proteasomal degradation",
+        "found": 13,
+        "total": 21,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-72689",
+        "name": "Formation of a pool of free 40S subunits",
+        "found": 65,
+        "total": 106,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-975956",
+        "name": "Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC)",
+        "found": 60,
+        "total": 101,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-9954714",
+        "name": "PELO:HBS1L and ABCE1 dissociate a ribosome on a non-stop mRNA",
+        "found": 59,
+        "total": 100,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-72706",
+        "name": "GTP hydrolysis and joining of the 60S ribosomal subunit",
+        "found": 68,
+        "total": 120,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-9954716",
+        "name": "ZNF598 and the Ribosome-associated Quality Trigger (RQT) complex dissociate a ribosome stalled on a no-go mRNA",
+        "found": 59,
+        "total": 105,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-156827",
+        "name": "L13a-mediated translational silencing of Ceruloplasmin expression",
+        "found": 67,
+        "total": 120,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-9948299",
+        "name": "Ribosome-associated quality control",
+        "found": 86,
+        "total": 155,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-174084",
+        "name": "Autodegradation of Cdh1 by Cdh1:APC/C",
+        "found": 29,
+        "total": 54,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-192823",
+        "name": "Viral mRNA Translation",
+        "found": 59,
+        "total": 114,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-174184",
+        "name": "Cdc20:Phospho-APC/C mediated degradation of Cyclin A",
+        "found": 30,
+        "total": 60,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      },
+      {
+        "stId": "R-HSA-72695",
+        "name": "Formation of the ternary complex, and subsequently, the 43S complex",
+        "found": 25,
+        "total": 54,
+        "pValue": 1.1102230246251565e-16,
+        "fdr": 4.440892098500626e-16
+      }
+    ],
+    "hard_boundary_S7_lt005": [
+      {
+        "stId": "R-HSA-8953854",
+        "name": "Metabolism of RNA",
+        "found": 29,
+        "total": 862,
+        "pValue": 8.813549778885488e-09,
+        "fdr": 8.425753588614526e-06
+      },
+      {
+        "stId": "R-HSA-392499",
+        "name": "Metabolism of proteins",
+        "found": 48,
+        "total": 2405,
+        "pValue": 1.0799500367308923e-06,
+        "fdr": 0.000457766614597066
+      },
+      {
+        "stId": "R-HSA-6781823",
+        "name": "Formation of TC-NER Pre-Incision Complex",
+        "found": 7,
+        "total": 54,
+        "pValue": 1.4395176559656164e-06,
+        "fdr": 0.000457766614597066
+      },
+      {
+        "stId": "R-HSA-674695",
+        "name": "RNA Polymerase II Pre-transcription Events",
+        "found": 8,
+        "total": 83,
+        "pValue": 2.250650651292041e-06,
+        "fdr": 0.0005379055056587978
+      },
+      {
+        "stId": "R-HSA-5696398",
+        "name": "Nucleotide Excision Repair",
+        "found": 9,
+        "total": 117,
+        "pValue": 3.2253206599941464e-06,
+        "fdr": 0.0005980304950495841
+      },
+      {
+        "stId": "R-HSA-9938026",
+        "name": "Immunoglobulin maturation",
+        "found": 16,
+        "total": 414,
+        "pValue": 4.5829395087793046e-06,
+        "fdr": 0.0005980304950495841
+      },
+      {
+        "stId": "R-HSA-9938027",
+        "name": "Affinity selection of immunoglobulins",
+        "found": 16,
+        "total": 414,
+        "pValue": 4.5829395087793046e-06,
+        "fdr": 0.0005980304950495841
+      },
+      {
+        "stId": "R-HSA-429958",
+        "name": "mRNA decay by 3' to 5' exoribonuclease",
+        "found": 5,
+        "total": 24,
+        "pValue": 5.025466344954488e-06,
+        "fdr": 0.0005980304950495841
+      },
+      {
+        "stId": "R-HSA-429914",
+        "name": "Deadenylation-dependent mRNA decay",
+        "found": 7,
+        "total": 67,
+        "pValue": 5.850280298203003e-06,
+        "fdr": 0.0006201297116095184
+      },
+      {
+        "stId": "R-HSA-73779",
+        "name": "RNA Polymerase II Transcription Pre-Initiation And Promoter Opening",
+        "found": 6,
+        "total": 48,
+        "pValue": 1.0153978419302767e-05,
+        "fdr": 0.0009316207659582076
+      },
+      {
+        "stId": "R-HSA-167162",
+        "name": "RNA Polymerase II HIV Promoter Escape",
+        "found": 6,
+        "total": 50,
+        "pValue": 1.2761928300797365e-05,
+        "fdr": 0.0009316207659582076
+      },
+      {
+        "stId": "R-HSA-167161",
+        "name": "HIV Transcription Initiation",
+        "found": 6,
+        "total": 50,
+        "pValue": 1.2761928300797365e-05,
+        "fdr": 0.0009316207659582076
+      },
+      {
+        "stId": "R-HSA-75953",
+        "name": "RNA Polymerase II Transcription Initiation",
+        "found": 6,
+        "total": 50,
+        "pValue": 1.2761928300797365e-05,
+        "fdr": 0.0009316207659582076
+      },
+      {
+        "stId": "R-HSA-9938024",
+        "name": "Somatic hypermutation of immunoglobulin genes",
+        "found": 10,
+        "total": 178,
+        "pValue": 1.4001539558772258e-05,
+        "fdr": 0.0009521046899965135
+      },
+      {
+        "stId": "R-HSA-73776",
+        "name": "RNA Polymerase II Promoter Escape",
+        "found": 6,
+        "total": 52,
+        "pValue": 1.588640758243276e-05,
+        "fdr": 0.0010008436776932639
+      }
+    ]
+  },
+  "case_studies_meta": [
+    {
+      "cell_line": "RPE1",
+      "id": "HCT116_ENSG00000101161",
+      "gene_symbol": "PRPF6",
+      "ensembl_id": "ENSG00000101161",
+      "r_S0": -0.09475,
+      "r_S2": 0.52452,
+      "r_S5": 0.56762,
+      "r_S6": 0.56258,
+      "r_S7": 0.74867,
+      "top_recip_donors": "POLR2H(+4.7z); GNPAT(+4.5z*); TFPT(+4.3z*); MED31(+4.2z); MED29(+4.2z)",
+      "top_de_genes": [
+        "SYF2",
+        "GAS5",
+        "DDIT3",
+        "NORAD",
+        "FAU",
+        "RPS27A",
+        "RPS7",
+        "RPS5"
+      ]
+    },
+    {
+      "cell_line": "RPE1",
+      "id": "HCT116_ENSG00000169230",
+      "gene_symbol": "PRELID1",
+      "ensembl_id": "ENSG00000169230",
+      "r_S0": -0.12817,
+      "r_S2": 0.309,
+      "r_S5": 0.45356,
+      "r_S6": 0.39396,
+      "r_S7": 0.61788,
+      "top_recip_donors": "TRAPPC8(+5.3z*); CACTIN(+4.5z*); DHX8(+4.3z*); GPKOW(+4.1z*)",
+      "top_de_genes": [
+        "GAS5",
+        "GARS",
+        "RACK1",
+        "MT-ND2",
+        "MT-ATP6",
+        "PSAT1",
+        "MT-ND3",
+        "SCN9A"
+      ]
+    },
+    {
+      "cell_line": "K562",
+      "id": "HEK293T_ENSG00000273899",
+      "gene_symbol": "NOL12",
+      "ensembl_id": "ENSG00000273899",
+      "r_S0": -0.10132,
+      "r_S2": 0.0657,
+      "r_S5": 0.38702,
+      "r_S6": 0.40405,
+      "r_S7": 0.61959,
+      "top_recip_donors": "EXOSC5(+5.2z); LRSAM1(+4.8z*); EIF3G(+4.4z); TRIOBP(-4.3z*); UTP14A(+4.3z)",
+      "top_de_genes": [
+        "AC139493.2",
+        "MT-ATP6",
+        "RPL37",
+        "UQCRH",
+        "RPL19",
+        "RPS27A",
+        "RPLP1",
+        "MRPL52"
+      ]
+    },
+    {
+      "cell_line": "K562",
+      "id": "HEK293T_ENSG00000137845",
+      "gene_symbol": "ADAM10",
+      "ensembl_id": "ENSG00000137845",
+      "r_S0": -0.11761,
+      "r_S2": 0.10803,
+      "r_S5": 0.06888,
+      "r_S6": 0.46144,
+      "r_S7": 0.57897,
+      "top_recip_donors": "GATA1(+9.4z); MED30(+9.1z*); MED21(+8.1z*); MED9(+6.9z*); SUPT6H(+6.0z)",
+      "top_de_genes": [
+        "GYPB",
+        "SH3BGRL",
+        "PYCARD",
+        "CST3",
+        "AIF1",
+        "CFD",
+        "ASAH1",
+        "POLD4"
+      ]
+    }
+  ],
+  "runtime_seconds": 144.79
+}
