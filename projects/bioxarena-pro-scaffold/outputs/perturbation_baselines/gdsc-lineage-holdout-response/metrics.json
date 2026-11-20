@@ -1,7 +1,11 @@
 {
   "task": "gdsc-lineage-holdout-response",
   "elapsed_seconds": 0.8141219615936279,
-  "cv_score": 0.19424334245595526,
+  "official_grade_py_score": 0.1199,
+  "official_baseline_ref": 0.148,
+  "status": "L1_BELOW_OFFICIAL_BASELINE",
+  "deprecated_custom_metric_score": 0.19424334245595526,
+  "deprecation_note": "Prior 0.19424 was produced by a custom metric that clipped negative per-compound Pearson correlations to 0. Under official tasks/perturbation/gdsc-lineage-holdout-response/grade.py, the score is 0.1199 (below official reference 0.148).",
   "n_train_lines": 351,
   "n_test_lines": 136,
   "n_compounds": 138,

@@ -1,8 +1,8 @@
-task,status,runtime_sec,train_time_sec,test_time_sec,ood_cv_score,preflight_passed,model_used,notes
-solubility,PASS_100%,29.5,5.34,0.09,0.715,True,HistGradientBoostingRegressor + Morgan(1024) + Physical Descriptors,Scaffold-robust gradient boosting. 5-fold CV Calibrated Score: 0.7150
-tdc-dti-binding-affinity,PASS_100%,4.65,0.11,0.0,0.2511,True,Source-Separated Ridge Regressor + Morgan(512) + AAC,"Source-separated double-cold training. Estimated OOD score: 0.2511 (kiba=0.302, bdb=0.209, davis=0.234)"
-gutcrc-cross-cohort-detection,PASS_100%,1.17,0.13,0.0,0.4453,True,Cohort-Standardized Logistic Regression (C=0.05) on log10(Taxa),Cross-cohort metagenomic detection. Leave-One-Cohort-Out Sens@90%Spec: 0.4453
-msk-met-tumor-origin,PASS_100%,1.03,0.18,0.02,0.4443,True,Class-Balanced Logistic Regression (C=0.05) on 1021 Genomics Features,Assay-generation OOD classification. 5-Fold Stratified Macro-F1: 0.4443
-cpjump-genetic-matching,PASS_100%,0.5939767360687256,,,0.6111778846153846,True,BioScaffold-OOD,
-gdsc-lineage-holdout-response,PASS_100%,0.8141219615936279,,,0.19424334245595526,True,BioScaffold-OOD,
-xatlas-orion-perturb,PASS_100%,18.944287061691284,,,0.0804,True,Target-Column Cosine Similarity Ridge (alpha=5.0),"Val Score: 0.0804 (HCT: 0.1061, HEK: 0.0548) vs Baseline Ref 0.051 and 22-agent SOTA 0.0825"
+task,preflight_status,runtime_sec,train_time_sec,test_time_sec,internal_val_score,preflight_passed,model_used,notes
+solubility,PREFLIGHT_PASS,29.5,5.34,0.09,0.715,True,HistGradientBoostingRegressor + Morgan(1024) + Physical Descriptors,L1 baseline reproduction (random KFold; official ref 0.711 uses scaffold split)
+tdc-dti-binding-affinity,PREFLIGHT_PASS,4.65,0.11,0.0,0.2511,True,Source-Separated Ridge Regressor + Morgan(512) + AAC,L1 baseline reproduction (cold-target holdout; not directly comparable to official double-cold split)
+gutcrc-cross-cohort-detection,PREFLIGHT_PASS,1.17,0.13,0.0,0.4453,True,Cohort-Standardized Logistic Regression (C=0.05) on log10(Taxa),L1 baseline reproduction (LOCO Sens@90%Spec: 0.4453 vs official ref 0.444)
+msk-met-tumor-origin,PREFLIGHT_PASS,1.03,0.18,0.02,0.4443,True,Class-Balanced Logistic Regression (C=0.05) on 1021 Genomics Features,L1 baseline reproduction (5-fold Macro-F1: 0.4443 vs official ref 0.549; below baseline)
+cpjump-genetic-matching,PREFLIGHT_PASS,0.59,,,0.6112,True,Cosine Similarity Baseline,L1 baseline reproduction (0.6112 vs official ref 0.613)
+gdsc-lineage-holdout-response,PREFLIGHT_PASS,0.81,,,0.1199,True,Ridge on expr+mut+cn (official grade.py),L1 baseline reproduction (official grade.py score 0.1199 vs official ref 0.148; below baseline. Prior 0.1942 from custom negative-clipped metric is deprecated)
+xatlas-orion-perturb,PREFLIGHT_PASS,18.94,,,0.0655,True,Target-Column Cosine Similarity Ridge (5000-dim kernel alpha=5.0),L1 baseline reproduction (10-split mean 0.0655 +/- 0.0044 vs internal SVD+Ridge baseline 0.0613 +/- 0.0040; delta +0.0041 within 0.02 noise margin; internal split is ~0.010 easier than official test)
