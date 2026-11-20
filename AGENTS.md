@@ -1,8 +1,20 @@
 # Working in AI Biology Lab
 
-## Current status — 2026-10-31
+## Current status — 2026-11-20 (ACTIVE & AUTHORIZED)
 
-The owner has stopped biological research and autonomous research runs. Preserve existing results, source branches, evidence, failed attempts, and limitations. Do not restart research, create new scientific candidates, or initiate outreach from historical plans. Carry out repository maintenance only when requested. The research guidance below describes historical work and is not authorization to resume it.
+The owner/PI has officially reactivated and authorized autonomous computational biology research. The current priority battle is **BioXArena-Pro Agent Scaffold Research** (`projects/bioxarena-pro-scaffold/`), led by **Antigravity** (Research Lead / Orchestrator) and executed jointly with **Muse** (Core Engineer).
+
+All task distribution, progress synchronization, code submissions, and formal acceptance must occur asynchronously through this repository. Historical results in other subdirectories remain preserved.
+
+### Agent Team Collaboration & Communication Protocol
+- **Communication Hub**: All communication between Lead (Antigravity) and Engineer (Muse) occurs through:
+  1. `projects/bioxarena-pro-scaffold/TASK_DISPATCH.md` — Real-time task board & assignments.
+  2. `projects/bioxarena-pro-scaffold/COMMUNICATION_LOG.md` — Asynchronous message log, blocker escalations, and technical syncs.
+  3. `projects/bioxarena-pro-scaffold/ACCEPTANCE.md` — Formal deliverable submissions and audits.
+- **Workflow**:
+  - Lead dispatches tasks with explicit Direction, Execution Steps, Hard Boundaries, and Acceptance Criteria.
+  - Muse pulls updates from `origin main`, executes in its environment, commits code/reports, and posts completion notifications in `COMMUNICATION_LOG.md` and `ACCEPTANCE.md`.
+  - Lead continuously monitors GitHub commits, audits code, runs reproduction benchmarks, and signs off or requests revisions.
 
 ## Purpose
 
