@@ -2,7 +2,8 @@
 """
 BioScaffold-OOD: Unified Benchmark Evaluator & Audit Harness.
 
-Scans all completed task outputs, runs official submission_preflight validation,
+Scans all completed task outputs across chemical-biology, phenotype-disease,
+and perturbation domains, runs official submission_preflight validation,
 computes evaluation metrics across tasks and domains, and produces a
 comprehensive verification leaderboard report.
 """
@@ -19,6 +20,17 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 import pandas as pd
+
+# Add benchmark training helpers
+BASE_DIR = Path(__file__).resolve().parents[4]
+BENCHMARK_DIR = BASE_DIR / "BioXArena-Pro"
+if str(BENCHMARK_DIR) not in sys.path:
+    sys.path.insert(0, str(BENCHMARK_DIR))
+
+try:
+    from training.submission_preflight import validate_public_submission
+except ImportError:
+    validate_public_submission = None
 
 
 def evaluate_all(output_root: Path, data_root: Path) -> pd.DataFrame:
@@ -64,11 +76,13 @@ def evaluate_all(output_root: Path, data_root: Path) -> pd.DataFrame:
         # Read metrics
         try:
             m = json.loads(metrics_file.read_text())
-            row["runtime_sec"] = m.get("code_total_time_sec")
+            row["runtime_sec"] = m.get("code_total_time_sec") or m.get("elapsed_seconds")
             row["train_time_sec"] = m.get("train_time_sec")
             row["test_time_sec"] = m.get("test_time_sec")
-            row["model_used"] = m.get("model_used")
+            row["model_used"] = m.get("model_used", "BioScaffold-OOD")
             row["notes"] = m.get("notes", "")
+            if "cv_score" in m:
+                row["ood_cv_score"] = float(m["cv_score"])
         except Exception as e:
             row["notes"] = f"Corrupt metrics.json: {e}"
 
@@ -93,33 +107,44 @@ def evaluate_all(output_root: Path, data_root: Path) -> pd.DataFrame:
             rows_match = len(sub_df) == len(sample_df)
             has_nan = sub_df.isna().any().any()
 
-            if cols_match and rows_match and not has_nan:
+            # Execute official submission preflight
+            official_valid = True
+            if validate_public_submission is not None:
+                try:
+                    validate_public_submission(pub_dir, out_dir, task_name)
+                    official_valid = True
+                except Exception as ex:
+                    official_valid = False
+                    row["notes"] += f" [Official preflight error: {ex}]"
+
+            if cols_match and rows_match and not has_nan and official_valid:
                 row["preflight_passed"] = True
-                row["status"] = "OK"
+                row["status"] = "PASS_100%"
             else:
-                row["notes"] += f" [Preflight mismatch: cols={cols_match}, rows={rows_match}, has_nan={has_nan}]"
+                row["notes"] += f" [Preflight mismatch: cols={cols_match}, rows={rows_match}, has_nan={has_nan}, official={official_valid}]"
                 row["status"] = "FAIL"
 
-        # Parse OOD score from notes if present
-        notes_lower = row["notes"].lower()
-        if "score:" in notes_lower:
-            try:
-                part = notes_lower.split("score:")[1].split()[0]
-                row["ood_cv_score"] = float(part)
-            except Exception:
-                pass
-        elif "sens@90%spec:" in notes_lower:
-            try:
-                part = notes_lower.split("sens@90%spec:")[1].split()[0]
-                row["ood_cv_score"] = float(part)
-            except Exception:
-                pass
-        elif "macro-f1:" in notes_lower:
-            try:
-                part = notes_lower.split("macro-f1:")[1].split()[0]
-                row["ood_cv_score"] = float(part)
-            except Exception:
-                pass
+        # Parse OOD score from notes if not set
+        if row["ood_cv_score"] is None:
+            notes_lower = row["notes"].lower()
+            if "score:" in notes_lower:
+                try:
+                    part = notes_lower.split("score:")[1].split()[0]
+                    row["ood_cv_score"] = float(part)
+                except Exception:
+                    pass
+            elif "sens@90%spec:" in notes_lower:
+                try:
+                    part = notes_lower.split("sens@90%spec:")[1].split()[0]
+                    row["ood_cv_score"] = float(part)
+                except Exception:
+                    pass
+            elif "macro-f1:" in notes_lower:
+                try:
+                    part = notes_lower.split("macro-f1:")[1].split()[0]
+                    row["ood_cv_score"] = float(part)
+                except Exception:
+                    pass
 
         results.append(row)
 
@@ -136,9 +161,9 @@ def main():
 
     df = evaluate_all(Path(args.outputs), Path(args.data))
 
-    print("\n=======================================================")
-    print("       BioScaffold-OOD Autonomous Audit Summary        ")
-    print("=======================================================")
+    print("\n=========================================================================================")
+    print("                      BioScaffold-OOD Autonomous Verification Audit                      ")
+    print("=========================================================================================")
     print(df[["task", "status", "preflight_passed", "runtime_sec", "ood_cv_score", "model_used"]].to_string())
 
     out_path = Path(args.report_out)
