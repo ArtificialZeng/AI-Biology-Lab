@@ -1,0 +1,80 @@
+{
+  "gtf_file": "gencode.v46.basic.annotation.gtf.gz",
+  "gtf_sha256": "d620d548ad23dad6c2d67486b7679d12f00f02f66dd5787183d8e6678dceb9b4",
+  "mapped_genes": "10530/10539",
+  "null_random_pairs": {
+    "n_pairs": 99988,
+    "frac_lt_1kb": 2e-05,
+    "frac_lt_10kb": 3e-05,
+    "frac_lt_100kb": 0.00022,
+    "frac_same_chrom": 0.054247
+  },
+  "all_active_pairs_abs_z_gt4": {
+    "n_pairs": 17213,
+    "frac_lt_1kb": 0.0032,
+    "frac_lt_10kb": 0.00331,
+    "frac_lt_100kb": 0.00343,
+    "frac_same_chrom": 0.05624,
+    "weight_share_lt_1kb": 0.00252,
+    "weight_share_lt_10kb": 0.00255,
+    "weight_share_lt_100kb": 0.00256
+  },
+  "negative_z_pairs_z_lt_minus4": {
+    "n_pairs": 3939,
+    "frac_lt_1kb": 0.01371,
+    "frac_lt_10kb": 0.01422,
+    "frac_lt_100kb": 0.01447,
+    "frac_same_chrom": 0.06524,
+    "weight_share_lt_1kb": 0.03279,
+    "weight_share_lt_10kb": 0.03317,
+    "weight_share_lt_100kb": 0.0332
+  },
+  "positive_z_pairs_z_gt_plus4": {
+    "n_pairs": 13272,
+    "frac_lt_1kb": 8e-05,
+    "frac_lt_10kb": 8e-05,
+    "frac_lt_100kb": 0.00015,
+    "frac_same_chrom": 0.05357,
+    "weight_share_lt_1kb": 0.0,
+    "weight_share_lt_10kb": 0.0,
+    "weight_share_lt_100kb": 1e-05
+  },
+  "top_donor_per_query": {
+    "n_pairs": 2606,
+    "frac_lt_1kb": 0.00384,
+    "frac_lt_10kb": 0.00384,
+    "frac_lt_100kb": 0.00384,
+    "frac_same_chrom": 0.05295,
+    "weight_share_lt_1kb": 0.00274,
+    "weight_share_lt_10kb": 0.00274,
+    "weight_share_lt_100kb": 0.00274
+  },
+  "counterfactual_overall_all_2614": {
+    "mean_S5": 0.14028,
+    "mean_S5_plus_ownRec_all": 0.12983,
+    "mean_S5_plus_ownRec_no10kb": 0.12944,
+    "mean_S5_plus_ownRec_no100kb": 0.12944,
+    "delta_all": -0.01045,
+    "delta_no10kb": -0.01084,
+    "delta_no100kb": -0.01084
+  },
+  "counterfactual_top40_ownRec_winners": {
+    "n": 40,
+    "frac_top_donor_lt10kb": 0.025,
+    "frac_top_donor_lt100kb": 0.025,
+    "mean_weight_share_lt10kb": 0.0228,
+    "mean_gain_all": 0.2536,
+    "mean_gain_no10kb": 0.2471,
+    "mean_gain_no100kb": 0.2471,
+    "pct_gain_retained_after_removing_10kb": 97.41
+  },
+  "counterfactual_top40_S6_S5_winners": {
+    "n": 40,
+    "frac_top_donor_lt10kb": 0.0,
+    "frac_top_donor_lt100kb": 0.0,
+    "frac_top_donor_neg_z": 0.325,
+    "mean_gain_ownRec_all": 0.2391,
+    "mean_gain_ownRec_no10kb": 0.2384
+  },
+  "runtime_seconds": 161.37
+}

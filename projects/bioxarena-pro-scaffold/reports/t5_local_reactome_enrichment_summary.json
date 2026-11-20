@@ -1,0 +1,910 @@
+{
+  "gmt_file": "ReactomePathways.gmt",
+  "gmt_license": "CC BY 4.0 (https://reactome.org/license)",
+  "gmt_sha256": "a9feaa3ae9bbb746422cba77a669813de627fb15b7d7478b67c8d57020ec26ae",
+  "n_gmt_pathways": 2874,
+  "n_evaluated_unique_genes": 1784,
+  "n_evaluated_in_gmt": 1452,
+  "top_N": 164,
+  "overlap_S7_top_vs_S0_top": 113,
+  "cohorts_full_evaluated_bg": {
+    "S7_top_164": {
+      "n_query": 164,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 243,
+      "top10": [
+        {
+          "stId": "R-HSA-71291",
+          "name": "Metabolism of amino acids and derivatives",
+          "k_in_query": 65,
+          "N_query": 164,
+          "n_in_bg": 115,
+          "M_bg": 1784,
+          "fold_enrichment": 6.1485,
+          "p_value": 3.157319641799916e-42,
+          "fdr_bh": 2.9931390204263206e-39
+        },
+        {
+          "stId": "R-HSA-9954709",
+          "name": "Ribosome Quality Control (RQC) complex extracts and degrades nascent peptide",
+          "k_in_query": 56,
+          "N_query": 164,
+          "n_in_bg": 84,
+          "M_bg": 1784,
+          "fold_enrichment": 7.252,
+          "p_value": 1.2685509486651778e-41,
+          "fdr_bh": 6.012931496672944e-39
+        },
+        {
+          "stId": "R-HSA-9948299",
+          "name": "Ribosome-associated quality control",
+          "k_in_query": 65,
+          "N_query": 164,
+          "n_in_bg": 119,
+          "M_bg": 1784,
+          "fold_enrichment": 5.9418,
+          "p_value": 6.231914332347467e-41,
+          "fdr_bh": 1.9692849290217994e-38
+        },
+        {
+          "stId": "R-HSA-9010553",
+          "name": "Regulation of expression of SLITs and ROBOs",
+          "k_in_query": 65,
+          "N_query": 164,
+          "n_in_bg": 125,
+          "M_bg": 1784,
+          "fold_enrichment": 5.6566,
+          "p_value": 4.065122238783972e-39,
+          "fdr_bh": 9.634339705918015e-37
+        },
+        {
+          "stId": "R-HSA-376176",
+          "name": "Signaling by ROBO receptors",
+          "k_in_query": 65,
+          "N_query": 164,
+          "n_in_bg": 129,
+          "M_bg": 1784,
+          "fold_enrichment": 5.4812,
+          "p_value": 5.52914893150338e-38,
+          "fdr_bh": 1.0483266374130408e-35
+        },
+        {
+          "stId": "R-HSA-422475",
+          "name": "Axon guidance",
+          "k_in_query": 66,
+          "N_query": 164,
+          "n_in_bg": 157,
+          "M_bg": 1784,
+          "fold_enrichment": 4.5729,
+          "p_value": 2.1611182664967766e-32,
+          "fdr_bh": 2.9267715951984918e-30
+        },
+        {
+          "stId": "R-HSA-9675108",
+          "name": "Nervous system development",
+          "k_in_query": 66,
+          "N_query": 164,
+          "n_in_bg": 157,
+          "M_bg": 1784,
+          "fold_enrichment": 4.5729,
+          "p_value": 2.1611182664967766e-32,
+          "fdr_bh": 2.9267715951984918e-30
+        },
+        {
+          "stId": "R-HSA-72766",
+          "name": "Translation",
+          "k_in_query": 74,
+          "N_query": 164,
+          "n_in_bg": 239,
+          "M_bg": 1784,
+          "fold_enrichment": 3.3681,
+          "p_value": 2.3334109101716514e-26,
+          "fdr_bh": 2.7650919285534072e-24
+        },
+        {
+          "stId": "R-HSA-69481",
+          "name": "G2/M Checkpoints",
+          "k_in_query": 39,
+          "N_query": 164,
+          "n_in_bg": 66,
+          "M_bg": 1784,
+          "fold_enrichment": 6.4279,
+          "p_value": 1.4249624562139644e-25,
+          "fdr_bh": 1.500960453878709e-23
+        },
+        {
+          "stId": "R-HSA-350562",
+          "name": "Regulation of ornithine decarboxylase (ODC)",
+          "k_in_query": 27,
+          "N_query": 164,
+          "n_in_bg": 31,
+          "M_bg": 1784,
+          "fold_enrichment": 9.4744,
+          "p_value": 2.9984601412762083e-25,
+          "fdr_bh": 2.2642834081863126e-23
+        }
+      ]
+    },
+    "S0_top_164": {
+      "n_query": 164,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 278,
+      "top10": [
+        {
+          "stId": "R-HSA-71291",
+          "name": "Metabolism of amino acids and derivatives",
+          "k_in_query": 79,
+          "N_query": 164,
+          "n_in_bg": 115,
+          "M_bg": 1784,
+          "fold_enrichment": 7.4727,
+          "p_value": 1.3019667889980692e-62,
+          "fdr_bh": 1.2342645159701696e-59
+        },
+        {
+          "stId": "R-HSA-9948299",
+          "name": "Ribosome-associated quality control",
+          "k_in_query": 79,
+          "N_query": 164,
+          "n_in_bg": 119,
+          "M_bg": 1784,
+          "fold_enrichment": 7.2216,
+          "p_value": 9.20231307530193e-61,
+          "fdr_bh": 4.361896397693115e-58
+        },
+        {
+          "stId": "R-HSA-9010553",
+          "name": "Regulation of expression of SLITs and ROBOs",
+          "k_in_query": 79,
+          "N_query": 164,
+          "n_in_bg": 125,
+          "M_bg": 1784,
+          "fold_enrichment": 6.8749,
+          "p_value": 3.3777982470516856e-58,
+          "fdr_bh": 1.0673842460683326e-55
+        },
+        {
+          "stId": "R-HSA-376176",
+          "name": "Signaling by ROBO receptors",
+          "k_in_query": 79,
+          "N_query": 164,
+          "n_in_bg": 129,
+          "M_bg": 1784,
+          "fold_enrichment": 6.6618,
+          "p_value": 1.3118904740162553e-56,
+          "fdr_bh": 3.109180423418525e-54
+        },
+        {
+          "stId": "R-HSA-9954709",
+          "name": "Ribosome Quality Control (RQC) complex extracts and degrades nascent peptide",
+          "k_in_query": 64,
+          "N_query": 164,
+          "n_in_bg": 84,
+          "M_bg": 1784,
+          "fold_enrichment": 8.288,
+          "p_value": 2.9529778196924496e-54,
+          "fdr_bh": 5.598845946136885e-52
+        },
+        {
+          "stId": "R-HSA-422475",
+          "name": "Axon guidance",
+          "k_in_query": 80,
+          "N_query": 164,
+          "n_in_bg": 157,
+          "M_bg": 1784,
+          "fold_enrichment": 5.543,
+          "p_value": 1.0258017233184726e-48,
+          "fdr_bh": 1.3892286195798743e-46
+        },
+        {
+          "stId": "R-HSA-9675108",
+          "name": "Nervous system development",
+          "k_in_query": 80,
+          "N_query": 164,
+          "n_in_bg": 157,
+          "M_bg": 1784,
+          "fold_enrichment": 5.543,
+          "p_value": 1.0258017233184726e-48,
+          "fdr_bh": 1.3892286195798743e-46
+        },
+        {
+          "stId": "R-HSA-2408557",
+          "name": "Selenocysteine synthesis",
+          "k_in_query": 52,
+          "N_query": 164,
+          "n_in_bg": 76,
+          "M_bg": 1784,
+          "fold_enrichment": 7.4429,
+          "p_value": 2.3079463039362062e-39,
+          "fdr_bh": 2.7349163701644048e-37
+        },
+        {
+          "stId": "R-HSA-156902",
+          "name": "Peptide chain elongation",
+          "k_in_query": 52,
+          "N_query": 164,
+          "n_in_bg": 77,
+          "M_bg": 1784,
+          "fold_enrichment": 7.3462,
+          "p_value": 6.651546935050658e-39,
+          "fdr_bh": 5.732424085843658e-37
+        },
+        {
+          "stId": "R-HSA-2408522",
+          "name": "Selenoamino acid metabolism",
+          "k_in_query": 52,
+          "N_query": 164,
+          "n_in_bg": 77,
+          "M_bg": 1784,
+          "fold_enrichment": 7.3462,
+          "p_value": 6.651546935050658e-39,
+          "fdr_bh": 5.732424085843658e-37
+        }
+      ]
+    },
+    "S7_minus_S0_top150": {
+      "n_query": 150,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 6,
+      "top10": [
+        {
+          "stId": "R-HSA-72163",
+          "name": "mRNA Splicing - Major Pathway",
+          "k_in_query": 38,
+          "N_query": 150,
+          "n_in_bg": 145,
+          "M_bg": 1784,
+          "fold_enrichment": 3.1169,
+          "p_value": 1.2413941199118774e-11,
+          "fdr_bh": 1.1768416256764598e-08
+        },
+        {
+          "stId": "R-HSA-72172",
+          "name": "mRNA Splicing",
+          "k_in_query": 38,
+          "N_query": 150,
+          "n_in_bg": 150,
+          "M_bg": 1784,
+          "fold_enrichment": 3.013,
+          "p_value": 3.888880806748225e-11,
+          "fdr_bh": 1.843329502398659e-08
+        },
+        {
+          "stId": "R-HSA-72203",
+          "name": "Processing of Capped Intron-Containing Pre-mRNA",
+          "k_in_query": 42,
+          "N_query": 150,
+          "n_in_bg": 197,
+          "M_bg": 1784,
+          "fold_enrichment": 2.5356,
+          "p_value": 1.1814692996856034e-09,
+          "fdr_bh": 3.733442987006507e-07
+        },
+        {
+          "stId": "R-HSA-9918481",
+          "name": "Dengue Virus-Host Interactions",
+          "k_in_query": 28,
+          "N_query": 150,
+          "n_in_bg": 131,
+          "M_bg": 1784,
+          "fold_enrichment": 2.5421,
+          "p_value": 1.2102466672171922e-06,
+          "fdr_bh": 0.00028682846013047456
+        },
+        {
+          "stId": "R-HSA-9839923",
+          "name": "Dengue Virus Infection",
+          "k_in_query": 33,
+          "N_query": 150,
+          "n_in_bg": 174,
+          "M_bg": 1784,
+          "fold_enrichment": 2.2556,
+          "p_value": 2.129573006884083e-06,
+          "fdr_bh": 0.00040376704210522217
+        },
+        {
+          "stId": "R-HSA-72165",
+          "name": "mRNA Splicing - Minor Pathway",
+          "k_in_query": 14,
+          "N_query": 150,
+          "n_in_bg": 42,
+          "M_bg": 1784,
+          "fold_enrichment": 3.9644,
+          "p_value": 3.2548638001799606e-06,
+          "fdr_bh": 0.0005142684804284338
+        },
+        {
+          "stId": "R-HSA-9943411",
+          "name": "CHD1 and CHD2 subfamily",
+          "k_in_query": 9,
+          "N_query": 150,
+          "n_in_bg": 30,
+          "M_bg": 1784,
+          "fold_enrichment": 3.568,
+          "p_value": 0.0005084271673840907,
+          "fdr_bh": 0.06885556495430258
+        },
+        {
+          "stId": "R-HSA-8953854",
+          "name": "Metabolism of RNA",
+          "k_in_query": 55,
+          "N_query": 150,
+          "n_in_bg": 476,
+          "M_bg": 1784,
+          "fold_enrichment": 1.3742,
+          "p_value": 0.003235203742255493,
+          "fdr_bh": 0.3765718418172278
+        },
+        {
+          "stId": "R-HSA-9937848",
+          "name": "CHD chromatin remodelers",
+          "k_in_query": 9,
+          "N_query": 150,
+          "n_in_bg": 41,
+          "M_bg": 1784,
+          "fold_enrichment": 2.6107,
+          "p_value": 0.005557094516646544,
+          "fdr_bh": 0.3765718418172278
+        },
+        {
+          "stId": "R-HSA-167172",
+          "name": "Transcription of the HIV genome",
+          "k_in_query": 9,
+          "N_query": 150,
+          "n_in_bg": 42,
+          "M_bg": 1784,
+          "fold_enrichment": 2.5486,
+          "p_value": 0.0065744934753226535,
+          "fdr_bh": 0.3765718418172278
+        }
+      ]
+    },
+    "S6_minus_S5_top150": {
+      "n_query": 150,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 21,
+      "top10": [
+        {
+          "stId": "R-HSA-72172",
+          "name": "mRNA Splicing",
+          "k_in_query": 34,
+          "N_query": 150,
+          "n_in_bg": 150,
+          "M_bg": 1784,
+          "fold_enrichment": 2.6958,
+          "p_value": 1.3143679340905617e-08,
+          "fdr_bh": 9.637172965443308e-06
+        },
+        {
+          "stId": "R-HSA-72163",
+          "name": "mRNA Splicing - Major Pathway",
+          "k_in_query": 33,
+          "N_query": 150,
+          "n_in_bg": 145,
+          "M_bg": 1784,
+          "fold_enrichment": 2.7068,
+          "p_value": 2.033158853469052e-08,
+          "fdr_bh": 9.637172965443308e-06
+        },
+        {
+          "stId": "R-HSA-72203",
+          "name": "Processing of Capped Intron-Containing Pre-mRNA",
+          "k_in_query": 39,
+          "N_query": 150,
+          "n_in_bg": 197,
+          "M_bg": 1784,
+          "fold_enrichment": 2.3545,
+          "p_value": 5.336381786677789e-08,
+          "fdr_bh": 1.6862966445901814e-05
+        },
+        {
+          "stId": "R-HSA-9839923",
+          "name": "Dengue Virus Infection",
+          "k_in_query": 34,
+          "N_query": 150,
+          "n_in_bg": 174,
+          "M_bg": 1784,
+          "fold_enrichment": 2.324,
+          "p_value": 6.780135564395178e-07,
+          "fdr_bh": 0.00016068921287616574
+        },
+        {
+          "stId": "R-HSA-9918481",
+          "name": "Dengue Virus-Host Interactions",
+          "k_in_query": 25,
+          "N_query": 150,
+          "n_in_bg": 131,
+          "M_bg": 1784,
+          "fold_enrichment": 2.2697,
+          "p_value": 4.132992974862728e-05,
+          "fdr_bh": 0.007836154680339732
+        },
+        {
+          "stId": "R-HSA-72187",
+          "name": "mRNA 3'-end processing",
+          "k_in_query": 22,
+          "N_query": 150,
+          "n_in_bg": 111,
+          "M_bg": 1784,
+          "fold_enrichment": 2.3572,
+          "p_value": 6.972022487013125e-05,
+          "fdr_bh": 0.010135886276991211
+        },
+        {
+          "stId": "R-HSA-9937848",
+          "name": "CHD chromatin remodelers",
+          "k_in_query": 12,
+          "N_query": 150,
+          "n_in_bg": 41,
+          "M_bg": 1784,
+          "fold_enrichment": 3.481,
+          "p_value": 7.484304212968195e-05,
+          "fdr_bh": 0.010135886276991211
+        },
+        {
+          "stId": "R-HSA-9943411",
+          "name": "CHD1 and CHD2 subfamily",
+          "k_in_query": 10,
+          "N_query": 150,
+          "n_in_bg": 30,
+          "M_bg": 1784,
+          "fold_enrichment": 3.9644,
+          "p_value": 9.059735366543098e-05,
+          "fdr_bh": 0.010735786409353573
+        },
+        {
+          "stId": "R-HSA-9770562",
+          "name": "mRNA Polyadenylation",
+          "k_in_query": 20,
+          "N_query": 150,
+          "n_in_bg": 99,
+          "M_bg": 1784,
+          "fold_enrichment": 2.4027,
+          "p_value": 0.00011661677548069089,
+          "fdr_bh": 0.012047159789832744
+        },
+        {
+          "stId": "R-HSA-5663205",
+          "name": "Infectious disease",
+          "k_in_query": 57,
+          "N_query": 150,
+          "n_in_bg": 443,
+          "M_bg": 1784,
+          "fold_enrichment": 1.5303,
+          "p_value": 0.00012707974461848885,
+          "fdr_bh": 0.012047159789832744
+        }
+      ]
+    },
+    "S5_minus_S2_top150": {
+      "n_query": 150,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 5,
+      "top10": [
+        {
+          "stId": "R-HSA-5368287",
+          "name": "Mitochondrial translation",
+          "k_in_query": 20,
+          "N_query": 150,
+          "n_in_bg": 82,
+          "M_bg": 1784,
+          "fold_enrichment": 2.9008,
+          "p_value": 5.985479272518711e-06,
+          "fdr_bh": 0.002756820498357778
+        },
+        {
+          "stId": "R-HSA-9937383",
+          "name": "Mitochondrial ribosome-associated quality control",
+          "k_in_query": 19,
+          "N_query": 150,
+          "n_in_bg": 76,
+          "M_bg": 1784,
+          "fold_enrichment": 2.9733,
+          "p_value": 7.079086308666216e-06,
+          "fdr_bh": 0.002756820498357778
+        },
+        {
+          "stId": "R-HSA-5389840",
+          "name": "Mitochondrial translation elongation",
+          "k_in_query": 19,
+          "N_query": 150,
+          "n_in_bg": 77,
+          "M_bg": 1784,
+          "fold_enrichment": 2.9347,
+          "p_value": 8.724115501132208e-06,
+          "fdr_bh": 0.002756820498357778
+        },
+        {
+          "stId": "R-HSA-5419276",
+          "name": "Mitochondrial translation termination",
+          "k_in_query": 18,
+          "N_query": 150,
+          "n_in_bg": 75,
+          "M_bg": 1784,
+          "fold_enrichment": 2.8544,
+          "p_value": 2.332342162788977e-05,
+          "fdr_bh": 0.005377959836810766
+        },
+        {
+          "stId": "R-HSA-5368286",
+          "name": "Mitochondrial translation initiation",
+          "k_in_query": 18,
+          "N_query": 150,
+          "n_in_bg": 76,
+          "M_bg": 1784,
+          "fold_enrichment": 2.8168,
+          "p_value": 2.8364767071786743e-05,
+          "fdr_bh": 0.005377959836810766
+        },
+        {
+          "stId": "R-HSA-1268020",
+          "name": "Mitochondrial protein import",
+          "k_in_query": 8,
+          "N_query": 150,
+          "n_in_bg": 27,
+          "M_bg": 1784,
+          "fold_enrichment": 3.524,
+          "p_value": 0.001156192302377843,
+          "fdr_bh": 0.1826783837756992
+        },
+        {
+          "stId": "R-HSA-392499",
+          "name": "Metabolism of proteins",
+          "k_in_query": 59,
+          "N_query": 150,
+          "n_in_bg": 506,
+          "M_bg": 1784,
+          "fold_enrichment": 1.3868,
+          "p_value": 0.001612835115608178,
+          "fdr_bh": 0.21842395565665038
+        },
+        {
+          "stId": "R-HSA-72172",
+          "name": "mRNA Splicing",
+          "k_in_query": 23,
+          "N_query": 150,
+          "n_in_bg": 150,
+          "M_bg": 1784,
+          "fold_enrichment": 1.8236,
+          "p_value": 0.0023799789470918473,
+          "fdr_bh": 0.27099280038031087
+        },
+        {
+          "stId": "R-HSA-9694548",
+          "name": "Maturation of spike protein_9694548",
+          "k_in_query": 4,
+          "N_query": 150,
+          "n_in_bg": 8,
+          "M_bg": 1784,
+          "fold_enrichment": 5.9467,
+          "p_value": 0.002572716459306749,
+          "fdr_bh": 0.27099280038031087
+        },
+        {
+          "stId": "R-HSA-72163",
+          "name": "mRNA Splicing - Major Pathway",
+          "k_in_query": 22,
+          "N_query": 150,
+          "n_in_bg": 145,
+          "M_bg": 1784,
+          "fold_enrichment": 1.8045,
+          "p_value": 0.0034184512732157906,
+          "fdr_bh": 0.32406918070085694
+        }
+      ]
+    }
+  },
+  "cohorts_gmt_annotated_bg": {
+    "S7_top_164": {
+      "n_query_in_gmt": 144,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 239,
+      "top5": [
+        {
+          "stId": "R-HSA-71291",
+          "name": "Metabolism of amino acids and derivatives",
+          "k_in_query": 65,
+          "N_query": 144,
+          "n_in_bg": 115,
+          "M_bg": 1452,
+          "fold_enrichment": 5.6993,
+          "p_value": 4.864619852250363e-41,
+          "fdr_bh": 4.6116596199333446e-38
+        },
+        {
+          "stId": "R-HSA-9954709",
+          "name": "Ribosome Quality Control (RQC) complex extracts and degrades nascent peptide",
+          "k_in_query": 56,
+          "N_query": 144,
+          "n_in_bg": 84,
+          "M_bg": 1452,
+          "fold_enrichment": 6.7222,
+          "p_value": 1.87040128509666e-40,
+          "fdr_bh": 8.865702091358169e-38
+        },
+        {
+          "stId": "R-HSA-9948299",
+          "name": "Ribosome-associated quality control",
+          "k_in_query": 65,
+          "N_query": 144,
+          "n_in_bg": 119,
+          "M_bg": 1452,
+          "fold_enrichment": 5.5077,
+          "p_value": 9.610760761284512e-40,
+          "fdr_bh": 3.037000400565906e-37
+        },
+        {
+          "stId": "R-HSA-9010553",
+          "name": "Regulation of expression of SLITs and ROBOs",
+          "k_in_query": 65,
+          "N_query": 144,
+          "n_in_bg": 125,
+          "M_bg": 1452,
+          "fold_enrichment": 5.2433,
+          "p_value": 6.276277233855749e-38,
+          "fdr_bh": 1.4874777044238125e-35
+        },
+        {
+          "stId": "R-HSA-376176",
+          "name": "Signaling by ROBO receptors",
+          "k_in_query": 65,
+          "N_query": 144,
+          "n_in_bg": 129,
+          "M_bg": 1452,
+          "fold_enrichment": 5.0807,
+          "p_value": 8.541540124794286e-37,
+          "fdr_bh": 1.6194760076609965e-34
+        }
+      ]
+    },
+    "S0_top_164": {
+      "n_query_in_gmt": 142,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 274,
+      "top5": [
+        {
+          "stId": "R-HSA-71291",
+          "name": "Metabolism of amino acids and derivatives",
+          "k_in_query": 79,
+          "N_query": 142,
+          "n_in_bg": 115,
+          "M_bg": 1452,
+          "fold_enrichment": 7.0244,
+          "p_value": 3.0634438986554194e-62,
+          "fdr_bh": 2.904144815925338e-59
+        },
+        {
+          "stId": "R-HSA-9948299",
+          "name": "Ribosome-associated quality control",
+          "k_in_query": 79,
+          "N_query": 142,
+          "n_in_bg": 119,
+          "M_bg": 1452,
+          "fold_enrichment": 6.7883,
+          "p_value": 2.199679423889421e-60,
+          "fdr_bh": 1.0426480469235857e-57
+        },
+        {
+          "stId": "R-HSA-9010553",
+          "name": "Regulation of expression of SLITs and ROBOs",
+          "k_in_query": 79,
+          "N_query": 142,
+          "n_in_bg": 125,
+          "M_bg": 1452,
+          "fold_enrichment": 6.4624,
+          "p_value": 8.26630737853338e-58,
+          "fdr_bh": 2.612153131616548e-55
+        },
+        {
+          "stId": "R-HSA-376176",
+          "name": "Signaling by ROBO receptors",
+          "k_in_query": 79,
+          "N_query": 142,
+          "n_in_bg": 129,
+          "M_bg": 1452,
+          "fold_enrichment": 6.262,
+          "p_value": 3.2609413484371756e-56,
+          "fdr_bh": 7.728430995796106e-54
+        },
+        {
+          "stId": "R-HSA-9954709",
+          "name": "Ribosome Quality Control (RQC) complex extracts and degrades nascent peptide",
+          "k_in_query": 64,
+          "N_query": 142,
+          "n_in_bg": 84,
+          "M_bg": 1452,
+          "fold_enrichment": 7.7907,
+          "p_value": 1.431398897151595e-53,
+          "fdr_bh": 2.7139323089994244e-51
+        }
+      ]
+    },
+    "S7_minus_S0_top150": {
+      "n_query_in_gmt": 128,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 6,
+      "top5": [
+        {
+          "stId": "R-HSA-72163",
+          "name": "mRNA Splicing - Major Pathway",
+          "k_in_query": 38,
+          "N_query": 128,
+          "n_in_bg": 145,
+          "M_bg": 1452,
+          "fold_enrichment": 2.9728,
+          "p_value": 3.063697744311983e-11,
+          "fdr_bh": 2.90438546160776e-08
+        },
+        {
+          "stId": "R-HSA-72172",
+          "name": "mRNA Splicing",
+          "k_in_query": 38,
+          "N_query": 128,
+          "n_in_bg": 150,
+          "M_bg": 1452,
+          "fold_enrichment": 2.8737,
+          "p_value": 9.572492398872759e-11,
+          "fdr_bh": 4.537361397065688e-08
+        },
+        {
+          "stId": "R-HSA-72203",
+          "name": "Processing of Capped Intron-Containing Pre-mRNA",
+          "k_in_query": 42,
+          "N_query": 128,
+          "n_in_bg": 197,
+          "M_bg": 1452,
+          "fold_enrichment": 2.4185,
+          "p_value": 2.9401955847596026e-09,
+          "fdr_bh": 9.291018047840345e-07
+        },
+        {
+          "stId": "R-HSA-9918481",
+          "name": "Dengue Virus-Host Interactions",
+          "k_in_query": 28,
+          "N_query": 128,
+          "n_in_bg": 131,
+          "M_bg": 1452,
+          "fold_enrichment": 2.4246,
+          "p_value": 2.5354630128561074e-06,
+          "fdr_bh": 0.0006009047340468975
+        },
+        {
+          "stId": "R-HSA-9839923",
+          "name": "Dengue Virus Infection",
+          "k_in_query": 33,
+          "N_query": 128,
+          "n_in_bg": 174,
+          "M_bg": 1452,
+          "fold_enrichment": 2.1514,
+          "p_value": 4.700876278195715e-06,
+          "fdr_bh": 0.0008396940640528156
+        }
+      ]
+    },
+    "S6_minus_S5_top150": {
+      "n_query_in_gmt": 129,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 15,
+      "top5": [
+        {
+          "stId": "R-HSA-72172",
+          "name": "mRNA Splicing",
+          "k_in_query": 34,
+          "N_query": 129,
+          "n_in_bg": 150,
+          "M_bg": 1452,
+          "fold_enrichment": 2.5513,
+          "p_value": 3.808672840766197e-08,
+          "fdr_bh": 2.7379652477324208e-05
+        },
+        {
+          "stId": "R-HSA-72163",
+          "name": "mRNA Splicing - Major Pathway",
+          "k_in_query": 33,
+          "N_query": 129,
+          "n_in_bg": 145,
+          "M_bg": 1452,
+          "fold_enrichment": 2.5617,
+          "p_value": 5.776297990996668e-08,
+          "fdr_bh": 2.7379652477324208e-05
+        },
+        {
+          "stId": "R-HSA-72203",
+          "name": "Processing of Capped Intron-Containing Pre-mRNA",
+          "k_in_query": 39,
+          "N_query": 129,
+          "n_in_bg": 197,
+          "M_bg": 1452,
+          "fold_enrichment": 2.2283,
+          "p_value": 1.629514600127944e-07,
+          "fdr_bh": 5.149266136404303e-05
+        },
+        {
+          "stId": "R-HSA-9839923",
+          "name": "Dengue Virus Infection",
+          "k_in_query": 34,
+          "N_query": 129,
+          "n_in_bg": 174,
+          "M_bg": 1452,
+          "fold_enrichment": 2.1994,
+          "p_value": 1.8685718241710613e-06,
+          "fdr_bh": 0.00044285152232854155
+        },
+        {
+          "stId": "R-HSA-9918481",
+          "name": "Dengue Virus-Host Interactions",
+          "k_in_query": 25,
+          "N_query": 129,
+          "n_in_bg": 131,
+          "M_bg": 1452,
+          "fold_enrichment": 2.1481,
+          "p_value": 9.093726229470939e-05,
+          "fdr_bh": 0.016998661658374617
+        }
+      ]
+    },
+    "S5_minus_S2_top150": {
+      "n_query_in_gmt": 131,
+      "n_pathways_tested": 948,
+      "n_fdr_lt_0_05": 5,
+      "top5": [
+        {
+          "stId": "R-HSA-5368287",
+          "name": "Mitochondrial translation",
+          "k_in_query": 20,
+          "N_query": 131,
+          "n_in_bg": 82,
+          "M_bg": 1452,
+          "fold_enrichment": 2.7034,
+          "p_value": 1.576516769857938e-05,
+          "fdr_bh": 0.006978354175740835
+        },
+        {
+          "stId": "R-HSA-9937383",
+          "name": "Mitochondrial ribosome-associated quality control",
+          "k_in_query": 19,
+          "N_query": 131,
+          "n_in_bg": 76,
+          "M_bg": 1452,
+          "fold_enrichment": 2.771,
+          "p_value": 1.8002039157931846e-05,
+          "fdr_bh": 0.006978354175740835
+        },
+        {
+          "stId": "R-HSA-5389840",
+          "name": "Mitochondrial translation elongation",
+          "k_in_query": 19,
+          "N_query": 131,
+          "n_in_bg": 77,
+          "M_bg": 1452,
+          "fold_enrichment": 2.735,
+          "p_value": 2.20833992903191e-05,
+          "fdr_bh": 0.006978354175740835
+        },
+        {
+          "stId": "R-HSA-5419276",
+          "name": "Mitochondrial translation termination",
+          "k_in_query": 18,
+          "N_query": 131,
+          "n_in_bg": 75,
+          "M_bg": 1452,
+          "fold_enrichment": 2.6602,
+          "p_value": 5.592998390007917e-05,
+          "fdr_bh": 0.012836057530489511
+        },
+        {
+          "stId": "R-HSA-5368286",
+          "name": "Mitochondrial translation initiation",
+          "k_in_query": 18,
+          "N_query": 131,
+          "n_in_bg": 76,
+          "M_bg": 1452,
+          "fold_enrichment": 2.6252,
+          "p_value": 6.770072537178012e-05,
+          "fdr_bh": 0.012836057530489511
+        }
+      ]
+    }
+  },
+  "t5_verdict": "GAIN_ENRICHMENT_FOUND"
+}

@@ -120,29 +120,20 @@ def evaluate_5metrics(preds: dict, val_df: pd.DataFrame, all_y: dict, bases: dic
             T_v5[i] = _project_out(t_vec, Q_full)
             P_v5[i] = _project_out(p_vec, Q_full)
 
-        # Perturbation Discrimination Rank Percentile (standard unprojected Delta & v5-projected)
+        # Perturbation Discrimination Rank Percentile (exact match to replogle_rowlevel.py: 1 - #(S_ij > S_ii)/(m-1))
         def calc_discrim(P_mat, T_mat):
             Pn = P_mat / np.maximum(np.linalg.norm(P_mat, axis=1, keepdims=True), 1e-12)
             Tn = T_mat / np.maximum(np.linalg.norm(T_mat, axis=1, keepdims=True), 1e-12)
-            # Zero-norm predictions (e.g. Constant_Mean) get random chance 0.50
             p_zero = np.linalg.norm(P_mat, axis=1) < 1e-10
             S = Pn @ Tn.T  # (m, m): row i = pred i vs all true j
-            pcts = np.empty(m, dtype=np.float64)
-            top1 = np.empty(m, dtype=np.float64)
-            for i in range(m):
-                if p_zero[i]:
-                    pcts[i] = 0.5
-                    top1[i] = 1.0 / m
-                else:
-                    diag = S[i, i]
-                    others = np.delete(S[i], i)
-                    # Tie-aware percentile: strictly less + 0.5 * equal
-                    pcts[i] = (np.sum(others < diag) + 0.5 * np.sum(others == diag)) / (m - 1)
-                    top1[i] = 1.0 if np.all(diag > others) else 0.0
-            return float(pcts.mean()), float(top1.mean())
+            diag = np.diag(S)
+            pcts = 1.0 - (S > diag[:, None]).sum(axis=1) / max(m - 1, 1)
+            pcts[p_zero] = 0.5
+            top1 = np.array([0.0 if p_zero[i] else (1.0 if np.sum(S[i] > diag[i]) == 0 else 0.0) for i in range(m)], dtype=np.float64)
+            return float(pcts.mean()), float(top1.mean()), pcts
 
-        dd_pct, dd_top1 = calc_discrim(P_delta, T_delta)
-        dv_pct, dv_top1 = calc_discrim(P_v5, T_v5)
+        dd_pct, dd_top1, dd_rows = calc_discrim(P_delta, T_delta)
+        dv_pct, dv_top1, dv_rows = calc_discrim(P_v5, T_v5)
 
         by_line[src] = {
             "v5": float(np.mean(v5_list)),
