@@ -1,0 +1,18 @@
+{
+  "n_paired_reproducible": 781,
+  "n_shared_genes": 4040,
+  "directions": {
+    "HEK293T->HCT116": {
+      "raw_shared_copy_mean": 0.2376,
+      "raw_shared_copy_sd": 0.1768,
+      "geneslope_coskrr_p15_mean": 0.3783,
+      "geneslope_coskrr_p15_sd": 0.2635
+    },
+    "HCT116->HEK293T": {
+      "raw_shared_copy_mean": 0.242,
+      "raw_shared_copy_sd": 0.1806,
+      "geneslope_coskrr_p15_mean": 0.3551,
+      "geneslope_coskrr_p15_sd": 0.2431
+    }
+  }
+}
