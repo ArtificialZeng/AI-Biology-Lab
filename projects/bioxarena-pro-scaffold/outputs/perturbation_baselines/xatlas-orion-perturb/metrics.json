@@ -1,0 +1,16 @@
+{
+  "task": "xatlas-orion-perturb",
+  "elapsed_seconds": 18.944287061691284,
+  "val_score_cosine_ridge": 0.0804,
+  "val_score_svd_ridge": 0.0702,
+  "val_score_knn": 0.0503,
+  "val_score_constant": 0.0195,
+  "official_ref_svd_ridge": 0.051,
+  "official_ref_knn": 0.047,
+  "official_sota_22_configs": 0.0825,
+  "n_test_rows": 455,
+  "status": "L2_ADVANCED",
+  "cv_score": 0.0804,
+  "model_used": "Target-Column Cosine Similarity Ridge (alpha=5.0)",
+  "notes": "Val Score: 0.0804 (HCT: 0.1061, HEK: 0.0548) vs Baseline Ref 0.051 and 22-agent SOTA 0.0825"
+}

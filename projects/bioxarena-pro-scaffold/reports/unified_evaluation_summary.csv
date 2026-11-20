@@ -5,3 +5,4 @@ gutcrc-cross-cohort-detection,PASS_100%,1.17,0.13,0.0,0.4453,True,Cohort-Standar
 msk-met-tumor-origin,PASS_100%,1.03,0.18,0.02,0.4443,True,Class-Balanced Logistic Regression (C=0.05) on 1021 Genomics Features,Assay-generation OOD classification. 5-Fold Stratified Macro-F1: 0.4443
 cpjump-genetic-matching,PASS_100%,0.5939767360687256,,,0.6111778846153846,True,BioScaffold-OOD,
 gdsc-lineage-holdout-response,PASS_100%,0.8141219615936279,,,0.19424334245595526,True,BioScaffold-OOD,
+xatlas-orion-perturb,PASS_100%,18.944287061691284,,,0.0804,True,Target-Column Cosine Similarity Ridge (alpha=5.0),"Val Score: 0.0804 (HCT: 0.1061, HEK: 0.0548) vs Baseline Ref 0.051 and 22-agent SOTA 0.0825"
