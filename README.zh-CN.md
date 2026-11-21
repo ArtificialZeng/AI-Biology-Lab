@@ -2,7 +2,7 @@
 
 **保存已有的数学生物学与计算生物学工作，保留可检查的证明、代码和复现证据。**
 
-**项目状态（2026-10-31）：已按所有者要求停止生物研究及自主研究任务。** 仓库保留已有成果供查阅和复现。[项目状态](docs/PROJECT_STATUS.md) · [完整项目索引](docs/PROJECT_INDEX.md) · [PR 整合记录](docs/CONSOLIDATION_2026-10-31.json)。
+**项目状态（2026-10-31）：已按所有者要求停止原生物研究及自主研究任务；2026-11-20 起，BioXArena-Pro 项目恢复自主研究**（`projects/bioxarena-pro-scaffold/`）。仓库保留已有与当前成果供查阅和复现。[项目状态](docs/PROJECT_STATUS.md) · [完整项目索引](docs/PROJECT_INDEX.md) · [PR 整合记录](docs/CONSOLIDATION_2026-10-31.json)。
 
 [English](README.md) · [首个课题](projects/mixed-phosphorylation/README.md) · [研究路线](docs/RESEARCH_ROADMAP.md) · [媒体资料](docs/MEDIA_BRIEF.zh-CN.md)
 
@@ -12,6 +12,7 @@
 
 | 项目 | 当前交付 | 证据范围 |
 | --- | --- | --- |
+| [BioXArena-Pro 单基因扰动建模](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v1.pdf) | [预印本 v1（PDF）](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v1.pdf) · 跨细胞系核基线 S5、三数据集预注册确认、PC1 轴分解与[公开审计台账](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv) | 未见 Nadig 2025 预注册 H1–H3 确认；3/3 PC1 分解确认；Codabench 0.0998（人机协作口径）；原生单细胞 GEARS 与 Miller DRF 校准进行中 |
 | [混合机制生化振荡](projects/mixed-phosphorylation/README.md) | 精确失稳界、吸引周期轨道及非零周期修正 | Linux区间证书与独立精确复算；优先权和外审待确认 |
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | 复现入口缺陷、历史源码恢复与补丁 | 离线CPU检查通过；未完成训练结果复现或作者确认 |
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |

@@ -2,7 +2,7 @@
 
 **Preserved mathematical and computational biology work: proofs, code, and reproducibility evidence.**
 
-**Research status — 2026-10-31:** biological research and autonomous research runs have stopped at the owner's request. This repository preserves the existing work for inspection and reproduction. [Project status](docs/PROJECT_STATUS.md) · [Complete project index](docs/PROJECT_INDEX.md) · [Consolidated PR history](docs/CONSOLIDATION_2026-10-31.json).
+**Research status — 2026-10-31:** biological research and autonomous research runs stopped at the owner's request; **from 2026-11-20, autonomous research resumed for the BioXArena-Pro project** (`projects/bioxarena-pro-scaffold/`). This repository preserves all existing and active work for inspection and reproduction. [Project status](docs/PROJECT_STATUS.md) · [Complete project index](docs/PROJECT_INDEX.md) · [Consolidated PR history](docs/CONSOLIDATION_2026-10-31.json).
 
 [中文](README.zh-CN.md) · [First result](projects/mixed-phosphorylation/README.md) · [Research roadmap](docs/RESEARCH_ROADMAP.md) · [For reviewers](docs/VALIDATION.md) · [媒体资料](docs/MEDIA_BRIEF.zh-CN.md)
 
@@ -14,6 +14,7 @@ Each public claim retains its scope, evidence, and unresolved limitations. Mergi
 
 | Project | Deliverable | Evidence status |
 | --- | --- | --- |
+| [BioXArena-Pro (`xatlas-orion-perturb`)](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v1.pdf) | [Preprint v1 (PDF)](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v1.pdf) · Cross-line kernel S5, pre-registered 3-atlas confirmation, PC1 axis decomposition & [audit ledger](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv) | Pre-registered unseen Nadig 2025 H1–H3 confirmed; 3/3 PC1 decomposition; Codabench private test 0.0998 (human-AI collab); native SC GEARS & Miller DRF calibration in progress |
 | [Mixed-mechanism phosphorylation](projects/mixed-phosphorylation/README.md) | Exact instability bound, validated attracting cycles and nonzero period correction | Linux interval certificates and independent exact audits; priority/human review pending |
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | Reproducible software defects and a history-grounded reconstruction patch | Offline CPU regression checks; no training-result or author confirmation |
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | Identifier guard, frozen-sample audit, and a checksum warning patch | 42 datasets / 20,720 reactions reproduced; no chemical-identity or upstream-acceptance claim |
