@@ -1,0 +1,68 @@
+{
+  "dataset": "Feng et al. (Cell Genomics 2025, PMID 41330380, Figshare 27989294 TargetedScreen)",
+  "status": "PENDING_FAILED_ELIGIBILITY_GATE",
+  "eligibility_gate": {
+    "rule": "both >= 100 reproducible AND >= 80 shared reproducible AND >= 2000 shared readout genes",
+    "passed": false,
+    "verdict": "FAILED_ELIGIBILITY_GATE_PENDING"
+  },
+  "cache_summary": {
+    "dataset": "Feng et al. (Cell Genomics 2025, PMID 41330380, Figshare 27989294 TargetedScreen)",
+    "license": "MIT",
+    "lines": [
+      {
+        "line": "jejf_2",
+        "slot": "HCT116",
+        "n_cells_assigned": 47558,
+        "n_nt_cells": 605,
+        "n_readout_genes": 5000,
+        "n_targets_kept": 444,
+        "n_reproducible": 38,
+        "n_repro_in_readout": 27,
+        "X_sha256": "b920e5a51703ce4d045a2d0ba36a6c95b2db6b323c6fab452b9932e0730ab24d",
+        "meta_sha256": "1dea700e07cd586b9a1fb45377d8c8cc10f0521edc8f6d75800d8475817d2a65",
+        "genes_sha256": "83128d378f3173d0ef357f5ce6ff62a96aa0fc929e470e99acc6e644ce79d829",
+        "elapsed_sec": 124.9
+      },
+      {
+        "line": "zapk_3",
+        "slot": "HEK293T",
+        "n_cells_assigned": 46376,
+        "n_nt_cells": 622,
+        "n_readout_genes": 5000,
+        "n_targets_kept": 444,
+        "n_reproducible": 86,
+        "n_repro_in_readout": 62,
+        "X_sha256": "0b99eee329de3abceb9bd2dc30d0a148648ec402a92d47cab432e120a9d953a6",
+        "meta_sha256": "4877542a2f3e1a5491c67344c85a4c4709e5408bf5859afed17c6d993c3207d6",
+        "genes_sha256": "22e85280fcae0303649fa7828433ef758e0095809f19147d09f27c842702e0b0",
+        "elapsed_sec": 148.5
+      }
+    ],
+    "shared_readout_genes": 4728,
+    "shared_reproducible_targets": 37,
+    "jejf_2_repro_in_readout": 27,
+    "zapk_3_repro_in_readout": 62,
+    "shared_repro_in_readout": 26,
+    "eligibility_gate": {
+      "rule": "both >= 100 reproducible AND >= 80 shared reproducible AND >= 2000 shared readout genes",
+      "passed": false,
+      "verdict": "FAILED_ELIGIBILITY_GATE_PENDING"
+    },
+    "total_elapsed_sec": 386.4
+  },
+  "candidate2_jiang2025_audit": {
+    "source": "Jiang, Dalgarno et al. (Nature Cell Biology 2025, GEO GSE281048, Zenodo 10.5281/zenodo.14518762, CC-BY-4.0)",
+    "inspection_method": "HTTP Range read of DE_results_all_pathway.zip central directory only (zero expression data downloaded)",
+    "targets_per_cytokine_context": {
+      "Parse_IFNB": 61,
+      "Parse_IFNG": 59,
+      "Parse_TNFA": 55,
+      "Parse_TGFB1": 52,
+      "Parse_INS": 44
+    },
+    "eligibility_gate_passed": false,
+    "rejection_reason": "Every single matched cytokine context contains only 44-61 target genes (< 150 tested / < 100 reproducible per line); pooling distinct cytokine stimulations is prohibited."
+  },
+  "overall_4th_dataset_confirmatory_verdict": "PENDING (\u5f85\u5b9a \u2014 no publicly available non-Orion 4th human 2-cell-line single-gene CRISPRi/KO atlas met pre-registered power criteria; thresholds strictly not lowered)"
+}
