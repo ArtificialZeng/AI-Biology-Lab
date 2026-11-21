@@ -403,12 +403,13 @@ def main():
     ap.add_argument("--max-ctrl", type=int, default=5000)
     ap.add_argument("--epochs", type=int, default=20)
     ap.add_argument("--device", default="mps" if torch.backends.mps.is_available() else "cpu")
+    ap.add_argument("--resume", action="store_true", help="Resume from existing metrics/row_ci CSVs by skipping completed seeds")
     args = ap.parse_args()
 
     t_all = time.time()
     print(
         f"=== R8-1 Native Single-Cell GEARS on Nadig 2025 (seeds={args.seeds}, "
-        f"cap={args.max_cells}, ctrl={args.max_ctrl}, device={args.device}) ===",
+        f"cap={args.max_cells}, ctrl={args.max_ctrl}, device={args.device}, resume={args.resume}) ===",
         flush=True,
     )
     train_df, all_y, _, sh0, sh1, g2i_map, sidx = load_nadig_bundle()
@@ -429,8 +430,28 @@ def main():
     rows = []
     ci_rows = []
     cov_list = []
+    done_seeds = set()
+    metrics_csv = REPORTS_DIR / "r81_native_sc_gears_nadig_metrics.csv"
+    ci_csv = REPORTS_DIR / "r81_native_sc_gears_nadig_row_ci.csv"
+    if args.resume and metrics_csv.exists() and ci_csv.exists():
+        prev_m = pd.read_csv(metrics_csv)
+        prev_c = pd.read_csv(ci_csv)
+        if not prev_m.empty and not prev_c.empty:
+            prev_m = prev_m[
+                (prev_m["max_cells_per_pert"] == args.max_cells)
+                & (prev_m["max_ctrl_cells"] == args.max_ctrl)
+            ]
+            done_seeds = set(prev_m["seed"].astype(int).tolist()) & set(prev_c["seed"].astype(int).tolist())
+            prev_m = prev_m[prev_m["seed"].astype(int).isin(done_seeds)]
+            prev_c = prev_c[prev_c["seed"].astype(int).isin(done_seeds)]
+            rows = prev_m.to_dict(orient="records")
+            ci_rows = prev_c.to_dict(orient="records")
+            print(f"  [Resume] Loaded {len(rows)} metric rows & {len(ci_rows)} CI rows for completed seeds={sorted(done_seeds)}", flush=True)
 
     for seed in args.seeds:
+        if seed in done_seeds:
+            print(f"  [Resume] Skipping already completed seed={seed}", flush=True)
+            continue
         t_s = time.time()
         val_df, df_tr, _, bases, axes = make_strict_union_split(train_df, g2i_map, all_y, sidx, seed)
         df_hct = df_tr[df_tr["source"] == "HCT116"]

@@ -12,7 +12,7 @@
 
 | 项目 | 当前交付 | 证据范围 |
 | --- | --- | --- |
-| [BioXArena-Pro 单基因扰动建模](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.1.pdf) | [预印本 v2.1（PDF）](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.1.pdf) · 跨细胞系核基线 S5、三数据集预注册确认、PC1 轴分解、Miller DRF 校准与[公开审计台账](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv) | 未见 Nadig 2025 预注册 H1–H3 确认；3/3 PC1 分解确认；Miller DRF 校准完成（S5 相对 scGPT 探针优势限于中等校准指标 v5）；Codabench 0.0998（双 AI 多轮协作口径）；原生单细胞 GEARS 进行中 |
+| [BioXArena-Pro 单基因扰动建模](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) | [预印本 v2.2（PDF）](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) · 跨细胞系核基线 S5、三数据集预注册确认、PC1 轴分解、Miller DRF 校准、原生单细胞 GEARS 审计与[公开审计台账](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv) | 未见 Nadig 2025 预注册 H1–H3 确认；3/3 PC1 分解确认；Miller DRF 校准完成（S5 相对 scGPT 探针优势限于中等校准指标 v5）；原生单细胞 GEARS（3 种子）在 disc_raw 上持平 S5、delta_r 上反超 S5、仅在 v5/disc_v5 上低于 S5；Codabench 0.0998（双 AI 多轮协作口径） |
 | [混合机制生化振荡](projects/mixed-phosphorylation/README.md) | 精确失稳界、吸引周期轨道及非零周期修正 | Linux区间证书与独立精确复算；优先权和外审待确认 |
 | [Paper-Code Auditor](projects/paper-code-auditor/README.md) | 复现入口缺陷、历史源码恢复与补丁 | 离线CPU检查通过；未完成训练结果复现或作者确认 |
 | [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |
