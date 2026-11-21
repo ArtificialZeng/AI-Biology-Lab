@@ -1,0 +1,5 @@
+# Added by Claude (master controller) 2026-11-21: never commit downloaded/derived expression data
+shared/lines/
+*.h5ad
+*.npz
+vcc_linespecific/src/prospective/**/context_*.h5ad

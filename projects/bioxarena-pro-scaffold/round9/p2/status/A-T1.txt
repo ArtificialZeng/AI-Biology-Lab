@@ -1,12 +1,14 @@
-IN_PROGRESS A-T1:
-5 LINES READY & VERIFIED (p2/shared/lines/, COMMON_GENES=6584, verify_shared_lines.py PASS):
-- replogle_k562_essential: G=8561, ctrl=10691/10691, targets=2049 (rep=1113, half_valid=2049), median_r=0.999942 vs bulk, data_loader PASS
-- replogle_rpe1: G=8746, ctrl=11485/11485, targets=2351 (rep=1575, half_valid=2351), median_r=0.999995 vs bulk, data_loader PASS (K562<->RPE1 shares 2017 all / 872 rep targets)
-- nadig_hepg2: G=9432, ctrl=4976/4976, targets=2343 (rep=1000, half_valid=2343)
-- nadig_jurkat: G=8826, ctrl=12013/12013, targets=2350 (rep=1262, half_valid=2350)
-- nourreddine_kolf21j (CM+ME Strong, 38322 cells): G=15000, ctrl=17895/17895, targets=95 (rep=67, in_genes=95, half_valid=95; HGNC remaps KAT3A->CREBBP, MSK1->RPS6KA5; shares 25/25/17/24 all & 14 rep LOLO targets)
+DONE A-T1 delivered 6 standardized CRISPRi human cell lines in p2/shared/lines/, COMMON_GENES.txt (6,148 common HGNC genes), README.md, and DATA_SOURCES.md (56,597,332,700 B = 56.597333 GB cumulative download <= 60.000 GB; zero X-Atlas/Orion data touched; zero held-out eval metrics computed per Rule 3):
+- replogle_k562_essential (Replogle 2022, CC BY 4.0): 310,385 raw cells, G=8,561, ctrl=10,691/10,691, targets=2,049 (rep=1,113, half_valid=2,049, in_genes=1,861); median_r=0.999942 vs bulk
+- replogle_rpe1 (Replogle 2022, CC BY 4.0): 247,914 raw cells, G=8,746, ctrl=11,485/11,485, targets=2,351 (rep=1,575, half_valid=2,351, in_genes=2,069); median_r=0.999995 vs bulk
+- nadig_hepg2 (Nadig 2025, GEO GSE264667, local 0 GB): 145,473 raw cells, G=9,432, ctrl=4,976/4,976, targets=2,343 (rep=1,000, half_valid=2,343, in_genes=2,112); max_abs_diff=1.91e-06 vs R7
+- nadig_jurkat (Nadig 2025, GEO GSE264667, local 0 GB): 262,956 raw cells, G=8,826, ctrl=12,013/12,013, targets=2,350 (rep=1,262, half_valid=2,350, in_genes=2,121); max_abs_diff=1.91e-06 vs R7
+- nourreddine_kolf21j (Nourreddine 2026 KOLF2.1J hiPSC CM+ME Strong, CC BY 4.0): 38,322 raw cells, G=15,000 (34,583 intersection -> 24,116 finite -> 15,000 cap with all common/target genes force-kept), ctrl=17,895/17,895, targets=95 (rep=67, half_valid=95, in_genes=95; HGNC remaps KAT3A->CREBBP, MSK1->RPS6KA5; LOLO shared=32 all / 20 rep)
+- vcc2025_h1 (Arc VCC 2025 H1 hESC Train+Val+Test, CC0 1.0): 414,694 unique cells (76,352 cloned Val/Test NT barcodes deduplicated across 48 Flex batches), G=14,656, ctrl=20,000/38,176, targets=300 (rep=204, half_valid=300, in_genes=300; LOLO shared=106 all / 91 rep)
 
-IN_PROGRESS Line 6 (vcc2025_h1 H1 hESC, CC0 1.0):
-- All 3 VCC 2025 splits downloaded & SHA-256 verified: adata_Training.h5ad (15.482 GB, sha256=a0997710...), adata_Validation.h5ad (6.929 GB, sha256=376f0bab...), adata_Test.h5ad (11.951 GB, sha256=ba5ce667...); total team downloads = 56,597,332,700 B (56.597333 GB <= 60.000 GB).
-- Processing vcc2025_h1 across all 414,694 unique cells (38,176 unique NT across 48 Flex batches, 317 guide groups -> 300 disjoint targets; duplicate Val/Test NT clones deduplicated cleanly) in task-560.
-- test_prepare_lines.py (6/6 tests passing in 0.036s); verify_shared_lines.py PASS on 5 completed lines (COMMON_GENES=6584).
+Latest verification after all edits:
+- verify_shared_lines.py: [VERIFIED] 6 lines, COMMON_GENES=6148 (all ctrl_cells.npz & pseudobulk_delta.npz finite, exact shapes, matching targets/genes).
+- test_prepare_lines.py: Ran 6 tests in 0.023s OK (synthetic CSC/CSR, UMI zero-row, disjoint 50/50 split-halves, NT barcode dedup, gene cap/force-keep, end-to-end math).
+- data_loader.py dev check: load_common_genes=6148, available_lines=all 6; replogle_k562_essential & replogle_rpe1 load cleanly at COMMON_GENES=(6148,).
+
+TASK_DONE
