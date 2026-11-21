@@ -4,11 +4,14 @@
 import numpy as np
 
 from adjudicate import adjudicate_results, render_markdown_report
-from data_loader import LineDataset, PREREG_COMMIT_FILE, check_prereg_gate, is_replogle_dev_line
+from data_loader import CODE_FREEZE_FILE, LineDataset, PREREG_COMMIT_FILE, check_prereg_gate, is_replogle_dev_line
 from metrics import (
     cis_non_overlapping,
     compute_line_specific_metrics_and_boots,
+    compute_residual_variance_decomposition,
     compute_row_metrics,
+    compute_splithalf_noise_ceiling,
+    compute_tmvs_shuffled_var_perm100,
     drf_score,
     paired_row_bootstrap_ci,
     single_array_bootstrap_ci,
@@ -143,15 +146,20 @@ def test_prereg_gate_and_splithalf():
     assert is_replogle_dev_line("replogle_rpe1") is True
     assert is_replogle_dev_line("nadig_hepg2") is False
 
-    # Replogle dev lines must pass gate even without PREREG_COMMIT.txt
+    # Replogle dev lines must pass gate even without PREREG_COMMIT.txt / CODE_FREEZE.txt
     check_prereg_gate(["replogle_k562", "replogle_rpe1"])
-    if not PREREG_COMMIT_FILE.exists():
+    if not (
+        PREREG_COMMIT_FILE.exists()
+        and PREREG_COMMIT_FILE.read_text(encoding="utf-8").strip()
+        and CODE_FREEZE_FILE.exists()
+        and CODE_FREEZE_FILE.read_text(encoding="utf-8").strip()
+    ):
         blocked = False
         try:
             check_prereg_gate(["nadig_hepg2"])
         except RuntimeError:
             blocked = True
-        assert blocked, "Non-Replogle line must be blocked before PREREG_COMMIT.txt exists!"
+        assert blocked, "Non-Replogle line must be blocked before PREREG_COMMIT.txt & CODE_FREEZE.txt exist!"
 
     rng = np.random.RandomState(5)
     Z = rng.randn(500, 10)
@@ -240,8 +248,8 @@ def test_end_to_end_synthetic_loo():
     d_pred = d_src + 0.5 * (d_obs - d_src) + rng_p.randn(15, 70) * 0.1
     t_i = np.arange(15, dtype=np.int64)
     ls = compute_line_specific_metrics_and_boots(d_obs, d_pred, d_src, t_i, top_k=20, n_boot=50, seed=77)
-    rs_ref = np.random.RandomState(77)
-    draws_ref = rs_ref.choice(15, size=(50, 15), replace=True)
+    rs_ref = np.random.default_rng(77)
+    draws_ref = rs_ref.integers(0, 15, size=(50, 15))
     r_true = d_obs - d_src
     r_pred = d_pred - d_src
     xs_lit, ys_lit = [], []
@@ -436,11 +444,177 @@ def test_v3_group_b_fct_hybrid_on_tmvs_s5_and_ci975():
     assert adj_b["H-B1"]["verdict"] == "CONFIRMED"
     assert adj_b["H-B2"]["verdict"] == "CONFIRMED"
     assert adj_b["H-B3"]["verdict"] == "CONFIRMED"
-    assert adj_b["H-B3"]["per_line"]["Conf_L3"]["n_controls_checked"] == 3  # 2 mismatched + 1 shuffled
+    assert adj_b["H-B3"]["per_line"]["Conf_L3"]["n_mismatch_controls_checked"] == 2
+    assert "NegCtrl_TMVS_ShuffledVar_perm100" in adj_b["H-B3"]["per_line"]["Conf_L3"]["by_control"]
     assert adj_b["Group_B_Verdict"] == "CONFIRMED"
     assert "Group A" in adj_b["R13_Dual_Summary"] and "Group B" in adj_b["R13_Dual_Summary"]
-    md = render_markdown_report(adj_b, df_lines, summary, "v3_unit")
-    assert "S5:" in md and "S6:" in md and "97.5%" in md
+    md = render_markdown_report(adj_b, df_lines, summary, "v4_unit")
+    assert "S5:" in md and "S6:" in md and "97.5%" in md and "R18:" in md and "R19:" in md
+
+
+def test_v4_r17_r19_orth_globalscale_perm100_vardecomp():
+    """Verify R17 (r_orth_cal, rho_AB_orth), R18 (GlobalScale, perm100, H-A3/B3), and R19 (3-layer decomp)."""
+    rng = np.random.RandomState(404)
+    P, G = 40, 80
+    t_idx = np.arange(P, dtype=np.int64)
+    t_names = tuple(f"G{i}" for i in t_idx)
+    genes = tuple(f"G{i}" for i in range(G))
+    g2i = {g: i for i, g in enumerate(genes)}
+
+    X = rng.randn(P, G) * 0.4
+    # Planted: pure global amplitude gain beta = 1.8 (zero per-gene variance pattern)
+    Y_global = 1.8 * X
+    # Check R19 pure global gain recovery
+    vd_glob = compute_residual_variance_decomposition(
+        delta_obs=Y_global,
+        delta_src_mean=X,
+        target_gene_idx=t_idx,
+        top_k=50,
+        n_boot=100,
+        seed=7,
+    )
+    for mode in ("resp_top50", "all_nontarget"):
+        d_m = vd_glob[mode]
+        f1 = d_m["frac_line_gain"]["estimate"]
+        f2 = d_m["frac_gene_gain"]["estimate"]
+        f3 = d_m["frac_remaining"]["estimate"]
+        assert abs((f1 + f2 + f3) - 1.0) < 1e-10
+        assert f1 > 0.99 and d_m["beta_mult"]["estimate"] > 1.79
+
+    # Planted: per-gene multiplicative gain m_g = 1.6 * var_ratio_g + remaining
+    gene_m = rng.uniform(0.6, 2.4, size=G)
+    Y_gene = X * gene_m[None, :]
+    vd_gene = compute_residual_variance_decomposition(
+        delta_obs=Y_gene,
+        delta_src_mean=X,
+        target_gene_idx=t_idx,
+        top_k=50,
+        n_boot=100,
+        seed=8,
+    )
+    assert abs(
+        vd_gene["all_nontarget"]["frac_line_gain"]["estimate"]
+        + vd_gene["all_nontarget"]["frac_gene_gain"]["estimate"]
+        + vd_gene["all_nontarget"]["frac_remaining"]["estimate"]
+        - 1.0
+    ) < 1e-10
+    assert (
+        vd_gene["all_nontarget"]["frac_line_gain"]["estimate"]
+        + vd_gene["all_nontarget"]["frac_gene_gain"]["estimate"]
+    ) > 0.99
+
+    # Verify Transfer_Mean_GlobalScale gets positive raw resid_corr yet orthogonalizes to zero/nan!
+    cov_s = np.diag(np.ones(G))
+    cov_t = np.diag(np.square(gene_m))
+    s1 = SourceLineInput(
+        name="S1",
+        ctrl_cov=cov_s,
+        deltas=X,
+        target_indices=t_idx,
+        target_names=t_names,
+    )
+    state = SourceModelState.fit([s1])
+    preds = predict_zero_shot_suite(state, cov_t, t_names, t_idx)
+    expected_c_glob = float(np.sqrt(np.mean(np.diag(cov_t)) / np.mean(np.diag(cov_s))))
+    assert np.allclose(preds["Transfer_Mean_GlobalScale"], expected_c_glob * X, atol=1e-10)
+
+    ls_gs = compute_line_specific_metrics_and_boots(
+        delta_obs=Y_gene,
+        delta_pred=preds["Transfer_Mean_GlobalScale"],
+        delta_src_mean=X,
+        target_gene_idx=t_idx,
+        top_k=50,
+        n_boot=100,
+        seed=9,
+    )["resp_top50"]
+    assert ls_gs["resid_corr"] > 0.25  # Raw r_resid sees global amplitude mismatch!
+    assert (not np.isfinite(ls_gs["resid_corr_orth"])) or abs(ls_gs["resid_corr_orth"]) < 1e-8
+
+    # Check perm100 distribution monotonicity
+    ceil = compute_splithalf_noise_ceiling(
+        delta_half_a=Y_gene + rng.randn(P, G) * 0.02,
+        delta_half_b=Y_gene + rng.randn(P, G) * 0.02,
+        delta_obs_full=Y_gene,
+        delta_src_mean=X,
+        target_gene_idx=t_idx,
+        top_k=50,
+        n_boot=100,
+        seed=9,
+    )
+    assert ceil["resp_top50"]["rho_half_ab_orth"] > 0.9
+    p100 = compute_tmvs_shuffled_var_perm100(
+        delta_obs=Y_gene,
+        delta_src_mean=X,
+        target_gene_idx=t_idx,
+        target_diag_var=np.diag(cov_t),
+        mean_src_var=np.diag(cov_s),
+        ceil_r_top50=ceil["resp_top50"]["ceiling_r"],
+        ceil_r_orth_top50=ceil["resp_top50"]["ceiling_r_orth"],
+        n_perm=100,
+        top_k=50,
+        seed=42,
+    )
+    ro = p100["r_orth_cal"]
+    assert p100["n_perm"] == 100
+    assert ro["p2_5"] <= ro["median"] <= ro["p97_5"] <= ro["p98_75"] <= ro["max"] + 1e-12
+
+    # Check adjudicate R17/R18 negative gates (rho_ab_orth<=0 fails H-B2; perm100 p97.5 fail breaks H-B3; H-A3 AND)
+    import pandas as pd
+    df_lines = pd.DataFrame([
+        {
+            "target_line": "C1", "n_eval_targets": 60, "method": "Hybrid_ProjShared",
+            "ls_slope_ols_top50": 0.20, "ls_slope_ols_top50_ci95_lo": 0.16, "ls_slope_ols_top50_ci95_hi": 0.24,
+            "ls_slope_ols_top50_ci975_lo": 0.15, "ls_slope_ols_top50_ci975_hi": 0.25,
+            "ls_resid_corr_cal_top50": 0.20, "ls_resid_corr_cal_top50_ci95_lo": 0.10, "ls_resid_corr_cal_top50_resamp_ci95_lo": 0.10, "ls_resid_corr_cal_top50_resamp_ci975_lo": 0.08, "ls_resid_corr_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_orth_cal_top50": 0.15, "ls_resid_corr_orth_cal_top50_ci95_lo": 0.08, "ls_resid_corr_orth_cal_top50_resamp_ci95_lo": 0.08, "ls_resid_corr_orth_cal_top50_resamp_ci975_lo": 0.06, "ls_resid_corr_orth_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_top50": 0.18, "ls_resid_corr_orth_top50": 0.14, "ctrl_disc_raw": 0.7, "ctrl_de50_r": 0.4, "mse": 0.1, "ls_slope_ols_all": 0.1,
+        },
+        {
+            "target_line": "C1", "n_eval_targets": 60, "method": "CIPHER_Linear",
+            "ls_slope_ols_top50": 0.18, "ls_slope_ols_top50_ci95_lo": 0.14, "ls_slope_ols_top50_ci95_hi": 0.22,
+            "ls_slope_ols_top50_ci975_lo": 0.13, "ls_slope_ols_top50_ci975_hi": 0.23,
+            "ls_resid_corr_cal_top50": 0.15, "ls_resid_corr_cal_top50_ci95_lo": 0.05, "ls_resid_corr_cal_top50_resamp_ci95_lo": 0.05, "ls_resid_corr_cal_top50_resamp_ci975_lo": 0.03, "ls_resid_corr_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_orth_cal_top50": 0.10, "ls_resid_corr_orth_cal_top50_ci95_lo": 0.02, "ls_resid_corr_orth_cal_top50_resamp_ci95_lo": 0.02, "ls_resid_corr_orth_cal_top50_resamp_ci975_lo": 0.01, "ls_resid_corr_orth_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_top50": 0.14, "ls_resid_corr_orth_top50": 0.09, "ctrl_disc_raw": 0.7, "ctrl_de50_r": 0.4, "mse": 0.1, "ls_slope_ols_all": 0.1,
+        },
+        {
+            "target_line": "C1", "n_eval_targets": 60, "method": "Transfer_Mean_VarScaled",
+            "ls_slope_ols_top50": 0.20, "ls_slope_ols_top50_ci95_lo": 0.16, "ls_slope_ols_top50_ci95_hi": 0.24,
+            "ls_slope_ols_top50_ci975_lo": 0.15, "ls_slope_ols_top50_ci975_hi": 0.25,
+            "ls_resid_corr_cal_top50": 0.25, "ls_resid_corr_cal_top50_ci95_lo": 0.15, "ls_resid_corr_cal_top50_resamp_ci95_lo": 0.15, "ls_resid_corr_cal_top50_resamp_ci975_lo": 0.12, "ls_resid_corr_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_orth_cal_top50": 0.15, "ls_resid_corr_orth_cal_top50_ci95_lo": 0.08, "ls_resid_corr_orth_cal_top50_resamp_ci95_lo": 0.08, "ls_resid_corr_orth_cal_top50_resamp_ci975_lo": 0.06, "ls_resid_corr_orth_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_top50": 0.23, "ls_resid_corr_orth_top50": 0.14, "ctrl_disc_raw": 0.7, "ctrl_de50_r": 0.4, "mse": 0.1, "ls_slope_ols_all": 0.1,
+        },
+        {
+            "target_line": "C1", "n_eval_targets": 60, "method": "Transfer_Mean_GlobalScale",
+            "ls_slope_ols_top50": 0.30, "ls_slope_ols_top50_ci95_lo": 0.25, "ls_slope_ols_top50_ci95_hi": 0.35,
+            "ls_slope_ols_top50_ci975_lo": 0.24, "ls_slope_ols_top50_ci975_hi": 0.36,
+            "ls_resid_corr_cal_top50": 0.50, "ls_resid_corr_cal_top50_ci95_lo": 0.40, "ls_resid_corr_cal_top50_resamp_ci95_lo": 0.40, "ls_resid_corr_cal_top50_resamp_ci975_lo": 0.38, "ls_resid_corr_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_orth_cal_top50": 0.0, "ls_resid_corr_orth_cal_top50_ci95_lo": 0.0, "ls_resid_corr_orth_cal_top50_resamp_ci95_lo": 0.0, "ls_resid_corr_orth_cal_top50_resamp_ci975_lo": 0.0, "ls_resid_corr_orth_cal_top50_resamp_valid_frac": 1.0,
+            "ls_resid_corr_top50": 0.48, "ls_resid_corr_orth_top50": 0.0, "ctrl_disc_raw": 0.7, "ctrl_de50_r": 0.4, "mse": 0.1, "ls_slope_ols_all": 0.1,
+        },
+    ])
+    # H-A3 beats slope (0.15 > 0.04) but fails r_orth_cal (0.06 <= 0.07) -> MUST fail H-A3!
+    # H-B3 perm100 p97_5 = 0.07 >= 0.06 -> MUST fail H-B3!
+    # H-B2 fails when rho_half_ab_orth <= 0!
+    df_boot = pd.DataFrame([
+        {"target_line": "C1", "metric": "ls_slope_ols_top50", "method_a": "Hybrid_ProjShared", "method_b": "NegCtrl_HybridProj_MismatchedCov(S1)", "disjoint_ci95": True, "disjoint_ci975": True, "a_ci95_lo": 0.16, "a_ci95_hi": 0.24, "b_ci95_lo": 0.0, "b_ci95_hi": 0.03, "a_ci975_lo": 0.15, "a_ci975_hi": 0.25, "b_ci975_lo": -0.01, "b_ci975_hi": 0.04, "mean_a": 0.20, "mean_b": 0.01, "delta": 0.19, "ci95_lo": 0.12, "ci95_hi": 0.26, "ci975_lo": 0.11, "ci975_hi": 0.27, "ci_gt_zero": True, "ci_lt_zero": False, "ci975_gt_zero": True, "ci975_lt_zero": False},
+        {"target_line": "C1", "metric": "ls_resid_corr_orth_cal_top50", "method_a": "Hybrid_ProjShared", "method_b": "NegCtrl_HybridProj_MismatchedCov(S1)", "disjoint_ci95": True, "disjoint_ci975": False, "a_ci95_lo": 0.08, "a_ci95_hi": 0.22, "b_ci95_lo": -0.02, "b_ci95_hi": 0.06, "a_ci975_lo": 0.06, "a_ci975_hi": 0.24, "b_ci975_lo": -0.03, "b_ci975_hi": 0.07, "mean_a": 0.15, "mean_b": 0.02, "delta": 0.13, "ci95_lo": 0.03, "ci95_hi": 0.23, "ci975_lo": 0.02, "ci975_hi": 0.24, "ci_gt_zero": True, "ci_lt_zero": False, "ci975_gt_zero": True, "ci975_lt_zero": False},
+        {"target_line": "C1", "metric": "ls_slope_ols_top50", "method_a": "Transfer_Mean_VarScaled", "method_b": "NegCtrl_TMVS_MismatchedVar(S1)", "disjoint_ci95": True, "disjoint_ci975": True, "a_ci95_lo": 0.16, "a_ci95_hi": 0.24, "b_ci95_lo": 0.0, "b_ci95_hi": 0.03, "a_ci975_lo": 0.15, "a_ci975_hi": 0.25, "b_ci975_lo": -0.01, "b_ci975_hi": 0.04, "mean_a": 0.20, "mean_b": 0.01, "delta": 0.19, "ci95_lo": 0.12, "ci95_hi": 0.26, "ci975_lo": 0.11, "ci975_hi": 0.27, "ci_gt_zero": True, "ci_lt_zero": False, "ci975_gt_zero": True, "ci975_lt_zero": False},
+        {"target_line": "C1", "metric": "ls_resid_corr_orth_cal_top50", "method_a": "Transfer_Mean_VarScaled", "method_b": "NegCtrl_TMVS_MismatchedVar(S1)", "disjoint_ci95": True, "disjoint_ci975": True, "a_ci95_lo": 0.08, "a_ci95_hi": 0.22, "b_ci95_lo": -0.03, "b_ci95_hi": 0.03, "a_ci975_lo": 0.06, "a_ci975_hi": 0.24, "b_ci975_lo": -0.04, "b_ci975_hi": 0.04, "mean_a": 0.15, "mean_b": 0.00, "delta": 0.15, "ci95_lo": 0.05, "ci95_hi": 0.25, "ci975_lo": 0.04, "ci975_hi": 0.26, "ci_gt_zero": True, "ci_lt_zero": False, "ci975_gt_zero": True, "ci975_lt_zero": False},
+        {"target_line": "C1", "metric": "ctrl_disc_raw", "method_a": "Hybrid_ProjShared", "method_b": "Transfer_Mean", "disjoint_ci95": False, "disjoint_ci975": False, "a_ci95_lo": 0.65, "a_ci95_hi": 0.75, "b_ci95_lo": 0.65, "b_ci95_hi": 0.75, "a_ci975_lo": 0.64, "a_ci975_hi": 0.76, "b_ci975_lo": 0.64, "b_ci975_hi": 0.76, "mean_a": 0.7, "mean_b": 0.7, "delta": 0.0, "ci95_lo": -0.01, "ci95_hi": 0.01, "ci975_lo": -0.02, "ci975_hi": 0.02, "ci_gt_zero": False, "ci_lt_zero": False, "ci975_gt_zero": False, "ci975_lt_zero": False},
+        {"target_line": "C1", "metric": "ctrl_disc_raw", "method_a": "Transfer_Mean_VarScaled", "method_b": "Transfer_Mean", "disjoint_ci95": False, "disjoint_ci975": False, "a_ci95_lo": 0.65, "a_ci95_hi": 0.75, "b_ci95_lo": 0.65, "b_ci95_hi": 0.75, "a_ci975_lo": 0.64, "a_ci975_hi": 0.76, "b_ci975_lo": 0.64, "b_ci975_hi": 0.76, "mean_a": 0.7, "mean_b": 0.7, "delta": 0.0, "ci95_lo": -0.01, "ci95_hi": 0.01, "ci975_lo": -0.02, "ci975_hi": 0.02, "ci_gt_zero": False, "ci_lt_zero": False, "ci975_gt_zero": False, "ci975_lt_zero": False},
+    ])
+    summary_neg = {
+        "pert_noise_ceilings": {"C1": {"resp_top50": {"rho_half_ab_orth": -0.05}}},
+        "tmvs_shuffled_var_perm100": {"C1": {"n_perm": 100, "r_orth_cal": {"p2_5": -0.04, "median": 0.01, "p97_5": 0.07, "p98_75": 0.08, "max": 0.09}}},
+    }
+    adj_neg = adjudicate_results(df_lines, df_boot, summary_neg, confirmatory_lines=["C1"], min_lines_pass=1, max_lines_fail_ha4=0, ci_level=0.975)
+    assert adj_neg["H-A2"]["verdict"] == "未确认"
+    assert adj_neg["H-B2"]["verdict"] == "未确认"
+    assert adj_neg["H-A3"]["verdict"] == "未确认"
+    assert adj_neg["H-B3"]["verdict"] == "未确认"
+    assert "Transfer_Mean_GlobalScale" in adj_neg["R18_GlobalScale_Summary"]["summary_statement"]
 
 
 if __name__ == "__main__":
@@ -450,4 +624,5 @@ if __name__ == "__main__":
     test_end_to_end_synthetic_loo()
     test_r4_controls_and_confirmatory_threshold()
     test_v3_group_b_fct_hybrid_on_tmvs_s5_and_ci975()
+    test_v4_r17_r19_orth_globalscale_perm100_vardecomp()
     print("ALL_UNIT_TESTS_PASSED")

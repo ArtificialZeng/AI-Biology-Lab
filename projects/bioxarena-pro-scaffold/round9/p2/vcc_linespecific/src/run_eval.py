@@ -32,12 +32,15 @@ from data_loader import (
     list_available_lines,
     load_common_genes,
     load_line_dataset,
+    read_code_freeze_hash,
 )
 from metrics import (
     cis_non_overlapping,
     compute_line_specific_metrics_and_boots,
+    compute_residual_variance_decomposition,
     compute_row_metrics,
     compute_splithalf_noise_ceiling,
+    compute_tmvs_shuffled_var_perm100,
     drf_score,
     paired_row_bootstrap_ci,
     pearson_1d,
@@ -170,6 +173,7 @@ def _evaluate_s5_top75_var(
     s5_methods = [
         "Hybrid_ProjShared",
         "Transfer_Mean_VarScaled",
+        "Transfer_Mean_GlobalScale",
         "Hybrid_on_TMVS",
         "FCT",
         "NegCtrl_HybridProj_SrcCorrTgtVar",
@@ -205,6 +209,23 @@ def _evaluate_s5_top75_var(
             if np.isfinite(cal_r) and ceil_val > 0 and vfrac >= 0.95:
                 ci95 = np.nanpercentile(b_cal, [2.5, 97.5]).tolist()
                 ci975 = np.nanpercentile(b_cal, [1.25, 98.75]).tolist()
+
+        ceil_orth_val = ceil_s5["resp_top50"]["ceiling_r_orth"] if ceil_s5 is not None else float("nan")
+        cal_orth_r = (
+            ls_s5["resid_corr_orth"] / ceil_orth_val
+            if (np.isfinite(ceil_orth_val) and ceil_orth_val > 0)
+            else float("nan")
+        )
+        ci95_orth = [float("nan"), float("nan")]
+        ci975_orth = [float("nan"), float("nan")]
+        vfrac_orth = 0.0
+        if ceil_s5 is not None:
+            b_cal_o = ls_s5["boot_resid_corr_orth"] / ceil_s5["resp_top50"]["boot_ceiling_r_orth"]
+            vfrac_orth = float(np.mean(np.isfinite(b_cal_o)))
+            if np.isfinite(cal_orth_r) and ceil_orth_val > 0 and vfrac_orth >= 0.95:
+                ci95_orth = np.nanpercentile(b_cal_o, [2.5, 97.5]).tolist()
+                ci975_orth = np.nanpercentile(b_cal_o, [1.25, 98.75]).tolist()
+
         out_methods[m_name] = {
             "ls_slope_ols_top50": ls_s5["slope_ols"],
             "ls_slope_ols_top50_ci95": ls_s5["slope_ols_ci95"],
@@ -215,14 +236,24 @@ def _evaluate_s5_top75_var(
             "ls_resid_corr_cal_top50_resamp_ci95": ci95,
             "ls_resid_corr_cal_top50_resamp_ci975": ci975,
             "ls_resid_corr_cal_top50_resamp_valid_frac": vfrac,
+            "ls_resid_corr_orth_top50": ls_s5["resid_corr_orth"],
+            "ls_resid_corr_orth_cal_top50": cal_orth_r,
+            "ls_resid_corr_orth_cal_top50_sq": float(cal_orth_r ** 2) if np.isfinite(cal_orth_r) else float("nan"),
+            "ls_resid_corr_orth_cal_top50_resamp_ci95": ci95_orth,
+            "ls_resid_corr_orth_cal_top50_resamp_ci975": ci975_orth,
+            "ls_resid_corr_orth_cal_top50_resamp_valid_frac": vfrac_orth,
         }
     return {
         "n_genes_total": int(G_dim),
         "n_genes_kept": int(np.sum(keep_cols)),
         "rho_half_ab_top50": ceil_s5["resp_top50"]["rho_half_ab"] if ceil_s5 else float("nan"),
         "ceiling_r_top50": ceil_s5["resp_top50"]["ceiling_r"] if ceil_s5 else float("nan"),
+        "rho_half_ab_orth_top50": ceil_s5["resp_top50"]["rho_half_ab_orth"] if ceil_s5 else float("nan"),
+        "ceiling_r_orth_top50": ceil_s5["resp_top50"]["ceiling_r_orth"] if ceil_s5 else float("nan"),
         "rho_half_ab_all": ceil_s5["all_nontarget"]["rho_half_ab"] if ceil_s5 else float("nan"),
         "ceiling_r_all": ceil_s5["all_nontarget"]["ceiling_r"] if ceil_s5 else float("nan"),
+        "rho_half_ab_orth_all": ceil_s5["all_nontarget"]["rho_half_ab_orth"] if ceil_s5 else float("nan"),
+        "ceiling_r_orth_all": ceil_s5["all_nontarget"]["ceiling_r_orth"] if ceil_s5 else float("nan"),
         "methods": out_methods,
     }
 
@@ -257,7 +288,7 @@ def evaluate_datasets(
     shared_targets_only: bool = True,
     only_reproducible: bool = False,
     n_boot: int = 4000,
-    seed: int = 12345,
+    seed: int = 20261121,
     require_official_spec: bool = True,
 ) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, Any]]:
     """Run full leave-one-cell-line-out evaluation across `datasets`."""
@@ -287,12 +318,15 @@ def evaluate_datasets(
     lam_by_target_line: Dict[str, float] = {}
     mismatched_cov_sources_by_line: Dict[str, List[str]] = {}
     s5_expressed_top75: Dict[str, Dict[str, Any]] = {}
+    tmvs_shuffled_var_perm100: Dict[str, Dict[str, Any]] = {}
+    variance_decomposition: Dict[str, Dict[str, Any]] = {}
     saved_eval_by_line: Dict[str, Dict[str, Any]] = {}
 
     comparisons = [
         ("Hybrid_Raw", "Transfer_Mean"),
         ("Hybrid_ProjShared", "Transfer_Mean"),
         ("Hybrid_ProjShared", "Transfer_Mean_VarScaled"),
+        ("Hybrid_ProjShared", "Transfer_Mean_GlobalScale"),
         ("Hybrid_ProjShared", "NegCtrl_HybridProj_SrcCorrTgtVar"),
         ("Hybrid_ProjShared", "NegCtrl_HybridProj_ShuffledGenes"),
         ("Hybrid_ProjShared", "NegCtrl_HybridProj_DiagCov"),
@@ -301,8 +335,10 @@ def evaluate_datasets(
         ("CIPHER_Linear", "NegCtrl_CIPHER_DiagCov"),
         ("Hybrid_Raw", "NegCtrl_Hybrid_ShuffledGenes"),
         ("NegCtrl_HybridProj_SrcCorrTgtVar", "Transfer_Mean_VarScaled"),
-        # PREREG_AUDIT_R2 Group B (TMVS) & R14/R15 comparisons
+        # PREREG_AUDIT_R2 & R3 Group B (TMVS) & R14/R15/R18 comparisons
         ("Transfer_Mean_VarScaled", "Transfer_Mean"),
+        ("Transfer_Mean_VarScaled", "Transfer_Mean_GlobalScale"),
+        ("Transfer_Mean_GlobalScale", "Transfer_Mean"),
         ("Transfer_Mean_VarScaled", "NegCtrl_TMVS_ShuffledVar"),
         ("Transfer_Mean_VarScaled", "FCT"),
         ("Hybrid_on_TMVS", "Transfer_Mean_VarScaled"),
@@ -345,6 +381,7 @@ def evaluate_datasets(
             "Hybrid_Raw",
             "Hybrid_ProjShared",
             "Transfer_Mean_VarScaled",
+            "Transfer_Mean_GlobalScale",
             "Hybrid_on_TMVS",
             "FCT",
             "NegCtrl_HybridProj_SrcCorrTgtVar",
@@ -516,6 +553,42 @@ def evaluate_datasets(
             top50_ls["resid_corr_cal"] = cal_r_top50
             top50_ls["boot_resid_corr_cal"] = boot_cal_top50
 
+            # PREREG_AUDIT_R3 R17: Amplitude-orthogonalized noise-calibrated correlation (primary correlation metric)
+            ceil_orth_top50 = ceil_info["resp_top50"]["ceiling_r_orth"] if ceil_info else float("nan")
+            ceil_orth_all = ceil_info["all_nontarget"]["ceiling_r_orth"] if ceil_info else float("nan")
+            cal_r_orth_top50 = (
+                top50_ls["resid_corr_orth"] / ceil_orth_top50
+                if (np.isfinite(ceil_orth_top50) and ceil_orth_top50 > 0)
+                else float("nan")
+            )
+            cal_r_orth_sq_top50 = float(cal_r_orth_top50 ** 2) if np.isfinite(cal_r_orth_top50) else float("nan")
+            cal_r_orth_top50_ci_fixed = (
+                [c / ceil_orth_top50 for c in top50_ls["resid_corr_orth_ci95"]]
+                if (np.isfinite(ceil_orth_top50) and ceil_orth_top50 > 0)
+                else [float("nan"), float("nan")]
+            )
+            cal_r_orth_top50_ci_resamp = [float("nan"), float("nan")]
+            cal_r_orth_top50_ci975_resamp = [float("nan"), float("nan")]
+            cal_r_orth_sq_top50_ci_resamp = [float("nan"), float("nan")]
+            cal_r_orth_sq_top50_ci975_resamp = [float("nan"), float("nan")]
+            cal_r_orth_top50_resamp_valid_frac = 0.0
+            boot_cal_orth_top50 = np.full_like(top50_ls["boot_resid_corr_orth"], np.nan)
+            if ceil_info is not None:
+                b_cal_o = top50_ls["boot_resid_corr_orth"] / ceil_info["resp_top50"]["boot_ceiling_r_orth"]
+                cal_r_orth_top50_resamp_valid_frac = float(np.mean(np.isfinite(b_cal_o)))
+                if (
+                    np.isfinite(cal_r_orth_top50)
+                    and ceil_orth_top50 > 0
+                    and cal_r_orth_top50_resamp_valid_frac >= 0.95
+                ):
+                    boot_cal_orth_top50 = b_cal_o
+                    cal_r_orth_top50_ci_resamp = np.nanpercentile(b_cal_o, [2.5, 97.5]).tolist()
+                    cal_r_orth_top50_ci975_resamp = np.nanpercentile(b_cal_o, [1.25, 98.75]).tolist()
+                    cal_r_orth_sq_top50_ci_resamp = np.nanpercentile(np.square(b_cal_o), [2.5, 97.5]).tolist()
+                    cal_r_orth_sq_top50_ci975_resamp = np.nanpercentile(np.square(b_cal_o), [1.25, 98.75]).tolist()
+            top50_ls["resid_corr_orth_cal"] = cal_r_orth_top50
+            top50_ls["boot_resid_corr_orth_cal"] = boot_cal_orth_top50
+
             cal_r_all = (
                 all_ls["resid_corr"] / ceil_all
                 if (np.isfinite(ceil_all) and ceil_all > 0)
@@ -543,12 +616,32 @@ def evaluate_datasets(
                     cal_r_all_ci975_resamp = np.nanpercentile(b_cal_all, [1.25, 98.75]).tolist()
                     cal_r_sq_all_ci_resamp = np.nanpercentile(np.square(b_cal_all), [2.5, 97.5]).tolist()
 
+            cal_r_orth_all = (
+                all_ls["resid_corr_orth"] / ceil_orth_all
+                if (np.isfinite(ceil_orth_all) and ceil_orth_all > 0)
+                else float("nan")
+            )
+            cal_r_orth_sq_all = float(cal_r_orth_all ** 2) if np.isfinite(cal_r_orth_all) else float("nan")
+            cal_r_orth_all_ci_resamp = [float("nan"), float("nan")]
+            cal_r_orth_all_ci975_resamp = [float("nan"), float("nan")]
+            cal_r_orth_all_resamp_valid_frac = 0.0
+            if ceil_info is not None:
+                b_cal_orth_all = all_ls["boot_resid_corr_orth"] / ceil_info["all_nontarget"]["boot_ceiling_r_orth"]
+                cal_r_orth_all_resamp_valid_frac = float(np.mean(np.isfinite(b_cal_orth_all)))
+                if (
+                    np.isfinite(cal_r_orth_all)
+                    and ceil_orth_all > 0
+                    and cal_r_orth_all_resamp_valid_frac >= 0.95
+                ):
+                    cal_r_orth_all_ci_resamp = np.nanpercentile(b_cal_orth_all, [2.5, 97.5]).tolist()
+                    cal_r_orth_all_ci975_resamp = np.nanpercentile(b_cal_orth_all, [1.25, 98.75]).tolist()
+
             rec: Dict[str, Any] = {
                 "target_line": target_line,
                 "n_eval_targets": int(len(row_idx)),
                 "method": m_name,
                 "lambda_src": float(state.lam),
-                # Primary & sensitivity line-specific metrics (LINE_SPECIFIC_METRIC.md & R6/R11/R13)
+                # Primary & sensitivity line-specific metrics (LINE_SPECIFIC_METRIC.md & R6/R11/R13/R17)
                 "ls_slope_ols_top50": top50_ls["slope_ols"],
                 "ls_slope_ols_top50_ci95_lo": top50_ls["slope_ols_ci95"][0],
                 "ls_slope_ols_top50_ci95_hi": top50_ls["slope_ols_ci95"][1],
@@ -585,6 +678,24 @@ def evaluate_datasets(
                 "ls_resid_corr_cal_top50_sq_resamp_ci95_hi": cal_r_sq_top50_ci_resamp[1],
                 "ls_resid_corr_cal_top50_sq_resamp_ci975_lo": cal_r_sq_top50_ci975_resamp[0],
                 "ls_resid_corr_cal_top50_sq_resamp_ci975_hi": cal_r_sq_top50_ci975_resamp[1],
+                "ls_resid_corr_orth_top50": top50_ls["resid_corr_orth"],
+                "ls_resid_corr_orth_top50_ci95_lo": top50_ls["resid_corr_orth_ci95"][0],
+                "ls_resid_corr_orth_top50_ci95_hi": top50_ls["resid_corr_orth_ci95"][1],
+                "ls_resid_corr_orth_top50_ci975_lo": top50_ls["resid_corr_orth_ci975"][0],
+                "ls_resid_corr_orth_top50_ci975_hi": top50_ls["resid_corr_orth_ci975"][1],
+                "ls_resid_corr_orth_cal_top50": cal_r_orth_top50,
+                "ls_resid_corr_orth_cal_top50_ci95_lo": cal_r_orth_top50_ci_fixed[0],
+                "ls_resid_corr_orth_cal_top50_ci95_hi": cal_r_orth_top50_ci_fixed[1],
+                "ls_resid_corr_orth_cal_top50_resamp_ci95_lo": cal_r_orth_top50_ci_resamp[0],
+                "ls_resid_corr_orth_cal_top50_resamp_ci95_hi": cal_r_orth_top50_ci_resamp[1],
+                "ls_resid_corr_orth_cal_top50_resamp_ci975_lo": cal_r_orth_top50_ci975_resamp[0],
+                "ls_resid_corr_orth_cal_top50_resamp_ci975_hi": cal_r_orth_top50_ci975_resamp[1],
+                "ls_resid_corr_orth_cal_top50_resamp_valid_frac": cal_r_orth_top50_resamp_valid_frac,
+                "ls_resid_corr_orth_cal_top50_sq": cal_r_orth_sq_top50,
+                "ls_resid_corr_orth_cal_top50_sq_resamp_ci95_lo": cal_r_orth_sq_top50_ci_resamp[0],
+                "ls_resid_corr_orth_cal_top50_sq_resamp_ci95_hi": cal_r_orth_sq_top50_ci_resamp[1],
+                "ls_resid_corr_orth_cal_top50_sq_resamp_ci975_lo": cal_r_orth_sq_top50_ci975_resamp[0],
+                "ls_resid_corr_orth_cal_top50_sq_resamp_ci975_hi": cal_r_orth_sq_top50_ci975_resamp[1],
                 "ls_resid_corr_per_pert_top50": top50_ls["per_pert_corr_mean"],
                 "pred_vs_obs_cosine_top50": top50_ls["pred_vs_obs_cosine_mean"],
                 "ls_slope_ols_all": all_ls["slope_ols"],
@@ -609,6 +720,16 @@ def evaluate_datasets(
                 "ls_resid_corr_cal_all_sq": cal_r_sq_all,
                 "ls_resid_corr_cal_all_sq_resamp_ci95_lo": cal_r_sq_all_ci_resamp[0],
                 "ls_resid_corr_cal_all_sq_resamp_ci95_hi": cal_r_sq_all_ci_resamp[1],
+                "ls_resid_corr_orth_all": all_ls["resid_corr_orth"],
+                "ls_resid_corr_orth_all_ci95_lo": all_ls["resid_corr_orth_ci95"][0],
+                "ls_resid_corr_orth_all_ci95_hi": all_ls["resid_corr_orth_ci95"][1],
+                "ls_resid_corr_orth_cal_all": cal_r_orth_all,
+                "ls_resid_corr_orth_cal_all_resamp_ci95_lo": cal_r_orth_all_ci_resamp[0],
+                "ls_resid_corr_orth_cal_all_resamp_ci95_hi": cal_r_orth_all_ci_resamp[1],
+                "ls_resid_corr_orth_cal_all_resamp_ci975_lo": cal_r_orth_all_ci975_resamp[0],
+                "ls_resid_corr_orth_cal_all_resamp_ci975_hi": cal_r_orth_all_ci975_resamp[1],
+                "ls_resid_corr_orth_cal_all_resamp_valid_frac": cal_r_orth_all_resamp_valid_frac,
+                "ls_resid_corr_orth_cal_all_sq": cal_r_orth_sq_all,
             }
             for k, arr in merged.items():
                 rec[k] = float(np.mean(arr))
@@ -646,8 +767,11 @@ def evaluate_datasets(
             ("resp_top50", "per_pert_slope", "ls_slope_per_pert_top50"),
             ("resp_top50", "resid_corr", "ls_resid_corr_top50"),
             ("resp_top50", "resid_corr_cal", "ls_resid_corr_cal_top50"),
+            ("resp_top50", "resid_corr_orth", "ls_resid_corr_orth_top50"),
+            ("resp_top50", "resid_corr_orth_cal", "ls_resid_corr_orth_cal_top50"),
             ("all_nontarget", "slope_ols", "ls_slope_ols_all"),
             ("all_nontarget", "resid_corr", "ls_resid_corr_all"),
+            ("all_nontarget", "resid_corr_orth", "ls_resid_corr_orth_all"),
         ]
         line_comparisons = (
             list(comparisons)
@@ -789,6 +913,39 @@ def evaluate_datasets(
             n_boot=n_boot,
             seed=seed,
         )
+        diag_t_full = np.maximum(np.diag(np.asarray(t_ctrl_cov, dtype=np.float64)), 1e-8)
+        mean_src_var_full = np.maximum(
+            np.mean(
+                [
+                    np.maximum(np.diag(np.asarray(s.ctrl_cov, dtype=np.float64)), 1e-8)
+                    for s in state.source_lines
+                ],
+                axis=0,
+            ),
+            1e-8,
+        )
+        ceil_t50 = ceil_info["resp_top50"]["ceiling_r"] if ceil_info is not None else float("nan")
+        ceil_o_t50 = ceil_info["resp_top50"]["ceiling_r_orth"] if ceil_info is not None else float("nan")
+        tmvs_shuffled_var_perm100[target_line] = compute_tmvs_shuffled_var_perm100(
+            delta_obs=true_deltas,
+            delta_src_mean=transfer_ref,
+            target_gene_idx=q_gidx,
+            target_diag_var=diag_t_full,
+            mean_src_var=mean_src_var_full,
+            ceil_r_top50=ceil_t50,
+            ceil_r_orth_top50=ceil_o_t50,
+            n_perm=100,
+            top_k=50,
+            seed=42,
+        )
+        variance_decomposition[target_line] = compute_residual_variance_decomposition(
+            delta_obs=true_deltas,
+            delta_src_mean=transfer_ref,
+            target_gene_idx=q_gidx,
+            top_k=50,
+            n_boot=n_boot,
+            seed=seed,
+        )
         del preds, row_metrics_by_method, ls_by_method
         gc.collect()
 
@@ -881,6 +1038,8 @@ def evaluate_datasets(
         "ctrl_cov_reliability": ctrl_reliability,
         "pert_noise_ceilings": pert_noise_ceilings,
         "s5_expressed_top75_var": s5_expressed_top75,
+        "tmvs_shuffled_var_perm100": tmvs_shuffled_var_perm100,
+        "variance_decomposition": variance_decomposition,
         "drf_calibration": drf_calibration,
         "cross_line_cosine_diagnostics": cross_line_cosine,
         "macro_means_by_method": (
@@ -902,7 +1061,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--all-targets", action="store_true", help="Evaluate all targets instead of shared.")
     p.add_argument("--only-reproducible", action="store_true", default=False)
     p.add_argument("--n-boot", type=int, default=4000)
-    p.add_argument("--seed", type=int, default=12345)
+    p.add_argument("--seed", type=int, default=20261121)
     return p.parse_args()
 
 
@@ -945,14 +1104,21 @@ def main() -> None:
         seed=args.seed,
         require_official_spec=True,
     )
+    cf_hash = read_code_freeze_hash()
     summary["phase"] = args.phase
+    summary["code_freeze_hash"] = cf_hash
     summary["representation"] = args.repr
     summary["shrink"] = args.shrink
     summary["cov_max_cells"] = args.cov_max_cells
     summary["mask_self"] = not args.no_mask_self
     summary["only_reproducible"] = args.only_reproducible
     summary["shared_targets_only"] = not args.all_targets
+    summary["bootstrap_seed"] = args.seed
+    summary["n_boot"] = args.n_boot
     summary["elapsed_sec"] = round(time.time() - t0, 2)
+
+    df_lines["code_freeze_hash"] = cf_hash
+    df_boot["code_freeze_hash"] = cf_hash
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     tag = f"{args.phase}_{args.repr}{args.tag_suffix}"

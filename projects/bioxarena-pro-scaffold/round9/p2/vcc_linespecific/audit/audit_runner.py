@@ -601,9 +601,9 @@ def _eval_tmvs_shuffled_perm_distribution(
     r_cal_vals = np.empty(n_perm, dtype=np.float64)
     slope_vals = np.empty(n_perm, dtype=np.float64)
 
-    rng = np.random.default_rng(seed + 2000)
     for k in range(n_perm):
-        perm = rng.permutation(n_genes)
+        # C2 fixed-RNG rule: perm k uses numpy.random.default_rng(k).permutation(G) in COMMON_GENES order
+        perm = np.random.default_rng(k).permutation(n_genes)
         delta_scale = np.sqrt(t_var[perm] / s_var_mean) - 1.0
         yp_raw_l, yp_orth_l = [], []
         for p, idx, bv in zip(row_idx_list, col_idx_list, b_vecs):
@@ -986,7 +986,7 @@ def audit_loo_suite(
                 target_cols,
                 "resp_top50",
                 n_boot,
-                seed + li * 100,
+                seed,
                 ceil_top50,
                 ha_res,
                 hb_res,
@@ -1000,7 +1000,7 @@ def audit_loo_suite(
                 target_cols,
                 "all_nontarget",
                 n_boot,
-                seed + li * 100 + 50,
+                seed,
                 ceil_all,
                 ha_res,
                 hb_res,
@@ -1059,7 +1059,7 @@ def audit_loo_suite(
                 method_metrics["hybrid"][row_key],
                 method_metrics["transferred_mean"][row_key],
                 n_boot=n_boot,
-                seed=seed + li + off,
+                seed=seed,
             )
             for name, row_key, off in conv_specs
         }
@@ -1068,7 +1068,7 @@ def audit_loo_suite(
                 method_metrics["transfer_mean_var_scaled"][row_key],
                 method_metrics["transferred_mean"][row_key],
                 n_boot=n_boot,
-                seed=seed + li + off + 10,
+                seed=seed,
             )
             for name, row_key, off in conv_specs
         }
@@ -1173,7 +1173,7 @@ def audit_loo_suite(
             target_cols=target_cols,
             mode="resp_top50",
             n_boot=n_boot,
-            seed=seed + li * 100 + 7,
+            seed=seed,
             ceiling_r=ceil_top50,
             half_a_res=ha_res,
             half_b_res=hb_res,
@@ -1188,7 +1188,7 @@ def audit_loo_suite(
             target_cols=target_cols,
             mode="resp_top50",
             n_boot=n_boot,
-            seed=seed + li * 100 + 7,
+            seed=seed,
             ceiling_r=ceil_top50,
             half_a_res=ha_res,
             half_b_res=hb_res,
@@ -1209,7 +1209,7 @@ def audit_loo_suite(
             target_cols,
             "resp_top50",
             n_boot,
-            seed + li * 100 + 11,
+            seed,
             ceil_top50,
             ha_res,
             hb_res,
@@ -1224,7 +1224,7 @@ def audit_loo_suite(
             target_cols,
             "resp_top50",
             n_boot,
-            seed + li * 100 + 13,
+            seed,
             ceil_top50,
             ha_res,
             hb_res,
@@ -1240,7 +1240,7 @@ def audit_loo_suite(
             target_cols=target_cols,
             mode="resp_top50",
             n_boot=n_boot,
-            seed=seed + li * 100 + 21,
+            seed=seed,
         )
         r19_all = _eval_r19_gain_decomposition(
             y_true=y_true,
@@ -1248,7 +1248,7 @@ def audit_loo_suite(
             target_cols=target_cols,
             mode="all_nontarget",
             n_boot=n_boot,
-            seed=seed + li * 100 + 22,
+            seed=seed,
         )
 
         hyb_all = method_metrics["hybrid"]["all_nontarget"]
@@ -1586,8 +1586,8 @@ def audit_loo_suite(
     }
 
 
-def check_prereg_gate(status_dir: Path, lines: Sequence[str], dev_only: bool) -> None:
-    """Enforce P2_RULES Rule 3: holdout lines forbidden prior to PREREG_COMMIT.txt."""
+def check_prereg_gate(status_dir: Path, lines: Sequence[str], dev_only: bool) -> dict:
+    """Enforce P2_RULES Rule 3 and PREREG_COMMIT C1: holdout lines require PREREG_COMMIT.txt + CODE_FREEZE.txt."""
     if dev_only:
         allowed = {
             "replogle_k562",
@@ -1600,12 +1600,21 @@ def check_prereg_gate(status_dir: Path, lines: Sequence[str], dev_only: bool) ->
         }
         if any(l not in allowed for l in lines):
             raise PermissionError(f"--dev-only only allows Replogle K562/RPE1, got {lines}")
-        return
+        return {"prereg_commit": None, "code_freeze_commit": None}
     commit_file = status_dir / "PREREG_COMMIT.txt"
     if not commit_file.exists() or not commit_file.read_text().strip():
         raise PermissionError(
             f"Rule 3 Gate: {commit_file} missing or empty. Refusing to evaluate held-out cell lines!"
         )
+    freeze_file = status_dir / "CODE_FREEZE.txt"
+    if not freeze_file.exists() or not freeze_file.read_text().strip():
+        raise PermissionError(
+            f"Rule C1 Code-Freeze Gate: {freeze_file} missing or empty. Refusing to evaluate held-out cell lines!"
+        )
+    lock_file = status_dir / "PREREG_LOCK_PUSHED.txt"
+    prereg_hash = lock_file.read_text().strip() if lock_file.exists() and lock_file.read_text().strip() else commit_file.read_text().strip().splitlines()[0]
+    freeze_hash = freeze_file.read_text().strip().splitlines()[0].strip()
+    return {"prereg_commit": prereg_hash, "code_freeze_commit": freeze_hash}
 
 
 def main() -> None:
@@ -1625,7 +1634,7 @@ def main() -> None:
     ap.add_argument("--n-boot", type=int, default=4000)
     args = ap.parse_args()
 
-    check_prereg_gate(args.status_dir, args.lines, args.dev_only)
+    gate_meta = check_prereg_gate(args.status_dir, args.lines, args.dev_only)
     res = audit_loo_suite(
         shared_dir=args.shared_dir,
         lines=args.lines,
@@ -1640,10 +1649,17 @@ def main() -> None:
         confirmatory_lines=args.confirmatory_lines,
     )
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    res["per_line_df"].to_csv(args.out_dir / "audit_per_line.csv", index=False)
+    df_out = res["per_line_df"].copy()
+    if gate_meta.get("code_freeze_commit"):
+        df_out["code_freeze_commit"] = gate_meta["code_freeze_commit"]
+    if gate_meta.get("prereg_commit"):
+        df_out["prereg_commit"] = gate_meta["prereg_commit"]
+    df_out.to_csv(args.out_dir / "audit_per_line.csv", index=False)
     with open(args.out_dir / "audit_summary.json", "w") as f:
         json.dump(
             {
+                "prereg_commit": gate_meta.get("prereg_commit"),
+                "code_freeze_commit": gate_meta.get("code_freeze_commit"),
                 "lines": res["lines"],
                 "n_common_genes": res["n_common_genes"],
                 "detailed": res["detailed"],

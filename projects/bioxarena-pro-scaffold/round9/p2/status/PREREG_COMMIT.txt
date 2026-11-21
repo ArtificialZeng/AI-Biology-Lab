@@ -1,0 +1,36 @@
+PREREG_COMMIT（主控核验通过，写入时间 2026-11-21 22:10 +08:00）
+
+锁定版本：PREREG_A.md v4
+commit：4cc89ebae67f0ed0748b80f994d26dcc9c2b95ef（2026-11-21 22:01:03 +08:00，已在 origin/main）
+sha256：17519aeb299009186c5e1d5f86ec22a0923deda9d8dd931fafe8d190d48e01e9（远端 commit 中的文件与本地一致）
+历史：v1 222cf75 → v2 11aca10 → v3 69c6e57 → v4 4cc89eb。各版之间都没有任何留出评测。
+主控核验记录：status/PREREG_AUDIT_R1.md、R2.md、R3.md
+主控独立复算脚本：gemini/审核脚本_第九轮/{tmvs_check.py,amp_check.py,orth_ceiling.py}
+
+在任何留出数据被读取之前，补充以下有约束力的实施规定（不改变假设、阈值和指标）：
+
+C1 代码冻结。留出评测必须在 status/CODE_FREEZE.txt 出现之后才能开始。
+  - A-T2 先完成正在进行的 dev 刷新，在 status/A-T2.txt 写 DEV_REFRESH_DONE。
+  - 主线执行者随后提交 vcc_linespecific/src/ 和 vcc_linespecific/audit/ 的代码并 push，把 commit 哈希写进 status/CODE_FREEZE.txt。
+  - 所有留出结果文件都要记录这个代码哈希。冻结后改任何代码，都要在 vcc_linespecific/DEVIATIONS.md 写明改了什么、为什么改、对结果有什么影响。
+
+C2 随机数固定。
+  - 100 次置换：第 k 次（k = 0..99）用 numpy.random.default_rng(k).permutation(G)，基因顺序以 shared/COMMON_GENES.txt 为准。
+  - bootstrap：numpy.random.default_rng(20261121)，4,000 次。
+  - A-T2 和 A-T3 都按这个规定实现。
+
+C3 两套实现不一致时。
+  - 判定以 A-T2 的结果为准，A-T3 独立复算。
+  - 点估计容差 1e-4，CI 端点容差 0.01。
+  - 如果某条假设在两套实现里的通过或不通过结论不同，两个结果都报告，这条假设按「不通过」计。
+
+C4 顺序。
+  - 先用锁定的主配置跑完全部 6 条线的留一评测，结果原样写进 results/ 并由主线提交。
+  - 之后才能跑 S1–S6 敏感性分析。
+  - nourreddine_kolf21j 和两条 Replogle 线只做次要报告。
+
+C5 照写不利结果。
+  - 两组判定（A 组、B 组）、GlobalScale 说明、R4 和 R14 的措辞规则按 v4 第 6 节执行。
+  - 「未确认」照写，进主表。
+
+可以开始的条件：本文件和 status/CODE_FREEZE.txt 都存在。

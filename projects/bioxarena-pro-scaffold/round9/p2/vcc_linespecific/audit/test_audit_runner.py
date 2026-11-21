@@ -25,9 +25,14 @@ class TestAuditRunner(unittest.TestCase):
                 check_prereg_gate(sdir, ["K562", "HepG2"], dev_only=True)
             # --dev-only permits Replogle K562/RPE1
             check_prereg_gate(sdir, ["K562", "RPE1"], dev_only=True)
-            # With PREREG_COMMIT.txt present, holdout lines allowed
+            # With only PREREG_COMMIT.txt present, C1 CODE_FREEZE gate still blocks holdout lines
             (sdir / "PREREG_COMMIT.txt").write_text("abc1234\n")
-            check_prereg_gate(sdir, ["K562", "RPE1", "HepG2"], dev_only=False)
+            with self.assertRaises(PermissionError):
+                check_prereg_gate(sdir, ["K562", "RPE1", "HepG2"], dev_only=False)
+            # With both PREREG_COMMIT.txt and CODE_FREEZE.txt present, holdout lines allowed
+            (sdir / "CODE_FREEZE.txt").write_text("deadbeef\n")
+            meta = check_prereg_gate(sdir, ["K562", "RPE1", "HepG2"], dev_only=False)
+            self.assertEqual(meta["code_freeze_commit"], "deadbeef")
 
     def test_synthetic_shared_dir_audit_confirmed_and_null_not_confirmed(self):
         rng = np.random.default_rng(77)

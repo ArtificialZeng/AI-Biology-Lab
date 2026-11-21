@@ -213,7 +213,7 @@ def paired_row_bootstrap_ci(
     scores_a: np.ndarray,
     scores_b: np.ndarray,
     n_boot: int = 4000,
-    seed: int = 12345,
+    seed: int = 20261121,
 ) -> Dict[str, float | bool]:
     """Single-line paired row-level bootstrap 95% CI for mean(scores_a - scores_b)."""
     a = np.asarray(scores_a, dtype=np.float64)
@@ -222,8 +222,8 @@ def paired_row_bootstrap_ci(
         raise ValueError(f"Mismatched score shapes: {a.shape} vs {b.shape}")
     n = len(a)
     d = a - b
-    rs = np.random.RandomState(seed)
-    idx = rs.choice(n, size=(n_boot, n), replace=True)
+    rs = np.random.default_rng(seed)
+    idx = rs.integers(0, n, size=(n_boot, n))
     boots = d[idx].mean(axis=1)
     ci_lo, ci_hi = np.percentile(boots, [2.5, 97.5])
     ci975_lo, ci975_hi = np.percentile(boots, [1.25, 98.75])
@@ -246,13 +246,13 @@ def paired_row_bootstrap_ci(
 def single_array_bootstrap_ci(
     scores: np.ndarray,
     n_boot: int = 4000,
-    seed: int = 12345,
+    seed: int = 20261121,
 ) -> Dict[str, float | bool]:
     """Row-level bootstrap 95% and 97.5% CIs for a single metric array."""
     a = np.asarray(scores, dtype=np.float64)
     n = len(a)
-    rs = np.random.RandomState(seed)
-    idx = rs.choice(n, size=(n_boot, n), replace=True)
+    rs = np.random.default_rng(seed)
+    idx = rs.integers(0, n, size=(n_boot, n))
     boots = a[idx].mean(axis=1)
     ci_lo, ci_hi = np.percentile(boots, [2.5, 97.5])
     ci975_lo, ci975_hi = np.percentile(boots, [1.25, 98.75])
@@ -275,14 +275,14 @@ def stratified_row_bootstrap_ci(
     scores_b: np.ndarray,
     strata: Sequence[str],
     n_boot: int = 4000,
-    seed: int = 12345,
+    seed: int = 20261121,
 ) -> Dict[str, float | bool]:
     """Equal-weight macro-averaged stratified paired bootstrap 95% & 97.5% CIs across lines."""
     a = np.asarray(scores_a, dtype=np.float64)
     b = np.asarray(scores_b, dtype=np.float64)
     st = np.asarray(strata)
     uniq = sorted(set(st.tolist()))
-    rs = np.random.RandomState(seed)
+    rs = np.random.default_rng(seed)
     d = a - b
     boot_sum = np.zeros(n_boot, dtype=np.float64)
     pt_a = 0.0
@@ -293,7 +293,8 @@ def stratified_row_bootstrap_ci(
         pt_a += float(a[idx_u].mean())
         pt_b += float(b[idx_u].mean())
         pt_d += float(d[idx_u].mean())
-        boot_sum += d[rs.choice(idx_u, size=(n_boot, len(idx_u)), replace=True)].mean(axis=1)
+        sel = idx_u[rs.integers(0, len(idx_u), size=(n_boot, len(idx_u)))]
+        boot_sum += d[sel].mean(axis=1)
     k = float(len(uniq))
     boots = boot_sum / k
     ci_lo, ci_hi = np.percentile(boots, [2.5, 97.5])
@@ -319,6 +320,15 @@ def cis_non_overlapping(ci1: Tuple[float, float], ci2: Tuple[float, float]) -> b
     return bool(ci1[1] < ci2[0] or ci2[1] < ci1[0])
 
 
+def _orth_project(vec: np.ndarray, base: np.ndarray) -> np.ndarray:
+    """Remove per-perturbation component along `base` on the same masked gene set (R17)."""
+    norm = float(np.linalg.norm(base))
+    if norm <= 1e-12 or not np.isfinite(norm):
+        return vec.copy()
+    b = base / norm
+    return vec - float(np.dot(vec, b)) * b
+
+
 def _mask_indices_by_mode(
     delta_obs: np.ndarray,
     r_true: np.ndarray,
@@ -326,22 +336,32 @@ def _mask_indices_by_mode(
     target_gene_idx: Sequence[int],
     mode: str = "resp_top50",
     top_k: int = 50,
-) -> Tuple[List[np.ndarray], List[np.ndarray], List[np.ndarray], List[np.ndarray]]:
+    delta_src_mean: Optional[np.ndarray] = None,
+) -> Tuple[
+    List[np.ndarray],
+    List[np.ndarray],
+    List[float],
+    List[float],
+    List[np.ndarray],
+    List[np.ndarray],
+]:
     """
-    Build per-perturbation masked residual arrays (xp, yp) and raw deltas (d_obs_p, d_pred_p)
-    matching A-T5 `audit/LIT/LINE_SPECIFIC_METRIC.md` §2.2 & §4.
+    Build per-perturbation masked residual arrays (xp, yp) and amplitude-orthogonalized
+    arrays (xp_orth, yp_orth) matching A-T5 `LINE_SPECIFIC_METRIC.md` §2.2/§4 and R17.
     """
     P, G = delta_obs.shape
     t_idx = np.asarray(target_gene_idx, dtype=np.int64)
     xs_list: List[np.ndarray] = []
     ys_list: List[np.ndarray] = []
-    obs_list: List[np.ndarray] = []
-    # Also retain per-perturbation OLS slopes and Pearson correlations
+    xs_orth_list: List[np.ndarray] = []
+    ys_orth_list: List[np.ndarray] = []
     per_pert_slopes: List[float] = []
     per_pert_corrs: List[float] = []
 
     for p in range(P):
         valid = np.isfinite(r_true[p]) & np.isfinite(r_pred[p]) & np.isfinite(delta_obs[p])
+        if delta_src_mean is not None:
+            valid = valid & np.isfinite(delta_src_mean[p])
         ti = int(t_idx[p])
         if 0 <= ti < G:
             valid[ti] = False
@@ -358,7 +378,14 @@ def _mask_indices_by_mode(
         yp = r_pred[p, idx].astype(np.float64)
         xs_list.append(xp)
         ys_list.append(yp)
-        obs_list.append(idx)
+
+        if delta_src_mean is not None:
+            bp = delta_src_mean[p, idx].astype(np.float64)
+            xs_orth_list.append(_orth_project(xp, bp))
+            ys_orth_list.append(_orth_project(yp, bp))
+        else:
+            xs_orth_list.append(xp)
+            ys_orth_list.append(yp)
 
         xv = xp - xp.mean()
         yv = yp - yp.mean()
@@ -368,7 +395,7 @@ def _mask_indices_by_mode(
         per_pert_corrs.append(
             float(np.dot(xv, yv) / np.sqrt(vx * vy)) if (vx > 1e-12 and vy > 1e-12) else float("nan")
         )
-    return xs_list, ys_list, per_pert_slopes, per_pert_corrs
+    return xs_list, ys_list, per_pert_slopes, per_pert_corrs, xs_orth_list, ys_orth_list
 
 
 def _sufficient_stats_per_pert(
@@ -450,7 +477,7 @@ def compute_line_specific_metrics_and_boots(
     target_gene_idx: Sequence[int],
     top_k: int = 50,
     n_boot: int = 4000,
-    seed: int = 12345,
+    seed: int = 20261121,
 ) -> Dict[str, Dict[str, object]]:
     """
     Compute official Arc VCC 2026 Wrap-Up line-specific slope & residual correlation metrics
@@ -485,14 +512,16 @@ def compute_line_specific_metrics_and_boots(
         cos_agree.append(float(np.dot(a, b) / den) if den > 1e-12 else 0.0)
 
     out: Dict[str, Dict[str, object]] = {}
+    d_src_arr = np.asarray(delta_src_mean, dtype=np.float64)
     for mode in ("resp_top50", "all_nontarget"):
-        xs_list, ys_list, p_slopes, p_corrs = _mask_indices_by_mode(
-            d_obs, r_true, r_pred, t_idx, mode=mode, top_k=top_k
+        xs_list, ys_list, p_slopes, p_corrs, xs_orth, ys_orth = _mask_indices_by_mode(
+            d_obs, r_true, r_pred, t_idx, mode=mode, top_k=top_k, delta_src_mean=d_src_arr
         )
         m = len(xs_list)
         if m == 0:
             raise ValueError(f"No valid perturbations for mode={mode}")
         ss = _sufficient_stats_per_pert(xs_list, ys_list)
+        ss_orth = _sufficient_stats_per_pert(xs_orth, ys_orth)
         N_sum = float(ss["n"].sum())
         sx_sum = float(ss["sx"].sum())
         sy_sum = float(ss["sy"].sum())
@@ -505,10 +534,18 @@ def compute_line_specific_metrics_and_boots(
         pt_sd_ratio, pt_obs_on_pred, pt_deming = _extended_scale_stats_from_sums(
             N_sum, sx_sum, sy_sum, sxx_sum, syy_sum, sxy_sum
         )
+        _, _, pt_corr_orth = _stats_from_sums(
+            float(ss_orth["n"].sum()),
+            float(ss_orth["sx"].sum()),
+            float(ss_orth["sy"].sum()),
+            float(ss_orth["sxx"].sum()),
+            float(ss_orth["syy"].sum()),
+            float(ss_orth["sxy"].sum()),
+        )
 
         # Deterministic perturbation-level bootstrap with identical seed across models for pairing!
-        rs = np.random.RandomState(seed)
-        draws = rs.choice(m, size=(n_boot, m), replace=True)
+        rs = np.random.default_rng(seed)
+        draws = rs.integers(0, m, size=(n_boot, m))
         bN = ss["n"][draws].sum(axis=1)
         bsx = ss["sx"][draws].sum(axis=1)
         bsy = ss["sy"][draws].sum(axis=1)
@@ -518,6 +555,14 @@ def compute_line_specific_metrics_and_boots(
         b_ols, b_noint, b_corr = _stats_from_sums(bN, bsx, bsy, bsxx, bsyy, bsxy)
         b_sd_ratio, b_obs_on_pred, b_deming = _extended_scale_stats_from_sums(
             bN, bsx, bsy, bsxx, bsyy, bsxy
+        )
+        _, _, b_corr_orth = _stats_from_sums(
+            ss_orth["n"][draws].sum(axis=1),
+            ss_orth["sx"][draws].sum(axis=1),
+            ss_orth["sy"][draws].sum(axis=1),
+            ss_orth["sxx"][draws].sum(axis=1),
+            ss_orth["syy"][draws].sum(axis=1),
+            ss_orth["sxy"][draws].sum(axis=1),
         )
         p_slopes_arr = np.asarray(p_slopes, dtype=np.float64)
         p_corrs_arr = np.asarray(p_corrs, dtype=np.float64)
@@ -559,6 +604,9 @@ def compute_line_specific_metrics_and_boots(
             "resid_corr": float(pt_corr),
             "resid_corr_ci95": _safe_ci(b_corr, (2.5, 97.5)),
             "resid_corr_ci975": _safe_ci(b_corr, (1.25, 98.75)),
+            "resid_corr_orth": float(pt_corr_orth),
+            "resid_corr_orth_ci95": _safe_ci(b_corr_orth, (2.5, 97.5)),
+            "resid_corr_orth_ci975": _safe_ci(b_corr_orth, (1.25, 98.75)),
             "sd_ratio": float(pt_sd_ratio),
             "sd_ratio_ci95": _safe_ci(b_sd_ratio, (2.5, 97.5)),
             "sd_ratio_ci975": _safe_ci(b_sd_ratio, (1.25, 98.75)),
@@ -575,6 +623,7 @@ def compute_line_specific_metrics_and_boots(
             "boot_slope_no_intercept": b_noint,
             "boot_per_pert_slope": b_pslope,
             "boot_resid_corr": b_corr,
+            "boot_resid_corr_orth": b_corr_orth,
             "boot_sd_ratio": b_sd_ratio,
             "boot_slope_obs_on_pred": b_obs_on_pred,
             "boot_slope_deming": b_deming,
@@ -601,23 +650,24 @@ def compute_splithalf_noise_ceiling(
     target_gene_idx: Sequence[int],
     top_k: int = 50,
     n_boot: int = 4000,
-    seed: int = 12345,
+    seed: int = 20261121,
 ) -> Dict[str, Dict[str, object]]:
     """
-    Compute split-half line-specific reliability (rho_AB, rho_SB, ceiling sqrt(rho_SB),
-    and replicate OLS slope) plus bootstrap ceiling array for both `resp_top50`
-    and `all_nontarget`, using identical perturbation-level bootstrap draws (`seed`).
+    Compute split-half line-specific reliability (raw and R17 amplitude-orthogonalized)
+    for both `resp_top50` and `all_nontarget`, using identical perturbation draws (`seed`).
     """
-    r_a = np.asarray(delta_half_a, dtype=np.float64) - np.asarray(delta_src_mean, dtype=np.float64)
-    r_b = np.asarray(delta_half_b, dtype=np.float64) - np.asarray(delta_src_mean, dtype=np.float64)
+    d_src_arr = np.asarray(delta_src_mean, dtype=np.float64)
+    r_a = np.asarray(delta_half_a, dtype=np.float64) - d_src_arr
+    r_b = np.asarray(delta_half_b, dtype=np.float64) - d_src_arr
     d_obs = np.asarray(delta_obs_full, dtype=np.float64)
     out: Dict[str, Dict[str, object]] = {}
     for mode in ("resp_top50", "all_nontarget"):
-        xs_list, ys_list, _, _ = _mask_indices_by_mode(
-            d_obs, r_a, r_b, target_gene_idx, mode=mode, top_k=top_k
+        xs_list, ys_list, _, _, xs_orth, ys_orth = _mask_indices_by_mode(
+            d_obs, r_a, r_b, target_gene_idx, mode=mode, top_k=top_k, delta_src_mean=d_src_arr
         )
         m = len(xs_list)
         ss = _sufficient_stats_per_pert(xs_list, ys_list)
+        ss_orth = _sufficient_stats_per_pert(xs_orth, ys_orth)
         slope_ab, _, rho_ab = _stats_from_sums(
             float(ss["n"].sum()),
             float(ss["sx"].sum()),
@@ -626,7 +676,6 @@ def compute_splithalf_noise_ceiling(
             float(ss["syy"].sum()),
             float(ss["sxy"].sum()),
         )
-        # Swap A/B for symmetric replicate slope
         slope_ba, _, _ = _stats_from_sums(
             float(ss["n"].sum()),
             float(ss["sy"].sum()),
@@ -635,13 +684,23 @@ def compute_splithalf_noise_ceiling(
             float(ss["sxx"].sum()),
             float(ss["sxy"].sum()),
         )
+        _, _, rho_ab_orth = _stats_from_sums(
+            float(ss_orth["n"].sum()),
+            float(ss_orth["sx"].sum()),
+            float(ss_orth["sy"].sum()),
+            float(ss_orth["sxx"].sum()),
+            float(ss_orth["syy"].sum()),
+            float(ss_orth["sxy"].sum()),
+        )
         rho_ab = float(rho_ab)
+        rho_ab_orth = float(rho_ab_orth)
         slope_ab = float(slope_ab)
         slope_ba = float(slope_ba)
         rho_sb, ceil_r = spearman_brown_ceiling(rho_ab)
+        rho_sb_orth, ceil_r_orth = spearman_brown_ceiling(rho_ab_orth)
 
-        rs = np.random.RandomState(seed)
-        draws = rs.choice(m, size=(n_boot, m), replace=True)
+        rs = np.random.default_rng(seed)
+        draws = rs.integers(0, m, size=(n_boot, m))
         b_slope_ab, _, b_rho_ab = _stats_from_sums(
             ss["n"][draws].sum(axis=1),
             ss["sx"][draws].sum(axis=1),
@@ -650,21 +709,373 @@ def compute_splithalf_noise_ceiling(
             ss["syy"][draws].sum(axis=1),
             ss["sxy"][draws].sum(axis=1),
         )
+        _, _, b_rho_ab_orth = _stats_from_sums(
+            ss_orth["n"][draws].sum(axis=1),
+            ss_orth["sx"][draws].sum(axis=1),
+            ss_orth["sy"][draws].sum(axis=1),
+            ss_orth["sxx"][draws].sum(axis=1),
+            ss_orth["syy"][draws].sum(axis=1),
+            ss_orth["sxy"][draws].sum(axis=1),
+        )
         with np.errstate(divide="ignore", invalid="ignore"):
             b_rho_sb = np.where(b_rho_ab > 0.0, (2.0 * b_rho_ab) / (1.0 + b_rho_ab), np.nan)
             b_ceil_r = np.sqrt(b_rho_sb)
+            b_rho_sb_orth = np.where(
+                b_rho_ab_orth > 0.0, (2.0 * b_rho_ab_orth) / (1.0 + b_rho_ab_orth), np.nan
+            )
+            b_ceil_r_orth = np.sqrt(b_rho_sb_orth)
 
         out[mode] = {
             "rho_half_ab": rho_ab,
             "rho_sb": rho_sb,
             "ceiling_r": ceil_r,
+            "rho_half_ab_orth": rho_ab_orth,
+            "rho_sb_orth": rho_sb_orth,
+            "ceiling_r_orth": ceil_r_orth,
             "slope_ab": slope_ab,
             "slope_ba": slope_ba,
             "slope_rep_mean": float(0.5 * (slope_ab + slope_ba))
             if (np.isfinite(slope_ab) and np.isfinite(slope_ba))
             else float("nan"),
             "boot_ceiling_r": b_ceil_r,
+            "boot_ceiling_r_orth": b_ceil_r_orth,
             "boot_slope_ab": b_slope_ab,
         }
     return out
+
+
+def compute_tmvs_shuffled_var_perm100(
+    delta_obs: np.ndarray,
+    delta_src_mean: np.ndarray,
+    target_gene_idx: Sequence[int],
+    target_diag_var: np.ndarray,
+    mean_src_var: np.ndarray,
+    ceil_r_top50: float,
+    ceil_r_orth_top50: float,
+    n_perm: int = 100,
+    top_k: int = 50,
+    seed: int = 42,
+    min_var: float = 1e-8,
+) -> Dict[str, object]:
+    """
+    PREREG_AUDIT_R3 R18: Evaluate 100 random gene permutations of target marginal variances
+    to obtain null distributions (median, p2.5, p97.5, p98.75) for `r_orth_cal`, `r_cal`, and `slope_ols`.
+    """
+    d_obs = np.asarray(delta_obs, dtype=np.float64)
+    d_src = np.asarray(delta_src_mean, dtype=np.float64)
+    t_idx = np.asarray(target_gene_idx, dtype=np.int64)
+    diag_t = np.maximum(np.asarray(target_diag_var, dtype=np.float64), min_var)
+    denom_var = np.maximum(np.asarray(mean_src_var, dtype=np.float64), min_var)
+    P, G = d_obs.shape
+
+    row_masks: List[np.ndarray] = []
+    s_list: List[np.ndarray] = []
+    r_obs_list: List[np.ndarray] = []
+    b_list: List[np.ndarray] = []
+    r_obs_orth_list: List[np.ndarray] = []
+
+    for p in range(P):
+        valid = np.isfinite(d_obs[p]) & np.isfinite(d_src[p])
+        ti = int(t_idx[p])
+        if 0 <= ti < G:
+            valid[ti] = False
+        idx = np.flatnonzero(valid)
+        if idx.size == 0:
+            continue
+        if idx.size > top_k:
+            idx = idx[np.argsort(np.abs(d_obs[p, idx]))[-top_k:]]
+        row_masks.append(idx)
+        sp = d_src[p, idx]
+        rp = d_obs[p, idx] - sp
+        s_list.append(sp)
+        r_obs_list.append(rp)
+        norm = float(np.linalg.norm(sp))
+        bp = sp / norm if norm > 1e-12 else np.zeros_like(sp)
+        b_list.append(bp)
+        r_obs_orth_list.append(rp - float(np.dot(rp, bp)) * bp)
+
+    ro_flat = np.concatenate(r_obs_list)
+    ro_orth_flat = np.concatenate(r_obs_orth_list)
+    ro_c = ro_flat - ro_flat.mean()
+    ro_var = float(np.dot(ro_c, ro_c))
+    ro_orth_c = ro_orth_flat - ro_orth_flat.mean()
+    ro_orth_var = float(np.dot(ro_orth_c, ro_orth_c))
+
+    uniform_len = len({len(idx) for idx in row_masks}) == 1
+    if uniform_len:
+        idx_mat = np.vstack(row_masks)
+        S_mat = np.vstack(s_list)
+        B_mat = np.vstack(b_list)
+
+    r_orth_cal_vals = np.full(n_perm, np.nan, dtype=np.float64)
+    r_cal_vals = np.full(n_perm, np.nan, dtype=np.float64)
+    slope_vals = np.full(n_perm, np.nan, dtype=np.float64)
+
+    for k in range(n_perm):
+        perm = np.random.default_rng(k).permutation(G)
+        scale_perm = np.sqrt(diag_t[perm] / denom_var) - 1.0
+        if uniform_len:
+            rp_mat = S_mat * scale_perm[idx_mat]
+            dot_pb = np.sum(rp_mat * B_mat, axis=1, keepdims=True)
+            rp_orth_flat = (rp_mat - dot_pb * B_mat).ravel()
+            rp_flat = rp_mat.ravel()
+        else:
+            rp_parts = []
+            rp_orth_parts = []
+            for idx, sp, bp in zip(row_masks, s_list, b_list):
+                rp = sp * scale_perm[idx]
+                rp_parts.append(rp)
+                rp_orth_parts.append(rp - float(np.dot(rp, bp)) * bp)
+            rp_flat = np.concatenate(rp_parts)
+            rp_orth_flat = np.concatenate(rp_orth_parts)
+
+        rp_c = rp_flat - rp_flat.mean()
+        rp_var = float(np.dot(rp_c, rp_c))
+        if ro_var > 1e-12:
+            cov = float(np.dot(ro_c, rp_c))
+            slope_vals[k] = cov / ro_var
+            if rp_var > 1e-12 and np.isfinite(ceil_r_top50) and ceil_r_top50 > 0:
+                r_cal_vals[k] = (cov / np.sqrt(ro_var * rp_var)) / ceil_r_top50
+
+        rp_oc = rp_orth_flat - rp_orth_flat.mean()
+        rp_ovar = float(np.dot(rp_oc, rp_oc))
+        if ro_orth_var > 1e-12 and rp_ovar > 1e-12 and np.isfinite(ceil_r_orth_top50) and ceil_r_orth_top50 > 0:
+            cov_o = float(np.dot(ro_orth_c, rp_oc))
+            r_orth_cal_vals[k] = (cov_o / np.sqrt(ro_orth_var * rp_ovar)) / ceil_r_orth_top50
+
+    def _summarize(arr: np.ndarray) -> Dict[str, object]:
+        fin = arr[np.isfinite(arr)]
+        if fin.size == 0:
+            return {
+                "p2_5": float("nan"),
+                "median": float("nan"),
+                "p97_5": float("nan"),
+                "p98_75": float("nan"),
+                "min": float("nan"),
+                "max": float("nan"),
+            }
+        return {
+            "p2_5": float(np.percentile(fin, 2.5)),
+            "median": float(np.percentile(fin, 50.0)),
+            "p97_5": float(np.percentile(fin, 97.5)),
+            "p98_75": float(np.percentile(fin, 98.75)),
+            "min": float(np.min(fin)),
+            "max": float(np.max(fin)),
+        }
+
+    return {
+        "n_perm": int(n_perm),
+        "r_orth_cal": _summarize(r_orth_cal_vals),
+        "r_cal": _summarize(r_cal_vals),
+        "slope_ols": _summarize(slope_vals),
+    }
+
+
+def _solve_r19_batch(
+    W_dense: np.ndarray,
+    nv: np.ndarray,
+    ss_sum: np.ndarray,
+    yy_sum: np.ndarray,
+    s_sq_sum: np.ndarray,
+    sy_sum: np.ndarray,
+    y_sq_sum: np.ndarray,
+    rr_sum: np.ndarray,
+    r_sq_sum: np.ndarray,
+    cnt_m: np.ndarray,
+    S_m: np.ndarray,
+    S2_m: np.ndarray,
+    SY_m: np.ndarray,
+    S2Y_m: np.ndarray,
+    S2Y2_m: np.ndarray,
+    S3_m: np.ndarray,
+    S3Y_m: np.ndarray,
+    S4_m: np.ndarray,
+    min_perts_per_gene: int = 5,
+    eps: float = 1e-12,
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """
+    PREREG_A v4 §5.4 vectorized 3-tier SST(r_obs) variance decomposition with distinct-row
+    gating (C_dist >= min_perts_per_gene) and cluster-W^2 finite-df noise-overfit subtraction.
+    """
+    N = np.maximum(W_dense @ nv, 1.0)
+    Ss = W_dense @ ss_sum
+    Sy = W_dense @ yy_sum
+    Sss = W_dense @ s_sq_sum
+    Ssy = W_dense @ sy_sum
+    Syy = W_dense @ y_sq_sum
+    Sr = W_dense @ rr_sum
+    Srr = W_dense @ r_sq_sum
+
+    cov_sy = Ssy - (Ss * Sy) / N
+    vx = Sss - (Ss * Ss) / N
+    beta = np.where(vx > eps, cov_sy / np.maximum(vx, eps), 1.0)
+    alpha = (Sy - beta * Ss) / N
+    sst_r = np.maximum(Srr - (Sr * Sr) / N, eps)
+    sse_1 = np.maximum(
+        Syy - 2.0 * alpha * Sy + N * alpha * alpha - 2.0 * beta * (Ssy - alpha * Ss) + (beta * beta) * Sss,
+        0.0,
+    )
+    f1 = np.clip(1.0 - sse_1 / sst_r, 0.0, 1.0)
+
+    C_dist = (W_dense > 0.0).astype(np.float64) @ cnt_m
+    Ss_g = W_dense @ S_m
+    Sss_g = W_dense @ S2_m
+    Ssy_g = W_dense @ SY_m
+
+    a_col = alpha[:, None]
+    b_col = beta[:, None]
+    ok_g = (C_dist >= min_perts_per_gene) & (Sss_g > eps)
+    mg = np.where(ok_g, (Ssy_g - a_col * Ss_g) / np.maximum(Sss_g, eps), b_col)
+    imp_raw = np.where(ok_g, ((mg - b_col) ** 2) * Sss_g, 0.0)
+
+    W2 = W_dense * W_dense
+    S2 = W2 @ S2_m
+    S2Y = W2 @ S2Y_m
+    S2Y2 = W2 @ S2Y2_m
+    S3 = W2 @ S3_m
+    S3Y = W2 @ S3Y_m
+    S4 = W2 @ S4_m
+    num_w2 = (
+        S2Y2
+        - 2.0 * a_col * S2Y
+        + (a_col * a_col) * S2
+        - 2.0 * mg * (S3Y - a_col * S3)
+        + (mg * mg) * S4
+    )
+    neff_g = np.where(S4 > eps, (Sss_g * Sss_g) / np.maximum(S4, eps), C_dist)
+    df_adj = np.maximum(1.0 - 1.0 / np.maximum(neff_g, 2.0), 0.25)
+    bias_g = np.where(ok_g, np.maximum(num_w2, 0.0) / (np.maximum(Sss_g, eps) * df_adj), 0.0)
+    imp_unbiased = np.maximum(np.sum(imp_raw - bias_g, axis=1), 0.0)
+    sse_2 = np.maximum(sse_1 - imp_unbiased, 0.0)
+
+    f12 = np.clip(1.0 - sse_2 / sst_r, f1, 1.0)
+    f2 = np.clip(f12 - f1, 0.0, 1.0)
+    f3 = np.clip(1.0 - f12, 0.0, 1.0)
+    return beta, f1, f2, f3
+
+
+def compute_residual_variance_decomposition(
+    delta_obs: np.ndarray,
+    delta_src_mean: np.ndarray,
+    target_gene_idx: Sequence[int],
+    top_k: int = 50,
+    n_boot: int = 4000,
+    seed: int = 20261121,
+    min_perts_per_gene: int = 5,
+) -> Dict[str, Dict[str, object]]:
+    """
+    PREREG_AUDIT_R3 R19 (PREREG_A v4 §5.4): Descriptive 3-tier SST(r_obs) variance decomposition
+    of R = Y - X for both `resp_top50` and `all_nontarget`:
+      1. Tier 1 (`frac_line_gain`): Whole-line pooled OLS alpha + beta_t * X
+      2. Tier 2 (`frac_gene_gain`): Incremental per-gene slopes m_{t,g} beyond beta_t
+         (`C_distinct >= min_perts_per_gene` with cluster-W^2 finite-df noise-overfit subtraction)
+      3. Tier 3 (`frac_remaining`): Remaining residual variance fraction
+    """
+    Y = np.asarray(delta_obs, dtype=np.float64)
+    X = np.asarray(delta_src_mean, dtype=np.float64)
+    t_idx = np.asarray(target_gene_idx, dtype=np.int64)
+    P, G = Y.shape
+
+    rs = np.random.default_rng(seed)
+    draws = rs.integers(0, P, size=(n_boot, P))
+
+    out: Dict[str, Dict[str, object]] = {}
+    for mode in ("resp_top50", "all_nontarget"):
+        M = np.isfinite(Y) & np.isfinite(X)
+        for p in range(P):
+            ti = int(t_idx[p])
+            if 0 <= ti < G:
+                M[p, ti] = False
+            if mode == "resp_top50":
+                idx = np.flatnonzero(M[p])
+                if idx.size > top_k:
+                    keep = idx[np.argsort(np.abs(Y[p, idx]))[-top_k:]]
+                    M[p] = False
+                    M[p, keep] = True
+
+        S_m = np.where(M, X, 0.0)
+        Y_m = np.where(M, Y, 0.0)
+        R_m = Y_m - S_m
+        cnt_m = M.astype(np.float64)
+
+        S2_m = S_m * S_m
+        SY_m = S_m * Y_m
+        Y2_m = Y_m * Y_m
+        S2Y_m = S2_m * Y_m
+        S2Y2_m = S2_m * Y2_m
+        S3_m = S2_m * S_m
+        S3Y_m = S3_m * Y_m
+        S4_m = S2_m * S2_m
+
+        nv = cnt_m.sum(axis=1)
+        ss_sum = S_m.sum(axis=1)
+        yy_sum = Y_m.sum(axis=1)
+        s_sq_sum = S2_m.sum(axis=1)
+        sy_sum = SY_m.sum(axis=1)
+        y_sq_sum = Y2_m.sum(axis=1)
+        rr_sum = R_m.sum(axis=1)
+        r_sq_sum = np.einsum("pg,pg->p", R_m, R_m)
+
+        pt_beta, pt_f1, pt_f2, pt_f3 = _solve_r19_batch(
+            np.ones((1, P), dtype=np.float64),
+            nv, ss_sum, yy_sum, s_sq_sum, sy_sum, y_sq_sum, rr_sum, r_sq_sum,
+            cnt_m, S_m, S2_m, SY_m, S2Y_m, S2Y2_m, S3_m, S3Y_m, S4_m,
+            min_perts_per_gene=min_perts_per_gene,
+        )
+
+        # Also compute no-intercept multiplicative ratio beta_mult = sum(X*Y)/sum(X^2) for diagnostics
+        tot_xx_pt = float(s_sq_sum.sum())
+        pt_beta_mult = float(sy_sum.sum() / tot_xx_pt) if tot_xx_pt > 1e-12 else float("nan")
+
+        b_beta = np.empty(n_boot, dtype=np.float64)
+        b_beta_mult = np.empty(n_boot, dtype=np.float64)
+        b_f1 = np.empty(n_boot, dtype=np.float64)
+        b_f2 = np.empty(n_boot, dtype=np.float64)
+        b_f3 = np.empty(n_boot, dtype=np.float64)
+
+        chunk = 400
+        for s0 in range(0, n_boot, chunk):
+            s1 = min(s0 + chunk, n_boot)
+            d_chunk = draws[s0:s1]
+            W = np.zeros((s1 - s0, P), dtype=np.float64)
+            rows_idx = np.repeat(np.arange(s1 - s0), P)
+            np.add.at(W, (rows_idx, d_chunk.ravel()), 1.0)
+
+            bb, bf1, bf2, bf3 = _solve_r19_batch(
+                W,
+                nv, ss_sum, yy_sum, s_sq_sum, sy_sum, y_sq_sum, rr_sum, r_sq_sum,
+                cnt_m, S_m, S2_m, SY_m, S2Y_m, S2Y2_m, S3_m, S3Y_m, S4_m,
+                min_perts_per_gene=min_perts_per_gene,
+            )
+            b_beta[s0:s1] = bb
+            b_f1[s0:s1] = bf1
+            b_f2[s0:s1] = bf2
+            b_f3[s0:s1] = bf3
+            wxx = W @ s_sq_sum
+            wxy = W @ sy_sum
+            b_beta_mult[s0:s1] = np.where(wxx > 1e-12, wxy / np.maximum(wxx, 1e-12), np.nan)
+
+        def _ci_pair(val: float, arr: np.ndarray) -> Dict[str, object]:
+            return {
+                "estimate": float(val),
+                "ci95": np.nanpercentile(arr, [2.5, 97.5]).tolist()
+                if np.any(np.isfinite(arr))
+                else [float("nan"), float("nan")],
+                "ci975": np.nanpercentile(arr, [1.25, 98.75]).tolist()
+                if np.any(np.isfinite(arr))
+                else [float("nan"), float("nan")],
+            }
+
+        out[mode] = {
+            "n_perts": int(P),
+            "min_gene_obs_for_gene_layer": int(min_perts_per_gene),
+            "n_eligible_genes": int(np.sum((cnt_m.sum(axis=0) >= min_perts_per_gene) & (S2_m.sum(axis=0) > 1e-12))),
+            "beta_ols_int": _ci_pair(float(pt_beta[0]), b_beta),
+            "beta_mult": _ci_pair(pt_beta_mult, b_beta_mult),
+            "frac_line_gain": _ci_pair(float(pt_f1[0]), b_f1),
+            "frac_gene_gain": _ci_pair(float(pt_f2[0]), b_f2),
+            "frac_remaining": _ci_pair(float(pt_f3[0]), b_f3),
+        }
+    return out
+
 

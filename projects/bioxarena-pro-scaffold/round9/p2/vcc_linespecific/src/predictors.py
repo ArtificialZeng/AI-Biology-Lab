@@ -361,6 +361,13 @@ def predict_zero_shot_suite(
     pred_tmvs = pred_transfer * var_scale[None, :]
     preds["Transfer_Mean_VarScaled"] = pred_tmvs
 
+    # 4e-2. PREREG_AUDIT_R3 R18: Zero-parameter line-global scalar variance scaling
+    #       c_glob = sqrt(mean_g C_{t,gg} / mean_g mean_s C_{s,gg})
+    c_global = float(
+        np.sqrt(max(float(np.mean(diag_t)), min_var) / max(float(np.mean(mean_src_var)), min_var))
+    )
+    preds["Transfer_Mean_GlobalScale"] = pred_transfer * c_global
+
     # 4f. PREREG_AUDIT_R2 R12 (H-B3): TMVS MismatchedVar (all source lines) & ShuffledVar controls
     for s_i, src in enumerate(state.source_lines):
         mis_var_scale = np.sqrt(src_vars_by_line[s_i] / mean_src_var)

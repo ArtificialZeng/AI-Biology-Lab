@@ -9,6 +9,7 @@ Enforces Rule 3 of P2_RULES.md:
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
@@ -20,6 +21,7 @@ SHARED_DIR = P2_ROOT / "shared"
 LINES_DIR = SHARED_DIR / "lines"
 STATUS_DIR = P2_ROOT / "status"
 PREREG_COMMIT_FILE = STATUS_DIR / "PREREG_COMMIT.txt"
+CODE_FREEZE_FILE = STATUS_DIR / "CODE_FREEZE.txt"
 
 REPLOGLE_DEV_PREFIXES = ("replogle", "k562", "rpe1")
 
@@ -48,22 +50,35 @@ def is_replogle_dev_line(line_name: str) -> bool:
     return any(tok in low for tok in REPLOGLE_DEV_PREFIXES)
 
 
+def read_code_freeze_hash() -> str:
+    """Return frozen commit hash from p2/status/CODE_FREEZE.txt, or 'UNFROZEN_DEV' if absent."""
+    if not CODE_FREEZE_FILE.exists():
+        return "UNFROZEN_DEV"
+    content = CODE_FREEZE_FILE.read_text(encoding="utf-8").strip()
+    if not content:
+        return "UNFROZEN_DEV"
+    m = re.search(r"\b([0-9a-fA-F]{7,40})\b", content)
+    if m:
+        return m.group(1)
+    return content.splitlines()[0].strip()[:80]
+
+
 def check_prereg_gate(line_names: Sequence[str]) -> None:
     """
-    Raise RuntimeError if any non-Replogle line is requested before PREREG_COMMIT.txt exists.
+    Raise RuntimeError if any non-Replogle line is requested before PREREG_COMMIT.txt
+    AND CODE_FREEZE.txt (C1 of PREREG_COMMIT.txt) both exist and are non-empty.
     """
     non_dev = [ln for ln in line_names if not is_replogle_dev_line(ln)]
     if not non_dev:
         return
-    if not PREREG_COMMIT_FILE.exists():
+    if not PREREG_COMMIT_FILE.exists() or not PREREG_COMMIT_FILE.read_text(encoding="utf-8").strip():
         raise RuntimeError(
-            f"PREREG GATE BLOCKED: {PREREG_COMMIT_FILE} does not exist yet. "
+            f"PREREG GATE BLOCKED: {PREREG_COMMIT_FILE} missing/empty. "
             f"Cannot load/evaluate non-Replogle lines: {non_dev}"
         )
-    content = PREREG_COMMIT_FILE.read_text(encoding="utf-8").strip()
-    if not content:
+    if not CODE_FREEZE_FILE.exists() or not CODE_FREEZE_FILE.read_text(encoding="utf-8").strip():
         raise RuntimeError(
-            f"PREREG GATE BLOCKED: {PREREG_COMMIT_FILE} is empty. "
+            f"CODE FREEZE GATE BLOCKED (C1): {CODE_FREEZE_FILE} missing/empty. "
             f"Cannot load/evaluate non-Replogle lines: {non_dev}"
         )
 

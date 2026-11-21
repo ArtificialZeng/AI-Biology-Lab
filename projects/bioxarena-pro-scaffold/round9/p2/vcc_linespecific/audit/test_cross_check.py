@@ -12,6 +12,7 @@ from cross_check import (
     compare_prediction_arrays,
     compare_tables,
     normalize_t2_long_table,
+    reconcile_c3_hypotheses,
     render_audit_markdown,
 )
 
@@ -22,20 +23,54 @@ class TestCrossCheck(unittest.TestCase):
     def test_compare_tables_match_and_flag(self):
         df_a = pd.DataFrame(
             [
-                {"line": "K562", "hybrid_slope": 0.2100, "disc_raw_hybrid": 0.6500},
-                {"line": "RPE1", "hybrid_slope": 0.1400, "disc_raw_hybrid": 0.6100},
+                {"line": "K562", "hybrid_slope": 0.2100, "disc_raw_hybrid": 0.6500, "r_orth_cal_ci975_lo": 0.1200},
+                {"line": "RPE1", "hybrid_slope": 0.1400, "disc_raw_hybrid": 0.6100, "r_orth_cal_ci975_lo": 0.1000},
             ]
         )
         df_b = pd.DataFrame(
             [
-                {"line": "K562", "hybrid_slope": 0.21002, "disc_raw_hybrid": 0.6500},
-                {"line": "RPE1", "hybrid_slope": 0.14500, "disc_raw_hybrid": 0.6100},
+                {"line": "K562", "hybrid_slope": 0.21002, "disc_raw_hybrid": 0.6500, "r_orth_cal_ci975_lo": 0.1235},
+                {"line": "RPE1", "hybrid_slope": 0.14500, "disc_raw_hybrid": 0.6100, "r_orth_cal_ci975_lo": 0.1150},
             ]
         )
-        res = compare_tables(df_a, df_b, tol=1e-4)
+        res = compare_tables(df_a, df_b, tol=1e-4, ci_tol=0.01)
         self.assertFalse(res["all_match"])
-        self.assertEqual(res["n_flagged"], 1)
-        self.assertAlmostEqual(res["max_abs_diff"], 0.005, places=5)
+        # K562 CI diff 0.0035 <= 0.01 (PASS); RPE1 point diff 0.005 > 1e-4 & CI diff 0.015 > 0.01 (2 flagged)
+        self.assertEqual(res["n_flagged"], 2)
+        self.assertAlmostEqual(res["max_point_abs_diff"], 0.005, places=5)
+        self.assertAlmostEqual(res["max_ci_abs_diff"], 0.015, places=5)
+
+    def test_reconcile_c3_hypotheses_conservative_on_disagreement(self):
+        audit_sum = {
+            "verdict": {
+                "H-A1": {"pass": False},
+                "H-A2": {"pass": True},
+                "H-A3": {"pass": True},
+                "H-A4": {"pass": False},
+                "Group_B": {
+                    "H-B1": {"pass": False},
+                    "H-B2": {"pass": True},
+                    "H-B3": {"pass": True},
+                    "H-B4": {"pass": True},
+                },
+            }
+        }
+        t2_adj = {
+            "H-A1": {"verdict": "未确认"},
+            "H-A2": {"verdict": "CONFIRMED"},
+            "H-A3": {"verdict": "CONFIRMED"},
+            "H-A4": {"verdict": "未确认"},
+            "H-B1": {"verdict": "未确认"},
+            "H-B2": {"verdict": "CONFIRMED"},
+            "H-B3": {"verdict": "未确认"},
+            "H-B4": {"verdict": "CONFIRMED"},
+        }
+        rows = reconcile_c3_hypotheses(audit_sum, t2_adj)
+        by_h = {r["hypothesis"]: r for r in rows}
+        self.assertTrue(by_h["H-A2"]["agree"])
+        self.assertEqual(by_h["H-A2"]["c3_reconciled"], "CONFIRMED")
+        self.assertFalse(by_h["H-B3"]["agree"])
+        self.assertEqual(by_h["H-B3"]["c3_reconciled"], "未确认 (FAIL)")
 
     def test_normalize_t2_long_table(self):
         long_df = pd.DataFrame(

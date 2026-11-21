@@ -18,6 +18,7 @@ import pandas as pd
 
 
 DEFAULT_TOL = 1e-4
+DEFAULT_CI_TOL = 0.01
 
 
 def normalize_t2_long_table(
@@ -210,8 +211,9 @@ def compare_tables(
     key_col: str = "line",
     column_pairs: Optional[List[Tuple[str, str]]] = None,
     tol: float = DEFAULT_TOL,
+    ci_tol: float = DEFAULT_CI_TOL,
 ) -> dict:
-    """Compare aligned numeric columns between A-T3 audit table and A-T2 results table."""
+    """Compare aligned numeric columns using point tol (1e-4) and CI tol (0.01) per C3."""
     if column_pairs is None:
         shared_cols = [c for c in audit_df.columns if c in t2_df.columns and c != key_col]
         column_pairs = [(c, c) for c in shared_cols if pd.api.types.is_numeric_dtype(audit_df[c])]
@@ -219,6 +221,8 @@ def compare_tables(
     merged = pd.merge(audit_df, t2_df, on=key_col, suffixes=("_audit", "_t2"), how="inner")
     diffs = []
     max_abs_diff = 0.0
+    max_point_abs_diff = 0.0
+    max_ci_abs_diff = 0.0
     n_flagged = 0
 
     for _, row in merged.iterrows():
@@ -228,6 +232,8 @@ def compare_tables(
             cb = f"{col_b}_t2" if col_a == col_b and f"{col_b}_t2" in merged.columns else col_b
             if ca not in row or cb not in row:
                 continue
+            is_ci = ("_ci" in col_a) or ("_ci" in col_b)
+            col_tol = ci_tol if is_ci else tol
             va = float(row[ca])
             vb = float(row[cb])
             if np.isnan(va) and np.isnan(vb):
@@ -238,9 +244,13 @@ def compare_tables(
                 flagged = True
             else:
                 abs_d = abs(va - vb)
-                flagged = abs_d > tol
+                flagged = abs_d > col_tol
                 if abs_d > max_abs_diff:
                     max_abs_diff = abs_d
+                if is_ci and abs_d > max_ci_abs_diff:
+                    max_ci_abs_diff = abs_d
+                if (not is_ci) and abs_d > max_point_abs_diff:
+                    max_point_abs_diff = abs_d
             if flagged:
                 n_flagged += 1
             diffs.append(
@@ -251,6 +261,7 @@ def compare_tables(
                     "val_audit": va,
                     "val_t2": vb,
                     "abs_diff": abs_d,
+                    "tol_used": float(col_tol),
                     "within_tol": not flagged,
                 }
             )
@@ -260,10 +271,42 @@ def compare_tables(
         "n_comparisons": int(len(diffs)),
         "n_flagged": int(n_flagged),
         "max_abs_diff": float(max_abs_diff),
+        "max_point_abs_diff": float(max_point_abs_diff),
+        "max_ci_abs_diff": float(max_ci_abs_diff),
         "tol": float(tol),
+        "ci_tol": float(ci_tol),
         "all_match": (n_flagged == 0 and len(merged) == len(audit_df)),
         "rows": diffs,
     }
+
+
+def reconcile_c3_hypotheses(audit_summary: dict, t2_adj: Optional[dict]) -> Optional[List[dict]]:
+    """C3 rule: if A-T2 and A-T3 disagree on any hypothesis pass/fail, report both & fail."""
+    if not t2_adj:
+        return None
+    v = audit_summary.get("verdict", {})
+    vb = v.get("Group_B", {})
+    rows = []
+    for h in ("H-A1", "H-A2", "H-A3", "H-A4", "H-B1", "H-B2", "H-B3", "H-B4"):
+        t3_node = v.get(h) if h.startswith("H-A") else vb.get(h)
+        t2_node = t2_adj.get(h)
+        if not isinstance(t3_node, dict) or not isinstance(t2_node, dict):
+            continue
+        t3_pass = bool(t3_node.get("pass"))
+        t2_pass = t2_node.get("verdict") == "CONFIRMED"
+        agree = t3_pass == t2_pass
+        # C3 strict conservative resolution: pass ONLY if both A-T2 and A-T3 pass
+        reconciled_pass = t3_pass and t2_pass
+        rows.append(
+            {
+                "hypothesis": h,
+                "t2_verdict": t2_node.get("verdict"),
+                "t3_verdict": "CONFIRMED" if t3_pass else "未确认",
+                "agree": agree,
+                "c3_reconciled": "CONFIRMED" if reconciled_pass else "未确认 (FAIL)",
+            }
+        )
+    return rows
 
 
 def compare_prediction_arrays(
@@ -292,6 +335,7 @@ def render_audit_markdown(
     audit_df: pd.DataFrame,
     comparison: Optional[dict] = None,
     t2_verdict: Optional[str] = None,
+    c3_hypotheses: Optional[List[dict]] = None,
 ) -> str:
     """Render an unvarnished Markdown audit report from independent audit artifacts."""
     v = audit_summary["verdict"]
@@ -300,9 +344,13 @@ def render_audit_markdown(
     gov_r14 = v.get("r14_mechanism_governance", {})
     vb = v.get("Group_B")
     ci_pct = f"{100.0 * v.get('ci_level', 0.975):.1f}%"
+    prereg_c = audit_summary.get("prereg_commit") or "dev_only (pre-freeze)"
+    freeze_c = audit_summary.get("code_freeze_commit") or "dev_only (pre-freeze)"
     lines = [
         "# Team A Independent Statistical Audit Report (A-T3)",
         "",
+        f"- **Locked Preregistration Commit (`PREREG_A.md` v4)**: `{prereg_c}`",
+        f"- **Code Freeze Commit (`CODE_FREEZE.txt`, C1)**: `{freeze_c}`",
         f"- **Evaluated Cell Lines ({len(audit_summary['lines'])})**: {', '.join(audit_summary['lines'])}",
         f"- **Confirmatory Cell Lines ({len(conf_lines)})**: {', '.join(conf_lines)}",
         f"- **Common Aligned Genes**: {audit_summary['n_common_genes']}",
@@ -360,6 +408,10 @@ def render_audit_markdown(
                 f"- **Variance Caveat**: `{gov.get('marginal_variance_caveat')}`",
                 f"- **R14 `Hybrid_on_TMVS > TMVS` on `r_orth_cal` (all confirmatory lines, paired 95% CI lo > 0)**: `{gov_r14.get(r14_key)}`",
                 f"- **Permitted R14 Statement**: `{gov_r14.get('allowed_cofluctuation_increment_phrase')}`",
+                "- **R16/R20 Novelty & Prior-Art Boundary (`PRIOR_ART_B.md` §5.2, `ALERT_B`)**: "
+                "Refer to `Transfer_Mean_VarScaled` (`tmvs`) strictly as *a parameter-free variance-ratio variant of expression-aware transfer* "
+                "(zero invention claim over `CGC` `10.64898/2026.09.30.755756`, `AMM-SimWMag` `10.3390/genes17070816`, "
+                "`CellularAI`, `AtlasShift`, `CASTER`; R19 3-tier multiplicative gain accounting contrasted vs `Molina & Zhang` additive 2-way ANOVA).",
                 "",
             ]
         )
@@ -371,14 +423,53 @@ def render_audit_markdown(
                 "",
             ]
         )
-    lines.extend(
-        [
-            "## 2. Per-Line Independent Recomputation Table",
-            "",
-            audit_df.to_markdown(index=False),
-            "",
-        ]
-    )
+    conf_set = set(conf_lines)
+    if "r_orth_cal" in audit_df.columns and "tmvs_r_orth_cal" in audit_df.columns:
+        summary_rows = []
+        for _, r in audit_df.iterrows():
+            ln = str(r["line"])
+            role = (
+                "Confirmatory"
+                if ln in conf_set
+                else ("Dev Selection (Excluded)" if "replogle" in ln else "Secondary Low-N (<50, Excluded)")
+            )
+            summary_rows.append(
+                {
+                    "line": ln,
+                    "role": role,
+                    "n_targets": int(r["n_eval_targets"]) if "n_eval_targets" in r.index else None,
+                    "hybrid_r_orth_cal": r.get("r_orth_cal"),
+                    "hybrid_ci975": f"[{r.get('r_orth_cal_ci975_lo', float('nan')):.4f}, {r.get('r_orth_cal_ci975_hi', float('nan')):.4f}]",
+                    "hybrid_slope": r.get("hybrid_slope"),
+                    "tmvs_r_orth_cal": r.get("tmvs_r_orth_cal"),
+                    "tmvs_ci975": f"[{r.get('tmvs_r_orth_cal_ci975_lo', float('nan')):.4f}, {r.get('tmvs_r_orth_cal_ci975_hi', float('nan')):.4f}]",
+                    "tmvs_slope": r.get("tmvs_slope"),
+                    "tmvs_perm100_p975": r.get("tmvs_perm100_r_orth_cal_p975"),
+                    "global_scale_raw_r": r.get("global_scale_resid_corr"),
+                    "r14_delta_r_orth_cal": r.get("r14_hotmvs_minus_tmvs_r_orth_cal"),
+                }
+            )
+        lines.extend(
+            [
+                "## 2. Per-Line Key Endpoint Summary (Confirmatory vs Secondary/Dev Separated)",
+                "",
+                pd.DataFrame(summary_rows).to_markdown(index=False),
+                "",
+                "### Full Per-Line Independent Recomputation Table",
+                "",
+                audit_df.to_markdown(index=False),
+                "",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "## 2. Per-Line Independent Recomputation Table",
+                "",
+                audit_df.to_markdown(index=False),
+                "",
+            ]
+        )
     orth_cols = [
         c
         for c in (
@@ -529,18 +620,39 @@ def render_audit_markdown(
             if vb
             else v["overall_verdict"]
         )
+        det_rows = [
+            r
+            for r in comparison["rows"]
+            if "_ci" not in r["metric_audit"]
+            and "shuf_" not in r["metric_audit"]
+            and "max_ctrl" not in r["metric_audit"]
+            and not r["metric_audit"].startswith("cent_disc_ownmasked")
+            and not r["metric_audit"].startswith("cent_de50_r")
+        ]
+        det_max = max((r["abs_diff"] for r in det_rows), default=0.0)
+        det_flagged = sum(1 for r in det_rows if not r["within_tol"])
         lines.extend(
             [
-                "## 3. Cross-Check Against A-T2 Results",
+                "## 3. Cross-Check Against A-T2 Results (C3 Tolerances: Point 1e-4, CI 0.01)",
                 "",
                 f"- **Matched Lines**: {comparison['n_lines_matched']}",
                 f"- **Numeric Comparisons**: {comparison['n_comparisons']}",
-                f"- **Flagged Discrepancies (> {comparison['tol']})**: {comparison['n_flagged']}",
-                f"- **Max Absolute Difference**: {comparison['max_abs_diff']:.6g}",
+                f"- **Max Point Abs Diff / Max CI Abs Diff**: `{comparison.get('max_point_abs_diff', float('nan')):.6g}` / `{comparison.get('max_ci_abs_diff', float('nan')):.6g}`",
+                f"- **Deterministic Point Comparisons (excl. RNG-seed CIs/single shuffles & `cent_*` `shared_axis` nuance)**: {len(det_rows)} checks, **{det_flagged} flagged**, max abs diff = `{det_max:.6g}`",
+                f"- **Total Flagged Discrepancies (point > {comparison['tol']}, CI > {comparison.get('ci_tol', DEFAULT_CI_TOL)})**: {comparison['n_flagged']} (Max abs diff = {comparison['max_abs_diff']:.6g})",
                 f"- **T2 Verdict vs A-T3 Verdict**: `{t2_verdict}` vs `{our_dual}`",
                 "",
             ]
         )
+        if c3_hypotheses:
+            lines.extend(
+                [
+                    "### C3 Hypothesis Verdict Consensus (`A-T2` vs `A-T3`)",
+                    "",
+                    pd.DataFrame(c3_hypotheses).to_markdown(index=False),
+                    "",
+                ]
+            )
         flagged = [r for r in comparison["rows"] if not r["within_tol"]]
         if flagged:
             lines.append("### Flagged Metric Discrepancies")
@@ -559,6 +671,7 @@ def main() -> None:
     ap.add_argument("--t2-adj-json", type=Path, required=False)
     ap.add_argument("--t2-primary-method", default="Hybrid_ProjShared")
     ap.add_argument("--tol", type=float, default=DEFAULT_TOL)
+    ap.add_argument("--ci-tol", type=float, default=DEFAULT_CI_TOL)
     args = ap.parse_args()
 
     audit_df = pd.read_csv(args.audit_dir / "audit_per_line.csv")
@@ -566,13 +679,15 @@ def main() -> None:
 
     comp = None
     t2_verdict = None
+    c3_hyps = None
     if args.t2_csv and args.t2_csv.exists():
         t2_raw = pd.read_csv(args.t2_csv)
         t2_df = normalize_t2_long_table(t2_raw, primary_method=args.t2_primary_method)
-        comp = compare_tables(audit_df, t2_df, tol=args.tol)
+        comp = compare_tables(audit_df, t2_df, tol=args.tol, ci_tol=args.ci_tol)
         (args.audit_dir / "cross_check_diffs.json").write_text(json.dumps(comp, indent=2))
     if args.t2_adj_json and args.t2_adj_json.exists():
         adj = json.loads(args.t2_adj_json.read_text())
+        c3_hyps = reconcile_c3_hypotheses(audit_summary, adj)
         if "R13_Dual_Summary" in adj:
             t2_verdict = adj["R13_Dual_Summary"]
         else:
@@ -583,7 +698,7 @@ def main() -> None:
         t2_sum = json.loads(args.t2_summary_json.read_text())
         t2_verdict = t2_sum.get("overall_verdict") or t2_sum.get("verdict", {}).get("overall_verdict")
 
-    md = render_audit_markdown(audit_summary, audit_df, comparison=comp, t2_verdict=t2_verdict)
+    md = render_audit_markdown(audit_summary, audit_df, comparison=comp, t2_verdict=t2_verdict, c3_hypotheses=c3_hyps)
     (args.audit_dir / "AUDIT_REPORT.md").write_text(md)
     print(f"Wrote {args.audit_dir / 'AUDIT_REPORT.md'}")
 
