@@ -59,8 +59,8 @@ Strict adherence to `P2_RULES.md` Rule 5:
 |---|---|---|---|---|---|
 | `KOLF_Chromatin_Modifiers_Strong_Perturbations.h5ad` | `https://ndownloader.figshare.com/files/59541377` | `1,528,903,380` B (`1.529 GB`) | `md5:fbd62eee013ad01be10f8ff291c8f8f5` | `741674b8a19a50b57d02b8b103f1779a135e9509dffd805fd33dd65853361745` | Downloaded & MD5/SHA-256 verified |
 | `KOLF_Metabolic_Enzymes_Strong_Perturbations.h5ad` | `https://ndownloader.figshare.com/files/64680753` | `1,326,348,118` B (`1.326 GB`) | `md5:95f57fd679b98ba4f060d143959c3a66` | `d86fa3260ca6289a361bd8be99a87f547e681d6b52c770c1ea1ba38011d59211` | Downloaded & MD5/SHA-256 verified |
-| `KOLF_Chromatin_Modifiers_QC_Filtered.h5ad` | `https://ndownloader.figshare.com/files/64680606` | `4,635,611,222` B (`4.636 GB`) | `md5:246eda29efaf8ae8da86c39840678582` | *(pending)* | Alternative if `Test.h5ad` omitted or budget allows |
-| `KOLF_Metabolic_Enzymes_QC_Filtered.h5ad` | `https://ndownloader.figshare.com/files/64680708` | `6,984,432,788` B (`6.984 GB`) | `md5:b5e17ab928cf263f679cf63bbb311a25` | *(pending)* | Alternative if `Test.h5ad` omitted |
+| `KOLF_Chromatin_Modifiers_QC_Filtered.h5ad` | `https://ndownloader.figshare.com/files/64680606` | `4,635,611,222` B (`4.636 GB`) | `md5:246eda29efaf8ae8da86c39840678582` | — | **Not downloaded** (Strong sub-atlases + `adata_Test.h5ad` chosen to stay `<= 60.00 GB`) |
+| `KOLF_Metabolic_Enzymes_QC_Filtered.h5ad` | `https://ndownloader.figshare.com/files/64680708` | `6,984,432,788` B (`6.984 GB`) | `md5:b5e17ab928cf263f679cf63bbb311a25` | — | **Not downloaded** (Strong sub-atlases + `adata_Test.h5ad` chosen to stay `<= 60.00 GB`) |
 | `KOLF_Strong_Perturbations.h5ad` | `https://ndownloader.figshare.com/files/64650852` | `46,718,752,086` B (`46.719 GB`) | `md5:28bcfff0679e7c6c35bdd584f3626362` | — | **Excluded** (exceeds 60 GB cap with Replogle+VCC) |
 | `KOLF_Pan_Genome_QC_Filtered.h5ad` | `https://ndownloader.figshare.com/files/64650261` | `189,393,177,972` B (`189.393 GB`) | `md5:afd30fde1e6ad32969c29868394385d1` | — | **Excluded** (exceeds 60 GB cap) |
 

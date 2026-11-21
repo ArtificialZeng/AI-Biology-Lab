@@ -16,7 +16,7 @@ Includes:
 
 from __future__ import annotations
 
-from typing import Dict, Optional, Sequence, Tuple
+from typing import Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 
@@ -172,11 +172,15 @@ def compute_row_metrics(
         "disc_raw": tie_aware_disc_rows(P_disc, T_disc),
     }
 
-    # Also compute pds_cosine with ALL evaluated panel targets masked (matching cell-eval2)
+    # A-T3 disc_raw_panel (all evaluated panel targets masked, centered Pearson) & cell-eval2 pds_cosine_panel
     if len(all_target_set) > 0 and len(all_target_set) < G:
         keep_cols = np.ones(G, dtype=bool)
         for j in all_target_set:
             keep_cols[j] = False
+        T_panel_ref = (T - ref[None, :])[:, keep_cols]
+        P_panel_ref = (P - ref[None, :])[:, keep_cols]
+        out["disc_raw_panel"] = tie_aware_disc_rows(P_panel_ref, T_panel_ref)
+
         # cell-eval2 pds_cosine uses uncentered cosine against control!
         T_panel = T[:, keep_cols]
         P_panel = P[:, keep_cols]
@@ -189,6 +193,8 @@ def compute_row_metrics(
         pds = 1.0 - (sb + 0.5 * np.maximum(to, 0)) / max(n - 1, 1)
         p_zero = np.linalg.norm(P_panel, axis=1) < 1e-10
         out["pds_cosine_panel"] = np.where(p_zero, 0.5, pds).astype(np.float64)
+    else:
+        out["disc_raw_panel"] = out["disc_raw"].copy()
 
     if Q is not None:
         out["v5"] = v5_rows
@@ -220,15 +226,20 @@ def paired_row_bootstrap_ci(
     idx = rs.choice(n, size=(n_boot, n), replace=True)
     boots = d[idx].mean(axis=1)
     ci_lo, ci_hi = np.percentile(boots, [2.5, 97.5])
+    ci975_lo, ci975_hi = np.percentile(boots, [1.25, 98.75])
     return {
         "mean_a": float(a.mean()),
         "mean_b": float(b.mean()),
         "delta": float(d.mean()),
         "ci95_lo": float(ci_lo),
         "ci95_hi": float(ci_hi),
+        "ci975_lo": float(ci975_lo),
+        "ci975_hi": float(ci975_hi),
         "boot_se": float(boots.std()),
         "ci_gt_zero": bool(ci_lo > 0.0),
         "ci_lt_zero": bool(ci_hi < 0.0),
+        "ci975_gt_zero": bool(ci975_lo > 0.0),
+        "ci975_lt_zero": bool(ci975_hi < 0.0),
     }
 
 
@@ -237,20 +248,25 @@ def single_array_bootstrap_ci(
     n_boot: int = 4000,
     seed: int = 12345,
 ) -> Dict[str, float | bool]:
-    """Row-level bootstrap 95% CI for a single metric array."""
+    """Row-level bootstrap 95% and 97.5% CIs for a single metric array."""
     a = np.asarray(scores, dtype=np.float64)
     n = len(a)
     rs = np.random.RandomState(seed)
     idx = rs.choice(n, size=(n_boot, n), replace=True)
     boots = a[idx].mean(axis=1)
     ci_lo, ci_hi = np.percentile(boots, [2.5, 97.5])
+    ci975_lo, ci975_hi = np.percentile(boots, [1.25, 98.75])
     return {
         "mean": float(a.mean()),
         "ci95_lo": float(ci_lo),
         "ci95_hi": float(ci_hi),
+        "ci975_lo": float(ci975_lo),
+        "ci975_hi": float(ci975_hi),
         "boot_se": float(boots.std()),
         "ci_gt_zero": bool(ci_lo > 0.0),
         "ci_lt_zero": bool(ci_hi < 0.0),
+        "ci975_gt_zero": bool(ci975_lo > 0.0),
+        "ci975_lt_zero": bool(ci975_hi < 0.0),
     }
 
 
@@ -261,7 +277,7 @@ def stratified_row_bootstrap_ci(
     n_boot: int = 4000,
     seed: int = 12345,
 ) -> Dict[str, float | bool]:
-    """Equal-weight macro-averaged stratified paired bootstrap 95% CI across lines."""
+    """Equal-weight macro-averaged stratified paired bootstrap 95% & 97.5% CIs across lines."""
     a = np.asarray(scores_a, dtype=np.float64)
     b = np.asarray(scores_b, dtype=np.float64)
     st = np.asarray(strata)
@@ -281,15 +297,20 @@ def stratified_row_bootstrap_ci(
     k = float(len(uniq))
     boots = boot_sum / k
     ci_lo, ci_hi = np.percentile(boots, [2.5, 97.5])
+    ci975_lo, ci975_hi = np.percentile(boots, [1.25, 98.75])
     return {
         "mean_a": pt_a / k,
         "mean_b": pt_b / k,
         "delta": pt_d / k,
         "ci95_lo": float(ci_lo),
         "ci95_hi": float(ci_hi),
+        "ci975_lo": float(ci975_lo),
+        "ci975_hi": float(ci975_hi),
         "boot_se": float(boots.std()),
         "ci_gt_zero": bool(ci_lo > 0.0),
         "ci_lt_zero": bool(ci_hi < 0.0),
+        "ci975_gt_zero": bool(ci975_lo > 0.0),
+        "ci975_lt_zero": bool(ci975_hi < 0.0),
     }
 
 
@@ -392,6 +413,36 @@ def _stats_from_sums(
     return slope_ols, slope_noint, corr
 
 
+def _extended_scale_stats_from_sums(
+    N: np.ndarray | float,
+    Sx: np.ndarray | float,
+    Sy: np.ndarray | float,
+    Sxx: np.ndarray | float,
+    Syy: np.ndarray | float,
+    Sxy: np.ndarray | float,
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """
+    Compute PREREG_AUDIT_R1 R6 scale diagnostics from sufficient statistics:
+      - sd_ratio = sd(r_pred) / sd(r_obs)
+      - slope_obs_on_pred = cov(r_obs, r_pred) / var(r_pred)
+      - slope_deming = orthogonal Deming regression slope (error variance ratio delta = 1)
+    """
+    cov_xy = np.asarray(Sxy - (Sx * Sy) / np.maximum(N, 1.0), dtype=np.float64)
+    var_x = np.maximum(np.asarray(Sxx - (Sx * Sx) / np.maximum(N, 1.0), dtype=np.float64), 0.0)
+    var_y = np.maximum(np.asarray(Syy - (Sy * Sy) / np.maximum(N, 1.0), dtype=np.float64), 0.0)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        sd_ratio = np.where(var_x > 1e-12, np.sqrt(var_y / var_x), np.nan)
+        slope_obs_on_pred = np.where(var_y > 1e-12, cov_xy / var_y, np.nan)
+
+        diff_xy = var_x - var_y
+        discrim = np.sqrt(diff_xy * diff_xy + 4.0 * cov_xy * cov_xy)
+        deming_lt = (2.0 * cov_xy) / (diff_xy + discrim)  # numerically stable when var_y < var_x
+        deming_ge = (-diff_xy + discrim) / np.where(np.abs(cov_xy) > 1e-12, 2.0 * cov_xy, np.nan)
+        both_zero = (var_x <= 1e-12) & (var_y <= 1e-12)
+        slope_deming = np.where(both_zero, np.nan, np.where(var_y < var_x, deming_lt, deming_ge))
+    return sd_ratio, slope_obs_on_pred, slope_deming
+
+
 def compute_line_specific_metrics_and_boots(
     delta_obs: np.ndarray,
     delta_pred: np.ndarray,
@@ -442,25 +493,31 @@ def compute_line_specific_metrics_and_boots(
         if m == 0:
             raise ValueError(f"No valid perturbations for mode={mode}")
         ss = _sufficient_stats_per_pert(xs_list, ys_list)
+        N_sum = float(ss["n"].sum())
+        sx_sum = float(ss["sx"].sum())
+        sy_sum = float(ss["sy"].sum())
+        sxx_sum = float(ss["sxx"].sum())
+        syy_sum = float(ss["syy"].sum())
+        sxy_sum = float(ss["sxy"].sum())
         pt_ols, pt_noint, pt_corr = _stats_from_sums(
-            float(ss["n"].sum()),
-            float(ss["sx"].sum()),
-            float(ss["sy"].sum()),
-            float(ss["sxx"].sum()),
-            float(ss["syy"].sum()),
-            float(ss["sxy"].sum()),
+            N_sum, sx_sum, sy_sum, sxx_sum, syy_sum, sxy_sum
+        )
+        pt_sd_ratio, pt_obs_on_pred, pt_deming = _extended_scale_stats_from_sums(
+            N_sum, sx_sum, sy_sum, sxx_sum, syy_sum, sxy_sum
         )
 
         # Deterministic perturbation-level bootstrap with identical seed across models for pairing!
         rs = np.random.RandomState(seed)
         draws = rs.choice(m, size=(n_boot, m), replace=True)
-        b_ols, b_noint, b_corr = _stats_from_sums(
-            ss["n"][draws].sum(axis=1),
-            ss["sx"][draws].sum(axis=1),
-            ss["sy"][draws].sum(axis=1),
-            ss["sxx"][draws].sum(axis=1),
-            ss["syy"][draws].sum(axis=1),
-            ss["sxy"][draws].sum(axis=1),
+        bN = ss["n"][draws].sum(axis=1)
+        bsx = ss["sx"][draws].sum(axis=1)
+        bsy = ss["sy"][draws].sum(axis=1)
+        bsxx = ss["sxx"][draws].sum(axis=1)
+        bsyy = ss["syy"][draws].sum(axis=1)
+        bsxy = ss["sxy"][draws].sum(axis=1)
+        b_ols, b_noint, b_corr = _stats_from_sums(bN, bsx, bsy, bsxx, bsyy, bsxy)
+        b_sd_ratio, b_obs_on_pred, b_deming = _extended_scale_stats_from_sums(
+            bN, bsx, bsy, bsxx, bsyy, bsxy
         )
         p_slopes_arr = np.asarray(p_slopes, dtype=np.float64)
         p_corrs_arr = np.asarray(p_corrs, dtype=np.float64)
@@ -483,20 +540,34 @@ def compute_line_specific_metrics_and_boots(
             pc_mean = float("nan")
             pc_ci = [float("nan"), float("nan")]
 
+        def _safe_ci(arr: np.ndarray, qs: Tuple[float, float] = (2.5, 97.5)) -> List[float]:
+            if np.any(np.isfinite(arr)):
+                return np.nanpercentile(arr, list(qs)).tolist()
+            return [float("nan"), float("nan")]
+
         out[mode] = {
             "n_perts": int(m),
             "slope_ols": float(pt_ols),
-            "slope_ols_ci95": np.nanpercentile(b_ols, [2.5, 97.5]).tolist(),
+            "slope_ols_ci95": _safe_ci(b_ols, (2.5, 97.5)),
+            "slope_ols_ci975": _safe_ci(b_ols, (1.25, 98.75)),
             "slope_no_intercept": float(pt_noint),
-            "slope_no_intercept_ci95": np.nanpercentile(b_noint, [2.5, 97.5]).tolist(),
+            "slope_no_intercept_ci95": _safe_ci(b_noint, (2.5, 97.5)),
+            "slope_no_intercept_ci975": _safe_ci(b_noint, (1.25, 98.75)),
             "per_pert_slope_mean": ps_mean,
             "per_pert_slope_ci95": ps_ci,
+            "per_pert_slope_ci975": _safe_ci(b_pslope, (1.25, 98.75)),
             "resid_corr": float(pt_corr),
-            "resid_corr_ci95": (
-                np.nanpercentile(b_corr, [2.5, 97.5]).tolist()
-                if np.any(np.isfinite(b_corr))
-                else [float("nan"), float("nan")]
-            ),
+            "resid_corr_ci95": _safe_ci(b_corr, (2.5, 97.5)),
+            "resid_corr_ci975": _safe_ci(b_corr, (1.25, 98.75)),
+            "sd_ratio": float(pt_sd_ratio),
+            "sd_ratio_ci95": _safe_ci(b_sd_ratio, (2.5, 97.5)),
+            "sd_ratio_ci975": _safe_ci(b_sd_ratio, (1.25, 98.75)),
+            "slope_obs_on_pred": float(pt_obs_on_pred),
+            "slope_obs_on_pred_ci95": _safe_ci(b_obs_on_pred, (2.5, 97.5)),
+            "slope_obs_on_pred_ci975": _safe_ci(b_obs_on_pred, (1.25, 98.75)),
+            "slope_deming": float(pt_deming),
+            "slope_deming_ci95": _safe_ci(b_deming, (2.5, 97.5)),
+            "slope_deming_ci975": _safe_ci(b_deming, (1.25, 98.75)),
             "per_pert_corr_mean": pc_mean,
             "per_pert_corr_ci95": pc_ci,
             "pred_vs_obs_cosine_mean": float(np.mean(cos_agree)) if cos_agree else float("nan"),
@@ -504,6 +575,9 @@ def compute_line_specific_metrics_and_boots(
             "boot_slope_no_intercept": b_noint,
             "boot_per_pert_slope": b_pslope,
             "boot_resid_corr": b_corr,
+            "boot_sd_ratio": b_sd_ratio,
+            "boot_slope_obs_on_pred": b_obs_on_pred,
+            "boot_slope_deming": b_deming,
         }
     return out
 

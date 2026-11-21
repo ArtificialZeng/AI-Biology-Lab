@@ -209,13 +209,29 @@ def test_end_to_end_synthetic_loo():
     assert macro["Hybrid_Raw"]["ls_resid_corr_cal_top50"] > 0.8
     assert len(summary["pert_noise_ceilings"]) == 3
     assert len(summary["drf_calibration"]) == 3
-    adj = adjudicate_results(df_lines, df_boot, summary, primary_method="Hybrid_Raw", min_lines_pass=2)
+    assert "NegCtrl_HybridProj_SrcCorrTgtVar" in macro
+    assert "Transfer_Mean_VarScaled" in macro
+
+    adj = adjudicate_results(
+        df_lines, df_boot, summary, primary_method="Hybrid_ProjShared", min_lines_pass=2
+    )
     assert adj["H-A1"]["verdict"] == "CONFIRMED"
     assert adj["H-A2"]["verdict"] == "CONFIRMED"
+    assert adj["H-A3"]["verdict"] == "CONFIRMED"
+    assert adj["H-A3"]["per_line"]["Synthetic_L3"]["n_sources_checked"] == 2
+    assert "R4_Wording_Checks" in adj
     md = render_markdown_report(adj, df_lines, summary, "unit_test")
     assert "CONFIRMED" in md
-    assert macro["Hybrid_Raw"]["ls_slope_ols_top50"] > macro["NegCtrl_Hybrid_MismatchedCov"]["ls_slope_ols_top50"]
-    assert macro["Hybrid_Raw"]["ls_slope_ols_top50"] > macro["NegCtrl_Hybrid_ShuffledGenes"]["ls_slope_ols_top50"]
+    assert macro["Hybrid_ProjShared"]["ls_slope_ols_top50"] > macro["NegCtrl_HybridProj_ShuffledGenes"]["ls_slope_ols_top50"]
+
+    # R6 & R11 identities check on Hybrid_ProjShared rows
+    hp = df_lines[df_lines["method"] == "Hybrid_ProjShared"]
+    for _, row in hp.iterrows():
+        assert abs(row["ls_slope_ols_top50"] - row["ls_resid_corr_top50"] * row["ls_sd_ratio_top50"]) < 1e-12
+        assert abs(row["ls_resid_corr_cal_top50_sq"] - row["ls_resid_corr_cal_top50"] ** 2) < 1e-12
+        assert row["ls_slope_deming_top50"] > 0.0
+        assert row["ls_slope_obs_on_pred_top50"] > 0.0
+        assert np.isfinite(row["ctrl_disc_raw_panel"]) and np.isfinite(row["cent_disc_raw_panel"])
 
     # Parity check between vectorized sufficient-stats bootstrap and literal concatenation
     rng_p = np.random.RandomState(33)
@@ -238,10 +254,193 @@ def test_end_to_end_synthetic_loo():
         ys_lit.append(r_pred[p, idx])
     xc = np.concatenate(xs_lit)
     yc = np.concatenate(ys_lit)
-    slope_lit = float(np.dot(xc - xc.mean(), yc - yc.mean()) / np.dot(xc - xc.mean(), xc - xc.mean()))
+    xc_c = xc - xc.mean()
+    yc_c = yc - yc.mean()
+    sxx = float(np.dot(xc_c, xc_c))
+    syy = float(np.dot(yc_c, yc_c))
+    sxy = float(np.dot(xc_c, yc_c))
+    slope_lit = sxy / sxx
+    deming_lit = float(((syy - sxx) + np.sqrt((syy - sxx) ** 2 + 4 * sxy ** 2)) / (2 * sxy))
     assert abs(ls["resp_top50"]["boot_slope_ols"][0] - slope_lit) < 1e-12
+    assert abs(ls["resp_top50"]["boot_slope_deming"][0] - deming_lit) < 1e-12
+    assert abs(ls["resp_top50"]["boot_sd_ratio"][0] - np.sqrt(syy / sxx)) < 1e-12
+    assert abs(ls["resp_top50"]["boot_slope_obs_on_pred"][0] - (sxy / syy)) < 1e-12
     assert abs(spearman_brown_ceiling(0.5)[0] - (2.0 / 3.0)) < 1e-12
     assert np.isnan(spearman_brown_ceiling(-0.1)[0])
+
+
+def test_r4_controls_and_confirmatory_threshold():
+    src_lines, C_t, D_t, target_indices, target_names = _make_synthetic_system(seed=19)
+    state = SourceModelState.fit(src_lines, mask_self=True)
+    # Double marginal variance on target line covariance -> Transfer_Mean_VarScaled should reflect ratio sqrt(diag_t / diag_s)
+    preds = predict_zero_shot_suite(
+        state=state,
+        target_ctrl_cov=4.0 * src_lines[0].ctrl_cov,
+        query_target_names=target_names,
+        query_target_gene_indices=target_indices,
+        mismatched_ctrl_cov=None,
+    )
+    assert "NegCtrl_HybridProj_SrcCorrTgtVar" in preds
+    assert "Transfer_Mean_VarScaled" in preds
+    assert "NegCtrl_HybridProj_MismatchedCov(S1)" in preds
+    assert "NegCtrl_HybridProj_MismatchedCov(S2)" in preds
+    # Check when S1 and S2 have identical covariance, sqrt(4 C_s / C_s) == 2.0
+    state_same = SourceModelState.fit(
+        [
+            src_lines[0],
+            SourceLineInput("S2_clone", src_lines[0].ctrl_cov, src_lines[1].deltas, target_indices, target_names),
+        ],
+        mask_self=True,
+    )
+    preds_same = predict_zero_shot_suite(
+        state=state_same,
+        target_ctrl_cov=4.0 * src_lines[0].ctrl_cov,
+        query_target_names=target_names,
+        query_target_gene_indices=target_indices,
+    )
+    assert np.allclose(preds_same["Transfer_Mean_VarScaled"], 2.0 * preds_same["Transfer_Mean"], atol=1e-7)
+
+    # Strict holdout confirmatory auto-selection test: replogle_* & <50 target lines become secondary
+    import pandas as pd
+    rows = []
+    boots = []
+    for ln, n_t in [("replogle_k562", 500), ("nadig_hepg2", 500), ("nadig_jurkat", 500), ("nourreddine_kolf21j", 18), ("vcc2025_h1", 80)]:
+        for m, sl, cal, vfrac in [
+            ("Hybrid_ProjShared", 0.20, 0.50, 1.0),
+            ("CIPHER_Linear", 0.30, 0.40, 1.0),
+            ("NegCtrl_HybridProj_MismatchedCov(src)", 0.01, 0.02, 1.0),
+            ("NegCtrl_HybridProj_ShuffledGenes", 0.00, 0.00, 1.0),
+            ("NegCtrl_HybridProj_SrcCorrTgtVar", 0.05, 0.10, 1.0),
+            ("Transfer_Mean_VarScaled", 0.02, 0.05, 1.0),
+        ]:
+            rows.append({
+                "target_line": ln, "n_eval_targets": n_t, "method": m,
+                "ls_slope_ols_top50": sl, "ls_slope_ols_top50_ci95_lo": sl - 0.05, "ls_slope_ols_top50_ci95_hi": sl + 0.05,
+                "ls_slope_noint_top50": sl, "ls_slope_per_pert_top50": sl,
+                "ls_resid_corr_cal_top50": cal, "ls_resid_corr_cal_top50_sq": cal ** 2,
+                "ls_resid_corr_cal_top50_ci95_lo": cal - 0.1, "ls_resid_corr_cal_top50_resamp_ci95_lo": cal - 0.1,
+                "ls_resid_corr_cal_top50_resamp_valid_frac": vfrac,
+                "cent_disc_raw": 0.8, "cent_de50_r": 0.4, "ctrl_disc_raw": 0.8, "ctrl_de50_r": 0.4, "mse": 0.01, "ls_slope_ols_all": sl, "ls_resid_corr_top50": cal * 0.5,
+            })
+        boots.append({"target_line": ln, "metric": "ls_slope_ols_top50", "method_a": "Hybrid_ProjShared", "method_b": "NegCtrl_HybridProj_MismatchedCov(src)", "disjoint_ci95": True, "a_ci95_lo": 0.15, "a_ci95_hi": 0.25, "b_ci95_lo": -0.04, "b_ci95_hi": 0.06, "mean_a": 0.20, "mean_b": 0.01, "delta": 0.19, "ci95_lo": 0.10, "ci95_hi": 0.28, "ci_gt_zero": True, "ci_lt_zero": False})
+        boots.append({"target_line": ln, "metric": "ls_slope_ols_top50", "method_a": "Hybrid_ProjShared", "method_b": "NegCtrl_HybridProj_ShuffledGenes", "disjoint_ci95": True, "a_ci95_lo": 0.15, "a_ci95_hi": 0.25, "b_ci95_lo": -0.04, "b_ci95_hi": 0.04, "mean_a": 0.20, "mean_b": 0.00, "delta": 0.20, "ci95_lo": 0.10, "ci95_hi": 0.28, "ci_gt_zero": True, "ci_lt_zero": False})
+        boots.append({"target_line": ln, "metric": "ls_slope_ols_top50", "method_a": "Hybrid_ProjShared", "method_b": "NegCtrl_HybridProj_SrcCorrTgtVar", "disjoint_ci95": True, "a_ci95_lo": 0.15, "a_ci95_hi": 0.25, "b_ci95_lo": 0.01, "b_ci95_hi": 0.09, "mean_a": 0.20, "mean_b": 0.05, "delta": 0.15, "ci95_lo": 0.06, "ci95_hi": 0.24, "ci_gt_zero": True, "ci_lt_zero": False})
+        boots.append({"target_line": ln, "metric": "ls_resid_corr_cal_top50", "method_a": "Hybrid_ProjShared", "method_b": "NegCtrl_HybridProj_SrcCorrTgtVar", "disjoint_ci95": True, "a_ci95_lo": 0.40, "a_ci95_hi": 0.60, "b_ci95_lo": 0.05, "b_ci95_hi": 0.15, "mean_a": 0.50, "mean_b": 0.10, "delta": 0.40, "ci95_lo": 0.25, "ci95_hi": 0.55, "ci_gt_zero": True, "ci_lt_zero": False})
+        boots.append({"target_line": ln, "metric": "ls_resid_corr_cal_top50", "method_a": "Hybrid_ProjShared", "method_b": "Transfer_Mean_VarScaled", "disjoint_ci95": True, "a_ci95_lo": 0.40, "a_ci95_hi": 0.60, "b_ci95_lo": 0.00, "b_ci95_hi": 0.10, "mean_a": 0.50, "mean_b": 0.05, "delta": 0.45, "ci95_lo": 0.30, "ci95_hi": 0.60, "ci_gt_zero": True, "ci_lt_zero": False})
+        for met in ["ctrl_disc_raw", "ctrl_de50_r", "ctrl_disc_raw_panel", "cent_disc_raw", "cent_de50_r", "cent_disc_raw_panel"]:
+            # Make one secondary line inferior to ensure secondary exclusions work
+            lt_zero = (ln == "nourreddine_kolf21j" and met == "ctrl_disc_raw")
+            boots.append({"target_line": ln, "metric": met, "method_a": "Hybrid_ProjShared", "method_b": "Transfer_Mean", "disjoint_ci95": False, "a_ci95_lo": 0.7, "a_ci95_hi": 0.9, "b_ci95_lo": 0.7, "b_ci95_hi": 0.9, "mean_a": 0.8, "mean_b": 0.8, "delta": -0.05 if lt_zero else 0.01, "ci95_lo": -0.08 if lt_zero else -0.01, "ci95_hi": -0.02 if lt_zero else 0.03, "ci_gt_zero": False, "ci_lt_zero": lt_zero})
+    adj_h = adjudicate_results(pd.DataFrame(rows), pd.DataFrame(boots), {"phase": "holdout", "lines": ["nadig_hepg2", "nadig_jurkat", "nourreddine_kolf21j", "replogle_k562", "vcc2025_h1"]})
+    assert adj_h["confirmatory_lines"] == ["nadig_hepg2", "nadig_jurkat", "vcc2025_h1"]
+    assert adj_h["H-A1"]["required"] == 3 and adj_h["H-A4"]["max_inferior_allowed"] == 0
+    assert adj_h["OVERALL_VERDICT"] == "CONFIRMED"
+    assert adj_h["R4_Wording_Checks"]["allowed_cofluctuation_phrase"] == "细胞系特异的共波动结构"
+
+
+def test_v3_group_b_fct_hybrid_on_tmvs_s5_and_ci975():
+    rng = np.random.RandomState(2026)
+    G = 80
+    N_ctrl = 300
+    N_pert = 24
+    genes = [f"G{i}" for i in range(G)]
+    g2i = {g: i for i, g in enumerate(genes)}
+    t_names = tuple(genes[:N_pert])
+    t_idx = np.arange(N_pert, dtype=np.int64)
+
+    # Plant distinct source vs target control libnorm means & variances -> test FCT geometric mean + TMVS
+    mu_s1 = rng.uniform(0.5, 4.0, size=G)
+    mu_s2 = rng.uniform(0.5, 4.0, size=G)
+    mu_t = rng.uniform(0.5, 4.0, size=G)
+    fc_true = rng.uniform(0.4, 1.8, size=(N_pert, G))
+    d_s1 = np.log1p(mu_s1[None, :] * fc_true) - np.log1p(mu_s1[None, :])
+    d_s2 = np.log1p(mu_s2[None, :] * fc_true) - np.log1p(mu_s2[None, :])
+    d_t_fct_expected = np.log1p(mu_t[None, :] * fc_true) - np.log1p(mu_t[None, :])
+
+    cov_s1 = np.diag(rng.uniform(0.1, 1.5, size=G))
+    cov_s2 = np.diag(rng.uniform(0.1, 1.5, size=G))
+    cov_t = np.diag(rng.uniform(0.1, 1.5, size=G))
+
+    state = SourceModelState.fit(
+        [
+            SourceLineInput("S1", cov_s1, d_s1, t_idx, t_names, ctrl_mean_libnorm=mu_s1),
+            SourceLineInput("S2", cov_s2, d_s2, t_idx, t_names, ctrl_mean_libnorm=mu_s2),
+        ],
+        mask_self=True,
+    )
+    preds = predict_zero_shot_suite(
+        state=state,
+        target_ctrl_cov=cov_t,
+        query_target_names=t_names,
+        query_target_gene_indices=t_idx,
+        target_ctrl_mean_libnorm=mu_t,
+    )
+    assert "FCT" in preds
+    assert "Hybrid_on_TMVS" in preds
+    assert "NegCtrl_TMVS_ShuffledVar" in preds
+    assert "NegCtrl_TMVS_MismatchedVar(S1)" in preds
+    assert "NegCtrl_TMVS_MismatchedVar(S2)" in preds
+    assert np.allclose(preds["FCT"], d_t_fct_expected, atol=1e-10)
+
+    # Check ci975 wider than or equal to ci95 + S5 & Group B end-to-end synthetic LOO
+    datasets = {}
+    shared_prog = rng.randn(N_pert, G) * 0.25
+    for idx_l, (lname, mu_l, scale_sd) in enumerate(
+        [("Replogle_K562", mu_s1, 0.7), ("Replogle_RPE1", mu_s2, 1.0), ("Conf_L3", mu_t, 1.8)]
+    ):
+        lrng = np.random.RandomState(700 + idx_l)
+        gene_sds = lrng.uniform(0.15, 0.8, size=G) * scale_sd
+        B = (lrng.randn(G, 6) * 0.25) * gene_sds[:, None]
+        X_ctrl = lrng.randn(N_ctrl, 6) @ B.T + lrng.randn(N_ctrl, G) * (0.1 * gene_sds[None, :])
+        # True perturbations scaled by line gene std (exact TMVS mechanism)
+        deltas = shared_prog * gene_sds[None, :]
+        ha = deltas + lrng.randn(*deltas.shape) * 0.02
+        hb = deltas + lrng.randn(*deltas.shape) * 0.02
+        datasets[lname] = LineDataset(
+            name=lname,
+            genes=genes,
+            gene_to_idx=g2i,
+            ctrl_cells=X_ctrl,
+            deltas=deltas,
+            target_names=t_names,
+            target_indices=t_idx,
+            repr_mask=np.ones(N_pert, dtype=bool),
+            representation="log1p",
+            half_a_deltas=ha,
+            half_b_deltas=hb,
+            half_valid=np.ones(N_pert, dtype=bool),
+            ctrl_mean_libnorm=mu_l,
+        )
+
+    df_lines, df_boot, summary = evaluate_datasets(
+        datasets=datasets, n_boot=200, seed=12345, require_official_spec=False
+    )
+    assert "s5_expressed_top75_var" in summary
+    assert summary["s5_expressed_top75_var"]["Conf_L3"]["n_genes_kept"] == G - (G // 4)
+    # 97.5% CI must enclose 95% CI
+    tmvs_row = df_lines[(df_lines["target_line"] == "Conf_L3") & (df_lines["method"] == "Transfer_Mean_VarScaled")].iloc[0]
+    assert tmvs_row["ls_slope_ols_top50_ci975_lo"] <= tmvs_row["ls_slope_ols_top50_ci95_lo"] + 1e-12
+    assert tmvs_row["ls_slope_ols_top50_ci975_hi"] >= tmvs_row["ls_slope_ols_top50_ci95_hi"] - 1e-12
+    assert np.isfinite(tmvs_row["ls_resid_corr_cal_top50_resamp_ci975_lo"])
+
+    adj_b = adjudicate_results(
+        df_lines,
+        df_boot,
+        summary,
+        confirmatory_lines=["Conf_L3"],
+        min_lines_pass=1,
+        max_lines_fail_ha4=0,
+        ci_level=0.975,
+    )
+    assert adj_b["ci_level_used"] == 0.975
+    assert adj_b["H-B1"]["verdict"] == "CONFIRMED"
+    assert adj_b["H-B2"]["verdict"] == "CONFIRMED"
+    assert adj_b["H-B3"]["verdict"] == "CONFIRMED"
+    assert adj_b["H-B3"]["per_line"]["Conf_L3"]["n_controls_checked"] == 3  # 2 mismatched + 1 shuffled
+    assert adj_b["Group_B_Verdict"] == "CONFIRMED"
+    assert "Group A" in adj_b["R13_Dual_Summary"] and "Group B" in adj_b["R13_Dual_Summary"]
+    md = render_markdown_report(adj_b, df_lines, summary, "v3_unit")
+    assert "S5:" in md and "S6:" in md and "97.5%" in md
 
 
 if __name__ == "__main__":
@@ -249,4 +448,6 @@ if __name__ == "__main__":
     test_metrics_and_bootstrap()
     test_prereg_gate_and_splithalf()
     test_end_to_end_synthetic_loo()
+    test_r4_controls_and_confirmatory_threshold()
+    test_v3_group_b_fct_hybrid_on_tmvs_s5_and_ci975()
     print("ALL_UNIT_TESTS_PASSED")

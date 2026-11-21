@@ -40,6 +40,7 @@ class LineDataset:
     half_a_deltas: Optional[np.ndarray] = None  # (N_pert, G) float64
     half_b_deltas: Optional[np.ndarray] = None  # (N_pert, G) float64
     half_valid: Optional[np.ndarray] = None     # (N_pert,) bool
+    ctrl_mean_libnorm: Optional[np.ndarray] = None  # (G,) float64 unperturbed libnorm mean (for FCT)
 
 
 def is_replogle_dev_line(line_name: str) -> bool:
@@ -114,7 +115,12 @@ def load_line_dataset(
     }.get(representation, [representation, "delta", "deltas", "X"])
 
     with np.load(line_dir / "ctrl_cells.npz", allow_pickle=True) as z_ctrl:
-        ctrl_raw = _pick_npz_array(z_ctrl, rep_candidates_ctrl).astype(np.float64)
+        ctrl_raw = _pick_npz_array(z_ctrl, rep_candidates_ctrl).astype(np.float32, copy=False)
+        ctrl_mean_libnorm = (
+            np.asarray(z_ctrl["ctrl_mean_libnorm"], dtype=np.float64)
+            if "ctrl_mean_libnorm" in z_ctrl.files
+            else None
+        )
 
     with np.load(line_dir / "pseudobulk_delta.npz", allow_pickle=True) as z_del:
         deltas_raw = _pick_npz_array(z_del, rep_candidates_delta).astype(np.float64)
@@ -161,6 +167,8 @@ def load_line_dataset(
             half_a_raw = half_a_raw[:, col_idx]
         if half_b_raw is not None:
             half_b_raw = half_b_raw[:, col_idx]
+        if ctrl_mean_libnorm is not None:
+            ctrl_mean_libnorm = ctrl_mean_libnorm[col_idx]
         genes = list(common_genes)
 
     g2i = {g: i for i, g in enumerate(genes)}
@@ -179,6 +187,7 @@ def load_line_dataset(
         half_a_deltas=half_a_raw,
         half_b_deltas=half_b_raw,
         half_valid=half_valid,
+        ctrl_mean_libnorm=ctrl_mean_libnorm,
     )
 
 

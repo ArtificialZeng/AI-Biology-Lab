@@ -10,6 +10,7 @@ import numpy as np
 from independent_predictors import (
     compute_control_covariance,
     predict_zero_shot_suite,
+    src_corr_target_var_covariance,
 )
 from independent_stats import (
     adjudicate_team_a,
@@ -76,16 +77,48 @@ class TestIndependentPredictors(unittest.TestCase):
         tgt_line = "L1"
         src_covs = {l: covs[l] for l in lines if l != tgt_line}
         src_deltas = {l: deltas[l] for l in lines if l != tgt_line}
+        mu_lib = {l: np.full(covs[tgt_line].shape[0], 2.0 + i) for i, l in enumerate(lines)}
+        dlib = {l: {t: np.ones(covs[tgt_line].shape[0]) * 0.5 for t in targets} for l in src_covs}
         preds1 = predict_zero_shot_suite(
-            targets, t2c, covs[tgt_line], src_covs, src_deltas, mismatch_cov=covs["L2"]
+            targets,
+            t2c,
+            covs[tgt_line],
+            src_covs,
+            src_deltas,
+            mismatch_cov=covs["L2"],
+            target_ctrl_mean_libnorm=mu_lib[tgt_line],
+            source_ctrl_mean_libnorm={l: mu_lib[l] for l in src_covs},
+            source_deltas_libnorm_by_target=dlib,
         )
         # Predictors never even take target deltas as an argument -> structural zero leakage.
         # Verify determinism with identical inputs:
         preds2 = predict_zero_shot_suite(
-            targets, t2c, covs[tgt_line], src_covs, src_deltas, mismatch_cov=covs["L2"]
+            targets,
+            t2c,
+            covs[tgt_line],
+            src_covs,
+            src_deltas,
+            mismatch_cov=covs["L2"],
+            target_ctrl_mean_libnorm=mu_lib[tgt_line],
+            source_ctrl_mean_libnorm={l: mu_lib[l] for l in src_covs},
+            source_deltas_libnorm_by_target=dlib,
         )
         for k in preds1:
             np.testing.assert_array_equal(preds1[k], preds2[k])
+        # R3/R4/R12/R14/R15 predictors emitted cleanly
+        for sl in src_covs:
+            self.assertIn(f"mismatch_cov_hybrid::{sl}", preds1)
+            self.assertIn(f"tmvs_mismatch::{sl}", preds1)
+        self.assertIn("src_corr_tgt_var_hybrid", preds1)
+        self.assertIn("transfer_mean_var_scaled", preds1)
+        self.assertIn("tmvs_shuffled_var", preds1)
+        self.assertIn("hybrid_on_tmvs", preds1)
+        self.assertIn("fct", preds1)
+        self.assertTrue(np.all(np.isfinite(preds1["fct"])))
+
+        # R4(a) matrix preserves target marginal variances exactly while averaging source correlations
+        sctv = src_corr_target_var_covariance(covs[tgt_line], list(src_covs.values()))
+        np.testing.assert_allclose(np.diag(sctv), np.diag(covs[tgt_line]), atol=1e-10)
 
     def test_planted_signal_passes_all_hypotheses(self):
         lines, targets, t2c, covs, deltas, ha, hb = _simulate_line_data(2026)

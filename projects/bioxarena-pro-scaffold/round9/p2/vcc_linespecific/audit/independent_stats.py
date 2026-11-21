@@ -20,7 +20,7 @@ EPS = 1e-12
 
 @dataclass(frozen=True)
 class BootstrapCI:
-    """Summary of a perturbation-level bootstrap confidence interval."""
+    """Summary of a perturbation-level bootstrap confidence interval (95% and 97.5% two-sided)."""
 
     estimate: float
     ci95_lo: float
@@ -28,6 +28,8 @@ class BootstrapCI:
     boot_se: float
     n_items: int
     n_boot: int
+    ci975_lo: float = float("nan")
+    ci975_hi: float = float("nan")
 
 
 def pearson_1d(x: np.ndarray, y: np.ndarray) -> float:
@@ -58,6 +60,23 @@ def ols_slope(x: np.ndarray, y: np.ndarray, fit_intercept: bool = True) -> float
         return float(np.dot(x_c, y_c) / denom) if denom > EPS else 0.0
     denom = float(np.dot(x_arr, x_arr))
     return float(np.dot(x_arr, y_arr) / denom) if denom > EPS else 0.0
+
+
+def deming_slope(x: np.ndarray, y: np.ndarray) -> float:
+    """Compute orthogonal (equal error-variance ratio delta=1) Deming regression slope of y on x."""
+    x_arr = np.asarray(x, dtype=np.float64)
+    y_arr = np.asarray(y, dtype=np.float64)
+    if x_arr.size < 2 or y_arr.size != x_arr.size:
+        return 0.0
+    xc = x_arr - np.mean(x_arr)
+    yc = y_arr - np.mean(y_arr)
+    sxx = float(np.dot(xc, xc))
+    syy = float(np.dot(yc, yc))
+    sxy = float(np.dot(xc, yc))
+    if abs(sxy) <= EPS:
+        return 0.0
+    diff = syy - sxx
+    return float((diff + np.sqrt(diff * diff + 4.0 * sxy * sxy)) / (2.0 * sxy))
 
 
 def row_mask_array(
@@ -148,6 +167,50 @@ def compute_disc_raw_rows(
     return out
 
 
+def compute_disc_ownmasked_rows(
+    true_delta: np.ndarray,
+    pred_delta: np.ndarray,
+    target_col_idx: Sequence[int | None],
+    center_across_genes: bool = True,
+) -> np.ndarray:
+    """Compute tie-aware perturbation discrimination zeroing only each row's own target gene (A-T2 convention)."""
+    t_mat = np.asarray(true_delta, dtype=np.float64).copy()
+    p_mat = np.asarray(pred_delta, dtype=np.float64).copy()
+    n_perts, n_genes = t_mat.shape
+    if n_perts <= 1:
+        return np.full(n_perts, 0.5, dtype=np.float64)
+
+    for i, t_idx in enumerate(target_col_idx):
+        if t_idx is not None and 0 <= int(t_idx) < n_genes:
+            t_mat[i, int(t_idx)] = 0.0
+            p_mat[i, int(t_idx)] = 0.0
+
+    if center_across_genes:
+        t_mat = t_mat - np.mean(t_mat, axis=1, keepdims=True)
+        p_mat = p_mat - np.mean(p_mat, axis=1, keepdims=True)
+
+    t_norms = np.linalg.norm(t_mat, axis=1, keepdims=True)
+    p_norms = np.linalg.norm(p_mat, axis=1, keepdims=True)
+    t_unit = t_mat / np.maximum(t_norms, EPS)
+    p_unit = p_mat / np.maximum(p_norms, EPS)
+    sim = p_unit @ t_unit.T
+
+    p_zero = p_norms[:, 0] <= 1e-10
+    t_zero = t_norms[:, 0] <= 1e-10
+    if np.any(p_zero):
+        sim[p_zero, :] = 0.0
+    if np.any(t_zero):
+        sim[:, t_zero] = 0.0
+
+    diag = np.diag(sim)[:, None]
+    strictly_better = np.sum(sim > diag + 1e-12, axis=1)
+    tied_others = np.sum(np.abs(sim - diag) <= 1e-12, axis=1) - 1
+    eff_better = strictly_better + 0.5 * np.maximum(tied_others, 0)
+    out = 1.0 - eff_better / float(n_perts - 1)
+    out[p_zero] = 0.5
+    return out
+
+
 def spearman_brown_reliability(r_half_ab: float) -> float:
     """Convert split-half correlation r_AB into full-sample reliability rho_full."""
     if not np.isfinite(r_half_ab) or r_half_ab <= 0.0:
@@ -185,6 +248,7 @@ def bootstrap_paired_mean_diff(
     idx = rng.integers(0, n, size=(n_boot, n))
     boots = diff[idx].mean(axis=1)
     lo, hi = np.percentile(boots, [2.5, 97.5])
+    lo975, hi975 = np.percentile(boots, [1.25, 98.75])
     return BootstrapCI(
         estimate=float(np.mean(diff)),
         ci95_lo=float(lo),
@@ -192,6 +256,8 @@ def bootstrap_paired_mean_diff(
         boot_se=float(np.std(boots, ddof=1)),
         n_items=n,
         n_boot=n_boot,
+        ci975_lo=float(lo975),
+        ci975_hi=float(hi975),
     )
 
 
@@ -208,6 +274,7 @@ def summarize_bootstrap_array(
     if n_boot == 0 or finite_boots.size < max(1, int(np.ceil(min_finite_frac * n_boot))):
         return BootstrapCI(estimate, float("nan"), float("nan"), float("nan"), n_items, n_boot)
     lo, hi = np.percentile(finite_boots, [2.5, 97.5])
+    lo975, hi975 = np.percentile(finite_boots, [1.25, 98.75])
     return BootstrapCI(
         estimate=float(estimate),
         ci95_lo=float(lo),
@@ -215,6 +282,8 @@ def summarize_bootstrap_array(
         boot_se=float(np.std(finite_boots, ddof=1)) if finite_boots.size > 1 else 0.0,
         n_items=n_items,
         n_boot=n_boot,
+        ci975_lo=float(lo975),
+        ci975_hi=float(hi975),
     )
 
 
@@ -244,53 +313,82 @@ def ci_strictly_below(ci_low: BootstrapCI, ci_high: BootstrapCI) -> bool:
     return bool(ci_low.ci95_hi < ci_high.ci95_lo)
 
 
+def _pick_bound(row: dict, prefer_keys: Sequence[str]) -> float:
+    for k in prefer_keys:
+        if k in row:
+            return float(row[k])
+    return float("nan")
+
+
 def adjudicate_team_a(
     line_results: Sequence[dict],
     min_lines_pass: int = 4,
     max_lines_inferior: int = 1,
     slope_threshold: float = 0.13,
+    confirmatory_lines: Sequence[str] | None = None,
+    use_975_ci: bool = True,
 ) -> dict:
-    """Apply pre-registered fixed adjudication rules for H-A1 through H-A4.
+    """Apply pre-registered fixed adjudication rules for Group A H-A1..H-A4 (R2/R3/R5/R10/R13)."""
+    eval_rows = (
+        [r for r in line_results if r["line"] in set(confirmatory_lines)]
+        if confirmatory_lines is not None
+        else list(line_results)
+    )
+    n_lines = len(eval_rows)
+    ci_tag = "975" if use_975_ci else "95"
 
-    Each element of `line_results` must contain:
-      - line: str
-      - primary_slope_ci95_lo: float
-      - noise_cal_corr_ci95_lo: float
-      - mismatch_slope_ci95_hi: float
-      - disc_raw_diff_ci95_hi: float (hybrid - transferred_mean)
-      - de50_r_diff_ci95_hi: float   (hybrid - transferred_mean)
-    """
-    n_lines = len(line_results)
-    ha1_pass_lines = [
-        r["line"] for r in line_results if np.isfinite(r["primary_slope_ci95_lo"]) and r["primary_slope_ci95_lo"] > slope_threshold
-    ]
-    ha2_pass_lines = [
-        r["line"] for r in line_results if np.isfinite(r["noise_cal_corr_ci95_lo"]) and r["noise_cal_corr_ci95_lo"] > 0.0
-    ]
+    def _slope_lo(r: dict) -> float:
+        return _pick_bound(r, (f"primary_slope_ci{ci_tag}_lo", "primary_slope_ci95_lo"))
+
+    def _cal_lo(r: dict) -> float:
+        return _pick_bound(r, (f"noise_cal_corr_ci{ci_tag}_lo", "noise_cal_corr_ci95_lo"))
+
+    def _mis_hi(r: dict) -> float:
+        return _pick_bound(
+            r,
+            (
+                f"max_mismatch_ci{ci_tag}_hi",
+                f"mismatch_slope_ci{ci_tag}_hi",
+                "max_mismatch_ci95_hi",
+                "mismatch_slope_ci95_hi",
+            ),
+        )
+
+    ha1_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_slope_lo(r)) and _slope_lo(r) > slope_threshold]
+    ha2_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_cal_lo(r)) and _cal_lo(r) > 0.0]
     ha3_pass_lines = [
         r["line"]
-        for r in line_results
-        if np.isfinite(r["mismatch_slope_ci95_hi"])
-        and np.isfinite(r["primary_slope_ci95_lo"])
-        and r["mismatch_slope_ci95_hi"] < r["primary_slope_ci95_lo"]
+        for r in eval_rows
+        if np.isfinite(_mis_hi(r)) and np.isfinite(_slope_lo(r)) and _mis_hi(r) < _slope_lo(r)
+    ]
+
+    ha4_key_groups = [
+        ("ctrl_disc_ownmasked", (f"ctrl_disc_ownmasked_diff_ci{ci_tag}_hi", "ctrl_disc_ownmasked_diff_ci95_hi")),
+        ("cent_disc_raw", (f"cent_disc_raw_diff_ci{ci_tag}_hi", "cent_disc_raw_diff_ci95_hi")),
+        ("cent_disc_ownmasked", (f"cent_disc_ownmasked_diff_ci{ci_tag}_hi", "cent_disc_ownmasked_diff_ci95_hi")),
+        ("cent_de50_r", (f"cent_de50_r_diff_ci{ci_tag}_hi", "cent_de50_r_diff_ci95_hi")),
     ]
     ha4_disc_inf_lines = [
-        r["line"] for r in line_results if np.isfinite(r["disc_raw_diff_ci95_hi"]) and r["disc_raw_diff_ci95_hi"] < 0.0
+        r["line"]
+        for r in eval_rows
+        if np.isfinite(_pick_bound(r, (f"disc_raw_diff_ci{ci_tag}_hi", "disc_raw_diff_ci95_hi")))
+        and _pick_bound(r, (f"disc_raw_diff_ci{ci_tag}_hi", "disc_raw_diff_ci95_hi")) < 0.0
     ]
     ha4_de50_inf_lines = [
-        r["line"] for r in line_results if np.isfinite(r["de50_r_diff_ci95_hi"]) and r["de50_r_diff_ci95_hi"] < 0.0
+        r["line"]
+        for r in eval_rows
+        if np.isfinite(_pick_bound(r, (f"de50_r_diff_ci{ci_tag}_hi", "de50_r_diff_ci95_hi")))
+        and _pick_bound(r, (f"de50_r_diff_ci{ci_tag}_hi", "de50_r_diff_ci95_hi")) < 0.0
     ]
-    has_cent = bool(line_results) and ("cent_disc_raw_diff_ci95_hi" in line_results[0]) and ("cent_de50_r_diff_ci95_hi" in line_results[0])
-    ha4_cent_disc_inf = (
-        [r["line"] for r in line_results if np.isfinite(r["cent_disc_raw_diff_ci95_hi"]) and r["cent_disc_raw_diff_ci95_hi"] < 0.0]
-        if has_cent
-        else []
-    )
-    ha4_cent_de50_inf = (
-        [r["line"] for r in line_results if np.isfinite(r["cent_de50_r_diff_ci95_hi"]) and r["cent_de50_r_diff_ci95_hi"] < 0.0]
-        if has_cent
-        else []
-    )
+
+    extra_inf: dict[str, list[str]] = {}
+    for label, key_prefs in ha4_key_groups:
+        if eval_rows and any(k in eval_rows[0] for k in key_prefs):
+            extra_inf[label] = [
+                r["line"]
+                for r in eval_rows
+                if np.isfinite(_pick_bound(r, key_prefs)) and _pick_bound(r, key_prefs) < 0.0
+            ]
 
     ha1_ok = len(ha1_pass_lines) >= min_lines_pass
     ha2_ok = len(ha2_pass_lines) >= min_lines_pass
@@ -298,7 +396,7 @@ def adjudicate_team_a(
     ha4_ok = (
         (len(ha4_disc_inf_lines) <= max_lines_inferior)
         and (len(ha4_de50_inf_lines) <= max_lines_inferior)
-        and ((not has_cent) or (len(ha4_cent_disc_inf) <= max_lines_inferior and len(ha4_cent_de50_inf) <= max_lines_inferior))
+        and all(len(v) <= max_lines_inferior for v in extra_inf.values())
     )
 
     overall = "CONFIRMED" if (ha1_ok and ha2_ok and ha3_ok and ha4_ok) else "未确认 (NOT CONFIRMED)"
@@ -309,16 +407,110 @@ def adjudicate_team_a(
         "de50_r_inferior_count": len(ha4_de50_inf_lines),
         "de50_r_inferior_lines": ha4_de50_inf_lines,
     }
-    if has_cent:
-        ha4_dict["cent_disc_raw_inferior_count"] = len(ha4_cent_disc_inf)
-        ha4_dict["cent_disc_raw_inferior_lines"] = ha4_cent_disc_inf
-        ha4_dict["cent_de50_r_inferior_count"] = len(ha4_cent_de50_inf)
-        ha4_dict["cent_de50_r_inferior_lines"] = ha4_cent_de50_inf
+    for label, lines_inf in extra_inf.items():
+        ha4_dict[f"{label}_inferior_count"] = len(lines_inf)
+        ha4_dict[f"{label}_inferior_lines"] = lines_inf
     return {
+        "ci_level": 0.975 if use_975_ci else 0.95,
         "n_lines": n_lines,
+        "confirmatory_lines": [r["line"] for r in eval_rows],
         "H-A1": {"pass": ha1_ok, "count": len(ha1_pass_lines), "lines": ha1_pass_lines},
         "H-A2": {"pass": ha2_ok, "count": len(ha2_pass_lines), "lines": ha2_pass_lines},
         "H-A3": {"pass": ha3_ok, "count": len(ha3_pass_lines), "lines": ha3_pass_lines},
         "H-A4": ha4_dict,
+        "overall_verdict": overall,
+    }
+
+
+def adjudicate_team_b(
+    line_results: Sequence[dict],
+    min_lines_pass: int = 3,
+    max_lines_inferior: int = 0,
+    slope_threshold: float = 0.13,
+    confirmatory_lines: Sequence[str] | None = None,
+    use_975_ci: bool = True,
+) -> dict:
+    """Apply pre-registered Group B (`Transfer_Mean_VarScaled`) adjudication (R12 & R13)."""
+    eval_rows = (
+        [r for r in line_results if r["line"] in set(confirmatory_lines)]
+        if confirmatory_lines is not None
+        else list(line_results)
+    )
+    n_lines = len(eval_rows)
+    ci_tag = "975" if use_975_ci else "95"
+
+    def _slope_lo(r: dict) -> float:
+        return _pick_bound(r, (f"tmvs_slope_ci{ci_tag}_lo", "tmvs_slope_ci95_lo"))
+
+    def _cal_lo(r: dict) -> float:
+        return _pick_bound(r, (f"tmvs_cal_r_ci{ci_tag}_lo", "tmvs_cal_r_ci95_lo"))
+
+    def _ctrl_slope_hi(r: dict) -> float:
+        return _pick_bound(r, (f"tmvs_max_ctrl_slope_ci{ci_tag}_hi", "tmvs_max_ctrl_slope_ci95_hi"))
+
+    def _ctrl_cal_hi(r: dict) -> float:
+        return _pick_bound(r, (f"tmvs_max_ctrl_cal_r_ci{ci_tag}_hi", "tmvs_max_ctrl_cal_r_ci95_hi"))
+
+    hb1_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_slope_lo(r)) and _slope_lo(r) > slope_threshold]
+    hb2_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_cal_lo(r)) and _cal_lo(r) > 0.0]
+    hb3_pass_lines = [
+        r["line"]
+        for r in eval_rows
+        if np.isfinite(_slope_lo(r))
+        and np.isfinite(_ctrl_slope_hi(r))
+        and np.isfinite(_cal_lo(r))
+        and np.isfinite(_ctrl_cal_hi(r))
+        and (_slope_lo(r) > _ctrl_slope_hi(r))
+        and (_cal_lo(r) > _ctrl_cal_hi(r))
+    ]
+
+    hb4_key_groups = [
+        ("ctrl_disc_panel", (f"tmvs_disc_raw_diff_ci{ci_tag}_hi", "tmvs_disc_raw_diff_ci95_hi")),
+        ("ctrl_disc_ownmasked", (f"tmvs_ctrl_disc_ownmasked_diff_ci{ci_tag}_hi", "tmvs_ctrl_disc_ownmasked_diff_ci95_hi")),
+        ("ctrl_de50_r", (f"tmvs_de50_r_diff_ci{ci_tag}_hi", "tmvs_de50_r_diff_ci95_hi")),
+        ("cent_disc_panel", (f"tmvs_cent_disc_raw_diff_ci{ci_tag}_hi", "tmvs_cent_disc_raw_diff_ci95_hi")),
+        ("cent_disc_ownmasked", (f"tmvs_cent_disc_ownmasked_diff_ci{ci_tag}_hi", "tmvs_cent_disc_ownmasked_diff_ci95_hi")),
+        ("cent_de50_r", (f"tmvs_cent_de50_r_diff_ci{ci_tag}_hi", "tmvs_cent_de50_r_diff_ci95_hi")),
+    ]
+    hb4_inf: dict[str, list[str]] = {}
+    for label, key_prefs in hb4_key_groups:
+        if eval_rows and any(k in eval_rows[0] for k in key_prefs):
+            hb4_inf[label] = [
+                r["line"]
+                for r in eval_rows
+                if np.isfinite(_pick_bound(r, key_prefs)) and _pick_bound(r, key_prefs) < 0.0
+            ]
+
+    hb1_ok = len(hb1_pass_lines) >= min_lines_pass
+    hb2_ok = len(hb2_pass_lines) >= min_lines_pass
+    hb3_ok = len(hb3_pass_lines) >= min_lines_pass
+    hb4_ok = bool(hb4_inf) and all(len(v) <= max_lines_inferior for v in hb4_inf.values())
+
+    in_vcc_top10_lines = [
+        r["line"]
+        for r in eval_rows
+        if "tmvs_slope" in r and np.isfinite(r["tmvs_slope"]) and 0.02 <= float(r["tmvs_slope"]) <= 0.13
+    ]
+
+    overall = "CONFIRMED" if (hb1_ok and hb2_ok and hb3_ok and hb4_ok) else "未确认 (NOT CONFIRMED)"
+    hb4_dict: dict[str, object] = {"pass": hb4_ok}
+    for label, lines_inf in hb4_inf.items():
+        hb4_dict[f"{label}_inferior_count"] = len(lines_inf)
+        hb4_dict[f"{label}_inferior_lines"] = lines_inf
+
+    return {
+        "ci_level": 0.975 if use_975_ci else 0.95,
+        "n_lines": n_lines,
+        "confirmatory_lines": [r["line"] for r in eval_rows],
+        "H-B1": {"pass": hb1_ok, "count": len(hb1_pass_lines), "lines": hb1_pass_lines},
+        "H-B2": {"pass": hb2_ok, "count": len(hb2_pass_lines), "lines": hb2_pass_lines},
+        "H-B3": {"pass": hb3_ok, "count": len(hb3_pass_lines), "lines": hb3_pass_lines},
+        "H-B4": hb4_dict,
+        "vcc2026_top10_range_check": {
+            "range": [0.02, 0.13],
+            "count": len(in_vcc_top10_lines),
+            "lines": in_vcc_top10_lines,
+            "r6_caveat": "External Arc VCC 2026 Wrap-Up slope estimator is unpublished in cell-eval2; OLS slopes depend on prediction SD ratio.",
+        },
         "overall_verdict": overall,
     }

@@ -3,51 +3,56 @@
 Unified single-cell control matrices and pseudobulk perturbation deltas prepared by **A-T1** using Addendum-B preprocessing.
 See `DATA_SOURCES.md` for dataset URLs, licenses, byte sizes, and checksums.
 
-**Common Aligned Readout Genes (`COMMON_GENES.txt`)**: **6584** HGNC gene symbols shared across all 5 lines.
+**Common Aligned Readout Genes (`COMMON_GENES.txt`)**: **6148** HGNC gene symbols shared across all 6 lines.
 
 ## 1. Per-Line Summary & Gene-Symbol Alignment Loss
 
 | Line | Raw Cells × Raw Genes | NT Ctrl (Sampled / Total) | Genes (Finite → Dedup Final) | Alignment Loss (MultiFile / Empty / Dup / Non-Finite / Cap) | Targets (Dedup / Reproducible) | Targets in `COMMON_GENES` (All / Rep) |
 |---|---|---|---|---|---|---|
-| `nadig_hepg2` | 145,473 × 9,624 | 4,976 / 4,976 | 9,433 → 9,432 | 0 / 0 / 1 / 191 / 0 | 2,343 / 1,000 | 1,989 / 932 |
-| `nadig_jurkat` | 262,956 × 8,882 | 12,013 / 12,013 | 8,827 → 8,826 | 0 / 0 / 1 / 55 / 0 | 2,350 / 1,262 | 1,992 / 1,147 |
-| `nourreddine_kolf21j` | 38,322 × 34,583 | 17,895 / 17,895 | 24,116 → 15,000 | 484 / 0 / 0 / 10,467 / 9,116 | 95 / 67 | 71 / 51 |
-| `replogle_k562_essential` | 310,385 × 8,563 | 10,691 / 10,691 | 8,563 → 8,561 | 0 / 0 / 2 / 0 / 0 | 2,049 / 1,113 | 1,762 / 1,054 |
-| `replogle_rpe1` | 247,914 × 8,749 | 11,485 / 11,485 | 8,747 → 8,746 | 0 / 0 / 1 / 2 / 0 | 2,351 / 1,575 | 1,994 / 1,414 |
+| `nadig_hepg2` | 145,473 × 9,624 | 4,976 / 4,976 | 9,433 → 9,432 | 0 / 0 / 1 / 191 / 0 | 2,343 / 1,000 | 1,777 / 811 |
+| `nadig_jurkat` | 262,956 × 8,882 | 12,013 / 12,013 | 8,827 → 8,826 | 0 / 0 / 1 / 55 / 0 | 2,350 / 1,262 | 1,779 / 995 |
+| `nourreddine_kolf21j` | 38,322 × 34,583 | 17,895 / 17,895 | 24,116 → 15,000 | 484 / 0 / 0 / 10,467 / 9,116 | 95 / 67 | 69 / 51 |
+| `replogle_k562_essential` | 310,385 × 8,563 | 10,691 / 10,691 | 8,563 → 8,561 | 0 / 0 / 2 / 0 / 0 | 2,049 / 1,113 | 1,558 / 910 |
+| `replogle_rpe1` | 247,914 × 8,749 | 11,485 / 11,485 | 8,747 → 8,746 | 0 / 0 / 1 / 2 / 0 | 2,351 / 1,575 | 1,780 / 1,290 |
+| `vcc2025_h1` | 414,694 × 18,080 | 20,000 / 38,176 | 14,656 → 14,656 | 0 / 0 / 0 / 3,424 / 0 | 300 / 204 | 228 / 168 |
 
 ## 2. Pairwise Shared Target Counts (All Deduplicated Targets)
 
-|                         |   nadig_hepg2 |   nadig_jurkat |   nourreddine_kolf21j |   replogle_k562_essential |   replogle_rpe1 |
-|:------------------------|--------------:|---------------:|----------------------:|--------------------------:|----------------:|
-| nadig_hepg2             |          2343 |           2318 |                    25 |                      2005 |            2316 |
-| nadig_jurkat            |          2318 |           2350 |                    25 |                      2011 |            2322 |
-| nourreddine_kolf21j     |            25 |             25 |                    95 |                        17 |              24 |
-| replogle_k562_essential |          2005 |           2011 |                    17 |                      2049 |            2017 |
-| replogle_rpe1           |          2316 |           2322 |                    24 |                      2017 |            2351 |
+|                         |   nadig_hepg2 |   nadig_jurkat |   nourreddine_kolf21j |   replogle_k562_essential |   replogle_rpe1 |   vcc2025_h1 |
+|:------------------------|--------------:|---------------:|----------------------:|--------------------------:|----------------:|-------------:|
+| nadig_hepg2             |          2343 |           2318 |                    25 |                      2005 |            2316 |           96 |
+| nadig_jurkat            |          2318 |           2350 |                    25 |                      2011 |            2322 |           97 |
+| nourreddine_kolf21j     |            25 |             25 |                    95 |                        17 |              24 |           11 |
+| replogle_k562_essential |          2005 |           2011 |                    17 |                      2049 |            2017 |           80 |
+| replogle_rpe1           |          2316 |           2322 |                    24 |                      2017 |            2351 |           98 |
+| vcc2025_h1              |            96 |             97 |                    11 |                        80 |              98 |          300 |
 
 ## 3. Pairwise Shared Target Counts (Reproducible Targets: `n_cells >= 25`, `ad_counts >= 50`, `energy_p < 0.001`)
 
-|                         |   nadig_hepg2 |   nadig_jurkat |   nourreddine_kolf21j |   replogle_k562_essential |   replogle_rpe1 |
-|:------------------------|--------------:|---------------:|----------------------:|--------------------------:|----------------:|
-| nadig_hepg2             |          1000 |            762 |                     8 |                       750 |             845 |
-| nadig_jurkat            |           762 |           1262 |                    10 |                       791 |             995 |
-| nourreddine_kolf21j     |             8 |             10 |                    67 |                         9 |              13 |
-| replogle_k562_essential |           750 |            791 |                     9 |                      1113 |             872 |
-| replogle_rpe1           |           845 |            995 |                    13 |                       872 |            1575 |
+|                         |   nadig_hepg2 |   nadig_jurkat |   nourreddine_kolf21j |   replogle_k562_essential |   replogle_rpe1 |   vcc2025_h1 |
+|:------------------------|--------------:|---------------:|----------------------:|--------------------------:|----------------:|-------------:|
+| nadig_hepg2             |          1000 |            762 |                     8 |                       750 |             845 |           29 |
+| nadig_jurkat            |           762 |           1262 |                    10 |                       791 |             995 |           59 |
+| nourreddine_kolf21j     |             8 |             10 |                    67 |                         9 |              13 |            8 |
+| replogle_k562_essential |           750 |            791 |                     9 |                      1113 |             872 |           43 |
+| replogle_rpe1           |           845 |            995 |                    13 |                       872 |            1575 |           72 |
+| vcc2025_h1              |            29 |             59 |                     8 |                        43 |              72 |          204 |
 
 ## 4. Leave-One-Line-Out Shared Target Counts (Target Line vs. Union of Other Lines)
 
 | Held-Out Line | Targets Shared w/ ≥1 Source Line (All) | Targets Shared w/ ≥1 Source Line (Reproducible) | Reproducible & in `COMMON_GENES` & ≥1 Source |
 |---|---|---|---|
-| `nadig_hepg2` | 2,343 | 984 | 918 |
-| `nadig_jurkat` | 2,350 | 1,178 | 1,073 |
-| `nourreddine_kolf21j` | 25 | 14 | 13 |
-| `replogle_k562_essential` | 2,039 | 1,041 | 989 |
-| `replogle_rpe1` | 2,350 | 1,287 | 1,172 |
+| `nadig_hepg2` | 2,343 | 985 | 799 |
+| `nadig_jurkat` | 2,350 | 1,180 | 934 |
+| `nourreddine_kolf21j` | 32 | 20 | 18 |
+| `replogle_k562_essential` | 2,039 | 1,044 | 859 |
+| `replogle_rpe1` | 2,350 | 1,300 | 1,070 |
+| `vcc2025_h1` | 106 | 91 | 80 |
 
 ## 5. Notes, HGNC Alignment & Budget Disclosures
 - All datasets share 10x/CellRanger Ensembl-v98-compatible symbols (`497/503` legacy symbols in `vcc2025_h1` match `nourreddine_kolf21j`, `nadig_*`, and `replogle_*` identically without renaming); where target aliases broke self-gene lookup or cross-line matching (`nourreddine_kolf21j`: `KAT3A -> CREBBP` via `ENSG00000005339`, `MSK1 -> RPS6KA5` via `ENSG00000100784`), official HGNC symbols are restored via `hgnc_complete_set.txt`.
-- `nourreddine_kolf21j` combines the two CC BY 4.0 Strong Perturbation sub-atlases (`KOLF_Chromatin_Modifiers_Strong_Perturbations.h5ad` + `KOLF_Metabolic_Enzymes_Strong_Perturbations.h5ad`, `2.855 GB`), yielding `95` targets (`67` reproducible, `14` reproducible shared in LOLO), because `KOLF_Strong_Perturbations.h5ad` (`46.719 GB`) and `KOLF_Pan_Genome_QC_Filtered.h5ad` (`189.393 GB`) exceed the `60.00 GB` team download cap.
+- `nourreddine_kolf21j` combines the two CC BY 4.0 Strong Perturbation sub-atlases (`KOLF_Chromatin_Modifiers_Strong_Perturbations.h5ad` + `KOLF_Metabolic_Enzymes_Strong_Perturbations.h5ad`, `2.855 GB`), yielding `95` targets (`67` reproducible; see Section 4 for exact LOLO shared counts), because `KOLF_Strong_Perturbations.h5ad` (`46.719 GB`) and `KOLF_Pan_Genome_QC_Filtered.h5ad` (`189.393 GB`) exceed the `60.00 GB` team download cap.
+- `vcc2025_h1` concatenates `adata_Training.h5ad`, `adata_Validation.h5ad`, and `adata_Test.h5ad` across the 48 shared Flex batches (`300` disjoint targets), deduplicating the identical `38,176` `non-targeting` control barcodes cloned across splits (`76,352` duplicate NT rows skipped).
 - Disjoint 50/50 split-halves (`half_a_delta_*`, `half_b_delta_*`) split both non-targeting controls and perturbed cells independently per batch (strictly zero shared cells between Half A and Half B, as required for noise-ceiling estimation).
 
 ## 6. Saved File Schema (`p2/shared/lines/<line>/`)

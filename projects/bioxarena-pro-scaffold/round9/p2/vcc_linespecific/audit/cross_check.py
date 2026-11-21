@@ -52,9 +52,9 @@ def normalize_t2_long_table(
                     "primary_slope_ci95_lo": float(r["ls_slope_ols_top50_ci95_lo"]),
                     "hybrid_slope_ci95_hi": float(r["ls_slope_ols_top50_ci95_hi"]),
                     "noise_cal_corr": float(r["ls_resid_corr_cal_top50"]),
-                    "disc_raw_hybrid": float(r["ctrl_disc_raw"]),
+                    "ctrl_disc_ownmasked_hybrid": float(r["ctrl_disc_raw"]),
                     "de50_r_hybrid": float(r["ctrl_de50_r"]),
-                    "cent_disc_raw_hybrid": float(r["cent_disc_raw"]),
+                    "cent_disc_ownmasked_hybrid": float(r["cent_disc_raw"]),
                     "cent_de50_r_hybrid": float(r["cent_de50_r"]),
                 }
             )
@@ -65,12 +65,83 @@ def normalize_t2_long_table(
             ):
                 rec["noise_cal_corr_ci95_lo"] = float(r["ls_resid_corr_cal_top50_resamp_ci95_lo"])
                 rec["noise_cal_corr_ci95_hi"] = float(r["ls_resid_corr_cal_top50_resamp_ci95_hi"])
+            col_aliases = (
+                ("ls_resid_corr_top50", "resid_corr"),
+                ("ls_resid_corr_top50_ci95_lo", "resid_corr_ci95_lo"),
+                ("ls_resid_corr_top50_ci95_hi", "resid_corr_ci95_hi"),
+                ("ls_resid_corr_cal_top50_sq", "r_cal_sq"),
+                ("ls_r_cal_sq_top50", "r_cal_sq"),
+                ("ls_resid_corr_cal_top50_sq_resamp_ci95_lo", "r_cal_sq_ci95_lo"),
+                ("ls_resid_corr_cal_top50_sq_resamp_ci95_hi", "r_cal_sq_ci95_hi"),
+                ("ls_sd_ratio_top50", "sd_pred_over_sd_obs"),
+                ("sd_pred_over_sd_obs", "sd_pred_over_sd_obs"),
+                ("ls_slope_obs_on_pred_top50", "slope_obs_on_pred"),
+                ("slope_obs_on_pred", "slope_obs_on_pred"),
+                ("ls_slope_deming_top50", "slope_deming"),
+                ("slope_deming", "slope_deming"),
+            )
+            for col_t2, col_au in col_aliases:
+                if col_au not in rec and col_t2 in r.index and np.isfinite(r[col_t2]):
+                    rec[col_au] = float(r[col_t2])
         if "Transfer_Mean" in by_m.index:
             rt = by_m.loc["Transfer_Mean"]
-            rec["disc_raw_tmean"] = float(rt["ctrl_disc_raw"])
+            rec["ctrl_disc_ownmasked_tmean"] = float(rt["ctrl_disc_raw"])
             rec["de50_r_tmean"] = float(rt["ctrl_de50_r"])
-            rec["cent_disc_raw_tmean"] = float(rt["cent_disc_raw"])
+            rec["cent_disc_ownmasked_tmean"] = float(rt["cent_disc_raw"])
             rec["cent_de50_r_tmean"] = float(rt["cent_de50_r"])
+        if "Transfer_Mean_VarScaled" in by_m.index:
+            rv = by_m.loc["Transfer_Mean_VarScaled"]
+            rec["tmvs_slope"] = float(rv["ls_slope_ols_top50"])
+            rec["tmvs_cal_r"] = float(rv["ls_resid_corr_cal_top50"])
+            for ck_src, ck_dst in (
+                ("ls_slope_ols_top50_ci95_lo", "tmvs_slope_ci95_lo"),
+                ("ls_slope_ols_top50_ci95_hi", "tmvs_slope_ci95_hi"),
+                ("ls_slope_ols_top50_ci975_lo", "tmvs_slope_ci975_lo"),
+                ("ls_slope_ols_top50_ci975_hi", "tmvs_slope_ci975_hi"),
+                ("ls_resid_corr_cal_top50_resamp_ci95_lo", "tmvs_cal_r_ci95_lo"),
+                ("ls_resid_corr_cal_top50_resamp_ci95_hi", "tmvs_cal_r_ci95_hi"),
+                ("ls_resid_corr_cal_top50_resamp_ci975_lo", "tmvs_cal_r_ci975_lo"),
+                ("ls_resid_corr_cal_top50_resamp_ci975_hi", "tmvs_cal_r_ci975_hi"),
+            ):
+                if ck_src in rv.index and np.isfinite(rv[ck_src]):
+                    rec[ck_dst] = float(rv[ck_src])
+        if "Hybrid_on_TMVS" in by_m.index:
+            rh = by_m.loc["Hybrid_on_TMVS"]
+            rec["hotmvs_slope"] = float(rh["ls_slope_ols_top50"])
+            rec["hotmvs_cal_r"] = float(rh["ls_resid_corr_cal_top50"])
+        if "FCT" in by_m.index:
+            rf = by_m.loc["FCT"]
+            rec["fct_slope"] = float(rf["ls_slope_ols_top50"])
+            rec["fct_cal_r"] = float(rf["ls_resid_corr_cal_top50"])
+        if "NegCtrl_TMVS_ShuffledVar" in by_m.index:
+            rsv = by_m.loc["NegCtrl_TMVS_ShuffledVar"]
+            rec["tmvs_shuf_var_slope"] = float(rsv["ls_slope_ols_top50"])
+            rec["tmvs_shuf_var_cal_r"] = float(rsv["ls_resid_corr_cal_top50"])
+        m_str = grp["method"].astype(str)
+        tmvs_ctrl_rows = grp[
+            m_str.str.startswith("NegCtrl_TMVS_MismatchedVar(") | (m_str == "NegCtrl_TMVS_ShuffledVar")
+        ]
+        if len(tmvs_ctrl_rows) > 0:
+            for col_c, dst_c in (
+                ("ls_slope_ols_top50_ci95_hi", "tmvs_max_ctrl_slope_ci95_hi"),
+                ("ls_slope_ols_top50_ci975_hi", "tmvs_max_ctrl_slope_ci975_hi"),
+                ("ls_resid_corr_cal_top50_resamp_ci95_hi", "tmvs_max_ctrl_cal_r_ci95_hi"),
+                ("ls_resid_corr_cal_top50_resamp_ci975_hi", "tmvs_max_ctrl_cal_r_ci975_hi"),
+            ):
+                if col_c in tmvs_ctrl_rows.columns:
+                    vals = tmvs_ctrl_rows[col_c].astype(float)
+                    vals = vals[np.isfinite(vals)]
+                    if len(vals) > 0:
+                        rec[dst_c] = float(vals.max())
+        if "NegCtrl_HybridProj_SrcCorrTgtVar" in by_m.index:
+            rs_tv = by_m.loc["NegCtrl_HybridProj_SrcCorrTgtVar"]
+            rec["sctv_slope"] = float(rs_tv["ls_slope_ols_top50"])
+            rec["sctv_slope_ci95_hi"] = float(rs_tv["ls_slope_ols_top50_ci95_hi"])
+            rec["sctv_cal_r"] = float(rs_tv["ls_resid_corr_cal_top50"])
+            if "ls_resid_corr_cal_top50_resamp_ci95_hi" in rs_tv.index and np.isfinite(
+                rs_tv["ls_resid_corr_cal_top50_resamp_ci95_hi"]
+            ):
+                rec["sctv_cal_r_ci95_hi"] = float(rs_tv["ls_resid_corr_cal_top50_resamp_ci95_hi"])
         if "CIPHER_Linear" in by_m.index:
             rec["cipher_linear_slope"] = float(by_m.loc["CIPHER_Linear", "ls_slope_ols_top50"])
         if mismatch_name in by_m.index:
@@ -78,6 +149,19 @@ def normalize_t2_long_table(
             rec["mismatch_slope"] = float(rm["ls_slope_ols_top50"])
             rec["mismatch_slope_ci95_lo"] = float(rm["ls_slope_ols_top50_ci95_lo"])
             rec["mismatch_slope_ci95_hi"] = float(rm["ls_slope_ols_top50_ci95_hi"])
+        # Support R3 multi-source mismatch rows (`NegCtrl_HybridProj_MismatchedCov(<line>)` or `::` or `_`)
+        mis_rows = grp[
+            m_str.str.startswith(f"{mismatch_name}(")
+            | m_str.str.startswith(f"{mismatch_name}::")
+            | m_str.str.startswith(f"{mismatch_name}_")
+            | (m_str == mismatch_name)
+        ]
+        if len(mis_rows) > 0:
+            idx_max = mis_rows["ls_slope_ols_top50_ci95_hi"].astype(float).idxmax()
+            rec["max_mismatch_slope"] = float(mis_rows.loc[idx_max, "ls_slope_ols_top50"])
+            rec["max_mismatch_ci95_hi"] = float(mis_rows.loc[idx_max, "ls_slope_ols_top50_ci95_hi"])
+            if "ls_slope_ols_top50_ci975_hi" in mis_rows.columns:
+                rec["max_mismatch_ci975_hi"] = float(mis_rows["ls_slope_ols_top50_ci975_hi"].astype(float).max())
         if shuf_name in by_m.index:
             rec["shuf_target_slope"] = float(by_m.loc[shuf_name, "ls_slope_ols_top50"])
         rows.append(rec)
@@ -175,27 +259,156 @@ def render_audit_markdown(
 ) -> str:
     """Render an unvarnished Markdown audit report from independent audit artifacts."""
     v = audit_summary["verdict"]
+    conf_lines = v.get("confirmatory_lines", audit_summary["lines"])
+    gov = v.get("r4_wording_governance", {})
+    gov_r14 = v.get("r14_mechanism_governance", {})
+    vb = v.get("Group_B")
+    ci_pct = f"{100.0 * v.get('ci_level', 0.975):.1f}%"
     lines = [
         "# Team A Independent Statistical Audit Report (A-T3)",
         "",
         f"- **Evaluated Cell Lines ({len(audit_summary['lines'])})**: {', '.join(audit_summary['lines'])}",
+        f"- **Confirmatory Cell Lines ({len(conf_lines)})**: {', '.join(conf_lines)}",
         f"- **Common Aligned Genes**: {audit_summary['n_common_genes']}",
-        f"- **Independent Overall Verdict**: **{v['overall_verdict']}**",
+        f"- **Confirmatory Two-Sided CI Level (R13 Bonferroni)**: **{ci_pct}**",
+        f"- **Independent Group A Verdict (`Hybrid_ProjShared`)**: **{v['overall_verdict']}**",
+        f"- **Independent Group B Verdict (`Transfer_Mean_VarScaled`)**: **{vb['overall_verdict']}**" if vb else "- **Independent Group B Verdict**: NA",
         "",
         "## 1. Pre-Registered Hypothesis Adjudication",
         "",
-        f"- **H-A1** (Line-specific slope 95% CI lower bound > 0.13): {'PASS' if v['H-A1']['pass'] else 'FAIL'} ({v['H-A1']['count']}/{v['n_lines']} lines: {v['H-A1']['lines']})",
-        f"- **H-A2** (Noise-calibrated correlation 95% CI lower bound > 0): {'PASS' if v['H-A2']['pass'] else 'FAIL'} ({v['H-A2']['count']}/{v['n_lines']} lines: {v['H-A2']['lines']})",
-        f"- **H-A3** (Mismatched covariance slope CI strictly below matched CI): {'PASS' if v['H-A3']['pass'] else 'FAIL'} ({v['H-A3']['count']}/{v['n_lines']} lines: {v['H-A3']['lines']})",
-        f"- **H-A4** (Hybrid non-inferior to Transferred Mean on disc_raw and de50_r): {'PASS' if v['H-A4']['pass'] else 'FAIL'} (disc_raw inferior: {v['H-A4']['disc_raw_inferior_count']}/{v['n_lines']}, de50_r inferior: {v['H-A4']['de50_r_inferior_count']}/{v['n_lines']})",
+        f"### Group A (`Hybrid_ProjShared`, {ci_pct} CI)",
         "",
-        "## 2. Per-Line Independent Recomputation Table",
-        "",
-        audit_df.to_markdown(index=False),
+        f"- **H-A1** (Line-specific slope {ci_pct} CI lower bound > 0.13): {'PASS' if v['H-A1']['pass'] else 'FAIL'} ({v['H-A1']['count']}/{v['n_lines']} lines: {v['H-A1']['lines']})",
+        f"- **H-A2** (Noise-calibrated correlation {ci_pct} CI lower bound > 0): {'PASS' if v['H-A2']['pass'] else 'FAIL'} ({v['H-A2']['count']}/{v['n_lines']} lines: {v['H-A2']['lines']})",
+        f"- **H-A3** (Matched > ALL K-1 mismatched covs, max mismatch CI_hi < matched CI_lo): {'PASS' if v['H-A3']['pass'] else 'FAIL'} ({v['H-A3']['count']}/{v['n_lines']} lines: {v['H-A3']['lines']})",
+        f"- **H-A4** (Hybrid non-inferior to Transferred Mean across ALL 6 conventions, {ci_pct} CI): {'PASS' if v['H-A4']['pass'] else 'FAIL'} "
+        f"(ctrl_disc_panel inf: {v['H-A4']['disc_raw_inferior_count']}/{v['n_lines']}, "
+        f"ctrl_disc_ownmasked inf: {v['H-A4'].get('ctrl_disc_ownmasked_inferior_count', 'NA')}/{v['n_lines']}, "
+        f"ctrl_de50_r inf: {v['H-A4']['de50_r_inferior_count']}/{v['n_lines']}, "
+        f"cent_disc_panel inf: {v['H-A4'].get('cent_disc_raw_inferior_count', 'NA')}/{v['n_lines']}, "
+        f"cent_disc_ownmasked inf: {v['H-A4'].get('cent_disc_ownmasked_inferior_count', 'NA')}/{v['n_lines']}, "
+        f"cent_de50_r inf: {v['H-A4'].get('cent_de50_r_inferior_count', 'NA')}/{v['n_lines']})",
         "",
     ]
+    if vb:
+        hb4 = vb.get("H-B4", {})
+        vcc_rng = vb.get("vcc2026_top10_range_check", {})
+        lines.extend(
+            [
+                f"### Group B (`Transfer_Mean_VarScaled`, {ci_pct} CI, R12)",
+                "",
+                f"- **H-B1** (TMVS slope {ci_pct} CI lower bound > 0.13): {'PASS' if vb['H-B1']['pass'] else 'FAIL'} ({vb['H-B1']['count']}/{vb['n_lines']} lines: {vb['H-B1']['lines']})",
+                f"- **H-B2** (TMVS r_cal {ci_pct} CI lower bound > 0): {'PASS' if vb['H-B2']['pass'] else 'FAIL'} ({vb['H-B2']['count']}/{vb['n_lines']} lines: {vb['H-B2']['lines']})",
+                f"- **H-B3** (TMVS > ALL K-1 mismatched var + shuffled var on BOTH slope & r_cal, {ci_pct} CI): {'PASS' if vb['H-B3']['pass'] else 'FAIL'} ({vb['H-B3']['count']}/{vb['n_lines']} lines: {vb['H-B3']['lines']})",
+                f"- **H-B4** (TMVS non-inferior across ALL 6 conventions, {ci_pct} CI): {'PASS' if hb4.get('pass') else 'FAIL'} "
+                f"(ctrl_disc_panel={hb4.get('ctrl_disc_panel_inferior_count', 'NA')}, ctrl_disc_ownmasked={hb4.get('ctrl_disc_ownmasked_inferior_count', 'NA')}, "
+                f"ctrl_de50_r={hb4.get('ctrl_de50_r_inferior_count', 'NA')}, cent_disc_panel={hb4.get('cent_disc_panel_inferior_count', 'NA')}, "
+                f"cent_disc_ownmasked={hb4.get('cent_disc_ownmasked_inferior_count', 'NA')}, cent_de50_r={hb4.get('cent_de50_r_inferior_count', 'NA')})",
+                f"- **Descriptive VCC 2026 Top-10 Range [0.02, 0.13]**: {vcc_rng.get('count', 0)}/{vb['n_lines']} confirmatory lines ({vcc_rng.get('lines', [])}) — *Caveat*: {vcc_rng.get('r6_caveat', '')}",
+                "",
+            ]
+        )
+    if gov or gov_r14:
+        lines.extend(
+            [
+                "### R4 & R14 Mechanism Wording Governance",
+                "",
+                f"- **Beats `SrcCorrTgtVar` on both slope & cal_r (all confirmatory lines, disjoint CI)**: `{gov.get('beats_src_corr_tgt_var_all_conf_slope_and_cal')}`",
+                f"- **Beats `Transfer_Mean_VarScaled` on cal_r (all confirmatory lines, disjoint CI)**: `{gov.get('beats_transfer_mean_var_scaled_all_conf_cal')}`",
+                f"- **Permitted R4 Wording**: `{gov.get('allowed_mechanism_phrase')}`",
+                f"- **Variance Caveat**: `{gov.get('marginal_variance_caveat')}`",
+                f"- **R14 `Hybrid_on_TMVS > TMVS` on r_cal (all confirmatory lines, paired 95% CI lo > 0)**: `{gov_r14.get('hotmvs_beats_tmvs_cal_r_all_conf_ci95_lo_gt_0')}`",
+                f"- **Permitted R14 Statement**: `{gov_r14.get('allowed_cofluctuation_increment_phrase')}`",
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            "## 2. Per-Line Independent Recomputation Table",
+            "",
+            audit_df.to_markdown(index=False),
+            "",
+        ]
+    )
+    # R12/R14/R15 clean breakdown tables when columns exist
+    s5_s6_cols = [
+        c
+        for c in (
+            "line",
+            "rho_ab_top50",
+            "noise_ceiling_r",
+            "rho_ab_all_nontarget",
+            "noise_ceiling_r_all_nontarget",
+            "hybrid_cal_r_all_nontarget",
+            "tmvs_cal_r_all_nontarget",
+            "s5_n_expressed_genes",
+            "s5_hybrid_cal_r",
+            "s5_tmvs_cal_r",
+            "s5_tmvs_slope",
+            "fct_slope",
+            "fct_cal_r",
+            "hotmvs_slope",
+            "hotmvs_cal_r",
+            "r14_hotmvs_minus_tmvs_cal_r",
+            "r14_hotmvs_minus_tmvs_cal_r_ci95_lo",
+            "r14_hotmvs_minus_tmvs_cal_r_ci95_hi",
+        )
+        if c in audit_df.columns
+    ]
+    if len(s5_s6_cols) > 1:
+        lines.extend(
+            [
+                "### R14 Mechanism & R15 Secondary Baselines / S5 Expressed / S6 Ceilings",
+                "",
+                audit_df[s5_s6_cols].to_markdown(index=False),
+                "",
+            ]
+        )
+
+    detailed = audit_summary.get("detailed", {})
+    ctrl_rows = []
+    for ln in audit_summary["lines"]:
+        dl = detailed.get(ln, {})
+        for src, vals in dl.get("mismatch_by_source", {}).items():
+            ctrl_rows.append(
+                {
+                    "target_line": ln,
+                    "group": "Group_A_MismatchedCov",
+                    "control": src,
+                    "slope_ols": vals.get("slope_ols"),
+                    "slope_ci975_hi": vals.get("slope_ols_ci975_hi"),
+                    "noise_cal_corr": vals.get("noise_cal_corr"),
+                    "cal_r_ci975_hi": None,
+                }
+            )
+        for ck, vals in dl.get("tmvs_ctrls", {}).items():
+            ctrl_rows.append(
+                {
+                    "target_line": ln,
+                    "group": "Group_B_TMVS_Ctrl",
+                    "control": ck,
+                    "slope_ols": vals.get("slope_ols"),
+                    "slope_ci975_hi": vals.get("slope_ols_ci975_hi"),
+                    "noise_cal_corr": vals.get("noise_cal_corr"),
+                    "cal_r_ci975_hi": vals.get("noise_cal_corr_ci975_hi"),
+                }
+            )
+    if ctrl_rows:
+        lines.extend(
+            [
+                "### R3 & R12 All Mismatched / Shuffled Control Specificity Details",
+                "",
+                pd.DataFrame(ctrl_rows).to_markdown(index=False),
+                "",
+            ]
+        )
 
     if comparison is not None:
+        our_dual = (
+            f"Group A: {v['overall_verdict']} | Group B: {vb['overall_verdict']}"
+            if vb
+            else v["overall_verdict"]
+        )
         lines.extend(
             [
                 "## 3. Cross-Check Against A-T2 Results",
@@ -204,7 +417,7 @@ def render_audit_markdown(
                 f"- **Numeric Comparisons**: {comparison['n_comparisons']}",
                 f"- **Flagged Discrepancies (> {comparison['tol']})**: {comparison['n_flagged']}",
                 f"- **Max Absolute Difference**: {comparison['max_abs_diff']:.6g}",
-                f"- **T2 Verdict vs A-T3 Verdict**: `{t2_verdict}` vs `{v['overall_verdict']}`",
+                f"- **T2 Verdict vs A-T3 Verdict**: `{t2_verdict}` vs `{our_dual}`",
                 "",
             ]
         )
@@ -240,9 +453,12 @@ def main() -> None:
         (args.audit_dir / "cross_check_diffs.json").write_text(json.dumps(comp, indent=2))
     if args.t2_adj_json and args.t2_adj_json.exists():
         adj = json.loads(args.t2_adj_json.read_text())
-        hyp_verdicts = [adj.get(h, {}).get("verdict") for h in ("H-A1", "H-A2", "H-A3", "H-A4")]
-        if all(v is not None for v in hyp_verdicts):
-            t2_verdict = "CONFIRMED" if all(v == "CONFIRMED" for v in hyp_verdicts) else "未确认"
+        if "R13_Dual_Summary" in adj:
+            t2_verdict = adj["R13_Dual_Summary"]
+        else:
+            hyp_verdicts = [adj.get(h, {}).get("verdict") for h in ("H-A1", "H-A2", "H-A3", "H-A4")]
+            if all(v is not None for v in hyp_verdicts):
+                t2_verdict = "CONFIRMED" if all(v == "CONFIRMED" for v in hyp_verdicts) else "未确认"
     elif args.t2_summary_json and args.t2_summary_json.exists():
         t2_sum = json.loads(args.t2_summary_json.read_text())
         t2_verdict = t2_sum.get("overall_verdict") or t2_sum.get("verdict", {}).get("overall_verdict")

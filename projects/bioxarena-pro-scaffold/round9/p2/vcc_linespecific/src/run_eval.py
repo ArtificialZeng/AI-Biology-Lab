@@ -122,7 +122,109 @@ def build_source_input(
         deltas=ds.deltas[keep],
         target_indices=ds.target_indices[keep],
         target_names=tuple(ds.target_names[i] for i in np.where(keep)[0]),
+        ctrl_mean_libnorm=ds.ctrl_mean_libnorm if ds.representation == "log1p" else None,
     )
+
+
+def _evaluate_s5_top75_var(
+    preds: Dict[str, np.ndarray],
+    true_deltas: np.ndarray,
+    transfer_ref: np.ndarray,
+    target_ctrl_cov: np.ndarray,
+    q_gidx: np.ndarray,
+    ha_sub: Optional[np.ndarray],
+    hb_sub: Optional[np.ndarray],
+    obs_sub: Optional[np.ndarray],
+    tr_sub: Optional[np.ndarray],
+    hv_mask: Optional[np.ndarray],
+    n_boot: int,
+    seed: int,
+) -> Dict[str, Any]:
+    """PREREG_AUDIT_R2 S5: Recompute r_cal and slope after dropping bottom 25% target ctrl variance genes."""
+    diag_t = np.diag(np.asarray(target_ctrl_cov, dtype=np.float64))
+    G_dim = diag_t.shape[0]
+    order = np.argsort(diag_t)
+    keep_cols = np.zeros(G_dim, dtype=bool)
+    keep_cols[order[G_dim // 4 :]] = True
+    old_to_new = np.full(G_dim, -1, dtype=np.int64)
+    old_to_new[keep_cols] = np.arange(int(np.sum(keep_cols)), dtype=np.int64)
+    q_gidx_s5 = np.array(
+        [int(old_to_new[ti]) if 0 <= int(ti) < G_dim else -1 for ti in q_gidx],
+        dtype=np.int64,
+    )
+
+    ceil_s5 = None
+    if ha_sub is not None and hb_sub is not None and obs_sub is not None and tr_sub is not None:
+        q_hv = q_gidx_s5[hv_mask] if hv_mask is not None else q_gidx_s5
+        ceil_s5 = compute_splithalf_noise_ceiling(
+            delta_half_a=ha_sub[:, keep_cols],
+            delta_half_b=hb_sub[:, keep_cols],
+            delta_obs_full=obs_sub[:, keep_cols],
+            delta_src_mean=tr_sub[:, keep_cols],
+            target_gene_idx=q_hv,
+            top_k=50,
+            n_boot=n_boot,
+            seed=seed,
+        )
+
+    s5_methods = [
+        "Hybrid_ProjShared",
+        "Transfer_Mean_VarScaled",
+        "Hybrid_on_TMVS",
+        "FCT",
+        "NegCtrl_HybridProj_SrcCorrTgtVar",
+        "NegCtrl_TMVS_ShuffledVar",
+    ]
+    out_methods: Dict[str, Any] = {}
+    d_obs_s5 = true_deltas[:, keep_cols]
+    tr_s5 = transfer_ref[:, keep_cols]
+    for m_name in s5_methods:
+        if m_name not in preds:
+            continue
+        ls_s5 = compute_line_specific_metrics_and_boots(
+            delta_obs=d_obs_s5,
+            delta_pred=preds[m_name][:, keep_cols],
+            delta_src_mean=tr_s5,
+            target_gene_idx=q_gidx_s5,
+            top_k=50,
+            n_boot=n_boot,
+            seed=seed,
+        )["resp_top50"]
+        ceil_val = ceil_s5["resp_top50"]["ceiling_r"] if ceil_s5 is not None else float("nan")
+        cal_r = (
+            ls_s5["resid_corr"] / ceil_val
+            if (np.isfinite(ceil_val) and ceil_val > 0)
+            else float("nan")
+        )
+        ci95 = [float("nan"), float("nan")]
+        ci975 = [float("nan"), float("nan")]
+        vfrac = 0.0
+        if ceil_s5 is not None:
+            b_cal = ls_s5["boot_resid_corr"] / ceil_s5["resp_top50"]["boot_ceiling_r"]
+            vfrac = float(np.mean(np.isfinite(b_cal)))
+            if np.isfinite(cal_r) and ceil_val > 0 and vfrac >= 0.95:
+                ci95 = np.nanpercentile(b_cal, [2.5, 97.5]).tolist()
+                ci975 = np.nanpercentile(b_cal, [1.25, 98.75]).tolist()
+        out_methods[m_name] = {
+            "ls_slope_ols_top50": ls_s5["slope_ols"],
+            "ls_slope_ols_top50_ci95": ls_s5["slope_ols_ci95"],
+            "ls_slope_ols_top50_ci975": ls_s5["slope_ols_ci975"],
+            "ls_resid_corr_top50": ls_s5["resid_corr"],
+            "ls_resid_corr_cal_top50": cal_r,
+            "ls_resid_corr_cal_top50_sq": float(cal_r ** 2) if np.isfinite(cal_r) else float("nan"),
+            "ls_resid_corr_cal_top50_resamp_ci95": ci95,
+            "ls_resid_corr_cal_top50_resamp_ci975": ci975,
+            "ls_resid_corr_cal_top50_resamp_valid_frac": vfrac,
+        }
+    return {
+        "n_genes_total": int(G_dim),
+        "n_genes_kept": int(np.sum(keep_cols)),
+        "rho_half_ab_top50": ceil_s5["resp_top50"]["rho_half_ab"] if ceil_s5 else float("nan"),
+        "ceiling_r_top50": ceil_s5["resp_top50"]["ceiling_r"] if ceil_s5 else float("nan"),
+        "rho_half_ab_all": ceil_s5["all_nontarget"]["rho_half_ab"] if ceil_s5 else float("nan"),
+        "ceiling_r_all": ceil_s5["all_nontarget"]["ceiling_r"] if ceil_s5 else float("nan"),
+        "methods": out_methods,
+    }
 
 
 def select_eval_targets(
@@ -183,20 +285,28 @@ def evaluate_datasets(
     pert_noise_ceilings: Dict[str, Dict[str, Any]] = {}
     drf_calibration: Dict[str, Dict[str, Any]] = {}
     lam_by_target_line: Dict[str, float] = {}
-    mismatched_cov_source_by_line: Dict[str, str] = {}
+    mismatched_cov_sources_by_line: Dict[str, List[str]] = {}
+    s5_expressed_top75: Dict[str, Dict[str, Any]] = {}
     saved_eval_by_line: Dict[str, Dict[str, Any]] = {}
 
     comparisons = [
         ("Hybrid_Raw", "Transfer_Mean"),
         ("Hybrid_ProjShared", "Transfer_Mean"),
+        ("Hybrid_ProjShared", "Transfer_Mean_VarScaled"),
+        ("Hybrid_ProjShared", "NegCtrl_HybridProj_SrcCorrTgtVar"),
+        ("Hybrid_ProjShared", "NegCtrl_HybridProj_ShuffledGenes"),
+        ("Hybrid_ProjShared", "NegCtrl_HybridProj_DiagCov"),
         ("CIPHER_Linear", "Transfer_Mean"),
-        ("CIPHER_Linear", "NegCtrl_CIPHER_MismatchedCov"),
         ("CIPHER_Linear", "NegCtrl_CIPHER_ShuffledGenes"),
         ("CIPHER_Linear", "NegCtrl_CIPHER_DiagCov"),
-        ("Hybrid_Raw", "NegCtrl_Hybrid_MismatchedCov"),
         ("Hybrid_Raw", "NegCtrl_Hybrid_ShuffledGenes"),
-        ("Hybrid_ProjShared", "NegCtrl_HybridProj_MismatchedCov"),
-        ("Hybrid_ProjShared", "NegCtrl_HybridProj_ShuffledGenes"),
+        ("NegCtrl_HybridProj_SrcCorrTgtVar", "Transfer_Mean_VarScaled"),
+        # PREREG_AUDIT_R2 Group B (TMVS) & R14/R15 comparisons
+        ("Transfer_Mean_VarScaled", "Transfer_Mean"),
+        ("Transfer_Mean_VarScaled", "NegCtrl_TMVS_ShuffledVar"),
+        ("Transfer_Mean_VarScaled", "FCT"),
+        ("Hybrid_on_TMVS", "Transfer_Mean_VarScaled"),
+        ("Hybrid_on_TMVS", "Transfer_Mean"),
     ]
 
     for t_idx_line, target_line in enumerate(line_names):
@@ -215,24 +325,35 @@ def evaluate_datasets(
         # Target-line control covariance ONLY (zero perturbation leakage)
         t_ctrl_sub = _subsample_ctrl(t_ds.ctrl_cells, cov_max_cells=cov_max_cells, seed=42)
         t_ctrl_cov = compute_control_covariance(t_ctrl_sub, shrink=shrink)
-        mis_src = src_inputs[t_idx_line % len(src_inputs)]
-        mis_cov = mis_src.ctrl_cov
-        mismatched_cov_source_by_line[target_line] = mis_src.name
+        mismatched_cov_sources_by_line[target_line] = list(src_names)
         preds = predict_zero_shot_suite(
             state=state,
             target_ctrl_cov=t_ctrl_cov,
             query_target_names=q_names,
             query_target_gene_indices=q_gidx,
-            mismatched_ctrl_cov=mis_cov,
+            mismatched_ctrl_cov=None,
             shuffle_seed=42,
+            target_ctrl_mean_libnorm=(
+                t_ds.ctrl_mean_libnorm if t_ds.representation == "log1p" else None
+            ),
         )
         true_deltas = t_ds.deltas[row_idx]
         transfer_ref = preds["Transfer_Mean"]
+        _cos_keep = {
+            "Transfer_Mean",
+            "CIPHER_Linear",
+            "Hybrid_Raw",
+            "Hybrid_ProjShared",
+            "Transfer_Mean_VarScaled",
+            "Hybrid_on_TMVS",
+            "FCT",
+            "NegCtrl_HybridProj_SrcCorrTgtVar",
+        }
         saved_eval_by_line[target_line] = {
             "target_to_row": {t: idx for idx, t in enumerate(q_names)},
             "q_gidx": q_gidx,
             "true_deltas": true_deltas.astype(np.float32),
-            "preds": {k: v.astype(np.float32) for k, v in preds.items()},
+            "preds": {k: v.astype(np.float32) for k, v in preds.items() if k in _cos_keep},
         }
 
         ctrl_reliability[target_line] = control_splithalf_covariance_reliability(
@@ -243,6 +364,7 @@ def evaluate_datasets(
         ceil_info = None
         pos_metrics_cent = None
         pos_metrics_ctrl = None
+        ha_sub = hb_sub = obs_sub = tr_sub = hv_mask_eval = None
         if t_ds.half_a_deltas is not None and t_ds.half_b_deltas is not None:
             hv_mask = (
                 t_ds.half_valid[row_idx]
@@ -250,6 +372,7 @@ def evaluate_datasets(
                 else np.ones(len(row_idx), dtype=bool)
             )
             if np.sum(hv_mask) >= 10:
+                hv_mask_eval = hv_mask
                 ha_sub = t_ds.half_a_deltas[row_idx][hv_mask]
                 hb_sub = t_ds.half_b_deltas[row_idx][hv_mask]
                 obs_sub = true_deltas[hv_mask]
@@ -331,12 +454,14 @@ def evaluate_datasets(
                 "cent_de50_r": rm_cent["de50_r"],
                 "cent_de50_sign": rm_cent["de50_sign"],
                 "cent_disc_raw": rm_cent["disc_raw"],
+                "cent_disc_raw_panel": rm_cent["disc_raw_panel"],
                 "cent_v5": rm_cent["v5"],
                 "cent_disc_v5": rm_cent["disc_v5"],
                 "ctrl_delta_r": rm_ctrl["delta_r"],
                 "ctrl_de50_r": rm_ctrl["de50_r"],
                 "ctrl_de50_sign": rm_ctrl["de50_sign"],
                 "ctrl_disc_raw": rm_ctrl["disc_raw"],
+                "ctrl_disc_raw_panel": rm_ctrl["disc_raw_panel"],
                 "pds_cosine_panel": rm_ctrl.get("pds_cosine_panel", rm_ctrl["disc_raw"]),
             }
             row_metrics_by_method[m_name] = merged
@@ -347,7 +472,7 @@ def evaluate_datasets(
             top50_ls = ls_res["resp_top50"]
             all_ls = ls_res["all_nontarget"]
 
-            # Noise-calibrated correlation (H-A2) if split-half ceiling is positive
+            # Noise-calibrated correlation & r_cal^2 (H-A2, R11) if split-half ceiling is positive
             ceil_top50 = ceil_info["resp_top50"]["ceiling_r"] if ceil_info else float("nan")
             ceil_all = ceil_info["all_nontarget"]["ceiling_r"] if ceil_info else float("nan")
             cal_r_top50 = (
@@ -355,55 +480,111 @@ def evaluate_datasets(
                 if (np.isfinite(ceil_top50) and ceil_top50 > 0)
                 else float("nan")
             )
+            cal_r_sq_top50 = float(cal_r_top50 ** 2) if np.isfinite(cal_r_top50) else float("nan")
             cal_r_top50_ci_fixed = (
                 [c / ceil_top50 for c in top50_ls["resid_corr_ci95"]]
                 if (np.isfinite(ceil_top50) and ceil_top50 > 0)
                 else [float("nan"), float("nan")]
             )
+            if np.isfinite(ceil_top50) and ceil_top50 > 0 and np.any(np.isfinite(top50_ls["boot_resid_corr"])):
+                cal_r_sq_top50_ci_fixed = np.nanpercentile(
+                    np.square(top50_ls["boot_resid_corr"] / ceil_top50), [2.5, 97.5]
+                ).tolist()
+            else:
+                cal_r_sq_top50_ci_fixed = [float("nan"), float("nan")]
+
             cal_r_top50_ci_resamp = [float("nan"), float("nan")]
+            cal_r_top50_ci975_resamp = [float("nan"), float("nan")]
+            cal_r_sq_top50_ci_resamp = [float("nan"), float("nan")]
+            cal_r_sq_top50_ci975_resamp = [float("nan"), float("nan")]
             cal_r_top50_resamp_valid_frac = 0.0
+            boot_cal_top50 = np.full_like(top50_ls["boot_resid_corr"], np.nan)
             if ceil_info is not None:
                 b_cal = top50_ls["boot_resid_corr"] / ceil_info["resp_top50"]["boot_ceiling_r"]
                 cal_r_top50_resamp_valid_frac = float(np.mean(np.isfinite(b_cal)))
-                if np.any(np.isfinite(b_cal)):
+                # PREREG_A §5.2: require >= 95% finite joint-bootstrap draws & positive full-sample ceiling
+                if (
+                    np.isfinite(cal_r_top50)
+                    and ceil_top50 > 0
+                    and cal_r_top50_resamp_valid_frac >= 0.95
+                ):
+                    boot_cal_top50 = b_cal
                     cal_r_top50_ci_resamp = np.nanpercentile(b_cal, [2.5, 97.5]).tolist()
+                    cal_r_top50_ci975_resamp = np.nanpercentile(b_cal, [1.25, 98.75]).tolist()
+                    cal_r_sq_top50_ci_resamp = np.nanpercentile(np.square(b_cal), [2.5, 97.5]).tolist()
+                    cal_r_sq_top50_ci975_resamp = np.nanpercentile(np.square(b_cal), [1.25, 98.75]).tolist()
+            top50_ls["resid_corr_cal"] = cal_r_top50
+            top50_ls["boot_resid_corr_cal"] = boot_cal_top50
 
             cal_r_all = (
                 all_ls["resid_corr"] / ceil_all
                 if (np.isfinite(ceil_all) and ceil_all > 0)
                 else float("nan")
             )
+            cal_r_sq_all = float(cal_r_all ** 2) if np.isfinite(cal_r_all) else float("nan")
             cal_r_all_ci_fixed = (
                 [c / ceil_all for c in all_ls["resid_corr_ci95"]]
                 if (np.isfinite(ceil_all) and ceil_all > 0)
                 else [float("nan"), float("nan")]
             )
             cal_r_all_ci_resamp = [float("nan"), float("nan")]
+            cal_r_all_ci975_resamp = [float("nan"), float("nan")]
+            cal_r_sq_all_ci_resamp = [float("nan"), float("nan")]
+            cal_r_all_resamp_valid_frac = 0.0
             if ceil_info is not None:
                 b_cal_all = all_ls["boot_resid_corr"] / ceil_info["all_nontarget"]["boot_ceiling_r"]
-                if np.any(np.isfinite(b_cal_all)):
+                cal_r_all_resamp_valid_frac = float(np.mean(np.isfinite(b_cal_all)))
+                if (
+                    np.isfinite(cal_r_all)
+                    and ceil_all > 0
+                    and cal_r_all_resamp_valid_frac >= 0.95
+                ):
                     cal_r_all_ci_resamp = np.nanpercentile(b_cal_all, [2.5, 97.5]).tolist()
+                    cal_r_all_ci975_resamp = np.nanpercentile(b_cal_all, [1.25, 98.75]).tolist()
+                    cal_r_sq_all_ci_resamp = np.nanpercentile(np.square(b_cal_all), [2.5, 97.5]).tolist()
 
             rec: Dict[str, Any] = {
                 "target_line": target_line,
                 "n_eval_targets": int(len(row_idx)),
                 "method": m_name,
                 "lambda_src": float(state.lam),
-                # Primary & sensitivity line-specific metrics (LINE_SPECIFIC_METRIC.md)
+                # Primary & sensitivity line-specific metrics (LINE_SPECIFIC_METRIC.md & R6/R11/R13)
                 "ls_slope_ols_top50": top50_ls["slope_ols"],
                 "ls_slope_ols_top50_ci95_lo": top50_ls["slope_ols_ci95"][0],
                 "ls_slope_ols_top50_ci95_hi": top50_ls["slope_ols_ci95"][1],
+                "ls_slope_ols_top50_ci975_lo": top50_ls["slope_ols_ci975"][0],
+                "ls_slope_ols_top50_ci975_hi": top50_ls["slope_ols_ci975"][1],
                 "ls_slope_noint_top50": top50_ls["slope_no_intercept"],
                 "ls_slope_per_pert_top50": top50_ls["per_pert_slope_mean"],
+                "ls_sd_ratio_top50": top50_ls["sd_ratio"],
+                "ls_sd_ratio_top50_ci95_lo": top50_ls["sd_ratio_ci95"][0],
+                "ls_sd_ratio_top50_ci95_hi": top50_ls["sd_ratio_ci95"][1],
+                "ls_slope_obs_on_pred_top50": top50_ls["slope_obs_on_pred"],
+                "ls_slope_obs_on_pred_top50_ci95_lo": top50_ls["slope_obs_on_pred_ci95"][0],
+                "ls_slope_obs_on_pred_top50_ci95_hi": top50_ls["slope_obs_on_pred_ci95"][1],
+                "ls_slope_deming_top50": top50_ls["slope_deming"],
+                "ls_slope_deming_top50_ci95_lo": top50_ls["slope_deming_ci95"][0],
+                "ls_slope_deming_top50_ci95_hi": top50_ls["slope_deming_ci95"][1],
                 "ls_resid_corr_top50": top50_ls["resid_corr"],
                 "ls_resid_corr_top50_ci95_lo": top50_ls["resid_corr_ci95"][0],
                 "ls_resid_corr_top50_ci95_hi": top50_ls["resid_corr_ci95"][1],
+                "ls_resid_corr_top50_ci975_lo": top50_ls["resid_corr_ci975"][0],
+                "ls_resid_corr_top50_ci975_hi": top50_ls["resid_corr_ci975"][1],
                 "ls_resid_corr_cal_top50": cal_r_top50,
                 "ls_resid_corr_cal_top50_ci95_lo": cal_r_top50_ci_fixed[0],
                 "ls_resid_corr_cal_top50_ci95_hi": cal_r_top50_ci_fixed[1],
                 "ls_resid_corr_cal_top50_resamp_ci95_lo": cal_r_top50_ci_resamp[0],
                 "ls_resid_corr_cal_top50_resamp_ci95_hi": cal_r_top50_ci_resamp[1],
+                "ls_resid_corr_cal_top50_resamp_ci975_lo": cal_r_top50_ci975_resamp[0],
+                "ls_resid_corr_cal_top50_resamp_ci975_hi": cal_r_top50_ci975_resamp[1],
                 "ls_resid_corr_cal_top50_resamp_valid_frac": cal_r_top50_resamp_valid_frac,
+                "ls_resid_corr_cal_top50_sq": cal_r_sq_top50,
+                "ls_resid_corr_cal_top50_sq_ci95_lo": cal_r_sq_top50_ci_fixed[0],
+                "ls_resid_corr_cal_top50_sq_ci95_hi": cal_r_sq_top50_ci_fixed[1],
+                "ls_resid_corr_cal_top50_sq_resamp_ci95_lo": cal_r_sq_top50_ci_resamp[0],
+                "ls_resid_corr_cal_top50_sq_resamp_ci95_hi": cal_r_sq_top50_ci_resamp[1],
+                "ls_resid_corr_cal_top50_sq_resamp_ci975_lo": cal_r_sq_top50_ci975_resamp[0],
+                "ls_resid_corr_cal_top50_sq_resamp_ci975_hi": cal_r_sq_top50_ci975_resamp[1],
                 "ls_resid_corr_per_pert_top50": top50_ls["per_pert_corr_mean"],
                 "pred_vs_obs_cosine_top50": top50_ls["pred_vs_obs_cosine_mean"],
                 "ls_slope_ols_all": all_ls["slope_ols"],
@@ -411,6 +592,9 @@ def evaluate_datasets(
                 "ls_slope_ols_all_ci95_hi": all_ls["slope_ols_ci95"][1],
                 "ls_slope_noint_all": all_ls["slope_no_intercept"],
                 "ls_slope_per_pert_all": all_ls["per_pert_slope_mean"],
+                "ls_sd_ratio_all": all_ls["sd_ratio"],
+                "ls_slope_obs_on_pred_all": all_ls["slope_obs_on_pred"],
+                "ls_slope_deming_all": all_ls["slope_deming"],
                 "ls_resid_corr_all": all_ls["resid_corr"],
                 "ls_resid_corr_all_ci95_lo": all_ls["resid_corr_ci95"][0],
                 "ls_resid_corr_all_ci95_hi": all_ls["resid_corr_ci95"][1],
@@ -419,6 +603,12 @@ def evaluate_datasets(
                 "ls_resid_corr_cal_all_ci95_hi": cal_r_all_ci_fixed[1],
                 "ls_resid_corr_cal_all_resamp_ci95_lo": cal_r_all_ci_resamp[0],
                 "ls_resid_corr_cal_all_resamp_ci95_hi": cal_r_all_ci_resamp[1],
+                "ls_resid_corr_cal_all_resamp_ci975_lo": cal_r_all_ci975_resamp[0],
+                "ls_resid_corr_cal_all_resamp_ci975_hi": cal_r_all_ci975_resamp[1],
+                "ls_resid_corr_cal_all_resamp_valid_frac": cal_r_all_resamp_valid_frac,
+                "ls_resid_corr_cal_all_sq": cal_r_sq_all,
+                "ls_resid_corr_cal_all_sq_resamp_ci95_lo": cal_r_sq_all_ci_resamp[0],
+                "ls_resid_corr_cal_all_sq_resamp_ci95_hi": cal_r_sq_all_ci_resamp[1],
             }
             for k, arr in merged.items():
                 rec[k] = float(np.mean(arr))
@@ -438,25 +628,33 @@ def evaluate_datasets(
 
         pooled_strata.extend([target_line] * len(row_idx))
 
-        # Per-line paired bootstrap CIs for row-averaged metrics
+        # Per-line paired bootstrap CIs for row-averaged metrics (including both A-T2 & A-T3 panel disc)
         row_met_keys = [
             "cent_disc_raw",
+            "cent_disc_raw_panel",
             "cent_de50_r",
             "ctrl_disc_raw",
+            "ctrl_disc_raw_panel",
             "ctrl_de50_r",
             "pds_cosine_panel",
             "mse",
         ]
-        # Per-line paired bootstrap CIs for pooled line-specific metrics
+        # Per-line paired bootstrap CIs for pooled line-specific metrics (plus joint-boot cal_r)
         ls_boot_keys = [
             ("resp_top50", "slope_ols", "ls_slope_ols_top50"),
             ("resp_top50", "slope_no_intercept", "ls_slope_noint_top50"),
             ("resp_top50", "per_pert_slope", "ls_slope_per_pert_top50"),
             ("resp_top50", "resid_corr", "ls_resid_corr_top50"),
+            ("resp_top50", "resid_corr_cal", "ls_resid_corr_cal_top50"),
             ("all_nontarget", "slope_ols", "ls_slope_ols_all"),
             ("all_nontarget", "resid_corr", "ls_resid_corr_all"),
         ]
-        for ma, mb in comparisons:
+        line_comparisons = (
+            list(comparisons)
+            + [("Hybrid_ProjShared", f"NegCtrl_HybridProj_MismatchedCov({s_name})") for s_name in src_names]
+            + [("Transfer_Mean_VarScaled", f"NegCtrl_TMVS_MismatchedVar({s_name})") for s_name in src_names]
+        )
+        for ma, mb in line_comparisons:
             if ma not in row_metrics_by_method or mb not in row_metrics_by_method:
                 continue
             for met in row_met_keys:
@@ -478,10 +676,18 @@ def evaluate_datasets(
                             (ci_a["ci95_lo"], ci_a["ci95_hi"]),
                             (ci_b["ci95_lo"], ci_b["ci95_hi"]),
                         ),
+                        "disjoint_ci975": cis_non_overlapping(
+                            (ci_a["ci975_lo"], ci_a["ci975_hi"]),
+                            (ci_b["ci975_lo"], ci_b["ci975_hi"]),
+                        ),
                         "a_ci95_lo": ci_a["ci95_lo"],
                         "a_ci95_hi": ci_a["ci95_hi"],
                         "b_ci95_lo": ci_b["ci95_lo"],
                         "b_ci95_hi": ci_b["ci95_hi"],
+                        "a_ci975_lo": ci_a["ci975_lo"],
+                        "a_ci975_hi": ci_a["ci975_hi"],
+                        "b_ci975_lo": ci_b["ci975_lo"],
+                        "b_ci975_hi": ci_b["ci975_hi"],
                         **ci_diff,
                     }
                 )
@@ -497,13 +703,28 @@ def evaluate_datasets(
                     if np.any(np.isfinite(diff_b))
                     else np.array([np.nan, np.nan])
                 )
+                ci_d975 = (
+                    np.nanpercentile(diff_b, [1.25, 98.75])
+                    if np.any(np.isfinite(diff_b))
+                    else np.array([np.nan, np.nan])
+                )
                 ci_a = (
                     np.nanpercentile(ba, [2.5, 97.5])
                     if np.any(np.isfinite(ba))
                     else np.array([np.nan, np.nan])
                 )
+                ci_a975 = (
+                    np.nanpercentile(ba, [1.25, 98.75])
+                    if np.any(np.isfinite(ba))
+                    else np.array([np.nan, np.nan])
+                )
                 ci_b = (
                     np.nanpercentile(bb, [2.5, 97.5])
+                    if np.any(np.isfinite(bb))
+                    else np.array([np.nan, np.nan])
+                )
+                ci_b975 = (
+                    np.nanpercentile(bb, [1.25, 98.75])
                     if np.any(np.isfinite(bb))
                     else np.array([np.nan, np.nan])
                 )
@@ -516,6 +737,14 @@ def evaluate_datasets(
                     if np.all(np.isfinite(ci_a)) and np.all(np.isfinite(ci_b))
                     else False
                 )
+                disjoint975 = (
+                    cis_non_overlapping(
+                        (float(ci_a975[0]), float(ci_a975[1])),
+                        (float(ci_b975[0]), float(ci_b975[1])),
+                    )
+                    if np.all(np.isfinite(ci_a975)) and np.all(np.isfinite(ci_b975))
+                    else False
+                )
                 boot_rows.append(
                     {
                         "target_line": target_line,
@@ -523,20 +752,43 @@ def evaluate_datasets(
                         "method_a": ma,
                         "method_b": mb,
                         "disjoint_ci95": disjoint,
+                        "disjoint_ci975": disjoint975,
                         "a_ci95_lo": float(ci_a[0]),
                         "a_ci95_hi": float(ci_a[1]),
                         "b_ci95_lo": float(ci_b[0]),
                         "b_ci95_hi": float(ci_b[1]),
+                        "a_ci975_lo": float(ci_a975[0]),
+                        "a_ci975_hi": float(ci_a975[1]),
+                        "b_ci975_lo": float(ci_b975[0]),
+                        "b_ci975_hi": float(ci_b975[1]),
                         "mean_a": pt_a,
                         "mean_b": pt_b,
                         "delta": pt_a - pt_b,
                         "ci95_lo": float(ci_d[0]),
                         "ci95_hi": float(ci_d[1]),
+                        "ci975_lo": float(ci_d975[0]),
+                        "ci975_hi": float(ci_d975[1]),
                         "boot_se": boot_se,
                         "ci_gt_zero": bool(np.isfinite(ci_d[0]) and ci_d[0] > 0.0),
                         "ci_lt_zero": bool(np.isfinite(ci_d[1]) and ci_d[1] < 0.0),
+                        "ci975_gt_zero": bool(np.isfinite(ci_d975[0]) and ci_d975[0] > 0.0),
+                        "ci975_lt_zero": bool(np.isfinite(ci_d975[1]) and ci_d975[1] < 0.0),
                     }
                 )
+        s5_expressed_top75[target_line] = _evaluate_s5_top75_var(
+            preds=preds,
+            true_deltas=true_deltas,
+            transfer_ref=transfer_ref,
+            target_ctrl_cov=t_ctrl_cov,
+            q_gidx=q_gidx,
+            ha_sub=ha_sub,
+            hb_sub=hb_sub,
+            obs_sub=obs_sub,
+            tr_sub=tr_sub,
+            hv_mask=hv_mask_eval,
+            n_boot=n_boot,
+            seed=seed,
+        )
         del preds, row_metrics_by_method, ls_by_method
         gc.collect()
 
@@ -551,12 +803,16 @@ def evaluate_datasets(
         strat_summary[comp_key] = {}
         for met in [
             "cent_disc_raw",
+            "cent_disc_raw_panel",
             "cent_de50_r",
             "ctrl_disc_raw",
+            "ctrl_disc_raw_panel",
             "ctrl_de50_r",
             "pds_cosine_panel",
             "mse",
         ]:
+            if len(pooled_row_scores[ma][met]) != len(pooled_strata) or len(pooled_row_scores[mb][met]) != len(pooled_strata):
+                continue
             strat_summary[comp_key][met] = stratified_row_bootstrap_ci(
                 np.asarray(pooled_row_scores[ma][met]),
                 np.asarray(pooled_row_scores[mb][met]),
@@ -577,7 +833,7 @@ def evaluate_datasets(
             G_dim = da["true_deltas"].shape[1]
             obs_cos_all, obs_cos_top50 = [], []
             pred_cos: Dict[str, Tuple[List[float], List[float]]] = {
-                m: ([], []) for m in da["preds"].keys()
+                m: ([], []) for m in da["preds"].keys() if m in db["preds"]
             }
             for t_name in shared_t:
                 ia = da["target_to_row"][t_name]
@@ -621,9 +877,10 @@ def evaluate_datasets(
         "n_lines": len(line_names),
         "lines": line_names,
         "lambda_by_target_line": lam_by_target_line,
-        "mismatched_cov_source_by_line": mismatched_cov_source_by_line,
+        "mismatched_cov_sources_by_line": mismatched_cov_sources_by_line,
         "ctrl_cov_reliability": ctrl_reliability,
         "pert_noise_ceilings": pert_noise_ceilings,
+        "s5_expressed_top75_var": s5_expressed_top75,
         "drf_calibration": drf_calibration,
         "cross_line_cosine_diagnostics": cross_line_cosine,
         "macro_means_by_method": (

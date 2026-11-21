@@ -10,16 +10,20 @@ import numpy as np
 
 from independent_stats import (
     adjudicate_team_a,
+    adjudicate_team_b,
     bootstrap_paired_mean_diff,
     bootstrap_perturbation_stat,
     ci_strictly_below,
     compute_de50_r_rows,
+    compute_disc_ownmasked_rows,
     compute_disc_raw_rows,
+    deming_slope,
     disattenuated_correlation,
     noise_ceiling_from_splithalf,
     ols_slope,
     pearson_1d,
     spearman_brown_reliability,
+    summarize_bootstrap_array,
 )
 
 
@@ -134,6 +138,108 @@ class TestIndependentStats(unittest.TestCase):
         rows_fail[2]["primary_slope_ci95_lo"] = 0.13  # boundary: must be strictly > 0.13
         verdict_fail = adjudicate_team_a(rows_fail)
         self.assertEqual(verdict_fail["overall_verdict"], "未确认 (NOT CONFIRMED)")
+
+    def test_deming_ownmasked_and_confirmatory_r3_r5(self):
+        # Deming exact symmetric slope (y = 2x + noise-free -> slope = 2.0; y = -0.5x -> -0.5)
+        x = np.array([-2.0, -1.0, 0.0, 1.0, 2.0])
+        self.assertAlmostEqual(deming_slope(x, 2.0 * x), 2.0, places=6)
+        self.assertAlmostEqual(deming_slope(x, -0.5 * x), -0.5, places=6)
+        self.assertAlmostEqual(deming_slope(x, np.ones_like(x)), 0.0, places=6)
+
+        # Own-target masked vs panel-masked disc_raw
+        true_d = np.array([[5.0, 1.0, -1.0, 0.2], [0.1, -5.0, 1.2, -0.3], [0.2, 0.1, 4.0, 1.1]])
+        disc_own = compute_disc_ownmasked_rows(true_d, true_d, target_col_idx=[0, 1, 2])
+        self.assertTrue(np.allclose(disc_own, 1.0))
+
+        # R2/R3/R5/R10 confirmatory lines adjudication (3/3 pass, 0/3 inferior)
+        rows = [
+            {
+                "line": "dev1", "primary_slope_ci95_lo": 0.01, "noise_cal_corr_ci95_lo": 0.02,
+                "mismatch_slope_ci95_hi": 0.0, "max_mismatch_ci95_hi": 0.0,
+                "disc_raw_diff_ci95_hi": -0.01, "de50_r_diff_ci95_hi": 0.01,
+                "ctrl_disc_ownmasked_diff_ci95_hi": -0.01,
+                "cent_disc_raw_diff_ci95_hi": 0.01, "cent_disc_ownmasked_diff_ci95_hi": 0.01,
+                "cent_de50_r_diff_ci95_hi": 0.01,
+            },
+            {
+                "line": "conf1", "primary_slope_ci95_lo": 0.20, "noise_cal_corr_ci95_lo": 0.15,
+                "mismatch_slope_ci95_hi": 0.01, "max_mismatch_ci95_hi": 0.05,
+                "disc_raw_diff_ci95_hi": 0.01, "de50_r_diff_ci95_hi": 0.02,
+                "ctrl_disc_ownmasked_diff_ci95_hi": 0.01,
+                "cent_disc_raw_diff_ci95_hi": 0.01, "cent_disc_ownmasked_diff_ci95_hi": 0.01,
+                "cent_de50_r_diff_ci95_hi": 0.01,
+            },
+            {
+                "line": "conf2", "primary_slope_ci95_lo": 0.18, "noise_cal_corr_ci95_lo": 0.12,
+                "mismatch_slope_ci95_hi": 0.01, "max_mismatch_ci95_hi": 0.04,
+                "disc_raw_diff_ci95_hi": 0.01, "de50_r_diff_ci95_hi": 0.01,
+                "ctrl_disc_ownmasked_diff_ci95_hi": 0.01,
+                "cent_disc_raw_diff_ci95_hi": 0.01, "cent_disc_ownmasked_diff_ci95_hi": 0.01,
+                "cent_de50_r_diff_ci95_hi": 0.01,
+            },
+            {
+                "line": "conf3", "primary_slope_ci95_lo": 0.16, "noise_cal_corr_ci95_lo": 0.10,
+                "mismatch_slope_ci95_hi": 0.01, "max_mismatch_ci95_hi": 0.02,
+                "disc_raw_diff_ci95_hi": 0.01, "de50_r_diff_ci95_hi": 0.01,
+                "ctrl_disc_ownmasked_diff_ci95_hi": 0.01,
+                "cent_disc_raw_diff_ci95_hi": 0.01, "cent_disc_ownmasked_diff_ci95_hi": 0.01,
+                "cent_de50_r_diff_ci95_hi": 0.01,
+            },
+        ]
+        v_ok = adjudicate_team_a(rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["conf1", "conf2", "conf3"])
+        self.assertEqual(v_ok["overall_verdict"], "CONFIRMED")
+        # Failing worst mismatch on conf1 breaks H-A3
+        rows[1]["max_mismatch_ci95_hi"] = 0.21
+        v_bad_r3 = adjudicate_team_a(rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["conf1", "conf2", "conf3"])
+        self.assertEqual(v_bad_r3["overall_verdict"], "未确认 (NOT CONFIRMED)")
+        rows[1]["max_mismatch_ci95_hi"] = 0.05
+        # Failing ONE H-A4 sub-metric breaks H-A4 (0/3 allowed)
+        rows[2]["ctrl_disc_ownmasked_diff_ci95_hi"] = -0.001
+        v_bad_r5 = adjudicate_team_a(rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["conf1", "conf2", "conf3"])
+        self.assertEqual(v_bad_r5["overall_verdict"], "未确认 (NOT CONFIRMED)")
+
+    def test_group_b_and_r13_975_ci_strictness(self):
+        # Verify ci975 is strictly wider than ci95 and Group B (R12/R13) checks both slope & cal_r
+        arr = np.linspace(0.0, 1.0, 1000)
+        ci = summarize_bootstrap_array(0.5, arr, n_items=50)
+        self.assertLess(ci.ci975_lo, ci.ci95_lo)
+        self.assertGreater(ci.ci975_hi, ci.ci95_hi)
+
+        b_rows = []
+        for idx, name in enumerate(["c1", "c2", "c3"]):
+            b_rows.append(
+                {
+                    "line": name,
+                    "tmvs_slope": 0.16 + 0.01 * idx,
+                    "tmvs_slope_ci95_lo": 0.14,
+                    "tmvs_slope_ci975_lo": 0.135,
+                    "tmvs_cal_r_ci975_lo": 0.20,
+                    "tmvs_max_ctrl_slope_ci975_hi": 0.05,
+                    "tmvs_max_ctrl_cal_r_ci975_hi": 0.08,
+                    "tmvs_disc_raw_diff_ci975_hi": 0.02,
+                    "tmvs_ctrl_disc_ownmasked_diff_ci975_hi": 0.02,
+                    "tmvs_de50_r_diff_ci975_hi": 0.02,
+                    "tmvs_cent_disc_panel_diff_ci975_hi": 0.02,
+                    "tmvs_cent_disc_ownmasked_diff_ci975_hi": 0.02,
+                    "tmvs_cent_de50_r_diff_ci975_hi": 0.02,
+                }
+            )
+        vb_ok = adjudicate_team_b(b_rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["c1", "c2", "c3"], use_975_ci=True)
+        self.assertEqual(vb_ok["overall_verdict"], "CONFIRMED")
+        self.assertEqual(vb_ok["ci_level"], 0.975)
+
+        # If H-B1 ci975_lo fails (<0.13) even when ci95_lo >= 0.13, strict R13 fails!
+        b_rows[0]["tmvs_slope_ci975_lo"] = 0.125
+        vb_975_fail = adjudicate_team_b(b_rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["c1", "c2", "c3"], use_975_ci=True)
+        self.assertEqual(vb_975_fail["H-B1"]["pass"], False)
+        self.assertEqual(vb_975_fail["overall_verdict"], "未确认 (NOT CONFIRMED)")
+        b_rows[0]["tmvs_slope_ci975_lo"] = 0.135
+
+        # Failing cal_r specificity against tmvs controls fails H-B3 even if slope beats ctrl
+        b_rows[1]["tmvs_max_ctrl_cal_r_ci975_hi"] = 0.21
+        vb_hb3_fail = adjudicate_team_b(b_rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["c1", "c2", "c3"], use_975_ci=True)
+        self.assertEqual(vb_hb3_fail["H-B3"]["pass"], False)
+        self.assertEqual(vb_hb3_fail["overall_verdict"], "未确认 (NOT CONFIRMED)")
 
 
 if __name__ == "__main__":

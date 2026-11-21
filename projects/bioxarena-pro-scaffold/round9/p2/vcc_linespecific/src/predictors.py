@@ -39,6 +39,7 @@ class SourceLineInput:
     deltas: np.ndarray              # (N_s, G) float64 perturbation responses Delta_s
     target_indices: np.ndarray      # (N_s,) int64 index of perturbed target gene in 0..G-1
     target_names: Tuple[str, ...]   # length N_s canonical target identifiers
+    ctrl_mean_libnorm: Optional[np.ndarray] = None  # (G,) float64 unperturbed libnorm mean (for FCT)
 
 
 def compute_control_covariance(
@@ -79,6 +80,18 @@ def shuffle_covariance_genes(cov: np.ndarray, seed: int = 42) -> np.ndarray:
 def diagonal_covariance(cov: np.ndarray) -> np.ndarray:
     """Zero out all off-diagonal gene-gene covariances while keeping marginal variances."""
     return np.diag(np.diag(cov).copy())
+
+
+def cov_to_corr(cov: np.ndarray, min_var: float = 1e-8) -> np.ndarray:
+    """Convert covariance matrix C to symmetric clipped Pearson correlation R = D^{-1/2} C D^{-1/2}."""
+    C = np.asarray(cov, dtype=np.float64)
+    diag = np.maximum(np.diag(C), float(min_var))
+    inv_sd = 1.0 / np.sqrt(diag)
+    corr = C * (inv_sd[:, None] * inv_sd[None, :])
+    corr = np.nan_to_num(corr, nan=0.0, posinf=0.0, neginf=0.0)
+    corr = np.clip(0.5 * (corr + corr.T), -1.0, 1.0)
+    np.fill_diagonal(corr, 1.0)
+    return corr
 
 
 def cipher_unit_response_columns(
@@ -226,6 +239,7 @@ def predict_zero_shot_suite(
     mismatched_ctrl_cov: Optional[np.ndarray] = None,
     shuffle_seed: int = 42,
     min_var: float = 1e-8,
+    target_ctrl_mean_libnorm: Optional[np.ndarray] = None,
 ) -> Dict[str, np.ndarray]:
     """
     Generate predictions (N_q, G) for all required methods & negative controls on a target line.
@@ -281,7 +295,12 @@ def predict_zero_shot_suite(
         "Hybrid_ProjShared": pred_hybrid_proj,
     }
 
-    # 4a. Negative control: Mismatched cell line covariance
+    # 4a. Negative control: Mismatched cell line covariance (ALL source lines + optional explicit)
+    for s_i, src in enumerate(state.source_lines):
+        diff_mis_s = src_cipher_preds[s_i] - mean_src_cipher_matched
+        preds[f"NegCtrl_HybridProj_MismatchedCov({src.name})"] = (
+            pred_transfer + project_out_basis(diff_mis_s, state.Q_shared)
+        )
     if mismatched_ctrl_cov is not None:
         pred_cipher_mis = state.lam * cipher_unit_response_columns(
             mismatched_ctrl_cov, q_idx, min_var=min_var
@@ -316,5 +335,69 @@ def predict_zero_shot_suite(
     preds["NegCtrl_HybridProj_DiagCov"] = pred_transfer + project_out_basis(
         diff_diag, state.Q_shared
     )
+
+    # 4d. PREREG_AUDIT_R1 R4(a): Source mean correlation matrix + Target marginal variances
+    #     C = D_t^{1/2} * R_bar_S * D_t^{1/2}
+    mean_src_corr = np.mean([cov_to_corr(s.ctrl_cov, min_var=min_var) for s in state.source_lines], axis=0)
+    diag_t = np.maximum(np.diag(np.asarray(target_ctrl_cov, dtype=np.float64)), min_var)
+    std_t = np.sqrt(diag_t)
+    cov_src_corr_tgt_var = (std_t[:, None] * mean_src_corr) * std_t[None, :]
+    pred_cipher_sctv = state.lam * cipher_unit_response_columns(
+        cov_src_corr_tgt_var, q_idx, min_var=min_var
+    )
+    diff_sctv = pred_cipher_sctv - mean_src_cipher_matched
+    preds["NegCtrl_HybridProj_SrcCorrTgtVar"] = pred_transfer + project_out_basis(
+        diff_sctv, state.Q_shared
+    )
+
+    # 4e. PREREG_AUDIT_R1 R4(b) & PREREG_AUDIT_R2 R12: Marginal-variance-scaled Transfer_Mean (TMVS)
+    #     Delta_hat_{p,t,g} = Delta_src_{p,g} * sqrt(C_{t,gg} / mean_s C_{s,gg})
+    src_vars_by_line = [
+        np.maximum(np.diag(np.asarray(s.ctrl_cov, dtype=np.float64)), min_var)
+        for s in state.source_lines
+    ]
+    mean_src_var = np.maximum(np.mean(src_vars_by_line, axis=0), min_var)
+    var_scale = np.sqrt(diag_t / mean_src_var)
+    pred_tmvs = pred_transfer * var_scale[None, :]
+    preds["Transfer_Mean_VarScaled"] = pred_tmvs
+
+    # 4f. PREREG_AUDIT_R2 R12 (H-B3): TMVS MismatchedVar (all source lines) & ShuffledVar controls
+    for s_i, src in enumerate(state.source_lines):
+        mis_var_scale = np.sqrt(src_vars_by_line[s_i] / mean_src_var)
+        preds[f"NegCtrl_TMVS_MismatchedVar({src.name})"] = pred_transfer * mis_var_scale[None, :]
+    diag_shuf = np.maximum(np.diag(np.asarray(cov_shuf, dtype=np.float64)), min_var)
+    shuf_var_scale = np.sqrt(diag_shuf / mean_src_var)
+    preds["NegCtrl_TMVS_ShuffledVar"] = pred_transfer * shuf_var_scale[None, :]
+
+    # 4g. PREREG_AUDIT_R2 R14: Hybrid_on_TMVS = TMVS + lambda * P_perp(v_t - v_bar_S)
+    preds["Hybrid_on_TMVS"] = pred_tmvs + diff_matched_proj
+
+    # 4h. PREREG_AUDIT_R2 R15: Fold-Change Transfer (FCT)
+    #     Delta_hat = log1p(mu_t * FC_bar_src) - log1p(mu_t), geometric mean FC across source lines
+    if target_ctrl_mean_libnorm is not None and all(
+        s.ctrl_mean_libnorm is not None for s in state.source_lines
+    ):
+        mu_t = np.maximum(np.asarray(target_ctrl_mean_libnorm, dtype=np.float64), 0.0)
+        mu_s_list = [
+            np.maximum(np.asarray(s.ctrl_mean_libnorm, dtype=np.float64), min_var)
+            for s in state.source_lines
+        ]
+        pred_fct = np.empty((N_q, G), dtype=np.float64)
+        for i, t_name in enumerate(query_target_names):
+            hits = state.target_to_source_rows.get(t_name, [])
+            if hits:
+                log_fcs = []
+                for s_i, r_i in hits:
+                    mu_s = mu_s_list[s_i]
+                    pert_s = np.maximum(
+                        np.expm1(np.log1p(mu_s) + state.source_lines[s_i].deltas[r_i]),
+                        min_var,
+                    )
+                    log_fcs.append(np.log(pert_s / mu_s))
+                fc_bar = np.exp(np.mean(log_fcs, axis=0))
+                pred_fct[i] = np.log1p(mu_t * fc_bar) - np.log1p(mu_t)
+            else:
+                pred_fct[i] = pred_transfer[i]
+        preds["FCT"] = pred_fct
 
     return preds
