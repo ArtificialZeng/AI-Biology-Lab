@@ -167,12 +167,15 @@ def build_or_load_nadig_splithalf(line: str, h5ad_name: str, seed: int = 42) -> 
     out_npz = sh_dir / f"{line}_splithalf_s{seed}.npz"
     if out_npz.exists():
         print(f"  [Split-Half Cache Hit] {line}", flush=True)
-        z = np.load(out_npz, allow_pickle=True)
-        ensgs = z["ensgs"].tolist()
+        with np.load(out_npz, allow_pickle=True) as z:
+            ensgs = z["ensgs"].tolist()
+            halfA = z["halfA"]
+            halfB = z["halfB"]
+            w_interp = z["w_interp"]
         return (
-            {g: z["halfA"][i] for i, g in enumerate(ensgs)},
-            {g: z["halfB"][i] for i, g in enumerate(ensgs)},
-            {g: z["w_interp"][i] for i, g in enumerate(ensgs)},
+            {g: halfA[i] for i, g in enumerate(ensgs)},
+            {g: halfB[i] for i, g in enumerate(ensgs)},
+            {g: w_interp[i] for i, g in enumerate(ensgs)},
         )
 
     t0 = time.time()
@@ -544,13 +547,19 @@ def run_calibration_and_ranking(dataset: str, emb_mat: np.ndarray, vocab: dict):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--datasets", nargs="+", default=["replogle", "nadig"], choices=["replogle", "nadig"])
+    args = ap.parse_args()
     wdir = resolve_scgpt_dir()
     vocab = json.load(open(wdir / "scgpt_vocab.json"))
     sd = torch.load(wdir / "scgpt_gh_repo_original_model.bin", map_location="cpu", weights_only=False)
     emb_mat = sd["encoder.embedding.weight"].float().numpy()
     del sd
-    run_calibration_and_ranking("replogle", emb_mat, vocab)
-    run_calibration_and_ranking("nadig", emb_mat, vocab)
+    gc.collect()
+    for ds in args.datasets:
+        run_calibration_and_ranking(ds, emb_mat, vocab)
+        gc.collect()
 
 
 if __name__ == "__main__":

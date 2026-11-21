@@ -1,0 +1,400 @@
+{
+  "dataset": "nadig",
+  "reference": "Miller et al., Nature Biotechnology 2026 (bioRxiv 10.1101/2025.10.20.683304)",
+  "control_construction": "Exact Addendum-B 50/50 single-cell split-half on both HepG2 and Jurkat (Half A -> Half B)",
+  "drf_by_metric": {
+    "MSE": {
+      "m_neg": {
+        "mean": 0.088,
+        "std": 0.0031
+      },
+      "m_pos_raw": {
+        "mean": 0.0807,
+        "std": 0.0025
+      },
+      "m_pos_interp": {
+        "mean": 0.0659,
+        "std": 0.002
+      },
+      "DRF_raw": {
+        "mean": 0.0354,
+        "std": 0.0292
+      },
+      "DRF_interp": {
+        "mean": 0.2227,
+        "std": 0.0221
+      }
+    },
+    "delta_r": {
+      "m_neg": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.4838,
+        "std": 0.0074
+      },
+      "m_pos_interp": {
+        "mean": 0.4631,
+        "std": 0.0081
+      },
+      "DRF_raw": {
+        "mean": 0.4838,
+        "std": 0.0074
+      },
+      "DRF_interp": {
+        "mean": 0.4631,
+        "std": 0.0081
+      }
+    },
+    "de50_r": {
+      "m_neg": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.8085,
+        "std": 0.011
+      },
+      "m_pos_interp": {
+        "mean": 0.7563,
+        "std": 0.0103
+      },
+      "DRF_raw": {
+        "mean": 0.8085,
+        "std": 0.011
+      },
+      "DRF_interp": {
+        "mean": 0.7563,
+        "std": 0.0103
+      }
+    },
+    "de50_sign": {
+      "m_neg": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.9246,
+        "std": 0.0049
+      },
+      "m_pos_interp": {
+        "mean": 0.9246,
+        "std": 0.0049
+      },
+      "DRF_raw": {
+        "mean": 0.8492,
+        "std": 0.0098
+      },
+      "DRF_interp": {
+        "mean": 0.8492,
+        "std": 0.0098
+      }
+    },
+    "v5": {
+      "m_neg": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.3771,
+        "std": 0.0074
+      },
+      "m_pos_interp": {
+        "mean": 0.3792,
+        "std": 0.0082
+      },
+      "DRF_raw": {
+        "mean": 0.3771,
+        "std": 0.0074
+      },
+      "DRF_interp": {
+        "mean": 0.3792,
+        "std": 0.0082
+      }
+    },
+    "disc_raw": {
+      "m_neg": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.9867,
+        "std": 0.002
+      },
+      "m_pos_interp": {
+        "mean": 0.9842,
+        "std": 0.0025
+      },
+      "DRF_raw": {
+        "mean": 0.9734,
+        "std": 0.0041
+      },
+      "DRF_interp": {
+        "mean": 0.9685,
+        "std": 0.0049
+      }
+    },
+    "disc_v5": {
+      "m_neg": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.9887,
+        "std": 0.0011
+      },
+      "m_pos_interp": {
+        "mean": 0.9897,
+        "std": 0.0013
+      },
+      "DRF_raw": {
+        "mean": 0.9774,
+        "std": 0.0023
+      },
+      "DRF_interp": {
+        "mean": 0.9794,
+        "std": 0.0026
+      }
+    }
+  },
+  "model_means_7metrics": {
+    "AE": {
+      "MSE": {
+        "mean": 0.0699,
+        "std": 0.0026
+      },
+      "delta_r": {
+        "mean": 0.1698,
+        "std": 0.0079
+      },
+      "de50_r": {
+        "mean": 0.2492,
+        "std": 0.0198
+      },
+      "de50_sign": {
+        "mean": 0.6457,
+        "std": 0.0097
+      },
+      "v5": {
+        "mean": 0.1146,
+        "std": 0.011
+      },
+      "disc_raw": {
+        "mean": 0.6665,
+        "std": 0.0149
+      },
+      "disc_v5": {
+        "mean": 0.6509,
+        "std": 0.0145
+      }
+    },
+    "Constant_Mean": {
+      "MSE": {
+        "mean": 0.0707,
+        "std": 0.0033
+      },
+      "delta_r": {
+        "mean": -0.0001,
+        "std": 0.0013
+      },
+      "de50_r": {
+        "mean": 0.0057,
+        "std": 0.0079
+      },
+      "de50_sign": {
+        "mean": 0.5,
+        "std": 0.0043
+      },
+      "v5": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "disc_raw": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "disc_v5": {
+        "mean": 0.5,
+        "std": 0.0
+      }
+    },
+    "OrthoFusion_scGPT_S5": {
+      "MSE": {
+        "mean": 0.0652,
+        "std": 0.0017
+      },
+      "delta_r": {
+        "mean": 0.2144,
+        "std": 0.0128
+      },
+      "de50_r": {
+        "mean": 0.3166,
+        "std": 0.0205
+      },
+      "de50_sign": {
+        "mean": 0.6808,
+        "std": 0.0119
+      },
+      "v5": {
+        "mean": 0.1741,
+        "std": 0.0121
+      },
+      "disc_raw": {
+        "mean": 0.7324,
+        "std": 0.0166
+      },
+      "disc_v5": {
+        "mean": 0.7157,
+        "std": 0.0132
+      }
+    },
+    "S0": {
+      "MSE": {
+        "mean": 0.0725,
+        "std": 0.0026
+      },
+      "delta_r": {
+        "mean": 0.161,
+        "std": 0.0067
+      },
+      "de50_r": {
+        "mean": 0.2511,
+        "std": 0.0188
+      },
+      "de50_sign": {
+        "mean": 0.6451,
+        "std": 0.0094
+      },
+      "v5": {
+        "mean": 0.1042,
+        "std": 0.0098
+      },
+      "disc_raw": {
+        "mean": 0.6709,
+        "std": 0.0146
+      },
+      "disc_v5": {
+        "mean": 0.655,
+        "std": 0.013
+      }
+    },
+    "S5": {
+      "MSE": {
+        "mean": 0.069,
+        "std": 0.0019
+      },
+      "delta_r": {
+        "mean": 0.1502,
+        "std": 0.0105
+      },
+      "de50_r": {
+        "mean": 0.2265,
+        "std": 0.0175
+      },
+      "de50_sign": {
+        "mean": 0.6293,
+        "std": 0.0128
+      },
+      "v5": {
+        "mean": 0.1741,
+        "std": 0.0121
+      },
+      "disc_raw": {
+        "mean": 0.7152,
+        "std": 0.0129
+      },
+      "disc_v5": {
+        "mean": 0.7157,
+        "std": 0.0132
+      }
+    },
+    "S7": {
+      "MSE": {
+        "mean": 0.0813,
+        "std": 0.0057
+      },
+      "delta_r": {
+        "mean": 0.1617,
+        "std": 0.0128
+      },
+      "de50_r": {
+        "mean": 0.2242,
+        "std": 0.0212
+      },
+      "de50_sign": {
+        "mean": 0.6277,
+        "std": 0.0134
+      },
+      "v5": {
+        "mean": 0.1871,
+        "std": 0.015
+      },
+      "disc_raw": {
+        "mean": 0.6992,
+        "std": 0.0156
+      },
+      "disc_v5": {
+        "mean": 0.6993,
+        "std": 0.016
+      }
+    },
+    "scGPT_FrozenEmb_Ridge": {
+      "MSE": {
+        "mean": 0.0641,
+        "std": 0.0026
+      },
+      "delta_r": {
+        "mean": 0.2129,
+        "std": 0.0119
+      },
+      "de50_r": {
+        "mean": 0.3064,
+        "std": 0.0279
+      },
+      "de50_sign": {
+        "mean": 0.6792,
+        "std": 0.012
+      },
+      "v5": {
+        "mean": 0.1512,
+        "std": 0.0113
+      },
+      "disc_raw": {
+        "mean": 0.7109,
+        "std": 0.0141
+      },
+      "disc_v5": {
+        "mean": 0.71,
+        "std": 0.0126
+      }
+    }
+  },
+  "mse_comparisons": {
+    "OrthoFusion_vs_S5": {
+      "mean_delta": -0.003841,
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "10/10"
+    },
+    "OrthoFusion_vs_scGPT_Probe": {
+      "mean_delta": 0.001107,
+      "splits_ci_gt_zero": "5/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "S5_vs_AE": {
+      "mean_delta": -0.000889,
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "1/10"
+    },
+    "S5_vs_scGPT_Probe": {
+      "mean_delta": 0.004948,
+      "splits_ci_gt_zero": "10/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "scGPT_Probe_vs_AE": {
+      "mean_delta": -0.005837,
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "10/10"
+    }
+  }
+}

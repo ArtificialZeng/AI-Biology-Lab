@@ -1,0 +1,400 @@
+{
+  "dataset": "replogle",
+  "reference": "Miller et al., Nature Biotechnology 2026 (bioRxiv 10.1101/2025.10.20.683304)",
+  "control_construction": "True independent experimental replicate screen on K562 (K562_essential Day 6 -> K562_gwps Day 8; RPE1 has no second normalized bulk replicate screen locally)",
+  "drf_by_metric": {
+    "MSE": {
+      "m_neg": {
+        "mean": 0.0339,
+        "std": 0.0023
+      },
+      "m_pos_raw": {
+        "mean": 0.0317,
+        "std": 0.0018
+      },
+      "m_pos_interp": {
+        "mean": 0.027,
+        "std": 0.0018
+      },
+      "DRF_raw": {
+        "mean": 0.0631,
+        "std": 0.0393
+      },
+      "DRF_interp": {
+        "mean": 0.2023,
+        "std": 0.0109
+      }
+    },
+    "delta_r": {
+      "m_neg": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.5134,
+        "std": 0.0137
+      },
+      "m_pos_interp": {
+        "mean": 0.475,
+        "std": 0.0109
+      },
+      "DRF_raw": {
+        "mean": 0.5134,
+        "std": 0.0137
+      },
+      "DRF_interp": {
+        "mean": 0.475,
+        "std": 0.0109
+      }
+    },
+    "de50_r": {
+      "m_neg": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.8427,
+        "std": 0.008
+      },
+      "m_pos_interp": {
+        "mean": 0.7032,
+        "std": 0.0066
+      },
+      "DRF_raw": {
+        "mean": 0.8427,
+        "std": 0.008
+      },
+      "DRF_interp": {
+        "mean": 0.7032,
+        "std": 0.0066
+      }
+    },
+    "de50_sign": {
+      "m_neg": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.9511,
+        "std": 0.0064
+      },
+      "m_pos_interp": {
+        "mean": 0.9511,
+        "std": 0.0064
+      },
+      "DRF_raw": {
+        "mean": 0.9022,
+        "std": 0.0127
+      },
+      "DRF_interp": {
+        "mean": 0.9022,
+        "std": 0.0127
+      }
+    },
+    "v5": {
+      "m_neg": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.4203,
+        "std": 0.0124
+      },
+      "m_pos_interp": {
+        "mean": 0.4,
+        "std": 0.0089
+      },
+      "DRF_raw": {
+        "mean": 0.4203,
+        "std": 0.0124
+      },
+      "DRF_interp": {
+        "mean": 0.4,
+        "std": 0.0089
+      }
+    },
+    "disc_raw": {
+      "m_neg": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.988,
+        "std": 0.0031
+      },
+      "m_pos_interp": {
+        "mean": 0.9933,
+        "std": 0.0023
+      },
+      "DRF_raw": {
+        "mean": 0.976,
+        "std": 0.0061
+      },
+      "DRF_interp": {
+        "mean": 0.9865,
+        "std": 0.0046
+      }
+    },
+    "disc_v5": {
+      "m_neg": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "m_pos_raw": {
+        "mean": 0.9915,
+        "std": 0.0026
+      },
+      "m_pos_interp": {
+        "mean": 0.9943,
+        "std": 0.0018
+      },
+      "DRF_raw": {
+        "mean": 0.9831,
+        "std": 0.0053
+      },
+      "DRF_interp": {
+        "mean": 0.9887,
+        "std": 0.0036
+      }
+    }
+  },
+  "model_means_7metrics": {
+    "AE": {
+      "MSE": {
+        "mean": 0.0669,
+        "std": 0.0037
+      },
+      "delta_r": {
+        "mean": 0.147,
+        "std": 0.0071
+      },
+      "de50_r": {
+        "mean": 0.2026,
+        "std": 0.014
+      },
+      "de50_sign": {
+        "mean": 0.6255,
+        "std": 0.0096
+      },
+      "v5": {
+        "mean": 0.0967,
+        "std": 0.0056
+      },
+      "disc_raw": {
+        "mean": 0.6468,
+        "std": 0.01
+      },
+      "disc_v5": {
+        "mean": 0.6387,
+        "std": 0.0104
+      }
+    },
+    "Constant_Mean": {
+      "MSE": {
+        "mean": 0.0693,
+        "std": 0.0052
+      },
+      "delta_r": {
+        "mean": -0.0028,
+        "std": 0.0015
+      },
+      "de50_r": {
+        "mean": -0.0128,
+        "std": 0.0176
+      },
+      "de50_sign": {
+        "mean": 0.4969,
+        "std": 0.0066
+      },
+      "v5": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "disc_raw": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "disc_v5": {
+        "mean": 0.5,
+        "std": 0.0
+      }
+    },
+    "OrthoFusion_scGPT_S5": {
+      "MSE": {
+        "mean": 0.0629,
+        "std": 0.0036
+      },
+      "delta_r": {
+        "mean": 0.1906,
+        "std": 0.0064
+      },
+      "de50_r": {
+        "mean": 0.2829,
+        "std": 0.0138
+      },
+      "de50_sign": {
+        "mean": 0.6628,
+        "std": 0.0051
+      },
+      "v5": {
+        "mean": 0.1401,
+        "std": 0.006
+      },
+      "disc_raw": {
+        "mean": 0.6988,
+        "std": 0.0082
+      },
+      "disc_v5": {
+        "mean": 0.6886,
+        "std": 0.0063
+      }
+    },
+    "S0": {
+      "MSE": {
+        "mean": 0.0687,
+        "std": 0.0037
+      },
+      "delta_r": {
+        "mean": 0.1408,
+        "std": 0.0058
+      },
+      "de50_r": {
+        "mean": 0.2119,
+        "std": 0.0127
+      },
+      "de50_sign": {
+        "mean": 0.6256,
+        "std": 0.0085
+      },
+      "v5": {
+        "mean": 0.0883,
+        "std": 0.0051
+      },
+      "disc_raw": {
+        "mean": 0.6511,
+        "std": 0.0093
+      },
+      "disc_v5": {
+        "mean": 0.6412,
+        "std": 0.0114
+      }
+    },
+    "S5": {
+      "MSE": {
+        "mean": 0.066,
+        "std": 0.0035
+      },
+      "delta_r": {
+        "mean": 0.1193,
+        "std": 0.0056
+      },
+      "de50_r": {
+        "mean": 0.217,
+        "std": 0.0146
+      },
+      "de50_sign": {
+        "mean": 0.6064,
+        "std": 0.0053
+      },
+      "v5": {
+        "mean": 0.1401,
+        "std": 0.006
+      },
+      "disc_raw": {
+        "mean": 0.6884,
+        "std": 0.0065
+      },
+      "disc_v5": {
+        "mean": 0.6886,
+        "std": 0.0063
+      }
+    },
+    "S7": {
+      "MSE": {
+        "mean": 0.0859,
+        "std": 0.006
+      },
+      "delta_r": {
+        "mean": 0.1162,
+        "std": 0.0069
+      },
+      "de50_r": {
+        "mean": 0.2013,
+        "std": 0.0184
+      },
+      "de50_sign": {
+        "mean": 0.5962,
+        "std": 0.0044
+      },
+      "v5": {
+        "mean": 0.1359,
+        "std": 0.008
+      },
+      "disc_raw": {
+        "mean": 0.6736,
+        "std": 0.0079
+      },
+      "disc_v5": {
+        "mean": 0.6744,
+        "std": 0.0076
+      }
+    },
+    "scGPT_FrozenEmb_Ridge": {
+      "MSE": {
+        "mean": 0.0642,
+        "std": 0.0046
+      },
+      "delta_r": {
+        "mean": 0.1802,
+        "std": 0.006
+      },
+      "de50_r": {
+        "mean": 0.2646,
+        "std": 0.014
+      },
+      "de50_sign": {
+        "mean": 0.6536,
+        "std": 0.0064
+      },
+      "v5": {
+        "mean": 0.1127,
+        "std": 0.0067
+      },
+      "disc_raw": {
+        "mean": 0.6859,
+        "std": 0.008
+      },
+      "disc_v5": {
+        "mean": 0.6807,
+        "std": 0.0085
+      }
+    }
+  },
+  "mse_comparisons": {
+    "OrthoFusion_vs_S5": {
+      "mean_delta": -0.003138,
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "10/10"
+    },
+    "OrthoFusion_vs_scGPT_Probe": {
+      "mean_delta": -0.001305,
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "1/10"
+    },
+    "S5_vs_AE": {
+      "mean_delta": -0.000925,
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "1/10"
+    },
+    "S5_vs_scGPT_Probe": {
+      "mean_delta": 0.001833,
+      "splits_ci_gt_zero": "4/10",
+      "splits_ci_lt_zero": "0/10"
+    },
+    "scGPT_Probe_vs_AE": {
+      "mean_delta": -0.002758,
+      "splits_ci_gt_zero": "0/10",
+      "splits_ci_lt_zero": "5/10"
+    }
+  }
+}
