@@ -126,10 +126,11 @@ def eval_subset_metrics(
         delta_rs.append(pearson_1d(dt, dp))
         top50 = np.argsort(np.abs(dt))[-50:]
         de50_rs.append(pearson_1d(dt[top50], dp[top50]))
-        de50_signs.append(float(np.mean(np.sign(dt[top50]) == np.sign(dp[top50]))))
+        s_dt, s_dp = np.sign(dt[top50]), np.sign(dp[top50])
+        de50_signs.append(float(np.mean(np.where(s_dp == 0, 0.5, (s_dt == s_dp).astype(np.float64)))))
         v5s.append(pearson_1d(vt[mask], vp[mask]))
 
-    # Unprojected and v5 perturbation discrimination (exact percentile rank)
+    # Unprojected and v5 perturbation discrimination (tie-aware mid-rank percentile)
     def disc_pct(A: np.ndarray, B: np.ndarray) -> float:
         A0 = A - A.mean(axis=1, keepdims=True)
         B0 = B - B.mean(axis=1, keepdims=True)
@@ -137,8 +138,10 @@ def eval_subset_metrics(
         Bn = B0 / np.maximum(np.linalg.norm(B0, axis=1, keepdims=True), 1e-12)
         C = Bn @ An.T  # C[i, j] = corr(pred_i, true_j)
         diag = np.diag(C)[:, None]
-        better = np.sum(C > diag, axis=1)
-        return float(np.mean(1.0 - better / max(n - 1, 1)))
+        strictly_better = np.sum(C > diag + 1e-12, axis=1)
+        tied_others = np.sum(np.abs(C - diag) <= 1e-12, axis=1) - 1
+        eff_better = strictly_better + 0.5 * np.maximum(tied_others, 0)
+        return float(np.mean(1.0 - eff_better / max(n - 1, 1)))
 
     return {
         "MSE": float(np.mean(mses)),
