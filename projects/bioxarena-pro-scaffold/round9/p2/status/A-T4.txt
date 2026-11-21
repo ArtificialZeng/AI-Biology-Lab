@@ -1,0 +1,22 @@
+COMPLETE A-T4 (Prospective VCC 2026 Preparation & cell-eval2 Local Repro)
+
+Deliverables (round9/p2/vcc_linespecific/src/prospective/):
+- HUMAN_STEPS.md: Verbatim-sourced VCC 2026 access, Terms/Rules/FAQ compliance, GT timeline estimate (no explicit 2026 date; 2025 GCS timeCreated precedent = 2025-12-16, 10d after 2025-12-06 Wrap-Up, CC0 1.0), and human action checklist.
+- CELL_EVAL2_REPRO.md: Local CPU/macOS repro guide for ArcInstitute/cell-eval2==0.22.0 + pdex==0.3.0, preset comparisons, upload-vs-scoring non-targeting bridge, CLI pitfalls (baseline --save-pred, prep-real-bundle --id/--baseline <.h5ad>), and observed VCC 2025 scores.
+- vcc2026_format.py: VCC 2026 upload validator, dispersed integer CSR count emitter (sum <= 1e6/cell), vcc .tar+zstd packager, SHA-256 + TIMESTAMP_DECLARATION.md bundler, and cell-eval2 real-control splicing bridge.
+- prospective_predict.py: End-to-end prospective prediction script integrating predictors.py / data_loader.py (--bundle-dir or --controls, --source-lines-dir or --source-h5ad or --self-control-only).
+- run_celleval2_vcc2025_verify.py: Automated verification pipeline scoring dispersed signal vs null arms on public H1-VCC-2025-training.h5ad with cell-eval2 (vcc2026 + legacy vcc profile).
+- test_prospective.py: 6 unit/integration tests covering format, validation failures, .vcc packaging, SHA-256 verification, cell-eval2 scoring bridge, and PREREG_COMMIT gate.
+
+Human Steps & Blockers:
+1. Access Gate: VCC 2026 test controls/targets (vcc_2026_controls_final.zip, ~615 MiB; D/E/F = AC16/MOLM13/U-87MG, 300 targets) require account login + Persona selfie verification. Deadline passed 2026-11-05 23:59 UTC (Wrap-Up 2026-11-19). Public GCS gs://arc-institute-virtual-cell-atlas/virtual-cell-challenge/2026/ is empty as of 2026-11-21. Agent did not register or accept terms.
+2. Terms & Compliance: /terms forbids "Use your account for any purpose other than participating in the Challenge" and redistribution of Services Content, and /rules controls over /faq. Before downloading/using controls-final post-deadline or publicly posting predictions derived from restricted inputs, email help@virtualcellchallenge.org for written permission or wait for public GCS CC0 1.0 release (late Nov to mid Dec 2026 estimated by 2025 precedent). Never push restricted inputs (context_*.h5ad, gene_names.csv, pert_counts.csv) to git; publish only SHA256SUMS.txt, prediction_manifest.json, TIMESTAMP_DECLARATION.md, and code/weights (plus optional OpenTimestamps ots stamp) prior to GT release.
+3. Upstream Dependency (Conservative Fallback Applied): At handoff, A-T1 is still IN_PROGRESS downloading Replogle K562/RPE1 into p2/shared/lines/, and PREREG_COMMIT.txt does not yet exist (Nadig held-out directories untouched per Rule 3). End-to-end simulation ran conservatively using public H1-VCC-2025-training.h5ad non-targeting controls + two simulated Replogle-schema sources (K562_sim, RPE1_sim) in /tmp/round9_A_T4/. Re-run with --source-lines-dir p2/shared/lines once A-T1 finishes Replogle and (for non-Replogle targets) after PREREG_COMMIT.txt is locked.
+
+Verification Results (Latest Runs):
+- test_prospective.py: 6 passed in 8.64s (/tmp/round9_A_T4/venv/bin/pytest -v).
+- cell-eval2 v0.22.0 (tests/test_vcc2026_preset.py + tests/test_golden_score.py): 13 passed in 5.58s.
+- run_celleval2_vcc2025_verify.py on public H1-VCC-2025-training.h5ad (600x1000, 5 perts + 100 non-targeting): exited 0; signal avg_score (from_replicate) = 1.034265584954988 vs null avg_score (from_replicate) = -0.2534912253149939 (CELLEVAL2 output saved under /tmp/round9_A_T4/celleval2_vcc2025_verify/).
+- End-to-end prospective simulation (/tmp/round9_A_T4/sim_prospective_out/, contexts D/E/F x 5 perts x 400 cells = 6,000x1,000, Hybrid_ProjShared): validation_passed=True; shasum -a 256 -c SHA256SUMS.txt -> prediction.h5ad: OK, prediction.prep.vcc: OK.
+
+TASK_DONE
