@@ -104,7 +104,7 @@ def make_fig1():
         if sc_df is not None:
             active_specs.append(("scGPT_Probe", "scGPT_Probe", "scGPT Probe", "#0b7285", "*", "-"))
         if g_data is not None:
-            active_specs.append(("Official_GEARS", "Official_GEARS", "Official GEARS", "#2f855a", "X", ":"))
+            active_specs.append(("Official_GEARS", "Official_GEARS", "GEARS (official package, pseudobulk-adapted)", "#2f855a", "X", ":"))
 
         for m_nad, m_t2, lbl, col, mk, ls in active_specs:
             if m_nad == "Official_GEARS":
@@ -159,8 +159,8 @@ def make_fig1():
     # Gather full legend from panel with most methods
     best_ax = axes[1] if gears_rep_d is not None else axes[0]
     handles, labels = best_ax.get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.03), ncol=len(labels), frameon=False)
-    fig.tight_layout(rect=[0, 0, 1, 0.94])
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.02), ncol=4, frameon=False, fontsize=8.4)
+    fig.tight_layout(rect=[0, 0, 1, 0.90])
     save_fig(fig, "fig1_metric_inversion_three_datasets")
 
 
@@ -219,7 +219,7 @@ def make_fig2():
     gn_path = REPORTS / "r72_official_gears_nadig_summary.json"
     gn_d = json.loads(gn_path.read_text()) if gn_path.exists() else None
     if gn_d is not None:
-        comps.append(("S5_vs_Official_GEARS", "S5 − Official\nGEARS"))
+        comps.append(("S5_vs_Official_GEARS", "S5 − GEARS (official\npackage, pseudobulk-adapted)"))
 
     y2 = np.arange(len(comps))[::-1]
     ax2.axvline(0.0, color="#2d3748", linestyle="--", linewidth=1.1, zorder=1)
