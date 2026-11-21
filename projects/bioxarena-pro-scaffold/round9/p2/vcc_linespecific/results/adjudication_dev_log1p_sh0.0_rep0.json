@@ -1,0 +1,150 @@
+{
+  "n_lines": 2,
+  "primary_method": "Hybrid_ProjShared",
+  "H-A1": {
+    "pass_count_primary": 0,
+    "pass_count_either": 1,
+    "required": 2,
+    "verdict": "\u672a\u786e\u8ba4",
+    "per_line": {
+      "replogle_k562_essential": {
+        "Hybrid_ProjShared_slope": 0.00466105764990357,
+        "Hybrid_ProjShared_ci95_lo": 0.003355457404577914,
+        "CIPHER_Linear_slope": 0.6424000666443985,
+        "CIPHER_Linear_ci95_lo": 0.6114171618085172,
+        "pass_primary": false,
+        "pass_either": true
+      },
+      "replogle_rpe1": {
+        "Hybrid_ProjShared_slope": 0.008313865536183037,
+        "Hybrid_ProjShared_ci95_lo": 0.006405184249447718,
+        "CIPHER_Linear_slope": -0.08183286618049357,
+        "CIPHER_Linear_ci95_lo": -0.08950596391920419,
+        "pass_primary": false,
+        "pass_either": false
+      }
+    }
+  },
+  "H-A2": {
+    "pass_count_fixed_ceil": 2,
+    "pass_count_resamp_ceil": 2,
+    "required": 2,
+    "verdict": "CONFIRMED",
+    "per_line": {
+      "replogle_k562_essential": {
+        "cal_r_top50": 0.05129788354369353,
+        "ci95_lo_fixed_ceil": 0.03746699088928779,
+        "ci95_lo_resamp_ceil": 0.037474735503930434,
+        "pass_fixed_ceil": true,
+        "pass_resamp_ceil": true
+      },
+      "replogle_rpe1": {
+        "cal_r_top50": 0.14663237235411727,
+        "ci95_lo_fixed_ceil": 0.1104691809380817,
+        "ci95_lo_resamp_ceil": 0.11045403011214325,
+        "pass_fixed_ceil": true,
+        "pass_resamp_ceil": true
+      }
+    }
+  },
+  "H-A3": {
+    "pass_count": 2,
+    "pass_count_shuffled_genes": 2,
+    "required": 2,
+    "verdict": "CONFIRMED",
+    "per_line": {
+      "replogle_k562_essential": {
+        "matched_slope": 0.00466105764990357,
+        "mismatched_slope": 0.0,
+        "disjoint_ci95": true,
+        "pass": true
+      },
+      "replogle_rpe1": {
+        "matched_slope": 0.008313865536183037,
+        "mismatched_slope": 0.0,
+        "disjoint_ci95": true,
+        "pass": true
+      }
+    }
+  },
+  "H-A4": {
+    "max_inferior_allowed": 1,
+    "verdict": "\u672a\u786e\u8ba4",
+    "by_metric": {
+      "cent_disc_raw": {
+        "n_inferior": 0,
+        "verdict": "CONFIRMED"
+      },
+      "cent_de50_r": {
+        "n_inferior": 0,
+        "verdict": "CONFIRMED"
+      },
+      "ctrl_disc_raw": {
+        "n_inferior": 2,
+        "verdict": "\u672a\u786e\u8ba4"
+      },
+      "ctrl_de50_r": {
+        "n_inferior": 0,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "details": {
+      "cent_disc_raw": {
+        "replogle_k562_essential": {
+          "delta": -0.001221865159258685,
+          "ci95_lo": -0.002601859738784781,
+          "ci95_hi": 4.131498115740075e-05,
+          "inferior_ci_lt_zero": false
+        },
+        "replogle_rpe1": {
+          "delta": 0.010881924010118218,
+          "ci95_lo": 0.007433066826699705,
+          "ci95_hi": 0.014295120605544371,
+          "inferior_ci_lt_zero": false
+        }
+      },
+      "cent_de50_r": {
+        "replogle_k562_essential": {
+          "delta": -2.9055642168891243e-05,
+          "ci95_lo": -0.0017601594500012705,
+          "ci95_hi": 0.0017509170373680558,
+          "inferior_ci_lt_zero": false
+        },
+        "replogle_rpe1": {
+          "delta": 0.03599847215098386,
+          "ci95_lo": 0.029981331139059618,
+          "ci95_hi": 0.04213012026095455,
+          "inferior_ci_lt_zero": false
+        }
+      },
+      "ctrl_disc_raw": {
+        "replogle_k562_essential": {
+          "delta": -0.006492953383924424,
+          "ci95_lo": -0.009538485364720458,
+          "ci95_hi": -0.0034926162175416874,
+          "inferior_ci_lt_zero": true
+        },
+        "replogle_rpe1": {
+          "delta": -0.014123883640493518,
+          "ci95_lo": -0.020095309999483762,
+          "ci95_hi": -0.008327848329977797,
+          "inferior_ci_lt_zero": true
+        }
+      },
+      "ctrl_de50_r": {
+        "replogle_k562_essential": {
+          "delta": 0.00273073566020041,
+          "ci95_lo": 0.0009463088796140372,
+          "ci95_hi": 0.004537722571259973,
+          "inferior_ci_lt_zero": false
+        },
+        "replogle_rpe1": {
+          "delta": 0.026322779225518775,
+          "ci95_lo": 0.021251673818254078,
+          "ci95_hi": 0.03154985633936808,
+          "inferior_ci_lt_zero": false
+        }
+      }
+    }
+  }
+}

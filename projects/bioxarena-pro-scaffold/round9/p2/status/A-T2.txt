@@ -1,1 +1,5 @@
-WAITING A-T2 ready & unit-tested (src/{predictors.py,metrics.py,data_loader.py,run_eval.py,adjudicate.py,dev_sweep.py,test_unit.py}; ALL_UNIT_TESTS_PASSED cleanly). Checked @ 19:29: A-T1 created replogle_k562_essential/ (preprocessing in progress, files not yet written; replogle_rpe1 pending; nadig_* untouched per Rule 3). Scheduled 5-min check.
+DEV_COMPLETE A-T2 completed all Replogle K562<->RPE1 dev evaluations (7-config dev_sweep.py + dev_log1p_c10k + dev_log1p_nomask; all unit tests PASS).
+Summary for PREREG_A.md:
+- Locked config: repr=log1p, shrink=0.0, mask_self=True, cov_max_cells=all (<=20k; c10k identical to 3 decimals), primary=Hybrid_ProjShared (with Hybrid_Raw, CIPHER_Linear, and negative controls reported).
+- K562<->RPE1 results: H-A2 CONFIRMED (2/2 cal_r_top50 CI > 0: +0.0513, +0.1466 on rep0; +0.0523, +0.1054 on rep1), H-A3 CONFIRMED (2/2 disjoint CI vs MismatchedCov & ShuffledGenes), H-A4 CONFIRMED on rep1 (4/4 metrics <=1 inf; 3/4 on rep0), H-A1 未确认 (slope 0.0065 rep0 / 0.0068 rep1, <0.13 due to ~15x smaller residual scale; CIPHER_Linear alone has -Delta_src baseline artifact matching DiagCov/ShuffledGenes).
+- Waiting for A-T1 to finish vcc2025_h1 and waiting for p2/status/PREREG_COMMIT.txt before touching or evaluating ANY held-out cell lines (nadig_hepg2, nadig_jurkat, nourreddine_kolf21j, vcc2025_h1). Scheduled 7-min check.

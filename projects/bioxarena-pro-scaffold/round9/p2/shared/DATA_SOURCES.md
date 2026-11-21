@@ -17,7 +17,7 @@ Strict adherence to `P2_RULES.md` Rule 5:
 |---|---|---|---|---|---|
 | `K562_essential_raw_singlecell_01.h5ad` | `https://ndownloader.figshare.com/files/35773219` | `10,661,879,995` B (`10.662 GB`) | `md5:4f1122ce1c7f13299a68df6459a266d3` | `3e5a63a9e892b21029bb55fca4e12517a49aad7af6c14133ca63d12cf68c6cee` | Downloaded & MD5/SHA-256 verified |
 | `rpe1_raw_singlecell_01.h5ad` | `https://ndownloader.figshare.com/files/35775606` | `8,700,873,216` B (`8.701 GB`) | `md5:6a2a9d0d2bf4ec147f4d1104043b268c` | `9b05ef1f81526216fa008d677e9e0d03dce9a2f7a95499a4fb81e505e9d88ef1` | Downloaded & MD5/SHA-256 verified |
-| `K562_essential_normalized_bulk_01.h5ad` | `https://ndownloader.figshare.com/files/35780870` | `79,766,954` B (`0.080 GB`) | `md5:30496767641cd2e660ee6ecb5baee132` | *(to verify local)* | Already on local disk (R6/R8) |
+| `K562_essential_normalized_bulk_01.h5ad` | `https://ndownloader.figshare.com/files/35780870` | `79,766,954` B (`0.080 GB`) | `md5:30496767641cd2e660ee6ecb5baee132` | `c1ca6456c9c9f1aa2b02c496eb64d1dc3e6a852edbd744d682b8d2c95fd36829` | Already on local disk (R8) |
 | `rpe1_normalized_bulk_01.h5ad` | `https://ndownloader.figshare.com/files/35775512` | `95,350,546` B (`0.095 GB`) | `md5:6f1e7d6a09e2f869759e3c4526b7f171` | `a3c5bfd0f15d63938bc80c9b8874b9cd761e3a23caf5ffe7966bae4e887ec89d` | Already on local disk (R6) |
 
 *Note*: Figshare+ API v2 exposes `supplied_md5`/`computed_md5` rather than `sha256` prior to download; exact SHA-256 digests are computed immediately upon download and recorded here. New Replogle download subtotal: **19.363 GB**.
@@ -42,10 +42,10 @@ Strict adherence to `P2_RULES.md` Rule 5:
 
 | File | URL | Size (Bytes / GB) | Pre-Download Hash (GCS JSON API) | Post-Download SHA-256 | Status |
 |---|---|---|---|---|---|
-| `gene_names.csv` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/gene_names.csv` | `116,023` B (`0.0001 GB`) | `md5(b64):PnSuaCYgIvYvcHAb7FolCQ==`, `crc32c:Px7c5g==` | *(pending)* | Planned |
-| `adata_Training.h5ad` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/train/adata_Training.h5ad` | `15,482,497,461` B (`15.482 GB`) | `crc32c:/Z0row==` (GCS composite object, no single md5) | *(pending)* | Planned (150 targets + NT controls) |
-| `adata_Validation.h5ad` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/validation/adata_Validation.h5ad` | `6,928,967,541` B (`6.929 GB`) | `crc32c:EendZg==` | *(pending)* | Planned (50 targets + NT controls; shared with A-T4) |
-| `adata_Test.h5ad` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/test/adata_Test.h5ad` | `11,950,739,168` B (`11.951 GB`) | `crc32c:JMP5RQ==` | *(pending)* | Planned if budget fits (`34.362 GB` total for all 300 H1 targets) |
+| `gene_names.csv` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/gene_names.csv` | `116,023` B (`0.0001 GB`) | `md5(b64):PnSuaCYgIvYvcHAb7FolCQ==`, `crc32c:Px7c5g==` | `e29ff3512b4c2440759bfb2a34577049b2f49df786b3e19c2a91b565de47b38e` | Downloaded & verified |
+| `adata_Training.h5ad` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/train/adata_Training.h5ad` | `15,482,497,461` B (`15.482 GB`) | `crc32c:/Z0row==` (GCS composite object, no single md5) | `a09977104fefb622368ca74b50c9d3c1e891733e6c83db07acfca49b0219c02b` | Downloaded & MD5/SHA-256 verified (150 targets + NT controls) |
+| `adata_Validation.h5ad` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/validation/adata_Validation.h5ad` | `6,928,967,541` B (`6.929 GB`) | `crc32c:EendZg==` | `376f0bab27d9f22e00dfd888668d3602006d035edc182721c378f4802c77bfe1` | Downloaded & verified (50 targets + NT controls; shared with A-T4) |
+| `adata_Test.h5ad` | `https://storage.googleapis.com/arc-institute-virtual-cell-atlas/virtual-cell-challenge/2025/test/adata_Test.h5ad` | `11,950,739,168` B (`11.951 GB`) | `crc32c:JMP5RQ==` | `ba5ce66729e4c8e50b6f147c7d73d3f9f28f76c91fa43ff33e3f6bc2ed831f03` | Downloaded & MD5/SHA-256 verified (100 targets + NT controls) |
 
 ---
 
@@ -66,9 +66,20 @@ Strict adherence to `P2_RULES.md` Rule 5:
 
 ---
 
-## 5. Cumulative Team Download Budget Tracker (Cap: 60.000 GB)
+## 5. HGNC Official Complete Gene Nomenclature Set
+- **Source**: HGNC (HUGO Gene Nomenclature Committee, EMBL-EBI), `https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt`
+- **License**: CC0 1.0 / Public Domain open access (`https://www.genenames.org/about/`).
+
+| File | URL | Size (Bytes / GB) | Last-Modified (HTTP HEAD) | Post-Download SHA-256 | Status |
+|---|---|---|---|---|---|
+| `hgnc_complete_set.txt` | `https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt` | `17,007,798` B (`0.017 GB`) | `Fri, 13 Nov 2026 12:59:59 GMT` | `6df77ac3cbaeb86a6dce5e17d851ebb27b6b3cdcd2471a211a3d8464f00c54c4` | Downloaded & SHA-256 verified |
+
+---
+
+## 6. Cumulative Team Download Budget Tracker (Cap: 60.000 GB)
 - Replogle 2022 (`K562_essential_raw_singlecell_01.h5ad` + `rpe1_raw_singlecell_01.h5ad`): **19.363 GB**
 - Nadig 2025 (`HepG2` + `Jurkat`, pre-existing local): **0.000 GB**
-- Arc VCC 2025 H1 (`adata_Training` + `adata_Validation` + `adata_Test` = `34.362 GB`, or `Training` + `Validation` = `22.411 GB`)
-- Nourreddine 2026 KOLF2.1J (`Chromatin_Modifiers_Strong` + `Metabolic_Enzymes_Strong` = `2.855 GB`, or `QC_Filtered` = `11.620 GB`)
-- **Planned Total**: `19.363 + 34.362 + 2.855 = 56.580 GB` (or `53.394 GB`) — strictly `< 60.000 GB`.
+- Arc VCC 2025 H1 (`adata_Training` + `adata_Validation` + `adata_Test` + `gene_names.csv` = `34.362 GB`)
+- Nourreddine 2026 KOLF2.1J (`Chromatin_Modifiers_Strong` + `Metabolic_Enzymes_Strong` = `2.855 GB`)
+- HGNC official complete set (`hgnc_complete_set.txt`): **`0.017 GB`**
+- **Completed Download Total**: `19.363 + 34.362 + 2.855 + 0.017 = 56.597 GB` (`56,597,332,700` B exact = `56.597333` decimal GB / `52.710374` GiB) — strictly `<= 60.000 GB`.

@@ -1,1 +1,12 @@
-IN_PROGRESS A-T1: nadig_hepg2 (9432 genes, 2343 targets, 1000 rep) and nadig_jurkat (8826 genes, 2350 targets, 1262 rep) built & R7-parity verified in p2/shared/lines/; Replogle K562_essential (56%) & RPE1 (58%) downloading (~11 MB/s combined, ~11-15 min left) to deliver Replogle pair first for A-T2.
+IN_PROGRESS A-T1:
+5 LINES READY & VERIFIED (p2/shared/lines/, COMMON_GENES=6584, verify_shared_lines.py PASS):
+- replogle_k562_essential: G=8561, ctrl=10691/10691, targets=2049 (rep=1113, half_valid=2049), median_r=0.999942 vs bulk, data_loader PASS
+- replogle_rpe1: G=8746, ctrl=11485/11485, targets=2351 (rep=1575, half_valid=2351), median_r=0.999995 vs bulk, data_loader PASS (K562<->RPE1 shares 2017 all / 872 rep targets)
+- nadig_hepg2: G=9432, ctrl=4976/4976, targets=2343 (rep=1000, half_valid=2343)
+- nadig_jurkat: G=8826, ctrl=12013/12013, targets=2350 (rep=1262, half_valid=2350)
+- nourreddine_kolf21j (CM+ME Strong, 38322 cells): G=15000, ctrl=17895/17895, targets=95 (rep=67, in_genes=95, half_valid=95; HGNC remaps KAT3A->CREBBP, MSK1->RPS6KA5; shares 25/25/17/24 all & 14 rep LOLO targets)
+
+IN_PROGRESS Line 6 (vcc2025_h1 H1 hESC, CC0 1.0):
+- All 3 VCC 2025 splits downloaded & SHA-256 verified: adata_Training.h5ad (15.482 GB, sha256=a0997710...), adata_Validation.h5ad (6.929 GB, sha256=376f0bab...), adata_Test.h5ad (11.951 GB, sha256=ba5ce667...); total team downloads = 56,597,332,700 B (56.597333 GB <= 60.000 GB).
+- Processing vcc2025_h1 across all 414,694 unique cells (38,176 unique NT across 48 Flex batches, 317 guide groups -> 300 disjoint targets; duplicate Val/Test NT clones deduplicated cleanly) in task-560.
+- test_prepare_lines.py (6/6 tests passing in 0.036s); verify_shared_lines.py PASS on 5 completed lines (COMMON_GENES=6584).

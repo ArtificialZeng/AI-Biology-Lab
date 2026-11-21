@@ -61,3 +61,4 @@ Secondary trigger (`WATCH_UPDATE` / metric check):
 | Run Timestamp (UTC+8) | Sources Checked | New Matches Evaluated | Alert Status | Notes |
 |---|---|---|---|---|
 | `2026-11-21 19:00` | `bioRxiv` (`2026-11-16..2026-11-21`, 1,572 preprints), `arXiv` (`2026-11-01..2026-11-21` + targeted all-time), `EuropePMC` (Oct–Nov 2026), `Dobin DOI` watch | 13 perturbation/VCC records triaged (see §3) | **`CLEAR`** | Baseline scan complete. `10.64898/2026.11.17.767214` unindexed as of `19:00+08:00`. |
+| `2026-11-21 20:17` | `bioRxiv` (`2026-11-19..2026-11-21`, 564 preprints), `arXiv` recent 30, `Dobin DOI` watch | 0 genuinely new (`10.64898/2026.11.18.767605` ImmunoTwin already triaged) | **`CLEAR`** | Cron iteration 1 (`run_monitor_scan.py 2`). `10.64898/2026.11.17.767214` still unindexed across bioRxiv/Crossref/EuropePMC. |

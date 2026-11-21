@@ -146,6 +146,7 @@ def adjudicate_results(
         }
 
     ha4_overall = all(v["verdict"] == "CONFIRMED" for v in ha4_verdicts.values())
+    ha4_max_inf = max(int(v["n_inferior"]) for v in ha4_verdicts.values())
     return {
         "n_lines": n_lines,
         "primary_method": primary_method,
@@ -172,6 +173,7 @@ def adjudicate_results(
         },
         "H-A4": {
             "max_inferior_allowed": max_lines_fail_ha4,
+            "max_n_inferior": ha4_max_inf,
             "verdict": "CONFIRMED" if ha4_overall else "未确认",
             "by_metric": ha4_verdicts,
             "details": ha4_details,
@@ -180,6 +182,10 @@ def adjudicate_results(
 
 
 def render_markdown_report(adj: Dict[str, Any], df_lines: pd.DataFrame, summary: Dict[str, Any], tag: str) -> str:
+    ha4_sub = ", ".join(
+        f"{k}={v['n_inferior']}/{adj['n_lines']}"
+        for k, v in adj["H-A4"]["by_metric"].items()
+    )
     lines_md: List[str] = [
         f"# Line-Specific Zero-Shot Perturbation Evaluation Report (`{tag}`)",
         "",
@@ -193,7 +199,7 @@ def render_markdown_report(adj: Dict[str, Any], df_lines: pd.DataFrame, summary:
         f"| **H-A1** (Line-specific slope 95% CI > 0.13) | {adj['H-A1']['pass_count_primary']}/{adj['n_lines']} | >= {adj['H-A1']['required']} | **{adj['H-A1']['verdict']}** |",
         f"| **H-A2** (Noise-calibrated resid corr CI > 0) | {adj['H-A2']['pass_count_fixed_ceil']}/{adj['n_lines']} | >= {adj['H-A2']['required']} | **{adj['H-A2']['verdict']}** |",
         f"| **H-A3** (Matched > Mismatched cov, disjoint CI) | {adj['H-A3']['pass_count']}/{adj['n_lines']} | >= {adj['H-A3']['required']} | **{adj['H-A3']['verdict']}** |",
-        f"| **H-A4** (Non-inferiority on disc_raw & de50_r) | {adj['H-A4']['by_metric']['cent_disc_raw']['n_inferior']}/{adj['n_lines']} inf | <= {adj['H-A4']['max_inferior_allowed']} inf | **{adj['H-A4']['verdict']}** |",
+        f"| **H-A4** (Non-inferiority on disc_raw & de50_r; worst of 4) | {adj['H-A4']['max_n_inferior']}/{adj['n_lines']} inf ({ha4_sub}) | <= {adj['H-A4']['max_inferior_allowed']} inf | **{adj['H-A4']['verdict']}** |",
         "",
         "## Per-Line Summary by Method",
         "",

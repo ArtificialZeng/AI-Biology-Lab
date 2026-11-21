@@ -30,6 +30,9 @@ def verify_and_summarize() -> None:
     metas: Dict[str, dict] = {}
 
     for ld in line_dirs:
+        if not (ld / "line_metadata.json").exists():
+            print(f"[SKIP incomplete/in-progress] {ld.name}")
+            continue
         name = ld.name
         genes = [x.strip() for x in (ld / "genes.txt").read_text(encoding="utf-8").splitlines() if x.strip()]
         targets = [x.strip() for x in (ld / "targets.txt").read_text(encoding="utf-8").splitlines() if x.strip()]
@@ -97,7 +100,7 @@ def verify_and_summarize() -> None:
         "",
         "## 1. Per-Line Summary & Gene-Symbol Alignment Loss",
         "",
-        "| Line | Raw Cells × Raw Genes | NT Ctrl (Sampled / Total) | Genes (Finite → Dedup Final) | Alignment Loss (Empty / Dup / Non-Finite) | Targets (Dedup / Reproducible) | Targets in `COMMON_GENES` (All / Rep) |",
+        "| Line | Raw Cells × Raw Genes | NT Ctrl (Sampled / Total) | Genes (Finite → Dedup Final) | Alignment Loss (MultiFile / Empty / Dup / Non-Finite / Cap) | Targets (Dedup / Reproducible) | Targets in `COMMON_GENES` (All / Rep) |",
         "|---|---|---|---|---|---|---|",
     ]
     for name in lines:
@@ -106,7 +109,9 @@ def verify_and_summarize() -> None:
         nt_s = f"{m['n_nt_sampled']:,} / {m['n_nt_total']:,}"
         g_s = f"{m['n_genes_finite_all_batches']:,} → {m['n_genes_final']:,}"
         non_fin = m["raw_shape"][1] - m["n_genes_finite_all_batches"]
-        loss_s = f"{m['n_genes_empty_symbol_dropped']} / {m['n_genes_duplicate_symbol_dropped']} / {non_fin:,}"
+        mf_drop = m.get("n_genes_multifile_dropped", 0)
+        cap_drop = m.get("n_genes_low_expr_cap_dropped", max(0, m["n_genes_finite_all_batches"] - m["n_genes_empty_symbol_dropped"] - m["n_genes_duplicate_symbol_dropped"] - m["n_genes_final"]))
+        loss_s = f"{mf_drop:,} / {m['n_genes_empty_symbol_dropped']} / {m['n_genes_duplicate_symbol_dropped']} / {non_fin:,} / {cap_drop:,}"
         t_s = f"{m['n_targets_deduplicated']:,} / {m['n_targets_reproducible']:,}"
         t_in_cg = len(target_all[name] & common_set)
         tr_in_cg = len(target_rep[name] & common_set)
@@ -137,7 +142,12 @@ def verify_and_summarize() -> None:
 
     md.extend([
         "",
-        "## 5. Saved File Schema (`p2/shared/lines/<line>/`)",
+        "## 5. Notes, HGNC Alignment & Budget Disclosures",
+        "- All datasets share 10x/CellRanger Ensembl-v98-compatible symbols (`497/503` legacy symbols in `vcc2025_h1` match `nourreddine_kolf21j`, `nadig_*`, and `replogle_*` identically without renaming); where target aliases broke self-gene lookup or cross-line matching (`nourreddine_kolf21j`: `KAT3A -> CREBBP` via `ENSG00000005339`, `MSK1 -> RPS6KA5` via `ENSG00000100784`), official HGNC symbols are restored via `hgnc_complete_set.txt`.",
+        "- `nourreddine_kolf21j` combines the two CC BY 4.0 Strong Perturbation sub-atlases (`KOLF_Chromatin_Modifiers_Strong_Perturbations.h5ad` + `KOLF_Metabolic_Enzymes_Strong_Perturbations.h5ad`, `2.855 GB`), yielding `95` targets (`67` reproducible, `14` reproducible shared in LOLO), because `KOLF_Strong_Perturbations.h5ad` (`46.719 GB`) and `KOLF_Pan_Genome_QC_Filtered.h5ad` (`189.393 GB`) exceed the `60.00 GB` team download cap.",
+        "- Disjoint 50/50 split-halves (`half_a_delta_*`, `half_b_delta_*`) split both non-targeting controls and perturbed cells independently per batch (strictly zero shared cells between Half A and Half B, as required for noise-ceiling estimation).",
+        "",
+        "## 6. Saved File Schema (`p2/shared/lines/<line>/`)",
         "- `genes.txt`: Aligned HGNC gene symbols matching column axis `0..G-1`.",
         "- `targets.txt`: Deduplicated target HGNC gene symbols matching row axis `0..P-1`.",
         "- `ctrl_cells.npz`: `X_log1p` (`log1p(1e4 * x / UMI)`), `X_zscore` (Addendum-B per-batch NT z-score), `X_libnorm` (`1e4 * x / UMI`), `ctrl_mean_log1p`, `ctrl_mean_libnorm`, `n_ctrl_total`, `batch_labels`.",

@@ -32,6 +32,7 @@ from typing import Callable, Dict, List, Optional, Sequence, Tuple
 import h5py
 import numpy as np
 import pandas as pd
+import scipy.sparse as sp
 from sklearn.decomposition import TruncatedSVD
 from statsmodels.stats.multitest import multipletests
 
@@ -71,43 +72,84 @@ def read_obs_or_var_col(grp: h5py.Group, col: str) -> List[str]:
 
 
 def read_h5ad_chunk_dense(x_node, s: int, e: int, n_genes_raw: int) -> np.ndarray:
-    """Read rows [s:e] from either a dense HDF5 dataset or a CSR sparse HDF5 group."""
+    """Read rows [s:e] from a dense HDF5 dataset, CSR HDF5 group, or in-memory scipy CSR matrix."""
+    if sp.issparse(x_node):
+        return x_node[s:e].toarray().astype(np.float64, copy=False)
     if isinstance(x_node, h5py.Dataset):
         return np.asarray(x_node[s:e, :], dtype=np.float64)
     if isinstance(x_node, h5py.Group):
         enc = str(x_node.attrs.get("encoding-type", ""))
         if "csc" in enc.lower():
-            raise NotImplementedError("CSC sparse X chunking not implemented; convert or add CSC reader.")
+            raise NotImplementedError("CSC HDF5 node must be pre-converted to CSR via open_x_node().")
         indptr = x_node["indptr"][s : e + 1]
         p0, p1 = int(indptr[0]), int(indptr[-1])
-        data = x_node["data"][p0:p1].astype(np.float64)
+        data = x_node["data"][p0:p1]
         indices = x_node["indices"][p0:p1]
-        out = np.zeros((e - s, n_genes_raw), dtype=np.float64)
         rel_ptr = indptr - p0
-        for row_i in range(e - s):
-            a, b = int(rel_ptr[row_i]), int(rel_ptr[row_i + 1])
-            if a < b:
-                out[row_i, indices[a:b]] = data[a:b]
-        return out
+        return sp.csr_matrix((data, indices, rel_ptr), shape=(e - s, n_genes_raw)).toarray().astype(np.float64, copy=False)
     raise TypeError(f"Unsupported HDF5 X node type: {type(x_node)}")
+
+
+def open_x_node(f: h5py.File, x_layer: str = "X"):
+    """Open HDF5 X/layer node; convert CSC sparse groups to fast in-memory CSR."""
+    x_node = f[x_layer] if x_layer == "X" else f[f"layers/{x_layer}"]
+    if isinstance(x_node, h5py.Group):
+        enc = str(x_node.attrs.get("encoding-type", ""))
+        shape = tuple(int(v) for v in x_node.attrs.get("shape"))
+        if "csc" in enc.lower():
+            csc = sp.csc_matrix((x_node["data"][:], x_node["indices"][:], x_node["indptr"][:]), shape=shape)
+            return csc.tocsr(), shape
+        return x_node, shape
+    if isinstance(x_node, h5py.Dataset):
+        return x_node, (int(x_node.shape[0]), int(x_node.shape[1]))
+    raise TypeError(f"Unsupported X node: {type(x_node)}")
 
 
 def compute_row_umi_sums(x_node, n_cells: int, n_genes_raw: int, chunk_size: int = 8192) -> np.ndarray:
     """Compute per-cell total UMI counts directly from X when obs/UMI_count is absent."""
+    if sp.issparse(x_node):
+        return np.asarray(x_node.sum(axis=1), dtype=np.float64).ravel()
     if isinstance(x_node, h5py.Group):
         indptr = x_node["indptr"][:]
         data = x_node["data"][:]
-        umi = np.zeros(n_cells, dtype=np.float64)
-        for i in range(n_cells):
-            a, b = int(indptr[i]), int(indptr[i + 1])
-            if a < b:
-                umi[i] = float(np.sum(data[a:b]))
+        umi = np.empty(n_cells, dtype=np.float64)
+        for s in range(0, n_cells, chunk_size):
+            e = min(s + chunk_size, n_cells)
+            ptrs = indptr[s : e + 1]
+            p0, p1 = int(ptrs[0]), int(ptrs[-1])
+            seg = data[p0:p1].astype(np.float64, copy=False)
+            lens = np.diff(ptrs)
+            if len(seg) == 0:
+                umi[s:e] = 0.0
+            elif np.all(lens > 0):
+                starts = np.empty(len(lens), dtype=np.int64)
+                starts[0] = 0
+                np.cumsum(lens[:-1], out=starts[1:])
+                umi[s:e] = np.add.reduceat(seg, starts)
+            else:
+                rel = ptrs - p0
+                umi[s:e] = [float(np.sum(seg[rel[i] : rel[i + 1]])) if lens[i] > 0 else 0.0 for i in range(len(lens))]
         return umi
     umi = np.zeros(n_cells, dtype=np.float64)
     for s in range(0, n_cells, chunk_size):
         e = min(s + chunk_size, n_cells)
         umi[s:e] = np.asarray(x_node[s:e, :], dtype=np.float64).sum(axis=1)
     return umi
+
+
+def collect_existing_line_symbols(exclude_line: str) -> set:
+    """Return union of gene & target symbols already present in other prepared lines."""
+    syms = set()
+    if not LINES_DIR.exists():
+        return syms
+    for ld in LINES_DIR.iterdir():
+        if not ld.is_dir() or ld.name == exclude_line:
+            continue
+        for fn in ("genes.txt", "targets.txt"):
+            p = ld / fn
+            if p.exists():
+                syms.update(x.strip() for x in p.read_text(encoding="utf-8").splitlines() if x.strip())
+    return syms
 
 
 def build_gene_keep_mask(
@@ -142,6 +184,7 @@ def build_gene_keep_mask(
     n_dup_dropped = sum(c - 1 for c in dup_counter.values() if c > 1)
 
     kept_items = list(best_by_sym.items())  # [(sym, (score, idx)), ...]
+    n_pre_cap = len(kept_items)
     if max_genes is not None and len(kept_items) > max_genes:
         keep_set = extra_keep_symbols or set()
         forced = [it for it in kept_items if it[0] in keep_set]
@@ -155,6 +198,7 @@ def build_gene_keep_mask(
         "n_genes_finite_all_batches": int(n_finite),
         "n_genes_empty_symbol_dropped": int(n_empty),
         "n_genes_duplicate_symbol_dropped": int(n_dup_dropped),
+        "n_genes_low_expr_cap_dropped": int(n_pre_cap - len(selected)),
         "duplicate_symbols": dup_syms,
         "n_genes_final": int(len(selected)),
     }
@@ -192,8 +236,8 @@ def stratified_split_halves(
 
 def process_singlecell_line(
     line_name: str,
-    h5ad_path: Path,
-    adapter_fn: Callable[[h5py.File], Dict[str, object]],
+    h5ad_paths: "Path | Sequence[Tuple[Path, str]]",
+    adapter_fn: Callable[..., Dict[str, object]],
     max_ctrl_cells: int = 20000,
     max_genes: Optional[int] = None,
     extra_keep_symbols: Optional[set] = None,
@@ -203,45 +247,108 @@ def process_singlecell_line(
     x_layer: str = "X",
 ) -> Path:
     """
-    Generic chunked Addendum-B single-cell processor for any h5ad line.
+    Generic chunked Addendum-B single-cell processor for one or more h5ad files.
 
-    `adapter_fn(f)` returns dict with:
-      - `nt_mask`: bool array (n_cells,)
-      - `batches`: int/str array (n_cells,)
-      - `umi`: float64 array (n_cells,) or None (computed from X)
-      - `pert_keys`: list[str] (n_cells,) unique perturbation group key ("" for NT/invalid)
+    `h5ad_paths` can be a single `Path` or a sequence of `(Path, file_tag)` pairs
+    concatenated virtually along cells (intersecting gene symbols when panels differ).
+    `adapter_fn(f, tag="")` returns dict with:
+      - `nt_mask`: bool array (n_cells_part,)
+      - `batches`: int/str array (n_cells_part,)
+      - `umi`: float64 array (n_cells_part,) or None (computed from X/layer)
+      - `pert_keys`: list[str] (n_cells_part,) unique perturbation group key ("" for NT/invalid)
       - `pert_meta`: dict[key -> (ens_id, gene_symbol)]
-      - `var_gene_ids`: list[str] (n_genes_raw,)
-      - `var_gene_names`: list[str] (n_genes_raw,)
+      - `var_gene_ids`: list[str] (n_genes_part,)
+      - `var_gene_names`: list[str] (n_genes_part,)
     """
+    from contextlib import ExitStack
+
     t0 = time.time()
     out_dir = LINES_DIR / line_name
     out_dir.mkdir(parents=True, exist_ok=True)
-    print(f"\n=== [{line_name}] Reading {h5ad_path} ===", flush=True)
-    input_sha256 = sha256_file(h5ad_path)
+    specs: List[Tuple[Path, str]] = (
+        [(h5ad_paths, "")] if isinstance(h5ad_paths, Path) else [(Path(p), str(tag)) for p, tag in h5ad_paths]
+    )
+    print(f"\n=== [{line_name}] Reading {[p.name for p, _ in specs]} ===", flush=True)
+    input_sha256s = {p.name: sha256_file(p) for p, _ in specs}
+    input_sha256 = input_sha256s[specs[0][0].name] if len(specs) == 1 else json.dumps(input_sha256s)
 
-    with h5py.File(h5ad_path, "r") as f:
-        x_node = f[x_layer] if x_layer == "X" else f[f"layers/{x_layer}"]
-        if isinstance(x_node, h5py.Dataset):
-            n_cells, n_genes_raw = x_node.shape
+    with ExitStack() as stack:
+        files = [stack.enter_context(h5py.File(p, "r")) for p, _ in specs]
+        x_nodes, part_shapes, part_metas, part_umis = [], [], [], []
+        for f_i, (_, tag) in zip(files, specs):
+            xn, shp = open_x_node(f_i, x_layer=x_layer)
+            x_nodes.append(xn)
+            part_shapes.append(shp)
+            try:
+                m_i = adapter_fn(f_i, tag)
+            except TypeError:
+                m_i = adapter_fn(f_i)
+            part_metas.append(m_i)
+            if m_i["umi"] is None:
+                print(f"  Computing per-cell UMI totals from {x_layer} ({tag or specs[0][0].name})...", flush=True)
+                part_umis.append(compute_row_umi_sums(xn, shp[0], shp[1], chunk_size=chunk_size))
+            else:
+                part_umis.append(np.asarray(m_i["umi"], dtype=np.float64))
+
+        # Align var columns across files if multi-file
+        if len(specs) == 1:
+            col_maps: List[Optional[np.ndarray]] = [None]
+            var_gids = list(part_metas[0]["var_gene_ids"])
+            var_gnames = list(part_metas[0]["var_gene_names"])
+            n_multifile_dropped = 0
         else:
-            shape = x_node.attrs.get("shape")
-            n_cells, n_genes_raw = int(shape[0]), int(shape[1])
+            ref_names = [str(x).strip() for x in part_metas[0]["var_gene_names"]]
+            if all([str(x).strip() for x in m["var_gene_names"]] == ref_names for m in part_metas[1:]):
+                col_maps = [None] * len(specs)
+                var_gids = list(part_metas[0]["var_gene_ids"])
+                var_gnames = ref_names
+                n_multifile_dropped = 0
+            else:
+                # Deterministic intersection of unique non-empty symbols in file-0 order
+                sym_maps = []
+                for m in part_metas:
+                    smap: Dict[str, int] = {}
+                    for ci, nm in enumerate(m["var_gene_names"]):
+                        s = str(nm).strip()
+                        if s and s not in smap:
+                            smap[s] = ci
+                    sym_maps.append(smap)
+                common_syms = [
+                    s for s in sym_maps[0].keys() if all(s in sm for sm in sym_maps[1:])
+                ]
+                col_maps = [np.array([sm[s] for s in common_syms], dtype=np.int64) for sm in sym_maps]
+                var_gids = [str(part_metas[0]["var_gene_ids"][sym_maps[0][s]]) for s in common_syms]
+                var_gnames = common_syms
+                n_multifile_dropped = int(max(shp[1] for shp in part_shapes) - len(common_syms))
+        n_dup_nt_skipped = int(sum(m.get("n_duplicate_nt_skipped", 0) for m in part_metas))
 
-        meta = adapter_fn(f)
-        nt_mask = np.asarray(meta["nt_mask"], dtype=bool)
-        batches_raw = np.asarray(meta["batches"])
-        umi = meta["umi"]
-        if umi is None:
-            print(f"  Computing per-cell UMI totals from {x_layer}...", flush=True)
-            umi = compute_row_umi_sums(x_node, n_cells, n_genes_raw, chunk_size=chunk_size)
-        else:
-            umi = np.asarray(umi, dtype=np.float64)
+        n_genes_raw = len(var_gnames)
+        offsets = np.cumsum([0] + [shp[0] for shp in part_shapes[:-1]]).tolist()
+        n_cells = int(sum(shp[0] for shp in part_shapes))
 
-        pert_keys: List[str] = meta["pert_keys"]
-        pert_meta: Dict[str, Tuple[str, str]] = meta["pert_meta"]
-        var_gids: List[str] = meta["var_gene_ids"]
-        var_gnames: List[str] = meta["var_gene_names"]
+        def read_virtual_chunk(s: int, e: int) -> np.ndarray:
+            parts = []
+            for idx_f, (xn, shp, cmap, off) in enumerate(zip(x_nodes, part_shapes, col_maps, offsets)):
+                fs, fe = off, off + shp[0]
+                lo, hi = max(s, fs), min(e, fe)
+                if lo >= hi:
+                    continue
+                arr = read_h5ad_chunk_dense(xn, lo - fs, hi - fs, shp[1])
+                if cmap is not None:
+                    arr = arr[:, cmap]
+                parts.append(arr)
+            return parts[0] if len(parts) == 1 else np.vstack(parts)
+
+        nt_mask = np.concatenate([np.asarray(m["nt_mask"], dtype=bool) for m in part_metas])
+        batches_raw = np.concatenate([np.asarray(m["batches"], dtype=str) for m in part_metas])
+        umi = np.concatenate(part_umis)
+        pert_keys: List[str] = [pk for m in part_metas for pk in m["pert_keys"]]
+        pert_meta: Dict[str, Tuple[str, str]] = {}
+        for m in part_metas:
+            pert_meta.update(m["pert_meta"])
+        target_remaps: Dict[str, str] = {}
+        for m in part_metas:
+            target_remaps.update(m.get("target_remaps", {}))
 
         uniq_batches, batch_idx_per_cell = np.unique(batches_raw, return_inverse=True)
         n_batches = len(uniq_batches)
@@ -275,7 +382,7 @@ def process_singlecell_line(
             m_loc = nt_mask[s:e]
             if not np.any(m_loc):
                 continue
-            Xc = read_h5ad_chunk_dense(x_node, s, e, n_genes_raw)
+            Xc = read_virtual_chunk(s, e)
             rows = np.where(m_loc)[0]
             X_lib = Xc[rows] * (1e4 / np.maximum(umi[s:e][rows], 1.0))[:, None]
             X_log = np.log1p(X_lib)
@@ -434,10 +541,14 @@ def process_singlecell_line(
         hb_sum_pb_z = np.zeros((n_pk, G), dtype=np.float64)
 
         # Check if we need to run AD + Energy tests (no precomputed stats)
+        keep_z = nt_mask | (cell_pkey_idx >= 0)
         need_ad_energy = precomputed_stats_fn is None
         if need_ad_energy:
+            keep_z_idx = np.where(keep_z)[0]
+            z_pos_map = np.full(n_cells, -1, dtype=np.int32)
+            z_pos_map[keep_z_idx] = np.arange(len(keep_z_idx), dtype=np.int32)
             G_top = len(top5000_raw_idx)
-            Z_5000 = np.empty((n_cells, G_top), dtype=np.float32)
+            Z_5000 = np.empty((len(keep_z_idx), G_top), dtype=np.float32)
             mu_top = mu_lib[:, top5000_raw_idx].astype(np.float32)
             sd_top = sd_lib[:, top5000_raw_idx].astype(np.float32)
 
@@ -445,16 +556,21 @@ def process_singlecell_line(
         print(f"  [Pass 2] Building ctrl_cells ({N_ctrl} x {G}) + pseudobulk deltas ({n_pk} groups)...", flush=True)
         for s in range(0, n_cells, chunk_size):
             e = min(s + chunk_size, n_cells)
-            Xc_raw = read_h5ad_chunk_dense(x_node, s, e, n_genes_raw)
+            if not np.any(keep_z[s:e]):
+                continue
+            Xc_raw = read_virtual_chunk(s, e)
             scale = (1e4 / np.maximum(umi[s:e], 1.0)).astype(np.float32)
             bi = batch_idx_per_cell[s:e]
 
             if need_ad_energy:
-                Zt = Xc_raw[:, top5000_raw_idx].astype(np.float32)
-                Zt *= scale[:, None]
-                Zt -= mu_top[bi]
-                Zt /= sd_top[bi]
-                Z_5000[s:e] = Zt
+                zp = z_pos_map[s:e]
+                z_loc = np.where(zp >= 0)[0]
+                if len(z_loc) > 0:
+                    Zt = Xc_raw[z_loc][:, top5000_raw_idx].astype(np.float32)
+                    Zt *= scale[z_loc][:, None]
+                    Zt -= mu_top[bi[z_loc]]
+                    Zt /= sd_top[bi[z_loc]]
+                    Z_5000[zp[z_loc]] = Zt
 
             Xs_lib = Xc_raw[:, sel_idx].astype(np.float32) * scale[:, None]
             Xs_log = np.log1p(Xs_lib)
@@ -514,8 +630,8 @@ def process_singlecell_line(
         Z_pca20 = svd.fit_transform(Z_5000).astype(np.float32)
         nt_ad_idx = stratified_nt_sample(nt_all_idx, batch_idx_per_cell, n_target=1000, seed=42)
         nt_en_idx = stratified_nt_sample(nt_all_idx, batch_idx_per_cell, n_target=500, seed=42)
-        X_ctrl_ad = Z_5000[nt_ad_idx]
-        C_pca_en = Z_pca20[nt_en_idx]
+        X_ctrl_ad = Z_5000[z_pos_map[nt_ad_idx]]
+        C_pca_en = Z_pca20[z_pos_map[nt_en_idx]]
         sigma_cache: Dict[Tuple[int, int], float] = {}
         rng_en = np.random.RandomState(42)
         stats_map = {}
@@ -525,10 +641,11 @@ def process_singlecell_line(
             if n_c < 25:
                 stats_map[pk] = (0, 0.0, 1.0)
                 continue
-            p_ad = ad_two_sample_pvalues_vectorized(Z_5000[ridx], X_ctrl_ad, sigma_cache)
+            rz = z_pos_map[ridx]
+            p_ad = ad_two_sample_pvalues_vectorized(Z_5000[rz], X_ctrl_ad, sigma_cache)
             _, q_ad, _, _ = multipletests(p_ad, method="fdr_bh")
             ad_cnt = float(np.sum(q_ad < 0.05))
-            ep_val = float(energy_distance_perm_pvalue(Z_pca20[ridx], C_pca_en, rng_en, n_perm=2000, batch_size=100))
+            ep_val = float(energy_distance_perm_pvalue(Z_pca20[rz], C_pca_en, rng_en, n_perm=2000, batch_size=100))
             rep = 1 if (ad_cnt >= 50.0 and ep_val < 0.001) else 0
             stats_map[pk] = (rep, ad_cnt, ep_val)
             if (k_i + 1) % 100 == 0 or (k_i + 1) == len(all_pkeys):
@@ -619,9 +736,14 @@ def process_singlecell_line(
     sym_set = set(sel_gnames)
     line_meta = {
         "line": line_name,
-        "input_file": h5ad_path.name,
+        "input_file": ", ".join(p.name for p, _ in specs),
+        "input_files": [p.name for p, _ in specs],
         "input_sha256": input_sha256,
-        "raw_shape": [int(n_cells), int(n_genes_raw)],
+        "input_sha256s": input_sha256s,
+        "n_genes_multifile_dropped": int(n_multifile_dropped),
+        "n_duplicate_nt_skipped": int(n_dup_nt_skipped),
+        "target_symbol_remaps": target_remaps,
+        "raw_shape": [int(n_cells - n_dup_nt_skipped), int(n_genes_raw)],
         "n_batches": int(n_batches),
         "n_nt_total": int(len(nt_all_idx)),
         "n_nt_sampled": int(N_ctrl),
@@ -772,6 +894,133 @@ def replogle_precomputed_stats(bulk_h5ad_path: Path) -> Dict[str, Tuple[int, flo
     return stats_map
 
 
+def load_hgnc_lookups(hgnc_tsv: Optional[Path] = None) -> Tuple[set, Dict[str, str], Dict[str, str]]:
+    """Load official HGNC approved symbols, ENSG->symbol, and symbol->ENSG maps if table exists."""
+    p = hgnc_tsv or Path("/Users/mac/.cache/r9_p2_raw/hgnc_complete_set.txt")
+    if not p.exists():
+        return set(), {}, {}
+    df = pd.read_csv(p, sep="\t", low_memory=False)
+    approved = set()
+    ens_to_sym: Dict[str, str] = {}
+    sym_to_ens: Dict[str, str] = {}
+    for row in df.itertuples(index=False):
+        if row.status != "Approved":
+            continue
+        sym = str(row.symbol).strip()
+        approved.add(sym)
+        ens = row.ensembl_gene_id if isinstance(row.ensembl_gene_id, str) else ""
+        if ens.startswith("ENSG"):
+            ens_to_sym[ens] = sym
+            sym_to_ens[sym] = ens
+    return approved, ens_to_sym, sym_to_ens
+
+
+def kolf_adapter(
+    f: h5py.File,
+    tag: str = "",
+    approved: Optional[set] = None,
+    ens_to_sym: Optional[Dict[str, str]] = None,
+) -> Dict[str, object]:
+    """Adapter for Nourreddine et al. (2026) KOLF2.1J Strong Perturbations h5ads (layers/counts)."""
+    if approved is None or ens_to_sym is None:
+        approved, ens_to_sym, _ = load_hgnc_lookups()
+    perturbed = read_obs_or_var_col(f["obs"], "perturbed")
+    gt = read_obs_or_var_col(f["obs"], "gene_target")
+    ge = read_obs_or_var_col(f["obs"], "gene_target_ensembl_id")
+    pt = read_obs_or_var_col(f["obs"], "perturbation")
+    ch = read_obs_or_var_col(f["obs"], "channel")
+    umi = f["obs/n_UMI_counts"][:].astype(np.float64)
+    nt_mask = np.array([p == "False" or g == "NTC" for p, g in zip(perturbed, gt)], dtype=bool)
+    batches = [f"{tag}_{c}" if tag else c for c in ch]
+    pert_keys: List[str] = []
+    pert_meta: Dict[str, Tuple[str, str]] = {}
+    target_remaps: Dict[str, str] = {}
+    for i in range(len(gt)):
+        if nt_mask[i]:
+            pert_keys.append("")
+            continue
+        raw_sym = gt[i].strip()
+        ens = ge[i].strip()
+        sym = raw_sym
+        if approved and raw_sym not in approved and ens in ens_to_sym:
+            sym = ens_to_sym[ens]
+            target_remaps[raw_sym] = sym
+        pk = f"{tag}_{pt[i]}" if tag else pt[i]
+        pert_keys.append(pk)
+        if pk not in pert_meta:
+            pert_meta[pk] = (ens, sym)
+    return {
+        "nt_mask": nt_mask,
+        "batches": batches,
+        "umi": umi,
+        "pert_keys": pert_keys,
+        "pert_meta": pert_meta,
+        "target_remaps": target_remaps,
+        "var_gene_ids": read_obs_or_var_col(f["var"], "gene_ids"),
+        "var_gene_names": read_obs_or_var_col(f["var"], "_index"),
+    }
+
+
+def vcc_adapter(
+    f: h5py.File,
+    tag: str = "",
+    sym_to_ens: Optional[Dict[str, str]] = None,
+    seen_nt_barcodes: Optional[set] = None,
+) -> Dict[str, object]:
+    """
+    Adapter for Arc Virtual Cell Challenge 2025 H1 hESC h5ads (Training / Validation / Test).
+    Deduplicates identical `non-targeting` barcodes shared across Train/Val/Test splits and
+    preserves native shared `Flex_*` batch identifiers.
+    """
+    if sym_to_ens is None:
+        _, _, sym_to_ens = load_hgnc_lookups()
+    tg = read_obs_or_var_col(f["obs"], "target_gene")
+    gd = read_obs_or_var_col(f["obs"], "guide_id")
+    bt = read_obs_or_var_col(f["obs"], "batch")
+    barcodes = read_obs_or_var_col(f["obs"], "_index")
+    nt_mask = np.zeros(len(tg), dtype=bool)
+    pert_keys: List[str] = []
+    pert_meta: Dict[str, Tuple[str, str]] = {}
+    n_dup_nt_skipped = 0
+    for i in range(len(tg)):
+        if tg[i] == "non-targeting":
+            bc = barcodes[i]
+            if seen_nt_barcodes is not None:
+                if bc in seen_nt_barcodes:
+                    n_dup_nt_skipped += 1
+                    pert_keys.append("")
+                    continue
+                seen_nt_barcodes.add(bc)
+            nt_mask[i] = True
+            pert_keys.append("")
+            continue
+        sym = tg[i].strip()
+        if not sym or sym.lower() in ("nan", "none", "na", "non-targeting"):
+            pert_keys.append("")
+            continue
+        pk = f"{tag}_{gd[i]}" if tag else gd[i]
+        pert_keys.append(pk)
+        if pk not in pert_meta:
+            pert_meta[pk] = (sym_to_ens.get(sym, ""), sym)
+    var_names = read_obs_or_var_col(f["var"], "_index")
+    if "gene_id" in f["var"]:
+        raw_gids = read_obs_or_var_col(f["var"], "gene_id")
+        var_gids = [raw_gids[i] or sym_to_ens.get(s, "") for i, s in enumerate(var_names)]
+    else:
+        var_gids = [sym_to_ens.get(s, "") for s in var_names]
+    return {
+        "nt_mask": nt_mask,
+        "batches": bt,
+        "umi": None,
+        "pert_keys": pert_keys,
+        "pert_meta": pert_meta,
+        "target_remaps": {},
+        "n_duplicate_nt_skipped": int(n_dup_nt_skipped),
+        "var_gene_ids": var_gids,
+        "var_gene_names": var_names,
+    }
+
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Prepare standardized shared cell-line inputs (A-T1).")
     p.add_argument("--line", required=True, choices=["nadig_hepg2", "nadig_jurkat", "replogle_k562_essential", "replogle_rpe1", "vcc2025_h1", "nourreddine_kolf21j"])
@@ -779,6 +1028,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--bulk-dir", type=Path, default=None, help="Optional directory containing Replogle normalized bulk h5ads.")
     p.add_argument("--max-ctrl", type=int, default=20000)
     p.add_argument("--max-genes", type=int, default=None)
+    p.add_argument("--include-test", action="store_true", help="Include adata_Test.h5ad for vcc2025_h1.")
     return p.parse_args()
 
 
@@ -834,5 +1084,45 @@ if __name__ == "__main__":
             max_genes=args.max_genes,
             precomputed_stats_fn=(lambda: replogle_precomputed_stats(bk)) if bk.exists() else None,
         )
+    elif args.line == "nourreddine_kolf21j":
+        approved, ens_to_sym, _ = load_hgnc_lookups()
+        specs = [
+            (args.input_dir / "KOLF_Chromatin_Modifiers_Strong_Perturbations.h5ad", "CM"),
+            (args.input_dir / "KOLF_Metabolic_Enzymes_Strong_Perturbations.h5ad", "ME"),
+        ]
+        keep_syms = collect_existing_line_symbols("nourreddine_kolf21j")
+        max_g = args.max_genes if args.max_genes is not None else 15000
+        process_singlecell_line(
+            "nourreddine_kolf21j",
+            specs,
+            lambda f, tag: kolf_adapter(f, tag=tag, approved=approved, ens_to_sym=ens_to_sym),
+            max_ctrl_cells=args.max_ctrl,
+            max_genes=max_g,
+            extra_keep_symbols=keep_syms,
+            x_layer="counts",
+        )
+    elif args.line == "vcc2025_h1":
+        _, _, sym_to_ens = load_hgnc_lookups()
+        specs = [
+            (args.input_dir / "adata_Training.h5ad", "train"),
+            (args.input_dir / "adata_Validation.h5ad", "val"),
+        ]
+        test_fp = args.input_dir / "adata_Test.h5ad"
+        if args.include_test:
+            if not test_fp.exists():
+                raise FileNotFoundError(f"Requested --include-test but missing {test_fp}")
+            specs.append((test_fp, "test"))
+        keep_syms = collect_existing_line_symbols("vcc2025_h1")
+        max_g = args.max_genes if args.max_genes is not None else 15000
+        seen_nt: set = set()
+        process_singlecell_line(
+            "vcc2025_h1",
+            specs,
+            lambda f, tag: vcc_adapter(f, tag=tag, sym_to_ens=sym_to_ens, seen_nt_barcodes=seen_nt),
+            max_ctrl_cells=args.max_ctrl,
+            max_genes=max_g,
+            extra_keep_symbols=keep_syms,
+            x_layer="X",
+        )
     else:
-        raise NotImplementedError(f"Line {args.line} adapter will be added after raw h5ad schema inspection.")
+        raise ValueError(f"Unsupported line: {args.line}")
