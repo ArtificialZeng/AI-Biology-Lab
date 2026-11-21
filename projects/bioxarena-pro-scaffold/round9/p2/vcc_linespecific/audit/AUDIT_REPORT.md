@@ -169,3 +169,75 @@
 | nourreddine_kolf21j     | Group_B_TMVS_Ctrl     | tmvs_mismatch::replogle_k562_essential |  0.12004     |            0.176043   |  0.00905588  |      0.022496    |      0.0745127   |
 | nourreddine_kolf21j     | Group_B_TMVS_Ctrl     | tmvs_mismatch::replogle_rpe1           |  0.0277564   |            0.140799   |  0.00520141  |      0.031119    |      0.0334839   |
 | nourreddine_kolf21j     | Group_B_TMVS_Ctrl     | tmvs_shuffled_var                      |  0.115932    |            0.192069   |  0.065791    |      0.149129    |      0.194388    |
+
+## 3. Cross-Check Against A-T2 Results (C3 Tolerances: Point 1e-4, CI 0.01)
+
+- **Matched Lines**: 6
+- **Numeric Comparisons**: 456
+- **Max Point Abs Diff / Max CI Abs Diff**: `0.0778267` / `0.0548688`
+- **Deterministic Point Comparisons (excl. RNG-seed CIs/single shuffles & `cent_*` `shared_axis` nuance)**: 264 checks, **0 flagged**, max abs diff = `1.11001e-14`
+- **Total Flagged Discrepancies (point > 0.0001, CI > 0.01)**: 45 (Max abs diff = 0.0778267)
+- **T2 Verdict vs A-T3 Verdict**: `Group A (Hybrid_ProjShared): 未确认 | Group B (Transfer_Mean_VarScaled): 未确认 (Bonferroni 97.5% CIs)` vs `Group A: 未确认 (NOT CONFIRMED) | Group B: 未确认 (NOT CONFIRMED)`
+
+### C3 Hypothesis Verdict Consensus (`A-T2` vs `A-T3`)
+
+| hypothesis   | t2_verdict   | t3_verdict   | agree   | c3_reconciled   |
+|:-------------|:-------------|:-------------|:--------|:----------------|
+| H-A1         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+| H-A2         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+| H-A3         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+| H-A4         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+| H-B1         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+| H-B2         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+| H-B3         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+| H-B4         | 未确认       | 未确认       | True    | 未确认 (FAIL)   |
+
+### Flagged Metric Discrepancies
+
+| line                    | metric_audit                 | metric_t2                    |   val_audit |      val_t2 |    abs_diff |   tol_used | within_tol   |
+|:------------------------|:-----------------------------|:-----------------------------|------------:|------------:|------------:|-----------:|:-------------|
+| nadig_hepg2             | tmvs_shuf_var_slope          | tmvs_shuf_var_slope          | -0.0236786  | -0.0196268  | 0.00405179  |     0.0001 | False        |
+| nadig_hepg2             | tmvs_shuf_var_cal_r          | tmvs_shuf_var_cal_r          | -0.0692931  | -0.0620991  | 0.00719394  |     0.0001 | False        |
+| nadig_hepg2             | shuf_target_slope            | shuf_target_slope            |  0.00785126 |  0.00572082 | 0.00213044  |     0.0001 | False        |
+| nadig_hepg2             | cent_disc_ownmasked_hybrid   | cent_disc_ownmasked_hybrid   |  0.897827   |  0.897513   | 0.000313675 |     0.0001 | False        |
+| nadig_hepg2             | cent_disc_ownmasked_tmean    | cent_disc_ownmasked_tmean    |  0.90269    |  0.902554   | 0.000136449 |     0.0001 | False        |
+| nadig_hepg2             | cent_de50_r_hybrid           | cent_de50_r_hybrid           |  0.544445   |  0.545236   | 0.000790873 |     0.0001 | False        |
+| nadig_hepg2             | cent_de50_r_tmean            | cent_de50_r_tmean            |  0.539674   |  0.541062   | 0.0013879   |     0.0001 | False        |
+| nadig_jurkat            | tmvs_shuf_var_slope          | tmvs_shuf_var_slope          |  0.0311548  |  0.0439888  | 0.012834    |     0.0001 | False        |
+| nadig_jurkat            | tmvs_shuf_var_cal_r          | tmvs_shuf_var_cal_r          |  0.111685   |  0.149543   | 0.0378573   |     0.0001 | False        |
+| nadig_jurkat            | shuf_target_slope            | shuf_target_slope            |  0.00207623 |  0.00248662 | 0.000410396 |     0.0001 | False        |
+| nadig_jurkat            | cent_disc_ownmasked_hybrid   | cent_disc_ownmasked_hybrid   |  0.918403   |  0.919115   | 0.000711481 |     0.0001 | False        |
+| nadig_jurkat            | cent_disc_ownmasked_tmean    | cent_disc_ownmasked_tmean    |  0.920984   |  0.921753   | 0.000768858 |     0.0001 | False        |
+| nadig_jurkat            | cent_de50_r_hybrid           | cent_de50_r_hybrid           |  0.534587   |  0.535518   | 0.000930482 |     0.0001 | False        |
+| nadig_jurkat            | cent_de50_r_tmean            | cent_de50_r_tmean            |  0.531343   |  0.532348   | 0.00100496  |     0.0001 | False        |
+| vcc2025_h1              | tmvs_shuf_var_slope          | tmvs_shuf_var_slope          |  0.0390831  |  0.0601618  | 0.0210787   |     0.0001 | False        |
+| vcc2025_h1              | tmvs_shuf_var_cal_r          | tmvs_shuf_var_cal_r          |  0.140822   |  0.189136   | 0.0483144   |     0.0001 | False        |
+| vcc2025_h1              | tmvs_max_ctrl_slope_ci95_hi  | tmvs_max_ctrl_slope_ci95_hi  |  0.0863312  |  0.129738   | 0.0434073   |     0.01   | False        |
+| vcc2025_h1              | tmvs_max_ctrl_slope_ci975_hi | tmvs_max_ctrl_slope_ci975_hi |  0.0863312  |  0.1412     | 0.0548688   |     0.01   | False        |
+| vcc2025_h1              | shuf_target_slope            | shuf_target_slope            | -0.00167604 | -0.00221641 | 0.000540375 |     0.0001 | False        |
+| vcc2025_h1              | cent_disc_ownmasked_hybrid   | cent_disc_ownmasked_hybrid   |  0.828481   |  0.829272   | 0.000791139 |     0.0001 | False        |
+| vcc2025_h1              | cent_disc_ownmasked_tmean    | cent_disc_ownmasked_tmean    |  0.834652   |  0.835443   | 0.000791139 |     0.0001 | False        |
+| vcc2025_h1              | cent_de50_r_hybrid           | cent_de50_r_hybrid           |  0.460394   |  0.457245   | 0.00314922  |     0.0001 | False        |
+| vcc2025_h1              | cent_de50_r_tmean            | cent_de50_r_tmean            |  0.50863    |  0.505612   | 0.0030181   |     0.0001 | False        |
+| replogle_k562_essential | tmvs_shuf_var_slope          | tmvs_shuf_var_slope          |  0.125881   |  0.099469   | 0.0264121   |     0.0001 | False        |
+| replogle_k562_essential | tmvs_shuf_var_cal_r          | tmvs_shuf_var_cal_r          |  0.280284   |  0.238204   | 0.0420805   |     0.0001 | False        |
+| replogle_k562_essential | tmvs_max_ctrl_cal_r_ci95_hi  | tmvs_max_ctrl_cal_r_ci95_hi  |  0.287542   |  0.264103   | 0.0234393   |     0.01   | False        |
+| replogle_k562_essential | tmvs_max_ctrl_cal_r_ci975_hi | tmvs_max_ctrl_cal_r_ci975_hi |  0.287542   |  0.26848    | 0.0190622   |     0.01   | False        |
+| replogle_k562_essential | shuf_target_slope            | shuf_target_slope            | -0.00767025 | -0.00841807 | 0.00074782  |     0.0001 | False        |
+| replogle_k562_essential | cent_disc_ownmasked_hybrid   | cent_disc_ownmasked_hybrid   |  0.9363     |  0.936435   | 0.000134324 |     0.0001 | False        |
+| replogle_k562_essential | cent_de50_r_hybrid           | cent_de50_r_hybrid           |  0.447071   |  0.448792   | 0.00172118  |     0.0001 | False        |
+| replogle_k562_essential | cent_de50_r_tmean            | cent_de50_r_tmean            |  0.452681   |  0.45387    | 0.00118832  |     0.0001 | False        |
+| replogle_rpe1           | tmvs_shuf_var_slope          | tmvs_shuf_var_slope          | -0.0399243  | -0.0349655  | 0.00495884  |     0.0001 | False        |
+| replogle_rpe1           | tmvs_shuf_var_cal_r          | tmvs_shuf_var_cal_r          | -0.204882   | -0.188506   | 0.0163751   |     0.0001 | False        |
+| replogle_rpe1           | shuf_target_slope            | shuf_target_slope            | -0.00775983 | -0.00872841 | 0.000968572 |     0.0001 | False        |
+| replogle_rpe1           | cent_disc_ownmasked_hybrid   | cent_disc_ownmasked_hybrid   |  0.926657   |  0.92766    | 0.00100277  |     0.0001 | False        |
+| replogle_rpe1           | cent_disc_ownmasked_tmean    | cent_disc_ownmasked_tmean    |  0.916406   |  0.917283   | 0.000876879 |     0.0001 | False        |
+| replogle_rpe1           | cent_de50_r_hybrid           | cent_de50_r_hybrid           |  0.488727   |  0.492096   | 0.00336882  |     0.0001 | False        |
+| replogle_rpe1           | cent_de50_r_tmean            | cent_de50_r_tmean            |  0.449177   |  0.452506   | 0.0033299   |     0.0001 | False        |
+| nourreddine_kolf21j     | tmvs_shuf_var_slope          | tmvs_shuf_var_slope          |  0.065791   |  0.0332152  | 0.0325758   |     0.0001 | False        |
+| nourreddine_kolf21j     | tmvs_shuf_var_cal_r          | tmvs_shuf_var_cal_r          |  0.194388   |  0.116561   | 0.0778267   |     0.0001 | False        |
+| nourreddine_kolf21j     | shuf_target_slope            | shuf_target_slope            | -0.00897655 | -0.00994461 | 0.000968057 |     0.0001 | False        |
+| nourreddine_kolf21j     | cent_disc_ownmasked_hybrid   | cent_disc_ownmasked_hybrid   |  0.74183    |  0.745098   | 0.00326797  |     0.0001 | False        |
+| nourreddine_kolf21j     | cent_disc_ownmasked_tmean    | cent_disc_ownmasked_tmean    |  0.77451    |  0.777778   | 0.00326797  |     0.0001 | False        |
+| nourreddine_kolf21j     | cent_de50_r_hybrid           | cent_de50_r_hybrid           |  0.467079   |  0.451665   | 0.0154141   |     0.0001 | False        |
+| nourreddine_kolf21j     | cent_de50_r_tmean            | cent_de50_r_tmean            |  0.490044   |  0.471453   | 0.0185911   |     0.0001 | False        |

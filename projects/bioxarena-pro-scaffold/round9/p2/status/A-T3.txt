@@ -1,9 +1,13 @@
 HELDOUT_PRIMARY_DONE
-[A-T3] HELDOUT_PRIMARY_DONE 2026-11-21T22:51+08:00: Completed standalone locked-primary 6-line held-out + dev/secondary LOO audit under CODE_FREEZE 1ca9f60f49adf1ac7cce8266e40533273411db30 and PREREG_A v4 commit 4cc89ebae67f0ed0748b80f994d26dcc9c2b95ef (6,148 COMMON_GENES, --space log1p --shrink 0.0 --cov-max-cells 0 --project-shared-axis, C2 default_rng(k) & default_rng(20261121) x 4000). Outputs written to round9/p2/vcc_linespecific/audit/{audit_per_line.csv,audit_summary.json,AUDIT_REPORT.md}.
-
-Primary Independent Confirmatory Adjudication (K_conf = 3: nadig_hepg2 N=799, nadig_jurkat N=934, vcc2025_h1 N=80; 97.5% two-sided CIs):
-- Group A (Hybrid_ProjShared): 未确认 (NOT CONFIRMED) — H-A1 FAIL (0/3; slopes +0.0097, +0.0058, -0.0088), H-A2 FAIL (2/3; r_orth_cal +0.0490 [0.0239,0.0738], +0.0652 [0.0406,0.0902], vcc2025_h1 -0.0398 [-0.1220,0.0371]), H-A3 FAIL (0/3), H-A4 FAIL (3/3 inferior ctrl_disc_panel & ctrl_disc_ownmasked).
-- Group B (Transfer_Mean_VarScaled): 未确认 (NOT CONFIRMED) — H-B1 FAIL (0/3; slopes +0.0357, +0.0095, -0.1647), H-B2 FAIL (2/3; r_orth_cal +0.0419 [0.0247,0.0604], +0.0947 [0.0800,0.1093], vcc2025_h1 -0.0772 [-0.1943,0.0332]), H-B3 FAIL (0/3 vs perm100 p97.5 +0.0872/+0.1528/+0.0534 & mismatch), H-B4 FAIL (3/3 inf cent_disc_panel/ownmasked; 2/3 ctrl_disc).
-- R18 GlobalScale callout: raw r_resid = -0.1264 (HepG2), -0.0056 (Jurkat), +0.2501 (H1), +0.2774 (K562), +0.3521 (RPE1), -0.3161 (KOLF2.1J); r_orth_cal = 0.0000 across all 6 lines.
-- R4/R14 governance: "target-line control statistics"; "Gains over Transfer_Mean may be explained by target-line marginal gene variance"; R14 delta r_orth_cal = +0.0131 [0.0036,0.0225] (HepG2), +0.0165 [0.0050,0.0283] (Jurkat), -0.0044 [-0.0685,0.0545] (H1) -> "In this dataset, co-fluctuation structure exhibits no detectable increment beyond marginal variance".
-- Next (per C4): Running sensitivities S1-S4 (into audit/sens_*/) and cross-checking A-T2 results once available before finalizing AUDIT_REPORT.md and TASK_DONE.
+[A-T3] HELDOUT_PRIMARY_DONE + C3_CROSSCHECK_PASS 2026-11-21T23:02+08:00:
+1. Primary Held-Out 6-Line Standalone Audit Complete (CODE_FREEZE 1ca9f60f49adf1ac7cce8266e40533273411db30; PREREG_A v4 commit 4cc89ebae67f0ed0748b80f994d26dcc9c2b95ef; C2 default_rng(k) & default_rng(20261121) x 4000; 6,148 COMMON_GENES):
+   - Group A (Hybrid_ProjShared): 未确认 (NOT CONFIRMED) — H-A1 0/3, H-A2 2/3, H-A3 0/3, H-A4 FAIL (3/3 inf).
+   - Group B (Transfer_Mean_VarScaled): 未确认 (NOT CONFIRMED) — H-B1 0/3, H-B2 2/3, H-B3 0/3, H-B4 FAIL (3/3 inf).
+   - R14 Mechanism: "In this dataset, co-fluctuation structure exhibits no detectable increment beyond marginal variance" (delta r_orth_cal = +0.0131 / +0.0165 / -0.0044 [-0.0685, +0.0545] on H1).
+   - R18 GlobalScale Callout: raw r_resid = -0.1264 (HepG2), -0.0056 (Jurkat), +0.2501 (H1), +0.2774 (K562), +0.3521 (RPE1), -0.3161 (KOLF2.1J); r_orth_cal = 0.0000.
+2. C3 Cross-Check vs A-T2 (results/*_holdout_log1p_sh0.0_rep1.*):
+   - Saved to audit/cross_check_diffs.json & audit/AUDIT_REPORT.md.
+   - 6 lines matched, 456 numeric comparisons: 264/264 deterministic point checks flagged=0 (max abs diff = 1.11001e-14); 0 real bootstrap CI differences > 0.01 (45 flagged items only in single-seed random shuffles, legacy max_ctrl 1-seed vs perm100 summary, and A-T2 rm_cent shared_axis projection).
+   - C3 Hypothesis Consensus: 8/8 hypotheses (H-A1..H-A4, H-B1..H-B4) agree 100% between A-T2 and A-T3 (all 未确认).
+3. Sensitivities In Progress (post HELDOUT_PRIMARY_DONE per C4):
+   - S1 (--all-targets, task-1270) and S2 (Hybrid_Raw no --project-shared-axis, task-1271) actively running into audit/sensitivity/; S3 (shrink=1e-3), S4a (cov_max_cells=10000), and S4b (zscore) queued next prior to final AUDIT_REPORT.md & TASK_DONE.
