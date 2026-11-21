@@ -1,20 +1,20 @@
-IN_PROGRESS A-T2 (Waiting on p2/status/PREREG_COMMIT.txt per Rule 3):
-Completed all PREREG_AUDIT_R1.md (v2: R3, R4, R5, R6, R10, R11) and PREREG_AUDIT_R2.md (v3: R12, R13, R14, R15 S5/S6) implementations in vcc_linespecific/src/, verified all unit tests, and updated Replogle dev-only results/*_dev_log1p_sh0.0_rep1.* (N=832) and results/*_dev_log1p_sh0.0_rep0.* (N=1,761) (zero held-out line touched):
+DEV_REFRESH_DONE
+IN_PROGRESS A-T2 (C1 & C2 Implemented, Dev Refreshed, Waiting on p2/status/CODE_FREEZE.txt per PREREG_COMMIT.txt C1):
 
-1. Implemented Methods & Metrics in src/:
-   - predictors.py: All source NegCtrl_HybridProj_MismatchedCov(<src>) (R3), NegCtrl_HybridProj_SrcCorrTgtVar (R4a), Transfer_Mean_VarScaled (TMVS, R4b/R12), all source NegCtrl_TMVS_MismatchedVar(<src>) + NegCtrl_TMVS_ShuffledVar (H-B3), Hybrid_on_TMVS (R14), and geometric-mean FCT (R15).
-   - metrics.py & data_loader.py: Added ctrl_mean_libnorm loading, float32 storage of ctrl_cells in memory (cast to float64 inside covariance computation, bit-identical to on-disk float32), panel-masked disc_raw_panel (R5 A-T3 parity), sd_pred/sd_obs, orthogonal Deming slope (delta=1), Obs~Pred OLS slope (R6), and Bonferroni 97.5% two-sided CIs ([1.25, 98.75], R13) alongside 95% CIs.
-   - run_eval.py & adjudicate.py: Enforced >=95% finite joint-bootstrap draws for cal_r & cal_r_sq (R11), S5 top-75% expressed target ctrl-variance filter, S6 resp_top50 vs all_nontarget ceilings, Group A & Group B dual confirmatory adjudication (97.5% CIs), R4/R14 wording locks, and strict 6-convention AND for H-A4/H-B4.
-   - test_unit.py: Added test_r4_controls_and_confirmatory_threshold and test_v3_group_b_fct_hybrid_on_tmvs_s5_and_ci975; latest run ALL_UNIT_TESTS_PASSED.
+1. PREREG_COMMIT.txt C1 & C2 Compliance Implemented & Frozen-Ready in vcc_linespecific/src/:
+   - data_loader.py (C1): Enforces BOTH p2/status/PREREG_COMMIT.txt AND p2/status/CODE_FREEZE.txt (non-empty) before loading or evaluating any non-Replogle cell line; preserves exact gene order from p2/shared/COMMON_GENES.txt; provides read_code_freeze_hash() recorded across all output files (.csv, .json, .md).
+   - metrics.py & run_eval.py (C2):
+     * 100 permutations in compute_tmvs_shuffled_var_perm100 use exact numpy.random.default_rng(k).permutation(G) for k=0..99.
+     * All bootstrap routines and CLI/evaluate_datasets defaults use exact numpy.random.default_rng(20261121) with n_boot=4000.
+   - adjudicate.py: Propagates code_freeze_hash and bootstrap_seed into adjudication_*.json & REPORT_*.md; R14 mechanism check aligns with PREREG_A v4 §6 paired 95% CI on r_orth_cal; R17/R18/R19/R20 rules enforced identically.
+   - test_unit.py: Verified latest run after final C1+C2 edit -> ALL_UNIT_TESTS_PASSED (including C1 CODE_FREEZE gate check, C2 default_rng parity, R17 r_orth_cal & rho_AB_orth<=0 gate, R18 Transfer_Mean_GlobalScale & 100-perm H-B3 gate, and R19 PREREG_A v4 §5.4 SST + W^2 cluster-df 3-tier decomposition).
 
-2. Replogle Dev Verification (results/REPORT_dev_log1p_sh0.0_rep1.md, N=832 rep targets, 7,225 common genes):
-   - Exact match to main controller tmvs_check.py (diff = 0.0000):
-     * Transfer_Mean_VarScaled (TMVS): K562 r_cal=+0.2198 (slope=+0.0737, r_cal^2=0.0483); RPE1 r_cal=+0.2145 (slope=+0.0267, r_cal^2=0.0460).
-     * FCT: K562 r_cal=+0.1394 (slope=+0.0462, r_cal^2=0.0194); RPE1 r_cal=+0.0903 (slope=+0.0111, r_cal^2=0.0082).
-   - Also updated results/*_dev_log1p_sh0.0_rep0.* (403.04s, N=1,761 all targets): TMVS r_cal=+0.2054 (K562, slope=+0.0621) / +0.2033 (RPE1, slope=+0.0222); FCT r_cal=+0.1231 / +0.0684.
-   - Primary Hybrid_ProjShared (rep1 dev 97.5% CIs): H-A1=0/2, H-A2=2/2 (r_cal +0.0523 / +0.1054), H-A3=2/2, H-A4=未确认 (2/2 inf on ctrl_disc_raw_panel); R4 note: SrcCorrTgtVar ties/beats on RPE1 (+0.1144 vs +0.1054).
-   - Group B TMVS (rep1 dev 97.5% CIs): H-B1=0/2, H-B2=2/2, H-B3=1/2 (on K562 NegCtrl_TMVS_ShuffledVar gets +0.3169 due to global K562<RPE1 shrinkage; RPE1 TMVS +0.2145 beats ShuffledVar -0.0599), H-B4=0/2 inf across all 6 conventions.
-   - R14 Hybrid_on_TMVS vs TMVS (rep1): 0/2 pass at 97.5% CI -> "在本数据上，共波动结构没有超出边际方差的可检测增量".
-   - S5 (5,419/7,225 top-75% var genes): TMVS r_cal increases (+0.2304 K562, +0.2327 RPE1). S6: rho_AB(top50) 0.9503/0.9441 vs rho_AB(all) 0.8421/0.7160.
+2. Verified Final Pre-Freeze Replogle Dev Refresh (Zero held-out lines read/evaluated):
+   - dev_log1p_sh0.0_rep1 (198.6s, N=832 rep targets, 7,225 common genes, seed=20261121):
+     * K562 <- RPE1: GlobalScale raw r_resid=+0.5546 (r_orth_cal=NaN); TMVS r_orth_cal=+0.1325 [97.5% CI lo=+0.1058] vs perm100 (p2.5=+0.0495, med=+0.0913, p97.5=+0.1266, max=+0.1296 -> H-B3 False); Hybrid_ProjShared r_orth_cal=+0.0838 (slope=+0.0050); Hybrid_on_TMVS r_orth_cal=+0.1500; rho_AB_orth(top50)=0.9273, S6 rho_AB_orth(all)=0.5418; R19 resp_top50: beta_ols_int=0.5611 [0.5404,0.5822], L1=0.3076, L2=0.1425 [0.1308,0.1520], L3=0.5500.
+     * RPE1 <- K562: GlobalScale raw r_resid=+0.3034 (r_orth_cal=NaN); TMVS r_orth_cal=+0.0979 [97.5% CI lo=+0.0837] vs perm100 (p2.5=-0.0048, med=+0.0324, p97.5=+0.0571, max=+0.0655 -> H-B3 True); Hybrid_ProjShared r_orth_cal=+0.1527 (slope=+0.0085); Hybrid_on_TMVS r_orth_cal=+0.1664; rho_AB_orth(top50)=0.9447, S6 rho_AB_orth(all)=0.6965; R19 resp_top50: beta_ols_int=1.7340 [1.6604,1.8133], L1=0.0920, L2=0.1195 [0.1059,0.1294], L3=0.7885.
+   - dev_log1p_sh0.0_rep0 (421.4s, N=1,761 all targets, seed=20261121):
+     * K562: TMVS r_orth_cal=+0.1114 (perm100 p97.5=+0.1159); Hybrid_ProjShared r_orth_cal=+0.0752; Hybrid_on_TMVS r_orth_cal=+0.1281; R19 resp_top50: L1=0.3043, L2=0.1112 [0.1043,0.1200], L3=0.5845.
+     * RPE1: TMVS r_orth_cal=+0.0881 (perm100 p97.5=+0.0578); Hybrid_ProjShared r_orth_cal=+0.1798; Hybrid_on_TMVS r_orth_cal=+0.1660; R19 resp_top50: L1=0.0694, L2=0.0856 [0.0772,0.0928], L3=0.8449.
 
-Strictly blocked on p2/status/PREREG_COMMIT.txt before reading or evaluating any held-out cell line.
+Ready for mainline commit+push of vcc_linespecific/src/ and p2/status/CODE_FREEZE.txt per C1; strictly blocked on CODE_FREEZE.txt before starting 6-line held-out primary evaluation.
