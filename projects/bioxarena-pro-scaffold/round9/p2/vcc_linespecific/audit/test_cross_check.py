@@ -49,6 +49,9 @@ class TestCrossCheck(unittest.TestCase):
                     "ls_slope_ols_top50_ci95_hi": 0.31,
                     "ls_resid_corr_top50": 0.22,
                     "ls_resid_corr_cal_top50": 0.35,
+                    "ls_resid_corr_orth_top50": 0.19,
+                    "ls_resid_corr_orth_cal_top50": 0.28,
+                    "ls_resid_corr_orth_cal_top50_sq": 0.0784,
                     "ls_resid_corr_cal_top50_sq": 0.1225,
                     "ls_resid_corr_cal_top50_sq_resamp_ci95_lo": 0.04,
                     "ls_resid_corr_cal_top50_sq_resamp_ci95_hi": 0.25,
@@ -122,22 +125,55 @@ class TestCrossCheck(unittest.TestCase):
                     "ls_slope_ols_top50_ci95_lo": -0.01,
                     "ls_slope_ols_top50_ci95_hi": 0.03,
                     "ls_resid_corr_cal_top50": 0.02,
+                    "ls_resid_corr_orth_cal_top50": 0.09,
                     "ctrl_disc_raw": 0.70,
                     "ctrl_de50_r": 0.44,
                     "cent_disc_raw": 0.71,
                     "cent_de50_r": 0.45,
+                },
+                {
+                    "target_line": "L1",
+                    "method": "Transfer_Mean_GlobalScale",
+                    "n_eval_targets": 20,
+                    "ls_slope_ols_top50": 0.03,
+                    "ls_resid_corr_top50": 0.55,
+                    "ls_resid_corr_cal_top50": 0.56,
+                    "ls_resid_corr_orth_cal_top50": 0.0,
+                },
+                {
+                    "target_line": "L1",
+                    "method": "Hybrid_on_TMVS",
+                    "n_eval_targets": 20,
+                    "ls_slope_ols_top50": 0.04,
+                    "ls_resid_corr_cal_top50": 0.22,
+                    "ls_resid_corr_orth_cal_top50": 0.15,
+                },
+                {
+                    "target_line": "L1",
+                    "method": "FCT",
+                    "n_eval_targets": 20,
+                    "ls_slope_ols_top50": 0.05,
+                    "ls_resid_corr_cal_top50": 0.14,
+                    "ls_resid_corr_orth_cal_top50": 0.23,
                 },
             ]
         )
         wide = normalize_t2_long_table(long_df, primary_method="Hybrid_ProjShared")
         self.assertEqual(list(wide["line"]), ["L1"])
         self.assertAlmostEqual(wide.loc[0, "hybrid_slope"], 0.25)
+        self.assertAlmostEqual(wide.loc[0, "r_orth_cal"], 0.28)
+        self.assertAlmostEqual(wide.loc[0, "r_orth_cal_sq"], 0.0784)
         self.assertAlmostEqual(wide.loc[0, "r_cal_sq"], 0.1225)
         self.assertAlmostEqual(wide.loc[0, "sd_pred_over_sd_obs"], 0.11)
         self.assertAlmostEqual(wide.loc[0, "slope_deming"], 0.26)
         self.assertAlmostEqual(wide.loc[0, "max_mismatch_ci95_hi"], 0.07)
         self.assertAlmostEqual(wide.loc[0, "sctv_slope"], 0.03)
         self.assertAlmostEqual(wide.loc[0, "tmvs_cal_r"], 0.02)
+        self.assertAlmostEqual(wide.loc[0, "tmvs_r_orth_cal"], 0.09)
+        self.assertAlmostEqual(wide.loc[0, "global_scale_resid_corr"], 0.55)
+        self.assertAlmostEqual(wide.loc[0, "global_scale_r_orth_cal"], 0.0)
+        self.assertAlmostEqual(wide.loc[0, "hotmvs_r_orth_cal"], 0.15)
+        self.assertAlmostEqual(wide.loc[0, "fct_r_orth_cal"], 0.23)
         self.assertAlmostEqual(wide.loc[0, "ctrl_disc_ownmasked_tmean"], 0.70)
 
     def test_compare_prediction_arrays(self):

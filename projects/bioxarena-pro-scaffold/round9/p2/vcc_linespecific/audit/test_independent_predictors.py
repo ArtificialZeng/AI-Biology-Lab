@@ -111,6 +111,7 @@ class TestIndependentPredictors(unittest.TestCase):
             self.assertIn(f"tmvs_mismatch::{sl}", preds1)
         self.assertIn("src_corr_tgt_var_hybrid", preds1)
         self.assertIn("transfer_mean_var_scaled", preds1)
+        self.assertIn("transfer_mean_global_scale", preds1)
         self.assertIn("tmvs_shuffled_var", preds1)
         self.assertIn("hybrid_on_tmvs", preds1)
         self.assertIn("fct", preds1)

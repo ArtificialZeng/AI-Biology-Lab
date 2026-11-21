@@ -241,6 +241,17 @@ class TestIndependentStats(unittest.TestCase):
         self.assertEqual(vb_hb3_fail["H-B3"]["pass"], False)
         self.assertEqual(vb_hb3_fail["overall_verdict"], "未确认 (NOT CONFIRMED)")
 
+        # R17 + R18: when r_orth_cal columns exist, H-B2 & H-B3 govern strictly via r_orth_cal
+        for r in b_rows:
+            r["tmvs_r_orth_cal_ci975_lo"] = 0.12
+            r["tmvs_max_ctrl_r_orth_cal_ci975_hi"] = 0.05
+        vb_r17_ok = adjudicate_team_b(b_rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["c1", "c2", "c3"], use_975_ci=True)
+        self.assertEqual(vb_r17_ok["overall_verdict"], "CONFIRMED")
+        b_rows[0]["tmvs_max_ctrl_r_orth_cal_ci975_hi"] = 0.13
+        vb_r17_fail = adjudicate_team_b(b_rows, min_lines_pass=3, max_lines_inferior=0, confirmatory_lines=["c1", "c2", "c3"], use_975_ci=True)
+        self.assertEqual(vb_r17_fail["H-B3"]["pass"], False)
+        self.assertEqual(vb_r17_fail["overall_verdict"], "未确认 (NOT CONFIRMED)")
+
 
 if __name__ == "__main__":
     unittest.main()

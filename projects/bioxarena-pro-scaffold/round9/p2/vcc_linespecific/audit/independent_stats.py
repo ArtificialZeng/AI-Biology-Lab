@@ -340,10 +340,18 @@ def adjudicate_team_a(
     def _slope_lo(r: dict) -> float:
         return _pick_bound(r, (f"primary_slope_ci{ci_tag}_lo", "primary_slope_ci95_lo"))
 
-    def _cal_lo(r: dict) -> float:
-        return _pick_bound(r, (f"noise_cal_corr_ci{ci_tag}_lo", "noise_cal_corr_ci95_lo"))
+    def _orth_cal_lo(r: dict) -> float:
+        return _pick_bound(
+            r,
+            (
+                f"r_orth_cal_ci{ci_tag}_lo",
+                "r_orth_cal_ci95_lo",
+                f"noise_cal_corr_ci{ci_tag}_lo",
+                "noise_cal_corr_ci95_lo",
+            ),
+        )
 
-    def _mis_hi(r: dict) -> float:
+    def _mis_slope_hi(r: dict) -> float:
         return _pick_bound(
             r,
             (
@@ -354,13 +362,31 @@ def adjudicate_team_a(
             ),
         )
 
+    def _mis_orth_hi(r: dict) -> float:
+        return _pick_bound(
+            r,
+            (
+                f"max_mismatch_r_orth_cal_ci{ci_tag}_hi",
+                "max_mismatch_r_orth_cal_ci95_hi",
+            ),
+        )
+
     ha1_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_slope_lo(r)) and _slope_lo(r) > slope_threshold]
-    ha2_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_cal_lo(r)) and _cal_lo(r) > 0.0]
-    ha3_pass_lines = [
-        r["line"]
-        for r in eval_rows
-        if np.isfinite(_mis_hi(r)) and np.isfinite(_slope_lo(r)) and _mis_hi(r) < _slope_lo(r)
-    ]
+    ha2_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_orth_cal_lo(r)) and _orth_cal_lo(r) > 0.0]
+    has_r17_orth_a = bool(eval_rows) and any(
+        k in eval_rows[0] for k in (f"r_orth_cal_ci{ci_tag}_lo", "r_orth_cal_ci95_lo")
+    ) and any(
+        k in eval_rows[0] for k in (f"max_mismatch_r_orth_cal_ci{ci_tag}_hi", "max_mismatch_r_orth_cal_ci95_hi")
+    )
+    ha3_pass_lines = []
+    for r in eval_rows:
+        slope_ok = np.isfinite(_mis_slope_hi(r)) and np.isfinite(_slope_lo(r)) and (_mis_slope_hi(r) < _slope_lo(r))
+        if has_r17_orth_a:
+            orth_ok = np.isfinite(_mis_orth_hi(r)) and np.isfinite(_orth_cal_lo(r)) and (_mis_orth_hi(r) < _orth_cal_lo(r))
+            if slope_ok and orth_ok:
+                ha3_pass_lines.append(r["line"])
+        elif slope_ok:
+            ha3_pass_lines.append(r["line"])
 
     ha4_key_groups = [
         ("ctrl_disc_ownmasked", (f"ctrl_disc_ownmasked_diff_ci{ci_tag}_hi", "ctrl_disc_ownmasked_diff_ci95_hi")),
@@ -442,27 +468,57 @@ def adjudicate_team_b(
     def _slope_lo(r: dict) -> float:
         return _pick_bound(r, (f"tmvs_slope_ci{ci_tag}_lo", "tmvs_slope_ci95_lo"))
 
-    def _cal_lo(r: dict) -> float:
-        return _pick_bound(r, (f"tmvs_cal_r_ci{ci_tag}_lo", "tmvs_cal_r_ci95_lo"))
+    has_r17_orth_b = bool(eval_rows) and any(
+        k in eval_rows[0] for k in (f"tmvs_r_orth_cal_ci{ci_tag}_lo", "tmvs_r_orth_cal_ci95_lo")
+    )
+
+    def _orth_cal_lo(r: dict) -> float:
+        return _pick_bound(
+            r,
+            (
+                f"tmvs_r_orth_cal_ci{ci_tag}_lo",
+                "tmvs_r_orth_cal_ci95_lo",
+                f"tmvs_cal_r_ci{ci_tag}_lo",
+                "tmvs_cal_r_ci95_lo",
+            ),
+        )
+
+    def _ctrl_orth_hi(r: dict) -> float:
+        return _pick_bound(
+            r,
+            (
+                f"tmvs_max_ctrl_r_orth_cal_ci{ci_tag}_hi",
+                "tmvs_max_ctrl_r_orth_cal_ci95_hi",
+                f"tmvs_max_ctrl_cal_r_ci{ci_tag}_hi",
+                "tmvs_max_ctrl_cal_r_ci95_hi",
+            ),
+        )
 
     def _ctrl_slope_hi(r: dict) -> float:
         return _pick_bound(r, (f"tmvs_max_ctrl_slope_ci{ci_tag}_hi", "tmvs_max_ctrl_slope_ci95_hi"))
 
-    def _ctrl_cal_hi(r: dict) -> float:
-        return _pick_bound(r, (f"tmvs_max_ctrl_cal_r_ci{ci_tag}_hi", "tmvs_max_ctrl_cal_r_ci95_hi"))
-
     hb1_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_slope_lo(r)) and _slope_lo(r) > slope_threshold]
-    hb2_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_cal_lo(r)) and _cal_lo(r) > 0.0]
-    hb3_pass_lines = [
-        r["line"]
-        for r in eval_rows
-        if np.isfinite(_slope_lo(r))
-        and np.isfinite(_ctrl_slope_hi(r))
-        and np.isfinite(_cal_lo(r))
-        and np.isfinite(_ctrl_cal_hi(r))
-        and (_slope_lo(r) > _ctrl_slope_hi(r))
-        and (_cal_lo(r) > _ctrl_cal_hi(r))
-    ]
+    hb2_pass_lines = [r["line"] for r in eval_rows if np.isfinite(_orth_cal_lo(r)) and _orth_cal_lo(r) > 0.0]
+    if has_r17_orth_b:
+        # R17 + R18: compare r_orth_cal CI lower bound > max(all 5 mismatched r_orth_cal CI_hi, 100-perm 97.5th pct)
+        hb3_pass_lines = [
+            r["line"]
+            for r in eval_rows
+            if np.isfinite(_orth_cal_lo(r))
+            and np.isfinite(_ctrl_orth_hi(r))
+            and (_orth_cal_lo(r) > _ctrl_orth_hi(r))
+        ]
+    else:
+        hb3_pass_lines = [
+            r["line"]
+            for r in eval_rows
+            if np.isfinite(_slope_lo(r))
+            and np.isfinite(_ctrl_slope_hi(r))
+            and np.isfinite(_orth_cal_lo(r))
+            and np.isfinite(_ctrl_orth_hi(r))
+            and (_slope_lo(r) > _ctrl_slope_hi(r))
+            and (_orth_cal_lo(r) > _ctrl_orth_hi(r))
+        ]
 
     hb4_key_groups = [
         ("ctrl_disc_panel", (f"tmvs_disc_raw_diff_ci{ci_tag}_hi", "tmvs_disc_raw_diff_ci95_hi")),

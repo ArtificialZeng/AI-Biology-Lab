@@ -69,6 +69,11 @@ def normalize_t2_long_table(
                 ("ls_resid_corr_top50", "resid_corr"),
                 ("ls_resid_corr_top50_ci95_lo", "resid_corr_ci95_lo"),
                 ("ls_resid_corr_top50_ci95_hi", "resid_corr_ci95_hi"),
+                ("ls_resid_corr_orth_top50", "r_orth_resid"),
+                ("ls_resid_corr_orth_cal_top50", "r_orth_cal"),
+                ("ls_resid_corr_orth_cal_top50_sq", "r_orth_cal_sq"),
+                ("ls_resid_corr_orth_cal_all", "hybrid_r_orth_cal_all_nontarget"),
+                ("ls_resid_corr_cal_all", "hybrid_cal_r_all_nontarget"),
                 ("ls_resid_corr_cal_top50_sq", "r_cal_sq"),
                 ("ls_r_cal_sq_top50", "r_cal_sq"),
                 ("ls_resid_corr_cal_top50_sq_resamp_ci95_lo", "r_cal_sq_ci95_lo"),
@@ -89,6 +94,17 @@ def normalize_t2_long_table(
             rec["de50_r_tmean"] = float(rt["ctrl_de50_r"])
             rec["cent_disc_ownmasked_tmean"] = float(rt["cent_disc_raw"])
             rec["cent_de50_r_tmean"] = float(rt["cent_de50_r"])
+        if "Transfer_Mean_GlobalScale" in by_m.index:
+            rg = by_m.loc["Transfer_Mean_GlobalScale"]
+            for ck_src, ck_dst in (
+                ("ls_slope_ols_top50", "global_scale_slope"),
+                ("ls_resid_corr_top50", "global_scale_resid_corr"),
+                ("ls_resid_corr_cal_top50", "global_scale_cal_r"),
+                ("ls_resid_corr_orth_cal_top50", "global_scale_r_orth_cal"),
+                ("ls_resid_corr_orth_cal_all", "global_scale_r_orth_cal_all_nontarget"),
+            ):
+                if ck_src in rg.index and np.isfinite(rg[ck_src]):
+                    rec[ck_dst] = float(rg[ck_src])
         if "Transfer_Mean_VarScaled" in by_m.index:
             rv = by_m.loc["Transfer_Mean_VarScaled"]
             rec["tmvs_slope"] = float(rv["ls_slope_ols_top50"])
@@ -102,6 +118,16 @@ def normalize_t2_long_table(
                 ("ls_resid_corr_cal_top50_resamp_ci95_hi", "tmvs_cal_r_ci95_hi"),
                 ("ls_resid_corr_cal_top50_resamp_ci975_lo", "tmvs_cal_r_ci975_lo"),
                 ("ls_resid_corr_cal_top50_resamp_ci975_hi", "tmvs_cal_r_ci975_hi"),
+                ("ls_resid_corr_orth_top50", "tmvs_r_orth_resid"),
+                ("ls_resid_corr_orth_cal_top50", "tmvs_r_orth_cal"),
+                ("ls_resid_corr_orth_cal_top50_sq", "tmvs_r_orth_cal_sq"),
+                ("ls_resid_corr_cal_top50_sq", "tmvs_r_cal_sq"),
+                ("ls_sd_ratio_top50", "tmvs_sd_pred_over_sd_obs"),
+                ("ls_slope_deming_top50", "tmvs_slope_deming"),
+                ("ls_slope_obs_on_pred_top50", "tmvs_slope_obs_on_pred"),
+                ("ls_resid_corr_cal_all", "tmvs_cal_r_all_nontarget"),
+                ("ls_resid_corr_orth_cal_all", "tmvs_r_orth_cal_all_nontarget"),
+                ("ls_slope_ols_all", "tmvs_slope_all_nontarget"),
             ):
                 if ck_src in rv.index and np.isfinite(rv[ck_src]):
                     rec[ck_dst] = float(rv[ck_src])
@@ -109,10 +135,14 @@ def normalize_t2_long_table(
             rh = by_m.loc["Hybrid_on_TMVS"]
             rec["hotmvs_slope"] = float(rh["ls_slope_ols_top50"])
             rec["hotmvs_cal_r"] = float(rh["ls_resid_corr_cal_top50"])
+            if "ls_resid_corr_orth_cal_top50" in rh.index and np.isfinite(rh["ls_resid_corr_orth_cal_top50"]):
+                rec["hotmvs_r_orth_cal"] = float(rh["ls_resid_corr_orth_cal_top50"])
         if "FCT" in by_m.index:
             rf = by_m.loc["FCT"]
             rec["fct_slope"] = float(rf["ls_slope_ols_top50"])
             rec["fct_cal_r"] = float(rf["ls_resid_corr_cal_top50"])
+            if "ls_resid_corr_orth_cal_top50" in rf.index and np.isfinite(rf["ls_resid_corr_orth_cal_top50"]):
+                rec["fct_r_orth_cal"] = float(rf["ls_resid_corr_orth_cal_top50"])
         if "NegCtrl_TMVS_ShuffledVar" in by_m.index:
             rsv = by_m.loc["NegCtrl_TMVS_ShuffledVar"]
             rec["tmvs_shuf_var_slope"] = float(rsv["ls_slope_ols_top50"])
@@ -138,6 +168,8 @@ def normalize_t2_long_table(
             rec["sctv_slope"] = float(rs_tv["ls_slope_ols_top50"])
             rec["sctv_slope_ci95_hi"] = float(rs_tv["ls_slope_ols_top50_ci95_hi"])
             rec["sctv_cal_r"] = float(rs_tv["ls_resid_corr_cal_top50"])
+            if "ls_resid_corr_orth_cal_top50" in rs_tv.index and np.isfinite(rs_tv["ls_resid_corr_orth_cal_top50"]):
+                rec["sctv_r_orth_cal"] = float(rs_tv["ls_resid_corr_orth_cal_top50"])
             if "ls_resid_corr_cal_top50_resamp_ci95_hi" in rs_tv.index and np.isfinite(
                 rs_tv["ls_resid_corr_cal_top50_resamp_ci95_hi"]
             ):
@@ -162,6 +194,10 @@ def normalize_t2_long_table(
             rec["max_mismatch_ci95_hi"] = float(mis_rows.loc[idx_max, "ls_slope_ols_top50_ci95_hi"])
             if "ls_slope_ols_top50_ci975_hi" in mis_rows.columns:
                 rec["max_mismatch_ci975_hi"] = float(mis_rows["ls_slope_ols_top50_ci975_hi"].astype(float).max())
+            if "ls_resid_corr_orth_cal_top50_resamp_ci975_hi" in mis_rows.columns:
+                ov = mis_rows["ls_resid_corr_orth_cal_top50_resamp_ci975_hi"].astype(float)
+                ov = ov[np.isfinite(ov)]
+                rec["max_mismatch_r_orth_cal_ci975_hi"] = float(ov.max()) if len(ov) > 0 else 0.0
         if shuf_name in by_m.index:
             rec["shuf_target_slope"] = float(by_m.loc[shuf_name, "ls_slope_ols_top50"])
         rows.append(rec)
@@ -278,9 +314,9 @@ def render_audit_markdown(
         "",
         f"### Group A (`Hybrid_ProjShared`, {ci_pct} CI)",
         "",
-        f"- **H-A1** (Line-specific slope {ci_pct} CI lower bound > 0.13): {'PASS' if v['H-A1']['pass'] else 'FAIL'} ({v['H-A1']['count']}/{v['n_lines']} lines: {v['H-A1']['lines']})",
-        f"- **H-A2** (Noise-calibrated correlation {ci_pct} CI lower bound > 0): {'PASS' if v['H-A2']['pass'] else 'FAIL'} ({v['H-A2']['count']}/{v['n_lines']} lines: {v['H-A2']['lines']})",
-        f"- **H-A3** (Matched > ALL K-1 mismatched covs, max mismatch CI_hi < matched CI_lo): {'PASS' if v['H-A3']['pass'] else 'FAIL'} ({v['H-A3']['count']}/{v['n_lines']} lines: {v['H-A3']['lines']})",
+        f"- **H-A1** (Line-specific OLS slope {ci_pct} CI lower bound > 0.13): {'PASS' if v['H-A1']['pass'] else 'FAIL'} ({v['H-A1']['count']}/{v['n_lines']} lines: {v['H-A1']['lines']})",
+        f"- **H-A2** (De-amplituded `r_orth_cal` {ci_pct} CI lower bound > 0, R17): {'PASS' if v['H-A2']['pass'] else 'FAIL'} ({v['H-A2']['count']}/{v['n_lines']} lines: {v['H-A2']['lines']})",
+        f"- **H-A3** (Matched > ALL K-1 mismatched covs on BOTH `r_orth_cal` AND slope, R18): {'PASS' if v['H-A3']['pass'] else 'FAIL'} ({v['H-A3']['count']}/{v['n_lines']} lines: {v['H-A3']['lines']})",
         f"- **H-A4** (Hybrid non-inferior to Transferred Mean across ALL 6 conventions, {ci_pct} CI): {'PASS' if v['H-A4']['pass'] else 'FAIL'} "
         f"(ctrl_disc_panel inf: {v['H-A4']['disc_raw_inferior_count']}/{v['n_lines']}, "
         f"ctrl_disc_ownmasked inf: {v['H-A4'].get('ctrl_disc_ownmasked_inferior_count', 'NA')}/{v['n_lines']}, "
@@ -295,11 +331,11 @@ def render_audit_markdown(
         vcc_rng = vb.get("vcc2026_top10_range_check", {})
         lines.extend(
             [
-                f"### Group B (`Transfer_Mean_VarScaled`, {ci_pct} CI, R12)",
+                f"### Group B (`Transfer_Mean_VarScaled`, {ci_pct} CI, R12/R17/R18)",
                 "",
-                f"- **H-B1** (TMVS slope {ci_pct} CI lower bound > 0.13): {'PASS' if vb['H-B1']['pass'] else 'FAIL'} ({vb['H-B1']['count']}/{vb['n_lines']} lines: {vb['H-B1']['lines']})",
-                f"- **H-B2** (TMVS r_cal {ci_pct} CI lower bound > 0): {'PASS' if vb['H-B2']['pass'] else 'FAIL'} ({vb['H-B2']['count']}/{vb['n_lines']} lines: {vb['H-B2']['lines']})",
-                f"- **H-B3** (TMVS > ALL K-1 mismatched var + shuffled var on BOTH slope & r_cal, {ci_pct} CI): {'PASS' if vb['H-B3']['pass'] else 'FAIL'} ({vb['H-B3']['count']}/{vb['n_lines']} lines: {vb['H-B3']['lines']})",
+                f"- **H-B1** (TMVS OLS slope {ci_pct} CI lower bound > 0.13): {'PASS' if vb['H-B1']['pass'] else 'FAIL'} ({vb['H-B1']['count']}/{vb['n_lines']} lines: {vb['H-B1']['lines']})",
+                f"- **H-B2** (TMVS de-amplituded `r_orth_cal` {ci_pct} CI lower bound > 0, R17): {'PASS' if vb['H-B2']['pass'] else 'FAIL'} ({vb['H-B2']['count']}/{vb['n_lines']} lines: {vb['H-B2']['lines']})",
+                f"- **H-B3** (TMVS `r_orth_cal` CI_lo > max(all K-1 mismatched var CI_hi, 100-perm 97.5th pct), R18): {'PASS' if vb['H-B3']['pass'] else 'FAIL'} ({vb['H-B3']['count']}/{vb['n_lines']} lines: {vb['H-B3']['lines']})",
                 f"- **H-B4** (TMVS non-inferior across ALL 6 conventions, {ci_pct} CI): {'PASS' if hb4.get('pass') else 'FAIL'} "
                 f"(ctrl_disc_panel={hb4.get('ctrl_disc_panel_inferior_count', 'NA')}, ctrl_disc_ownmasked={hb4.get('ctrl_disc_ownmasked_inferior_count', 'NA')}, "
                 f"ctrl_de50_r={hb4.get('ctrl_de50_r_inferior_count', 'NA')}, cent_disc_panel={hb4.get('cent_disc_panel_inferior_count', 'NA')}, "
@@ -309,16 +345,29 @@ def render_audit_markdown(
             ]
         )
     if gov or gov_r14:
+        r14_key = (
+            "hotmvs_beats_tmvs_r_orth_cal_all_conf_ci95_lo_gt_0"
+            if "hotmvs_beats_tmvs_r_orth_cal_all_conf_ci95_lo_gt_0" in gov_r14
+            else "hotmvs_beats_tmvs_cal_r_all_conf_ci95_lo_gt_0"
+        )
         lines.extend(
             [
-                "### R4 & R14 Mechanism Wording Governance",
+                "### R4 & R14 Mechanism Wording Governance (R17 Updated)",
                 "",
                 f"- **Beats `SrcCorrTgtVar` on both slope & cal_r (all confirmatory lines, disjoint CI)**: `{gov.get('beats_src_corr_tgt_var_all_conf_slope_and_cal')}`",
-                f"- **Beats `Transfer_Mean_VarScaled` on cal_r (all confirmatory lines, disjoint CI)**: `{gov.get('beats_transfer_mean_var_scaled_all_conf_cal')}`",
+                f"- **Beats `Transfer_Mean_VarScaled` on `r_orth_cal` (all confirmatory lines, disjoint CI)**: `{gov.get('beats_transfer_mean_var_scaled_all_conf_cal')}`",
                 f"- **Permitted R4 Wording**: `{gov.get('allowed_mechanism_phrase')}`",
                 f"- **Variance Caveat**: `{gov.get('marginal_variance_caveat')}`",
-                f"- **R14 `Hybrid_on_TMVS > TMVS` on r_cal (all confirmatory lines, paired 95% CI lo > 0)**: `{gov_r14.get('hotmvs_beats_tmvs_cal_r_all_conf_ci95_lo_gt_0')}`",
+                f"- **R14 `Hybrid_on_TMVS > TMVS` on `r_orth_cal` (all confirmatory lines, paired 95% CI lo > 0)**: `{gov_r14.get(r14_key)}`",
                 f"- **Permitted R14 Statement**: `{gov_r14.get('allowed_cofluctuation_increment_phrase')}`",
+                "",
+            ]
+        )
+    if "global_scale_resid_corr" in audit_df.columns:
+        gs_vals = [f"{r['line']}: raw `r_resid={r['global_scale_resid_corr']:+.4f}` (`r_orth_cal={r['global_scale_r_orth_cal']:+.4f}`)" for _, r in audit_df.iterrows()]
+        lines.extend(
+            [
+                f"> **R18 Global-Amplitude Artifact Callout**: Using **a single scalar per cell line (`Transfer_Mean_GlobalScale`)** already achieves raw residual correlation **{'; '.join(gs_vals)}**, collapsing near zero once per-perturbation amplitude is removed (`r_orth_cal`).",
                 "",
             ]
         )
@@ -330,7 +379,46 @@ def render_audit_markdown(
             "",
         ]
     )
-    # R12/R14/R15 clean breakdown tables when columns exist
+    orth_cols = [
+        c
+        for c in (
+            "line",
+            "rho_ab_orth_top50",
+            "noise_ceiling_r_orth",
+            "r_orth_cal",
+            "r_orth_cal_ci975_lo",
+            "r_orth_cal_ci975_hi",
+            "tmvs_r_orth_cal",
+            "tmvs_r_orth_cal_ci975_lo",
+            "tmvs_r_orth_cal_ci975_hi",
+            "global_scale_resid_corr",
+            "global_scale_r_orth_cal",
+            "tmvs_perm100_r_orth_cal_p025",
+            "tmvs_perm100_r_orth_cal_median",
+            "tmvs_perm100_r_orth_cal_p975",
+            "tmvs_max_ctrl_r_orth_cal_ci975_hi",
+            "fct_r_orth_cal",
+            "hotmvs_r_orth_cal",
+            "r14_hotmvs_minus_tmvs_r_orth_cal",
+            "r14_hotmvs_minus_tmvs_r_orth_cal_ci95_lo",
+            "rho_ab_orth_all_nontarget",
+            "tmvs_r_orth_cal_all_nontarget",
+            "hybrid_r_orth_cal_all_nontarget",
+            "s5_tmvs_r_orth_cal",
+            "s5_hybrid_r_orth_cal",
+        )
+        if c in audit_df.columns
+    ]
+    if len(orth_cols) > 1:
+        lines.extend(
+            [
+                "### R17/R18 Orthogonalized (`r_orth_cal`), GlobalScale, & 100-Perm Shuffled-Var Table",
+                "",
+                audit_df[orth_cols].to_markdown(index=False),
+                "",
+            ]
+        )
+    # R14/R15 clean breakdown table
     s5_s6_cols = [
         c
         for c in (
@@ -358,7 +446,7 @@ def render_audit_markdown(
     if len(s5_s6_cols) > 1:
         lines.extend(
             [
-                "### R14 Mechanism & R15 Secondary Baselines / S5 Expressed / S6 Ceilings",
+                "### R14 Mechanism & R15 Secondary Baselines / S5 Expressed / S6 Raw Ceilings",
                 "",
                 audit_df[s5_s6_cols].to_markdown(index=False),
                 "",
@@ -366,6 +454,36 @@ def render_audit_markdown(
         )
 
     detailed = audit_summary.get("detailed", {})
+    r19_rows = []
+    for ln in audit_summary["lines"]:
+        r19d = detailed.get(ln, {}).get("r19_gain_decomposition", {})
+        for mask_name in ("resp_top50", "all_nontarget"):
+            if mask_name in r19d:
+                d_m = r19d[mask_name]
+                r19_rows.append(
+                    {
+                        "target_line": ln,
+                        "mask": mask_name,
+                        "beta_t": d_m.get("beta_t"),
+                        "beta_t_ci95": f"[{d_m.get('beta_t_ci95_lo', float('nan')):.3f}, {d_m.get('beta_t_ci95_hi', float('nan')):.3f}]",
+                        "frac_whole_line": d_m.get("frac_whole_line"),
+                        "whole_ci95": f"[{d_m.get('frac_whole_line_ci95_lo', float('nan')):.3f}, {d_m.get('frac_whole_line_ci95_hi', float('nan')):.3f}]",
+                        "frac_per_gene_inc": d_m.get("frac_per_gene_inc"),
+                        "gene_ci95": f"[{d_m.get('frac_per_gene_inc_ci95_lo', float('nan')):.3f}, {d_m.get('frac_per_gene_inc_ci95_hi', float('nan')):.3f}]",
+                        "frac_remaining": d_m.get("frac_remaining"),
+                        "rem_ci95": f"[{d_m.get('frac_remaining_ci95_lo', float('nan')):.3f}, {d_m.get('frac_remaining_ci95_hi', float('nan')):.3f}]",
+                    }
+                )
+    if r19_rows:
+        lines.extend(
+            [
+                "### R19 Descriptive Multiplicative Gain Variance Decomposition",
+                "",
+                pd.DataFrame(r19_rows).to_markdown(index=False),
+                "",
+            ]
+        )
+
     ctrl_rows = []
     for ln in audit_summary["lines"]:
         dl = detailed.get(ln, {})
@@ -375,10 +493,11 @@ def render_audit_markdown(
                     "target_line": ln,
                     "group": "Group_A_MismatchedCov",
                     "control": src,
+                    "r_orth_cal": vals.get("r_orth_cal"),
+                    "r_orth_cal_ci975_hi": vals.get("r_orth_cal_ci975_hi"),
                     "slope_ols": vals.get("slope_ols"),
                     "slope_ci975_hi": vals.get("slope_ols_ci975_hi"),
                     "noise_cal_corr": vals.get("noise_cal_corr"),
-                    "cal_r_ci975_hi": None,
                 }
             )
         for ck, vals in dl.get("tmvs_ctrls", {}).items():
@@ -387,10 +506,11 @@ def render_audit_markdown(
                     "target_line": ln,
                     "group": "Group_B_TMVS_Ctrl",
                     "control": ck,
+                    "r_orth_cal": vals.get("r_orth_cal"),
+                    "r_orth_cal_ci975_hi": vals.get("r_orth_cal_ci975_hi"),
                     "slope_ols": vals.get("slope_ols"),
                     "slope_ci975_hi": vals.get("slope_ols_ci975_hi"),
                     "noise_cal_corr": vals.get("noise_cal_corr"),
-                    "cal_r_ci975_hi": vals.get("noise_cal_corr_ci975_hi"),
                 }
             )
     if ctrl_rows:

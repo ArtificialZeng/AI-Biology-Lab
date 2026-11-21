@@ -1,8 +1,8 @@
 {
   "n_lines_matched": 2,
-  "n_comparisons": 108,
+  "n_comparisons": 152,
   "n_flagged": 41,
-  "max_abs_diff": 0.048698076258778145,
+  "max_abs_diff": 0.04576573245134247,
   "tol": 0.0001,
   "all_match": false,
   "rows": [
@@ -98,6 +98,42 @@
     },
     {
       "line": "replogle_k562_essential",
+      "metric_audit": "r_orth_resid",
+      "metric_t2": "r_orth_resid",
+      "val_audit": 0.0822331463394704,
+      "val_t2": 0.0822331463394704,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "r_orth_cal",
+      "metric_t2": "r_orth_cal",
+      "val_audit": 0.0838291588715224,
+      "val_t2": 0.0838291588715224,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "r_orth_cal_sq",
+      "metric_t2": "r_orth_cal_sq",
+      "val_audit": 0.0070273278771069,
+      "val_t2": 0.0070273278771069,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "hybrid_r_orth_cal_all_nontarget",
+      "metric_t2": "hybrid_r_orth_cal_all_nontarget",
+      "val_audit": 0.0508705395757785,
+      "val_t2": 0.0508705395757785,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
       "metric_audit": "r_cal_sq",
       "metric_t2": "r_cal_sq",
       "val_audit": 0.00273508391693,
@@ -152,6 +188,15 @@
     },
     {
       "line": "replogle_k562_essential",
+      "metric_audit": "hybrid_cal_r_all_nontarget",
+      "metric_t2": "hybrid_cal_r_all_nontarget",
+      "val_audit": 0.0286101458932432,
+      "val_t2": 0.0286101458932432,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
       "metric_audit": "max_mismatch_slope",
       "metric_t2": "max_mismatch_slope",
       "val_audit": 0.0,
@@ -172,6 +217,15 @@
       "line": "replogle_k562_essential",
       "metric_audit": "max_mismatch_ci975_hi",
       "metric_t2": "max_mismatch_ci975_hi",
+      "val_audit": 0.0,
+      "val_t2": 0.0,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "max_mismatch_r_orth_cal_ci975_hi",
+      "metric_t2": "max_mismatch_r_orth_cal_ci975_hi",
       "val_audit": 0.0,
       "val_t2": 0.0,
       "abs_diff": 0.0,
@@ -212,6 +266,42 @@
       "val_t2": 0.0457365327063169,
       "abs_diff": 0.00018889001507199632,
       "within_tol": false
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "sctv_r_orth_cal",
+      "metric_t2": "sctv_r_orth_cal",
+      "val_audit": 0.0235328825593859,
+      "val_t2": 0.0235328825593859,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "global_scale_slope",
+      "metric_t2": "global_scale_slope",
+      "val_audit": 0.0308192944143195,
+      "val_t2": 0.0308192944143195,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "global_scale_resid_corr",
+      "metric_t2": "global_scale_resid_corr",
+      "val_audit": 0.5545751860793066,
+      "val_t2": 0.5545751860793066,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "global_scale_cal_r",
+      "metric_t2": "global_scale_cal_r",
+      "val_audit": 0.5617855874435604,
+      "val_t2": 0.5617855874435604,
+      "abs_diff": 0.0,
+      "within_tol": true
     },
     {
       "line": "replogle_k562_essential",
@@ -305,6 +395,96 @@
     },
     {
       "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_r_orth_resid",
+      "metric_t2": "tmvs_r_orth_resid",
+      "val_audit": 0.1299700370328164,
+      "val_t2": 0.1299700370328164,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_r_orth_cal",
+      "metric_t2": "tmvs_r_orth_cal",
+      "val_audit": 0.1324925454996495,
+      "val_t2": 0.1324925454996495,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_r_orth_cal_sq",
+      "metric_t2": "tmvs_r_orth_cal_sq",
+      "val_audit": 0.0175542746129767,
+      "val_t2": 0.0175542746129767,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_r_cal_sq",
+      "metric_t2": "tmvs_r_cal_sq",
+      "val_audit": 0.0483300352625366,
+      "val_t2": 0.0483300352625366,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_sd_pred_over_sd_obs",
+      "metric_t2": "tmvs_sd_pred_over_sd_obs",
+      "val_audit": 0.3396020474237662,
+      "val_t2": 0.3396020474237662,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_slope_deming",
+      "metric_t2": "tmvs_slope_deming",
+      "val_audit": 0.0827378004437438,
+      "val_t2": 0.0827378004437437,
+      "abs_diff": 1.1102230246251565e-16,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_slope_obs_on_pred",
+      "metric_t2": "tmvs_slope_obs_on_pred",
+      "val_audit": 0.6390400784176574,
+      "val_t2": 0.6390400784176574,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_cal_r_all_nontarget",
+      "metric_t2": "tmvs_cal_r_all_nontarget",
+      "val_audit": 0.4659125265539598,
+      "val_t2": 0.4659125265539597,
+      "abs_diff": 1.1102230246251565e-16,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_r_orth_cal_all_nontarget",
+      "metric_t2": "tmvs_r_orth_cal_all_nontarget",
+      "val_audit": 0.1193288738244041,
+      "val_t2": 0.1193288738244041,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "tmvs_slope_all_nontarget",
+      "metric_t2": "tmvs_slope_all_nontarget",
+      "val_audit": 0.111947100822916,
+      "val_t2": 0.111947100822916,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
       "metric_audit": "tmvs_shuf_var_slope",
       "metric_t2": "tmvs_shuf_var_slope",
       "val_audit": 0.2082668342951306,
@@ -325,36 +505,36 @@
       "line": "replogle_k562_essential",
       "metric_audit": "tmvs_max_ctrl_slope_ci95_hi",
       "metric_t2": "tmvs_max_ctrl_slope_ci95_hi",
-      "val_audit": 0.2293803143049097,
+      "val_audit": 0.2214011583568436,
       "val_t2": 0.1897231999371333,
-      "abs_diff": 0.039657114367776414,
+      "abs_diff": 0.0316779584197103,
       "within_tol": false
     },
     {
       "line": "replogle_k562_essential",
       "metric_audit": "tmvs_max_ctrl_slope_ci975_hi",
       "metric_t2": "tmvs_max_ctrl_slope_ci975_hi",
-      "val_audit": 0.2323449451031322,
+      "val_audit": 0.2214011583568436,
       "val_t2": 0.1922746736036251,
-      "abs_diff": 0.04007027149950709,
+      "abs_diff": 0.029126484753218496,
       "within_tol": false
     },
     {
       "line": "replogle_k562_essential",
       "metric_audit": "tmvs_max_ctrl_cal_r_ci95_hi",
       "metric_t2": "tmvs_max_ctrl_cal_r_ci95_hi",
-      "val_audit": 0.4037599539300904,
+      "val_audit": 0.3995493365596621,
       "val_t2": 0.3553286585170854,
-      "abs_diff": 0.048431295413005004,
+      "abs_diff": 0.04422067804257673,
       "within_tol": false
     },
     {
       "line": "replogle_k562_essential",
       "metric_audit": "tmvs_max_ctrl_cal_r_ci975_hi",
       "metric_t2": "tmvs_max_ctrl_cal_r_ci975_hi",
-      "val_audit": 0.410196386645135,
+      "val_audit": 0.3995493365596621,
       "val_t2": 0.3614983103863569,
-      "abs_diff": 0.048698076258778145,
+      "abs_diff": 0.03805102617330525,
       "within_tol": false
     },
     {
@@ -377,6 +557,15 @@
     },
     {
       "line": "replogle_k562_essential",
+      "metric_audit": "hotmvs_r_orth_cal",
+      "metric_t2": "hotmvs_r_orth_cal",
+      "val_audit": 0.1499787249925028,
+      "val_t2": 0.1499787249925029,
+      "abs_diff": 8.326672684688674e-17,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
       "metric_audit": "fct_slope",
       "metric_t2": "fct_slope",
       "val_audit": 0.046210061024198,
@@ -390,6 +579,15 @@
       "metric_t2": "fct_cal_r",
       "val_audit": 0.1394222841629997,
       "val_t2": 0.1394222841629997,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_k562_essential",
+      "metric_audit": "fct_r_orth_cal",
+      "metric_t2": "fct_r_orth_cal",
+      "val_audit": 0.2357414790438166,
+      "val_t2": 0.2357414790438166,
       "abs_diff": 0.0,
       "within_tol": true
     },
@@ -584,6 +782,42 @@
     },
     {
       "line": "replogle_rpe1",
+      "metric_audit": "r_orth_resid",
+      "metric_t2": "r_orth_resid",
+      "val_audit": 0.1505013761703884,
+      "val_t2": 0.1505013761703883,
+      "abs_diff": 8.326672684688674e-17,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "r_orth_cal",
+      "metric_t2": "r_orth_cal",
+      "val_audit": 0.1526863858346036,
+      "val_t2": 0.1526863858346036,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "r_orth_cal_sq",
+      "metric_t2": "r_orth_cal_sq",
+      "val_audit": 0.0233131324192334,
+      "val_t2": 0.0233131324192334,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "hybrid_r_orth_cal_all_nontarget",
+      "metric_t2": "hybrid_r_orth_cal_all_nontarget",
+      "val_audit": 0.1268352106763609,
+      "val_t2": 0.1268352106763609,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
       "metric_audit": "r_cal_sq",
       "metric_t2": "r_cal_sq",
       "val_audit": 0.0111027458955731,
@@ -638,6 +872,15 @@
     },
     {
       "line": "replogle_rpe1",
+      "metric_audit": "hybrid_cal_r_all_nontarget",
+      "metric_t2": "hybrid_cal_r_all_nontarget",
+      "val_audit": 0.1205693691589876,
+      "val_t2": 0.1205693691589876,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
       "metric_audit": "max_mismatch_slope",
       "metric_t2": "max_mismatch_slope",
       "val_audit": 0.0,
@@ -658,6 +901,15 @@
       "line": "replogle_rpe1",
       "metric_audit": "max_mismatch_ci975_hi",
       "metric_t2": "max_mismatch_ci975_hi",
+      "val_audit": 0.0,
+      "val_t2": 0.0,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "max_mismatch_r_orth_cal_ci975_hi",
+      "metric_t2": "max_mismatch_r_orth_cal_ci975_hi",
       "val_audit": 0.0,
       "val_t2": 0.0,
       "abs_diff": 0.0,
@@ -698,6 +950,42 @@
       "val_t2": 0.1361577640755077,
       "abs_diff": 0.0005067337893719936,
       "within_tol": false
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "sctv_r_orth_cal",
+      "metric_t2": "sctv_r_orth_cal",
+      "val_audit": 0.1210570715598899,
+      "val_t2": 0.1210570715598899,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "global_scale_slope",
+      "metric_t2": "global_scale_slope",
+      "val_audit": 0.0057684796746096,
+      "val_t2": 0.0057684796746096,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "global_scale_resid_corr",
+      "metric_t2": "global_scale_resid_corr",
+      "val_audit": 0.3033881927187408,
+      "val_t2": 0.3033881927187408,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "global_scale_cal_r",
+      "metric_t2": "global_scale_cal_r",
+      "val_audit": 0.3078454732797311,
+      "val_t2": 0.3078454732797311,
+      "abs_diff": 0.0,
+      "within_tol": true
     },
     {
       "line": "replogle_rpe1",
@@ -791,6 +1079,96 @@
     },
     {
       "line": "replogle_rpe1",
+      "metric_audit": "tmvs_r_orth_resid",
+      "metric_t2": "tmvs_r_orth_resid",
+      "val_audit": 0.096541684500986,
+      "val_t2": 0.096541684500986,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_r_orth_cal",
+      "metric_t2": "tmvs_r_orth_cal",
+      "val_audit": 0.097943296359973,
+      "val_t2": 0.097943296359973,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_r_orth_cal_sq",
+      "metric_t2": "tmvs_r_orth_cal_sq",
+      "val_audit": 0.0095928893018575,
+      "val_t2": 0.0095928893018575,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_r_cal_sq",
+      "metric_t2": "tmvs_r_cal_sq",
+      "val_audit": 0.0460231716132884,
+      "val_t2": 0.0460231716132884,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_sd_pred_over_sd_obs",
+      "metric_t2": "tmvs_sd_pred_over_sd_obs",
+      "val_audit": 0.1262041978162259,
+      "val_t2": 0.1262041978162259,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_slope_deming",
+      "metric_t2": "tmvs_slope_deming",
+      "val_audit": 0.0270945499068808,
+      "val_t2": 0.0270945499068799,
+      "abs_diff": 8.98586760555986e-16,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_slope_obs_on_pred",
+      "metric_t2": "tmvs_slope_obs_on_pred",
+      "val_audit": 1.6752528843096963,
+      "val_t2": 1.6752528843096963,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_cal_r_all_nontarget",
+      "metric_t2": "tmvs_cal_r_all_nontarget",
+      "val_audit": 0.121415988959495,
+      "val_t2": 0.1214159889594951,
+      "abs_diff": 9.71445146547012e-17,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_r_orth_cal_all_nontarget",
+      "metric_t2": "tmvs_r_orth_cal_all_nontarget",
+      "val_audit": 0.150233365709016,
+      "val_t2": 0.150233365709016,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "tmvs_slope_all_nontarget",
+      "metric_t2": "tmvs_slope_all_nontarget",
+      "val_audit": 0.014380662157332,
+      "val_t2": 0.014380662157332,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
       "metric_audit": "tmvs_shuf_var_slope",
       "metric_t2": "tmvs_shuf_var_slope",
       "val_audit": -0.0143832505280517,
@@ -863,6 +1241,15 @@
     },
     {
       "line": "replogle_rpe1",
+      "metric_audit": "hotmvs_r_orth_cal",
+      "metric_t2": "hotmvs_r_orth_cal",
+      "val_audit": 0.1663799639553314,
+      "val_t2": 0.1663799639553314,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
       "metric_audit": "fct_slope",
       "metric_t2": "fct_slope",
       "val_audit": 0.0111311315166022,
@@ -876,6 +1263,15 @@
       "metric_t2": "fct_cal_r",
       "val_audit": 0.0903421505522726,
       "val_t2": 0.0903421505522726,
+      "abs_diff": 0.0,
+      "within_tol": true
+    },
+    {
+      "line": "replogle_rpe1",
+      "metric_audit": "fct_r_orth_cal",
+      "metric_t2": "fct_r_orth_cal",
+      "val_audit": 0.0531605161555762,
+      "val_t2": 0.0531605161555762,
       "abs_diff": 0.0,
       "within_tol": true
     },

@@ -234,6 +234,36 @@ def _moments_to_r6_stats(
     return sd_ratio, b_rev, b_dem
 
 
+def _pair_moments(xs: Sequence[np.ndarray], ys: Sequence[np.ndarray]):
+    nv = np.array([float(x.size) for x in xs], dtype=np.float64)
+    sx = np.array([float(np.sum(x)) for x in xs], dtype=np.float64)
+    sy = np.array([float(np.sum(y)) for y in ys], dtype=np.float64)
+    sxx = np.array([float(np.dot(x, x)) for x in xs], dtype=np.float64)
+    syy = np.array([float(np.dot(y, y)) for y in ys], dtype=np.float64)
+    sxy = np.array([float(np.dot(x, y)) for x, y in zip(xs, ys)], dtype=np.float64)
+    return nv, sx, sy, sxx, syy, sxy
+
+
+def _boot_stats_from_draws(nv, sx, sy, sxx, syy, sxy, draws: Optional[np.ndarray] = None):
+    if draws is None:
+        return _moments_to_stats(
+            float(nv.sum()), float(sx.sum()), float(sy.sum()),
+            float(sxx.sum()), float(syy.sum()), float(sxy.sum()),
+        )
+    return _moments_to_stats(
+        nv[draws].sum(axis=1), sx[draws].sum(axis=1), sy[draws].sum(axis=1),
+        sxx[draws].sum(axis=1), syy[draws].sum(axis=1), sxy[draws].sum(axis=1),
+    )
+
+
+def _orthogonalize_pair(x: np.ndarray, y: np.ndarray, ref: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    nrm = float(np.linalg.norm(ref))
+    if nrm <= EPS:
+        return x.copy(), y.copy()
+    b = ref / nrm
+    return x - float(np.dot(x, b)) * b, y - float(np.dot(y, b)) * b
+
+
 def _eval_residual_slope_and_corr(
     r_true: np.ndarray,
     r_pred: np.ndarray,
@@ -247,102 +277,105 @@ def _eval_residual_slope_and_corr(
     half_b_res: Optional[np.ndarray] = None,
     half_valid_mask: Optional[np.ndarray] = None,
     gene_keep_mask: Optional[np.ndarray] = None,
+    ortho_ref: Optional[np.ndarray] = None,
 ) -> dict:
-    """Compute line-specific OLS slope, zero-intercept slope, per-pert slope, and corr with 95%/97.5% CIs."""
-    xs, ys, kept = _build_masked_vectors(
-        r_true, r_pred, delta_obs, target_cols, mode=mode, gene_keep_mask=gene_keep_mask
-    )
+    """Compute raw + orthogonalized (R17) line-specific slope & r_cal with 95%/97.5% CIs."""
+    n_perts, n_genes = delta_obs.shape
+    xs, ys, xo, yo, kept = [], [], [], [], []
+    ha_raw_l, hb_raw_l, ha_orth_l, hb_orth_l = [], [], [], []
+    has_direct_halves = half_a_res is not None and half_b_res is not None
+    any_hv = False
+
+    for p in range(n_perts):
+        valid = np.isfinite(r_true[p]) & np.isfinite(r_pred[p]) & np.isfinite(delta_obs[p])
+        if gene_keep_mask is not None:
+            valid = valid & gene_keep_mask
+        t_idx = int(target_cols[p])
+        if 0 <= t_idx < n_genes:
+            valid[t_idx] = False
+        idx = np.flatnonzero(valid)
+        if idx.size == 0:
+            continue
+        if mode == "resp_top50" and idx.size > 50:
+            idx = idx[np.argsort(np.abs(delta_obs[p, idx]))[-50:]]
+        xv = r_true[p, idx].astype(np.float64)
+        yv = r_pred[p, idx].astype(np.float64)
+        xs.append(xv)
+        ys.append(yv)
+        ref_v = ortho_ref[p, idx].astype(np.float64) if ortho_ref is not None else np.zeros_like(xv)
+        xov, yov = _orthogonalize_pair(xv, yv, ref_v)
+        xo.append(xov)
+        yo.append(yov)
+        kept.append(p)
+
+        if has_direct_halves:
+            hv_ok = half_valid_mask is None or bool(half_valid_mask[p])
+            if hv_ok and np.all(np.isfinite(half_a_res[p, idx])) and np.all(np.isfinite(half_b_res[p, idx])):
+                hav = half_a_res[p, idx].astype(np.float64)
+                hbv = half_b_res[p, idx].astype(np.float64)
+                hao, hbo = _orthogonalize_pair(hav, hbv, ref_v)
+                ha_raw_l.append(hav)
+                hb_raw_l.append(hbv)
+                ha_orth_l.append(hao)
+                hb_orth_l.append(hbo)
+                any_hv = True
+            else:
+                z = np.zeros(0, dtype=np.float64)
+                ha_raw_l.append(z)
+                hb_raw_l.append(z)
+                ha_orth_l.append(z)
+                hb_orth_l.append(z)
+
     m = len(xs)
     if m == 0:
         return {"n_perts": 0, "slope_ols": float("nan")}
+    if not any_hv:
+        has_direct_halves = False
 
-    nv = np.array([float(x.size) for x in xs], dtype=np.float64)
-    sx = np.array([float(np.sum(x)) for x in xs], dtype=np.float64)
-    sy = np.array([float(np.sum(y)) for y in ys], dtype=np.float64)
-    sxx = np.array([float(np.dot(x, x)) for x in xs], dtype=np.float64)
-    syy = np.array([float(np.dot(y, y)) for y in ys], dtype=np.float64)
-    sxy = np.array([float(np.dot(x, y)) for x, y in zip(xs, ys)], dtype=np.float64)
-
-    pt_ols, pt_noint, pt_corr = _moments_to_stats(
-        float(nv.sum()), float(sx.sum()), float(sy.sum()), float(sxx.sum()), float(syy.sum()), float(sxy.sum())
-    )
+    nv, sx, sy, sxx, syy, sxy = _pair_moments(xs, ys)
+    pt_ols, pt_noint, pt_corr = _boot_stats_from_draws(nv, sx, sy, sxx, syy, sxy)
     pt_sd_ratio, pt_rev_ols, pt_deming = _moments_to_r6_stats(
         float(nv.sum()), float(sx.sum()), float(sy.sum()), float(sxx.sum()), float(syy.sum()), float(sxy.sum())
     )
 
-    has_direct_halves = half_a_res is not None and half_b_res is not None
-    hnv = np.zeros(m, dtype=np.float64)
-    hsx = np.zeros(m, dtype=np.float64)
-    hsy = np.zeros(m, dtype=np.float64)
-    hsxx = np.zeros(m, dtype=np.float64)
-    hsyy = np.zeros(m, dtype=np.float64)
-    hsxy = np.zeros(m, dtype=np.float64)
-    if has_direct_halves:
-        any_hv = False
-        for i, p in enumerate(kept):
-            if half_valid_mask is not None and not bool(half_valid_mask[p]):
-                continue
-            valid = np.isfinite(delta_obs[p]) & np.isfinite(half_a_res[p]) & np.isfinite(half_b_res[p])
-            if gene_keep_mask is not None:
-                valid = valid & gene_keep_mask
-            t_idx = int(target_cols[p])
-            if 0 <= t_idx < delta_obs.shape[1]:
-                valid[t_idx] = False
-            idx = np.flatnonzero(valid)
-            if idx.size == 0:
-                continue
-            if mode == "resp_top50" and idx.size > 50:
-                idx = idx[np.argsort(np.abs(delta_obs[p, idx]))[-50:]]
-            ha_v = half_a_res[p, idx].astype(np.float64)
-            hb_v = half_b_res[p, idx].astype(np.float64)
-            hnv[i] = float(ha_v.size)
-            hsx[i] = float(np.sum(ha_v))
-            hsy[i] = float(np.sum(hb_v))
-            hsxx[i] = float(np.dot(ha_v, ha_v))
-            hsyy[i] = float(np.dot(hb_v, hb_v))
-            hsxy[i] = float(np.dot(ha_v, hb_v))
-            any_hv = True
-        if not any_hv:
-            has_direct_halves = False
+    onv, osx, osy, osxx, osyy, osxy = _pair_moments(xo, yo)
+    _, _, pt_orth_corr = _boot_stats_from_draws(onv, osx, osy, osxx, osyy, osxy)
 
     rng = np.random.default_rng(seed)
     draws = rng.integers(0, m, size=(n_boot, m))
-    N_b = nv[draws].sum(axis=1)
-    Sx_b = sx[draws].sum(axis=1)
-    Sy_b = sy[draws].sum(axis=1)
-    Sxx_b = sxx[draws].sum(axis=1)
-    Syy_b = syy[draws].sum(axis=1)
-    Sxy_b = sxy[draws].sum(axis=1)
-    b_ols, b_noint, b_corr = _moments_to_stats(N_b, Sx_b, Sy_b, Sxx_b, Syy_b, Sxy_b)
-    b_sd_ratio, b_rev_ols, b_deming = _moments_to_r6_stats(N_b, Sx_b, Sy_b, Sxx_b, Syy_b, Sxy_b)
+    b_ols, b_noint, b_corr = _boot_stats_from_draws(nv, sx, sy, sxx, syy, sxy, draws)
+    b_sd_ratio, b_rev_ols, b_deming = _moments_to_r6_stats(
+        nv[draws].sum(axis=1), sx[draws].sum(axis=1), sy[draws].sum(axis=1),
+        sxx[draws].sum(axis=1), syy[draws].sum(axis=1), sxy[draws].sum(axis=1),
+    )
+    _, _, b_orth_corr = _boot_stats_from_draws(onv, osx, osy, osxx, osyy, osxy, draws)
 
     pt_hab = float("nan")
+    pt_hab_orth = float("nan")
     if has_direct_halves:
-        _, _, pt_hab_arr = _moments_to_stats(
-            float(hnv.sum()), float(hsx.sum()), float(hsy.sum()),
-            float(hsxx.sum()), float(hsyy.sum()), float(hsxy.sum()),
-        )
+        hnv, hsx, hsy, hsxx, hsyy, hsxy = _pair_moments(ha_raw_l, hb_raw_l)
+        _, _, pt_hab_arr = _boot_stats_from_draws(hnv, hsx, hsy, hsxx, hsyy, hsxy)
         pt_hab = float(pt_hab_arr)
         full_ceiling = noise_ceiling_from_splithalf(pt_hab)
-        _, _, b_hab = _moments_to_stats(
-            hnv[draws].sum(axis=1),
-            hsx[draws].sum(axis=1),
-            hsy[draws].sum(axis=1),
-            hsxx[draws].sum(axis=1),
-            hsyy[draws].sum(axis=1),
-            hsxy[draws].sum(axis=1),
-        )
+        _, _, b_hab = _boot_stats_from_draws(hnv, hsx, hsy, hsxx, hsyy, hsxy, draws)
         b_ceil = np.array([noise_ceiling_from_splithalf(float(rh)) for rh in b_hab], dtype=np.float64)
-        b_cal = np.array(
-            [disattenuated_correlation(float(rc), float(cb)) for rc, cb in zip(b_corr, b_ceil)],
+        b_cal = np.array([disattenuated_correlation(float(rc), float(cb)) for rc, cb in zip(b_corr, b_ceil)], dtype=np.float64)
+
+        ohnv, ohsx, ohsy, ohsxx, ohsyy, ohsxy = _pair_moments(ha_orth_l, hb_orth_l)
+        _, _, pt_hab_o = _boot_stats_from_draws(ohnv, ohsx, ohsy, ohsxx, ohsyy, ohsxy)
+        pt_hab_orth = float(pt_hab_o)
+        full_ceiling_orth = noise_ceiling_from_splithalf(pt_hab_orth)
+        _, _, b_hab_o = _boot_stats_from_draws(ohnv, ohsx, ohsy, ohsxx, ohsyy, ohsxy, draws)
+        b_ceil_o = np.array([noise_ceiling_from_splithalf(float(rh)) for rh in b_hab_o], dtype=np.float64)
+        b_orth_cal = np.array(
+            [disattenuated_correlation(float(rc), float(cb)) for rc, cb in zip(b_orth_corr, b_ceil_o)],
             dtype=np.float64,
         )
     else:
         full_ceiling = ceiling_r
-        b_cal = np.array(
-            [disattenuated_correlation(float(rc), ceiling_r) for rc in b_corr],
-            dtype=np.float64,
-        )
+        full_ceiling_orth = ceiling_r
+        b_cal = np.array([disattenuated_correlation(float(rc), ceiling_r) for rc in b_corr], dtype=np.float64)
+        b_orth_cal = np.array([disattenuated_correlation(float(rc), ceiling_r) for rc in b_orth_corr], dtype=np.float64)
 
     pt_cal = disattenuated_correlation(float(pt_corr), float(full_ceiling))
     pt_cal_sq = float(pt_cal * pt_cal) if np.isfinite(pt_cal) else float("nan")
@@ -350,12 +383,19 @@ def _eval_residual_slope_and_corr(
     b_cal_sq = np.where(np.isfinite(b_cal), b_cal * b_cal, np.nan)
     b_cal_sq_signed = np.where(np.isfinite(b_cal), np.sign(b_cal) * b_cal * b_cal, np.nan)
 
+    pt_orth_cal = disattenuated_correlation(float(pt_orth_corr), float(full_ceiling_orth))
+    pt_orth_cal_sq = float(pt_orth_cal * pt_orth_cal) if np.isfinite(pt_orth_cal) else float("nan")
+    b_orth_cal_sq = np.where(np.isfinite(b_orth_cal), b_orth_cal * b_orth_cal, np.nan)
+
     ci_ols = summarize_bootstrap_array(float(pt_ols), b_ols, n_items=m)
     ci_noint = summarize_bootstrap_array(float(pt_noint), b_noint, n_items=m)
     ci_corr = summarize_bootstrap_array(float(pt_corr), b_corr, n_items=m)
     ci_cal = summarize_bootstrap_array(float(pt_cal), b_cal, n_items=m)
     ci_cal_sq = summarize_bootstrap_array(pt_cal_sq, b_cal_sq, n_items=m)
     ci_cal_sq_signed = summarize_bootstrap_array(pt_cal_sq_signed, b_cal_sq_signed, n_items=m)
+    ci_orth_corr = summarize_bootstrap_array(float(pt_orth_corr), b_orth_corr, n_items=m)
+    ci_orth_cal = summarize_bootstrap_array(float(pt_orth_cal), b_orth_cal, n_items=m)
+    ci_orth_cal_sq = summarize_bootstrap_array(pt_orth_cal_sq, b_orth_cal_sq, n_items=m)
     ci_sd_ratio = summarize_bootstrap_array(float(pt_sd_ratio), b_sd_ratio, n_items=m)
     ci_rev_ols = summarize_bootstrap_array(float(pt_rev_ols), b_rev_ols, n_items=m)
     ci_deming = summarize_bootstrap_array(float(pt_deming), b_deming, n_items=m)
@@ -393,6 +433,21 @@ def _eval_residual_slope_and_corr(
         "r_cal_sq_signed": ci_cal_sq_signed.estimate,
         "r_cal_sq_signed_ci95_lo": ci_cal_sq_signed.ci95_lo,
         "r_cal_sq_signed_ci95_hi": ci_cal_sq_signed.ci95_hi,
+        "r_orth_resid": ci_orth_corr.estimate,
+        "r_orth_resid_ci95_lo": ci_orth_corr.ci95_lo,
+        "r_orth_resid_ci95_hi": ci_orth_corr.ci95_hi,
+        "r_orth_cal": ci_orth_cal.estimate,
+        "r_orth_cal_ci95_lo": ci_orth_cal.ci95_lo,
+        "r_orth_cal_ci95_hi": ci_orth_cal.ci95_hi,
+        "r_orth_cal_ci975_lo": ci_orth_cal.ci975_lo,
+        "r_orth_cal_ci975_hi": ci_orth_cal.ci975_hi,
+        "r_orth_cal_sq": ci_orth_cal_sq.estimate,
+        "r_orth_cal_sq_ci95_lo": ci_orth_cal_sq.ci95_lo,
+        "r_orth_cal_sq_ci95_hi": ci_orth_cal_sq.ci95_hi,
+        "r_orth_cal_sq_ci975_lo": ci_orth_cal_sq.ci975_lo,
+        "r_orth_cal_sq_ci975_hi": ci_orth_cal_sq.ci975_hi,
+        "rho_ab_orth": pt_hab_orth,
+        "noise_ceiling_r_orth": float(full_ceiling_orth),
         "sd_pred_over_sd_obs": ci_sd_ratio.estimate,
         "sd_pred_over_sd_obs_ci95_lo": ci_sd_ratio.ci95_lo,
         "sd_pred_over_sd_obs_ci95_hi": ci_sd_ratio.ci95_hi,
@@ -421,85 +476,69 @@ def _eval_joint_paired_cal_r_diff(
     half_a_res: Optional[np.ndarray] = None,
     half_b_res: Optional[np.ndarray] = None,
     half_valid_mask: Optional[np.ndarray] = None,
+    ortho_ref: Optional[np.ndarray] = None,
 ) -> BootstrapCI:
-    """Paired joint-bootstrap CI for r_cal(pred_a) - r_cal(pred_b) (R14)."""
+    """Paired joint-bootstrap CI for r_cal (or r_orth_cal when ortho_ref set) diff (R14)."""
     xs_a, ys_a, kept_a = _build_masked_vectors(r_true, r_pred_a, delta_obs, target_cols, mode=mode)
     xs_b, ys_b, kept_b = _build_masked_vectors(r_true, r_pred_b, delta_obs, target_cols, mode=mode)
     m = len(kept_a)
     if m == 0 or not np.array_equal(kept_a, kept_b):
         return BootstrapCI(float("nan"), float("nan"), float("nan"), float("nan"), m, n_boot)
 
-    def _moms(xs, ys):
-        nv = np.array([float(x.size) for x in xs], dtype=np.float64)
-        sx = np.array([float(np.sum(x)) for x in xs], dtype=np.float64)
-        sy = np.array([float(np.sum(y)) for y in ys], dtype=np.float64)
-        sxx = np.array([float(np.dot(x, x)) for x in xs], dtype=np.float64)
-        syy = np.array([float(np.dot(y, y)) for y in ys], dtype=np.float64)
-        sxy = np.array([float(np.dot(x, y)) for x, y in zip(xs, ys)], dtype=np.float64)
-        return nv, sx, sy, sxx, syy, sxy
+    if ortho_ref is not None:
+        xs_ao, ys_ao, xs_bo, ys_bo = [], [], [], []
+        for idx_i, p in enumerate(kept_a):
+            valid = np.isfinite(r_true[p]) & np.isfinite(r_pred_a[p]) & np.isfinite(delta_obs[p])
+            t_idx = int(target_cols[p])
+            if 0 <= t_idx < delta_obs.shape[1]:
+                valid[t_idx] = False
+            g_idx = np.flatnonzero(valid)
+            if mode == "resp_top50" and g_idx.size > 50:
+                g_idx = g_idx[np.argsort(np.abs(delta_obs[p, g_idx]))[-50:]]
+            ref_v = ortho_ref[p, g_idx].astype(np.float64)
+            xa_o, ya_o = _orthogonalize_pair(xs_a[idx_i], ys_a[idx_i], ref_v)
+            xb_o, yb_o = _orthogonalize_pair(xs_b[idx_i], ys_b[idx_i], ref_v)
+            xs_ao.append(xa_o); ys_ao.append(ya_o)
+            xs_bo.append(xb_o); ys_bo.append(yb_o)
+        xs_a, ys_a, xs_b, ys_b = xs_ao, ys_ao, xs_bo, ys_bo
 
-    nv_a, sx_a, sy_a, sxx_a, syy_a, sxy_a = _moms(xs_a, ys_a)
-    nv_b, sx_b, sy_b, sxx_b, syy_b, sxy_b = _moms(xs_b, ys_b)
-    _, _, pt_ra = _moments_to_stats(
-        float(nv_a.sum()), float(sx_a.sum()), float(sy_a.sum()),
-        float(sxx_a.sum()), float(syy_a.sum()), float(sxy_a.sum()),
-    )
-    _, _, pt_rb = _moments_to_stats(
-        float(nv_b.sum()), float(sx_b.sum()), float(sy_b.sum()),
-        float(sxx_b.sum()), float(syy_b.sum()), float(sxy_b.sum()),
-    )
+    nv_a, sx_a, sy_a, sxx_a, syy_a, sxy_a = _pair_moments(xs_a, ys_a)
+    nv_b, sx_b, sy_b, sxx_b, syy_b, sxy_b = _pair_moments(xs_b, ys_b)
+    _, _, pt_ra = _boot_stats_from_draws(nv_a, sx_a, sy_a, sxx_a, syy_a, sxy_a)
+    _, _, pt_rb = _boot_stats_from_draws(nv_b, sx_b, sy_b, sxx_b, syy_b, sxy_b)
 
     rng = np.random.default_rng(seed)
     draws = rng.integers(0, m, size=(n_boot, m))
-    _, _, b_ra = _moments_to_stats(
-        nv_a[draws].sum(axis=1), sx_a[draws].sum(axis=1), sy_a[draws].sum(axis=1),
-        sxx_a[draws].sum(axis=1), syy_a[draws].sum(axis=1), sxy_a[draws].sum(axis=1),
-    )
-    _, _, b_rb = _moments_to_stats(
-        nv_b[draws].sum(axis=1), sx_b[draws].sum(axis=1), sy_b[draws].sum(axis=1),
-        sxx_b[draws].sum(axis=1), syy_b[draws].sum(axis=1), sxy_b[draws].sum(axis=1),
-    )
+    _, _, b_ra = _boot_stats_from_draws(nv_a, sx_a, sy_a, sxx_a, syy_a, sxy_a, draws)
+    _, _, b_rb = _boot_stats_from_draws(nv_b, sx_b, sy_b, sxx_b, syy_b, sxy_b, draws)
 
     has_direct_halves = half_a_res is not None and half_b_res is not None
     if has_direct_halves:
-        hnv = np.zeros(m, dtype=np.float64)
-        hsx = np.zeros(m, dtype=np.float64)
-        hsy = np.zeros(m, dtype=np.float64)
-        hsxx = np.zeros(m, dtype=np.float64)
-        hsyy = np.zeros(m, dtype=np.float64)
-        hsxy = np.zeros(m, dtype=np.float64)
+        ha_l, hb_l = [], []
         any_hv = False
-        for i, p in enumerate(kept_a):
+        for p in kept_a:
             if half_valid_mask is not None and not bool(half_valid_mask[p]):
-                continue
+                ha_l.append(np.zeros(0)); hb_l.append(np.zeros(0)); continue
             valid = np.isfinite(delta_obs[p]) & np.isfinite(half_a_res[p]) & np.isfinite(half_b_res[p])
             t_idx = int(target_cols[p])
             if 0 <= t_idx < delta_obs.shape[1]:
                 valid[t_idx] = False
             idx = np.flatnonzero(valid)
             if idx.size == 0:
-                continue
+                ha_l.append(np.zeros(0)); hb_l.append(np.zeros(0)); continue
             if mode == "resp_top50" and idx.size > 50:
                 idx = idx[np.argsort(np.abs(delta_obs[p, idx]))[-50:]]
-            ha_v = half_a_res[p, idx].astype(np.float64)
-            hb_v = half_b_res[p, idx].astype(np.float64)
-            hnv[i] = float(ha_v.size)
-            hsx[i] = float(np.sum(ha_v))
-            hsy[i] = float(np.sum(hb_v))
-            hsxx[i] = float(np.dot(ha_v, ha_v))
-            hsyy[i] = float(np.dot(hb_v, hb_v))
-            hsxy[i] = float(np.dot(ha_v, hb_v))
+            hav = half_a_res[p, idx].astype(np.float64)
+            hbv = half_b_res[p, idx].astype(np.float64)
+            if ortho_ref is not None:
+                hav, hbv = _orthogonalize_pair(hav, hbv, ortho_ref[p, idx].astype(np.float64))
+            ha_l.append(hav); hb_l.append(hbv)
             any_hv = True
         if any_hv:
-            _, _, pt_hab = _moments_to_stats(
-                float(hnv.sum()), float(hsx.sum()), float(hsy.sum()),
-                float(hsxx.sum()), float(hsyy.sum()), float(hsxy.sum()),
-            )
+            hnv, hsx, hsy, hsxx, hsyy, hsxy = _pair_moments(ha_l, hb_l)
+            _, _, pt_hab = _boot_stats_from_draws(hnv, hsx, hsy, hsxx, hsyy, hsxy)
             full_c = noise_ceiling_from_splithalf(float(pt_hab))
-            _, _, b_hab = _moments_to_stats(
-                hnv[draws].sum(axis=1), hsx[draws].sum(axis=1), hsy[draws].sum(axis=1),
-                hsxx[draws].sum(axis=1), hsyy[draws].sum(axis=1), hsxy[draws].sum(axis=1),
-            )
+            _, _, b_hab = _boot_stats_from_draws(hnv, hsx, hsy, hsxx, hsyy, hsxy, draws)
             b_ceil = np.array([noise_ceiling_from_splithalf(float(rh)) for rh in b_hab], dtype=np.float64)
         else:
             full_c = ceiling_r
@@ -517,6 +556,222 @@ def _eval_joint_paired_cal_r_diff(
         dtype=np.float64,
     )
     return summarize_bootstrap_array(pt_diff, b_diff, n_items=m)
+
+
+def _eval_tmvs_shuffled_perm_distribution(
+    r_true: np.ndarray,
+    t_mean: np.ndarray,
+    delta_obs: np.ndarray,
+    target_cols: Sequence[int],
+    t_var: np.ndarray,
+    s_var_mean: np.ndarray,
+    ceil_raw: float,
+    ceil_orth: float,
+    n_perm: int = 100,
+    seed: int = 20261121,
+) -> dict:
+    """R18: 100-permutation null distribution for gene-label-shuffled TMVS variance."""
+    n_perts, n_genes = delta_obs.shape
+    row_idx_list, col_idx_list = [], []
+    xo_raw_l, xo_orth_l, b_vecs = [], [], []
+    for p in range(n_perts):
+        valid = np.isfinite(r_true[p]) & np.isfinite(t_mean[p]) & np.isfinite(delta_obs[p])
+        t_idx = int(target_cols[p])
+        if 0 <= t_idx < n_genes:
+            valid[t_idx] = False
+        idx = np.flatnonzero(valid)
+        if idx.size == 0:
+            continue
+        if idx.size > 50:
+            idx = idx[np.argsort(np.abs(delta_obs[p, idx]))[-50:]]
+        xv = r_true[p, idx].astype(np.float64)
+        rv = t_mean[p, idx].astype(np.float64)
+        nrm = float(np.linalg.norm(rv))
+        bv = (rv / nrm) if nrm > EPS else np.zeros_like(rv)
+        xov = xv - float(np.dot(xv, bv)) * bv
+        row_idx_list.append(p)
+        col_idx_list.append(idx)
+        xo_raw_l.append(xv)
+        xo_orth_l.append(xov)
+        b_vecs.append(bv)
+
+    x_raw = np.concatenate(xo_raw_l)
+    x_orth = np.concatenate(xo_orth_l)
+    r_orth_cal_vals = np.empty(n_perm, dtype=np.float64)
+    r_cal_vals = np.empty(n_perm, dtype=np.float64)
+    slope_vals = np.empty(n_perm, dtype=np.float64)
+
+    rng = np.random.default_rng(seed + 2000)
+    for k in range(n_perm):
+        perm = rng.permutation(n_genes)
+        delta_scale = np.sqrt(t_var[perm] / s_var_mean) - 1.0
+        yp_raw_l, yp_orth_l = [], []
+        for p, idx, bv in zip(row_idx_list, col_idx_list, b_vecs):
+            yp = t_mean[p, idx] * delta_scale[idx]
+            yp_raw_l.append(yp)
+            yp_orth_l.append(yp - float(np.dot(yp, bv)) * bv)
+        y_raw = np.concatenate(yp_raw_l)
+        y_orth = np.concatenate(yp_orth_l)
+        slope_vals[k] = ols_slope(x_raw, y_raw, fit_intercept=True)
+        r_cal_vals[k] = disattenuated_correlation(pearson_1d(x_raw, y_raw), ceil_raw)
+        r_orth_cal_vals[k] = disattenuated_correlation(pearson_1d(x_orth, y_orth), ceil_orth)
+
+    def _pcts(arr: np.ndarray) -> dict:
+        fin = arr[np.isfinite(arr)]
+        if fin.size == 0:
+            return {"p025": float("nan"), "median": float("nan"), "p975": float("nan")}
+        p025, p50, p975 = np.percentile(fin, [2.5, 50.0, 97.5])
+        return {"p025": float(p025), "median": float(p50), "p975": float(p975)}
+
+    return {
+        "n_perm": n_perm,
+        "r_orth_cal": _pcts(r_orth_cal_vals),
+        "r_cal": _pcts(r_cal_vals),
+        "slope_ols": _pcts(slope_vals),
+    }
+
+
+def _eval_r19_gain_decomposition(
+    y_true: np.ndarray,
+    t_mean: np.ndarray,
+    target_cols: Sequence[int],
+    mode: str,
+    n_boot: int,
+    seed: int,
+    min_perts_per_gene: int = 5,
+) -> dict:
+    """R19: Descriptive residual variance split into whole-line gain, per-gene gain, and remaining."""
+    P, G = y_true.shape
+    mask = np.isfinite(y_true) & np.isfinite(t_mean)
+    for p in range(P):
+        tc = int(target_cols[p])
+        if 0 <= tc < G:
+            mask[p, tc] = False
+        if mode == "resp_top50":
+            idx = np.flatnonzero(mask[p])
+            mask[p] = False
+            if idx.size > 50:
+                idx = idx[np.argsort(np.abs(y_true[p, idx]))[-50:]]
+            mask[p, idx] = True
+
+    S_m = np.where(mask, t_mean, 0.0)
+    Y_m = np.where(mask, y_true, 0.0)
+    R_m = Y_m - S_m
+    cnt_m = mask.astype(np.float64)
+    # Precompute higher powers for cluster-df-unbiased W^2 variance subtraction
+    S2_m = S_m * S_m
+    SY_m = S_m * Y_m
+    Y2_m = Y_m * Y_m
+    S2Y_m = S2_m * Y_m
+    S2Y2_m = S2_m * Y2_m
+    S3_m = S2_m * S_m
+    S3Y_m = S3_m * Y_m
+    S4_m = S2_m * S2_m
+
+    # Per-row sums for pooled OLS beta_t and SST(r) (exact O(P) bootstrap)
+    nv = cnt_m.sum(axis=1)
+    ss_sum = S_m.sum(axis=1)
+    yy_sum = Y_m.sum(axis=1)
+    s_sq_sum = S2_m.sum(axis=1)
+    sy_sum = SY_m.sum(axis=1)
+    y_sq_sum = Y2_m.sum(axis=1)
+    rr_sum = R_m.sum(axis=1)
+    r_sq_sum = np.einsum("pg,pg->p", R_m, R_m)
+
+    # Precompute row arrays for fast chunked GEMM bootstrap across all G genes cleanly
+    rng = np.random.default_rng(seed)
+    draws = rng.integers(0, P, size=(n_boot, P))
+
+    def _solve_batch(W_dense: np.ndarray):
+        # W_dense: (B, P) float64 multiplicities (row 0 in point call = np.ones((1, P)))
+        N = np.maximum(W_dense @ nv, 1.0)
+        Ss = W_dense @ ss_sum
+        Sy = W_dense @ yy_sum
+        Sss = W_dense @ s_sq_sum
+        Ssy = W_dense @ sy_sum
+        Syy = W_dense @ y_sq_sum
+        Sr = W_dense @ rr_sum
+        Srr = W_dense @ r_sq_sum
+
+        cov_sy = Ssy - (Ss * Sy) / N
+        vx = Sss - (Ss * Ss) / N
+        beta = np.where(vx > EPS, cov_sy / np.maximum(vx, EPS), 1.0)
+        alpha = (Sy - beta * Ss) / N
+        sst_r = np.maximum(Srr - (Sr * Sr) / N, EPS)
+        sse_1 = np.maximum(
+            Syy - 2.0 * alpha * Sy + N * alpha * alpha - 2.0 * beta * (Ssy - alpha * Ss) + (beta * beta) * Sss,
+            0.0,
+        )
+        f1 = np.clip(1.0 - sse_1 / sst_r, 0.0, 1.0)
+
+        # Require >= min_perts_per_gene DISTINCT perturbations (not bootstrap-multiplicity-inflated)
+        C_dist = (W_dense > 0.0).astype(np.float64) @ cnt_m
+        Ss_g = W_dense @ S_m
+        Sss_g = W_dense @ S2_m
+        Ssy_g = W_dense @ SY_m
+
+        a_col = alpha[:, None]
+        b_col = beta[:, None]
+        ok_g = (C_dist >= min_perts_per_gene) & (Sss_g > EPS)
+        mg = np.where(ok_g, (Ssy_g - a_col * Ss_g) / np.maximum(Sss_g, EPS), b_col)
+        imp_raw = np.where(ok_g, (mg - b_col) ** 2 * Sss_g, 0.0)
+
+        # Remove finite-sample & cluster-bootstrap noise overfit E[(sum w*S*e)^2 / Sss_g] via W^2 moments
+        W2 = W_dense * W_dense
+        S2 = W2 @ S2_m
+        S2Y = W2 @ S2Y_m
+        S2Y2 = W2 @ S2Y2_m
+        S3 = W2 @ S3_m
+        S3Y = W2 @ S3Y_m
+        S4 = W2 @ S4_m
+        num_w2 = S2Y2 - 2.0 * a_col * S2Y + (a_col * a_col) * S2 - 2.0 * mg * (S3Y - a_col * S3) + (mg * mg) * S4
+        neff_g = np.where(S4 > EPS, (Sss_g * Sss_g) / np.maximum(S4, EPS), C_dist)
+        df_adj = np.maximum(1.0 - 1.0 / np.maximum(neff_g, 2.0), 0.25)
+        bias_g = np.where(ok_g, np.maximum(num_w2, 0.0) / (np.maximum(Sss_g, EPS) * df_adj), 0.0)
+        imp_unbiased = np.maximum(np.sum(imp_raw - bias_g, axis=1), 0.0)
+        sse_2 = np.maximum(sse_1 - imp_unbiased, 0.0)
+
+        f12 = np.clip(1.0 - sse_2 / sst_r, f1, 1.0)
+        f2 = np.clip(f12 - f1, 0.0, 1.0)
+        f3 = np.clip(1.0 - f12, 0.0, 1.0)
+        return beta, f1, f2, f3
+
+    pt_beta, pt_f1, pt_f2, pt_f3 = _solve_batch(np.ones((1, P), dtype=np.float64))
+    b_beta = np.empty(n_boot, dtype=np.float64)
+    b_f1 = np.empty(n_boot, dtype=np.float64)
+    b_f2 = np.empty(n_boot, dtype=np.float64)
+    b_f3 = np.empty(n_boot, dtype=np.float64)
+    chunk = 500
+    for s0 in range(0, n_boot, chunk):
+        s1 = min(s0 + chunk, n_boot)
+        W = np.zeros((s1 - s0, P), dtype=np.float64)
+        for bi in range(s1 - s0):
+            W[bi] = np.bincount(draws[s0 + bi], minlength=P)
+        bb, bf1, bf2, bf3 = _solve_batch(W)
+        b_beta[s0:s1] = bb
+        b_f1[s0:s1] = bf1
+        b_f2[s0:s1] = bf2
+        b_f3[s0:s1] = bf3
+
+    ci_beta = summarize_bootstrap_array(float(pt_beta[0]), b_beta, n_items=P)
+    ci_f1 = summarize_bootstrap_array(float(pt_f1[0]), b_f1, n_items=P)
+    ci_f2 = summarize_bootstrap_array(float(pt_f2[0]), b_f2, n_items=P)
+    ci_f3 = summarize_bootstrap_array(float(pt_f3[0]), b_f3, n_items=P)
+
+    return {
+        "beta_t": ci_beta.estimate,
+        "beta_t_ci95_lo": ci_beta.ci95_lo,
+        "beta_t_ci95_hi": ci_beta.ci95_hi,
+        "frac_whole_line": ci_f1.estimate,
+        "frac_whole_line_ci95_lo": ci_f1.ci95_lo,
+        "frac_whole_line_ci95_hi": ci_f1.ci95_hi,
+        "frac_per_gene_inc": ci_f2.estimate,
+        "frac_per_gene_inc_ci95_lo": ci_f2.ci95_lo,
+        "frac_per_gene_inc_ci95_hi": ci_f2.ci95_hi,
+        "frac_remaining": ci_f3.estimate,
+        "frac_remaining_ci95_lo": ci_f3.ci95_lo,
+        "frac_remaining_ci95_hi": ci_f3.ci95_hi,
+    }
 
 
 def _mean_row_cosine(
@@ -725,10 +980,32 @@ def audit_loo_suite(
         for m_name, p_mat in preds.items():
             r_pred = p_mat - t_mean
             m_top50 = _eval_residual_slope_and_corr(
-                r_true, r_pred, y_true, target_cols, "resp_top50", n_boot, seed + li * 100, ceil_top50, ha_res, hb_res, hv_mask
+                r_true,
+                r_pred,
+                y_true,
+                target_cols,
+                "resp_top50",
+                n_boot,
+                seed + li * 100,
+                ceil_top50,
+                ha_res,
+                hb_res,
+                hv_mask,
+                ortho_ref=t_mean,
             )
             m_all = _eval_residual_slope_and_corr(
-                r_true, r_pred, y_true, target_cols, "all_nontarget", n_boot, seed + li * 100 + 50, ceil_all, ha_res, hb_res, hv_mask
+                r_true,
+                r_pred,
+                y_true,
+                target_cols,
+                "all_nontarget",
+                n_boot,
+                seed + li * 100 + 50,
+                ceil_all,
+                ha_res,
+                hb_res,
+                hv_mask,
+                ortho_ref=t_mean,
             )
             disc_rows = compute_disc_raw_rows(y_true, p_mat, masked_cols=target_cols)
             disc_own_rows = compute_disc_ownmasked_rows(y_true, p_mat, target_col_idx=target_cols)
@@ -796,7 +1073,7 @@ def audit_loo_suite(
             for name, row_key, off in conv_specs
         }
 
-        # R3: track ALL source-line mismatched covariance controls (Group A)
+        # R3: track ALL source-line mismatched covariance controls (Group A: slope & r_orth_cal)
         mismatch_by_source = {}
         for sl in src_lines:
             ms_50 = method_metrics[f"mismatch_cov_hybrid::{sl}"]["resp_top50"]
@@ -807,13 +1084,25 @@ def audit_loo_suite(
                 "slope_ols_ci975_lo": ms_50["slope_ols_ci975_lo"],
                 "slope_ols_ci975_hi": ms_50["slope_ols_ci975_hi"],
                 "noise_cal_corr": ms_50["noise_cal_corr"],
+                "r_orth_cal": ms_50["r_orth_cal"],
+                "r_orth_cal_ci95_lo": ms_50["r_orth_cal_ci95_lo"],
+                "r_orth_cal_ci95_hi": ms_50["r_orth_cal_ci95_hi"],
+                "r_orth_cal_ci975_lo": ms_50["r_orth_cal_ci975_lo"],
+                "r_orth_cal_ci975_hi": ms_50["r_orth_cal_ci975_hi"],
             }
         worst_mismatch_line = max(
             src_lines, key=lambda sl: mismatch_by_source[sl]["slope_ols_ci975_hi"]
         )
         worst_mis = mismatch_by_source[worst_mismatch_line]
 
-        # R12: track ALL source-line mismatched variances + shuffled gene-label variance (Group B)
+        def _nan_max(vals: Sequence[float]) -> float:
+            fin = [float(v) for v in vals if np.isfinite(v)]
+            return max(fin) if fin else float("nan")
+
+        max_mis_orth_95 = _nan_max([v["r_orth_cal_ci95_hi"] for v in mismatch_by_source.values()])
+        max_mis_orth_975 = _nan_max([v["r_orth_cal_ci975_hi"] for v in mismatch_by_source.values()])
+
+        # R12/R17/R18: track ALL source-line mismatched variances + 100-permutation shuffled variance (Group B)
         tmvs_ctrl_keys = [f"tmvs_mismatch::{sl}" for sl in src_lines] + ["tmvs_shuffled_var"]
         tmvs_ctrls = {}
         for ck in tmvs_ctrl_keys:
@@ -829,19 +1118,54 @@ def audit_loo_suite(
                 "noise_cal_corr_ci95_hi": mc["noise_cal_corr_ci95_hi"],
                 "noise_cal_corr_ci975_lo": mc["noise_cal_corr_ci975_lo"],
                 "noise_cal_corr_ci975_hi": mc["noise_cal_corr_ci975_hi"],
+                "r_orth_cal": mc["r_orth_cal"],
+                "r_orth_cal_ci95_lo": mc["r_orth_cal_ci95_lo"],
+                "r_orth_cal_ci95_hi": mc["r_orth_cal_ci95_hi"],
+                "r_orth_cal_ci975_lo": mc["r_orth_cal_ci975_lo"],
+                "r_orth_cal_ci975_hi": mc["r_orth_cal_ci975_hi"],
             }
 
-        def _nan_max(vals: Sequence[float]) -> float:
-            fin = [float(v) for v in vals if np.isfinite(v)]
-            return max(fin) if fin else float("nan")
+        t_var_diag = np.maximum(np.diag(covs[tgt_line]), 1e-8)
+        s_var_mean_vec = np.maximum(
+            np.mean([np.maximum(np.diag(covs[sl]), 1e-8) for sl in src_lines], axis=0),
+            1e-8,
+        )
+        hyb_50 = method_metrics["hybrid"]["resp_top50"]
+        tmvs_perm100 = _eval_tmvs_shuffled_perm_distribution(
+            r_true=r_true,
+            t_mean=t_mean,
+            delta_obs=y_true,
+            target_cols=target_cols,
+            t_var=t_var_diag,
+            s_var_mean=s_var_mean_vec,
+            ceil_raw=hyb_50["noise_ceiling_r"],
+            ceil_orth=hyb_50["noise_ceiling_r_orth"],
+            n_perm=100,
+            seed=seed + li * 100,
+        )
 
-        tmvs_max_ctrl_slope_95 = _nan_max([v["slope_ols_ci95_hi"] for v in tmvs_ctrls.values()])
-        tmvs_max_ctrl_slope_975 = _nan_max([v["slope_ols_ci975_hi"] for v in tmvs_ctrls.values()])
-        tmvs_max_ctrl_cal_95 = _nan_max([v["noise_cal_corr_ci95_hi"] for v in tmvs_ctrls.values()])
-        tmvs_max_ctrl_cal_975 = _nan_max([v["noise_cal_corr_ci975_hi"] for v in tmvs_ctrls.values()])
+        tmvs_mismatch_only = [tmvs_ctrls[f"tmvs_mismatch::{sl}"] for sl in src_lines]
+        tmvs_max_ctrl_slope_95 = _nan_max(
+            [v["slope_ols_ci95_hi"] for v in tmvs_mismatch_only] + [tmvs_perm100["slope_ols"]["p975"]]
+        )
+        tmvs_max_ctrl_slope_975 = _nan_max(
+            [v["slope_ols_ci975_hi"] for v in tmvs_mismatch_only] + [tmvs_perm100["slope_ols"]["p975"]]
+        )
+        tmvs_max_ctrl_cal_95 = _nan_max(
+            [v["noise_cal_corr_ci95_hi"] for v in tmvs_mismatch_only] + [tmvs_perm100["r_cal"]["p975"]]
+        )
+        tmvs_max_ctrl_cal_975 = _nan_max(
+            [v["noise_cal_corr_ci975_hi"] for v in tmvs_mismatch_only] + [tmvs_perm100["r_cal"]["p975"]]
+        )
+        tmvs_max_ctrl_orth_95 = _nan_max(
+            [v["r_orth_cal_ci95_hi"] for v in tmvs_mismatch_only] + [tmvs_perm100["r_orth_cal"]["p975"]]
+        )
+        tmvs_max_ctrl_orth_975 = _nan_max(
+            [v["r_orth_cal_ci975_hi"] for v in tmvs_mismatch_only] + [tmvs_perm100["r_orth_cal"]["p975"]]
+        )
 
-        # R14: Hybrid_on_TMVS minus TMVS paired joint-bootstrap on r_cal
-        r14_ci = _eval_joint_paired_cal_r_diff(
+        # R14: Hybrid_on_TMVS minus TMVS paired joint-bootstrap on r_orth_cal (R17/R20) & r_cal
+        r14_orth_ci = _eval_joint_paired_cal_r_diff(
             r_true=r_true,
             r_pred_a=preds["hybrid_on_tmvs"] - t_mean,
             r_pred_b=preds["transfer_mean_var_scaled"] - t_mean,
@@ -854,14 +1178,30 @@ def audit_loo_suite(
             half_a_res=ha_res,
             half_b_res=hb_res,
             half_valid_mask=hv_mask,
+            ortho_ref=t_mean,
+        )
+        r14_raw_ci = _eval_joint_paired_cal_r_diff(
+            r_true=r_true,
+            r_pred_a=preds["hybrid_on_tmvs"] - t_mean,
+            r_pred_b=preds["transfer_mean_var_scaled"] - t_mean,
+            delta_obs=y_true,
+            target_cols=target_cols,
+            mode="resp_top50",
+            n_boot=n_boot,
+            seed=seed + li * 100 + 7,
+            ceiling_r=ceil_top50,
+            half_a_res=ha_res,
+            half_b_res=hb_res,
+            half_valid_mask=hv_mask,
+            ortho_ref=None,
         )
 
         # R15 S5: Expressed-genes sensitivity (exclude lowest 25% of target control diag(C_t))
-        t_var_diag = np.diag(covs[tgt_line])
-        q25_var = float(np.percentile(t_var_diag, 25.0))
-        expr_mask = t_var_diag > q25_var
+        raw_var_diag = np.diag(covs[tgt_line])
+        q25_var = float(np.percentile(raw_var_diag, 25.0))
+        expr_mask = raw_var_diag > q25_var
         if int(np.sum(expr_mask)) < 50:
-            expr_mask = t_var_diag >= q25_var
+            expr_mask = raw_var_diag >= q25_var
         s5_hyb = _eval_residual_slope_and_corr(
             r_true,
             preds["hybrid"] - t_mean,
@@ -875,6 +1215,7 @@ def audit_loo_suite(
             hb_res,
             hv_mask,
             gene_keep_mask=expr_mask,
+            ortho_ref=t_mean,
         )
         s5_tmvs = _eval_residual_slope_and_corr(
             r_true,
@@ -889,15 +1230,35 @@ def audit_loo_suite(
             hb_res,
             hv_mask,
             gene_keep_mask=expr_mask,
+            ortho_ref=t_mean,
         )
 
-        hyb_50 = method_metrics["hybrid"]["resp_top50"]
+        # R19: Descriptive gain decomposition (whole-line beta_t, per-gene m_t,g increment, remaining)
+        r19_top50 = _eval_r19_gain_decomposition(
+            y_true=y_true,
+            t_mean=t_mean,
+            target_cols=target_cols,
+            mode="resp_top50",
+            n_boot=n_boot,
+            seed=seed + li * 100 + 21,
+        )
+        r19_all = _eval_r19_gain_decomposition(
+            y_true=y_true,
+            t_mean=t_mean,
+            target_cols=target_cols,
+            mode="all_nontarget",
+            n_boot=n_boot,
+            seed=seed + li * 100 + 22,
+        )
+
         hyb_all = method_metrics["hybrid"]["all_nontarget"]
         mis_50 = method_metrics["mismatch_cov_hybrid"]["resp_top50"]
         sctv_50 = method_metrics["src_corr_tgt_var_hybrid"]["resp_top50"]
         tmvs_50 = method_metrics["transfer_mean_var_scaled"]["resp_top50"]
         tmvs_all = method_metrics["transfer_mean_var_scaled"]["all_nontarget"]
         tmvs_shuf_50 = method_metrics["tmvs_shuffled_var"]["resp_top50"]
+        glob_50 = method_metrics["transfer_mean_global_scale"]["resp_top50"]
+        glob_all = method_metrics["transfer_mean_global_scale"]["all_nontarget"]
         hotmvs_50 = method_metrics["hybrid_on_tmvs"]["resp_top50"]
         fct_50 = method_metrics["fct"]["resp_top50"] if "fct" in method_metrics else {}
 
@@ -919,6 +1280,18 @@ def audit_loo_suite(
             "noise_cal_corr_ci95_hi": hyb_50["noise_cal_corr_ci95_hi"],
             "noise_cal_corr_ci975_lo": hyb_50["noise_cal_corr_ci975_lo"],
             "noise_cal_corr_ci975_hi": hyb_50["noise_cal_corr_ci975_hi"],
+            "r_orth_resid": hyb_50["r_orth_resid"],
+            "r_orth_cal": hyb_50["r_orth_cal"],
+            "r_orth_cal_ci95_lo": hyb_50["r_orth_cal_ci95_lo"],
+            "r_orth_cal_ci95_hi": hyb_50["r_orth_cal_ci95_hi"],
+            "r_orth_cal_ci975_lo": hyb_50["r_orth_cal_ci975_lo"],
+            "r_orth_cal_ci975_hi": hyb_50["r_orth_cal_ci975_hi"],
+            "r_orth_cal_sq": hyb_50["r_orth_cal_sq"],
+            "rho_ab_orth_top50": hyb_50["rho_ab_orth"],
+            "noise_ceiling_r_orth": hyb_50["noise_ceiling_r_orth"],
+            "rho_ab_orth_all_nontarget": hyb_all["rho_ab_orth"],
+            "noise_ceiling_r_orth_all_nontarget": hyb_all["noise_ceiling_r_orth"],
+            "hybrid_r_orth_cal_all_nontarget": hyb_all["r_orth_cal"],
             "r_cal_sq": hyb_50["r_cal_sq"],
             "r_cal_sq_ci95_lo": hyb_50["r_cal_sq_ci95_lo"],
             "r_cal_sq_ci95_hi": hyb_50["r_cal_sq_ci95_hi"],
@@ -938,13 +1311,24 @@ def audit_loo_suite(
             "max_mismatch_ci95_hi": worst_mis["slope_ols_ci95_hi"],
             "max_mismatch_ci975_lo": worst_mis["slope_ols_ci975_lo"],
             "max_mismatch_ci975_hi": worst_mis["slope_ols_ci975_hi"],
+            "max_mismatch_r_orth_cal_ci95_hi": max_mis_orth_95,
+            "max_mismatch_r_orth_cal_ci975_hi": max_mis_orth_975,
             "sctv_slope": sctv_50["slope_ols"],
             "sctv_slope_ci95_hi": sctv_50["slope_ols_ci95_hi"],
             "sctv_slope_ci975_hi": sctv_50["slope_ols_ci975_hi"],
             "sctv_cal_r": sctv_50["noise_cal_corr"],
             "sctv_cal_r_ci95_hi": sctv_50["noise_cal_corr_ci95_hi"],
             "sctv_cal_r_ci975_hi": sctv_50["noise_cal_corr_ci975_hi"],
-            # Group B: Transfer_Mean_VarScaled + R12/R13 controls
+            "sctv_r_orth_cal": sctv_50["r_orth_cal"],
+            "sctv_r_orth_cal_ci95_hi": sctv_50["r_orth_cal_ci95_hi"],
+            "sctv_r_orth_cal_ci975_hi": sctv_50["r_orth_cal_ci975_hi"],
+            # R18 GlobalScale comparator
+            "global_scale_slope": glob_50["slope_ols"],
+            "global_scale_resid_corr": glob_50["resid_corr"],
+            "global_scale_cal_r": glob_50["noise_cal_corr"],
+            "global_scale_r_orth_cal": glob_50["r_orth_cal"],
+            "global_scale_r_orth_cal_all_nontarget": glob_all["r_orth_cal"],
+            # Group B: Transfer_Mean_VarScaled + R12/R13/R17/R18 controls
             "tmvs_slope": tmvs_50["slope_ols"],
             "tmvs_slope_ci95_lo": tmvs_50["slope_ols_ci95_lo"],
             "tmvs_slope_ci95_hi": tmvs_50["slope_ols_ci95_hi"],
@@ -955,41 +1339,73 @@ def audit_loo_suite(
             "tmvs_cal_r_ci95_hi": tmvs_50["noise_cal_corr_ci95_hi"],
             "tmvs_cal_r_ci975_lo": tmvs_50["noise_cal_corr_ci975_lo"],
             "tmvs_cal_r_ci975_hi": tmvs_50["noise_cal_corr_ci975_hi"],
+            "tmvs_r_orth_resid": tmvs_50["r_orth_resid"],
+            "tmvs_r_orth_cal": tmvs_50["r_orth_cal"],
+            "tmvs_r_orth_cal_ci95_lo": tmvs_50["r_orth_cal_ci95_lo"],
+            "tmvs_r_orth_cal_ci95_hi": tmvs_50["r_orth_cal_ci95_hi"],
+            "tmvs_r_orth_cal_ci975_lo": tmvs_50["r_orth_cal_ci975_lo"],
+            "tmvs_r_orth_cal_ci975_hi": tmvs_50["r_orth_cal_ci975_hi"],
+            "tmvs_r_orth_cal_sq": tmvs_50["r_orth_cal_sq"],
             "tmvs_r_cal_sq": tmvs_50["r_cal_sq"],
             "tmvs_sd_pred_over_sd_obs": tmvs_50["sd_pred_over_sd_obs"],
             "tmvs_slope_deming": tmvs_50["slope_deming"],
             "tmvs_slope_obs_on_pred": tmvs_50["slope_obs_on_pred"],
             "tmvs_cal_r_all_nontarget": tmvs_all["noise_cal_corr"],
+            "tmvs_r_orth_cal_all_nontarget": tmvs_all["r_orth_cal"],
             "tmvs_slope_all_nontarget": tmvs_all["slope_ols"],
             "tmvs_shuf_var_slope": tmvs_shuf_50["slope_ols"],
             "tmvs_shuf_var_slope_ci975_hi": tmvs_shuf_50["slope_ols_ci975_hi"],
             "tmvs_shuf_var_cal_r": tmvs_shuf_50["noise_cal_corr"],
             "tmvs_shuf_var_cal_r_ci975_hi": tmvs_shuf_50["noise_cal_corr_ci975_hi"],
+            "tmvs_perm100_r_orth_cal_p025": tmvs_perm100["r_orth_cal"]["p025"],
+            "tmvs_perm100_r_orth_cal_median": tmvs_perm100["r_orth_cal"]["median"],
+            "tmvs_perm100_r_orth_cal_p975": tmvs_perm100["r_orth_cal"]["p975"],
+            "tmvs_perm100_r_cal_median": tmvs_perm100["r_cal"]["median"],
+            "tmvs_perm100_r_cal_p975": tmvs_perm100["r_cal"]["p975"],
+            "tmvs_perm100_slope_median": tmvs_perm100["slope_ols"]["median"],
+            "tmvs_perm100_slope_p975": tmvs_perm100["slope_ols"]["p975"],
             "tmvs_max_ctrl_slope_ci95_hi": tmvs_max_ctrl_slope_95,
             "tmvs_max_ctrl_slope_ci975_hi": tmvs_max_ctrl_slope_975,
             "tmvs_max_ctrl_cal_r_ci95_hi": tmvs_max_ctrl_cal_95,
             "tmvs_max_ctrl_cal_r_ci975_hi": tmvs_max_ctrl_cal_975,
+            "tmvs_max_ctrl_r_orth_cal_ci95_hi": tmvs_max_ctrl_orth_95,
+            "tmvs_max_ctrl_r_orth_cal_ci975_hi": tmvs_max_ctrl_orth_975,
             "tmvs_ctrl_disc_ownmasked": method_metrics["transfer_mean_var_scaled"]["disc_own_mean"],
             "tmvs_de50_r": method_metrics["transfer_mean_var_scaled"]["de50_r_mean"],
-            # R14 Hybrid_on_TMVS
+            # R14 Hybrid_on_TMVS (both r_orth_cal and raw r_cal)
             "hotmvs_slope": hotmvs_50["slope_ols"],
             "hotmvs_cal_r": hotmvs_50["noise_cal_corr"],
-            "r14_hotmvs_minus_tmvs_cal_r": r14_ci.estimate,
-            "r14_hotmvs_minus_tmvs_cal_r_ci95_lo": r14_ci.ci95_lo,
-            "r14_hotmvs_minus_tmvs_cal_r_ci95_hi": r14_ci.ci95_hi,
-            "r14_hotmvs_minus_tmvs_cal_r_ci975_lo": r14_ci.ci975_lo,
-            "r14_hotmvs_minus_tmvs_cal_r_ci975_hi": r14_ci.ci975_hi,
+            "hotmvs_r_orth_cal": hotmvs_50["r_orth_cal"],
+            "r14_hotmvs_minus_tmvs_r_orth_cal": r14_orth_ci.estimate,
+            "r14_hotmvs_minus_tmvs_r_orth_cal_ci95_lo": r14_orth_ci.ci95_lo,
+            "r14_hotmvs_minus_tmvs_r_orth_cal_ci95_hi": r14_orth_ci.ci95_hi,
+            "r14_hotmvs_minus_tmvs_r_orth_cal_ci975_lo": r14_orth_ci.ci975_lo,
+            "r14_hotmvs_minus_tmvs_r_orth_cal_ci975_hi": r14_orth_ci.ci975_hi,
+            "r14_hotmvs_minus_tmvs_cal_r": r14_raw_ci.estimate,
+            "r14_hotmvs_minus_tmvs_cal_r_ci95_lo": r14_raw_ci.ci95_lo,
+            "r14_hotmvs_minus_tmvs_cal_r_ci95_hi": r14_raw_ci.ci95_hi,
             # R15 FCT + S5 expressed genes
             "fct_slope": fct_50.get("slope_ols", float("nan")),
             "fct_cal_r": fct_50.get("noise_cal_corr", float("nan")),
+            "fct_r_orth_cal": fct_50.get("r_orth_cal", float("nan")),
             "fct_cal_r_ci95_lo": fct_50.get("noise_cal_corr_ci95_lo", float("nan")),
             "fct_cal_r_ci95_hi": fct_50.get("noise_cal_corr_ci95_hi", float("nan")),
             "s5_n_expressed_genes": int(np.sum(expr_mask)),
             "s5_hybrid_cal_r": s5_hyb["noise_cal_corr"],
-            "s5_hybrid_cal_r_ci95_lo": s5_hyb["noise_cal_corr_ci95_lo"],
+            "s5_hybrid_r_orth_cal": s5_hyb["r_orth_cal"],
             "s5_tmvs_cal_r": s5_tmvs["noise_cal_corr"],
-            "s5_tmvs_cal_r_ci95_lo": s5_tmvs["noise_cal_corr_ci95_lo"],
+            "s5_tmvs_r_orth_cal": s5_tmvs["r_orth_cal"],
+            "s5_tmvs_r_orth_cal_ci95_lo": s5_tmvs["r_orth_cal_ci95_lo"],
             "s5_tmvs_slope": s5_tmvs["slope_ols"],
+            # R19 Descriptive Gain Decomposition
+            "r19_top50_beta_t": r19_top50["beta_t"],
+            "r19_top50_frac_whole": r19_top50["frac_whole_line"],
+            "r19_top50_frac_gene_inc": r19_top50["frac_per_gene_inc"],
+            "r19_top50_frac_rem": r19_top50["frac_remaining"],
+            "r19_all_beta_t": r19_all["beta_t"],
+            "r19_all_frac_whole": r19_all["frac_whole_line"],
+            "r19_all_frac_gene_inc": r19_all["frac_per_gene_inc"],
+            "r19_all_frac_rem": r19_all["frac_remaining"],
             # Additional negative controls & global metrics
             "diag_cov_slope": method_metrics["diag_cov_hybrid"]["resp_top50"]["slope_ols"],
             "shuf_target_slope": method_metrics["shuffled_gene_hybrid"]["resp_top50"]["slope_ols"],
@@ -1050,12 +1466,20 @@ def audit_loo_suite(
         detailed[tgt_line] = {
             "mismatch_by_source": mismatch_by_source,
             "tmvs_ctrls": tmvs_ctrls,
+            "tmvs_perm100": tmvs_perm100,
+            "r19_gain_decomposition": {
+                "resp_top50": r19_top50,
+                "all_nontarget": r19_all,
+            },
             "r14_hotmvs_minus_tmvs": {
-                "delta_cal_r": r14_ci.estimate,
-                "ci95_lo": r14_ci.ci95_lo,
-                "ci95_hi": r14_ci.ci95_hi,
-                "ci975_lo": r14_ci.ci975_lo,
-                "ci975_hi": r14_ci.ci975_hi,
+                "delta_r_orth_cal": r14_orth_ci.estimate,
+                "orth_ci95_lo": r14_orth_ci.ci95_lo,
+                "orth_ci95_hi": r14_orth_ci.ci95_hi,
+                "orth_ci975_lo": r14_orth_ci.ci975_lo,
+                "orth_ci975_hi": r14_orth_ci.ci975_hi,
+                "delta_cal_r": r14_raw_ci.estimate,
+                "ci95_lo": r14_raw_ci.ci95_lo,
+                "ci95_hi": r14_raw_ci.ci95_hi,
             },
             "s5_expressed_only": {
                 "n_expressed_genes": int(np.sum(expr_mask)),
@@ -1080,7 +1504,7 @@ def audit_loo_suite(
             },
         }
 
-    # Adjudicate using exact pre-registered rules (R2, R3, R4, R5, R10, R12, R13, R14)
+    # Adjudicate using exact pre-registered rules (R2-R5, R10, R12-R14, R17-R18)
     conf_list = list(confirmatory_lines) if confirmatory_lines is not None else list(lines)
     n_conf = len(conf_list)
     min_pass = int(np.ceil(0.8 * n_conf))
@@ -1104,21 +1528,21 @@ def audit_loo_suite(
     beats_sctv = bool(conf_rows) and all(
         np.isfinite(r["primary_slope_ci95_lo"])
         and np.isfinite(r["sctv_slope_ci95_hi"])
-        and np.isfinite(r["noise_cal_corr_ci95_lo"])
-        and np.isfinite(r["sctv_cal_r_ci95_hi"])
+        and np.isfinite(r["r_orth_cal_ci95_lo"])
+        and np.isfinite(r["sctv_r_orth_cal_ci95_hi"])
         and (r["primary_slope_ci95_lo"] > r["sctv_slope_ci95_hi"])
-        and (r["noise_cal_corr_ci95_lo"] > r["sctv_cal_r_ci95_hi"])
+        and (r["r_orth_cal_ci95_lo"] > r["sctv_r_orth_cal_ci95_hi"])
         for r in conf_rows
     )
     beats_tmvs = bool(conf_rows) and all(
-        np.isfinite(r["noise_cal_corr_ci95_lo"])
-        and np.isfinite(r["tmvs_cal_r_ci95_hi"])
-        and (r["noise_cal_corr_ci95_lo"] > r["tmvs_cal_r_ci95_hi"])
+        np.isfinite(r["r_orth_cal_ci95_lo"])
+        and np.isfinite(r["tmvs_r_orth_cal_ci95_hi"])
+        and (r["r_orth_cal_ci95_lo"] > r["tmvs_r_orth_cal_ci95_hi"])
         for r in conf_rows
     )
     r14_all_conf_pass = bool(conf_rows) and all(
-        np.isfinite(r["r14_hotmvs_minus_tmvs_cal_r_ci95_lo"])
-        and (r["r14_hotmvs_minus_tmvs_cal_r_ci95_lo"] > 0.0)
+        np.isfinite(r["r14_hotmvs_minus_tmvs_r_orth_cal_ci95_lo"])
+        and (r["r14_hotmvs_minus_tmvs_r_orth_cal_ci95_lo"] > 0.0)
         for r in conf_rows
     )
     verdict["r4_wording_governance"] = {
@@ -1136,12 +1560,13 @@ def audit_loo_suite(
         ),
     }
     verdict["r14_mechanism_governance"] = {
-        "hotmvs_beats_tmvs_cal_r_all_conf_ci95_lo_gt_0": r14_all_conf_pass,
-        "per_conf_line_delta_cal_r": {
+        "metric": "r_orth_cal",
+        "hotmvs_beats_tmvs_r_orth_cal_all_conf_ci95_lo_gt_0": r14_all_conf_pass,
+        "per_conf_line_delta_r_orth_cal": {
             r["line"]: {
-                "delta": r["r14_hotmvs_minus_tmvs_cal_r"],
-                "ci95_lo": r["r14_hotmvs_minus_tmvs_cal_r_ci95_lo"],
-                "ci95_hi": r["r14_hotmvs_minus_tmvs_cal_r_ci95_hi"],
+                "delta": r["r14_hotmvs_minus_tmvs_r_orth_cal"],
+                "ci95_lo": r["r14_hotmvs_minus_tmvs_r_orth_cal_ci95_lo"],
+                "ci95_hi": r["r14_hotmvs_minus_tmvs_r_orth_cal_ci95_hi"],
             }
             for r in conf_rows
         },

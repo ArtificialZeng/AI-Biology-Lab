@@ -253,6 +253,7 @@ def predict_zero_shot_suite(
         1e-8,
     )
     var_scale = np.sqrt(t_var / s_var_mean)
+    global_scale = float(np.sqrt(np.mean(t_var) / np.maximum(np.mean(s_var_mean), 1e-12)))
     rng_var = np.random.default_rng(seed + 500)
     t_var_shuf = t_var[rng_var.permutation(n_genes)]
     var_scale_shuf = np.sqrt(t_var_shuf / s_var_mean)
@@ -277,6 +278,7 @@ def predict_zero_shot_suite(
     n_eval = len(eval_targets)
     out = {
         "transferred_mean": np.zeros((n_eval, n_genes), dtype=np.float64),
+        "transfer_mean_global_scale": np.zeros((n_eval, n_genes), dtype=np.float64),
         "transfer_mean_var_scaled": np.zeros((n_eval, n_genes), dtype=np.float64),
         "tmvs_shuffled_var": np.zeros((n_eval, n_genes), dtype=np.float64),
         "hybrid_on_tmvs": np.zeros((n_eval, n_genes), dtype=np.float64),
@@ -320,6 +322,7 @@ def predict_zero_shot_suite(
         ls_tgt = _ls_term(v_tgt)
         tmvs_vec = t_mean * var_scale
         out["transferred_mean"][i] = t_mean
+        out["transfer_mean_global_scale"][i] = global_scale * t_mean
         out["transfer_mean_var_scaled"][i] = tmvs_vec
         out["tmvs_shuffled_var"][i] = t_mean * var_scale_shuf
         out["hybrid_on_tmvs"][i] = tmvs_vec + ls_tgt
