@@ -62,19 +62,18 @@ def make_fig1():
     t2_sum = json.loads((REPORTS / "t2_all_5metric_summary.json").read_text())
     r71_sum = json.loads((REPORTS / "r71_nadig_confirmation_summary.json").read_text())
 
-    # Optional official GEARS summaries if available
+    # Optional official GEARS & scGPT probe summaries if available
     gears_rep = REPORTS / "r72_official_gears_replogle_summary.json"
     gears_nad = REPORTS / "r72_official_gears_nadig_summary.json"
     gears_rep_d = json.loads(gears_rep.read_text()) if gears_rep.exists() else None
     gears_nad_d = json.loads(gears_nad.read_text()) if gears_nad.exists() else None
-
-    # Also read exact unmasked disc_raw for xatlas and Replogle from t2_discrim_delta_row_ci.csv
-    disc_df = pd.read_csv(REPORTS / "t2_discrim_delta_row_ci.csv")
+    scgpt_rep = pd.read_csv(REPORTS / "r72_scgpt_probe_replogle_metrics.csv") if (REPORTS / "r72_scgpt_probe_replogle_metrics.csv").exists() else None
+    scgpt_nad = pd.read_csv(REPORTS / "r72_scgpt_probe_nadig_metrics.csv") if (REPORTS / "r72_scgpt_probe_nadig_metrics.csv").exists() else None
 
     datasets = [
-        ("A. xatlas-orion-perturb (Dev10)", "xatlas", t2_sum["xatlas__dev10"], None),
-        ("B. Replogle 2022 (External Zero-Shot)", "replogle", t2_sum["replogle2022__strict10"], gears_rep_d),
-        ("C. Nadig 2025 (Pre-Registered Unseen)", "nadig", r71_sum["methods"], gears_nad_d),
+        ("A. xatlas-orion-perturb (Dev10)", "xatlas", t2_sum["xatlas__dev10"], None, None),
+        ("B. Replogle 2022 (External Zero-Shot)", "replogle", t2_sum["replogle2022__strict10"], gears_rep_d, scgpt_rep),
+        ("C. Nadig 2025 (Pre-Registered Unseen)", "nadig", r71_sum["methods"], gears_nad_d, scgpt_nad),
     ]
 
     metrics = [
@@ -94,21 +93,26 @@ def make_fig1():
         ("S7", "S7", "S7 (Full)", "#805ad5", "v", "-"),
     ]
 
-    fig, axes = plt.subplots(1, 3, figsize=(14.2, 4.7), sharey=False)
+    fig, axes = plt.subplots(1, 3, figsize=(14.4, 4.9), sharey=False)
     x = np.arange(len(metrics))
-    max_m = 7 if (gears_rep_d is not None or gears_nad_d is not None) else 6
+    max_m = 8 if (gears_rep_d is not None and scgpt_rep is not None) else 7
 
-    for ax_i, (ax, (title, ds_key, d_methods, g_data)) in enumerate(zip(axes, datasets)):
+    for ax_i, (ax, (title, ds_key, d_methods, g_data, sc_df)) in enumerate(zip(axes, datasets)):
         # Collect matrix (methods x metrics)
         vals = {}
         active_specs = list(methods_spec)
+        if sc_df is not None:
+            active_specs.append(("scGPT_Probe", "scGPT_Probe", "scGPT Probe", "#0b7285", "*", "-"))
         if g_data is not None:
             active_specs.append(("Official_GEARS", "Official_GEARS", "Official GEARS", "#2f855a", "X", ":"))
 
         for m_nad, m_t2, lbl, col, mk, ls in active_specs:
             if m_nad == "Official_GEARS":
                 gm = g_data["metrics"]
-                vals[lbl] = [gm["delta_r"]["mean"], gm["de50_r"]["mean"], gm["de50_sign"]["mean"], gm["v5"]["mean"], gm["discrim_delta_pct"]["mean"]]
+                vals[lbl] = [gm["delta_r"]["mean"], gm["de50_r"]["mean"], gm["de50_sign"]["mean"], gm["v5"]["mean"], gm["disc_raw"]["mean"]]
+                continue
+            if m_nad == "scGPT_Probe":
+                vals[lbl] = [float(sc_df["delta_r"].mean()), float(sc_df["de50_r"].mean()), float(sc_df["de50_sign"].mean()), float(sc_df["v5"].mean()), float(sc_df["disc_raw"].mean())]
                 continue
             key = m_nad if ds_key == "nadig" else m_t2
             md = d_methods[key]
@@ -207,7 +211,11 @@ def make_fig2():
         ("S5_vs_Simplified_GNN", "S5 − Simp. GNN"),
         ("S5_vs_Simplified_ResMLP", "S5 − Simp. MLP"),
     ]
-    # Add Official GEARS Nadig if available
+    # Add scGPT_FrozenEmb_Ridge and Official GEARS Nadig if available
+    sc_nad_ci_p = REPORTS / "r72_scgpt_probe_nadig_row_ci.csv"
+    sc_nad_ci = pd.read_csv(sc_nad_ci_p) if sc_nad_ci_p.exists() else None
+    if sc_nad_ci is not None:
+        comps.append(("S5_vs_scGPT_Probe", "S5 − scGPT\nProbe (33M)"))
     gn_path = REPORTS / "r72_official_gears_nadig_summary.json"
     gn_d = json.loads(gn_path.read_text()) if gn_path.exists() else None
     if gn_d is not None:
@@ -223,6 +231,10 @@ def make_fig2():
             if ck == "S5_vs_Official_GEARS":
                 d = gn_d["comparisons"][met][ck]
                 md, lo, hi, n_pos = d["mean_delta"], d["mean_ci95_lo"], d["mean_ci95_hi"], d["splits_ci_gt_zero"]
+            elif ck == "S5_vs_scGPT_Probe":
+                sub = sc_nad_ci[(sc_nad_ci["metric"] == met) & (sc_nad_ci["comparison"] == ck)]
+                md, lo, hi = float(sub["delta"].mean()), float(sub["ci95_lo"].mean()), float(sub["ci95_hi"].mean())
+                n_pos = f"{int(sub['ci_gt_zero'].sum())}/{len(sub)}"
             else:
                 d = r71_sum["comparisons"][met][ck]
                 md, lo, hi, n_pos = d["mean_delta"], d["mean_ci95_lo"], d["mean_ci95_hi"], f"{d['splits_ci_gt_zero']}/10"

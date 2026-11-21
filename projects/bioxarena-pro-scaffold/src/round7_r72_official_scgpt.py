@@ -105,6 +105,7 @@ def load_official_scgpt_generator(weights_dir: Path, vocab: dict, device: torch.
             mapped_sd[nk] = v
     missing, unexpected = model.load_state_dict(mapped_sd, strict=False)
     model.transformer_encoder.enable_nested_tensor = False
+    model.transformer_encoder.use_nested_tensor = False
     print(f"  [scGPT_human loaded] matched={len(mapped_sd)} tensors, missing={len(missing)} (pert_encoder/cls_decoder)", flush=True)
     return model.to(device)
 

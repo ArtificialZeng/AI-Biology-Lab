@@ -1,0 +1,354 @@
+{
+  "dataset": "nadig",
+  "package": "cell-gears==0.1.2",
+  "hyperparameters": {
+    "hidden_size": 64,
+    "epochs": 20,
+    "lr": 0.001,
+    "weight_decay": 0.0005,
+    "batch_size": 32
+  },
+  "seeds": [
+    42,
+    0,
+    1,
+    2,
+    3,
+    7,
+    11,
+    99,
+    2024,
+    31337
+  ],
+  "coverage": [
+    {
+      "seed": 42,
+      "line0": {
+        "n_train_in_go": 746,
+        "n_train_total": 753,
+        "n_test_in_go": 147,
+        "n_test_total": 147,
+        "test_go_coverage": 1.0
+      },
+      "line1": {
+        "n_train_in_go": 983,
+        "n_train_total": 991,
+        "n_test_in_go": 191,
+        "n_test_total": 191,
+        "test_go_coverage": 1.0
+      }
+    },
+    {
+      "seed": 0,
+      "line0": {
+        "n_train_in_go": 748,
+        "n_train_total": 753,
+        "n_test_in_go": 145,
+        "n_test_total": 147,
+        "test_go_coverage": 0.9864
+      },
+      "line1": {
+        "n_train_in_go": 965,
+        "n_train_total": 971,
+        "n_test_in_go": 190,
+        "n_test_total": 191,
+        "test_go_coverage": 0.9948
+      }
+    },
+    {
+      "seed": 1,
+      "line0": {
+        "n_train_in_go": 746,
+        "n_train_total": 751,
+        "n_test_in_go": 145,
+        "n_test_total": 147,
+        "test_go_coverage": 0.9864
+      },
+      "line1": {
+        "n_train_in_go": 976,
+        "n_train_total": 982,
+        "n_test_in_go": 191,
+        "n_test_total": 191,
+        "test_go_coverage": 1.0
+      }
+    },
+    {
+      "seed": 2,
+      "line0": {
+        "n_train_in_go": 748,
+        "n_train_total": 755,
+        "n_test_in_go": 147,
+        "n_test_total": 147,
+        "test_go_coverage": 1.0
+      },
+      "line1": {
+        "n_train_in_go": 981,
+        "n_train_total": 989,
+        "n_test_in_go": 191,
+        "n_test_total": 191,
+        "test_go_coverage": 1.0
+      }
+    },
+    {
+      "seed": 3,
+      "line0": {
+        "n_train_in_go": 745,
+        "n_train_total": 751,
+        "n_test_in_go": 147,
+        "n_test_total": 147,
+        "test_go_coverage": 1.0
+      },
+      "line1": {
+        "n_train_in_go": 973,
+        "n_train_total": 980,
+        "n_test_in_go": 190,
+        "n_test_total": 191,
+        "test_go_coverage": 0.9948
+      }
+    },
+    {
+      "seed": 7,
+      "line0": {
+        "n_train_in_go": 745,
+        "n_train_total": 752,
+        "n_test_in_go": 147,
+        "n_test_total": 147,
+        "test_go_coverage": 1.0
+      },
+      "line1": {
+        "n_train_in_go": 973,
+        "n_train_total": 981,
+        "n_test_in_go": 191,
+        "n_test_total": 191,
+        "test_go_coverage": 1.0
+      }
+    },
+    {
+      "seed": 11,
+      "line0": {
+        "n_train_in_go": 748,
+        "n_train_total": 754,
+        "n_test_in_go": 146,
+        "n_test_total": 147,
+        "test_go_coverage": 0.9932
+      },
+      "line1": {
+        "n_train_in_go": 974,
+        "n_train_total": 980,
+        "n_test_in_go": 190,
+        "n_test_total": 191,
+        "test_go_coverage": 0.9948
+      }
+    },
+    {
+      "seed": 99,
+      "line0": {
+        "n_train_in_go": 743,
+        "n_train_total": 750,
+        "n_test_in_go": 147,
+        "n_test_total": 147,
+        "test_go_coverage": 1.0
+      },
+      "line1": {
+        "n_train_in_go": 972,
+        "n_train_total": 980,
+        "n_test_in_go": 191,
+        "n_test_total": 191,
+        "test_go_coverage": 1.0
+      }
+    },
+    {
+      "seed": 2024,
+      "line0": {
+        "n_train_in_go": 749,
+        "n_train_total": 755,
+        "n_test_in_go": 147,
+        "n_test_total": 147,
+        "test_go_coverage": 1.0
+      },
+      "line1": {
+        "n_train_in_go": 971,
+        "n_train_total": 978,
+        "n_test_in_go": 190,
+        "n_test_total": 191,
+        "test_go_coverage": 0.9948
+      }
+    },
+    {
+      "seed": 31337,
+      "line0": {
+        "n_train_in_go": 743,
+        "n_train_total": 750,
+        "n_test_in_go": 147,
+        "n_test_total": 147,
+        "test_go_coverage": 1.0
+      },
+      "line1": {
+        "n_train_in_go": 968,
+        "n_train_total": 976,
+        "n_test_in_go": 191,
+        "n_test_total": 191,
+        "test_go_coverage": 1.0
+      }
+    }
+  ],
+  "metrics": {
+    "v5": {
+      "mean": 0.057731,
+      "std": 0.014332
+    },
+    "delta_r": {
+      "mean": 0.107709,
+      "std": 0.017433
+    },
+    "de50_r": {
+      "mean": 0.197338,
+      "std": 0.024631
+    },
+    "de50_sign": {
+      "mean": 0.646203,
+      "std": 0.009524
+    },
+    "disc_raw": {
+      "mean": 0.609465,
+      "std": 0.014887
+    },
+    "disc_v5": {
+      "mean": 0.583391,
+      "std": 0.027365
+    },
+    "discrim_delta_pct": {
+      "mean": 0.609311,
+      "std": 0.014862
+    },
+    "centroid_train_r": {
+      "mean": 0.107709,
+      "std": 0.017433
+    },
+    "v5_go_covered_only": {
+      "mean": 0.057917,
+      "std": 0.014389
+    },
+    "disc_raw_go_covered_only": {
+      "mean": 0.610204,
+      "std": 0.015191
+    }
+  },
+  "comparisons": {
+    "v5": {
+      "S5_vs_Official_GEARS": {
+        "mean_delta": 0.116409,
+        "mean_ci95_lo": 0.092736,
+        "mean_ci95_hi": 0.140293,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "S7_vs_Official_GEARS": {
+        "mean_delta": 0.129333,
+        "mean_ci95_lo": 0.102239,
+        "mean_ci95_hi": 0.156705,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "Official_GEARS_vs_AE": {
+        "mean_delta": -0.05688,
+        "mean_ci95_lo": -0.079125,
+        "mean_ci95_hi": -0.035237,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "10/10"
+      }
+    },
+    "delta_r": {
+      "S5_vs_Official_GEARS": {
+        "mean_delta": 0.04254,
+        "mean_ci95_lo": 0.015177,
+        "mean_ci95_hi": 0.070084,
+        "splits_ci_gt_zero": "9/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "S7_vs_Official_GEARS": {
+        "mean_delta": 0.054015,
+        "mean_ci95_lo": 0.024403,
+        "mean_ci95_hi": 0.08359,
+        "splits_ci_gt_zero": "9/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "Official_GEARS_vs_AE": {
+        "mean_delta": -0.062059,
+        "mean_ci95_lo": -0.093779,
+        "mean_ci95_hi": -0.030384,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "10/10"
+      }
+    },
+    "disc_raw": {
+      "S5_vs_Official_GEARS": {
+        "mean_delta": 0.105719,
+        "mean_ci95_lo": 0.067296,
+        "mean_ci95_hi": 0.143841,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "S7_vs_Official_GEARS": {
+        "mean_delta": 0.08969,
+        "mean_ci95_lo": 0.050959,
+        "mean_ci95_hi": 0.12809,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "Official_GEARS_vs_AE": {
+        "mean_delta": -0.05699,
+        "mean_ci95_lo": -0.096108,
+        "mean_ci95_hi": -0.017571,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "7/10"
+      }
+    },
+    "disc_v5": {
+      "S5_vs_Official_GEARS": {
+        "mean_delta": 0.132263,
+        "mean_ci95_lo": 0.093244,
+        "mean_ci95_hi": 0.170513,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "S7_vs_Official_GEARS": {
+        "mean_delta": 0.115909,
+        "mean_ci95_lo": 0.076797,
+        "mean_ci95_hi": 0.15453,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "Official_GEARS_vs_AE": {
+        "mean_delta": -0.067524,
+        "mean_ci95_lo": -0.107335,
+        "mean_ci95_hi": -0.027298,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "9/10"
+      }
+    },
+    "centroid_train_r": {
+      "S5_vs_Official_GEARS": {
+        "mean_delta": 0.04254,
+        "mean_ci95_lo": 0.015177,
+        "mean_ci95_hi": 0.070084,
+        "splits_ci_gt_zero": "9/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "S7_vs_Official_GEARS": {
+        "mean_delta": 0.054015,
+        "mean_ci95_lo": 0.024403,
+        "mean_ci95_hi": 0.08359,
+        "splits_ci_gt_zero": "9/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "Official_GEARS_vs_AE": {
+        "mean_delta": -0.062059,
+        "mean_ci95_lo": -0.093779,
+        "mean_ci95_hi": -0.030384,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "10/10"
+      }
+    }
+  }
+}

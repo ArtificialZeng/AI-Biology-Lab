@@ -10,7 +10,7 @@ exact same 5 metrics + `disc_raw` + `disc_v5` + Systema `centroid_train_r`, and 
 cell-line-stratified row-level paired bootstrap 95% CIs against S5, S7, and AE.
 
 Notes on Official GEARS Integration:
-  - Runs in isolated venv (`/Users/mac/.cache/r7_gears_venv`, `cell-gears==0.1.2`).
+  - Runs in an isolated venv with `cell-gears==0.1.2` (e.g., `$HOME/.cache/r7_gears_venv`).
   - Official GEARS is single-cell-line by design; trained independently per cell line on
     each split's training set (90% train / 10% internal val for GEARS early stopping;
     benchmark held-out perturbations strictly in `test`, zero test-label leakage).
