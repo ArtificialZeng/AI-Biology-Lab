@@ -98,3 +98,40 @@ $$\hat{\mathbf{y}}_{\text{fusion}} = \mathbf{b}_c + P_{S_c}\!\big(\hat{\mathbf{y
 - `Tahoe-100M` / `sci-Plex`: Chemical small-molecule perturbations, not CRISPRi/KO.
 
 **Fail-Safe Clause**: If **neither** Candidate 1 nor Candidate 2 passes the locked Eligibility Gate above, we **do not** lower standards or force an underpowered/confounded dataset; we document the exact quantitative failure counts for every screened candidate and formally record the 4th-dataset confirmatory verdict as **`待定 (PENDING — no publicly available 4th human 2-cell-line single-gene CRISPRi/KO atlas met pre-registered power criteria)`**. If a candidate passes, we record its exact file SHA-256 checksums and locked preprocessing parameters in `Addendum R8-A` **prior to reading any expression counts**, then execute the exact pre-registered `H4`/`H5` evaluation.
+
+---
+
+## 4. Addendum R8-A — Locked Candidate 1 (`Feng et al. 2025` `TargetedScreen`) Selection & Preprocessing (Committed Prior to Downloading Expression Counts)
+
+**Metadata-Only Screening Audit (Zero Expression Counts Downloaded or Read)**:
+- Inspected `GenomeWideScreen_FitnessGenes_Cell-Metadata.tsv.gz`, `GenomeWideScreen_NonFitnessGenes_Cell-Metadata.tsv.gz`, and `TargetedScreen_Cell-Metadata.tsv.gz` from Figshare `10.6084/m9.figshare.27989294.v2` (**MIT License**):
+  - `GenomeWideScreen_FitnessGenes`: top-2 lines `wahn_1` (`6` genes $\ge 25$ cells) & `siqu_4` (`2` genes $\ge 25$ cells) → **FAILS** minimum cell-depth gate.
+  - `GenomeWideScreen_NonFitnessGenes`: top-2 lines `kolf_2` (`0` genes $\ge 25$ cells) & `miaj_4` (`0` genes $\ge 25$ cells) → **FAILS** minimum cell-depth gate.
+  - **`TargetedScreen`** (`1,161,864` cells, `19` human iPSC donor lines): top-2 individual human donor cell lines by assigned cell count are:
+    - **Line 0 (`jejf_2`)**: `47,558` assigned cells (`605` `NonTarget` control cells across `Pool4_Day3` [`203`], `Pool5_Day3` [`187`], `Pool7_Day3` [`148`], `Pool6_Day3` [`67`]); `444` unique target genes, **`442` genes with `n_cells >= 25`**.
+    - **Line 1 (`zapk_3`)**: `46,376` assigned cells (`622` `NonTarget` control cells across `Pool2_Day3` [`270`], `Pool3_Day3` [`177`], `Pool1_Day3` [`175`]); `444` unique target genes, **`442` genes with `n_cells >= 25`**.
+    - **Shared target genes with `n_cells >= 25`**: **`442`** (completely disjoint experimental pools: `Pool4–7` vs `Pool1–3`, zero batch overlap).
+    - *Transparent scope note*: Both `jejf_2` and `zapk_3` are human iPSC cell lines from two unrelated healthy HipSci donors (distinct genetic backgrounds and distinct experimental pools, though same pluripotent cell state rather than two distinct tissue lineages; this limitation will be explicitly stated in the manuscript).
+
+**Locked Official Files & Published MD5 Checksums (Before Expression Download)**:
+- `TargetedScreen_Cell-Metadata.tsv.gz` (`13.5 MB`, Figshare MD5 `980a440a8132a20567c4c3610e6a5b20`)
+- `TargetedScreen_RNA-UMI-Counts.csv.gz` (`4,481.0 MB`, Figshare MD5 `f0d613b1ea8147425501baddba034158`)
+- Exact SHA-256 of both downloaded files will be verified and logged in `prepare_feng2025_cache.py` and `ROUND8_EXECUTION_REPORT.md`.
+
+**Locked Preprocessing Protocol (Zero Deviations Permitted)**:
+1. **Cell Filtering**: Retain cells belonging to `Cell_Line in {"jejf_2", "zapk_3"}` whose `Guide_Call` is a single assigned target (`gene = Guide_Call.split("_")[0]`, excluding `unassigned`, `multiplet`, `nan`).
+2. **Per-`Pool_Day` Normalization & Control Z-Scoring** (exact analog of Addendum B `gem_group`, using `Pool_Day` because individual `Inlet`s contain as few as 2 `NonTarget` cells whereas every `Pool_Day` contains `67–270` `NonTarget` cells):
+   - Extract `Pool_Day` via regex `Pool\d+_Day\d+` from `Batch`.
+   - Within each `(Cell_Line, Pool_Day)` stratum, library-size normalize every cell's raw UMI counts to that stratum's median total UMI count across retained cells.
+   - Z-score every gene within each `(Cell_Line, Pool_Day)` stratum against cells with `gene == "NonTarget"` in that same stratum.
+   - Average z-scored profiles across all retained cells targeting each unique gene symbol (merging guides targeting the same gene) to form the pseudobulk profile per `(Cell_Line, target_gene)`.
+3. **Readout Gene Selection (Up to Top `5,000` Finite Genes per Line)**:
+   - Drop any gene with zero control variance or non-finite z-score in any `Pool_Day` stratum of that line.
+   - Rank remaining finite genes by mean library-size-normalized expression across all `NonTarget` control cells (`control_mean`) and select the top `5,000` genes per line (or all finite genes if `< 5,000`).
+4. **Locked Reproducibility Criterion (Identical to Replogle 2022 & Nadig 2025 Addendum B)**:
+   - Vectorized Scholz-Stephens two-sample Anderson-Darling test across all selected readout genes against all `NonTarget` control cells of that line (`605` in `jejf_2`, `622` in `zapk_3`; BH FDR `< 0.05` → `ad_counts`).
+   - 20-PC 2,000-permutation energy-distance test against all `NonTarget` control cells of that line (`energy_test_p_value < 0.001`).
+   - `reproducible = 1` iff `n_cells >= 25` AND `ad_counts >= 50` AND `energy_test_p_value < 0.001`.
+5. **Post-QC Eligibility Gate (Hard Stop Before Running Any Model)**:
+   - Proceed to `H4`/`H5` confirmatory testing **ONLY** if both `jejf_2` and `zapk_3` have `>= 100` reproducible target genes, `>= 80` shared reproducible target genes, and `>= 2,000` shared readout genes. If this gate fails, **do not** relax thresholds; mark 4th-dataset confirmation **`待定 (PENDING)`**.
+
