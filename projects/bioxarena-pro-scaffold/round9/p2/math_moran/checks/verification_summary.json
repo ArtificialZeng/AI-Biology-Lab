@@ -1,0 +1,717 @@
+{
+  "checker1_exact_markov": {
+    "unreduced_forward_checks": [
+      {
+        "n": 1,
+        "lam": "1",
+        "transient_states": 1,
+        "T_exact": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1",
+        "transient_states": 7,
+        "T_exact": "7"
+      },
+      {
+        "n": 3,
+        "lam": "1",
+        "transient_states": 85,
+        "T_exact": "47/2"
+      },
+      {
+        "n": 1,
+        "lam": "0",
+        "transient_states": 1,
+        "T_exact": "1"
+      },
+      {
+        "n": 2,
+        "lam": "0",
+        "transient_states": 7,
+        "T_exact": "4"
+      },
+      {
+        "n": 3,
+        "lam": "0",
+        "transient_states": 85,
+        "T_exact": "15/2"
+      },
+      {
+        "n": 1,
+        "lam": "1/2",
+        "transient_states": 1,
+        "T_exact": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1/2",
+        "transient_states": 7,
+        "T_exact": "5"
+      },
+      {
+        "n": 3,
+        "lam": "1/2",
+        "transient_states": 85,
+        "T_exact": "23/2"
+      }
+    ],
+    "canonical_forward_checks": [
+      {
+        "n": 1,
+        "lam": "1",
+        "transient_states": 1,
+        "T_exact": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1",
+        "transient_states": 3,
+        "T_exact": "7"
+      },
+      {
+        "n": 3,
+        "lam": "1",
+        "transient_states": 10,
+        "T_exact": "47/2"
+      },
+      {
+        "n": 4,
+        "lam": "1",
+        "transient_states": 37,
+        "T_exact": "169/3"
+      },
+      {
+        "n": 5,
+        "lam": "1",
+        "transient_states": 151,
+        "T_exact": "1337/12"
+      },
+      {
+        "n": 1,
+        "lam": "0",
+        "transient_states": 1,
+        "T_exact": "1"
+      },
+      {
+        "n": 2,
+        "lam": "0",
+        "transient_states": 3,
+        "T_exact": "4"
+      },
+      {
+        "n": 3,
+        "lam": "0",
+        "transient_states": 10,
+        "T_exact": "15/2"
+      },
+      {
+        "n": 4,
+        "lam": "0",
+        "transient_states": 37,
+        "T_exact": "34/3"
+      },
+      {
+        "n": 5,
+        "lam": "0",
+        "transient_states": 151,
+        "T_exact": "185/12"
+      },
+      {
+        "n": 1,
+        "lam": "1/3",
+        "transient_states": 1,
+        "T_exact": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1/3",
+        "transient_states": 3,
+        "T_exact": "23/5"
+      },
+      {
+        "n": 3,
+        "lam": "1/3",
+        "transient_states": 10,
+        "T_exact": "137/14"
+      },
+      {
+        "n": 4,
+        "lam": "1/3",
+        "transient_states": 37,
+        "T_exact": "49/3"
+      },
+      {
+        "n": 5,
+        "lam": "1/3",
+        "transient_states": 151,
+        "T_exact": "3187/132"
+      },
+      {
+        "n": 1,
+        "lam": "1/2",
+        "transient_states": 1,
+        "T_exact": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1/2",
+        "transient_states": 3,
+        "T_exact": "5"
+      },
+      {
+        "n": 3,
+        "lam": "1/2",
+        "transient_states": 10,
+        "T_exact": "23/2"
+      },
+      {
+        "n": 4,
+        "lam": "1/2",
+        "transient_states": 37,
+        "T_exact": "61/3"
+      },
+      {
+        "n": 5,
+        "lam": "1/2",
+        "transient_states": 151,
+        "T_exact": "377/12"
+      }
+    ],
+    "subset_coalescing_checks": [
+      {
+        "n": 1,
+        "lam": "1",
+        "subset_states": 1,
+        "T_subset": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1",
+        "subset_states": 4,
+        "T_subset": "7"
+      },
+      {
+        "n": 3,
+        "lam": "1",
+        "subset_states": 11,
+        "T_subset": "47/2"
+      },
+      {
+        "n": 4,
+        "lam": "1",
+        "subset_states": 26,
+        "T_subset": "169/3"
+      },
+      {
+        "n": 5,
+        "lam": "1",
+        "subset_states": 57,
+        "T_subset": "1337/12"
+      },
+      {
+        "n": 6,
+        "lam": "1",
+        "subset_states": 120,
+        "T_subset": "1947/10"
+      },
+      {
+        "n": 1,
+        "lam": "0",
+        "subset_states": 1,
+        "T_subset": "1"
+      },
+      {
+        "n": 2,
+        "lam": "0",
+        "subset_states": 4,
+        "T_subset": "4"
+      },
+      {
+        "n": 3,
+        "lam": "0",
+        "subset_states": 11,
+        "T_subset": "15/2"
+      },
+      {
+        "n": 4,
+        "lam": "0",
+        "subset_states": 26,
+        "T_subset": "34/3"
+      },
+      {
+        "n": 5,
+        "lam": "0",
+        "subset_states": 57,
+        "T_subset": "185/12"
+      },
+      {
+        "n": 6,
+        "lam": "0",
+        "subset_states": 120,
+        "T_subset": "197/10"
+      },
+      {
+        "n": 1,
+        "lam": "1/2",
+        "subset_states": 1,
+        "T_subset": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1/2",
+        "subset_states": 4,
+        "T_subset": "5"
+      },
+      {
+        "n": 3,
+        "lam": "1/2",
+        "subset_states": 11,
+        "T_subset": "23/2"
+      },
+      {
+        "n": 4,
+        "lam": "1/2",
+        "subset_states": 26,
+        "T_subset": "61/3"
+      },
+      {
+        "n": 5,
+        "lam": "1/2",
+        "subset_states": 57,
+        "T_subset": "377/12"
+      },
+      {
+        "n": 6,
+        "lam": "1/2",
+        "subset_states": 120,
+        "T_subset": "447/10"
+      }
+    ],
+    "lumped_kc_checks_count": 100,
+    "lumped_kc_bd_sample": [
+      {
+        "n": 1,
+        "lam": "1",
+        "kc_transient": 1,
+        "T_kc": "1"
+      },
+      {
+        "n": 2,
+        "lam": "1",
+        "kc_transient": 3,
+        "T_kc": "7"
+      },
+      {
+        "n": 3,
+        "lam": "1",
+        "kc_transient": 5,
+        "T_kc": "47/2"
+      },
+      {
+        "n": 4,
+        "lam": "1",
+        "kc_transient": 7,
+        "T_kc": "169/3"
+      },
+      {
+        "n": 5,
+        "lam": "1",
+        "kc_transient": 9,
+        "T_kc": "1337/12"
+      },
+      {
+        "n": 10,
+        "lam": "1",
+        "kc_transient": 19,
+        "T_kc": "234181/252"
+      },
+      {
+        "n": 15,
+        "lam": "1",
+        "kc_transient": 29,
+        "T_kc": "76871357/24024"
+      },
+      {
+        "n": 20,
+        "lam": "1",
+        "kc_transient": 39,
+        "T_kc": "29766233275/3879876"
+      }
+    ],
+    "lumped_kc_db_sample": [
+      {
+        "n": 1,
+        "lam": "0",
+        "kc_transient": 1,
+        "T_kc": "1"
+      },
+      {
+        "n": 2,
+        "lam": "0",
+        "kc_transient": 3,
+        "T_kc": "4"
+      },
+      {
+        "n": 3,
+        "lam": "0",
+        "kc_transient": 5,
+        "T_kc": "15/2"
+      },
+      {
+        "n": 4,
+        "lam": "0",
+        "kc_transient": 7,
+        "T_kc": "34/3"
+      },
+      {
+        "n": 5,
+        "lam": "0",
+        "kc_transient": 9,
+        "T_kc": "185/12"
+      },
+      {
+        "n": 10,
+        "lam": "0",
+        "kc_transient": 19,
+        "T_kc": "9649/252"
+      },
+      {
+        "n": 15,
+        "lam": "0",
+        "kc_transient": 29,
+        "T_kc": "1532093/24024"
+      },
+      {
+        "n": 20,
+        "lam": "0",
+        "kc_transient": 39,
+        "T_kc": "352893319/3879876"
+      }
+    ]
+  },
+  "checker2_symbolic_and_mc": {
+    "symbolic": {
+      "sympy_version": "1.13.3",
+      "all_symbolic_residuals_zero": true,
+      "verified_identities": [
+        "(k,0) general k>=2",
+        "(k,1) interior 2<=k<=n-1",
+        "(n,1) upper boundary",
+        "(1,1) lower boundary n>=2",
+        "n=1 base case",
+        "telescoping difference t(k,1)-t(k-1,1)",
+        "bd, db, lambda-mixed specializations",
+        "t_bd(n,0) == t_bd(n,1) for n>=2"
+      ]
+    },
+    "monte_carlo": [
+      {
+        "rule": "bd",
+        "lam": "1",
+        "n": 2,
+        "N": 3,
+        "trials": 15000,
+        "seed": 1002,
+        "mc_mean": 6.9543,
+        "mc_se": 0.0438,
+        "exact": 7.0,
+        "z_score": -1.044,
+        "rel_err": 0.00653
+      },
+      {
+        "rule": "bd",
+        "lam": "1",
+        "n": 3,
+        "N": 4,
+        "trials": 15000,
+        "seed": 1003,
+        "mc_mean": 23.4205,
+        "mc_se": 0.1406,
+        "exact": 23.5,
+        "z_score": -0.566,
+        "rel_err": 0.00338
+      },
+      {
+        "rule": "bd",
+        "lam": "1",
+        "n": 4,
+        "N": 5,
+        "trials": 10000,
+        "seed": 1004,
+        "mc_mean": 57.0528,
+        "mc_se": 0.3934,
+        "exact": 56.333333,
+        "z_score": 1.829,
+        "rel_err": 0.01277
+      },
+      {
+        "rule": "bd",
+        "lam": "1",
+        "n": 5,
+        "N": 6,
+        "trials": 10000,
+        "seed": 1005,
+        "mc_mean": 112.4849,
+        "mc_se": 0.7461,
+        "exact": 111.416667,
+        "z_score": 1.432,
+        "rel_err": 0.00959
+      },
+      {
+        "rule": "bd",
+        "lam": "1",
+        "n": 8,
+        "N": 9,
+        "trials": 5000,
+        "seed": 1008,
+        "mc_mean": 472.304,
+        "mc_se": 4.064,
+        "exact": 469.742857,
+        "z_score": 0.63,
+        "rel_err": 0.00545
+      },
+      {
+        "rule": "bd",
+        "lam": "1",
+        "n": 12,
+        "N": 13,
+        "trials": 3000,
+        "seed": 1012,
+        "mc_mean": 1602.894,
+        "mc_se": 16.7187,
+        "exact": 1621.238528,
+        "z_score": -1.097,
+        "rel_err": 0.01132
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 2,
+        "N": 3,
+        "trials": 15000,
+        "seed": 2002,
+        "mc_mean": 3.9982,
+        "mc_se": 0.0199,
+        "exact": 4.0,
+        "z_score": -0.09,
+        "rel_err": 0.00045
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 3,
+        "N": 4,
+        "trials": 15000,
+        "seed": 2003,
+        "mc_mean": 7.4175,
+        "mc_se": 0.0356,
+        "exact": 7.5,
+        "z_score": -2.316,
+        "rel_err": 0.011
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 4,
+        "N": 5,
+        "trials": 15000,
+        "seed": 2004,
+        "mc_mean": 11.2426,
+        "mc_se": 0.0503,
+        "exact": 11.333333,
+        "z_score": -1.804,
+        "rel_err": 0.00801
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 5,
+        "N": 6,
+        "trials": 15000,
+        "seed": 2005,
+        "mc_mean": 15.3063,
+        "mc_se": 0.0663,
+        "exact": 15.416667,
+        "z_score": -1.664,
+        "rel_err": 0.00716
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 8,
+        "N": 9,
+        "trials": 10000,
+        "seed": 2008,
+        "mc_mean": 28.9329,
+        "mc_se": 0.1414,
+        "exact": 28.742857,
+        "z_score": 1.344,
+        "rel_err": 0.00661
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 12,
+        "N": 13,
+        "trials": 10000,
+        "seed": 2012,
+        "mc_mean": 48.5892,
+        "mc_se": 0.2209,
+        "exact": 48.238528,
+        "z_score": 1.587,
+        "rel_err": 0.00727
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 20,
+        "N": 21,
+        "trials": 10000,
+        "seed": 2020,
+        "mc_mean": 90.6295,
+        "mc_se": 0.3764,
+        "exact": 90.954793,
+        "z_score": -0.864,
+        "rel_err": 0.00358
+      },
+      {
+        "rule": "db",
+        "lam": "0",
+        "n": 30,
+        "N": 31,
+        "trials": 10000,
+        "seed": 2030,
+        "mc_mean": 148.6548,
+        "mc_se": 0.5646,
+        "exact": 148.849614,
+        "z_score": -0.345,
+        "rel_err": 0.00131
+      },
+      {
+        "rule": "mixed_half",
+        "lam": "1/2",
+        "n": 3,
+        "N": 4,
+        "trials": 10000,
+        "seed": 3003,
+        "mc_mean": 11.428,
+        "mc_se": 0.0757,
+        "exact": 11.5,
+        "z_score": -0.951,
+        "rel_err": 0.00626
+      },
+      {
+        "rule": "mixed_half",
+        "lam": "1/2",
+        "n": 5,
+        "N": 6,
+        "trials": 10000,
+        "seed": 3005,
+        "mc_mean": 31.7756,
+        "mc_se": 0.2,
+        "exact": 31.416667,
+        "z_score": 1.795,
+        "rel_err": 0.01142
+      },
+      {
+        "rule": "mixed_half",
+        "lam": "1/2",
+        "n": 10,
+        "N": 11,
+        "trials": 5000,
+        "seed": 3010,
+        "mc_mean": 118.303,
+        "mc_se": 0.9586,
+        "exact": 119.289683,
+        "z_score": -1.029,
+        "rel_err": 0.00827
+      }
+    ]
+  },
+  "negative_controls": {
+    "negative_controls_passed": 8,
+    "controls": [
+      {
+        "control": "off_by_one_N_instead_of_n",
+        "detected_by": [
+          "exact_markov",
+          "monte_carlo",
+          "sympy"
+        ],
+        "exact_discrepancy": "197/6",
+        "mc_n": 5,
+        "mc_z_rejection": -83.08
+      },
+      {
+        "control": "truncated_harmonic_H_{n-1}",
+        "detected_by": [
+          "exact_markov",
+          "monte_carlo",
+          "sympy"
+        ],
+        "exact_discrepancy": "-1",
+        "mc_n": 3,
+        "mc_z_rejection": 7.01
+      },
+      {
+        "control": "plus_one_additive_corruption",
+        "detected_by": [
+          "exact_markov",
+          "monte_carlo",
+          "sympy"
+        ],
+        "exact_discrepancy": "1",
+        "mc_n": 2,
+        "mc_z_rejection": -27.42
+      },
+      {
+        "control": "log_instead_of_harmonic",
+        "detected_by": [
+          "exact_markov",
+          "monte_carlo"
+        ],
+        "exact_discrepancy": "-2.2042 (at n=3)",
+        "mc_n": 3,
+        "mc_z_rejection": 18.23
+      },
+      {
+        "control": "self_loop_center_n3",
+        "detected_by": [
+          "exact_unreduced_forward_markov"
+        ],
+        "T_with_loops": "472/15",
+        "T_simple_graph": "47/2",
+        "exact_discrepancy": "239/30"
+      },
+      {
+        "control": "self_loop_all_n3",
+        "detected_by": [
+          "exact_unreduced_forward_markov"
+        ],
+        "T_with_loops": "280/9",
+        "T_simple_graph": "47/2",
+        "exact_discrepancy": "137/18"
+      },
+      {
+        "control": "corrupted_kc_kernel_n4_eps_1_100",
+        "detected_by": [
+          "exact_lumped_kc_markov"
+        ],
+        "T_perturbed": "3533/63",
+        "T_exact": "169/3",
+        "exact_discrepancy": "-16/63"
+      },
+      {
+        "control": "swapped_bd_vs_db_n4",
+        "detected_by": [
+          "exact_markov",
+          "monte_carlo"
+        ],
+        "mc_db_mean": 11.2146,
+        "wrong_bd_exact": "169/3",
+        "mc_z_rejection": -727.34
+      }
+    ]
+  }
+}

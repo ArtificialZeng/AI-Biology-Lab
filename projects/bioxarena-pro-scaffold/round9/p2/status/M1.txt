@@ -1,0 +1,2 @@
+[M1] COMPLETED: 已严格证明 Brewster et al. (PNAS Nexus 2025, pgaf252 / arXiv:2503.09841v2) 公式 (9) T_N^bd = n^3 - n^2 + n*H_n 为真，并同步导出 db 精确公式 T_N^db = n*H_n + n - 1 与 λ-混合公式；双独立检查器（精确有理数链 + SymPy/前向蒙特卡洛）及 8 项改坏对照在 python -B 与 python -B -O 下全部通过。产出见 p2/math_moran/{README.md,proof.md,REPORT.md,sources.md,checks/}
+TASK_DONE
