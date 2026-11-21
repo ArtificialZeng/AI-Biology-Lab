@@ -1,0 +1,259 @@
+{
+  "dataset": "replogle",
+  "status": "EXPLORATORY_SEEN_DATASET",
+  "formula": "y_hat = b + P_S(y_hat_scGPT - b) + P_perp(y_hat_S5 - b), S = span{1, b, a}, ZERO tunable weights",
+  "n_splits": 10,
+  "methods": {
+    "AE": {
+      "v5": {
+        "mean": 0.096702,
+        "std": 0.005624
+      },
+      "delta_r": {
+        "mean": 0.146959,
+        "std": 0.00713
+      },
+      "de50_r": {
+        "mean": 0.202598,
+        "std": 0.014002
+      },
+      "de50_sign": {
+        "mean": 0.625525,
+        "std": 0.009639
+      },
+      "disc_raw": {
+        "mean": 0.646769,
+        "std": 0.009987
+      },
+      "disc_v5": {
+        "mean": 0.638718,
+        "std": 0.010391
+      }
+    },
+    "OrthoFusion_scGPT_S5": {
+      "v5": {
+        "mean": 0.140066,
+        "std": 0.005974
+      },
+      "delta_r": {
+        "mean": 0.190605,
+        "std": 0.006426
+      },
+      "de50_r": {
+        "mean": 0.282927,
+        "std": 0.013793
+      },
+      "de50_sign": {
+        "mean": 0.662799,
+        "std": 0.005067
+      },
+      "disc_raw": {
+        "mean": 0.698769,
+        "std": 0.008156
+      },
+      "disc_v5": {
+        "mean": 0.688564,
+        "std": 0.006263
+      }
+    },
+    "S5": {
+      "v5": {
+        "mean": 0.140066,
+        "std": 0.005974
+      },
+      "delta_r": {
+        "mean": 0.119259,
+        "std": 0.005605
+      },
+      "de50_r": {
+        "mean": 0.217004,
+        "std": 0.014562
+      },
+      "de50_sign": {
+        "mean": 0.606433,
+        "std": 0.005288
+      },
+      "disc_raw": {
+        "mean": 0.688427,
+        "std": 0.006457
+      },
+      "disc_v5": {
+        "mean": 0.688564,
+        "std": 0.006263
+      }
+    },
+    "scGPT_FrozenEmb_Ridge": {
+      "v5": {
+        "mean": 0.112698,
+        "std": 0.006727
+      },
+      "delta_r": {
+        "mean": 0.180161,
+        "std": 0.005976
+      },
+      "de50_r": {
+        "mean": 0.264649,
+        "std": 0.014025
+      },
+      "de50_sign": {
+        "mean": 0.653554,
+        "std": 0.006408
+      },
+      "disc_raw": {
+        "mean": 0.685938,
+        "std": 0.00796
+      },
+      "disc_v5": {
+        "mean": 0.680747,
+        "std": 0.008454
+      }
+    }
+  },
+  "comparisons": {
+    "delta_r": {
+      "OrthoFusion_vs_AE": {
+        "mean_delta": 0.043646,
+        "std_delta": 0.010203,
+        "mean_ci95_lo": 0.024922,
+        "mean_ci95_hi": 0.06281,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_S5": {
+        "mean_delta": 0.071346,
+        "std_delta": 0.005303,
+        "mean_ci95_lo": 0.056039,
+        "mean_ci95_hi": 0.086672,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_scGPT_Probe": {
+        "mean_delta": 0.010444,
+        "std_delta": 0.003724,
+        "mean_ci95_lo": 0.000646,
+        "mean_ci95_hi": 0.02025,
+        "splits_ci_gt_zero": "5/10",
+        "splits_ci_lt_zero": "0/10"
+      }
+    },
+    "disc_raw": {
+      "OrthoFusion_vs_AE": {
+        "mean_delta": 0.052,
+        "std_delta": 0.012094,
+        "mean_ci95_lo": 0.028098,
+        "mean_ci95_hi": 0.076104,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_S5": {
+        "mean_delta": 0.010343,
+        "std_delta": 0.00651,
+        "mean_ci95_lo": -0.010066,
+        "mean_ci95_hi": 0.030669,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_scGPT_Probe": {
+        "mean_delta": 0.012832,
+        "std_delta": 0.006272,
+        "mean_ci95_lo": -0.000912,
+        "mean_ci95_hi": 0.026804,
+        "splits_ci_gt_zero": "5/10",
+        "splits_ci_lt_zero": "0/10"
+      }
+    },
+    "disc_v5": {
+      "OrthoFusion_vs_AE": {
+        "mean_delta": 0.049846,
+        "std_delta": 0.007956,
+        "mean_ci95_lo": 0.027803,
+        "mean_ci95_hi": 0.071921,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_S5": {
+        "mean_delta": 0.0,
+        "std_delta": 0.0,
+        "mean_ci95_lo": 0.0,
+        "mean_ci95_hi": 0.0,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_scGPT_Probe": {
+        "mean_delta": 0.007817,
+        "std_delta": 0.008507,
+        "mean_ci95_lo": -0.016294,
+        "mean_ci95_hi": 0.032029,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "0/10"
+      }
+    },
+    "v5": {
+      "OrthoFusion_vs_AE": {
+        "mean_delta": 0.043363,
+        "std_delta": 0.002319,
+        "mean_ci95_lo": 0.032197,
+        "mean_ci95_hi": 0.054639,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_S5": {
+        "mean_delta": 0.0,
+        "std_delta": 0.0,
+        "mean_ci95_lo": 0.0,
+        "mean_ci95_hi": 0.0,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "OrthoFusion_vs_scGPT_Probe": {
+        "mean_delta": 0.027368,
+        "std_delta": 0.00503,
+        "mean_ci95_lo": 0.015201,
+        "mean_ci95_hi": 0.039534,
+        "splits_ci_gt_zero": "10/10",
+        "splits_ci_lt_zero": "0/10"
+      }
+    }
+  },
+  "exploratory_adjudication": {
+    "note": "EXPLORATORY ONLY on already-seen dataset; confirmatory test requires unseen 4th dataset.",
+    "H4_non_inferiority": {
+      "delta_r_vs_scGPT": {
+        "mean_delta": 0.010444,
+        "std_delta": 0.003724,
+        "mean_ci95_lo": 0.000646,
+        "mean_ci95_hi": 0.02025,
+        "splits_ci_gt_zero": "5/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "v5_vs_S5": {
+        "mean_delta": 0.0,
+        "std_delta": 0.0,
+        "mean_ci95_lo": 0.0,
+        "mean_ci95_hi": 0.0,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "passed": true
+    },
+    "H5_disc_raw_synergy": {
+      "disc_raw_vs_scGPT": {
+        "mean_delta": 0.012832,
+        "std_delta": 0.006272,
+        "mean_ci95_lo": -0.000912,
+        "mean_ci95_hi": 0.026804,
+        "splits_ci_gt_zero": "5/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "disc_raw_vs_S5": {
+        "mean_delta": 0.010343,
+        "std_delta": 0.00651,
+        "mean_ci95_lo": -0.010066,
+        "mean_ci95_hi": 0.030669,
+        "splits_ci_gt_zero": "0/10",
+        "splits_ci_lt_zero": "0/10"
+      },
+      "passed": false
+    }
+  }
+}
