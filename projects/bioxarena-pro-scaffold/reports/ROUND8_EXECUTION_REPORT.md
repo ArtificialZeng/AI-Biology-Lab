@@ -42,8 +42,17 @@
 | **R8-8** | DONE | `3c313be`, updated in v2 | `reports/PRIOR_ART_LOG.md` covering all 5 claims, 9 mandatory metascience works + `CrossAudit` (`arXiv:2608.28631`) + `Vaccaro` (`arXiv:2606.11217`) + `HyperMap` (`10.64898/2026.04.23.720505`). |
 | **R8-9** | DONE | `8da7859` | `reports/AUTONOMY_EVIDENCE.md` & `reports/autonomy_timeline.csv` (36 commits, all 15 direct human messages `<= 30` chars, 26 Claude relays, explicit `不确定` tags). |
 | **R8-10** | DONE | `3c313be` | Preprint PDF v1 archived (`BioXArena_xatlas_preprint_v1.pdf`). |
-| **R8-11** | DONE | Current commit | Preprint PDF v2 (`BioXArena_xatlas_preprint_v2.pdf`, SHA-256 `90c732a8c020c9b5049684d8db697cef7cef6412022da01b636c2b5ef6d83535`) + `reports/REFERENCE_CHECK.csv` + regenerated figures + README links. |
+| **R8-11** | DONE | `48f9b1a` | Preprint PDF v2 (`BioXArena_xatlas_preprint_v2.pdf`, SHA-256 `90c732a8c020c9b5049684d8db697cef7cef6412022da01b636c2b5ef6d83535`) + `reports/REFERENCE_CHECK.csv` + regenerated figures. |
+| **R8-12** | DONE | Current commit | **Preprint PDF v2.1** (`BioXArena_xatlas_preprint_v2.1.pdf`, SHA-256 `7090e56196527d35f4cd896b99ee5b7e87d08071032b6c0161e83e84eb287317`, 15 pages, 244-word single-paragraph abstract): uniform `DRF_raw` estimator throughout abstract/prose (removed mixed `DRF_interp` `0.703`), explicitly reports `v5` (`DRF_raw 0.38–0.42 < delta_r 0.48–0.51`) and states that S5's sole clear advantage over the frozen scGPT probe is confined to a moderately calibrated metric while tying (`disc_raw`) or trailing (`de50_sign`, `de50_r`) on the best-calibrated metrics (`0.81–0.98`); full 7-metric DRF table ordered by `DRF_raw` in Section 3.3; Systema year corrected to `2025` across manuscript, `REFERENCE_CHECK.csv`, and `PRIOR_ART_LOG.md`; root README updated to v2.1 (`v1` and `v2` preserved). |
 
 ---
 
+## 3. Preprint v2.1 Deliverable (`R8-12`)
+
+- **Local Path**: `projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.1.pdf`
+- **Source Markdown**: `projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.1.md`
+- **GitHub URL**: `https://github.com/ArtificialZeng/AI-Biology-Lab/blob/main/projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.1.pdf`
+- **SHA-256**: `7090e56196527d35f4cd896b99ee5b7e87d08071032b6c0161e83e84eb287317`
+
 PREPRINT_V2_DONE
+PREPRINT_V21_DONE
