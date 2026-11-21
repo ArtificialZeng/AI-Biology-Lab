@@ -1,0 +1,92 @@
+[
+  {
+    "n_tasks": 60,
+    "n_defects_per_gen": 120,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.21,
+    "true_delta_repair": 0.0,
+    "est_sd_delta": 0.0311,
+    "power_or_t1e": 0.045
+  },
+  {
+    "n_tasks": 60,
+    "n_defects_per_gen": 120,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.31,
+    "true_delta_repair": 0.1,
+    "est_sd_delta": 0.0344,
+    "power_or_t1e": 0.833
+  },
+  {
+    "n_tasks": 80,
+    "n_defects_per_gen": 160,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.21,
+    "true_delta_repair": 0.0,
+    "est_sd_delta": 0.0276,
+    "power_or_t1e": 0.054
+  },
+  {
+    "n_tasks": 80,
+    "n_defects_per_gen": 160,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.29,
+    "true_delta_repair": 0.08,
+    "est_sd_delta": 0.0301,
+    "power_or_t1e": 0.772
+  },
+  {
+    "n_tasks": 80,
+    "n_defects_per_gen": 160,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.31,
+    "true_delta_repair": 0.1,
+    "est_sd_delta": 0.0302,
+    "power_or_t1e": 0.926
+  },
+  {
+    "n_tasks": 80,
+    "n_defects_per_gen": 160,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.33,
+    "true_delta_repair": 0.12,
+    "est_sd_delta": 0.0313,
+    "power_or_t1e": 0.973
+  },
+  {
+    "n_tasks": 120,
+    "n_defects_per_gen": 240,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.21,
+    "true_delta_repair": 0.0,
+    "est_sd_delta": 0.0212,
+    "power_or_t1e": 0.038
+  },
+  {
+    "n_tasks": 120,
+    "n_defects_per_gen": 240,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.29,
+    "true_delta_repair": 0.08,
+    "est_sd_delta": 0.0249,
+    "power_or_t1e": 0.903
+  },
+  {
+    "n_tasks": 120,
+    "n_defects_per_gen": 240,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.31,
+    "true_delta_repair": 0.1,
+    "est_sd_delta": 0.0251,
+    "power_or_t1e": 0.973
+  },
+  {
+    "n_tasks": 160,
+    "n_defects_per_gen": 320,
+    "p_repair_same": 0.21,
+    "p_repair_cross": 0.29,
+    "true_delta_repair": 0.08,
+    "est_sd_delta": 0.0205,
+    "power_or_t1e": 0.978
+  }
+]

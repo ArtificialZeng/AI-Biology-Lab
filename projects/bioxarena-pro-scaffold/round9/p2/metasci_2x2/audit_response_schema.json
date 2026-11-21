@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CrossAudit2x2Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "constitution_commit",
+    "verdict",
+    "overall_block_score",
+    "findings"
+  ],
+  "properties": {
+    "constitution_commit": {
+      "type": "string",
+      "description": "Exact git commit/version identifier of CONSTITUTION_2x2.md supplied in prompt (enforces CrossAudit I3)."
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["PASS", "BLOCKED"],
+      "description": "Default categorical verdict under standard threshold (BLOCKED iff any BLOCKER-severity finding)."
+    },
+    "overall_block_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Continuous risk score (0 = definitely clean/valid, 100 = certain BLOCKER-grade scientific/spec defect) used for matched-FPR ROC calibration across auditor vendors."
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "severity",
+          "confidence",
+          "defect_family",
+          "file_path",
+          "symbol_or_line",
+          "evidence_quote",
+          "mechanism"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "pattern": "^CA-(SCI|DATA|STAT|SPEC|META|DCL)-[0-9]{3}$"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["BLOCKER", "ADVISORY"]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "defect_family": {
+            "type": "string",
+            "enum": [
+              "ALGO_MATH_LOGIC",
+              "STAT_LEAK_METRIC",
+              "SPEC_CODE_MISMATCH",
+              "NUM_PROVENANCE_FABRICATION",
+              "DATA_UNIT_SCHEMA",
+              "OTHER"
+            ]
+          },
+          "file_path": {
+            "type": "string"
+          },
+          "symbol_or_line": {
+            "type": "string"
+          },
+          "evidence_quote": {
+            "type": "string"
+          },
+          "mechanism": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
