@@ -1,5 +1,20 @@
-DEV_COMPLETE A-T2 completed all Replogle K562<->RPE1 dev evaluations (7-config dev_sweep.py + dev_log1p_c10k + dev_log1p_nomask; all unit tests PASS).
-Summary for PREREG_A.md:
-- Locked config: repr=log1p, shrink=0.0, mask_self=True, cov_max_cells=all (<=20k; c10k identical to 3 decimals), primary=Hybrid_ProjShared (with Hybrid_Raw, CIPHER_Linear, and negative controls reported).
-- K562<->RPE1 results: H-A2 CONFIRMED (2/2 cal_r_top50 CI > 0: +0.0513, +0.1466 on rep0; +0.0523, +0.1054 on rep1), H-A3 CONFIRMED (2/2 disjoint CI vs MismatchedCov & ShuffledGenes), H-A4 CONFIRMED on rep1 (4/4 metrics <=1 inf; 3/4 on rep0), H-A1 未确认 (slope 0.0065 rep0 / 0.0068 rep1, <0.13 due to ~15x smaller residual scale; CIPHER_Linear alone has -Delta_src baseline artifact matching DiagCov/ShuffledGenes).
-- Waiting for A-T1 to finish vcc2025_h1 and waiting for p2/status/PREREG_COMMIT.txt before touching or evaluating ANY held-out cell lines (nadig_hepg2, nadig_jurkat, nourreddine_kolf21j, vcc2025_h1). Scheduled 7-min check.
+IN_PROGRESS A-T2 (Waiting on p2/status/PREREG_COMMIT.txt per Rule 3):
+Completed all PREREG_AUDIT_R1.md (v2: R3, R4, R5, R6, R10, R11) and PREREG_AUDIT_R2.md (v3: R12, R13, R14, R15 S5/S6) implementations in vcc_linespecific/src/, verified all unit tests, and updated Replogle dev-only results/*_dev_log1p_sh0.0_rep1.* (N=832) and results/*_dev_log1p_sh0.0_rep0.* (N=1,761) (zero held-out line touched):
+
+1. Implemented Methods & Metrics in src/:
+   - predictors.py: All source NegCtrl_HybridProj_MismatchedCov(<src>) (R3), NegCtrl_HybridProj_SrcCorrTgtVar (R4a), Transfer_Mean_VarScaled (TMVS, R4b/R12), all source NegCtrl_TMVS_MismatchedVar(<src>) + NegCtrl_TMVS_ShuffledVar (H-B3), Hybrid_on_TMVS (R14), and geometric-mean FCT (R15).
+   - metrics.py & data_loader.py: Added ctrl_mean_libnorm loading, float32 storage of ctrl_cells in memory (cast to float64 inside covariance computation, bit-identical to on-disk float32), panel-masked disc_raw_panel (R5 A-T3 parity), sd_pred/sd_obs, orthogonal Deming slope (delta=1), Obs~Pred OLS slope (R6), and Bonferroni 97.5% two-sided CIs ([1.25, 98.75], R13) alongside 95% CIs.
+   - run_eval.py & adjudicate.py: Enforced >=95% finite joint-bootstrap draws for cal_r & cal_r_sq (R11), S5 top-75% expressed target ctrl-variance filter, S6 resp_top50 vs all_nontarget ceilings, Group A & Group B dual confirmatory adjudication (97.5% CIs), R4/R14 wording locks, and strict 6-convention AND for H-A4/H-B4.
+   - test_unit.py: Added test_r4_controls_and_confirmatory_threshold and test_v3_group_b_fct_hybrid_on_tmvs_s5_and_ci975; latest run ALL_UNIT_TESTS_PASSED.
+
+2. Replogle Dev Verification (results/REPORT_dev_log1p_sh0.0_rep1.md, N=832 rep targets, 7,225 common genes):
+   - Exact match to main controller tmvs_check.py (diff = 0.0000):
+     * Transfer_Mean_VarScaled (TMVS): K562 r_cal=+0.2198 (slope=+0.0737, r_cal^2=0.0483); RPE1 r_cal=+0.2145 (slope=+0.0267, r_cal^2=0.0460).
+     * FCT: K562 r_cal=+0.1394 (slope=+0.0462, r_cal^2=0.0194); RPE1 r_cal=+0.0903 (slope=+0.0111, r_cal^2=0.0082).
+   - Also updated results/*_dev_log1p_sh0.0_rep0.* (403.04s, N=1,761 all targets): TMVS r_cal=+0.2054 (K562, slope=+0.0621) / +0.2033 (RPE1, slope=+0.0222); FCT r_cal=+0.1231 / +0.0684.
+   - Primary Hybrid_ProjShared (rep1 dev 97.5% CIs): H-A1=0/2, H-A2=2/2 (r_cal +0.0523 / +0.1054), H-A3=2/2, H-A4=未确认 (2/2 inf on ctrl_disc_raw_panel); R4 note: SrcCorrTgtVar ties/beats on RPE1 (+0.1144 vs +0.1054).
+   - Group B TMVS (rep1 dev 97.5% CIs): H-B1=0/2, H-B2=2/2, H-B3=1/2 (on K562 NegCtrl_TMVS_ShuffledVar gets +0.3169 due to global K562<RPE1 shrinkage; RPE1 TMVS +0.2145 beats ShuffledVar -0.0599), H-B4=0/2 inf across all 6 conventions.
+   - R14 Hybrid_on_TMVS vs TMVS (rep1): 0/2 pass at 97.5% CI -> "在本数据上，共波动结构没有超出边际方差的可检测增量".
+   - S5 (5,419/7,225 top-75% var genes): TMVS r_cal increases (+0.2304 K562, +0.2327 RPE1). S6: rho_AB(top50) 0.9503/0.9441 vs rho_AB(all) 0.8421/0.7160.
+
+Strictly blocked on p2/status/PREREG_COMMIT.txt before reading or evaluating any held-out cell line.

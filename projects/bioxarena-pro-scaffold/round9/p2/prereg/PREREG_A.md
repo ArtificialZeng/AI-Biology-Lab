@@ -1,55 +1,54 @@
-# Pre-Registration A (`PREREG_A`, v2): Zero-Shot Cross-Cell-Line CRISPRi Perturbation Prediction via Target-Line Unperturbed Control Co-Fluctuations
+# Pre-Registration A (`PREREG_A`, v3): Zero-Shot Cross-Cell-Line CRISPRi Perturbation Prediction via Target-Line Unperturbed Control Statistics
 
 **Study Team**: BioXArena Team A (`A-T1` Data, `A-T2` Solver/Eval, `A-T3` Pre-Registration & Statistical Audit, `A-T4` Prospective, `A-T5` Literature & Metrics)  
 **Human lead**: Zijian Zeng (Round 9 Phase 2, AI-Biology-Lab)  
-**Preregistration Version & Status**: Version 2 (Revised per Master Controller Audit `PREREG_AUDIT_R1.md`; awaiting remote commit verification in `round9/p2/status/PREREG_COMMIT.txt`)  
+**Preregistration Version & Status**: Version 3 (Revised per Master Controller Audit `round9/p2/status/PREREG_AUDIT_R2.md`; awaiting remote commit verification in `round9/p2/status/PREREG_COMMIT.txt`)  
 **Upstream Reference Rules**: `round9/p2/P2_RULES.md`, `round9/p2/cards/A-T3.md`  
-**Prior-Art & Official Metric Specs**: `round9/p2/vcc_linespecific/audit/LIT/{LINE_SPECIFIC_METRIC.md,CIPHER_METHOD.md,PRIOR_ART_A.md,COMPETITION_MONITOR.md}`
+**Prior-Art & Official Metric Specs**: `round9/p2/vcc_linespecific/audit/LIT/{LINE_SPECIFIC_METRIC.md,CIPHER_METHOD.md,PRIOR_ART_A.md,PRIOR_ART_B.md,COMPETITION_MONITOR.md}`  
+**Dev Audit Evidence (`Replogle K562 <-> RPE1` Only, Rule 7)**: `round9/p2/vcc_linespecific/audit/dev/{audit_per_line.csv,audit_summary.json,AUDIT_REPORT.md}`
 
 ---
 
-## §0 Revision History (v1 -> v2)
+## §0 Revision History (v1 -> v2 -> v3)
 
-- **Version 1 (`git commit 222cf75`, `2026-11-21 20:56:39 +08:00`)**: Submitted and pushed before Master Controller Audit R1 arrived (`PREREG_COMMIT.txt` had not yet been written, and **zero held-out cell lines had been evaluated**—only `Replogle K562 <-> RPE1` development checks ran under Rule 3). Version 1 remains preserved in git history without rewriting commits.
-- **Version 2 (This Document)**: Revised per all 11 mandatory Master Controller requirements (`round9/p2/status/PREREG_AUDIT_R1.md`, **R1–R11**):
-  - **R1**: Standardized role attribution to `"Human lead: Zijian Zeng"` throughout the document.
-  - **R2**: Excluded dev selection lines (`replogle_k562_essential`, `replogle_rpe1`) from confirmatory hypothesis counting (still reported in full 6-line tables).
-  - **R3**: Expanded `NegCtrl_HybridProj_MismatchedCov(s')` to evaluate **all $K-1 = 5$ source cell lines**, requiring `matched_ci95_lo > max_{s'} mismatch_ci95_hi(s')`.
-  - **R4**: Added `NegCtrl_HybridProj_SrcCorrTgtVar` ($D_t^{1/2}\bar{R}_S D_t^{1/2}$) and `Transfer_Mean_VarScaled` ($\bar{\Delta}^{\mathrm{src}} \sqrt{C_{t,gg}/\bar{C}_{S,gg}}$) plus strict wording constraints distinguishing co-fluctuation structure from marginal gene variance.
-  - **R5**: Required H-A4 non-inferiority (`0/3` inferior) jointly (`AND`) across **all 6** metric conventions (`ctrl_*` & `cent_*`; both A-T2 own-target-zeroed and A-T3 all-panel-masked `disc_raw`, plus `de50_r`), using A-T2 own-target `ctrl_*` in main tables and others in appendix tables.
-  - **R6**: Explicitly disclosed that the Arc VCC 2026 Wrap-Up `0.02–0.13` slope estimator formula is not published in `cell-eval2` or accessible preprints, explained OLS scale dependence ($\beta = r \cdot \mathrm{SD}_{\mathrm{pred}}/\mathrm{SD}_{\mathrm{obs}} \approx r^2$ under MSE calibration), and added secondary `r`, `sd_pred/sd_obs`, `slope_deming`, and `slope_obs_on_pred`.
-  - **R7**: Clarified scientific boundary with CIPHER v2 (which already established co-fluctuations > variance alone and within-cell-type transferability) and noted Luan et al. (2026) (`10.64898/2026.10.20.760514`, `KOLF2.1J -> H1`).
-  - **R8**: Disclosed Rounds 7–8 prior use of `nadig_hepg2` / `nadig_jurkat` and verified zero prior codebase use of control covariance $C_t$.
-  - **R9**: Recorded `2026-11-21 19:28 +08:00` email from Human lead (`Zijian Zeng`) to `help@virtualcellchallenge.org` requesting post-deadline `controls-final` research permission and pre-GT hash publication.
-  - **R10**: Applied `>= 50` target floor excluding `nourreddine_kolf21j` (`18` targets) to secondary reporting; locked **$K_{\mathrm{conf}} = 3$** confirmatory lines (`nadig_hepg2`, `nadig_jurkat`, `vcc2025_h1`) with **`3/3`** (`ceil(0.8 * 3)`) for H-A1..H-A3 and **`0/3`** (`floor(0.2 * 3)`) for H-A4.
-  - **R11**: Added descriptive metric **`r_cal_sq` ($r_{\mathrm{cal}}^2$) + 95% CI** (proportion of recoverable line-specific variance explained).
-- **Binding Adjudication Rule**: **All confirmatory hypothesis verdicts (H-A1..H-A4), mechanism wording constraints, and independent audits follow Version 2 exclusively.**
+- **Version 1 (`git commit 222cf75`, `2026-11-21 20:56:39 +08:00`)**: Submitted and pushed before Master Controller Audit R1 arrived (`PREREG_COMMIT.txt` had not yet been written, and **zero held-out cell lines had been evaluated**—only `Replogle K562 <-> RPE1` development checks ran under Rule 3). Preserved unmodified in git history.
+- **Version 2 (`sha256 d9273cf6104a08fd498cb3ad7923a664b93696d50922d0a1ace39bb3ae869a48`)**: Addressed all 11 Master Controller requirements in `round9/p2/status/PREREG_AUDIT_R1.md` (**R1–R11**): `"Human lead: Zijian Zeng"` attribution (R1); exclusion of dev lines (`replogle_*`) and $<50$-target line (`nourreddine_kolf21j`, `18` targets) leaving $K_{\mathrm{conf}} = 3$ confirmatory lines (`3/3` pass, `0/3` inferior) (R2, R10); all $K-1 = 5$ mismatched covariance controls (R3); `SrcCorrTgtVar` & `Transfer_Mean_VarScaled` controls and wording locks (R4); strict `AND` across all 6 H-A4 conventions (R5); R6 VCC slope estimator disclosure and scale diagnostics (`r`, `sd_pred/sd_obs`, `slope_deming`, `slope_obs_on_pred`) (R6); CIPHER v2 / Luan et al. (2026) boundary (R7); Rounds 7–8 disclosure (R8); `19:28 +08:00` VCC permission email disclosure (R9); and $r_{\mathrm{cal}}^2$ variance-explained reporting (R11). Verified on `PREREG_AUDIT_R2.md` §1 (`0` held-out evaluations prior to v3).
+- **Version 3 (This Document, per `round9/p2/status/PREREG_AUDIT_R2.md`, **R12–R16** + Rule 7)**:
+  - **Explicit Post-Dev Disclosure**: **Confirmatory Group B (`Transfer_Mean_VarScaled`, R12) is added after observing development-pair results on `Replogle K562 <-> RPE1`** (where `Transfer_Mean_VarScaled` achieved `r_cal = +0.2198` on `K562` and `+0.2145` on `RPE1`, slope `0.0737` and `0.0267`, i.e., `2–4x` stronger correlation than primary `Hybrid_ProjShared`, `0.0523` / `0.1054`), **strictly before inspecting or evaluating any held-out cell line** (`nadig_hepg2`, `nadig_jurkat`, `vcc2025_h1`, `nourreddine_kolf21j`) per `PREREG_AUDIT_R2.md`.
+  - **Rule 7 Dev Artifacts**: Saved complete `--dev-only` audit outputs to `round9/p2/vcc_linespecific/audit/dev/{audit_per_line.csv,audit_summary.json,AUDIT_REPORT.md}` so every dev number in §3.2 traces 1-to-1 to disk artifacts.
+  - **R12**: Added **Confirmatory Group B (`H-B1..H-B4`)** testing zero-parameter `Transfer_Mean_VarScaled` in parallel with and separately adjudicated from Group A (`H-A1..H-A4`), including 6 specificity controls (all 5 mismatched source variances + shuffled-gene target variance) and descriptive comparison to `[0.02, 0.13]`.
+  - **R13**: Tightened **ALL confirmatory CIs (both Group A and Group B)** from 95% to **97.5% two-sided (`[1.25%, 98.75%]`, Bonferroni correction for 2 hypothesis groups)** and mandated reporting both Group A and Group B verdicts in every abstract and summary.
+  - **R14**: Added secondary mechanism test **`Hybrid_on_TMVS`** checking whether gene–gene co-fluctuations add positive `r_cal` increment over marginal-variance scaling alone, locking mechanism phrasing accordingly.
+  - **R15**: Added secondary **`FCT`** (Fold-Change Transfer) baseline, **S5** expressed-genes sensitivity (dropping lowest 25% of target control variance), and **S6** unselected `all_nontarget` split-half $\rho_{AB}$ reporting to quantify `resp_top50` ceiling selection bias.
+  - **R16**: Locked prior-art compliance on marginal-variance / expression-dependent scaling via `A-T5`'s `audit/LIT/PRIOR_ART_B.md` (and `ALERT_B` flag in `status/A-T5.txt`), forbidding methodological novelty claims if already described in prior literature.
+- **Binding Adjudication Rule**: **All confirmatory hypothesis verdicts (Group A `H-A1..H-A4` and Group B `H-B1..H-B4` at 97.5% CI), R4/R14 wording constraints, R16 novelty limits, and independent audits follow Version 3 exclusively.**
 
 ---
 
-## 1. Falsifiable Research Question & Scientific Boundary
+## 1. Falsifiable Research Questions & Scientific Boundaries
 
 In the Arc Virtual Cell Challenge 2026 Wrap-Up (2026-11-19), top-10 challenge models achieved high bulk/global agreement yet recovered a reported **cell-line-specific perturbation slope of only `0.02–0.13`** (versus **`1.02`** for experimental replicates). Existing cross-context predictors predominantly recover shared cross-line responses while missing cell-line-specific propagation.
 
-**Boundary with Prior Art (R7)**:
-- **CIPHER v2** (`bioRxiv 10.1101/2025.06.27.661814 v2`, Kuznets-Speck et al. 2025/2026) already demonstrated in its abstract and text that removing off-diagonal gene–gene co-fluctuations (retaining only diagonal marginal variances) drops performance several-fold, and that co-fluctuation correlation patterns transfer across studies within the *same* cell type. Accordingly, **"unperturbed control covariance carries perturbation information" is NOT a novel finding claimed by Team A**.
-- **Luan et al. (2026)** (`bioRxiv 10.64898/2026.10.20.760514`, indexed 2026-10-25) evaluated centered cross-context transfer from `KOLF2.1J` to `H1` (overlapping two cell lines used here; audited alongside VCC 2026 methods in `PRIOR_ART_A.md`), using target-line training perturbations rather than unperturbed control covariance $C_t$.
+**Boundaries with Prior Art (R7 & R16)**:
+- **CIPHER v2 (R7)** (`bioRxiv 10.1101/2025.06.27.661814 v2`, Kuznets-Speck et al. 2025/2026) already demonstrated in its abstract and text that removing off-diagonal gene–gene co-fluctuations drops performance several-fold, and that co-fluctuation correlation patterns transfer across studies within the *same* cell type. Accordingly, **"unperturbed control covariance carries perturbation information" is NOT a novel finding claimed by Team A**.
+- **Luan et al. (2026)** (`bioRxiv 10.64898/2026.10.20.760514`, 2026-10-25) evaluated centered transfer from `KOLF2.1J` to `H1` using target training perturbations rather than unperturbed target controls $C_t$.
+- **Marginal-Variance / Expression-Dependent Scaling Boundary (R16)**: Prior-art screening across bioRxiv, arXiv, PubMed, Scholar, GitHub, VCC 2025/2026 solutions, CASTER, CGC, Systema, and Molina & Zhang (2026) (`10.64898/2026.07.24.740459`) is documented by `A-T5` in `audit/LIT/PRIOR_ART_B.md` (and `status/A-T5.txt`). Regardless of whether `A-T5` raises `ALERT_B`, Group B is tested identically on held-out lines; if `ALERT_B` or prior scaling art is documented, Team A claims **solely** that *"we systematically tested target marginal-variance scaling on zero-shot line-specific residuals"*, with zero claim of inventing a new method.
 
-**Core Falsifiable Question**: Under **strict zero-shot cross-cell-line generalization**—using **zero perturbation labels or perturbed cells from the target cell line**—can adding target unperturbed single-cell control co-fluctuations $C_t$ onto shared cross-line transfer recover the **cell-line-specific perturbation residual** $\Delta_{p,t} - \bar{\Delta}^{\mathrm{src}}_{p,(-t)}$ cleanly above the external `0.13` benchmark and all marginal-variance / mismatched-covariance controls without degrading overall perturbation discrimination (`disc_raw`) or DE correlation (`de50_r`)?
+**Two Parallel Falsifiable Questions (Tested Strictly Zero-Shot with Zero Target Perturbations)**:
+1. **Group A (`Hybrid_ProjShared`)**: Can adding target unperturbed single-cell control co-fluctuations $C_t$ onto shared cross-line transfer recover cell-line-specific residuals $\Delta_{p,t} - \bar{\Delta}^{\mathrm{src}}_{p,(-t)}$ strictly above `0.13`, `rho_AB > 0` calibrated signal, all 5 mismatched covariances, and `Transfer_Mean` non-inferiority?
+2. **Group B (`Transfer_Mean_VarScaled`, Added Post-Dev per R12)**: Can zero-parameter target control gene-variance scaling $\bar{\Delta}^{\mathrm{src}}_{p,g} \sqrt{C_{t,gg}/\bar{C}_{S,gg}}$ (using zero gene–gene covariance and zero training) recover cell-line-specific residuals above `0.13`, `r_cal > 0`, all 6 variance specificity controls, and `Transfer_Mean` non-inferiority?
 
 ---
 
 ## 2. Rule 3 Zero-Look, Prior-Round Disclosure (R8), & Rule 5 Clean Data
 
-1. **Zero-Look Prior to Remote Lock**: Prior to Master Controller verification in `round9/p2/status/PREREG_COMMIT.txt`, **no team member or script evaluated, tuned, inspected, or loaded expression matrices (`.npz`) from any held-out cell line** (`nadig_hepg2`, `nadig_jurkat`, `nourreddine_kolf21j`, `vcc2025_h1`). Configuration selection (`log1p`, `shrink=0.0`, `mask_self=True`, `Hybrid_ProjShared`, `only_reproducible=True`) occurred exclusively on `Replogle K562 <-> RPE1` (`dev_sweep.py` / `--dev-only`).
-2. **Prior-Round & Codebase Disclosure (R8)**:
-   - Public datasets **`nadig_hepg2`** and **`nadig_jurkat`** (`GSE264667`) were previously analyzed in Rounds 7 and 8 of this project using other cross-cell-line baselines (e.g., S5 cross-line transfer methods).
-   - Comprehensive search of the Round 1–8 repository confirmed that **no prior code in this repository used unperturbed target single-cell control covariance $C_t$**.
-3. **Clean Data & Zero X-Atlas (Rule 5)**: Every dataset is open-access (`CC BY 4.0`, `CC0 1.0`, or public NCBI GEO), checksummed in `round9/p2/shared/DATA_SOURCES.md` (total new downloads **`56.597333` GB** = `56,597,332,700` B `<= 60.000` GB cap). Zero X-Atlas / Orion data or panels are used.
+1. **Zero-Look Prior to Remote Lock**: Prior to Master Controller verification in `round9/p2/status/PREREG_COMMIT.txt`, **no team member or script evaluated, tuned, inspected, or loaded expression matrices (`.npz`) from any held-out cell line** (`nadig_hepg2`, `nadig_jurkat`, `nourreddine_kolf21j`, `vcc2025_h1`). All dev verification (`PREREG_AUDIT_R2.md` §2 and §3.2) used exclusively `Replogle K562 <-> RPE1`.
+2. **Prior-Round & Codebase Disclosure (R8)**: Public datasets `nadig_hepg2` and `nadig_jurkat` (`GSE264667`) were analyzed in Rounds 7–8 with non-covariance baselines; repository search confirmed zero prior codebase use of target unperturbed control covariance $C_t$.
+3. **Clean Data & Zero X-Atlas (Rule 5)**: Every dataset is open-access (`CC BY 4.0`, `CC0 1.0`, or public NCBI GEO), checksummed in `round9/p2/shared/DATA_SOURCES.md` (`56.597333` GB `<= 60.000` GB cap). Zero X-Atlas / Orion data are used.
 
 ---
 
-## 3. Dataset Cohorts, Target-Count Thresholds (R2/R10), & Locked Config
+## 3. Dataset Cohorts, Target-Count Thresholds (R2/R10), & Dev Verification
 
 ### 3.1 Full 6-Line Shared Dataset Inventory (`COMMON_GENES = 6,148`)
 
@@ -58,112 +57,122 @@ In the Arc Virtual Cell Challenge 2026 Wrap-Up (2026-11-19), top-10 challenge mo
 | **`nadig_hepg2`** | **Confirmatory (`>=50`)** | `e1ad7c3c5a201c861a207a858aa7e59f5e6ac1955674c415f7de0d1dadadb52e` | 145,473 × 9,624 | 4,976 | 9,432 | 2,343 / 1,000 | 1,777 / 811 | 2,343 / **799** |
 | **`nadig_jurkat`** | **Confirmatory (`>=50`)** | `ffbe15f2c8f7ffcfd7b0ba9e6937d4ebc2d03b0179fa8234648a59bcb82c04a3` | 262,956 × 8,882 | 12,013 | 8,826 | 2,350 / 1,262 | 1,779 / 995 | 2,350 / **934** |
 | **`vcc2025_h1`** | **Confirmatory (`>=50`)** | `a0997710...`, `376f0bab...`, `ba5ce667...` | 414,694 × 18,080 *(76,352 dup NT removed)* | 20,000 / 38,176 | 14,656 | 300 / 204 | 228 / 168 | 106 / **80** |
-| `replogle_k562_essential` | **Dev Selection *(excluded from H-A verdict)*** | `3e5a63a9e892b21029bb55fca4e12517a49aad7af6c14133ca63d12cf68c6cee` | 310,385 × 8,563 | 10,691 | 8,561 | 2,049 / 1,113 | 1,558 / 910 | 2,039 / 859 |
-| `replogle_rpe1` | **Dev Selection *(excluded from H-A verdict)*** | `9b05ef1f81526216fa008d677e9e0d03dce9a2f7a95499a4fb81e505e9d88ef1` | 247,914 × 8,749 | 11,485 | 8,746 | 2,351 / 1,575 | 1,780 / 1,290 | 2,350 / 1,070 |
+| `replogle_k562_essential` | **Dev Selection *(excluded from Confirmatory)*** | `3e5a63a9e892b21029bb55fca4e12517a49aad7af6c14133ca63d12cf68c6cee` | 310,385 × 8,563 | 10,691 | 8,561 | 2,049 / 1,113 | 1,558 / 910 | 2,039 / 859 |
+| `replogle_rpe1` | **Dev Selection *(excluded from Confirmatory)*** | `9b05ef1f81526216fa008d677e9e0d03dce9a2f7a95499a4fb81e505e9d88ef1` | 247,914 × 8,749 | 11,485 | 8,746 | 2,351 / 1,575 | 1,780 / 1,290 | 2,350 / 1,070 |
 | `nourreddine_kolf21j` | **Secondary Low-$N$ (`18 < 50`, *excluded*)** | `741674b8...` (`CM`), `d86fa326...` (`ME`) | 38,322 × 34,583 | 17,895 | 15,000 | 95 / 67 | 69 / 51 | 32 / **18** |
 
-- **Partition Rule (R2 & R10)**:
-  - **Confirmatory Held-Out Cohort ($K_{\mathrm{conf}} = 3$)**: Only cell lines untouched before `PREREG_COMMIT.txt` **and** having $\ge 50$ evaluable targets in metadata (`nadig_hepg2`, `nadig_jurkat`, `vcc2025_h1`). All 6 lines are run cleanly as 6-line LOO-CL (with `replogle_*` serving only as source training/dev-reference lines and `nourreddine_kolf21j` reported separately as an underpowered $<50$-target sub-atlas).
-- **Preprocessing Summary**: Batch-stratified 50/50 disjoint split-halves (`half_a`, `half_b`; 100% `half_valid = True`); `reproducible` requires `n_cells >= 25`, `ad_counts >= 50`, `energy_test_p_value < 0.001`; HGNC unification via `hgnc_complete_set.txt` (`6,148` common genes).
+- **Confirmatory Held-Out Cohort ($K_{\mathrm{conf}} = 3$)**: Only `nadig_hepg2` (`799`), `nadig_jurkat` (`934`), and `vcc2025_h1` (`80`). Full 6-line LOO-CL is evaluated cleanly, while dev lines (`replogle_*`) and low-$N$ (`nourreddine_kolf21j`, `18 < 50`) are reported separately and excluded from confirmatory verdicts.
+- **Preprocessing Summary**: Batch-stratified 50/50 disjoint split-halves (`half_a`, `half_b`, 100% `half_valid`); `reproducible` requires `n_cells >= 25`, `ad_counts >= 50`, `energy_test_p_value < 0.001`; `ctrl_mean_libnorm` stored alongside CP10K `log1p`/`zscore`/`libnorm` deltas.
 
-### 3.2 Locked Primary Configuration & Dev Verification (`Replogle K562 <-> RPE1` Only)
+### 3.2 Locked Primary Configuration & Reproducible Dev Audit (`audit/dev/`, Rule 7)
 
-- **Primary Representation (`--repr` / `--space`)**: **`log1p`** (`log1p(1e4 * UMI / libsize)` minus per-batch NT mean)
-- **Primary Covariance Shrinkage (`--shrink`)**: **`0.0`** (diagonal floor `max(diag(C), 1e-8)`)
-- **Control Sample Scope (`cov_max_cells`)**: All NT control cells in `ctrl_cells.npz` (`4,976–20,000` per line)
-- **Self-Target Masking (`mask_self`)**: **`True`** ($v_\ell(p)_{g_p} = 0$)
-- **Primary Evaluation Target Filter (`only_reproducible`)**: **`True`** (targets $p$ in `COMMON_GENES` with `reproducible == True` in target line $t$ and $\ge 1$ `reproducible == True` source line $s \ne t$)
-- **Primary Model**: **`Hybrid_ProjShared`**
-- **Pre-Registered Sensitivity Checks *(secondary, non-confirmatory)***: **S1** `only_reproducible = False` (`all` targets); **S2** `Hybrid_Raw` vs `Hybrid_ProjShared`; **S3** `shrink = 1e-3`; **S4** `cov_max_cells = 10,000` and `zscore`.
+- **Locked Configuration**: `--space log1p`, `--shrink 0.0`, `cov_max_cells = all` (`4,976–20,000` per line), `mask_self = True`, `reproducible_only = True`; **Group A Primary**: `Hybrid_ProjShared`; **Group B Primary**: `Transfer_Mean_VarScaled`.
+- **Pre-Registered Sensitivities**: **S1** `all_targets` (`only_reproducible = False`); **S2** `Hybrid_Raw` vs `Hybrid_ProjShared`; **S3** `shrink = 1e-3`; **S4** `cov_max_cells = 10,000` & `zscore`; **S5** expressed genes only (top 75% target `diag(C_t)`, R15); **S6** unselected `all_nontarget` split-half $\rho_{AB}$ vs `resp_top50` (R15).
 
-**Replogle `K562 <-> RPE1` Dev Verification Summary (including R3/R4/R6/R11)**:  
-On `Replogle K562 <-> RPE1` (`7,225` common genes, `832` reproducible shared targets; `1,761` all):
-- `log1p` outperformed `zscore` (`Hybrid_ProjShared` slope `0.0011–0.0016`) and `libnorm` (MSE `1.46–1.72`, `120x` $\lambda$ swing).
-- On `log1p` (`rep1`): `Hybrid_ProjShared` yielded `ls_slope_ols_top50 = 0.0050` (`K562`) / `0.0085` (`RPE1`), `r_cal = +0.0523 [0.0324, 0.0710]` (`r_cal_sq = 0.0027`) and `+0.1054 [0.0599, 0.1546]` (`r_cal_sq = 0.0111`), `sd_pred/sd_obs = 0.0964` / `0.0823`, `slope_obs_on_pred = +0.5356` / `+1.2622`, `slope_deming = +0.0050` / `+0.0086`.
-- However, under **R4**, **`Transfer_Mean_VarScaled` (`tmvs`)** achieved **`r_cal = +0.2198` (`K562`) and `+0.2145` (`RPE1`)** (slope `0.0737` / `0.0267`)—more than double `Hybrid_ProjShared`—and `SrcCorrTgtVar` (`sctv`) reached `r_cal = +0.1144` on `RPE1`! And H-A1 stayed `未确认` (`0.005–0.009 < 0.13`, faithfully preserved per Rule 8).
+**Exact Traceable `Replogle K562 <-> RPE1` Dev Numbers (`7,225` common genes, `832` reproducible shared targets)**  
+*(Recorded directly in `round9/p2/vcc_linespecific/audit/dev/{audit_per_line.csv,audit_summary.json,AUDIT_REPORT.md}`)*:
+
+- **`replogle_k562_essential <- replogle_rpe1`** (`rho_AB(top50) = 0.9503`, `c_ceil(top50) = 0.9872`; S6 `rho_AB(all) = 0.8421`, `c_ceil(all) = 0.9562`):
+  - **Group A `Hybrid_ProjShared`**: `slope = +0.0050` (`97.5% CI [0.0028, 0.0072]`), `r_cal = +0.0523` (`97.5% CI [0.0302, 0.0740]`), `r_cal_sq = 0.0027`, `sd_pred/sd_obs = 0.0964`, `slope_deming = +0.0050`, `slope_obs_on_pred = +0.5356`. `SrcCorrTgtVar`: `r_cal = +0.0292`. S5 (`5,418` expressed genes): `r_cal = +0.0549`.
+  - **Group B `Transfer_Mean_VarScaled`**: `slope = +0.0737` (`97.5% CI [0.0626, 0.0848]`), `r_cal = +0.2198` (`97.5% CI [0.1844, 0.2544]`), `r_cal_sq = 0.0483`, `sd_pred/sd_obs = 0.3396`, `slope_deming = +0.0827`, S5 (`5,418` genes): `r_cal = +0.2306`, `slope = +0.0778`; S6 `r_cal(all) = +0.4659`. **H-B3 Fail Artifact Found**: `tmvs_shuffled_var` achieved `slope = +0.2083` (`97.5% CI [0.1832, 0.2323]`) and `r_cal = +0.3626` (`97.5% CI [0.3143, 0.4102]`) because shuffling $D_t$ against unshuffled large $\bar{D}_S$ amplifies negative regression-to-the-mean shrinkage ($\mathrm{corr}(K562 - RPE1, RPE1) = -0.8325$)!
+  - **R14 & FCT**: `Hybrid_on_TMVS` `r_cal = +0.2254` (`delta = +0.0056`, `95% CI [+0.0003, +0.0106]`); `FCT` `r_cal = +0.1394`, `slope = +0.0462`.
+- **`replogle_rpe1 <- replogle_k562_essential`** (`rho_AB(top50) = 0.9441`, `c_ceil(top50) = 0.9855`; S6 `rho_AB(all) = 0.7160`, `c_ceil(all) = 0.9135`):
+  - **Group A `Hybrid_ProjShared`**: `slope = +0.0085` (`97.5% CI [0.0044, 0.0125]`), `r_cal = +0.1054` (`97.5% CI [0.0526, 0.1602]`), `r_cal_sq = 0.0111`, `sd_pred/sd_obs = 0.0823`, `slope_deming = +0.0086`, `slope_obs_on_pred = +1.2622`. `SrcCorrTgtVar`: `r_cal = +0.1144`. S5 (`5,418` expressed genes): `r_cal = +0.1063`.
+  - **Group B `Transfer_Mean_VarScaled`**: `slope = +0.0267` (`97.5% CI [0.0243, 0.0289]`), `r_cal = +0.2145` (`97.5% CI [0.1962, 0.2327]`), `r_cal_sq = 0.0460`, `sd_pred/sd_obs = 0.1262`, `slope_deming = +0.0271`, S5: `r_cal = +0.2327`, `slope = +0.0285`; S6 `r_cal(all) = +0.1214`. `tmvs_shuffled_var` fell to `slope = -0.0144`, `r_cal = -0.0893` (passes H-B3 on RPE1).
+  - **R14 & FCT**: `Hybrid_on_TMVS` `r_cal = +0.2351` (`delta = +0.0205`, `95% CI [-0.0041, +0.0443]` crosses zero); `FCT` `r_cal = +0.0903`, `slope = +0.0111`.
+- Both Group A and Group B adjudicate **`未确认 (NOT CONFIRMED)`** on dev.
 
 ---
 
-## 4. Exact LOO-CL Zero-Shot Predictors, All Mismatched Controls (R3), & Variance Controls (R4)
+## 4. Exact LOO-CL Zero-Shot Predictors & Controls (R3, R4, R12, R14, R15)
 
-For each line $t \in \{1, \dots, 6\}$ with source lines $\mathcal{S} = \{1, \dots, 6\} \setminus \{t\}$:
+For each target cell line $t \in \{1,\dots,6\}$ with source lines $\mathcal{S} = \{1,\dots,6\} \setminus \{t\}$:
 
 1. **Unperturbed Covariance Linear Response**: $v_\ell(p) = C_{\ell,:,g_p} / \max(C_{\ell,g_p,g_p}, 10^{-8})$, with $v_\ell(p)_{g_p} \leftarrow 0$.
-2. **Signed Source-Only $\hat{\lambda}_{(-t)}$**:
+2. **Signed Source-Only $\hat{\lambda}_{(-t)}$** and **Shared-Axis Projector $P_\perp = I_G - q_1 q_1^T$** fit strictly on $\mathcal{S}$:
    $$\hat{\lambda}_{(-t)} = \mathrm{clip}\!\left(\frac{\sum_{s \in \mathcal{S}} \sum_{p \in \mathcal{P}_s} \langle \Delta_{p,s},\, v_s(p) \rangle}{\max\!\left(\sum_{s \in \mathcal{S}} \sum_{p \in \mathcal{P}_s} \|v_s(p)\|_2^2,\, 10^{-12}\right)},\; -10.0,\; 10.0\right).$$
-3. **Source-Only Shared-Axis Projection**: Orthonormal rank-1 basis (`Q_shared`, $q_1$ from source deltas) defines $P_\perp = I_G - q_1 q_1^T$.
-4. **Core Predictors** *(with $\mathcal{S}_p = \{s \in \mathcal{S} : p \text{ available & reproducible}\}$, $\bar{\Delta}^{\mathrm{src}}_{p,(-t)} = \frac{1}{|\mathcal{S}_p|}\sum_{s \in \mathcal{S}_p} \Delta_{p,s}$, $\bar{v}_{\mathcal{S}_p}(p) = \frac{1}{|\mathcal{S}_p|}\sum_{s \in \mathcal{S}_p} v_s(p)$)*:
-   - **`Transfer_Mean`**: $\bar{\Delta}^{\mathrm{src}}_{p,(-t)}$
-   - **`CIPHER_Linear`**: $\hat{\lambda}_{(-t)}\, v_t(p)$
-   - **`Hybrid_Raw`**: $\bar{\Delta}^{\mathrm{src}}_{p,(-t)} + \hat{\lambda}_{(-t)}\big(v_t(p) - \bar{v}_{\mathcal{S}_p}(p)\big)$
-   - **`Hybrid_ProjShared` *(Primary Locked)***: $\bar{\Delta}^{\mathrm{src}}_{p,(-t)} + \hat{\lambda}_{(-t)}\, P_\perp\big(v_t(p) - \bar{v}_{\mathcal{S}_p}(p)\big)$
-5. **All $K-1$ Mismatched-Covariance Specificity Controls (R3)**:
-   - For **every source cell line** $s' \in \mathcal{S}$ (`5` lines in 6-line LOO):
-     $$\text{NegCtrl\_HybridProj\_MismatchedCov}(s'):\quad \bar{\Delta}^{\mathrm{src}}_{p,(-t)} + \hat{\lambda}_{(-t)}\, P_\perp\big(v_{s'}(p) - \bar{v}_{\mathcal{S}_p}(p)\big).$$
-   - All 5 mismatched slopes and 95% CIs are computed and reported; H-A3 requires matched CI lower bound strictly above **all 5** mismatched CI upper bounds (`matched_ci95_lo > max_{s'} mismatch_ci95_hi(s')`).
-6. **Target Marginal Variance vs Co-Fluctuation Controls (R4, *Secondary / Wording-Governing*)**:
-   - **(a) `NegCtrl_HybridProj_SrcCorrTgtVar`**: Form target correlation-replaced covariance $C^{\mathrm{SCTV}}_t = D_t^{1/2} \bar{R}_S D_t^{1/2}$, where $D_t = \mathrm{diag}(\max(\mathrm{diag}(C_t), 10^{-8}))$ and $\bar{R}_S = \frac{1}{|\mathcal{S}|}\sum_{s \in \mathcal{S}} R_s$ ($R_s$ = Pearson correlation matrix of $C_s$), then apply `Hybrid_ProjShared` using $C^{\mathrm{SCTV}}_t$ in place of $C_t$.
-   - **(b) `Transfer_Mean_VarScaled`**: Pure gene-level marginal variance scaling without gene–gene covariance:
+3. **Baselines & Group A Models** *(for $\mathcal{S}_p = \{s \in \mathcal{S} : p \text{ available & reproducible}\}$)*:
+   - **`Transfer_Mean`**: $\bar{\Delta}^{\mathrm{src}}_{p,(-t)} = \frac{1}{|\mathcal{S}_p|}\sum_{s \in \mathcal{S}_p} \Delta_{p,s}$
+   - **`CIPHER_Linear`**: $\hat{\lambda}_{(-t)} v_t(p)$
+   - **`Hybrid_Raw`**: $\bar{\Delta}^{\mathrm{src}}_{p,(-t)} + \hat{\lambda}_{(-t)}(v_t(p) - \bar{v}_{\mathcal{S}_p}(p))$
+   - **`Hybrid_ProjShared` *(Group A Primary)***: $\bar{\Delta}^{\mathrm{src}}_{p,(-t)} + \hat{\lambda}_{(-t)} P_\perp(v_t(p) - \bar{v}_{\mathcal{S}_p}(p))$
+   - **`NegCtrl_HybridProj_MismatchedCov(s')` *(R3, all 5 source lines)***: Replace $v_t(p)$ with $v_{s'}(p)$ for each $s' \in \mathcal{S}$.
+   - **`NegCtrl_HybridProj_SrcCorrTgtVar` *(R4a)***: Replace $C_t$ with $D_t^{1/2} \bar{R}_S D_t^{1/2}$ ($\bar{R}_S = \frac{1}{|\mathcal{S}|}\sum_s R_s$).
+   - **Additional Covariance Nulls**: `NegCtrl_HybridProj_ShuffledGenes`, `NegCtrl_HybridProj_ShuffledAllCov`, `NegCtrl_HybridProj_DiagCov`.
+4. **Group B Predictor & Specificity Controls (R12)**:
+   - **`Transfer_Mean_VarScaled` *(Group B Primary, `tmvs`)***:
      $$\hat{\Delta}^{\mathrm{TMVS}}_{p,t,g} = \bar{\Delta}^{\mathrm{src}}_{p,(-t),g} \cdot \sqrt{\frac{\max(C_{t,gg},\, 10^{-8})}{\max\!\left(\frac{1}{|\mathcal{S}|}\sum_{s \in \mathcal{S}} C_{s,gg},\, 10^{-8}\right)}}.$$
-7. **Additional Null Controls**: `NegCtrl_HybridProj_ShuffledGenes` (permute $C_t$ gene labels), `NegCtrl_HybridProj_ShuffledAllCov` (permute both $C_t$ and $C_s$ in A-T3 audit), and `NegCtrl_HybridProj_DiagCov` ($C_t \leftarrow \mathrm{diag}(C_t)$).
+   - **`NegCtrl_TMVS_MismatchedVar(s')` *(all 5 source lines)***: Replace $C_{t,gg}$ in numerator with $C_{s',gg}$ for each $s' \in \mathcal{S}$.
+   - **`NegCtrl_TMVS_ShuffledVar`**: Permute gene indices of target variance diagonal vector $\max(\mathrm{diag}(C_t), 10^{-8})$ across the $G$ common genes while preserving source mean variances $\bar{C}_{S,gg}$.
+5. **Secondary Mechanism Predictor (R14)**:
+   - **`Hybrid_on_TMVS`**:
+     $$\hat{\Delta}^{\mathrm{Hybrid\_on\_TMVS}}_{p,t} = \hat{\Delta}^{\mathrm{TMVS}}_{p,t} + \hat{\lambda}_{(-t)}\, P_\perp\big(v_t(p) - \bar{v}_{\mathcal{S}_p}(p)\big),$$
+     using the exact same $\hat{\lambda}_{(-t)}$ and $P_\perp$ fit on $\mathcal{S}$.
+6. **Secondary Fold-Change Transfer Baseline (R15)**:
+   - **`FCT`**: Using `ctrl_mean_libnorm` ($\mu_s, \mu_t$):
+     $$\mathrm{FC}_{p,s} = \frac{\max\!\big(\mathrm{expm1}(\mathrm{log1p}(\max(\mu_s, 10^{-8})) + \Delta^{\mathrm{log1p}}_{p,s}),\, 10^{-8}\big)}{\max(\mu_s,\, 10^{-8})}, \qquad \overline{\mathrm{FC}}^{\mathrm{src}}_p = \exp\!\left(\frac{1}{|\mathcal{S}_p|}\sum_{s \in \mathcal{S}_p}\log\mathrm{FC}_{p,s}\right),$$
+     $$\hat{\Delta}^{\mathrm{FCT}}_{p,t} = \mathrm{log1p}\!\big(\max(\mu_t, 0.0)\cdot \overline{\mathrm{FC}}^{\mathrm{src}}_p\big) - \mathrm{log1p}\!\big(\max(\mu_t, 0.0)\big).$$
 
 ---
 
-## 5. Metrics, Slope Limitations (R6), Variance Explained (R11), & Noise Ceiling
+## 5. Metrics, Slope Scope & Ceiling Selection-Bias Limitations (R5, R6, R11, S5, S6)
 
-1. **Line-Specific Residuals & Primary Slope (`ls_slope_ols_top50`)**: $r^{\mathrm{obs}}_{p,t} = \Delta^{\mathrm{obs}}_{p,t} - \bar{\Delta}^{\mathrm{src}}_{p,(-t)}$, $r^{\mathrm{pred}}_{p,t} = \hat{\Delta}_{p,t} - \bar{\Delta}^{\mathrm{src}}_{p,(-t)}$, evaluated across pooled pairs in `resp_top50` (top 50 genes by $|\Delta^{\mathrm{obs}}_{p,g}|$ excluding $g_p$) and secondary `all_nontarget`.
-2. **Scope & Limitations of Slope Metric (R6)**:
-   - **Verified External Gap**: Neither the Arc VCC 2026 Wrap-Up nor `ArcInstitute/cell-eval2 v0.22.0` publishes the estimator equation for the reported `0.02–0.13` top-10 line-specific slope (`Dobin 10.64898/2026.11.17.767214` unindexed across Crossref/bioRxiv/OpenAlex/EuropePMC/PubMed APIs as of 2026-11-21). H-A1 therefore benchmarks against an external figure whose exact code estimator is unverified.
-   - **Scale Dependence**: OLS `slope(r_pred ~ r_obs)` equals $r \cdot \frac{\mathrm{SD}(r^{\mathrm{pred}})}{\mathrm{SD}(r^{\mathrm{obs}})}$, so an MSE-optimal scalar prediction achieves slope $\approx r^2$. Consequently, every line **must also report**: pooled Pearson **`r`** (`resid_corr`), **`sd_pred / sd_obs`**, orthogonal equal-error-variance **Deming slope** (`slope_deming`, $\delta = 1$), **reverse OLS slope** (`slope_obs_on_pred`), zero-intercept slope, per-perturbation mean slope, and `cos_agreement_top50`.
-3. **Noise Ceiling & `r_cal_sq` (R11)**:
-   - From disjoint 50/50 split-halves (`half_a`, `half_b`), $\rho_{AB} = \mathrm{corr}(r^{(A)}, r^{(B)})$; if $\rho_{AB} > 0$, $\rho_{\mathrm{SB}} = \frac{2\rho_{AB}}{1+\rho_{AB}}$, $c_{\mathrm{ceil}} = \sqrt{\rho_{\mathrm{SB}}}$, and $r_{\mathrm{cal}} = r_{\mathrm{resid}} / c_{\mathrm{ceil}}$. If $\rho_{AB} \le 0$ on full sample, H-A2 fails automatically.
-   - **Joint Perturbation Bootstrap (`n_boot = 4000`)**: Resample perturbation indices $I^{(b)}$ identically for both $r_{\mathrm{resid}}^{(b)}$ and $\rho_{AB}^{(b)} \to c_{\mathrm{ceil}}^{(b)}$; require $\ge 95\%$ finite draws.
-   - **Explainable Line-Specific Variance Fraction (`r_cal_sq`, R11)**: Report $r_{\mathrm{cal}}^2$ (`r_cal_sq` + 95% joint-bootstrap CI, plus signed $\mathrm{sign}(r_{\mathrm{cal}}) r_{\mathrm{cal}}^2$; interpret variance explained only when `r_cal` CI > 0) on every line for transparent reporting.
-4. **Global Accuracy Metrics (H-A4, R5)**:
-   - Tie-aware `disc_raw` evaluated in **both** A-T2's own-target-zeroed convention (`main table`) and A-T3's all-panel-targets-masked convention (`appendix`, plus `pds_cosine_panel`), alongside `de50_r` (own target masked), evaluated under **both** unperturbed control (`ctrl_*`, main table) and `Source_Grand_Mean` centroid (`cent_*`, appendix).
+1. **Line-Specific Residuals & Primary Metrics**: $r^{\mathrm{obs}}_{p,t} = \Delta^{\mathrm{obs}}_{p,t} - \bar{\Delta}^{\mathrm{src}}_{p,(-t)}$, $r^{\mathrm{pred}}_{p,t} = \hat{\Delta}_{p,t} - \bar{\Delta}^{\mathrm{src}}_{p,(-t)}$ on `resp_top50` (top 50 genes by $|\Delta^{\mathrm{obs}}_{p,g}|$, $g \ne g_p$) and unselected `all_nontarget`.
+2. **Scope & Limitations of Slope Metric (R6)**: Neither Arc VCC 2026 Wrap-Up nor `cell-eval2 v0.22.0` publishes the `0.02–0.13` top-10 slope formula (`Dobin 10.64898/2026.11.17.767214` unindexed across Crossref/bioRxiv/OpenAlex/EuropePMC/PubMed APIs as of 2026-11-21). Moreover OLS `slope(r_pred ~ r_obs) = r * SD_pred / SD_obs`. Every line reports secondary `r`, `sd_pred/sd_obs`, orthogonal **Deming slope** ($\delta=1$), reverse OLS `slope_obs_on_pred`, zero-intercept slope, per-perturbation mean slope, and `cos_agreement_top50`.
+3. **Noise Ceiling, `r_cal_sq` (R11), & S6 Selection-Bias Disclosure**:
+   - From disjoint 50/50 split-halves, $\rho_{AB} = \mathrm{corr}(r^{(A)}, r^{(B)})$, $c_{\mathrm{ceil}} = \sqrt{\frac{2\rho_{AB}}{1+\rho_{AB}}}$, $r_{\mathrm{cal}} = r_{\mathrm{resid}} / c_{\mathrm{ceil}}$, $r_{\mathrm{cal}}^2$ (`r_cal_sq` + joint-bootstrap CI), using **4,000** joint perturbation resamples ($\ge 95\%$ finite draws).
+   - **S6 Selection-Bias Limitation**: Selecting `resp_top50` by full-sample $|\Delta^{\mathrm{obs}}|$ conditions on extreme shared sample fluctuations and **upward-biases $\rho_{AB}$** (verified in Replogle dev: `0.944 -> 0.716` on `RPE1`, `0.950 -> 0.842` on `K562`), whereas `r_cal` also depends on out-of-sample vs top-50 residual SNR. Both `resp_top50` and unselected `all_nontarget` ($\rho_{AB}$, $c_{\mathrm{ceil}}$, $r_{\mathrm{cal}}$) MUST be reported side by side in all reports.
+4. **S5 Expressed-Genes Sensitivity (R15)**: Drop the lowest 25% of common genes ranked strictly by unperturbed target control variance `diag(C_t) <= Q_{0.25}` (no perturbation info), re-select `resp_top50` within the remaining 75% expressed/variable genes, and recompute `tmvs` and `Hybrid_ProjShared` $r_{\mathrm{cal}}$ and slope to separate abundance/dropout on–off detection effects from continuous magnitude prediction.
+5. **Global Accuracy Conventions (R5)**: Simultaneous non-inferiority across all **6** conventions: `ctrl_disc_ownmasked`, `ctrl_disc_panel`, `ctrl_de50_r`, `cent_disc_ownmasked`, `cent_disc_panel`, and `cent_de50_r` (with `ctrl_*` own-target in main tables and others in appendix).
 
 ---
 
-## 6. Locked Confirmatory Adjudication ($K_{\mathrm{conf}} = 3$) & Wording Governance (R4)
+## 6. Locked Confirmatory Groups A & B ($K_{\mathrm{conf}} = 3$, 97.5% CI) & Wording Governance
 
-Confirmatory Cohort ($K_{\mathrm{conf}} = 3$): **`nadig_hepg2`**, **`nadig_jurkat`**, **`vcc2025_h1`**.  
-Applying `A-T3.md` proportions with ceiling/floor rounding (`only stricter`):  
-$$N_{\mathrm{pass}} = \lceil 0.8 \times 3 \rceil = \mathbf{3/3}, \qquad N_{\mathrm{inf}} = \lfloor 0.2 \times 3 \rfloor = \mathbf{0/3}.$$
+- **Confirmatory Cohort ($K_{\mathrm{conf}} = 3$)**: **`nadig_hepg2`**, **`nadig_jurkat`**, **`vcc2025_h1`**.  
+- **Thresholds**: $N_{\mathrm{pass}} = \lceil 0.8 \times 3 \rceil = \mathbf{3/3}$ (`H-A1..A3`, `H-B1..B3`), $N_{\mathrm{inf}} = \lfloor 0.2 \times 3 \rfloor = \mathbf{0/3}$ (`H-A4`, `H-B4`).
+- **R13 Multiple-Comparison Level**: **ALL confirmatory criteria below use two-sided 97.5% percentile confidence intervals (`[1.25%, 98.75%]`, Bonferroni over 2 groups)**. **Both Group A and Group B outcomes MUST be reported jointly in every abstract and summary.**
 
-1. **H-A1 (Line-Specific Slope > 0.13)**: On **3/3 confirmatory lines**, locked primary **`Hybrid_ProjShared`** achieves `ls_slope_ols_top50` **95% CI lower bound $> 0.13$**. *(Pure `CIPHER_Linear` and `Hybrid_Raw` cannot substitute for `Hybrid_ProjShared` due to $-\bar{\Delta}^{\mathrm{src}}$ / $-\bar{v}_{\mathcal{S}_p}$ artifacts verified in Replogle dev.)*
-2. **H-A2 (Noise-Calibrated Correlation > 0)**: On **3/3 confirmatory lines**, $\rho_{AB} > 0$, $\ge 95\%$ finite joint-bootstrap draws, and $r_{\mathrm{cal}}$ **joint-bootstrap 95% CI lower bound $> 0$**.
-3. **H-A3 (Specificity Against ALL 5 Source Covariances, R3)**: On **3/3 confirmatory lines**, `Hybrid_ProjShared` beats **every** mismatched source covariance ($s' \in \mathcal{S}$, all 5 lines): `matched_ci95_lo > max_{s'} mismatch_ci95_hi(s')`.
-4. **H-A4 (Strict Multi-Convention Non-Inferiority, R5)**: On **0/3 confirmatory lines**, `Hybrid_ProjShared - Transfer_Mean` has paired bootstrap 95% CI strictly below zero (`diff_ci95_hi < 0`) across **ALL SIX** conventions simultaneously (`AND`):
-   `ctrl_disc_ownmasked`, `ctrl_disc_panel`, `ctrl_de50_r`, `cent_disc_ownmasked`, `cent_disc_panel`, and `cent_de50_r`.
+### Confirmatory Group A (`Hybrid_ProjShared`)
+1. **H-A1**: On 3/3 confirmatory lines, `Hybrid_ProjShared` `ls_slope_ols_top50` **97.5% CI lower bound $> 0.13$**. *(Pure `CIPHER_Linear` / `Hybrid_Raw` cannot substitute.)*
+2. **H-A2**: On 3/3 confirmatory lines, $\rho_{AB} > 0$, $\ge 95\%$ finite joint-bootstrap draws, and `Hybrid_ProjShared` $r_{\mathrm{cal}}$ **97.5% CI lower bound $> 0$**.
+3. **H-A3**: On 3/3 confirmatory lines, `Hybrid_ProjShared` beats **all 5** source mismatched covariance controls (`matched_slope_ci975_lo > max_{s'} mismatch_slope_ci975_hi(s')`).
+4. **H-A4**: On 0/3 confirmatory lines, `Hybrid_ProjShared - Transfer_Mean` **97.5% CI upper bound $< 0$** across **ALL 6** conventions (`AND`).
 
-### Hard-Coded Decision & Wording Rules
-- **Overall Verdict**: **`CONFIRMED`** iff **H-A1 AND H-A2 AND H-A3 AND H-A4** all pass on 3/3 confirmatory lines (`0/3` inferior on H-A4). If **ANY** criterion fails, all conclusions **MUST state `未确认` (NOT CONFIRMED)** verbatim. Post-hoc changes to parameters, hypotheses, cohorts, or thresholds are forbidden.
-- **Locked R4 Wording Rules (Binding Regardless of Pass/Fail)**:
-  1. Only if **`Hybrid_ProjShared`** beats `(a) NegCtrl_HybridProj_SrcCorrTgtVar` on **BOTH** `ls_slope_ols_top50` and `noise_cal_corr` with non-overlapping 95% CIs on **3/3 confirmatory lines** may papers/summaries refer to **`"cell-line-specific co-fluctuation structure"`**; otherwise conclusions **MUST** use **`"target-line control statistics"`** (or equivalent non-structural phrasing).
-  2. If `Hybrid_ProjShared` does not outperform `(b) Transfer_Mean_VarScaled` on `noise_cal_corr` (`matched_cal_ci95_lo > tmvs_cal_ci95_hi`) across **3/3 confirmatory lines**, conclusions **MUST** state explicitly that **observed improvements may be explained by target-line marginal gene variance**.
+### Confirmatory Group B (`Transfer_Mean_VarScaled`, Added Post-Dev per R12)
+1. **H-B1**: On 3/3 confirmatory lines, `Transfer_Mean_VarScaled` `ls_slope_ols_top50` **97.5% CI lower bound $> 0.13$**.
+2. **H-B2**: On 3/3 confirmatory lines, $\rho_{AB} > 0$, $\ge 95\%$ finite draws, and `Transfer_Mean_VarScaled` $r_{\mathrm{cal}}$ **97.5% CI lower bound $> 0$**.
+3. **H-B3 (Specificity Against 6 Variance Controls)**: On 3/3 confirmatory lines, `Transfer_Mean_VarScaled` beats **all 5** `NegCtrl_TMVS_MismatchedVar(s')` AND `NegCtrl_TMVS_ShuffledVar` on **BOTH** `ls_slope_ols_top50` **AND** $r_{\mathrm{cal}}$ with non-overlapping **97.5% CIs** (`tmvs_slope_ci975_lo > max_ctrl_slope_ci975_hi` **AND** `tmvs_cal_r_ci975_lo > max_ctrl_cal_r_ci975_hi`).
+4. **H-B4**: On 0/3 confirmatory lines, `Transfer_Mean_VarScaled - Transfer_Mean` **97.5% CI upper bound $< 0$** across **ALL 6** conventions (`AND`).
+5. **Descriptive Group B Check**: Report whether `tmvs` slope point estimate lies in `[0.02, 0.13]` with R6 estimator/scale caveat.
+
+### Hard-Coded Decision, Mechanism Wording, & Novelty Governance (R4, R14, R16)
+- **Group Verdicts**: Each group (`Group A`, `Group B`) independently yields **`CONFIRMED`** iff all 4 of its criteria (`1 AND 2 AND 3 AND 4`) pass at 97.5% CI; if any criterion in a group fails, that group **MUST state `未确认` (NOT CONFIRMED)** verbatim.
+- **R4 Locks (Group A)**:
+  1. Use **`"cell-line-specific co-fluctuation structure"`** only if `Hybrid_ProjShared` beats `SrcCorrTgtVar` on BOTH slope and $r_{\mathrm{cal}}$ (disjoint CIs, 3/3 confirmatory lines); otherwise use **`"target-line control statistics"`**.
+  2. Unless `Hybrid_ProjShared` beats `Transfer_Mean_VarScaled` on $r_{\mathrm{cal}}$ (3/3 confirmatory lines), state explicitly that **gains over `Transfer_Mean` may be explained by target-line marginal gene variance**.
+- **R14 Mechanism Lock**: Only if `Hybrid_on_TMVS - Transfer_Mean_VarScaled` $r_{\mathrm{cal}}$ paired bootstrap 95% CI lower bound is **`> 0` on 3/3 confirmatory lines** may reports state *"co-fluctuation structure provides incremental information beyond marginal variance"*; otherwise they **MUST** state *"In this dataset, co-fluctuation structure exhibits no detectable increment beyond marginal variance"*.
+- **R16 Novelty Lock**: Governed by `audit/LIT/PRIOR_ART_B.md` and `status/A-T5.txt` (`ALERT_B`): if prior literature includes expression/variance-dependent scaling, describe Group B strictly as *"a systematic zero-shot test on line-specific residuals"* and claim zero methodological novelty.
 
 ---
 
-## 7. Prospective VCC 2026 Generalization Protocol (`AC16`, `MOLM13`, `U-87MG`, R9)
+## 7. Prospective VCC 2026 Protocol (`AC16`, `MOLM13`, `U-87MG`, R9)
 
-Aligned with `round9/p2/vcc_linespecific/src/prospective/{HUMAN_STEPS.md,CELL_EVAL2_REPRO.md,vcc2026_format.py,prospective_predict.py}` and `P2_RULES.md` Rule 6:
-1. **Compliance & Outreach Update (R9)**: On **`2026-11-21 19:28 (+08:00)`**, Human lead (`Zijian Zeng`) emailed **`help@virtualcellchallenge.org`** requesting written clarification/permission to run offline research predictions on post-deadline `controls-final` and publish prediction hashes prior to GT release; currently awaiting response. Agents strictly **do not** download gated Challenge files, complete KYC verification, or push externally.
-2. **Pre-GT Cryptographic Lock**: Once compliant `controls-final` (via explicit written permission or CC0 1.0 GCS release prior to GT release) are obtained by Human lead, `prospective_predict.py` runs the exact locked configuration (`log1p`, `shrink=0.0`, `mask_self=True`, `Hybrid_ProjShared`) fitted strictly on our 6 public lines + target `non-targeting` controls (`18,533` panel genes, `400` cells/pert/context). Prior to GT release, commit only `SHA256SUMS.txt`, `prediction_manifest.json`, `TIMESTAMP_DECLARATION.md`, and code (never restricted input matrices) to public GitHub.
-3. **Post-GT Evaluation**: Score unmodified predictions upon CC0 GT release with **`ArcInstitute/cell-eval2 v0.22.0`** (`--preset vcc2026`) and the identical Version-2 **H-A1..H-A4 + R3/R4/R5/R6/R11** protocol, reporting negative results verbatim as `未确认`.
+On **`2026-11-21 19:28 (+08:00)`**, Human lead (`Zijian Zeng`) emailed **`help@virtualcellchallenge.org`** requesting permission for offline `controls-final` research predictions (`prospective_predict.py`) and pre-GT hash commits (`CELL_EVAL2_REPRO.md` / `HUMAN_STEPS.md`). Agents never download gated data, complete KYC, or push externally. Upon compliant `controls-final` access and post-CC0 GT release, evaluate unmodified predictions via `cell-eval2 v0.22.0` (`--preset vcc2026`) under the exact Version-3 **Group A + Group B (`97.5%` CI) + R4/R14/R15/R16** rules, reporting any failed group verbatim as `未确认`.
 
 ---
 
 ## 8. Independent Statistical Audit Plan (`A-T3`)
 
-After `round9/p2/status/PREREG_COMMIT.txt` appears and `A-T2` completes evaluation in `round9/p2/vcc_linespecific/results/`:
-1. Execute standalone `audit/audit_runner.py` (**zero imports from `src/`**) with `--space log1p --shrink 0.0 --cov-max-cells 0 --project-shared-axis --confirmatory-lines nadig_hepg2 nadig_jurkat vcc2025_h1 --status-dir round9/p2/status`, evaluating all 6 lines, all $5$ source mismatches per line (R3), both R4 controls, all 6 H-A4 sub-metrics (R5), R6 scale diagnostics, and R11 $r_{\mathrm{cal}}^2$, plus S1–S4 sensitivity checks.
-2. Verify zero-leakage invariance and numerical parity (`tol <= 1e-4`) against `A-T2` outputs via `audit/cross_check.py`, writing complete unvarnished findings and wording-governance flags to `round9/p2/vcc_linespecific/audit/AUDIT_REPORT.md`.
+Strictly AFTER `round9/p2/status/PREREG_COMMIT.txt` exists and `A-T2` completes 6-line held-out + sensitivity runs in `round9/p2/vcc_linespecific/results/`:
+1. Run standalone `audit/audit_runner.py` (**zero `src/` imports**) with locked primary parameters (`--space log1p --shrink 0.0 --cov-max-cells 0 --project-shared-axis --confirmatory-lines nadig_hepg2 nadig_jurkat vcc2025_h1`), auditing all 6 lines, Group A + Group B at 97.5% CI, R3/R12 all-source & shuffled controls, R4/R14 mechanism/wording checks, R15 `FCT` + `S5` + `S6`, and S1–S4 sensitivity runs.
+2. Verify zero-leakage invariance and numerical parity (`tol <= 1e-4`) against `A-T2` via `audit/cross_check.py`, publishing the unvarnished final report in `round9/p2/vcc_linespecific/audit/AUDIT_REPORT.md`.
 
 ---
 
 ## 9. API-Verified Bibliography
 
-All citations verified directly via Crossref, bioRxiv, or arXiv APIs on 2026-11-21:
+All citations verified directly via Crossref, bioRxiv, or arXiv APIs on 2026-11-21 *(R16 Group B literature expansion recorded separately by `A-T5` in `audit/LIT/PRIOR_ART_B.md`)*:
 1. **Kuznets-Speck B et al. (19 authors)** (2025/2026). *Co-fluctuations of genes in single cells predict transcriptome-wide outcomes to perturbations* (`CIPHER`). bioRxiv `doi:10.1101/2025.06.27.661814` (v1: 2025-07-01; v2: 2026-09-03), PMID `40631127`.
 2. **Replogle JM et al. (17 authors)** (2022). *Mapping information-rich genotype-phenotype landscapes with genome-scale Perturb-seq*. *Cell*, `doi:10.1016/j.cell.2022.05.013`, PMID `35688146`.
 3. **Nadig A et al. (8 authors)** (2025). *Transcriptome-wide analysis of differential expression in perturbation atlases*. *Nature Genetics*, `doi:10.1038/s41588-025-02169-3`, PMID `40259084`.
