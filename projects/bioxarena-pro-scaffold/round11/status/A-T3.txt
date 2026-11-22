@@ -6,3 +6,30 @@
 - Zero Round 11 expression matrices downloaded or accessed (round11/shared/ contains only R11_DOWNLOAD_PLAN.md); zero git commands executed.
 - Next pending Master Controller action: lock PREREG_D_COMMIT.txt / issue R11_GO.txt (and align round11/src/ + round11/audit/ to v2 97.5% CIs, SA-8 resp_top50_split, & H-D5 prior to CODE_FREEZE_R11.txt).
 PREREG_D_R1_READY_FOR_LOCK
+
+
+[A-T3] ROUND 11 INDEPENDENT AUDIT CODE VERIFIED & READY FOR FREEZE 2026-11-22T14:47+08:00
+1. Strictly Independent Implementation (`round11/audit/`, zero reads of `round11/src/` or `round11/results/`, zero accesses to `round11/shared/lines/` or `round11/shared/raw/`, zero edits to `round10/`):
+   - `__init__.py`: `75b08a55db435711ab55bc423912d297bcd01404c558924dbd4c5b393c5436da`
+   - `independent_r11_loader.py`: `b205d58f8b0ed0a09bf31d3c131a285cc12daf9ade7f365aa740b2146b90e960`
+   - `independent_r11_predictors.py`: `baf7267d50d9a66b9f9b1a8025ffb12f911797e10167857039c0b5b1a4781cf0`
+   - `independent_r11_metrics.py`: `f54759eeac8cf38fa5ef09155d2149f2b306eb90529076442d39a5b357e38628`
+   - `run_r11_audit.py`: `0940eddd8cc97bf9ac205b19b9833c377855cdb1c9900dd4b659d825b32298eb`
+   - `test_r11_audit.py`: `ec3f85a5ae20b7a390ce529272889abfc6cb45024f11d89dc80f71b76ea3f214`
+   - Verified Round 10 freeze manifest (`shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`): 22/22 OK.
+
+2. Implemented `PREREG_D v2` + `PREREG_D_ADDENDUM_A.md` Specifications:
+   - Bonferroni two-sided `97.5%` CIs (`[1.25%, 98.75%]`) with default `n_boot = 4,000`, `seed = 20261123`.
+   - `H-D1` (`all_nontarget` FCT `r_orth_cal_ci975_lo > 0`) + **Addendum A1** (`r_orth_cal_valid_frac >= 0.95` & `rho_ab_orth > 0`, with `hd1_a1_deviation_flag` dual-reporting whenever `ci975_lo > 0` fails A1 validity).
+   - `H-D2` (`all_nontarget` FCT `ci975_lo > max(6 mismatched ci975_hi, Perm100 Q_0.975)`), plus `Perm100` (`default_rng(k).permutation(G)`, `k = 0..99`) under BOTH `all_nontarget` AND `resp_top50`.
+   - `H-D3` (`all_nontarget` paired joint bootstrap `FCT - E1_ConstMed`).
+   - Independent Claim 2 `H-D4a` (`E1_ConstMed(resp_top50) > 0`) & joint cross-mask `H-D4b` (`E1_ConstMed(resp_top50) - E1_ConstMed(all_nontarget) > 0`).
+   - `SA-8` (`resp_top50_split`): symmetric `(A->B + B->A) / 2` cross-half top-50 selection with single-half split ceiling `sqrt(rho_AB)` for `FCT`, `E1_ConstMed`, and `Perm100`.
+   - `H-D5` (`all_nontarget` comparison vs `NegCtrl_FCT_MismatchedMean(nourreddine_kolf21j)`, supporting `feng_ipsc` targeted-panel overlap + Addendum A2/A3 notes), `H-D_util`, `SA-1..SA-7` (`R19` & `S7` under both masks), and `P1` `K_conf < 2` guard.
+
+3. Verification Strictly on Synthetic Fixtures & Round 9/10 Unblinded Lines Only (`python3 -I`):
+   - **Unit & Adversarial Suite (`python3 -I round11/audit/test_r11_audit.py -v`)**: **5/5 PASSED** (`0.689s`) — hard blinding gate, `parse_confirmatory_lines_r11`, naive elementwise parity (`<= 1e-12`), planted Addendum A1 `valid_frac < 0.95` deviation flag, `P1` `K_conf < 2` guard, independent Claim 1 vs Claim 2 adjudication, naive elementwise `SA-8` parity (`<= 1e-12`), and `H-D5` targeted-panel (`min_gene_overlap=100` vs `3000`).
+   - **Blinding Gate CLI Refusal (`python3 -I round11/audit/run_r11_audit.py --mode holdout_r11`)**: Verified `RuntimeError: CODE_FREEZE_R11 hard lock: missing or empty .../CODE_FREEZE_R11.txt`.
+   - **Exact R10-E Benchmark Cross-Check (`task-2450`, `--seed 20261122 --n-boot 4000 --n-perm 100` vs `round10/exploratory/baseline_ablation_*.csv`)**: **828 scalar checks** across `dld1`, `cd4t_rest`, `calu3`, `wtc11_i3neuron`, `nadig_hepg2`, `vcc2025_h1` -> **`max_abs_diff = 6.106e-16` (`PASS <= 1e-10`)**, exactly matching `dld1 all_nontarget` `FCT +0.1355`, `E1 -0.0614`, `FCT-E1 +0.1969`.
+   - **Full End-to-End Dev Check (`task-2459`, `--seed 20261123 --n-boot 4000 --n-perm 100` on `dld1`, `vcc2025_h1`)**: Exited `0` across primary + `H-D4` + `SA-8` + `H-D5` + `H-D_util` + `R19` + dual-mask `S7` (`round11/audit/dev_r11_seed20261123/`).
+R11_AUDIT_CODE_READY

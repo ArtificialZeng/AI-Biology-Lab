@@ -1,0 +1,10 @@
+R11_GO  2026-11-22 14:36 +08:00  (Claude, master controller; PREREG_D locked at 72fc0c9)
+
+允许（只限以下操作）：
+1. 按 round11/shared/R11_DOWNLOAD_PLAN.md 下载 4 个数据集（telohaec、hcasmc、cd4t_stim48、feng_ipsc）的锁定文件到 round11/shared/raw/<line>/，合计 ≤ 80 GB；逐个核对文件大小和 md5（有提供的）。下载不到或校验失败的文件，写进 DATA_SOURCES_R11.md，不得换成别的文件。
+2. hcasmc 下载后立即做 PREREG_D §2.2.2 的可行性检查（按块读取 + 能否提取单 sgRNA 分配），只看结构和计数；不通过就按「可行性排除」处理并写明原因。
+3. 按 PREREG_D §2.2–2.3 和补充 A 做单 sgRNA 过滤、NT 对照筛选、分两半，生成和第十轮相同格式的 round11/shared/lines/<line>/（genes.txt、targets.txt、ctrl_cells.npz、pseudobulk_delta.npz、line_metadata.json）。删掉临时文件。
+4. 只报告计数，写 round11/shared/R11_QC_COUNTS.md（逐级筛选：目标线可重复 → 源线可重复 → 靶基因在 G_eval 内 → n_eval_targets；|G_eval|；两半各自的 NT 细胞数；half_valid 数）。
+5. 按 §2.2 机械规则写 round11/status/CONFIRMATORY_LINES_R11.txt（只从 telohaec、hcasmc、cd4t_stim48 中选 n_eval_targets ≥ 50 的线；feng_ipsc 永远不进入）。
+
+禁止：在 round11/status/CODE_FREEZE_R11.txt 出现之前，计算任何预测或评测指标（FCT、E1、相关系数、r_orth_cal、残差、斜率等）。读取下载数据的 Python 一律用 -I。数据文件不得进入 git。

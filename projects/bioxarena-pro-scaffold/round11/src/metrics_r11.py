@@ -682,10 +682,10 @@ def compute_s7_cellcount_and_kd_r11(
     """
     Round 11 `S7` Cell-Count & Knockdown-Depth Confounding Controls under `mode` (`all_nontarget` primary):
       (i)   Per-pert `r_orth_p` across masked genes
-      (ii)  Spearman correlation with `ln(n_cells)` and `|k_p|` (+ 98.33% / 97.5% / 95% CIs)
+      (ii)  Spearman correlation with `ln(n_cells)` and `|k_p|` (+ 97.5% / 95% / 98.33% CIs)
       (iii) Mean-centered OLS `[1, ln(n_cells) - mean, |k_p| - mean]`
       (iv)  Balanced `n_cells` tertiles (`T1_low`, `T2_mid`, `T3_high`) recomputing pooled FCT, E1,
-            mismatched controls, perm100, and paired `FCT - E1` under `mode`.
+            mismatched controls, perm100, and paired `FCT - E1` under `mode` (`97.5%` CIs per PREREG_D v2).
     """
     N, G = delta_obs.shape
     t_mean = np.asarray(delta_transfer, dtype=np.float64)
@@ -822,7 +822,7 @@ def compute_s7_cellcount_and_kd_r11(
                         n_boot=n_boot,
                         seed=seed,
                     )
-                    hi_val = float(m_res.get(mode, {}).get("r_orth_cal", {}).get("ci9833_hi", float("nan")))
+                    hi_val = float(m_res.get(mode, {}).get("r_orth_cal", {}).get("ci975_hi", float("nan")))
                     mis_detail[m_name] = hi_val
                     if np.isfinite(hi_val):
                         hi_list.append(hi_val)
@@ -867,12 +867,12 @@ def compute_s7_cellcount_and_kd_r11(
                 else {}
             )
 
-            fct_lo9833 = float(md.get("r_orth_cal", {}).get("ci9833_lo", float("nan")))
+            fct_lo975 = float(md.get("r_orth_cal", {}).get("ci975_lo", float("nan")))
             perm_p975 = float(perm100.get("r_orth_cal", {}).get("p97_5", float("nan")))
-            hd3_lo9833 = float(diff_hd3.get("ci9833_lo", float("nan")))
-            beats_mis = bool(np.isfinite(fct_lo9833) and np.isfinite(max_mis_hi) and fct_lo9833 > max_mis_hi)
-            beats_perm = bool(np.isfinite(fct_lo9833) and np.isfinite(perm_p975) and fct_lo9833 > perm_p975)
-            passes_hd3 = bool(np.isfinite(hd3_lo9833) and hd3_lo9833 > 0.0)
+            hd3_lo975 = float(diff_hd3.get("ci975_lo", float("nan")))
+            beats_mis = bool(np.isfinite(fct_lo975) and np.isfinite(max_mis_hi) and fct_lo975 > max_mis_hi)
+            beats_perm = bool(np.isfinite(fct_lo975) and np.isfinite(perm_p975) and fct_lo975 > perm_p975)
+            passes_hd3 = bool(np.isfinite(hd3_lo975) and hd3_lo975 > 0.0)
             tertiles_out[lbl] = {
                 "n_targets": int(c_idx.size),
                 "n_cells_min": float(np.min(nc_arr[c_idx])),
@@ -882,16 +882,16 @@ def compute_s7_cellcount_and_kd_r11(
                 "fct_slope_ols": md.get("slope_ols", {}),
                 "rho_half_ab_orth": float(md.get("rho_half_ab_orth", float("nan"))),
                 "ceiling_r_orth": ceil_orth,
-                "max_mismatched_ci9833_hi": max_mis_hi,
+                "max_mismatched_ci975_hi": max_mis_hi,
                 "perm100_p975": perm_p975,
                 "perm100_median": float(perm100.get("r_orth_cal", {}).get("median", float("nan"))),
                 "fct_minus_e1": diff_hd3,
-                "beats_mismatched_ci9833": beats_mis,
+                "beats_mismatched_ci975": beats_mis,
                 "beats_perm100_p975": beats_perm,
-                "passes_hd1": bool(np.isfinite(fct_lo9833) and fct_lo9833 > 0.0),
+                "passes_hd1": bool(np.isfinite(fct_lo975) and fct_lo975 > 0.0),
                 "passes_hd2": bool(beats_mis and beats_perm),
                 "passes_hd3": passes_hd3,
-                "mismatched_ci9833_hi_by_source": mis_detail,
+                "mismatched_ci975_hi_by_source": mis_detail,
             }
 
     return {
@@ -910,4 +910,291 @@ def compute_s7_cellcount_and_kd_r11(
         "ols_adjusted_both": ols_both,
         "ols_adjusted_ln_ncells_only": ols_nc_only,
         "n_cells_tertiles": tertiles_out,
+    }
+
+
+def single_half_ceiling(rho_ab: float) -> float:
+    """Single-half noise ceiling `sqrt(rho_AB)` (`PREREG_D §5 SA-8`); NaN if `rho_ab <= 0`."""
+    if not np.isfinite(rho_ab) or rho_ab <= 0.0:
+        return float("nan")
+    return float(np.sqrt(float(rho_ab)))
+
+
+def _prepare_split_direction_indices(
+    delta_sel: np.ndarray,
+    delta_eval_obs: np.ndarray,
+    delta_other_obs: np.ndarray,
+    delta_transfer: np.ndarray,
+    target_gene_idx: Sequence[int],
+    half_valid: Optional[np.ndarray],
+    extra_valid: Optional[np.ndarray] = None,
+    gene_keep_mask: Optional[np.ndarray] = None,
+    top_k: int = 50,
+) -> Tuple[List[int], List[np.ndarray]]:
+    """
+    Extract per-perturbation top-k gene indices ranked by `|delta_sel[p]|` (non-self, finite
+    in selection half, evaluation half, other half for noise ceiling, transfer mean, and optional predictor).
+    """
+    N, G = delta_sel.shape
+    rows: List[int] = []
+    idx_list: List[np.ndarray] = []
+    for p in range(N):
+        if half_valid is not None and not bool(half_valid[p]):
+            continue
+        valid = (
+            np.isfinite(delta_sel[p])
+            & np.isfinite(delta_eval_obs[p])
+            & np.isfinite(delta_other_obs[p])
+            & np.isfinite(delta_transfer[p])
+        )
+        if extra_valid is not None:
+            valid = valid & np.isfinite(extra_valid[p])
+        if gene_keep_mask is not None:
+            valid = valid & gene_keep_mask
+        ti = int(target_gene_idx[p])
+        if 0 <= ti < G:
+            valid[ti] = False
+        idx = np.flatnonzero(valid)
+        if idx.size == 0:
+            continue
+        if idx.size > top_k:
+            idx = idx[np.argsort(np.abs(delta_sel[p, idx]), kind="mergesort")[-top_k:]]
+        rows.append(p)
+        idx_list.append(idx)
+    return rows, idx_list
+
+
+def compute_resp_top50_split_suite_r11(
+    delta_pred: np.ndarray,
+    delta_transfer: np.ndarray,
+    target_gene_idx: Sequence[int],
+    delta_half_a: Optional[np.ndarray],
+    delta_half_b: Optional[np.ndarray],
+    half_valid: Optional[np.ndarray] = None,
+    gene_keep_mask: Optional[np.ndarray] = None,
+    top_k: int = 50,
+    n_boot: int = 4000,
+    seed: int = 20261123,
+) -> Dict[str, Any]:
+    """
+    `PREREG_D §5 SA-8` Split-Half Out-of-Sample Top-50 Mask (`resp_top50_split`):
+      - Direction `A -> B`: rank top-50 genes by `|HalfA_delta|`, evaluate `pred` residual
+        against `HalfB_delta` residual (orthogonalized to `Transfer_Mean` on `M^{(A)}`),
+        disattenuated by single-half noise ceiling `sqrt(rho_AB_orth(M^{(A)}))`.
+      - Direction `B -> A`: symmetric reverse.
+      - Symmetric averaged `r_orth_raw_split` and `r_orth_cal_split` with joint perturbation
+        bootstrap (`default_rng(seed)` x `n_boot`, `97.5%` CIs).
+    """
+    if delta_half_a is None or delta_half_b is None:
+        return {"n_perts": 0, "status": "missing_split_halves"}
+
+    ha = np.asarray(delta_half_a, dtype=np.float64)
+    hb = np.asarray(delta_half_b, dtype=np.float64)
+    tm = np.asarray(delta_transfer, dtype=np.float64)
+    rp = np.asarray(delta_pred, dtype=np.float64) - tm
+    ha_res = ha - tm
+    hb_res = hb - tm
+
+    rows_ab, idx_ab = _prepare_split_direction_indices(
+        ha, hb, ha, tm, target_gene_idx, half_valid, extra_valid=rp, gene_keep_mask=gene_keep_mask, top_k=top_k
+    )
+    rows_ba, idx_ba = _prepare_split_direction_indices(
+        hb, ha, hb, tm, target_gene_idx, half_valid, extra_valid=rp, gene_keep_mask=gene_keep_mask, top_k=top_k
+    )
+    map_ab = dict(zip(rows_ab, idx_ab))
+    map_ba = dict(zip(rows_ba, idx_ba))
+    rows_common = [p for p in rows_ab if p in map_ba]
+    m = len(rows_common)
+    if m == 0:
+        return {"n_perts": 0, "status": "no_valid_split_perturbations"}
+
+    idx_a_c = [map_ab[p] for p in rows_common]
+    idx_b_c = [map_ba[p] for p in rows_common]
+
+    def _collect_dir(eval_obs_res: np.ndarray, idx_c: Sequence[np.ndarray]) -> Tuple[Tuple[np.ndarray, ...], Tuple[np.ndarray, ...]]:
+        xs_o, ys_o, ha_o, hb_o = [], [], [], []
+        for p, idx in zip(rows_common, idx_c):
+            rv = tm[p, idx]
+            xo, yo = _orth_pair(eval_obs_res[p, idx], rp[p, idx], rv)
+            hao, hbo = _orth_pair(ha_res[p, idx], hb_res[p, idx], rv)
+            xs_o.append(xo)
+            ys_o.append(yo)
+            ha_o.append(hao)
+            hb_o.append(hbo)
+        return _moments(xs_o, ys_o), _moments(ha_o, hb_o)
+
+    mom_ab, hmom_ab = _collect_dir(hb_res, idx_a_c)
+    mom_ba, hmom_ba = _collect_dir(ha_res, idx_b_c)
+
+    def _eval_dir(
+        pm: Tuple[np.ndarray, ...],
+        hm: Tuple[np.ndarray, ...],
+        draws: np.ndarray,
+    ) -> Tuple[float, np.ndarray, float, np.ndarray, float, float]:
+        nv, sx, sy, sxx, syy, sxy = pm
+        hnv, hsx, hsy, hsxx, hsyy, hsxy = hm
+        _, pt_r, _, _, _ = _moments_to_corr_and_slope(
+            float(nv.sum()), float(sx.sum()), float(sy.sum()), float(sxx.sum()), float(syy.sum()), float(sxy.sum())
+        )
+        _, pt_rho, _, _, _ = _moments_to_corr_and_slope(
+            float(hnv.sum()), float(hsx.sum()), float(hsy.sum()), float(hsxx.sum()), float(hsyy.sum()), float(hsxy.sum())
+        )
+        pt_ceil = single_half_ceiling(float(pt_rho))
+        pt_cal = disattenuated_r(float(pt_r), pt_ceil)
+
+        _, b_r, _, _, _ = _moments_to_corr_and_slope(
+            nv[draws].sum(axis=1), sx[draws].sum(axis=1), sy[draws].sum(axis=1),
+            sxx[draws].sum(axis=1), syy[draws].sum(axis=1), sxy[draws].sum(axis=1),
+        )
+        _, b_rho, _, _, _ = _moments_to_corr_and_slope(
+            hnv[draws].sum(axis=1), hsx[draws].sum(axis=1), hsy[draws].sum(axis=1),
+            hsxx[draws].sum(axis=1), hsyy[draws].sum(axis=1), hsxy[draws].sum(axis=1),
+        )
+        b_cal = np.array(
+            [disattenuated_r(float(r), single_half_ceiling(float(rh))) for r, rh in zip(b_r, b_rho)],
+            dtype=np.float64,
+        )
+        return float(pt_r), b_r, float(pt_cal), b_cal, float(pt_rho), float(pt_ceil)
+
+    rng = np.random.default_rng(seed)
+    draws = rng.integers(0, m, size=(n_boot, m))
+    pt_raw_a, b_raw_a, pt_cal_a, b_cal_a, rho_a, ceil_a = _eval_dir(mom_ab, hmom_ab, draws)
+    pt_raw_b, b_raw_b, pt_cal_b, b_cal_b, rho_b, ceil_b = _eval_dir(mom_ba, hmom_ba, draws)
+
+    pt_raw_split = 0.5 * (pt_raw_a + pt_raw_b)
+    b_raw_split = 0.5 * (b_raw_a + b_raw_b)
+    pt_cal_split = 0.5 * (pt_cal_a + pt_cal_b)
+    b_cal_split = 0.5 * (b_cal_a + b_cal_b)
+
+    return {
+        "n_perts": int(m),
+        "r_orth_cal": summarize_boot_r11(pt_cal_split, b_cal_split, m, n_boot),
+        "r_orth_raw": summarize_boot_r11(pt_raw_split, b_raw_split, m, n_boot),
+        "r_orth_cal_a_to_b": pt_cal_a,
+        "r_orth_cal_b_to_a": pt_cal_b,
+        "r_orth_raw_a_to_b": pt_raw_a,
+        "r_orth_raw_b_to_a": pt_raw_b,
+        "rho_half_ab_orth_a": rho_a,
+        "rho_half_ab_orth_b": rho_b,
+        "ceiling_single_a": ceil_a,
+        "ceiling_single_b": ceil_b,
+    }
+
+
+def compute_fct_perm100_split_r11(
+    state: FctSourceState,
+    target_ctrl_mean_libnorm: np.ndarray,
+    query_target_names: Sequence[str],
+    delta_transfer: np.ndarray,
+    target_gene_idx: Sequence[int],
+    delta_half_a: Optional[np.ndarray],
+    delta_half_b: Optional[np.ndarray],
+    half_valid: Optional[np.ndarray] = None,
+    fc_bundle: Optional[Tuple[np.ndarray, np.ndarray, np.ndarray]] = None,
+    gene_keep_mask: Optional[np.ndarray] = None,
+    n_perm: int = 100,
+    top_k: int = 50,
+) -> Dict[str, Any]:
+    """
+    100-permutation null (`k=0..n_perm-1`) under `SA-8` (`resp_top50_split`), computing
+    symmetric average `0.5 * (r_cal_{A->B}[k] + r_cal_{B->A}[k])` with single-half ceilings
+    `sqrt(rho_AB_orth(M^{(A)}))` and `sqrt(rho_AB_orth(M^{(B)}))`.
+    """
+    if delta_half_a is None or delta_half_b is None:
+        return {"n_perm": int(n_perm), "mode": "resp_top50_split", "r_orth_cal": {}, "r_orth_raw": {}}
+
+    mu_t = np.maximum(np.asarray(target_ctrl_mean_libnorm, dtype=np.float64), 0.0)
+    G = mu_t.shape[0]
+    if fc_bundle is None:
+        fc_bundle = compute_source_transfer_and_fc_bar(state, query_target_names)
+    pred_transfer, fc_bar, has_hits = fc_bundle
+
+    ha = np.asarray(delta_half_a, dtype=np.float64)
+    hb = np.asarray(delta_half_b, dtype=np.float64)
+    tm = np.asarray(delta_transfer, dtype=np.float64)
+    ha_res = ha - tm
+    hb_res = hb - tm
+
+    rows_ab, idx_ab = _prepare_split_direction_indices(
+        ha, hb, ha, tm, target_gene_idx, half_valid, gene_keep_mask=gene_keep_mask, top_k=top_k
+    )
+    rows_ba, idx_ba = _prepare_split_direction_indices(
+        hb, ha, hb, tm, target_gene_idx, half_valid, gene_keep_mask=gene_keep_mask, top_k=top_k
+    )
+    map_ab = dict(zip(rows_ab, idx_ab))
+    map_ba = dict(zip(rows_ba, idx_ba))
+    rows_common = [p for p in rows_ab if p in map_ba]
+    if not rows_common:
+        return {"n_perm": int(n_perm), "mode": "resp_top50_split", "r_orth_cal": {}, "r_orth_raw": {}}
+
+    def _setup_dir(eval_obs_res: np.ndarray, idx_c: Sequence[np.ndarray]):
+        xo_l, bv_l, hao_l, hbo_l = [], [], [], []
+        for p, idx in zip(rows_common, idx_c):
+            rv = tm[p, idx]
+            nrm = float(np.linalg.norm(rv))
+            bv = (rv / nrm) if nrm > EPS else np.zeros_like(rv)
+            xv = eval_obs_res[p, idx]
+            xo_l.append(xv - float(np.dot(xv, bv)) * bv)
+            ha_o, hb_o = _orth_pair(ha_res[p, idx], hb_res[p, idx], rv)
+            hao_l.append(ha_o)
+            hbo_l.append(hb_o)
+            bv_l.append(bv)
+        x_pool = np.concatenate(xo_l)
+        rho_ab = pearson_1d_strict(np.concatenate(hao_l), np.concatenate(hbo_l))
+        ceil_s = single_half_ceiling(rho_ab)
+        return x_pool, bv_l, ceil_s
+
+    idx_a_c = [map_ab[p] for p in rows_common]
+    idx_b_c = [map_ba[p] for p in rows_common]
+    x_a_pool, bv_a, ceil_a = _setup_dir(hb_res, idx_a_c)
+    x_b_pool, bv_b, ceil_b = _setup_dir(ha_res, idx_b_c)
+
+    raw_vals = np.empty(n_perm, dtype=np.float64)
+    cal_vals = np.empty(n_perm, dtype=np.float64)
+
+    for k in range(n_perm):
+        perm = np.random.default_rng(k).permutation(G)
+        mu_p = mu_t[perm]
+        yp_a_l, yp_b_l = [], []
+        for p, ia, ba_v, ib, bb_v in zip(rows_common, idx_a_c, bv_a, idx_b_c, bv_b):
+            hit_p = bool(has_hits[p])
+            for idx_dir, bv_dir, out_list in ((ia, ba_v, yp_a_l), (ib, bb_v, yp_b_l)):
+                if hit_p:
+                    m_sub = mu_p[idx_dir]
+                    pred_v = np.log1p(m_sub * fc_bar[p, idx_dir]) - np.log1p(m_sub)
+                else:
+                    pred_v = pred_transfer[p, idx_dir]
+                yv = pred_v - tm[p, idx_dir]
+                out_list.append(yv - float(np.dot(yv, bv_dir)) * bv_dir)
+
+        r_raw_a = pearson_1d_strict(x_a_pool, np.concatenate(yp_a_l))
+        r_raw_b = pearson_1d_strict(x_b_pool, np.concatenate(yp_b_l))
+        r_cal_a = disattenuated_r(r_raw_a, ceil_a)
+        r_cal_b = disattenuated_r(r_raw_b, ceil_b)
+        raw_vals[k] = 0.5 * (r_raw_a + r_raw_b)
+        cal_vals[k] = 0.5 * (r_cal_a + r_cal_b)
+
+    def _pct(arr: np.ndarray) -> Dict[str, float]:
+        fin = arr[np.isfinite(arr)]
+        if fin.size == 0:
+            return {k: float("nan") for k in ("p2_5", "median", "p97_5", "p98_75", "max", "mean")}
+        p25, p50, p975, p9875 = np.percentile(fin, [2.5, 50.0, 97.5, 98.75])
+        return {
+            "p2_5": float(p25),
+            "median": float(p50),
+            "p97_5": float(p975),
+            "p98_75": float(p9875),
+            "max": float(np.max(fin)),
+            "mean": float(np.mean(fin)),
+        }
+
+    return {
+        "n_perm": int(n_perm),
+        "mode": "resp_top50_split",
+        "r_orth_cal": _pct(cal_vals),
+        "r_orth_raw": _pct(raw_vals),
+        "ceiling_single_a": ceil_a,
+        "ceiling_single_b": ceil_b,
+        "perm0_r_orth_cal": float(cal_vals[0]),
+        "perm0_r_orth_raw": float(raw_vals[0]),
     }
