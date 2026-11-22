@@ -1,0 +1,3 @@
+R12_GO 2026-11-22 22:58 +0800
+Authorized: A-T1 may download ONLY the 5 files in R12_DOWNLOAD_PLAN.md (GSE345058 raw_counts.mtx.gz + cell/gene/sgRNA annotations; XuCao2023.h5ad), total <= 15 GB, then run counts-only QC (no predictor, correlation or metric of any kind) and the HEK293 feasibility gate.
+Gate: CONFIRMATORY_LINES_R12.txt is written mechanically from R12_QC_COUNTS.md; evaluation is blocked until CODE_FREEZE_R12.txt exists.

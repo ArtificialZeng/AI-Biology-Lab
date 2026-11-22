@@ -1,0 +1,27 @@
+# A-T1 Round 12 Data Screening Status
+# Task:【主控 21:58】新任务：第十二轮数据筛查 (cutoff 2026-11-22; metadata-only)
+# Reference sets verified via r9_refs.json: u6_rep=2117, R9_COMMON=6148, u6_rep&R9_COMMON=1698
+
+[2026-11-22 22:21] Round 12 metadata-only data screen completed across IGVF (157 Perturb AnalysisSets + 405 MeasurementSets), GEO (2016-2026/11; 733 2024-2026 hits screened), scPerturb (Zenodo 13350497; all 54 files), Arc Virtual Cell Atlas, Broad SCP, and 2026 bioRxiv preprints. ZERO expression matrices (.h5/.h5ad/.mtx/.rds/.tar) downloaded; ZERO login/terms/401/403 bypasses; ZERO X-Atlas/Orion or VCC datasets.
+
+Report written: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/shared/R12_DATA_SCREEN.md
+
+Key findings:
+1. TIER 1 PRIMARY QUALIFIER — GSE345058 (A549-doxCas9 CRISPRko, CZ Biohub, bioRxiv 2026-06-02 / GEO 2026-08-26, HTTP 200 open):
+   - 1,000 target genes (4 sgRNAs/gene) + 211 NTCs; 606,075 single-sgRNA QC cells (560,755 Perturbed + 45,320 NTC across 4 batches; 1,000/1,000 >=50 cells & half_valid; median 6,083 genes/cell, 26,103 UMIs/cell, max mt 10.0%).
+   - Exact intersection: u6_rep=530, u6_rep&R9_COMMON=452 (452/452 >=50 cells & half_valid); gene_annotations covers 6,133/6,148 (99.76%) of R9_COMMON.
+   - Est. n_eval_targets: 106-212 (90-181 in R9C; ~126-134 at R11 cd4t_stim48 survival rate). Files: 25.05 GB .h5ad OR 10G raw_counts.mtx.gz + 38M cell_annotations.csv.gz. Uncertainties: 26.7% cells have 0 CAS9 UMI counts; bioRxiv manuscript license cc_by_nc_nd.
+
+2. TIER 2 BORDERLINE — XuCao2023.h5ad / GSE218566 (HEK293-idCas9 CRISPRi PerturbSci-Kinetics, Nat Biotechnol 2023, Zenodo 13350497 CC-BY-4.0, 336.64 MB, HTTP 200):
+   - 228 target genes + 15 NTCs; 126,271 singlets (98,315 post >40% KD filter; ST10 retains 181 DEG targets).
+   - Exact intersection: u6_rep=164, u6_rep&R9_COMMON=143 (ST10: 121 / 109). Est. n_eval_targets: 33-66 (straddles 50).
+   - High risks: shallow ~8,000 reads/cell & median 2,155 UMIs/cell (|G_eval| >= 3000 uncertain), unprinted NTC cell count, 4sU labeling, .h5ad pre- vs post-KD filter status.
+
+3. TIER 2 LIKELY UNDERPOWERED — GSE327644 (Primary human macrophages Cas9-eVLP CRISPRko, Nat Biotechnol Aug 2026, 6.58 GB 16 Flex .h5 files):
+   - 569 canonical targets + 593 Control guides (u6_rep=108, R9_COMMON=92 -> est. 22-43 / 18-37 << 50). Additional risks: GEO mislabels CRISPRko as CRISPRi; 10x Flex probe chemistry; unverified MOI/singlet purity; single donor RG5581 split across Ctrl/LPS.
+
+4. EXHAUSTIVE EXCLUSIONS VERIFIED:
+   - Near-misses (<50 eval_targets): GSE337804 (A549, u6_rep=65), Mixscale GSE281048/Zenodo 14518762 (u6_rep=9-20/pathway; pooled 55, R9C=46, stimulated-only), FrangiehIzar2021 (Melanoma, u6_rep=51, R9C=44), PerturbFate GSE291147 (A375, u6_rep=39), GSE263747 (SNU-761, 108 TFs), GSE273677 (EndoC-bH1, u6_rep=15), GSE283574 (H358 Cas12a, u6_rep=29), GSE280506 (u6_rep=41), Drepanos 2026 Zenodo 20722064 (A549, 25 genes, u6_rep=13), GSE284197 (44 TFs), GSE319096 (29 genes, u6_rep=8), Gupta 2026 (29 genes), GSE200201 (28 genes), GSE271853 (26 genes + dbGaP), GSE305037 (17 genes), GSE354698/Zenodo 20615641 (TF-iMG arrayed <15 genes).
+   - Portals with 0 new qualifying datasets: IGVF (all 157 AnalysisSets exhausted; Huangfu HUES8/Gersbach hepatocyte have 0 AnalysisSets & HUES8 MOI=12), Arc Virtual Cell Atlas (only scbasecount/tahoe100M/forbidden VCC), Cascade 100M (commercial cytokine/drug).
+
+R12_SCREEN_DONE
