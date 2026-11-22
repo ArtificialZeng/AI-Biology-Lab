@@ -1,0 +1,187 @@
+{
+  "prereg_commit_hash": "72fc0c937358b089e78664b464f9db5aafb790b1",
+  "code_freeze_hash": "cc834d863105c66874acb4c27cc214fd79704955",
+  "source_mode": "r9_r10_8",
+  "primary_mask": "all_nontarget",
+  "secondary_masks": [
+    "resp_top50",
+    "resp_top50_split"
+  ],
+  "ci_level_primary": "ci975",
+  "bootstrap_seed": 20261123,
+  "n_boot": 4000,
+  "phase": "holdout_r11",
+  "confirmatory_lines": [
+    "cd4t_stim48"
+  ],
+  "secondary_lines": [
+    "feng_ipsc",
+    "telohaec"
+  ],
+  "k_conf": 1,
+  "k_conf_disclosure": "Insufficient confirmatory cell lines (K_conf < 2); confirmatory hypothesis testing was not performed (\u786e\u8ba4\u6027\u7ebf\u4e0d\u8db3\uff0c\u672a\u505a\u786e\u8ba4\u6027\u68c0\u9a8c).",
+  "cd4t_stim48_in_k_conf": true,
+  "descriptive_H_D4_all_lines": {
+    "primary_ci_level": "ci975",
+    "verdict": "CONFIRMED",
+    "pass_count": 3,
+    "required": 3,
+    "verdicts_by_ci_level": {
+      "ci95": "CONFIRMED",
+      "ci975": "CONFIRMED",
+      "ci9833": "CONFIRMED"
+    },
+    "pass_counts_by_ci_level": {
+      "ci95": 3,
+      "ci975": 3,
+      "ci9833": 3
+    },
+    "per_line": {
+      "cd4t_stim48": {
+        "e1_resp_top50": 0.041432819781007546,
+        "e1_all_nontarget": -0.02115582298175537,
+        "cross_diff": 0.06258864276276291,
+        "valid_frac_resp_top50": 1.0,
+        "valid_frac_cross": 1.0,
+        "ci95": {
+          "e1_resp_top50_lo": 0.027321054728676752,
+          "e1_resp_top50_hi": 0.055044191945154766,
+          "cross_diff_lo": 0.04828120003264587,
+          "cross_diff_hi": 0.07620066740501795,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci975": {
+          "e1_resp_top50_lo": 0.025232387234501892,
+          "e1_resp_top50_hi": 0.05672514141679977,
+          "cross_diff_lo": 0.04647148404618733,
+          "cross_diff_hi": 0.07756356088424088,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci9833": {
+          "e1_resp_top50_lo": 0.023305208409348886,
+          "e1_resp_top50_hi": 0.05765715244474268,
+          "cross_diff_lo": 0.04587213850634483,
+          "cross_diff_hi": 0.07813897855355204,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "pass": true
+      },
+      "feng_ipsc": {
+        "e1_resp_top50": 0.24152656802367506,
+        "e1_all_nontarget": 0.05227962645905379,
+        "cross_diff": 0.18924694156462127,
+        "valid_frac_resp_top50": 1.0,
+        "valid_frac_cross": 1.0,
+        "ci95": {
+          "e1_resp_top50_lo": 0.19662980719840942,
+          "e1_resp_top50_hi": 0.28879767493357555,
+          "cross_diff_lo": 0.14487521817816956,
+          "cross_diff_hi": 0.23549278146035574,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci975": {
+          "e1_resp_top50_lo": 0.189059938543222,
+          "e1_resp_top50_hi": 0.2945406508579697,
+          "cross_diff_lo": 0.1391955355107206,
+          "cross_diff_hi": 0.24120742393714342,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci9833": {
+          "e1_resp_top50_lo": 0.18581962542718916,
+          "e1_resp_top50_hi": 0.2971790376779484,
+          "cross_diff_lo": 0.13418910631737277,
+          "cross_diff_hi": 0.2445557141609793,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "pass": true
+      },
+      "telohaec": {
+        "e1_resp_top50": 0.18076274368705472,
+        "e1_all_nontarget": -0.04234563008541169,
+        "cross_diff": 0.2231083737724664,
+        "valid_frac_resp_top50": 1.0,
+        "valid_frac_cross": 1.0,
+        "ci95": {
+          "e1_resp_top50_lo": 0.0556299401063286,
+          "e1_resp_top50_hi": 0.3409704359655639,
+          "cross_diff_lo": 0.08054531501815917,
+          "cross_diff_hi": 0.42750251965826624,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci975": {
+          "e1_resp_top50_lo": 0.04283100235370665,
+          "e1_resp_top50_hi": 0.3637085247493028,
+          "cross_diff_lo": 0.06508627068251073,
+          "cross_diff_hi": 0.4589834148471316,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci9833": {
+          "e1_resp_top50_lo": 0.03722302273856795,
+          "e1_resp_top50_hi": 0.3748457810226517,
+          "cross_diff_lo": 0.059532417431339746,
+          "cross_diff_hi": 0.4738334274568273,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "pass": true
+      }
+    }
+  },
+  "descriptive_H_D5_feng_ipsc": {
+    "present": true,
+    "role": "SECONDARY_NON_CONFIRMATORY",
+    "n_eval_targets": 95,
+    "n_genes_eval": 5297,
+    "fct_r_orth_cal": 0.12101379497666478,
+    "fct_ci975_lo": 0.10431526308721646,
+    "fct_ci975_hi": 0.1377625883713168,
+    "mis_kolf21j_r_orth_cal": 0.05683646276366667,
+    "mis_kolf21j_ci975_lo": 0.038416225812281796,
+    "mis_kolf21j_ci975_hi": 0.07482175238472508,
+    "paired_fct_minus_mis_kolf21j": 0.06417733221299812,
+    "paired_ci975_lo": 0.05178621537066906,
+    "paired_ci975_hi": 0.07737062098677228,
+    "fct_strictly_exceeds_kolf21j_paired_975": true,
+    "fct_ci_disjoint_above_kolf21j_975": true,
+    "addendum_a3_note": "Split halves share genetic donors across sibling iPSC clones; noise ceiling reflects clone/channel variability rather than inter-donor variation."
+  },
+  "confirmatory_status": "INSUFFICIENT_LINES",
+  "Group_D_Verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+  "H-D1": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D2": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D3": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D4": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D_util": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  }
+}
