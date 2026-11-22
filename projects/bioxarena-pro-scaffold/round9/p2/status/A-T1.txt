@@ -22,3 +22,13 @@ Delivered /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round9/p2/sh
 5. Calu-3 (Zenodo 13350497 SunshineHein2023.h5ad / GSE208240, CC BY 4.0): 743.67 MB; 27,882 QC cells (2,500 NTC); 195 single targets (183 genes); shared_union6 = 63 (SARS-CoV-2 challenged caveat).
 Infrastructure checks: Arc VCC 2026 GCS bucket (virtual-cell-challenge/2026/) is empty (items=[]); Nourreddine 2026 Figshare 27261219 & GitHub have no compact standalone pseudobulk CSV (only 6 .h5ad files, KOLF_Strong=46.72 GB same line). Documented Tier B auxiliary sets (IGVFDS3530HHEU WTC11 Endothelial 0.144 GB / 156 shared / 64 NTC caveat; IGVFDS6332VCTO WTC11 CM 331 shared / >60 GB; Feng 2026 45 HipSci iPSCs / contains kolf_2) and 15 excluded candidates.
 R10_SCREEN_DONE
+
+R10-1 DOWNLOAD & QC PLAN DELIVERED (zero files downloaded; waiting for round10/status/R10_GO.txt):
+Wrote /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/shared/R10_DOWNLOAD_PLAN.md implementing PREREG_C_AUDIT_R1.md P2-P4:
+- Total active cumulative download = 34.080 GB (<= 60.000 GB, 25.920 GB margin; < 4 GB streaming RAM on 36 GiB host):
+  1. Confirmatory 1 — DLD-1 (GSE337988 Low-MOI ONLY, 24 GSM9864227..50 HDF5 trios = 6.496 GB): MULTI-seq singlets with strictly 1 sgRNA; split-half = 12 odd vs 12 even channels (SAM24482910_1,3..23 vs 2,4..24).
+  2. Confirmatory 2 — Primary CD4+ T Rest (GSE314342 lexicographically first 2 donors CE0006864 [D4, 24 R2L .h5 = 12.113 GB] + CE0008162 [D1, 23 R1L .h5 = 14.428 GB] + 0.010 GB S3 CSVs = 26.551 GB; 5,768,399 cells, 153,179 NTC single-sgRNA): strictly 1 sgRNA; split-half by donor (CE0006864 vs CE0008162, noting donor biological & R2/R1 run variance enter split-half noise ceiling).
+  3. Secondary — WTC11 i3Neurons (TianKampmann2021_CRISPRi.h5ad = 0.289 GB, odd vs even lanes lib1/3 vs lib2/4) & Calu-3 (SunshineHein2023.h5ad = 0.744 GB, single-gene elements only, batch parity / state-stratified split).
+- Pre-download Exclusion of H9 (IGVFDS9825FOBP, P2): IGVF exposes zero small single-sgRNA per-target count table (IGVFFI7085MUTI is guide sequences only, 244,119 B); PMC13629240 Table S2 proves only 53,037 pre-QC 1_HTO+1_sgRNA cells (5.53%) -> ~27k post-QC targeting single-sgRNA cells (~19.2/gene across 1,408 genes); and mandatory IGVFFI9448NBQC.pkl (46.074 GB) + .h5 (4.925 GB) = 50.999 GB yields 85.079 GB > 60.000 GB budget (plus 46.074 GB pickle vs 36 GiB RAM). Excluded pre-download (K_conf=2 confirmatory lines).
+- HGNC mapping: canonical resolution via /Users/mac/.cache/r9_p2_raw/hgnc_complete_set.txt (approved -> ENSG -> unambiguous prev_symbol -> alias) plus cross-round R9/R10 canonical loader bridge recovering 164 legacy prev_symbol genes in R9 COMMON_GENES.txt.
+R10_PLAN_DONE

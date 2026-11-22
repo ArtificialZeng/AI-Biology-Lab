@@ -121,16 +121,37 @@ def cipher_unit_response_columns(
     return out
 
 
-def fit_shared_subspace(source_deltas: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def fit_shared_subspace(
+    source_deltas: np.ndarray,
+    proj_mode: str = "span3",
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
-    Fit source-only shared perturbation centroid `b_S` and PC1 residual axis `a_S`,
-    and return orthonormal QR basis `Q_S` for span{1, b_S, a_S}.
-    Matches `fit_baseline_and_axis` in `src/xatlas_panhuman_solver.py`.
+    Fit source-only shared subspace basis strictly from source perturbations.
+
+    proj_mode="span3" (default, locked at CODE_FREEZE 1ca9f60f):
+      Fits centroid `b_S` and PC1 residual axis `a_S` (off span{1, b_S}), returning
+      orthonormal QR basis `Q_S` for span{1, b_S, a_S}, matching `fit_baseline_and_axis`.
+    proj_mode="rank1_q1" (opt-in sensitivity S2b matching PREREG_A v4 §4.2 text):
+      Fits rank-1 centered PCA PC1 `q_1` of `source_deltas`, returning `Q_S = q_1[:, None]`.
     """
+    if proj_mode not in ("span3", "rank1_q1"):
+        raise ValueError(f"Unknown proj_mode={proj_mode!r}; expected 'span3' or 'rank1_q1'.")
     Y = np.asarray(source_deltas, dtype=np.float64)
     G = Y.shape[1]
     base = Y.mean(axis=0)
     Ys = Y - base[None, :]
+    if proj_mode == "rank1_q1":
+        if Ys.shape[0] >= 1 and float(np.linalg.norm(Ys)) > 1e-12:
+            _, _, Vt = np.linalg.svd(Ys, full_matrices=False)
+            q1 = Vt[0].copy()
+            q1_norm = float(np.linalg.norm(q1))
+            if q1_norm > 1e-12:
+                q1 = q1 / q1_norm
+                if q1[np.argmax(np.abs(q1))] < 0:
+                    q1 = -q1
+                return base, q1, q1[:, None]
+        return base, np.zeros(G, dtype=np.float64), np.zeros((G, 0), dtype=np.float64)
+
     M0 = np.column_stack([np.ones(G, dtype=np.float64), base])
     Q0, R0 = np.linalg.qr(M0, mode="reduced")
     Q0 = Q0[:, np.abs(np.diag(R0)) > 1e-10 * max(1.0, np.abs(R0).max())]
@@ -207,13 +228,14 @@ class SourceModelState:
         source_lines: Sequence[SourceLineInput],
         mask_self: bool = True,
         min_var: float = 1e-8,
+        proj_mode: str = "span3",
     ) -> "SourceModelState":
         if len(source_lines) == 0:
             raise ValueError("At least one source line is required.")
         lam = fit_cipher_lambda(source_lines, mask_self=mask_self, min_var=min_var)
         all_deltas = np.vstack([np.asarray(s.deltas, dtype=np.float64) for s in source_lines])
         grand_mean = all_deltas.mean(axis=0)
-        base_shared, axis_shared, Q_shared = fit_shared_subspace(all_deltas)
+        base_shared, axis_shared, Q_shared = fit_shared_subspace(all_deltas, proj_mode=proj_mode)
 
         target_map: Dict[str, List[Tuple[int, int]]] = {}
         for s_idx, src in enumerate(source_lines):

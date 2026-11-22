@@ -283,7 +283,7 @@ All sensitivity variants were executed independently under frozen code (`CODE_FR
 
 ## 5. Exploratory Analysis Reference (`FCT`, Not Pre-Registered)
 
-Independent inspection of `results/exploratory_fct_summary.json` and `results/EXPLORATORY_FCT.md` (post-hoc specificity test using 5 mismatched `ctrl_mean_libnorm` controls + 100 permutations `default_rng(k)`, `97.5%` CIs) confirms:
+Independent inspection of `results/exploratory_fct_summary.json` and `results/EXPLORATORY_FCT.md` (A-T2 post-hoc specificity test using 5 mismatched `ctrl_mean_libnorm` controls + 100 permutations `default_rng(k)`, `97.5%` CIs) confirms:
 - `nadig_hepg2` (`N=799`, Confirmatory): `r_orth_cal = +0.2611 [+0.2420, +0.2807]` > `max mismatch CI hi (+0.1319)` & `perm100 p97.5 (+0.1696)` (`True`); `slope = +0.0588 [+0.0536, +0.0640]` > `+0.0434` / `-0.0043` (`True`).
 - `nadig_jurkat` (`N=934`, Confirmatory): `r_orth_cal = +0.1043 [+0.0849, +0.1238]` `<= perm100 p97.5 (+0.1201, median +0.0680)` (`False`); `slope = +0.0200 [+0.0149, +0.0253]` `<= +0.0367` / `+0.0480` (`False`).
 - `vcc2025_h1` (`N=80`, Confirmatory): `r_orth_cal = +0.3505 [+0.2784, +0.4245]` > `+0.2022` / `+0.2445` (`True`); `slope = +0.2503 [+0.1339, +0.3542]` `<= perm100 p97.5 (+0.2409)` (`False`).

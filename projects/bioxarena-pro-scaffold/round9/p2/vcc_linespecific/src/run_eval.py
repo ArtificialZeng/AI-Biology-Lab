@@ -290,6 +290,7 @@ def evaluate_datasets(
     n_boot: int = 4000,
     seed: int = 20261121,
     require_official_spec: bool = True,
+    proj_mode: str = "span3",
 ) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, Any]]:
     """Run full leave-one-cell-line-out evaluation across `datasets`."""
     if require_official_spec:
@@ -349,7 +350,7 @@ def evaluate_datasets(
         t_ds = datasets[target_line]
         src_names = [ln for ln in line_names if ln != target_line]
         src_inputs = [all_source_inputs[s] for s in src_names]
-        state = SourceModelState.fit(src_inputs, mask_self=mask_self)
+        state = SourceModelState.fit(src_inputs, mask_self=mask_self, proj_mode=proj_mode)
         lam_by_target_line[target_line] = float(state.lam)
 
         row_idx, q_names, q_gidx = select_eval_targets(
@@ -1062,6 +1063,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--only-reproducible", action="store_true", default=False)
     p.add_argument("--n-boot", type=int, default=4000)
     p.add_argument("--seed", type=int, default=20261121)
+    p.add_argument(
+        "--proj-mode",
+        choices=["span3", "rank1_q1"],
+        default="span3",
+        help="Shared-subspace projector mode (span3=frozen default; rank1_q1=S2b sensitivity).",
+    )
     return p.parse_args()
 
 
@@ -1103,6 +1110,7 @@ def main() -> None:
         n_boot=args.n_boot,
         seed=args.seed,
         require_official_spec=True,
+        proj_mode=args.proj_mode,
     )
     cf_hash = read_code_freeze_hash()
     summary["phase"] = args.phase
@@ -1113,6 +1121,7 @@ def main() -> None:
     summary["mask_self"] = not args.no_mask_self
     summary["only_reproducible"] = args.only_reproducible
     summary["shared_targets_only"] = not args.all_targets
+    summary["proj_mode"] = args.proj_mode
     summary["bootstrap_seed"] = args.seed
     summary["n_boot"] = args.n_boot
     summary["elapsed_sec"] = round(time.time() - t0, 2)

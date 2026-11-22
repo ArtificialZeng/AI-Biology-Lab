@@ -23,7 +23,9 @@ from predictors import (
     SourceLineInput,
     SourceModelState,
     compute_control_covariance,
+    fit_shared_subspace,
     predict_zero_shot_suite,
+    project_out_basis,
 )
 from run_eval import control_splithalf_covariance_reliability, evaluate_datasets
 
@@ -617,6 +619,48 @@ def test_v4_r17_r19_orth_globalscale_perm100_vardecomp():
     assert "Transfer_Mean_GlobalScale" in adj_neg["R18_GlobalScale_Summary"]["summary_statement"]
 
 
+def test_s2b_rank1_q1_projection_mode() -> None:
+    rng = np.random.default_rng(123)
+    N, G = 40, 24
+    Y = rng.normal(0.0, 0.2, size=(N, G)) + np.linspace(0.5, -0.5, G)[None, :]
+    b_def, a_def, Q_def = fit_shared_subspace(Y)
+    b_sp3, a_sp3, Q_sp3 = fit_shared_subspace(Y, proj_mode="span3")
+    assert np.array_equal(b_def, b_sp3)
+    assert np.array_equal(a_def, a_sp3)
+    assert np.array_equal(Q_def, Q_sp3)
+    assert Q_def.shape == (G, 3)
+
+    b_r1, q1, Q_r1 = fit_shared_subspace(Y, proj_mode="rank1_q1")
+    assert np.array_equal(b_r1, b_def)
+    assert Q_r1.shape == (G, 1)
+    assert np.allclose(np.linalg.norm(q1), 1.0, atol=1e-12)
+    assert np.allclose(Q_r1[:, 0], q1, atol=1e-12)
+    _, _, Vt = np.linalg.svd(Y - Y.mean(axis=0, keepdims=True), full_matrices=False)
+    expected_q1 = Vt[0].copy()
+    if expected_q1[np.argmax(np.abs(expected_q1))] < 0:
+        expected_q1 = -expected_q1
+    assert np.allclose(q1, expected_q1, atol=1e-12)
+    assert float(np.linalg.norm(project_out_basis(q1[None, :], Q_r1))) < 1e-12
+
+    cov_s = np.eye(G) + 0.2 * np.outer(q1, q1)
+    cov_t = np.diag(rng.uniform(0.5, 1.5, size=G)) + 0.3 * np.outer(q1, q1)
+    src = SourceLineInput(
+        name="S1",
+        target_names=[f"T{i}" for i in range(N)],
+        target_indices=np.arange(N, dtype=np.int64) % G,
+        deltas=Y,
+        ctrl_cov=cov_s,
+    )
+    st_sp3 = SourceModelState.fit([src], mask_self=True, proj_mode="span3")
+    st_r1 = SourceModelState.fit([src], mask_self=True, proj_mode="rank1_q1")
+    preds_sp3 = predict_zero_shot_suite(st_sp3, cov_t, [f"T{i}" for i in range(10)], np.arange(10, dtype=np.int64))
+    preds_r1 = predict_zero_shot_suite(st_r1, cov_t, [f"T{i}" for i in range(10)], np.arange(10, dtype=np.int64))
+    for inv_k in ("Transfer_Mean", "CIPHER_Linear", "Hybrid_Raw", "Transfer_Mean_VarScaled", "Transfer_Mean_GlobalScale"):
+        assert np.allclose(preds_sp3[inv_k], preds_r1[inv_k], atol=1e-12)
+    assert not np.allclose(preds_sp3["Hybrid_ProjShared"], preds_r1["Hybrid_ProjShared"])
+    assert not np.allclose(preds_sp3["Hybrid_on_TMVS"], preds_r1["Hybrid_on_TMVS"])
+
+
 if __name__ == "__main__":
     test_cipher_and_hybrid_planted_recovery()
     test_metrics_and_bootstrap()
@@ -625,4 +669,5 @@ if __name__ == "__main__":
     test_r4_controls_and_confirmatory_threshold()
     test_v3_group_b_fct_hybrid_on_tmvs_s5_and_ci975()
     test_v4_r17_r19_orth_globalscale_perm100_vardecomp()
+    test_s2b_rank1_q1_projection_mode()
     print("ALL_UNIT_TESTS_PASSED")

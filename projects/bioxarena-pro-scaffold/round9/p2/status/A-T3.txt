@@ -1,13 +1,16 @@
 HELDOUT_PRIMARY_DONE
-[A-T3] HELDOUT_PRIMARY_DONE + C3_CROSSCHECK_PASS 2026-11-21T23:02+08:00:
-1. Primary Held-Out 6-Line Standalone Audit Complete (CODE_FREEZE 1ca9f60f49adf1ac7cce8266e40533273411db30; PREREG_A v4 commit 4cc89ebae67f0ed0748b80f994d26dcc9c2b95ef; C2 default_rng(k) & default_rng(20261121) x 4000; 6,148 COMMON_GENES):
+[A-T3] HELDOUT_FULL_SENSITIVITIES_AND_PAPER_DRAFT_DONE 2026-11-22T09:32+08:00:
+1. Primary Held-Out 6-Line Standalone Audit Complete (CODE_FREEZE 1ca9f60f49adf1ac7cce8266e40533273411db30; PREREG_A v4 4cc89ebae67f0ed0748b80f994d26dcc9c2b95ef):
    - Group A (Hybrid_ProjShared): 未确认 (NOT CONFIRMED) — H-A1 0/3, H-A2 2/3, H-A3 0/3, H-A4 FAIL (3/3 inf).
    - Group B (Transfer_Mean_VarScaled): 未确认 (NOT CONFIRMED) — H-B1 0/3, H-B2 2/3, H-B3 0/3, H-B4 FAIL (3/3 inf).
-   - R14 Mechanism: "In this dataset, co-fluctuation structure exhibits no detectable increment beyond marginal variance" (delta r_orth_cal = +0.0131 / +0.0165 / -0.0044 [-0.0685, +0.0545] on H1).
-   - R18 GlobalScale Callout: raw r_resid = -0.1264 (HepG2), -0.0056 (Jurkat), +0.2501 (H1), +0.2774 (K562), +0.3521 (RPE1), -0.3161 (KOLF2.1J); r_orth_cal = 0.0000.
-2. C3 Cross-Check vs A-T2 (results/*_holdout_log1p_sh0.0_rep1.*):
-   - Saved to audit/cross_check_diffs.json & audit/AUDIT_REPORT.md.
-   - 6 lines matched, 456 numeric comparisons: 264/264 deterministic point checks flagged=0 (max abs diff = 1.11001e-14); 0 real bootstrap CI differences > 0.01 (45 flagged items only in single-seed random shuffles, legacy max_ctrl 1-seed vs perm100 summary, and A-T2 rm_cent shared_axis projection).
-   - C3 Hypothesis Consensus: 8/8 hypotheses (H-A1..H-A4, H-B1..H-B4) agree 100% between A-T2 and A-T3 (all 未确认).
-3. Sensitivities In Progress (post HELDOUT_PRIMARY_DONE per C4):
-   - S1 (--all-targets, task-1270) and S2 (Hybrid_Raw no --project-shared-axis, task-1271) actively running into audit/sensitivity/; S3 (shrink=1e-3), S4a (cov_max_cells=10000), and S4b (zscore) queued next prior to final AUDIT_REPORT.md & TASK_DONE.
+   - C3 Cross-Check vs A-T2: 6 lines, 456 comparisons, 264/264 deterministic <= 1.11001e-14, 0 real CI diffs > 0.01, 8/8 hypothesis consensus.
+2. Full Pre-Registered Sensitivity Suite Complete (audit/sensitivity/):
+   - S1 (s1_all_targets --all-targets), S2 (s2_no_proj Hybrid_Raw), S3 (s3_shrink1e3), S4a (s4a_cov10k), S4b (s4b_zscore) + S5 (4,611 genes) + S6 (all_nontarget ceilings) + R19 (3-tier multiplicative gain decomposition).
+   - Across ALL sensitivity variants: BOTH Group A and Group B remain 未确认 (NOT CONFIRMED), R14 remains False.
+   - Dual-team sensitivity parity vs A-T2: S3 max_abs_diff = 3.123e-17 (30 checks); S4b max_abs_diff = 1.329e-15 (24 Hyb+TMVS checks); S4a subsample RNG diff 2.024e-02 (verdicts identical).
+   - Updated audit/AUDIT_REPORT.md + re-verified 18/18 audit unit tests (OK).
+3. Round 9 Preprint Draft Complete & Audited:
+   - Written to round9/p2/paper/PREPRINT_DRAFT.md (sha256: aebcae7f9559a86a32f9b14148595aaab5230ed50c66e2f3fc340dcbef597a93).
+   - PAPER_DRAFT_READY.txt created with exact 1-line sha256; incorporates arXiv:2608.00152v3 (Shoeibi & Yousefi, 2026), R18 GlobalScale, FCT secondary/exploratory segregation, Prior Art A/B/C boundaries, AI disclosure, and 0 forbidden terms.
+PAPER_DRAFT_READY
+TASK_DONE
