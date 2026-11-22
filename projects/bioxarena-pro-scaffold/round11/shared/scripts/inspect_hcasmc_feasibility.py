@@ -65,7 +65,43 @@ def run_feasibility(
 
         with h5py.File(h5_path, "r") as f:
             if "matrix" not in f:
-                raise RuntimeError("HDF5 missing /matrix group")
+                flat_req = ("cells", "genes", "indptr", "indices", "data", "shape")
+                if all(k in f for k in flat_req):
+                    sh = [int(x) for x in f["shape"][:]]
+                    n_c, n_g = (sh[0], sh[1]) if len(sh) == 2 else (int(f["cells"].shape[0]), int(f["genes"].shape[0]))
+                    genes_dec = [x.decode("utf-8", errors="replace") for x in f["genes"][:]]
+                    cells_dec = [x.decode("utf-8", errors="replace") for x in f["cells"][:]]
+                    us_cnt = Counter(b.split("__")[-1] if "__" in b else "" for b in cells_dec)
+                    us_cnt.pop("", None)
+                    n_ensg = sum(1 for g in genes_dec if g.startswith("ENSG"))
+                    non_ensg = [g for g in genes_dec if not g.startswith("ENSG")]
+                    all_guides = ref_ntc | ref_safe | ref_tgt
+                    g_hits = sum(1 for g in genes_dec if g in all_guides)
+                    result.update({
+                        "h5_layout": "parse_flat_root_csr",
+                        "shape": sh,
+                        "nnz": int(f["data"].shape[0]),
+                        "indptr_len": int(f["indptr"].shape[0]),
+                        "indptr_dtype": str(f["indptr"].dtype),
+                        "data_dtype": str(f["data"].dtype),
+                        "data_chunks": str(f["data"].chunks),
+                        "data_compression": str(f["data"].compression),
+                        "n_cells": len(cells_dec),
+                        "n_genes_entries": len(genes_dec),
+                        "n_rna_ensg": int(n_ensg),
+                        "non_ensg_sample": non_ensg[:20],
+                        "n_guide_features": int(g_hits),
+                        "guide_tsv_n_rows": int(len(gdf)),
+                        "guide_tsv_types": {str(k): int(v) for k, v in gdf["type"].value_counts().items()},
+                        "barcode_samples": cells_dec[:5] + cells_dec[-5:],
+                        "barcode_us_suffix_counts": dict(us_cnt.most_common(20)),
+                    })
+                    raise RuntimeError(
+                        f"Parse flat-root CSR matrix ({n_c:,} cells x {n_g:,} ENSG RNA features, nnz={int(f['data'].shape[0]):,}) "
+                        f"contains ZERO CRISPR guide-capture features (guide_matches={g_hits}, non_ensg={non_ensg[:5]}); "
+                        f"manifest guide TSVs ({len(gdf)} rows) are guide library tables lacking per-cell barcodes/assignments."
+                    )
+                raise RuntimeError(f"HDF5 missing /matrix group (root keys={list(f.keys())})")
             m = f["matrix"]
             for req in ("shape", "barcodes", "indptr", "indices", "data", "features"):
                 if req not in m:

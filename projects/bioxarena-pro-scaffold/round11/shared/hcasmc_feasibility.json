@@ -1,0 +1,59 @@
+{
+  "h5_path": "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/shared/raw/hcasmc/IGVFFI5999NXAF.h5",
+  "feasible": false,
+  "reason": "RuntimeError: Parse flat-root CSR matrix (955,600 cells x 62,710 ENSG RNA features, nnz=2,679,007,357) contains ZERO CRISPR guide-capture features (guide_matches=0, non_ensg=['gene_id']); manifest guide TSVs (3163 rows) are guide library tables lacking per-cell barcodes/assignments.",
+  "h5_layout": "parse_flat_root_csr",
+  "shape": [
+    955600,
+    62710
+  ],
+  "nnz": 2679007357,
+  "indptr_len": 955601,
+  "indptr_dtype": "int64",
+  "data_dtype": "int64",
+  "data_chunks": "None",
+  "data_compression": "None",
+  "n_cells": 955600,
+  "n_genes_entries": 62711,
+  "n_rna_ensg": 62710,
+  "non_ensg_sample": [
+    "gene_id"
+  ],
+  "n_guide_features": 0,
+  "guide_tsv_n_rows": 3163,
+  "guide_tsv_types": {
+    "targeting": 2913,
+    "safe-targeting": 125,
+    "non-targeting": 125
+  },
+  "barcode_samples": [
+    "79_01_01__s1",
+    "79_01_14__s1",
+    "79_01_36__s1",
+    "79_01_62__s1",
+    "79_01_69__s1",
+    "78_90_45__s14",
+    "78_92_13__s14",
+    "78_94_07__s14",
+    "78_96_04__s14",
+    "78_96_52__s14"
+  ],
+  "barcode_us_suffix_counts": {
+    "s13": 75136,
+    "s1": 73515,
+    "s10": 73067,
+    "s9": 72728,
+    "s2": 72285,
+    "s5": 72271,
+    "s7": 72086,
+    "s12": 71968,
+    "s3": 71907,
+    "s6": 71745,
+    "s11": 71715,
+    "s8": 70764,
+    "s4": 70600,
+    "s14": 15813
+  },
+  "max_rss_gb": 0.306,
+  "elapsed_sec": 0.2
+}
