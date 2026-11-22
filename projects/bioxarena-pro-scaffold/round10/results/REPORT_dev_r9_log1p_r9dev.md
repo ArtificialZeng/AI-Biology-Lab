@@ -98,12 +98,12 @@
 
 ## 100-Perm `NegCtrl_FCT_Perm` (`k=0..99`) & Mismatched Mean Summary
 
-- **nadig_hepg2**: perm100 `r_orth_cal` median=+0.1264, p97.5=+0.1696, p98.75=+0.1744; max mismatched hi=+nan
-- **nadig_jurkat**: perm100 `r_orth_cal` median=+0.0685, p97.5=+0.1203, p98.75=+0.1285; max mismatched hi=+nan
-- **nourreddine_kolf21j**: perm100 `r_orth_cal` median=+0.0577, p97.5=+0.1246, p98.75=+0.1381; max mismatched hi=+nan
-- **replogle_k562_essential**: perm100 `r_orth_cal` median=+0.1157, p97.5=+0.1563, p98.75=+0.1576; max mismatched hi=+nan
-- **replogle_rpe1**: perm100 `r_orth_cal` median=+0.0758, p97.5=+0.1064, p98.75=+0.1083; max mismatched hi=+nan
-- **vcc2025_h1**: perm100 `r_orth_cal` median=+0.2101, p97.5=+0.2445, p98.75=+0.2521; max mismatched hi=+nan
+- **nadig_hepg2**: perm100 `r_orth_cal` median=+0.1264, p97.5=+0.1696, p98.75=+0.1744; max mismatched hi=+0.1317
+- **nadig_jurkat**: perm100 `r_orth_cal` median=+0.0685, p97.5=+0.1203, p98.75=+0.1285; max mismatched hi=+0.0846
+- **nourreddine_kolf21j**: perm100 `r_orth_cal` median=+0.0577, p97.5=+0.1246, p98.75=+0.1381; max mismatched hi=+0.1810
+- **replogle_k562_essential**: perm100 `r_orth_cal` median=+0.1157, p97.5=+0.1563, p98.75=+0.1576; max mismatched hi=+0.1257
+- **replogle_rpe1**: perm100 `r_orth_cal` median=+0.0758, p97.5=+0.1064, p98.75=+0.1083; max mismatched hi=+0.1019
+- **vcc2025_h1**: perm100 `r_orth_cal` median=+0.2101, p97.5=+0.2445, p98.75=+0.2521; max mismatched hi=+0.2022
 
 ## `SA-3` Round 9 Anchors Notice (`P7`) & `SA-6 / S7` Cell-Count Controls (`P6`)
 

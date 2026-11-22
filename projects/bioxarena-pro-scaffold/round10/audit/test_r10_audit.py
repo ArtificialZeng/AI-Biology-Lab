@@ -247,6 +247,31 @@ class TestRound10Audit(unittest.TestCase):
         for k in p_direct:
             np.testing.assert_allclose(p_direct[k], p_cached[k], atol=1e-12)
 
+    def test_cross_check_long_table_parity(self):
+        import csv
+        import json
+        from run_r10_audit import run_cross_check
+        with tempfile.TemporaryDirectory() as tmp:
+            p_csv = Path(tmp) / "line_metrics_test.csv"
+            p_json = Path(tmp) / "summary_test.json"
+            with p_csv.open("w", newline="", encoding="utf-8") as fh:
+                w = csv.DictWriter(fh, fieldnames=["target_line", "method", "r_orth_cal", "r_orth_cal_ci975_lo", "r_orth_cal_ci975_hi", "ctrl_de50_r"])
+                w.writeheader()
+                w.writerow({"target_line": "dld1", "method": "FCT", "r_orth_cal": 0.25, "r_orth_cal_ci975_lo": 0.20, "r_orth_cal_ci975_hi": 0.30, "ctrl_de50_r": 0.61})
+            p_json.write_text(json.dumps({"fct_perm100": {"dld1": {"r_orth_cal": {"p97_5": 0.12, "median": 0.08}}}}), encoding="utf-8")
+            lr = {
+                "dld1": {
+                    "methods": {"fct": {"resp_top50": {"r_orth_cal_est": 0.25, "r_orth_cal_ci975_lo": 0.201, "r_orth_cal_ci975_hi": 0.299}}},
+                    "perm100": {"r_orth_cal": {"p975": 0.12, "median": 0.08}},
+                    "hc3": {"ctrl_de50_r": {"fct_mean": 0.61}},
+                    "s7": {},
+                }
+            }
+            cc = run_cross_check(lr, [], p_csv, results_summary_json=p_json)
+            self.assertTrue(cc["passes_c3_tolerance"])
+            self.assertLess(cc["max_point_abs_diff"], 1e-12)
+            self.assertLess(cc["max_ci_abs_diff"], 0.002)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

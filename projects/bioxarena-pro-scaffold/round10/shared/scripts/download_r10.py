@@ -48,7 +48,7 @@ LINE_META = {
         "title": "4. Calu-3 Lung Adenocarcinoma (Sunshine et al. 2023, Zenodo 13350497 / GSE208240)",
         "pub": "Sunshine S, Hein MY, Weissman JS et al. (*Nat. Commun.* 2023), `doi:10.1038/s41467-023-41788-4`, `PMID:37803001`.",
         "license": "`CC BY 4.0` (Zenodo `13350497` and *Nat. Commun.*).",
-        "note": "Direct-capture CRISPRi (`SunshineHein2023.h5ad`, `743,672,579 B`); dual-gene combinatorial elements (`22` pairs) excluded at QC ingestion.",
+        "note": "Direct-capture CRISPRi (`SunshineHein2023.h5ad`, `743,672,579 B`); dual-gene combinatorial elements (`2,667` cells) excluded at QC ingestion.",
     },
 }
 

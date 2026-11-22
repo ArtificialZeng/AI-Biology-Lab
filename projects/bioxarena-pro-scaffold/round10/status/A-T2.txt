@@ -1,0 +1,25 @@
+ROUND 10 GROUP C (`FCT`) PIPELINE IMPLEMENTATION & ROUND 9 DEV TESTING COMPLETE (Zero R10 Data Accessed)
+
+1. Implemented Modules in `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/src/` (Aligned to PREREG_C commit dc4b4a5, PREREG_C_AUDIT_R1 P1-P7, & R10_DOWNLOAD_PLAN.md):
+   - `__init__.py` & `data_loader_r10.py`:
+     * `HGNCBridge`: Deterministic 4-tier canonical HGNC resolution (`Approved` -> unambiguous `ENSG` -> unambiguous `prev_symbol` -> unambiguous `alias_symbol`) via frozen `/Users/mac/.cache/r9_p2_raw/hgnc_complete_set.txt`, resolving 162/6148 legacy symbols in R9 `COMMON_GENES.txt` cleanly with 0 collisions and mapping R9->R10 without mutating R9 data.
+     * Pure-Python `h5py` chunked/sparse loaders (`<= 4 GB` RAM): `read_10x_feature_bc_matrix_h5`, `call_single_features_from_umi`, `load_dld1_gsm_channel` (`GSE337988` Low-MOI trio MULTI-seq singlet + single-sgRNA P4 filter, regex `parse_dld1_guide_gene`), `read_cd4t_flex_h5` (`GSE314342` Rest single-sgRNA + `sgrna_library_metadata.suppl_table.csv`), `iter_h5ad_csr_chunks_r10` (`wtc11_i3neuron`, `calu3`), `count_igvf_single_sgrna_from_metadata` (`P2` >= 50 shared target gate without expression download), and deterministic `split_units_even_odd` (`PREREG_C §2.3` even/odd unit split).
+     * Hard execution gate `check_prereg_c_gate`: blocks `--phase holdout_r10` unless both `PREREG_C_COMMIT.txt` and `CODE_FREEZE_R10.txt` exist and are non-empty.
+   - `fct_pipeline.py`:
+     * Zero-tuning `FCT` (`PREREG_A v4 §4.6` / `PREREG_C §3.1`), `Transfer_Mean`, all source `NegCtrl_FCT_MismatchedMean(s')` (6 in R10, 5 in R9 LOLO), `NegCtrl_FCT_Perm0` + streaming `iter_fct_perm_predictions` (`default_rng(k)` k=0..99), `FCT_FullNTMean` (`SA-5b`), `Transfer_Mean_GlobalScale` (`SA-2`), and `SA-3` Round 9 anchors (`Hybrid_ProjShared` strictly using frozen `1ca9f60f` 3D `span{1, b_S, a_S}` per `P7`, `TMVS`, `Hybrid_on_TMVS`, `CIPHER_Linear`, `Source_Grand_Mean`).
+   - `metrics_r10.py`:
+     * Amplitude-orthogonalized `r_orth_cal` (`resp_top50` + `all_nontarget` S6), joint perturbation bootstrap (`default_rng(20261122)` x `4000`, Bonferroni two-sided 97.5% CIs `[1.25%, 98.75%]`), all 6 `H-C3` discrimination/DE50 conventions (`ctrl_*` & `cent_*` `disc_raw`, `disc_raw_panel`, `de50_r`, plus `pds_cosine_panel`), `compute_fct_perm100_null` (`k=0..99`), BLAS-vectorized 3-tier `R19` decomposition (`1-df` zero-intercept within-gene slope + `W^2` cluster-df unbiased subtraction), and `S7` (`P6`) analysis (`r_orth_p`, Spearman vs `ln(n_cells)` and `|k_p|` with 97.5% CIs, mean-centered covariate OLS intercept `[1, ln(n_cells), |k_p|]` 97.5% CI, and `n_cells` tertiles `T1/T2/T3`).
+   - `adjudicate_r10.py` & `run_eval_r10.py`:
+     * `P1` guard (`K_conf < 2` suspends confirmatory testing with exact verbatim disclosure), `K_conf = 2` disclosure tag, `H-C1`, `H-C2`, `H-C3` evaluation, CLI supporting `--phase {dev_r9, holdout_r10}`, `--all-targets` (`S1`), `--s5-top75` (`S5` control variance > Q_0.25).
+
+2. Verification Strictly Using Synthetic Unit Tests + Round 9's Existing 6 Lines Only (`round10/shared/lines/` untouched):
+   - Unit Tests (`python3 test_unit_r10.py`, re-run after final edits): **`R10_ALL_UNIT_TESTS_PASSED`** (0 warnings; covers HGNC bridge, `PREREG_C` gate block/allow, all HDF5 stream loaders on synthetic `.h5`/`.h5ad`/`.csv.gz` fixtures, `<1e-12` `FCT` & `Hybrid_ProjShared` parity vs Round 9, GlobalScale collapse, planted pass & null fail & `P1` `K_conf < 2` adjudication, `S7` Spearman/OLS/tertiles, and unbiased `R19`).
+   - Full 6-Line R9 Dev Evaluation (`run_eval_r10.py --phase dev_r9 --repr log1p --n-boot 4000 --seed 20261122 --tag-suffix _r9dev`, `692.33s`, artifacts in `round10/results/*_dev_r9_log1p_r9dev.*`):
+     * `nadig_hepg2` (`N=797` post-HGNC dedup): `FCT r_orth_cal=+0.2614 [+0.2424, +0.2812]` (vs R9 `+0.2611`), `max_mis_hi=+0.1317`, `perm100 p97.5=+0.1696`; `S7` Spearman(`r_orth_p`, ln n_cells)=`+0.2084`, OLS-adjusted intercept=`+0.2943 [+0.2763, +0.3113]`; `T1..T3` FCT `r_orth_cal`=`+0.2117 / +0.2589 / +0.3333`.
+     * `nadig_jurkat` (`N=931`): `FCT r_orth_cal=+0.1047 [+0.0860, +0.1243]` (vs R9 `+0.1043`), `max_mis_hi=+0.0846`, `perm100 p97.5=+0.1203`; `S7` OLS intercept=`+0.1174 [+0.1021, +0.1331]`.
+     * `vcc2025_h1` (`N=80`): `FCT r_orth_cal=+0.3505 [+0.2765, +0.4225]` (exact match R9 `+0.3505`), `max_mis_hi=+0.2022`, `perm100 p97.5=+0.2445`; `S7` OLS intercept=`+0.3196 [+0.2587, +0.3818]`.
+     * `replogle_k562_essential` (`N=858`): `+0.1939 [+0.1739, +0.2147]`; `replogle_rpe1` (`N=1068`): `+0.1295 [+0.1116, +0.1480]`; `nourreddine_kolf21j` (`N=18`): `+0.1839 [+0.0183, +0.3537]`.
+     * `R19` `all_nontarget` parity vs R9 (`L1 / L2 / L3`): `hepg2` `0.1309/0.0733/0.7958` (vs R9 `0.1310/0.0731/0.7958`), `jurkat` `0.2301/0.0589/0.7110` (vs `0.2301/0.0586/0.7113`), `vcc2025_h1` `0.3477/0.0416/0.6107` (vs `0.3477/0.0367/0.6156`).
+   - `S5` Sensitivity Smoke Check (`run_eval_r10.py --phase dev_r9 --repr log1p --s5-top75 --lines nadig_hepg2,vcc2025_h1 --n-boot 500 --tag-suffix _r9dev_s5`, `192.03s`): `nadig_hepg2` `+0.2627`, `vcc2025_h1` `+0.3495`.
+
+R10_CODE_READY

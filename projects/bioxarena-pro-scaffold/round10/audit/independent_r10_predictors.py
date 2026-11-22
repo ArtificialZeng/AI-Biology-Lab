@@ -369,7 +369,8 @@ def build_predictions(
             diff = v_t - v_s_mean
             if q_3d.shape[1] > 0:
                 diff = diff - q_3d @ (q_3d.T @ diff)
-            ls_term = lam_ls * diff
+            # Frozen 1ca9f60f SA-3 (P7) definition uses global source-fitted CIPHER slope `lam_global`
+            ls_term = lam_global * diff
             cipher[i] = lam_global * v_t
             hyb[i] = t_mean[i] + ls_term
             hyb_tmvs[i] = tmvs[i] + ls_term

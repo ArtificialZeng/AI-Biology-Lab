@@ -37,6 +37,7 @@ import h5py
 import numpy as np
 import pandas as pd
 import scipy.sparse as sp
+from scipy.sparse.linalg import eigsh
 from statsmodels.stats.multitest import multipletests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -234,6 +235,7 @@ class PartSpec:
     var_gene_names: List[str]
     read_chunk_fn: Callable[[int, int], np.ndarray]  # returns dense float64 (e-s, n_genes_raw)
     read_rows_fn: Optional[Callable[[np.ndarray], np.ndarray]] = None
+    read_chunk_cols_fn: Optional[Callable[[int, int, np.ndarray], np.ndarray]] = None  # float32 (e-s, len(cols))
 
 
 def _compute_half_stats(
@@ -329,6 +331,7 @@ def process_r10_line(
     max_ram_z_bytes: int = 2_500_000_000,
     shard_max_bytes: int = 8_000_000_000,
     n_workers: int = 8,
+    force_half_seq: Optional[bool] = None,
 ) -> Path:
     """
     Chunked, low-RAM processor for R10 standardized line outputs with disjoint split halves.
@@ -402,8 +405,12 @@ def process_r10_line(
     half_a_batches = np.where([np.any((batch_idx_per_cell == b) & (half_arr == 1)) for b in range(n_batches)])[0]
     half_b_batches = np.where([np.any((batch_idx_per_cell == b) & (half_arr == 2)) for b in range(n_batches)])[0]
 
-    def iter_chunks():
-        for p, cmap, (s_g, e_g) in zip(parts, col_maps, part_offsets):
+    def iter_chunks(part_indices: Optional[Sequence[int]] = None):
+        idxs = range(len(parts)) if part_indices is None else part_indices
+        for p_idx in idxs:
+            p = parts[p_idx]
+            cmap = col_maps[p_idx]
+            s_g, _ = part_offsets[p_idx]
             for loc_s in range(0, p.n_cells, chunk_size):
                 loc_e = min(loc_s + chunk_size, p.n_cells)
                 yield s_g + loc_s, s_g + loc_e, p, cmap, loc_s, loc_e
@@ -535,15 +542,20 @@ def process_r10_line(
         hb_sum_lib, hb_sq_lib, hb_sum_log, hb_cnt, half_b_batches, sel_idx
     )
 
-    # 3. Map perturbations & pre-plan sharded Z_5000 storage for eligible groups (n >= 25)
-    pkey_to_rows: Dict[str, List[int]] = defaultdict(list)
+    # 3. Map perturbations (prune < 10 cells upfront after counting raw groups) & pre-plan sharded Z_5000
+    raw_pkey_to_rows: Dict[str, List[int]] = defaultdict(list)
     for i in range(n_cells):
         if nt_mask[i] or half_arr[i] not in (1, 2):
             continue
         pk = all_pk[i]
         if pk:
-            pkey_to_rows[pk].append(i)
+            raw_pkey_to_rows[pk].append(i)
 
+    n_raw_pk_all = len(raw_pkey_to_rows)
+    pkey_to_rows: Dict[str, List[int]] = {
+        pk: rlist for pk, rlist in raw_pkey_to_rows.items() if len(rlist) >= 10
+    }
+    del raw_pkey_to_rows
     all_pkeys = sorted(pkey_to_rows.keys())
     pkey_to_idx = {pk: i for i, pk in enumerate(all_pkeys)}
     cell_pkey_idx = np.full(n_cells, -1, dtype=np.int32)
@@ -571,25 +583,38 @@ def process_r10_line(
     X_ctrl_ad = np.empty((len(nt_ad_idx), G_top), dtype=np.float32)
     X_ctrl_en_5000 = np.empty((len(nt_en_idx), G_top), dtype=np.float32)
 
-    pb_cnt = np.zeros(n_pk, dtype=np.int64)
-    pb_sum_lib = np.zeros((n_pk, G), dtype=np.float64)
-    pb_sum_log = np.zeros((n_pk, G), dtype=np.float64)
-    pb_sum_z = np.zeros((n_pk, G), dtype=np.float64)
-
-    ha_pb_cnt = np.zeros(n_pk, dtype=np.int64)
-    ha_pb_sum_lib = np.zeros((n_pk, G), dtype=np.float64)
-    ha_pb_sum_log = np.zeros((n_pk, G), dtype=np.float64)
-    ha_pb_sum_z = np.zeros((n_pk, G), dtype=np.float64)
-
-    hb_pb_cnt = np.zeros(n_pk, dtype=np.int64)
-    hb_pb_sum_lib = np.zeros((n_pk, G), dtype=np.float64)
-    hb_pb_sum_log = np.zeros((n_pk, G), dtype=np.float64)
-    hb_pb_sum_z = np.zeros((n_pk, G), dtype=np.float64)
+    disjoint_batches = not np.any((ha_cnt > 0) & (hb_cnt > 0))
+    part_halves = [set(p.half_flags[p.half_flags > 0].tolist()) for p in parts]
+    can_half_seq = disjoint_batches and all(len(hs) <= 1 for hs in part_halves)
 
     elig_pidx = [i for i, pk in enumerate(all_pkeys) if len(pkey_to_rows[pk]) >= 25]
     n_elig_cells = sum(len(pkey_to_rows[all_pkeys[pi]]) for pi in elig_pidx)
     row_bytes = max(G_top, 1) * 4
     use_ram_z = (n_elig_cells * row_bytes) <= max_ram_z_bytes
+    use_half_seq = can_half_seq if force_half_seq is None and not use_ram_z else (bool(force_half_seq) and can_half_seq)
+
+    ha_pb_cnt = np.zeros(n_pk, dtype=np.int64)
+    hb_pb_cnt = np.zeros(n_pk, dtype=np.int64)
+    pb_cnt = None if disjoint_batches else np.zeros(n_pk, dtype=np.int64)
+    pb_sum_lib = pb_sum_log = pb_sum_z = None
+    ha_pb_sum_lib = ha_pb_sum_log = ha_pb_sum_z = None
+    hb_pb_sum_lib = hb_pb_sum_log = hb_pb_sum_z = None
+
+    if not use_half_seq:
+        ha_pb_sum_lib = np.zeros((n_pk, G), dtype=np.float32)
+        ha_pb_sum_log = np.zeros((n_pk, G), dtype=np.float32)
+        ha_pb_sum_z = np.zeros((n_pk, G), dtype=np.float32)
+        hb_pb_sum_lib = np.zeros((n_pk, G), dtype=np.float32)
+        hb_pb_sum_log = np.zeros((n_pk, G), dtype=np.float32)
+        hb_pb_sum_z = np.zeros((n_pk, G), dtype=np.float32)
+        if not disjoint_batches:
+            pb_sum_lib = np.zeros((n_pk, G), dtype=np.float32)
+            pb_sum_log = np.zeros((n_pk, G), dtype=np.float32)
+            pb_sum_z = np.zeros((n_pk, G), dtype=np.float32)
+
+    union_raw_idx = np.unique(np.concatenate([sel_idx, top5000_raw_idx])) if same_var else None
+    sel_in_u = np.searchsorted(union_raw_idx, sel_idx) if union_raw_idx is not None else None
+    top_in_u = np.searchsorted(union_raw_idx, top5000_raw_idx) if union_raw_idx is not None else None
 
     z_ram_pos = np.full(n_cells, -1, dtype=np.int32)
     cell_shard = np.full(n_cells, -1, dtype=np.int32)
@@ -634,108 +659,206 @@ def process_r10_line(
 
     shard_row_paths = [out_dir / f"_tmp_shard_{s}.rows.bin" for s in range(len(shard_groups))]
     shard_pid_paths = [out_dir / f"_tmp_shard_{s}.pidx.bin" for s in range(len(shard_groups))]
+    pb_ha_paths = [out_dir / f"_tmp_ha_{k}.f32.bin" for k in ("lib", "log", "z")] if use_half_seq else []
+    pb_hb_paths = [out_dir / f"_tmp_hb_{k}.f32.bin" for k in ("lib", "log", "z")] if use_half_seq else []
 
     t2 = time.time()
     mode_desc = f"RAM({n_elig_cells:,}x{G_top})" if use_ram_z else f"{len(shard_groups)} SSD shards (~{n_elig_cells*row_bytes/1e9:.1f}GB)"
+    hs_desc = ", half_seq=True" if use_half_seq else ""
     print(
-        f"  [Pass 2] Populating ctrl_cells ({N_ctrl:,}x{G}), pseudobulk ({n_pk} groups, elig={len(elig_pidx)}), Z_5000={mode_desc}...",
+        f"  [Pass 2] Populating ctrl_cells ({N_ctrl:,}x{G}), pseudobulk ({n_pk} groups, elig={len(elig_pidx)}{hs_desc}), Z_5000={mode_desc}...",
         flush=True,
     )
+
+    def _run_pass2_parts(
+        part_indices: Optional[Sequence[int]],
+        shard_row_fps: list,
+        shard_pid_fps: list,
+        ha_sums: Optional[Tuple[np.ndarray, np.ndarray, np.ndarray]],
+        hb_sums: Optional[Tuple[np.ndarray, np.ndarray, np.ndarray]],
+    ) -> None:
+        nonlocal ZtZ
+        for g_s, g_e, p, cmap, loc_s, loc_e in iter_chunks(part_indices):
+            m_keep = keep_all[g_s:g_e]
+            if not np.any(m_keep):
+                continue
+            if union_raw_idx is not None and p.read_chunk_cols_fn is not None:
+                Xu = p.read_chunk_cols_fn(loc_s, loc_e, union_raw_idx)
+                X_top_in = Xu[:, top_in_u]
+                X_sel_in = Xu[:, sel_in_u]
+                del Xu
+            else:
+                Xc = p.read_chunk_fn(loc_s, loc_e)
+                if cmap is not None:
+                    Xc = Xc[:, cmap]
+                X_top_in = Xc[:, top5000_raw_idx].astype(np.float32, copy=False)
+                X_sel_in = Xc[:, sel_idx].astype(np.float32, copy=False)
+                del Xc
+
+            scale = (1e4 / np.maximum(umi[g_s:g_e], 1.0)).astype(np.float32)
+            bi = batch_idx_per_cell[g_s:g_e]
+
+            k_loc = np.where(m_keep)[0]
+            Zt_k = X_top_in[k_loc] * scale[k_loc][:, None]
+            Zt_k -= mu_top[bi[k_loc]]
+            Zt_k /= sd_top[bi[k_loc]]
+            ZtZ += (Zt_k.T @ Zt_k).astype(np.float64)
+
+            loc_to_zpos = np.full(g_e - g_s, -1, dtype=np.int32)
+            loc_to_zpos[k_loc] = np.arange(len(k_loc), dtype=np.int32)
+
+            ad_loc = np.where(nt_ad_pos[g_s:g_e] >= 0)[0]
+            if len(ad_loc) > 0:
+                X_ctrl_ad[nt_ad_pos[g_s:g_e][ad_loc]] = Zt_k[loc_to_zpos[ad_loc]]
+
+            en_loc = np.where(nt_en_pos[g_s:g_e] >= 0)[0]
+            if len(en_loc) > 0:
+                X_ctrl_en_5000[nt_en_pos[g_s:g_e][en_loc]] = Zt_k[loc_to_zpos[en_loc]]
+
+            if use_ram_z:
+                zr_loc = np.where(z_ram_pos[g_s:g_e] >= 0)[0]
+                if len(zr_loc) > 0:
+                    Z_ram[z_ram_pos[g_s:g_e][zr_loc]] = Zt_k[loc_to_zpos[zr_loc]]
+            else:
+                sh_chunk = cell_shard[g_s:g_e]
+                for sid in np.unique(sh_chunk[sh_chunk >= 0]):
+                    sl = np.where(sh_chunk == sid)[0]
+                    Zt_k[loc_to_zpos[sl]].tofile(shard_row_fps[sid])
+                    cell_pkey_idx[g_s:g_e][sl].astype(np.int32).tofile(shard_pid_fps[sid])
+
+            Xs_lib = X_sel_in * scale[:, None]
+            Xs_log = np.log1p(Xs_lib)
+            del X_top_in, X_sel_in, Zt_k
+
+            cpos = ctrl_pos_map[g_s:g_e]
+            c_loc = np.where(cpos >= 0)[0]
+            if len(c_loc) > 0:
+                dst = cpos[c_loc]
+                Xs_lib_c = Xs_lib[c_loc]
+                X_ctrl_lib[dst] = Xs_lib_c
+                X_ctrl_log[dst] = Xs_log[c_loc]
+                X_ctrl_z[dst] = (Xs_lib_c - mu_lib_s[bi[c_loc]]) / sd_lib_s[bi[c_loc]]
+
+            pidx = cell_pkey_idx[g_s:g_e]
+            p_loc = np.where(pidx >= 0)[0]
+            if len(p_loc) > 0:
+                pi_p = pidx[p_loc]
+                bi_p = bi[p_loc]
+                hf_p = half_arr[g_s:g_e][p_loc]
+                Xl_p = Xs_lib[p_loc]
+                Xg_p = Xs_log[p_loc]
+                bh_code = bi_p.astype(np.int64) * 4 + hf_p.astype(np.int64)
+                for code in np.unique(bh_code):
+                    b = int(code // 4)
+                    h = int(code % 4)
+                    m_bh = bh_code == code
+                    pi_sub = pi_p[m_bh]
+                    u_p, inv = np.unique(pi_sub, return_inverse=True)
+                    cnt_u = np.bincount(inv).astype(np.int64)
+                    S = sp.csr_matrix(
+                        (np.ones(len(inv), dtype=np.float32), (inv, np.arange(len(inv)))),
+                        shape=(len(u_p), len(inv)),
+                    )
+                    sum_raw_lib = S @ Xl_p[m_bh]
+                    sum_raw_log = S @ Xg_p[m_bh]
+
+                    if not disjoint_batches:
+                        d_lib = sum_raw_lib - cnt_u[:, None].astype(np.float32) * mu_lib_s[b]
+                        d_log = sum_raw_log - cnt_u[:, None].astype(np.float32) * mu_log_s[b]
+                        pb_sum_lib[u_p] += d_lib
+                        pb_sum_log[u_p] += d_log
+                        pb_sum_z[u_p] += d_lib / sd_lib_s[b]
+                        pb_cnt[u_p] += cnt_u
+
+                    if h == 1 and ha_sums is not None:
+                        d_lib_h = sum_raw_lib - cnt_u[:, None].astype(np.float32) * ha_mu_lib[b]
+                        ha_sums[0][u_p] += d_lib_h
+                        ha_sums[1][u_p] += sum_raw_log - cnt_u[:, None].astype(np.float32) * ha_mu_log[b]
+                        ha_sums[2][u_p] += d_lib_h / ha_sd_lib[b]
+                        ha_pb_cnt[u_p] += cnt_u
+                    elif h == 2 and hb_sums is not None:
+                        d_lib_h = sum_raw_lib - cnt_u[:, None].astype(np.float32) * hb_mu_lib[b]
+                        hb_sums[0][u_p] += d_lib_h
+                        hb_sums[1][u_p] += sum_raw_log - cnt_u[:, None].astype(np.float32) * hb_mu_log[b]
+                        hb_sums[2][u_p] += d_lib_h / hb_sd_lib[b]
+                        hb_pb_cnt[u_p] += cnt_u
+            del Xs_lib, Xs_log
 
     try:
         shard_row_fps = [] if use_ram_z else [open(pth, "wb") for pth in shard_row_paths]
         shard_pid_fps = [] if use_ram_z else [open(pth, "wb") for pth in shard_pid_paths]
         try:
-            for g_s, g_e, p, cmap, loc_s, loc_e in iter_chunks():
-                m_keep = keep_all[g_s:g_e]
-                if not np.any(m_keep):
-                    continue
-                Xc = p.read_chunk_fn(loc_s, loc_e)
-                if cmap is not None:
-                    Xc = Xc[:, cmap]
-                scale = (1e4 / np.maximum(umi[g_s:g_e], 1.0)).astype(np.float32)
-                bi = batch_idx_per_cell[g_s:g_e]
+            if use_half_seq:
+                ha_idx = [i for i, hs in enumerate(part_halves) if 1 in hs]
+                hb_idx = [i for i in range(len(parts)) if i not in set(ha_idx)]
 
-                # Top-5000 Z for keep_all -> ZtZ Gram accumulation + NT / eligible cell Z_5000 routing
-                k_loc = np.where(m_keep)[0]
-                Zt_k = Xc[k_loc][:, top5000_raw_idx].astype(np.float32)
-                Zt_k *= scale[k_loc][:, None]
-                Zt_k -= mu_top[bi[k_loc]]
-                Zt_k /= sd_top[bi[k_loc]]
-                Zt_k64 = Zt_k.astype(np.float64)
-                ZtZ += Zt_k64.T @ Zt_k64
+                ha_tmp = (
+                    np.zeros((n_pk, G), dtype=np.float32),
+                    np.zeros((n_pk, G), dtype=np.float32),
+                    np.zeros((n_pk, G), dtype=np.float32),
+                )
+                _run_pass2_parts(ha_idx, shard_row_fps, shard_pid_fps, ha_tmp, None)
+                for arr, pth in zip(ha_tmp, pb_ha_paths):
+                    arr.tofile(pth)
+                del ha_tmp
+                gc.collect()
 
-                # Map global chunk indices -> position in Zt_k
-                loc_to_zpos = np.full(g_e - g_s, -1, dtype=np.int32)
-                loc_to_zpos[k_loc] = np.arange(len(k_loc), dtype=np.int32)
-
-                ad_loc = np.where(nt_ad_pos[g_s:g_e] >= 0)[0]
-                if len(ad_loc) > 0:
-                    X_ctrl_ad[nt_ad_pos[g_s:g_e][ad_loc]] = Zt_k[loc_to_zpos[ad_loc]]
-
-                en_loc = np.where(nt_en_pos[g_s:g_e] >= 0)[0]
-                if len(en_loc) > 0:
-                    X_ctrl_en_5000[nt_en_pos[g_s:g_e][en_loc]] = Zt_k[loc_to_zpos[en_loc]]
-
-                if use_ram_z:
-                    zr_loc = np.where(z_ram_pos[g_s:g_e] >= 0)[0]
-                    if len(zr_loc) > 0:
-                        Z_ram[z_ram_pos[g_s:g_e][zr_loc]] = Zt_k[loc_to_zpos[zr_loc]]
-                else:
-                    sh_chunk = cell_shard[g_s:g_e]
-                    for sid in np.unique(sh_chunk[sh_chunk >= 0]):
-                        sl = np.where(sh_chunk == sid)[0]
-                        Zt_k[loc_to_zpos[sl]].tofile(shard_row_fps[sid])
-                        cell_pkey_idx[g_s:g_e][sl].astype(np.int32).tofile(shard_pid_fps[sid])
-
-                # Canonical G matrix -> ctrl_cells + overall + Half A + Half B pseudobulks
-                Xs_lib = Xc[:, sel_idx].astype(np.float32) * scale[:, None]
-                Xs_log = np.log1p(Xs_lib)
-                Xs_z = (Xs_lib - mu_lib_s[bi]) / sd_lib_s[bi]
-
-                cpos = ctrl_pos_map[g_s:g_e]
-                c_loc = np.where(cpos >= 0)[0]
-                if len(c_loc) > 0:
-                    dst = cpos[c_loc]
-                    X_ctrl_lib[dst] = Xs_lib[c_loc]
-                    X_ctrl_log[dst] = Xs_log[c_loc]
-                    X_ctrl_z[dst] = Xs_z[c_loc]
-
-                pidx = cell_pkey_idx[g_s:g_e]
-                p_loc = np.where(pidx >= 0)[0]
-                if len(p_loc) > 0:
-                    pi_loc = pidx[p_loc]
-                    bi_loc = bi[p_loc]
-                    np.add.at(pb_sum_lib, pi_loc, Xs_lib[p_loc] - mu_lib_s[bi_loc])
-                    np.add.at(pb_sum_log, pi_loc, Xs_log[p_loc] - mu_log_s[bi_loc])
-                    np.add.at(pb_sum_z, pi_loc, Xs_z[p_loc])
-                    np.add.at(pb_cnt, pi_loc, 1)
-
-                    hf = half_arr[g_s:g_e][p_loc]
-                    ma = hf == 1
-                    if np.any(ma):
-                        pi_a, bi_a, loc_a = pi_loc[ma], bi_loc[ma], p_loc[ma]
-                        np.add.at(ha_pb_sum_lib, pi_a, Xs_lib[loc_a] - ha_mu_lib[bi_a])
-                        np.add.at(ha_pb_sum_log, pi_a, Xs_log[loc_a] - ha_mu_log[bi_a])
-                        np.add.at(ha_pb_sum_z, pi_a, (Xs_lib[loc_a] - ha_mu_lib[bi_a]) / ha_sd_lib[bi_a])
-                        np.add.at(ha_pb_cnt, pi_a, 1)
-
-                    mb = hf == 2
-                    if np.any(mb):
-                        pi_b, bi_b, loc_b = pi_loc[mb], bi_loc[mb], p_loc[mb]
-                        np.add.at(hb_pb_sum_lib, pi_b, Xs_lib[loc_b] - hb_mu_lib[bi_b])
-                        np.add.at(hb_pb_sum_log, pi_b, Xs_log[loc_b] - hb_mu_log[bi_b])
-                        np.add.at(hb_pb_sum_z, pi_b, (Xs_lib[loc_b] - hb_mu_lib[bi_b]) / hb_sd_lib[bi_b])
-                        np.add.at(hb_pb_cnt, pi_b, 1)
+                hb_tmp = (
+                    np.zeros((n_pk, G), dtype=np.float32),
+                    np.zeros((n_pk, G), dtype=np.float32),
+                    np.zeros((n_pk, G), dtype=np.float32),
+                )
+                _run_pass2_parts(hb_idx, shard_row_fps, shard_pid_fps, None, hb_tmp)
+                for arr, pth in zip(hb_tmp, pb_hb_paths):
+                    arr.tofile(pth)
+                del hb_tmp
+                gc.collect()
+            else:
+                _run_pass2_parts(
+                    None,
+                    shard_row_fps,
+                    shard_pid_fps,
+                    (ha_pb_sum_lib, ha_pb_sum_log, ha_pb_sum_z),
+                    (hb_pb_sum_lib, hb_pb_sum_log, hb_pb_sum_z),
+                )
         finally:
             for fp in shard_row_fps + shard_pid_fps:
                 fp.close()
 
+        # Persist ctrl_cells.npz + genes.txt immediately after Pass 2 to reclaim control matrix RAM before workers
+        cmean_lib_s = ctrl_mean_lib[sel_idx].astype(np.float32)
+        ctrl_mean_log_s = ctrl_mean_log[sel_idx].astype(np.float32)
+        batch_labels = np.array([str(uniq_batches[batch_idx_per_cell[i]]) for i in ctrl_sample_idx])
+        (out_dir / "genes.txt").write_text("\n".join(sel_gnames) + "\n", encoding="utf-8")
+        np.savez_compressed(
+            out_dir / "ctrl_cells.npz",
+            X_log1p=X_ctrl_log,
+            X_zscore=X_ctrl_z,
+            X_libnorm=X_ctrl_lib,
+            ctrl_mean_log1p=ctrl_mean_log_s,
+            ctrl_mean_libnorm=cmean_lib_s,
+            ctrl_mean_log1p_full=ctrl_mean_log_s,
+            ctrl_mean_libnorm_full=cmean_lib_s,
+            ctrl_mean_log1p_sub20k=X_ctrl_log.mean(axis=0).astype(np.float32),
+            ctrl_mean_libnorm_sub20k=X_ctrl_lib.mean(axis=0).astype(np.float32),
+            half_a_ctrl_mean_libnorm=ha_ctrl_mean_lib,
+            half_b_ctrl_mean_libnorm=hb_ctrl_mean_lib,
+            n_ctrl_total=np.int64(n_nt_tot),
+            batch_labels=batch_labels,
+        )
+        del X_ctrl_lib, X_ctrl_log, X_ctrl_z
+        gc.collect()
+
         print(f"  [Pass 2 DONE] ({time.time()-t2:.1f}s). Computing exact SVD eigenvectors & Addendum-B QC...", flush=True)
         verify_ad_implementation()
         k_pc = min(20, G_top)
-        _, evecs = np.linalg.eigh(ZtZ)
-        V20 = evecs[:, -k_pc:][:, ::-1].astype(np.float32)
+        if k_pc > 0 and k_pc < G_top - 1:
+            v0 = np.full(G_top, 1.0 / np.sqrt(G_top), dtype=np.float64)
+            _, evecs = eigsh(ZtZ, k=k_pc, which="LA", v0=v0)
+            V20 = evecs[:, ::-1].astype(np.float32)
+        else:
+            _, evecs = np.linalg.eigh(ZtZ)
+            V20 = evecs[:, -k_pc:][:, ::-1].astype(np.float32)
         Xc_sorted = np.sort(X_ctrl_ad, axis=0)
         C_pca_en = (X_ctrl_en_5000 @ V20).astype(np.float32)
 
@@ -808,61 +931,92 @@ def process_r10_line(
         del Z_ram, ZtZ, V20, X_ctrl_ad, X_ctrl_en_5000, Xc_sorted, C_pca_en
         gc.collect()
     finally:
-        for pth in shard_row_paths + shard_pid_paths:
+        for pth in shard_row_paths + shard_pid_paths + ([] if 'keep_pb_bins' in locals() else []):
             if pth.exists():
                 pth.unlink(missing_ok=True)
 
-    # 4. Deduplicate to 1 row per unique canonical target gene symbol (retain n_cells >= 10)
-    best_by_sym: Dict[str, Tuple[Tuple[int, float, float], int, str, str, str]] = {}
-    n_pert_min10 = 0
-    for pk in all_pkeys:
-        pi = pkey_to_idx[pk]
-        n_c = int(pb_cnt[pi])
-        if n_c < 10:
-            continue
-        n_pert_min10 += 1
-        ens, sym, raw_sym, hstat = pert_meta[pk]
-        sym = str(sym).strip()
-        if not sym or sym.lower() in ("nan", "none", "na", "non-targeting"):
-            continue
-        rep, ad_val, ep_val = stats_map[pk]
-        rep = 1 if (n_c >= 25 and ad_val >= 50.0 and ep_val < 0.001) else 0
-        key_score = (int(rep), float(ad_val), float(n_c))
-        if sym not in best_by_sym or key_score > best_by_sym[sym][0]:
-            best_by_sym[sym] = (key_score, pi, ens, raw_sym, hstat)
+    try:
+        if disjoint_batches:
+            pb_cnt = ha_pb_cnt + hb_pb_cnt
 
-    sorted_syms = sorted(best_by_sym.keys())
-    P = len(sorted_syms)
-    sel_pi = np.array([best_by_sym[s][1] for s in sorted_syms], dtype=np.int64)
-    target_ens = np.array([best_by_sym[s][2] for s in sorted_syms], dtype=str)
-    target_raw = np.array([best_by_sym[s][3] for s in sorted_syms], dtype=str)
-    target_hstat = np.array([best_by_sym[s][4] for s in sorted_syms], dtype=str)
-    reproducible = np.array([best_by_sym[s][0][0] == 1 for s in sorted_syms], dtype=bool)
-    ad_counts_arr = np.array([best_by_sym[s][0][1] for s in sorted_syms], dtype=np.float32)
-    ep_arr = np.array([stats_map[all_pkeys[pi]][2] for pi in sel_pi], dtype=np.float32)
-    n_cells_arr = pb_cnt[sel_pi].astype(np.float32)
+        # 4. Deduplicate to 1 row per unique canonical target gene symbol (retain n_cells >= 10)
+        best_by_sym: Dict[str, Tuple[Tuple[int, float, float], int, str, str, str]] = {}
+        n_pert_min10 = 0
+        for pk in all_pkeys:
+            pi = pkey_to_idx[pk]
+            n_c = int(pb_cnt[pi])
+            if n_c < 10:
+                continue
+            n_pert_min10 += 1
+            ens, sym, raw_sym, hstat = pert_meta[pk]
+            sym = str(sym).strip()
+            if not sym or sym.lower() in ("nan", "none", "na", "non-targeting"):
+                continue
+            rep, ad_val, ep_val = stats_map[pk]
+            rep = 1 if (n_c >= 25 and ad_val >= 50.0 and ep_val < 0.001) else 0
+            key_score = (int(rep), float(ad_val), float(n_c))
+            if sym not in best_by_sym or key_score > best_by_sym[sym][0]:
+                best_by_sym[sym] = (key_score, pi, ens, raw_sym, hstat)
 
-    cnt_f = np.maximum(pb_cnt[sel_pi, None], 1).astype(np.float64)
-    delta_lib = (pb_sum_lib[sel_pi] / cnt_f).astype(np.float32)
-    delta_log = (pb_sum_log[sel_pi] / cnt_f).astype(np.float32)
-    delta_z = (pb_sum_z[sel_pi] / cnt_f).astype(np.float32)
+        sorted_syms = sorted(best_by_sym.keys())
+        P = len(sorted_syms)
+        sel_pi = np.array([best_by_sym[s][1] for s in sorted_syms], dtype=np.int64)
+        target_ens = np.array([best_by_sym[s][2] for s in sorted_syms], dtype=str)
+        target_raw = np.array([best_by_sym[s][3] for s in sorted_syms], dtype=str)
+        target_hstat = np.array([best_by_sym[s][4] for s in sorted_syms], dtype=str)
+        reproducible = np.array([best_by_sym[s][0][0] == 1 for s in sorted_syms], dtype=bool)
+        ad_counts_arr = np.array([best_by_sym[s][0][1] for s in sorted_syms], dtype=np.float32)
+        ep_arr = np.array([stats_map[all_pkeys[pi]][2] for pi in sel_pi], dtype=np.float32)
+        n_cells_arr = pb_cnt[sel_pi].astype(np.float32)
 
-    ha_c = ha_pb_cnt[sel_pi]
-    hb_c = hb_pb_cnt[sel_pi]
-    half_valid = (ha_c >= 2) & (hb_c >= 2)  # PREREG_C §2.3
-    ha_den = np.maximum(ha_c[:, None], 1).astype(np.float64)
-    hb_den = np.maximum(hb_c[:, None], 1).astype(np.float64)
-    ha_d_lib = (ha_pb_sum_lib[sel_pi] / ha_den).astype(np.float32)
-    ha_d_log = (ha_pb_sum_log[sel_pi] / ha_den).astype(np.float32)
-    ha_d_z = (ha_pb_sum_z[sel_pi] / ha_den).astype(np.float32)
-    hb_d_lib = (hb_pb_sum_lib[sel_pi] / hb_den).astype(np.float32)
-    hb_d_log = (hb_pb_sum_log[sel_pi] / hb_den).astype(np.float32)
-    hb_d_z = (hb_pb_sum_z[sel_pi] / hb_den).astype(np.float32)
+        if use_half_seq:
+            if P > 0 and n_pk > 0:
+                ha_sel_lib = np.asarray(np.memmap(pb_ha_paths[0], dtype=np.float32, mode="r", shape=(n_pk, G))[sel_pi], dtype=np.float32)
+                ha_sel_log = np.asarray(np.memmap(pb_ha_paths[1], dtype=np.float32, mode="r", shape=(n_pk, G))[sel_pi], dtype=np.float32)
+                ha_sel_z = np.asarray(np.memmap(pb_ha_paths[2], dtype=np.float32, mode="r", shape=(n_pk, G))[sel_pi], dtype=np.float32)
+                hb_sel_lib = np.asarray(np.memmap(pb_hb_paths[0], dtype=np.float32, mode="r", shape=(n_pk, G))[sel_pi], dtype=np.float32)
+                hb_sel_log = np.asarray(np.memmap(pb_hb_paths[1], dtype=np.float32, mode="r", shape=(n_pk, G))[sel_pi], dtype=np.float32)
+                hb_sel_z = np.asarray(np.memmap(pb_hb_paths[2], dtype=np.float32, mode="r", shape=(n_pk, G))[sel_pi], dtype=np.float32)
+            else:
+                ha_sel_lib = ha_sel_log = ha_sel_z = np.empty((0, G), dtype=np.float32)
+                hb_sel_lib = hb_sel_log = hb_sel_z = np.empty((0, G), dtype=np.float32)
+        else:
+            ha_sel_lib = ha_pb_sum_lib[sel_pi]
+            ha_sel_log = ha_pb_sum_log[sel_pi]
+            ha_sel_z = ha_pb_sum_z[sel_pi]
+            hb_sel_lib = hb_pb_sum_lib[sel_pi]
+            hb_sel_log = hb_pb_sum_log[sel_pi]
+            hb_sel_z = hb_pb_sum_z[sel_pi]
+
+        cnt_f = np.maximum(pb_cnt[sel_pi, None], 1).astype(np.float32)
+        if disjoint_batches:
+            delta_lib = ((ha_sel_lib + hb_sel_lib) / cnt_f).astype(np.float32)
+            delta_log = ((ha_sel_log + hb_sel_log) / cnt_f).astype(np.float32)
+            delta_z = ((ha_sel_z + hb_sel_z) / cnt_f).astype(np.float32)
+        else:
+            delta_lib = (pb_sum_lib[sel_pi] / cnt_f).astype(np.float32)
+            delta_log = (pb_sum_log[sel_pi] / cnt_f).astype(np.float32)
+            delta_z = (pb_sum_z[sel_pi] / cnt_f).astype(np.float32)
+
+        ha_c = ha_pb_cnt[sel_pi]
+        hb_c = hb_pb_cnt[sel_pi]
+        half_valid = (ha_c >= 2) & (hb_c >= 2)  # PREREG_C §2.3
+        ha_den = np.maximum(ha_c[:, None], 1).astype(np.float32)
+        hb_den = np.maximum(hb_c[:, None], 1).astype(np.float32)
+        ha_d_lib = (ha_sel_lib / ha_den).astype(np.float32)
+        ha_d_log = (ha_sel_log / ha_den).astype(np.float32)
+        ha_d_z = (ha_sel_z / ha_den).astype(np.float32)
+        hb_d_lib = (hb_sel_lib / hb_den).astype(np.float32)
+        hb_d_log = (hb_sel_log / hb_den).astype(np.float32)
+        hb_d_z = (hb_sel_z / hb_den).astype(np.float32)
+    finally:
+        for pth in pb_ha_paths + pb_hb_paths:
+            if pth.exists():
+                pth.unlink(missing_ok=True)
 
     gname_to_pos = {g: j for j, g in enumerate(sel_gnames)}
     kd_log1p = np.full(P, np.nan, dtype=np.float32)
     kd_frac = np.full(P, np.nan, dtype=np.float32)
-    cmean_lib_s = ctrl_mean_lib[sel_idx].astype(np.float32)
     for row_i, sym in enumerate(sorted_syms):
         g_j = gname_to_pos.get(sym)
         if g_j is not None:
@@ -870,27 +1024,7 @@ def process_r10_line(
             base_c = float(cmean_lib_s[g_j])
             kd_frac[row_i] = float(-delta_lib[row_i, g_j] / max(base_c, 1e-8))
 
-    (out_dir / "genes.txt").write_text("\n".join(sel_gnames) + "\n", encoding="utf-8")
     (out_dir / "targets.txt").write_text("\n".join(sorted_syms) + "\n", encoding="utf-8")
-
-    batch_labels = np.array([str(uniq_batches[batch_idx_per_cell[i]]) for i in ctrl_sample_idx])
-    ctrl_mean_log_s = ctrl_mean_log[sel_idx].astype(np.float32)
-    np.savez_compressed(
-        out_dir / "ctrl_cells.npz",
-        X_log1p=X_ctrl_log,
-        X_zscore=X_ctrl_z,
-        X_libnorm=X_ctrl_lib,
-        ctrl_mean_log1p=ctrl_mean_log_s,
-        ctrl_mean_libnorm=cmean_lib_s,
-        ctrl_mean_log1p_full=ctrl_mean_log_s,
-        ctrl_mean_libnorm_full=cmean_lib_s,
-        ctrl_mean_log1p_sub20k=X_ctrl_log.mean(axis=0).astype(np.float32),
-        ctrl_mean_libnorm_sub20k=X_ctrl_lib.mean(axis=0).astype(np.float32),
-        half_a_ctrl_mean_libnorm=ha_ctrl_mean_lib,
-        half_b_ctrl_mean_libnorm=hb_ctrl_mean_lib,
-        n_ctrl_total=np.int64(n_nt_tot),
-        batch_labels=batch_labels,
-    )
     np.savez_compressed(
         out_dir / "pseudobulk_delta.npz",
         delta_log1p=delta_log,
@@ -932,7 +1066,7 @@ def process_r10_line(
         "n_nt_half_a": int(ha_cnt.sum()),
         "n_nt_half_b": int(hb_cnt.sum()),
         **gene_audit,
-        "n_raw_pert_groups": int(n_pk),
+        "n_raw_pert_groups": int(n_raw_pk_all),
         "n_pert_groups_min10_cells": int(n_pert_min10),
         "n_targets_deduplicated": int(P),
         "n_targets_reproducible": int(reproducible.sum()),
@@ -1007,18 +1141,25 @@ def make_10x_csc_subset_readers(
     keep_cols: np.ndarray,
     n_raw_features: int,
     rna_row_idx: Optional[np.ndarray],
-) -> Tuple[Callable[[int, int], np.ndarray], Callable[[np.ndarray], np.ndarray]]:
+) -> Tuple[
+    Callable[[int, int], np.ndarray],
+    Callable[[np.ndarray], np.ndarray],
+    Callable[[int, int, np.ndarray], np.ndarray],
+]:
     """
-    Create memory-bounded `(read_chunk_fn, read_rows_fn)` over a sorted subset `keep_cols`
-    of columns in a 10x CSC `.h5` file `(n_raw_features, n_raw_cells)`.
+    Create memory-bounded `(read_chunk_fn, read_rows_fn, read_chunk_cols_fn)` over a sorted
+    subset `keep_cols` of columns in a 10x CSC `.h5` file `(n_raw_features, n_raw_cells)`.
+    When `feat_cols` is supplied, slices `feat_cols` BEFORE densifying and returns float32.
     """
     n_out_genes = len(rna_row_idx) if rna_row_idx is not None else n_raw_features
     if rna_row_idx is not None and len(rna_row_idx) == n_raw_features and np.array_equal(rna_row_idx, np.arange(n_raw_features)):
         rna_row_idx = None
 
-    def _read_cols(raw_cols: np.ndarray) -> np.ndarray:
+    def _read_cols(raw_cols: np.ndarray, feat_cols: Optional[np.ndarray] = None) -> np.ndarray:
+        out_dtype = np.float32 if feat_cols is not None else np.float64
+        out_w = len(feat_cols) if feat_cols is not None else n_out_genes
         if len(raw_cols) == 0:
-            return np.zeros((0, n_out_genes), dtype=np.float64)
+            return np.zeros((0, out_w), dtype=out_dtype)
         if len(raw_cols) > 1 and not np.all(raw_cols[:-1] <= raw_cols[1:]):
             raise ValueError("raw_cols must be sorted ascending")
         c_min, c_max = int(raw_cols[0]), int(raw_cols[-1])
@@ -1037,7 +1178,6 @@ def make_10x_csc_subset_readers(
                 )
                 sub = csc_span[:, raw_cols - c_min]
             else:
-                # Sparse cell-subset access (e.g., Pass 1 NTC-only reads): pull only target columns
                 col_starts = indptr[raw_cols]
                 col_ends = indptr[raw_cols + 1]
                 all_d, all_i = [], []
@@ -1052,11 +1192,19 @@ def make_10x_csc_subset_readers(
                 d_cat = np.concatenate(all_d) if all_d else np.empty(0, dtype=np.float32)
                 i_cat = np.concatenate(all_i) if all_i else np.empty(0, dtype=np.int32)
                 sub = sp.csc_matrix((d_cat, i_cat, new_ptr), shape=(n_raw_features, len(raw_cols)))
-            if rna_row_idx is not None:
-                sub = sub[rna_row_idx, :]
-            return sub.T.toarray().astype(np.float64, copy=False)
 
-    return (lambda s, e: _read_cols(keep_cols[s:e])), (lambda loc_idx: _read_cols(keep_cols[loc_idx]))
+            if feat_cols is not None:
+                target_rows = rna_row_idx[feat_cols] if rna_row_idx is not None else feat_cols
+                sub = sub[target_rows, :]
+            elif rna_row_idx is not None:
+                sub = sub[rna_row_idx, :]
+            return sub.T.toarray().astype(out_dtype, copy=False)
+
+    return (
+        (lambda s, e: _read_cols(keep_cols[s:e], None)),
+        (lambda loc_idx: _read_cols(keep_cols[loc_idx], None)),
+        (lambda s, e, fcols: _read_cols(keep_cols[s:e], fcols)),
+    )
 
 
 def extract_top2_csc(csc_mat: sp.csc_matrix) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -1327,7 +1475,7 @@ def build_dld1_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpec], d
         tot_sing_h += int(sing_h.sum())
         tot_s1 += len(keep_arr)
 
-        read_chunk, read_rows = make_10x_csc_subset_readers(r_path, keep_arr, n_genes_raw, None)
+        read_chunk, read_rows, read_chunk_cols = make_10x_csc_subset_readers(r_path, keep_arr, n_genes_raw, None)
         half_flag = np.full(len(keep_arr), 1 if (ch_idx % 2 == 1) else 2, dtype=np.int8)
         parts.append(
             PartSpec(
@@ -1336,7 +1484,7 @@ def build_dld1_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpec], d
                 n_cells=len(keep_arr),
                 n_genes_raw=n_genes_raw,
                 nt_mask=nt_arr,
-                batches=np.full(len(keep_arr), f"ch_{ch_idx:02d}", dtype=str),
+                batches=np.full(len(keep_arr), f"ch_{ch_idx:02d}"),
                 half_flags=half_flag,
                 umi=rna_umi[keep_arr],
                 pert_keys=pkeys,
@@ -1345,6 +1493,7 @@ def build_dld1_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpec], d
                 var_gene_names=var_names,
                 read_chunk_fn=read_chunk,
                 read_rows_fn=read_rows,
+                read_chunk_cols_fn=read_chunk_cols,
             )
         )
 
@@ -1471,28 +1620,58 @@ def build_cd4t_rest_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpe
                 mt_raw = np.zeros(n_feat, dtype=bool)
                 mt_raw[rna_rows] = [x.startswith("MT-") for x in fnames[rna_rows]]
 
-            umi_l, ng_l, mt_l = compute_10x_csc_rna_qc(lp, rna_rows, mt_raw)
-            ok_init = (mt_l < 20.0) & (ng_l >= 200)
-            ok_hq = (mt_l <= 5.0) & (ng_l >= 500)
-
-            # Extract CRISPR submatrix only for ok_hq cells & initial cells for histogram
+            # Single-pass chunked lane scan: compute RNA QC & extract CRISPR entries (<200MB RAM)
             is_crp = np.zeros(n_feat, dtype=bool)
             is_crp[crp_rows] = True
             crp_remap_idx = np.full(n_feat, -1, dtype=np.int32)
             crp_remap_idx[crp_rows] = np.arange(len(crp_rows), dtype=np.int32)
+            is_rna_feat = ~is_crp
+
+            umi_l = np.zeros(n_col, dtype=np.float64)
+            ng_l = np.zeros(n_col, dtype=np.int32)
+            mt_umi_l = np.zeros(n_col, dtype=np.float64)
+            crp_idx_parts, crp_dat_parts, crp_col_parts = [], [], []
 
             with h5py.File(lp, "r") as f:
                 m = f["matrix"]
-                indptr = m["indptr"][:]
-                data = m["data"][:]
-                indices = m["indices"][:]
-            m_all = is_crp[indices]
-            c_idx = crp_remap_idx[indices[m_all]]
-            c_dat = data[m_all].astype(np.int64, copy=False)
-            col_lens = np.diff(indptr)
-            c_col = np.repeat(np.arange(n_col, dtype=np.int32), col_lens)[m_all]
+                indptr_all = m["indptr"][:]
+                data_ds = m["data"]
+                indices_ds = m["indices"]
+                for cs in range(0, n_col, 25000):
+                    ce = min(cs + 25000, n_col)
+                    p0, p1 = int(indptr_all[cs]), int(indptr_all[ce])
+                    if p1 == p0:
+                        continue
+                    dat = data_ds[p0:p1]
+                    idx = indices_ds[p0:p1]
+                    col_lens = np.diff(indptr_all[cs : ce + 1])
+                    col_ids = np.repeat(np.arange(cs, ce, dtype=np.int32), col_lens)
 
-            # Build CSC matrix ONLY for ok_init cells
+                    m_r = is_rna_feat[idx]
+                    if np.any(m_r):
+                        r_dat = dat[m_r].astype(np.float64, copy=False)
+                        r_idx = idx[m_r]
+                        r_col = col_ids[m_r] - cs
+                        umi_l[cs:ce] = np.bincount(r_col, weights=r_dat, minlength=ce - cs)
+                        ng_l[cs:ce] = np.bincount(r_col, minlength=ce - cs)
+                        mt_m = mt_raw[r_idx]
+                        if np.any(mt_m):
+                            mt_umi_l[cs:ce] = np.bincount(r_col[mt_m], weights=r_dat[mt_m], minlength=ce - cs)
+
+                    m_c = ~m_r
+                    if np.any(m_c):
+                        crp_idx_parts.append(crp_remap_idx[idx[m_c]])
+                        crp_dat_parts.append(dat[m_c].astype(np.int64, copy=False))
+                        crp_col_parts.append(col_ids[m_c])
+
+            mt_l = 100.0 * mt_umi_l / np.maximum(umi_l, 1.0)
+            ok_init = (mt_l < 20.0) & (ng_l >= 200)
+            ok_hq = (mt_l <= 5.0) & (ng_l >= 500)
+
+            c_idx = np.concatenate(crp_idx_parts) if crp_idx_parts else np.empty(0, dtype=np.int32)
+            c_dat = np.concatenate(crp_dat_parts) if crp_dat_parts else np.empty(0, dtype=np.int64)
+            c_col = np.concatenate(crp_col_parts) if crp_col_parts else np.empty(0, dtype=np.int32)
+
             ok_init_mask = ok_init[c_col]
             bins = np.clip(c_dat[ok_init_mask], 1, 65)
             np.add.at(hist, (c_idx[ok_init_mask], bins), 1)
@@ -1501,12 +1680,11 @@ def build_cd4t_rest_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpe
             col_map_hq = np.full(n_col, -1, dtype=np.int32)
             col_map_hq[hq_cols] = np.arange(len(hq_cols), dtype=np.int32)
             hq_m = col_map_hq[c_col] >= 0
-            # Construct compact CSC across ok_hq cells
             C_hq = sp.csr_matrix(
                 (c_dat[hq_m].astype(np.float64), (c_idx[hq_m], col_map_hq[c_col[hq_m]])),
                 shape=(len(crp_rows), len(hq_cols)),
             ).tocsc()
-            del indptr, data, indices, c_idx, c_dat, c_col, m_all, col_lens
+            del indptr_all, c_idx, c_dat, c_col, crp_idx_parts, crp_dat_parts, crp_col_parts
 
             lane_cache.append(
                 (
@@ -1554,7 +1732,7 @@ def build_cd4t_rest_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpe
 
             keep_arr = np.asarray(keep_cols, dtype=np.int64)
             nt_arr = np.asarray(nt_flags, dtype=bool)
-            read_chunk, read_rows = make_10x_csc_subset_readers(lp, keep_arr, n_feat, rna_rows)
+            read_chunk, read_rows, read_chunk_cols = make_10x_csc_subset_readers(lp, keep_arr, n_feat, rna_rows)
             parts.append(
                 PartSpec(
                     tag=lane_tag,
@@ -1562,7 +1740,7 @@ def build_cd4t_rest_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpe
                     n_cells=len(keep_arr),
                     n_genes_raw=len(rna_rows),
                     nt_mask=nt_arr,
-                    batches=np.full(len(keep_arr), f"{donor_id}_{lane_tag}", dtype=str),
+                    batches=np.full(len(keep_arr), f"{donor_id}_{lane_tag}"),
                     half_flags=np.full(len(keep_arr), half_val, dtype=np.int8),
                     umi=umi_l[keep_arr],
                     pert_keys=pkeys,
@@ -1571,6 +1749,7 @@ def build_cd4t_rest_parts(raw_dir: Path, hgnc: HGNCLookup) -> Tuple[List[PartSpe
                     var_gene_names=rnames,
                     read_chunk_fn=read_chunk,
                     read_rows_fn=read_rows,
+                    read_chunk_cols_fn=read_chunk_cols,
                 )
             )
         donor_audit[donor_id] = {
@@ -1595,12 +1774,13 @@ def parse_args() -> argparse.Namespace:
         help="Which R10 line(s) to process.",
     )
     p.add_argument("--workers", type=int, default=8, help="Parallel worker processes for AD/Energy tests.")
+    p.add_argument("--chunk-size", type=int, default=8192, help="Cells per streaming Pass 1/2 chunk.")
     p.add_argument("--raw-dir", type=Path, default=R10_RAW_DIR)
     p.add_argument("--out-root", type=Path, default=R10_LINES_DIR)
     return p.parse_args()
 
 
-def run_line(line: str, raw_dir: Path, out_root: Path, hgnc: HGNCLookup, workers: int) -> Path:
+def run_line(line: str, raw_dir: Path, out_root: Path, hgnc: HGNCLookup, workers: int, chunk_size: int = 8192) -> Path:
     builders = {
         "wtc11_i3neuron": build_wtc11_i3neuron_parts,
         "calu3": build_calu3_parts,
@@ -1612,6 +1792,7 @@ def run_line(line: str, raw_dir: Path, out_root: Path, hgnc: HGNCLookup, workers
         line_name=line,
         parts=parts,
         hgnc=hgnc,
+        chunk_size=chunk_size,
         out_root=out_root,
         extra_meta={"adapter_audit": audit},
         n_workers=workers,
@@ -1623,7 +1804,7 @@ def main() -> None:
     hgnc = build_hgnc_lookup()
     targets = ["wtc11_i3neuron", "calu3", "dld1", "cd4t_rest"] if args.line == "all" else [args.line]
     for ln in targets:
-        run_line(ln, args.raw_dir, args.out_root, hgnc, args.workers)
+        run_line(ln, args.raw_dir, args.out_root, hgnc, args.workers, args.chunk_size)
 
 
 if __name__ == "__main__":

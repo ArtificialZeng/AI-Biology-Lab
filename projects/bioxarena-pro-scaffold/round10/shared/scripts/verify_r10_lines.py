@@ -110,6 +110,14 @@ def verify_and_count_line(line_dir: Path, hgnc: HGNCLookup, r9_ref: dict) -> dic
             arr = ctrl[k]
             if arr.ndim != 2 or arr.shape[1] != G or not np.all(np.isfinite(arr)):
                 raise ValueError(f"{line_dir.name} invalid ctrl_cells[{k}] shape={arr.shape} or non-finite")
+        for k in (
+            "ctrl_mean_log1p_full", "ctrl_mean_libnorm_full",
+            "ctrl_mean_log1p_sub20k", "ctrl_mean_libnorm_sub20k",
+            "half_a_ctrl_mean_libnorm", "half_b_ctrl_mean_libnorm",
+        ):
+            arr = ctrl[k]
+            if arr.shape != (G,) or not np.all(np.isfinite(arr)):
+                raise ValueError(f"{line_dir.name} invalid ctrl_cells[{k}] shape={arr.shape} or non-finite")
         n_ctrl_sampled = int(ctrl["X_log1p"].shape[0])
         n_ctrl_total = int(ctrl["n_ctrl_total"])
 
@@ -128,7 +136,12 @@ def verify_and_count_line(line_dir: Path, hgnc: HGNCLookup, r9_ref: dict) -> dic
                 raise KeyError(f"{line_dir.name} pseudobulk_delta.npz missing {k}")
         if [str(x) for x in pb["targets"]] != targets:
             raise ValueError(f"{line_dir.name}: targets.txt mismatch with pseudobulk_delta.npz")
-        for k in ("delta_log1p", "delta_zscore", "delta_libnorm", "half_a_delta_libnorm", "half_b_delta_libnorm"):
+        for k in (
+            "delta_log1p", "delta_zscore", "delta_libnorm",
+            "half_a_delta_log1p", "half_b_delta_log1p",
+            "half_a_delta_zscore", "half_b_delta_zscore",
+            "half_a_delta_libnorm", "half_b_delta_libnorm",
+        ):
             arr = pb[k]
             if arr.shape != (P, G) or not np.all(np.isfinite(arr)):
                 raise ValueError(f"{line_dir.name} invalid {k} shape={arr.shape} or non-finite")

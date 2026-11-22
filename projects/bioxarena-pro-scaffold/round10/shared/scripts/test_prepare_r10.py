@@ -194,14 +194,14 @@ class TestProcessR10LineSynthetic(unittest.TestCase):
                 "synth_ram", parts, lk, max_ctrl_cells=10, chunk_size=17,
                 seed=42, out_root=td_p / "out1", n_workers=1,
             )
-            # 2. Force sharded SSD binary stream path (`max_ram_z_bytes=1`) + spawn workers and compare bit-for-bit!
+            # 2. Force sharded SSD binary stream path + half_seq spill (`max_ram_z_bytes=1`) and compare bit-for-bit!
             out_shd = process_r10_line(
                 "synth_shd", parts, lk, max_ctrl_cells=10, chunk_size=17,
-                seed=42, out_root=td_p / "out2", max_ram_z_bytes=1, shard_max_bytes=5000, n_workers=2,
+                seed=42, out_root=td_p / "out2", max_ram_z_bytes=1, shard_max_bytes=5000, n_workers=2, force_half_seq=True,
             )
 
-            # Assert zero leftover _tmp_shard_* temp files!
-            self.assertEqual(list(out_shd.glob("_tmp_shard_*")), [])
+            # Assert zero leftover _tmp_shard_* or _tmp_ha_*/_tmp_hb_* temp files!
+            self.assertEqual(list(out_shd.glob("_tmp_*")), [])
 
             ctrl = np.load(out_ram / "ctrl_cells.npz")
             pb = np.load(out_ram / "pseudobulk_delta.npz")
@@ -285,10 +285,13 @@ class Test10xCSCHelpersAndAdapters(unittest.TestCase):
             self.assertLess(float(pm[0]), 20.0)
 
             keep_cols = np.array([0, 3, 5], dtype=np.int64)
-            read_chunk, read_rows = make_10x_csc_subset_readers(hp, keep_cols, 6, rna_rows)
+            read_chunk, read_rows, read_chunk_cols = make_10x_csc_subset_readers(hp, keep_cols, 6, rna_rows)
             dense_all = read_chunk(0, 3)
             self.assertEqual(dense_all.shape, (3, 4))
             np.testing.assert_allclose(dense_all, X[:4, [0, 3, 5]].T)
+            dense_cols = read_chunk_cols(0, 3, np.array([0, 3], dtype=np.int64))
+            self.assertEqual(dense_cols.dtype, np.float32)
+            np.testing.assert_allclose(dense_cols, X[[0, 3], :][:, [0, 3, 5]].T)
             dense_sub = read_rows(np.array([0, 2], dtype=np.int64))  # sparse mode (<15% density across span)
             np.testing.assert_allclose(dense_sub, X[:4, [0, 5]].T)
 
@@ -321,6 +324,11 @@ class Test10xCSCHelpersAndAdapters(unittest.TestCase):
         self.assertEqual(passing, ["dld1", "cd4t_rest"])
         self.assertIn("CONFIRMATORY_LINES=dld1,cd4t_rest", txt)
         self.assertIn("K_CONF=2", txt)
+
+        # Guard against np.full(..., dtype=str) truncating channel/lane batch labels to '<U1'
+        b1 = np.full(3, "ch_01")
+        b2 = np.full(3, "ch_02")
+        self.assertEqual(len(np.unique(np.concatenate([b1, b2]))), 2)
 
 
 if __name__ == "__main__":

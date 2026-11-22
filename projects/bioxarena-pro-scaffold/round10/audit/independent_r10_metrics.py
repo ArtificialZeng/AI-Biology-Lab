@@ -96,7 +96,10 @@ def orthogonalize_to_ref(vec: np.ndarray, ref: np.ndarray) -> np.ndarray:
     denom = float(np.dot(ref, ref))
     if denom <= EPS:
         return vec.copy()
-    return vec - (float(np.dot(vec, ref)) / denom) * ref
+    out = vec - (float(np.dot(vec, ref)) / denom) * ref
+    if float(np.linalg.norm(out)) <= 1e-11 * max(float(np.linalg.norm(vec)), EPS):
+        return np.zeros_like(out)
+    return out
 
 
 def _extract_pert_gene_indices(

@@ -86,7 +86,8 @@ def evaluate_target_line(
     )
     t_mean = preds["transferred_mean"]
 
-    # Primary FCT + comparators (resp_top50 & all_nontarget)
+    # Primary FCT + comparators (resp_top50 on all methods; all_nontarget on primary + SA-2/SA-3/SA-5 anchors)
+    all_nt_methods = {"fct", "fct_full_nt", "transfer_mean_global_scale", "hybrid", "transfer_mean_var_scaled", "hybrid_on_tmvs"}
     method_eval: Dict[str, Dict[str, Any]] = {}
     for m_name, p_mat in preds.items():
         m_top50 = evaluate_joint_residuals(
@@ -101,17 +102,21 @@ def evaluate_target_line(
             half_b_obs=cohort.half_b_obs,
             half_valid=cohort.half_valid,
         )
-        m_all = evaluate_joint_residuals(
-            delta_obs=cohort.delta_obs,
-            pred=p_mat,
-            t_mean=t_mean,
-            target_cols=cohort.target_cols,
-            mode="all_nontarget",
-            n_boot=n_boot,
-            seed=seed,
-            half_a_obs=cohort.half_a_obs,
-            half_b_obs=cohort.half_b_obs,
-            half_valid=cohort.half_valid,
+        m_all = (
+            evaluate_joint_residuals(
+                delta_obs=cohort.delta_obs,
+                pred=p_mat,
+                t_mean=t_mean,
+                target_cols=cohort.target_cols,
+                mode="all_nontarget",
+                n_boot=n_boot,
+                seed=seed,
+                half_a_obs=cohort.half_a_obs,
+                half_b_obs=cohort.half_b_obs,
+                half_valid=cohort.half_valid,
+            )
+            if m_name in all_nt_methods
+            else {}
         )
         method_eval[m_name] = {"resp_top50": m_top50, "all_nontarget": m_all}
 
@@ -260,47 +265,127 @@ def evaluate_target_line(
     }
 
 
-def run_cross_check(audit_rows: List[Dict[str, Any]], results_csv: Path) -> Dict[str, Any]:
-    """Optional C3 parity check comparing independent A-T3 metrics against A-T2 results CSV."""
+def run_cross_check(
+    line_results: Dict[str, Dict[str, Any]],
+    audit_rows: List[Dict[str, Any]],
+    results_csv: Path,
+    results_summary_json: Optional[Path] = None,
+) -> Dict[str, Any]:
+    """Full C3 parity cross-check comparing independent A-T3 audit against A-T2 `round10/results/`."""
     import pandas as pd
 
     if not results_csv.exists():
         return {"status": "MISSING_RESULTS_CSV", "path": str(results_csv)}
     df_t2 = pd.read_csv(results_csv)
-    t2_map = {str(r["line"]): r for _, r in df_t2.iterrows()}
 
-    checks = []
+    # Auto-detect sibling summary_*.json if omitted
+    if results_summary_json is None and results_csv.name.startswith("line_metrics_"):
+        cand = results_csv.with_name(results_csv.name.replace("line_metrics_", "summary_", 1)).with_suffix(".json")
+        if cand.exists():
+            results_summary_json = cand
+    sum_t2 = json.loads(results_summary_json.read_text(encoding="utf-8")) if (results_summary_json and results_summary_json.exists()) else None
+
+    checks: List[Dict[str, Any]] = []
     max_pt_diff = 0.0
     max_ci_diff = 0.0
-    for row in audit_rows:
-        ln = row["line"]
-        if ln not in t2_map:
-            continue
-        r2 = t2_map[ln]
-        pairs = [
-            ("fct_r_orth_cal", "fct_r_orth_cal", False),
-            ("fct_r_orth_cal_ci975_lo", "fct_r_orth_cal_ci975_lo", True),
-            ("fct_r_orth_cal_ci975_hi", "fct_r_orth_cal_ci975_hi", True),
-            ("fct_slope_ols", "fct_slope_ols", False),
-            ("max_mismatch_r_orth_cal_ci975_hi", "max_mismatch_r_orth_cal_ci975_hi", True),
-            ("perm100_p975", "perm100_r_orth_cal_p975", True),
-        ]
-        for k_a3, k_a2, is_ci in pairs:
-            if k_a3 in row and k_a2 in r2:
-                diff = abs(float(row[k_a3]) - float(r2[k_a2]))
-                if np.isfinite(diff):
-                    if is_ci:
-                        max_ci_diff = max(max_ci_diff, diff)
-                    else:
-                        max_pt_diff = max(max_pt_diff, diff)
-                    checks.append({"line": ln, "metric": k_a3, "a3": float(row[k_a3]), "a2": float(r2[k_a2]), "abs_diff": diff})
+
+    def _record(ln: str, key: str, a3_val: Any, a2_val: Any, is_ci: bool = False) -> None:
+        nonlocal max_pt_diff, max_ci_diff
+        try:
+            v3, v2 = float(a3_val), float(a2_val)
+        except (TypeError, ValueError):
+            return
+        if not (np.isfinite(v3) and np.isfinite(v2)):
+            return
+        diff = abs(v3 - v2)
+        if is_ci:
+            max_ci_diff = max(max_ci_diff, diff)
+        else:
+            max_pt_diff = max(max_pt_diff, diff)
+        checks.append({"line": ln, "metric": key, "a3": v3, "a2": v2, "abs_diff": diff, "is_ci": is_ci})
+
+    # Detect long format (`target_line`, `method`) from round10/src/
+    if "target_line" in df_t2.columns and "method" in df_t2.columns:
+        method_map = {
+            "Source_Grand_Mean": "source_grand_mean",
+            "FCT": "fct",
+            "Transfer_Mean_GlobalScale": "transfer_mean_global_scale",
+            "Transfer_Mean_VarScaled": "transfer_mean_var_scaled",
+            "CIPHER_Linear": "cipher_linear",
+            "Hybrid_ProjShared": "hybrid",
+            "Hybrid_on_TMVS": "hybrid_on_tmvs",
+        }
+        for ln, res in line_results.items():
+            sub_ln = df_t2[df_t2["target_line"] == ln]
+            if sub_ln.empty:
+                continue
+            # Also add all mismatched mean methods dynamically
+            line_method_map = dict(method_map)
+            for m_key in res["methods"]:
+                if m_key.startswith("fct_mismatch::"):
+                    sname = m_key.split("::", 1)[1]
+                    line_method_map[f"NegCtrl_FCT_MismatchedMean({sname})"] = m_key
+
+            for a2_meth, a3_meth in line_method_map.items():
+                m_row = sub_ln[sub_ln["method"] == a2_meth]
+                if len(m_row) != 1 or a3_meth not in res["methods"]:
+                    continue
+                r2 = m_row.iloc[0]
+                m3 = res["methods"][a3_meth]["resp_top50"]
+                if a2_meth != "Transfer_Mean_GlobalScale":
+                    _record(ln, f"{a2_meth}.r_orth_cal", m3.get("r_orth_cal_est"), r2.get("r_orth_cal"), is_ci=False)
+                    _record(ln, f"{a2_meth}.r_orth_cal_ci975_lo", m3.get("r_orth_cal_ci975_lo"), r2.get("r_orth_cal_ci975_lo"), is_ci=True)
+                    _record(ln, f"{a2_meth}.r_orth_cal_ci975_hi", m3.get("r_orth_cal_ci975_hi"), r2.get("r_orth_cal_ci975_hi"), is_ci=True)
+                _record(ln, f"{a2_meth}.r_cal", m3.get("r_cal_est"), r2.get("r_cal"), is_ci=False)
+                _record(ln, f"{a2_meth}.slope_ols", m3.get("slope_ols_est"), r2.get("slope_ols"), is_ci=False)
+                m3_all = res["methods"][a3_meth].get("all_nontarget", {})
+                if m3_all and "all_nontarget_r_orth_cal" in r2 and a2_meth != "Transfer_Mean_GlobalScale":
+                    _record(ln, f"{a2_meth}.all_r_orth_cal", m3_all.get("r_orth_cal_est"), r2.get("all_nontarget_r_orth_cal"), is_ci=False)
+
+            # H-C3 aggregate panel/ownmasked/de50 parity on FCT & Transfer_Mean
+            hc3 = res.get("hc3", {})
+            for a2_meth, hc3_field in (("FCT", "fct_mean"), ("Transfer_Mean", "tmean_mean")):
+                m_row = sub_ln[sub_ln["method"] == a2_meth]
+                if len(m_row) != 1:
+                    continue
+                r2 = m_row.iloc[0]
+                for c3_k, c2_k in (
+                    ("ctrl_disc_panel", "ctrl_disc_raw_panel"),
+                    ("ctrl_disc_ownmasked", "ctrl_disc_raw"),
+                    ("ctrl_de50_r", "ctrl_de50_r"),
+                    ("cent_disc_panel", "cent_disc_raw_panel"),
+                    ("cent_disc_ownmasked", "cent_disc_raw"),
+                    ("cent_de50_r", "cent_de50_r"),
+                    ("pds_cosine_panel", "pds_cosine_panel"),
+                ):
+                    if c3_k in hc3 and c2_k in r2:
+                        _record(ln, f"{a2_meth}.hc3.{c3_k}", hc3[c3_k].get(hc3_field), r2.get(c2_k), is_ci=False)
+
+            if sum_t2 is not None:
+                p2 = sum_t2.get("fct_perm100", {}).get(ln, {}).get("r_orth_cal", {})
+                p3 = res["perm100"]["r_orth_cal"]
+                _record(ln, "perm100.p975", p3.get("p975"), p2.get("p97_5"), is_ci=False)
+                _record(ln, "perm100.median", p3.get("median"), p2.get("median"), is_ci=False)
+
+                s2 = sum_t2.get("s7_cellcount_kd", {}).get(ln, {})
+                s3 = res["s7"]
+                if s2 and s3:
+                    _record(ln, "s7.sp_ln_ncells", s3["spearman_ln_ncells"].get("rho_est"), s2.get("spearman_r_orth_p_vs_ln_ncells", {}).get("estimate"), is_ci=False)
+                    _record(ln, "s7.sp_abs_kp", s3["spearman_abs_kp"].get("rho_est"), s2.get("spearman_r_orth_p_vs_abs_kd", {}).get("estimate"), is_ci=False)
+                    _record(ln, "s7.ols_intercept", s3.get("ols_centered", {}).get("intercept_adjusted_est"), s2.get("ols_adjusted_both", {}).get("adjusted_intercept", {}).get("estimate"), is_ci=False)
+                    for t3_k, t2_k in (("T1_low_ncells", "T1_low"), ("T2_mid_ncells", "T2_mid"), ("T3_high_ncells", "T3_high")):
+                        t3_v = s3.get("tertiles", {}).get(t3_k, {})
+                        t2_v = s2.get("n_cells_tertiles", {}).get(t2_k, {})
+                        if t3_v and t2_v:
+                            _record(ln, f"s7.{t2_k}.r_orth_cal", t3_v.get("fct_r_orth_cal"), t2_v.get("fct_r_orth_cal", {}).get("estimate"), is_ci=False)
+                            _record(ln, f"s7.{t2_k}.ci975_lo", t3_v.get("fct_r_orth_cal_ci975_lo"), t2_v.get("fct_r_orth_cal", {}).get("ci975_lo"), is_ci=True)
 
     return {
         "n_checks": len(checks),
         "max_point_abs_diff": max_pt_diff,
         "max_ci_abs_diff": max_ci_diff,
-        "passes_c3_tolerance": bool(max_pt_diff <= 1e-4 and max_ci_diff <= 0.01),
-        "checks": checks,
+        "passes_c3_tolerance": bool(len(checks) > 0 and max_pt_diff <= 1e-4 and max_ci_diff <= 0.01),
+        "top_diffs": sorted(checks, key=lambda x: -x["abs_diff"])[:10],
     }
 
 
@@ -367,20 +452,21 @@ def main() -> None:
     parser.add_argument("--n-boot", type=int, default=4000)
     parser.add_argument("--n-perm", type=int, default=100)
     parser.add_argument("--seed", type=int, default=20261122)
+    parser.add_argument("--no-hgnc", action="store_true", default=False)
     parser.add_argument("--out-dir", type=Path, default=Path(__file__).resolve().parent)
     parser.add_argument("--cross-check-csv", type=Path, default=None)
     args = parser.parse_args()
 
     only_rep = not args.all_targets
     cov_max = args.cov_max_cells if args.cov_max_cells > 0 else None
-    hgnc = CanonicalHGNC.from_tsv()
-    common_genes = load_r9_common_genes(hgnc=hgnc if args.mode == "holdout_r10" else None)
+    hgnc = None if args.no_hgnc else CanonicalHGNC.from_tsv()
+    common_genes = load_r9_common_genes(hgnc=hgnc)
 
     if args.mode == "r9_dev":
         req_targets = args.target_lines if args.target_lines else list(R9_LINE_NAMES)
         enforce_r10_gate(req_targets, allow_r9_only=True, extra_lines_dir=R9_LINES_DIR)
         r9_loaded = {
-            ln: load_line_dataset(R9_LINES_DIR / ln, representation="log1p", aligned_genes=common_genes, hgnc=None)
+            ln: load_line_dataset(R9_LINES_DIR / ln, representation="log1p", aligned_genes=common_genes, hgnc=hgnc)
             for ln in R9_LINE_NAMES
         }
         cov_cache = {
@@ -460,7 +546,7 @@ def main() -> None:
             writer.writeheader()
             writer.writerows(csv_rows)
 
-    cc = run_cross_check(csv_rows, args.cross_check_csv) if args.cross_check_csv else None
+    cc = run_cross_check(line_results, csv_rows, args.cross_check_csv) if args.cross_check_csv else None
     payload = {"verdict": verdict, "cross_check": cc, "lines": line_results}
     (args.out_dir / f"{prefix}_summary.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(json.dumps({"prefix": prefix, "verdict": verdict, "cross_check": cc}, indent=2, ensure_ascii=False))
