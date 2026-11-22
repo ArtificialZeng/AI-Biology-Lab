@@ -1,0 +1,31 @@
+AGENT: A-T4 (Antigravity / Gemini — Prospective & Manuscript Outline)
+ROUND: Round 11 (Post-Verdict Outline Integration)
+DATE: 2026-11-22 21:06 +08:00
+SUPERVISOR_DIRECTIVE: [主控 21:20] Update round10/paper/OUTLINE.md with locked Round 11 results per R11_VERDICT.md; isolate post-hoc exploratory items (SA-8 & FCT vs constant-baseline combinations under N_5) in a standalone final section per EXPLORATORY_REVIEW_R11.md without writing exploratory/null_cone_theorem content into the main body.
+
+DELIVERABLE_UPDATED:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/paper/OUTLINE.md (187 lines)
+
+SUMMARY_OF_UPDATES:
+1. Main Narrative & Abstract (§2.3) + Results Outline (§3–§6) + Figures/Tables (Fig. 1, Fig. 6; Tables 1, 6, 7; Supp. Tables S3, S5):
+   - Locked Round 11 outcomes strictly reported as descriptive only under PREREG_D v2 P1: K_conf = 1 (cd4t_stim48 only, N = 503 [422 split-half valid], |G_eval| = 6,131); confirmatory hypothesis testing was not performed due to insufficient qualifying cell lines.
+   - Incorporated all mandatory PREREG_D Q7 and R11_VERDICT.md §8 disclosures:
+     * hcasmc pre-evaluation Q3/D1 exclusion (0 guide features in IGVFFI5999NXAF.h5 and IGVFFI9007DBZO.h5ad);
+     * telohaec weak knockdown D2 outcome (46% median target knockdown, median 0 top-5k DE genes -> 17/2,198 reproducible, N = 9 < 50);
+     * cd4t_stim48 (r9_6 and src8 N = 1,406): descriptive H-D1, H-D2 (fails against vcc2025_h1 baseline while beating 5 other mismatched lines & perm100), H-D3, and H-D4 pass/fail status;
+     * cd4t_stim48 independence disclosure (Q2/Q7): shares Marson lab, primary human CD4+ alpha-beta T lineage, and sgRNA library with Round 10 cd4t_rest, plus Addendum A2 shared 24 sequencing lanes conservatively lowering r_orth_cal (rho_AB_orth = +0.0784);
+     * feng_ipsc (N = 93 pre-locked secondary line): descriptive H-D2, H-D3, H-D4, and H-D5 (FCT - Mis(KOLF2.1J) = +0.0650 [+0.0528, +0.0784]) plus Addendum A3 same-donor clone split caveat;
+     * Three-party reconciliation (max point-estimate diff <= 1.1e-16 across 48 estimates), R11_VERDICT.md §7 four-point cross-round synthesis (both T-cell lines lose to vcc2025_h1), and tiny overall effect size (r_orth_cal ~ 0.05-0.12 across qualifying lines).
+2. Isolated End Section (§9. 事后探索（待查新和独立复核）):
+   - Strictly isolated outside main body, abstract, and main tables/figures pending A-T5 literature verification and A-T3 independent checks.
+   - Records SA-8 split-half selection bias observations and candidate target-response/baseline mechanism (compatible with, and distinct from, Nicol et al. 2026) along with real-mu noise-free simulation requirement and toy-model sign mismatch caveat (all-gene E1 +0.227 vs observed cd4t_stim48 -0.020).
+   - Records post-hoc observation that FCT outperforms linear combinations of arbitrary constant-baseline transforms under N_5 (12/12 lines), explicitly noting zero-by-construction baselines (GlobalScale, Source_Grand_Mean, E1/E2/E6/E7), N_5 post-hoc forking-paths risk (H-D2 8/12), persistent cd4t_stim48 loss to vcc2025_h1 (0.0596 <= 0.0766), downgrade of first-order Taylor expansion to heuristic derivation, and Q5a pseudo-replication limits.
+
+COMPLIANCE_AND_INTEGRITY_CHECKS:
+- Human role referred to strictly as Human project lead / 人类项目负责人 (zero occurrences of restricted role abbreviations/titles or banned overclaiming phrasing in OUTLINE.md and A-T4.txt).
+- Freeze manifests verified after edits via shasum -a 256 -c:
+  * round10/status/FREEZE_MANIFEST_R10.txt: 22/22 OK
+  * round11/status/FREEZE_MANIFEST_R11.txt: 41/41 OK
+- No git commands executed; only round10/paper/OUTLINE.md and round11/status/A-T4.txt modified.
+
+OUTLINE_R11_DONE

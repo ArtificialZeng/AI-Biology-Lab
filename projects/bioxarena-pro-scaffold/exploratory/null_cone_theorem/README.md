@@ -1,3 +1,5 @@
+> 已作废：本文件的 12 线数字没有执行预注册 P5 的靶基因自身过滤，样本口径有误；以 round11/audit/exploratory_check/REPORT.md（A-T3 按锁定口径重算）为准。定理 1 和 Q5a 的论断已被独立复核大幅收窄，见 round11/status/EXPLORATORY_REVIEW_R11.md 第 D 节。
+
 # Universal Target-Free Null-Cone Cure for Zero-Shot Perturbation Benchmarks (`exploratory/null_cone_theorem/`)
 
 ## 1. Scientific Overview & Relationship to Rounds 9–11

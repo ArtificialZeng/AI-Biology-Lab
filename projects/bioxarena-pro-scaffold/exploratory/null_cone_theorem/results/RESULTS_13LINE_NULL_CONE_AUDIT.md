@@ -1,3 +1,5 @@
+> 已作废：本文件的 12 线数字没有执行预注册 P5 的靶基因自身过滤，样本口径有误；以 round11/audit/exploratory_check/REPORT.md（A-T3 按锁定口径重算）为准。定理 1 和 Q5a 的论断已被独立复核大幅收窄，见 round11/status/EXPLORATORY_REVIEW_R11.md 第 D 节。
+
 # Universal Target-Free Null-Cone Audit Across 13 Human Perturb-seq Atlases (>10.33M QC Single Cells)
 
 - **Audit Parameters**: `n_boot = 4000`, `n_perm = 100`, `seed = 20261124`, Bonferroni two-sided `97.5%` CIs (`[1.25%, 98.75%]`), universal target-free `log1p` scales `c ∈ [0.05, 1.0, 20.0]`.
