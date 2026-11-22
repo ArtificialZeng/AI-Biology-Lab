@@ -14,6 +14,15 @@
   "uns_keys": [],
   "n_obs": 98315,
   "n_var": 59429,
+  "obs_ngenes_min": 201,
+  "obs_ncounts_min": 301,
+  "obs_percent_mito_quantiles": {
+    "5": 12.89,
+    "25": 19.91,
+    "50": 25.81,
+    "75": 32.32,
+    "95": 42.42
+  },
   "obs_index_sample": [
     "220824perturbsci_06.GCCGACGATACTTGCGCCGC",
     "220824perturbsci_01.CGGACTGGCCTGGTCAGCCA",
@@ -74,10 +83,10 @@
   },
   "split_half_branch": "Stage 2 deterministic seed=42 stratified 50/50 split (no .obs replicate/batch column)",
   "e3_data_feasibility_pass": true,
-  "e3_reader_feasibility_pass": false,
-  "e3_gate_pass": false,
-  "e3_verdict": "BLOCKED_BY_READER_INDEX_BUG",
-  "e3_reason": "E3 data criteria SATISFIED: X non-negative int64 raw UMIs verified (129,448,599 nnz, frac_nonint=0.0, + layers/nascent_counts); per-cell guide_id (489 unique guides) & NTC labels (perturbation=='control': 2,758 cells across 15 control guide_ids; nperts==0: 2,758); split branch=Stage 2 deterministic seed=42 stratified 50/50 split (no .obs replicate/batch column); HOWEVER round12/src/dataset_readers_r12.py::check_hek293_feasibility failed with KeyError: \"Unable to synchronously open object (object 'index' doesn't exist)\" because AnnData 0.2.0 stores index in obs.attrs['_index']='cell_barcode' and var.attrs['_index']='gene_symbol' rather than 'index'/'_index'.",
+  "e3_reader_feasibility_pass": true,
+  "e3_gate_pass": true,
+  "e3_verdict": "PASS",
+  "e3_reason": "E3 gate PASS: X non-negative int64 raw UMIs verified (129,448,599 nnz, frac_nonint=0.0, + layers/nascent_counts); per-cell guide_id (489 guides) & NTC labels (perturbation=='control': 2,758 cells across 15 control guides; nperts==0: 2,758; min ngenes=201, min ncounts=301); obs percent_mito quantiles (5/25/50/75/95%)={'5': 12.89, '25': 19.91, '50': 25.81, '75': 32.32, '95': 42.42}; split branch=Stage 2 deterministic seed=42 stratified 50/50 split (no .obs replicate/batch column); reader check=PASS (per round12/status/RULING_R12_PREFREEZE.md Ruling B: max_pct_mt disabled).",
   "matrices": [
     {
       "name": "X",
@@ -1303,7 +1312,55 @@
     }
   },
   "reader_check_hek293": {
-    "feasible": false,
-    "reason": "KeyError: \"Unable to synchronously open object (object 'index' doesn't exist)\""
+    "feasible": true,
+    "h5ad_path": "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/shared/raw/hek293_xucao/XuCao2023.h5ad",
+    "n_cells": 98315,
+    "n_rna_features": 59429,
+    "layers": [
+      "nascent_counts"
+    ],
+    "int_count_sources": [
+      "X",
+      "layers/nascent_counts"
+    ],
+    "obs_columns": [
+      "Cell_cycle_phase",
+      "cancer",
+      "cell_barcode",
+      "cell_line",
+      "celltype",
+      "disease",
+      "gRNA_UMI_counts",
+      "guide_id",
+      "nascent_MT_ratio",
+      "nascent_UMI_counts",
+      "nascent_ratio",
+      "ncounts",
+      "new_exon_ratio",
+      "ngenes",
+      "nperts",
+      "organism",
+      "percent_mito",
+      "percent_ribo",
+      "perturbation",
+      "perturbation_type",
+      "target",
+      "tissue_type",
+      "whole_exon_ratio"
+    ],
+    "var_columns": [
+      "gene_symbol",
+      "ncells",
+      "ncounts"
+    ],
+    "detected_rep_col": null,
+    "detected_rep_labels": [],
+    "obs_index_col": "cell_barcode",
+    "detected_pert_col": "perturbation",
+    "detected_guide_col": "guide_id",
+    "detected_nperts_col": "nperts",
+    "n_ntc_meta": 2758,
+    "n_tgt_cells_meta": 95557,
+    "n_unique_canon_targets_meta": 203
   }
 }

@@ -30,3 +30,43 @@ R12_PLAN_V2_READY
    - `dataset_readers_r12.build_a549_parts` raised `OverflowError: Python integer 2168629364 out of bounds for int32` at line 424 (`indptr_ds[cs + 1 : ce + 1] = cur_nnz + csc_b.indptr[1:]`) because `csc_b.indptr` is `np.int32` and `GSE345058_raw_counts.mtx.gz` has `3,598,670,133 > 2^31-1` nonzeros.
    - `A-T2` should add `.astype(np.int64)` on line 424 of `round12/src/dataset_readers_r12.py` pre-freeze (0 algorithmic/PREREG impact).
    - Meanwhile, keeping the conservative unblock rule, `round12/shared/scripts/prepare_r12_lines.py` (`build_a549_parts_int64`) mirrors `build_a549_parts` identically with `.astype(np.int64)` and is actively building `round12/shared/lines/a549_ko/` and `round12/shared/lines/a549_ko_cas9pos/` via frozen `process_r10_line` (`task-2463`). `round12/shared/lines/hek293_xucao/` remains held pending `A-T2` reader fixes + Master Control ruling on `max_pct_mt=20.0` vs authors' exported QC (`22,863` vs `98,315` cells).
+
+5. **COMPLETED UNBLOCKED LINES & QC COUNTS (`2026-11-23T01:17+08:00`, counts-only / zero metrics or predictors computed)**:
+   - **`a549_ko` (`round12/shared/lines/a549_ko/`) — CONFIRMATORY ELIGIBILITY PASS**:
+     * `605,484` QC-kept single-sgRNA+NTC cells (`560,164` perturbed + `45,320` `Nontargeting` NTCs; `QARS` [`591` cells] excluded as unmapped in local canonical HGNC table -> `999/1,000` target genes).
+     * Disjoint split halves across `32` `Lane`s (`0` fallback cells): `Half A = batch1+batch3` (`16` lanes, `23,758` NTCs) vs `Half B = batch2+batch4` (`16` lanes, `21,562` NTCs); `20,000` sampled NTCs.
+     * Genes: `29,891` GRCh38 (`Cas9` removed) -> `17,340` finite -> `17,337` canonical (`|G_eval(a549_ko)| = 6,121` canonical vs `5,959` raw `>= 3,000`).
+     * Addendum-B reproducibility: `971/999` reproducible (`971/999` `half_valid`); `521` shared reproducible with `r9_6` (`union6_rep`); **`n_eval_targets = 445`** (`445/445` `half_valid`; `429` raw + `16` HGNC-bridged `>= 50`).
+   - **`a549_ko_cas9pos` (`round12/shared/lines/a549_ko_cas9pos/`, `PREREG_E §5.5` `SA-Cas9` sensitivity; never in `K_conf`)**:
+     * `443,687` kept cells (`161,953` `total_counts_CAS9 == 0` + `435` `QARS` excluded = `443,687`; `33,685` NTCs: `17,435` Half A / `16,250` Half B across `32` `Lane`s, `20,000` sampled); `16,721` canonical genes (`|G_eval| = 6,121`); `954/999` reproducible; **`n_eval_targets = 445`** (`445/445` `half_valid`).
+   - **Counts-only report written**: `round12/shared/R12_QC_COUNTS.md` (and `verify_r12_lines.py` exit `0`, zero temp/cache artifacts remaining under `shared/lines/` or `shared/raw/`).
+
+6. **EXACT ACTION NEEDED FROM MASTER CONTROL (`Claude`) / `A-T2` / `A-T3` BEFORE `CODE_FREEZE_R12.txt` & `CONFIRMATORY_LINES_R12.txt`**:
+   - **(A) Patch `round12/src/dataset_readers_r12.py` pre-freeze (`A-T2`)** (also check `round12/audit/independent_r12_loader.py` if applicable for `A-T3`):
+     1. Read HDF5 AnnData DataFrame index via `group.attrs["_index"]` (`'cell_barcode'` for `obs`, `'gene_symbol'` for `var` in `XuCao2023.h5ad`) in `check_hek293_feasibility()`, `build_hek293_parts()`, and `_compute_h5ad_feature_subsets()`.
+     2. Cast `csc_b.indptr[1:].astype(np.int64)` at `dataset_readers_r12.py:424` (`build_a549_parts`) to avoid NumPy 2 `int32` `OverflowError` on `GSE345058` (`3,598,670,133 > 2^31-1`).
+   - **(B) Master Control Ruling on `hek293_xucao` (`XuCao2023.h5ad`) `max_pct_mt` QC Cutoff (`PREREG_E §3.2`)**:
+     * `XuCao2023.h5ad` satisfies `E3` (`98,315 x 59,429` raw `int64` UMIs + `guide_id` + `control` NTCs `2,758` cells; Stage 2 `seed=42` split fires since `.obs` lacks replicate/batch). All `98,315` cells in `.h5ad` already have `ngenes >= 201` & `ncounts >= 301`, with median `obs['percent_mito'] = 25.81%` (computed `/X` `MT-*` median `26.54%`, max `81.89%`).
+     * Should `hek293_xucao` ingestion keep `build_hek293_parts` default `max_pct_mt = 20.0` (retaining `22,863 / 98,315` cells, `626` NTCs, `167/203` targets `>=25` cells) OR match `PREREG_E §3.2`'s explicit text (`>= 300 RNA UMIs, >= 200 genes`, retaining all `98,315` cells / `2,758` NTCs with e.g. `max_pct_mt = 100.0`)?
+   - `round12/status/CONFIRMATORY_LINES_R12.txt` and final completion marker are held until Master Control rules on (B) & `A-T2` patches (A) so `hek293_xucao` is not prematurely skipped or built under an unconfirmed MT filter.
+
+R12_A549_QC_DONE_HEK293_BLOCKED
+
+7. **RESUMED POST-PATCH (`2026-11-23T02:55+08:00`, per `RULING_R12_PREFREEZE.md` + `A-T2.txt` `R12_CODE_PATCHED`)**:
+   - Verified `inspect_hek293_feasibility.py` PASS with patched `round12/src/dataset_readers_r12.py::check_hek293_feasibility` (`feasible=True`, `obs_index_col='cell_barcode'`, `n_cells=98,315`, `int_count_sources=['X', 'layers/nascent_counts']`, `obs percent_mito quantiles={5:12.89, 25:19.91, 50:25.81, 75:32.32, 95:42.42}`).
+   - Launched `prepare_r12_lines.py --lines hek293_xucao` in background (`max_pct_mt=None`, `apply_author_kd40_filter=False`, Stage 2 `seed=42` sorted by real `cell_barcode`; A549 lines left completely untouched).
+
+8. **FINALIZED HEK293, COUNTS-ONLY QC REPORT, & CONFIRMATORY GATE (`2026-11-23T02:59+08:00`)**:
+   - **`hek293_xucao` (`round12/shared/lines/hek293_xucao/`) — CONFIRMATORY ELIGIBILITY PASS**:
+     * Built via patched `round12/src/dataset_readers_r12.py::prepare_r12_line` (`max_pct_mt=None` per `RULING_R12_PREFREEZE.md` Ruling B, `apply_author_kd40_filter=False`, Stage 2 `seed=42` sorted by real `obs['cell_barcode']`, synthetic `idCas9_KRAB_MeCP2` removed -> `59,428` raw human features; `a549_ko` and `a549_ko_cas9pos` untouched).
+     * Counts: `98,274 / 98,315` kept single-sgRNA+NTC cells (`95,517` targeting + `2,757` NTC: `Half A = 1,378 >= 15`, `Half B = 1,379 >= 15`); `29,247` finite -> `29,194` final canonical genes (**`|G_eval(hek293_xucao)| = 6,127 >= 3,000`**, `5,966` raw); `96/200` Addendum-B reproducible (`96/96` `half_valid`); `70` shared reproducible with `r9_6`; **`n_eval_targets = 62 >= 50`** (`62/62` `half_valid`).
+     * Disclosed `XuCao2023.h5ad` `.obs['percent_mito']` 5/25/50/75/95 quantiles (`12.89% / 19.91% / 25.81% / 32.32% / 42.42%`) and `a549_ko` `QARS` (`591` cells) HGNC exclusion in `round12/shared/R12_QC_COUNTS.md`.
+   - **`round12/status/CONFIRMATORY_LINES_R12.txt` Written (`K_conf = 2`)**:
+     * Mechanically emitted passing lines `['a549_ko', 'hek293_xucao']` (`a549_ko`: `445 >= 50`, `6,121 >= 3,000`, NTC `23,758 / 21,562`; `hek293_xucao`: `62 >= 50`, `6,127 >= 3,000`, NTC `1,378 / 1,379`; `a549_ko_cas9pos`: `SENSITIVITY_SA_CAS9`). Zero predictors, correlations, or evaluation metrics computed.
+   - **`round12/shared/scripts/*.py` SHA-256 Checksums (for Freeze Manifest)**:
+     * `shared/scripts/download_r12.py`: `be6a49af31eeb0c707098044a0cca7686037cc387f55bb5180e6936aac453e57`
+     * `shared/scripts/inspect_hek293_feasibility.py`: `47f35c6c0a9519b1460676091f2719f684fd276efb6c730525992d56bc93c181`
+     * `shared/scripts/prepare_r12_lines.py`: `08522681ea50a2f7f19b6703630fe0cca92fb973ebc06f6dde3bc037c7aea272`
+     * `shared/scripts/verify_r12_lines.py`: `ab28964d6d948b015fde291c889d6433df7c05eb510916da0488da2817d0a461`
+
+R12_QC_DONE
