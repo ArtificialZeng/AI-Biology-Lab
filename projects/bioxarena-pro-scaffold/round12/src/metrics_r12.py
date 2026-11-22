@@ -281,9 +281,12 @@ def prepare_n5_per_pert_data(
     gene_keep_mask: Optional[np.ndarray] = None,
     mode: str = "all_nontarget",
     top_k: int = 50,
+    precomputed_items: Optional[Sequence[Tuple[int, np.ndarray]]] = None,
+    eval_delta_obs: Optional[np.ndarray] = None,
 ) -> Tuple[List[Tuple[int, np.ndarray, np.ndarray]], np.ndarray, np.ndarray, np.ndarray, np.ndarray, Dict[str, Any]]:
     """Precompute per-perturbation `N_5` bases `Q_p` and observed/split-half orthogonalized moments."""
-    n_t, n_g = delta_obs.shape
+    obs_eval = delta_obs if eval_delta_obs is None else eval_delta_obs
+    n_t, n_g = obs_eval.shape
     per_p: List[Tuple[int, np.ndarray, np.ndarray]] = []
     ro_ss: List[float] = []
     haa_ss: List[float] = []
@@ -293,26 +296,32 @@ def prepare_n5_per_pert_data(
     has_halves = half_a_obs is not None and half_b_obs is not None
     ranks: List[int] = []
 
-    for p in range(n_t):
-        valid = np.isfinite(delta_obs[p]) & np.isfinite(t_mean[p]) & np.isfinite(fc_bar[p]) & np.isfinite(grand_mean)
-        if gene_keep_mask is not None:
-            valid = valid & gene_keep_mask
-        tc = int(target_gene_idx[p])
-        if 0 <= tc < n_g:
-            valid[tc] = False
-        idx = np.flatnonzero(valid)
-        if idx.size == 0:
-            continue
-        if mode == "resp_top50" and idx.size > top_k:
-            idx = idx[np.argsort(np.abs(delta_obs[p, idx]), kind="mergesort")[-top_k:]]
+    if precomputed_items is not None:
+        item_iter: List[Tuple[int, np.ndarray]] = [(int(p), np.asarray(idx, dtype=np.int64)) for p, idx in precomputed_items if len(idx) > 0]
+    else:
+        item_iter = []
+        for p in range(n_t):
+            valid = np.isfinite(obs_eval[p]) & np.isfinite(t_mean[p]) & np.isfinite(fc_bar[p]) & np.isfinite(grand_mean)
+            if gene_keep_mask is not None:
+                valid = valid & gene_keep_mask
+            tc = int(target_gene_idx[p])
+            if 0 <= tc < n_g:
+                valid[tc] = False
+            idx = np.flatnonzero(valid)
+            if idx.size == 0:
+                continue
+            if mode == "resp_top50" and idx.size > top_k:
+                idx = idx[np.argsort(np.abs(obs_eval[p, idx]), kind="mergesort")[-top_k:]]
+            item_iter.append((p, idx))
 
+    for p, idx in item_iter:
         tm_p = t_mean[p, idx].astype(np.float64)
         gm_p = grand_mean[idx].astype(np.float64)
         fcb_p = fc_bar[p, idx].astype(np.float64)
         q_p = build_n5_basis(tm_p, gm_p, fcb_p)
         ranks.append(q_p.shape[1])
 
-        r_obs = delta_obs[p, idx].astype(np.float64) - tm_p
+        r_obs = obs_eval[p, idx].astype(np.float64) - tm_p
         r_obs_orth = r_obs - q_p @ (q_p.T @ r_obs)
         per_p.append((p, idx, q_p))
         ro_ss.append(float(np.dot(r_obs_orth, r_obs_orth)))
@@ -376,6 +385,7 @@ def _pred_n5_moments(
 def _calc_n5_vectorized(
     s_xy: Any, s_xx: Any, s_yyc: Any, s_yyo: Any,
     s_ha: Any, s_hb: Any, s_hab: Any,
+    single_half: bool = False,
 ) -> Tuple[Any, Any, Any, Any, Any, Any]:
     eta = np.where(s_yyc > EPS, np.sqrt(np.clip(s_yyo / np.maximum(s_yyc, EPS), 0.0, 1.0)), 0.0)
     denom_sp = np.sqrt(np.maximum(s_xx, 0.0) * np.maximum(s_yyc, 0.0))
@@ -384,9 +394,27 @@ def _calc_n5_vectorized(
     r_orth_raw = np.where((denom_orth > EPS) & (s_yyo > 1e-24), np.clip(s_xy / np.maximum(denom_orth, EPS), -1.0, 1.0), 0.0)
     hden = np.sqrt(np.maximum(s_ha, 0.0) * np.maximum(s_hb, 0.0))
     rho = np.where(hden > EPS, np.clip(s_hab / np.maximum(hden, EPS), -1.0, 1.0), 0.0)
-    ceil = np.where(rho > 0.0, np.sqrt((2.0 * rho) / (1.0 + rho)), 0.0)
+    rho_pos = np.maximum(rho, 0.0)
+    ceil_pos = np.sqrt(rho_pos) if single_half else np.sqrt((2.0 * rho_pos) / (1.0 + rho_pos))
+    ceil = np.where(rho > 0.0, ceil_pos, 0.0)
     r_sp_cal = np.where(ceil > EPS, r_sp_raw / np.maximum(ceil, EPS), float("nan"))
     return r_sp_cal, r_sp_raw, r_orth_raw, eta, rho, ceil
+
+
+def _summarize_paired_mis_n5(
+    preds: Dict[str, np.ndarray],
+    boot_draws_cal: Dict[str, Tuple[float, np.ndarray]],
+    m: int,
+    n_boot: int,
+) -> Dict[str, Dict[str, Any]]:
+    paired_mis: Dict[str, Dict[str, Any]] = {}
+    if "FCT" in boot_draws_cal and m > 0:
+        fct_pt, fct_b = boot_draws_cal["FCT"]
+        for mk in sorted(k for k in preds if k.startswith("NegCtrl_FCT_MismatchedMean(")):
+            src_name = mk[len("NegCtrl_FCT_MismatchedMean(") : -1]
+            mis_pt, mis_b = boot_draws_cal[mk]
+            paired_mis[src_name] = summarize_boot_r11(float(fct_pt - mis_pt), fct_b - mis_b, m, n_boot)
+    return paired_mis
 
 
 def _n5_construction_role(method_name: str) -> str:
@@ -431,15 +459,6 @@ def compute_n5_suite_r12(
     m = len(per_p)
     draws = np.random.default_rng(seed).integers(0, m, size=(n_boot, m)) if m > 0 else None
 
-    s_xx = float(np.sum(xx_o))
-    s_ha = float(np.sum(haa_o))
-    s_hb = float(np.sum(hbb_o))
-    s_hab = float(np.sum(hab_o))
-    b_xx = np.sum(xx_o[draws], axis=1) if draws is not None else None
-    b_ha = np.sum(haa_o[draws], axis=1) if draws is not None else None
-    b_hb = np.sum(hbb_o[draws], axis=1) if draws is not None else None
-    b_hab = np.sum(hab_o[draws], axis=1) if draws is not None else None
-
     methods_out: Dict[str, Dict[str, Any]] = {}
     boot_draws_cal: Dict[str, Tuple[float, np.ndarray]] = {}
 
@@ -458,45 +477,164 @@ def compute_n5_suite_r12(
             }
             continue
 
-        xy, yy_o, yy_c = _pred_n5_moments(per_p, delta_obs, p_mat, delta_transfer)
-        s_yyc = float(np.sum(yy_c))
-        pt_cal, pt_raw, pt_orth_raw, pt_eta, pt_rho, pt_ceil = _calc_n5_vectorized(
-            float(np.sum(xy)), s_xx, s_yyc, float(np.sum(yy_o)), s_ha, s_hb, s_hab
+        pt_cal, b_cal, pt_raw, pt_orth_raw, pt_eta, pt_rho, pt_ceil, pt_r2 = _eval_n5_direction(
+            per_p, delta_obs, p_mat, delta_transfer, xx_o, haa_o, hbb_o, hab_o, draws, single_half=False
         )
-        pt_r2 = float(max(0.0, 1.0 - float(pt_eta) ** 2)) if s_yyc > EPS else 1.0
-        if draws is not None:
-            b_cal, _, _, _, _, _ = _calc_n5_vectorized(
-                np.sum(xy[draws], axis=1), b_xx,
-                np.sum(yy_c[draws], axis=1), np.sum(yy_o[draws], axis=1),
-                b_ha, b_hb, b_hab,
-            )
-        else:
-            b_cal = np.array([float(pt_cal)], dtype=np.float64)
-
-        boot_draws_cal[m_name] = (float(pt_cal), np.asarray(b_cal, dtype=np.float64))
+        boot_draws_cal[m_name] = (pt_cal, b_cal)
         methods_out[m_name] = {
-            "r_cone_sp": summarize_boot_r11(float(pt_cal), np.asarray(b_cal, dtype=np.float64), m, n_boot),
-            "r_cone_sp_raw": float(pt_raw),
-            "r_cone_orth_raw": float(pt_orth_raw),
-            "eta": float(pt_eta),
-            "r2_n5": float(pt_r2),
-            "rho_half_ab_cone": float(pt_rho),
-            "ceiling_cone": float(pt_ceil),
+            "r_cone_sp": summarize_boot_r11(pt_cal, b_cal, m, n_boot),
+            "r_cone_sp_raw": pt_raw,
+            "r_cone_orth_raw": pt_orth_raw,
+            "eta": pt_eta,
+            "r2_n5": pt_r2,
+            "rho_half_ab_cone": pt_rho,
+            "ceiling_cone": pt_ceil,
             "construction_status": _n5_construction_role(m_name),
         }
 
-    paired_mis: Dict[str, Dict[str, Any]] = {}
-    if "FCT" in boot_draws_cal and m > 0:
-        fct_pt, fct_b = boot_draws_cal["FCT"]
-        for mk in sorted(k for k in preds if k.startswith("NegCtrl_FCT_MismatchedMean(")):
-            src_name = mk[len("NegCtrl_FCT_MismatchedMean(") : -1]
-            mis_pt, mis_b = boot_draws_cal[mk]
-            paired_mis[src_name] = summarize_boot_r11(float(fct_pt - mis_pt), fct_b - mis_b, m, n_boot)
-
+    paired_mis = _summarize_paired_mis_n5(preds, boot_draws_cal, m, n_boot)
     return {
         "meta": meta,
         "methods": methods_out,
         "paired_fct_minus_mis": paired_mis,
+    }
+
+
+def _eval_n5_direction(
+    per_p: Sequence[Tuple[int, np.ndarray, np.ndarray]],
+    eval_obs: np.ndarray,
+    p_mat: np.ndarray,
+    delta_transfer: np.ndarray,
+    xx_o: np.ndarray,
+    haa_o: np.ndarray,
+    hbb_o: np.ndarray,
+    hab_o: np.ndarray,
+    draws: Optional[np.ndarray],
+    single_half: bool = False,
+) -> Tuple[float, np.ndarray, float, float, float, float, float, float]:
+    """Evaluate point estimate and bootstrap draws for one `N_5` direction."""
+    s_xx = float(np.sum(xx_o))
+    s_ha = float(np.sum(haa_o))
+    s_hb = float(np.sum(hbb_o))
+    s_hab = float(np.sum(hab_o))
+    xy, yy_o, yy_c = _pred_n5_moments(per_p, eval_obs, p_mat, delta_transfer)
+    s_yyc = float(np.sum(yy_c))
+    pt_cal, pt_raw, pt_orth_raw, pt_eta, pt_rho, pt_ceil = _calc_n5_vectorized(
+        float(np.sum(xy)), s_xx, s_yyc, float(np.sum(yy_o)), s_ha, s_hb, s_hab,
+        single_half=single_half,
+    )
+    pt_r2 = float(max(0.0, 1.0 - float(pt_eta) ** 2)) if s_yyc > EPS else 1.0
+    if draws is not None:
+        b_cal, _, _, _, _, _ = _calc_n5_vectorized(
+            np.sum(xy[draws], axis=1), np.sum(xx_o[draws], axis=1),
+            np.sum(yy_c[draws], axis=1), np.sum(yy_o[draws], axis=1),
+            np.sum(haa_o[draws], axis=1), np.sum(hbb_o[draws], axis=1), np.sum(hab_o[draws], axis=1),
+            single_half=single_half,
+        )
+    else:
+        b_cal = np.array([float(pt_cal)], dtype=np.float64)
+    return (
+        float(pt_cal),
+        np.asarray(b_cal, dtype=np.float64),
+        float(pt_raw),
+        float(pt_orth_raw),
+        float(pt_eta),
+        float(pt_rho),
+        float(pt_ceil),
+        float(pt_r2),
+    )
+
+
+def compute_n5_resp_top50_split_r12(
+    delta_obs: np.ndarray,
+    preds: Dict[str, np.ndarray],
+    delta_transfer: np.ndarray,
+    grand_mean: np.ndarray,
+    fc_bar: np.ndarray,
+    target_gene_idx: Sequence[int],
+    delta_half_a: Optional[np.ndarray],
+    delta_half_b: Optional[np.ndarray],
+    half_valid: Optional[np.ndarray] = None,
+    gene_keep_mask: Optional[np.ndarray] = None,
+    top_k: int = 50,
+    n_boot: int = 4000,
+    seed: int = DEFAULT_R12_SEED,
+) -> Dict[str, Any]:
+    """
+    Evaluate `PREREG_E §5.3` `N_5` Null-Cone semi-partial `r_cone_sp` under split-half
+    out-of-sample `resp_top50_split` (`A->B` and `B->A`, disattenuated by single-half
+    cone ceiling `sqrt(rho_AB_cone)`) across all predictors & paired `FCT - Mis_s`.
+    """
+    if delta_half_a is None or delta_half_b is None:
+        return {"meta": {"n_eval_perts": 0, "status": "missing_split_halves"}, "methods": {}, "paired_fct_minus_mis": {}}
+
+    ha = np.asarray(delta_half_a, dtype=np.float64)
+    hb = np.asarray(delta_half_b, dtype=np.float64)
+    tm = np.asarray(delta_transfer, dtype=np.float64)
+    fcb = np.asarray(fc_bar, dtype=np.float64)
+    gm = np.asarray(grand_mean, dtype=np.float64)
+    gmask = np.isfinite(gm) if gene_keep_mask is None else (np.asarray(gene_keep_mask, dtype=bool) & np.isfinite(gm))
+
+    rows_ab, idx_ab = _prepare_split_direction_indices(
+        ha, hb, ha, tm, target_gene_idx, half_valid,
+        extra_valid=fcb, gene_keep_mask=gmask, top_k=top_k,
+    )
+    rows_ba, idx_ba = _prepare_split_direction_indices(
+        hb, ha, hb, tm, target_gene_idx, half_valid,
+        extra_valid=fcb, gene_keep_mask=gmask, top_k=top_k,
+    )
+    map_ab = dict(zip(rows_ab, idx_ab))
+    map_ba = dict(zip(rows_ba, idx_ba))
+    rows_common = [p for p in rows_ab if p in map_ba]
+    m = len(rows_common)
+    if m == 0:
+        return {"meta": {"n_eval_perts": 0, "status": "no_valid_split_perturbations"}, "methods": {}, "paired_fct_minus_mis": {}}
+
+    items_ab = [(p, map_ab[p]) for p in rows_common]
+    items_ba = [(p, map_ba[p]) for p in rows_common]
+
+    per_ab, xx_ab, haa_ab, hbb_ab, hab_ab, meta_ab = prepare_n5_per_pert_data(
+        delta_obs=delta_obs, t_mean=tm, grand_mean=gm, fc_bar=fcb,
+        target_gene_idx=target_gene_idx, half_a_obs=ha, half_b_obs=hb,
+        half_valid=half_valid, precomputed_items=items_ab, eval_delta_obs=hb,
+    )
+    per_ba, xx_ba, haa_ba, hbb_ba, hab_ba, meta_ba = prepare_n5_per_pert_data(
+        delta_obs=delta_obs, t_mean=tm, grand_mean=gm, fc_bar=fcb,
+        target_gene_idx=target_gene_idx, half_a_obs=ha, half_b_obs=hb,
+        half_valid=half_valid, precomputed_items=items_ba, eval_delta_obs=ha,
+    )
+
+    draws = np.random.default_rng(seed).integers(0, m, size=(n_boot, m))
+    methods_out: Dict[str, Dict[str, Any]] = {}
+    boot_draws_cal: Dict[str, Tuple[float, np.ndarray]] = {}
+
+    for m_name, p_mat in preds.items():
+        ca, ba_arr, ra, oa, ea, rho_a, ceil_a, r2a = _eval_n5_direction(
+            per_ab, hb, p_mat, tm, xx_ab, haa_ab, hbb_ab, hab_ab, draws, single_half=True
+        )
+        cb, bb_arr, rb, ob, eb, rho_b, ceil_b, r2b = _eval_n5_direction(
+            per_ba, ha, p_mat, tm, xx_ba, haa_ba, hbb_ba, hab_ba, draws, single_half=True
+        )
+        pt_cal = 0.5 * (ca + cb)
+        b_cal = 0.5 * (ba_arr + bb_arr)
+        boot_draws_cal[m_name] = (float(pt_cal), np.asarray(b_cal, dtype=np.float64))
+        methods_out[m_name] = {
+            "r_cone_sp": summarize_boot_r11(float(pt_cal), np.asarray(b_cal, dtype=np.float64), m, n_boot),
+            "r_cone_sp_raw": float(0.5 * (ra + rb)),
+            "r_cone_orth_raw": float(0.5 * (oa + ob)),
+            "eta": float(0.5 * (ea + eb)),
+            "r2_n5": float(0.5 * (r2a + r2b)),
+            "rho_half_ab_cone_a": float(rho_a),
+            "rho_half_ab_cone_b": float(rho_b),
+            "ceiling_cone_single_a": float(ceil_a),
+            "ceiling_cone_single_b": float(ceil_b),
+            "construction_status": _n5_construction_role(m_name),
+        }
+
+    return {
+        "meta": {"n_eval_perts": int(m), "mode": "N5_resp_top50_split", "ab": meta_ab, "ba": meta_ba},
+        "methods": methods_out,
+        "paired_fct_minus_mis": _summarize_paired_mis_n5(preds, boot_draws_cal, m, n_boot),
     }
 
 
@@ -619,6 +757,7 @@ __all__ = [
     "compute_joint_paired_r_orth_diff_r11",
     "compute_joint_sa8_split_minus_all_r12",
     "compute_n5_perm100_r12",
+    "compute_n5_resp_top50_split_r12",
     "compute_n5_suite_r12",
     "compute_paired_fct_minus_all_mismatched_r12",
     "compute_residual_suite_r11",

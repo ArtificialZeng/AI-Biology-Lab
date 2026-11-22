@@ -161,15 +161,23 @@ def build_a549_parts(
                 if str(pval).strip().lower() in _A549_NTC_TOKENS:
                     known_ntc_sgrnas.add(str(gval).strip())
 
+    c_cellid_col = _pick_column(cell_df.columns, ["cell_id", "Cell_ID", "barcode", "Barcode", "cell"])
     c_batch_col = _pick_column(cell_df.columns, ["batch", "Batch", "batch_id"])
-    c_unit_col = _pick_column(cell_df.columns, ["lane", "channel", "sample", "batch", "Batch"])
+    c_unit_col = _pick_column(cell_df.columns, ["Lane", "lane", "channel", "sample", "batch", "Batch"])
     c_sgrna_col = _pick_column(cell_df.columns, ["sgRNA", "sgrna", "guide_id", "guide"])
     c_pert_col = _pick_column(cell_df.columns, ["Perturbation", "perturbation", "target_gene", "gene_symbol", "gene"])
+    c_cond_col = _pick_column(cell_df.columns, ["Condition", "condition"])
     c_cas9_col = _pick_column(cell_df.columns, ["total_counts_CAS9", "cas9_counts", "CAS9_counts", "CAS9"])
     if c_batch_col is None or c_pert_col is None or c_sgrna_col is None:
         raise KeyError(
             f"A549 cell annotations missing batch/sgRNA/Perturbation columns in {cell_path}: {list(cell_df.columns)}"
         )
+    if c_cellid_col is not None:
+        cids = [str(x).strip() for x in cell_df[c_cellid_col].tolist()]
+        if any(not c for c in cids) or len(set(cids)) != len(cids):
+            raise ValueError(
+                f"A549 cell annotations contain empty or duplicate {c_cellid_col!r} entries in {cell_path}"
+            )
 
     n_annot_cells = len(cell_df)
     n_annot_genes = len(gene_df)
@@ -233,6 +241,7 @@ def build_a549_parts(
     units_raw = cell_df[c_unit_col].astype(str).str.strip().tolist() if c_unit_col else batches_raw
     sgrnas_raw = cell_df[c_sgrna_col].astype(str).str.strip().tolist()
     perts_raw = cell_df[c_pert_col].astype(str).str.strip().tolist()
+    conds_raw = cell_df[c_cond_col].astype(str).str.strip().tolist() if c_cond_col is not None else None
 
     raw_to_kept = np.full(n_annot_cells, -1, dtype=np.int32)
     kept_nt_l: List[bool] = []
@@ -266,7 +275,21 @@ def build_a549_parts(
                 n_cas9_zero_excl += 1
                 continue
 
-        is_ntc = pr.lower() in _A549_NTC_TOKENS or (sg in known_ntc_sgrnas and pr.lower() in _A549_NTC_TOKENS)
+        pert_is_ntc = pr.lower() in _A549_NTC_TOKENS
+        if conds_raw is not None:
+            cond_low = conds_raw[ci].lower()
+            if cond_low in _UNASSIGNED_TOKENS:
+                n_multiguide_excl += 1
+                continue
+            cond_is_ntc = cond_low in _A549_NTC_TOKENS
+            if pert_is_ntc != cond_is_ntc:
+                n_nonplain_excl += 1
+                continue
+            is_ntc = pert_is_ntc and cond_is_ntc
+        else:
+            is_ntc = pert_is_ntc
+        if is_ntc and known_ntc_sgrnas and sg in known_ntc_sgrnas:
+            pass  # verified NTC guide identity
         if is_ntc:
             k_idx = len(kept_nt_l)
             raw_to_kept[ci] = k_idx
@@ -512,12 +535,25 @@ def check_hek293_feasibility(raw_dir: Path, hgnc: Optional[HGNCLookup] = None) -
             rep_labels = sorted({str(x).strip() for x in rep_vals if str(x).strip()})
 
             pert_col = next((c for c in ("perturbation", "target_gene", "target", "gene", "gene_symbol") if c in obs_keys), None)
+            guide_col = next((c for c in ("sgRNA", "sgrna", "guide_id", "top_sgrna", "guide", "perturbation_2") if c in obs_keys), None)
+            nperts_col = next((c for c in ("nperts", "n_guides", "num_guides", "n_perts") if c in obs_keys), None)
             n_ntc = n_tgt = 0
             canon_tgts: Set[str] = set()
             if pert_col:
                 pvals = read_obs_or_var_col(obs, pert_col)
-                for p in pvals:
+                gvals = read_obs_or_var_col(obs, guide_col) if guide_col else None
+                npvals = (
+                    pd.to_numeric(pd.Series(read_obs_or_var_col(obs, nperts_col)), errors="coerce").to_numpy()
+                    if nperts_col
+                    else None
+                )
+                for idx_c, p in enumerate(pvals):
                     ps = str(p).strip()
+                    gs = str(gvals[idx_c]).strip() if gvals is not None else ""
+                    if npvals is not None and np.isfinite(npvals[idx_c]) and int(npvals[idx_c]) > 1:
+                        continue
+                    if _MULTI_GUIDE_RE.search(ps) or (gs and _MULTI_GUIDE_RE.search(gs)):
+                        continue
                     if ps.lower() in _HEK_NTC_TOKENS:
                         n_ntc += 1
                     elif _is_plain_single_gene_symbol(ps):
@@ -526,8 +562,15 @@ def check_hek293_feasibility(raw_dir: Path, hgnc: Optional[HGNCLookup] = None) -
                             n_tgt += 1
                             canon_tgts.add(cs)
 
+        has_guide_info = bool(guide_col is not None or nperts_col is not None or pert_col is not None)
         return {
-            "feasible": bool(n_ntc > 0 and len(canon_tgts) > 0 and len(r_ids) > 0 and len(int_count_layers) > 0),
+            "feasible": bool(
+                n_ntc > 0
+                and len(canon_tgts) > 0
+                and len(r_ids) > 0
+                and len(int_count_layers) > 0
+                and has_guide_info
+            ),
             "h5ad_path": str(h5ad_path),
             "n_cells": int(n_cells),
             "n_rna_features": int(len(r_names)),
@@ -538,6 +581,8 @@ def check_hek293_feasibility(raw_dir: Path, hgnc: Optional[HGNCLookup] = None) -
             "detected_rep_col": rep_col,
             "detected_rep_labels": rep_labels[:20],
             "detected_pert_col": pert_col,
+            "detected_guide_col": guide_col,
+            "detected_nperts_col": nperts_col,
             "n_ntc_meta": int(n_ntc),
             "n_tgt_cells_meta": int(n_tgt),
             "n_unique_canon_targets_meta": int(len(canon_tgts)),
@@ -556,6 +601,35 @@ def _is_nonhuman_or_vector_var(sym: str, gid: str) -> bool:
     return False
 
 
+def _resolve_hek293_integer_x_layer(f: h5py.File, x_layer: Optional[str]) -> str:
+    """
+    `PREREG_E §3.2 (E3)`: Select raw non-negative integer UMI matrix layer.
+    When `x_layer` is `None` or `'auto'`, prefer `'X'` if integer, else inspect
+    `layers/*` (`counts`, `raw_counts`, `raw`, etc.), or raise `EXCLUDED_FEASIBILITY_Q3`.
+    """
+    req = "auto" if x_layer is None else str(x_layer).strip()
+    if req.lower() != "auto":
+        node = f["X"] if req == "X" else f["layers"][req]
+        if not _sample_node_nonneg_int(node):
+            raise RuntimeError(
+                f"EXCLUDED_FEASIBILITY_Q3: HEK293 layer {req!r} does not contain raw non-negative integer UMI counts."
+            )
+        return req
+
+    if "X" in f and _sample_node_nonneg_int(f["X"]):
+        return "X"
+    if "layers" in f:
+        avail = sorted(f["layers"].keys())
+        preferred = [k for k in ("counts", "raw_counts", "raw", "UMI", "umi") if k in avail]
+        ordered = preferred + [k for k in avail if k not in preferred]
+        for lk in ordered:
+            if _sample_node_nonneg_int(f["layers"][lk]):
+                return lk
+    raise RuntimeError(
+        "EXCLUDED_FEASIBILITY_Q3: HEK293 XuCao2023.h5ad lacks raw non-negative integer UMI counts in X or layers/*."
+    )
+
+
 def build_hek293_parts(
     raw_dir: Path,
     hgnc: HGNCLookup,
@@ -565,10 +639,12 @@ def build_hek293_parts(
     min_umi: int = 300,
     min_batch_nt: int = 15,
     force_seed42_split: bool = False,
-    x_layer: str = "X",
+    x_layer: str = "auto",
 ) -> Tuple[List[PartSpec], dict]:
     """
     `XuCao2023.h5ad` (`HEK293` PerturbSci-Kinetics CRISPRi):
+      - `E3`: verifies raw non-negative integer UMI counts (`X` or `layers/*`); auto-selects
+        integer layer when `X` is float-normalized, else raises `EXCLUDED_FEASIBILITY_Q3`.
       - All single-sgRNA cells by default (`apply_author_kd40_filter=False` avoids outcome selection).
       - Excludes synthetic dCas9/lentiviral & non-human spike-in features if present.
       - Stage 1: lexicographic 1-based parity on `.obs` replicate column if `>= 2` distinct
@@ -579,7 +655,8 @@ def build_hek293_parts(
     h5ad_path = _find_first_file(hdir, ["XuCao2023.h5ad"], "*.h5ad")
 
     with h5py.File(h5ad_path, "r") as f:
-        x_node, shape = open_x_node(f, x_layer=x_layer)
+        resolved_layer = _resolve_hek293_integer_x_layer(f, x_layer)
+        x_node, shape = open_x_node(f, x_layer=resolved_layer)
         n_raw_cells, n_raw_var = int(shape[0]), int(shape[1])
         obs = f["obs"]
         obs_keys = set(obs.keys())
@@ -637,7 +714,7 @@ def build_hek293_parts(
         ng_all = np.zeros(n_raw_cells, dtype=np.int32)
         mt_umi_all = np.zeros(n_raw_cells, dtype=np.float64)
         if isinstance(x_node, h5py.Group) and "indptr" in x_node:
-            layer_arg = None if x_layer == "X" else x_layer
+            layer_arg = None if resolved_layer == "X" else resolved_layer
             for cs, ce, blk in iter_h5ad_csr_chunks_r10(h5ad_path, row_chunk=4096, layer_name=layer_arg):
                 sub = blk if full_rna_subset else blk[:, rna_rows]
                 umi_all[cs:ce] = sub.sum(axis=1)
@@ -788,6 +865,7 @@ def build_hek293_parts(
     )
     audit = {
         "n_raw_cells": int(n_raw_cells),
+        "x_layer_used": resolved_layer,
         "apply_author_kd40_filter": bool(apply_author_kd40_filter),
         "n_multiguide_or_unassigned_excluded": int(n_multiguide_excl),
         "n_kd40_excluded": int(n_kd40_excl),
@@ -817,7 +895,12 @@ def prepare_r12_line(
     hgnc_l = hgnc or build_hgnc_lookup()
     if line in ("a549_ko", "a549_ko_cas9pos", "a549", "a549_cas9pos"):
         use_c9 = exclude_zero_cas9 or (line in ("a549_ko_cas9pos", "a549_cas9pos"))
-        parts, audit = build_a549_parts(raw_dir, hgnc_l, exclude_zero_cas9=use_c9)
+        parts, audit = build_a549_parts(
+            raw_dir,
+            hgnc_l,
+            exclude_zero_cas9=use_c9,
+            cache_dir=Path(out_root) / f".cache_{line}",
+        )
     elif line in ("hek293_xucao", "hek293"):
         parts, audit = build_hek293_parts(raw_dir, hgnc_l, apply_author_kd40_filter=apply_author_kd40_filter)
     else:

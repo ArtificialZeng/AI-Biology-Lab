@@ -319,6 +319,10 @@ def adjudicate_r12_results(
     Execute strict `PREREG_E` confirmatory & reporting-only adjudication.
     """
     conf_lines = list(confirmatory_lines)
+    if conf_lines and not any(str(c).lower().startswith("a549") for c in conf_lines):
+        raise ValueError(
+            f"PREREG_E §0.2.2 violation: a549_ko is mandatory for any confirmatory portfolio; got {conf_lines}"
+        )
     k_conf = len(conf_lines)
     all_lines = sorted(df_lines["target_line"].unique().tolist()) if not df_lines.empty else []
     secondary_lines = [l for l in all_lines if l not in set(conf_lines)]
@@ -329,7 +333,7 @@ def adjudicate_r12_results(
     desc_util = _evaluate_util_noninferiority(df_boot, all_lines, noninf_ci_level="ci975")
 
     out: Dict[str, Any] = {
-        "schema_version": "r12_prereg_e_v1",
+        "schema_version": "r12_prereg_e_v2",
         "primary_mask": "all_nontarget",
         "sa8_mask": "resp_top50_split",
         "primary_ci_level": "ci975",
@@ -519,14 +523,19 @@ def render_r12_markdown_report(
             f"{_fval(r['resp_top50_r_orth_cal']):+.4f} | {_fval(r['rho_half_ab_orth']):+.4f} | {_fval(r['r_orth_cal_valid_frac']):.4f} |"
         )
 
-    # Reporting-only FCT - E1 & N_5 Null Cone section
-    n5_map = summary.get("n5_cone_metrics", {})
-    if n5_map:
+    # Reporting-only N_5 Null Cone section (all_nontarget and resp_top50_split)
+    for n5_key, mask_lbl in (
+        ("n5_cone_metrics", "all_nontarget"),
+        ("n5_cone_split_metrics", "resp_top50_split"),
+    ):
+        n5_map = summary.get(n5_key, {})
+        if not n5_map:
+            continue
         lines_md.extend([
             "",
-            "## Reporting-Only `N_5` Null-Cone Analysis (`r_cone_sp`, 97.5% CIs)",
+            f"## Reporting-Only `N_5` Null-Cone Analysis — `{mask_lbl}` (`r_cone_sp`, 97.5% CIs)",
             "",
-            "*Note: `Transfer_Mean_GlobalScale` and `Source_Grand_Mean` are **zero by exact mathematical construction** under `N_5`, and `E1_ConstMed`, `E2_ConstP10`, `E2_ConstP90`, `E6_LogFCBar`, `E7_FCBarMinus1` are **suppressed by cone construction** (`R2_N5 >= 0.99`); only `FCT`, `Mis_s`, single-draw `Perm0..99`, `E3`/`E5`, and non-cone target models are empirically informative.*",
+            "*Note: `Transfer_Mean`, `Transfer_Mean_GlobalScale`, and `Source_Grand_Mean` are **zero by exact mathematical construction** under `N_5`, and `E1_ConstMed`, `E2_ConstP10`, `E2_ConstP90`, `E6_LogFCBar`, `E7_FCBarMinus1` are **suppressed by cone construction** (`R2_N5 >= 0.99`); only `FCT`, `Mis_s`, single-draw `Perm0..99`, `E3`/`E5`, and non-cone target models are empirically informative.*",
             "",
             "| Target Line | Method | `N_5 r_cone_sp` | 97.5% CI | `eta` | `R2_N5` | Structural Role |",
             "|---|---|---:|---|---:|---:|---|",
@@ -553,5 +562,16 @@ def render_r12_markdown_report(
             f"`N_5` single-draw med={_fval(pn5.get('median')):+.4f}, med|r|={_fval(pn5.get('median_abs')):+.4f}, "
             f"Q97.5={_fval(pn5.get('p97_5')):+.4f} (med_eta={_fval(n5_perm_map.get(ln, {}).get('med_eta')):.4f})"
         )
+
+    lines_md.extend([
+        "",
+        "## Mandatory Governance, Provenance & Prior-Art Disclosures (`PREREG_E §0.2, §5, §7.2, §8`)",
+        "",
+        "- **Post-Hoc Provenance**: `H-E1` (paired `FCT - Mis_s` on `all_nontarget`) and `H-E2` (`SA-8 resp_top50_split` constant-baseline inflation) were specified in `PREREG_E` after unblinding Rounds 9-11 (`N=12` lines) and evaluated zero-shot on unseen Round 12 lines.",
+        "- **Claim 2 Non-Mechanistic Scope**: Confirmation of `H-E2` establishes an **empirical evaluation artifact strictly under `r_orth_cal`** (`resp_top50_split` vs `all_nontarget`) — namely that single-line constant baseline `E1_ConstMed` attains inflated disattenuated residual correlation under magnitude-selected subsets — and **must NOT be extrapolated** as a mechanistic biological claim or applied directly to raw DEG discovery benchmarks without independent validation.",
+        "- **Modality Boundary & Single-Line Generalizability**: Source cohorts (`r9_6`, `r9_r10_8`) comprise **CRISPRi** perturbations whereas `a549_ko` (`GSE345058`) is **CRISPRko**. Failure on `a549_ko` is confounded with CRISPRi->CRISPRko modality shift rather than purely same-modality failure; passage constitutes cross-modality generalization evidence. Under `K_conf = 1`, population generalizability across additional lineages remains explicitly limited.",
+        "- **Prior-Art & Data Attribution**: Baseline-aware perturbation transfer context acknowledges **Kawsar et al. (2026), `CanPert/CASTER` (`doi:10.64898/2026.11.15.766815`)**; `a549_ko` CRISPRko dataset derives from **Liu et al. (2026), `GSE345058`**; `hek293_xucao` CRISPRi derives from **Xu & Cao (2023), PerturbSci-Kinetics**.",
+        "- **Reporting-Only §5 Scope**: Legacy unpaired `H-D2`, paired `FCT - E1_ConstMed`, `N_5` null-cone suites (`all_nontarget` & `resp_top50_split`), `SA-Src8` (`--source-mode r9_r10_8`), `SA-Cas9` (`a549_ko_cas9pos`), naive `resp_top50`, and `H-D_util` are strictly descriptive and carry zero multiplicity weight.",
+    ])
 
     return "\n".join(lines_md) + "\n"

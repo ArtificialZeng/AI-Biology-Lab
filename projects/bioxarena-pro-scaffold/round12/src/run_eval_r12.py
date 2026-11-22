@@ -65,6 +65,7 @@ from metrics_r12 import (  # noqa: E402
     DEFAULT_R12_SEED,
     compute_joint_sa8_split_minus_all_r12,
     compute_n5_perm100_r12,
+    compute_n5_resp_top50_split_r12,
     compute_n5_suite_r12,
     compute_paired_fct_minus_all_mismatched_r12,
 )
@@ -286,7 +287,7 @@ def evaluate_target_against_sources_r12(
             }
         )
 
-    # 3. Reporting-only N_5 Null-Cone metrics & single-draw 100-perm null
+    # 3. Reporting-only N_5 Null-Cone metrics (all_nontarget & resp_top50_split) + 100-perm null
     n5_suite = compute_n5_suite_r12(
         delta_obs=true_deltas,
         preds=preds,
@@ -298,6 +299,21 @@ def evaluate_target_against_sources_r12(
         delta_half_b=hb_sub,
         half_valid=hv_sub,
         gene_keep_mask=gene_keep_mask,
+        n_boot=n_boot,
+        seed=seed,
+    )
+    n5_split_suite = compute_n5_resp_top50_split_r12(
+        delta_obs=true_deltas,
+        preds=preds,
+        delta_transfer=transfer_ref,
+        grand_mean=state.grand_mean,
+        fc_bar=fc_bar,
+        target_gene_idx=q_gidx,
+        delta_half_a=ha_sub,
+        delta_half_b=hb_sub,
+        half_valid=hv_sub,
+        gene_keep_mask=gene_keep_mask,
+        top_k=50,
         n_boot=n_boot,
         seed=seed,
     )
@@ -317,6 +333,7 @@ def evaluate_target_against_sources_r12(
         n_perm=n_perm,
     )
     extra["n5_cone_metrics"] = n5_suite
+    extra["n5_cone_split_metrics"] = n5_split_suite
     extra["n5_perm100"] = n5_perm
     return line_rows, boot_rows, extra
 
@@ -423,6 +440,7 @@ def main() -> None:
     all_boot_rows: List[Dict[str, Any]] = []
     perm_map: Dict[str, Any] = {}
     n5_map: Dict[str, Any] = {}
+    n5_split_map: Dict[str, Any] = {}
     n5_perm_map: Dict[str, Any] = {}
     r19_map: Dict[str, Any] = {}
     s7_map: Dict[str, Any] = {}
@@ -454,6 +472,7 @@ def main() -> None:
         all_boot_rows.extend(b_rows)
         perm_map[tgt_ln] = extra["perm100"]
         n5_map[tgt_ln] = extra["n5_cone_metrics"]
+        n5_split_map[tgt_ln] = extra["n5_cone_split_metrics"]
         n5_perm_map[tgt_ln] = extra["n5_perm100"]
         r19_map[tgt_ln] = extra["r19_variance_decomposition"]
         s7_map[tgt_ln] = extra["s7_cellcount_kd"]
@@ -486,6 +505,7 @@ def main() -> None:
         "eval_meta": eval_meta,
         "fct_perm100": perm_map,
         "n5_cone_metrics": n5_map,
+        "n5_cone_split_metrics": n5_split_map,
         "n5_perm100": n5_perm_map,
         "r19_variance_decomposition": r19_map,
         "s7_cellcount_kd": s7_map,

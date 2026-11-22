@@ -1,43 +1,40 @@
-[A-T2] ROUND 12 (`PREREG_E`) CODE DRAFT READY FOR AUDIT & DOWNLOAD GATE 2026-11-22T22:55+08:00
+[A-T2] ROUND 12 (`PREREG_E` v2 LOCK-ALIGNED @ 4c606f4) CODE READY 2026-11-22T23:12+08:00
 
-1. Strict Freeze Integrity & Blinding Compliance:
-   - `shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`: **22/22 `.py` files OK** (zero edits to `round10/`).
-   - `shasum -a 256 -c round11/status/FREEZE_MANIFEST_R11.txt`: **41/41 files OK** (zero edits to any file under `round11/` per Round 12 directive).
-   - Zero access to any Round 12 held-out expression matrix (`round12/shared/` holds only `R12_DOWNLOAD_PLAN.md` and `PRIOR_ART_F.md`).
-   - Verified `python3 -I round12/src/run_eval_r12.py --phase holdout_r12` blocks cleanly (`RuntimeError: PREREG_E hard gate blocked`).
+1. Strict Lock Alignment, Blinding & Freeze Integrity:
+   - Aligned strictly to locked `PREREG_E.md` (`commit 4c606f4732ea080768e27757c689d40d7892cd3d`, sha256 `d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924`) and `round12/shared/R12_DOWNLOAD_PLAN.md` (sha256 `e3826e09dd4326b1724d25732bb05d3d4dc72681ffc283b4a5efba57bd1555ed`).
+   - `shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`: exited `0`, `22` `: OK` (zero edits to `round10/`).
+   - `shasum -a 256 -c round11/status/FREEZE_MANIFEST_R11.txt`: exited `0`, `41` `: OK` (zero edits to `round11/`).
+   - Blinding compliance: zero access to `round12/shared/lines/` or `round12/shared/raw/`.
    - Post-final-edit SHA-256 checksums of `round12/src/*.py`:
      * `__init__.py`: `148a8b661cbfdc9aa7ad99aede4b3a3efcf6d7c4bebea932e577ff99cf2c5089`
-     * `adjudicate_r12.py`: `57f711890e8179a6868e488608c7df77b4d46442c58f68c49cdc156a12e43285`
+     * `adjudicate_r12.py`: `b1954bb6ae1a857e3e34619215544e000653510492dd1f451b1eb133bc3fe64f`
      * `data_loader_r12.py`: `3f28ecb9a442dbe4e1c792552443412f451affe3a41ef5abddca7bd9bb3e3111`
-     * `dataset_readers_r12.py`: `e35f5c67c5952648d0d596ce39d2007d43ce9e21f66e7b92f185759856b09cec`
-     * `metrics_r12.py`: `2f09c328fd7901ba5c130d1ea03b8a5b07bbb404dcdcac07e869595e841e143e`
-     * `run_eval_r12.py`: `5c10de3a3018937d13a50ab737d587187aea28f4635201726bb5dad8272cc4a6`
-     * `test_unit_r12.py`: `05d4d749784382a9f5e869ce6748f3fdb6dc5e54f799b71809bc5389477452b0`
+     * `dataset_readers_r12.py`: `f001f79f2e4d045c510ee892da1d9711bef56a53bc8429dfa77856fc7fb71511`
+     * `metrics_r12.py`: `68513e42d9b417cab3a523224bd3ab3313077edf7c22ee086d1b933c9424d0a7`
+     * `run_eval_r12.py`: `eb812b3038a20b66072be3aa1bd012ae8f5bb97cabf2e26d3f2e69cad82fec04`
+     * `test_unit_r12.py`: `f5b0dcfb34a20dcf6776a85fc87a3583ee2932beba57b3f49af5855fa25bb3e5`
 
-2. Implemented `round12/src/` Modules Aligned to `PREREG_E.md` & `R12_DOWNLOAD_PLAN.md`:
-   - `data_loader_r12.py`: Reuses frozen `data_loader_r10` / `data_loader_r11`; enforces `check_prereg_e_gate()` (`PREREG_E_COMMIT.txt` + `CODE_FREEZE_R12.txt`), `CONFIRMATORY_LINES_R12.txt` parser, `dev_r9` / `dev_r10` / `dev_r11` dev phases, and `r9_6` / `r9_r10_8` source pools.
+2. Final `PREREG_E v2` Alignment Summary in `round12/src/`:
    - `dataset_readers_r12.py`:
-     * **`build_a549_parts` (`a549_ko` / `a549_ko_cas9pos`, `GSE345058`)**: Reads `raw_counts.mtx.gz` + `cell_annotations` + `gene_annotations` + `sgRNA` (no `.h5ad`); auto-detects `(cells x genes)` vs `(genes x cells)` MTX orientation and space/tab delimiter; streams MTX chunks into cell-bucketed 10x CSC HDF5 cache (`< 1.5 GB` peak RAM, incremental temp `.bin` cleanup); excludes `Cas9`/`CAS9` (`genome == "CAS9"`); strictly `Nontargeting` NTCs & single sgRNA; `Half A = batch1 + batch3` vs `Half B = batch2 + batch4`; `Lane` centering (`min_batch_nt = 15`); `exclude_zero_cas9` toggle (`total_counts_CAS9 > 0` or MTX `CAS9` fallback) for `SA-Cas9`.
-     * **`check_hek293_feasibility` & `build_hek293_parts` (`hek293_xucao`, `XuCao2023.h5ad`)**: `h5py` reader supporting CSR/CSC/dense `/X` and `/layers/*` (E3 feasibility check samples `/X` & `/layers` for non-negative integer counts); excludes synthetic `dCas9` / `Cas9` & `ENSMUSG` spike-ins; filters `nperts <= 1` singlets cleanly; defaults `apply_author_kd40_filter=False` (`all singlets`, no outcome selection); Stage-1 lexicographic sorted `.obs` replicate parity split with Stage-2 barcode-sorted stratified `seed=42` 50/50 fallback.
-     * `prepare_r12_line`: unified standardization dispatcher into `process_r10_line`.
-   - `metrics_r12.py`:
-     * `DEFAULT_R12_SEED = 20261201`, two-sided `97.5%` CIs (`ci975`) alongside `ci95` and `ci9833`.
-     * `compute_paired_fct_minus_all_mismatched_r12` (`H-E1b`): Joint perturbation bootstrap of paired `FCT - NegCtrl_FCT_MismatchedMean(s)` against EVERY mismatched source `s` in pool.
-     * `compute_joint_sa8_split_minus_all_r12` (`H-E2b`): Joint perturbation cross-mask bootstrap of `r_orth_cal(pred, resp_top50_split) - r_orth_cal(pred, all_nontarget)` strictly on common half-valid perturbations (`rows_common`), disattenuating `resp_top50_split` by single-half `sqrt(rho_AB)` and `all_nontarget` by Spearman-Brown `sqrt(2*rho/(1+rho))` inside identical draws.
-     * `compute_n5_suite_r12` & `compute_n5_perm100_r12`: Canonical `N_5` SVD basis, `r_cone_sp`, `eta`, `r2_n5`, paired `N_5 FCT - Mis_s`, single-draw `Perm0..99` (`median`, `median_abs`, `Q97.5`, `med_eta`), explicitly tagging construction-zeroed (`Transfer_Mean`, `Transfer_Mean_GlobalScale`, `Source_Grand_Mean`) and cone-suppressed (`E1_ConstMed`, `E2_ConstP10/P90`, `E6_LogFCBar`, `E7_FCBarMinus1`) controls.
-   - `adjudicate_r12.py` & `run_eval_r12.py`: Confirmatory IUT + 2-claim Bonferroni adjudicator supporting `K_conf = 0` (abort confirmatory), `K_conf = 1` (`CONFIRMATORY_SINGLE_LINE_K1` with mandatory generalizability disclosure), and `K_conf >= 2`, separating Claims 1 (`H-E1a ∩ H-E1b ∩ H-E1c`) & 2 (`H-E2a ∩ H-E2b`) from all reporting-only sections (`H-D2` unpaired, `FCT - E1`, `N_5`, `SA-8` / naive `resp_top50`, `H-D_util`, secondary lines).
+     * `build_a549_parts` (`a549_ko` / `a549_ko_cas9pos`, `GSE345058`): enforces `cell_id` uniqueness/non-empty validation (when `cell_id` column is present), `Condition == "Nontargeting"` + `Perturbation == "Nontargeting"` consistency (excluding mismatches), `Lane`-first NTC centering unit priority, `Half A = batch1 + batch3` vs `Half B = batch2 + batch4`, excludes `Cas9`/`CAS9` (`genome == "CAS9"`), and keeps CSC `.h5` cache in writable `.cache_<line>` directory under `out_root` when invoked via `prepare_r12_line`.
+     * `check_hek293_feasibility` & `build_hek293_parts` (`hek293_xucao`, `XuCao2023.h5ad`): implements `E3` integer UMI check across `/X` & `/layers/*` plus single-sgRNA (`sgRNA` / `nperts`) & NTC detection; defaults `x_layer="auto"` in `build_hek293_parts` via `_resolve_hek293_integer_x_layer()` so integer `layers/counts` / `layers/raw_counts` is auto-selected if `/X` is float-normalized, or raises `RuntimeError("EXCLUDED_FEASIBILITY_Q3: ...")` if no integer count layer exists; keeps `apply_author_kd40_filter=False` default + Stage-1 replicate parity / Stage-2 barcode-sorted `seed=42` split.
+   - `metrics_r12.py` & `run_eval_r12.py`:
+     * Deduplicated `_eval_n5_direction` + parameterized `_calc_n5_vectorized(..., single_half=...)` cleanly across both `compute_n5_suite_r12` (`all_nontarget`) and newly added **`compute_n5_resp_top50_split_r12`** (`PREREG_E §5.3` `resp_top50_split` `A->B`/`B->A` out-of-sample split-half `N_5` disattenuated by single-half cone ceiling `sqrt(rho_AB_cone)`), wired into `evaluate_target_against_sources_r12` (`extra["n5_cone_split_metrics"]`) and `summary["n5_cone_split_metrics"]`.
+   - `adjudicate_r12.py`:
+     * Enforces mandatory `a549` presence (`PREREG_E §0.2.2`: raises `ValueError` if non-empty `confirmatory_lines` excludes `a549*`).
+     * Renders both `N_5 all_nontarget` and `N_5 resp_top50_split` tables (`ZERO_BY_EXACT_CONSTRUCTION`, `SUPPRESSED_BY_CONE_CONSTRUCTION`), plus dedicated `Mandatory Governance, Provenance & Prior-Art Disclosures` (`E6` post-hoc provenance, Claim 2 `r_orth_cal`-only non-mechanistic scope, `CRISPRi->CRISPRko` modality boundary & `K_conf=1` single-line generalizability limit, prior-art **Kawsar et al. 2026 `CanPert/CASTER` (`doi:10.64898/2026.11.15.766815`)**, **Liu et al. 2026 (`GSE345058`)**, **Xu & Cao 2023**, and `§5` reporting-only boundaries).
 
-3. Verification Strictly on R9–R11 Seen Lines & Synthetic Fixtures (`python3 -I`):
-   - **Post-final-edit Static Check (`python3 -I -m pyflakes round12/src/*.py`)**: `PYFLAKES_OK` (0 warnings/errors).
-   - **Post-final-edit Unit & Parity Suite (`python3 -I round12/src/test_unit_r12.py -v`)**: **Ran 6 tests in 3.413s — OK**:
+3. Post-Final-Edit Verification (`python3 -I`):
+   - `python3 -I -m pyflakes round12/src/*.py`: exited `0` (0 warnings/errors).
+   - `python3 -I round12/src/test_unit_r12.py -v`: **Ran 6 tests in 3.488s — OK**:
      * `test_1`: blinding gate (`PREREG_E_COMMIT.txt` + `CODE_FREEZE_R12.txt`) & `CONFIRMATORY_LINES_R12.txt` parsing.
-     * `test_2`: Exact `<= 1e-12` parity of `compute_joint_sa8_split_minus_all_r12` vs `round11/audit/exploratory_check/exploratory_core.py:evaluate_cross_mask_split_minus_all` with partial `half_valid`, plus 6-source paired `FCT - Mis_s`.
-     * `test_3`: Exact `<= 1e-12` parity of `compute_n5_suite_r12` & `compute_n5_perm100_r12` vs `round11/audit/exploratory_check/run_n5_audit.py` + exact structural classifications (`ZERO_BY_EXACT_CONSTRUCTION`, `SUPPRESSED_BY_CONE_CONSTRUCTION`).
-     * `test_4`: `K_conf = 0`, `K_conf = 1` (single-line notice), `K_conf = 2` adjudication + `H-E1b` single-source failure, `Addendum A1`, and `H-E2b` IUT failure guards.
-     * `test_5`: Synthetic `a549_ko` (`GSE345058`) reader across both `(cells x genes)` space-MTX & `(genes x cells)` tab-MTX, `Cas9` vector row exclusion with `feature_types="Gene Expression"`, `exclude_zero_cas9` (`CAS9 == 0`), `batch1+3 vs batch2+4`, and end-to-end `process_r10_line`.
-     * `test_6`: Synthetic `hek293_xucao` (`XuCao2023.h5ad`) CSR & CSC `.h5ad`, `E3` integer-count feasibility pass & float-only failure, `layers/counts` reading, `dCas9-KRAB-MeCP2` exclusion, Stage-1 lexicographic parity, Stage-2 `seed=42` backup, and default `apply_author_kd40_filter=False` vs `True`.
-   - **Post-final-edit Blinding Gate (`--phase holdout_r12`)**: `RuntimeError: PREREG_E hard gate blocked`.
-   - **Post-final-edit Real-Data R9 Dev Check (`--phase dev_r9 --lines vcc2025_h1 --n-boot 400 --n-perm 20 --seed 20261201`)**: exited `0` in `113.07s` (`vcc2025_h1` N=80: `H-E1b` paired `FCT - Mis_s` 5/5 `+0.0890` to `+0.1560`, `H-E2b E1(split)-E1(all)` `+0.2663 [+0.2107, +0.3224]`, `N_5 FCT` `+0.1088 [+0.0923, +0.1281]` vs construction-zero `Transfer_Mean`/`SGM`/`GlobalScale` `+0.0000` [`eta=0.0000`]).
-   - *(Pre-refinement full `n_boot=4000, n_perm=100` dev checks also ran cleanly: `dev_r10 cd4t_rest` in `174.35s` matching `exploratory_check` `N_common=284`, `dE1=+0.0383 [-0.0067, +0.0863]`, `N_5 FCT=+0.0553`; `dev_r11 feng_ipsc` in `105.21s`; plus post-refactor `dev_r11 feng_ipsc` [`96.82s`] and `dev_r10 --source-mode r9_r10_8 calu3` [`244.58s`].)*
+     * `test_2`: Exact `<= 1e-12` parity of `compute_joint_sa8_split_minus_all_r12` vs `exploratory_core.py`, plus 6-source paired `FCT - Mis_s`.
+     * `test_3`: Exact `<= 1e-12` parity of `compute_n5_suite_r12` & `compute_n5_perm100_r12` vs `run_n5_audit.py` + `compute_n5_resp_top50_split_r12` (`r_cone_sp=0.0` exact construction zeros & `r2_n5 >= 0.99` cone suppression + paired `FCT - Mis_s`).
+     * `test_4`: `a549`-mandatory confirmatory guard (`ValueError` on `["hek293"]` alone), `K_conf=0/1/2` & IUT guards (`H-E1b`, `Addendum A1`, `H-E2b`), and `PREREG_E §5/§7.2/§8` report disclosure assertions.
+     * `test_5`: Synthetic `a549_ko` reader testing `Condition == "Nontargeting"` consistency, duplicate `cell_id` rejection (`ValueError`), both `(cells x genes)` and `(genes x cells)` MTX orientations, `CAS9` removal, `exclude_zero_cas9`, `batch1+3 vs batch2+4`, and end-to-end `process_r10_line`.
+     * `test_6`: Synthetic `hek293_xucao` reader verifying float-only `/X` rejection (`EXCLUDED_FEASIBILITY_Q3`), auto-selection of `layers/counts` with default `x_layer="auto"`, CSR/CSC `.h5ad`, `dCas9` removal, Stage-1 parity / Stage-2 `seed=42` split, and default `apply_author_kd40_filter=False` vs `True`.
+   - **Post-Lock Blinding Gate (`python3 -I round12/src/run_eval_r12.py --phase holdout_r12`)**: exited `1` with `RuntimeError: CODE_FREEZE_R12 hard gate blocked: missing/empty .../round12/status/CODE_FREEZE_R12.txt` (`PREREG_E_COMMIT.txt` verified, `CODE_FREEZE_R12.txt` still required).
+   - **Full-Scale Dev Check 1 (`--phase dev_r9 --source-mode r9_6 --lines vcc2025_h1 --n-boot 4000 --n-perm 100 --seed 20261201`)**: exited `0` in `196.48s` (`N=80`: `H-E1b` paired `FCT - Mis_s` 5/5 `+0.0890` to `+0.1560`; `H-E2b E1(split)-E1(all)` `+0.2663 [+0.2088, +0.3217]`; `N_5 all_nontarget FCT` `+0.1088 [+0.0907, +0.1291]`; `N_5 resp_top50_split FCT` `+0.0535 [+0.0299, +0.0891]`, zero-by-construction controls `+0.0000` [`eta=0.0000`]).
+   - **Full-Scale Dev Check 2 (`--phase dev_r10 --source-mode r9_r10_8 --lines dld1 --n-boot 4000 --n-perm 100 --seed 20261201`)**: exited `0` in `327.88s` (`N=96`: `H-E1b` paired `FCT - Mis_s` 7/7 `+0.0628` to `+0.1381`; `H-E2b` `+0.1575 [+0.1100, +0.2033]`; `N_5 all_nontarget FCT` `+0.1129 [+0.0846, +0.1445]`; `N_5 resp_top50_split FCT` `+0.0581 [+0.0276, +0.0948]`, `E1_ConstMed` cone-suppressed `R2_N5=0.999999`).
 
-R12_CODE_DRAFT_READY
+R12_CODE_READY

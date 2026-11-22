@@ -55,6 +55,7 @@ from dataset_readers_r12 import (  # noqa: E402
 from metrics_r12 import (  # noqa: E402
     compute_joint_sa8_split_minus_all_r12,
     compute_n5_perm100_r12,
+    compute_n5_resp_top50_split_r12,
     compute_n5_suite_r12,
     compute_paired_fct_minus_all_mismatched_r12,
 )
@@ -245,6 +246,29 @@ class Round12UnitTests(unittest.TestCase):
         self.assertEqual(n5_r12["methods"]["FCT"]["construction_status"], "INFORMATIVE")
         self.assertGreater(n5_r12["methods"]["FCT"]["r_cone_sp"]["ci975_lo"], 0.40)
 
+        # Verify N_5 resp_top50_split (A->B / B->A single-half ceiling & cone suppression)
+        n5_split = compute_n5_resp_top50_split_r12(
+            delta_obs=tgt_ds.deltas,
+            preds=preds,
+            delta_transfer=preds["Transfer_Mean"],
+            grand_mean=state.grand_mean,
+            fc_bar=fc_bar,
+            target_gene_idx=tgt_ds.target_indices,
+            delta_half_a=tgt_ds.half_a_deltas,
+            delta_half_b=tgt_ds.half_b_deltas,
+            half_valid=tgt_ds.half_valid,
+            top_k=50,
+            n_boot=150,
+            seed=seed_test,
+        )
+        self.assertGreater(n5_split["meta"]["n_eval_perts"], 0)
+        for z_m in ("Transfer_Mean", "Source_Grand_Mean", "Transfer_Mean_GlobalScale"):
+            self.assertEqual(n5_split["methods"][z_m]["r_cone_sp"]["estimate"], 0.0)
+        for s_m in ("E1_ConstMed", "E2_ConstP10", "E2_ConstP90", "E6_LogFCBar", "E7_FCBarMinus1"):
+            self.assertGreaterEqual(n5_split["methods"][s_m]["r2_n5"], 0.99)
+        self.assertGreater(n5_split["methods"]["FCT"]["r_cone_sp"]["ci975_lo"], 0.30)
+        self.assertIn("src_0", n5_split["paired_fct_minus_mis"])
+
         # Verify N_5 perm100 matches audit perm100 single-draw logic
         p_r12 = compute_n5_perm100_r12(
             state=state,
@@ -316,8 +340,13 @@ class Round12UnitTests(unittest.TestCase):
             "n_boot": 200,
             "fct_perm100": {"a549": ex1["perm100"], "hek293": ex2["perm100"]},
             "n5_cone_metrics": {"a549": ex1["n5_cone_metrics"], "hek293": ex2["n5_cone_metrics"]},
+            "n5_cone_split_metrics": {"a549": ex1["n5_cone_split_metrics"], "hek293": ex2["n5_cone_split_metrics"]},
             "n5_perm100": {"a549": ex1["n5_perm100"], "hek293": ex2["n5_perm100"]},
         }
+
+        # PREREG_E §0.2.2 guard: hek293 CANNOT serve as sole confirmatory line without a549
+        with self.assertRaises(ValueError):
+            adjudicate_r12_results(df_l, df_b, summary, confirmatory_lines=["hek293"])
 
         # Case 0: K_conf = 0 aborts confirmatory verdicts
         adj0 = adjudicate_r12_results(df_l, df_b, summary, confirmatory_lines=[])
@@ -336,6 +365,10 @@ class Round12UnitTests(unittest.TestCase):
         md1 = render_r12_markdown_report(df_l, df_b, summary, adj1, "unit_k1")
         self.assertIn("single-line generalizability is limited", md1)
         self.assertIn("ZERO_BY_EXACT_CONSTRUCTION", md1)
+        self.assertIn("resp_top50_split", md1)
+        self.assertIn("doi:10.64898/2026.11.15.766815", md1)
+        self.assertIn("CRISPRi->CRISPRko", md1)
+        self.assertIn("must NOT be extrapolated", md1)
 
         # Case 2: K_conf = 2 passes both Claim 1 & Claim 2 unanimously
         adj2 = adjudicate_r12_results(df_l, df_b, summary, confirmatory_lines=["a549", "hek293"])
@@ -385,19 +418,21 @@ class Round12UnitTests(unittest.TestCase):
         for b in batches:
             for i in range(18):
                 c9 = 0 if (i % 4 == 0) else 3
-                cell_rows.append({"cell_id": f"C{cid}", "batch": b, "lane": f"{b}_L1", "sgRNA": f"NTC_sg{i % 2}", "Perturbation": "Nontargeting", "total_counts_CAS9": c9})
+                cell_rows.append({"cell_id": f"C{cid}", "Condition": "Nontargeting", "batch": b, "lane": f"{b}_L1", "sgRNA": f"NTC_sg{i % 2}", "Perturbation": "Nontargeting", "total_counts_CAS9": c9})
                 cell_kinds.append(("ntc", -1, c9))
                 cid += 1
             for ti, gsym in enumerate((genes[0], genes[1])):
                 for i in range(16):
                     c9 = 0 if (i % 4 == 0) else 2
-                    cell_rows.append({"cell_id": f"C{cid}", "batch": b, "lane": f"{b}_L1", "sgRNA": f"{gsym}_sg{i % 2}", "Perturbation": gsym, "total_counts_CAS9": c9})
+                    cell_rows.append({"cell_id": f"C{cid}", "Condition": "Perturbed", "batch": b, "lane": f"{b}_L1", "sgRNA": f"{gsym}_sg{i % 2}", "Perturbation": gsym, "total_counts_CAS9": c9})
                     cell_kinds.append(("tgt", ti, c9))
                     cid += 1
-        # Excluded rows (multi-guide & unassigned)
-        cell_rows.append({"cell_id": f"C{cid}", "batch": "batch1", "lane": "batch1_L1", "sgRNA": "g1,g2", "Perturbation": f"{genes[0]},{genes[1]}", "total_counts_CAS9": 3})
+        # Excluded rows (multi-guide & unassigned & Condition/Perturbation mismatch)
+        cell_rows.append({"cell_id": f"C{cid}", "Condition": "Perturbed", "batch": "batch1", "lane": "batch1_L1", "sgRNA": "g1,g2", "Perturbation": f"{genes[0]},{genes[1]}", "total_counts_CAS9": 3})
         cell_kinds.append(("excl", -1, 3))
-        cell_rows.append({"cell_id": f"C{cid + 1}", "batch": "batch2", "lane": "batch2_L1", "sgRNA": "unassigned", "Perturbation": "unassigned", "total_counts_CAS9": 3})
+        cell_rows.append({"cell_id": f"C{cid + 1}", "Condition": "Unassigned", "batch": "batch2", "lane": "batch2_L1", "sgRNA": "unassigned", "Perturbation": "unassigned", "total_counts_CAS9": 3})
+        cell_kinds.append(("excl", -1, 3))
+        cell_rows.append({"cell_id": f"C{cid + 2}", "Condition": "Nontargeting", "batch": "batch3", "lane": "batch3_L1", "sgRNA": f"{genes[0]}_sg0", "Perturbation": genes[0], "total_counts_CAS9": 3})
         cell_kinds.append(("excl", -1, 3))
 
         n_cells = len(cell_rows)
@@ -445,6 +480,7 @@ class Round12UnitTests(unittest.TestCase):
             # 1) Full A549 (cells x genes MTX) -> Half A=batch1+3, Half B=batch2+4 -> standardize
             parts, audit = build_a549_parts(raw_dir, hgnc, exclude_zero_cas9=False, bucket_size=90, chunk_lines=25000)
             self.assertEqual(audit["n_multiguide_or_unassigned_excluded"], 2)
+            self.assertEqual(audit["n_nonplain_or_unapproved_excluded"], 1)
             self.assertEqual(audit["n_qc_kept_cells"], (18 + 32) * 4)
             self.assertEqual(set(np.unique(parts[0].half_flags).tolist()), {1, 2})
 
@@ -466,6 +502,13 @@ class Round12UnitTests(unittest.TestCase):
             parts_tr, audit_tr = build_a549_parts(raw_dir, hgnc, exclude_zero_cas9=True, bucket_size=90)
             self.assertEqual(audit_tr["n_qc_kept_cells"], audit_c9["n_qc_kept_cells"])
             self.assertEqual(int(parts_tr[0].nt_mask.sum()), int(parts_c9[0].nt_mask.sum()))
+
+            # 4) Duplicate cell_id MUST raise ValueError
+            dup_df = cell_df_noc9.copy()
+            dup_df.loc[dup_df.index[-1], "cell_id"] = dup_df.loc[dup_df.index[0], "cell_id"]
+            dup_df.to_csv(adir / "GSE345058_cell_annotations.csv.gz", index=False, compression="gzip")
+            with self.assertRaises(ValueError):
+                build_a549_parts(raw_dir, hgnc, exclude_zero_cas9=False, bucket_size=90)
 
     def test_6_dataset_reader_hek293_synthetic(self) -> None:
         rng = np.random.default_rng(1301)
@@ -552,10 +595,13 @@ class Round12UnitTests(unittest.TestCase):
             self.assertEqual(audit_bkp["half_rule_used"], "seed42_stratified_50_50")
             self.assertEqual(audit_bkp["n_kept_half_a_ntc"], audit_bkp["n_kept_half_b_ntc"])
 
-            # E3 float-only X fails feasibility; layers/counts passes and loads identically
+            # E3 float-only X fails feasibility and aborts build with EXCLUDED_FEASIBILITY_Q3;
+            # adding layers/counts passes and auto-selects layers/counts even with default x_layer='auto'
             X_log_float = sp.csr_matrix(np.log1p(X).astype(np.float32))
             _write_hek_h5ad(hdir / "XuCao2023.h5ad", X_log_float, "csr_matrix", [r["rep"] for r in obs_records])
             self.assertFalse(check_hek293_feasibility(raw_dir, hgnc=hgnc)["feasible"])
+            with self.assertRaisesRegex(RuntimeError, "EXCLUDED_FEASIBILITY_Q3"):
+                build_hek293_parts(raw_dir, hgnc)
             with h5py.File(hdir / "XuCao2023.h5ad", "a") as fh:
                 lg = fh.create_group("layers").create_group("counts")
                 lg.attrs["encoding-type"] = "csr_matrix"
@@ -566,7 +612,8 @@ class Round12UnitTests(unittest.TestCase):
             feas_lay = check_hek293_feasibility(raw_dir, hgnc=hgnc)
             self.assertTrue(feas_lay["feasible"])
             self.assertEqual(feas_lay["int_count_sources"], ["layers/counts"])
-            parts_lay, _ = build_hek293_parts(raw_dir, hgnc, x_layer="counts")
+            parts_lay, audit_lay = build_hek293_parts(raw_dir, hgnc)
+            self.assertEqual(audit_lay["x_layer_used"], "counts")
             self.assertTrue(np.allclose(parts_lay[0].umi, parts[0].umi))
 
 
