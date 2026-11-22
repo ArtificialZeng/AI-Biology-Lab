@@ -1,8 +1,10 @@
+> 内部草稿：未经主控和用户审核，含已知过度表述（见 round11/status/EXPLORATORY_REVIEW_R11.md），不得对外使用或投稿。
+
 # Signal-Tail Conditioning in `log1p` Perturbation Benchmarks Survives Split-Half Selection and Is Resolved by a Universal Target-Free Null Cone Across 13 Human Perturb-seq Atlases
 
 > **Manuscript Status & Governance Disclosure:** Integrated synthesis manuscript uniting the lab's three commit-locked, pre-registered zero-shot Perturb-seq audits (Rounds 9–11; `10,334,369` QC single cells) with our post-hoc mechanistic theorems (`Theorem 1`–`Theorem 2`), universal target-free null-cone evaluation metric (`N_5`), and `33`-pair cross-line conservation analysis (`Q5a`). All locked confirmatory verdicts from `PREREG_A v4` (Round 9), `PREREG_C` (Round 10), and `PREREG_D` (Round 11) are reported verbatim and unchanged; post-hoc mechanistic findings are explicitly demarcated throughout.
 >
-> **AI Governance Disclosure:** Human principal investigator Zijian Zeng (non-biologist) supervised study governance. `Claude` (Anthropic) served as Master Controller for pre-registration locking, code-freeze oversight, and independent audit verification. `Antigravity` (Google Gemini) performed data standardization, primary analyses, independent re-implementation audits, literature verification, and derivation/verification of the `N_5` null-cone framework (`exploratory/null_cone_theorem/`).
+> **AI Governance Disclosure:** Zijian Zeng (non-biologist) set the research question and supervised governance. `Claude` (Anthropic) served as Master Controller for pre-registration locking, code-freeze oversight, and independent audit verification. `Antigravity` (Google Gemini) performed data standardization, primary analyses, independent re-implementation audits, literature verification, and derivation/verification of the `N_5` null-cone framework (`exploratory/null_cone_theorem/`).
 
 ---
 
