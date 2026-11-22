@@ -708,8 +708,10 @@ def build_hek293_parts(
       - All single-sgRNA cells by default (`apply_author_kd40_filter=False` avoids outcome selection).
       - Excludes synthetic dCas9/lentiviral & non-human spike-in features if present.
       - Stage 1: lexicographic 1-based parity on `.obs` replicate column if `>= 2` distinct
-        labels populate both halves; Stage 2 fallback: deterministic `seed=42` stratified
-        50/50 split on barcode-sorted indices within NTC and per target gene.
+        labels populate both halves (`batches` = replicate ID, falling back to `half_{h}_pooled`
+        when a replicate has `< min_batch_nt` NTCs); Stage 2 fallback: deterministic `seed=42`
+        stratified 50/50 split on barcode-sorted indices within NTC and per target gene, with
+        `batches` = `'half_1'`/`'half_2'` from `half_arr` (`RULING_R12_HEK293_UNITS.md §1`).
     """
     hdir = _resolve_raw_subdir(raw_dir, ("hek293_xucao", "hek293"))
     h5ad_path = _find_first_file(hdir, ["XuCao2023.h5ad"], "*.h5ad")
@@ -750,8 +752,6 @@ def build_hek293_parts(
             None,
         )
         rep_vals = read_obs_or_var_col(obs, rep_col) if rep_col else None
-        batch_col = next((c for c in ("batch", "sample", "lane", "channel", "gem_group") if c in obs_keys), None)
-        batch_vals = read_obs_or_var_col(obs, batch_col) if batch_col else rep_vals
 
         kd_vals = None
         if apply_author_kd40_filter:
@@ -806,7 +806,6 @@ def build_hek293_parts(
 
         keep_rows: List[int] = []
         nt_flags: List[bool] = []
-        batches_l: List[str] = []
         rep_strs_l: List[str] = []
         kept_bcs_l: List[str] = []
         pkeys: List[str] = []
@@ -835,13 +834,11 @@ def build_hek293_parts(
                 n_multiguide_excl += 1
                 continue
 
-            b_lbl = str(batch_vals[r_i]).strip() if batch_vals is not None else "batch_0"
             r_str = str(rep_vals[r_i]).strip() if rep_vals is not None else ""
 
             if is_ntc:
                 keep_rows.append(r_i)
                 nt_flags.append(True)
-                batches_l.append(b_lbl)
                 rep_strs_l.append(r_str)
                 kept_bcs_l.append(str(obs_barcodes[r_i]))
                 pkeys.append("")
@@ -860,7 +857,6 @@ def build_hek293_parts(
                     continue
                 keep_rows.append(r_i)
                 nt_flags.append(False)
-                batches_l.append(b_lbl)
                 rep_strs_l.append(r_str)
                 kept_bcs_l.append(str(obs_barcodes[r_i]))
                 pkeys.append(canon_sym)
@@ -879,11 +875,13 @@ def build_hek293_parts(
         if (not force_seed42_split) and rep_col is not None and len(distinct_reps) >= 2 and all(bool(x) for x in rep_strs_l):
             rep_to_half = {lbl: (1 if i % 2 == 0 else 2) for i, lbl in enumerate(distinct_reps)}
             half_arr = np.array([rep_to_half[x] for x in rep_strs_l], dtype=np.int8)
-            batch_arr, n_fb = _apply_min_ntc_batch_fallback(
-                np.array(batches_l, dtype=str), nt_arr, half_arr, min_batch_nt=min_batch_nt
-            )
             if np.sum(nt_arr & (half_arr == 1)) == 0 or np.sum(nt_arr & (half_arr == 2)) == 0:
                 used_seed42_fallback = True
+            else:
+                # RULING_R12_HEK293_UNITS.md §1: Stage 1 unit/batch = replicate ID (with < min_batch_nt half fallback)
+                batch_arr, n_fb = _apply_min_ntc_batch_fallback(
+                    np.array(rep_strs_l, dtype=str), nt_arr, half_arr, min_batch_nt=min_batch_nt
+                )
         else:
             used_seed42_fallback = True
 
@@ -900,9 +898,9 @@ def build_hek293_parts(
                 idxs = np.array(idxs_sorted, dtype=np.int64)
                 perm = rng42.permutation(len(idxs))
                 half_arr[idxs[perm[len(idxs) // 2 :]]] = 2
-            batch_arr, n_fb = _apply_min_ntc_batch_fallback(
-                np.array(batches_l, dtype=str), nt_arr, half_arr, min_batch_nt=min_batch_nt
-            )
+            # RULING_R12_HEK293_UNITS.md §1: Stage 2 unit/batch = half ('half_1' / 'half_2') from half_arr
+            batch_arr = np.where(half_arr == 1, "half_1", "half_2").astype(str)
+            n_fb = 0
 
         if isinstance(x_node, h5py.Group):
             x_full = sp.csr_matrix(

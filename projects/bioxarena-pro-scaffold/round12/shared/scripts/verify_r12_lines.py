@@ -167,6 +167,18 @@ def write_qc_counts_markdown(
             f"Per `RULING_R12_PREFREEZE.md` (Ruling B), **no mitochondrial upper cutoff (`max_pct_mt` disabled)** is applied because `PREREG_E §3.2` contains no MT limit (and no extra `MT <= 20%` sensitivity branch is added). "
             f"For transparency, `.obs['percent_mito']` 5/25/50/75/95 percentiles are **`{pmt_q.get('5')}% / {pmt_q.get('25')}% / {pmt_q.get('50')}% / {pmt_q.get('75')}% / {pmt_q.get('95')}%`** (`MT-*` fraction on `/X` human RNA UMIs: `13.25% / 20.48% / 26.54% / 33.28% / 43.57%`)."
         )
+    hek_c = counts_by_line.get("hek293_xucao")
+    hek_m = meta_by_line.get("hek293_xucao", {})
+    if hek_c is not None:
+        lines.append(
+            "- **`hek293_xucao` D3 NTC Subtraction Unit Fix Disclosure (`round12/status/RULING_R12_HEK293_UNITS.md`)**: "
+            "Per `RULING_R12_HEK293_UNITS.md` §1 (`PREREG_E §3.3`), Stage 2 HEK293 must use per-half batches (`half_1` / `half_2`) as the NTC subtraction unit rather than pooled single `batch_0`. "
+            "Before/after counts-only comparison: "
+            "**Superseded v1 (`batch_0` pooled, archived in `CONFIRMATORY_LINES_R12_SUPERSEDED_v1.txt`)**: `n_batches=1`, `98,274` kept cells (`2,757` NTC: `1,378 / 1,379`), `n_genes=29,247 -> 29,194`, `|G_eval|=6,127`, `96/200` reproducible, `70` shared w/ `r9_6`, `n_eval_targets=62`; "
+            f"**Corrected v2 (`half_1` / `half_2` per-half centering)**: `n_batches={hek_m.get('n_batches', '?')}`, `{hek_c['raw_cells_after_qc']:,}` kept cells (`{hek_c['n_nt_cells']:,}` NTC: `{hek_c['n_nt_half_a']:,} / {hek_c['n_nt_half_b']:,}`), "
+            f"`n_genes={hek_c['n_genes_finite']:,} -> {hek_c['n_genes_final']:,}`, `|G_eval|={hek_c['g_eval_canon']:,}`, "
+            f"`{hek_c['n_targets_reproducible']:,}/{hek_c['n_targets_dedup']:,}` reproducible, `{hek_c['n_shared_reproducible_with_r9_all_canon']:,}` shared w/ `r9_6`, `n_eval_targets={hek_c['n_shared_reproducible_eval_canon']:,}`."
+        )
     hek_pending = (
         "hek293_xucao" not in counts_by_line
         and hek_feasibility is not None
@@ -181,7 +193,7 @@ def write_qc_counts_markdown(
     else:
         lines.append(f"- **Final `CONFIRMATORY_LINES_R12.txt` (`K_conf={len(passing)}`)**: `{passing}`")
         if len(passing) == 1 and passing == ["a549_ko"]:
-            lines.append("- **Mandatory `PREREG_E` §2.2 Single-Line Disclosure (`K_conf=1`)**: Only `a549_ko` entered the confirmatory tier; `K_conf = 1` confirmatory claims apply strictly to `A549` (Cas9 KO lung carcinoma) and cannot independently establish multi-lineage generalizability without a second independent confirmatory dataset.")
+            lines.append("- **Mandatory `PREREG_E` §1 / §2.2 Single-Line Disclosure (`K_conf=1`, 推广性有限)**: Only `a549_ko` cleared the confirmatory gate (`>= 50` eval targets & `>= 3,000` genes); `hek293_xucao` fell below threshold under compliant half-level NTC subtraction and is mechanically classified `SECONDARY_ONLY` (reported descriptively under §5). `K_conf = 1` confirmatory claims apply strictly to `A549` (Cas9 KO lung carcinoma) with limited multi-lineage generalizability.")
         elif "a549_ko" not in passing:
             lines.append("- **Mandatory `PREREG_E` §2.2 Abort Notice**: Primary confirmatory line `a549_ko` failed eligibility thresholds (`K_conf=0` confirmatory abort).")
 

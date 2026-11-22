@@ -574,6 +574,7 @@ class Round12UnitTests(unittest.TestCase):
             parts, audit = build_hek293_parts(raw_dir, hgnc, apply_author_kd40_filter=False)
             self.assertFalse(audit["used_seed42_fallback"])
             self.assertTrue(audit["half_rule_used"].startswith("obs_replicate_parity"))
+            self.assertEqual(set(parts[0].batches.tolist()), {"repA", "repB", "repC", "repD"})
             self.assertEqual(parts[0].n_genes_raw, len(genes) + 1)  # dCas9 excluded
             self.assertEqual(audit["n_multiguide_or_unassigned_excluded"], 2)
             self.assertEqual(audit["n_qc_kept_cells"], (18 + 32) * 4)
@@ -593,6 +594,12 @@ class Round12UnitTests(unittest.TestCase):
             parts_bkp, audit_bkp = build_hek293_parts(raw_dir, hgnc)
             self.assertTrue(audit_bkp["used_seed42_fallback"])
             self.assertEqual(audit_bkp["half_rule_used"], "seed42_stratified_50_50")
+            self.assertTrue(
+                np.array_equal(
+                    parts_bkp[0].batches,
+                    np.where(parts_bkp[0].half_flags == 1, "half_1", "half_2"),
+                )
+            )
             self.assertEqual(audit_bkp["n_kept_half_a_ntc"], audit_bkp["n_kept_half_b_ntc"])
 
             # E3 float-only X fails feasibility and aborts build with EXCLUDED_FEASIBILITY_Q3;
@@ -678,6 +685,14 @@ class Round12UnitTests(unittest.TestCase):
             self.assertEqual(audit["n_qc_kept_cells"], n_cells)
             self.assertTrue(audit["used_seed42_fallback"])
             self.assertEqual(parts[0].var_gene_names[-1], "MT-CO1")
+            # Stage-2 unit/batch MUST equal 'half_1' / 'half_2' derived from half_flags
+            self.assertTrue(
+                np.array_equal(
+                    parts[0].batches,
+                    np.where(parts[0].half_flags == 1, "half_1", "half_2"),
+                )
+            )
+            self.assertEqual(set(parts[0].batches.tolist()), {"half_1", "half_2"})
 
             # Explicit max_pct_mt=20.0 drops the high-MT half cleanly for comparison
             _, audit_mt20 = build_hek293_parts(raw_dir, hgnc, max_pct_mt=20.0)
@@ -690,6 +705,73 @@ class Round12UnitTests(unittest.TestCase):
             self.assertIn("KeyError", feas_bad["reason"])
             with self.assertRaises(KeyError):
                 build_hek293_parts(raw_dir, hgnc)
+
+    def test_8_hek293_stage1_replicate_and_stage2_half_unit_batches(self) -> None:
+        rng = np.random.default_rng(1501)
+        hgnc = _get_hgnc()
+        genes = _pick_hgnc_genes(250)
+        n_var = len(genes)
+
+        # Stage 1 test: obs has BOTH an unrelated single 'batch' column ('all_one_batch') AND a 'replicate'
+        # column with rep1 (16 NTC), rep2 (16 NTC), rep3 (4 NTC < 15 -> falls back to half_1_pooled!).
+        # Lexicographic sorted distinct_reps = ['rep1', 'rep2', 'rep3']:
+        #   rep1 (idx 0 -> half 1, >=15 NTC -> batch='rep1')
+        #   rep2 (idx 1 -> half 2, >=15 NTC -> batch='rep2')
+        #   rep3 (idx 2 -> half 1,  4 NTC <15 -> batch='half_1_pooled')
+        reps = ["rep1"] * 24 + ["rep2"] * 24 + ["rep3"] * 12
+        perts = (
+            ["control"] * 16 + [genes[0]] * 8
+            + ["control"] * 16 + [genes[0]] * 8
+            + ["control"] * 4 + [genes[0]] * 8
+        )
+        n_cells = len(reps)
+        barcodes = [f"CELL_{i:04d}" for i in range(n_cells)]
+        X = np.full((n_cells, n_var), 2, dtype=np.int32)
+        for i, pr in enumerate(perts):
+            if pr != "control":
+                X[i, :10] += rng.integers(3, 6, size=10)
+        X_csr = sp.csr_matrix(X, dtype=np.float32)
+
+        with tempfile.TemporaryDirectory() as td:
+            raw_dir = Path(td) / "raw"
+            hdir = raw_dir / "hek293_xucao"
+            hdir.mkdir(parents=True)
+            h5_p = hdir / "XuCao2023.h5ad"
+            with h5py.File(h5_p, "w") as f:
+                xg = f.create_group("X")
+                xg.attrs["encoding-type"] = "csr_matrix"
+                xg.attrs["shape"] = np.array(X_csr.shape, dtype=np.int64)
+                xg.create_dataset("data", data=X_csr.data)
+                xg.create_dataset("indices", data=X_csr.indices.astype(np.int32))
+                xg.create_dataset("indptr", data=X_csr.indptr.astype(np.int64))
+                og = f.create_group("obs")
+                og.attrs["_index"] = "cell_barcode"
+                og.create_dataset("cell_barcode", data=np.array(barcodes, dtype="S"))
+                og.create_dataset("replicate", data=np.array(reps, dtype="S"))
+                og.create_dataset("batch", data=np.array(["global_batch0"] * n_cells, dtype="S"))
+                og.create_dataset("perturbation", data=np.array(perts, dtype="S"))
+                og.create_dataset("nperts", data=np.array([0 if p == "control" else 1 for p in perts], dtype=np.int32))
+                vg = f.create_group("var")
+                vg.attrs["_index"] = "gene_symbol"
+                vg.create_dataset("gene_symbol", data=np.array(genes, dtype="S"))
+
+            # Stage 1: batches = replicate IDs (with <15 NTC fallback to half_1_pooled)
+            parts1, audit1 = build_hek293_parts(raw_dir, hgnc, force_seed42_split=False)
+            self.assertFalse(audit1["used_seed42_fallback"])
+            self.assertEqual(audit1["n_low_ntc_batch_fallback_cells"], 12)
+            expected_b1 = np.array(["rep1"] * 24 + ["rep2"] * 24 + ["half_1_pooled"] * 12, dtype=str)
+            self.assertTrue(np.array_equal(parts1[0].batches, expected_b1))
+
+            # Stage 2 forced (even with replicate/batch cols present): batches strictly equal 'half_1' / 'half_2'
+            parts2, audit2 = build_hek293_parts(raw_dir, hgnc, force_seed42_split=True)
+            self.assertTrue(audit2["used_seed42_fallback"])
+            self.assertEqual(audit2["n_low_ntc_batch_fallback_cells"], 0)
+            self.assertTrue(
+                np.array_equal(
+                    parts2[0].batches,
+                    np.where(parts2[0].half_flags == 1, "half_1", "half_2"),
+                )
+            )
 
 
 if __name__ == "__main__":

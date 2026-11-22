@@ -367,16 +367,42 @@ def check_hek293_xucao_feasibility(h5_path: Path) -> Dict[str, Any]:
                 ok_l, desc_l = _sample_integer_check(f["layers"][lk])
                 counts_candidates.append((f"/layers/{lk}", desc_l, ok_l))
 
+        explicit_total_layer_names = {"counts", "raw_counts", "raw", "umi_counts", "umi", "total_counts", "x_raw"}
+        excluded_subfraction_tokens = ("nascent", "unspliced", "spliced", "ambiguous", "velocity", "intron", "exon")
+
         chosen_count_path: Optional[str] = None
         for path_k, _, ok_flag in counts_candidates:
-            if path_k.startswith("/layers/") and ("raw" in path_k or "count" in path_k or "umi" in path_k) and ok_flag:
+            if not ok_flag or not path_k.startswith("/layers/"):
+                continue
+            lname = path_k.split("/layers/", 1)[1].lower()
+            if lname in explicit_total_layer_names:
                 chosen_count_path = path_k
                 break
         if chosen_count_path is None:
             for path_k, _, ok_flag in counts_candidates:
-                if ok_flag:
+                if path_k == "/X" and ok_flag:
                     chosen_count_path = path_k
                     break
+        if chosen_count_path is None:
+            for path_k, _, ok_flag in counts_candidates:
+                if not ok_flag or not path_k.startswith("/layers/"):
+                    continue
+                lname = path_k.split("/layers/", 1)[1].lower()
+                if not any(tok in lname for tok in excluded_subfraction_tokens) and (
+                    "raw" in lname or "count" in lname or "umi" in lname or "total" in lname
+                ):
+                    chosen_count_path = path_k
+                    break
+        if chosen_count_path is None:
+            for path_k, _, ok_flag in counts_candidates:
+                if not ok_flag:
+                    continue
+                if path_k.startswith("/layers/"):
+                    lname = path_k.split("/layers/", 1)[1].lower()
+                    if any(tok in lname for tok in excluded_subfraction_tokens):
+                        continue
+                chosen_count_path = path_k
+                break
 
         obs_cols = _list_obs_columns(f["obs"]) if "obs" in f and isinstance(f["obs"], h5py.Group) else []
         guide_col = None
@@ -540,92 +566,96 @@ def _stream_mtx_gz_to_csr_h5(
     tmp_dir = out_csr_h5.parent / f"_tmp_mtx_shards_{os.getpid()}"
     tmp_dir.mkdir(parents=True, exist_ok=True)
 
+    header_lines = 0
     with gzip.open(mtx_gz_path, "rt", encoding="utf-8", errors="replace") as fh:
         header = fh.readline()
+        header_lines += 1
         if not header.startswith("%%MatrixMarket"):
             raise RuntimeError(f"Invalid MatrixMarket header in {mtx_gz_path}: {header!r}")
         line = fh.readline()
+        header_lines += 1
         while line.startswith("%") or not line.strip():
             line = fh.readline()
+            header_lines += 1
         parts = line.strip().split()
         n_rows_mtx, n_cols_mtx = int(parts[0]), int(parts[1])
 
-        if (n_rows_mtx, n_cols_mtx) == (n_cells_annot, n_genes_annot):
-            cell_first = True
-        elif (n_rows_mtx, n_cols_mtx) == (n_genes_annot, n_cells_annot):
-            cell_first = False
-        else:
-            raise RuntimeError(
-                f"MTX dimension mismatch: got ({n_rows_mtx}, {n_cols_mtx}), "
-                f"expected ({n_cells_annot}, {n_genes_annot}) or transpose."
-            )
+    if (n_rows_mtx, n_cols_mtx) == (n_cells_annot, n_genes_annot):
+        cell_first = True
+    elif (n_rows_mtx, n_cols_mtx) == (n_genes_annot, n_cells_annot):
+        cell_first = False
+    else:
+        raise RuntimeError(
+            f"MTX dimension mismatch: got ({n_rows_mtx}, {n_cols_mtx}), "
+            f"expected ({n_cells_annot}, {n_genes_annot}) or transpose."
+        )
 
-        umi = np.zeros(n_cells_annot, dtype=np.float64)
-        cas9_umi = np.zeros(n_cells_annot, dtype=np.float64)
-        n_buckets = max(1, (n_cells_annot + 32767) // 32768)
-        bucket_r: List[List[np.ndarray]] = [[] for _ in range(n_buckets)]
-        bucket_c: List[List[np.ndarray]] = [[] for _ in range(n_buckets)]
-        bucket_v: List[List[np.ndarray]] = [[] for _ in range(n_buckets)]
-        shard_files: List[List[Path]] = [[] for _ in range(n_buckets)]
-        shard_counter = 0
+    umi = np.zeros(n_cells_annot, dtype=np.float64)
+    cas9_umi = np.zeros(n_cells_annot, dtype=np.float64)
+    n_buckets = max(1, (n_cells_annot + 32767) // 32768)
+    bucket_r: List[List[np.ndarray]] = [[] for _ in range(n_buckets)]
+    bucket_c: List[List[np.ndarray]] = [[] for _ in range(n_buckets)]
+    bucket_v: List[List[np.ndarray]] = [[] for _ in range(n_buckets)]
+    shard_files: List[List[Path]] = [[] for _ in range(n_buckets)]
+    shard_counter = 0
 
-        def _flush_buckets() -> None:
-            nonlocal shard_counter
-            for bi in range(n_buckets):
-                if not bucket_r[bi]:
-                    continue
-                rr = np.concatenate(bucket_r[bi])
-                cc = np.concatenate(bucket_c[bi])
-                vv = np.concatenate(bucket_v[bi])
-                bucket_r[bi].clear()
-                bucket_c[bi].clear()
-                bucket_v[bi].clear()
-                sp_p = tmp_dir / f"b{bi}_s{shard_counter}.npz"
-                shard_counter += 1
-                np.savez(sp_p, r=rr, c=cc, v=vv)
-                shard_files[bi].append(sp_p)
-
-        def _ingest_chunk(buf: List[str]) -> None:
-            if not buf:
-                return
-            txt = "".join(buf)
-            arr = np.fromstring(txt, sep=" ", dtype=np.float64).reshape(-1, 3)
-            r0 = arr[:, 0].astype(np.int64) - 1
-            c0 = arr[:, 1].astype(np.int64) - 1
-            vv = arr[:, 2].astype(np.float32)
-            cell_i, gene_i = (r0, c0) if cell_first else (c0, r0)
-
-            np.add.at(umi, cell_i, vv.astype(np.float64))
-            if cas9_col_raw is not None:
-                is_cas9 = gene_i == cas9_col_raw
-                if np.any(is_cas9):
-                    np.add.at(cas9_umi, cell_i[is_cas9], vv[is_cas9].astype(np.float64))
-
-            b_idx = cell_i // 32768
-            for bi in np.unique(b_idx):
-                m_b = b_idx == bi
-                bucket_r[int(bi)].append(cell_i[m_b].astype(np.int32))
-                bucket_c[int(bi)].append(gene_i[m_b].astype(np.int32))
-                bucket_v[int(bi)].append(vv[m_b])
-
-        lines_buf: List[str] = []
-        mem_entries = 0
-        for raw_ln in fh:
-            s_ln = raw_ln.strip()
-            if not s_ln or s_ln.startswith("%"):
+    def _flush_buckets() -> None:
+        nonlocal shard_counter
+        for bi in range(n_buckets):
+            if not bucket_r[bi]:
                 continue
-            lines_buf.append(s_ln + " ")
-            if len(lines_buf) >= chunk_lines:
-                _ingest_chunk(lines_buf)
-                mem_entries += len(lines_buf)
-                lines_buf.clear()
-                if mem_entries >= 20_000_000:
-                    _flush_buckets()
-                    mem_entries = 0
-        if lines_buf:
-            _ingest_chunk(lines_buf)
-            lines_buf.clear()
-        _flush_buckets()
+            rr = np.concatenate(bucket_r[bi])
+            cc = np.concatenate(bucket_c[bi])
+            vv = np.concatenate(bucket_v[bi])
+            bucket_r[bi].clear()
+            bucket_c[bi].clear()
+            bucket_v[bi].clear()
+            sp_p = tmp_dir / f"b{bi}_s{shard_counter}.npz"
+            shard_counter += 1
+            np.savez(sp_p, r=rr, c=cc, v=vv)
+            shard_files[bi].append(sp_p)
+
+    def _ingest_arrays(r0: np.ndarray, c0: np.ndarray, vv: np.ndarray) -> None:
+        if r0.size == 0:
+            return
+        cell_i, gene_i = (r0, c0) if cell_first else (c0, r0)
+
+        np.add.at(umi, cell_i, vv.astype(np.float64))
+        if cas9_col_raw is not None:
+            is_cas9 = gene_i == cas9_col_raw
+            if np.any(is_cas9):
+                np.add.at(cas9_umi, cell_i[is_cas9], vv[is_cas9].astype(np.float64))
+
+        b_idx = cell_i // 32768
+        for bi in np.unique(b_idx):
+            m_b = b_idx == bi
+            bucket_r[int(bi)].append(cell_i[m_b].astype(np.int32))
+            bucket_c[int(bi)].append(gene_i[m_b].astype(np.int32))
+            bucket_v[int(bi)].append(vv[m_b])
+
+    mem_entries = 0
+    for chunk in pd.read_csv(
+        mtx_gz_path,
+        sep=r"\s+",
+        skiprows=header_lines,
+        comment="%",
+        header=None,
+        names=["r", "c", "v"],
+        dtype={"r": np.int64, "c": np.int64, "v": np.float32},
+        chunksize=20_000_000,
+        engine="c",
+    ):
+        if chunk.empty:
+            continue
+        r0 = chunk["r"].to_numpy(dtype=np.int64) - 1
+        c0 = chunk["c"].to_numpy(dtype=np.int64) - 1
+        vv = chunk["v"].to_numpy(dtype=np.float32)
+        _ingest_arrays(r0, c0, vv)
+        mem_entries += int(r0.size)
+        if mem_entries >= 40_000_000:
+            _flush_buckets()
+            mem_entries = 0
+    _flush_buckets()
 
     try:
         indptr = np.zeros(n_cells_annot + 1, dtype=np.int64)
@@ -728,6 +758,35 @@ def build_a549_ko_audit_parts(
     cas9_cols = np.flatnonzero(cas9_mask)
     cas9_col_raw = int(cas9_cols[0]) if cas9_cols.size > 0 else None
 
+    # Resolve metadata columns fail-fast before streaming 10GB MTX
+    def _resolve_col(df: pd.DataFrame, candidates: Sequence[str]) -> Optional[str]:
+        for c in candidates:
+            if c in df.columns:
+                return c
+        lower_map = {str(col).lower(): str(col) for col in df.columns}
+        for c in candidates:
+            hit = lower_map.get(c.lower())
+            if hit is not None:
+                return hit
+        return None
+
+    batch_col = _resolve_col(cdf, ("Batch", "batch"))
+    pert_col = _resolve_col(cdf, ("Perturbation", "perturbation"))
+    if batch_col is None or pert_col is None:
+        raise KeyError(
+            f"GSE345058 cell_annotations missing Batch/Perturbation column: found {list(cdf.columns)}"
+        )
+    lane_col = _resolve_col(cdf, ("Lane", "lane"))
+    cond_col = _resolve_col(cdf, ("Condition", "condition"))
+    sgrna_col = _resolve_col(cdf, ("sgRNA", "sgrna", "guide_id"))
+    cas9_col_name = _resolve_col(cdf, ("total_counts_CAS9", "cas9_counts"))
+
+    batch_s = cdf[batch_col].astype(str).str.strip().str.lower()
+    lane_s = cdf[lane_col].astype(str).str.strip() if lane_col is not None else batch_s
+    cond_s = cdf[cond_col].astype(str).str.strip() if cond_col is not None else pd.Series([""] * len(cdf))
+    pert_s = cdf[pert_col].astype(str).str.strip()
+    sgrna_s = cdf[sgrna_col].astype(str).str.strip() if sgrna_col is not None else pert_s
+
     h5_cache = cache_h5_path or (adir / "_audit_a549_csr.h5")
     umi_all, cas9_mtx_umi = _stream_mtx_gz_to_csr_h5(
         mtx_gz_path=mtx_p,
@@ -738,20 +797,14 @@ def build_a549_ko_audit_parts(
         cas9_col_raw=cas9_col_raw,
     )
 
-    batch_s = cdf["batch"].astype(str).str.strip().str.lower()
-    lane_s = cdf["Lane"].astype(str).str.strip() if "Lane" in cdf.columns else batch_s
-    cond_s = cdf["Condition"].astype(str).str.strip() if "Condition" in cdf.columns else pd.Series([""] * len(cdf))
-    pert_s = cdf["Perturbation"].astype(str).str.strip()
-    sgrna_s = cdf["sgRNA"].astype(str).str.strip() if "sgRNA" in cdf.columns else pert_s
-
     is_ntc = (cond_s == "Nontargeting").to_numpy() | (pert_s == "Nontargeting").to_numpy()
     single_sg_ok = np.asarray(
         [(bool(sg) and ("," not in sg) and (";" not in sg) and ("|" not in sg) and sg.lower() not in ("nan", "none", "unassigned")) for sg in sgrna_s],
         dtype=bool,
     )
     # Use total_counts_CAS9 if present, else fallback to raw MTX Cas9 count
-    if "total_counts_CAS9" in cdf.columns:
-        cas9_vals = pd.to_numeric(cdf["total_counts_CAS9"], errors="coerce").fillna(0.0).to_numpy()
+    if cas9_col_name is not None:
+        cas9_vals = pd.to_numeric(cdf[cas9_col_name], errors="coerce").fillna(0.0).to_numpy()
     else:
         cas9_vals = cas9_mtx_umi
 
@@ -771,7 +824,8 @@ def build_a549_ko_audit_parts(
     nt_kept = is_ntc[keep_rows]
     batches_kept = lane_s.iloc[keep_rows].to_numpy(dtype=str)
     halves_kept = half_arr[keep_rows]
-    umi_kept = umi_all[keep_rows]
+    umi_human = np.maximum(umi_all - cas9_mtx_umi, 0.0)
+    umi_kept = umi_human[keep_rows]
 
     pkeys: List[str] = []
     pmeta: Dict[str, Tuple[str, str, str, str]] = {}
@@ -1048,32 +1102,30 @@ def build_hek293_xucao_audit_parts(
                 )
 
     if split_branch == "STAGE2_STRATIFIED_SEED42":
-        # Barcode-sorted deterministic stratified 50/50 split with np.random.default_rng(42)
-        order_bc = np.argsort(np.asarray([barcodes[i] for i in keep_rows], dtype=object), kind="mergesort")
-        sorted_keep = keep_rows[order_bc]
+        # RULING_R12_HEK293_UNITS §2 exact Stage-2 stratified 50/50 split:
+        # 1) Single rng = np.random.default_rng(42);
+        # 2) Strata keys: canonical HGNC symbol for targeting cells, "__NTC__" for controls,
+        #    processed in Python default string sort order;
+        # 3) Within each stratum, sort ascending by (real cell_barcode, kept_row_idx);
+        # 4) perm = rng.permutation(n): perm[:n//2] -> half 1 (A), perm[n//2:] -> half 2 (B).
         rng = np.random.default_rng(42)
-        h_sorted = np.zeros(len(sorted_keep), dtype=np.int8)
-        nt_sorted = is_ntc_raw[sorted_keep]
+        strata: Dict[str, List[int]] = defaultdict(list)
+        for kept_idx, r_raw in enumerate(keep_rows):
+            if is_ntc_raw[r_raw]:
+                strata["__NTC__"].append(kept_idx)
+            elif canon_targets_raw[r_raw]:
+                strata[canon_targets_raw[r_raw]].append(kept_idx)
 
-        nt_pos = np.flatnonzero(nt_sorted)
-        perm_nt = nt_pos[rng.permutation(len(nt_pos))]
-        h_sorted[perm_nt[0::2]] = 1
-        h_sorted[perm_nt[1::2]] = 2
+        for key in sorted(strata.keys()):
+            ordered = np.asarray(
+                sorted(strata[key], key=lambda idx: (barcodes[keep_rows[idx]], idx)),
+                dtype=np.int64,
+            )
+            perm = rng.permutation(len(ordered))
+            n_half = len(ordered) // 2
+            halves_kept[ordered[perm[:n_half]]] = 1
+            halves_kept[ordered[perm[n_half:]]] = 2
 
-        by_tgt: Dict[str, List[int]] = defaultdict(list)
-        for pos_k, r_raw in enumerate(sorted_keep):
-            if not nt_sorted[pos_k] and canon_targets_raw[r_raw]:
-                by_tgt[canon_targets_raw[r_raw]].append(pos_k)
-        for tgt_k in sorted(by_tgt.keys()):
-            arr = np.asarray(by_tgt[tgt_k], dtype=np.int64)
-            perm = arr[rng.permutation(len(arr))]
-            h_sorted[perm[0::2]] = 1
-            h_sorted[perm[1::2]] = 2
-
-        # Restore ascending `keep_rows` ordering
-        inv_bc = np.empty_like(order_bc)
-        inv_bc[order_bc] = np.arange(len(order_bc))
-        halves_kept = h_sorted[inv_bc]
         batches_kept = np.asarray([f"half_{h}" for h in halves_kept], dtype=object)
 
     nt_kept = is_ntc_raw[keep_rows]

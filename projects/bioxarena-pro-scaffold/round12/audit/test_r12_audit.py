@@ -189,7 +189,7 @@ class TestRound12CleanRoomAudit(unittest.TestCase):
             cdf = pd.DataFrame({
                 "cell_id": [f"cid_{i:04d}" for i in range(48)],
                 "cell_barcode": [f"BC_{i % 12:02d}" for i in range(48)],  # intentionally collides across batches!
-                "batch": batches,
+                "Batch": batches,
                 "Lane": lanes,
                 "Condition": conds,
                 "Perturbation": perts,
@@ -346,6 +346,42 @@ class TestRound12CleanRoomAudit(unittest.TestCase):
             inv_perm = np.argsort(perm_rows)
             self.assertTrue(np.array_equal(parts_a02_perm[0].half_flags[inv_perm], parts_a02[0].half_flags))
 
+            # Verify exact RULING_R12_HEK293_UNITS §2 Stage-2 rule on odd stratum sizes
+            # ("__NTC__" processed AFTER uppercase symbols in sorted order; perm[:n//2] -> half 1)
+            obs_odd = pd.concat([obs_a02.iloc[:39], obs_a02.iloc[40:79], obs_a02.iloc[80:119]], ignore_index=True)
+            mat_odd = np.concatenate([mat[:39], mat[40:79], mat[80:119]], axis=0)
+            bc_odd = [barcodes[i] for i in list(range(39)) + list(range(40, 79)) + list(range(80, 119))]
+            _write_synthetic_h5ad(
+                h5_p,
+                mat_odd,
+                "csr",
+                False,
+                obs_odd,
+                genes,
+                bc_odd,
+                anndata02_index_names=("cell_barcode", "gene_symbol"),
+            )
+            parts_odd, _ = build_hek293_xucao_audit_parts(
+                raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0
+            )
+            po = parts_odd[0]
+            self.assertTrue(np.array_equal(po.batches, np.asarray([f"half_{h}" for h in po.half_flags])))
+            # Each stratum has n=39: n//2=19 in half 1 (A), 20 in half 2 (B)
+            self.assertEqual(int(np.sum(po.nt_mask & (po.half_flags == 1))), 19)
+            self.assertEqual(int(np.sum(po.nt_mask & (po.half_flags == 2))), 20)
+            ref_rng = np.random.default_rng(42)
+            ref_h = np.zeros(len(bc_odd), dtype=np.int8)
+            for s_key in sorted(["G001", "G002", "__NTC__"]):
+                if s_key == "__NTC__":
+                    idxs = [k for k in range(len(bc_odd)) if obs_odd["perturbation"].iloc[k] == "control"]
+                else:
+                    idxs = [k for k in range(len(bc_odd)) if obs_odd["perturbation"].iloc[k] == s_key]
+                ord_k = np.asarray(sorted(idxs, key=lambda idx: (bc_odd[idx], idx)), dtype=np.int64)
+                prm = ref_rng.permutation(len(ord_k))
+                ref_h[ord_k[prm[: len(ord_k) // 2]]] = 1
+                ref_h[ord_k[prm[len(ord_k) // 2 :]]] = 2
+            self.assertTrue(np.array_equal(po.half_flags, ref_h))
+
             # Case E (Ruling A1): Missing obs/var index must raise RuntimeError (NO synthetic fallback!)
             with h5py.File(h5_p, "r+") as hf_bad:
                 del hf_bad["obs"].attrs["_index"]
@@ -405,6 +441,54 @@ class TestRound12CleanRoomAudit(unittest.TestCase):
             self.assertIsNone(meta_b["max_pct_mt"])
             self.assertEqual(parts_b[0].n_cells, 48)  # all 48 >55%-MT cells kept; 2 sub-QC cells dropped!
             self.assertEqual(meta_b["n_kept_ntc"], 20)
+
+            # Case G: Total integer `/X` must take priority over subfraction `/layers/nascent_counts`,
+            # and float-only `/X` + `/layers/nascent_counts` must still fail E3 feasibility.
+            _write_synthetic_h5ad(
+                h5_p,
+                mat,
+                "csc",
+                False,
+                obs_a02,
+                genes,
+                barcodes,
+                anndata02_index_names=("cell_barcode", "gene_symbol"),
+            )
+            with h5py.File(h5_p, "r+") as hf_ng:
+                lg = hf_ng.create_group("layers")
+                sp_nasc = sp.csc_matrix(np.minimum(mat, 1).astype(np.int64))
+                ng = lg.create_group("nascent_counts")
+                ng.attrs["encoding-type"] = "csc_matrix"
+                ng.attrs["shape"] = np.asarray(mat.shape, dtype=np.int64)
+                ng.create_dataset("data", data=sp_nasc.data)
+                ng.create_dataset("indices", data=sp_nasc.indices.astype(np.int32))
+                ng.create_dataset("indptr", data=sp_nasc.indptr.astype(np.int64))
+            feas_ng = check_hek293_xucao_feasibility(h5_p)
+            self.assertTrue(feas_ng["feasible"])
+            self.assertEqual(feas_ng["chosen_counts_path"], "/X")
+
+            _write_synthetic_h5ad(
+                h5_p,
+                mat,
+                "csc",
+                False,
+                obs_a02,
+                genes,
+                barcodes,
+                float_x_only=True,
+                anndata02_index_names=("cell_barcode", "gene_symbol"),
+            )
+            with h5py.File(h5_p, "r+") as hf_ng2:
+                lg2 = hf_ng2.create_group("layers")
+                sp_nasc2 = sp.csc_matrix(np.minimum(mat, 1).astype(np.int64))
+                ng2 = lg2.create_group("nascent_counts")
+                ng2.attrs["encoding-type"] = "csc_matrix"
+                ng2.attrs["shape"] = np.asarray(mat.shape, dtype=np.int64)
+                ng2.create_dataset("data", data=sp_nasc2.data)
+                ng2.create_dataset("indices", data=sp_nasc2.indices.astype(np.int32))
+                ng2.create_dataset("indptr", data=sp_nasc2.indptr.astype(np.int64))
+            feas_ng_bad = check_hek293_xucao_feasibility(h5_p)
+            self.assertEqual(feas_ng_bad["status"], "EXCLUDED_FEASIBILITY_Q3")
 
     def test_4_adjudicator_and_exact_parity_against_frozen_r11(self) -> None:
         # Part 1: Verify adjudication logic across K_conf = 0, 1, 2 and partial failure

@@ -1,16 +1,17 @@
 AGENT: A-T3 (Team A · Pre-Registration & Statistical Audit)
-ROUND: 12 (PREREG_E v2 Locked `4c606f4` + Clean-Room `round12/audit/` Patched per RULING_R12_PREFREEZE A1 & B)
+ROUND: 12 Patched Clean-Room `round12/audit/` (RULING_R12_HEK293_UNITS §1–2 Applied; Awaiting A-T1 R12_QC_DONE2 for HEK293 Re-Xcheck)
 LOCKED_PREREG: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/prereg/PREREG_E.md (sha256: d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924, commit 4c606f4732ea080768e27757c689d40d7892cd3d)
-PREFREEZE_RULING: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/RULING_R12_PREFREEZE.md (Ruling A1 + Ruling B applied)
+PREFREEZE_RULING: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/RULING_R12_PREFREEZE.md + RULING_R12_HEK293_UNITS.md
 PAIRED_RORTH_CSV: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/outputs/paired_rorth_12lines.csv (3ec183d1d8f23de6c2b7d2987cf4bd6a0af5e42295df451899582e6152f2ef75)
 CROSSCHECK_DEV_REPORT: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/CROSSCHECK_DEV.md
+READER_XCHECK_REPORT: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/READER_XCHECK_R12.md
 
 ROUND12_AUDIT_SHA256:
 - round12/audit/__init__.py: 4ecff3ffd56dfad9a49eebf26bc192a90fd70994962889527e33afab1b7b9a55
-- round12/audit/independent_r12_loader.py: 4fbd6daee497e07f3f528661a21e3591f8d9f09d1faac2af28558ee39867f6fb
+- round12/audit/independent_r12_loader.py: b6e5bc5670b9be1ee7067c2b5339067eaaa2c43a60c6ad1b9a7ec85aa7afae5a
 - round12/audit/independent_r12_metrics.py: d265a9843f28570295b43f921e4e79cec5e456b6445ba5df72e5fcf506741547
 - round12/audit/run_r12_audit.py: 7621d35aa484cde376bb992e64c009aea4e771b9eb69c2041de5ad89998f3ef7
-- round12/audit/test_r12_audit.py: a3a7d977103294515a7915e9c55a08ed59ea3d80272d4e6c2ad0c03e20976303
+- round12/audit/test_r12_audit.py: 9f2b2e6a767aefc3468468ea4f8cea43d5e29c3c7cf141f1d75516bf3ab743a7
 - round12/audit/verify_vs_r12_results.py: 299b76e7698f50b249600d5ffcb809dc2dfa3c489a2e3401d7ffdfb01af5fcb
 
 SUMMARY:
@@ -26,7 +27,24 @@ SUMMARY:
   - Pre-patch full dev suite (metrics/predictors unchanged across patch): `dev_smoke_post_r11_feng` (`59` pt `1.11e-16`, `88` CI `9.71e-17`), `dev_smoke_post_src8_calu3` (`65` pt `2.22e-16`, `100` CI `1.11e-16`), `dev_smoke_r11_feng` (`4000/100`: `59` pt `1.11e-16`, `88` CI `1.11e-16`), `dev_smoke_r10_cd4t_rest` (`4000/100`: `59` pt `1.73e-17`, `88/90` non-degenerate CI `<= 2.78e-17`).
 - Post-patch verification: `pyflakes` (`PYFLAKES_OK`), `test_r12_audit.py` (`4/4 OK`), `test_exploratory_check.py` (`4/4 OK`), `FREEZE_MANIFEST_R10.txt` (`22/22 OK`), `FREEZE_MANIFEST_R11.txt` (`41/41 OK`), Rule 5 audit `ZERO_HITS`.
 
+- Independent Clean-Room Reader Cross-Check (`READER_XCHECK_R12.md`, zero FCT/correlations/metrics computed; rebuilt to `round12/audit/reader_xcheck/` vs `round12/shared/lines/`):
+  - Two reader bugs fixed during pre-freeze cross-check (`pyflakes` OK, `test_r12_audit.py` `4/4 OK`):
+    1) `check_hek293_xucao_feasibility` now prioritizes full-transcriptome integer `/X` over subfraction `/layers/nascent_counts` (`test_3` Case G added; Run 1 before fix had picked `/layers/nascent_counts` giving `59,775` cells / `0` targets).
+    2) `build_a549_ko_audit_parts` now resolves `Batch`/`batch` case-insensitively before 10 GB `.mtx.gz` streaming (fixing `KeyError: 'batch'`), subtracts `Cas9` vector counts from cell UMIs (`umi_human`), and uses `pd.read_csv(engine="c")`.
+  - **`hek293_xucao` Cross-Check Results (MISMATCH):**
+    - Matched: `kept_cells = 98,274 == 98,274`, `n_nt_total = 2,757 == 2,757`, `targets.txt = 200 == 200`, `ctrl_mean_libnorm` / `_full` / `_log1p` `max_abs_diff = 0.0`.
+    - Mismatches: (1) `batches = ["half_1", "half_2"]` (`n_batches=2`) vs `shared` `["batch_0"]` (`n_batches=1`) drops `n_genes_final` (`22,114` vs `29,194`), `|G_eval|` (`6,126` vs `6,127`, missing `HINT2`), shifts `delta_log1p` (`max_abs_diff = 0.003620`, `eval_space = 0.002769`, `delta_libnorm = 0.254744`), and breaks `Z_5000` zero-count ties in AD QC so `n_targets_reproducible` drops from `96` to `23` and `n_eval_targets` drops from `62` to `19` (`< 50` confirmatory floor; `18` shared, `PCNA` only in `xcheck`, `44` only in `shared`), while `energy_test_p_value <= 0.05` remains `189 == 189`; (2) Stage-2 `seed=42` half-split swaps NTC counts (`1,379 / 1,378` vs `1,378 / 1,379`), flips odd target half counts (`xcheck.half_a_n_cells == shared.half_b_n_cells`), and assigns different cells per half (`half_a/b_ctrl_mean_libnorm` diff `2.025`/`2.029`, `6.686`/`6.690` swapped; `half_a/b_delta_log1p` diff `1.4198`).
+  - **`a549_ko` Cross-Check Results (445 eval targets / 6,121 G_eval / ctrl_mean EXACT; QARS `591` cells + float32 ULP diff):**
+    - Matched: `nt_total = 45,320`, `half_a/b = 23,758 / 21,562`, `genes.txt = 17,337 == 17,337`, `|G_eval| = 6,121 == 6,121`, `n_eval_targets = 445 == 445` (exact ordered equality), `ctrl_mean_libnorm` / `_full` / `_log1p` / `half_a` / `half_b` `max_abs_diff = 0.0`.
+    - Mismatches: (1) `kept_cells = 606,075` vs `605,484` (`+591`), `targets.txt = 1,000` vs `999` (`only_in_xcheck = ["QARS"]`), `n_targets_reproducible = 972` vs `971` (`QARS` is `"unmapped"` in HGNC table -> filtered in `shared` as unapproved, retained per `PREREG_E §3.1` in `xcheck`; absent from `r9_6` and `G_eval`); (2) `pseudobulk_delta` across `999 x 17,337` & `445 x 6,121`: `aligned_delta_log1p max_abs_diff = 3.576e-7` (`allclose_1e_6 = True`), `half_a = 4.172e-7`, `half_b = 4.768e-7`, `delta_libnorm = 1.526e-5` (reflecting `cas9_mtx_umi` UMI exclusion / float32 ULP).
+
+- Ruling 2 Patch (`RULING_R12_HEK293_UNITS.md §1–2`):
+  - `build_hek293_xucao_audit_parts` keeps `batches = ["half_1", "half_2"]` (`Stage 2`) / replicate ID (`Stage 1`), and updates Stage-2 stratified 50/50 split strictly to: single `rng = np.random.default_rng(42)`; strata keys = canonical HGNC symbol (targeting) / `"__NTC__"` (NTC) iterated in Python default string sort order; within each stratum sorted ascending by `(cell_barcode, kept_row_idx)`; `perm[:n//2]` -> half 1 (A), `perm[n//2:]` -> half 2 (B).
+  - Updated `test_r12_audit.py` `test_3` to verify exact Stage-2 parity on odd stratum sizes (`n=39 -> 19 half 1, 20 half 2`), `"__NTC__"` sort order, and `"half_1"/"half_2"` batches. `pyflakes` (`PYFLAKES_OK`), `test_r12_audit.py` (`4/4 OK` in `1.926s`), `test_exploratory_check.py` (`4/4 OK`), Rule 5 `ZERO_HITS`. Pending `A-T1` `R12_QC_DONE2` to re-run `hek293_xucao` cross-check.
+
 PAIRED_RORTH_DONE
 PREREG_E_V2_READY
 R12_AUDIT_CODE_READY
 R12_AUDIT_PATCHED
+R12_READER_XCHECK_MISMATCH
+R12_AUDIT_PATCHED2
