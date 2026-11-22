@@ -1,5 +1,5 @@
 AGENT: A-T3 (Team A · Pre-Registration & Statistical Audit)
-ROUND: 12 Clean-Room `round12/audit/` Patched + Full Reader Cross-Check Passed (`R12_READER_XCHECK_OK`)
+ROUND: 12 Blind Audit + A-T2 Clean-Room Triple Cross-Check Passed (`R12_TRIPLE_OK_A-T3`)
 LOCKED_PREREG: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/prereg/PREREG_E.md (sha256: d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924, commit 4c606f4732ea080768e27757c689d40d7892cd3d)
 PREFREEZE_RULING: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/RULING_R12_PREFREEZE.md + RULING_R12_HEK293_UNITS.md
 PAIRED_RORTH_CSV: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/outputs/paired_rorth_12lines.csv (3ec183d1d8f23de6c2b7d2987cf4bd6a0af5e42295df451899582e6152f2ef75)
@@ -50,6 +50,47 @@ SUMMARY:
     * `pseudobulk_delta.npz` (`log1p` primary representation): `delta_log1p = 4.936e-7` (`G_eval`: `2.775e-7`), `half_a_delta_log1p = 7.628e-7`, `half_b_delta_log1p = 6.072e-7`, `knockdown_depth_log1p = 1.192e-7` (all `<= 1e-6`; note non-log1p `delta_zscore = 1.907e-6`, `delta_libnorm = 1.297e-4` [rel `3.98e-6`]).
     * Combined with `a549_ko` (`445 == 445`, `|G_eval| = 6,121`, `23,758 / 21,562`, `ctrl_mean = 0.0`, `delta_log1p <= 3.58e-7`; `QARS` `591` cells accepted per Ruling 2 §3), full Round 12 reader cross-check passes.
 
+- Blind Holdout Round 12 Independent Audit Execution (`CODE_FREEZE_R12.txt` = `11d91c72025264b838af091abcf0eac71588eb91`, `K_conf = 1`, `a549_ko` only; zero access to any `round12/results/` non-`dev_` file; zero edits to frozen code or `shared/lines/`):
+  - Pre-run & post-run `shasum -a 256 -c round12/status/FREEZE_MANIFEST_R12.txt`: **46/46 `OK`** (exit code `0`).
+  - Command 1 (`r9_6`, exit code `0`):
+    `python3 -I round12/audit/run_r12_audit.py --phase holdout_r12 --source-mode r9_6 --lines a549_ko hek293_xucao a549_ko_cas9pos --n-boot 4000 --n-perm 100 --seed 20261201 --out-dir round12/audit/holdout_r12`
+    * JSON: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/holdout_r12/audit_r12_summary_holdout_r12_r9_6.json`
+    * SHA-256: `3a102c86c65cb1d005da6650990935c744f91c0b37252ca543c71053720f7134`
+    * Report: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/holdout_r12/AUDIT_R12_REPORT_holdout_r12_r9_6.md`
+  - Command 2 (`SA-Src8 r9_r10_8`, exit code `0`):
+    `python3 -I round12/audit/run_r12_audit.py --phase holdout_r12 --source-mode r9_r10_8 --lines a549_ko hek293_xucao a549_ko_cas9pos --n-boot 4000 --n-perm 100 --seed 20261201 --out-dir round12/audit/holdout_r12_src8`
+    * JSON: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/holdout_r12_src8/audit_r12_summary_holdout_r12_r9_r10_8.json`
+    * SHA-256: `2e15351f0301bcf7c8a166c65017041781e2b70cab01f1e223941367160f1602`
+    * Report: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/holdout_r12_src8/AUDIT_R12_REPORT_holdout_r12_r9_r10_8.md`
+  - **`r9_6` Blind Results (`Adjudication = CONFIRMATORY_SINGLE_LINE_K1`, `Claim 1 H-E1 = CONFIRMED`, `Claim 2 H-E2 = CONFIRMED`; MANDATORY `K_conf=1` / 推广性有限 scope notice):**
+    * **`a549_ko` (`CONFIRMATORY`, `N=445`, `|G_eval|=6,121`):**
+      - `H-E1a`: `PASS` (`FCT r_orth_cal = +0.189803 [0.174167, 0.205455]`, `vf=1.0000`, `rho_ab_orth=0.788744`)
+      - `H-E1b` (`6/6` `PASS`, `min CI97.5_lo = +0.068168`): `nadig_hepg2 +0.186878 [0.169321, 0.204932]`, `nadig_jurkat +0.079630 [0.069325, 0.090023]`, `nourreddine_kolf21j +0.106873 [0.098539, 0.115601]`, `replogle_k562_essential +0.127924 [0.115009, 0.140975]`, `replogle_rpe1 +0.080369 [0.068168, 0.091740]`, `vcc2025_h1 +0.150492 [0.140195, 0.160501]`
+      - `H-E1c`: `PASS` (`FCT CI97.5_lo +0.174167 > Perm100 Q97.5 +0.001813`; `perm_med = -0.010573`, margin `+0.172354`)
+      - `H-E2a`: `PASS` (`E1_ConstMed resp_top50_split = +0.256501 [0.219514, 0.298107]`, `N=445`, `vf=1.0000`)
+      - `H-E2b`: `PASS` (`E1(split)-E1(all) = +0.276640 [0.241189, 0.316411]`, `n_common=445`, `all_est=-0.020139`)
+    * **`hek293_xucao` (`SECONDARY_ONLY`, `N=16`, `|G_eval|=6,126`):**
+      - `H-E1 = True` (`H-E1a PASS`: `+0.156058 [0.059515, 0.259321]`, `vf=1.0`, `rho_ab_orth=0.300533`; `H-E1b 6/6 PASS`: `min CI97.5_lo = +0.066604` vs `kolf21j`; `H-E1c PASS`: `0.059515 > Perm97.5 0.001526`)
+      - `H-E2 = False` (`H-E2a`: `+0.015652 [-0.098837, 0.134983]`; `H-E2b`: `+0.033856 [-0.086819, 0.179676]`, underpowered at `N=16`)
+    * **`a549_ko_cas9pos` (`SA-Cas9`, `N=445`, `|G_eval|=6,121`):**
+      - `H-E1 = True` (`H-E1a`: `+0.195011 [0.179671, 0.210825]`, `vf=1.0`, `rho_ab_orth=0.738771`; `H-E1b 6/6`: `min CI97.5_lo = +0.071858`; `H-E1c`: `0.179671 > Perm97.5 0.000445`)
+      - `H-E2 = True` (`H-E2a`: `+0.252272 [0.217235, 0.291813]`; `H-E2b`: `+0.273544 [0.239781, 0.311229]`)
+  - **`SA-Src8 r9_r10_8` Blind Results (`Adjudication = CONFIRMATORY_SINGLE_LINE_K1`):**
+    * **`a549_ko` (`N=528`, `|G_eval|=6,085`):** `H-E1a PASS` (`+0.156341 [0.141392, 0.172096]`, `vf=1.0`, `rho_ab_orth=0.777582`); `H-E1b 8/8 PASS` (`min CI97.5_lo = +0.037175` vs `dld1`, `diff=+0.042344`; `cd4t_rest +0.145142 [0.133205, 0.157531]`); `H-E1c PASS` (`0.141392 > Perm97.5 0.002307`); `H-E2a PASS` (`+0.230223 [0.195474, 0.267696]`); `H-E2b PASS` (`+0.246195 [0.213194, 0.281223]`, `all_est=-0.015972`).
+    * **`hek293_xucao` (`N=16`, `|G_eval|=6,089`):** `H-E1a PASS` (`+0.154437 [0.060028, 0.250858]`, `rho_ab_orth=0.299006`); `H-E1b 8/8 PASS` (`min CI97.5_lo = +0.062926` vs `kolf21j`); `H-E1c PASS` (`0.060028 > 0.000180`); `H-E2a/b FAIL` (`+0.011533 [-0.095965, 0.146845]`, `diff=+0.030464 [-0.079802, 0.188232]`).
+    * **`a549_ko_cas9pos` (`N=526`, `|G_eval|=6,085`):** `H-E1a PASS` (`+0.161635 [0.146387, 0.177296]`); `H-E1b 8/8 PASS` (`min CI97.5_lo = +0.039882`); `H-E1c PASS` (`0.146387 > 0.001649`); `H-E2a PASS` (`+0.229130 [0.196074, 0.264303]`); `H-E2b PASS` (`+0.246147 [0.214865, 0.278219]`).
+  - **Comparison vs `A-T2` (`round12/results/`, unblinded ONLY after `R12_EVAL_DONE` at `2026-11-23T07:43`; via unmodified `verify_vs_r12_results.py --tol 1e-10` on isolated read-only symlink views of `round12/results/`):**
+    * **`r9_6_log1p` (`holdout_r12/audit_r12_summary_holdout_r12_r9_6.json` vs `*_holdout_r12_r9_6_log1p.*`):**
+      - Point checks: **`177`**, max abs diff = **`1.110223e-16`** (`a549_ko_cas9pos.N5.Hybrid_ProjShared.eta`).
+      - CI97.5 checks: **`264`**, max abs diff = **`8.326673e-17`** (`a549_ko.HE1b(nadig_hepg2).ci975:hi`).
+      - Permutation quantile checks (`Perm100` `all_nontarget` + `resp_top50`, `54` checks): max abs diff = **`1.110e-16`** (`a549_ko.resp_top50.r_cal.median`).
+      - Verdict & claim parity (`verdict_mismatches = []`, `pass_tol = true`): `H-E1a/b/c`, `H-E1`, `H-E2a/b`, `H-E2`, `legacy H-D2`, `k_conf = 1`, `Claim 1 = CONFIRMED`, `Claim 2 = CONFIRMED` -> **`100%` exact match (`0` mismatches)**.
+    * **`SA-Src8 r9_r10_8_log1p_src8` (`holdout_r12_src8/audit_r12_summary_holdout_r12_r9_r10_8.json` vs `*_holdout_r12_r9_r10_8_log1p_src8.*`):**
+      - Point checks: **`195`**, max abs diff = **`1.730420e-16`** (`a549_ko.N5.Transfer_Mean_GlobalScale.eta`).
+      - CI97.5 checks: **`300`**, max abs diff = **`8.326673e-17`** (`hek293_xucao.Source_Grand_Mean.r_orth_cal_ci975:lo`).
+      - Permutation quantile checks (`Perm100` `all_nontarget` + `resp_top50`, `54` checks): max abs diff = **`1.110e-16`** (`a549_ko.resp_top50.r_cal.p025`).
+      - Verdict & claim parity (`verdict_mismatches = []`, `pass_tol = true`): `H-E1a/b/c`, `H-E1`, `H-E2a/b`, `H-E2`, `legacy H-D2`, `k_conf = 1`, `Claim 1 = CONFIRMED`, `Claim 2 = CONFIRMED` -> **`100%` exact match (`0` mismatches)**.
+
 PAIRED_RORTH_DONE
 PREREG_E_V2_READY
 R12_AUDIT_CODE_READY
@@ -57,3 +98,5 @@ R12_AUDIT_PATCHED
 R12_READER_XCHECK_MISMATCH
 R12_AUDIT_PATCHED2
 R12_READER_XCHECK_OK
+R12_AUDIT_DONE
+R12_TRIPLE_OK_A-T3

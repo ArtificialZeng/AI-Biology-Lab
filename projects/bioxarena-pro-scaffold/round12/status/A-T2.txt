@@ -1,32 +1,80 @@
-[A-T2] ROUND 12 (`PREREG_E` v2 + RULING A1–A3 + HEK293 UNITS PATCHED2 @ 4c606f4) 2026-11-23T04:03+08:00
+[A-T2] ROUND 12 HOLDOUT EVALUATION RESULTS 2026-11-23T07:42+08:00
 
-1. Strict Ruling 2 (`RULING_R12_HEK293_UNITS.md §1`) Compliance, Blinding & Freeze Integrity:
-   - Modified ONLY `round12/src/dataset_readers_r12.py::build_hek293_parts` (+ unit tests in `round12/src/test_unit_r12.py`).
-   - Zero changes to any Stage-2 splitting logic (retained single `rng42 = np.random.default_rng(42)`, `"__NTC__"` / HGNC sorted keys, `(kept_bcs_l[idx], idx)` ascending cell sort, `perm[:n//2]` Half 1 vs `perm[n//2:]` Half 2), zero changes to A549 reader, and zero changes to `metrics_r12.py`, `adjudicate_r12.py`, `run_eval_r12.py`, `data_loader_r12.py`, or `__init__.py` (all SHA-256 hashes identical).
-   - `shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`: exited `0`, `22` `: OK` (zero edits to `round10/`).
-   - `shasum -a 256 -c round11/status/FREEZE_MANIFEST_R11.txt`: exited `0`, `41` `: OK` (zero edits to `round11/`).
-   - Blinding compliance: zero access to `round12/shared/lines/` or `round12/shared/raw/`.
-   - Post-patch2 SHA-256 checksums of `round12/src/*.py`:
-     * `__init__.py`: `148a8b661cbfdc9aa7ad99aede4b3a3efcf6d7c4bebea932e577ff99cf2c5089` (unchanged)
-     * `adjudicate_r12.py`: `b1954bb6ae1a857e3e34619215544e000653510492dd1f451b1eb133bc3fe64f` (unchanged)
-     * `data_loader_r12.py`: `3f28ecb9a442dbe4e1c792552443412f451affe3a41ef5abddca7bd9bb3e3111` (unchanged)
-     * `dataset_readers_r12.py`: `cc196a4476b1e051ac840e293fbc6ad4b59613dfb39e80233a5d2378131e5b94` (patched2: `build_hek293_parts` unit/batch)
-     * `metrics_r12.py`: `68513e42d9b417cab3a523224bd3ab3313077edf7c22ee086d1b933c9424d0a7` (unchanged)
-     * `run_eval_r12.py`: `eb812b3038a20b66072be3aa1bd012ae8f5bb97cabf2e26d3f2e69cad82fec04` (unchanged)
-     * `test_unit_r12.py`: `18f00fc95d8f20b7b69ec6b7de4ca2149f36ed8008de84428aaafd3fedd1c3a6` (+ `test_8` Stage 1 replicate vs Stage 2 half batch tests)
+1. Freeze Integrity Verification (`head -n 34 round12/status/FREEZE_MANIFEST_R12.txt | shasum -a 256 -c`, Section 1 + Section 2 = 31 entries):
+   - Pre-evaluation check: exit code `0`, 31/31 `OK` (Section 1: 19 code files; Section 2: 12 locked doc/ruling/QC/gate files).
+   - Post-evaluation check: exit code `0`, 31/31 `OK` (zero byte modifications to frozen code or documents).
+   - Code freeze reference: `round12/status/CODE_FREEZE_R12.txt` (`11d91c72025264b838af091abcf0eac71588eb91`), `round12/status/PREREG_E_COMMIT.txt` (`4c606f4732ea080768e27757c689d40d7892cd3d`), `round12/status/CONFIRMATORY_LINES_R12.txt` (`K_conf = 1`, `confirmatory_lines = ["a549_ko"]`).
 
-2. Changes Applied (`round12/status/RULING_R12_HEK293_UNITS.md §1`):
-   - `dataset_readers_r12.py::build_hek293_parts`:
-     * **Stage 1 (`obs_replicate_parity:<rep_col>`)**: `batch_arr` is set directly from `rep_strs_l` (replicate IDs, ignoring any unrelated `.obs['batch']` / `'batch_0'`), passing through `_apply_min_ntc_batch_fallback(..., min_batch_nt=min_batch_nt)` so any replicate with `< 15` NTCs falls back to `half_{h}_pooled` in its half.
-     * **Stage 2 (`seed42_stratified_50_50`)**: `batch_arr = np.where(half_arr == 1, "half_1", "half_2").astype(str)` and `n_fb = 0`, matching `PREREG_E §3.3` (`half` NTC-centering unit for HEK293 Stage 2).
-     * Removed dead `batch_col` / `batch_vals` / `batches_l` variables in `build_hek293_parts`.
-   - Prior Ruling A1–A3 fixes preserved intact: HEK293 `attrs['_index']` -> `_index`/`index` without synthetic fallback, A549 `csc_b.indptr[1:].astype(np.int64)`, and `max_pct_mt=None` default.
+2. Commands, Exit Codes, Runtimes, Output Paths & SHA-256:
+   - **Run 1 (Primary Confirmatory `r9_6`)**:
+     * Command: `python3 -I round12/src/run_eval_r12.py --phase holdout_r12 --source-mode r9_6 --lines a549_ko,hek293_xucao,a549_ko_cas9pos --n-boot 4000 --n-perm 100 --seed 20261201`
+     * Exit code: `0`
+     * Runtime: `630.98s` (`elapsed_sec`), `/usr/bin/time -p`: `real 632.94`, `user 549.87`, `sys 75.45`
+     * Output files & sha256:
+       - `round12/results/REPORT_holdout_r12_r9_6_log1p.md`: `6df91cd49e84873e830d48b31be1ec8717c8879f5f7f5d7f6977db968cb156de`
+       - `round12/results/adjudication_holdout_r12_r9_6_log1p.json`: `12c62fc3eb483ee8836c912f6b582dfd715a4cd57ce977cc1c3a5a31f27ee845`
+       - `round12/results/bootstrap_ci_holdout_r12_r9_6_log1p.csv`: `aa1a9d2135e19a472c8bb58d0d210cac34072013f0e0ea6fb2efc9a2c59eae91`
+       - `round12/results/line_metrics_holdout_r12_r9_6_log1p.csv`: `daa3e3313f44339deedafdd36519d0db15b69d60a5402fb79745464e1e1799f1`
+       - `round12/results/summary_holdout_r12_r9_6_log1p.json`: `ba7ed9119b0f1eb3131fff618a3e6c0901fe4267ce0487d4987bcd7a75d2efa0`
+   - **Run 2 (`SA-Src8` Sensitivity `r9_r10_8`)**:
+     * Command: `python3 -I round12/src/run_eval_r12.py --phase holdout_r12 --source-mode r9_r10_8 --lines a549_ko,hek293_xucao,a549_ko_cas9pos --n-boot 4000 --n-perm 100 --seed 20261201 --tag-suffix _src8`
+     * Exit code: `0`
+     * Runtime: `851.52s` (`elapsed_sec`), `/usr/bin/time -p`: `real 854.00`, `user 763.86`, `sys 77.34`
+     * Output files & sha256:
+       - `round12/results/REPORT_holdout_r12_r9_r10_8_log1p_src8.md`: `0bb726f1d20a0cadaf15b55d8e0a9b0fa7cf4c5ef0b393d584e8ffa6839f6ed5`
+       - `round12/results/adjudication_holdout_r12_r9_r10_8_log1p_src8.json`: `e2bb1e382369ad3470f777b3d93d4ba6ecbbcbffa4a74d642b87b321df8f299e`
+       - `round12/results/bootstrap_ci_holdout_r12_r9_r10_8_log1p_src8.csv`: `b19d9ca79c3fc2175838961994a56f03c0f88c3a9d68326e91b914044c9eebe1`
+       - `round12/results/line_metrics_holdout_r12_r9_r10_8_log1p_src8.csv`: `dcf6fcb26d196d06ae7717f8f3d77bdacbc38dad1e2e16a9c308eb928bdf460e`
+       - `round12/results/summary_holdout_r12_r9_r10_8_log1p_src8.json`: `fb60e9859dbc460e15be8bd3678eff5aae9ed0d8eef518e324f6f3104b8d9b53`
 
-3. Post-Patch2 Verification (`python3 -I`):
-   - `python3 -I -m pyflakes round12/src/*.py`: exited `0` (0 warnings/errors).
-   - `python3 -I round12/src/test_unit_r12.py -v`: **Ran 8 tests in 3.598s — OK**:
-     * `test_1`–`test_5`: all blinding, SA-8, `N_5`, adjudicator, and A549 checks pass.
-     * `test_6` & `test_7`: Stage 1 confirms `set(batches) == {"repA", "repB", "repC", "repD"}`; Stage 2 confirms `batches == np.where(half_flags == 1, "half_1", "half_2")` alongside `attrs['_index']` (`cell_barcode`/`gene_symbol`) and `max_pct_mt=None`.
-     * `test_8_hek293_stage1_replicate_and_stage2_half_unit_batches`: verifies (a) Stage 1 ignores unrelated `obs['batch'] = 'global_batch0'` and uses `rep1`/`rep2` plus `< 15` NTC fallback `half_1_pooled` for `rep3` (`12` fallback cells); (b) Stage 2 (`force_seed42_split=True`) assigns `"half_1"` / `"half_2"` strictly from `half_flags`.
+3. Confirmatory Adjudication (`CONFIRMATORY_LINES_R12.txt`: `K_conf = 1`, `a549_ko` ONLY):
+   - **Run 1 (`r9_6`) — Confirmatory Line `a549_ko` (`N=445`, `n_genes_eval=6121`)**:
+     * `confirmatory_status`: `CONFIRMATORY_SINGLE_LINE_K1` (`limited_single_line_generalizability_notice = true`)
+     * `Group_E_Claim1_Verdict`: **CONFIRMED** (`1/1`)
+       - `H-E1a` (`FCT`, `all_nontarget`): `0.18980314764741424`, 97.5% CI `[0.17416745275713927, 0.20545533394860485]`, `valid_frac = 1.0`, `rho_half_ab_orth = 0.7887443809703106`, `H-E1a_pass = true` (`CONFIRMED`)
+       - `H-E1b` (`FCT - NegCtrl_FCT_MismatchedMean(s)`, `all_nontarget`, 6/6):
+         * `nadig_hepg2`: `0.18687822630847511`, 97.5% CI `[0.16932090778017875, 0.2049316167813072]`, `pass = true`
+         * `nadig_jurkat`: `0.07962980963456615`, 97.5% CI `[0.06932451089787629, 0.09002342795468991]`, `pass = true`
+         * `nourreddine_kolf21j`: `0.10687325769501275`, 97.5% CI `[0.0985394512376554, 0.11560066260270338]`, `pass = true`
+         * `replogle_k562_essential`: `0.12792431125299406`, 97.5% CI `[0.11500884000368918, 0.14097460122965164]`, `pass = true`
+         * `replogle_rpe1`: `0.0803687512763436`, 97.5% CI `[0.0681677794445851, 0.09174033552291339]`, `pass = true`
+         * `vcc2025_h1`: `0.15049204473554784`, 97.5% CI `[0.1401952672929839, 0.1605011990665467]`, `pass = true`
+         -> `H-E1b_pass = true` (`6/6`, `min_paired_ci975_lo = 0.0681677794445851`, `CONFIRMED`)
+       - `H-E1c` (`FCT ci975_lo > Perm100(all_nontarget) Q0.975`): `0.17416745275713927 > 0.0018132552539497884`, `H-E1c_pass = true` (`CONFIRMED`)
+     * `Group_E_Claim2_Verdict`: **CONFIRMED** (`1/1`)
+       - `H-E2a` (`E1_ConstMed`, `resp_top50_split`): `0.25650103405103714`, 97.5% CI `[0.21951365893880279, 0.29810666919934614]`, `H-E2a_pass = true` (`CONFIRMED`)
+       - `H-E2b` (`E1(resp_top50_split) - E1(all_nontarget)`, `n_common_perts = 445`): `0.27664049076889535`, 97.5% CI `[0.24118882048800763, 0.31641097853916367]`, `H-E2b_pass = true` (`CONFIRMED`)
 
-R12_CODE_PATCHED2
+4. Reporting-Only Results (`PREREG_E §5` — non-confirmatory):
+   - **Run 1 (`r9_6`) — `hek293_xucao` (§5 descriptive only, `N=16`, `n_genes_eval=6126`)**:
+     * `H-E1a`: `0.15605819654454253`, 97.5% CI `[0.05951487477660664, 0.2593214416608916]`, `valid_frac = 1.0`, `rho_half_ab_orth = 0.3005334147483218`, `H-E1a_pass = true`
+     * `H-E1b` (`6/6`): `nadig_hepg2` `0.1914088630714602` `[0.10132516956331548, 0.294492770860153]` (`pass=true`), `nadig_jurkat` `0.1914085971898657` `[0.12233692406293957, 0.26074367073448085]` (`pass=true`), `nourreddine_kolf21j` `0.11102510207254357` `[0.06660390115992618, 0.15876172896154087]` (`pass=true`), `replogle_k562_essential` `0.16107499789475258` `[0.10470795915094834, 0.2234139033429449]` (`pass=true`), `replogle_rpe1` `0.19973832919047887` `[0.11389731820594323, 0.2922792628366618]` (`pass=true`), `vcc2025_h1` `0.17978400693198748` `[0.1042946880818506, 0.2601090549090945]` (`pass=true`); `H-E1b_pass = true`
+     * `H-E1c`: `perm100_all_nontarget_q975 = 0.0015263451038004705`, `H-E1c_pass = true` (`descriptive_unpaired_pass = false`, `descriptive_unpaired_max_mis_ci975_hi = 0.10826458333001734`)
+     * `H-E2a`: `0.01565220680254762`, 97.5% CI `[-0.09883654457106854, 0.13498277133554082]`, `H-E2a_pass = false`
+     * `H-E2b` (`n_common_perts = 16`): `0.033856036184115416`, 97.5% CI `[-0.08681898210413974, 0.17967587844673114]`, `H-E2b_pass = false`
+   - **Run 1 (`r9_6`) — `a549_ko_cas9pos` (`SA-Cas9` sensitivity only, `N=445`, `n_genes_eval=6121`)**:
+     * `H-E1a`: `0.19501133668481102`, 97.5% CI `[0.1796710649550339, 0.21082510917729383]`, `valid_frac = 1.0`, `rho_half_ab_orth = 0.7387708526483836`, `H-E1a_pass = true`
+     * `H-E1b` (`6/6`): `nadig_hepg2` `0.19071814111310909` `[0.17369582954374543, 0.20960603888262194]`, `nadig_jurkat` `0.08485814039721813` `[0.07387625817096548, 0.09565154459651938]`, `nourreddine_kolf21j` `0.11116343555159895` `[0.10282609752331132, 0.12002022866764395]`, `replogle_k562_essential` `0.1329887727559118` `[0.11932932090119133, 0.14639665706071162]`, `replogle_rpe1` `0.08349948508357762` `[0.07185819659985246, 0.09594128956977888]`, `vcc2025_h1` `0.15633705966446154` `[0.1464504919918057, 0.16647210372063703]`; `H-E1b_pass = true`
+     * `H-E1c`: `perm100_all_nontarget_q975 = 0.00044479282928218953`, `H-E1c_pass = true`
+     * `H-E2a`: `0.25227168701538716`, 97.5% CI `[0.2172350924565509, 0.2918129306551566]`, `H-E2a_pass = true`
+     * `H-E2b` (`n_common_perts = 445`): `0.2735444001764351`, 97.5% CI `[0.23978137673688193, 0.3112285745496815]`, `H-E2b_pass = true`
+   - **Run 2 (`SA-Src8`, `r9_r10_8`, §5 sensitivity only) — `a549_ko` (`N=528`, `n_genes_eval=6085`)**:
+     * `H-E1a`: `0.15634055226696245`, 97.5% CI `[0.1413918724625121, 0.1720955724839951]`, `valid_frac = 1.0`, `rho_half_ab_orth = 0.7775817677237445`, `H-E1a_pass = true` (`CONFIRMED`)
+     * `H-E1b` (`8/8`):
+       - `cd4t_rest`: `0.14514162708952252`, 97.5% CI `[0.13320483780843828, 0.15753093162100376]`, `pass = true`
+       - `dld1`: `0.0423442937864207`, 97.5% CI `[0.03717525751786431, 0.04801171147184541]`, `pass = true`
+       - `nadig_hepg2`: `0.1444665626273455`, 97.5% CI `[0.1283492327549355, 0.16113106910571753]`, `pass = true`
+       - `nadig_jurkat`: `0.05982344014362381`, 97.5% CI `[0.05061824723994304, 0.06945390162152441]`, `pass = true`
+       - `nourreddine_kolf21j`: `0.08155769332733144`, 97.5% CI `[0.07342302216188654, 0.09013346595157018]`, `pass = true`
+       - `replogle_k562_essential`: `0.0996331716990099`, 97.5% CI `[0.08726541045458952, 0.112190147517984]`, `pass = true`
+       - `replogle_rpe1`: `0.0744649726317343`, 97.5% CI `[0.06565878994486786, 0.08386910967526505]`, `pass = true`
+       - `vcc2025_h1`: `0.11757973672096733`, 97.5% CI `[0.10679806225028836, 0.12904805266968378]`, `pass = true`
+       -> `H-E1b_pass = true` (`CONFIRMED`)
+     * `H-E1c`: `0.1413918724625121 > 0.0023074760316747064`, `H-E1c_pass = true` (`CONFIRMED`)
+     * `H-E2a`: `0.23022344273728415`, 97.5% CI `[0.1954735293668522, 0.26769638407603114]`, `H-E2a_pass = true` (`CONFIRMED`)
+     * `H-E2b` (`n_common_perts = 528`): `0.24619544169014318`, 97.5% CI `[0.21319447383687987, 0.2812230609610729]`, `H-E2b_pass = true` (`CONFIRMED`)
+   - **Run 2 (`SA-Src8`, `r9_r10_8`) — `hek293_xucao` (`N=16`, `n_genes_eval=6089`) & `a549_ko_cas9pos` (`N=526`, `n_genes_eval=6085`)**:
+     * `hek293_xucao`: `H-E1a` `0.1544366917282077` `[0.06002835931777767, 0.2508580797363796]` (`pass=true`), `H-E1b` `8/8` (`min ci975_lo = 0.0629259731550474`, `pass=true`), `H-E1c` `q975 = 0.00018017441205541774` (`pass=true`); `H-E2a` `0.01153336068124415` `[-0.0959647698463913, 0.14684527263404912]` (`pass=false`), `H-E2b` (`n=16`) `0.03046382660623029` `[-0.0798016494906476, 0.1882323501999719]` (`pass=false`).
+     * `a549_ko_cas9pos`: `H-E1a` `0.16163536836810646` `[0.14638675954545535, 0.17729636265225857]` (`pass=true`), `H-E1b` `8/8` (`min ci975_lo = 0.03988186391312528`, `pass=true`), `H-E1c` `q975 = 0.0016488978811963052` (`pass=true`); `H-E2a` `0.2291300509188361` `[0.19607409121988256, 0.2643033224589901]` (`pass=true`), `H-E2b` (`n=526`) `0.24614673027605966` `[0.21486476757889086, 0.27821927553003023]` (`pass=true`).
+
+R12_EVAL_DONE

@@ -1,0 +1,8 @@
+11d91c72025264b838af091abcf0eac71588eb91 CODE_FREEZE_R12 (code + rulings + deviations D1–D4 + QC counts + gate; verified on origin/main)
+prereg: 4c606f4732ea080768e27757c689d40d7892cd3d (PREREG_E.md sha256 d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924, unchanged)
+manifest: round12/status/FREEZE_MANIFEST_R12.txt (sha256 e4bdb4c8029a19a18b63c9048a23f5982b23e53dbd498473cdbaeb7a0f564379; 46 entries, all re-verified OK; 31 code/doc entries match the committed blobs, 15 line-data files hashed only)
+K_conf = 1 (a549_ko) -> PREREG_E §2.2: confirmatory adjudication runs on A549; every summary and abstract must state K_conf = 1 / 推广性有限
+hek293_xucao: SECONDARY_ONLY (16 eval targets < 50 after D3; descriptive §5 report); a549_ko_cas9pos: SA-Cas9 sensitivity only
+pre-freeze independent checks: A549 gate 445 / 6,121 and HEK293 16 / 6,126 / 19 (controller r12_check.py count12); A-T3 raw-to-lines reader cross-check OK on both lines
+evaluation settings (PREREG_E): seed 20261201, 4,000 bootstraps, 100 permutations, Bonferroni over 2 claims (97.5% CIs)
+frozen by: Claude (master controller) 2026-11-23 07:15 +0800
