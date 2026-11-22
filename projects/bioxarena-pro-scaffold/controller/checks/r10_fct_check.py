@@ -58,22 +58,23 @@ mu_t = np.maximum(T['mu'][gi_t], EPS)
 rows = []
 for ti, p in enumerate(T['t']):
     p = canon(p)
-    if not T['rep'][ti] or not T['hv'][ti] or p not in gpos: continue
+    if not T['rep'][ti] or p not in gpos: continue
     Sp = [s for s in S if p in src[s]['rows']]
     if not Sp: continue
     rows.append((ti, p, Sp))
 N = len(rows); print(f'{tline}: eligible targets N={N}, |G_eval|={len(GE)}, sources={len(S)}', flush=True)
 
 # per-target 50-gene masks and source quantities
-M, TM, LFC, Dobs, Da, Db, ncell = [], [], [], [], [], [], []
+M, TM, LFC, Dobs, Da, Db, ncell, HV = [], [], [], [], [], [], [], []
 for ti, p, Sp in rows:
     d = T['D'][ti][gi_t].astype(np.float64); g = gpos[p]
     dd = np.abs(d); dd[g] = -1; m = np.argsort(-dd, kind='stable')[:50]
     tm = np.mean([src[s]['D'][src[s]['rows'][p]] for s in Sp], axis=0)
     lfc = np.mean([np.log(np.maximum(np.expm1(np.log1p(src[s]['mu']) + src[s]['D'][src[s]['rows'][p]]), EPS) / src[s]['mu']) for s in Sp], axis=0)
     M.append(m); TM.append(tm[m]); LFC.append(lfc[m]); Dobs.append(d[m])
-    Da.append(T['A'][ti][gi_t][m].astype(np.float64)); Db.append(T['Bh'][ti][gi_t][m].astype(np.float64)); ncell.append(T['n'][ti])
-M, TM, LFC, Dobs, Da, Db = map(np.array, (M, TM, LFC, Dobs, Da, Db))
+    Da.append(T['A'][ti][gi_t][m].astype(np.float64)); Db.append(T['Bh'][ti][gi_t][m].astype(np.float64)); ncell.append(T['n'][ti]); HV.append(bool(T['hv'][ti]) and np.all(np.isfinite(Da[-1])) and np.all(np.isfinite(Db[-1])))
+M, TM, LFC, Dobs, Da, Db, HV = map(np.array, (M, TM, LFC, Dobs, Da, Db, HV))
+print(f'half-valid targets for the noise ceiling: {int(HV.sum())}/{N}', flush=True)
 
 def orth(R):  # project each row off its Transfer_Mean vector
     u = TM / np.maximum(np.linalg.norm(TM, axis=1, keepdims=True), 1e-12)
@@ -83,7 +84,8 @@ def fct(mu_full):
 
 Oo, Ao, Bo = orth(Dobs - TM), orth(Da - TM), orth(Db - TM)
 def score(P, idx):
-    rab = np.corrcoef(Ao[idx].ravel(), Bo[idx].ravel())[0, 1]
+    hidx = idx[HV[idx]]                       # all eligible targets enter the correlation; only half-valid ones enter the ceiling
+    rab = np.corrcoef(Ao[hidx].ravel(), Bo[hidx].ravel())[0, 1]
     if not rab > 0: return np.nan
     return float(np.clip(np.corrcoef(Oo[idx].ravel(), P[idx].ravel())[0, 1] / np.sqrt(2 * rab / (1 + rab)), -1, 1))
 
