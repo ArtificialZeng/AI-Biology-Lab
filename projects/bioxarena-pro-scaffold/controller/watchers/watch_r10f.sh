@@ -4,7 +4,7 @@ setopt nullglob
 P=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10
 start=$(date +%s)
 while true; do
-  [ -s $P/status/CODE_FREEZE_PUSHED.txt ] && { echo "$(date +%H:%M) FREEZE_PUSHED: $(head -1 $P/status/CODE_FREEZE_PUSHED.txt)"; exit 0; }
+  grep -q QC_LOCK $P/status/CODE_FREEZE_PUSHED.txt 2>/dev/null && { echo "$(date +%H:%M) QC_LOCK_PUSHED: $(grep QC_LOCK $P/status/CODE_FREEZE_PUSHED.txt)"; exit 0; }
   early=$(find $P/results $P/audit -type f -newer $P/status/CONFIRMATORY_LINES.txt 2>/dev/null | grep -v -E "__pycache__|\.py$|r9dev|r9_dev|_dev_" | head -3)
   [ -n "$early" ] && { echo "$(date +%H:%M) RESULTS_BEFORE_FREEZE_ALERT: $early"; exit 0; }
   [ $(( $(date +%s) - start )) -gt 3600 ] && { echo "$(date +%H:%M) TIMEOUT 1h"; exit 0; }

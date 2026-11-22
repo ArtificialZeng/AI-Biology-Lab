@@ -1,25 +1,42 @@
-ROUND 10 GROUP C (`FCT`) PIPELINE IMPLEMENTATION & ROUND 9 DEV TESTING COMPLETE (Zero R10 Data Accessed)
+ROUND 10 HOLDOUT EVALUATION COMPLETE (`_primary`, `_s1`, `_s5`; Freeze Commit f8d2ebfc238d83a0c3a6c86696950ed292bf90e9; QC Lock 86872ed741c3aa681a7a9091e60d03bd9922038e; PREREG_C Commit dc4b4a5; Manifest 22/22 SHA-256 OK)
 
-1. Implemented Modules in `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/src/` (Aligned to PREREG_C commit dc4b4a5, PREREG_C_AUDIT_R1 P1-P7, & R10_DOWNLOAD_PLAN.md):
-   - `__init__.py` & `data_loader_r10.py`:
-     * `HGNCBridge`: Deterministic 4-tier canonical HGNC resolution (`Approved` -> unambiguous `ENSG` -> unambiguous `prev_symbol` -> unambiguous `alias_symbol`) via frozen `/Users/mac/.cache/r9_p2_raw/hgnc_complete_set.txt`, resolving 162/6148 legacy symbols in R9 `COMMON_GENES.txt` cleanly with 0 collisions and mapping R9->R10 without mutating R9 data.
-     * Pure-Python `h5py` chunked/sparse loaders (`<= 4 GB` RAM): `read_10x_feature_bc_matrix_h5`, `call_single_features_from_umi`, `load_dld1_gsm_channel` (`GSE337988` Low-MOI trio MULTI-seq singlet + single-sgRNA P4 filter, regex `parse_dld1_guide_gene`), `read_cd4t_flex_h5` (`GSE314342` Rest single-sgRNA + `sgrna_library_metadata.suppl_table.csv`), `iter_h5ad_csr_chunks_r10` (`wtc11_i3neuron`, `calu3`), `count_igvf_single_sgrna_from_metadata` (`P2` >= 50 shared target gate without expression download), and deterministic `split_units_even_odd` (`PREREG_C §2.3` even/odd unit split).
-     * Hard execution gate `check_prereg_c_gate`: blocks `--phase holdout_r10` unless both `PREREG_C_COMMIT.txt` and `CODE_FREEZE_R10.txt` exist and are non-empty.
-   - `fct_pipeline.py`:
-     * Zero-tuning `FCT` (`PREREG_A v4 §4.6` / `PREREG_C §3.1`), `Transfer_Mean`, all source `NegCtrl_FCT_MismatchedMean(s')` (6 in R10, 5 in R9 LOLO), `NegCtrl_FCT_Perm0` + streaming `iter_fct_perm_predictions` (`default_rng(k)` k=0..99), `FCT_FullNTMean` (`SA-5b`), `Transfer_Mean_GlobalScale` (`SA-2`), and `SA-3` Round 9 anchors (`Hybrid_ProjShared` strictly using frozen `1ca9f60f` 3D `span{1, b_S, a_S}` per `P7`, `TMVS`, `Hybrid_on_TMVS`, `CIPHER_Linear`, `Source_Grand_Mean`).
-   - `metrics_r10.py`:
-     * Amplitude-orthogonalized `r_orth_cal` (`resp_top50` + `all_nontarget` S6), joint perturbation bootstrap (`default_rng(20261122)` x `4000`, Bonferroni two-sided 97.5% CIs `[1.25%, 98.75%]`), all 6 `H-C3` discrimination/DE50 conventions (`ctrl_*` & `cent_*` `disc_raw`, `disc_raw_panel`, `de50_r`, plus `pds_cosine_panel`), `compute_fct_perm100_null` (`k=0..99`), BLAS-vectorized 3-tier `R19` decomposition (`1-df` zero-intercept within-gene slope + `W^2` cluster-df unbiased subtraction), and `S7` (`P6`) analysis (`r_orth_p`, Spearman vs `ln(n_cells)` and `|k_p|` with 97.5% CIs, mean-centered covariate OLS intercept `[1, ln(n_cells), |k_p|]` 97.5% CI, and `n_cells` tertiles `T1/T2/T3`).
-   - `adjudicate_r10.py` & `run_eval_r10.py`:
-     * `P1` guard (`K_conf < 2` suspends confirmatory testing with exact verbatim disclosure), `K_conf = 2` disclosure tag, `H-C1`, `H-C2`, `H-C3` evaluation, CLI supporting `--phase {dev_r9, holdout_r10}`, `--all-targets` (`S1`), `--s5-top75` (`S5` control variance > Q_0.25).
+1. Executed Commands (Zero .py Files Modified; Invoked Strictly via `-I` Isolated Python Running Frozen `round10/src/run_eval_r10.py`):
+   - Primary (`holdout_r10_log1p_primary`, 347.74s): `--phase holdout_r10 --repr log1p --n-boot 4000 --n-perm 100 --seed 20261122 --tag-suffix _primary`
+   - Sensitivity S1 (`holdout_r10_log1p_s1`, 593.68s): `--phase holdout_r10 --repr log1p --all-targets --n-boot 4000 --n-perm 100 --seed 20261122 --tag-suffix _s1`
+   - Sensitivity S5 (`holdout_r10_log1p_s5`, 341.13s): `--phase holdout_r10 --repr log1p --s5-top75 --n-boot 4000 --n-perm 100 --seed 20261122 --tag-suffix _s5`
 
-2. Verification Strictly Using Synthetic Unit Tests + Round 9's Existing 6 Lines Only (`round10/shared/lines/` untouched):
-   - Unit Tests (`python3 test_unit_r10.py`, re-run after final edits): **`R10_ALL_UNIT_TESTS_PASSED`** (0 warnings; covers HGNC bridge, `PREREG_C` gate block/allow, all HDF5 stream loaders on synthetic `.h5`/`.h5ad`/`.csv.gz` fixtures, `<1e-12` `FCT` & `Hybrid_ProjShared` parity vs Round 9, GlobalScale collapse, planted pass & null fail & `P1` `K_conf < 2` adjudication, `S7` Spearman/OLS/tertiles, and unbiased `R19`).
-   - Full 6-Line R9 Dev Evaluation (`run_eval_r10.py --phase dev_r9 --repr log1p --n-boot 4000 --seed 20261122 --tag-suffix _r9dev`, `692.33s`, artifacts in `round10/results/*_dev_r9_log1p_r9dev.*`):
-     * `nadig_hepg2` (`N=797` post-HGNC dedup): `FCT r_orth_cal=+0.2614 [+0.2424, +0.2812]` (vs R9 `+0.2611`), `max_mis_hi=+0.1317`, `perm100 p97.5=+0.1696`; `S7` Spearman(`r_orth_p`, ln n_cells)=`+0.2084`, OLS-adjusted intercept=`+0.2943 [+0.2763, +0.3113]`; `T1..T3` FCT `r_orth_cal`=`+0.2117 / +0.2589 / +0.3333`.
-     * `nadig_jurkat` (`N=931`): `FCT r_orth_cal=+0.1047 [+0.0860, +0.1243]` (vs R9 `+0.1043`), `max_mis_hi=+0.0846`, `perm100 p97.5=+0.1203`; `S7` OLS intercept=`+0.1174 [+0.1021, +0.1331]`.
-     * `vcc2025_h1` (`N=80`): `FCT r_orth_cal=+0.3505 [+0.2765, +0.4225]` (exact match R9 `+0.3505`), `max_mis_hi=+0.2022`, `perm100 p97.5=+0.2445`; `S7` OLS intercept=`+0.3196 [+0.2587, +0.3818]`.
-     * `replogle_k562_essential` (`N=858`): `+0.1939 [+0.1739, +0.2147]`; `replogle_rpe1` (`N=1068`): `+0.1295 [+0.1116, +0.1480]`; `nourreddine_kolf21j` (`N=18`): `+0.1839 [+0.0183, +0.3537]`.
-     * `R19` `all_nontarget` parity vs R9 (`L1 / L2 / L3`): `hepg2` `0.1309/0.0733/0.7958` (vs R9 `0.1310/0.0731/0.7958`), `jurkat` `0.2301/0.0589/0.7110` (vs `0.2301/0.0586/0.7113`), `vcc2025_h1` `0.3477/0.0416/0.6107` (vs `0.3477/0.0367/0.6156`).
-   - `S5` Sensitivity Smoke Check (`run_eval_r10.py --phase dev_r9 --repr log1p --s5-top75 --lines nadig_hepg2,vcc2025_h1 --n-boot 500 --tag-suffix _r9dev_s5`, `192.03s`): `nadig_hepg2` `+0.2627`, `vcc2025_h1` `+0.3495`.
+2. Confirmatory Cohort Disclosure (`CONFIRMATORY_LINES.txt`): **`K_conf = 2 confirmatory cell lines`**
+   - Confirmatory lines: `dld1` (`N=86`, `|G_eval|=6,124`, `rho_AB_orth=+0.8277`), `cd4t_rest` (`N=302`, `|G_eval|=6,123`, `rho_AB_orth=+0.6479`).
+   - Secondary lines: `calu3` (`N=8`, `|G_eval|=6,134`, `rho_AB_orth=+0.8776`), `wtc11_i3neuron` (`N=2`, `|G_eval|=5,995`, `rho_AB_orth=+0.8562`).
 
-R10_CODE_READY
+3. Primary Confirmatory Hypotheses (`holdout_r10_log1p_primary`, `default_rng(20261122)` x 4000, Two-Sided Bonferroni 97.5% CIs):
+   - **Primary Scientific Claim (`Group_C_Verdict` / `FCT`)**: **`未确认`**
+   - **`H-C1` (`FCT r_orth_cal` 97.5% CI_lo > 0, valid_frac >= 0.95, rho_AB_orth > 0)**: **`CONFIRMED`** (`2/2` pass; note `D-R10-2` extra guards satisfied on both lines)
+     * `dld1` (`N=86`): `r_orth_cal = +0.1401` (`97.5% CI [+0.0870, +0.1917]`), `valid_frac = 1.0`, `rho_half_ab_orth = +0.8277` -> **PASS**
+     * `cd4t_rest` (`N=302`): `r_orth_cal = +0.0560` (`97.5% CI [+0.0171, +0.0938]`), `valid_frac = 1.0`, `rho_half_ab_orth = +0.6479` -> **PASS**
+   - **`H-C2` (`FCT r_orth_cal` 97.5% CI_lo > max 6 mismatched source means `ci975_hi` AND > `perm100 p97.5`)**: **`未确认`** (`0/2` pass)
+     * `dld1`: `fct_ci975_lo = +0.0870` <= `max_mismatched_ci975_hi = +0.1092` (`NegCtrl_FCT_MismatchedMean(vcc2025_h1)`, range across 6 sources `[-0.0225..+0.0707]`, max upper `+0.1092`; `rpe1 +0.1032`) AND <= `perm100_p97.5 = +0.1179` (`median = +0.0892`, `p98.75 = +0.1187`) -> **FAIL** (`beats_mismatched=False`, `beats_perm100=False`)
+     * `cd4t_rest`: `fct_ci975_lo = +0.0171` <= `max_mismatched_ci975_hi = +0.0761` (`NegCtrl_FCT_MismatchedMean(nadig_jurkat)`; `rpe1 +0.0714`, `k562 +0.0691`, `h1 +0.0680`, `hepg2 +0.0599`, `kolf21j +0.0548`) AND <= `perm100_p97.5 = +0.0554` (`median = +0.0347`, `p98.75 = +0.0570`) -> **FAIL** (`beats_mismatched=False`, `beats_perm100=False`)
+   - **`H-C3` (Parallel Practical Utility Non-Inferiority vs `Transfer_Mean` across ALL 6 conventions, `diff_ci975_hi >= 0`)**: **`CONFIRMED`** (`12/12` non-inferior pairs, `0` inferior pairs, `1` strictly superior pair; `D-R10-1` mapping: `*_disc_raw` = `*_disc_ownmasked`, `*_disc_raw_panel` = `*_disc_panel`):
+     * `ctrl_disc_raw` (`0/2` inf): `dld1` `FCT=0.8984` vs `TMean=0.9001` (`delta=-0.0018 [-0.0073, +0.0033]`); `cd4t_rest` `0.6568` vs `0.6573` (`-0.0005 [-0.0088, +0.0073]`).
+     * `ctrl_disc_raw_panel` (`0/2` inf): `dld1` `0.8984` vs `0.8995` (`-0.0011 [-0.0059, +0.0038]`); `cd4t_rest` `0.6571` vs `0.6572` (`-0.0001 [-0.0084, +0.0079]`).
+     * `ctrl_de50_r` (`0/2` inf): `dld1` `0.6321` vs `0.6256` (`+0.0065 [-0.0018, +0.0150]`); `cd4t_rest` `0.2133` vs `0.2145` (`-0.0011 [-0.0117, +0.0093]`).
+     * `cent_disc_raw` (`0/2` inf): `dld1` `0.9000` vs `0.9030` (`-0.0030 [-0.0116, +0.0038]`); `cd4t_rest` `0.6795` vs `0.6671` (`+0.0124 [-0.0028, +0.0272]`).
+     * `cent_disc_raw_panel` (`0/2` inf): `dld1` `0.8993` vs `0.9023` (`-0.0030 [-0.0120, +0.0040]`); `cd4t_rest` `0.6801` vs `0.6670` (`+0.0130 [-0.0025, +0.0283]`).
+     * `cent_de50_r` (`0/2` inf, `1/2` sup): `dld1` `0.5010` vs `0.4957` (`+0.0053 [-0.0071, +0.0179]`); `cd4t_rest` `0.3717` vs `0.3413` (`+0.0305 [+0.0177, +0.0435]` strict superior).
+
+4. Mandatory Secondary Diagnostics (`SA-1`–`SA-6` / `S7`) & Secondary Cohort (`_primary`):
+   - Secondary lines: `calu3` (`N=8`): `FCT r_orth_cal = +0.0879 [-0.0689, +0.2743]` (`max_mis_hi=+0.2702`, `perm100_p97.5=+0.1519`); `wtc11_i3neuron` (`N=2`): `-0.0313 [-0.0334, +0.2649]`.
+   - `SA-1` / `SA-2`: `FCT` OLS slope `dld1 +0.0290 [+0.0194, +0.0396]`, `cd4t_rest +0.0156 [+0.0026, +0.0313]`; `Transfer_Mean_GlobalScale` raw `r_cal` (`dld1 +0.2404`, `cd4t_rest -0.2616`) collapses to `NaN/0` under `r_orth_cal`.
+   - `SA-3` (`P7` 3D anchor): `Hybrid_ProjShared` (`dld1 -0.0429`, `cd4t_rest -0.0244`), `TMVS` (`dld1 +0.0888`, `cd4t_rest +0.0198`), `Hybrid_on_TMVS - TMVS` (`dld1 -0.0515`, `cd4t_rest -0.0237`, neither significant).
+   - `SA-4` (`R19` `L1 / L2 / L3`): `dld1` `resp_top50` `0.0527/0.0321/0.9152` (`all_nontarget` `0.1133/0.0285/0.8582`); `cd4t_rest` `resp_top50` `0.0568/0.0368/0.9064` (`all_nontarget` `0.3098/0.0039/0.6863`).
+   - `SA-5` (`S6 all_nontarget` & `SA-5b FCT_FullNTMean`): `dld1` `FCT all_nontarget r_orth_cal = +0.1355 [+0.1082, +0.1649]` (`rho_ab_all=+0.2533`); `cd4t_rest` `+0.0556 [+0.0376, +0.0741]` (`rho_ab_all=+0.1468`); `FCT_FullNTMean` identical to `FCT`.
+   - `SA-6 / S7` (`P6`):
+     * `dld1`: `Spearman(r_orth_p, ln n_cells) = -0.0005 [-0.2382, +0.2399]`, `Spearman(|k_p|) = +0.1322 [-0.1066, +0.3649]`, OLS-adjusted intercept `+0.1400 [+0.0978, +0.1829]`; tertiles `T1..T3` (`N=29/29/28`): `FCT r_orth_cal = +0.1403 / +0.1456 / +0.1290`, all `HC1=True`, `HC2=False`.
+     * `cd4t_rest`: `Spearman(r_orth_p, ln n_cells) = -0.1428 [-0.2637, -0.0167]`, `Spearman(|k_p|) = +0.0828 [-0.0454, +0.2072]`, OLS-adjusted intercept `+0.0607 [+0.0288, +0.0920]`; tertiles `T1..T3` (`N=101/101/100`): `FCT r_orth_cal = +0.0988 (HC1=True, HC2=False) / -0.0030 (False, False) / +0.0369 (False, False)`.
+
+5. Sensitivity Runs `_s1` & `_s5` (`Group_C_Verdict = 未确认` in Both):
+   - **`S1` (`--all-targets`, `*_holdout_r10_log1p_s1.*`, 593.68s)**: `dld1` (`N=500`, `+0.0717 [+0.0462, +0.0992]`), `cd4t_rest` (`N=1422`, `+0.0314 [+0.0124, +0.0502]`); `H-C1: CONFIRMED (2/2)`, `H-C2: 未确认 (0/2)` (`dld1` `+0.0462 <= perm p97.5 +0.0570` though `> max_mis +0.0406`; `cd4t_rest` `+0.0124 <= +0.0232 / +0.0183`), `Group_C_Verdict: 未确认`; `H-C3: 未确认` (`8/12` non-inf, `4` inferior pairs in `cent_*`).
+   - **`S5` (`--s5-top75`, `*_holdout_r10_log1p_s5.*`, 341.13s)**: `dld1` (`N=86`, `+0.1433 [+0.0888, +0.1971]`), `cd4t_rest` (`N=302`, `+0.0543 [+0.0151, +0.0918]`); `H-C1: CONFIRMED (2/2)`, `H-C2: 未确认 (0/2)` (`dld1` `+0.0888 <= +0.1081 / +0.1187`; `cd4t_rest` `+0.0151 <= +0.0697 / +0.0514`), `Group_C_Verdict: 未确认`; `H-C3: CONFIRMED` (`12/12` non-inf, `1` sup).
+
+R10_EVAL_DONE

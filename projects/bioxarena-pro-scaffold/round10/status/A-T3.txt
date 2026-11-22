@@ -13,3 +13,39 @@
    - Post-final-edit end-to-end CLI verification on `vcc2025_h1` (`--mode r9_dev --target-lines vcc2025_h1 --cross-check-csv ...`): `86` checks (`FCT`, 5 mismatched controls, 100-perm null, 7 `H-C3`/`pds_cosine_panel` metrics, `SA-2/SA-3`, `S7` Spearman/OLS/tertiles, joint 97.5% CIs), `max_point_abs_diff = 1.110e-16`, `max_ci_abs_diff = 1.110e-16`, `passes_c3_tolerance = True`.
 3. Awaiting `CONFIRMATORY_LINES.txt` and `CODE_FREEZE_R10.txt` before touching any Round 10 line (`--mode holdout_r10`).
 R10_AUDIT_CODE_READY
+
+[A-T3] ROUND 10 INDEPENDENT HOLDOUT AUDIT LAUNCHED 2026-11-22T12:16+08:00:
+- Verified `CODE_FREEZE_R10.txt` (code f8d2ebf, QC 86872ed) and `CONFIRMATORY_LINES.txt` (`K_conf=2`: `dld1`, `cd4t_rest`; Secondary: `wtc11_i3neuron`, `calu3`).
+- Preserved all 22 frozen manifest `.py` hashes untouched (`python3 -I` invoked cleanly via `runpy.run_path` + `sys.path.insert(0, '.../round10/audit')` isolating from `round10/src/`).
+- `task-1939` running `--mode holdout_r10 --n-boot 4000 --n-perm 100 --seed 20261122 --out-dir round10/audit/holdout` in parallel with `A-T2` (blind to `round10/results/`).
+STATUS: RUNNING_R10_HOLDOUT_AUDIT
+
+
+[A-T3] PRIMARY HOLDOUT AUDIT & C3 CROSS-CHECK COMPLETE (WAITING FOR A-T2 R10_EVAL_DONE) 2026-11-22T12:33+08:00:
+- Code freeze integrity verified (`shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`): 22/22 .py files OK (zero edits).
+- Independent blind `holdout_r10` audit (`task-1939`) & official CLI `--cross-check-csv` run against `round10/results/line_metrics_holdout_r10_log1p_primary.csv` (`task-1983`, `n_boot=4000`, `n_perm=100`, `seed=20261122`) both exited 0:
+  * Cohort (`CONFIRMATORY_LINES.txt`): `K_conf = 2` (`dld1` N=86, `cd4t_rest` N=302); Secondary: `calu3` (N=8), `wtc11_i3neuron` (N=2).
+  * `H-C1`: **2/2 PASS** (`dld1` FCT `r_orth_cal = +0.1401 [+0.0870, +0.1917]`; `cd4t_rest` `+0.0560 [+0.0171, +0.0938]`).
+  * `H-C2`: **0/2 FAIL** -> Primary Group C verdict: **`未确认 (NOT CONFIRMED)`** (`dld1` +0.0870 <= max_mis +0.1092 / perm975 +0.1179; `cd4t_rest` +0.0171 <= max_mis +0.0761 / perm975 +0.0554).
+  * `H-C3`: **2/2 PASS** -> Parallel non-inferiority verdict: **`非劣效通过 (H-C3 PASS)`** (0/6 inferior conventions on both confirmatory lines; 1 strictly superior on `cd4t_rest` `cent_de50_r` +0.0305 [+0.0177, +0.0435]).
+  * `C3` Cross-Check vs `A-T2` (`audit_r10_summary.json`, `cross_check_r10.json`, `AUDIT_R10_REPORT.md`): `349` core checks, `max_point_abs_diff = 6.661e-16` (< 1e-6), `max_ci_abs_diff = 1.069e-05` (<= 0.01), `passes_c3_tolerance = True`; `100%` `H-C1`/`H-C2`/`H-C3` consensus.
+- `A-T2` completed `_s1` (`12:32`) and is actively running `_s5` (`PID 81028`, `A-T2.txt` still `R10_CODE_READY`). Per 12:22 gate ("且 A-T2.txt 末行为 R10_EVAL_DONE"), launching parallel independent `S1 --all-targets` cross-check and waiting for `A-T2.txt` `R10_EVAL_DONE` before writing final `R10_AUDIT_DONE`.
+STATUS: PRIMARY_C3_PASSED_RUNNING_S1_WAITING_A_T2_R10_EVAL_DONE
+
+
+[A-T3] ROUND 10 INDEPENDENT AUDIT & C3 CROSS-CHECK COMPLETE 2026-11-22T12:44+08:00:
+1. Pre-Conditions & Code Freeze Verification:
+   - Confirmed `round10/status/A-T2.txt` ends with `R10_EVAL_DONE` (`_primary`, `_s1`, `_s5` complete).
+   - Verified `shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`: **22/22 .py files OK** (zero edits to any frozen manifest file; code freeze commit `f8d2ebfc238d83a0c3a6c86696950ed292bf90e9`, QC lock `86872ed741c3aa681a7a9091e60d03bd9922038e`, `PREREG_C` commit `dc4b4a5`).
+2. Independent Round 10 Holdout Verdicts (`round10/audit/holdout/audit_r10_summary.json`, `audit_r10_per_line.csv`, `AUDIT_R10_REPORT.md`):
+   - Evaluated Cohort (`CONFIRMATORY_LINES.txt`): `K_conf = 2` (`dld1` N=86, `cd4t_rest` N=302); Secondary: `calu3` (N=8), `wtc11_i3neuron` (N=2).
+   - **`H-C1`**: **2/2 PASS (`CONFIRMED`)** — `dld1` FCT `r_orth_cal = +0.1401 [+0.0870, +0.1917]`; `cd4t_rest` `+0.0560 [+0.0171, +0.0938]` (both `valid_frac = 1.0`, `rho_ab_orth > 0`).
+   - **`H-C2`**: **0/2 FAIL -> Primary Group C Verdict: `未确认 (NOT CONFIRMED)`** — `dld1` CI_lo `+0.0870 <= max_mis_hi +0.1092 / perm100_p97.5 +0.1179`; `cd4t_rest` CI_lo `+0.0171 <= max_mis_hi +0.0761 / perm100_p97.5 +0.0554`.
+   - **`H-C3`**: **2/2 PASS (`非劣效通过 / H-C3 PASS`)** — 0/6 inferior conventions on both `dld1` and `cd4t_rest`; 1 strictly superior convention (`cd4t_rest` `cent_de50_r +0.0305 [+0.0177, +0.0435]`).
+   - `SA-6 / S7` (`P6`) & `R19`: OLS-adjusted intercepts `+0.1400 [+0.0979, +0.1826]` (`dld1`) and `+0.0607 [+0.0281, +0.0934]` (`cd4t_rest`); `R19` `all_nontarget` `L1/L2/L3` = `0.1133/0.0271/0.8595` (`dld1`) and `0.3098/0.0031/0.6872` (`cd4t_rest`).
+3. Dual-Team `C3` Cross-Check vs `A-T2` (`round10/results/`):
+   - **Primary (`line_metrics_holdout_r10_log1p_primary.csv`)**: **PASS** (`n_checks = 349`, `max_point_abs_diff = 6.661e-16 < 1e-6`, `max_ci_abs_diff = 1.069e-05 <= 0.01`, `passes_c3_tolerance = True`; `36` confirmatory `H-C3` checks `max_abs_diff = 2.351e-16`; 100% verdict consensus).
+   - **Sensitivity `S1` (`--all-targets` vs `line_metrics_holdout_r10_log1p_s1.csv`, `audit_r10_s1_alltargets_summary.json`)**: **PASS** (`n_checks = 364`, `max_point_abs_diff = 1.978e-16 < 1e-6`, `max_ci_abs_diff = 3.886e-16 <= 0.01`, `passes_c3_tolerance = True`; `dld1` N=500 `+0.0717`, `cd4t_rest` N=1,422 `+0.0314`; identical `H-C1=2/2, H-C2=0/2, H-C3=0/2`).
+   - **Sensitivity `S5` (`sa5_top75_fct` vs `line_metrics_holdout_r10_log1p_s5.csv`)**: **PASS** (`dld1` `+0.143259734837`, diff `8.327e-17`; `cd4t_rest` `+0.054313591518`, diff `5.551e-17`; identical `H-C1=2/2, H-C2=0/2, H-C3=2/2`).
+4. Artifacts: `round10/audit/holdout/{audit_r10_per_line.csv, audit_r10_summary.json, cross_check_r10.json, audit_r10_s1_alltargets_per_line.csv, audit_r10_s1_alltargets_summary.json, AUDIT_R10_REPORT.md}`.
+R10_AUDIT_DONE

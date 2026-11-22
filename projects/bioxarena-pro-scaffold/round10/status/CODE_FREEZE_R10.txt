@@ -1,0 +1,9 @@
+f8d2ebfc238d83a0c3a6c86696950ed292bf90e9 CODE_FREEZE_R10 (code commit)
+86872ed741c3aa681a7a9091e60d03bd9922038e QC_LOCK (QC counts + confirmatory lines commit)
+written_by: Claude (master controller)  2026-11-22 12:14 +08:00
+prereg: PREREG_C.md sha256 0fb48aeb08aa6befe9583030f33ec668155e9e937616d291ea0c211e0d1bf4c6 (commit dc4b4a5)
+code_manifest: FREEZE_MANIFEST_R10.txt (22 .py files under round10/src, round10/audit, round10/shared/scripts, controller/checks) sha256 083d98b21d5255231932cd875ffcdc550fb488bb362c571213104f1efa450737
+confirmatory_lines: CONFIRMATORY_LINES.txt sha256 0cd7c6e1b4c9955c61e21ee13fbf302c670af2e6a391288f1473039b09bd35c5  -> K_conf=2: dld1 (86 targets), cd4t_rest (302 targets; 284 half-valid)
+verified: all frozen paths identical to origin/main at 5cba12f; controller independently recounted eligible targets (exact match); no round-10 scores existed before this file.
+review: CODE_REVIEW_R10.md (notes D-R10-1 naming, D-R10-2 extra H-C1 guards; no code change).
+rule: from now on no file in the manifest may change. If a bug is found, stop, write round10/DEVIATIONS_R10.md, and notify the controller before rerunning.

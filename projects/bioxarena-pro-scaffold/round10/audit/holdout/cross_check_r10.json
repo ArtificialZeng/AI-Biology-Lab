@@ -1,0 +1,223 @@
+{
+  "primary_csv": "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/results/line_metrics_holdout_r10_log1p_primary.csv",
+  "core_cross_check": {
+    "n_checks": 349,
+    "max_point_abs_diff": 6.661338147750939e-16,
+    "max_ci_abs_diff": 1.0691072839214e-05,
+    "passes_c3_tolerance": true,
+    "top_diffs": [
+      {
+        "line": "calu3",
+        "metric": "NegCtrl_FCT_MismatchedMean(replogle_rpe1).r_orth_cal_ci975_lo",
+        "a3": -0.10872737181214939,
+        "a2": -0.1087380628849886,
+        "abs_diff": 1.0691072839214e-05,
+        "is_ci": true
+      },
+      {
+        "line": "calu3",
+        "metric": "NegCtrl_FCT_MismatchedMean(replogle_rpe1).r_orth_cal_ci975_hi",
+        "a3": 0.15733857240365007,
+        "a2": 0.1573388868308236,
+        "abs_diff": 3.144271735200377e-07,
+        "is_ci": true
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "Source_Grand_Mean.r_orth_cal_ci975_hi",
+        "a3": 0.14412408572564933,
+        "a2": 0.1441240857256485,
+        "abs_diff": 8.326672684688674e-16,
+        "is_ci": true
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "CIPHER_Linear.r_orth_cal_ci975_hi",
+        "a3": 0.2638164530511084,
+        "a2": 0.2638164530511076,
+        "abs_diff": 7.771561172376096e-16,
+        "is_ci": true
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "Hybrid_ProjShared.all_r_orth_cal",
+        "a3": -0.11617308797706066,
+        "a2": -0.11617308797706,
+        "abs_diff": 6.661338147750939e-16,
+        "is_ci": false
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "Hybrid_on_TMVS.r_orth_cal",
+        "a3": -0.48915418600234556,
+        "a2": -0.4891541860023449,
+        "abs_diff": 6.661338147750939e-16,
+        "is_ci": false
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "Hybrid_on_TMVS.r_orth_cal_ci975_lo",
+        "a3": -0.48915418600234556,
+        "a2": -0.4891541860023449,
+        "abs_diff": 6.661338147750939e-16,
+        "is_ci": true
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "Hybrid_on_TMVS.all_r_orth_cal",
+        "a3": -0.08424880967820532,
+        "a2": -0.0842488096782047,
+        "abs_diff": 6.245004513516506e-16,
+        "is_ci": false
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "Hybrid_on_TMVS.slope_ols",
+        "a3": -0.17503295667940297,
+        "a2": -0.1750329566794025,
+        "abs_diff": 4.718447854656915e-16,
+        "is_ci": false
+      },
+      {
+        "line": "wtc11_i3neuron",
+        "metric": "Hybrid_ProjShared.r_orth_cal",
+        "a3": -0.506618353279616,
+        "a2": -0.5066183532796156,
+        "abs_diff": 4.440892098500626e-16,
+        "is_ci": false
+      }
+    ]
+  },
+  "extra_hc3_r19_s7_checks": {
+    "n_checks": 54,
+    "max_point_abs_diff": 1.7433970933566911e-16,
+    "max_ci_abs_diff": 0.020155530527559917,
+    "top_diffs": [
+      {
+        "metric": "calu3.s7.ols_centered.intercept_adjusted_ci975_hi",
+        "a3": 0.38172804802959365,
+        "a2": 0.36157251750203373,
+        "abs_diff": 0.020155530527559917,
+        "is_ci": true
+      },
+      {
+        "metric": "cd4t_rest.s7.spearman_abs_kp.rho_ci975_hi",
+        "a3": 0.21307849653387695,
+        "a2": 0.20716891613637256,
+        "abs_diff": 0.005909580397504388,
+        "is_ci": true
+      },
+      {
+        "metric": "calu3.s7.ols_centered.intercept_adjusted_ci975_lo",
+        "a3": -0.14443334693112037,
+        "a2": -0.14957887671775716,
+        "abs_diff": 0.005145529786636793,
+        "is_ci": true
+      },
+      {
+        "metric": "dld1.s7.spearman_abs_kp.rho_ci975_hi",
+        "a3": 0.3603393740957454,
+        "a2": 0.36488889402530433,
+        "abs_diff": 0.004549519929558932,
+        "is_ci": true
+      },
+      {
+        "metric": "cd4t_rest.s7.spearman_abs_kp.rho_ci975_lo",
+        "a3": -0.043056376488270515,
+        "a2": -0.04535300792025953,
+        "abs_diff": 0.0022966314319890144,
+        "is_ci": true
+      },
+      {
+        "metric": "cd4t_rest.s7.ols_centered.intercept_adjusted_ci975_hi",
+        "a3": 0.09335160157867922,
+        "a2": 0.09198015163123859,
+        "abs_diff": 0.0013714499474406366,
+        "is_ci": true
+      },
+      {
+        "metric": "dld1.s7.spearman_abs_kp.rho_ci975_lo",
+        "a3": -0.10736463325750928,
+        "a2": -0.10656860629362654,
+        "abs_diff": 0.0007960269638827427,
+        "is_ci": true
+      },
+      {
+        "metric": "cd4t_rest.s7.ols_centered.intercept_adjusted_ci975_lo",
+        "a3": 0.028130802417877143,
+        "a2": 0.028767666788314585,
+        "abs_diff": 0.000636864370437442,
+        "is_ci": true
+      },
+      {
+        "metric": "calu3.s7.spearman_abs_kp.rho_ci975_hi",
+        "a3": 0.9746835443037977,
+        "a2": 0.9753086419753085,
+        "abs_diff": 0.0006250976715108658,
+        "is_ci": true
+      },
+      {
+        "metric": "dld1.s7.ols_centered.intercept_adjusted_ci975_hi",
+        "a3": 0.18263216885040587,
+        "a2": 0.18290175086896537,
+        "abs_diff": 0.0002695820185595055,
+        "is_ci": true
+      },
+      {
+        "metric": "dld1.s7.ols_centered.intercept_adjusted_ci975_lo",
+        "a3": 0.09788451861922463,
+        "a2": 0.09778113667232671,
+        "abs_diff": 0.0001033819468979208,
+        "is_ci": true
+      },
+      {
+        "metric": "dld1.hc3.ctrl_disc_ownmasked.diff_ci975_lo",
+        "a3": -0.00725034199726403,
+        "a2": -0.007250341997264265,
+        "abs_diff": 2.3505503099485736e-16,
+        "is_ci": true
+      },
+      {
+        "metric": "dld1.hc3.ctrl_disc_panel.diff_ci975_hi",
+        "a3": 0.00383036935704513,
+        "a2": 0.0038303693570449506,
+        "abs_diff": 1.7954387976359953e-16,
+        "is_ci": true
+      },
+      {
+        "metric": "dld1.hc3.ctrl_disc_panel.diff_mean",
+        "a3": -0.0010943912448700488,
+        "a2": -0.0010943912448698745,
+        "abs_diff": 1.7433970933566911e-16,
+        "is_ci": false
+      },
+      {
+        "metric": "dld1.hc3.cent_de50_r.diff_ci975_hi",
+        "a3": 0.017895873957813266,
+        "a2": 0.017895873957813436,
+        "abs_diff": 1.700029006457271e-16,
+        "is_ci": true
+      }
+    ]
+  },
+  "adjudication_consensus": {
+    "k_conf": 2,
+    "H-C1": {
+      "a3": "2/2",
+      "a2": "2/2",
+      "verdict_consensus": true
+    },
+    "H-C2": {
+      "a3": "0/2",
+      "a2": "0/2",
+      "verdict_consensus": true
+    },
+    "H-C3": {
+      "a3": "2/2",
+      "a2": "0 inferior / 1 superior",
+      "verdict_consensus": true
+    },
+    "overall_primary_verdict": "未确认 (NOT CONFIRMED)",
+    "overall_hc3_verdict": "非劣效通过 (H-C3 PASS)"
+  }
+}
