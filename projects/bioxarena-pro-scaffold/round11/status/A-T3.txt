@@ -1,0 +1,8 @@
+[A-T3] ROUND 11 PREREG_D v2 (R1-REVISED) COMPLETE & SUBMITTED FOR LOCK 2026-11-22T14:25+08:00
+- Revised /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/prereg/PREREG_D.md (v2 R1-Revised) per round11/status/PREREG_D_AUDIT_R1.md (Q1–Q10) and A-T1's verified metadata in round11/shared/R11_DOWNLOAD_PLAN.md (sha256: 3e3991368ff0bf4d4e590cba11f770e1b71feeab2d805f149082b7dd25b44ecf).
+- Verified PREREG_D.md SHA-256: 1a0544980c094468faed54ba339608d8f68d2205358d04c1dc59622b5a98fd30
+- Updated /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/status/COMMIT_REQUEST_A-T3.txt with new SHA-256 and Q1–Q10 compliance checklist.
+- Verified Round 10 freeze manifest (shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt): 22/22 OK.
+- Zero Round 11 expression matrices downloaded or accessed (round11/shared/ contains only R11_DOWNLOAD_PLAN.md); zero git commands executed.
+- Next pending Master Controller action: lock PREREG_D_COMMIT.txt / issue R11_GO.txt (and align round11/src/ + round11/audit/ to v2 97.5% CIs, SA-8 resp_top50_split, & H-D5 prior to CODE_FREEZE_R11.txt).
+PREREG_D_R1_READY_FOR_LOCK

@@ -1,0 +1,34 @@
+[A-T3] ROUND 11 COMMIT REQUEST — PREREG_D v2 (R1-REVISED) READY FOR PRE-REGISTRATION LOCK
+Timestamp: 2026-11-22T14:25+08:00
+Protocol Version: PREREG_D.md v2 (R1-Revised; supersedes initial v1 draft per PREREG_D_AUDIT_R1.md)
+
+1. Target File & Verified Checksums (NO git executed by A-T3):
+   - File: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/prereg/PREREG_D.md (v2 R1-Revised)
+   - SHA-256 (PREREG_D.md v2): 1a0544980c094468faed54ba339608d8f68d2205358d04c1dc59622b5a98fd30
+   - Linked Manifest: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/shared/R11_DOWNLOAD_PLAN.md
+   - SHA-256 (R11_DOWNLOAD_PLAN.md): 3e3991368ff0bf4d4e590cba11f770e1b71feeab2d805f149082b7dd25b44ecf
+
+2. R1 Audit Checklist Compliance Summary (PREREG_D_AUDIT_R1.md Q1–Q10 + A-T1 Verified Metadata):
+   - Q1 (97.5% CI via IUT + 2-Claim Bonferroni): Written explicitly inside §4.1 — Primary Biological Claim (H-D1 ∩ H-D2 ∩ H-D3) and Independent Methodological Claim (H-D4 = H-D4a ∩ H-D4b) are each IUT-tested (no split within IUT conjunctions), yielding 2 confirmatory claims -> alpha_claim = 0.05/2 = 0.025 -> two-sided 97.5% CIs ([1.25%, 98.75%]); §6 power numbers recomputed at z_975 = 2.2414027. H-D_util also uses 97.5% CIs.
+   - Q2 (cd4t_stim48 Independence Limitation & Fixed Cohort): Disclosed weakened biological/lab independence in §2.2.3 & §7 (shares primary CD4+ αβ T cell type, sgRNA library, and Marson lab with R10 cd4t_rest, while donors/lanes/state are disjoint). Locked split-half rules + missing-unit seed=42 backup rule across candidates.
+   - Q3 (80.000 GB Cap & hcasmc Pre-Eval Feasibility Gate): Raised Round 11 budget cap to 80.000 GB (locked cohort = 76.254 GB core / 76.338 GB incl. optional files). Locked pre-evaluation streaming + guide-capture feasibility gate on 36 GiB host in §1 & §2.2.2 prior to any evaluation metrics or CONFIRMATORY_LINES_R11.txt.
+   - Q4 (Remove Open-Ended / Fallback Language): Removed all dataset fallback/open-ended wording; cohort permanently locked to {telohaec, hcasmc, cd4t_stim48} + secondary {feng_ipsc} (X-Atlas/Orion & Cas9 KO excluded).
+   - Q5 (H-D2 6 Mismatched Control CI_hi): Locked all 6 mismatched control upper bounds NegCtrl_FCT_MismatchedMean(s') to 97.5% ([1.25%, 98.75%]) in §4.1 & §4.2 under all_nontarget, alongside Perm100 Q_{0.975}.
+   - Q6 (Pre-QC Disjointness Enforcements): Verified & locked pre-QC donor/lane/timepoint disjointness of cd4t_stim48 (CE0008678/CE0010866, Stim48hr) vs R10 cd4t_rest (CE0006864/CE0008162, Rest), and strict pre-QC exclusion of kolf_2 (64,009 cells) and kolf_3 (69,622 cells) from feng_ipsc TargetedScreen (19 HipSci lines -> 17 non-KOLF lines / 9 donors, 444 targets, 333 in R9_COMMON; reconciling 43 across 3 screens in R11_DATA_SCREEN.md).
+   - Q7 (Mandatory Abstract Disclosures): Locked all required abstract items in §7 (per-line H-D1/H-D2/H-D3 verdicts, separate H-D4 verdict, exact K_conf count / Q3 exclusion / P1 <2 notice, cd4t_stim48 independence limitation, and R^2 ~ 0.3%-1.8% low-variance disclosure).
+   - Q8 (H-D4 Independent 2nd Confirmatory Claim): Locked H-D4 as independently adjudicated Claim 2 in §4.1 & §4.2 requiring unanimous K_conf/K_conf passage on both H-D4a & H-D4b (97.5% CIs).
+   - Q9 (Nicol, Shivakumar & Irizarry 2026 + SA-8 resp_top50_split): Cited doi:10.64898/2026.05.07.723486 in §0.2 & §4.2 relinquishing DEG/top-k inflation priority; added pre-specified SA-8 (resp_top50_split) in §5 with symmetric A->B & B->A cross-half selection and single-half ceiling sqrt(rho_AB) disattenuation.
+   - Q10 (Exact Claim Phrasing & Scope Limitation): Included exact verbatim Chinese/English biological claim wording in §0.1 and R10 all_nontarget range r_orth_cal in [0.056, 0.136] (R^2 ~ 0.3%-1.8%).
+   - A-T1 Verified Metadata Specs (§2.2 & §5): Exact file manifests, P4 filters, strict NTC-only vs safe-targeting/unassigned exclusions, telohaec 2,133 plain HGNC (1,064 R9_COMMON) / -TSS* / cis-element exclusions, feng_ipsc Cell_Line x Inlet >= 15 NTC centering, and secondary H-D5 (feng_ipsc FCT vs NegCtrl_FCT_MismatchedMean(nourreddine_kolf21j)).
+
+3. Pre-Code-Freeze Coordination Note (For Master Controller / A-T2):
+   - Note that round11/status/A-T2.txt (13:29+08:00) drafted round11/src/ against PREREG_D v1 (98.33% CIs prior to PREREG_D_AUDIT_R1.md). Prior to CODE_FREEZE_R11.txt, round11/src/ and round11/audit/ should align to v2 (97.5% primary CIs, SA-8 resp_top50_split, and feng_ipsc H-D5 reporting).
+
+4. Blinding & Freeze Integrity:
+   - Zero Round 11 expression matrices downloaded or accessed (round11/shared/ contains only R11_DOWNLOAD_PLAN.md).
+   - Round 10 freeze manifest check (shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt): verified 22/22 OK after all edits.
+
+5. Requested Master Controller Action:
+   - Inspect updated PREREG_D.md (sha256: 1a0544980c094468faed54ba339608d8f68d2205358d04c1dc59622b5a98fd30), commit + lock hash into round11/status/PREREG_D_COMMIT.txt, and authorize next step.
+
+PREREG_D_R1_READY_FOR_LOCK
