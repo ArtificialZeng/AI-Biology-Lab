@@ -12,3 +12,13 @@ Latest verification after all edits:
 - data_loader.py dev check: load_common_genes=6148, available_lines=all 6; replogle_k562_essential & replogle_rpe1 load cleanly at COMMON_GENES=(6148,).
 
 TASK_DONE
+
+R10-0 DATA SCREEN COMPLETE (zero expression matrices downloaded; zero evals run; zero X-Atlas/Orion data):
+Delivered /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round9/p2/shared/R10_DATA_SCREEN.md auditing 5 qualifying new human cell lines (>=50 shared union6 targets, CRISPRi scRNA-seq, NTC controls, open public license, <=60 GB download option):
+1. DLD-1 (GSE337988, Yeung bioRxiv 2026): Low_assays.h5 = 4.621 GB; 1,338,060 est. GEX cells (24 Low-MOI channels); 504 NTCs; 4,954 targets; shared_union6 = 668.
+2. Primary Human CD4+ alpha-beta T Cells (GSE314342 + S3 marson2025_data, Zhu Cell 2026, MIT License): Rest 94 .h5 = 54.582 GB (2-donor ~27.3 GB) or GWCD4i.pseudobulk_merged.h5ad = 44.567 GB; Rest 11,487,117 cells (313,989 NTC single-sgRNA); 12,778 lib targets (11,287 Rest DE-tested); shared_union6 = 2,482 lib / 1,452 Rest DE; 4 donors x 2 runs x 94 lanes.
+3. WTC11 i3Neurons (Zenodo 13350497 TianKampmann2021_CRISPRi.h5ad / GSE152988, CC BY 4.0): 289.39 MB; 27,189 QC cells (368 NTC); 184 targets; shared_union6 = 70; 4 10x lanes.
+4. H9 Cortical Neurons (IGVF IGVFDS9825FOBP, Gogate bioRxiv 2026): split .h5 (4.925 GB) + .pkl (46.074 GB) + CSV = 50.999 GB (<=60 GB; .h5ad 87.43 GB >60 GB); 549,727 QC cells (59,714 NTC); 1,408 ASD targets (1,394 mapped tgt); shared_union6 = 244 (251 w/ pos ctrl); 24 HTO libraries (MOI~4 caveat).
+5. Calu-3 (Zenodo 13350497 SunshineHein2023.h5ad / GSE208240, CC BY 4.0): 743.67 MB; 27,882 QC cells (2,500 NTC); 195 single targets (183 genes); shared_union6 = 63 (SARS-CoV-2 challenged caveat).
+Infrastructure checks: Arc VCC 2026 GCS bucket (virtual-cell-challenge/2026/) is empty (items=[]); Nourreddine 2026 Figshare 27261219 & GitHub have no compact standalone pseudobulk CSV (only 6 .h5ad files, KOLF_Strong=46.72 GB same line). Documented Tier B auxiliary sets (IGVFDS3530HHEU WTC11 Endothelial 0.144 GB / 156 shared / 64 NTC caveat; IGVFDS6332VCTO WTC11 CM 331 shared / >60 GB; Feng 2026 45 HipSci iPSCs / contains kolf_2) and 15 excluded candidates.
+R10_SCREEN_DONE

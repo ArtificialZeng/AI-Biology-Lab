@@ -1,0 +1,10 @@
+# Added by Claude (master controller) 2026-11-22: never commit downloaded/derived expression data
+shared/lines/
+shared/raw/
+*.h5
+*.h5ad
+*.npz
+*.pkl
+*.rds
+*.tar
+*.mtx.gz

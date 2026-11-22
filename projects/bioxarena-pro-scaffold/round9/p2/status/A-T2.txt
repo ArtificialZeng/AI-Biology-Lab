@@ -33,4 +33,6 @@ PRIMARY HELDOUT COMPLETE (Code Freeze Commit 1ca9f60f49adf1ac7cce8266e4053327341
      * vcc2025_h1 (N=80): FCT r_orth_cal=+0.3505 [+0.2784, +0.4245] > max mismatch CI hi (+0.2022) & perm100 p97.5 (+0.2445) -> True (slope +0.2503 [+0.1339, +0.3542] <= perm100 p97.5 +0.2409 -> False).
    - Pre-registered Group A & Group B confirmatory verdicts remain unchanged (both 未确认).
 
-Cleared per HELDOUT_PRIMARY_COMMITTED.txt (ae63b52d): currently running S3 (shrink=0.001), S4a (cov_max_cells=10000), S4b (zscore), and S1 (all shared targets, only_reproducible=False) sequentially into results/*_sens_* (task-1048).
+Cleared per HELDOUT_PRIMARY_COMMITTED.txt (ae63b52d); relaunched S1-S4 sensitivities post-restart in parallel pairs under frozen commit 1ca9f60f49adf1ac7cce8266e40533273411db30 (zero changes to src/):
+- task-1063: S3 (shrink=0.001, results/*_holdout_log1p_sens_s3_sh0.001.*) -> S1 (only_reproducible=False, results/*_holdout_log1p_sens_s1_rep0.*)
+- task-1064: S4a (cov_max_cells=10000, results/*_holdout_log1p_sens_s4a_c10k.*) -> S4b (zscore, results/*_holdout_zscore_sens_s4b.*)

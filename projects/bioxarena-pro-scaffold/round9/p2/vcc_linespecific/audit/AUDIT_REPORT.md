@@ -241,3 +241,61 @@
 | nourreddine_kolf21j     | cent_disc_ownmasked_tmean    | cent_disc_ownmasked_tmean    |  0.77451    |  0.777778   | 0.00326797  |     0.0001 | False        |
 | nourreddine_kolf21j     | cent_de50_r_hybrid           | cent_de50_r_hybrid           |  0.467079   |  0.451665   | 0.0154141   |     0.0001 | False        |
 | nourreddine_kolf21j     | cent_de50_r_tmean            | cent_de50_r_tmean            |  0.490044   |  0.471453   | 0.0185911   |     0.0001 | False        |
+
+
+---
+
+## 4. Pre-Registered Sensitivity Suite (`S1`–`S6`), `R19` Gain Decomposition, & Cross-Checks
+
+All sensitivity variants were executed independently under frozen code (`CODE_FREEZE 1ca9f60f49adf1ac7cce8266e40533273411db30`) into `audit/sensitivity/{s1_all_targets,s2_no_proj,s3_shrink1e3,s4a_cov10k,s4b_zscore}`. Across **every** sensitivity variant, **both Group A (`Hybrid_ProjShared` / `Hybrid_Raw`) and Group B (`Transfer_Mean_VarScaled` / `TMVS`) remained `未确认 (NOT CONFIRMED)`**, and **`R14` co-fluctuation increment remained `False`**.
+
+### 4.1 Sensitivity Summary Across Confirmatory Held-Out Lines (`S1`–`S4b`)
+
+| Variant | Output Dir | Group A Verdict | Group B Verdict | `R14` | `nadig_hepg2` `Hyb` / `TMVS` `r_orth_cal` (`R14`) | `nadig_jurkat` `Hyb` / `TMVS` `r_orth_cal` (`R14`) | `vcc2025_h1` `Hyb` / `TMVS` `r_orth_cal` (`R14`) |
+| :--- | :--- | :--- | :--- | :---: | :--- | :--- | :--- |
+| **Primary** (`log1p`, `sh=0`, `20k`, `Proj`, `rep=1`) | `audit/` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0490` / `+0.0419` (`+0.0131`) | `+0.0652` / `+0.0947` (`+0.0165`) | `-0.0398` / `-0.0772` (`-0.0044`) |
+| **`S1`** (`--all-targets`: `N=1777, 1779, 95`) | `s1_all_targets` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0196` / `+0.0324` (`+0.0029`) | `+0.0609` / `+0.0874` (`+0.0152`) | `-0.1016` / `-0.0474` (`-0.0564`) |
+| **`S2`** (`Hybrid_Raw`, no `P_perp`) | `s2_no_proj` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.1226` / `+0.0419` (`+0.0505`) | `+0.1290` / `+0.0947` (`+0.0535`) | `-0.0384` / `-0.0772` (`-0.0032`) |
+| **`S3`** (`--shrink 0.001`) | `s3_shrink1e3` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0490` / `+0.0418` (`+0.0131`) | `+0.0652` / `+0.0947` (`+0.0165`) | `-0.0398` / `-0.0772` (`-0.0044`) |
+| **`S4a`** (`--cov-max-cells 10000`) | `s4a_cov10k` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0486` / `+0.0421` (`+0.0127`) | `+0.0632` / `+0.0914` (`+0.0159`) | `-0.0335` / `-0.0776` (`-0.0004`) |
+| **`S4b`** (`--space zscore`) | `s4b_zscore` | **未确认** (`0,2,0,F`) | **未确认** (`0,0,0,F`) | `False` | `+0.0485` / `+0.0108` (`+0.0381`) | `+0.0307` / `+0.0118` (`+0.0190`) | `-0.0495` / `+0.0196` (`-0.0686`) |
+
+*Notes:* Tuples denote `(H-*1 count, H-*2 count, H-*3 count, H-*4 pass)`. In `S1` (`--all-targets`), `nadig_hepg2` (`N=1777`) yielded `Hybrid_ProjShared +0.0196 [+0.0003, +0.0393]` (`slope +0.0062`, `max mismatch +0.0458`), `TMVS +0.0324 [+0.0185, +0.0470]` (`slope +0.0424`, `perm975 +0.0746`, `max mismatch +0.0998`), `FCT +0.2163`, and `R14 +0.0029 [-0.0042, +0.0104]`; `nadig_jurkat` (`N=1779`) yielded `Hybrid +0.0609 [+0.0435, +0.0788]` (`slope +0.0040`, `max mismatch +0.0513`), `TMVS +0.0874 [+0.0768, +0.0981]` (`perm975 +0.1382`, `max mismatch +0.1571`), `FCT +0.0853`, and `R14 +0.0152 [+0.0078, +0.0230]`; `vcc2025_h1` (`N=95`) yielded `Hybrid -0.1016 [-0.2277, +0.0060]` (`slope -0.0141`, `max mismatch +0.2263`), `TMVS -0.0474 [-0.1568, +0.0618]` (`slope -0.1303`), `FCT +0.3618`, and `R14 -0.0564 [-0.1518, +0.0152]`. Secondary `S1` lines: `replogle_k562_essential` (`N=1550`, `Hyb +0.0372`, `TMVS +0.1711 > perm975 +0.1172 / maxmis +0.1590`, `R14 -0.0028`), `replogle_rpe1` (`N=1779`, `Hyb +0.1811`, `TMVS +0.0992`, `R14 +0.0617`), and `nourreddine_kolf21j` (`N=28`, `Hyb +0.0131`, `TMVS +0.1012`).
+
+### 4.2 `S5` (Top-75% Expressed Genes), `S6` (`all_nontarget` Ceilings), and `R19` Decomposition (Primary Suite)
+
+| Line | Role | `S5` (`4,611`) `Hyb` / `TMVS` `r_orth_cal` | `S6` $\rho^{\perp}_{AB}$ `top50` $\to$ `all` | `S6` `all` `Hyb` / `TMVS` `r_orth_cal` | `R19` `top50` $\beta_t$ | `R19` `top50` `L1 / L2 / L3` | `R19` `all` $\beta_t$ | `R19` `all` `L1 / L2 / L3` |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `nadig_hepg2` | Conf. | `+0.0489` / `+0.0424` | `0.8745 -> 0.4747` | `+0.0481` / `+0.1824` | `1.1439 [1.099, 1.189]` | `0.0160 / 0.1413 / 0.8428` | `0.5973 [0.573, 0.623]` | `0.1310 / 0.0731 / 0.7958` |
+| `nadig_jurkat` | Conf. | `+0.0657` / `+0.0966` | `0.8465 -> 0.3765` | `+0.0464` / `+0.1220` | `0.9939 [0.955, 1.031]` | `0.0000 / 0.1488 / 0.8512` | `0.4469 [0.427, 0.467]` | `0.2301 / 0.0586 / 0.7113` |
+| `vcc2025_h1` | Conf. | `-0.0387` / `-0.0791` | `0.9885 -> 0.8886` | `+0.0064` / `+0.0323` | `0.6190 [0.372, 1.111]` | `0.0625 / 0.1886 / 0.7489` | `0.2691 [0.201, 0.356]` | `0.3477 / 0.0367 / 0.6156` |
+| `replogle_k562_essential` | Dev (Excl.) | `+0.0339` / `+0.1868` | `0.8861 -> 0.4547` | `+0.0213` / `+0.1387` | `0.7814 [0.757, 0.806]` | `0.0769 / 0.1790 / 0.7440` | `0.3469 [0.333, 0.361]` | `0.4627 / 0.0439 / 0.4933` |
+| `replogle_rpe1` | Dev (Excl.) | `+0.1978` / `+0.0903` | `0.9134 -> 0.6139` | `+0.1778` / `+0.1761` | `1.6321 [1.575, 1.692]` | `0.1239 / 0.1035 / 0.7725` | `0.8038 [0.776, 0.831]` | `0.0162 / 0.1300 / 0.8538` |
+| `nourreddine_kolf21j` | Low-N (Excl.) | `+0.0096` / `+0.1378` | `0.8195 -> 0.1627` | `-0.0147` / `+0.0983` | `0.6432 [0.507, 0.892]` | `0.0999 / 0.0168 / 0.8833` | `0.1832 [0.121, 0.253]` | `0.5129 / 0.0110 / 0.4761` |
+
+### 4.3 Dual-Team Sensitivity Parity (`A-T2` `results/*_sens_*` vs. `A-T3` `audit/sensitivity/`)
+
+- **`S3` (`s3_shrink1e3` vs. `sens_s3_sh0.001`):** `30` checks across all 6 lines (`Hybrid_ProjShared`, `TMVS`, `FCT`), **`max_abs_diff = 3.123e-17`**.
+- **`S4b` (`s4b_zscore` vs. `sens_s4b`):** `24` checks across all 6 lines (`Hybrid_ProjShared`, `TMVS`; `FCT` omitted by `A-T2` in `zscore` space), **`max_abs_diff = 1.329e-15`**.
+- **`S4a` (`s4a_cov10k` vs. `sens_s4a_c10k`):** `30` checks show expected stochastic control-subsample draw variance (`max_abs_diff = 2.024e-02` on target-control subsample), zero hypothesis verdict changes.
+
+---
+
+## 5. Exploratory Analysis Reference (`FCT`, Not Pre-Registered)
+
+Independent inspection of `results/exploratory_fct_summary.json` and `results/EXPLORATORY_FCT.md` (post-hoc specificity test using 5 mismatched `ctrl_mean_libnorm` controls + 100 permutations `default_rng(k)`, `97.5%` CIs) confirms:
+- `nadig_hepg2` (`N=799`, Confirmatory): `r_orth_cal = +0.2611 [+0.2420, +0.2807]` > `max mismatch CI hi (+0.1319)` & `perm100 p97.5 (+0.1696)` (`True`); `slope = +0.0588 [+0.0536, +0.0640]` > `+0.0434` / `-0.0043` (`True`).
+- `nadig_jurkat` (`N=934`, Confirmatory): `r_orth_cal = +0.1043 [+0.0849, +0.1238]` `<= perm100 p97.5 (+0.1201, median +0.0680)` (`False`); `slope = +0.0200 [+0.0149, +0.0253]` `<= +0.0367` / `+0.0480` (`False`).
+- `vcc2025_h1` (`N=80`, Confirmatory): `r_orth_cal = +0.3505 [+0.2784, +0.4245]` > `+0.2022` / `+0.2445` (`True`); `slope = +0.2503 [+0.1339, +0.3542]` `<= perm100 p97.5 (+0.2409)` (`False`).
+- Secondary/Dev: `replogle_rpe1` (`N=1070`, `+0.1296 [+0.1115, +0.1475]`, `True`/`True`), `replogle_k562_essential` (`N=859`, `+0.1938 [+0.1748, +0.2150]`, `True`/`False`), `nourreddine_kolf21j` (`N=18`, `+0.1839 [+0.0214, +0.3545]`, `False`/`False`).
+
+*Governance Lock:* Strictly **not pre-registered, exploratory**, excluded from Round 9 confirmatory adjudication (`Group A = 未确认`, `Group B = 未确认`), and requires prospective validation on brand-new unseen human CRISPRi datasets (Round 10).
+
+---
+
+## 6. Final Audit Sign-Off (`C1`–`C5` & `R1`–`R20`)
+
+- **`C1` (Gate & Immutability):** `PREREG_A v4` (`4cc89ebae67f0ed0748b80f994d26dcc9c2b95ef`, `sha256: 17519aeb299009186c5e1d5f86ec22a0923deda9d8dd931fafe8d190d48e01e9`) and `CODE_FREEZE` (`1ca9f60f49adf1ac7cce8266e40533273411db30`) strictly enforced with zero post-freeze edits to evaluation or audit code.
+- **`C2` (RNG Lock):** 100-perm `np.random.default_rng(k)` (`k = 0..99`), bootstrap `np.random.default_rng(20261121)` (`n_boot = 4,000`).
+- **`C3` (Dual-Team Cross-Check):** `264/264` primary deterministic comparisons within `1.11e-14`, `0` real bootstrap CI diffs `> 0.01`, `8/8` hypothesis consensus; `S3` (`3.12e-17`) and `S4b` (`1.33e-15`) likewise verified.
+- **`C5` & Unit Tests:** `18/18` unit tests (`audit/test_*.py`) verified passing alongside [PREPRINT_DRAFT.md](file:///Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round9/p2/paper/PREPRINT_DRAFT.md).
