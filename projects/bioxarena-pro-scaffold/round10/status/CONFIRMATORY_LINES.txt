@@ -1,0 +1,10 @@
+# Round 10 Mechanical Confirmatory Line Gate (PREREG_C §2.2 / P2-P5)
+# Thresholds: candidate in {dld1, cd4t_rest}, n_eval_targets >= 50, |G_eval(t)| >= 3000
+# dld1: PASS_CONFIRMATORY (n_eval_targets=86 >= 50, |G_eval|=6124 >= 3000)
+# cd4t_rest: PASS_CONFIRMATORY (n_eval_targets=302 >= 50, |G_eval|=6123 >= 3000)
+# wtc11_i3neuron: SECONDARY_ONLY (excluded from confirmatory; n_eval_targets=2, |G_eval|=5995)
+# calu3: SECONDARY_ONLY (excluded from confirmatory; n_eval_targets=8, |G_eval|=6134)
+# h9: EXCLUDED_PRE_DOWNLOAD (P2: too few single-sgRNA cells per target and 60 GB budget; see R10_DOWNLOAD_PLAN.md) [reason corrected by controller 12:15]
+# K_CONF=2
+dld1
+cd4t_rest
