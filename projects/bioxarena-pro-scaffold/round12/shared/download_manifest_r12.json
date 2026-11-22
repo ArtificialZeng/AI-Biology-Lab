@@ -1,0 +1,61 @@
+{
+  "total_files": 5,
+  "total_bytes": 11333944184,
+  "files": [
+    {
+      "rel_path": "a549_ko/GSE345058_cell_annotations.csv.gz",
+      "line": "a549_ko",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_cell_annotations.csv.gz",
+      "expected_bytes": 40152708,
+      "actual_bytes": 40152708,
+      "expected_md5": null,
+      "md5": "68515d8b700fb282e4d01a5a2d6db7f2",
+      "sha256": "5561c19d1020b6bcb7bf7e9a6f7a875df00097d9674723063eb0928cbe849fdf",
+      "integrity": "gzip -t OK (0.2s)"
+    },
+    {
+      "rel_path": "a549_ko/GSE345058_gene_annotations.csv.gz",
+      "line": "a549_ko",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_gene_annotations.csv.gz",
+      "expected_bytes": 378455,
+      "actual_bytes": 378455,
+      "expected_md5": null,
+      "md5": "f73ec036e1a8d47ead3e6df163d5e292",
+      "sha256": "7cbed598dcda0125bcc7aad1dbb79c23ac17f296368d2d4f2873535acf54d0e9",
+      "integrity": "gzip -t OK (0.0s)"
+    },
+    {
+      "rel_path": "a549_ko/GSE345058_raw_counts.mtx.gz",
+      "line": "a549_ko",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_raw_counts.mtx.gz",
+      "expected_bytes": 10956707618,
+      "actual_bytes": 10956707618,
+      "expected_md5": null,
+      "md5": "2878ebec6e8aee3be7f6cfe2f9244ebb",
+      "sha256": "abbcdd70f7de6f726c5ef6e0f63d28104f4a383fcda7502ff06d481287352189",
+      "integrity": "gzip -t OK (44.1s)"
+    },
+    {
+      "rel_path": "a549_ko/GSE345058_sgRNA.csv.gz",
+      "line": "a549_ko",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE345nnn/GSE345058/suppl/GSE345058_sgRNA.csv.gz",
+      "expected_bytes": 68194,
+      "actual_bytes": 68194,
+      "expected_md5": null,
+      "md5": "a67bcf0d2949175da649a0b16ae4a19c",
+      "sha256": "ec973d729a75407a091a5b363ebb8b286ef5acebfe421ede7dc042a469b4a72d",
+      "integrity": "gzip -t OK (0.0s)"
+    },
+    {
+      "rel_path": "hek293_xucao/XuCao2023.h5ad",
+      "line": "hek293_xucao",
+      "url": "https://zenodo.org/api/records/13350497/files/XuCao2023.h5ad/content",
+      "expected_bytes": 336637209,
+      "actual_bytes": 336637209,
+      "expected_md5": "3efb25a2927c5c228f04f783f18004d8",
+      "md5": "3efb25a2927c5c228f04f783f18004d8",
+      "sha256": "0065ac9524f103fcb7903125b4d2d22e8f2c29e427db31b7cefd5a8f1ea846e0",
+      "integrity": "h5py keys=['X', 'layers', 'obs', 'obsm', 'obsp', 'uns', 'var', 'varm', 'varp']"
+    }
+  ]
+}

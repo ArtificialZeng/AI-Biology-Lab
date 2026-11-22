@@ -1,0 +1,1309 @@
+{
+  "h5ad_path": "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/shared/raw/hek293_xucao/XuCao2023.h5ad",
+  "top_keys": [
+    "X",
+    "layers",
+    "obs",
+    "obsm",
+    "obsp",
+    "uns",
+    "var",
+    "varm",
+    "varp"
+  ],
+  "uns_keys": [],
+  "n_obs": 98315,
+  "n_var": 59429,
+  "obs_index_sample": [
+    "220824perturbsci_06.GCCGACGATACTTGCGCCGC",
+    "220824perturbsci_01.CGGACTGGCCTGGTCAGCCA",
+    "220824perturbsci_07.GTAGTAGTCCACGCGAGATT",
+    "220824perturbsci_01.AGCTCATTCGGGCAGGTATT",
+    "220824perturbsci_04.GGCAGCAGTTGCGTTGGAGC",
+    "220824perturbsci_01.CTGCGCTGGTGAAGAGGCAT",
+    "220824perturbsci_06.GAAGAGTATTTGGCCTGAAG",
+    "220824perturbsci_03.TCTCCTCCTGATCTCCGAAC",
+    "221010perturbsci_12.AACTGACCGGGAAGATCGAG",
+    "221010perturbsci_13.AAGGTAACCGACTTAACCTT",
+    "221010perturbsci_15.CCGATATAAGGCTGGAACTT",
+    "221010perturbsci_09.AACTGACCGGAATCCATCTT"
+  ],
+  "obs_barcode_prefixes_first5k": [
+    "220824perturbsci"
+  ],
+  "obs_barcode_dash_suffixes": [],
+  "var_index_sample": [
+    "DDX11L1",
+    "WASH7P",
+    "MIR6859-1",
+    "MIR1302-2HG",
+    "MIR1302-2",
+    "FAM138A",
+    "OR4G4P",
+    "OR4G11P",
+    "OR4F5",
+    "RP11-34P13.7",
+    "RP11-34P13.8",
+    "CICP27",
+    "RP11-34P13.15",
+    "RP11-34P13.16",
+    "RP11-34P13.14"
+  ],
+  "var_n_ensmusg": 0,
+  "var_cas9_hits": [
+    "idCas9_KRAB_MeCP2"
+  ],
+  "replicate_candidate_columns": [],
+  "control_n_cells": 2758,
+  "control_guide_id_counts": {
+    "NO-TARGET_98": 409,
+    "NO-TARGET_454": 263,
+    "NO-TARGET_326": 226,
+    "NO-TARGET_470": 223,
+    "NO-TARGET_391": 222,
+    "NO-TARGET_112": 199,
+    "NO-TARGET_473": 195,
+    "NO-TARGET_407": 167,
+    "NO-TARGET_202": 153,
+    "NO-TARGET_311": 139,
+    "NO-TARGET_183": 136,
+    "NO-TARGET_358": 117,
+    "NO-TARGET_7": 115,
+    "NO-TARGET_4": 108,
+    "NO-TARGET_206": 86
+  },
+  "split_half_branch": "Stage 2 deterministic seed=42 stratified 50/50 split (no .obs replicate/batch column)",
+  "e3_data_feasibility_pass": true,
+  "e3_reader_feasibility_pass": false,
+  "e3_gate_pass": false,
+  "e3_verdict": "BLOCKED_BY_READER_INDEX_BUG",
+  "e3_reason": "E3 data criteria SATISFIED: X non-negative int64 raw UMIs verified (129,448,599 nnz, frac_nonint=0.0, + layers/nascent_counts); per-cell guide_id (489 unique guides) & NTC labels (perturbation=='control': 2,758 cells across 15 control guide_ids; nperts==0: 2,758); split branch=Stage 2 deterministic seed=42 stratified 50/50 split (no .obs replicate/batch column); HOWEVER round12/src/dataset_readers_r12.py::check_hek293_feasibility failed with KeyError: \"Unable to synchronously open object (object 'index' doesn't exist)\" because AnnData 0.2.0 stores index in obs.attrs['_index']='cell_barcode' and var.attrs['_index']='gene_symbol' rather than 'index'/'_index'.",
+  "matrices": [
+    {
+      "name": "X",
+      "encoding": "csc_matrix",
+      "shape": [
+        98315,
+        59429
+      ],
+      "dtype": "int64",
+      "nnz": 129448599,
+      "nnz_checked": 129448599,
+      "all_finite": true,
+      "n_negative": 0,
+      "min": 1.0,
+      "max": 15495.0,
+      "frac_noninteger": 0.0,
+      "is_nonneg_integer": true,
+      "sample_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "layers/nascent_counts",
+      "encoding": "csc_matrix",
+      "shape": [
+        98315,
+        59429
+      ],
+      "dtype": "int64",
+      "nnz": 37755967,
+      "nnz_checked": 37755967,
+      "all_finite": true,
+      "n_negative": 0,
+      "min": 1.0,
+      "max": 463.0,
+      "frac_noninteger": 0.0,
+      "is_nonneg_integer": true,
+      "sample_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "obs_summary": {
+    "index_key": "cell_barcode",
+    "keys": [
+      "Cell_cycle_phase",
+      "cancer",
+      "cell_barcode",
+      "cell_line",
+      "celltype",
+      "disease",
+      "gRNA_UMI_counts",
+      "guide_id",
+      "nascent_MT_ratio",
+      "nascent_UMI_counts",
+      "nascent_ratio",
+      "ncounts",
+      "new_exon_ratio",
+      "ngenes",
+      "nperts",
+      "organism",
+      "percent_mito",
+      "percent_ribo",
+      "perturbation",
+      "perturbation_type",
+      "target",
+      "tissue_type",
+      "whole_exon_ratio"
+    ],
+    "columns": [
+      "perturbation",
+      "ncounts",
+      "nascent_UMI_counts",
+      "nascent_ratio",
+      "guide_id",
+      "gRNA_UMI_counts",
+      "nascent_MT_ratio",
+      "Cell_cycle_phase",
+      "whole_exon_ratio",
+      "new_exon_ratio",
+      "target",
+      "perturbation_type",
+      "disease",
+      "cancer",
+      "tissue_type",
+      "cell_line",
+      "celltype",
+      "organism",
+      "nperts",
+      "ngenes",
+      "percent_mito",
+      "percent_ribo"
+    ],
+    "details": {
+      "perturbation": {
+        "dtype": "<U8",
+        "n_unique": 204,
+        "top_counts": [
+          [
+            "control",
+            2758
+          ],
+          [
+            "SMARCD1",
+            2158
+          ],
+          [
+            "SLC25A1",
+            1880
+          ],
+          [
+            "XPO5",
+            1583
+          ],
+          [
+            "LDHA",
+            1437
+          ],
+          [
+            "SEC62",
+            1375
+          ],
+          [
+            "ARID2",
+            1309
+          ],
+          [
+            "DLAT",
+            1256
+          ],
+          [
+            "PDHA1",
+            1184
+          ],
+          [
+            "ATP11A",
+            1167
+          ],
+          [
+            "LDB1",
+            1149
+          ],
+          [
+            "CHD1",
+            1148
+          ],
+          [
+            "SDHAF1",
+            1148
+          ],
+          [
+            "KDM4A",
+            1130
+          ],
+          [
+            "OGDH",
+            1114
+          ]
+        ]
+      },
+      "ncounts": {
+        "dtype": "<U5",
+        "n_unique": 8382,
+        "top_counts": [
+          [
+            "2086",
+            50
+          ],
+          [
+            "1437",
+            49
+          ],
+          [
+            "2115",
+            49
+          ],
+          [
+            "1427",
+            48
+          ],
+          [
+            "1638",
+            48
+          ],
+          [
+            "1386",
+            47
+          ],
+          [
+            "1428",
+            46
+          ],
+          [
+            "1526",
+            46
+          ],
+          [
+            "1655",
+            46
+          ],
+          [
+            "1245",
+            45
+          ],
+          [
+            "1550",
+            45
+          ],
+          [
+            "1560",
+            45
+          ],
+          [
+            "1682",
+            45
+          ],
+          [
+            "1778",
+            45
+          ],
+          [
+            "1329",
+            44
+          ]
+        ]
+      },
+      "nascent_UMI_counts": {
+        "dtype": "<U4",
+        "n_unique": 2428,
+        "top_counts": [
+          [
+            "248",
+            201
+          ],
+          [
+            "186",
+            195
+          ],
+          [
+            "226",
+            195
+          ],
+          [
+            "234",
+            195
+          ],
+          [
+            "252",
+            194
+          ],
+          [
+            "218",
+            193
+          ],
+          [
+            "271",
+            193
+          ],
+          [
+            "187",
+            192
+          ],
+          [
+            "276",
+            190
+          ],
+          [
+            "283",
+            190
+          ],
+          [
+            "238",
+            188
+          ],
+          [
+            "313",
+            188
+          ],
+          [
+            "237",
+            187
+          ],
+          [
+            "227",
+            186
+          ],
+          [
+            "275",
+            186
+          ]
+        ]
+      },
+      "nascent_ratio": {
+        "dtype": "<U18",
+        "n_unique": 81689,
+        "top_counts": [
+          [
+            "0.2",
+            102
+          ],
+          [
+            "0.166666666666667",
+            96
+          ],
+          [
+            "0.142857142857143",
+            54
+          ],
+          [
+            "0.181818181818182",
+            53
+          ],
+          [
+            "0.1875",
+            40
+          ],
+          [
+            "0.176470588235294",
+            38
+          ],
+          [
+            "0.153846153846154",
+            37
+          ],
+          [
+            "0.173913043478261",
+            35
+          ],
+          [
+            "0.157894736842105",
+            33
+          ],
+          [
+            "0.125",
+            31
+          ],
+          [
+            "0.19047619047619",
+            31
+          ],
+          [
+            "0.222222222222222",
+            30
+          ],
+          [
+            "0.214285714285714",
+            28
+          ],
+          [
+            "0.133333333333333",
+            26
+          ],
+          [
+            "0.15",
+            23
+          ]
+        ]
+      },
+      "guide_id": {
+        "dtype": "<U13",
+        "n_unique": 489,
+        "top_counts": [
+          [
+            "SMARCD1_3",
+            1227
+          ],
+          [
+            "XPO5_1",
+            952
+          ],
+          [
+            "SLC25A1_1",
+            899
+          ],
+          [
+            "SEC62_3",
+            862
+          ],
+          [
+            "LDHA_1",
+            806
+          ],
+          [
+            "LDB1_1",
+            738
+          ],
+          [
+            "ATP11A_2",
+            636
+          ],
+          [
+            "SMARCD1_2",
+            605
+          ],
+          [
+            "PHF10_2",
+            596
+          ],
+          [
+            "SLC25A1_3",
+            583
+          ],
+          [
+            "ZC3H13_1",
+            572
+          ],
+          [
+            "FOXK1_3",
+            567
+          ],
+          [
+            "OGDH_3",
+            559
+          ],
+          [
+            "LIG1_2",
+            536
+          ],
+          [
+            "ATP11A_3",
+            531
+          ]
+        ]
+      },
+      "gRNA_UMI_counts": {
+        "dtype": "<U4",
+        "n_unique": 273,
+        "top_counts": [
+          [
+            "15",
+            2934
+          ],
+          [
+            "16",
+            2887
+          ],
+          [
+            "17",
+            2872
+          ],
+          [
+            "14",
+            2834
+          ],
+          [
+            "20",
+            2796
+          ],
+          [
+            "19",
+            2794
+          ],
+          [
+            "13",
+            2782
+          ],
+          [
+            "18",
+            2740
+          ],
+          [
+            "21",
+            2681
+          ],
+          [
+            "10",
+            2667
+          ],
+          [
+            "12",
+            2604
+          ],
+          [
+            "11",
+            2602
+          ],
+          [
+            "22",
+            2598
+          ],
+          [
+            "23",
+            2478
+          ],
+          [
+            "25",
+            2422
+          ]
+        ]
+      },
+      "nascent_MT_ratio": {
+        "dtype": "<U18",
+        "n_unique": 51254,
+        "top_counts": [
+          [
+            "0.0",
+            349
+          ],
+          [
+            "0.0169491525423729",
+            70
+          ],
+          [
+            "0.0153846153846154",
+            64
+          ],
+          [
+            "0.0125",
+            62
+          ],
+          [
+            "0.0138888888888889",
+            61
+          ],
+          [
+            "0.0123456790123457",
+            59
+          ],
+          [
+            "0.0121951219512195",
+            58
+          ],
+          [
+            "0.0126582278481013",
+            57
+          ],
+          [
+            "0.012987012987013",
+            57
+          ],
+          [
+            "0.015625",
+            57
+          ],
+          [
+            "0.0140845070422535",
+            56
+          ],
+          [
+            "0.010989010989011",
+            55
+          ],
+          [
+            "0.0106382978723404",
+            54
+          ],
+          [
+            "0.0133333333333333",
+            53
+          ],
+          [
+            "0.0147058823529412",
+            52
+          ]
+        ]
+      },
+      "Cell_cycle_phase": {
+        "dtype": "<U3",
+        "n_unique": 3,
+        "top_counts": [
+          [
+            "G2M",
+            49169
+          ],
+          [
+            "S",
+            35772
+          ],
+          [
+            "G1",
+            13374
+          ]
+        ]
+      },
+      "whole_exon_ratio": {
+        "dtype": "<U17",
+        "n_unique": 87343,
+        "top_counts": [
+          [
+            "0.75",
+            77
+          ],
+          [
+            "0.666666666666667",
+            54
+          ],
+          [
+            "0.714285714285714",
+            43
+          ],
+          [
+            "0.727272727272727",
+            37
+          ],
+          [
+            "0.8",
+            37
+          ],
+          [
+            "0.777777777777778",
+            30
+          ],
+          [
+            "0.7",
+            28
+          ],
+          [
+            "0.769230769230769",
+            26
+          ],
+          [
+            "0.692307692307692",
+            24
+          ],
+          [
+            "0.736842105263158",
+            21
+          ],
+          [
+            "0.764705882352941",
+            18
+          ],
+          [
+            "0.772727272727273",
+            17
+          ],
+          [
+            "0.785714285714286",
+            17
+          ],
+          [
+            "0.730769230769231",
+            16
+          ],
+          [
+            "0.72",
+            15
+          ]
+        ]
+      },
+      "new_exon_ratio": {
+        "dtype": "<U18",
+        "n_unique": 49475,
+        "top_counts": [
+          [
+            "0.5",
+            372
+          ],
+          [
+            "0.666666666666667",
+            253
+          ],
+          [
+            "0.6",
+            195
+          ],
+          [
+            "0.571428571428571",
+            158
+          ],
+          [
+            "0.555555555555556",
+            128
+          ],
+          [
+            "0.75",
+            101
+          ],
+          [
+            "0.625",
+            97
+          ],
+          [
+            "0.333333333333333",
+            80
+          ],
+          [
+            "0.4",
+            79
+          ],
+          [
+            "0.636363636363636",
+            79
+          ],
+          [
+            "0.583333333333333",
+            76
+          ],
+          [
+            "0.545454545454545",
+            74
+          ],
+          [
+            "0.615384615384615",
+            72
+          ],
+          [
+            "0.588235294117647",
+            70
+          ],
+          [
+            "0.714285714285714",
+            69
+          ]
+        ]
+      },
+      "target": {
+        "dtype": "<U8",
+        "n_unique": 204,
+        "top_counts": [
+          [
+            "control",
+            2758
+          ],
+          [
+            "SMARCD1",
+            2158
+          ],
+          [
+            "SLC25A1",
+            1880
+          ],
+          [
+            "XPO5",
+            1583
+          ],
+          [
+            "LDHA",
+            1437
+          ],
+          [
+            "SEC62",
+            1375
+          ],
+          [
+            "ARID2",
+            1309
+          ],
+          [
+            "DLAT",
+            1256
+          ],
+          [
+            "PDHA1",
+            1184
+          ],
+          [
+            "ATP11A",
+            1167
+          ],
+          [
+            "LDB1",
+            1149
+          ],
+          [
+            "CHD1",
+            1148
+          ],
+          [
+            "SDHAF1",
+            1148
+          ],
+          [
+            "KDM4A",
+            1130
+          ],
+          [
+            "OGDH",
+            1114
+          ]
+        ]
+      },
+      "perturbation_type": {
+        "dtype": "<U7",
+        "n_unique": 1,
+        "top_counts": [
+          [
+            "CRISPRi",
+            98315
+          ]
+        ]
+      },
+      "disease": {
+        "dtype": "<U7",
+        "n_unique": 1,
+        "top_counts": [
+          [
+            "healthy",
+            98315
+          ]
+        ]
+      },
+      "cancer": {
+        "dtype": "<U4",
+        "n_unique": 1,
+        "top_counts": [
+          [
+            "True",
+            98315
+          ]
+        ]
+      },
+      "tissue_type": {
+        "dtype": "<U9",
+        "n_unique": 1,
+        "top_counts": [
+          [
+            "cell_line",
+            98315
+          ]
+        ]
+      },
+      "cell_line": {
+        "dtype": "<U6",
+        "n_unique": 1,
+        "top_counts": [
+          [
+            "HEK293",
+            98315
+          ]
+        ]
+      },
+      "celltype": {
+        "dtype": "<U22",
+        "n_unique": 1,
+        "top_counts": [
+          [
+            "embryonic kidney cells",
+            98315
+          ]
+        ]
+      },
+      "organism": {
+        "dtype": "<U5",
+        "n_unique": 1,
+        "top_counts": [
+          [
+            "human",
+            98315
+          ]
+        ]
+      },
+      "nperts": {
+        "dtype": "<U1",
+        "n_unique": 2,
+        "top_counts": [
+          [
+            "1",
+            95557
+          ],
+          [
+            "0",
+            2758
+          ]
+        ]
+      },
+      "ngenes": {
+        "dtype": "<U4",
+        "n_unique": 3920,
+        "top_counts": [
+          [
+            "908",
+            93
+          ],
+          [
+            "827",
+            88
+          ],
+          [
+            "1009",
+            86
+          ],
+          [
+            "1151",
+            85
+          ],
+          [
+            "1261",
+            85
+          ],
+          [
+            "853",
+            85
+          ],
+          [
+            "961",
+            85
+          ],
+          [
+            "1169",
+            83
+          ],
+          [
+            "1258",
+            83
+          ],
+          [
+            "936",
+            83
+          ],
+          [
+            "1038",
+            82
+          ],
+          [
+            "1045",
+            82
+          ],
+          [
+            "1060",
+            82
+          ],
+          [
+            "1079",
+            82
+          ],
+          [
+            "920",
+            82
+          ]
+        ]
+      },
+      "percent_mito": {
+        "dtype": "<U19",
+        "n_unique": 87541,
+        "top_counts": [
+          [
+            "25.0",
+            60
+          ],
+          [
+            "20.0",
+            53
+          ],
+          [
+            "16.666666666666668",
+            46
+          ],
+          [
+            "22.22222222222222",
+            41
+          ],
+          [
+            "14.285714285714286",
+            39
+          ],
+          [
+            "33.333333333333336",
+            33
+          ],
+          [
+            "18.181818181818183",
+            26
+          ],
+          [
+            "12.5",
+            23
+          ],
+          [
+            "21.428571428571427",
+            22
+          ],
+          [
+            "23.529411764705884",
+            21
+          ],
+          [
+            "28.571428571428573",
+            20
+          ],
+          [
+            "19.23076923076923",
+            19
+          ],
+          [
+            "27.77777777777778",
+            19
+          ],
+          [
+            "26.666666666666668",
+            18
+          ],
+          [
+            "0.0",
+            17
+          ]
+        ]
+      },
+      "percent_ribo": {
+        "dtype": "<U19",
+        "n_unique": 61794,
+        "top_counts": [
+          [
+            "2.9411764705882355",
+            76
+          ],
+          [
+            "3.4482758620689653",
+            74
+          ],
+          [
+            "2.7777777777777777",
+            71
+          ],
+          [
+            "2.7027027027027026",
+            66
+          ],
+          [
+            "3.3333333333333335",
+            66
+          ],
+          [
+            "3.0303030303030303",
+            62
+          ],
+          [
+            "3.5714285714285716",
+            60
+          ],
+          [
+            "3.125",
+            58
+          ],
+          [
+            "3.7037037037037037",
+            56
+          ],
+          [
+            "4.0",
+            55
+          ],
+          [
+            "3.8461538461538463",
+            54
+          ],
+          [
+            "2.3255813953488373",
+            50
+          ],
+          [
+            "4.3478260869565215",
+            49
+          ],
+          [
+            "2.380952380952381",
+            48
+          ],
+          [
+            "2.4390243902439024",
+            48
+          ]
+        ]
+      }
+    }
+  },
+  "var_summary": {
+    "index_key": "gene_symbol",
+    "keys": [
+      "gene_symbol",
+      "ncells",
+      "ncounts"
+    ],
+    "columns": [
+      "ncounts",
+      "ncells"
+    ],
+    "details": {
+      "ncounts": {
+        "dtype": "<U8",
+        "n_unique": 10099,
+        "top_counts": [
+          [
+            "0",
+            13263
+          ],
+          [
+            "1",
+            3832
+          ],
+          [
+            "2",
+            2172
+          ],
+          [
+            "3",
+            1570
+          ],
+          [
+            "4",
+            1177
+          ],
+          [
+            "5",
+            957
+          ],
+          [
+            "6",
+            827
+          ],
+          [
+            "7",
+            724
+          ],
+          [
+            "8",
+            678
+          ],
+          [
+            "9",
+            599
+          ],
+          [
+            "10",
+            527
+          ],
+          [
+            "11",
+            480
+          ],
+          [
+            "12",
+            443
+          ],
+          [
+            "13",
+            395
+          ],
+          [
+            "15",
+            384
+          ]
+        ]
+      },
+      "ncells": {
+        "dtype": "<U5",
+        "n_unique": 9780,
+        "top_counts": [
+          [
+            "0",
+            13263
+          ],
+          [
+            "1",
+            3857
+          ],
+          [
+            "2",
+            2182
+          ],
+          [
+            "3",
+            1569
+          ],
+          [
+            "4",
+            1197
+          ],
+          [
+            "5",
+            947
+          ],
+          [
+            "6",
+            834
+          ],
+          [
+            "7",
+            720
+          ],
+          [
+            "8",
+            692
+          ],
+          [
+            "9",
+            590
+          ],
+          [
+            "10",
+            536
+          ],
+          [
+            "11",
+            473
+          ],
+          [
+            "12",
+            433
+          ],
+          [
+            "13",
+            394
+          ],
+          [
+            "15",
+            377
+          ]
+        ]
+      }
+    }
+  },
+  "reader_check_hek293": {
+    "feasible": false,
+    "reason": "KeyError: \"Unable to synchronously open object (object 'index' doesn't exist)\""
+  }
+}
