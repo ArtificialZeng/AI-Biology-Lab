@@ -1,0 +1,13 @@
+[A-T4] R10-E COMBINED PAPER OUTLINE READY (ROUND 9 + ROUND 10 + R10-E PLACEHOLDER)
+
+Deliverable: round10/paper/OUTLINE.md
+
+Summary of Contents:
+- Combined scope anchored strictly to locked Round 9 (PREREG_A v4 4cc89eb, CODE_FREEZE 1ca9f60f, K_conf = 3: nadig_hepg2 N=799, nadig_jurkat N=934, vcc2025_h1 N=80) and Round 10 (PREREG_C dc4b4a5, QC_LOCK 86872ed, CODE_FREEZE_R10 f8d2ebfc, K_conf = 2 confirmatory cell lines: dld1 N=86, cd4t_rest N=302 [284 two-donor half-valid]; secondary calu3 N=8, wtc11_i3neuron N=2; h9_neuron IGVFDS9825FOBP excluded pre-download under P2).
+- Title candidates using calibrated non-confirmatory terminology ("Did Not Confirm" / "Fails Pre-Registered Specificity" per Round 9 PAPER_REVIEW_R1.md B3).
+- Abstract skeleton strictly separating Confirmatory outcomes (R9 Group A/B 0/4 NOT CONFIRMED; R10 H-C1 2/2 PASS, H-C2 0/2 FAIL -> Group C NOT CONFIRMED, H-C3 12/12 non-inferior PASS) from an explicitly demarcated Post-Hoc Exploratory R10-E placeholder paragraph.
+- Complete inventory for Figures 1-6 (Fig. 6 reserved as post-hoc R10-E placeholder), Main Tables 1-6 (Table 6 reserved as post-hoc R10-E placeholder), and Supplementary Tables S1-S5.
+- Detailed Methods & Pre-Registration Deviations section covering R9 D1 (span3 vs literal rank1_q1, S2b sensitivity) and R10 D-R10-1 (H-C3 naming correspondence), D-R10-2 (H-C1 extra guard conditions), minor mu_t=0 vs 1e-8 note, and H9 P2 wording correction, plus combined Limitations (including same-model A-T2/A-T3 execution, K_conf=2, P3 cross-donor ceiling inflation, S6 resp_top50 bias, unreleased VCC 2026 GT / unpublished slope estimator, and bounded prior-art placeholders).
+- Strictly left R10-E conclusions & values empty pending A-T2 (R10E_ABLATION_DONE), A-T3 (R10E_AUDIT_DONE), A-T5 (R10E_LIT_DONE), and A-T1 (R11_SCREEN_DONE).
+
+R10E_OUTLINE_DONE

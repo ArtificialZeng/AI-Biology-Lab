@@ -49,3 +49,29 @@ STATUS: PRIMARY_C3_PASSED_RUNNING_S1_WAITING_A_T2_R10_EVAL_DONE
    - **Sensitivity `S5` (`sa5_top75_fct` vs `line_metrics_holdout_r10_log1p_s5.csv`)**: **PASS** (`dld1` `+0.143259734837`, diff `8.327e-17`; `cd4t_rest` `+0.054313591518`, diff `5.551e-17`; identical `H-C1=2/2, H-C2=0/2, H-C3=2/2`).
 4. Artifacts: `round10/audit/holdout/{audit_r10_per_line.csv, audit_r10_summary.json, cross_check_r10.json, audit_r10_s1_alltargets_per_line.csv, audit_r10_s1_alltargets_summary.json, AUDIT_R10_REPORT.md}`.
 R10_AUDIT_DONE
+
+
+[A-T3] R10-E INDEPENDENT POST-HOC ABLATION COMPLETE (BLIND TO A-T2; AWAITING A-T2 R10E_ABLATION_DONE FOR CROSS-CHECK) 2026-11-22T12:53+08:00:
+- Freeze integrity verified: `22/22` files in `FREEZE_MANIFEST_R10.txt` `OK`.
+- Unit tests (`round10/audit/exploratory/test_r10e_ablation.py`, `-I` isolated): `3/3 PASSED` (`0.042s`).
+- Independent blind calculation (`round10/audit/exploratory/independent_r10e_ablation.py`, `-I` isolated, zero inspection of `round10/exploratory/`, `n_boot=4000`, `seed=20261122`, Bonferroni `97.5%` CIs) completed (`task-2118`, exit 0) across 5 lines (`dld1`, `cd4t_rest`, `nadig_hepg2`, `vcc2025_h1`, `nadig_jurkat`) x 2 masks (`resp_top50`, `all_nontarget`):
+  * Post-hoc `resp_top50`: `E1` (target ctrl-mean median constant) reproduces `86.4%–115.5%` of `FCT` `r_orth_cal` (`dld1`: `FCT +0.1401` vs `E1 +0.1567` [`111.8%`], `FCT-E1 = -0.0166 [-0.0708, +0.0396]`; `cd4t_rest`: `+0.0560` vs `+0.0495` [`88.4%`], `diff +0.0065 [-0.0136, +0.0270]`; `hepg2`: `+0.2614` vs `+0.2259` [`86.4%`], `diff +0.0355 [+0.0179, +0.0542]`; `h1`: `+0.3505` vs `+0.3076` [`87.8%`], `diff +0.0429 [+0.0131, +0.0769]`; `jurkat`: `+0.1047` vs `+0.1209` [`115.5%`], `diff -0.0162 [-0.0326, +0.0006]`). `E6` (`ln FC_bar`) and `E7` (`FC_bar - 1`) corroborate.
+  * Post-hoc `all_nontarget` (`S6`): `E1`/`E6`/`E7` collapse (`-0.0782..+0.0437`), whereas real `FCT` stays positive (`+0.0556..+0.1848`; `FCT-E1` strictly `> 0` on `5/5` lines: `dld1 +0.1969 [+0.1673, +0.2253]`, `cd4t_rest +0.0426 [+0.0248, +0.0605]`, `hepg2 +0.2318 [+0.2244, +0.2393]`, `h1 +0.0989 [+0.0822, +0.1162]`, `jurkat +0.1862 [+0.1758, +0.1971]`).
+- Outputs written to `round10/audit/exploratory/{AUDIT_R10E_REPORT.md, audit_r10e_metrics.csv, audit_r10e_paired_fct_minus_e1.csv, audit_r10e_summary.json}`. Waiting for `A-T2` (`PID 88084`) to emit `R10E_ABLATION_DONE` to run `< 1e-6` cross-check before writing `R10E_AUDIT_DONE`.
+STATUS: R10E_INDEPENDENT_DONE_WAITING_A_T2_CROSS_CHECK
+
+
+[A-T3] R10-E POST-HOC ABLATION INDEPENDENT AUDIT & DUAL-TEAM CROSS-CHECK COMPLETE 2026-11-22T13:01+08:00:
+1. Blind Independence & Frozen Code Compliance:
+   - Strictly avoided reading `round10/exploratory/` until after `task-2118` wrote independent blind outputs in `round10/audit/exploratory/{independent_r10e_ablation.py, test_r10e_ablation.py, audit_r10e_metrics.csv, audit_r10e_paired_fct_minus_e1.csv, audit_r10e_summary.json, AUDIT_R10E_REPORT.md}`.
+   - Verified `shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`: **22/22 .py files OK** (zero edits). Unit tests `test_r10e_ablation.py`: **3/3 PASSED**.
+   - Confirmed `round10/status/A-T2.txt` ends with `R10E_ABLATION_DONE`.
+2. Dual-Team `R10-E` Cross-Check (`round10/audit/exploratory/cross_check_r10e.py` -> `cross_check_r10e.json`):
+   - Compared all `40` metric rows (`5` lines [`dld1`, `cd4t_rest`, `nadig_hepg2`, `vcc2025_h1`, `nadig_jurkat`] × `2` masks [`resp_top50`, `all_nontarget`] × {`FCT`, `E1`, `E6`, `E7`}) + `10` paired `FCT - E1` rows against `round10/exploratory/baseline_ablation_metrics.csv` & `baseline_ablation_paired_fct_vs_e1.csv`:
+     * **`n_total_scalar_checks = 510`**, **`n_bool_mismatches = 0`**
+     * **`max_point_abs_diff = 1.1102230246251565e-16`** (`< 1e-6`, PASS)
+     * **`max_ci_abs_diff = 1.1102230246251565e-16`** (`< 1e-6`, PASS)
+3. Post-Hoc Scientific Summary (**事后探索性 / post hoc，非预注册确认性**; confirmatory `PREREG_C` verdict remains `未确认`):
+   - Under `resp_top50`, single scalar constant baseline `E1` recovers `86.4%–115.5%` of `FCT` (`dld1`: `FCT +0.1401` vs `E1 +0.1567`, diff `-0.0166 [-0.0708, +0.0396]`; `cd4t_rest`: `+0.0560` vs `+0.0495`, diff `+0.0065 [-0.0136, +0.0270]`; `nadig_jurkat`: `+0.1047` vs `+0.1209`, diff `-0.0162 [-0.0326, +0.0006]`; `nadig_hepg2`: diff `+0.0355 [+0.0179, +0.0542]`; `vcc2025_h1`: diff `+0.0429 [+0.0131, +0.0769]`). `E6` (`ln FC_bar`) and `E7` (`FC_bar - 1`) confirm the asymptotic limits.
+   - Under selection-free `all_nontarget` (`S6`), constant/limit baselines `E1`/`E6`/`E7` collapse (`-0.0782..+0.0437`), whereas real `FCT` stays positive (`+0.0556..+0.1848`) with `FCT - E1` `97.5% CI > 0` across all `5/5` audited lines (`+0.0426` to `+0.2318`).
+R10E_AUDIT_DONE
