@@ -39,6 +39,7 @@ Pursue original, externally checkable results in mathematical and computational 
 - Public documentation must retain limitations and credit the source model.
 - Do not publish credentials, internal prompts, private correspondence, patient information, or third-party papers without permission.
 - External outreach and submissions need authorization from the human user. Repository publication does not authorize contacting researchers or journalists.
+- **Permanent User Rule (2026-11-22 — Media & Submission Policy):** Media briefs, press releases, and external submission pitches (`媒体稿、新闻稿、投稿推介`) MUST NEVER enter the public repository (`*MEDIA_BRIEF*` and `*媒体*` are git-ignored at repo root). Execution agents (including main line and all `A-T` agents) MUST NOT draft or send any media or external pitch materials. Only the Master Controller may draft such materials upon explicit request by the user, and publication requires explicit user review and approval.
 
 ## Practical scope
 
