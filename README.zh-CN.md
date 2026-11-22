@@ -1,79 +1,53 @@
-# AI Biology Lab｜AI 数学生物学与计算生物学实验室
+# AI Biology Lab
 
-**保存已有的数学生物学与计算生物学工作，保留可检查的证明、代码和复现证据。**
+定量发育生物学、计算生物学与数学生物学研究。各项目列明证据、适用条件和审阅状态。由 [Shawn Zeng（Zijian Zeng）](https://github.com/ArtificialZeng) 维护。
 
-**项目状态（2026-10-31）：已按所有者要求停止原生物研究及自主研究任务；2026-11-20 起，BioXArena-Pro 项目恢复自主研究**（`projects/bioxarena-pro-scaffold/`）。仓库保留已有与当前成果供查阅和复现。[项目状态](docs/PROJECT_STATUS.md) · [完整项目索引](docs/PROJECT_INDEX.md) · [PR 整合记录](docs/CONSOLIDATION_2026-10-31.json)。
+[English](README.md) · [完整项目索引](docs/PROJECT_INDEX.md) · [复现说明](docs/REPRODUCIBILITY.md) · [同行评阅指南](docs/VALIDATION.md)
 
-[English](README.md) · [首个课题](projects/mixed-phosphorylation/README.md) · [研究路线](docs/RESEARCH_ROADMAP.md) · [媒体资料](docs/MEDIA_BRIEF.zh-CN.md)
+## 代表成果
 
-由 [Shawn Zeng (Zijian Zeng) / ArtificialZeng](https://github.com/ArtificialZeng) 维护。各研究包保留原有的问题、证据和限制；合入本仓库不代表生物学突破、外部同行评审或上游维护者采纳。
+按科学问题的影响范围和证据强度排序。独立实证验证和精确数学证明随对应结论列出。
 
-## 项目目录
+### 1. 胚胎细胞分裂时序
 
-| 项目 | 当前交付 | 证据范围 |
-| --- | --- | --- |
-| [BioXArena-Pro 单基因扰动建模](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) | [预印本 v2.2（PDF）](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) · 跨细胞系核基线 S5、三数据集预注册确认、PC1 轴分解、Miller DRF 校准、原生单细胞 GEARS 审计与[公开审计台账](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv) | 未见 Nadig 2025 预注册 H1–H3 确认；3/3 PC1 分解确认；Miller DRF 校准完成（S5 相对 scGPT 探针优势限于中等校准指标 v5）；原生单细胞 GEARS（3 种子）在 disc_raw 上持平 S5、delta_r 上反超 S5、仅在 v5/disc_v5 上低于 S5；Codabench 0.0998（双 AI 多轮协作口径） |
-| [混合机制生化振荡](projects/mixed-phosphorylation/README.md) | 精确失稳界、吸引周期轨道及非零周期修正 | Linux区间证书与独立精确复算；优先权和外审待确认 |
-| [Paper-Code Auditor](projects/paper-code-auditor/README.md) | 复现入口缺陷、历史源码恢复与补丁 | 离线CPU检查通过；未完成训练结果复现或作者确认 |
-| [ORD Data Auditor](projects/ord-data-auditor/README.md) | 标识符校验器、固定样本审计与校验位补丁 | 已复跑42数据集／20,720反应；不自动改写化合物身份 |
-| [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | NDCG行顺序敏感性全量审计 | 217实验／95配置；副指标排名变动，未推翻主榜单 |
-| [MEMOTE方向审计](projects/memote-direction-auditor/README.md) | 等价反应写法反例与两行候选修复 | 真实完整ATP检测入口验证通过；待维护者确认 |
-| [边界中继与孤立平衡分支](projects/relay-isola-auditor/README.md) | 给定单参数族中的精确质量作用反例 | 新上下文AI范围复核与两套精确计算；人类外审和优先权未确认 |
-| [区室分配 beta 区间](projects/compartment-beta-gap/README.md) | 7/8 < beta < 1 正概率爆炸定理 | 独立 AI 数学复核及有限精确检查通过；待专家与优先性确认；未声称几乎必然爆炸 |
-| [免疫衰减下的双毒株共存](projects/waning-coexistence-auditor/README.md) | 完整模型的共存存在性与条件逆命题，允许任意非负免疫衰减 | 新上下文AI数学审查与两套精确复算；广义猜想和根计数仍未解决 |
+在两套独立采集的秀丽隐杆线虫成像档案中，分裂标注的选取会改变估计出的时序关联。RIKEN 的 52 个胚胎中，一项匹配对照使平均斜率上移 **0.673**，95% 置信区间为 **0.277–1.070**。采用另一种端点定义时，区间跨过零。手稿还展示了同一份粗采样记录何时容许方向相反的斜率。这是供领域同行评阅的观察性研究稿。
 
-上游核验申请（按顺序提交，尚待维护者审核）：[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165)。
+[项目说明](projects/embryo-division-timing/README.md) · [v7 主文](projects/embryo-division-timing/v7/manuscript_main.pdf) · [补充材料](projects/embryo-division-timing/v7/supplementary_info.pdf) · [主图](projects/embryo-division-timing/v7/figures/Fig1_optical_boundary_control.pdf)
 
-## 已有结果：稳定振荡的周期仍有可量化偏差
+### 2. BioXArena-Pro 单细胞评测
 
-固定原文速率、P=8、S=40，已证明：每个充分大的有限激酶总量K对应的守恒类内都有吸引周期轨道。其局部分支在模型时间下满足
+包含预注册留出检验、校准分析和原生基线比较。比较结果随指标及评测设置变化，预印本与审计台账同时记录正向结果和反向证据。
 
-$$T(K)=T_\infty+\frac{T_1}{K}+O(K^{-2}),\qquad T_1\in[7.65771717,7.68396573].$$
+[预印本 v2.2](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) · [审计台账](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv)
 
-T1严格为正，说明周期从上方趋近极限，并非完全不变。结论经过Linux区间积分、新上下文数学审查及独立有理数复算；没有给出明确K0或余项常数。[完整证明与复现](projects/mixed-phosphorylation/validated-cycle/README.md) · [中文研究简报](projects/mixed-phosphorylation/validated-cycle/docs/BRIEF.zh-CN.md)。质性鲁棒性已有直接相关会议研究，优先权尚未确认；完整原猜想仍未解决。
+### 3. 混合机制磷酸化
 
-## 首个结果
+在指定的已发表模型速率下，精确代数证明给出平衡点失稳的充分界，覆盖该界以上的全部有限激酶总量。另有区间认证和持续性论证，给出充分大激酶总量下的吸引周期分支，以及严格为正的一阶周期修正。原猜想的完整结论和成果优先权仍待确认。
 
-在 Conradi、Mincheva、Shiu 的混合机制双磷酸化模型中，固定原文 Table 1 速率、总磷酸酶 8、总底物 40，我们给出精确证明：
+[项目与精确证明](projects/mixed-phosphorylation/README.md) · [周期分支与周期修正](projects/mixed-phosphorylation/validated-cycle/README.md)
 
-> 对每个有限的总激酶浓度 K ≥ 4660166/209569（约 22.2369），唯一正平衡点在六维守恒类中恰有两个不稳定、四个稳定特征值。因此，对所有 K ≥ 23 都成立。
+## 其他数学结果
 
-证明包含 **125 个严格为正的有理数 Bernstein 系数**，覆盖整个无界参数区间。23 是充分界，尚未声称是最优阈值。
+| 成果 | 结论范围 |
+| --- | --- |
+| [泄漏树的传感器布置](projects/tree-sensor-linkages/README.md) | 给出任意已知非空泄漏集合下的精确秩与泛型局部可辨识性判据。 |
+| [正则图上的固定概率界](projects/two-graph-moran-matching/README.md) | 对连通非完全正则图证明两种类型方向的精确界。 |
+| [周期输入下的适应](projects/periodic-adaptation/README.md) | 给出特定可逆反应模型中的吸引周期响应和带符号的平均差恒等式。 |
+| [更多证明与反例](docs/PROJECT_INDEX.md) | 各研究包收录问题、精确检查和未决情形。 |
 
-- [五页结果稿](projects/mixed-phosphorylation/manuscript/main.pdf)
-- [完整证明](projects/mixed-phosphorylation/evidence/finite_kinase_proof.md)
-- [机器可检查证书](projects/mixed-phosphorylation/evidence/finite_kinase_sign_certificate.json)
+## 软件与数据审计
 
-这份早期精确证书处理原文猜想6.2的第一项；单凭平衡点不稳定不能推出周期轨道。上面的新工作另行给出了周期轨道及周期修正证明，振幅的严格修正与完整猜想仍未解决。已有直接相关的 2023/2025 会议工作，新颖性与优先权待原作者确认。当前没有外部人类同行审稿或细胞实验。
+[论文代码审计](projects/paper-code-auditor/README.md) · [ORD 数据审计](projects/ord-data-auditor/README.md) · [蛋白质指标审计](projects/protein-metric-auditor/README.md) · [MEMOTE 方向审计](projects/memote-direction-auditor/README.md) · [完整索引](docs/PROJECT_INDEX.md)
 
-![浓度变化的数值结果](projects/mixed-phosphorylation/evidence/concentration_effects.png)
+各项目记录复现的具体问题、验证方法及上游审核状态。
 
-图为浮点数值观察，不是周期轨道存在性的严格证明。
+## 仓库导航
 
-## 一键复核
+| 目录 | 内容 |
+| --- | --- |
+| [projects](projects/) | 研究手稿、数学证明、评测与审计 |
+| [docs](docs/) | 完整索引、复现、评阅说明与研究历史 |
+| [scripts](scripts/) | 磷酸化项目的复现入口 |
+| [.github/workflows](.github/workflows/) | 托管验证流程 |
 
-Python 3.12 / 3.13；精确验证只依赖 SymPy，无需 GPU 或模型 API。
-
-```sh
-git clone https://github.com/ArtificialZeng/AI-Biology-Lab.git
-cd AI-Biology-Lab
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements-exact.txt
-python scripts/reproduce.py verify
-```
-
-验证在临时副本中执行，不改动归档证据。详细命令见[复现说明](docs/REPRODUCIBILITY.md)。
-
-## 历史研究目标（已停止推进）
-
-1. 算出明确的有限K阈值及可用的余项常数。
-2. 严格认证振幅修正，并澄清标量投影的不变性。
-3. 扩展经过认证的参数区域。
-4. 与相关研究核对优先权，取得外部人类复核。
-
-这些目标尚未完成，当前不安排自主研究继续推进。[研究路线](docs/RESEARCH_ROADMAP.md)保留验收条件；[外部验证说明](docs/VALIDATION.md)列出专家可以复核的问题。AI 参与推导和审查的范围见 [AI 使用说明](docs/AI_USE.md)。上面的简介表不是完整目录，请以[完整项目索引](docs/PROJECT_INDEX.md)查阅全部研究包。
-
-## 2026-10-26：开放问题研究
-
-新增两个精确研究包：[分舱模型猜想端点反例](projects/directed-cycle-identifiability/README.md)与[双磷酸化循环八参数对称子类的稳定性分类](projects/dual-futile-symmetry/README.md)。前者针对猜想的边界条件，原文主定理不受影响；后者留下完整十六参数猜想未解。优先权和原作者确认仍待核验。[筛选与范围记录](docs/OPEN_RESEARCH_2026-10-26.md)。
+各项目说明区分观察性成果、数学证书和评测结果。[AI 使用与溯源](docs/AI_USE.md) · [引用信息](CITATION.cff) · [许可证](LICENSE)

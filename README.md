@@ -1,155 +1,53 @@
 # AI Biology Lab
 
-**Preserved mathematical and computational biology work: proofs, code, and reproducibility evidence.**
+Research in quantitative developmental biology, computational biology and mathematical biology. Each project records its evidence, assumptions and review status. Maintained by [Shawn Zeng (Zijian Zeng)](https://github.com/ArtificialZeng).
 
-**Research status — 2026-10-31:** biological research and autonomous research runs stopped at the owner's request; **from 2026-11-20, autonomous research resumed for the BioXArena-Pro project** (`projects/bioxarena-pro-scaffold/`). This repository preserves all existing and active work for inspection and reproduction. [Project status](docs/PROJECT_STATUS.md) · [Complete project index](docs/PROJECT_INDEX.md) · [Consolidated PR history](docs/CONSOLIDATION_2026-10-31.json).
+[中文](README.zh-CN.md) · [All projects](docs/PROJECT_INDEX.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [Reviewer guide](docs/VALIDATION.md)
 
-[中文](README.zh-CN.md) · [First result](projects/mixed-phosphorylation/README.md) · [Research roadmap](docs/RESEARCH_ROADMAP.md) · [For reviewers](docs/VALIDATION.md) · [媒体资料](docs/MEDIA_BRIEF.zh-CN.md)
+## Featured results
 
-Maintained by [Shawn Zeng (Zijian Zeng) / ArtificialZeng](https://github.com/ArtificialZeng). The retained work concerns biochemical oscillations, molecular switches, reaction networks, and scientific computing.
+Scientific scope and strength of evidence determine the order. Independent empirical checks and exact proofs are identified alongside the claims they support.
 
-Each public claim retains its scope, evidence, and unresolved limitations. Merging a packet into this repository does not establish biological novelty, external peer review, or upstream acceptance.
+### 1. Division timing in developing embryos
 
-## Research and engineering projects
+In public lineages from two independently acquired *Caenorhabditis elegans* imaging archives, the choice of division label changes estimated timing associations. In the 52-embryo RIKEN archive, one matched swap changes the mean slope by **+0.673** (95% CI **0.277 to 1.070**). Another endpoint definition yields an interval spanning zero. The manuscript also shows when the same coarse timing record permits opposite slopes. This is an observational manuscript prepared for specialist review.
 
-| Project | Deliverable | Evidence status |
-| --- | --- | --- |
-| [BioXArena-Pro (`xatlas-orion-perturb`)](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) | [Preprint v2.2 (PDF)](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) · Cross-line kernel S5, pre-registered 3-atlas confirmation, PC1 axis decomposition, Miller DRF calibration, native SC GEARS audit & [audit ledger](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv) | Pre-registered unseen Nadig 2025 H1–H3 confirmed; 3/3 PC1 decomposition; Miller DRF completed (S5 advantage over scGPT probe confined to moderate-DRF v5); native SC GEARS (3 seeds) ties S5 on disc_raw and beats S5 on delta_r while trailing on v5/disc_v5; Codabench 0.0998 (dual-AI multi-round under human-set goal) |
-| [Mixed-mechanism phosphorylation](projects/mixed-phosphorylation/README.md) | Exact instability bound, validated attracting cycles and nonzero period correction | Linux interval certificates and independent exact audits; priority/human review pending |
-| [Paper-Code Auditor](projects/paper-code-auditor/README.md) | Reproducible software defects and a history-grounded reconstruction patch | Offline CPU regression checks; no training-result or author confirmation |
-| [ORD Data Auditor](projects/ord-data-auditor/README.md) | Identifier guard, frozen-sample audit, and a checksum warning patch | 42 datasets / 20,720 reactions reproduced; no chemical-identity or upstream-acceptance claim |
-| [Protein Metric Auditor](projects/protein-metric-auditor/README.md) | Full released-score NDCG order audit | 217 assays / 95 configurations; secondary-metric rank shifts only |
-| [MEMOTE direction audit](projects/memote-direction-auditor/README.md) | Equivalent-reaction counterexamples and a two-line direction fix | Real complete ATP detector integration; maintainer acceptance pending |
-| [Reversible Markov embedding audit](projects/reversible-embedding-auditor/README.md) | Exact rational four-state counterexample to one positive-spectrum embedding implication | Two exact checkers and fresh AI review; author review and priority pending |
-| [Directed-cycle identifiability](projects/directed-cycle-identifiability/README.md) | Exact endpoint counterexample to Conjecture 4.6 and interior-leak inclusion proof | Nonzero exact minor and rational inverse; original-author confirmation pending |
-| [Dual-futile-cycle partial results](projects/dual-futile-symmetry/README.md) | Eight-parameter spectral classification; full-parameter determinant-conditioned positivity of Delta4 | Separate exact reconstructions; general sixteen-parameter stability conjecture unresolved |
-| [RNA short-helix placements](projects/rna-short-helix-placements/README.md) | Exact three-helix coloring classification and a comparable-short corollary | 288 normalized cases; exact unique-fold checks; AI review completed, human review and priority pending |
-| [Example 8 stability audit](projects/lumping-example8-auditor/README.md) | Source-specific Jacobian correction and full-domain local stability proof | Exact witness, two symbolic implementations, ordinary/optimized archive replay; no broad open-problem resolution |
-| [MEMOTE API cache audit](projects/memote-cache-auditor/README.md) | Sequential API cache-lifecycle repair | Real API red/green checks; same-suite mutation and concurrency outside scope |
-| [Native GLPK presolver audit](projects/glpk-presolver-auditor/README.md) | Exact-input false-optimal solver counterexamples and a limited branch guard | Two independent grids; scaled tolerance residual explicitly retained; upstream confirmation pending |
-| [Boundary-relay isola](projects/relay-isola-auditor/README.md) | Exact mass-action counterexample for a given one-parameter family | Fresh AI scope review and two exact implementations; human review and priority unconfirmed |
-| [Compartment allocation beta gap](projects/compartment-beta-gap/README.md) | Positive-probability explosion theorem for 7/8 < beta < 1 | Fresh substantive AI mathematical review and finite exact checks; human review/priority pending; no almost-sure claim |
-| [Coexistence with waning immunity](projects/waning-coexistence-auditor/README.md) | Full-parameter feasible-root classification and uniqueness under ordered invasion | Fresh AI mathematical review and four exact checkers; actual-model Question 2 answered, abstract Conjecture 1 unresolved |
-| [Adjacent-port catenary audit](projects/adjacent-catenary-auditor/README.md) | Exact singular-locus and transfer-differential classification for all chain lengths | Fresh AI math review and two exact checkers; human review/priority pending |
-| [Proportional-scaling audit](projects/proportional-scaling-auditor/README.md) | Exact counterexamples including strictly increased postinfection mortality | Three exact certificate checks; known bistability credited, main constant-recruitment theorem untouched |
-| [Three- and four-particle ancestral circulation](projects/ancestral-circulation-classification/README.md) | Complete N3 sign law and exact N4 reversal with a fixed rate ordering | Full polynomial identities and two-colour verification; human review and priority pending |
-| [3-sunlet dimension proofs](projects/even-sunlet-dimension/README.md) | General group-based models and cyclic inversion-symmetric models | Uniform kernel proofs and independent exact certificates; author review and priority pending |
-| [Mantis conditioned stationary support](projects/mantis-stationary-auditor/README.md) | Reachable-class and outside-support correction for finite initial-conditioned laws | Exact component oracles and actual API replay; one disclosed pre-existing full-suite numerical failure |
-| [GillesPy2 ODE failure propagation](projects/gillespy-ode-failure/README.md) | Reject failed backend steps before publishing future-labelled results | Analytic baseline/candidate replay and independent AI review; upstream maintainer confirmation pending |
-| [Two-graph Moran fixation bounds](projects/two-graph-moran-matching) | Every connected noncomplete regular graph, both type orientations; all matching deletions retained | Exact sum-of-squares and polynomial proofs; arbitrary irregular graphs unresolved; human review pending |
-| [TreeSwift gamma audit](projects/treeswift-gamma) | Correct branching intervals, label dependence and crown-stem handling | Exact sign-flip witness; 714 + 1,774 generated cases; upstream review requested; GPL-3.0 subproject |
-| [Cogent3 gap-distance audit](projects/cogent-gap-distance) | Correct row-order-dependent distances under pairwise deletion | Exact shared-column oracle and real public API reproduction; upstream review requested; BSD3 source notices retained |
-| [Multi-pathogen coexistence correction](projects/multipathogen-coexistence) | Exact all-positive counterexamples to the simultaneous-endemic-equilibrium assertion in Djuikem–Arino2025 Conjecture5 | Full16D ODE/NGM replay and separate AI proof check; classical exclusion credited; author review pending |
-| [Catalytic response threshold](projects/catalytic-response/README.md) | Complete six-positive-rate steady-response classification for source Fig. 14B | Exact proof, two checkers and fresh AI review; priority and author confirmation pending |
-| Random-switching reaction networks: [common-support counterexample](projects/switching-common-support/README.md) · [Example 44 proof](projects/switching-transience/README.md) | Literal Conjecture 43 fails; Conjecture 46 holds on an explicit slow-switching interval | Two distinct models, complete probability arguments and exact checks; fresh AI review, source-author confirmation pending |
-| [ETE RF polytomy correction](projects/ete-rf-polytomy/README.md) | Correct shared-leaf topology correction and invalid negative distances | Genuine native baseline/candidate checks; known upstream issue credited; inherited full-suite failures disclosed |
-| [Periodic adaptation](projects/periodic-adaptation/README.md) | Exact all-waveform mean deficit and attracting periodic response for a published reversible motif | Complete ODE argument and two exact checkers; fresh AI review, human/priority verification pending |
-| [Forward-response scope audit](projects/nonreciprocal-response-audit/README.md) | Exact moment twins and a local finite-jet repair of subsidiary source claims | Independent exact recomputation and AI mathematical review; author verification pending |
-| [Fixed-target switching clarification](projects/white-noise-switching-monotonicity/README.md) | Exact finite switching-rate example for a specified target proportion | Two exact checks; equivalent dispersal theory credited; local AI review is not human peer review |
+[Project](projects/embryo-division-timing/README.md) · [Manuscript v7](projects/embryo-division-timing/v7/manuscript_main.pdf) · [Supplement](projects/embryo-division-timing/v7/supplementary_info.pdf) · [Main figure](projects/embryo-division-timing/v7/figures/Fig1_optical_boundary_control.pdf)
 
-Upstream review requests (submitted in order; acceptance pending):[Paper-Code PR #1](https://github.com/ziul-bio/DMS-SiteEffect-PLM/pull/1) · [ORD PR #1165](https://github.com/open-reaction-database/ord-schema/pull/1165).
+### 2. BioXArena-Pro single-cell benchmark
 
-Historical open-problem research: [selection, results, and parked leads](docs/OPEN_RESEARCH_2026-10-26.md). The [complete index](docs/PROJECT_INDEX.md) also includes later packets absent from the introductory table above.
+A computational benchmark with preregistered held-out analyses, calibration checks and comparisons with native baselines. The comparison depends on the metric and evaluation regime. The preprint and audit ledger report both gains and counterevidence.
 
-## Retained result: robust oscillations have a nonzero period correction
+[Preprint v2.2](projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) · [Audit ledger](projects/bioxarena-pro-scaffold/reports/AUDIT_LEDGER.csv)
 
-For the fixed published rates, P=8 and S=40, an attracting periodic branch exists in each fixed compatibility class for every sufficiently large finite kinase total K. In original model time,
+### 3. Mixed-mechanism phosphorylation
 
-$$T(K)=T_\infty+T_1/K+O(K^{-2}),\qquad T_1\in[7.65771717,7.68396573].$$
+For specified published model rates, exact algebra certifies equilibrium instability for all finite kinase totals at or above a sufficient bound. A separate interval certificate and persistence argument give an attracting periodic branch for sufficiently large totals and a strictly positive leading correction to its period. The full source conjecture and priority remain open.
 
-The positive coefficient certifies a finite-concentration bias: this local branch approaches its limiting period from above. No numerical K0 or remainder constant is given. [Proofs, Linux interval runs, exact independent audits, and figure](projects/mixed-phosphorylation/validated-cycle/README.md). Qualitative robustness overlaps existing conference work; novelty of the strict model-specific period certificate remains pending expert confirmation. The full source conjecture is unresolved.
+[Project and exact proof](projects/mixed-phosphorylation/README.md) · [Periodic branch and period correction](projects/mixed-phosphorylation/validated-cycle/README.md)
 
-## First project: can a biochemical oscillator resist changes in enzyme concentration?
+## Selected mathematical results
 
-The mixed-mechanism phosphorylation model studied by Conradi, Mincheva, and Shiu has a unique positive equilibrium. Their 2019 paper asks whether it can remain unstable as total kinase grows arbitrarily large.
-
-**Our exact result:** at the paper's Table 1 reaction rates, with total phosphatase **8** and total substrate **40**, the equilibrium has exactly **two unstable and four stable eigenvalues** on its six-dimensional compatibility class for every finite
-
-$$K_{\mathrm{tot}}\ge \frac{4660166}{209569}\approx22.2369.$$
-
-In particular, the result holds for every **K ≥ 23**. The bound is sufficient and is not claimed to be sharp. Rational equilibrium parametrization and **125 strictly positive rational Bernstein coefficients** give a certificate for the entire unbounded range, rather than a finite parameter scan.
-
-| Evidence level | Current status |
+| Result | Scope |
 | --- | --- |
-| Equilibrium instability over the stated range | Exact proof and executable certificate |
-| Selected finite-K trajectories and extrema | Floating-point numerical evidence |
-| Attracting periodic branch for every sufficiently large K | Interval limiting-cycle certificate plus local persistence; no explicit K0 |
-| Original Conjecture 6.2 | First assertion addressed; full conjecture unresolved |
-| Novelty and priority | Unconfirmed; directly related 2023/2025 conference work exists |
-| External human peer review / biological experiments | None reported |
+| [Sensor placement on leaking trees](projects/tree-sensor-linkages/README.md) | Exact rank and a criterion for generic local identifiability for any nonempty known leak set. |
+| [Fixation bounds on regular graphs](projects/two-graph-moran-matching/README.md) | Exact bounds in both type orientations for connected noncomplete regular graphs. |
+| [Periodic adaptation](projects/periodic-adaptation/README.md) | An attracting periodic response and a signed mean-deficit identity for a published reversible motif. |
+| [Other proofs and counterexamples](docs/PROJECT_INDEX.md) | Project-level statements, exact checks and unresolved cases. |
 
-**Unstable equilibrium does not by itself prove a periodic orbit.** The current result concerns a published mathematical model; it does not establish new behavior in living cells.
+## Software and data audits
 
-[Read the five-page note](projects/mixed-phosphorylation/manuscript/main.pdf) · [Read the proof](projects/mixed-phosphorylation/evidence/finite_kinase_proof.md) · [Inspect the certificate](projects/mixed-phosphorylation/evidence/finite_kinase_sign_certificate.json)
+[Paper-Code Auditor](projects/paper-code-auditor/README.md) · [ORD Data Auditor](projects/ord-data-auditor/README.md) · [Protein Metric Auditor](projects/protein-metric-auditor/README.md) · [MEMOTE direction audit](projects/memote-direction-auditor/README.md) · [Full index](docs/PROJECT_INDEX.md)
 
-![Numerical concentration effects: waveforms, period and amplitude](projects/mixed-phosphorylation/evidence/concentration_effects.png)
+Project records identify the tested failure, verification method and upstream review status.
 
-*Numerical illustration, not a rigorous periodic-orbit certificate. The curves show finite-concentration effects and convergence toward a limiting model.*
+## Repository guide
 
-## Verify the result
+| Directory | Use |
+| --- | --- |
+| [projects](projects/) | Individual manuscripts, proofs, benchmarks and audit packets |
+| [docs](docs/) | Full index, reproduction notes, reviewer guidance and research history |
+| [scripts](scripts/) | Reproduction entry points for the phosphorylation study |
+| [.github/workflows](.github/workflows/) | Hosted verification workflows |
 
-Python 3.12 or 3.13. The exact verification requires only SymPy and the Python standard library; no GPU, API key, or model weights are needed.
-
-```sh
-git clone https://github.com/ArtificialZeng/AI-Biology-Lab.git
-cd AI-Biology-Lab
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements-exact.txt
-python scripts/reproduce.py verify
-```
-
-This runs three checks: reconstruction of the manuscript matrix, a direct nine-equation formulation, and a second reduction with an exact tangent-space identity and Routh root count. Each uses rational arithmetic. Runs take place in a temporary copy; results are saved under ignored `artifacts/` and the archived evidence stays unchanged. See [reproduction instructions](docs/REPRODUCIBILITY.md).
-
-For numerical reproduction and figures:
-
-```sh
-python -m pip install -r requirements.txt
-python scripts/reproduce.py numerics
-python scripts/reproduce.py figure
-```
-
-## Historical research targets — inactive
-
-1. Obtain an explicit finite-K threshold and a usable remainder constant.
-2. Certify amplitude corrections and clarify scalar-projection invariance.
-3. Extend the validated parameter region.
-4. Clarify priority with directly overlapping research and obtain external human review.
-
-These remain uncompleted historical targets; no autonomous work is scheduled to pursue them. [The roadmap](docs/RESEARCH_ROADMAP.md) preserves their acceptance criteria. [External validation](docs/VALIDATION.md) is required before claims of priority or resolution of the full conjecture.
-
-## Repository map
-
-```text
-projects/mixed-phosphorylation/  First research project, proof, data, and note
-scripts/reproduce.py            Reproduction entry point
-docs/                          Research plan, validation, and media information
-.github/workflows/             Continuous exact verification
-```
-
-The project uses AI for derivation, coding, search, and review. Separate AI review passes and independent implementations are useful checks; they are not external human peer review. See [AI use and provenance](docs/AI_USE.md).
-
-## Sources and credit
-
-- Conradi, Mincheva, and Shiu (2019), [*Emergence of oscillations in a mixed-mechanism phosphorylation system*](https://doi.org/10.1007/s11538-019-00580-6), [arXiv version used](https://arxiv.org/html/1809.02886v2).
-- Suwanmajo and Krishnan (2015), [*Mixed mechanisms of multi-site phosphorylation*](https://doi.org/10.1098/rsif.2014.1405).
-- Related work requiring priority clarification: [Grasse, SBHD 2023, poster 48](https://www.sbhdberlin.org/pdf/SBHD2023_Poster_Session_Program.pdf); [Grasse and Conradi, BIOMATH 2025 abstract](https://biomath.math.bas.bg/biomath/index.php/bmcs/article/download/1787/1594/7828).
-
-Third-party papers are linked, not redistributed. Original repository code is available under the [MIT license](LICENSE); third-party code and data retain their own licenses, recorded in each project's `THIRD_PARTY.md`. Citation metadata is in [CITATION.cff](CITATION.cff).
-
-## Two-leak compartment models and loopless regression
-
-[Round 002](docs/RESEARCH_ROUND_002.md) adds exact complex/positive fiber counts for two-leak directed cycles, a necessary-and-sufficient extra-sensor criterion for two-leak bidirected trees, and a narrowly scoped COBRApy loopless-selection repair. Each package includes executable evidence and review limitations; original-author confirmation and priority remain pending.
-
-## Tree sensor result extended to arbitrary nonempty leak sets
-
-The [retained-root tree classification](projects/tree-sensor-linkages/README.md) replaces the two-leak restriction by any known set of L leak locations. If q is the maximum number of vertex-disjoint observation-to-leak paths, the generic transfer-data rank is 2n−2+q and the generic ambiguity dimension is L−q. Thus full generic local identifiability holds exactly when q=L. The earlier two-leak path rule is a corollary of this same contribution.
-
-The proof passed a separate AI mathematical review, with independent rational forest, resolvent and positive-similarity checks. The public verifiers retain their checks under `python -O` and preserve archived evidence. Historical priority and external human review remain pending; the broad multiple-input/output problem remains unresolved.
-[FASTCC direction auditor](projects/fastcc-direction-auditor/README.md) reproduces a negative-only reaction constraint defect and a minimal existing-API repair ([COBRApy PR1500](https://github.com/opencobra/cobrapy/pull/1500)): independent baseline 1 failed / 4 passed, candidate 5 passed, plus 24 exact finite cases. GLPK coverage; AI review is not maintainer acceptance or external human peer review. Related SPECTRA PR1495 is credited.
-## Density-triggered serial-transfer dynamics
-
-[Proof and reproducible checks](projects/serial-transfer-global-dynamics/) for the strict two-environment full-basin exclusion question in Schreiber (2025), with a finite-period classification. Exact analytic claims, finite computational checks, and limits of source/author verification are distinguished in the packet.
-## Positive regular CRN elimination fixture
-
-[Proof and exact checks](projects/groebner-positive-counterfamily/) for an indecomposable all-positive-rate reaction family with a globally stable positive state and regular complex zeros, yet without species-coordinate lex shape. The packet credits prior obstructions and distinguishes the mixed-coordinate repair.
+Project documentation distinguishes observational results, mathematical certificates and benchmark comparisons. [AI use and provenance](docs/AI_USE.md) · [Citation metadata](CITATION.cff) · [License](LICENSE)
