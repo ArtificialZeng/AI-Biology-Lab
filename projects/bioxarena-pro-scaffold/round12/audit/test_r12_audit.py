@@ -68,6 +68,7 @@ def _write_synthetic_h5ad(
     var_names: list[str],
     obs_index: list[str],
     float_x_only: bool = False,
+    anndata02_index_names: tuple[str, str] | None = None,
 ) -> None:
     n_c, n_g = mat.shape
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -95,7 +96,10 @@ def _write_synthetic_h5ad(
             _write_mat(hf, "X", mat.astype(np.int32))
 
         obs = hf.create_group("obs")
-        obs.create_dataset("_index", data=np.asarray(obs_index, dtype="S"))
+        obs_idx_col = anndata02_index_names[0] if anndata02_index_names else "_index"
+        if anndata02_index_names:
+            obs.attrs["_index"] = obs_idx_col.encode("utf-8")
+        obs.create_dataset(obs_idx_col, data=np.asarray([x.encode("utf-8") for x in obs_index], dtype="S"))
         obs.attrs["column-order"] = np.asarray(list(obs_df.columns), dtype="S")
         for col in obs_df.columns:
             s = obs_df[col]
@@ -105,8 +109,12 @@ def _write_synthetic_h5ad(
                 obs.create_dataset(col, data=np.asarray([str(x).encode("utf-8") for x in s], dtype="S"))
 
         var = hf.create_group("var")
-        var.create_dataset("_index", data=np.asarray(var_names, dtype="S"))
-        var.create_dataset("gene_symbol", data=np.asarray([v.encode("utf-8") for v in var_names], dtype="S"))
+        var_idx_col = anndata02_index_names[1] if anndata02_index_names else "_index"
+        if anndata02_index_names:
+            var.attrs["_index"] = var_idx_col
+        var.create_dataset(var_idx_col, data=np.asarray([v.encode("utf-8") for v in var_names], dtype="S"))
+        if var_idx_col != "gene_symbol":
+            var.create_dataset("gene_symbol", data=np.asarray([v.encode("utf-8") for v in var_names], dtype="S"))
 
 
 class TestRound12CleanRoomAudit(unittest.TestCase):
@@ -264,8 +272,11 @@ class TestRound12CleanRoomAudit(unittest.TestCase):
             _write_synthetic_h5ad(h5_p, mat, "csc", True, obs_s2, genes, barcodes)
             f_ok = check_hek293_xucao_feasibility(h5_p)
             self.assertEqual(f_ok["status"], "FEASIBLE")
-            parts_s2, meta_s2 = build_hek293_xucao_audit_parts(raw_root, hgnc, apply_author_kd40=False)
+            parts_s2, meta_s2 = build_hek293_xucao_audit_parts(
+                raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0
+            )
             self.assertEqual(meta_s2["split_branch"], "STAGE2_STRATIFIED_SEED42")
+            self.assertIsNone(meta_s2["max_pct_mt"])
             self.assertEqual(parts_s2[0].n_cells, 120)  # all 120 singlets kept (no KD>40% drop!)
             self.assertEqual(parts_s2[0].n_genes_raw, 30)  # dCas9 excluded
 
@@ -280,16 +291,120 @@ class TestRound12CleanRoomAudit(unittest.TestCase):
                 genes,
                 [barcodes[i] for i in perm_rows],
             )
-            parts_s2_perm, _ = build_hek293_xucao_audit_parts(raw_root, hgnc, apply_author_kd40=False)
+            parts_s2_perm, _ = build_hek293_xucao_audit_parts(
+                raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0
+            )
             self.assertEqual(int((parts_s2_perm[0].half_flags == 1).sum()), int((parts_s2[0].half_flags == 1).sum()))
 
             # Case C: Stage-1 `.obs` replicate parity (>=2 replicates, >=15 NTC/half)
             obs_s1 = obs_base.copy()
             obs_s1["replicate"] = [f"rep{(i % 4) + 1}" for i in range(120)]
             _write_synthetic_h5ad(h5_p, mat, "csr", False, obs_s1, genes, barcodes)
-            parts_s1, meta_s1 = build_hek293_xucao_audit_parts(raw_root, hgnc, apply_author_kd40=False)
+            parts_s1, meta_s1 = build_hek293_xucao_audit_parts(
+                raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0
+            )
             self.assertEqual(meta_s1["split_branch"], "STAGE1_OBS_REPLICATE_PARITY")
             self.assertEqual(parts_s1[0].n_cells, 120)
+
+            # Case D (Ruling A1): AnnData 0.2.0 attrs["_index"] ("cell_barcode" / "gene_symbol", NO `_index` dataset)
+            # Also verify NTC cells with nperts=0 and "nan" auxiliary guide column are retained.
+            obs_a02 = obs_base.copy()
+            obs_a02["nperts"] = np.concatenate([np.zeros(40, dtype=np.int32), np.ones(80, dtype=np.int32)])
+            obs_a02["sgRNA"] = ["nan"] * 40 + [f"sg_{i}" for i in range(40, 120)]
+            _write_synthetic_h5ad(
+                h5_p,
+                mat,
+                "csr",
+                False,
+                obs_a02,
+                genes,
+                barcodes,
+                anndata02_index_names=("cell_barcode", "gene_symbol"),
+            )
+            parts_a02, meta_a02 = build_hek293_xucao_audit_parts(
+                raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0
+            )
+            self.assertEqual(meta_a02["n_kept_cells"], 120)
+            self.assertEqual(meta_a02["n_kept_ntc"], 40)
+            self.assertEqual(parts_a02[0].n_genes_raw, 30)  # dCas9 excluded via real var.attrs["_index"]="gene_symbol"
+            self.assertEqual(parts_a02[0].var_gene_names[:3], ["G000", "G001", "G002"])
+            # Shuffling rows must yield identical split half assignment count using cell_barcode
+            obs_a02_perm = obs_a02.iloc[perm_rows].reset_index(drop=True)
+            _write_synthetic_h5ad(
+                h5_p,
+                mat[perm_rows],
+                "csr",
+                False,
+                obs_a02_perm,
+                genes,
+                [barcodes[i] for i in perm_rows],
+                anndata02_index_names=("cell_barcode", "gene_symbol"),
+            )
+            parts_a02_perm, _ = build_hek293_xucao_audit_parts(
+                raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0
+            )
+            inv_perm = np.argsort(perm_rows)
+            self.assertTrue(np.array_equal(parts_a02_perm[0].half_flags[inv_perm], parts_a02[0].half_flags))
+
+            # Case E (Ruling A1): Missing obs/var index must raise RuntimeError (NO synthetic fallback!)
+            with h5py.File(h5_p, "r+") as hf_bad:
+                del hf_bad["obs"].attrs["_index"]
+                del hf_bad["obs"]["cell_barcode"]
+            with self.assertRaises(RuntimeError) as ctx_obs:
+                build_hek293_xucao_audit_parts(raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0)
+            self.assertIn("MISSING_ANNDATA_INDEX", str(ctx_obs.exception))
+
+            _write_synthetic_h5ad(
+                h5_p,
+                mat,
+                "csr",
+                False,
+                obs_a02,
+                genes,
+                barcodes,
+                anndata02_index_names=("cell_barcode", "gene_symbol"),
+            )
+            with h5py.File(h5_p, "r+") as hf_bad_v:
+                del hf_bad_v["var"].attrs["_index"]
+                del hf_bad_v["var"]["gene_symbol"]
+            with self.assertRaises(RuntimeError) as ctx_var:
+                build_hek293_xucao_audit_parts(raw_root, hgnc, apply_author_kd40=False, min_umi=0.0, min_genes=0)
+            self.assertIn("MISSING_ANNDATA_INDEX", str(ctx_var.exception))
+
+            # Case F (Ruling B): Default >=300 UMI / >=200 genes, ZERO pct_mt cap (>50% MT still retained!)
+            mt_genes = [f"MT-G{i:02d}" for i in range(10)]
+            auto_genes = [f"HGENE{i:03d}" for i in range(230)]
+            all_b_genes = mt_genes + auto_genes + ["dCas9"]
+            hgnc_b = _make_tiny_hgnc(auto_genes + mt_genes)
+            n_cells_b = 50
+            mat_b = np.zeros((n_cells_b, len(all_b_genes)), dtype=np.int32)
+            # First 48 cells: >55% MT reads AND >=230 expressed genes, >=460 non-MT UMIs (total > 1000 UMI)
+            mat_b[:48, :10] = 60  # 600 MT UMI
+            mat_b[:48, 10:240] = 2  # 460 non-MT UMI across 230 genes -> 56.6% MT!
+            # Cell 48: fails min_umi (<300 total human UMI despite 230 genes)
+            mat_b[48, 10:240] = 1  # 230 UMI, 230 genes -> must drop
+            # Cell 49: fails min_genes (<200 detected genes despite >=300 UMI)
+            mat_b[49, 10:110] = 5  # 500 UMI, 100 genes -> must drop
+            barcodes_b = [f"HEK_{i:03d}" for i in range(n_cells_b)]
+            obs_b = pd.DataFrame({
+                "perturbation": ["control"] * 20 + ["HGENE000"] * 28 + ["HGENE001", "HGENE001"],
+                "sgRNA": ["nan"] * 20 + ["sg_0"] * 28 + ["sg_1", "sg_1"],
+                "nperts": np.concatenate([np.zeros(20, dtype=np.int32), np.ones(30, dtype=np.int32)]),
+            })
+            _write_synthetic_h5ad(
+                h5_p,
+                mat_b,
+                "csr",
+                False,
+                obs_b,
+                all_b_genes,
+                barcodes_b,
+                anndata02_index_names=("cell_barcode", "gene_symbol"),
+            )
+            parts_b, meta_b = build_hek293_xucao_audit_parts(raw_root, hgnc_b, apply_author_kd40=False)
+            self.assertIsNone(meta_b["max_pct_mt"])
+            self.assertEqual(parts_b[0].n_cells, 48)  # all 48 >55%-MT cells kept; 2 sub-QC cells dropped!
+            self.assertEqual(meta_b["n_kept_ntc"], 20)
 
     def test_4_adjudicator_and_exact_parity_against_frozen_r11(self) -> None:
         # Part 1: Verify adjudication logic across K_conf = 0, 1, 2 and partial failure

@@ -616,6 +616,81 @@ class Round12UnitTests(unittest.TestCase):
             self.assertEqual(audit_lay["x_layer_used"], "counts")
             self.assertTrue(np.allclose(parts_lay[0].umi, parts[0].umi))
 
+    def test_7_hek293_attrs_index_and_mt_ruling(self) -> None:
+        rng = np.random.default_rng(1401)
+        hgnc = _get_hgnc()
+        genes = _pick_hgnc_genes(250)
+        var_names = genes + ["MT-CO1"]
+        n_var = len(var_names)
+
+        # No replicate column in obs -> forces Stage-2 seed=42 barcode-sorted stratified 50/50 split;
+        # half of cells carry pct_mt ~ 35% (> 20%) to verify RULING A3 max_pct_mt=None default.
+        n_ntc, n_t1 = 24, 24
+        n_cells = n_ntc + n_t1
+        barcodes = [f"BC_{i:04d}" for i in range(n_cells)][::-1]
+        perts = ["control"] * n_ntc + [genes[0]] * n_t1
+        nperts = [0] * n_ntc + [1] * n_t1
+
+        X = np.full((n_cells, n_var), 2, dtype=np.int32)  # 250 * 2 = 500 >= 300 UMI, >= 200 genes
+        X[: n_ntc // 2, -1] = 280  # ~36% MT-CO1 in half of NTC cells
+        X[n_ntc : n_ntc + n_t1 // 2, -1] = 280  # ~36% MT-CO1 in half of target cells
+        for i in range(n_ntc, n_cells):
+            X[i, :15] += rng.integers(3, 8, size=15)
+        X_csr = sp.csr_matrix(X, dtype=np.float32)
+
+        def _write_ann02_h5ad(path: Path, with_attrs_index: bool = True) -> None:
+            with h5py.File(path, "w") as f:
+                xg = f.create_group("X")
+                xg.attrs["encoding-type"] = "csr_matrix"
+                xg.attrs["shape"] = np.array(X_csr.shape, dtype=np.int64)
+                xg.create_dataset("data", data=X_csr.data)
+                xg.create_dataset("indices", data=X_csr.indices.astype(np.int32))
+                xg.create_dataset("indptr", data=X_csr.indptr.astype(np.int64))
+                og = f.create_group("obs")
+                if with_attrs_index:
+                    og.attrs["_index"] = "cell_barcode"
+                og.create_dataset("cell_barcode", data=np.array(barcodes, dtype="S"))
+                og.create_dataset("perturbation", data=np.array(perts, dtype="S"))
+                og.create_dataset("nperts", data=np.array(nperts, dtype=np.int32))
+                vg = f.create_group("var")
+                if with_attrs_index:
+                    vg.attrs["_index"] = "gene_symbol"
+                vg.create_dataset("gene_symbol", data=np.array(var_names, dtype="S"))
+
+        with tempfile.TemporaryDirectory() as td:
+            raw_dir = Path(td) / "raw"
+            hdir = raw_dir / "hek293_xucao"
+            hdir.mkdir(parents=True)
+            h5_p = hdir / "XuCao2023.h5ad"
+
+            # 1) AnnData attrs['_index'] pointing to cell_barcode & gene_symbol (no _index/index dataset)
+            _write_ann02_h5ad(h5_p, with_attrs_index=True)
+            feas = check_hek293_feasibility(raw_dir, hgnc=hgnc)
+            self.assertTrue(feas["feasible"])
+            self.assertEqual(feas["obs_index_col"], "cell_barcode")
+            self.assertEqual(feas["n_cells"], n_cells)
+            self.assertEqual(feas["n_rna_features"], n_var)
+
+            # RULING A3: default max_pct_mt=None retains ALL 48 cells (including >20% MT cells)
+            parts, audit = build_hek293_parts(raw_dir, hgnc)
+            self.assertEqual(audit["obs_index_col"], "cell_barcode")
+            self.assertIsNone(audit["max_pct_mt"])
+            self.assertEqual(audit["n_qc_kept_cells"], n_cells)
+            self.assertTrue(audit["used_seed42_fallback"])
+            self.assertEqual(parts[0].var_gene_names[-1], "MT-CO1")
+
+            # Explicit max_pct_mt=20.0 drops the high-MT half cleanly for comparison
+            _, audit_mt20 = build_hek293_parts(raw_dir, hgnc, max_pct_mt=20.0)
+            self.assertEqual(audit_mt20["n_qc_kept_cells"], n_cells // 2)
+
+            # 2) Missing real index (no attrs['_index'], _index, or index) MUST fail (no synthetic fallback)
+            _write_ann02_h5ad(h5_p, with_attrs_index=False)
+            feas_bad = check_hek293_feasibility(raw_dir, hgnc=hgnc)
+            self.assertFalse(feas_bad["feasible"])
+            self.assertIn("KeyError", feas_bad["reason"])
+            with self.assertRaises(KeyError):
+                build_hek293_parts(raw_dir, hgnc)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

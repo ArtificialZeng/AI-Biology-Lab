@@ -50,7 +50,6 @@ for p in (str(R10_SRC_DIR), str(R10_SCRIPTS_DIR), str(R11_SRC_DIR)):
 from data_loader_r10 import iter_h5ad_csr_chunks_r10  # noqa: E402
 from dataset_readers_r11 import (  # noqa: E402
     _apply_min_ntc_batch_fallback,
-    _compute_h5ad_feature_subsets,
     _find_first_file,
     _is_plain_single_gene_symbol,
     _pick_column,
@@ -421,7 +420,8 @@ def build_a549_parts(
                         idx_ds.resize((cur_nnz + add_nnz,))
                         data_ds[cur_nnz : cur_nnz + add_nnz] = csc_b.data
                         idx_ds[cur_nnz : cur_nnz + add_nnz] = csc_b.indices
-                    indptr_ds[cs + 1 : ce + 1] = cur_nnz + csc_b.indptr[1:]
+                    # RULING A2 (`RULING_R12_PREFREEZE.md`): prevent int32 overflow when total nnz > 2^31 - 1
+                    indptr_ds[cs + 1 : ce + 1] = cur_nnz + csc_b.indptr[1:].astype(np.int64)
                     cur_nnz += add_nnz
                 else:
                     indptr_ds[cs + 1 : ce + 1] = cur_nnz
@@ -485,6 +485,60 @@ def build_a549_parts(
 # ==============================================================================
 
 
+def _resolve_h5ad_index_col(group: h5py.Group, group_name: str = "obs") -> str:
+    """
+    RULING A1 (`RULING_R12_PREFREEZE.md`): Resolve real `.obs`/`.var` index column cleanly.
+    Checks `group.attrs['_index']` first (AnnData `obs`/`var` schema, e.g. `cell_barcode`
+    or `gene_symbol`), then `_index` and `index` datasets. Raises `KeyError` if absent
+    (never synthesizes `cell_{i}` or integer fallback indices).
+    """
+    keys = set(group.keys())
+    attr_idx = group.attrs.get("_index")
+    if attr_idx is not None:
+        raw_val = attr_idx.reshape(-1)[0] if (isinstance(attr_idx, np.ndarray) and attr_idx.size >= 1) else attr_idx
+        attr_s = (
+            raw_val.decode("utf-8", errors="replace").strip()
+            if isinstance(raw_val, (bytes, np.bytes_))
+            else str(raw_val).strip()
+        )
+        if attr_s in keys:
+            return attr_s
+    for cand in ("_index", "index"):
+        if cand in keys:
+            return cand
+    raise KeyError(
+        f"HEK293 .h5ad {group_name} missing real index column (attrs['_index']={attr_idx!r}, keys={sorted(keys)})"
+    )
+
+
+def _compute_h5ad_feature_subsets(f: h5py.File) -> Tuple[np.ndarray, np.ndarray, List[str], List[str], List[str]]:
+    """Inspect `var` using real index (`attrs['_index']` -> `_index`/`index`) without synthetic fallback."""
+    var = f["var"]
+    var_keys = set(var.keys())
+    idx_col = _resolve_h5ad_index_col(var, group_name="var")
+    raw_idx = read_obs_or_var_col(var, idx_col)
+    n_var = len(raw_idx)
+
+    ft_col = next((c for c in ("feature_types", "feature_type") if c in var_keys), None)
+    if ft_col is not None:
+        ftypes = [str(x) for x in read_obs_or_var_col(var, ft_col)]
+        rna_rows = np.array([i for i, t in enumerate(ftypes) if t == "Gene Expression"], dtype=np.int64)
+        if len(rna_rows) == 0:
+            rna_rows = np.arange(n_var, dtype=np.int64)
+    else:
+        ftypes = ["Gene Expression"] * n_var
+        rna_rows = np.arange(n_var, dtype=np.int64)
+
+    id_col = next((c for c in ("ensembl_id", "gene_ids", "gene_id", "feature_id") if c in var_keys), idx_col)
+    name_col = next((c for c in ("gene_symbol", "gene_symbols", "feature_name", "gene_name") if c in var_keys), idx_col)
+    var_ids_all = read_obs_or_var_col(var, id_col)
+    var_names_all = read_obs_or_var_col(var, name_col)
+
+    r_ids = [str(var_ids_all[i]).strip() for i in rna_rows]
+    r_names = [str(var_names_all[i]).strip() for i in rna_rows]
+    return rna_rows, np.array([gn.startswith("MT-") for gn in r_names], dtype=bool), r_ids, r_names, ftypes
+
+
 def _sample_node_nonneg_int(node: Any, max_elems: int = 1000) -> bool:
     """Check whether sparse group or dataset sample contains non-negative integer counts."""
     if isinstance(node, h5py.Group) and "data" in node:
@@ -523,7 +577,7 @@ def check_hek293_feasibility(raw_dir: Path, hgnc: Optional[HGNCLookup] = None) -
             for lk in layer_keys:
                 if _sample_node_nonneg_int(f["layers"][lk]):
                     int_count_layers.append(f"layers/{lk}")
-            idx_col = "_index" if "_index" in obs_keys else "index"
+            idx_col = _resolve_h5ad_index_col(obs, group_name="obs")
             n_cells = len(read_obs_or_var_col(obs, idx_col))
             _, _, r_ids, r_names, _ = _compute_h5ad_feature_subsets(f)
 
@@ -580,6 +634,7 @@ def check_hek293_feasibility(raw_dir: Path, hgnc: Optional[HGNCLookup] = None) -
             "var_columns": var_keys,
             "detected_rep_col": rep_col,
             "detected_rep_labels": rep_labels[:20],
+            "obs_index_col": idx_col,
             "detected_pert_col": pert_col,
             "detected_guide_col": guide_col,
             "detected_nperts_col": nperts_col,
@@ -634,7 +689,9 @@ def build_hek293_parts(
     raw_dir: Path,
     hgnc: HGNCLookup,
     apply_author_kd40_filter: bool = False,
-    max_pct_mt: float = 20.0,
+    # RULING A3 / 裁定 B (`round12/status/RULING_R12_PREFREEZE.md`): PREREG_E §3.2 does NOT specify
+    # an MT% cutoff for HEK293 XuCao2023; keep all single-sgRNA cells passing UMI >= 300 & ngenes >= 200.
+    max_pct_mt: Optional[float] = None,
     min_ngenes: int = 200,
     min_umi: int = 300,
     min_batch_nt: int = 15,
@@ -645,6 +702,9 @@ def build_hek293_parts(
     `XuCao2023.h5ad` (`HEK293` PerturbSci-Kinetics CRISPRi):
       - `E3`: verifies raw non-negative integer UMI counts (`X` or `layers/*`); auto-selects
         integer layer when `X` is float-normalized, else raises `EXCLUDED_FEASIBILITY_Q3`.
+      - `RULING A1`: resolves real `.obs` / `.var` index (`attrs['_index']` -> `_index`/`index`),
+        raising `KeyError` on missing real indices (never synthesizes `cell_{i}`).
+      - `RULING A3 / 裁定 B`: `max_pct_mt=None` by default (no MT% filtering in `PREREG_E §3.2`).
       - All single-sgRNA cells by default (`apply_author_kd40_filter=False` avoids outcome selection).
       - Excludes synthetic dCas9/lentiviral & non-human spike-in features if present.
       - Stage 1: lexicographic 1-based parity on `.obs` replicate column if `>= 2` distinct
@@ -660,8 +720,12 @@ def build_hek293_parts(
         n_raw_cells, n_raw_var = int(shape[0]), int(shape[1])
         obs = f["obs"]
         obs_keys = set(obs.keys())
-        obs_idx_col = "_index" if "_index" in obs_keys else ("index" if "index" in obs_keys else None)
-        obs_barcodes = read_obs_or_var_col(obs, obs_idx_col) if obs_idx_col else [f"cell_{i}" for i in range(n_raw_cells)]
+        obs_idx_col = _resolve_h5ad_index_col(obs, group_name="obs")
+        obs_barcodes = [str(b).strip() for b in read_obs_or_var_col(obs, obs_idx_col)]
+        if len(obs_barcodes) != n_raw_cells:
+            raise ValueError(
+                f"HEK293 obs[{obs_idx_col!r}] length {len(obs_barcodes)} != matrix rows {n_raw_cells} in {h5ad_path}"
+            )
 
         raw_rna_rows, _, raw_rids, raw_rnames, _ = _compute_h5ad_feature_subsets(f)
         human_mask = [not _is_nonhuman_or_vector_var(nm, gid) for nm, gid in zip(raw_rnames, raw_rids)]
@@ -750,7 +814,11 @@ def build_hek293_parts(
         n_multiguide_excl = n_kd40_excl = n_nonplain_excl = 0
 
         for r_i in range(n_raw_cells):
-            if not (umi_all[r_i] >= float(min_umi) and ng_all[r_i] >= min_ngenes and pct_mt_all[r_i] <= max_pct_mt):
+            if not (
+                umi_all[r_i] >= float(min_umi)
+                and ng_all[r_i] >= min_ngenes
+                and (max_pct_mt is None or pct_mt_all[r_i] <= float(max_pct_mt))
+            ):
                 continue
             ps = str(pert_vals[r_i]).strip()
             plow = ps.lower()
@@ -865,7 +933,9 @@ def build_hek293_parts(
     )
     audit = {
         "n_raw_cells": int(n_raw_cells),
+        "obs_index_col": obs_idx_col,
         "x_layer_used": resolved_layer,
+        "max_pct_mt": (None if max_pct_mt is None else float(max_pct_mt)),
         "apply_author_kd40_filter": bool(apply_author_kd40_filter),
         "n_multiguide_or_unassigned_excluded": int(n_multiguide_excl),
         "n_kd40_excluded": int(n_kd40_excl),

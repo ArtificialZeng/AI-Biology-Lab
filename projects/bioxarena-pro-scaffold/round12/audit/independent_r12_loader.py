@@ -274,6 +274,46 @@ def _list_obs_columns(obs: h5py.Group) -> List[str]:
     return sorted(k for k in obs.keys() if k != "__categories")
 
 
+def _read_anndata_index(group: h5py.Group, group_name: str) -> List[str]:
+    """
+    Read AnnData HDF5 `/obs` or `/var` index (`RULING_R12_PREFREEZE` Ruling A1).
+    Checks `group.attrs["_index"]` first (e.g. AnnData 0.2.0 `cell_barcode` / `gene_symbol`),
+    then falls back to dataset `"_index"` and `"index"`. Raises `RuntimeError` if absent;
+    never synthesizes fake `cell_{i}` or `G{i}` names.
+    """
+    candidates: List[str] = []
+    if "_index" in group.attrs:
+        raw_attr = group.attrs["_index"]
+        if isinstance(raw_attr, (bytes, np.bytes_)):
+            idx_name = raw_attr.decode("utf-8", errors="replace").strip()
+        elif isinstance(raw_attr, np.ndarray):
+            if raw_attr.ndim == 0:
+                scalar = raw_attr.item()
+                idx_name = (
+                    scalar.decode("utf-8", errors="replace").strip()
+                    if isinstance(scalar, (bytes, np.bytes_))
+                    else str(scalar).strip()
+                )
+            elif raw_attr.size > 0:
+                idx_name = _decode_str([raw_attr.flat[0]])[0].strip()
+            else:
+                idx_name = ""
+        else:
+            idx_name = str(raw_attr).strip()
+        if idx_name:
+            candidates.append(idx_name)
+    for fallback_name in ("_index", "index"):
+        if fallback_name not in candidates:
+            candidates.append(fallback_name)
+    for cname in candidates:
+        arr = _read_obs_or_var_column(group, cname)
+        if arr is not None:
+            return [str(x).strip() for x in arr]
+    raise RuntimeError(
+        f"MISSING_ANNDATA_INDEX: /{group_name} lacks valid attrs['_index'], '_index', or 'index' dataset."
+    )
+
+
 def _sample_integer_check(h5_node: Any, max_sample: int = 200000) -> Tuple[bool, str]:
     """Verify non-negative integer counts without materializing huge arrays."""
     if isinstance(h5_node, h5py.Dataset):
@@ -355,11 +395,11 @@ def check_hek293_xucao_feasibility(h5_path: Path) -> Dict[str, Any]:
             vals = _read_obs_or_var_column(f["obs"], col)
             if vals is None:
                 continue
-            sample_vals = [str(v).strip().lower() for v in vals[:50000]]
+            uniq_vals = {str(v).strip().lower() for v in vals}
             if any(
                 v in ("control", "ntc", "nontargeting", "non-targeting", "non_targeting", "nt")
                 or v.startswith(("ntc", "nontarget", "non-target", "non_target"))
-                for v in sample_vals
+                for v in uniq_vals
             ):
                 has_ntc_label = True
                 ntc_checked_col = col
@@ -803,12 +843,20 @@ def build_hek293_xucao_audit_parts(
     raw_dir: Path,
     hgnc: HGNCLookup,
     apply_author_kd40: bool = False,
+    min_umi: float = 300.0,
+    min_genes: int = 200,
 ) -> Tuple[List[PartSpec], Dict[str, Any]]:
     """
-    Independent `hek293_xucao` (`XuCao2023.h5ad`) `h5py` reader (`PREREG_E.md §3.2`):
+    Independent `hek293_xucao` (`XuCao2023.h5ad`) `h5py` reader (`PREREG_E.md §3.2`,
+    `RULING_R12_PREFREEZE.md` Ruling A1 & Ruling B):
+      - Reads `/obs` and `/var` index strictly via `_read_anndata_index` (`attrs["_index"]`,
+        falling back to `"_index"` then `"index"`, raising `RuntimeError` if missing — never
+        falling back to synthetic `cell_{i}` / `G{i}` labels).
       - Runs mandatory pre-metric feasibility check (`EXCLUDED_FEASIBILITY_Q3` if lacking
         integer raw UMI counts or per-cell sgRNA/NTC labels).
-      - Applies authors' single-sgRNA rule without post-hoc `>40%` KD filtering by default
+      - **NO mitochondrial percentage filter (`max_pct_mt = None`, Ruling B):** keeps all
+        QC-valid singlets (`>=300` UMI and `>=200` detected human genes by default, no `pct_mt` cap).
+      - Applies single-sgRNA / NTC rule without post-hoc `>40%` KD filtering by default
         (`apply_author_kd40=False` per Directive §3).
       - Uses Two-Stage deterministic split:
           Stage 1: sorted `.obs` replicate odd/even parity if >= 2 replicates & >= 15 NTC/half;
@@ -821,6 +869,13 @@ def build_hek293_xucao_audit_parts(
 
     count_path = str(feas["chosen_counts_path"]).lstrip("/")
     with h5py.File(h5_p, "r") as f:
+        if "obs" not in f or "var" not in f:
+            raise RuntimeError("MISSING_ANNDATA_GROUP: XuCao2023.h5ad requires both /obs and /var groups.")
+        obs = f["obs"]
+        var = f["var"]
+        barcodes = _read_anndata_index(obs, "obs")
+        var_ids_raw = _read_anndata_index(var, "var")
+
         x_node = f[count_path]
         enc_attr = x_node.attrs.get("encoding-type", "")
         if isinstance(enc_attr, bytes):
@@ -831,18 +886,19 @@ def build_hek293_xucao_audit_parts(
         elif "csc" in str(enc_attr).lower():
             enc = "csc"
             sh = x_node.attrs.get("shape", None)
-            n_cells_raw = len(f["obs"]["_index"][()]) if "_index" in f["obs"] else int(sh[0])
-            n_genes_raw = len(f["var"]["_index"][()]) if "_index" in f["var"] else int(sh[1])
+            n_cells_raw = len(barcodes) if len(barcodes) > 0 else int(sh[0])
+            n_genes_raw = len(var_ids_raw) if len(var_ids_raw) > 0 else int(sh[1])
         else:
             enc = "csr"
             sh = x_node.attrs.get("shape", None)
             n_cells_raw = int(sh[0]) if sh is not None else len(x_node["indptr"]) - 1
-            n_genes_raw = int(sh[1]) if sh is not None else (len(f["var"]["_index"][()]) if "_index" in f["var"] else 0)
+            n_genes_raw = int(sh[1]) if sh is not None else len(var_ids_raw)
 
-        obs = f["obs"]
-        var = f["var"]
-        barcodes = _decode_str(obs["_index"][()]) if "_index" in obs else [f"cell_{i}" for i in range(n_cells_raw)]
-        var_ids_raw = _decode_str(var["_index"][()]) if "_index" in var else [f"G{i}" for i in range(n_genes_raw)]
+        if len(barcodes) != n_cells_raw or len(var_ids_raw) != n_genes_raw:
+            raise RuntimeError(
+                f"INDEX_LENGTH_MISMATCH: obs={len(barcodes)} vs matrix_rows={n_cells_raw}, "
+                f"var={len(var_ids_raw)} vs matrix_cols={n_genes_raw}"
+            )
 
         v_sym = None
         for vc in ("gene_symbol", "gene_name", "symbol", "feature_name"):
@@ -916,31 +972,42 @@ def build_hek293_xucao_audit_parts(
         encoding=enc,
     )
     umi_raw = np.zeros(n_cells_raw, dtype=np.float64)
+    ngenes_raw = np.zeros(n_cells_raw, dtype=np.int64)
     for s0 in range(0, n_cells_raw, 16384):
         e0 = min(n_cells_raw, s0 + 16384)
         blk = dummy_rc(s0, e0)[:, keep_gene_cols]
         umi_raw[s0:e0] = blk.sum(axis=1)
+        ngenes_raw[s0:e0] = (blk > 0).sum(axis=1)
 
     is_ntc_raw = np.zeros(n_cells_raw, dtype=bool)
     valid_singlet = np.ones(n_cells_raw, dtype=bool)
     canon_targets_raw: List[str] = [""] * n_cells_raw
     raw_targets_raw: List[str] = [""] * n_cells_raw
 
+    ntc_exact = ("control", "ntc", "nontargeting", "non-targeting", "non_targeting", "nt", "scrambled", "ctrl")
+    bad_tokens = ("unassigned", "multiplet", "doublet", "empty", "nan", "none")
+
+    def _is_ntc_token(tok: str) -> bool:
+        return (tok in ntc_exact) or tok.startswith(("ntc", "nontarget", "non-target", "non_target"))
+
     for i in range(n_cells_raw):
         p_str = str(pert_arr[i]).strip() if pert_arr is not None else ""
         g_str = str(guide_arr[i]).strip() if guide_arr is not None else p_str
         p_lo, g_lo = p_str.lower(), g_str.lower()
-        if (not p_str and not g_str) or any(x in (p_lo, g_lo) for x in ("unassigned", "multiplet", "doublet", "empty", "nan", "none")):
+        if any(x in (p_lo, g_lo) for x in ("multiplet", "doublet")):
             valid_singlet[i] = False
             continue
         if nperts_arr is not None and np.isfinite(nperts_arr[i]) and float(nperts_arr[i]) > 1.0 + 1e-6:
             valid_singlet[i] = False
             continue
-        if any(sep in g_str for sep in (",", ";", "|")) and p_lo not in ("control", "ntc"):
+        if _is_ntc_token(p_lo) or (p_lo in ("", "nan", "none") and _is_ntc_token(g_lo)):
+            is_ntc_raw[i] = True
+            continue
+        if (not p_str and not g_str) or p_lo in bad_tokens or g_lo == "unassigned":
             valid_singlet[i] = False
             continue
-        if p_lo in ("control", "ntc", "nontargeting", "non-targeting", "non_targeting", "nt") or p_lo.startswith(("ntc", "nontarget", "non-target")):
-            is_ntc_raw[i] = True
+        if any(sep in g_str for sep in (",", ";", "|")) or any(sep in p_str for sep in (",", ";", "|")):
+            valid_singlet[i] = False
             continue
         if apply_author_kd40 and kd_arr is not None and np.isfinite(kd_arr[i]) and float(kd_arr[i]) <= 0.40:
             valid_singlet[i] = False
@@ -949,7 +1016,8 @@ def build_hek293_xucao_audit_parts(
         canon_targets_raw[i] = canon_s
         raw_targets_raw[i] = p_str
 
-    valid_singlet &= umi_raw > 0.0
+    # PREREG_E §3.2 + RULING_R12_PREFREEZE Ruling B: UMI >= 300, genes >= 200, NO pct_mt filter
+    valid_singlet &= (umi_raw > 0.0) & (umi_raw >= float(min_umi)) & (ngenes_raw >= int(min_genes))
     keep_rows = np.flatnonzero(valid_singlet)
 
     # Two-Stage Split-Half Rule (PREREG_E §3.2)
@@ -1053,6 +1121,9 @@ def build_hek293_xucao_audit_parts(
         "split_branch": split_branch,
         "rep_col_used": rep_col_used,
         "apply_author_kd40": bool(apply_author_kd40),
+        "max_pct_mt": None,
+        "min_umi": float(min_umi),
+        "min_genes": int(min_genes),
         "n_cells_raw": int(n_cells_raw),
         "n_kept_cells": int(len(keep_rows)),
         "n_kept_ntc": int(nt_kept.sum()),

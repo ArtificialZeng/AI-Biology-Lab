@@ -1,40 +1,36 @@
-[A-T2] ROUND 12 (`PREREG_E` v2 LOCK-ALIGNED @ 4c606f4) CODE READY 2026-11-22T23:12+08:00
+[A-T2] ROUND 12 (`PREREG_E` v2 + RULING A1–A3 PATCHED @ 4c606f4) CODE PATCHED 2026-11-23T01:24+08:00
 
-1. Strict Lock Alignment, Blinding & Freeze Integrity:
-   - Aligned strictly to locked `PREREG_E.md` (`commit 4c606f4732ea080768e27757c689d40d7892cd3d`, sha256 `d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924`) and `round12/shared/R12_DOWNLOAD_PLAN.md` (sha256 `e3826e09dd4326b1724d25732bb05d3d4dc72681ffc283b4a5efba57bd1555ed`).
+1. Strict Ruling A1–A3 Compliance, Blinding & Freeze Integrity:
+   - Applied pre-freeze Ruling A1–A3 from `round12/status/RULING_R12_PREFREEZE.md`:
+     * Only `round12/src/dataset_readers_r12.py` (+ unit test addition in `round12/src/test_unit_r12.py`) was modified.
+     * Zero changes to `metrics_r12.py`, `adjudicate_r12.py`, `run_eval_r12.py`, `data_loader_r12.py`, or `__init__.py` (all SHA-256 hashes identical to locked verification).
    - `shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`: exited `0`, `22` `: OK` (zero edits to `round10/`).
    - `shasum -a 256 -c round11/status/FREEZE_MANIFEST_R11.txt`: exited `0`, `41` `: OK` (zero edits to `round11/`).
    - Blinding compliance: zero access to `round12/shared/lines/` or `round12/shared/raw/`.
-   - Post-final-edit SHA-256 checksums of `round12/src/*.py`:
-     * `__init__.py`: `148a8b661cbfdc9aa7ad99aede4b3a3efcf6d7c4bebea932e577ff99cf2c5089`
-     * `adjudicate_r12.py`: `b1954bb6ae1a857e3e34619215544e000653510492dd1f451b1eb133bc3fe64f`
-     * `data_loader_r12.py`: `3f28ecb9a442dbe4e1c792552443412f451affe3a41ef5abddca7bd9bb3e3111`
-     * `dataset_readers_r12.py`: `f001f79f2e4d045c510ee892da1d9711bef56a53bc8429dfa77856fc7fb71511`
-     * `metrics_r12.py`: `68513e42d9b417cab3a523224bd3ab3313077edf7c22ee086d1b933c9424d0a7`
-     * `run_eval_r12.py`: `eb812b3038a20b66072be3aa1bd012ae8f5bb97cabf2e26d3f2e69cad82fec04`
-     * `test_unit_r12.py`: `f5b0dcfb34a20dcf6776a85fc87a3583ee2932beba57b3f49af5855fa25bb3e5`
+   - Post-patch SHA-256 checksums of `round12/src/*.py`:
+     * `__init__.py`: `148a8b661cbfdc9aa7ad99aede4b3a3efcf6d7c4bebea932e577ff99cf2c5089` (unchanged)
+     * `adjudicate_r12.py`: `b1954bb6ae1a857e3e34619215544e000653510492dd1f451b1eb133bc3fe64f` (unchanged)
+     * `data_loader_r12.py`: `3f28ecb9a442dbe4e1c792552443412f451affe3a41ef5abddca7bd9bb3e3111` (unchanged)
+     * `dataset_readers_r12.py`: `5976080e24f38ac26f29f0fa5214258debc6005a93e3de967e2022c4d23c7e80` (patched A1–A3)
+     * `metrics_r12.py`: `68513e42d9b417cab3a523224bd3ab3313077edf7c22ee086d1b933c9424d0a7` (unchanged)
+     * `run_eval_r12.py`: `eb812b3038a20b66072be3aa1bd012ae8f5bb97cabf2e26d3f2e69cad82fec04` (unchanged)
+     * `test_unit_r12.py`: `aa4e7300ec12e9c3179649835e5d5de176f4c7bbbe09199f5159b2c26e8f8816` (+ `test_7` synthetic `attrs['_index']` + MT ruling test)
 
-2. Final `PREREG_E v2` Alignment Summary in `round12/src/`:
-   - `dataset_readers_r12.py`:
-     * `build_a549_parts` (`a549_ko` / `a549_ko_cas9pos`, `GSE345058`): enforces `cell_id` uniqueness/non-empty validation (when `cell_id` column is present), `Condition == "Nontargeting"` + `Perturbation == "Nontargeting"` consistency (excluding mismatches), `Lane`-first NTC centering unit priority, `Half A = batch1 + batch3` vs `Half B = batch2 + batch4`, excludes `Cas9`/`CAS9` (`genome == "CAS9"`), and keeps CSC `.h5` cache in writable `.cache_<line>` directory under `out_root` when invoked via `prepare_r12_line`.
-     * `check_hek293_feasibility` & `build_hek293_parts` (`hek293_xucao`, `XuCao2023.h5ad`): implements `E3` integer UMI check across `/X` & `/layers/*` plus single-sgRNA (`sgRNA` / `nperts`) & NTC detection; defaults `x_layer="auto"` in `build_hek293_parts` via `_resolve_hek293_integer_x_layer()` so integer `layers/counts` / `layers/raw_counts` is auto-selected if `/X` is float-normalized, or raises `RuntimeError("EXCLUDED_FEASIBILITY_Q3: ...")` if no integer count layer exists; keeps `apply_author_kd40_filter=False` default + Stage-1 replicate parity / Stage-2 barcode-sorted `seed=42` split.
-   - `metrics_r12.py` & `run_eval_r12.py`:
-     * Deduplicated `_eval_n5_direction` + parameterized `_calc_n5_vectorized(..., single_half=...)` cleanly across both `compute_n5_suite_r12` (`all_nontarget`) and newly added **`compute_n5_resp_top50_split_r12`** (`PREREG_E §5.3` `resp_top50_split` `A->B`/`B->A` out-of-sample split-half `N_5` disattenuated by single-half cone ceiling `sqrt(rho_AB_cone)`), wired into `evaluate_target_against_sources_r12` (`extra["n5_cone_split_metrics"]`) and `summary["n5_cone_split_metrics"]`.
-   - `adjudicate_r12.py`:
-     * Enforces mandatory `a549` presence (`PREREG_E §0.2.2`: raises `ValueError` if non-empty `confirmatory_lines` excludes `a549*`).
-     * Renders both `N_5 all_nontarget` and `N_5 resp_top50_split` tables (`ZERO_BY_EXACT_CONSTRUCTION`, `SUPPRESSED_BY_CONE_CONSTRUCTION`), plus dedicated `Mandatory Governance, Provenance & Prior-Art Disclosures` (`E6` post-hoc provenance, Claim 2 `r_orth_cal`-only non-mechanistic scope, `CRISPRi->CRISPRko` modality boundary & `K_conf=1` single-line generalizability limit, prior-art **Kawsar et al. 2026 `CanPert/CASTER` (`doi:10.64898/2026.11.15.766815`)**, **Liu et al. 2026 (`GSE345058`)**, **Xu & Cao 2023**, and `§5` reporting-only boundaries).
+2. Ruling A1–A3 Changes in `round12/src/dataset_readers_r12.py`:
+   - **(A1) HEK293 real `obs`/`var` index resolution (`_resolve_h5ad_index_col` + local R12 `_compute_h5ad_feature_subsets` + `check_hek293_feasibility` + `build_hek293_parts`)**:
+     * Resolves `group.attrs['_index']` first (AnnData schema, e.g. `cell_barcode` for `obs`, `gene_symbol` for `var`), then `_index` / `index` datasets.
+     * Removed all synthetic index fallbacks (`cell_{i}` and `str(i)` ranges); missing real indices raise `KeyError` (and return `feasible=False` cleanly in `check_hek293_feasibility`).
+     * `round11/src/dataset_readers_r11.py` was left completely untouched/frozen; local `_compute_h5ad_feature_subsets` override lives strictly in `dataset_readers_r12.py`.
+   - **(A2) A549 `indptr` `int64` cast (pre-patch line 424)**:
+     * Updated to `indptr_ds[cs + 1 : ce + 1] = cur_nnz + csc_b.indptr[1:].astype(np.int64)` to prevent `int32` overflow when `nnz > 2^31 - 1`.
+   - **(A3) HEK293 mitochondrial cutoff removed (`max_pct_mt: Optional[float] = None`)**:
+     * Changed `build_hek293_parts(..., max_pct_mt: Optional[float] = None)` (citing `round12/status/RULING_R12_PREFREEZE.md` Ruling B / A3) so zero cells are filtered on `pct_mt` by default while still preserving optional numeric threshold support if explicitly passed.
 
-3. Post-Final-Edit Verification (`python3 -I`):
+3. Post-Patch Verification (`python3 -I`):
    - `python3 -I -m pyflakes round12/src/*.py`: exited `0` (0 warnings/errors).
-   - `python3 -I round12/src/test_unit_r12.py -v`: **Ran 6 tests in 3.488s — OK**:
-     * `test_1`: blinding gate (`PREREG_E_COMMIT.txt` + `CODE_FREEZE_R12.txt`) & `CONFIRMATORY_LINES_R12.txt` parsing.
-     * `test_2`: Exact `<= 1e-12` parity of `compute_joint_sa8_split_minus_all_r12` vs `exploratory_core.py`, plus 6-source paired `FCT - Mis_s`.
-     * `test_3`: Exact `<= 1e-12` parity of `compute_n5_suite_r12` & `compute_n5_perm100_r12` vs `run_n5_audit.py` + `compute_n5_resp_top50_split_r12` (`r_cone_sp=0.0` exact construction zeros & `r2_n5 >= 0.99` cone suppression + paired `FCT - Mis_s`).
-     * `test_4`: `a549`-mandatory confirmatory guard (`ValueError` on `["hek293"]` alone), `K_conf=0/1/2` & IUT guards (`H-E1b`, `Addendum A1`, `H-E2b`), and `PREREG_E §5/§7.2/§8` report disclosure assertions.
-     * `test_5`: Synthetic `a549_ko` reader testing `Condition == "Nontargeting"` consistency, duplicate `cell_id` rejection (`ValueError`), both `(cells x genes)` and `(genes x cells)` MTX orientations, `CAS9` removal, `exclude_zero_cas9`, `batch1+3 vs batch2+4`, and end-to-end `process_r10_line`.
-     * `test_6`: Synthetic `hek293_xucao` reader verifying float-only `/X` rejection (`EXCLUDED_FEASIBILITY_Q3`), auto-selection of `layers/counts` with default `x_layer="auto"`, CSR/CSC `.h5ad`, `dCas9` removal, Stage-1 parity / Stage-2 `seed=42` split, and default `apply_author_kd40_filter=False` vs `True`.
-   - **Post-Lock Blinding Gate (`python3 -I round12/src/run_eval_r12.py --phase holdout_r12`)**: exited `1` with `RuntimeError: CODE_FREEZE_R12 hard gate blocked: missing/empty .../round12/status/CODE_FREEZE_R12.txt` (`PREREG_E_COMMIT.txt` verified, `CODE_FREEZE_R12.txt` still required).
-   - **Full-Scale Dev Check 1 (`--phase dev_r9 --source-mode r9_6 --lines vcc2025_h1 --n-boot 4000 --n-perm 100 --seed 20261201`)**: exited `0` in `196.48s` (`N=80`: `H-E1b` paired `FCT - Mis_s` 5/5 `+0.0890` to `+0.1560`; `H-E2b E1(split)-E1(all)` `+0.2663 [+0.2088, +0.3217]`; `N_5 all_nontarget FCT` `+0.1088 [+0.0907, +0.1291]`; `N_5 resp_top50_split FCT` `+0.0535 [+0.0299, +0.0891]`, zero-by-construction controls `+0.0000` [`eta=0.0000`]).
-   - **Full-Scale Dev Check 2 (`--phase dev_r10 --source-mode r9_r10_8 --lines dld1 --n-boot 4000 --n-perm 100 --seed 20261201`)**: exited `0` in `327.88s` (`N=96`: `H-E1b` paired `FCT - Mis_s` 7/7 `+0.0628` to `+0.1381`; `H-E2b` `+0.1575 [+0.1100, +0.2033]`; `N_5 all_nontarget FCT` `+0.1129 [+0.0846, +0.1445]`; `N_5 resp_top50_split FCT` `+0.0581 [+0.0276, +0.0948]`, `E1_ConstMed` cone-suppressed `R2_N5=0.999999`).
+   - `python3 -I round12/src/test_unit_r12.py -v`: **Ran 7 tests in 3.554s — OK**:
+     * `test_1`–`test_6`: all original unit, parity (`<= 1e-12`), adjudicator, A549 (`Condition`/`cell_id`/`CAS9`), and HEK293 (`E3` float `/X` -> `layers/counts` auto-switch / `EXCLUDED_FEASIBILITY_Q3`, Stage 1/2 split) tests pass cleanly.
+     * `test_7_hek293_attrs_index_and_mt_ruling`: synthetic AnnData `attrs['_index']` (`obs`=`cell_barcode`, `var`=`gene_symbol` without `_index`/`index` datasets) passes feasibility + Stage-2 `seed=42` barcode-sorted split; default `max_pct_mt=None` retains high-MT cells (~36% MT, all `48/48` kept vs `24/48` under explicit `max_pct_mt=20.0`); removing `attrs['_index']` cleanly fails `check_hek293_feasibility` and raises `KeyError` in `build_hek293_parts`.
+   - *(Note: prior to this adapter-only A1–A3 patch, full `n_boot=4000, n_perm=100` dev checks on `dev_r9 vcc2025_h1` [196.48s] and `dev_r10 dld1 r9_r10_8` [327.88s] plus `--phase holdout_r12` gate block were verified on identical unchanged evaluation modules `metrics_r12.py` / `adjudicate_r12.py` / `run_eval_r12.py` / `data_loader_r12.py`.)*
 
-R12_CODE_READY
+R12_CODE_PATCHED

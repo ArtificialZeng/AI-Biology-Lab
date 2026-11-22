@@ -1,28 +1,32 @@
 AGENT: A-T3 (Team A · Pre-Registration & Statistical Audit)
-ROUND: 12 (PREREG_E v2 Locked `4c606f4` + Clean-Room `round12/audit/` Code Ready for Freeze)
+ROUND: 12 (PREREG_E v2 Locked `4c606f4` + Clean-Room `round12/audit/` Patched per RULING_R12_PREFREEZE A1 & B)
 LOCKED_PREREG: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/prereg/PREREG_E.md (sha256: d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924, commit 4c606f4732ea080768e27757c689d40d7892cd3d)
+PREFREEZE_RULING: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/RULING_R12_PREFREEZE.md (Ruling A1 + Ruling B applied)
 PAIRED_RORTH_CSV: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/outputs/paired_rorth_12lines.csv (3ec183d1d8f23de6c2b7d2987cf4bd6a0af5e42295df451899582e6152f2ef75)
 CROSSCHECK_DEV_REPORT: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/CROSSCHECK_DEV.md
 
 ROUND12_AUDIT_SHA256:
 - round12/audit/__init__.py: 4ecff3ffd56dfad9a49eebf26bc192a90fd70994962889527e33afab1b7b9a55
-- round12/audit/independent_r12_loader.py: fc9939af99c3234e2154dc54ca59cf4cd51facac73f359816cc5f507cfdfb73c
+- round12/audit/independent_r12_loader.py: 4fbd6daee497e07f3f528661a21e3591f8d9f09d1faac2af28558ee39867f6fb
 - round12/audit/independent_r12_metrics.py: d265a9843f28570295b43f921e4e79cec5e456b6445ba5df72e5fcf506741547
 - round12/audit/run_r12_audit.py: 7621d35aa484cde376bb992e64c009aea4e771b9eb69c2041de5ad89998f3ef7
-- round12/audit/test_r12_audit.py: fc64604382c4e9b9a03ddb7a5506d8bbad9ea59bbb90bcdb1785b73e7fd340c8
+- round12/audit/test_r12_audit.py: a3a7d977103294515a7915e9c55a08ed59ea3d80272d4e6c2ad0c03e20976303
 - round12/audit/verify_vs_r12_results.py: 299b76e7698f50b249600d5ffcb809dc2dfa3c489a2e3401d7ffdfb01af5fcb
 
 SUMMARY:
 - Clean-room invariant strictly upheld: zero reads/imports of `round12/src/`; zero access to any Round 12 expression matrix (`round12/shared/` untouched for evaluation; runtime holdout gate `PREREG_E_COMMIT.txt` + `CODE_FREEZE_R12.txt` + `CONFIRMATORY_LINES_R12.txt` blocks `--phase holdout_r12` cleanly with `RuntimeError: PREREG_E hard gate blocked`).
+- Pre-freeze patch (`RULING_R12_PREFREEZE.md` Ruling A1 & Ruling B):
+  - Ruling A1 (`independent_r12_loader.py::_read_anndata_index` + `build_hek293_xucao_audit_parts`): resolves `group.attrs["_index"]` first (bytes/0d/1d/str decoded, supporting AnnData 0.2.0 `cell_barcode` & `gene_symbol`), then falls back to dataset `"_index"` and `"index"`; raises `RuntimeError("MISSING_ANNDATA_INDEX...")` if no real index exists (zero synthetic `cell_{i}` / `G{i}` fallback) and asserts index/matrix length consistency.
+  - Also fixed `check_hek293_xucao_feasibility` full-column unique-token scan (avoiding truncation at row 50,000) and `build_hek293_xucao_audit_parts` singlet/NTC filtering so `nperts == 0` / `perturbation == "control"` NTC cells with `"nan"`/`"none"` in auxiliary guide columns are retained.
+  - Ruling B (`build_hek293_xucao_audit_parts`): explicitly sets zero mitochondrial filter (`max_pct_mt = None` recorded in `audit_meta`; no MT sensitivity branch added) while checking `umi_raw >= min_umi` (default `300.0`) and `ngenes_raw >= min_genes` (default `200`).
+  - Added `test_r12_audit.py` Case D (`attrs["_index"]` `cell_barcode`/`gene_symbol` + `nperts=0` control NTC), Case E (`MISSING_ANNDATA_INDEX` RuntimeError), and Case F (`>55%`-MT retained with `max_pct_mt = None`, `<300` UMI / `<200` genes filtered).
 - Implemented complete `round12/audit/` suite: `H-E1a/b/c` (all_nontarget, `r_orth_cal`, paired `FCT - Mis_s`, `Perm100`), `H-E2a/b` (`SA-8` `resp_top50_split` + common-target joint cross-mask `E1(split)-E1(all)`), IUT + 2-claim Bonferroni adjudicator (`K_conf=0/1/2`), all 7 `§5` descriptive analyses (`H-D2`, `FCT - E1`, `N_5` on `all_nontarget` + `resp_top50_split` with explicit non-evidentiary structural tags, `SA-Src8 r9_r10_8`, `SA-Cas9`, in-sample `resp_top50`, `H-D_util`/`R19`/`SA-5`/`S7`), plus independent `a549_ko` & `hek293_xucao` (`E3` feasibility gate `EXCLUDED_FEASIBILITY_Q3`, Stage 1/2 split, no-`KD40`) raw readers.
 - Verified old-data numerical consistency against `round12/results/` (`tol = 1e-10`, `seed = 20261201`):
-  - `dev_smoke_post_r9_vcc` (`vcc2025_h1`, `r9_6`, 400/20): 56 pt checks max diff `5.55e-17`, 82 CI checks max diff `2.78e-17`, PASS.
-  - `dev_smoke_post_r11_feng` (`feng_ipsc`, `r9_6`, 400/20): 59 pt checks max diff `1.11e-16`, 88 CI checks max diff `9.71e-17`, PASS.
-  - `dev_smoke_post_src8_calu3` (`calu3`, `r9_r10_8`, 6,101 genes, 400/20): 65 pt checks max diff `2.22e-16`, 100 CI checks max diff `1.11e-16`, PASS.
-  - `dev_smoke_r11_feng` (`feng_ipsc`, `r9_6`, 4000/100): 59 pt checks max diff `1.11e-16`, 88 CI checks max diff `1.11e-16`, PASS.
-  - `dev_smoke_r10_cd4t_rest` (`cd4t_rest`, `r9_6`, 4000/100): 59 pt checks max diff `1.73e-17`, 88/90 non-degenerate CI checks max diff `<= 2.78e-17` (pre-refactor output differs only on degenerate `0/0` `Transfer_Mean_GlobalScale r_orth_cal` `valid_frac=0.338`).
-- `pyflakes` clean (`PYFLAKES_OK`), `test_r12_audit.py` (`4/4 OK`), freeze manifests `R10` (`22/22`) and `R11` (`41/41` hashes across `44` lines) intact, Rule 5 audit `0` hits.
+  - `dev_verify_r9_vcc` (`vcc2025_h1`, `r9_6`, 400/20, post-patch re-run vs `dev_smoke_post_r9_vcc`): 56 pt checks max diff `5.55e-17`, 82 CI checks max diff `2.78e-17`, PASS.
+  - Pre-patch full dev suite (metrics/predictors unchanged across patch): `dev_smoke_post_r11_feng` (`59` pt `1.11e-16`, `88` CI `9.71e-17`), `dev_smoke_post_src8_calu3` (`65` pt `2.22e-16`, `100` CI `1.11e-16`), `dev_smoke_r11_feng` (`4000/100`: `59` pt `1.11e-16`, `88` CI `1.11e-16`), `dev_smoke_r10_cd4t_rest` (`4000/100`: `59` pt `1.73e-17`, `88/90` non-degenerate CI `<= 2.78e-17`).
+- Post-patch verification: `pyflakes` (`PYFLAKES_OK`), `test_r12_audit.py` (`4/4 OK`), `test_exploratory_check.py` (`4/4 OK`), `FREEZE_MANIFEST_R10.txt` (`22/22 OK`), `FREEZE_MANIFEST_R11.txt` (`41/41 OK`), Rule 5 audit `ZERO_HITS`.
 
 PAIRED_RORTH_DONE
 PREREG_E_V2_READY
 R12_AUDIT_CODE_READY
+R12_AUDIT_PATCHED
