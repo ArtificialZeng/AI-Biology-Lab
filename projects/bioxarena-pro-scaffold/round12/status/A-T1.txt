@@ -70,3 +70,30 @@ R12_A549_QC_DONE_HEK293_BLOCKED
      * `shared/scripts/verify_r12_lines.py`: `ab28964d6d948b015fde291c889d6433df7c05eb510916da0488da2817d0a461`
 
 R12_QC_DONE
+
+---
+9. **RULING_R12_HEK293_UNITS REBUILD STARTED (`2026-11-23T07:05+08:00`)**:
+   - Verified `round12/status/A-T2.txt` ends with `R12_CODE_PATCHED2` and `round12/src/dataset_readers_r12.py` sha256 = `cc196a4476b1e051ac840e293fbc6ad4b59613dfb39e80233a5d2378131e5b94`.
+   - Archived `CONFIRMATORY_LINES_R12.txt` verbatim -> `CONFIRMATORY_LINES_R12_SUPERSEDED_v1.txt` (`cmp` OK); deleted old `round12/shared/lines/hek293_xucao`; left `a549_ko` and `a549_ko_cas9pos` untouched.
+   - Rebuilding `hek293_xucao` in background via `prepare_r12_lines.py --lines hek293_xucao` (`2 batches`: `half_1` / `half_2`, `max_pct_mt=None`).
+
+10. **RULING_R12_HEK293_UNITS REBUILD VERIFIED, ARCHIVED v1, & MECHANICAL K_conf=1 FINALIZED (`2026-11-23T07:08+08:00`)**:
+    - **`hek293_xucao` Rebuilt (`round12/shared/lines/hek293_xucao/`) via `cc196a44...5b94` (`max_pct_mt=None`, Stage 2 `batches = half_1/half_2`)**:
+      * `98,274` kept cells (`95,517` targeting + `2,757` NTC: `Half A = 1,378 >= 15`, `Half B = 1,379 >= 15`, `n_batches=2`).
+      * Finite genes `22,185 -> 22,155` canonical (`|G_eval| = 6,126 >= 3,000`, `5,965` raw); `19/200` reproducible (`19/19` `half_valid`); `17` shared with `r9_6`; **`n_eval_targets = 16 < 50`** (`16/16` `half_valid`).
+      * Contrast vs superseded v1 (`batch_0`): dropped from `n_eval_targets=62` (`96/200` rep, `29,194` genes) to `n_eval_targets=16` (`19/200` rep, `22,155` genes).
+    - **A549 Lines Verified Untouched**: `a549_ko` (`Nov 23 00:59`) and `a549_ko_cas9pos` (`Nov 23 01:14`) untouched to the byte (`n_eval_targets=445`, `|G_eval|=6,121`).
+    - **Mechanical Gate & Outputs Written**:
+      * Archived v1 -> `status/CONFIRMATORY_LINES_R12_SUPERSEDED_v1.txt` (`sha256: b0f10a57992fc81355cce30764dc777b4c6ce60632944bcefa561e65b1fb4023`).
+      * Updated `shared/R12_QC_COUNTS.md` (`sha256: e31c4c709618c876b59d80d5c5f09122885d396c17820bd229650ab87665b9c0`) with D3 pre/post counts, `percent_mito` quantiles, `QARS` exclusion, and `PREREG_E §1 / §2.2` `K_conf=1` limited generalizability disclosure (`推广性有限`).
+      * Rewrote `status/CONFIRMATORY_LINES_R12.txt` (`sha256: 1509e9c5fd466c013d2c3b5c32e910dd93908acffeb536473d47cc0ff9f524f7`): `a549_ko` = confirmatory (`K_CONF=1`); `hek293_xucao` = `SECONDARY_ONLY` (`16 < 50`).
+    - **New / Updated File SHA-256 Digests**:
+      * `shared/lines/hek293_xucao/ctrl_cells.npz`: `f57993098f92ca662be153354f94d83ee44033a3132e92d67f37e27c88ce8947`
+      * `shared/lines/hek293_xucao/genes.txt`: `fbc35ebaf7e18d377eb175867f4b5be67486af3c94d43200784ae726de7b2692`
+      * `shared/lines/hek293_xucao/line_metadata.json`: `84e23f330e8e5bea3ef3ca874bf2dcab8ff3392fd9d28cfb89f5226c3a6e0f89`
+      * `shared/lines/hek293_xucao/pseudobulk_delta.npz`: `5b20a1fa6630b857357f8fd0ec438968fdeadb42d8c1df0d0c8f908c53d37f87`
+      * `shared/lines/hek293_xucao/targets.txt`: `f1903bf7c381635ac7ee1e4bd950dc9048920f62585fd9c5b6ee1be4d89ecbf9`
+      * `shared/scripts/verify_r12_lines.py`: `f9363a61f4408e85b9874b84348e707c71d0c3e7478968a05a65920b03949e2c`
+    - Zero predictions, correlations, or evaluation metrics computed; zero `git` operations executed.
+
+R12_QC_DONE2

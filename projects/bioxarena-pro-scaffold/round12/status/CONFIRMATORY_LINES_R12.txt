@@ -1,9 +1,8 @@
 # Round 12 Mechanical Confirmatory Line Gate (PREREG_E §2.2, §3.2, §3.3)
 # Thresholds: candidate in {a549_ko, hek293_xucao}, feasibility==PASS, n_eval_targets >= 50, |G_eval(t)| >= 3000, NTC_half_A >= 15 & NTC_half_B >= 15
 # a549_ko: PASS_CONFIRMATORY (n_eval_targets=445 >= 50, |G_eval|=6121 >= 3000, NTC_half_A=23758, NTC_half_B=21562)
-# hek293_xucao: PASS_CONFIRMATORY (n_eval_targets=62 >= 50, |G_eval|=6127 >= 3000, NTC_half_A=1378, NTC_half_B=1379)
+# hek293_xucao: SECONDARY_ONLY (n_eval_targets=16 < 50, |G_eval|=6126 >= 3000, NTC_half_A=1378, NTC_half_B=1379)
 # a549_ko_cas9pos: SENSITIVITY_SA_CAS9 (never enters K_conf; n_eval_targets=445, |G_eval|=6121)
-# K_CONF=2
-# CONFIRMATORY_DUAL_LINE_K2: K_conf = 2 confirmatory cell lines
+# K_CONF=1
+# CONFIRMATORY_SINGLE_LINE_K1: K_conf = 1 confirmatory line (mandatory single-line generalizability disclosure)
 a549_ko
-hek293_xucao

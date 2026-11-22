@@ -2,7 +2,7 @@
 
 **Agent:** `A-T3` (Team A · Pre-Registration & Statistical Audit)  
 **Scope:** Independent raw ingestion & standardization from `round12/shared/raw/` via `independent_r12_loader.py::standardize_raw_cohort_to_audit_line` into [`round12/audit/reader_xcheck/`](file:///Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/audit/reader_xcheck), compared item-by-item against `round12/shared/lines/` (`round12/results/` and `round12/shared/lines/` strictly untouched; zero FCT, correlations, or evaluation metrics computed).  
-**Status Summary:** **`R12_READER_XCHECK_MISMATCH`** (both `hek293_xucao` and `a549_ko` completed; `hek293_xucao` shows critical batch/split discrepancies collapsing `n_eval_targets` from `62` to `19`; `a549_ko` matches `100%` on `445` eval targets / `6,121` `G_eval` / two-half NTCs / `ctrl_mean` `0.0` and differs only on `QARS` `591` cells + `3.58e-7` float32 ULP in `delta_log1p`).
+**Status Summary:** **`R12_READER_XCHECK_OK`** (Post-`RULING_R12_HEK293_UNITS` re-verification at `2026-11-23 07:11 +08:00` confirmed **100% exact match** on `hek293_xucao` after `A-T1` `R12_QC_DONE2`: `98,274` kept cells, `1,378 / 1,379` two-half NTCs, identical half cell sets, `22,155` genes, `|G_eval|=6,126`, `19` reproducible targets, `16` eval targets, `0.0` control array diff, `delta_log1p <= 4.94e-7`, `half_a_delta_log1p <= 7.63e-7`, `half_b_delta_log1p <= 6.07e-7`; historical pre-ruling records in §1.1–1.3 preserved verbatim; `a549_ko` `QARS` `591` cells & `3.58e-7` accepted per `RULING_R12_HEK293_UNITS.md §3`).
 
 ---
 
@@ -38,6 +38,22 @@ We patched [`check_hek293_xucao_feasibility`](file:///Users/mac/AI-Biology-Lab/p
 2. **Stage-2 `seed=42` Half-Split Difference:**
    - Even independently of `batch_0` vs `half_1/half_2`, `xcheck` (`perm[0::2] -> Half A`, `perm[1::2] -> Half B` on canonical-target barcode-sorted cells) produced `1,379 / 1,378` NTCs and `half_a_n_cells == shared.half_b_n_cells` (`max diff = 0.0`), whereas `shared` had `1,378 / 1,379` AND non-identical half control/delta arrays (`half_a_ctrl_mean_libnorm` diff `2.025` vs `shared_ha`, `6.686` vs `shared_hb`), indicating different cell-level split assignment / permutation ordering under `seed=42`.
 
+### 1.4 Post-`RULING_R12_HEK293_UNITS` Re-Verification (`2026-11-23 07:11 +08:00`, After `A-T1` `R12_QC_DONE2`) — **EXACT MATCH (`PASS`)**
+
+Following [`RULING_R12_HEK293_UNITS.md`](file:///Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/RULING_R12_HEK293_UNITS.md) (§1 batches = `["half_1", "half_2"]`, §2 exact Stage-2 `seed=42` split using single `rng`, Python-sorted canonical/`"__NTC__"` keys, ascending `(cell_barcode, kept_row_idx)` sort, `perm[:n//2]` -> Half 1 / `perm[n//2:]` -> Half 2), `A-T3` independently rebuilt `hek293_xucao` from `XuCao2023.h5ad` (`sha256(independent_r12_loader.py) = b6e5bc5670b9be1ee7067c2b5339067eaaa2c43a60c6ad1b9a7ec85aa7afae5a`) and verified against `A-T1`'s rebuilt `round12/shared/lines/hek293_xucao/` (`R12_QC_DONE2`, `07:08`, `dataset_readers_r12.py cc196a44...5b94`):
+
+| Item | Independent `reader_xcheck` (`A-T3`) | `round12/shared/lines/hek293_xucao` (`R12_QC_DONE2`) | Match? | Exact Comparison Details |
+|---|---:|---:|:---:|---|
+| **Retained Cells** | **`98,274`** (`41` dropped `<300` human UMI) | **`98,274`** | **PASS** | `diff = 0` (`max_pct_mt = None`, `apply_author_kd40 = False`) |
+| **NTC & Per-Half Cells** | Total **`2,757`**, Half A **`1,378`**, Half B **`1,379`** | Total **`2,757`**, Half A **`1,378`**, Half B **`1,379`** | **PASS** | `half_a_n_cells`, `half_b_n_cells`, `n_cells` exact across all `200` targets (`max diff = 0.0`); `ctrl_cells.npz` `X_log1p` / `X_libnorm` / `X_zscore` / `batch_labels` (`half_1`/`half_2`) **`max_abs = 0.0`**; `half_a/b_ctrl_mean_libnorm` **`max_abs = 0.0`**, confirming **100% identical cell sets in Half A and Half B** |
+| **`n_batches` / Finite / Final Genes** | `2` batches / `22,185` finite / **`22,155`** final | `2` batches / `22,185` finite / **`22,155`** final | **PASS** | `genes.txt` exact ordered equality (`22,155 == 22,155`) |
+| **`\|G_eval\|` (with `r9_6`)** | **`6,126`** | **`6,126`** | **PASS** | Exact ordered equality (`eval_genes` `len = 6,126`, zero diff) |
+| **`targets.txt`** | **`200`** | **`200`** | **PASS** | Exact ordered equality (`200 == 200`, `half_valid` array equal) |
+| **Reproducible Target Set** | **`19 / 200`** | **`19 / 200`** | **PASS** | Exact set equality: `['CNOT2', 'CNOT3', 'CPSF6', 'DDX56', 'DROSHA', 'EEF1G', 'IGF2BP1', 'LRPPRC', 'MCM3', 'NOP2', 'POLR1A', 'PRPF38B', 'RNMT', 'RPL30', 'SMG5', 'SMG7', 'TAF2', 'UPF1', 'UPF2']` |
+| **Evaluation Target Set (`r9_6`, rep, in `G_eval`)** | **`16`** (`< 50` -> `SECONDARY_ONLY`) | **`16`** (`< 50` -> `SECONDARY_ONLY`) | **PASS** | Exact ordered set equality (`exact_equal = True`): `['CNOT2', 'CNOT3', 'CPSF6', 'DDX56', 'DROSHA', 'EEF1G', 'LRPPRC', 'MCM3', 'NOP2', 'POLR1A', 'RNMT', 'SMG5', 'SMG7', 'TAF2', 'UPF1', 'UPF2']` |
+| **`pseudobulk_delta` (`log1p` Primary Representation)** | `200 x 22,155` (`6,126` `G_eval`) | — | **PASS (`<= 1e-6`)** | `delta_log1p`: **`4.936e-7`** (`G_eval`: **`2.775e-7`**); `half_a_delta_log1p`: **`7.628e-7`**; `half_b_delta_log1p`: **`6.072e-7`**; `knockdown_depth_log1p`: **`1.192e-7`** (strictly float32 ULP precision; note non-log1p arrays scale proportionally with value magnitude: `delta_zscore` `1.907e-6` [`rel=1.88e-7`], `delta_libnorm` `1.297e-4` [`rel=3.98e-6`]) |
+| **Control Arrays (`ctrl_cells.npz`)** | `2,757 x 22,155` | — | **PASS (`0.0`)** | `ctrl_mean_libnorm`, `ctrl_mean_libnorm_full`, `ctrl_mean_log1p`, `half_a_ctrl_mean_libnorm`, `half_b_ctrl_mean_libnorm`, `X_log1p`, `X_libnorm`, `X_zscore`, and `eval_space_ctrl_mean_libnorm` ALL **`0.0` (exact bit-for-bit equality)** |
+
 ---
 
 ## 2. `a549_ko` (`GSE345058`) Cross-Check — **EXACT ON `eval_targets`/`G_eval`/`ctrl_mean`, `QARS` (`591` Cells) UNAPPROVED-FILTER DIFFERENCE**
@@ -63,6 +79,6 @@ Before running `a549_ko`, an initial `task-3159` run exposed a column-case bug i
 
 ## 3. Pre-Freeze Summary & Governance Impact
 
-- **`a549_ko` (`GSE345058`, Mandatory Primary Line):** Independently verified to **`445 == 445`** eval targets, **`6,121 == 6,121`** `G_eval` genes, **`23,758 / 21,562`** two-half NTCs, **`0.0`** control mean diff, and **`<= 3.58e-7`** `delta_log1p` agreement across all `999` shared targets (`diff` on `QARS` `591` cells & `cas9_mtx_umi` library-size exclusion has zero impact on `445` evaluation targets).
-- **`hek293_xucao` (`XuCao2023.h5ad`, Conditional Line):** **Critical discrepancy (`19 < 50` vs `62 >= 50` eval targets, plus Stage-2 split cell differences and `batch_0` vs `half_1`/`half_2` AD tie-breaking)** requires a Master Controller ruling before `CODE_FREEZE_R12` / holdout evaluation (specifically: whether Stage-2 HEK293 passes `"batch_0"` to `process_r10_line` per `shared/lines/hek293_xucao` — where `ha_delta`/`hb_delta` remain strictly half-NTC-centered while pooled `Z_5000` preserves discrete zero ties — and aligning Stage-2 `seed=42` barcode parity `1,378/1,379` vs `1,379/1,378`).
+- **`a549_ko` (`GSE345058`, Confirmatory Line, `K_conf = 1`):** Independently verified to **`445 == 445`** eval targets, **`6,121 == 6,121`** `G_eval` genes, **`23,758 / 21,562`** two-half NTCs, **`0.0`** control mean diff, and **`<= 3.58e-7`** `delta_log1p` agreement across all `999` shared targets (`QARS` `591` unmapped cells & `3.58e-7` accepted per `RULING_R12_HEK293_UNITS.md §3`).
+- **`hek293_xucao` (`XuCao2023.h5ad`, `SECONDARY_ONLY` per `CONFIRMATORY_LINES_R12.txt`):** Post-`RULING_R12_HEK293_UNITS` re-verification (`2026-11-23 07:11 +08:00`) achieves **100% exact structural, split-half cell-set, gene (`22,155`, `|G_eval|=6,126`), reproducible (`19`), and eval (`16`) target agreement**, **`0.0`** control array diff, and **`<= 7.63e-7`** `log1p` pseudobulk max abs diff (`R12_READER_XCHECK_OK`).
 

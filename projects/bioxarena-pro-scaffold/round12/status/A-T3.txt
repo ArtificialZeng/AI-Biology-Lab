@@ -1,5 +1,5 @@
 AGENT: A-T3 (Team A · Pre-Registration & Statistical Audit)
-ROUND: 12 Patched Clean-Room `round12/audit/` (RULING_R12_HEK293_UNITS §1–2 Applied; Awaiting A-T1 R12_QC_DONE2 for HEK293 Re-Xcheck)
+ROUND: 12 Clean-Room `round12/audit/` Patched + Full Reader Cross-Check Passed (`R12_READER_XCHECK_OK`)
 LOCKED_PREREG: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/prereg/PREREG_E.md (sha256: d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924, commit 4c606f4732ea080768e27757c689d40d7892cd3d)
 PREFREEZE_RULING: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/RULING_R12_PREFREEZE.md + RULING_R12_HEK293_UNITS.md
 PAIRED_RORTH_CSV: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/outputs/paired_rorth_12lines.csv (3ec183d1d8f23de6c2b7d2987cf4bd6a0af5e42295df451899582e6152f2ef75)
@@ -42,9 +42,18 @@ SUMMARY:
   - `build_hek293_xucao_audit_parts` keeps `batches = ["half_1", "half_2"]` (`Stage 2`) / replicate ID (`Stage 1`), and updates Stage-2 stratified 50/50 split strictly to: single `rng = np.random.default_rng(42)`; strata keys = canonical HGNC symbol (targeting) / `"__NTC__"` (NTC) iterated in Python default string sort order; within each stratum sorted ascending by `(cell_barcode, kept_row_idx)`; `perm[:n//2]` -> half 1 (A), `perm[n//2:]` -> half 2 (B).
   - Updated `test_r12_audit.py` `test_3` to verify exact Stage-2 parity on odd stratum sizes (`n=39 -> 19 half 1, 20 half 2`), `"__NTC__"` sort order, and `"half_1"/"half_2"` batches. `pyflakes` (`PYFLAKES_OK`), `test_r12_audit.py` (`4/4 OK` in `1.926s`), `test_exploratory_check.py` (`4/4 OK`), Rule 5 `ZERO_HITS`. Pending `A-T1` `R12_QC_DONE2` to re-run `hek293_xucao` cross-check.
 
+- Post-`RULING_R12_HEK293_UNITS` & `R12_QC_DONE2` HEK293 Re-Verification (`2026-11-23 07:11 +08:00`, zero FCT/correlations/metrics computed; `shared/lines/` untouched):
+  - Verified rebuilt `round12/audit/reader_xcheck/hek293_xucao/` (`independent_r12_loader.py b6e5bc56...`) vs `round12/shared/lines/hek293_xucao/` (`R12_QC_DONE2` via `dataset_readers_r12.py cc196a44...5b94`):
+    * Retained cells `98,274 == 98,274`; total NTC `2,757 == 2,757`; Half A / B NTC `1,378 / 1,379 == 1,378 / 1,379`; `n_batches = 2 == 2`; per-target `half_a_n_cells` / `half_b_n_cells` / `n_cells` `max diff = 0.0`.
+    * `genes.txt = 22,155 == 22,155` (`22,185` finite); `|G_eval| = 6,126 == 6,126`; `targets.txt = 200 == 200`; `n_targets_reproducible = 19/200 == 19/200` (exact 19-target set); `n_eval_targets = 16 == 16` (exact 16-target set: `CNOT2`, `CNOT3`, `CPSF6`, `DDX56`, `DROSHA`, `EEF1G`, `LRPPRC`, `MCM3`, `NOP2`, `POLR1A`, `RNMT`, `SMG5`, `SMG7`, `TAF2`, `UPF1`, `UPF2`).
+    * `ctrl_cells.npz` (`X_log1p`, `X_libnorm`, `X_zscore`, `batch_labels`, `ctrl_mean_libnorm`, `ctrl_mean_libnorm_full`, `ctrl_mean_log1p`, `half_a_ctrl_mean_libnorm`, `half_b_ctrl_mean_libnorm`): ALL `max_abs_diff = 0.0` (proving identical Half A & Half B cell sets).
+    * `pseudobulk_delta.npz` (`log1p` primary representation): `delta_log1p = 4.936e-7` (`G_eval`: `2.775e-7`), `half_a_delta_log1p = 7.628e-7`, `half_b_delta_log1p = 6.072e-7`, `knockdown_depth_log1p = 1.192e-7` (all `<= 1e-6`; note non-log1p `delta_zscore = 1.907e-6`, `delta_libnorm = 1.297e-4` [rel `3.98e-6`]).
+    * Combined with `a549_ko` (`445 == 445`, `|G_eval| = 6,121`, `23,758 / 21,562`, `ctrl_mean = 0.0`, `delta_log1p <= 3.58e-7`; `QARS` `591` cells accepted per Ruling 2 §3), full Round 12 reader cross-check passes.
+
 PAIRED_RORTH_DONE
 PREREG_E_V2_READY
 R12_AUDIT_CODE_READY
 R12_AUDIT_PATCHED
 R12_READER_XCHECK_MISMATCH
 R12_AUDIT_PATCHED2
+R12_READER_XCHECK_OK
