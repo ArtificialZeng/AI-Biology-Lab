@@ -322,8 +322,9 @@ class Test10xCSCHelpersAndAdapters(unittest.TestCase):
         }
         passing, txt = evaluate_confirmatory_lines(counts)
         self.assertEqual(passing, ["dld1", "cd4t_rest"])
-        self.assertIn("CONFIRMATORY_LINES=dld1,cd4t_rest", txt)
-        self.assertIn("K_CONF=2", txt)
+        non_comment = [ln for ln in txt.splitlines() if ln.strip() and not ln.startswith("#")]
+        self.assertEqual(non_comment, ["dld1", "cd4t_rest"])
+        self.assertIn("# K_CONF=2", txt)
 
         # Guard against np.full(..., dtype=str) truncating channel/lane batch labels to '<U1'
         b1 = np.full(3, "ch_01")

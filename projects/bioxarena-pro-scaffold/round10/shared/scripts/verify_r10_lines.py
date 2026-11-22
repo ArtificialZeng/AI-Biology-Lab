@@ -172,26 +172,34 @@ def verify_and_count_line(line_dir: Path, hgnc: HGNCLookup, r9_ref: dict) -> dic
     rep_hv_targets = [t for t, r, hv in zip(targets, rep, half_valid) if r and hv]
 
     shared_rep_r9_all_canon = [t for t in rep_targets if t in r9_ref["r9_rep_canon_union"]]
+    shared_rep_r9_all_raw = [t for t in rep_targets if t in r9_ref["r9_rep_raw_union"]]
     shared_rep_r9_eval_canon = [t for t in shared_rep_r9_all_canon if t in g_eval_canon]
     shared_rep_r9_eval_hv_canon = [t for t in rep_hv_targets if t in r9_ref["r9_rep_canon_union"] and t in g_eval_canon]
-    shared_rep_r9_eval_raw = [t for t in rep_targets if t in r9_ref["r9_rep_raw_union"] and t in g_eval_raw]
+    shared_rep_r9_eval_raw = [t for t in shared_rep_r9_all_raw if t in g_eval_raw]
+    raw_cells_kept = int(meta.get("raw_shape", [0, 0])[0])
 
     return {
         "line": line_dir.name,
-        "raw_cells_after_qc": int(meta.get("raw_shape", [0, 0])[0]),
+        "raw_cells_after_qc": raw_cells_kept,
+        "n_targeting_single_sgrna_cells": int(raw_cells_kept - n_ctrl_total),
         "n_nt_cells": int(n_ctrl_total),
+        "n_nt_half_a": int(meta.get("n_nt_half_a", 0)),
+        "n_nt_half_b": int(meta.get("n_nt_half_b", 0)),
         "n_nt_sampled": int(n_ctrl_sampled),
         "n_genes_finite": int(meta.get("n_genes_finite_all_batches", G)),
         "n_genes_final": int(G),
         "g_eval_canon": int(len(g_eval_canon)),
         "g_eval_raw": int(len(g_eval_raw)),
         "n_targets_dedup": int(P),
+        "n_targets_half_valid": int(meta.get("n_targets_half_valid", int(half_valid.sum()))),
         "n_targets_reproducible": int(len(rep_targets)),
         "n_targets_reproducible_half_valid": int(len(rep_hv_targets)),
+        "n_shared_reproducible_with_r9_all_raw": int(len(shared_rep_r9_all_raw)),
         "n_shared_reproducible_with_r9_all_canon": int(len(shared_rep_r9_all_canon)),
         "n_shared_reproducible_eval_canon": int(len(shared_rep_r9_eval_canon)),
         "n_shared_reproducible_eval_half_valid_canon": int(len(shared_rep_r9_eval_hv_canon)),
         "n_shared_reproducible_eval_raw": int(len(shared_rep_r9_eval_raw)),
+        "hgnc_bridge_recovered_eval_symbols": sorted(set(shared_rep_r9_eval_canon) - set(shared_rep_r9_eval_raw)),
         "n_half_a_batches": int(meta.get("n_half_a_batches", 0)),
         "n_half_b_batches": int(meta.get("n_half_b_batches", 0)),
     }
@@ -202,33 +210,35 @@ def evaluate_confirmatory_lines(counts_by_line: Dict[str, dict]) -> Tuple[List[s
     Mechanically determine confirmatory lines per PREREG_C §2.2:
       Candidate confirmatory lines: `dld1`, `cd4t_rest`.
       Criteria: `g_eval_canon >= 3000` AND `n_shared_reproducible_eval_canon >= 50`.
-    `wtc11_i3neuron` and `calu3` remain secondary-only regardless of counts.
+    Emits strict machine-readable format: `#` comments for counts/notes and ONLY
+    passing confirmatory line names (one per line) as non-comment content.
     """
     passing: List[str] = []
-    lines_txt = ["# Round 10 Mechanical Confirmatory Line Gate (PREREG_C §2.2 / P2-P5)", ""]
+    lines_txt = [
+        "# Round 10 Mechanical Confirmatory Line Gate (PREREG_C §2.2 / P2-P5)",
+        "# Thresholds: candidate in {dld1, cd4t_rest}, n_eval_targets >= 50, |G_eval(t)| >= 3000",
+    ]
     for ln in CANDIDATE_CONFIRMATORY:
         c = counts_by_line.get(ln)
         if c is None:
-            lines_txt.append(f"{ln}: NOT_PROCESSED")
+            lines_txt.append(f"# {ln}: NOT_PROCESSED")
             continue
         ok = (c["g_eval_canon"] >= 3000) and (c["n_shared_reproducible_eval_canon"] >= 50)
         if ok:
             passing.append(ln)
         lines_txt.append(
-            f"{ln}: {'PASS_CONFIRMATORY' if ok else 'FAIL_CONFIRMATORY'} "
-            f"(eval_shared_rep={c['n_shared_reproducible_eval_canon']} >= 50, |G_eval|={c['g_eval_canon']} >= 3000)"
+            f"# {ln}: {'PASS_CONFIRMATORY' if ok else 'FAIL_CONFIRMATORY'} "
+            f"(n_eval_targets={c['n_shared_reproducible_eval_canon']} >= 50, |G_eval|={c['g_eval_canon']} >= 3000)"
         )
     for ln in SECONDARY_ONLY_LINES:
         c = counts_by_line.get(ln)
         if c is not None:
             lines_txt.append(
-                f"{ln}: SECONDARY_ONLY (eval_shared_rep={c['n_shared_reproducible_eval_canon']}, |G_eval|={c['g_eval_canon']})"
+                f"# {ln}: SECONDARY_ONLY (excluded from confirmatory; n_eval_targets={c['n_shared_reproducible_eval_canon']}, |G_eval|={c['g_eval_canon']})"
             )
-    lines_txt.append("h9: EXCLUDED_PRE_DOWNLOAD (P2: same lineage as R9 H1 hESC)")
-    lines_txt.append("")
-    lines_txt.append(f"CONFIRMATORY_LINES={','.join(passing) if passing else 'NONE'}")
-    lines_txt.append(f"K_CONF={len(passing)}")
-    lines_txt.append(f"GATE_STATUS={'CONFIRMATORY_OK' if len(passing) >= 2 else 'STOP_BELOW_2_CONFIRMATORY'}")
+    lines_txt.append("# h9: EXCLUDED_PRE_DOWNLOAD (P2: same lineage as R9 H1 hESC)")
+    lines_txt.append(f"# K_CONF={len(passing)}")
+    lines_txt.extend(passing)
     return passing, "\n".join(lines_txt) + "\n"
 
 
