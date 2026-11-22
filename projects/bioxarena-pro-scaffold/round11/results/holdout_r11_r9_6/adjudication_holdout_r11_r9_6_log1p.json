@@ -1,0 +1,187 @@
+{
+  "prereg_commit_hash": "72fc0c937358b089e78664b464f9db5aafb790b1",
+  "code_freeze_hash": "cc834d863105c66874acb4c27cc214fd79704955",
+  "source_mode": "r9_6",
+  "primary_mask": "all_nontarget",
+  "secondary_masks": [
+    "resp_top50",
+    "resp_top50_split"
+  ],
+  "ci_level_primary": "ci975",
+  "bootstrap_seed": 20261123,
+  "n_boot": 4000,
+  "phase": "holdout_r11",
+  "confirmatory_lines": [
+    "cd4t_stim48"
+  ],
+  "secondary_lines": [
+    "feng_ipsc",
+    "telohaec"
+  ],
+  "k_conf": 1,
+  "k_conf_disclosure": "Insufficient confirmatory cell lines (K_conf < 2); confirmatory hypothesis testing was not performed (\u786e\u8ba4\u6027\u7ebf\u4e0d\u8db3\uff0c\u672a\u505a\u786e\u8ba4\u6027\u68c0\u9a8c).",
+  "cd4t_stim48_in_k_conf": true,
+  "descriptive_H_D4_all_lines": {
+    "primary_ci_level": "ci975",
+    "verdict": "CONFIRMED",
+    "pass_count": 3,
+    "required": 3,
+    "verdicts_by_ci_level": {
+      "ci95": "CONFIRMED",
+      "ci975": "CONFIRMED",
+      "ci9833": "CONFIRMED"
+    },
+    "pass_counts_by_ci_level": {
+      "ci95": 3,
+      "ci975": 3,
+      "ci9833": 3
+    },
+    "per_line": {
+      "cd4t_stim48": {
+        "e1_resp_top50": 0.05221886894376789,
+        "e1_all_nontarget": -0.020290311520271994,
+        "cross_diff": 0.07250918046403988,
+        "valid_frac_resp_top50": 1.0,
+        "valid_frac_cross": 1.0,
+        "ci95": {
+          "e1_resp_top50_lo": 0.028964634362357657,
+          "e1_resp_top50_hi": 0.07531718419338135,
+          "cross_diff_lo": 0.050647178154083254,
+          "cross_diff_hi": 0.09434952601201305,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci975": {
+          "e1_resp_top50_lo": 0.02572844495090529,
+          "e1_resp_top50_hi": 0.07915605012546602,
+          "cross_diff_lo": 0.04772743067397344,
+          "cross_diff_hi": 0.09816886753494838,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci9833": {
+          "e1_resp_top50_lo": 0.023412444328740935,
+          "e1_resp_top50_hi": 0.08025004954607984,
+          "cross_diff_lo": 0.04582412401374089,
+          "cross_diff_hi": 0.09971475149797791,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "pass": true
+      },
+      "feng_ipsc": {
+        "e1_resp_top50": 0.24788959047451703,
+        "e1_all_nontarget": 0.052951591328064686,
+        "cross_diff": 0.19493799914645235,
+        "valid_frac_resp_top50": 1.0,
+        "valid_frac_cross": 1.0,
+        "ci95": {
+          "e1_resp_top50_lo": 0.20487804489600211,
+          "e1_resp_top50_hi": 0.2919829731335768,
+          "cross_diff_lo": 0.15101144877857595,
+          "cross_diff_hi": 0.23718242143038384,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci975": {
+          "e1_resp_top50_lo": 0.2003230838090572,
+          "e1_resp_top50_hi": 0.2975470566255362,
+          "cross_diff_lo": 0.14572932905510447,
+          "cross_diff_hi": 0.24290297545155629,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci9833": {
+          "e1_resp_top50_lo": 0.1963963189533862,
+          "e1_resp_top50_hi": 0.29964821893890664,
+          "cross_diff_lo": 0.14307803296930902,
+          "cross_diff_hi": 0.2452161401093139,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "pass": true
+      },
+      "telohaec": {
+        "e1_resp_top50": 0.1798399402026284,
+        "e1_all_nontarget": -0.04748615267711073,
+        "cross_diff": 0.22732609287973912,
+        "valid_frac_resp_top50": 1.0,
+        "valid_frac_cross": 1.0,
+        "ci95": {
+          "e1_resp_top50_lo": 0.04844022593690189,
+          "e1_resp_top50_hi": 0.3502672818701882,
+          "cross_diff_lo": 0.080496094961753,
+          "cross_diff_hi": 0.4392704160427477,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci975": {
+          "e1_resp_top50_lo": 0.03335290964091625,
+          "e1_resp_top50_hi": 0.37558637776688647,
+          "cross_diff_lo": 0.0659021630870853,
+          "cross_diff_hi": 0.48379317534957306,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci9833": {
+          "e1_resp_top50_lo": 0.027832364477762835,
+          "e1_resp_top50_hi": 0.38816389773918314,
+          "cross_diff_lo": 0.05852097488796512,
+          "cross_diff_hi": 0.49894482796783424,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "pass": true
+      }
+    }
+  },
+  "descriptive_H_D5_feng_ipsc": {
+    "present": true,
+    "role": "SECONDARY_NON_CONFIRMATORY",
+    "n_eval_targets": 93,
+    "n_genes_eval": 5326,
+    "fct_r_orth_cal": 0.12119304639100807,
+    "fct_ci975_lo": 0.10427349639336903,
+    "fct_ci975_hi": 0.13711996746981708,
+    "mis_kolf21j_r_orth_cal": 0.0562222531949942,
+    "mis_kolf21j_ci975_lo": 0.03782834143372731,
+    "mis_kolf21j_ci975_hi": 0.07443885692921214,
+    "paired_fct_minus_mis_kolf21j": 0.06497079319601387,
+    "paired_ci975_lo": 0.05275859249729549,
+    "paired_ci975_hi": 0.07841985939902923,
+    "fct_strictly_exceeds_kolf21j_paired_975": true,
+    "fct_ci_disjoint_above_kolf21j_975": true,
+    "addendum_a3_note": "Split halves share genetic donors across sibling iPSC clones; noise ceiling reflects clone/channel variability rather than inter-donor variation."
+  },
+  "confirmatory_status": "INSUFFICIENT_LINES",
+  "Group_D_Verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+  "H-D1": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D2": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D3": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D4": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  },
+  "H-D_util": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 1
+  }
+}
