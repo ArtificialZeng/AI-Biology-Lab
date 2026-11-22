@@ -119,3 +119,97 @@
 2. **Q3 文献定位与严谨引用要求（合并手稿时必须遵守）**：
    - 论文中**绝不能声称**“首次发现声称具有细胞情境特异性的扰动预测模型其实只恢复了情境无关均值（或被无情境基线击败）”——因为 [`CGC` (`Huang et al. 2026`)](https://doi.org/10.64898/2026.09.30.755756)、[`Molina & Zhang (2026)`](https://doi.org/10.64898/2026.07.24.740459) 与 [`CASTER` (`Kawsar et al. 2026`)](https://doi.org/10.64898/2026.11.15.766815) 已先后对 `Arc State`、`MORPH`、`BioLORD`、`scGen` 与 `CASTER` 零样本模式给出了严格定量证明；同时 [Arc VCC 2026 Wrap-Up](https://arcinstitute.org/news/virtual-cell-challenge-2026-wrap-up) 已对 Top-10 参赛方案给出跨系平均坍塌结论。
    - **Team A 的精准、牢不可破的新颖定位应聚焦于**：在前人证明“模型跨系收益只来自情境共享平均值 $\beta_p$/`Pert Mean`”的基础上，进一步揭示**即使在明确剥离全系振幅（$\beta_t$ 移除后 `r_orth_cal`）的细粒度目标系残差检验上，当前跨系 fold-change 缩放转移（FCT）看似“仅存的少数目标系特异优势（H-C2 未通过 `0/2` 特异性，而 FCT 此前呈正）”仍几乎完全由常数基线下的几何平均 + `log1p` 压缩伪影（`E1`）驱动**，从而把“虚假情境特异增益”的拆解从**加性均值（`Pert Mean` / $\beta_p$）层面**深入到了**非加性对数折变压缩层面**，并为后续 `E6/E7` 验证提供了精确的阴性对照与机理分解准则。
+
+---
+
+# R11 文献补充核查（Q4 & Q5）
+
+- **补充核查时间**：2026-11-22T13:30+08:00
+- **任务依据**：[`R11_第十一轮行动指令.md`](file:///Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/controller/directives/R11_%E7%AC%AC%E5%8D%81%E4%B8%80%E8%BD%AE%E8%A1%8C%E5%8A%A8%E6%8C%87%E4%BB%A4.md) §A-T5
+
+## R11 执行摘要：Q4 / Q5 三档结论总览表
+
+| 问题编号 | 核心核查问题 | 三档结论 | 精准范围与关键边界说明 |
+|---|---|---|---|
+| **Q4** | 是否有人指出：在扰动预测评测中“按真实观测响应选基因”（如按真实 `|Δ|` 取前 K 个基因、按真实 DEG 评测）会造成选择偏倚，让无信息变换也得高分？ | **「部分做过（写清做到哪一步）」** | **两类直接邻近工作已揭示“依赖真值选基因”造成的得分虚高，但主流仍提倡 DEG/Top-K 评测，且无人点出 `E1`/置换在无噪声/跨系基线下的 `resp_top50` vs `all_nontarget` 偏倚**：<br>① **`Nicol, Shivakumar & Irizarry (2026)`** ([`10.64898/2026.05.07.723486`](https://doi.org/10.64898/2026.05.07.723486), [GitHub `phillipnicol/systema`](https://github.com/phillipnicol/systema) `Figure 2` & `ctl-mean-topk.ipynb`) 在模拟与 10 个 Perturb-seq 数据集上直接证明：当按 `|True − Control|` 选 `top k = 20` 基因并共享对照样本误差时，随机噪声相关从 `r = 0.528` 放大至 **`r = 0.869`**，零变化 `Null Baseline`（`ctl-mean`）最高刷到 **`+0.408`**；但该工作归因于**同数据集有限样本共享对照噪声与同批选基因耦合**，一旦做 split-half（`Split DEG + control`）即归零（`-0.044..+0.047`）。<br>② [`cell-eval2`](https://github.com/ArcInstitute/cell-eval2)（`#351`）仅修了**表达量存在性门槛** `perturbed > 5 CPM OR control > 5 CPM` 泄露 LFC 正号的问题（盲目抬高低于 5 CPM 基因曾赚得 `+0.372..+0.506` 方向保真），而在 DE 指标中**继续使用**参考显著 DEG 集合 $S_p^{\text{real}}$ 与 `top_k`。**相反地**，`Miller 2026`（明确倡导 `top 100 DEGs`/`WMSE`）、`SBB`（明确推广 `top20` DEG 指标与 `wMSE`）、`Systema`（报告 `PearsonΔ20` 但归因系统偏移）、`scPerturBench`（`DEG=100`）、`arXiv:2608.00152`（train HVGs）均未警告 `resp_top50` 会相对于 `all_nontarget` 抬高**不含目标基线信息但非常数的几何平均 `log1p` 压缩变换（`E1`）与标签置换**（`H-D4`）。 |
+| **Q5** | 是否有人报告过：跨细胞类型的扰动响应在 fold-change 空间比在 `log1p` 差值空间更守恒，或者线特异的 `log1p` 差值主要来自基线表达差异？ | **「部分做过（写清做到哪一步）」**<br>（子命题 A：**「没有找到」**；<br>子命题 B：**「部分做过」**） | **子命题 A（fold-change 空间比 `log1p` 差值更守恒）：「没有找到」**。`CellularAI`、`AtlasShift` 与 `Nadig 2025`/`sigRecon` 在实践中选择在 `log2FC` 空间工作，而 `Molina & Zhang 2026`、`CASTER`、`Li 2026`、`scPerturBench` 在 `log1p(CP10k)` 差值空间评测；**未见任何公开论文或预印本在同一批多细胞系扰动数据上直接对比两种表示的跨系保守性并报道倍数变化高于 `log1p` 差值**。<br>**子命题 B（线特异 `log1p` 差值主要来自基线表达差异）：「部分做过」**。已有四类局部相关报道：① `Molina & Zhang (2026)` 证明 `log1p` 分解中的**扰动无关**系别模板 $\alpha_c$ 有 `72.3%–88.8%` 位于前 5 个未扰动对照 PC 内，但对真正依赖靶点的系别交互 $\gamma_{c,p}$ 反而指出目标对照几乎无预测力；② `AMM-SimWMag (2026)` 在免疫刺激数据证明跨类型**整体标量振幅**差异可由目标基线 ISG 表达解释（`R²-DEG 0.810→0.872`）；③ `Ahlmann-Eltze et al. (2025)` `Extended Data Fig. 9` 指出 K562→RPE1 转移误差随两系未扰动基线表达差异增大而增大；④ `Booeshaghi & Pachter (2021)` 推导了低基线 $\lambda$ 处相同倍数变化被 `log1p` 压缩的公式。**但无人提出或证实：逐基因线特异 `log1p` 差值（乃至剥离全局振幅 $\beta_t$ 后的 `r_orth_cal` 胜过 `E1` 之差）主要由“目标线实测基线 $c_{t,g}$ 对相对保守的跨系 fold-change 经 `log1p(c_{t,g}·FC) − log1p(c_{t,g})` 非线性缩放”产生。** |
+
+---
+
+## 五、Q4 详查：按真实观测响应选基因（`top-K` / real DEGs）导致的选择偏倚与无信息变换虚高
+
+### 5.1 结论：**「部分做过（写清做到哪一步）」**
+
+在扰动预测评测工程与统计学批判文献中，**已有两条直接相邻但机理边界不同的线索**揭示了“按真实观测端选基因”会抬高无信息基线；但另一方面，**绝大部分主流基准非但没有警惕 `resp_top50` 类指标相对全基因 `all_nontarget` 的选择偏倚，反而在 2025–2026 年强力推行 `top-K` / DEG 加权评测**。具体逐项核验如下：
+
+#### A. 直接涉及“选基因依赖于观测答案会奖励无信息基线”的 2 项先导工作（精确区分到哪一步）
+
+1. **`Nicol, Shivakumar & Irizarry (2026-05-07)`**（*Spurious correlation inflates performance in single-cell perturbation prediction*, [`10.64898/2026.05.07.723486`](https://doi.org/10.64898/2026.05.07.723486), [GitHub `phillipnicol/systema`](https://github.com/phillipnicol/systema)）：
+   - **做到哪一步**：该文的主体贡献是证明共享同一批对照均值 $C$ 计算 `(True − C)` 与 `(Pred − C)` 会在有限对照样本下产生虚假相关性；但尤为关键的是，其 **Figure 2（`spurious_correlation_paper/figure_2.qmd`）** 与 **对照均线测试（`split_control/ctl-mean-topk.ipynb`）** 专门考察了 **`top k = 20` Pearson $\Delta$**：
+     - 在 Figure 2a 模拟中（独立正态 `True`, `Predicted`, `Control`，`n = 1000`），按 `abs(True - Control)` 取 **`top k = 20`** 后，虚假相关从全基因 `r = 0.528` 进一步**暴涨至 `r = 0.869`**；
+     - 在 10 个 Perturb-seq 数据集实测中（`ctl-mean-topk.ipynb`），代表**纯粹无信息零变化的控制均值基线（`Null Baseline: ctl-mean`）** 在“同样本选择 top-20 DEGs + 共享对照”（`Shared DEG + control`）下取得显著正向相关：**`TianCRISPRi2021 = +0.4082`、`TianCRISPRa2021 = +0.3226`、`XuKinetics2024 = +0.1549`、`FrangiehControlSingle2021 = +0.1176`**（而 `ReplogleK562 = +0.0657`, `ReplogleRPE1 = +0.0590`）。一旦改为独立样本对半挑选 DEGs 并拆分对照细胞（`Split DEG + control`），`ctl-mean` 即塌缩回 **`-0.0441` 至 `+0.0471`**（零附近）。
+   - **尚未覆盖到 `R11`（`H-D4`）的本质区别**：Nicol 等剖析并解决的仍是**同一批单细胞有限样本误差耦合**（共享随机噪声 $-C$ 被 `|True − C|` 尾选放大 + 选基因半与估计半未独立）。而在 Team A 的 `R10/R11` 设定（`H-D4`）中：即便对照样本独立/足够大且脱离共享随机噪声，`E1`（`常数基线 × 跨系几何平均 FC` 经 `log1p` 压缩）是**确定性、跨系聚合的非均匀向量**（并非 `ctl-mean` 零变化，也不共享目标单细胞采样误差 $-C$）；按目标实测 `|Δ|` 选 `resp_top50` 仍会利用极值尾选择（range restriction / tail amplification）把 `E1` 与保守强响应轴的微小耦合及置换极值大幅抬高，从而在 `E1(resp_top50) − E1(all_nontarget)` 上制造出 Nicol 的 split-control/split-DEG 方案无法消除的虚假高分。
+
+2. **`ArcInstitute/cell-eval2`（`v0.22.0`）与 VCC 2026 DE 指标**（[GitHub `ArcInstitute/cell-eval2`](https://github.com/ArcInstitute/cell-eval2), `docs/vcc2026_metrics/vcc2026-metrics.md:352-635`, `src/cell_eval2/de_compute.py:1212-1243`, `docs/metrics.md:788-808, 1108-1135, 1674-1735`）：
+   - **做到哪一步**：
+     - **`#351` 存在性泄漏修复**：指出旧版 `cell-eval` 用 `(perturbed > 5 CPM) OR (control > 5 CPM)` 筛选检测基因违背 **"the surviving gene set must not depend on the answer"**（`vcc2026-metrics.md:362`）——对对照 `≤ 5 CPM` 但扰动 `> 5 CPM` 的基因，`100.0000%` 的真实 `log2FC > 0`（每上下文 `26,373 / 33,969 / 26,839` 条）；一个仅在对照细胞里对这些低于 5 CPM 基因加常数量、完全不看任何靶点信息的盲目基线，竟能凭此拿下 `de_wilcoxon_direction_fidelity_yield_raw` 的 **`+0.3722 / +0.5059 / +0.3651`** 及总分 **`+0.1057`**（`de_compute.py:1222-1235`）。修复版改用**仅由对照 `> 5 CPM` 决定的测试宇宙**。
+     - **防常向量作弊与固定门控**：对可加选的 `delta_pearson_degs`（`docs/metrics.md:788-808`）及 VCC 计分指标 `de_wilcoxon_lfc_nmae`（`vcc2026-metrics.md:579-620`），强制要求 `min_gate_size >= 10`（避免 2 个基因相关恒为 $\pm 1$）、要求预测不能全常（全常相关性罚 `-1`，`#92/#391`）、用 `S_p^real` 参考集固定评估队列防缺失值刷分（`#89`），并实测通用均值基线在 `de_wilcoxon_lfc_nmae` 上仅得 **`1.0009–1.0017`**（与预测全零 `1.0` 无技能点相当），同时针对 `overlap_top50..top500` 在 §5 用 $2\times 2$ MCC 校正大基因集下的随机交集膨胀。
+   - **尚未覆盖到的空白**：`cell-eval2` 本身仍然**常规依赖**参考真值 DEG 集合 $S_p^{\text{real}}$（`de_wilcoxon_lfc_nmae`、`de_wilcoxon_direction_reach_raw`、`delta_pearson_degs`）与按真值 `|lfc|` 排序的 `top_k`（`de_wilcoxon_overlap_top50` 等），**未分析或警示**：当测试基线是类似 `E1` 这种“不含目标基线信息但保留几何平均方向排序”的**非均匀变换**、或置换零分布时，仅在真值高响应子集（`resp_top50`）评估连续相关性与方向对齐会因尾部极值选取比在 `all_nontarget` 上系统性地给出更高分数。
+
+#### B. 指令点名核心基准与近期文献的对照核查（绝大多数甚至相反主张“应该仅在 Top-K / DEG 上评测”）
+
+| 文献 / Benchmark | 对“按真实观测 DEG / Top-K 选基因评测”的真实立场 | 是否指出 Q4 选择偏倚（奖励无信息变换）？ |
+|---|---|---|
+| **`Systema`** (`Viñas Torné et al. 2025/2026`, *Nat Biotechnol*, [`10.1038/s41587-025-02777-8`](https://doi.org/10.1038/s41587-025-02777-8)) | 同时用 `PearsonΔ`（全基因）和 `PearsonΔ20`（按观测真值 `|ΔX|` 取前 20 DEGs）评估，发现无扰动特异信息的 `perturbed mean` 在 `PearsonΔ20` 上同样接近或击败深层模型（仅 `Frangieh18` 除外）。 | **否**：作者将其归因于**全数据集系统偏移（systematic perturbation-vs-control shift）与扰动面板选偏**，并在校正后的 `Systema` 指标中也包含 top-20 版本，**未**比较 `top20` 相对于 `all_nontarget` 对常数/置换变换本身的放大作用。 |
+| **`Miller et al. (2026)`** (*Nat Biotechnol*, [`10.1038/s41587-026-03307-w`](https://doi.org/10.1038/s41587-026-03307-w)) & **`Mejia et al. (2025)`** ([`arXiv:2506.22641`](https://arxiv.org/abs/2506.22641)) | **完全相反（大力提倡）**：主张按每扰动 **top 100 DEGs**（`Extended Data Fig. 5`）或按 vs-Rest DEG 显著性加权（**`WMSE`** / $R_w^2(\Delta)$）能去除海量非响应基因的“信号稀释”、显著提高指标区分真/假对照的 `DRF` 校准度；仅注明计算 DEG 掩码/权重时应排除充当正对照的半分割技术重复细胞以防泄漏。 | **否**：不仅未警告选择偏倚奖励无信息变换，反而将其视为比全基因更优越的黄金评测子空间。 |
+| **`SBB`** (`Vollenweider & Bühlmann 2026`, [`10.64898/2026.04.20.719650`](https://doi.org/10.64898/2026.04.20.719650)) | **明确提倡**：主推 `top_n_deg_*`（如 `top20_mse`、`top20_pearson_dp`）与 `wMSE`，展示 `Frangieh '21` 上全基因 `MSE` 的 `BDS ≈ 0%` 而 `wMSE` 升至 **`92%`**（`discrimination_analysis.md:335-445`）。 | **否**：未报道 `top20` 掩码会在置换或 `E1` 基线上抬高虚高分数。 |
+| **`scPerturBench`** ([`10.1101/2024.12.20.629581`](https://doi.org/10.1101/2024.12.20.629581) / `Wei et al. 2026`, *Nat Methods*, [`10.1038/s41592-025-02980-0`](https://doi.org/10.1038/s41592-025-02980-0)) | 代码库（`calPerformance.py:33-56, 98, 135`, `calPerformance_genetic.py:25-46, 98, 147`）机械地同时跑 `DEG=100`（`DEG_hvg5000.pkl` 真值前 100 DEG）与 `5000` HVG 全集并对比 `trainMean.py`。 | **否**：仅作双尺度报表，无对“按观测响应选 `DEG=100` 引发选择偏倚”的任何机制批评。 |
+| **`arXiv:2608.00152v3`** (`Shoeibi & Yousefi 2026`, [`arXiv:2608.00152`](https://arxiv.org/abs/2608.00152)) | 其锁定基准评估标量敲低幅度 `AD`，特征空间固定取训练集挑选的 **`d = 2,000` HVGs**，不按观测响应挑选评价基因；文中只引述 `Mejia 2025` 用 DEG 加权损失抗模态坍塌。 | **否**：未讨论按观测 `|Δ|` 选 top-K/DEG 基因的评测选择偏倚。 |
+| **`scPertEval`** (`Schäfer et al. 2026`, [`10.64898/2026.07.23.740433`](https://doi.org/10.64898/2026.07.23.740433)) | 在架构上将空间明确划分为“**全数据集固定且独立于扰动的对照高表达面板** `heg_1000`（Ahlmann-Eltze 2025 方案）”与“**每扰动真值响应子集** `top_k` / `degs_padj`（Miller 2026 方案）”（`catalog.py:33-51`），并探讨细胞数影响 DE 检验力；且演示 `de_overlap_k=10` 在 `Wessels23` 上 `BDS = 0.382 < 0.5`。 | **边缘铺垫但未点破核心**：阐明了两组空间“是否依赖每扰动真值”，却仍按 `DRF`/`BDS` 把 `top_k`/`degs` 列为标准协议，未检验 `top_k` 对常数基线/置换的虚假抬高。 |
+| **`Panagopoulos et al. (2026)`** ([`arXiv:2610.26267`](https://arxiv.org/abs/2610.26267)) | 指出复制单向量构造成多细胞矩阵会使 **模型预测侧** 出现 `67.1%` 的假显著 DEG 对，导致 `Precision@N` 排行随截断阈值 `N` 翻转 **`86.7%`**；并明言数值精度（如 `MSE`/`Pearson`）在不同 $N$ 下相对稳定（§4.1.1）。 | **否（批判对象不同）**：讨论的是“**预测端**伪重复膨胀导致的 `Precision@N` 不稳定”，而非“**真值端**按 `|Δ|` 选基因让 `E1`/置换等无信息变换得高分”。 |
+| **`CGC`** ([`10.64898/2026.09.30.755756`](https://doi.org/10.64898/2026.09.30.755756), `Extended Data Fig. 2d` & `run.py`) | 在训练输出端检验支持度选基因 vs 全基因，发现 `support_minus_full = -0.0355 [-0.0666, -0.0044]`（选基因反而丧失下游全响应效用）。 | **角度不同**：讨论的是**模型输出支撑裁剪损失下游效用**，非“评测阶段按真实 `|Δ|` 截断造成无信息基线偏高”。 |
+| **同样本“double dipping”经典统计工作**（`ClusterDE` [`10.1101/2023.07.21.550107`](https://doi.org/10.1101/2023.07.21.550107)、`countsplit`） | 针对“同一批细胞既聚类又做聚类间 DE 检验”会制造假阳性 DEG。 | **相邻统计原理，不同任务**：仅涉无监督聚类后 DE 检验的 I 类错误，未涉跨系/跨扰动预测基准的 `resp_top50` vs `all_nontarget` 评估。 |
+
+---
+
+## 六、Q5 详查：跨细胞系扰动在 `fold-change` vs `log1p` 差值空间的保守性及基线表达驱动假说
+
+### 6.1 结论：**「部分做过（写清做到哪一步）」**（严格拆分：子命题 A「`fold-change` 空间比 `log1p` 差值更守恒」＝ **「没有找到」**；子命题 B「线特异 `log1p` 差值主要来自基线表达差异」＝ **「部分做过」**）
+
+#### A. 子命题 5a（`fold-change` 空间跨细胞类型是否比 `log1p` 差值空间更守恒）：**「没有找到」**
+在检查了 Perturb-seq 跨系图谱、药物迁移、以及 VCC 2025/2026 方法与基准文献后：**未发现任何已发表研究或预印本直接设计实验对比“同一批多细胞系扰动响应在 fold-change（比值/`log2FC`）空间 vs `log1p` 差值空间的跨系保守性相关/一致性”，并报告 fold-change 空间更守恒**。两类表示目前在实际工程中各走一边、缺少交叉定量对决：
+- **直接在 `log2FC` / 相对比例空间做跨情境比较或迁移的代表**：
+  - Illumina [`CellularAI`](https://github.com/Illumina/CellularAI)（`docs/method.md`）直接在居中 `log2FC` 空间对跨系摘要进行随机效应汇集，再通过 `self.fc * exp2(l2)` 映射到目标对照比例；完整方法学论文延至 2027 年初，目前公开源码与[官博](https://www.illumina.com/company/news-center/feature-articles/cellular-ai-virtual-cell-challenge-2026.html)均**未报告**“为什么在 `log2FC` 空间而不直接在 `log1p` 差值空间汇集更守恒”的定量消融；
+  - [`AtlasShift`](https://github.com/kaipengm2/Virtual-Cell-Challenge-2026)（`model.py:89-130, 221-227`, `predict.py:196`）按经验权重同时混合 `space="log2fc"`（权重 `0.6`）与 `space="bulk_delta"`（`log1p(50000·p) − log1p(50000·c)`，权重 `0.3`），且实现了 `log1p(baseline·exp2(cd4)) − log1p(baseline)` 的跨空间映射，但未发布二者的保守性比较；
+  - [`Nadig et al. (2025)`](https://doi.org/10.1038/s41588-025-02169-3)（*Nat Genet*, `PMC13063516`）使用 `TRADE` 测量 K562/RPE1/Jurkat/HepG2 间 `log2FoldChange` 的转录组级相关（中位数 `0.40–0.75`，指出未校准点估计中位相关仅 `0.16`），与 [`sigRecon`](https://doi.org/10.64898/2026.08.14.744937) 一样全程采用 `log2FoldChange`，从未与 `log1p` 差值空间对比。
+- **直接在 `log1p` 差值空间做跨情境分解与评测的代表**：
+  - [`Molina & Zhang (2026)`](https://doi.org/10.64898/2026.07.24.740459)、[`CASTER`](https://doi.org/10.64898/2026.11.15.766815)、[`Li et al. (2026)`](https://doi.org/10.1126/sciadv.aed3414)、[`scPerturBench`](https://doi.org/10.1038/s41592-025-02980-0) 全程直接在 `log1p(CP10k)` 差值 $\Delta$ 空间测量跨系相关性与泛化，同样**没有**在倍数变化空间再测一次跨系保守性进行横向比较。
+
+#### B. 子命题 5b（线特异 `log1p` 差值是否主要源于基线表达差异）：**「部分做过（写清做到哪一步）」**
+文献中确实存在 **4 项局部涉及“基线表达差异影响跨系 `log1p` 响应/迁移差异”的实证与数学工作**，但每一项都有严格的限定范围，且**无一揭示 R10-E / R11 的非线性折叠映射机制**：
+
+1. **`Molina & Zhang (2026)`（[`10.64898/2026.07.24.740459`](https://doi.org/10.64898/2026.07.24.740459)）— 对全局模板 $\alpha_c$ 成立，但对靶点特异交互 $\gamma_{c,p}$ 恰恰给出否定结论**：
+   - 作者在 `log1p` 四分量分解 $\delta_{c,p} = \mu + \alpha_c + \beta_p + \gamma_{c,p}$ 中把 $\alpha_c$ 定义为 *cell-line-specific baseline (template)*（占全信号 `27.8%`，各系 `23.4%–64.6%`），并在 `fig1e_ctrl_space_results.json` 中证明 **`α_c` 方差的 `72.3%–88.8%` 落在未扰动对照表达的前 5 个主成分内**（前 100 PC 内达 `91.8%–98.3%`；而特异残差在 100 PC 内仅 `34.6%–39.3%`）。
+   - **关键边界**：这里的 $\alpha_c$ 是**所有扰动共享的固定细胞系偏移**（在去振幅 / 去模板后完全消失）；而在讨论随靶点变化的真正线特异部分 $\gamma_{c,p}$ 时，作者反而发现往跨系线性模型加入 `Target ctrl` 特征**几乎零增量**（`s4a_cross_features` `-0.045..+0.083`），说明加性线性映射下的基线表达并不能解释 $\gamma_{c,p}$——**Molina 并未测试非线性的 $\log1p(c_{t,g}\cdot\mathrm{FC}_{p,g}) - \log1p(c_{t,g})$ 映射如何在基线 $c_{t,g}$ 驱动下直接生成依赖扰动 $p$ 的系别差值残差**。
+
+2. **`AMM-SimWMag`（`Sun et al. 2026`, *Genes*, [`10.3390/genes17070816`](https://doi.org/10.3390/genes17070816)）— 仅针对免疫刺激的单一细胞类型振幅标量**：
+   - 在 `Kang IFN-β`、`Haber`、`Hagai` 等细胞因子/病原体刺激跨类型迁移中（`log1p(CP10k)`），指出单一无缩放平均 `LinearDelta` 低估强响应类型、高估弱响应类型，而仅用**目标细胞类型未扰动对照的基线 ISG 表达均值**推导一个**全基因共享的标量放大系数 $\hat{s}_h$**，即可将 `R²-DEG` 从 `0.810` 提升至 `0.872`（逼近先知标量 `0.877`）。
+   - **关键边界**：$\hat{s}_h$ 是**全基因同一个乘数**（在去除了目标系全振幅 $\beta_t$ 的 `r_orth_cal` 评测中会彻底消去），并未研究 CRISPRi 多靶点下**逐基因基线表达 $c_{t,g}$ 对 fold-change 进行非线性 `log1p` 压缩所造成的基因级分布差异**。
+
+3. **`Ahlmann-Eltze et al. (2025)`（*Nat Methods*, [`10.1038/s41592-025-02772-6`](https://doi.org/10.1038/s41592-025-02772-6), `Extended Data Fig. 9`）— 基线差异与跨系预测误差的经验相关性**：
+   - 作者在 `K562 ↔ RPE1` 跨系预训练线性模型分析中专设 **`Extended Data Fig. 9`**：*"Analysis how differential expression between K562 and RPE1 effects prediction accuracy of transfer learning"*，定量给出读出基因预测误差（panel b）及按扰动 `Pearson Δ`（panel c）均随 K562 与 RPE1 间**未扰动基线表达差异**的增大而显著变差，正文中明确表述 *"The predictions were more accurate for genes that were more similar between K562 and RPE1"*。
+   - **关键边界**：报告的是跨系预测错误率随基线表达差异上升的经验关系，**未区分**这种误差下降是源自真实调控重连，还是仅仅因为 `log1p` 空间里相同的相对倍数变化在两端基线不同时体现出不同的绝对 `log1p` 增量。
+
+4. **`Booeshaghi & Pachter (2021)`（*Bioinformatics*, [`10.1093/bioinformatics/btab085`](https://doi.org/10.1093/bioinformatics/btab085)）与 `CASTER`（[`10.64898/2026.11.15.766815`](https://doi.org/10.64898/2026.11.15.766815)）**：
+   - 前者在单细胞数学公式上说明了 $\log(1+\mathrm{FC}\cdot \lambda)-\log(1+\lambda)$ 仅在大基线 $\lambda\gg 1$ 时趋近 $\log(\mathrm{FC})$、小基线 $\lambda$ 处随 $\lambda$ 缩小（`btab085 Fig. 1c`），但未联系跨细胞系扰动响应差异；后者虽在合成模拟（`results_text.py:208-212`）验证当情境特异分量显式依赖基因基线时注意力网络可从对照恢复它，但在真实 4 系零样本 `Task T2` 中同样发现目标对照无法预报先验残差（反而输给 `PerturbMean` `0.1714 vs 0.1981`）。
+
+---
+
+## 七、对 Team A `R11` 前瞻检验（`PREREG_D` / `H-D1..H-D4`）与合稿叙事的直接启示
+
+1. **Q4 为 `H-D4` 与主掩码切换（`resp_top50 → all_nontarget`）提供了清晰且不被抢先的方法学定位**：
+   - 虽然 `Nicol et al. (2026)` 已证明**同数据集共享对照误差 + 同批选取 `top-20` 基因**会把随机噪音和零变化 `ctl-mean` 相关推高至 `+0.408..+0.869`（且 `cell-eval2 #351` 封堵了 `>5 CPM` 存在性门控泄漏），但业界权威基准（`Miller 2026`、`SBB`、`scPerturBench`、`Systema`、`cell-eval2 delta_pearson_degs`）目前仍然普遍认可甚至推荐在**真实高响应/显著 DEG 子集**上评测相关性。
+   - Team A 在 `R10` 事后发现并于 `R11` **严格前瞻检验**的 **`H-D4`**（即即便在跨细胞系 `r_orth_cal` 指标下，没有任何目标对照基因特异性的**确定性常数基线变换 `E1`** 与标签置换，仍会在 `resp_top50` 上拿到虚假正向得分、而在切换至 `all_nontarget` 后塌缩回 0 附近），属于对现有基于观测响应子集评测体系的重要盲区补充；引用 `Nicol et al. (2026)` 与 `cell-eval2 #351` 作为先导并在边界上明确区分（样本共享误差 vs 确定性非均匀变换在极值尾上的对齐放大），论据将无懈可击。
+
+2. **Q5 为 `H-D1..H-D3`（全基因口径下 `FCT > E1`）精准划定了生物学可解释性边界**：
+   - 在文献中**无人**证实“跨系扰动在 `fold-change` 空间比在 `log1p` 差值空间更守恒”，亦**无人**报道过“跨系逐基因特异 `log1p` 差值主要由保守倍数变化经目标线实测基线 $c_{t,g}$ 压缩产生”。因此，若 `R11` 在全新前瞻细胞系上同时证实了 `H-D1..H-D3`（`FCT` 在 `all_nontarget` 下显著为正、越过错配与置换零线、且显著击败常数基线 `E1`）与 `E6/E7` 检验，Team A 将同时确立两项文献尚属空白的贡献：**① 揭示 `FCT` 对目标线真实基线表达 $c_{t,g}$ 的非线性 `log1p(c_{t,g}·FC) − log1p(c_{t,g})` 缩放确实携带跨系可迁移的非加性信号（超越 `Molina & Zhang` 与 `CASTER` 在加性/黑盒特征下“目标基线无助于 $\gamma_{c,p}$”的悲观结论）；② 揭示该表面增益同时伴随的评估伪影边界（`E1` 在 `resp_top50` 下的选择偏倚与在 `all_nontarget` 下的剥离）**。

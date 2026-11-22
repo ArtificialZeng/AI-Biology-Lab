@@ -1,0 +1,31 @@
+[A-T2] ROUND 11 (`PREREG_D`) PIPELINE DRAFT READY FOR AUDIT 2026-11-22T13:29+08:00
+
+1. Architecture & Strict Frozen Round 10 Reuse (Zero Modification to `round10/src/`):
+   - Verified `shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt`: **22/22 `.py` files OK** (zero edits to any frozen Round 10 file).
+   - Zero access to any unseen Round 11 dataset or `round11/shared/`; hard blinding gate `check_prereg_d_gate()` in `round11/src/data_loader_r11.py` refuses `--phase holdout_r11` unless both `PREREG_D_COMMIT.txt` and `CODE_FREEZE_R11.txt` exist and are non-empty.
+   - Authored modular `round11/src/` pipeline strictly importing frozen primitives (`data_loader_r10`, `fct_pipeline`, `metrics_r10`, `adjudicate_r10`, `run_eval_r10`):
+     * `__init__.py`: `87b9ccee0baf6a0e60c90a64e1871099e5847a689668c5bbd2416e57aa07fcea`
+     * `data_loader_r11.py`: `c6ad62da6b232786a28e88bfc61a6fde4ab211afadfd2ff19abcbcb1f783b509`
+     * `predictors_r11.py`: `2a070b869ccd2eb98a903d7f6cf16c5ef966b4e04837afcfb775d96de913f3cd`
+     * `metrics_r11.py`: `66d3c620ef9f494c2cf0913ed4441f9cbae8f6f3b00f4127b2760000d52de7c2`
+     * `adjudicate_r11.py`: `a224e1043a91f84295aa63a896836f019e7b50bd8a6fede250c9dbaacd9e4c2e`
+     * `run_eval_r11.py`: `f7e082044e8bb1bc1401b67ca948af28bb41dddad7c1f5925737441275d0af4b`
+     * `test_unit_r11.py`: `126bdb759724ab23ff9afd4ab0d9ea4f5e77eae7fd48cb58161641184f06aa18`
+
+2. Implemented `PREREG_D` Requirements & Pre-Lock Draft Alignment (`round11/prereg/PREREG_D.md` v1 Draft):
+   - Primary evaluation mask **`all_nontarget`** (canonical CSV columns `r_orth_cal`, `r_orth_cal_ci9833_*`, etc.) with **`resp_top50`** secondary (`resp_top50_*`).
+   - Exact Bonferroni `98.33%` CIs (`[100*(0.05/6), 100*(1 - 0.05/6)]` = `[0.833333..., 99.166667%]`) alongside `95%` and `97.5%` CIs using `np.random.default_rng(20261123)` x `4,000` joint perturbation bootstrap.
+   - `100`-permutation null (`np.random.default_rng(k).permutation(G)`, `k=0..99`) computed under **BOTH** `all_nontarget` (primary `H-D2`) and `resp_top50` (secondary).
+   - **`H-D3` (`FCT - E1_ConstMed` under `all_nontarget`)**: joint paired perturbation bootstrap (`compute_joint_paired_r_orth_diff_r11`).
+   - **`H-D4` (`E1_ConstMed(resp_top50) > 0` & cross-mask `E1(resp_top50) - E1(all_nontarget) > 0`, `98.33%` CIs)**: joint cross-mask bootstrap recomputing each mask's orthogonalized split-half ceiling inside identical perturbation draws (`compute_joint_cross_mask_e1_diff_r11`).
+   - Unanimous `K_conf / K_conf` adjudication (`H-D1`, `H-D2`, `H-D3` co-primary; `H-D4` separate secondary; `H-D_util` parallel `97.5%` non-inferiority across `SIX_CONVENTIONS`; `P1` `K_conf < 2` abort guard; `K_conf = 2` disclosure).
+   - Source modes `--source-mode r9_6` (6 Round 9 sources, primary) and `--source-mode r9_r10_8` (`SA-Src8`: 6 R9 + `dld1`, `cd4t_rest`, sensitivity), `SA-5` descriptive `E2..E7` ablations, and `SA-6 / S7` (`compute_s7_cellcount_and_kd_r11`) under both `all_nontarget` and `resp_top50`.
+
+3. Development Verification Strictly on Unblinded R9/R10 Lines & Synthetic Fixtures (`-I` Isolated Python):
+   - **Post-final-edit Unit Suite (`python3 -I round11/src/test_unit_r11.py -v`)**: **5/5 OK** (`2.779s`) — blinding gate, `98.33%` quantile precision, `<= 1e-12` parity vs frozen `round10/src/metrics_r10.py` (`compute_residual_suite_r10` & `compute_fct_perm100_null`) + naive element-wise reference on `all_nontarget`, planted `H-D1..H-D4` cross-mask consistency, `P1` `< 2` guard, unanimous 3-of-3 adjudication, and 8-source mismatched checking.
+   - **Post-final-edit 8-Source Development Smoke (`dev_r10 --source-mode r9_r10_8 --lines calu3 --n-boot 400 --n-perm 20`)**: Exited `0` in `128.73s` (`calu3` `N=9`, all 8 mismatched controls, `E1..E7`, `H-D3`, `H-D4`, dual-mask `perm100`, dual-mask `S7`, `R19`).
+   - **Post-final-edit Blinding Gate Check (`python3 -I round11/src/run_eval_r11.py --phase holdout_r11`)**: Confirmed `RuntimeError: PREREG_D hard gate blocked: missing/empty .../PREREG_D_COMMIT.txt`.
+   - *(Pre-alignment `n_boot=4000, n_perm=100` dev checks on R9 `vcc2025_h1` [64.12s] and R10 `dld1,cd4t_rest` [164.17s] also exited `0` under `--source-mode r9_6`, confirming `all_nontarget` parity with R10/R10-E).*
+   - Pending next step: Once Master Controller locks `PREREG_D` (`PREREG_D_COMMIT.txt`) and confirms final `PREREG_D.md`, perform final line-by-line parity check prior to `CODE_FREEZE_R11`.
+
+R11_CODE_DRAFT_READY

@@ -1,0 +1,91 @@
+{
+  "prereg_commit_hash": "",
+  "code_freeze_hash": "",
+  "source_mode": "r9_6",
+  "primary_mask": "all_nontarget",
+  "secondary_mask": "resp_top50",
+  "bootstrap_seed": 20261123,
+  "n_boot": 4000,
+  "phase": "dev_r9",
+  "confirmatory_lines": [],
+  "secondary_lines": [
+    "vcc2025_h1"
+  ],
+  "k_conf": 0,
+  "k_conf_disclosure": "Insufficient confirmatory cell lines (K_conf < 2); confirmatory hypothesis testing was not performed (\u786e\u8ba4\u6027\u7ebf\u4e0d\u8db3\uff0c\u672a\u505a\u786e\u8ba4\u6027\u68c0\u9a8c).",
+  "descriptive_H_D4_all_lines": {
+    "primary_ci_level": "ci95",
+    "verdict": "CONFIRMED",
+    "pass_count": 1,
+    "required": 1,
+    "verdicts_by_ci_level": {
+      "ci95": "CONFIRMED",
+      "ci975": "CONFIRMED",
+      "ci9833": "CONFIRMED"
+    },
+    "pass_counts_by_ci_level": {
+      "ci95": 1,
+      "ci975": 1,
+      "ci9833": 1
+    },
+    "per_line": {
+      "vcc2025_h1": {
+        "e1_resp_top50": 0.30759147882356747,
+        "e1_all_nontarget": 0.04371835211799922,
+        "cross_diff": 0.26387312670556823,
+        "valid_frac_resp_top50": 1.0,
+        "valid_frac_cross": 1.0,
+        "ci95": {
+          "e1_resp_top50_lo": 0.24922447980842344,
+          "e1_resp_top50_hi": 0.36492473210781623,
+          "cross_diff_lo": 0.21199850095286082,
+          "cross_diff_hi": 0.31466792093466633,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci975": {
+          "e1_resp_top50_lo": 0.24273297322778534,
+          "e1_resp_top50_hi": 0.3742169282054192,
+          "cross_diff_lo": 0.2051952023878162,
+          "cross_diff_hi": 0.3209664448480796,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "ci9833": {
+          "e1_resp_top50_lo": 0.2383195259197652,
+          "e1_resp_top50_hi": 0.37908167599787634,
+          "cross_diff_lo": 0.20291910373941963,
+          "cross_diff_hi": 0.32423471593884484,
+          "part_a_e1_top50_gt_0": true,
+          "part_b_cross_diff_gt_0": true,
+          "pass": true
+        },
+        "pass": true
+      }
+    }
+  },
+  "confirmatory_status": "INSUFFICIENT_LINES",
+  "Group_D_Verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+  "H-D1": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  },
+  "H-D2": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  },
+  "H-D3": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  },
+  "H-D4": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  },
+  "H-C3_noninf": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  }
+}

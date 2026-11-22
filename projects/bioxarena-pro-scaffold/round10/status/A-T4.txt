@@ -11,3 +11,19 @@ Summary of Contents:
 - Strictly left R10-E conclusions & values empty pending A-T2 (R10E_ABLATION_DONE), A-T3 (R10E_AUDIT_DONE), A-T5 (R10E_LIT_DONE), and A-T1 (R11_SCREEN_DONE).
 
 R10E_OUTLINE_DONE
+
+---
+
+[A-T4] R11 COMBINED PAPER OUTLINE UPDATED (ROUND 9 -> ROUND 10 -> R10-E POST-HOC 13:15 CORRECTION -> ROUND 11 PLACEHOLDER)
+
+Updated Deliverable: round10/paper/OUTLINE.md
+
+Updates Applied per R11_第十一轮行动指令.md & R10_VERDICT.md (13:15 Correction):
+1. Four-Act Narrative Arc Integrated:
+   - Act I (R9 Confirmatory, PREREG_A v4, K_conf=3): Co-fluctuation (Hybrid_ProjShared) & marginal variance (TMVS) NOT CONFIRMED (0/4 each; R14 negative).
+   - Act II (R10 Confirmatory, PREREG_C, K_conf=2, resp_top50): VCC-champion-class FCT passes H-C1 (2/2) & H-C3 (12/12) but FAILS H-C2 specificity (0/2 -> NOT CONFIRMED).
+   - Act III (R10-E Post-Hoc Exploratory, BASELINE_ABLATION.md + AUDIT_R10E_REPORT.md + PRIOR_ART_D.md, 510 checks max diff 1.11e-16): Explicitly marked post hoc & preserving R10 confirmatory verdict. Documents 13:15 retraction of initial E1=FCT intuition: outcome-selected resp_top50 rewards target-agnostic E1 (86.4%-115.5% of FCT) & inflates perm100, causing H-C2 failure; under unbiased all_nontarget (S6), E1/E2/E6/E7/perm100 collapse near <=0 while real FCT stays positive across 8/8 well-powered lines (N>=18) with paired FCT-E1 97.5% CI > 0 on 8/8 lines (dld1 +0.1969, cd4t_rest +0.0426). Also incorporates S6 frozen R10 specificity (dld1 passes; cd4t_rest misses by 0.002) and PRIOR_ART_D Q1/Q2 ("没有找到") vs Q3 ("已有人做过") boundaries (Q4/Q5 flagged pending).
+   - Act IV (Round 11 Confirmatory, PREREG_D): Strictly reserved as empty result/conclusion placeholders (Abstract §2.3, Section 6, Figure 6, Table 7, Supp. Table S6) aligned to all_nontarget primary mask, Bonferroni 98.33% CIs for H-D1..H-D3, methodological H-D4, and metadata-only R11_DATA_SCREEN.md candidates (TeloHAEC_2285, HCASMC_971, optional Feng 2026 non-KOLF iPSCs). Zero R11 results or conclusions written.
+2. Freeze Integrity Preserved: shasum -a 256 -c round10/status/FREEZE_MANIFEST_R10.txt -> 22/22 OK. Zero git commands run.
+
+R11_OUTLINE_DONE
