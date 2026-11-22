@@ -1,0 +1,12 @@
+# Round 11: never commit downloaded/derived expression data or caches
+shared/lines/
+shared/raw/
+*.h5
+*.h5ad
+*.npz
+*.pkl
+*.rds
+*.tar
+*.mtx.gz
+__pycache__/
+*.pyc

@@ -42,3 +42,14 @@ R10-2 DOWNLOAD, INGESTION & COUNTS-ONLY QC COMPLETE (zero evaluation metrics, co
   * calu3 (SECONDARY_ONLY): 29,370 kept single-gene cells (26,276 single-gene, 3,094 NTC; 1,486 vs 1,608 across 8 batches; 2,667 dual-gene cells excluded), G=13,692 (|G_eval|_canon=6,134), 178 targets, 22 reproducible -> 9 R9-shared -> 8 n_eval_targets.
 - Confirmatory Gate & Reports: Wrote round10/shared/R10_QC_COUNTS.md and round10/status/CONFIRMATORY_LINES.txt (K_conf=2: dld1, cd4t_rest). Unit tests test_prepare_r10.py (6/6 OK) and verify_r10_lines.py passed after all edits.
 R10_QC_DONE
+
+=== R11-0 DATA SCREEN (2026-11-22) ===
+Deliverable: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/shared/R11_DATA_SCREEN.md
+Metadata-only compliance: ZERO expression matrices (.h5/.h5ad/.pkl/.tar/UMI CSV) downloaded; all counts verified via IGVF/GEO/Figshare/EuropePMC/NCBI APIs & small guide/QC/metadata tables (<=13.5 MB). Zenodo API HTTP 403 logged without bypass; scPerturb checked via PMC12220817 + GEO.
+Reference baseline: union6_all=2,655, union6_rep=2,117 (1,657 in R9_COMMON), union10_rep=5,491 (3,001 in R9_COMMON); K=10 used cell lines (K562, RPE1, HepG2, Jurkat, KOLF2.1J, H1, DLD-1, CD4+ T, Calu-3, WTC-11 i3N).
+Top R11 picks (<=60 GB, low-MOI strict P4):
+1. TeloHAEC_2285 (IGVFDS7943IIWZ / GSE210681, PMC10921916 Nature 2024): NEW arterial endothelial line (resting), 1.47 GB .h5ad, 214,449 QC 1-guide cells (257,986 pre-QC UMI>=4, median=102, 2,656 NTC + 3,912 safe pre-QC), 2,241 canonical TSS genes (u6_rep=373..391, u10_rep=863..896) -> est. 75-150 R11 eval_targets vs R9 (170-345 vs R9+R10).
+2. HCASMC-hTERT (IGVFDS6248NDUW, Quertermous Parse Perturb-seq): NEW smooth muscle line, ZIM3-KRAB, MOI 0.1-0.2, 42.89 GB .hdf5 (IGVFFI5999NXAF; .h5ad 87.29 GB), 971 CAD genes (u6_rep=194, u10_rep=430) -> est. 40-80 vs R9 (85-170 vs R9+R10).
+3. Feng 2026 TargetedScreen (PMC12903452 / Figshare 27989294, MIT): 4.48 GB RNA; excl kolf_2/3 leaves 43 lines / 30 donors (550,406 pert + 7,266 NTC across 142/142 inlets), u6_rep=292 -> est. 60-115 pooled (same hPSC state; Fitness=32 NTC & NonFitness=10 NTC lack batch NTCs).
+Demoted/High-MOI/Over-budget: WTC-11 EC CC-Perturb (IGVFDS3530HHEU d1: MOI=5.5, 75 pure NTC, 0 P4>=25; pooled d1-3 0.49 GB: 546 pure NTC, 112 u6_rep P4>=25); TeloHAEC_GW (IGVFDS6017INUS 44.51 GB: MOI=5 kills P4, 2,107 u6_rep via deconv); WTC-11 CM (IGVFDS6332VCTO: low-MOI med=571, 1,863 promoters, u6_rep=181, u10_rep=682, needs 75.78-112.80 GB & >75 GB RAM); H9 Neuron (IGVFDS9825FOBP: mean 3.8 sgRNAs/cell fails P4, u6_rep=207, 50.99 GB .h5+.pkl needs >48 GB RAM + multi-guide deconv).
+R11_SCREEN_DONE
