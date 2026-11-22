@@ -185,9 +185,11 @@ def evaluate_confirmatory_lines_r11(
         note = ""
         if ln == "cd4t_stim48":
             note = " [Q2/Q7 DISCLOSURE: shared cell type/library/lab with R10 cd4t_rest]"
+        t_op = ">=" if c["n_shared_reproducible_eval_canon"] >= 50 else "<"
+        g_op = ">=" if c["g_eval_canon"] >= 3000 else "<"
         lines_txt.append(
             f"# {ln}: {'PASS_CONFIRMATORY' if ok else 'FAIL_CONFIRMATORY'} "
-            f"(n_eval_targets={c['n_shared_reproducible_eval_canon']} >= 50, |G_eval|={c['g_eval_canon']} >= 3000){note}"
+            f"(n_eval_targets={c['n_shared_reproducible_eval_canon']} {t_op} 50, |G_eval|={c['g_eval_canon']} {g_op} 3000){note}"
         )
 
     for ln in SECONDARY_ONLY_LINES:

@@ -1307,23 +1307,14 @@ def adjudicate_round11_group_d(
             Unanimous `K_conf / K_conf` non-inferiority across all 6 metrics.
     """
     k_conf = len(confirmatory_lines)
-    if k_conf < 2:
-        return {
-            "k_conf": k_conf,
-            "confirmatory_lines": list(confirmatory_lines),
-            "status": "NO_CONFIRMATORY_ADJUDICATION",
-            "primary_verdict": "确认性线不足，未做确认性检验",
-            "hd4_verdict": "确认性线不足，未做确认性检验",
-            "hd_util_verdict": "确认性线不足，未做确认性检验",
-            "abstract_notice": "Insufficient confirmatory cell lines (K_conf < 2); confirmatory hypothesis testing was not performed (确认性线不足，未做确认性检验).",
-        }
-
     hd1_n, hd1_ci_only_n, hd2_n, hd3_n = 0, 0, 0, 0
     hd4a_n, hd4b_n, hd4_n, hd_util_n = 0, 0, 0, 0
     a1_deviation_lines: List[str] = []
     line_verdicts: Dict[str, Dict[str, Any]] = {}
 
     for line in confirmatory_lines:
+        if line not in per_line_summary:
+            continue
         info = per_line_summary[line]
         d1 = bool(info["hd1_pass"])
         d1_ci = bool(info.get("hd1_ci975_gt_0_only", d1))
@@ -1356,6 +1347,20 @@ def adjudicate_round11_group_d(
             "hd4b": d4b,
             "hd4": d4,
             "hd_util": du,
+        }
+
+    if k_conf < 2:
+        return {
+            "k_conf": k_conf,
+            "confirmatory_lines": list(confirmatory_lines),
+            "status": "NO_CONFIRMATORY_ADJUDICATION",
+            "primary_verdict": "确认性线不足，未做确认性检验",
+            "hd4_verdict": "确认性线不足，未做确认性检验",
+            "hd_util_verdict": "确认性线不足，未做确认性检验",
+            "abstract_notice": "Insufficient confirmatory cell lines (K_conf < 2); confirmatory hypothesis testing was not performed (确认性线不足，未做确认性检验).",
+            "cd4t_stim48_independence_required": "cd4t_stim48" in confirmatory_lines,
+            "hd1_a1_deviation_lines": a1_deviation_lines,
+            "descriptive_line_verdicts": line_verdicts,
         }
 
     primary_confirmed = (hd1_n == k_conf) and (hd2_n == k_conf) and (hd3_n == k_conf)

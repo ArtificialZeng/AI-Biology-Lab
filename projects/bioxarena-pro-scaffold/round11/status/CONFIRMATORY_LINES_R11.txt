@@ -1,0 +1,9 @@
+# Round 11 Mechanical Confirmatory Line Gate (PREREG_D §2.2-2.3)
+# Thresholds: candidate in {telohaec, hcasmc, cd4t_stim48}, feasibility==PASS, n_eval_targets >= 50, |G_eval(t)| >= 3000
+# telohaec: FAIL_CONFIRMATORY (n_eval_targets=9 < 50, |G_eval|=4869 >= 3000)
+# hcasmc: EXCLUDED_FEASIBILITY_Q3 (RuntimeError: Parse flat-root CSR matrix (955,600 cells x 62,710 ENSG RNA features, nnz=2,679,007,357) contains ZERO CRISPR guide-capture features (guide_matches=0, non_ensg=['gene_id']); manifest guide TSVs (3163 rows) are guide library tables lacking per-cell barcodes/assignments.)
+# cd4t_stim48: PASS_CONFIRMATORY (n_eval_targets=503 >= 50, |G_eval|=6131 >= 3000) [Q2/Q7 DISCLOSURE: shared cell type/library/lab with R10 cd4t_rest]
+# feng_ipsc: SECONDARY_ONLY (never enters K_conf; n_eval_targets=93, |G_eval|=5326)
+# K_CONF=1
+# P1_GUARD: K_conf < 2 -> ABORT confirmatory adjudication (descriptive reporting only)
+cd4t_stim48

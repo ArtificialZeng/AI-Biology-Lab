@@ -34,6 +34,7 @@ from independent_r11_loader import (
     R9_LINE_SET,
     R10_LINES_DIR,
     R10_SOURCE_EXT_NAMES,
+    R11_CANDIDATE_CONFIRMATORY,
     R11_LINES_DIR,
     R11_SECONDARY_ONLY,
     R11_STATUS_DIR,
@@ -710,6 +711,32 @@ def render_audit_markdown(
             f"| `{_fmt(sp['median'])} / {_fmt(sp['p975'])}` | `{_fmt(pt)}` "
             f"| `{info['hd4a_pass']} / {info['hd4b_pass']}` |"
         )
+
+    lines.extend(
+        [
+            "",
+            "## Table 3: `H-D5` (`all_nontarget` FCT vs `Mis(nourreddine_kolf21j)`) & Addendum Notes",
+            "",
+            "| Line | `FCT` (`all_nontarget`) | `Mis(kolf21j)` (`all_nontarget`) | `FCT - Mis(kolf21j) [97.5% CI]` | `Diff CI > 0` |",
+            "| :--- | :---: | :---: | :---: | :---: |",
+        ]
+    )
+    for ln, info in summary["per_line"].items():
+        h5 = info.get("hd5_kolf21j")
+        if not h5:
+            continue
+        f5 = h5["fct_all"]
+        m5 = h5["mis_kolf21j_all"]
+        p5 = h5["paired_fct_minus_mis_kolf21j"]
+        lines.append(
+            f"| `{ln}` "
+            f"| `{_fmt(f5['est'])} [{_fmt(f5['ci975_lo'])}, {_fmt(f5['ci975_hi'])}]` "
+            f"| `{_fmt(m5['est'])} [{_fmt(m5['ci975_lo'])}, {_fmt(m5['ci975_hi'])}]` "
+            f"| `{_fmt(p5['diff_est'])} [{_fmt(p5['diff_ci975_lo'])}, {_fmt(p5['diff_ci975_hi'])}]` "
+            f"| `{h5['paired_diff_ci975_gt_0']}` |"
+        )
+        for note in info.get("addendum_notes", []):
+            lines.append(f"- **Disclosure (`{ln}`):** {note}")
     return "\n".join(lines) + "\n"
 
 
@@ -755,9 +782,9 @@ def main() -> None:
             targets = list(args.target_lines)
         else:
             targets = list(conf_list)
-            for sec in R11_SECONDARY_ONLY:
-                if (R11_LINES_DIR / sec / "pseudobulk_delta.npz").exists() and sec not in targets:
-                    targets.append(sec)
+            for cand in R11_CANDIDATE_CONFIRMATORY + R11_SECONDARY_ONLY:
+                if (R11_LINES_DIR / cand / "pseudobulk_delta.npz").exists() and cand not in targets:
+                    targets.append(cand)
 
     hgnc = None if args.no_hgnc else CanonicalHGNC.from_tsv()
     common_genes = load_r9_common_genes(hgnc=hgnc)
