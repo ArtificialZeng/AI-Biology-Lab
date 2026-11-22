@@ -29,3 +29,22 @@ COMPLIANCE_AND_INTEGRITY_CHECKS:
 - No git commands executed; only round10/paper/OUTLINE.md and round11/status/A-T4.txt modified.
 
 OUTLINE_R11_DONE
+
+---
+UPDATE: [主控 21:58] Exploratory Section Revision (Round 11 §D Final)
+DATE: 2026-11-22 21:48 +08:00
+SOURCES:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/status/EXPLORATORY_REVIEW_R11.md (§D)
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/REPORT.md
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/shared/PRIOR_ART_E.md
+
+SUMMARY_OF_EXPLORATORY_UPDATES:
+- Renamed final section of round10/paper/OUTLINE.md from "事后探索（待查新和独立复核）" to "9. 事后探索" (177 lines total).
+- Restricted §9 strictly to the 3 post-hoc items approved in EXPLORATORY_REVIEW_R11.md §D using only A-T3 audited locked P5 numbers from round11/audit/exploratory_check/REPORT.md:
+  1) SA-8 split-half effect: 9/12 lines pass E1(split) - E1(all) 97.5% CI > 0 (12/12 positive point estimate; cd4t_rest NS [+0.0383]; cd4t_stim48 +0.0730 [+0.0384, +0.1098]);
+  2) FCT outperforms arbitrary constant-baseline combinations under N_5 (12/12 lines vs Perm100 Q97.5), explicitly noting GlobalScale (eta < 1e-14), b_S (eta < 1e-14), and E1/E2/E6/E7 (R^2_N5 >= 0.992784) are zero/suppressed by mathematical construction;
+  3) Paired FCT - Mis_s 97.5% CI > 0 passes 11/12 lines (post-hoc, NOT pre-registered; cd4t_rest +0.0345, cd4t_stim48 +0.0141), vs 7/12 unpaired (both T-cell lines fail unpaired against Mis(vcc2025_h1): cd4t_rest -0.0009, cd4t_stim48 -0.0188).
+- Added §9 Limitation line: noiseless real-mu mechanism model predicts wrong signs on 8/12 lines under all mask (+ on 12/12 vs 8/12 negative in real data; e.g. cd4t_stim48 +0.6084 vs -0.0203), leaving the mechanism unexplained.
+- Added post-hoc cross-line subset limitation in §6.7: FCT outperforms direct log1p transfer reliably only on expr05 (10/10 lines, line-blocked permutation Bonferroni x3 p = 0.0059 vs all p = 1.0000); first-order Taylor derivations, absolute claims, and Q5a expression conservation claims excluded from main text.
+
+OUTLINE_EXPLORATORY_DONE

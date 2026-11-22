@@ -1,0 +1,9 @@
+[A-T5] 2026-11-22T21:21+08:00
+Task: [主控 21:20] exploratory/null_cone_theorem 事后论证三问文献先导核查 (Q1 Theorem 1 / SA-8, Q2 N_5 半偏投影, Q3 Q5a logFC vs log1p 跨细胞保守性)
+Deliverable: round11/shared/PRIOR_ART_E.md
+Summary of Findings:
+- Q1 (Theorem 1 / SA-8: split-half 选 top-k |Δ| 仍因确定性基线 w(μ)=μ/(1+μ) 信号尾偏倚奖赏无信息变换): 部分做过 (Nicol 2026 等处理了随机噪声耦合且以 split-half 视作解法; Arc cell-eval2 修了 >5 CPM 并集二值泄漏; Lun 2018 / Booeshaghi 2021 / Ahlmann-Eltze 2023 分析了低丰度方差与 log1p 压缩; Lawley 1944 建立多元范围限制理论; 唯独“split-half 且 σ_noise=0 下仍通过 w(μ) 信号尾令常数/均值/置换虚高”未见报道)
+- Q2 (N_5: 投影剔除常数基线 log1p 锥 + 半偏相关分母作评测指标): 部分做过 (CGC/IGC 2026, Molina & Zhang 2026, COMPASS 2026 已做 1D 线性模板/共享轴正交投影 + 对称残差 Pearson/cosine, Systema 2025 做质心平移, Kim 2015/ppcor 与 Lovell 1963 给出半偏与 FWL 公式; 但对多伪计数非线性函数锥 {g_c(FC)} 投影并采用半偏分母 ||P⊥r_obs|| ||(r_pred)_centered|| 作扰动评测指标尚未找到)
+- Q3 (Q5a: 同一数据集直接对比 logFC 与 log1p 空间跨细胞类型保守性, 复查至 2026-11): 没有找到 (Zhu/Dann Cell 2026 与 Nadig 2025/sigRecon 仅在 log2FC 空间分析, COMPASS/Molina/CanPert 仅在 log1p 差值空间分析, arXiv:2604.27646 仅测模型预测精度而非真实观测跨系保守性对比)
+Constraints respected: Read-only & API/web verification; no git; no expression data read; all DOIs & text points personally verified in session.
+PRIOR_ART_E_DONE
