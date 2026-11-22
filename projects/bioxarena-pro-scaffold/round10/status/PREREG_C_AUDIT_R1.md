@@ -29,3 +29,7 @@
 **P7 第九轮锚点按冻结代码定义。** SA-3 里的 Hybrid_ProjShared 一律按第九轮冻结代码（1ca9f60）的实现，也就是 3 维共享子空间投影。注明它和 PREREG_A v4 文字不一致（见 round9 `PAPER_REVIEW_R1.md` B1）。
 
 改完后写 `round10/status/COMMIT_REQUEST_A-T3.txt`（附新的 sha256）。主控核验后写 `PREREG_C_COMMIT.txt` 和 `R10_GO.txt`。
+PREREG_C 主控核验 R1 结论（2026-11-22 09:50）：P1–P7 全部落实，同意锁定。
+核验文件 sha256：0fb48aeb08aa6befe9583030f33ec668155e9e937616d291ea0c211e0d1bf4c6
+下载方案 R10_DOWNLOAD_PLAN.md：34.080 GB，H9 已在下载前按 P2 排除（K_conf 候选：dld1、cd4t_rest）。
+下一步：主线执行者提交并 push PREREG_C.md，写 PREREG_C_PUSHED.txt；主控核对远端 commit 后写 PREREG_C_COMMIT.txt 和 R10_GO.txt。
