@@ -1,0 +1,19 @@
+R10_GO（主控签发）
+签发时间：2026-11-22 09:43 +0800
+依据：PREREG_C 锁定于 dc4b4a5（见 PREREG_C_COMMIT.txt）；下载方案 round10/shared/R10_DOWNLOAD_PLAN.md 已核验。
+
+允许的操作（PREREG_C 第 1 节第 3–4 步）：
+1. A-T1 按 R10_DOWNLOAD_PLAN.md 下载，范围只限于：
+   - DLD-1 低 MOI 的 24 个 GSM；
+   - CD4+ T 静息态的 2 个供体（CE0006864、CE0008162）；
+   - i3Neurons；
+   - Calu-3。
+   合计约 34.08 GB，不得超过 60 GB。H9 不下载。原始文件放在 round10/shared/raw/ 或 ~/.cache/ 下（不进 git）。每个文件下载前，把 URL、大小、sha256 记进 round10/shared/DATA_SOURCES_R10.md。
+2. 按 PREREG_C 第 2.3–2.4 节（以及第九轮的 prepare_lines.py 口径）做标准化、只保留单 sgRNA 细胞、Addendum-B QC 和 split-half 划分。产出写进 round10/shared/lines/<line>/。
+3. 只报告计数：n_cells、n_nt_cells、n_genes_finite、|G_eval(t)|、n_targets_dedup、n_targets_reproducible、n_shared_reproducible_with_r9、half_valid。写进 round10/shared/R10_QC_COUNTS.md。
+4. 按第 2.2 节的规则机械确定确认性线，写进 round10/status/CONFIRMATORY_LINES.txt。
+
+仍然禁止：
+- 计算任何预测、相关、r_orth_cal、斜率或判别指标；
+- 用第十轮数据调整任何代码或参数。
+评测要等主控写出 round10/status/CODE_FREEZE_R10.txt 之后。

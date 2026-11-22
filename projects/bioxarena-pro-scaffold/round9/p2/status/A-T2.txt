@@ -33,6 +33,18 @@ PRIMARY HELDOUT COMPLETE (Code Freeze Commit 1ca9f60f49adf1ac7cce8266e4053327341
      * vcc2025_h1 (N=80): FCT r_orth_cal=+0.3505 [+0.2784, +0.4245] > max mismatch CI hi (+0.2022) & perm100 p97.5 (+0.2445) -> True (slope +0.2503 [+0.1339, +0.3542] <= perm100 p97.5 +0.2409 -> False).
    - Pre-registered Group A & Group B confirmatory verdicts remain unchanged (both 未确认).
 
-Cleared per HELDOUT_PRIMARY_COMMITTED.txt (ae63b52d); relaunched S1-S4 sensitivities post-restart in parallel pairs under frozen commit 1ca9f60f49adf1ac7cce8266e40533273411db30 (zero changes to src/):
-- task-1063: S3 (shrink=0.001, results/*_holdout_log1p_sens_s3_sh0.001.*) -> S1 (only_reproducible=False, results/*_holdout_log1p_sens_s1_rep0.*)
-- task-1064: S4a (cov_max_cells=10000, results/*_holdout_log1p_sens_s4a_c10k.*) -> S4b (zscore, results/*_holdout_zscore_sens_s4b.*)
+5. Held-Out Sensitivities S1, S3, S4a, S4b (Strict Frozen Commit 1ca9f60f): ALL COMPLETE & VERIFIED:
+   - S3 (shrink=0.001, results/*_holdout_log1p_sens_s3_sh0.001.*, 844.67s): Group A: 未确认 (H-A1..4 all 未确认) | Group B: 未确认 (H-B1..4 all 未确认) | R14: 2/3 False.
+   - S1 (--all-targets, results/*_holdout_log1p_sens_s1_rep0.*, 1385.23s): Group A: 未确认 (H-A1..4 all 未确认; hepg2 r_orth +0.0196, jurkat +0.0609, h1 -0.1016) | Group B: 未确认 (H-B1..4 all 未确认) | R14: 1/3 False.
+   - S4a (cov_max_cells=10000, results/*_holdout_log1p_sens_s4a_c10k.*, 828.69s): Group A: 未确认 | Group B: 未确认 | R14: 2/3 False.
+   - S4b (zscore space, results/*_holdout_zscore_sens_s4b.*, 782.23s): Group A: 未确认 | Group B: 未确认 (TMVS collapses under unit-var zscore: hepg2 +0.0108, jurkat +0.0118, h1 +0.0196; H-B2=0/3, H-B3=0/3) | R14: 1/3 False.
+
+6. Pre-Registration Deviation Disclosure (vcc_linespecific/DEVIATIONS.md) & S2b Sensitivity (rank1_q1, --proj-mode rank1_q1, results/*_holdout_log1p_sens_s2b_rank1q1.*):
+   - Recorded pre-freeze mismatch in DEVIATIONS.md: PREREG_A v4 §4.2 prose wrote rank-1 P_perp = I - q_1 q_1^T, whereas frozen codebase 1ca9f60f (predictors.py::fit_shared_subspace and audit/independent_predictors.py::fit_source_shared_axis_basis) removed 3D span{1, b_S, a_S}. Added opt-in non-default --proj-mode rank1_q1 (keeping default "span3" bit-identical to 1ca9f60f; unit tests pass: ALL_UNIT_TESTS_PASSED).
+   - S2b (rank1_q1, 597.37s) Verdicts — Group A Verdict UNCHANGED (未确认):
+     * Group A Primary (Hybrid_ProjShared): 未确认 (H-A1: 0/3 未确认 [hepg2 +0.0089, jurkat +0.0102, h1 -0.0064]; H-A2: 2/3 未确认 [hepg2 +0.0468, jurkat +0.1040, h1 -0.0299 FAIL]; H-A3: 0/3 未确认; H-A4: 3/3 inf 未确认 [union=3/3]).
+     * Group B Primary (TMVS): 未确认 (invariant under P_perp).
+     * R14 Mechanism Check (Hybrid_on_TMVS - TMVS r_orth_cal): 2/3 False ("在本数据上，共波动结构没有超出边际方差的可检测增量"; hepg2 +0.0126 ci975_lo=+0.0014, jurkat +0.0375 ci975_lo=+0.0238, h1 +0.0026 ci95_lo=-0.0611 FAIL).
+
+S2B_DONE
+TASK_DONE

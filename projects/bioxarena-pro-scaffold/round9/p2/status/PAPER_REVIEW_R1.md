@@ -42,3 +42,7 @@
 - **S7 数据可得性。** 第 7 节加上仓库链接 https://github.com/ArtificialZeng/AI-Biology-Lab 和各数据集的原始来源链接。
 
 改完后更新 `status/PAPER_DRAFT_READY.txt`（新的 sha256），写一行 `R1_REVISED`。暂不生成 PDF。
+
+## 主控复审 R1 结论（2026-11-22 09:57）
+修订稿（sha256 cebac156…682e）落实了 B1–B4 和 S1–S7；S2b（秩 1 投影）的数字和 results/*_sens_s2b_rank1q1.* 一致（HepG2 +0.0468，Jurkat +0.1040，H1 −0.0299，A 组仍为未确认）。
+决定：暂不生成 PDF。等第十轮结果出来后，把第九轮（预注册的阴性结果）和第十轮（FCT 前瞻验证）合成一篇，再出 PDF。

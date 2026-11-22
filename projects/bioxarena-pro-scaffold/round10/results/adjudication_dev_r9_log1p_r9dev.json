@@ -1,0 +1,32 @@
+{
+  "prereg_commit_hash": "",
+  "code_freeze_hash": "",
+  "bootstrap_seed": 20261122,
+  "n_boot": 4000,
+  "phase": "dev_r9",
+  "confirmatory_lines": [],
+  "secondary_lines": [
+    "nadig_hepg2",
+    "nadig_jurkat",
+    "nourreddine_kolf21j",
+    "replogle_k562_essential",
+    "replogle_rpe1",
+    "vcc2025_h1"
+  ],
+  "k_conf": 0,
+  "k_conf_disclosure": "Insufficient confirmatory cell lines (K_conf < 2); confirmatory hypothesis testing was not performed (\u786e\u8ba4\u6027\u7ebf\u4e0d\u8db3\uff0c\u672a\u505a\u786e\u8ba4\u6027\u68c0\u9a8c).",
+  "confirmatory_status": "INSUFFICIENT_LINES",
+  "Group_C_Verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+  "H-C1": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  },
+  "H-C2": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  },
+  "H-C3": {
+    "verdict": "NOT_EVALUATED_INSUFFICIENT_LINES",
+    "k_conf": 0
+  }
+}

@@ -17,4 +17,10 @@
 - **Governance & Post-Freeze Sensitivity Switch (`S2b`):**
   - Primary confirmatory adjudication remains anchored to the frozen `1ca9f60f` rank-3 implementation (`proj_mode="span3"` kept as default, bit-identical to `1ca9f60f`).
   - Added an **opt-in, non-default** switch (`--proj-mode rank1_q1` in `src/run_eval.py` / `proj_mode="rank1_q1"` in `src/predictors.py`) to execute sensitivity **`S2b`** matching literal `PREREG_A v4 §4.2` rank-1 centered PCA PC1 (`q_1 = Vt[0]` of `Y - mean(Y, axis=0)`, $P_\perp = I_G - q_1 q_1^\top$) on held-out (`results/*_holdout_log1p_sens_s2b_rank1q1.*`).
-- **Observed `S2b` (`rank1_q1`) Result Summary:** *(Pending S2b completion — to be appended immediately after `S2b` finishes.)*
+- **Observed `S2b` (`rank1_q1`) Result Summary (`results/*_holdout_log1p_sens_s2b_rank1q1.*`, 597.37s):**
+  - **Confirmatory Verdicts Unchanged:** `Group A (Hybrid_ProjShared): 未确认 | Group B (Transfer_Mean_VarScaled): 未确认`. Zero individual Group A hypotheses changed verdict:
+    - `H-A1` (`slope 97.5% CI lo > 0.13`): **未确认** (`0/3` pass: `nadig_hepg2 +0.0089 [+0.0054, +0.0127]`, `nadig_jurkat +0.0102 [+0.0070, +0.0136]`, `vcc2025_h1 -0.0064 [-0.0216, +0.0063]`).
+    - `H-A2` (`r_orth_cal 97.5% CI lo > 0`): **未确认** (`2/3` pass: `nadig_hepg2 +0.0468 [+0.0211, +0.0724]`, `nadig_jurkat +0.1040 [+0.0783, +0.1296]`, `vcc2025_h1 -0.0299 [-0.1118, +0.0445]` FAIL).
+    - `H-A3` (`matched > ALL 5 mismatched cov on BOTH slope AND r_orth_cal`): **未确认** (`0/3` pass). Notably, under `rank1_q1`, `nadig_hepg2` `NegCtrl_HybridProj_DiagCov` (`+0.0771`, slope `+0.0141`) also exceeded `Hybrid_ProjShared` (`+0.0468`, slope `+0.0089`), whereas frozen `span3` suppressed this marginal-variance bleed-through.
+    - `H-A4` (`strict AND non-inferiority across 6 conventions`): **未确认** (`3/3` inferior; `ctrl_disc_raw=3/3`, `ctrl_de50_r=2/3`, `ctrl_disc_raw_panel=3/3`, `cent_disc_raw=2/3`, `cent_de50_r=1/3`, `cent_disc_raw_panel=2/3`).
+  - **`R14` Co-Fluctuation Increment (`Hybrid_on_TMVS` - `TMVS` on `r_orth_cal`) Unchanged:** Fails unanimity at `2/3` (`confirmed=False`; `95%: 2/3`, `97.5%: 2/3`), retaining allowed statement `"在本数据上，共波动结构没有超出边际方差的可检测增量"` (`nadig_hepg2` `+0.0126` `ci975_lo=+0.0014`, `nadig_jurkat` `+0.0375` `ci975_lo=+0.0238`, `vcc2025_h1` `+0.0026` `ci95_lo=-0.0611`, `ci975_lo=-0.0711` FAIL).

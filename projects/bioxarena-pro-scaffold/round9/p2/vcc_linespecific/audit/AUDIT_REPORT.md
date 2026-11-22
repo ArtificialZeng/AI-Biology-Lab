@@ -256,6 +256,7 @@ All sensitivity variants were executed independently under frozen code (`CODE_FR
 | **Primary** (`log1p`, `sh=0`, `20k`, `Proj`, `rep=1`) | `audit/` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0490` / `+0.0419` (`+0.0131`) | `+0.0652` / `+0.0947` (`+0.0165`) | `-0.0398` / `-0.0772` (`-0.0044`) |
 | **`S1`** (`--all-targets`: `N=1777, 1779, 95`) | `s1_all_targets` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0196` / `+0.0324` (`+0.0029`) | `+0.0609` / `+0.0874` (`+0.0152`) | `-0.1016` / `-0.0474` (`-0.0564`) |
 | **`S2`** (`Hybrid_Raw`, no `P_perp`) | `s2_no_proj` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.1226` / `+0.0419` (`+0.0505`) | `+0.1290` / `+0.0947` (`+0.0535`) | `-0.0384` / `-0.0772` (`-0.0032`) |
+| **`S2b`** (`rank1_q1` literal `PREREG_A v4`) | `s2b_rank1` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0468` / `+0.0419` (`+0.0126`) | `+0.1040` / `+0.0947` (`+0.0375`) | `-0.0299` / `-0.0772` (`+0.0026`) |
 | **`S3`** (`--shrink 0.001`) | `s3_shrink1e3` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0490` / `+0.0418` (`+0.0131`) | `+0.0652` / `+0.0947` (`+0.0165`) | `-0.0398` / `-0.0772` (`-0.0044`) |
 | **`S4a`** (`--cov-max-cells 10000`) | `s4a_cov10k` | **未确认** (`0,2,0,F`) | **未确认** (`0,2,0,F`) | `False` | `+0.0486` / `+0.0421` (`+0.0127`) | `+0.0632` / `+0.0914` (`+0.0159`) | `-0.0335` / `-0.0776` (`-0.0004`) |
 | **`S4b`** (`--space zscore`) | `s4b_zscore` | **未确认** (`0,2,0,F`) | **未确认** (`0,0,0,F`) | `False` | `+0.0485` / `+0.0108` (`+0.0381`) | `+0.0307` / `+0.0118` (`+0.0190`) | `-0.0495` / `+0.0196` (`-0.0686`) |
@@ -278,6 +279,7 @@ All sensitivity variants were executed independently under frozen code (`CODE_FR
 - **`S3` (`s3_shrink1e3` vs. `sens_s3_sh0.001`):** `30` checks across all 6 lines (`Hybrid_ProjShared`, `TMVS`, `FCT`), **`max_abs_diff = 3.123e-17`**.
 - **`S4b` (`s4b_zscore` vs. `sens_s4b`):** `24` checks across all 6 lines (`Hybrid_ProjShared`, `TMVS`; `FCT` omitted by `A-T2` in `zscore` space), **`max_abs_diff = 1.329e-15`**.
 - **`S4a` (`s4a_cov10k` vs. `sens_s4a_c10k`):** `30` checks show expected stochastic control-subsample draw variance (`max_abs_diff = 2.024e-02` on target-control subsample), zero hypothesis verdict changes.
+- **`S2b` (`s2b_rank1` vs. `sens_s2b_rank1q1`, post-freeze rank-1 `q1` sensitivity per `DEVIATIONS.md` `D1` & `PAPER_REVIEW_R1.md` `B1`):** `90` checks across all `6` lines (`Hybrid_ProjShared`, `Hybrid_on_TMVS`, `TMVS`, `FCT`, `97.5%` joint-bootstrap CIs), **`max_abs_diff = 1.110e-16`**; Group A remains **未确认** (`0,2,0,F`), Group B remains **未确认**, `R14 = False` (`hepg2` `+0.0126`, `jurkat` `+0.0375`, `vcc2025_h1` `+0.0026 [-0.0611, +0.0623]`). Notably under rank-1 `q1`, `nadig_hepg2` `NegCtrl_HybridProj_DiagCov` (`+0.0771`, slope `+0.0141`) exceeded `Hybrid_ProjShared` (`+0.0468`, slope `+0.0089`), while `nadig_jurkat` (`+0.1040 [+0.0783, +0.1296]`, slope `+0.0102 [+0.0070, +0.0136]`) failed `H-A3` on slope vs. `NegCtrl_HybridProj_MismatchedCov(vcc2025_h1)` (`CI975_hi = +0.0153`).
 
 ---
 

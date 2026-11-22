@@ -1,16 +1,19 @@
 HELDOUT_PRIMARY_DONE
-[A-T3] HELDOUT_FULL_SENSITIVITIES_AND_PAPER_DRAFT_DONE 2026-11-22T09:32+08:00:
+[A-T3] HELDOUT_FULL_SENSITIVITIES_AND_PAPER_R1_REVISED 2026-11-22T09:53+08:00:
 1. Primary Held-Out 6-Line Standalone Audit Complete (CODE_FREEZE 1ca9f60f49adf1ac7cce8266e40533273411db30; PREREG_A v4 4cc89ebae67f0ed0748b80f994d26dcc9c2b95ef):
    - Group A (Hybrid_ProjShared): 未确认 (NOT CONFIRMED) — H-A1 0/3, H-A2 2/3, H-A3 0/3, H-A4 FAIL (3/3 inf).
    - Group B (Transfer_Mean_VarScaled): 未确认 (NOT CONFIRMED) — H-B1 0/3, H-B2 2/3, H-B3 0/3, H-B4 FAIL (3/3 inf).
    - C3 Cross-Check vs A-T2: 6 lines, 456 comparisons, 264/264 deterministic <= 1.11001e-14, 0 real CI diffs > 0.01, 8/8 hypothesis consensus.
-2. Full Pre-Registered Sensitivity Suite Complete (audit/sensitivity/):
+2. Full Pre-Registered + R1 Sensitivity Suite Complete (audit/sensitivity/):
    - S1 (s1_all_targets --all-targets), S2 (s2_no_proj Hybrid_Raw), S3 (s3_shrink1e3), S4a (s4a_cov10k), S4b (s4b_zscore) + S5 (4,611 genes) + S6 (all_nontarget ceilings) + R19 (3-tier multiplicative gain decomposition).
-   - Across ALL sensitivity variants: BOTH Group A and Group B remain 未确认 (NOT CONFIRMED), R14 remains False.
-   - Dual-team sensitivity parity vs A-T2: S3 max_abs_diff = 3.123e-17 (30 checks); S4b max_abs_diff = 1.329e-15 (24 Hyb+TMVS checks); S4a subsample RNG diff 2.024e-02 (verdicts identical).
-   - Updated audit/AUDIT_REPORT.md + re-verified 18/18 audit unit tests (OK).
-3. Round 9 Preprint Draft Complete & Audited:
-   - Written to round9/p2/paper/PREPRINT_DRAFT.md (sha256: aebcae7f9559a86a32f9b14148595aaab5230ed50c66e2f3fc340dcbef597a93).
-   - PAPER_DRAFT_READY.txt created with exact 1-line sha256; incorporates arXiv:2608.00152v3 (Shoeibi & Yousefi, 2026), R18 GlobalScale, FCT secondary/exploratory segregation, Prior Art A/B/C boundaries, AI disclosure, and 0 forbidden terms.
+   - S2b (s2b_rank1, literal PREREG_A v4 §4.2 rank-1 PCA q1 projection per PAPER_REVIEW_R1.md B1 / DEVIATIONS.md D1):
+     * Independently recomputed via scratch/run_s2b_audit.py (leaving frozen audit/*.py untouched) & cross-checked against A-T2 results/*_holdout_log1p_sens_s2b_rank1q1.*: 90 checks across 6 lines, max_abs_diff = 1.110e-16; identical verdicts (Group A = 未确认 0,2,0,F; Group B = 未确认; R14 = False 2/3).
+     * Confirmatory Hybrid_ProjShared (rank1_q1) r_orth_cal: nadig_hepg2 +0.0468 [+0.0211, +0.0724] (slope +0.0089; DiagCov +0.0771 beats it), nadig_jurkat +0.1040 [+0.0783, +0.1296] (slope +0.0102 fails H-A3 vs vcc2025_h1 mismatch +0.0153), vcc2025_h1 -0.0299 [-0.1118, +0.0445]; R14 +0.0126 / +0.0375 / +0.0026 [-0.0611, +0.0623].
+   - Updated audit/AUDIT_REPORT.md (§4.1, §4.3, §5) + verified 18/18 Round 9 audit unit tests (OK).
+3. Round 9 Preprint Draft R1 Revised (`PAPER_REVIEW_R1.md` B1-B4, S1-S7):
+   - Updated round9/p2/paper/PREPRINT_DRAFT.md (sha256: cebac156f62133c217d56b1884b7c5ac040896b71ae23fffde9d327fecd0682e).
+   - Addressed B1 (DEVIATIONS.md §2.4, rank-1 S2b integrated into §3.6 & Table 6, A-T2/A-T3 3D subspace non-independence disclosed in §2.4 & §6 #2), B2 (A-T4 -> A-T2), B3 (removed Rejects/rejected/multi-laboratory/unblinded/unblinding; softened Abstract ending), B4 (Abstract trimmed to 239 words <= 250 with all 5 required elements), S1-S7 (Claude Group B replication, "One possible explanation", all_nontarget emphasized before resp_top50, "in our bounded literature search", "has not been tested in a pre-registered design", role disclosure, GitHub + GEO/GCS/Figshare dataset URLs).
+   - Zero forbidden terms verified; PAPER_DRAFT_READY.txt updated with new sha256 + R1_REVISED.
 PAPER_DRAFT_READY
+R1_REVISED
 TASK_DONE
