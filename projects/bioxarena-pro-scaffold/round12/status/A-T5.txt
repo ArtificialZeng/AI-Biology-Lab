@@ -1,0 +1,6 @@
+TASK: R12 文献核查 PRIOR_ART_F
+OUTPUT: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/shared/PRIOR_ART_F.md
+VERDICT_Q1 (GSE345058 A549 cross-cell transcriptome prediction): 没有找到
+VERDICT_Q2 (paired target-line baseline vs mismatched cell-line baseline): 部分做过 (CanPert/CASTER 10.64898/2026.11.15.766815 已做模型输入 wrong-line controls 配对 Wilcoxon 检验，但仍把预测 shift 加回目标自身对照且未做全源系 IUT；其余 Fan et al. NeurIPS 2026 / CGC / 校准基准等均未做基线间配对错配对照)
+CONSTRAINTS_CHECKED: no git, no Orion/VCC/GSE345058/XuCao2023 matrix access, no CAPTCHA/PoW bypass, no banned words
+PRIOR_ART_F_DONE

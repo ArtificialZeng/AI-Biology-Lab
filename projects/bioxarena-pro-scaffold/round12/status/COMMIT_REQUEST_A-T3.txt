@@ -1,0 +1,22 @@
+# Round 12 Commit Request — A-T3 (`PREREG_E.md v2` Post-Audit Revision)
+
+- Target Artifact: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/prereg/PREREG_E.md` (`v2`)
+- SHA-256 (`PREREG_E.md`): `4b0d35a0f49f49b74f0e7f8ba901c9e19d04db53e23a8dfe9fecbe698b57808b`
+- Linked Plan: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/shared/R12_DOWNLOAD_PLAN.md` (`R12_PLAN_V2_READY`)
+- SHA-256 (`R12_DOWNLOAD_PLAN.md`): `e3826e09dd4326b1724d25732bb05d3d4dc72681ffc283b4a5efba57bd1555ed`
+- Supplemental Audit Artifact: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/outputs/paired_rorth_12lines.csv`
+- SHA-256 (`paired_rorth_12lines.csv`): `3ec183d1d8f23de6c2b7d2987cf4bd6a0af5e42295df451899582e6152f2ef75`
+- Supplemental Audit Report: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/REPORT.md` (`fb09f91b374d60dc6fa04ceb4d35640cbe76857d7bc2909a58dc0752566234f2`)
+- Audit Reference: `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/PREREG_E_AUDIT_R1.md` (`E1–E6`)
+
+## Post-Review Verification Checklist (`PREREG_E_AUDIT_R1.md` `E1–E6`)
+- [x] **E1 (Metric Separation & 12-Line `r_orth_cal` Paired Table):** Explicitly separated Check 2B `N_5` `r_cone_sp` (`11/12` paired, strictly descriptive in `§5`) from `r_orth_cal` (`all_nontarget`, `H-E1b` locked confirmatory endpoint). Embedded complete 12-line `r_orth_cal` paired table in `§0.1` (`paired_rorth_12lines.csv`, `11/12` passing all mismatched baselines: `6/6` unseen R10+R11 + `5/6` R9 LOO, vs `7/12` unpaired `H-D2`), plus Master Controller `controller/checks/r12_paired_check.py` replication (`dld1`, `cd4t_rest`, `cd4t_stim48`, `feng_ipsc` all `6/6` > 0) and post-hoc T-cell power reading requiring prospective confirmation.
+- [x] **E2 (`Lane`-Matched NTC Subtraction):** Unified `§3.1` and `§3.3` exclusively on `Lane`-level NTC `log1p` subtraction for `a549_ko` (`32` lanes, `1,244–1,577` NTCs/lane, all nested inside batch & Half A/B, matching R10/R11).
+- [x] **E3 (`HEK293` Pre-Metric Feasibility Gate `EXCLUDED_FEASIBILITY_Q3`):** Locked immediate post-download, pre-metric feasibility check on `XuCao2023.h5ad`: missing non-negative integer raw UMI counts (across `/X` & `/layers`) OR missing per-cell `sgRNA` & NTC labels triggers deterministic exclusion (`EXCLUDED_FEASIBILITY_Q3` logged in `round12/shared/R12_QC_COUNTS.md` & `CONFIRMATORY_LINES_R12.txt`, omitted from both confirmatory and secondary metrics).
+- [x] **E4 (Download Budget Numbers):** Synced `§3` with `R12_DOWNLOAD_PLAN.md`: `GSE345058_raw_counts.mtx.gz` `10,956,707,618 B` (`10.957 GB`), `a549_ko` `10,997,306,975 B` (`10.997 GB`), `hek293_xucao` `336,637,209 B` (`0.337 GB`), grand total `11,333,944,184 B` (`~11.33 GB` / `11.334 GB <= 15.000 GB`).
+- [x] **E5 (`FREEZE_MANIFEST_R11.txt` Line Count):** Updated `§0.3` cleanly to **`44/44` manifest lines verified (`41/41` file SHA-256 entries + `3` header lines, `0` failures)**.
+- [x] **E6 (Post-Hoc Provenance & Scope Disclosures in `§0.1` + `§7`):** Disclosed that `H-E1` & `H-E2` originated post-hoc from R9–R11 data (requiring prospective testing); Claim 2 (`SA-8`) is purely empirical (`8/12` wrong sign in Check 4 noiseless simulation — NOT mechanistic proof); and Claim 2 applies strictly to `r_orth_cal` (`resp_top50_split`), NOT Nicol et al. (2026) DEG metrics.
+- [x] Confirmatory framework intact: `H-E1a/b/c` & `H-E2a/b` under IUT + 2-claim Bonferroni (`97.5%` CIs, `seed = 20261201`, `4,000` bootstraps, `100` perms); zero downloads in `round12/shared/` (`R12_DOWNLOAD_PLAN.md` only); Directive Rule 5 audit clean (`0` hits).
+
+## Requested Master Controller Action
+Verify SHA-256 `4b0d35a0f49f49b74f0e7f8ba901c9e19d04db53e23a8dfe9fecbe698b57808b` on `round12/prereg/PREREG_E.md` (`v2`) alongside `round12/shared/R12_DOWNLOAD_PLAN.md` (`e3826e09dd4326b1724d25732bb05d3d4dc72681ffc283b4a5efba57bd1555ed`), emit `PREREG_E_COMMIT.txt`, and issue `R12_GO.txt` when ready.

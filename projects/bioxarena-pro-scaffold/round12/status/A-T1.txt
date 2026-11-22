@@ -1,0 +1,19 @@
+# A-T1 Round 12 Status
+# Directive: controller/directives/R12_第十二轮行动指令.md (§3, §4.2)
+# Hard Lock Verification: ZERO .mtx.gz or .h5ad files downloaded or inspected before PREREG_E_COMMIT / R12_GO.txt.
+
+[2026-11-22 22:32] Completed Round 12 download, verification, split-half, and NTC/single-sgRNA plan in round12/shared/R12_DOWNLOAD_PLAN.md using strictly GEO/Zenodo metadata pages and already-audited GSE345058 annotation CSVs.
+
+Plan summary locked for PREREG_E (updated per PREREG_E_AUDIT_R1 E2-E4):
+- Budget total: 11,333,944,184 B (11.33 GB / 10.556 GiB) <= 15.000 GB cap (5 files total).
+- a549_ko (GSE345058 CRISPRko, Primary Confirmatory):
+  - Files: GSE345058_raw_counts.mtx.gz (10,956,707,618 B = 10.957 GB) + cell_annotations.csv.gz (40,152,708 B) + gene_annotations.csv.gz (378,455 B) + sgRNA.csv.gz (68,194 B) = 10,997,306,975 B (11.00 GB); h5ad (25.05 GB) & normalized_counts.mtx.gz excluded.
+  - SHA256 protocol: GEO omits filelist.txt (HTTP 403); verify exact Content-Length + gzip -t + compute local sha256sum into R12_CHECKSUMS.sha256 post-lock.
+  - Split-half & NTC centering (E2): Half A = batch1+batch3 (318,447 cells; 23,758 NTC) vs Half B = batch2+batch4 (287,628 cells; 21,562 NTC); strictly Lane-level centering (32/32 lanes nested in batch/half, 1,244-1,577 NTC/lane >= 15).
+  - NTC/Single-sgRNA/Features: Condition=='Nontargeting' only (45,320 NTCs, 211 guides); join on cell_id (not cell_barcode); exclude synthetic Cas9 row (genome=='CAS9'); CAS9>0 sensitivity arm retains 444,122 cells (32/32 lanes >=607 NTC).
+- hek293_xucao (XuCao2023.h5ad, Zenodo 13350497, Confirmatory-gated else Secondary unless E3-excluded):
+  - File: XuCao2023.h5ad (336,637,209 B = 0.34 GB / 336.64 MB, CC-BY-4.0), published md5=3efb25a2927c5c228f04f783f18004d8; verify byte size + upstream md5 + h5py open + compute local sha256sum post-lock.
+  - Pre-locked rules: keep ALL single-sgRNA cells (DO NOT filter by post-hoc KD > 40%); Stage-1 odd vs even sorted .obs replicate ID split if >=2 replicate IDs present, else Stage-2 locked fallback stratified 50/50 split per perturbation (seed=42).
+  - Pre-eval E3 Feasibility Gate: If XuCao2023.h5ad lacks non-negative integer raw UMI counts (in both /X and /layers) OR lacks per-cell sgRNA and NTC labels in /obs, mark EXCLUDED_FEASIBILITY_Q3 in R12_QC_COUNTS.md & CONFIRMATORY_LINES_R12.txt and omit from both confirmatory and secondary reporting (zero downstream metrics computed).
+
+R12_PLAN_V2_READY

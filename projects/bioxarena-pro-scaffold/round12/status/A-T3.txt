@@ -1,0 +1,24 @@
+AGENT: A-T3 (Team A · Pre-Registration & Statistical Audit)
+ROUND: 12 (Paired r_orth_cal Verification + PREREG_E v2 Post-Audit Revision)
+ARTIFACT: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/prereg/PREREG_E.md
+ARTIFACT_SHA256: 4b0d35a0f49f49b74f0e7f8ba901c9e19d04db53e23a8dfe9fecbe698b57808b
+LINKED_PLAN: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/shared/R12_DOWNLOAD_PLAN.md
+LINKED_PLAN_SHA256: e3826e09dd4326b1724d25732bb05d3d4dc72681ffc283b4a5efba57bd1555ed
+PAIRED_RORTH_CSV: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/outputs/paired_rorth_12lines.csv
+PAIRED_RORTH_CSV_SHA256: 3ec183d1d8f23de6c2b7d2987cf4bd6a0af5e42295df451899582e6152f2ef75
+EXPLORATORY_REPORT: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/audit/exploratory_check/REPORT.md
+COMMIT_REQUEST: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round12/status/COMMIT_REQUEST_A-T3.txt
+
+SUMMARY:
+- Completed frozen round11/audit r_orth_cal paired FCT - Mis_s verification across all 12 cell lines (all_nontarget, P5 cohorts, R9 LOO 5 sources / R10-R11 6 sources, seed=20261124, n_boot=4,000, n_perm=100): 11/12 lines pass all available mismatched baselines (6/6 unseen R10+R11 lines pass 6/6 pairs; 5/6 R9 LOO lines pass 5/5 pairs; nourreddine_kolf21j N=18 passes 3/5 failing nadig_jurkat [-0.0008, +0.1162] and replogle_k562_essential [-0.0105, +0.0917]), vs 7/12 unpaired H-D2. Saved paired_rorth_12lines.csv and appended Check 5 to round11/audit/exploratory_check/REPORT.md.
+- Applied all PREREG_E_AUDIT_R1.md mandatory & suggested revisions (E1-E6) to PREREG_E.md (v2) and synced EXCLUDED_FEASIBILITY_Q3 / round12/shared/R12_QC_COUNTS.md conventions with R12_DOWNLOAD_PLAN.md (v2):
+  - E1: Separated Check 2B N_5 r_cone_sp (placed strictly in §5 descriptive analyses) from H-E1b confirmatory r_orth_cal; added 12-line r_orth_cal paired table + Master Controller 4-line check replication + post-hoc T-cell power interpretation to §0.1.
+  - E2: Unified A549 NTC subtraction strictly at the Lane level (32 lanes, 1,244-1,577 NTCs/lane) across §3.1 and §3.3.
+  - E3: Added pre-metric HEK293 feasibility gate (EXCLUDED_FEASIBILITY_Q3 if lacking non-negative integer raw UMI counts across /X & /layers OR missing per-cell sgRNA/NTC labels -> excluded from both confirmatory and secondary evaluation).
+  - E4: Confirmed §3 sizes: raw_counts.mtx.gz 10.957 GB (10,956,707,618 B), total 11,333,944,184 B (~11.33 GB <= 15.000 GB).
+  - E5: Updated §0.3 FREEZE_MANIFEST_R11.txt note to 44/44 manifest lines verified (41/41 SHA-256 entries + 3 headers, 0 failures).
+  - E6: Disclosed post-hoc R9-R11 hypothesis provenance and Claim 2 strictly empirical non-mechanistic scope (8/12 wrong signs in noiseless Check 4; restricted to r_orth_cal, non-extrapolable to Nicol et al. DEG metrics) in §0.1 and §7.
+- Verified zero data files in round12/shared/, test_exploratory_check.py 4/4 PASSED, and Directive Rule 5 terminology audit clean (0 hits).
+
+PAIRED_RORTH_DONE
+PREREG_E_V2_READY
