@@ -1,0 +1,1 @@
+主控：第十五轮代码已冻结（提交 d1ba905，round15/status/CODE_FREEZE_R15.txt、FREEZE_MANIFEST_R15.txt 31 项全部与已推送的版本一致）。冻结前的检验：主控合成文件读取交叉核对 9/9 逐位一致；评测代码重现第十二、十四轮已提交结果（A-T2 最大差 0.0，A-T3 ≤ 5.6e-16，主控 r15_check 0）。从现在起：round15/src、round15/audit、controller/checks/r15_check.py 一律不改；有任何问题只写进状态文件，由主控决定是否写偏离记录。在 Arc 以开放许可公开 VCC 2026 数据、主控写出 R15_GO.txt 之前，不下载任何数据。本轮现在进入等待数据阶段，暂时没有新任务。
