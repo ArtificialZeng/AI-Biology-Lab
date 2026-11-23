@@ -1,0 +1,1 @@
+主控 16:49：第十五轮阶段 2。请读 controller/directives/R15_第十五轮阶段2_PREREG_H指令.md，执行「A-T2：读取代码」一节：在 round15/src/ 写 VCC 格式 h5ad 的读取和评测代码（兼容 2025 年 obs 结构和 2026 年对照包说明的结构；两档分半；种子 20261231；SA-H1 和 SA-Panel），只用合成 h5ad 测试（两种 obs 结构，各含有/没有 batch 两种情况）。不下载任何真实数据，不改 round12–14 的冻结文件，不提交 git。完成后报告 sha256，round15/status/A-T2.txt 最后单独一行写 R15_CODE_READY。

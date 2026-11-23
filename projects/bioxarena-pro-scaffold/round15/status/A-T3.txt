@@ -1,0 +1,22 @@
+ROLE: A-T3 (Team A Pre-Registration & Statistical Audit)
+ROUND: 15 (Arc Virtual Cell Challenge 2026 — Pre-Release Multi-Line Preregistration)
+TIME: 2026-11-23 +08:00
+STATUS: PREREG_H_DRAFT_READY
+
+DELIVERABLE:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/prereg/PREREG_H.md
+  - bytes: 28209
+  - sha256: 0104634aad01263dd0e93cfed0901ba6d4eacb94cf26721ad105bc989a15b3e6
+
+PRE-LOCK VERIFICATION SUMMARY:
+1. Strict Pre-Release Timing & Blinding Verified:
+   - Public GCS bucket query (virtual-cell-challenge/2026/) confirmed EMPTY (`0` files) prior to lock (`2026-11-23 16:30–16:43 +08:00`).
+   - Zero `virtualcellchallenge.org` accounts created, zero terms accepted, zero 2026 files downloaded (including neither `pert_counts.csv` nor control packages), zero git commands run, zero outward communications.
+2. PREREG_H Locks (Addendum to PREREG_E commit `4c606f4`):
+   - Word-for-word inheritance of `PREREG_E` Claim 1 (`H-E1a/b/c`), Claim 2 (`H-E2a/b`), `r_orth_cal`, `all_nontarget` / `resp_top50_split`, `r9_6` sources, IUT + 2-Claim Bonferroni (`97.5%` CIs, `n_boot = 4,000`, `n_perm = 100`), `P5` eligibility, and §5 descriptive suite; new RNG seed **`20261231`**.
+   - Open-license access gate (`CC0` / `CC BY` public GCS or Virtual Cell Atlas ONLY; gated terms -> `EXCLUDED_ACCESS`) with sunset expiration date **`2027-06-30`**.
+   - Candidate lines: `cal33`, `hela`, `ac16`, `molm13`, `u87mg` (`jurkat` strictly excluded due to `nadig_jurkat` in `r9_6`); evaluated individually with `max K_conf = 5` and IUT across all `K_conf` qualifying lines.
+   - Co-release priority (`300`-target challenge set primary; `>10,000` full screen secondary descriptive); integer raw UMI verification (`EXCLUDED_FEASIBILITY`), `target_gene == "non-targeting"` NTC, single-construct (`PREREG_F §3.2` fallback), `>= 300` UMI & `>= 200` genes, `max_pct_mt = None`, two-tier split-half (`Tier 1`: `.obs` batch/channel parity -> `Tier 2`: stratified `seed = 20261231`), `>= 50` targets / `>= 3,000` genes / `>= 15` NTC per half gate.
+   - Secondary analyses `SA-H1` (leave-`vcc2025_h1`-out) & `SA-Panel` (`129` shared val-test targets vs remaining targets), plus prior disclosures (`NeurIPS 2026 OpenReview lnpzb1HvwX` unread / no Claim 1 novelty until inspected, `CanPert/CASTER`, unreadable Dobin metrics preprint, Arc curation, `<= 60 GB` download cap into `round15/shared/raw/vcc2026/`).
+
+PREREG_H_DRAFT_READY

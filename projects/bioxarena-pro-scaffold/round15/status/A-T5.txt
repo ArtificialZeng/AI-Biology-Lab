@@ -1,0 +1,16 @@
+R15 A-T5 Status Report
+Date: 2026-11-23 16:46 CST
+Role: A-T5 (Team A - Literature & Official Metrics)
+Deliverable: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/shared/PRIOR_ART_H.md
+
+Verification Summary:
+1. Q1 (Claim 1 counterpart - target controls vs mismatched controls on VCC 2026 lines Cal-33, HeLa, Jurkat, AC16, MOLM13, U-87MG):
+   - Verdict: 部分做过 (partial component-level / non-VCC2026-panel overlap only; no full target-vs-mismatched control ablation across all 6 VCC 2026 Flex cell lines found).
+2. Q2 (Claim 2 counterpart - post-2026-11-16 works claiming high scores without target baseline after independent split-half gene selection):
+   - Verdict: 没有找到 (inspected OCCAM arXiv:2611.21959v1, mixing-vs-selection v1.3.1, PerturbJEPA arXiv:2611.20575v1, ReliFlow arXiv:2611.23999v1, Tarikere rs-11768707, He et al. 2026.11.16.767041, Cupaioli & Merelli v3, UPM v2, Arc/Ion Genomics reports).
+3. Q3 (Alexander Dobin VCC 2026 metrics preprint doi:10.64898/2026.11.17.767214):
+   - Verdict: 未能读取 (HTTP 404 across Crossref/OpenAlex/DataCite/doi.org, not indexed in bioRxiv/medRxiv/EuropePMC APIs, HTTP 403 on biorxiv.org HTML/PDF). Readable companion docs (ArcInstitute/cell-eval2 vcc2026-metrics.md & vcc2026-metrics-brief.md, and Arc 2026-11-19 Wrap-Up post) do not define the regression formula for line-specific slope (0.02-0.13 vs 1.02) and do not test FCT-class predictors.
+
+All citations verified via official APIs / repositories with verified DOIs/URLs and single-sentence verbatim quotes; gated resources explicitly marked 未能读取.
+
+PRIOR_ART_H_DONE

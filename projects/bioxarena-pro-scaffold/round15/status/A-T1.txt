@@ -1,0 +1,12 @@
+ROUND15_PHASE=VCC2026_PRE_RELEASE_FEASIBILITY_AUDIT
+AGENT=A-T1
+DATE=2026-11-23
+QUERY_TIMESTAMP_UTC=2026-11-23T08:41:41Z (window 08:30:21Z-08:42:35Z; 16:30-16:43 +08:00)
+FEASIBILITY_REPORT=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/shared/R15_FEASIBILITY_VCC2026.md (sha256=aa0f70ad62732005565215bf7d105c18f011da7848a8ccaaf6e5eea2f22630c2)
+VERDICT=UNCERTAIN_WAIT_FOR_PUBLIC_OPEN_RELEASE (不确定：等待官方免登录开放发布并核查靶点/批次列与许可证)
+RELEASE_STATUS=GCS arc-institute-virtual-cell-atlas virtual-cell-challenge/2026/ EMPTY (items=[], prefixes=None; only 2025/ present, uploaded 2025-12-16T17:08-17:36Z); HF arcinstitute=0 VCC2026 datasets/models/spaces (latest 2026-10-28T21:52:33Z); GEO/BioProject=0 VCC2026; Zenodo/Figshare=0 Arc VCC2026; arcinstitute.org/news latest=2026-11-19 Wrap-Up (no open release date published)
+EXPERIMENTAL_DESIGN=6 lines CRISPRi + 10x Flex (18,533 genes) + Ultima UG100 (cyto, median 20,000 UMIs/cell): val Cal-33, HeLa, Jurkat [EXCLUDE Jurkat: already R9 source nadig_jurkat]; test AC16, MOLM13, U-87MG (up to 5 candidate lines). Full screen >10,000 targets + 100 NTCs (~50,000 cells, median 500/pert); Challenge curated 300 targets/panel (129 val-test overlap, 171 new, >=80% median KD, better of 2 guides, 400 cells/pert) + 46 NTCs (18,400 cells, target_gene==non-targeting, raw integer UMIs). 2025 H5AD Range check confirmed batch(48 Flex lanes)/guide_id/target_gene in Atlas; 2026 challenge control schema only documents target_gene/context/ntc_id (no batch column yet).
+TARGET_LIST_AND_PROJECTION=pert_counts.csv & >10k list NOT public without login+selfie; public Wrap-Up reports 277/300 test targets in Replogle 2022 K562 & 298/300 in X-Atlas/Orion; vcc2025_h1 reference (300 targets): leave-one-out vs u5_rep=2004 (u5∩R9C=1610) has 95 in u5_rep (84 in u5∩R9C), reproducible 91/95=95.8% (80/84=95.2%); parametric projections await actual released list.
+LICENSE_AND_COMPLIANCE=2025 Atlas is CC0 1.0 (arcinstitute.org/tools/virtualcellatlas); 2026 currently gated by virtualcellchallenge.org/terms (eff 2026-08-04, prohibits non-Challenge use/redistribution) & Persona selfie -> NO account login/Terms acceptance performed; zero >100MB downloads/matrices/git/external actions.
+RISKS=Technical similarity with R9 source vcc2025_h1 (same Arc Lab + 10x Flex + UG100 + CRISPRi pipeline -> require leave-vcc2025_h1-out ablation); >=80% KD + better-guide + 400-cell curation survivorship bias; potential missing batch column; 129 val-test overlap.
+R15_FEASIBILITY_DONE
