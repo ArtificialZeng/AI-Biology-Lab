@@ -27,3 +27,28 @@ KEY_COMPLIANCE_ITEMS_IMPLEMENTED:
    - Human role stated strictly as Human project lead / 人类项目负责人; zero press releases, tweets, external text, README edits, or git commands executed.
 
 R13_OUTLINE_DONE
+
+---
+UPDATE: 主控 09:36 — Outline v3 (Title Refinement + Round 13 PREREG_F Gate-Failure Integration)
+DATE: 2026-11-23 09:37 +08:00
+ARCHIVED_PRIOR_VERSION:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/paper/OUTLINE_v2_preR13.md (sha256: c7024b18503067631f031eebe2e6c326a5adafb86335352fdd5782f0872c7776)
+SOURCES:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/status/R13_VERDICT.md
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/prereg/PREREG_F.md
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/shared/R13_QC_COUNTS.md
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/status/RULING_R13_READER.md
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/results/REPORT_holdout_r13_r9_6_log1p.md
+
+SUMMARY_OF_V3_UPDATES:
+1. Title Candidates Refined (OUTLINE.md §1):
+   - Removed all references to Claim 2 ("Persistent Split-Half Selection Inflation", "Exposing Split-Half Selection Bias") from all title candidates.
+   - All 3 title candidates now strictly emphasize Claim 1 (target-line baseline specificity, explicitly distinct from best predictive accuracy) and K_conf = 1 (single confirmatory cell line, limited generalizability).
+2. Round 13 Placeholder Replaced With Actual Pre-Registered Gate-Failure Results (OUTLINE.md Header, Abstract §2.3, §3.8, Fig 1, Tables 1/9/S5/S8, Methods §5.2, Limitations §6.1, §7, §8 Jung et al. 2026):
+   - Pre-registered prospective attempt on primary human macrophages (GSE327644, Jung et al. 2026, PREREG_F 5b51e5b) failed the target-count gate before confirmatory testing: mac_ctrl yielded 122,354 cells and 15/582 reproducible targets, leaving only 3 eval targets (AKIRIN2, KAT5, ZC3H13) < 50 threshold -> K_conf = 0 (mac_lps secondary line yielded 26/582 rep and 5 eval targets). Three-way count reconciliation confirmed identical 3 eval targets (RULING_R13_READER.md).
+   - Documented structural cause: immune-focused knockout library yields median 0 DEGs/target in unstimulated cells and barely overlaps Round 9 essential-gene sources (unsolvable by adding more cells).
+   - Explicitly stated NO confirmatory adjudication was performed (NO_CONFIRMATORY_LINES_DESCRIPTIVE_ONLY), Round 12 conclusions remain completely unchanged (A549 CRISPRko K_conf = 1, limited generalizability), and descriptive metrics at N = 3 and N = 5 (56 numbers max diff 2.2e-16 between A-T2 and controller r13_check.py) carry no inferential weight and must NOT be written as replicated or failed to replicate.
+   - Both Abstract Paragraph 3 (§2.3) and Limitations (§6.1) explicitly report this Round 13 gate failure.
+- Zero external/promotional text written; zero git commands executed.
+
+R13_OUTLINE_V3_DONE
