@@ -9,7 +9,7 @@ for i in $(seq 1 480); do
   frozen_ok || { echo "$(date +%H:%M) R12_FROZEN_FILE_CHANGED_ALERT"; exit 0; }
   [ "$(shasum -a 256 round13/prereg/PREREG_F.md | cut -c1-64)" = 0408ada0c0b88b9b2e1ddf97ba5f3e861dff0448f1bad36c6dd2347f5ac708ec ] || { echo "$(date +%H:%M) PREREG_F_CHANGED_ALERT"; exit 0; }
   [ ! -s round13/status/R13_LINES_AUTHORIZED.txt ] && [ -n "$(find round13/shared/lines -type f 2>/dev/null | head -1)" ] && { echo "$(date +%H:%M) LINES_BUILT_BEFORE_AUTH_ALERT"; exit 0; }
-  big=$(find round13 -type f -size +100M -not -path "round13/shared/raw/gse327644/*" -not -path "round13/shared/lines/*" 2>/dev/null | head -1); [ -n "$big" ] && { echo "$(date +%H:%M) UNEXPECTED_BIG_FILE_ALERT $big"; exit 0; }
+  big=$(find round13 -type f -size +100M -not -path "round13/shared/raw/gse327644/*" -not -path "round13/shared/lines/*" -not -path "round13/audit/reader_xcheck/*" 2>/dev/null | head -1); [ -n "$big" ] && { echo "$(date +%H:%M) UNEXPECTED_BIG_FILE_ALERT $big"; exit 0; }
   for spec in A-T1.txt:R13_DOWNLOAD_DONE A-T2.txt:R13_CODE_PATCHED A-T3.txt:R13_AUDIT_CODE_READY A-T1.txt:R13_QC_DONE A-T3.txt:R13_READER_XCHECK_OK A-T3.txt:R13_READER_XCHECK_MISMATCH; do
     f=${spec%%:*}; m=${spec#*:}
     case "$SEEN" in *" $m "*) ;; *) [ "$(cnt $f $m)" -gt 0 ] && { echo "$(date +%H:%M) $m"; exit 0; };; esac

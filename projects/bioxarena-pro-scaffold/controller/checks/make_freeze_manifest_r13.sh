@@ -12,6 +12,7 @@ OUT=round13/status/FREEZE_MANIFEST_R13.txt
     round13/status/R13_LINES_AUTHORIZED.txt round13/shared/R13_QC_COUNTS.md round13/status/CONFIRMATORY_LINES_R13.txt \
     round13/shared/R13_CHECKSUMS.sha256 round13/shared/download_manifest_r13.json
   [ -s round13/audit/READER_XCHECK_R13.md ] && shasum -a 256 round13/audit/READER_XCHECK_R13.md
+  [ -s round13/status/RULING_R13_READER.md ] && shasum -a 256 round13/status/RULING_R13_READER.md
   echo "# Section 3: prepared line data (inputs to evaluation)"
   find round13/shared/lines -type f -not -path "*/.cache*" -not -name "_tmp_*" | sort | xargs shasum -a 256
 } > "$OUT"

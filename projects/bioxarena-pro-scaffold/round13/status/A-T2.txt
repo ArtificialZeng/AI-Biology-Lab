@@ -1,34 +1,30 @@
-[A-T2] ROUND 13 (`PREREG_F` / `GSE327644`) READER & PIPELINE CODE READY 2026-11-23T08:20+08:00
+[A-T2] ROUND 13 (`PREREG_F` / `GSE327644`) AUDIT PATCH COMPLETE & VERIFIED 2026-11-23T08:27+08:00
 
 1. Freeze Integrity & Blinding Compliance:
-   - Zero real Round 13 data downloaded or accessed (only synthetic Cell Ranger Flex `.h5` & companion test fixtures used).
+   - Zero real Round 13 data downloaded or accessed (strictly synthetic Cell Ranger Flex `.h5` & companion fixtures used).
    - Zero modifications to `round10/`, `round11/`, or `round12/` (`head -n 34 round12/status/FREEZE_MANIFEST_R12.txt | shasum -a 256 -c`: `31` `: OK`; full `FREEZE_MANIFEST_R12.txt`: `46` `: OK`, exit code `0`).
-   - All new code resides strictly under `round13/src/`, with post-final-edit SHA-256 checksums:
+   - Post-patch SHA-256 checksums (`round13/src/*.py`):
      * `round13/src/__init__.py`: `816746b38905a729c75e84bd23b6d3b5e3c8840e176f33e048fecc28ba3dc8e8`
      * `round13/src/adjudicate_r13.py`: `21cc850593a9c486669e71a3ad472dc53977717b12680e877dca161a3be4b528`
      * `round13/src/data_loader_r13.py`: `589edfc276ca90dc8bb8ec71dc107e81ab4b1dfb376ab8c639082a25a6ade455`
-     * `round13/src/dataset_readers_r13.py`: `c32beda7127749c1f2369daf4c49215ae0b71eea4907fca032d1f5d1a201d19b`
+     * `round13/src/dataset_readers_r13.py`: `22dfc34d9d432baa5c6b4fa7ea815b89c5f9c8ace51842ab0daec3ee609202a5`
      * `round13/src/run_eval_r13.py`: `a19f9414f8ecc336ce1297b3123388050ff2dc6312c1fde61c07d039b92e6e65`
-     * `round13/src/test_unit_r13.py`: `0014a36025a5bf255fe69cee864d1a101425b4e82961a897b4c2c3b237c7bae3`
+     * `round13/src/test_unit_r13.py`: `3a31aa73300898b26ab9cc57c01e9e086e8b25911f86ca4eaaa3497c1f7510b0`
 
-2. Implemented `round13/src/` Modules Aligned to `R13_第十三轮阶段2_GSE327644预注册指令.md`:
-   - `dataset_readers_r13.py` (`check_gse327644_feasibility`, `load_gse327644_guide_metadata`, `build_gse327644_parts`, `prepare_r13_line`):
-     * **Condition Routing & Filtered Matrices**: separates `mac_ctrl` (confirmatory candidate) and `mac_lps` (secondary descriptive only), selecting strictly Cell Ranger `filtered` `.h5` files (excluding `raw_feature_bc_matrix.h5` and AppleDouble files).
-     * **Pre-Metric Feasibility Gate (`EXCLUDED_FEASIBILITY`)**: verifies `/matrix` CSC datasets, non-negative integer counts (`/matrix/data`), human `Gene Expression` features, valid per-cell protospacer calling (`protospacer_calls_per_cell.csv` OR non-empty `CRISPR Guide Capture` UMIs), and resolvable NTC / canonical HGNC targets.
-     * **Guide Calling & Deterministic NTC Rule (Rule 3)**: prefers companion Cell Ranger `protospacer_calls_per_cell.csv(.gz)` (`num_features == 1`, single non-delimited `feature_call`) when present across files, else uses `.h5` `CRISPR Guide Capture` UMI pooled Poisson-Gaussian bimodal mixture calling (`fit_poisson_gaussian_thresholds_from_hist` + `n_pos == 1` & 3x dominance). If template distinguishes `safe-targeting` from `non-targeting`, ONLY `non-targeting` counts as NTC and `safe-targeting` is excluded; otherwise ALL control guides count as NTC.
-     * **Cell RNA QC (Rule 3)**: `umi >= 300` AND `ngenes >= 200`, with NO mitochondrial percentage limit (`max_pct_mt=None`).
-     * **Channel Parity & Unit Centering + Stage 2 Fallback (Rule 4)**: Stage 1 pairs `L01/L03 -> Half A (1)` and `L02/L04 -> Half B (2)` (`num % 2`) with channel-level NTC centering (`< 15` NTCs in any channel falls back to `half_{h}_pooled` via `_apply_min_ntc_batch_fallback`); Stage 2 fallback (when channels missing or single-half) uses locked Ruling 2 `default_rng(42)` stratified 50/50 split with `batches` = `half_1`/`half_2`.
-     * **Standardization**: wires `PartSpec` directly into frozen `round10/shared/scripts/prepare_r10_lines.py::process_r10_line` producing identical Round 10/11/12 line directory outputs.
-   - `data_loader_r13.py`, `adjudicate_r13.py`, `run_eval_r13.py`:
-     * Reuse frozen `round12/src/` evaluation/metrics/report machinery identically (`PREREG_E` criteria unchanged), enforcing `DEFAULT_R13_SEED = 20261223`, hard `PREREG_F_COMMIT.txt` + `CODE_FREEZE_R13.txt` gating on `--phase holdout_r13`, `mac_ctrl`-only confirmatory adjudication guard, and non-pooling cross-round disclosure.
+2. Pre-Freeze Audit Fixes Applied (Per Master Controller 08:37 Directive Only):
+   - **Audit #1 (`PREREG_F §3.4` Target Symbol Canonicalization in `dataset_readers_r13.py`):**
+     * Added `_extract_target_stem_r13`: extracts `stem = guide_id.rsplit('-', 1)[0]` cleanly (while preserving underscore-delimited test guides cleanly) instead of trusting hyphen-truncated `guide_target_gene_name` (so `HLA-A-1` resolves to `HLA-A` instead of `HLA`, and readthrough `PPAN-P2RY11-1` / `ARPC4-TTLL3-1` resolve to `PPAN-P2RY11` / `ARPC4-TTLL3` rather than colliding into `PPAN` / `ARPC4`).
+     * Remaps `stem in {'1','2','3','4'}` with `guide_target_gene_name == 'JUN'` to `'JUN'`, and also matches `1-Jun..4-Jun` directly in `.h5` features (and cross-maps `1-Jun..4-Jun <-> JUN-1..JUN-4` under `canon_sym == 'JUN'`), then resolves `(stem, guide_target_gene_id)` via `HGNCLookup.resolve`.
+     * Added exact `GSE327644` guide template column aliases (`guide_role`, `guide_target_gene_name`, `guide_target_gene_id`) to `load_gse327644_guide_metadata`, stripped `'n/a'` metadata tokens, and guarded `is_generic_ctrl` against overriding explicit `Targeting a Gene` rows (e.g., `NEGR1`, `CTRL`).
+   - **Audit #2 (`PREREG_F §3.2` Threshold Fitting Population in `dataset_readers_r13.py`):**
+     * Separated `ok_fit = (ng_all >= int(min_ngenes))` (`>= 200` detected genes within each line, accumulated into `fit_hist` per channel and summed per line in `_assign_single_guide_from_h5_em`) from final cell retention QC `ok_qc = (umi_all >= float(min_umi)) & (ng_all >= int(min_ngenes))` (`>= 300 UMI` and `>= 200` genes).
+   - **Unchanged Logic:** No other Round 13 logic modified.
 
-3. Post-Final-Edit Verification (`python3 -I`):
-   - `python3 -I -m pyflakes round13/src/*.py`: exited `0` (0 warnings/errors).
-   - `python3 -I round13/src/test_unit_r13.py -v`: **Ran 4 tests in 2.388s — OK**:
-     * `test_1`: `DEFAULT_R13_SEED == 20261223`, `check_prereg_f_gate`, `mac_ctrl`-only adjudicator guard (`ValueError` on `mac_lps`), `K_conf = 0/1`, and `PREREG_F` report headers.
-     * `test_2`: synthetic 4-channel `Mac_Ctrl` (`L01..L04`) `.h5` (`Gene Expression` without `MT-*` + `CRISPR Guide Capture`), ignoring `raw_feature_bc_matrix` & `LPS` files, `safe-targeting` exclusion, `L03` `< 15` NTC -> `half_1_pooled`, RNA QC (`8`) vs doublet (`8`) exclusions, and full end-to-end `prepare_r13_line` + `load_standardized_line_r10`.
-     * `test_3`: synthetic `Mac_LPS` with companion `protospacer_calls_per_cell.csv` (`num_features == 1` vs multiplet/unassigned) and all-controls NTC rule when template omits `safe-targeting`.
-     * `test_4`: no-lane `seed=42` Stage-2 backup retaining ~45% MT cells (`40/40`, `max_pct_mt=None`), plus non-integer float `/matrix/data` feasibility failure (`EXCLUDED_FEASIBILITY`).
-   - `python3 -I round13/src/run_eval_r13.py --phase holdout_r13`: exited `1` with `RuntimeError: PREREG_F hard gate blocked`.
+3. Post-Patch Verification (`python3 -I`):
+   - `python3 -I -m pyflakes round13/src/*.py`: `PYFLAKES_OK` (exit code `0`, 0 errors/warnings).
+   - `python3 -I round13/src/test_unit_r13.py -v`: **Ran 5 tests in 2.389s — OK**:
+     * `test_1`–`test_4`: unchanged behavior verified `ok`.
+     * `test_5_prereg_f_target_symbols_hla_ppan_p2ry11_jun_and_ngenes200_threshold_fit`: verifies exact `GSE327644` template columns (`HLA-A`, `PPAN-P2RY11` vs `PPAN` non-collision, `1-Jun` -> `JUN`), `.h5`-only fallback (`HLA-A-1`, `PPAN-P2RY11-1`, `PPAN-1`, `1-Jun -> JUN` + `JUN-1`), and EM bimodal threshold fitting across `ngenes >= 200` (`median_guide_threshold == 6.0 != 7.0` with `60` fit-only `ngenes=220, umi=220` cells/channel excluded from final `ok_qc` retention).
+   - `python3 -I round13/src/run_eval_r13.py --phase holdout_r13`: blocked cleanly with `RuntimeError: CODE_FREEZE_R13 hard gate blocked`.
 
-R13_CODE_READY
+R13_CODE_PATCHED

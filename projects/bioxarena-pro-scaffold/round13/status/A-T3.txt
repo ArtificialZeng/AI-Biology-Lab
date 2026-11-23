@@ -1,28 +1,32 @@
 ROLE: A-T3 (Team A Pre-Registration & Statistical Audit)
 ROUND: 13 (Phase 2 — GSE327644 Primary Human Macrophage Replication)
 TIME: 2026-11-23 +08:00
-STATUS: PREREG_F_DRAFT_READY
+STATUS: R13_READER_XCHECK_MISMATCH
 
-DELIVERABLE:
-- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/prereg/PREREG_F.md
-  - bytes: 26787
-  - sha256: 9cea408340dc5673b83541eccf46499d4b513e470b121382e4298087e9a40543
+1. PRE-REGISTRATION & CLEAN-ROOM AUDIT CODE DELIVERABLES (preserved record):
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/prereg/PREREG_F.md (locked commit 5b51e5b, sha256 0408ada0c0b88b9b2e1ddf97ba5f3e861dff0448f1bad36c6dd2347f5ac708ec)
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/audit/__init__.py (sha256 3a0ad1944fbb5d3e6aca7a87238c8e8d1865d7f9b230e01786b6679b8d1848a2)
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/audit/independent_r13_loader.py (sha256 8ad172d9af9766d1cfe997d6f6c180a282318ae1f85aea5c092abab5fbcd48bf; updated _has_r13_code_patched to recognize R13_LINES_AUTHORIZED.txt; 5/5 synthetic H5 tests + pyflakes OK)
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/audit/run_r13_audit.py (sha256 98b2160e1b5133a4c7e632305e331ba545c84b828bb25b66a3eabbb765c91231)
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/audit/test_r13_audit.py (sha256 262202754370cab529ec070477a9e3c2441cd7ab68ce7ae0e8f6e809c8e657d2)
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/audit/run_r13_reader_xcheck.py (sha256 3553a7aad73daf5d80e2fcb59bdc87f3bf6721e762fd4cf03c18b2298862f4d1)
 
-PRE-LOCK VERIFICATION SUMMARY:
-1. Blindness & Isolation Verified:
-   - Zero expression matrices downloaded or opened (round13/shared/raw/ does not exist; GSE327644_RAW.tar verified via HTTP HEAD only: Content-Length 6579169280 bytes).
-   - Frozen R10/R11/R12 files untouched.
-2. Guide Template Pre-Lock Inspection (38,166 bytes; sha256 66bc28c8f6338709a72964399861855f494aca2676f9ccd57ae27c2c7311c1fb):
-   - Inspected GSE327644_PRJNA1450051_marson_mac_perturbseq_guide_template.txt.gz (2,925 guide rows across 6 columns).
-   - NTC Rule Locked Pre-Data: guide_role separates strictly into 'Targeting a Gene' (2,332 rows) and 'Control' (593 rows uniformly named NTC-001..NTC-593 with target 'n/a'). Zero non-targeting vs safe-targeting distinction exists; therefore ALL 593 Control guides (NTC-001..NTC-593) count as NTC.
-   - Target Symbol Rule Locked Pre-Data: Fixed hyphen-truncation in guide_target_gene_name (which collapsed 14 HLA-* genes into 'HLA' and truncated 5 readthrough symbols) and Excel-formatted 1-Jun..4-Jun (JUN) via stem = guide_id.rsplit('-', 1)[0] -> frozen HGNCLookup.resolve(stem, ens_id), yielding all 583 targeting genes (u6_rep = 107, u6_rep & R9_COMMON = 91; alongside A-T1's raw-column reconnaissance 108 / 92 disclosed in PREREG_F §7).
-3. Publication & GEO Metadata Verified via API:
-   - PubMed PMID 42608566 (efetch): Jung et al., Nat Biotechnol (Epub 2026-08-17), doi:10.1038/s41587-026-03258-2.
-   - GEO GSE327644 / GSM9662558..GSM9662561 (Mac_L01..L04; Mac_Ctrl + Mac_LPS filtered .h5 files; Cell Ranger v9.0.1; Chromium Human Transcriptome Probe Set v1.1.0 2024-A; donor RG5581).
-4. PREREG_F Key Locks:
-   - Parent PREREG_E (commit 4c606f4732ea080768e27757c689d40d7892cd3d, sha256 d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924) inherited verbatim across all claims (H-E1a/b/c, H-E2a/b), endpoints (r_orth_cal), masks (all_nontarget, resp_top50_split), r9_6 sources (+ SA-Src8 descriptive), IUT + 2-Claim Bonferroni (97.5% CI, n_boot=4000, n_perm=100), P5, and disclosures, with new RNG seed 20261223.
-   - mac_ctrl (Mac_Ctrl L01-L04) = SOLE confirmatory candidate line (max K_conf=1); mac_lps (Mac_LPS) = strictly descriptive secondary only.
-   - QC >= 300 UMI, >= 200 genes, max_pct_mt = None; exact 1 guide per cell; Stage-1 channel parity (Half A = L01+L03, Half B = L02+L04, channel subtraction unit with <15 NTC half-pooled fallback) and Stage-2 Ruling-2 seed-42 fallback.
-   - Prior disclosures (post-R12 design, 10.5 / 21.6-43.2 / 90.7 estimates & high gate/power failure risk, single donor RG5581, Flex probe panel, undisclosed MOI/singlets) and pre-locked no-pooling interpretive rules included.
+2. CLEAN-ROOM READER XCHECK REPORT (`mac_ctrl`, `mac_lps` from raw H5 via python3 -I; zero reads of round13/src/; zero predictions/metrics computed; shared/lines untouched):
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/audit/READER_XCHECK_R13.md (sha256 50bf0bdf44bca3e3665f9fbc6bad6b721ffa115265c2313e1c1f8713e714b597)
+   - /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/audit/reader_xcheck/reader_xcheck_comparison.json (sha256 33cabc703fa609e8f3a07e6490e3b74d1bddb2fce564c6369e6736239a2dc1b4)
 
-PREREG_F_DRAFT_READY
+3. EXACT MATCHES (`0` DIFF):
+   - Guide call mode (`H5_CRISPR_POISSON_GAUSSIAN_LINE_FIT` / `h5_crispr_umi_em`) & `median_guide_threshold = 5.0` on both lines.
+   - All per-channel & per-half NTC counts (`mac_ctrl`: 24,679 total = 13,354 Half A [L01=6,651, L03=6,703] / 11,325 Half B [L02=7,173, L04=4,152]; `mac_lps`: 27,205 total = 14,605 Half A [L01=7,149, L03=7,456] / 12,600 Half B [L02=7,985, L04=4,615]; zero <15 fallbacks).
+   - `ctrl_cells.npz` (`X_log1p`, `X_libnorm`, `X_zscore`, `batch_labels`, and all `ctrl_mean_*` vectors): exact `0.0` bit-for-bit equality on both `mac_ctrl` and `mac_lps`.
+   - `genes.txt` (`13,454` on `mac_ctrl`, `13,436` on `mac_lps`) & `|G_eval| = 6,132`: exact ordered equality.
+   - `mac_ctrl` eval targets: exact match `3 == 3` (`['AKIRIN2', 'KAT5', 'ZC3H13']`, `< 50` -> `K_CONF = 0`).
+
+4. EXPLICIT MISMATCHES REQUIRING CONTROLLER RULING:
+   - MISMATCH 1 (CRIPAK unmapped target cells: +143 in `mac_ctrl`, +142 in `mac_lps`):
+     * `xcheck` retained CRIPAK (`122,497` vs `122,354` across L01..L04 diff `+45,+31,+47,+20=+143`; `134,383` vs `134,241` across L01..L04 diff `+34,+41,+41,+26=+142`) and `583` targets vs `shared`'s `582` HGNC-approved targets (`targets_only_in_xcheck = ['CRIPAK']`).
+   - MISMATCH 2 (Guide pooling unit `guide_id` [xcheck, cd4t_rest/cd4t_stim48 style] vs canonical `canon_sym` gene pooling [shared, a549_ko style]):
+     * `mac_ctrl`: raw pert groups `2,318` vs `582`; reproducible targets `11` (`AKIRIN2, COP1, FLI1, IRF8, KAT5, MITF, NIPBL, TGFBR1, TNFAIP3, ZC3H13, ZEB2`) vs `15` (also `AHR, IRF2, PRDM1, TRIB1`); `pseudobulk_delta` `delta_log1p` max_abs_diff = `0.729744` (`n_cells` max diff `205`).
+     * `mac_lps`: raw pert groups `2,319` vs `582`; reproducible targets `21` vs `26` (`shared`-only `CEBPB, DUSP1, FLI1, IRF1, MYC, NFKB1, TLR4`; `xcheck`-only `CD14, TRAF3` active single guides diluted by pooling); eval targets `4` vs `5` (`MYC` reproducible in `shared` [ad=65, n=178], non-reproducible single-guide in `xcheck` [ad=17, n=55]); `delta_log1p` max_abs_diff = `0.821834` (`n_cells` max diff `230`).
+
+R13_READER_XCHECK_MISMATCH
