@@ -1,0 +1,12 @@
+ROUND13_PHASE=SCREEN_ONLY
+AGENT=A-T1
+DATE=2026-11-23
+OUTPUT_REPORT=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/shared/R13_DATA_SCREEN.md
+OVERALL_CONCLUSION=NONE_QUALIFYING (没有合格的公开第二独立确认细胞系)
+PORTALS_CHECKED=GEO,IGVF,scPerturb,ArrayExpress/BioStudies,CELLxGENE,Zenodo,Figshare,bioRxiv,medRxiv,EuropePMC,HuggingFace
+POST_2026_11_22_ELIGIBLE_NEW_DATASETS=0
+MARGINAL_GSE327644_PRIMARY_MACROPHAGE=u6_rep=108,u6_rep_cap_R9C=92,est_20_40pct=21.6-43.2,est_R12_A549_84pct=90.7,est_R12_HEK293_10pct=10.5,status=INELIGIBLE_HIGH_RISK
+MARGINAL_IGVF_HUES8=97_MeasurementSets_no_AnalysisSet,MOI=10_12_enhancers,status=INELIGIBLE
+OTHER_AUDITED_2026=GSE301119_hMF(203_targets,86_sigKD,28446_cells_33.7pct_singlet,RDS_only);PerturbME_A375(221_model_u6rep=77,FACS_top_bot_5pct_HLA_90pct_cells);VIPerturbSeq(K562_used_line,66_ctrl_in_filtered);GSE343369_KOLF2.2J(u6rep=28);GSE320250_HSC(Mus_musculus);Figshare34002315_HKU12(all_excluded_lines)
+CONSTRAINTS_COMPLIANCE=metadata_only_lt_100MB,zero_matrix_downloads,zero_accounts_EULA,zero_git,zero_prereg_metrics
+R13_SCREEN_DONE

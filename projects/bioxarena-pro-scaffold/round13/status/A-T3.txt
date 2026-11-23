@@ -1,0 +1,28 @@
+ROLE: A-T3 (Team A Pre-Registration & Statistical Audit)
+ROUND: 13 (Phase 2 — GSE327644 Primary Human Macrophage Replication)
+TIME: 2026-11-23 +08:00
+STATUS: PREREG_F_DRAFT_READY
+
+DELIVERABLE:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/prereg/PREREG_F.md
+  - bytes: 26787
+  - sha256: 9cea408340dc5673b83541eccf46499d4b513e470b121382e4298087e9a40543
+
+PRE-LOCK VERIFICATION SUMMARY:
+1. Blindness & Isolation Verified:
+   - Zero expression matrices downloaded or opened (round13/shared/raw/ does not exist; GSE327644_RAW.tar verified via HTTP HEAD only: Content-Length 6579169280 bytes).
+   - Frozen R10/R11/R12 files untouched.
+2. Guide Template Pre-Lock Inspection (38,166 bytes; sha256 66bc28c8f6338709a72964399861855f494aca2676f9ccd57ae27c2c7311c1fb):
+   - Inspected GSE327644_PRJNA1450051_marson_mac_perturbseq_guide_template.txt.gz (2,925 guide rows across 6 columns).
+   - NTC Rule Locked Pre-Data: guide_role separates strictly into 'Targeting a Gene' (2,332 rows) and 'Control' (593 rows uniformly named NTC-001..NTC-593 with target 'n/a'). Zero non-targeting vs safe-targeting distinction exists; therefore ALL 593 Control guides (NTC-001..NTC-593) count as NTC.
+   - Target Symbol Rule Locked Pre-Data: Fixed hyphen-truncation in guide_target_gene_name (which collapsed 14 HLA-* genes into 'HLA' and truncated 5 readthrough symbols) and Excel-formatted 1-Jun..4-Jun (JUN) via stem = guide_id.rsplit('-', 1)[0] -> frozen HGNCLookup.resolve(stem, ens_id), yielding all 583 targeting genes (u6_rep = 107, u6_rep & R9_COMMON = 91; alongside A-T1's raw-column reconnaissance 108 / 92 disclosed in PREREG_F §7).
+3. Publication & GEO Metadata Verified via API:
+   - PubMed PMID 42608566 (efetch): Jung et al., Nat Biotechnol (Epub 2026-08-17), doi:10.1038/s41587-026-03258-2.
+   - GEO GSE327644 / GSM9662558..GSM9662561 (Mac_L01..L04; Mac_Ctrl + Mac_LPS filtered .h5 files; Cell Ranger v9.0.1; Chromium Human Transcriptome Probe Set v1.1.0 2024-A; donor RG5581).
+4. PREREG_F Key Locks:
+   - Parent PREREG_E (commit 4c606f4732ea080768e27757c689d40d7892cd3d, sha256 d10f92ced16a4519c43ea2b92b8b7ee881ab3d1764e39ffd10580473e4108924) inherited verbatim across all claims (H-E1a/b/c, H-E2a/b), endpoints (r_orth_cal), masks (all_nontarget, resp_top50_split), r9_6 sources (+ SA-Src8 descriptive), IUT + 2-Claim Bonferroni (97.5% CI, n_boot=4000, n_perm=100), P5, and disclosures, with new RNG seed 20261223.
+   - mac_ctrl (Mac_Ctrl L01-L04) = SOLE confirmatory candidate line (max K_conf=1); mac_lps (Mac_LPS) = strictly descriptive secondary only.
+   - QC >= 300 UMI, >= 200 genes, max_pct_mt = None; exact 1 guide per cell; Stage-1 channel parity (Half A = L01+L03, Half B = L02+L04, channel subtraction unit with <15 NTC half-pooled fallback) and Stage-2 Ruling-2 seed-42 fallback.
+   - Prior disclosures (post-R12 design, 10.5 / 21.6-43.2 / 90.7 estimates & high gate/power failure risk, single donor RG5581, Flex probe panel, undisclosed MOI/singlets) and pre-locked no-pooling interpretive rules included.
+
+PREREG_F_DRAFT_READY
