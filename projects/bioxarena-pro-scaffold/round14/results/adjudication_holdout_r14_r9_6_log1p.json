@@ -1,0 +1,243 @@
+{
+  "schema_version": "r14_prereg_g_v1",
+  "parent_protocol": "r12_prereg_e_v2",
+  "primary_mask": "all_nontarget",
+  "sa8_mask": "resp_top50_split",
+  "primary_ci_level": "ci975",
+  "k_conf": 0,
+  "confirmatory_lines": [],
+  "secondary_lines": [
+    "a549_myllia"
+  ],
+  "same_cell_line_independent_dataset_only_notice": true,
+  "no_cross_round_pooling_notice": true,
+  "all_lines_descriptive": {
+    "H-E1": {
+      "verdict": "CONFIRMED",
+      "pass_count": 1,
+      "required": 1,
+      "sub_hypotheses": {
+        "H-E1a": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        },
+        "H-E1b": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        },
+        "H-E1c": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        }
+      },
+      "per_line": {
+        "a549_myllia": {
+          "fct_r_orth_cal": 0.10765128364420055,
+          "fct_ci975_lo": 0.07210653529336132,
+          "fct_ci975_hi": 0.14193438097268987,
+          "valid_frac": 1.0,
+          "rho_half_ab_orth": 0.3875370076557335,
+          "addendum_a1_ci_gt0_but_low_valid_frac": false,
+          "H-E1a_pass": true,
+          "H-E1b_pass": true,
+          "H-E1b_n_sources_checked": 6,
+          "H-E1b_n_sources_pass": 6,
+          "H-E1b_min_paired_ci975_lo": 0.038950412580357016,
+          "H-E1b_per_source": {
+            "nadig_hepg2": {
+              "estimate": 0.065661090554113,
+              "ci975_lo": 0.038950412580357016,
+              "ci975_hi": 0.09233734961983098,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "nadig_jurkat": {
+              "estimate": 0.07386598482968619,
+              "ci975_lo": 0.045585302422462,
+              "ci975_hi": 0.10137144364552991,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "nourreddine_kolf21j": {
+              "estimate": 0.09843051153954133,
+              "ci975_lo": 0.06312698427102734,
+              "ci975_hi": 0.13325573232342358,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "replogle_k562_essential": {
+              "estimate": 0.07655742117341144,
+              "ci975_lo": 0.043638160333584676,
+              "ci975_hi": 0.10908486402627117,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "replogle_rpe1": {
+              "estimate": 0.06976193483569498,
+              "ci975_lo": 0.042852861951419685,
+              "ci975_hi": 0.09661683353223102,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "vcc2025_h1": {
+              "estimate": 0.09790138049602572,
+              "ci975_lo": 0.06150950605197747,
+              "ci975_hi": 0.1388242100935124,
+              "valid_frac": 1.0,
+              "pass": true
+            }
+          },
+          "H-E1c_pass": true,
+          "perm100_all_nontarget_q975": 0.003485788809564812,
+          "descriptive_unpaired_max_mis_ci975_hi": 0.06250413317353873,
+          "descriptive_unpaired_pass": true,
+          "pass": true
+        }
+      }
+    },
+    "H-E2": {
+      "verdict": "CONFIRMED",
+      "pass_count": 1,
+      "required": 1,
+      "sub_hypotheses": {
+        "H-E2a": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        },
+        "H-E2b": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        }
+      },
+      "per_line": {
+        "a549_myllia": {
+          "e1_split_r_orth_cal": 0.11053638289287898,
+          "e1_split_ci975_lo": 0.04536397105250467,
+          "e1_split_ci975_hi": 0.18539984425549458,
+          "e1_split_valid_frac": NaN,
+          "H-E2a_pass": true,
+          "e1_split_minus_all_est": 0.11426929124584558,
+          "e1_split_minus_all_ci975_lo": 0.047087226300061506,
+          "e1_split_minus_all_ci975_hi": 0.19177564944061756,
+          "n_common_perts": 32,
+          "H-E2b_pass": true,
+          "pass": true
+        }
+      }
+    },
+    "H-D_util_reporting": {
+      "ci_level": "ci975",
+      "verdict": "CONFIRMED",
+      "n_inferior_pairs": 0,
+      "inferior_pairs": [],
+      "strict_superiority_count": 0,
+      "total_checks": 6,
+      "by_metric": {
+        "ctrl_disc_raw": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_myllia": {
+              "mean_fct": 0.8135080645161291,
+              "mean_tmean": 0.8235887096774194,
+              "delta": -0.010080645161290258,
+              "ci_lo": -0.03326612903225812,
+              "ci_hi": 0.012096774193548267,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        },
+        "ctrl_disc_raw_panel": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_myllia": {
+              "mean_fct": 0.813508064516129,
+              "mean_tmean": 0.8215725806451613,
+              "delta": -0.008064516129032251,
+              "ci_lo": -0.03125,
+              "ci_hi": 0.014112903225806495,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        },
+        "ctrl_de50_r": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_myllia": {
+              "mean_fct": 0.3206552954282935,
+              "mean_tmean": 0.31764932606724816,
+              "delta": 0.0030059693610453575,
+              "ci_lo": -0.03073594511319554,
+              "ci_hi": 0.04078370280670086,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        },
+        "cent_disc_raw": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_myllia": {
+              "mean_fct": 0.6925403225806452,
+              "mean_tmean": 0.6774193548387097,
+              "delta": 0.015120967741935498,
+              "ci_lo": -0.00606098790322585,
+              "ci_hi": 0.04233870967741937,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        },
+        "cent_disc_raw_panel": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_myllia": {
+              "mean_fct": 0.6925403225806452,
+              "mean_tmean": 0.6754032258064517,
+              "delta": 0.017137096774193505,
+              "ci_lo": -0.00504032258064524,
+              "ci_hi": 0.04435483870967738,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        },
+        "cent_de50_r": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_myllia": {
+              "mean_fct": 0.47078591809519543,
+              "mean_tmean": 0.45034592815924057,
+              "delta": 0.02043998993595486,
+              "ci_lo": -0.026598570412423715,
+              "ci_hi": 0.07087308838919376,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "confirmatory_status": "NO_CONFIRMATORY_LINES_DESCRIPTIVE_ONLY",
+  "Group_E_Claim1_Verdict": "NOT_EVALUATED_NO_CONFIRMATORY_LINES",
+  "Group_E_Claim2_Verdict": "NOT_EVALUATED_NO_CONFIRMATORY_LINES"
+}

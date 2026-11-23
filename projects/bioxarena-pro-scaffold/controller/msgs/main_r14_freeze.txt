@@ -1,0 +1,5 @@
+主控 10:47：第十四轮门槛结果已确定并经 A-T3 独立复核（a549_myllia 32 个评测靶点 < 50，K_CONF=0）。请做冻结提交并推送到 origin/main：
+1. 只 git add：round14/src/*.py；round14/audit/*.py 和 round14/audit/READER_XCHECK_R14.md（不含 reader_xcheck/ 子目录）；round14/shared/R14_QC_COUNTS.md、R14_CHECKSUMS.sha256、download_manifest_r14.json；round14/status/ 下的 FREEZE_MANIFEST_R14.txt、CONFIRMATORY_LINES_R14.txt、PREREG_G_COMMIT.txt、R14_GO.txt、R14_LINES_AUTHORIZED.txt、main.txt、A-T*.txt；controller/checks/r14_check.py、make_freeze_manifest_r14.sh；controller/agy_send_file.sh；controller/watchers/watch_r14.sh、watch_r12c.sh；controller/directives/MS1_论文初稿指令.md。
+2. 绝对不要提交 round14/shared/raw/、round14/shared/lines/、round14/audit/reader_xcheck/、paper/，也不要提交 round14/status/R14_VERDICT.md（还是草稿）。不要用 git add -A 或 git add .。
+3. 提交信息：「R14 freeze: GSE337804 a549_myllia fails PREREG_G gate (32 eval targets < 50, K_conf=0); manifest 27 files; reader xcheck OK」。
+4. 不要 force-push。推送后在 round14/status/main.txt 追加完整提交哈希，最后单独一行写 R14_FREEZE_COMMITTED。

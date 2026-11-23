@@ -1,0 +1,5 @@
+主控 10:56：第十四轮判定已定稿。请提交并推送到 origin/main：
+1. 只 git add：round14/status/R14_VERDICT.md、CODE_FREEZE_R14.txt、A-T2.txt、A-T4.txt、A-T5.txt、main.txt；round14/results/ 下所有 *holdout_r14* 文件；controller/checks/r14_holdout_a549_myllia.out、R14_HASHES_BEFORE_COMPARE.txt、verify_freeze_commit.sh、summarize_r14.py、compare_r14.py、subgroups_r14.py；controller/msgs/。
+2. 不要提交 raw、lines、reader_xcheck、paper/；不要用 git add -A 或 git add .。
+3. 提交信息：「R14 verdict: GSE337804 a549_myllia failed PREREG_G gate (32 < 50, K_conf=0); descriptive-only results consistent with R12 (A-T2 vs controller <=5.6e-17); R12 conclusion unchanged」。
+4. 不要 force-push。推送后在 round14/status/main.txt 追加完整提交哈希，最后单独一行写 R14_RESULTS_COMMITTED。

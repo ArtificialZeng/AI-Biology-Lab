@@ -1,0 +1,6 @@
+主控 10:56：请逐条核实论文初稿 paper/MANUSCRIPT_DRAFT_v1.md 第 8 节的全部参考文献（以及正文里出现但没列入的引用，如 CellularAI、AtlasShift、VCC 2026 wrap-up 的斜率数字），按 paper/REVIEW_MS1_controller.md 的 B 部分：
+1. 每条用 DOI 查 Crossref（https://api.crossref.org/works/<doi>）或 PubMed E-utilities，记录原题、全部或前三位作者、年份、期刊或预印本服务器、DOI/PMID，以及核实来源。
+2. 已知要改的：Heidari（真实题目 Evaluating Single-Cell Perturbation Response Models Is Far from Straightforward）、Kawsar（Transferring CRISPRi knockdown responses to new cell lines requires screening part of each line）、Nicol（Spurious correlation inflates performance in single-cell perturbation prediction，引用 v2）。
+3. 查不到或对不上的条目标 [VERIFY] 并说明原因，绝对不要编造或猜测题目和作者。
+4. 输出 paper/REFERENCES_VERIFIED.md（表格：编号、核实后的完整引用、来源、状态 OK / CORRECTED / VERIFY）。只在本地，不提交 git，不写对外文字。
+完成后 round14/status/A-T5.txt 最后单独一行写 REFS_VERIFIED_DONE。

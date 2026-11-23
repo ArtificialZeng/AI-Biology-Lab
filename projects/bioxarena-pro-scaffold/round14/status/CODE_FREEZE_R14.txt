@@ -1,0 +1,6 @@
+1409333c29103ed1b0ddfaf01c641e756eb5a109 CODE_FREEZE_R14 (code + reader xcheck + QC counts + gate; verified on origin/main)
+prereg: d34560d7ae568b299dca15c766c2e356b483c39f (PREREG_G.md sha256 53e2c9c0406af8f3c3f6ab40a53b3aa1e4e04da9f4811da074aa444512fda657; addendum to PREREG_E 4c606f4)
+manifest: round14/status/FREEZE_MANIFEST_R14.txt (sha256 2d0a034687bcfb35d9a5740d25a1bddb2d0b28bd1dcfeb1bf98289d7c301fcdb; 27 entries all OK; 22 code/doc entries match the committed blobs, 5 line-data files hashed only)
+K_conf = 0 (a549_myllia 32 eval targets < 50) -> PREREG_G §6: no confirmatory adjudication; descriptive only, including the §7 overlap/novel subgroups
+evaluation settings (PREREG_G): seed 20261224, 4,000 bootstraps, 100 permutations, 97.5% CIs; descriptive only
+frozen by: Claude (master controller) 2026-11-23 10:58 +0800
