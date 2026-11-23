@@ -1,0 +1,6 @@
+540ba1896fab3bd8f240190175befe4a8ef5fe7d CODE_FREEZE_R13 (code + reader xcheck + ruling + QC counts + gate; verified on origin/main)
+prereg: 5b51e5b079c2c01b44408b9ed9f8d6027b4ae4f5 (PREREG_F.md sha256 0408ada0c0b88b9b2e1ddf97ba5f3e861dff0448f1bad36c6dd2347f5ac708ec; addendum to PREREG_E 4c606f4)
+manifest: round13/status/FREEZE_MANIFEST_R13.txt (sha256 5ebe4ee142c46a940ccfabc9da3f1080a6093c2ec90a421242a049d2fe3203f6; 32 entries all OK; 22 code/doc entries match the committed blobs, 10 line-data files hashed only)
+K_conf = 0 (mac_ctrl 3 eval targets < 50) -> PREREG_F §5.3: no confirmatory adjudication; mac_ctrl and mac_lps descriptive only
+evaluation settings (PREREG_F): seed 20261223, 4,000 bootstraps, 100 permutations, 97.5% CIs; descriptive only
+frozen by: Claude (master controller) 2026-11-23 09:27 +0800

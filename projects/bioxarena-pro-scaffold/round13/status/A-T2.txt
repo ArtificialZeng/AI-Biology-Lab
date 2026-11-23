@@ -1,30 +1,45 @@
-[A-T2] ROUND 13 (`PREREG_F` / `GSE327644`) AUDIT PATCH COMPLETE & VERIFIED 2026-11-23T08:27+08:00
+[A-T2] ROUND 13 (`PREREG_F` / `GSE327644`) DESCRIPTIVE EVALUATION COMPLETE 2026-11-23T09:33+08:00
 
-1. Freeze Integrity & Blinding Compliance:
-   - Zero real Round 13 data downloaded or accessed (strictly synthetic Cell Ranger Flex `.h5` & companion fixtures used).
-   - Zero modifications to `round10/`, `round11/`, or `round12/` (`head -n 34 round12/status/FREEZE_MANIFEST_R12.txt | shasum -a 256 -c`: `31` `: OK`; full `FREEZE_MANIFEST_R12.txt`: `46` `: OK`, exit code `0`).
-   - Post-patch SHA-256 checksums (`round13/src/*.py`):
-     * `round13/src/__init__.py`: `816746b38905a729c75e84bd23b6d3b5e3c8840e176f33e048fecc28ba3dc8e8`
-     * `round13/src/adjudicate_r13.py`: `21cc850593a9c486669e71a3ad472dc53977717b12680e877dca161a3be4b528`
-     * `round13/src/data_loader_r13.py`: `589edfc276ca90dc8bb8ec71dc107e81ab4b1dfb376ab8c639082a25a6ade455`
-     * `round13/src/dataset_readers_r13.py`: `22dfc34d9d432baa5c6b4fa7ea815b89c5f9c8ace51842ab0daec3ee609202a5`
-     * `round13/src/run_eval_r13.py`: `a19f9414f8ecc336ce1297b3123388050ff2dc6312c1fde61c07d039b92e6e65`
-     * `round13/src/test_unit_r13.py`: `3a31aa73300898b26ab9cc57c01e9e086e8b25911f86ca4eaaa3497c1f7510b0`
+1. Governance & Non-Confirmatory Scope (`K_conf = 0`):
+   - **K_conf = 0** (`round13/status/CODE_FREEZE_R13.txt`: `540ba1896fab3bd8f240190175befe4a8ef5fe7d` / commit `540ba18`; `PREREG_F`: `5b51e5b079c2c01b44408b9ed9f8d6027b4ae4f5`).
+   - `mac_ctrl` yielded `3` evaluated targets (`< 50` confirmatory gate), so `CONFIRMATORY_LINES_R13.txt` sets `K_CONF=0` (`confirmatory_status = NO_CONFIRMATORY_LINES_DESCRIPTIVE_ONLY`, `Group_E_Claim1_Verdict = NOT_EVALUATED_NO_CONFIRMATORY_LINES`, `Group_E_Claim2_Verdict = NOT_EVALUATED_NO_CONFIRMATORY_LINES`).
+   - **重要声明：`K_conf = 0`，本轮全部数值均为描述性结果（descriptive-only per `PREREG_F §5.3`），不对 `mac_ctrl` 或 `mac_lps` 作任何确认性表述；第十二轮 `A549` 结论维持不变，且禁止跨轮合并检验。**
+   - 冻结代码零修改；运行前后校验 `round13/status/FREEZE_MANIFEST_R13.txt` (`32` `: OK`) 与 `round12/status/FREEZE_MANIFEST_R12.txt` (`46` `: OK`) 均完整无损。
 
-2. Pre-Freeze Audit Fixes Applied (Per Master Controller 08:37 Directive Only):
-   - **Audit #1 (`PREREG_F §3.4` Target Symbol Canonicalization in `dataset_readers_r13.py`):**
-     * Added `_extract_target_stem_r13`: extracts `stem = guide_id.rsplit('-', 1)[0]` cleanly (while preserving underscore-delimited test guides cleanly) instead of trusting hyphen-truncated `guide_target_gene_name` (so `HLA-A-1` resolves to `HLA-A` instead of `HLA`, and readthrough `PPAN-P2RY11-1` / `ARPC4-TTLL3-1` resolve to `PPAN-P2RY11` / `ARPC4-TTLL3` rather than colliding into `PPAN` / `ARPC4`).
-     * Remaps `stem in {'1','2','3','4'}` with `guide_target_gene_name == 'JUN'` to `'JUN'`, and also matches `1-Jun..4-Jun` directly in `.h5` features (and cross-maps `1-Jun..4-Jun <-> JUN-1..JUN-4` under `canon_sym == 'JUN'`), then resolves `(stem, guide_target_gene_id)` via `HGNCLookup.resolve`.
-     * Added exact `GSE327644` guide template column aliases (`guide_role`, `guide_target_gene_name`, `guide_target_gene_id`) to `load_gse327644_guide_metadata`, stripped `'n/a'` metadata tokens, and guarded `is_generic_ctrl` against overriding explicit `Targeting a Gene` rows (e.g., `NEGR1`, `CTRL`).
-   - **Audit #2 (`PREREG_F §3.2` Threshold Fitting Population in `dataset_readers_r13.py`):**
-     * Separated `ok_fit = (ng_all >= int(min_ngenes))` (`>= 200` detected genes within each line, accumulated into `fit_hist` per channel and summed per line in `_assign_single_guide_from_h5_em`) from final cell retention QC `ok_qc = (umi_all >= float(min_umi)) & (ng_all >= int(min_ngenes))` (`>= 300 UMI` and `>= 200` genes).
-   - **Unchanged Logic:** No other Round 13 logic modified.
+2. Execution Command, Exit Code, & Output SHA-256:
+   - Command:
+     `python3 -I round13/src/run_eval_r13.py --phase holdout_r13 --source-mode r9_6 --lines mac_ctrl,mac_lps --n-boot 4000 --n-perm 100 --seed 20261223`
+   - Exit code: `0` (elapsed `206.47s`; stdout: `Saved Round 13 results (*_holdout_r13_r9_6_log1p.*) in 206.47s`)
+   - Output files & SHA-256 checksums (`round13/results/`):
+     * `round13/results/REPORT_holdout_r13_r9_6_log1p.md`: `ab223b716945e3c6aea5bb1c104782d05e820110b3285928e05399b625d41f60`
+     * `round13/results/adjudication_holdout_r13_r9_6_log1p.json`: `e1c499e1f88157c2c55d2ac218494303929dd473d711b12750f4c6ead073a908`
+     * `round13/results/bootstrap_ci_holdout_r13_r9_6_log1p.csv`: `3c906b69d4d3ad98fd1ea5beb04dbcbc772236faee96eb5d9d2fd598696bdf29`
+     * `round13/results/line_metrics_holdout_r13_r9_6_log1p.csv`: `d4081348edc0a940d175f17483f0da374af761d59b6faa2e8f97ac5e986505fa`
+     * `round13/results/summary_holdout_r13_r9_6_log1p.json`: `3161fef133365ab2bcbbde47f659384b2bb1e0fb974f44aae64fa0739603f810`
 
-3. Post-Patch Verification (`python3 -I`):
-   - `python3 -I -m pyflakes round13/src/*.py`: `PYFLAKES_OK` (exit code `0`, 0 errors/warnings).
-   - `python3 -I round13/src/test_unit_r13.py -v`: **Ran 5 tests in 2.389s — OK**:
-     * `test_1`–`test_4`: unchanged behavior verified `ok`.
-     * `test_5_prereg_f_target_symbols_hla_ppan_p2ry11_jun_and_ngenes200_threshold_fit`: verifies exact `GSE327644` template columns (`HLA-A`, `PPAN-P2RY11` vs `PPAN` non-collision, `1-Jun` -> `JUN`), `.h5`-only fallback (`HLA-A-1`, `PPAN-P2RY11-1`, `PPAN-1`, `1-Jun -> JUN` + `JUN-1`), and EM bimodal threshold fitting across `ngenes >= 200` (`median_guide_threshold == 6.0 != 7.0` with `60` fit-only `ngenes=220, umi=220` cells/channel excluded from final `ok_qc` retention).
-   - `python3 -I round13/src/run_eval_r13.py --phase holdout_r13`: blocked cleanly with `RuntimeError: CODE_FREEZE_R13 hard gate blocked`.
+3. Descriptive Results (`r9_6`, `log1p`, `n_boot=4000`, `n_perm=100`, `seed=20261223`, two-sided `97.5% CI`; `K_conf = 0`, 全部为描述性结果):
+   - **`mac_ctrl`** (`N = 3`, `n_genes_eval = 6132`, `rho_half_ab_orth = +0.374804`, `valid_frac = 1.0`, `perm100_all_nontarget_q975 = +0.036139`):
+     * `FCT` (`all_nontarget` `r_orth_cal`): `+0.181021`, `97.5% CI [+0.079903, +0.410398]` (`0.18102057531929033`, `[0.07990256831414558, 0.41039808461263766]`)
+     * `H-E1b` 6 Paired Contrasts (`FCT − NegCtrl_FCT_MismatchedMean(s')`, `all_nontarget`, descriptive only):
+       - `nadig_hepg2`: `+0.163450`, `97.5% CI [+0.029707, +0.379911]` (`0.16344963995385464`, `[0.02970685747006826, 0.3799110694845459]`)
+       - `nadig_jurkat`: `+0.184268`, `97.5% CI [+0.124850, +0.336377]` (`0.1842680084581542`, `[0.12485017711520435, 0.3363772464714679]`)
+       - `nourreddine_kolf21j`: `+0.196604`, `97.5% CI [+0.098782, +0.386656]` (`0.19660422729412783`, `[0.09878201722762345, 0.3866557885819239]`)
+       - `replogle_k562_essential`: `+0.195419`, `97.5% CI [+0.108810, +0.399341]` (`0.1954188990566749`, `[0.10880983814304863, 0.3993410541890052]`)
+       - `replogle_rpe1`: `+0.174315`, `97.5% CI [+0.044075, +0.400151]` (`0.17431544028425433`, `[0.04407453152537949, 0.4001510582857219]`)
+       - `vcc2025_h1`: `+0.112580`, `97.5% CI [+0.057792, +0.184925]` (`0.11257966670991813`, `[0.05779168211503709, 0.18492458605961937]`)
+     * `E1_ConstMed` (`resp_top50_split`, `N_common = 3`, `valid_frac = 1.0`): `+0.110247`, `97.5% CI [-0.037971, +0.387778]` (`0.11024672212893605`, `[-0.03797102617787235, 0.38777834537533584]`)
+     * `H-E2b` (`E1(resp_top50_split) − E1(all_nontarget)`, `N_common = 3`): `+0.077993`, `97.5% CI [-0.020149, +0.212319]` (`0.07799330278403942`, `[-0.020148793245531527, 0.21231909886452038]`; ref `E1(all_nontarget) = +0.032253`, `97.5% CI [-0.024589, +0.175459]`)
 
-R13_CODE_PATCHED
+   - **`mac_lps`** (`N = 5`, `n_genes_eval = 6132`, `rho_half_ab_orth = +0.400857`, `valid_frac = 1.0`, `perm100_all_nontarget_q975 = +0.038359`, secondary descriptive only):
+     * `FCT` (`all_nontarget` `r_orth_cal`): `+0.188541`, `97.5% CI [+0.089654, +0.352200]` (`0.18854109961890048`, `[0.08965361110188777, 0.352200325219866]`)
+     * `H-E1b` 6 Paired Contrasts (`FCT − NegCtrl_FCT_MismatchedMean(s')`, `all_nontarget`, descriptive only):
+       - `nadig_hepg2`: `+0.194901`, `97.5% CI [+0.093241, +0.337338]` (`0.19490127664508863`, `[0.09324121449954714, 0.33733835726433753]`)
+       - `nadig_jurkat`: `+0.195188`, `97.5% CI [+0.104163, +0.335864]` (`0.19518790507600145`, `[0.10416254877418667, 0.33586381696252504]`)
+       - `nourreddine_kolf21j`: `+0.188845`, `97.5% CI [+0.096617, +0.330734]` (`0.1888445313612157`, `[0.0966165991513957, 0.33073415949672497]`)
+       - `replogle_k562_essential`: `+0.184487`, `97.5% CI [+0.082311, +0.337535]` (`0.1844871266448064`, `[0.0823105447128612, 0.3375348423620158]`)
+       - `replogle_rpe1`: `+0.199197`, `97.5% CI [+0.086905, +0.352675]` (`0.1991967302891731`, `[0.08690485703043382, 0.35267461050179294]`)
+       - `vcc2025_h1`: `+0.087617`, `97.5% CI [-0.006674, +0.145187]` (`0.08761709985273887`, `[-0.006674273522076057, 0.1451873085930892]`)
+     * `E1_ConstMed` (`resp_top50_split`, `N_common = 5`, `valid_frac = 1.0`): `+0.151009`, `97.5% CI [-0.026379, +0.477290]` (`0.15100877916082958`, `[-0.026378873135519346, 0.47729041362836366]`)
+     * `H-E2b` (`E1(resp_top50_split) − E1(all_nontarget)`, `N_common = 5`): `+0.107013`, `97.5% CI [+0.000009, +0.354318]` (`0.10701314637754356`, `[8.607481648066575e-06, 0.35431769877936403]`; ref `E1(all_nontarget) = +0.043996`, `97.5% CI [-0.027505, +0.152451]`)
+
+R13_EVAL_DONE
