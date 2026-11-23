@@ -20,3 +20,102 @@ PRE-LOCK VERIFICATION SUMMARY:
    - Secondary analyses `SA-H1` (leave-`vcc2025_h1`-out) & `SA-Panel` (`129` shared val-test targets vs remaining targets), plus prior disclosures (`NeurIPS 2026 OpenReview lnpzb1HvwX` unread / no Claim 1 novelty until inspected, `CanPert/CASTER`, unreadable Dobin metrics preprint, Arc curation, `<= 60 GB` download cap into `round15/shared/raw/vcc2026/`).
 
 PREREG_H_DRAFT_READY
+
+---
+PREREG_H_UPDATED_VERSION: v2 (controller audit round15/status/PREREG_H_AUDIT_R1.md; PREREG_H.md sha256: b6ec94aec5d742cfd47f850d5beac1a7bbe08b8dacab6d8bf0352a3eeeede9e9)
+TIME: 2026-11-23 +08:00
+STATUS: R15_READER_XCHECK_READY
+
+CLEAN-ROOM AUDIT CODE DELIVERABLES (under /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/audit/):
+- __init__.py (sha256: 47db04afe2f56625c413d304b9c21af0e7d84e5daf4ec8ee1af958b55fbd7927)
+- independent_r15_loader.py (sha256: 50cf80164955230b2a17c27d7c8f25a2373bb3e01955e863d13eee89d64b06d1)
+- run_r15_audit.py (sha256: eb230cb2a7d9689ef6189b71b86b001bacdb1ff1f6ed93df7ce8a4f94c1f398f)
+- test_r15_audit.py (sha256: ccce0e5c74d333a29085c38ca37511dcf53b845d904d02547c9796c9b02dd46c)
+- xcheck_r15_synthetic.py (sha256: de79990f4323dad845dd47234fe2358bf1062bbda8cc6f642b408d16ab131e62)
+
+IMPLEMENTATION & SYNTHETIC VERIFICATION SUMMARY (`python3 -I`, zero real 2026 files):
+1. Strict Clean-Room & Compliance Locks:
+   - Never inspected `round15/src/`, `round15/results/`, or `round15/status/A-T2.txt`.
+   - Never downloaded any real 2026 file (`round15/shared/` contains only `PRIOR_ART_H.md` and `R15_FEASIBILITY_VCC2026.md`); zero accounts/terms accepted; zero git commands.
+   - Enforces open-license + `2027-06-30` sunset gate (`verify_r15_open_release_and_sunset`), hard `jurkat` exclusion (`enforce_r15_gate`), and `round15/shared/` block under `synthetic_test`.
+2. `PREREG_H v2 §3.1` Multi-Line Identity & Pre-QC `Jurkat` Deletion (`independent_r15_loader.py`):
+   - Explicit `.obs` line columns (`cell_line`, `cell_type`, `line`, stripping `-`/`_`/space case-insensitively to `cal33..u87mg`, `jurkat`) take strict priority over `context`, which resolves ONLY via official `context_to_line_map` (else `EXCLUDED_FEASIBILITY`, never inferred from expression).
+   - Drops ALL `jurkat` rows immediately at ingestion BEFORE any matrix depth read, QC count, centering, or metric.
+   - 100% nonzero slot integer check + multi-slot inconsistency stop guard (`MULTIPLE_INCONSISTENT_INTEGER_SLOTS`), dual `2025` (`target_gene`/`guide_id`/`batch`) & `2026` (`target_gene`/`context`/`ntc_id`) `.obs` schemas, single-construct dual-guide cassette retention vs multi-target rejection, `PREREG_F §3.2` `/obsm` fallback, `>= 300 UMI`, `>= 200 genes`, `max_pct_mt = None`, Tier 1 `.obs` batch parity & Tier 2 stratified `seed = 20261231`.
+3. `PREREG_H v2 §8.4` Release-Wave IUT & §9 Secondary Suite (`run_r15_audit.py`, `seed = 20261231`):
+   - Supports per-wave adjudication (`adjudicate_release_wave`, tagged `interim, more lines pending` until all 5 lines or sunset `2027-06-30`) and cross-wave IUT overall adjudication (`adjudicate_overall_round15`: later waves keep or revoke, never rescue; mandatory `K=1` single-line and `K>=2` single-lab/platform disclosures + Fan et al. & CASTER provenance).
+   - Implements `SA-H1` (leave-`vcc2025_h1`-out) and `SA-Panel` (`129` shared val-test targets vs remaining targets).
+4. Cross-Check & Static Check Results (executed cleanly after final code edits):
+   - `pyflakes round15/audit/*.py`: 0 warnings/errors.
+   - `python3 -I -m py_compile round15/audit/*.py`: exit 0.
+   - `python3 -I round15/audit/test_r15_audit.py -v`: 4/4 tests OK (2.672s), verifying mixed multi-line+`Jurkat` pre-QC purge, `context`-only `EXCLUDED_FEASIBILITY` vs mapped extraction, pure-numpy oracle parity (`rel_diff <= 1e-6`, `delta`/`half_a`/`half_b` `abs_diff <= 1e-6`), CSR vs CSC `0.0` exact cache parity, and `§8.4` release waves + `SA-H1`/`SA-Panel`.
+   - Rule 5 forbidden-term scan across `round15/audit/*.py`, `round15/prereg/PREREG_H.md`, and `round15/status/A-T3.txt`: 0 hits.
+
+R15_READER_XCHECK_READY
+
+---
+PREREG_H_ADDENDUM_A_SHA256: b9b8eb790dc8c413cff32c3ebfb1743defd6486e4843bc11d16a338bd2fba47d
+TIME: 2026-11-23 17:08 +08:00
+STATUS: R15_READER_ADDENDUM_A_DONE
+
+ADDENDUM A (`§3.1 rule (c)` SINGLE-LINE FILE MANIFEST) UPDATES:
+- Updated files under `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/audit/`:
+  - `independent_r15_loader.py` (sha256: `bcc3617826beef12c521197fea5193b227d7d4c89d937a1017e57690a66817aa`)
+  - `xcheck_r15_synthetic.py` (sha256: `d6f2f590cac38c2cc3df247208f0be5525b1310fbbc3999060505518f4026ba2`)
+  - `test_r15_audit.py` (sha256: `6a3d0c93a756b5547fd605ece2071e8d46fb364761cd7e1b05fa363a4f6c1d25`)
+  - (Unchanged: `__init__.py` `47db04afe2f56625c413d304b9c21af0e7d84e5daf4ec8ee1af958b55fbd7927`, `run_r15_audit.py` `eb230cb2a7d9689ef6189b71b86b001bacdb1ff1f6ed93df7ce8a4f94c1f398f`)
+- Implemented `§3.1 rule (c)` across `_resolve_manifest_entry_for_path`, `_resolve_vcc_cell_line_identities`, `check_vcc_h5ad_feasibility`, `build_vcc_line_audit_parts`, `standardize_vcc_line_to_audit_line`, `partition_vcc_files_by_line`, `format_r15_manifest_provenance_md`, and `compute_independent_oracle_arrays` / `--line-manifest-json`:
+  - Accepts `line_manifest` mapping filename/path -> `{line, url, quote}` (rejects bare filename/line strings, missing URL scheme, or empty verbatim quote with `EXCLUDED_FEASIBILITY`).
+  - Resolves `(a) explicit column -> (b) mapped context -> (c) official line_manifest -> else EXCLUDED_FEASIBILITY`; whenever `(a)` or mapped `(b)` applies AND `(c)` also covers the file, `(a)/(b)` take precedence and any cell-level disagreement marks ALL affected lines `EXCLUDED_FEASIBILITY` (including across multi-file release batches).
+  - Records URL + verbatim statement in `manifest_provenance` / `audit_meta["line_manifest_provenance"]` before any metric, and drops `jurkat` pre-QC.
+- Verification (`python3 -I`, zero real 2026 downloads, zero git):
+  - `pyflakes round15/audit/*.py`: 0 warnings/errors.
+  - `python3 -I -m py_compile round15/audit/*.py`: exit 0.
+  - `python3 -I round15/audit/test_r15_audit.py -v`: `Ran 5 tests in 4.228s`, `OK` (including `test_addendum_a_single_line_file_manifest_and_conflicts`: one-file-per-line with `line_manifest` -> ingests & matches numpy oracle `rel_diff <= 1e-6`, `delta`/`half_a`/`half_b` `abs_diff <= 1e-6`; missing/incomplete manifest even on `cal33.h5ad` -> `EXCLUDED_FEASIBILITY`; `(a)` or `(b)` vs `(c)` conflicts -> all affected lines `EXCLUDED_FEASIBILITY`).
+  - `xcheck_r15_synthetic.py --line-manifest-json` CLI smoke check: exit 0 (`ctrl_mean_libnorm_rel_diff = 4.81e-08`, `delta_log1p_diff = 4.97e-07`, `half_a_diff = 6.09e-07`, `half_b_diff = 6.36e-07`).
+
+R15_READER_ADDENDUM_A_DONE
+
+---
+CONTROLLER_AUDIT_REF: round15/status/R15_READER_XCHECK_CONTROLLER_R1.md (Issue 2)
+TIME: 2026-11-23 17:16 +08:00
+STATUS: R15_READER_FIX1_DONE
+
+MULTI-FILE RELEASE DIRECTORY FIX SUMMARY:
+- Updated files under `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/audit/`:
+  - `independent_r15_loader.py` (sha256: `65f4642a68acf6bf3a59d5eb6cbf8baab56d4b939bba09f783cf8de4138996cc`)
+  - `test_r15_audit.py` (sha256: `739610fbbf300d749ef8a9ec06f16ce3a6ff7f53594cc69a5016471ada67103d`)
+  - (Unchanged: `__init__.py` `47db04afe2f56625c413d304b9c21af0e7d84e5daf4ec8ee1af958b55fbd7927`, `run_r15_audit.py` `eb230cb2a7d9689ef6189b71b86b001bacdb1ff1f6ed93df7ce8a4f94c1f398f`, `xcheck_r15_synthetic.py` `d6f2f590cac38c2cc3df247208f0be5525b1310fbbc3999060505518f4026ba2`)
+- Fix (`check_vcc_h5ad_feasibility` & `build_vcc_line_audit_parts`):
+  - Resolves line identities per file via `(a)/(b)/(c)` FIRST; when a file's cells belong 100% to other cell lines (`0` cells for `norm_line`), records it in `other_line_files` and `file_audit_log` (`contributes_cells = False`, `n_line_raw_cells = 0`, `status = ZERO_CELLS_OTHER_LINE_ONLY`, plus `n_files_contributing`, `n_files_zero_cells_other_lines`, `n_jurkat_dropped_in_other_files` in `counts`) WITHOUT erroring.
+  - Marks `EXCLUDED_FEASIBILITY` ONLY when `norm_line` contributes `0` cells across ALL passed input files (`not file_reports`), or when `norm_line` has an ambiguous/unmapped file or `(a)/(b)` vs `(c)` conflict affecting `norm_line`.
+  - Cleanly isolates slot-integer/NTC checks to files actually contributing `>= 1` cell of `norm_line` (so invalid float matrices on another line's separate file fail that other line, not `cal33`).
+- Verification (run cleanly after final code edits, `python3 -I`, zero real 2026 downloads, zero git):
+  - `pyflakes round15/audit/*.py`: 0 warnings/errors.
+  - `python3 -I -m py_compile round15/audit/*.py`: exit 0.
+  - `python3 -I round15/audit/test_r15_audit.py -v`: `Ran 5 tests in 5.661s`, `OK` (verifying full directory `[h5_cal, h5_hela, h5_jur]` passed to `standardize_vcc_line_to_audit_line` for `cal33` and `hela` with `0.0` exact array equality vs single-file build, `0`-cell audit logging, `ac16` `EXCLUDED_FEASIBILITY` when 0 cells in all 3 files, and `cal33` succeeding even when `hela`'s separate file has non-integer float matrix).
+  - Never inspected `round15/src/`, `round15/results/`, or `round15/status/A-T2.txt`.
+
+R15_READER_FIX1_DONE
+
+---
+TIME: 2026-11-23 17:31 +08:00
+STATUS: R15_REGRESSION_DONE
+
+ROUND 12 & ROUND 14 EVALUATION REGRESSION VERIFICATION (`run_r15_audit.py`):
+- Code changes required: NONE (`run_r15_audit.py` `sha256: eb230cb2a7d9689ef6189b71b86b001bacdb1ff1f6ed93df7ce8a4f94c1f398f` already provides `--phase dev_r12|dev_r14`, `--source-mode r9_6`, `--lines`, `--seed`, `--n-boot`, `--n-perm`, `--out-dir`; defaults unchanged; `round12/`–`round14/` unmodified; zero data downloaded; zero git).
+- Regression outputs under `/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/audit/regression_r12_r14/`:
+  - `audit_r15_dev_r12_r12_a549_ko_r9_6.json` (+ CSVs)
+  - `audit_r15_dev_r14_r14_a549_myllia_r9_6.json` (+ CSVs)
+  - `REGRESSION_REPORT_R12_R14.json`
+- Regression 1 (`round12/shared/lines/a549_ko`, `r9_6`, `seed=20261201`, `n_boot=4000`, `n_perm=100`):
+  - vs `round12/audit/holdout_r12/audit_r12_summary_holdout_r12_r9_6.json` (`2,889` numeric fields + all boolean verdicts): `0` mismatches, **`overall_max_abs_diff = 0.0`** (`const_stats = 0.0`, `method_eval = 0.0`, `paired_he1b = 0.0`, `mismatched_all = 0.0`, `perm100_all_nontarget = 0.0`, `sa8_e1 = 0.0`, `sa8_e1_split_minus_all = 0.0`, `pair_fct_minus_e1_all = 0.0`, `n5_all = 0.0`, `n5_split = 0.0`, `r19_all = 0.0`, `s7_all = 0.0`); `H-E1a/b/c`, `H-E1`, `H-E2a/b`, `H-E2` all `True` (`6/6` `H-E1b`).
+  - vs `round12/results/*holdout_r12_r9_6_log1p*` (`589` numeric fields across CSV/JSON): `0` mismatches, **`overall_max_abs_diff = 3.331e-16 <= 1e-10`** (`method. = 3.331e-16`, `e1. = 5.551e-17`, `e1_split_minus_all. = 5.551e-17`, `paired_he1b. = 8.327e-17`, `pair_fct_minus_e1. = 2.776e-17`, `perm100. = 3.469e-18`), excluding 20 `Transfer_Mean`/`Transfer_Mean_GlobalScale` zero-variance correlation fields (`AT2 CSV empty / valid_frac=0.0` vs `AT3 0.0 / valid_frac=1.0` convention already exact in `round12/audit/holdout_r12`).
+- Regression 2 (`round14/shared/lines/a549_myllia`, `r9_6`, `seed=20261224`, `n_boot=4000`, `n_perm=100`):
+  - vs `round14/results/*holdout_r14_r9_6_log1p*` (`589` numeric fields + all verdicts): `0` mismatches, **`overall_max_abs_diff = 5.551e-16 <= 1e-10`** (`method. = 5.551e-16`, `e1. = 5.551e-17`, `e1_split_minus_all. = 1.110e-16`, `paired_he1b. = 2.776e-17`, `pair_fct_minus_e1. = 0.0`, `perm100. = 3.469e-18`); `n_genes_eval=6126`, `n_eval_targets=32`, `H-E1a/b/c`, `H-E1` (`6/6` `H-E1b`), `H-E2a/b`, `H-E2` all `True` (identical).
+- Round 15 New Additions Verified Executable:
+  - `SA-H1` (`sa_h1_leave_vcc2025_out`) completed on both R12 `a549_ko` and R14 `a549_myllia` (`n_sources = 5`).
+  - `SA-Panel` (`evaluate_sa_panel_overlap`) completed in CLI pending mode and on explicit `a549_myllia` subset (`4` / `28`).
+  - `adjudicate_release_wave` + `adjudicate_overall_round15` completed cleanly (`CONFIRMATORY_WAVE_SINGLE_LINE_K1` / `CONFIRMATORY_SINGLE_LINE_K1`).
+
+R15_REGRESSION_DONE

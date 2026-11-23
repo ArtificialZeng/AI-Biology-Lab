@@ -1,0 +1,5 @@
+主控：读取代码交叉核对第 2 轮全部通过（6 个读入情形的全部数组和标签逐位相同，3 个排除情形两边一致；round15/status/R15_READER_XCHECK_CONTROLLER_R1.md 会补上第 2 轮结果）。冻结前还差评测代码的回归检验，请各自用自己的代码做：
+1. 用第十五轮评测代码（A-T2：round15/src/run_eval_r15.py；A-T3：round15/audit/run_r15_audit.py）重跑第十二轮的 a549_ko（round12/shared/lines/，r9_6，种子 20261201，n_boot 4000，n_perm 100），与已提交的 round12/results/*holdout_r12_r9_6_log1p*（A-T3 对照 round12/audit/holdout_r12）逐项比较：全部点估计、CI 端点、valid_frac、6 个配对差、置换分位数、E1 两个掩码、H-E1/H-E2 判定。
+2. 同样重跑第十四轮的 a549_myllia（round14/shared/lines/，种子 20261224），与 round14/results/*holdout_r14_r9_6_log1p* 比较。
+3. 要求：最大绝对差 ≤ 1e-10，判定标志全部相同；SA-H1、SA-Panel、分批判定这些新增部分不参与比较，但要能跑通。只为回归检验临时改种子和数据路径（用命令行参数，不改代码默认值）；输出写到 round15/results/regression_r12_r14/（A-T2）或 round15/audit/regression_r12_r14/（A-T3）。不改 round12–14 的任何文件，不下载数据，不提交 git。
+4. 完成后报告每项的最大差。A-T2 在 round15/status/A-T2.txt、A-T3 在 round15/status/A-T3.txt 最后单独一行写 R15_REGRESSION_DONE。如果代码不支持指向旧线的参数，就用最少的改动加上（只加命令行参数），并说明。

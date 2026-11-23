@@ -1,0 +1,52 @@
+ROLE: A-T2 (Team A Methods & Evaluation Code)
+ROUND: 15 (`PREREG_H` v2 + `PREREG_H_ADDENDUM_A` — Arc VCC 2026 Multi-Line Holdout Pipeline)
+TIME: 2026-11-23 +08:00
+STATUS: R15_REGRESSION_DONE
+
+DELIVERABLES (`round15/src/`):
+- round15/src/__init__.py
+  - bytes: 83
+  - sha256: 3df6839667570f6267b1a081b9eb34d8c9d2560412d6ea2a9b406c00afc36b51
+- round15/src/data_loader_r15.py
+  - bytes: 20532
+  - sha256: 08504aac3b5e4d1ae1cecfbdfd434bef137e20ada0dd2caa7588f8b2260ec05b
+- round15/src/dataset_readers_r15.py
+  - bytes: 55337
+  - sha256: 1a18704005b7a9b1a430e3bb4988a37b683b7b30e188be41cae2432cc687c3aa
+- round15/src/adjudicate_r15.py
+  - bytes: 24709
+  - sha256: 0d43915c97971e6fe8cbefc0e2fec7a121d679eed4aff56ac27919a8412ac26d
+- round15/src/run_eval_r15.py
+  - bytes: 22367
+  - sha256: a1ee2b141f847f28c83427a636143873f05f64d89bafe398c6696885ffb37025
+- round15/src/test_unit_r15.py
+  - bytes: 46671
+  - sha256: 404acf699ca6ee20465c43f422a65335e8a9fc667be8b3d6234c366364917a7d
+
+MINIMAL CLI EXTENSION FOR LEGACY REGRESSION (NO PREREG_H RULE / DEFAULT CHANGES):
+- Added `--phase regression_legacy` and optional `--min-gene-overlap` CLI option in `round15/src/run_eval_r15.py`, plus `allow_legacy_lines: bool = False` (default False) and descriptive `all_lines_descriptive` summary in `round15/src/adjudicate_r15.py`.
+- `--phase holdout_r15` remains 100% locked: hard `PREREG_H_COMMIT.txt` + `CODE_FREEZE_R15.txt` gate, `ALLOWED_R15_LINES = ("cal33", "hela", "ac16", "molm13", "u87mg")`, hard `jurkat` rejection, and `DEFAULT_R15_SEED = 20261231`.
+
+REGRESSION VERIFICATION (`round15/results/regression_r12_r14/`):
+1. Round 12 `a549_ko` (`round12/shared/lines/`, `r9_6`, `seed=20261201`, `n_boot=4000`, `n_perm=100` vs `round12/results/*holdout_r12_r9_6_log1p*`):
+   - `n_methods_compared = 23`, `n_boot_rows_compared = 47`, `n_adj_bool_flags_checked = 15`.
+   - `max_point_estimates_diff = 0.0`, `max_ci_endpoints_diff = 0.0`, `max_valid_frac_diff = 0.0`, `max_line_metrics_diff = 0.0`, `max_boot_ci_diff = 0.0`.
+   - `max_he1b_6pairs_diff = 0.0` (all 6 `H-E1b_FCT_minus_Mis_*` contrasts).
+   - `max_e1_both_masks_diff = 0.0` (`E1_ConstMed` under `all_nontarget`, `resp_top50`, `resp_top50_split`).
+   - `max_perm100_diff = 0.0`, `max_adj_perline_num_diff = 0.0`.
+   - `verdicts_exact_match = True`, `all_adj_bool_flags_match = True` (`H-E1 = CONFIRMED`, `H-E2 = CONFIRMED`).
+   - `SA-H1` executed cleanly (`5` remaining sources excluding `vcc2025_h1`).
+2. Round 14 `a549_myllia` (`round14/shared/lines/`, `r9_6`, `seed=20261224`, `n_boot=4000`, `n_perm=100` vs `round14/results/*holdout_r14_r9_6_log1p*`):
+   - `n_methods_compared = 23`, `n_boot_rows_compared = 47`, `n_adj_bool_flags_checked = 15`.
+   - `max_point_estimates_diff = 0.0`, `max_ci_endpoints_diff = 0.0`, `max_valid_frac_diff = 0.0`, `max_line_metrics_diff = 0.0`, `max_boot_ci_diff = 0.0`.
+   - `max_he1b_6pairs_diff = 0.0`, `max_e1_both_masks_diff = 0.0`, `max_perm100_diff = 0.0`, `max_adj_perline_num_diff = 0.0`.
+   - `verdicts_exact_match = True`, `all_adj_bool_flags_match = True` (`k_conf = 0` `CONFIRMATORY_ABORTED_K0`, descriptive `H-E1 = CONFIRMED`, `H-E2 = CONFIRMED`).
+   - `SA-H1` (`5` sources) and `SA-Panel` (`--panel-overlap-file round12/shared/lines/a549_ko/targets.txt`, `status = OK`) both executed cleanly.
+3. Summary artifact: `round15/results/regression_r12_r14/REGRESSION_DIFF_SUMMARY.json`.
+
+ADDITIONAL VERIFICATION AFTER FINAL CODE EDITS:
+- Static lint (`python3 -I -m pyflakes round15/src/*.py`): 0 warnings/errors.
+- Unit & synthetic integration suite (`python3 -I round15/src/test_unit_r15.py`): Ran 7 tests in 13.214s — OK.
+- Frozen manifest integrity re-check (`shasum -a 256 -c` on `FREEZE_MANIFEST_R12.txt`, `FREEZE_MANIFEST_R13.txt`, `FREEZE_MANIFEST_R14.txt`): all entries `: OK` (exit code 0).
+
+R15_REGRESSION_DONE

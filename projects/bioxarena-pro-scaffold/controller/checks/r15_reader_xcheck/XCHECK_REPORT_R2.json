@@ -1,0 +1,1214 @@
+{
+ "case1_mixed_explicit/cal33": {
+  "expect": "OK",
+  "at2": "OK",
+  "at3": "OK",
+  "compare": {
+   "genes.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     3697,
+     3697
+    ]
+   },
+   "targets.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     30,
+     30
+    ]
+   },
+   "pseudobulk_delta.npz:keys_only_in_at2": [],
+   "pseudobulk_delta.npz:keys_only_in_at3": [],
+   "pseudobulk_delta.npz:ad_counts": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:energy_test_p_value": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_valid": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:knockdown_depth_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:knockdown_fraction": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:reproducible": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_ensembl_ids": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_hgnc_status": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_raw_symbols": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:targets": {
+    "pass": true
+   },
+   "ctrl_cells.npz:keys_only_in_at2": [],
+   "ctrl_cells.npz:keys_only_in_at3": [],
+   "ctrl_cells.npz:X_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:batch_labels": {
+    "pass": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_a_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_b_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:n_ctrl_total": {
+    "pass": true
+   },
+   "metadata_subset": {
+    "at2": {
+     "split_tier": "tier1_batch_channel_parity"
+    },
+    "at3": {}
+   },
+   "ALL_EXACT": true
+  },
+  "verdict_match_expectation": true
+ },
+ "case1_mixed_explicit/hela": {
+  "expect": "OK",
+  "at2": "OK",
+  "at3": "OK",
+  "compare": {
+   "genes.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     3700,
+     3700
+    ]
+   },
+   "targets.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     30,
+     30
+    ]
+   },
+   "pseudobulk_delta.npz:keys_only_in_at2": [],
+   "pseudobulk_delta.npz:keys_only_in_at3": [],
+   "pseudobulk_delta.npz:ad_counts": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:energy_test_p_value": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_valid": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:knockdown_depth_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:knockdown_fraction": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:reproducible": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_ensembl_ids": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_hgnc_status": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_raw_symbols": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:targets": {
+    "pass": true
+   },
+   "ctrl_cells.npz:keys_only_in_at2": [],
+   "ctrl_cells.npz:keys_only_in_at3": [],
+   "ctrl_cells.npz:X_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:batch_labels": {
+    "pass": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_a_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_b_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:n_ctrl_total": {
+    "pass": true
+   },
+   "metadata_subset": {
+    "at2": {
+     "split_tier": "tier1_batch_channel_parity"
+    },
+    "at3": {}
+   },
+   "ALL_EXACT": true
+  },
+  "verdict_match_expectation": true
+ },
+ "case2_context_only/cal33": {
+  "expect": "OK",
+  "at2": "OK",
+  "at3": "OK",
+  "compare": {
+   "genes.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     3784,
+     3784
+    ]
+   },
+   "targets.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     30,
+     30
+    ]
+   },
+   "pseudobulk_delta.npz:keys_only_in_at2": [],
+   "pseudobulk_delta.npz:keys_only_in_at3": [],
+   "pseudobulk_delta.npz:ad_counts": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:energy_test_p_value": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_valid": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:knockdown_depth_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:knockdown_fraction": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:reproducible": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_ensembl_ids": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_hgnc_status": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_raw_symbols": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:targets": {
+    "pass": true
+   },
+   "ctrl_cells.npz:keys_only_in_at2": [],
+   "ctrl_cells.npz:keys_only_in_at3": [],
+   "ctrl_cells.npz:X_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:batch_labels": {
+    "pass": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_a_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_b_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:n_ctrl_total": {
+    "pass": true
+   },
+   "metadata_subset": {
+    "at2": {
+     "split_tier": "tier2_stratified_seed"
+    },
+    "at3": {}
+   },
+   "ALL_EXACT": true
+  },
+  "verdict_match_expectation": true
+ },
+ "case2_context_only/hela": {
+  "expect": "OK",
+  "at2": "OK",
+  "at3": "OK",
+  "compare": {
+   "genes.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     3781,
+     3781
+    ]
+   },
+   "targets.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     30,
+     30
+    ]
+   },
+   "pseudobulk_delta.npz:keys_only_in_at2": [],
+   "pseudobulk_delta.npz:keys_only_in_at3": [],
+   "pseudobulk_delta.npz:ad_counts": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:energy_test_p_value": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_valid": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:knockdown_depth_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:knockdown_fraction": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:reproducible": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_ensembl_ids": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_hgnc_status": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_raw_symbols": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:targets": {
+    "pass": true
+   },
+   "ctrl_cells.npz:keys_only_in_at2": [],
+   "ctrl_cells.npz:keys_only_in_at3": [],
+   "ctrl_cells.npz:X_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:batch_labels": {
+    "pass": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_a_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_b_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:n_ctrl_total": {
+    "pass": true
+   },
+   "metadata_subset": {
+    "at2": {
+     "split_tier": "tier2_stratified_seed"
+    },
+    "at3": {}
+   },
+   "ALL_EXACT": true
+  },
+  "verdict_match_expectation": true
+ },
+ "case2_context_nomap/cal33": {
+  "expect": "EXCLUDED",
+  "at2": "RAISED: EXCLUDED_FEASIBILITY: cal33 failed VCC feasibility gate: EXCLUDED_FEASIBILITY: adata_Validation.h5ad uses .obs['context'] without an official Arc context-to-line mapping table or line_manifest entry (PREREG_H \u00a73.1 + Addendum A).",
+  "at2_trace_tail": [
+   "  File \"/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/src/dataset_readers_r15.py\", line 942, in build_vcc_parts",
+   "    raise RuntimeError(f\"EXCLUDED_FEASIBILITY: {canon_line} failed VCC feasibility gate: {feas.get('reason')}\")",
+   "RuntimeError: EXCLUDED_FEASIBILITY: cal33 failed VCC feasibility gate: EXCLUDED_FEASIBILITY: adata_Validation.h5ad uses .obs['context'] without an official Arc context-to-line mapping table or line_manifest entry (PREREG_H \u00a73.1 + Addendum A)."
+  ],
+  "at3": "RAISED: EXCLUDED_FEASIBILITY (EXCLUDED_FEASIBILITY): context_only_obs (context) without published Arc context_to_line_map or official line_manifest (PREREG_H v2 \u00a73.1 + Addendum A: never inferred from expression or filename)",
+  "at3_trace_tail": [
+   "  File \"/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/audit/independent_r15_loader.py\", line 1111, in build_vcc_line_audit_parts",
+   "    raise RuntimeError(f\"EXCLUDED_FEASIBILITY ({feas['status']}): {feas['reason']}\")",
+   "RuntimeError: EXCLUDED_FEASIBILITY (EXCLUDED_FEASIBILITY): context_only_obs (context) without published Arc context_to_line_map or official line_manifest (PREREG_H v2 \u00a73.1 + Addendum A: never inferred from expression or filename)"
+  ],
+  "verdict_match_expectation": true
+ },
+ "case3_per_line_files/cal33": {
+  "expect": "OK",
+  "at2": "OK",
+  "at3": "OK",
+  "compare": {
+   "genes.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     3697,
+     3697
+    ]
+   },
+   "targets.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     30,
+     30
+    ]
+   },
+   "pseudobulk_delta.npz:keys_only_in_at2": [],
+   "pseudobulk_delta.npz:keys_only_in_at3": [],
+   "pseudobulk_delta.npz:ad_counts": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:energy_test_p_value": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_valid": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:knockdown_depth_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:knockdown_fraction": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:reproducible": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_ensembl_ids": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_hgnc_status": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_raw_symbols": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:targets": {
+    "pass": true
+   },
+   "ctrl_cells.npz:keys_only_in_at2": [],
+   "ctrl_cells.npz:keys_only_in_at3": [],
+   "ctrl_cells.npz:X_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:batch_labels": {
+    "pass": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_a_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_b_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:n_ctrl_total": {
+    "pass": true
+   },
+   "metadata_subset": {
+    "at2": {
+     "split_tier": "tier1_batch_channel_parity"
+    },
+    "at3": {}
+   },
+   "ALL_EXACT": true
+  },
+  "verdict_match_expectation": true
+ },
+ "case3_per_line_files/hela": {
+  "expect": "OK",
+  "at2": "OK",
+  "at3": "OK",
+  "compare": {
+   "genes.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     3700,
+     3700
+    ]
+   },
+   "targets.txt": {
+    "equal_order": true,
+    "equal_set": true,
+    "n": [
+     30,
+     30
+    ]
+   },
+   "pseudobulk_delta.npz:keys_only_in_at2": [],
+   "pseudobulk_delta.npz:keys_only_in_at3": [],
+   "pseudobulk_delta.npz:ad_counts": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:energy_test_p_value": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_a_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_delta_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_b_n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:half_valid": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:knockdown_depth_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:knockdown_fraction": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:n_cells": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "pseudobulk_delta.npz:reproducible": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_ensembl_ids": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_hgnc_status": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:target_raw_symbols": {
+    "pass": true
+   },
+   "pseudobulk_delta.npz:targets": {
+    "pass": true
+   },
+   "ctrl_cells.npz:keys_only_in_at2": [],
+   "ctrl_cells.npz:keys_only_in_at3": [],
+   "ctrl_cells.npz:X_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:X_zscore": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:batch_labels": {
+    "pass": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_libnorm_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_full": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:ctrl_mean_log1p_sub20k": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_a_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:half_b_ctrl_mean_libnorm": {
+    "pass": true,
+    "max_abs_diff": 0.0,
+    "same_nan": true
+   },
+   "ctrl_cells.npz:n_ctrl_total": {
+    "pass": true
+   },
+   "metadata_subset": {
+    "at2": {
+     "split_tier": "tier1_batch_channel_parity"
+    },
+    "at3": {}
+   },
+   "ALL_EXACT": true
+  },
+  "verdict_match_expectation": true
+ },
+ "case3_no_manifest/cal33": {
+  "expect": "EXCLUDED",
+  "at2": "RAISED: EXCLUDED_FEASIBILITY: cal33 failed VCC feasibility gate: EXCLUDED_FEASIBILITY: cal33_challenge.h5ad lacks an explicit cell-line column (('cell_line', 'cell_type', 'line', 'cellline', 'celltype')), a mapped 'context' column, and an official line_manifest entry (PREREG_H \u00a73.1 + Addendum A; filename al",
+  "at2_trace_tail": [
+   "  File \"/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/src/dataset_readers_r15.py\", line 942, in build_vcc_parts",
+   "    raise RuntimeError(f\"EXCLUDED_FEASIBILITY: {canon_line} failed VCC feasibility gate: {feas.get('reason')}\")",
+   "RuntimeError: EXCLUDED_FEASIBILITY: cal33 failed VCC feasibility gate: EXCLUDED_FEASIBILITY: cal33_challenge.h5ad lacks an explicit cell-line column (('cell_line', 'cell_type', 'line', 'cellline', 'celltype')), a mapped 'context' column, and an official line_manifest entry (PREREG_H \u00a73.1 + Addendum A; filename alone invalid)."
+  ],
+  "at3": "RAISED: EXCLUDED_FEASIBILITY (EXCLUDED_FEASIBILITY): missing_explicit_line_col_context_map_and_official_line_manifest_PREREG_H_3_1_C",
+  "at3_trace_tail": [
+   "  File \"/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/audit/independent_r15_loader.py\", line 1111, in build_vcc_line_audit_parts",
+   "    raise RuntimeError(f\"EXCLUDED_FEASIBILITY ({feas['status']}): {feas['reason']}\")",
+   "RuntimeError: EXCLUDED_FEASIBILITY (EXCLUDED_FEASIBILITY): missing_explicit_line_col_context_map_and_official_line_manifest_PREREG_H_3_1_C"
+  ],
+  "verdict_match_expectation": true
+ },
+ "case4_nonint/cal33": {
+  "expect": "EXCLUDED",
+  "at2": "RAISED: EXCLUDED_FEASIBILITY: cal33 failed VCC feasibility gate: EXCLUDED_FEASIBILITY: GSE337804 adata_Validation.h5ad lacks verified non-negative integer UMI counts across candidate slots ['X'] (diag={'X': {'eligible_candidate': True, 'is_nonneg_int': False, 'status': 'non_integer_or_negative_csr', 'layout",
+  "at2_trace_tail": [
+   "  File \"/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/src/dataset_readers_r15.py\", line 942, in build_vcc_parts",
+   "    raise RuntimeError(f\"EXCLUDED_FEASIBILITY: {canon_line} failed VCC feasibility gate: {feas.get('reason')}\")",
+   "RuntimeError: EXCLUDED_FEASIBILITY: cal33 failed VCC feasibility gate: EXCLUDED_FEASIBILITY: GSE337804 adata_Validation.h5ad lacks verified non-negative integer UMI counts across candidate slots ['X'] (diag={'X': {'eligible_candidate': True, 'is_nonneg_int': False, 'status': 'non_integer_or_negative_csr', 'layout': 'csr', 'shape': [2218, 3800], 'n_nonzero': 3356555, 'n_negative': 0, 'n_nonfinite': 0, 'n_nonint': 3356555, 'median_total_umi': 1977.977036446333}})."
+  ],
+  "at3": "RAISED: EXCLUDED_FEASIBILITY (EXCLUDED_FEASIBILITY): no_integer_raw_umi_slot in adata_Validation.h5ad: [{'slot_path': '/X', 'is_integer': False, 'reason': 'sparse_non_integer_0_2000000_maxdiff=0.4996', 'shape': None, 'nnz_pos': None, 'sum_total': None}]",
+  "at3_trace_tail": [
+   "  File \"/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round15/audit/independent_r15_loader.py\", line 1111, in build_vcc_line_audit_parts",
+   "    raise RuntimeError(f\"EXCLUDED_FEASIBILITY ({feas['status']}): {feas['reason']}\")",
+   "RuntimeError: EXCLUDED_FEASIBILITY (EXCLUDED_FEASIBILITY): no_integer_raw_umi_slot in adata_Validation.h5ad: [{'slot_path': '/X', 'is_integer': False, 'reason': 'sparse_non_integer_0_2000000_maxdiff=0.4996', 'shape': None, 'nnz_pos': None, 'sum_total': None}]"
+  ],
+  "verdict_match_expectation": true
+ }
+}

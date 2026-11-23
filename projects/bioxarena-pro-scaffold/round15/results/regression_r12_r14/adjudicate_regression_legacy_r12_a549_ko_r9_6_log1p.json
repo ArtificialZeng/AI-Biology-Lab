@@ -1,0 +1,496 @@
+{
+  "Group_E_Claim1_Verdict": "CONFIRMED",
+  "Group_E_Claim2_Verdict": "CONFIRMED",
+  "H-E1": {
+    "verdict": "CONFIRMED",
+    "pass_count": 1,
+    "required": 1,
+    "sub_hypotheses": {
+      "H-E1a": {
+        "pass_count": 1,
+        "required": 1,
+        "verdict": "CONFIRMED"
+      },
+      "H-E1b": {
+        "pass_count": 1,
+        "required": 1,
+        "verdict": "CONFIRMED"
+      },
+      "H-E1c": {
+        "pass_count": 1,
+        "required": 1,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "per_line": {
+      "a549_ko": {
+        "fct_r_orth_cal": 0.18980314764741424,
+        "fct_ci975_lo": 0.17416745275713927,
+        "fct_ci975_hi": 0.20545533394860485,
+        "valid_frac": 1.0,
+        "rho_half_ab_orth": 0.7887443809703106,
+        "addendum_a1_ci_gt0_but_low_valid_frac": false,
+        "H-E1a_pass": true,
+        "H-E1b_pass": true,
+        "H-E1b_n_sources_checked": 6,
+        "H-E1b_n_sources_pass": 6,
+        "H-E1b_min_paired_ci975_lo": 0.0681677794445851,
+        "H-E1b_per_source": {
+          "nadig_hepg2": {
+            "estimate": 0.18687822630847511,
+            "ci975_lo": 0.16932090778017875,
+            "ci975_hi": 0.2049316167813072,
+            "valid_frac": 1.0,
+            "pass": true
+          },
+          "nadig_jurkat": {
+            "estimate": 0.07962980963456615,
+            "ci975_lo": 0.06932451089787629,
+            "ci975_hi": 0.09002342795468991,
+            "valid_frac": 1.0,
+            "pass": true
+          },
+          "nourreddine_kolf21j": {
+            "estimate": 0.10687325769501275,
+            "ci975_lo": 0.0985394512376554,
+            "ci975_hi": 0.11560066260270338,
+            "valid_frac": 1.0,
+            "pass": true
+          },
+          "replogle_k562_essential": {
+            "estimate": 0.12792431125299406,
+            "ci975_lo": 0.11500884000368918,
+            "ci975_hi": 0.14097460122965164,
+            "valid_frac": 1.0,
+            "pass": true
+          },
+          "replogle_rpe1": {
+            "estimate": 0.0803687512763436,
+            "ci975_lo": 0.0681677794445851,
+            "ci975_hi": 0.09174033552291339,
+            "valid_frac": 1.0,
+            "pass": true
+          },
+          "vcc2025_h1": {
+            "estimate": 0.15049204473554784,
+            "ci975_lo": 0.1401952672929839,
+            "ci975_hi": 0.1605011990665467,
+            "valid_frac": 1.0,
+            "pass": true
+          }
+        },
+        "H-E1c_pass": true,
+        "perm100_all_nontarget_q975": 0.0018132552539497884,
+        "descriptive_unpaired_max_mis_ci975_hi": 0.12373118722557883,
+        "descriptive_unpaired_pass": true,
+        "pass": true
+      }
+    }
+  },
+  "H-E2": {
+    "verdict": "CONFIRMED",
+    "pass_count": 1,
+    "required": 1,
+    "sub_hypotheses": {
+      "H-E2a": {
+        "pass_count": 1,
+        "required": 1,
+        "verdict": "CONFIRMED"
+      },
+      "H-E2b": {
+        "pass_count": 1,
+        "required": 1,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "per_line": {
+      "a549_ko": {
+        "e1_split_r_orth_cal": 0.25650103405103714,
+        "e1_split_ci975_lo": 0.21951365893880279,
+        "e1_split_ci975_hi": 0.29810666919934614,
+        "e1_split_valid_frac": NaN,
+        "H-E2a_pass": true,
+        "e1_split_minus_all_est": 0.27664049076889535,
+        "e1_split_minus_all_ci975_lo": 0.24118882048800763,
+        "e1_split_minus_all_ci975_hi": 0.31641097853916367,
+        "n_common_perts": 445,
+        "H-E2b_pass": true,
+        "pass": true
+      }
+    }
+  },
+  "utility_noninferiority": {
+    "ci_level": "ci975",
+    "verdict": "CONFIRMED",
+    "n_inferior_pairs": 0,
+    "inferior_pairs": [],
+    "strict_superiority_count": 4,
+    "total_checks": 6,
+    "by_metric": {
+      "ctrl_disc_raw": {
+        "n_inferior": 0,
+        "n_superior": 0,
+        "verdict": "CONFIRMED",
+        "per_line": {
+          "a549_ko": {
+            "mean_fct": 0.8605273813138982,
+            "mean_tmean": 0.8610942403077235,
+            "delta": -0.0005668589938253588,
+            "ci_lo": -0.0036441567972467087,
+            "ci_hi": 0.0022828094948880912,
+            "non_inferior": true,
+            "superior": false
+          }
+        }
+      },
+      "ctrl_disc_raw_panel": {
+        "n_inferior": 0,
+        "n_superior": 0,
+        "verdict": "CONFIRMED",
+        "per_line": {
+          "a549_ko": {
+            "mean_fct": 0.8589887640449438,
+            "mean_tmean": 0.8591406012754328,
+            "delta": -0.00015183723048894926,
+            "ci_lo": -0.0036138526166616656,
+            "ci_hi": 0.0034315846745622673,
+            "non_inferior": true,
+            "superior": false
+          }
+        }
+      },
+      "ctrl_de50_r": {
+        "n_inferior": 0,
+        "n_superior": 1,
+        "verdict": "CONFIRMED",
+        "per_line": {
+          "a549_ko": {
+            "mean_fct": 0.700033567753359,
+            "mean_tmean": 0.6707212339019133,
+            "delta": 0.029312333851445715,
+            "ci_lo": 0.02411606988561936,
+            "ci_hi": 0.03443577569474568,
+            "non_inferior": true,
+            "superior": true
+          }
+        }
+      },
+      "cent_disc_raw": {
+        "n_inferior": 0,
+        "n_superior": 1,
+        "verdict": "CONFIRMED",
+        "per_line": {
+          "a549_ko": {
+            "mean_fct": 0.8399483753416338,
+            "mean_tmean": 0.8344670513209839,
+            "delta": 0.005481324020649936,
+            "ci_lo": 0.001270371495090572,
+            "ci_hi": 0.010649926612005155,
+            "non_inferior": true,
+            "superior": true
+          }
+        }
+      },
+      "cent_disc_raw_panel": {
+        "n_inferior": 0,
+        "n_superior": 1,
+        "verdict": "CONFIRMED",
+        "per_line": {
+          "a549_ko": {
+            "mean_fct": 0.8417147484563214,
+            "mean_tmean": 0.8358285251543678,
+            "delta": 0.0058862233019536525,
+            "ci_lo": 0.0016092848466443975,
+            "ci_hi": 0.011084434153254379,
+            "non_inferior": true,
+            "superior": true
+          }
+        }
+      },
+      "cent_de50_r": {
+        "n_inferior": 0,
+        "n_superior": 1,
+        "verdict": "CONFIRMED",
+        "per_line": {
+          "a549_ko": {
+            "mean_fct": 0.4438599040311825,
+            "mean_tmean": 0.39417115920987333,
+            "delta": 0.04968874482130914,
+            "ci_lo": 0.041850638711113455,
+            "ci_hi": 0.058255835252180935,
+            "non_inferior": true,
+            "superior": true
+          }
+        }
+      }
+    }
+  },
+  "all_lines_descriptive": {
+    "Group_E_Claim1_Verdict": "CONFIRMED",
+    "Group_E_Claim2_Verdict": "CONFIRMED",
+    "H-E1": {
+      "verdict": "CONFIRMED",
+      "pass_count": 1,
+      "required": 1,
+      "sub_hypotheses": {
+        "H-E1a": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        },
+        "H-E1b": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        },
+        "H-E1c": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        }
+      },
+      "per_line": {
+        "a549_ko": {
+          "fct_r_orth_cal": 0.18980314764741424,
+          "fct_ci975_lo": 0.17416745275713927,
+          "fct_ci975_hi": 0.20545533394860485,
+          "valid_frac": 1.0,
+          "rho_half_ab_orth": 0.7887443809703106,
+          "addendum_a1_ci_gt0_but_low_valid_frac": false,
+          "H-E1a_pass": true,
+          "H-E1b_pass": true,
+          "H-E1b_n_sources_checked": 6,
+          "H-E1b_n_sources_pass": 6,
+          "H-E1b_min_paired_ci975_lo": 0.0681677794445851,
+          "H-E1b_per_source": {
+            "nadig_hepg2": {
+              "estimate": 0.18687822630847511,
+              "ci975_lo": 0.16932090778017875,
+              "ci975_hi": 0.2049316167813072,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "nadig_jurkat": {
+              "estimate": 0.07962980963456615,
+              "ci975_lo": 0.06932451089787629,
+              "ci975_hi": 0.09002342795468991,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "nourreddine_kolf21j": {
+              "estimate": 0.10687325769501275,
+              "ci975_lo": 0.0985394512376554,
+              "ci975_hi": 0.11560066260270338,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "replogle_k562_essential": {
+              "estimate": 0.12792431125299406,
+              "ci975_lo": 0.11500884000368918,
+              "ci975_hi": 0.14097460122965164,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "replogle_rpe1": {
+              "estimate": 0.0803687512763436,
+              "ci975_lo": 0.0681677794445851,
+              "ci975_hi": 0.09174033552291339,
+              "valid_frac": 1.0,
+              "pass": true
+            },
+            "vcc2025_h1": {
+              "estimate": 0.15049204473554784,
+              "ci975_lo": 0.1401952672929839,
+              "ci975_hi": 0.1605011990665467,
+              "valid_frac": 1.0,
+              "pass": true
+            }
+          },
+          "H-E1c_pass": true,
+          "perm100_all_nontarget_q975": 0.0018132552539497884,
+          "descriptive_unpaired_max_mis_ci975_hi": 0.12373118722557883,
+          "descriptive_unpaired_pass": true,
+          "pass": true
+        }
+      }
+    },
+    "H-E2": {
+      "verdict": "CONFIRMED",
+      "pass_count": 1,
+      "required": 1,
+      "sub_hypotheses": {
+        "H-E2a": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        },
+        "H-E2b": {
+          "pass_count": 1,
+          "required": 1,
+          "verdict": "CONFIRMED"
+        }
+      },
+      "per_line": {
+        "a549_ko": {
+          "e1_split_r_orth_cal": 0.25650103405103714,
+          "e1_split_ci975_lo": 0.21951365893880279,
+          "e1_split_ci975_hi": 0.29810666919934614,
+          "e1_split_valid_frac": NaN,
+          "H-E2a_pass": true,
+          "e1_split_minus_all_est": 0.27664049076889535,
+          "e1_split_minus_all_ci975_lo": 0.24118882048800763,
+          "e1_split_minus_all_ci975_hi": 0.31641097853916367,
+          "n_common_perts": 445,
+          "H-E2b_pass": true,
+          "pass": true
+        }
+      }
+    },
+    "utility_noninferiority": {
+      "ci_level": "ci975",
+      "verdict": "CONFIRMED",
+      "n_inferior_pairs": 0,
+      "inferior_pairs": [],
+      "strict_superiority_count": 4,
+      "total_checks": 6,
+      "by_metric": {
+        "ctrl_disc_raw": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_ko": {
+              "mean_fct": 0.8605273813138982,
+              "mean_tmean": 0.8610942403077235,
+              "delta": -0.0005668589938253588,
+              "ci_lo": -0.0036441567972467087,
+              "ci_hi": 0.0022828094948880912,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        },
+        "ctrl_disc_raw_panel": {
+          "n_inferior": 0,
+          "n_superior": 0,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_ko": {
+              "mean_fct": 0.8589887640449438,
+              "mean_tmean": 0.8591406012754328,
+              "delta": -0.00015183723048894926,
+              "ci_lo": -0.0036138526166616656,
+              "ci_hi": 0.0034315846745622673,
+              "non_inferior": true,
+              "superior": false
+            }
+          }
+        },
+        "ctrl_de50_r": {
+          "n_inferior": 0,
+          "n_superior": 1,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_ko": {
+              "mean_fct": 0.700033567753359,
+              "mean_tmean": 0.6707212339019133,
+              "delta": 0.029312333851445715,
+              "ci_lo": 0.02411606988561936,
+              "ci_hi": 0.03443577569474568,
+              "non_inferior": true,
+              "superior": true
+            }
+          }
+        },
+        "cent_disc_raw": {
+          "n_inferior": 0,
+          "n_superior": 1,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_ko": {
+              "mean_fct": 0.8399483753416338,
+              "mean_tmean": 0.8344670513209839,
+              "delta": 0.005481324020649936,
+              "ci_lo": 0.001270371495090572,
+              "ci_hi": 0.010649926612005155,
+              "non_inferior": true,
+              "superior": true
+            }
+          }
+        },
+        "cent_disc_raw_panel": {
+          "n_inferior": 0,
+          "n_superior": 1,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_ko": {
+              "mean_fct": 0.8417147484563214,
+              "mean_tmean": 0.8358285251543678,
+              "delta": 0.0058862233019536525,
+              "ci_lo": 0.0016092848466443975,
+              "ci_hi": 0.011084434153254379,
+              "non_inferior": true,
+              "superior": true
+            }
+          }
+        },
+        "cent_de50_r": {
+          "n_inferior": 0,
+          "n_superior": 1,
+          "verdict": "CONFIRMED",
+          "per_line": {
+            "a549_ko": {
+              "mean_fct": 0.4438599040311825,
+              "mean_tmean": 0.39417115920987333,
+              "delta": 0.04968874482130914,
+              "ci_lo": 0.041850638711113455,
+              "ci_hi": 0.058255835252180935,
+              "non_inferior": true,
+              "superior": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "protocol": "PREREG_H_v2",
+  "wave_id": "r12_a549_ko",
+  "k_conf": 1,
+  "confirmatory_lines": [
+    "a549_ko"
+  ],
+  "secondary_lines": [],
+  "excluded_lines": [],
+  "jurkat_excluded": true,
+  "resolved_lines": [
+    "a549_ko"
+  ],
+  "pending_lines": [
+    "cal33",
+    "hela",
+    "ac16",
+    "molm13",
+    "u87mg"
+  ],
+  "sunset_reached": false,
+  "per_line_verdicts": {
+    "a549_ko": {
+      "line": "a549_ko",
+      "Claim1_H_E1": "CONFIRMED",
+      "Claim2_H_E2": "CONFIRMED",
+      "sub": {
+        "H-E1a": "CONFIRMED",
+        "H-E1b": "CONFIRMED",
+        "H-E1c": "CONFIRMED",
+        "H-E2a": "CONFIRMED",
+        "H-E2b": "CONFIRMED"
+      }
+    }
+  },
+  "confirmatory_status": "CONFIRMATORY_SINGLE_LINE_K1",
+  "single_line_limited_generalizability_notice": true,
+  "single_lab_platform_notice": false,
+  "scope_disclosure": "K_conf = 1 single-line confirmation only; cross-line generalizability is limited.",
+  "study_complete": false,
+  "statement_label": "interim, more lines pending"
+}
