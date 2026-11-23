@@ -1,0 +1,285 @@
+{
+  "round": 14,
+  "accession": "GSE337804",
+  "prereg_lock": "PREREG_G (commit d34560d verified on origin/main)",
+  "r14_go_verified": true,
+  "blinding_policy": "Bytes/sha256/filenames and PREREG_G \u00a74.1 integer raw-count slot & obs column-name check ONLY; ZERO cell/target counts, ZERO line builds, ZERO metrics prior to R14_LINES_AUTHORIZED.txt.",
+  "downloads": [
+    {
+      "filename": "GSE337804_A549_ch_1.RDS.h5ad",
+      "rel_path": "shared/raw/gse337804/GSE337804_A549_ch_1.RDS.h5ad",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE337804&format=file&file=GSE337804%5FA549%5Fch%5F1%2ERDS%2Eh5ad",
+      "expected_bytes": 563808587,
+      "actual_bytes": 563808587,
+      "expected_sha256": null,
+      "sha256": "15230cd19d5958f3b1efa2f08160faf7b6a319dad3fbaeacbb0ed7f42ab9b448",
+      "md5": "8814522720b3fda7ed366abbe578eabc"
+    },
+    {
+      "filename": "GSE337804_A549_ch_2.RDS.h5ad",
+      "rel_path": "shared/raw/gse337804/GSE337804_A549_ch_2.RDS.h5ad",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE337804&format=file&file=GSE337804%5FA549%5Fch%5F2%2ERDS%2Eh5ad",
+      "expected_bytes": 608829330,
+      "actual_bytes": 608829330,
+      "expected_sha256": null,
+      "sha256": "a29d724ab5e4fa3dc698da2ef75ec5bc7cbdabfcb7b55efc43882bcd64d39215",
+      "md5": "3fbfafa351301a67d7a8ac8f6d4760b1"
+    },
+    {
+      "filename": "GSE337804_sgRNA_lib.csv.gz",
+      "rel_path": "shared/raw/gse337804/GSE337804_sgRNA_lib.csv.gz",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE337804&format=file&file=GSE337804%5FsgRNA%5Flib%2Ecsv%2Egz",
+      "expected_bytes": 12261,
+      "actual_bytes": 12261,
+      "expected_sha256": "96f6eb62449ba276d36591af2f7e0fca47ffedb9f19d711bcc27671d50882df6",
+      "sha256": "96f6eb62449ba276d36591af2f7e0fca47ffedb9f19d711bcc27671d50882df6",
+      "md5": "2e2979014a2415c176894735a46ce381"
+    }
+  ],
+  "total_bytes": 1172650178,
+  "expected_total_bytes": 1172650178,
+  "slot_check_prereg_g_4_1": {
+    "GSE337804_A549_ch_1.RDS.h5ad": {
+      "top_level_keys": [
+        "X",
+        "obs",
+        "obsm",
+        "raw",
+        "var",
+        "varm"
+      ],
+      "raw_group_keys": [
+        "X",
+        "var"
+      ],
+      "has_layers": false,
+      "X_identical_to_raw_X": true,
+      "matrix_slots": [
+        {
+          "path": "/X",
+          "hdf5_type": "Group",
+          "attrs": {
+            "encoding-type": "csr_matrix",
+            "encoding-version": "0.1.0",
+            "shape": [
+              25702,
+              18711
+            ]
+          },
+          "keys": [
+            "data",
+            "indices",
+            "indptr"
+          ],
+          "shape": [
+            25702,
+            18711
+          ],
+          "data_shape": [
+            121101403
+          ],
+          "dtype": "float64",
+          "all_finite": true,
+          "min_val": 1.0,
+          "max_val": 1018.0,
+          "all_nonnegative": true,
+          "all_exact_integer": true,
+          "n_nonint": 0,
+          "n_elems": 121101403
+        },
+        {
+          "path": "/raw/X",
+          "hdf5_type": "Group",
+          "attrs": {
+            "encoding-type": "csr_matrix",
+            "encoding-version": "0.1.0",
+            "shape": [
+              25702,
+              18711
+            ]
+          },
+          "keys": [
+            "data",
+            "indices",
+            "indptr"
+          ],
+          "shape": [
+            25702,
+            18711
+          ],
+          "data_shape": [
+            121101403
+          ],
+          "dtype": "float64",
+          "all_finite": true,
+          "min_val": 1.0,
+          "max_val": 1018.0,
+          "all_nonnegative": true,
+          "all_exact_integer": true,
+          "n_nonint": 0,
+          "n_elems": 121101403
+        }
+      ],
+      "obs": {
+        "hdf5_type": "Group",
+        "index_key": "_index",
+        "columns": [
+          "orig.ident",
+          "nCount_RNA",
+          "nFeature_RNA",
+          "percent.mt",
+          "sgrna_id",
+          "sgrna_symbol",
+          "cl",
+          "channel",
+          "cl_channel"
+        ],
+        "all_obs_keys": [
+          "_index",
+          "channel",
+          "cl",
+          "cl_channel",
+          "nCount_RNA",
+          "nFeature_RNA",
+          "orig.ident",
+          "percent.mt",
+          "sgrna_id",
+          "sgrna_symbol"
+        ],
+        "key_encodings": {
+          "_index": "Dataset",
+          "channel": "Dataset",
+          "cl": "Dataset",
+          "cl_channel": "Dataset",
+          "nCount_RNA": "Dataset",
+          "nFeature_RNA": "Dataset",
+          "orig.ident": "Dataset",
+          "percent.mt": "Dataset",
+          "sgrna_id": "Dataset",
+          "sgrna_symbol": "Dataset"
+        }
+      }
+    },
+    "GSE337804_A549_ch_2.RDS.h5ad": {
+      "top_level_keys": [
+        "X",
+        "obs",
+        "obsm",
+        "raw",
+        "var",
+        "varm"
+      ],
+      "raw_group_keys": [
+        "X",
+        "var"
+      ],
+      "has_layers": false,
+      "X_identical_to_raw_X": true,
+      "matrix_slots": [
+        {
+          "path": "/X",
+          "hdf5_type": "Group",
+          "attrs": {
+            "encoding-type": "csr_matrix",
+            "encoding-version": "0.1.0",
+            "shape": [
+              27809,
+              18808
+            ]
+          },
+          "keys": [
+            "data",
+            "indices",
+            "indptr"
+          ],
+          "shape": [
+            27809,
+            18808
+          ],
+          "data_shape": [
+            130604474
+          ],
+          "dtype": "float64",
+          "all_finite": true,
+          "min_val": 1.0,
+          "max_val": 1059.0,
+          "all_nonnegative": true,
+          "all_exact_integer": true,
+          "n_nonint": 0,
+          "n_elems": 130604474
+        },
+        {
+          "path": "/raw/X",
+          "hdf5_type": "Group",
+          "attrs": {
+            "encoding-type": "csr_matrix",
+            "encoding-version": "0.1.0",
+            "shape": [
+              27809,
+              18808
+            ]
+          },
+          "keys": [
+            "data",
+            "indices",
+            "indptr"
+          ],
+          "shape": [
+            27809,
+            18808
+          ],
+          "data_shape": [
+            130604474
+          ],
+          "dtype": "float64",
+          "all_finite": true,
+          "min_val": 1.0,
+          "max_val": 1059.0,
+          "all_nonnegative": true,
+          "all_exact_integer": true,
+          "n_nonint": 0,
+          "n_elems": 130604474
+        }
+      ],
+      "obs": {
+        "hdf5_type": "Group",
+        "index_key": "_index",
+        "columns": [
+          "orig.ident",
+          "nCount_RNA",
+          "nFeature_RNA",
+          "percent.mt",
+          "sgrna_id",
+          "sgrna_symbol",
+          "cl",
+          "channel",
+          "cl_channel"
+        ],
+        "all_obs_keys": [
+          "_index",
+          "channel",
+          "cl",
+          "cl_channel",
+          "nCount_RNA",
+          "nFeature_RNA",
+          "orig.ident",
+          "percent.mt",
+          "sgrna_id",
+          "sgrna_symbol"
+        ],
+        "key_encodings": {
+          "_index": "Dataset",
+          "channel": "Dataset",
+          "cl": "Dataset",
+          "cl_channel": "Dataset",
+          "nCount_RNA": "Dataset",
+          "nFeature_RNA": "Dataset",
+          "orig.ident": "Dataset",
+          "percent.mt": "Dataset",
+          "sgrna_id": "Dataset",
+          "sgrna_symbol": "Dataset"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+ROLE=A-T4
+TASK=MS1_Manuscript_Draft_v1
+DATE=2026-11-23
+HUMAN_PROJECT_LEAD=Zijian Zeng
+
+DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v1.md
+BYTES=84494
+LINES=309
+
+STRUCTURE_AND_CONTENT_SUMMARY:
+- Title: Selected OUTLINE.md Candidate 2 highlighting Claim 1 target-baseline specificity distinct from predictive accuracy, single-line confirmation in A549 CRISPRko (K_conf=1, Limited Generalizability), and omitting Claim 2 from Title.
+- Task label: MS1 initial manuscript draft (`v1`).
+- Abstract: 205 whitespace words / 198 prose+math tokens after stripping HTML comments (<= 250 word limit). Discloses single confirmatory cell line (K_conf=1, GSE345058), post-hoc Round 9-11 origins of Claims 1 and 2, Claim 1 specificity vs overall accuracy (Source_Grand_Mean +0.4051 > FCT +0.1898), Claim 2 empirical methodological scope, Round 13 macrophage gate exit (GSE327644, 3 and 5 < 50, K_conf=0), and Round 14 independent A549 gate exit (GSE337804, 32 < 50, K_conf=0).
+- Body Sections 1-10: Introduction (with Kawsar et al. 2026 CASTER, Systema, Nicol et al. 2026 v1, Heidari et al. 2026, Miller et al. 2026, Shoeibi & Yousefi 2026), Results 2.1-2.5 (R9-R11 post-hoc synthesis, R12 A549 confirmation + SA-Cas9 + SA-Src8 + HEK293 secondary + three-party parity, complete A549 predictor comparison Table 4, R13 gate exit descriptive readouts, R14 gate exit with Day-16 constitutive Cas9 essential-gene dropout and [R14 DESCRIPTIVE PENDING] markers), Discussion, standalone Limitations (with internal HTML TODO comment for unread PDFs, hidden from visible prose), full Methods (exact formulas, Addendum-B QC, IUT + Bonferroni, seeds, freeze governance), Data and Code Availability, AI Involvement & Author Contributions, 25 verified References ([VERIFY] on unverified DOI for Schnitzler et al. 2024 PMC10921916), Figures 1-5 legends, and populated Tables 1-6.
+
+VERIFICATION_SUMMARY:
+- Inline source tags checked: 44 unique <!-- src: ... --> file paths, 0 missing files, 0 numeric lines untagged.
+- Prohibited-term lexical audit across both MANUSCRIPT_DRAFT_v1.md and A-T4.txt: 0 prohibited overclaiming, causal-absolutist, priority, role-misnaming, or gate-outcome mislabeling violations (only factual phrase "1.02 for experimental replicates").
+- Freeze manifest SHA-256 verification: R10 (22/22 OK), R11 (41/41 OK), R12 (46/46 OK), R13 (32/32 OK).
+- External safety compliance: zero git commands, zero public pushes or outreach drafts, README.md untouched.
+
+MS1_DRAFT_DONE

@@ -1,0 +1,31 @@
+[A-T2] ROUND 14 (`PREREG_G` / `GSE337804`) PRE-FREEZE AUDIT PATCH COMPLETE & VERIFIED 2026-11-23T10:01+08:00
+
+1. Freeze Integrity & Blinding Compliance:
+   - Zero real Round 14 expression data downloaded or accessed (only synthetic `.h5ad` and `sgRNA_lib.csv.gz` fixtures used).
+   - Zero modifications to frozen `round10/`, `round11/`, `round12/`, or `round13/` (`shasum -a 256 -c round12/status/FREEZE_MANIFEST_R12.txt`: `46` `: OK`; `shasum -a 256 -c round13/status/FREEZE_MANIFEST_R13.txt`: `32` `: OK`).
+   - Post-patch SHA-256 checksums (`round14/src/*.py`):
+     * `round14/src/__init__.py`: `4324c9367e9bab237305dbf9678ccc88406c7324d1f9514ed16f8a01295e119f`
+     * `round14/src/adjudicate_r14.py`: `3590d70017cb867d124fc134bc27fcf761b478682bf16a1bde2cc10e6427945f`
+     * `round14/src/data_loader_r14.py`: `e3537b4ac56aa1cd954ddb553840c254c8cbe9ce1259d7a5c0f546b9abec7a2e`
+     * `round14/src/dataset_readers_r14.py`: `e0b0c461e33950ee22897e8c36c69fa15af4fb8e46e68e6d0fe91c73d53d4104`
+     * `round14/src/run_eval_r14.py`: `528d7aa703dd290e0882fe7141975b2886333096ef8f2b8863449569bb11762c`
+     * `round14/src/test_unit_r14.py`: `f50629bd2f2cb79f5a4e001c8feee576c81c96b30a16a4a243eb22774574b215`
+
+2. Pre-Freeze Audit Fixes Applied (Per Master Controller 10:08 Directive / `PREREG_G §4.1` Only):
+   - **Audit #1 — Exclude Subfraction / Derived Layers (`_EXCLUDED_LAYER_TOKENS`):**
+     * Layers whose name contains any of `nascent`, `unspliced`, `spliced`, `ambiguous`, `velocity`, `intron`, `exon`, `lognorm`, `scale` are strictly excluded from candidate integer slots (`status = excluded_subfraction_or_derived_layer`).
+   - **Audit #2 — Multi-Slot Ambiguity Check (`SLOT_AMBIGUOUS`):**
+     * Under `x_layer='auto'`, whenever >=2 candidate slots pass full non-negative integer validation (e.g., integer `X` alongside `raw/X` or `layers/counts`), `_compare_slots_elementwise` aligns shapes & gene columns and checks element-wise exact equality across all rows: prefers `X` iff identical, otherwise raises `RuntimeError('SLOT_AMBIGUOUS: ...')` reporting each candidate slot's shape, `median_total_umi`, and differences (blocking SCT-like auto-misclassification until controller override).
+   - **Audit #3 — Full All-Nonzero Integer Validation & Per-Slot Metadata:**
+     * Replaced head/mid/tail sampling with `_validate_slot_full_nonneg_int`, verifying ALL finite, non-negative, integer non-zero entries across the entire matrix for every candidate and explicitly selected slot, and recording per-slot check results + `median_total_umi` in both `check_gse337804_feasibility` and `build_gse337804_parts` (`audit['channel_slots']`).
+   - **Audit #4 — Preserved Explicit `x_layer` & Added Unit Tests:**
+     * Preserved `x_layer` across `check_gse337804_feasibility`, `build_gse337804_parts`, and `prepare_r14_line`; unchanged remaining logic.
+
+3. Post-Patch Verification (`python3 -I`):
+   - `python3 -I -m pyflakes round14/src/*.py`: `PYFLAKES_OK` (exit code `0`).
+   - `python3 -I round14/src/test_unit_r14.py -v`: **Ran 6 tests in 2.710s — OK**:
+     * `test_1`–`test_5`: all unchanged tests passed (`ok`).
+     * `test_6_slot_ambiguous_excluded_layers_full_int_check_and_explicit_x_layer`: verifies integer `X != raw/X` raises `RuntimeError: SLOT_AMBIGUOUS` (reporting both `median_total_umi` values), explicit `x_layer='raw/X'` resolves cleanly & logs metadata, all `spliced`/`unspliced`/`nascent`/`velocity`/`lognorm`/`scaled` integer layers are excluded while identical gene-permuted `X == raw/X` auto-picks `X`, and a single non-sample mid-matrix decimal fails full non-zero validation (`EXCLUDED_FEASIBILITY`).
+   - `python3 -I round14/src/run_eval_r14.py --phase holdout_r14`: blocked cleanly with `RuntimeError: CODE_FREEZE_R14 hard gate blocked`.
+
+R14_CODE_PATCHED

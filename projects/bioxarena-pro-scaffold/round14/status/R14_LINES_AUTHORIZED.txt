@@ -1,0 +1,5 @@
+R14 line building authorized by Claude (master controller) 2026-11-23 10:24 +0800.
+Reviewed reader: round14/src/dataset_readers_r14.py sha256 e0b0c461e33950ee22897e8c36c69fa15af4fb8e46e68e6d0fe91c73d53d4104 (after slot-selection patch R14_CODE_PATCHED).
+Slot ruling (PREREG_G §4.1): both channels have /X identical to /raw/X, no /layers, all nonzero entries non-negative integers (A-T1). Controller check: per-cell row sums of /X equal obs nCount_RNA exactly (max |diff| 0) and per-cell nonzero counts equal nFeature_RNA, in both ch_1 (25,702 cells) and ch_2 (27,809 cells). So /X holds the raw RNA UMI counts; use /X.
+Checksums: round14/shared/R14_CHECKSUMS.sha256, 3/3 OK (controller re-run).
+Scope: build a549_myllia with this exact reader; counts-only gate (PREREG_G §6) plus the §7 subgroup target counts; no predictor or metric.

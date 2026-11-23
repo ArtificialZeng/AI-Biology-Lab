@@ -22,4 +22,71 @@ PRE-LOCK VERIFICATION SUMMARY:
    - Sole candidate line: a549_myllia (max K_conf=1); interpretive scope strictly restricted to independent-dataset replication within A549 (no cross-lineage generalization, no cross-round pooling).
    - Pre-metric integer raw-count feasibility check (EXCLUDED_FEASIBILITY), author single-sgRNA .obs assignment (sgrna_id/sgrna_symbol; fallback PREREG_F §3.2), pert_key = canon_sym gene-level pooling matching R12 a549_ko, >= 300 UMI & >= 200 genes, max_pct_mt = None (DepleteX), ch_1 (Half A) vs ch_2 (Half B) channel-level NTC subtraction, PREREG_E §2.2 gates, pre-registered descriptive subgroup split (15 R12-overlap vs 46 novel targets: FCT + 6 paired contrasts), prior disclosures, and download plan.
 
-PREREG_G_DRAFT_READY
+---
+LOCKED_COMMIT: d34560d7ae568b299dca15c766c2e356b483c39f (PREREG_G_COMMIT.txt verified)
+TIME: 2026-11-23 +08:00
+STATUS: R14_AUDIT_CODE_READY
+
+CLEAN-ROOM AUDIT DELIVERABLES (under /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round14/audit/):
+- __init__.py (138 B, sha256: cee60beec668d5b711fb70ee2db75e35dfaf0c915a8a93812367703c01112937)
+- independent_r14_loader.py (70957 B, sha256: 0ec21cca66b5a697353e470e19a6e6077c5a5462b990c04428b728cca92dd62e)
+- run_r14_audit.py (26379 B, sha256: 3e586c6b77da62a8a0da95c44ef7b47d5bbf8c719cb08058336991f3d61eafa6)
+- test_r14_audit.py (33327 B, sha256: 618f0ddae8ce3397d147a7cbbd0679714c36bd322f12755620182e539883c43f)
+
+IMPLEMENTATION & GATE VERIFICATION SUMMARY:
+1. Strict Clean-Room & Blinding Compliance:
+   - Never read or imported round14/src/, round14/results/, or round14/status/A-T2.txt.
+   - Never downloaded or read any real GSE337804 .h5ad expression matrix; round14/shared/lines/ does not exist.
+   - Runtime gates verified (`enforce_r14_gate`):
+     * `synthetic_test`: strictly blocks `round14/shared/`.
+     * `dev_r9`..`dev_r13`: blocks `a549_myllia` and `round14/shared/`.
+     * `reader_xcheck_r14`: hard-blocked unless BOTH `PREREG_G_COMMIT.txt` AND `R14_LINES_AUTHORIZED.txt` exist and are non-empty.
+     * `holdout_r14`: hard-blocked until `PREREG_G_COMMIT.txt`, `CODE_FREEZE_R14.txt`, and `CONFIRMATORY_LINES_R14.txt` are populated (verified live: raises `CODE_FREEZE_R14 hard gate blocked`).
+2. Pre-Metric Slot Verification & Multi-Slot Inconsistency Stop Guard (`check_gse337804_h5ad_feasibility`):
+   - Inspects `/raw/X`, `/X`, and non-excluded `/layers/*` across `ch_1` & `ch_2` (ignoring subfraction/processed layers e.g. `nascent`, `unspliced`, `spliced`, `log1p`, `scale`, `norm`).
+   - Verifies 100% of stored matrix entries in candidate slots (chunked streaming, zero sampling) for finite non-negative exact integers (`>= 0`, `x == floor(x)`).
+   - If `>= 2` non-excluded slots pass integer check, compares exact shape, `/var` index/symbols, and elementwise matrix equality across all rows; any discrepancy immediately returns `EXCLUDED_FEASIBILITY` (`MULTIPLE_INCONSISTENT_INTEGER_SLOTS`) and stops instead of picking arbitrarily.
+3. Author Single-sgRNA, ctrl_NT vs ctrl_T Exclusion, HGNC Pooling & QC (`build_a549_myllia_audit_parts`):
+   - Prefers author `.obs` single-sgRNA assignments (`sgrna_id`, `sgrna_symbol`, rejecting multi-guide delimiters, `nperts > 1`, `unassigned`, `multiplet`), with `PREREG_F §3.2` raw-guide Poisson-Gaussian histogram threshold fallback (`n_genes >= 200`, `min_thr=5, max_thr=20, default_thr=7`) only when `.obs` calls are absent.
+   - Strictly retains ONLY `ctrl_NT` (`non-targeting_1..20`, `symbol == "non-targeting"`) as NTC; strictly excludes ALL `20` `ctrl_T` (`gene_desert_1..20`, `symbol == "gene_desert"`) safe-targeting cells from both NTC and target sets.
+   - Maps targeting genes via frozen `HGNCLookup.resolve`, drops unmapped/non-human (`Cas9`, `ENSMUSG`), and pools all QC-valid single-sgRNA cells per canonical HGNC gene (`pert_key = canon_sym`).
+   - Enforces `n_umis >= 300`, `n_genes >= 200`, `max_pct_mt = None` (`DepleteX`), `Half A (ch_1)` vs `Half B (ch_2)`, and `batches = ["ch_1", "ch_2"]`.
+4. Statistical Engine & §7 Subgroup Audit (`run_r14_audit.py`):
+   - Reuses frozen `evaluate_target_line_r12` (`DEFAULT_R14_SEED = 20261224`, `n_boot = 4000`, `n_perm = 100`, `97.5%` Bonferroni CI, `n_eval_targets >= 50` & `n_genes_eval >= 3000` confirmatory gate).
+   - `adjudicate_round14`: enforces `max K_conf = 1` on `a549_myllia`, aborts (`K_conf = 0`) if `< 50` targets or `< 3000` genes or `CONFIRMATORY_LINES_R14` fails, and restricts claim scope strictly to same-lineage independent-lab A549 replication (no cross-lineage generalization, no R12 cross-round pooling).
+   - `evaluate_r14_subgroups`: implements pre-registered descriptive §7 breakdown (`overlap_r12_a549` [15] vs `novel_not_in_r12_a549` [46]: `FCT r_orth_cal [97.5% CI]` + 6 `H-E1b` paired contrasts + `Perm100` + `E1_ConstMed` under `seed = 20261224`).
+5. Static & Synthetic Verification Results (all executed strictly with `python3 -I` on temporary synthetic `.h5ad` fixtures):
+   - `pyflakes round14/audit/*.py`: 0 warnings/errors.
+   - `python3 -I -m py_compile round14/audit/*.py`: exit 0.
+   - `python3 -I round14/audit/test_r14_audit.py -v`: 4/4 tests OK (1.953s).
+   - Rule 5 forbidden-term scan across `round14/audit/*.py` and `round14/status/A-T3.txt`: 0 hits.
+
+R14_AUDIT_CODE_READY
+
+---
+AUTHORIZED_BY: PREREG_G_COMMIT (d34560d) + R14_LINES_AUTHORIZED (2026-11-23 10:24 +0800)
+TIME: 2026-11-23 +08:00
+STATUS: R14_READER_XCHECK_OK
+
+CROSS-CHECK DELIVERABLES & UPDATED HASHES:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round14/audit/READER_XCHECK_R14.md (sha256: f886b285d130483bc56338bbb2137f85a5c1139e0c5d44885b2dfde21f120c5f)
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round14/audit/xcheck_r14_reader.py (sha256: d254480afb6cdb5b83267d4461033fa0f313ef64d0cbbb2a74b72ed51fc2c7c0)
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round14/audit/independent_r14_loader.py (updated standardize chunk_size=8192 matching prepare_r10_lines default; sha256: 96a990388df3b5308e345209663c4496309b85cca95df88b4db8673d3047e0b2; re-verified 4/4 synthetic tests 2.077s, pyflakes 0 warnings)
+
+RAW REBUILD VS round14/shared/lines/a549_myllia ITEM-BY-ITEM SUMMARY (ZERO predictions/metrics run; shared/lines unmodified):
+1. Slot verification (`ch_1` & `ch_2`, 100% nonzero scan):
+   - ch_1 (25,702 x 18,711; 121,101,403 nnz; sum 363,210,965; max 1,018) & ch_2 (27,809 x 18,808; 130,604,474 nnz; sum 402,730,416; max 1,059): `/raw/X` == `/X` bit-identical (`MULTIPLE_IDENTICAL_INTEGER_SLOTS_VERIFIED`), zero negative/nonfinite/noninteger values, excluded_layers=[].
+2. Cell / Channel / NTC / gene_desert Counts (0 differences):
+   - ch_1 (Half A, batch=ch_1): raw 25,702 -> gene_desert excl 988 -> kept 24,714 (NTC=1,033, targeting=23,681).
+   - ch_2 (Half B, batch=ch_2): raw 27,809 -> gene_desert excl 1,075 -> kept 26,734 (NTC=1,060, targeting=25,674).
+   - Total: raw 53,511 -> gene_desert excl 2,063 -> RNA QC excl 0 -> kept 51,448 (NTC=2,093, targeting=49,355).
+3. Genes, Reproducible Targets, & Evaluation Target Sets (0 differences):
+   - `genes.txt` (15,456) exact order & set match; `|G_eval|` aligned to `r9_6` = 6,126 exact match.
+   - `targets.txt` (212, half_valid=212/212) exact order & set match.
+   - Reproducible targets (`reproducible == True`): 81 / 212 exact set match (0 mismatches).
+   - Evaluation targets (`r9_6` & `self in G_eval`): 32 / 81 (< 50, K_CONF=0) exact set match; §7 subgroups: `overlap_r12_a549` = 4/15 (`[CREBBP, HDAC3, KDM6A, PTEN]`), `novel_not_in_r12_a549` = 28/46 exact set match.
+4. Numerical Array Comparison (`ctrl` means & `delta` arrays):
+   - At `prepare_r10_lines` default `chunk_size=8192`, `ctrl_mean_libnorm`, `ctrl_mean_libnorm_full`, `ctrl_mean_log1p`, `X_log1p`, `delta_log1p`, `half_a_delta_log1p`, `half_b_delta_log1p`, `knockdown_depth_log1p`, `n_cells`, `ad_counts` ALL match bit-for-bit (`max_abs_diff = 0.0 <= 1e-6`).
+   - Note: initial rebuild with `chunk_size=4096` showed float32 accumulation-order diff up to `1.427e-06` (`half_a_delta_log1p`) and `1.798e-06` (`half_b_delta_log1p`), traced cleanly to chunked float32 summation order inside `process_r10_line`.
+
+R14_READER_XCHECK_OK

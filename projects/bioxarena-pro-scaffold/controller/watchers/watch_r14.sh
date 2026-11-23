@@ -11,6 +11,7 @@ for i in $(seq 1 480); do
   if [ -n "$PREG_SHA" ]; then [ "$(shasum -a 256 round14/prereg/PREREG_G.md | cut -c1-64)" = "$PREG_SHA" ] || { echo "$(date +%H:%M) PREREG_G_CHANGED_ALERT"; exit 0; }; fi
   [ -s round14/status/R14_GO.txt ] || { big=$(find round14 -type f -size +100M 2>/dev/null | head -1); [ -n "$big" ] && { echo "$(date +%H:%M) BIG_FILE_BEFORE_GO_ALERT $big"; exit 0; }; }
   [ ! -s round14/status/R14_LINES_AUTHORIZED.txt ] && [ -n "$(find round14/shared/lines -type f 2>/dev/null | head -1)" ] && { echo "$(date +%H:%M) LINES_BUILT_BEFORE_AUTH_ALERT"; exit 0; }
+  [ -n "$(git -c http.proxy= -c https.proxy= ls-files paper 2>/dev/null | head -1)$(git -c http.proxy= -c https.proxy= diff --cached --name-only -- paper 2>/dev/null | head -1)" ] && { echo "$(date +%H:%M) PAPER_IN_GIT_ALERT"; exit 0; }
   for spec in $MARKERS; do
     f=${spec%%:*}; m=${spec#*:}
     case "$SEEN" in *" $m "*) ;; *) [ "$(cnt $f $m)" -gt 0 ] && { echo "$(date +%H:%M) $m"; exit 0; };; esac
