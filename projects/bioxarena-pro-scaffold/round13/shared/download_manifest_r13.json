@@ -1,0 +1,146 @@
+{
+  "round": 13,
+  "accession": "GSE327644",
+  "prereg_lock": "PREREG_F (commit 5b51e5b079c2c01b44408b9ed9f8d6027b4ae4f5)",
+  "blinding_policy": "Metadata/bytes/sha256/filenames only; ZERO h5 content reads, zero cell/target counts, zero metrics prior to R13_CODE_PATCHED.",
+  "top_level_downloads": [
+    {
+      "filename": "GSE327644_PRJNA1450051_marson_mac_perturbseq_guide_template.txt.gz",
+      "rel_path": "shared/raw/gse327644/GSE327644_PRJNA1450051_marson_mac_perturbseq_guide_template.txt.gz",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE327644&format=file&file=GSE327644%5FPRJNA1450051%5Fmarson%5Fmac%5Fperturbseq%5Fguide%5Ftemplate%2Etxt%2Egz",
+      "expected_bytes": 38166,
+      "actual_bytes": 38166,
+      "expected_sha256": "66bc28c8f6338709a72964399861855f494aca2676f9ccd57ae27c2c7311c1fb",
+      "sha256": "66bc28c8f6338709a72964399861855f494aca2676f9ccd57ae27c2c7311c1fb",
+      "md5": "d6fe91ffb3ae8b3baee3323537387654"
+    },
+    {
+      "filename": "GSE327644_RAW.tar",
+      "rel_path": "shared/raw/gse327644/GSE327644_RAW.tar",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE327644&format=file&file=GSE327644%5FRAW%2Etar",
+      "expected_bytes": 6579169280,
+      "actual_bytes": 6579169280,
+      "expected_sha256": null,
+      "sha256": "81287a8049f205347cd8721a94420e56a056b32abebbff2916f79fdad03dfe06",
+      "md5": "abbac19032dd72b5ffbc9ad929d17f20"
+    }
+  ],
+  "total_top_level_bytes": 6579207446,
+  "extracted_member_count": 8,
+  "total_extracted_bytes": 6579156866,
+  "extracted_members": [
+    {
+      "member_name": "GSM9662558_Mac_L01_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662558_Mac_L01_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 711445486,
+      "actual_bytes": 711445486,
+      "sha256": "12426a792692d9504114953b34d6026770266490a523cffb4572b55da336d3da",
+      "md5": "5f48992375ff861293f081f4fc1dc351"
+    },
+    {
+      "member_name": "GSM9662558_Mac_L01_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662558_Mac_L01_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 849004606,
+      "actual_bytes": 849004606,
+      "sha256": "d7381ba73acde6a5c49a959ab6a9bd89ba84eb569f4ae07db929b7cc1fa2313d",
+      "md5": "4aae674222ddef3b5d559b5b67076196"
+    },
+    {
+      "member_name": "GSM9662559_Mac_L02_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662559_Mac_L02_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 882369966,
+      "actual_bytes": 882369966,
+      "sha256": "2926d823932b074583bea9e555dc2109db6c08c08d4d1526d2d247ba4d471e12",
+      "md5": "164dbab809e402cb767af9a7dc6bcf42"
+    },
+    {
+      "member_name": "GSM9662559_Mac_L02_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662559_Mac_L02_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 1048416449,
+      "actual_bytes": 1048416449,
+      "sha256": "3ff0e6c93e6df5e8fe1d08ee6c5c5d4c0fcc656aa4e803eb0b0d6caa1819e917",
+      "md5": "a227dd986b7cbc8f6ff6841f8c697aec"
+    },
+    {
+      "member_name": "GSM9662560_Mac_L03_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662560_Mac_L03_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 846769991,
+      "actual_bytes": 846769991,
+      "sha256": "c1ec18f3df1e5f8f9b82ab9c125b7efef8949f790654a917889f7cbf5ebfa9c7",
+      "md5": "abc39167ed1ded5fd47466ccf60f1a84"
+    },
+    {
+      "member_name": "GSM9662560_Mac_L03_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662560_Mac_L03_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 1007403937,
+      "actual_bytes": 1007403937,
+      "sha256": "da9b4aebf3176090ce220a148580a7050a1d8c20bc86d0bab7d9052f15f22bb5",
+      "md5": "0fe709755becdf8bd66674614f4d51e6"
+    },
+    {
+      "member_name": "GSM9662561_Mac_L04_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662561_Mac_L04_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 567177859,
+      "actual_bytes": 567177859,
+      "sha256": "9b830eb7659f76d948fb1d9e8ac86a4b4e1152c5dfc2b70de93d59a9be958018",
+      "md5": "b507279ac1c148319c6559f3ebb39001"
+    },
+    {
+      "member_name": "GSM9662561_Mac_L04_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "rel_path": "shared/raw/gse327644/GSM9662561_Mac_L04_Mac_LPS_sample_filtered_feature_bc_matrix.h5",
+      "tar_size_bytes": 666568572,
+      "actual_bytes": 666568572,
+      "sha256": "b579035960e7763278b5a89257ce53637703316d43f8cea93d82f414d8e74070",
+      "md5": "0a4a866e0e2ce7427c2da33eb1437397"
+    }
+  ],
+  "channel_summary": {
+    "channel_count": 4,
+    "channel_ids_sorted": [
+      "L01",
+      "L02",
+      "L03",
+      "L04"
+    ],
+    "per_channel": {
+      "L01": {
+        "ctrl": [
+          "GSM9662558_Mac_L01_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "lps": [
+          "GSM9662558_Mac_L01_Mac_LPS_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "other": []
+      },
+      "L02": {
+        "ctrl": [
+          "GSM9662559_Mac_L02_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "lps": [
+          "GSM9662559_Mac_L02_Mac_LPS_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "other": []
+      },
+      "L03": {
+        "ctrl": [
+          "GSM9662560_Mac_L03_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "lps": [
+          "GSM9662560_Mac_L03_Mac_LPS_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "other": []
+      },
+      "L04": {
+        "ctrl": [
+          "GSM9662561_Mac_L04_Mac_Ctrl_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "lps": [
+          "GSM9662561_Mac_L04_Mac_LPS_sample_filtered_feature_bc_matrix.h5"
+        ],
+        "other": []
+      }
+    },
+    "guide_call_files_in_tar": [],
+    "non_channel_members": []
+  }
+}

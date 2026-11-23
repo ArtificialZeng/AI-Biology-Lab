@@ -1,0 +1,6 @@
+# Round 13 Mechanical Confirmatory Line Gate (PREREG_F §2, §3, §4, §5)
+# Thresholds: candidate=mac_ctrl ONLY, feasibility==PASS, n_eval_targets >= 50, |G_eval(t)| >= 3000, NTC_half_A >= 15 & NTC_half_B >= 15
+# mac_ctrl: SECONDARY_ONLY (n_eval_targets=3 < 50, |G_eval|=6132 >= 3000, NTC_half_A=13354, NTC_half_B=11325)
+# mac_lps: SECONDARY_ONLY (PREREG_F §2 descriptive secondary only; never enters K_conf; n_eval_targets=5, |G_eval|=6132, NTC_half_A=14605, NTC_half_B=12600)
+# K_CONF=0
+# PREREG_F_GATE_FAIL: K_conf = 0 -> NO confirmatory adjudication; descriptive reporting only (Round 12 A549 unchanged)

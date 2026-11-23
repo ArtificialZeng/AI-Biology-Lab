@@ -1,12 +1,15 @@
-ROUND13_PHASE=SCREEN_ONLY
+ROUND13_PHASE=QC_COUNTS_COMPLETE
 AGENT=A-T1
 DATE=2026-11-23
-OUTPUT_REPORT=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/shared/R13_DATA_SCREEN.md
-OVERALL_CONCLUSION=NONE_QUALIFYING (没有合格的公开第二独立确认细胞系)
-PORTALS_CHECKED=GEO,IGVF,scPerturb,ArrayExpress/BioStudies,CELLxGENE,Zenodo,Figshare,bioRxiv,medRxiv,EuropePMC,HuggingFace
-POST_2026_11_22_ELIGIBLE_NEW_DATASETS=0
-MARGINAL_GSE327644_PRIMARY_MACROPHAGE=u6_rep=108,u6_rep_cap_R9C=92,est_20_40pct=21.6-43.2,est_R12_A549_84pct=90.7,est_R12_HEK293_10pct=10.5,status=INELIGIBLE_HIGH_RISK
-MARGINAL_IGVF_HUES8=97_MeasurementSets_no_AnalysisSet,MOI=10_12_enhancers,status=INELIGIBLE
-OTHER_AUDITED_2026=GSE301119_hMF(203_targets,86_sigKD,28446_cells_33.7pct_singlet,RDS_only);PerturbME_A375(221_model_u6rep=77,FACS_top_bot_5pct_HLA_90pct_cells);VIPerturbSeq(K562_used_line,66_ctrl_in_filtered);GSE343369_KOLF2.2J(u6rep=28);GSE320250_HSC(Mus_musculus);Figshare34002315_HKU12(all_excluded_lines)
-CONSTRAINTS_COMPLIANCE=metadata_only_lt_100MB,zero_matrix_downloads,zero_accounts_EULA,zero_git,zero_prereg_metrics
-R13_SCREEN_DONE
+SCREEN_REPORT=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/shared/R13_DATA_SCREEN.md (sha256=0fec4ca9dc8e49e7296081e28b156beddcab385696bd84987717e09abd70ae60)
+DOWNLOAD_ARCHIVE=GSE327644_RAW.tar (6579169280 B, sha256=81287a8049f205347cd8721a94420e56a056b32abebbff2916f79fdad03dfe06); guide_template (38166 B, sha256=66bc28c8f6338709a72964399861855f494aca2676f9ccd57ae27c2c7311c1fb)
+CHECKSUMS_FILE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/shared/R13_CHECKSUMS.sha256 (sha256=6794b3ceabde6caf99859c7efc474f96ead59e9e948baf634f4e45b2c183771e)
+DOWNLOAD_MANIFEST=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/shared/download_manifest_r13.json (sha256=78429d1b662c584c833a867a790f1fb72aac046e3e4bf8237752edf017bb3c57)
+READER_USED=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/src/dataset_readers_r13.py (sha256=22dfc34d9d432baa5c6b4fa7ea815b89c5f9c8ace51842ab0daec3ee609202a5)
+CHANNELS=4 (L01,L02,L03,L04; channel_parity_L01L03_vs_L02L04; no protospacer CSV -> h5_crispr_umi_em fallback; 0 <15 NTC fallbacks)
+MAC_CTRL=FEASIBLE_PASS; kept=122354 (97675 targeting, 24679 NTC: A=13354, B=11325); G_eval=6132; targets=582 -> rep=15 -> r9_6=3 -> n_eval_targets=3 < 50 -> SECONDARY_ONLY
+MAC_LPS=FEASIBLE_PASS; kept=134241 (107036 targeting, 27205 NTC: A=14605, B=12600); G_eval=6132; targets=582 -> rep=26 -> r9_6=6 -> n_eval_targets=5 -> SECONDARY_ONLY (PREREG_F §2 descriptive only)
+QC_REPORT=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/shared/R13_QC_COUNTS.md (sha256=408d4c40a825d76c9b2c6e672ea4d9b14c83ec8baedd4a902e3872ff6d26cd7e)
+CONFIRMATORY_GATE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round13/status/CONFIRMATORY_LINES_R13.txt (K_CONF=0; sha256=02fed89f2075090df23a7e1a944d5463369e74daf012774a09479e8f70a2ca9a)
+BLINDING_COMPLIANCE=counts_only,zero_predictors_correlations_metrics
+R13_QC_DONE

@@ -1,0 +1,29 @@
+AGENT: A-T4 (Antigravity / Gemini — Prospective & Manuscript Outline)
+ROUND: Round 12 Integration & Round 13 Outline Update
+DATE: 2026-11-23 08:22 +08:00
+SUPERVISOR_DIRECTIVE: 主控 08:27 — Archive R11 outline as round10/paper/OUTLINE_R11.md; update round10/paper/OUTLINE.md with Round 12 confirmatory results per round12/status/R12_VERDICT.md and pre-submission prior-art synthesis per round13/status/PRIOR_ART_CONCLUSION_R13.md; include Round 13 (GSE327644 primary macrophages, in pre-registration) placeholder only with zero expected results.
+
+DELIVERABLES:
+- Backup archive (exact byte copy): /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/paper/OUTLINE_R11.md (sha256: 33ec1dc024eb44ad025cb801a960841ba28c2628308dae91f524515d0d7c6ee2)
+- Updated outline (197 lines): /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round10/paper/OUTLINE.md
+
+KEY_COMPLIANCE_ITEMS_IMPLEMENTED:
+1. Round 12 as Confirmatory Core & K_conf = 1 Disclosure:
+   - Claim 1 (H-E1, target-line specificity) & Claim 2 (H-E2, SA-8 split-half inflation) confirmed on a549_ko (GSE345058 CRISPRko, N = 445, |G_eval| = 6,121, rho_AB_orth = 0.789); three-party reconciliation exact (Controller vs A-T2 max diff 1.9e-16 across 90 numbers; A-T3 vs A-T2 1.1e-16 across 177 point estimates & 8.3e-17 across 264 CI endpoints).
+   - Both ALL 3 Title candidates and Abstract explicitly disclose single confirmatory cell line (K_conf = 1, limited generalizability / 推广性有限).
+   - Round 13 (GSE327644 primary human macrophages) included strictly as a pre-registration placeholder (§3.8 / §7 checklist) with zero expected results.
+2. Claim 1 (H-E1) Framing per PREREG_E §8 & Prior Art:
+   - Stated strictly as a preregistered prospective test that a baseline-only transform (FCT) beats all 6 mismatched-cell-line baselines on a de-amplituded residual metric (r_orth_cal, all_nontarget, +0.1898 [+0.1742, +0.2055], 6/6 paired diffs min +0.0796 vs nadig_jurkat, Perm100 Q0.975 = +0.0018) in a never-used cell line and modality (CRISPRi -> CRISPRko).
+   - Explicitly cites Kawsar et al. 2026 (CanPert/CASTER, doi:10.64898/2026.11.15.766815) without claiming first correct-vs-mismatched comparison, and cites Heidari et al. 2026 (scPerturb-eval) baseline_logfc & Liu et al. 2026 (GSE345058) as data source.
+   - Explicitly states FCT is NOT the best predictor on A549 all_nontarget r_orth_cal (Source_Grand_Mean +0.405 > CIPHER_Linear +0.282 > Hybrid_on_TMVS +0.237 > TMVS +0.222 > FCT +0.190): Claim 1 establishes specificity, not predictive accuracy.
+3. Claim 2 (H-E2 / SA-8) Scoped Strictly as Non-Core Methodological Observation:
+   - Framed as a methodological observation (non-core finding) confined to r_orth_cal (E1_ConstMed uses source fold-change while omitting target baseline profile: -0.0201 on all_nontarget -> +0.2565 on resp_top50_split; H-E2b +0.2766; mechanism unknown / R11 noiseless simulation wrong sign on 8/12 lines).
+   - Explicitly cites Nicol, Shivakumar & Irizarry 2026 v2 (Split DEG + control, nonctl-mean positive scores, ctl-mean ~ 0) and Heidari et al. 2026 (CrossSplit, *_vs_topdeg, define_trivial, rigorous_pearson_delta_pert, baseline_logfc), flagging bioRxiv HTTP 403 unread PDFs for mandatory human inspection pre-submission.
+4. Provenance, Deviations D1-D4, & HEK293 SUPERSEDED_v1 Disclosure:
+   - Explicitly states both R12 claims originated from R9-R11 post-hoc observations (PREREG_E §0.1 E6).
+   - Documents Deviations D1-D4 (pre-metric metadata/counts only) and HEK293 exit from CONFIRMATORY_LINES_R12_SUPERSEDED_v1.txt (62 targets -> 16 < 50 after D3 per-half NTC subtraction -> SECONDARY_ONLY, K_conf = 2 -> 1) in both Methods and Limitations.
+5. Restrictions Observed:
+   - Updated 3 calibrated title candidates (removed outdated "Unconfirmed Cell-Line Specificity" framing; no exaggeration).
+   - Human role stated strictly as Human project lead / 人类项目负责人; zero press releases, tweets, external text, README edits, or git commands executed.
+
+R13_OUTLINE_DONE

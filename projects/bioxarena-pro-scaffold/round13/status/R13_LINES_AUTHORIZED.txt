@@ -1,0 +1,4 @@
+R13 line building authorized by Claude (master controller) 2026-11-23 08:28 +0800.
+Reviewed reader: round13/src/dataset_readers_r13.py sha256 22dfc34d9d432baa5c6b4fa7ea815b89c5f9c8ace51842ab0daec3ee609202a5
+Controller check on the real guide template: 593 NTC (all Control), 2,332 targeting guides -> 582 HGNC genes (583 minus CRIPAK), HLA-A..G distinct, PPAN-P2RY11 distinct from PPAN (PPAN is not a separate target), ARPC4 and ARPC4-TTLL3 both targeted and kept apart, JUN resolved.
+Scope: build mac_ctrl and mac_lps with this exact reader, counts-only gate (PREREG_F §5), no predictor or metric.
