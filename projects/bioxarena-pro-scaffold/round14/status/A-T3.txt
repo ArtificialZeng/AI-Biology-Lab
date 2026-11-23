@@ -1,0 +1,25 @@
+ROLE: A-T3 (Team A Pre-Registration & Statistical Audit)
+ROUND: 14 (GSE337804 — Independent-Lab A549 CRISPRko Replication)
+TIME: 2026-11-23 +08:00
+STATUS: PREREG_G_DRAFT_READY
+
+DELIVERABLE:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round14/prereg/PREREG_G.md
+  - bytes: 22108
+  - sha256: 53e2c9c0406af8f3c3f6ab40a53b3aa1e4e04da9f4811da074aa444512fda657
+
+PRE-LOCK VERIFICATION SUMMARY:
+1. Strict Blinding Verified:
+   - Zero .h5ad expression matrices downloaded or opened (round14/shared/raw/ does not exist; GSE337804_A549_ch_1.RDS.h5ad [563,808,587 B] and GSE337804_A549_ch_2.RDS.h5ad [608,829,330 B] verified via HTTP HEAD only).
+   - Frozen R10-R13 assets untouched.
+2. API & Small-File Verification (GSE337804 / PRJNA1491103):
+   - PubMed PMID 42673963 (efetch): Adduri AK et al., Cell (2026 Sep 17, Epub 2026 Aug 31), doi:10.1016/j.cell.2026.07.052; independent of X-Atlas/Orion, Arc VCC 2026, and Myllia Echoes of Silenced Genes.
+   - Inspected 12,261 B GSE337804_sgRNA_lib.csv.gz (sha256: 96f6eb62449ba276d36591af2f7e0fca47ffedb9f19d711bcc27671d50882df6, 694 rows):
+     * 20 ctrl_NT (non-targeting_1..20) cleanly separable from 20 ctrl_T (gene_desert_1..20) -> ONLY 20 ctrl_NT count as NTC; ctrl_T strictly excluded.
+     * 654 targeting guides across 218 unique genes (100% HGNC-approved); u6_rep = 65; u6_rep & R9_COMMON = 61 (exact partition verified against frozen R12 a549_ko: 15 overlapping + 46 unseen novel targets).
+3. PREREG_G Key Locks:
+   - Word-for-word inheritance of PREREG_E (4c606f4) claims (H-E1a/b/c, H-E2a/b), r_orth_cal, masks, r9_6 sources (+ SA-Src8 descriptive), IUT + 2-Claim Bonferroni (97.5% CI, n_boot=4000, n_perm=100), and disclosures; new RNG seed 20261224.
+   - Sole candidate line: a549_myllia (max K_conf=1); interpretive scope strictly restricted to independent-dataset replication within A549 (no cross-lineage generalization, no cross-round pooling).
+   - Pre-metric integer raw-count feasibility check (EXCLUDED_FEASIBILITY), author single-sgRNA .obs assignment (sgrna_id/sgrna_symbol; fallback PREREG_F §3.2), pert_key = canon_sym gene-level pooling matching R12 a549_ko, >= 300 UMI & >= 200 genes, max_pct_mt = None (DepleteX), ch_1 (Half A) vs ch_2 (Half B) channel-level NTC subtraction, PREREG_E §2.2 gates, pre-registered descriptive subgroup split (15 R12-overlap vs 46 novel targets: FCT + 6 paired contrasts), prior disclosures, and download plan.
+
+PREREG_G_DRAFT_READY

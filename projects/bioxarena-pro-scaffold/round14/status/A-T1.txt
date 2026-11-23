@@ -1,0 +1,14 @@
+ROUND14_PHASE=FEASIBILITY_COMPLETE
+AGENT=A-T1
+DATE=2026-11-23
+TARGET_DATASET=GSE337804 (Myllia Biotechnology x UCSF/Arc STATE, A549 SpCas9 CRISPRn + 10x 5' HT v2 + DepleteX)
+FEASIBILITY_VERDICT=FEASIBLE (可行; requires pre-metric .RDS.h5ad raw-count slot gate & explicit n_eval_targets>=50 narrow-margin disclosure)
+REPORT_PATH=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round14/shared/R14_FEASIBILITY_GSE337804.md
+FILES_INSPECTED=GSE337804_2cl_description.pdf (236820 B); GSE337804_sgRNA_lib.csv.gz (12261 B); GEO/SRA PRJNA1491103 metadata
+MATRIX_FILES_UNTOUCHED=GSE337804_A549_ch_1.RDS.h5ad (563808587 B); GSE337804_A549_ch_2.RDS.h5ad (608829330 B)
+CHANNELS=2 (ch_1=GSM9860781/82 1.179B GEX reads; ch_2=GSM9860783/84 1.449B GEX reads; single condition Basal, no HCT116 uploaded)
+NTC_SEPARABILITY=SEPARABLE (20 ctrl_NT non-targeting_1..20 -> USE AS NTC; 20 ctrl_T gene_desert_1..20 safe-targeting -> EXCLUDE FROM NTC)
+TARGETS=218 (654 guides, all HGNC approved); u6_rep=65; u6_rep_cap_R9C=61 (15/15 present in R12 a549_ko are reproducible; 46/61 unseen in a549_ko)
+ESTIMATED_N_EVAL_TARGETS=R12_A549_98.45pct=60.1 (83.96pct=54.6); rule_20_40pct=12.2-24.4; R12_HEK293_11.19pct=6.8; R13_mac_ctrl_3.30pct=2.0
+CONSTRAINTS_COMPLIANCE=metadata_and_small_files_only_le_100MB,zero_matrix_downloads,zero_accounts_EULA,zero_git
+R14_FEASIBILITY_DONE
