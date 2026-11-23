@@ -1,0 +1,7 @@
+主控 11:05：请为论文初稿 paper/MANUSCRIPT_DRAFT_v3.md 第 9 节的图注出图，放在 paper/figures/（PNG 300 dpi + PDF），只用已经提交的结果文件（round12/results/、round12/audit/holdout_r12*、round13/results/、round14/results/、各轮 QC_COUNTS 和判定文件），**不重新计算任何指标、不改冻结代码**。至少包括：
+1. 研究设计与各轮靶点漏斗（第 9–14 轮，含 HEK293 62→16、巨噬细胞 582→15→3、GSE337804 212→81→32，门槛 50 画成参考线）。
+2. 第十二轮 A549 的主要结果：FCT 与 6 个错配基线的配对差（点估计 + 97.5% CI，0 参考线），旁边放置换分布的 Q0.975。
+3. 特异性 vs 精度：A549 上全部预测器的 r_orth_cal（含 CI），突出 FCT 不是最高（Source_Grand_Mean 0.405）。
+4. 论断 2：E1 在全基因 / 普通 top-50 / 分半 top-50 下的分数（A549），以及第十四轮描述性对应值（明确标注 descriptive, not confirmatory）。
+5. 第十四轮描述性结果：FCT 和 6 个配对差（N = 32），以及 §7 的新靶点组（N = 28），图上标注 gate failed, descriptive only。
+要求：每张图一个 y 轴（不要双 y 轴）；颜色对色盲友好，同一个数据集在所有图里同一颜色；CI 一律写明是 97.5%；文字用英文；每张图另存一个 CSV（画图用的确切数字）和一个生成脚本 paper/figures/make_figures.py，用 python3 -I 运行。不提交 git，不写对外文字。完成后 round14/status/A-T2.txt 最后单独一行写 FIGURES_DONE。

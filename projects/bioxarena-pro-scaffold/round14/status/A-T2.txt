@@ -53,3 +53,15 @@
        - `vcc2025_h1`: `+0.098328`, `97.5% CI [+0.057600, +0.141175]` (`valid_frac = 1.0`)
 
 R14_EVAL_DONE
+
+5. Manuscript §9 Figures (`paper/figures/`, `python3 -I paper/figures/make_figures.py`):
+   - Strictly read committed results (`round9/`–`round14/` JSON/CSV), QC counts, and verdict files without recomputing any metric or altering frozen code (`FREEZE_MANIFEST_R14`: `27/27`, `FREEZE_MANIFEST_R13`: `32/32`, `FREEZE_MANIFEST_R12`: `46/46`).
+   - All panels use a single y-axis (`no twinx`), English text, explicit `97.5% CI`, and one fixed colorblind-safe Okabe-Ito/Tol color per dataset across all 5 figures (`PNG 300 dpi` + vector `PDF` + source CSVs):
+     * `paper/figures/make_figures.py` (`31bc42d67a954e69ad6470e5d7587fa7427b964f29e021e21e20a4c4feb1eb85`) — `pyflakes` OK; `python3 -I` exit `0`.
+     * Figure 1 (`20` rows): `fig1_data.csv` (`4964c2e0...`) | `fig1_study_funnel.png` (`6e815cc0...`) | `fig1_study_funnel.pdf` (`68780628...`) — Rounds 9–14 architecture & 20-cohort attrition funnel (incl. HEK293 `62->16`, macrophages `582->15->3`, GSE337804 `218->212->81->32`, `N = 50` reference line).
+     * Figure 2 (`44` rows): `fig2_data.csv` (`40d17f88...`) | `fig2_r9_r11_evolution.png` (`bdf27197...`) | `fig2_r9_r11_evolution.pdf` (`cdc4222f...`) — R9–12 `GlobalScale` `r_cal` vs. `r_orth_cal = 0`, R9–11 unpaired (`7/12`) vs. paired (`11/12`), R10-E mask ablation.
+     * Figure 3 (`22` rows): `fig3_data.csv` (`c9f66ac1...`) | `fig3_r12_a549_confirmatory.png` (`766ea819...`) | `fig3_r12_a549_confirmatory.pdf` (`07226ac7...`) — R12 `a549_ko` `FCT` vs. 6 mismatched baselines, 6/6 paired contrasts (`0` line) & `Perm100 Q0.975 = +0.0018`, plus `SA-Cas9`/`SA-Src8`/`S5`/`S7`/`hek293_xucao`.
+     * Figure 4 (`23` rows): `fig4_data.csv` (`2b70c954...`) | `fig4_specificity_accuracy_claim2.png` (`374cae83...`) | `fig4_specificity_accuracy_claim2.pdf` (`bb09af34...`) — All 15 predictors on `a549_ko` (`Source_Grand_Mean +0.4051` > `FCT +0.1898`), plus Claim 2 `E1_ConstMed` across `all_nontarget` / `resp_top50` / `resp_top50_split` for R12 `a549_ko` (confirmatory) & R14 `a549_myllia` (`gate failed; descriptive only, not confirmatory`).
+     * Figure 5 (`33` rows): `fig5_data.csv` (`a515a835...`) | `fig5_r13_r14_gate_failures.png` (`e43f621c...`) | `fig5_r13_r14_gate_failures.pdf` (`7c94c9a5...`) — R13 & R14 attrition (`3`, `5`, `32 < 50`), R14 Day-16 essential-gene counts, and R14 descriptive `FCT` + 6 paired contrasts (`N=32` & `§7 Novel N=28` + `N=4` overlap pt. est.), stamped `gate failed, descriptive only`.
+
+FIGURES_DONE

@@ -1,0 +1,7 @@
+主控 11:00：v2 已审，A 部分基本改好。请生成 paper/MANUSCRIPT_DRAFT_v3.md（保留 v2），只做以下修改：
+1. 参考文献：按 paper/REFERENCES_VERIFIED.md 全部替换第 8 节（主控已用 Crossref 抽查 3 条，2 条完全一致；第 5 条第四作者 Crossref 只写 "Wilson P"，不要写 "Wilson PC"）。正文里对应的作者和年份同步改（例如 Zhu R 不是 Zhu X；Systema 写 2026，Epub 2025；Xu 2024，Epub 2023）。
+2. 归属更正：CellularAI 改为 Illumina 的 Reddy AJ et al. 2026（GitHub），AtlasShift 改为 Zheng K 2026（GitHub），都不是 Adduri et al.；0.02–0.13 和 1.02 的斜率出处改为 Arc Institute 2026 年 11 月 19 日的 VCC 2026 wrap-up 网页（验证集），不要接在 cell-eval2 后面；Table 1 的 vcc2025_h1 改引 Roohani et al. 2025；补入 Scholz & Stephens 1987（Anderson–Darling）。Miller et al. 删掉 arXiv:2506.22641，改用 bioRxiv 10.1101/2025.10.20.683304。
+3. scPerturb：第十二轮 HEK293 数据（XuCao2023.h5ad）就是从 Zenodo 13350497 下载的，所以保留这个登录号并补引 Peidli et al. 2024（Nature Methods，PMID 38279009）。
+4. 第十四轮描述性结果：按 round14/status/R14_VERDICT.md 第 4 节填写第 2.5 节和表 6（N = 32：FCT +0.108 [+0.072, +0.142]；6 个配对差全部 > 0，最小下界 +0.039；置换 Q0.975 +0.0035；E1 全基因 −0.004、分半 top-50 +0.111 [+0.045, +0.185]，差 +0.114 [+0.047, +0.192]；§7 分组：28 个新靶点 FCT +0.108 [+0.070, +0.144]、6 个配对差全部 > 0，4 个重叠靶点只报点估计）。**必须用判定文件的读法：** 门槛未通过，不是确认性复现；只能说在这个独立实验室的 A549 数据集上，描述性区间与第十二轮同向且不含 0，强度低于预注册的确认性检验；不能说门槛定得太严或事后改门槛。
+5. 摘要和讨论各加一句同样措辞的话（摘要仍 ≤ 250 词）。
+仍然只在本地，不提交 git，不写对外文字。完成后 round14/status/A-T4.txt 最后单独一行写 MS1_V3_DONE。

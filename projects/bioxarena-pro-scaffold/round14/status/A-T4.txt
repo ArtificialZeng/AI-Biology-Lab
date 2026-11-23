@@ -1,35 +1,26 @@
 ROLE=A-T4
-TASK=MS1_Manuscript_Draft_v2
+TASK=MS1_Manuscript_Draft_v4
 DATE=2026-11-23
 HUMAN_PROJECT_LEAD=Zijian Zeng
 
 V1_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v1.md (preserved, sha256=5be95395a8179b7465fda95f472ae9c5d6234759c2c479a64d9d5b479c6f2cf8)
-V2_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v2.md
-V2_BYTES=88919
-V2_LINES=311
-V2_SHA256=eba2401a2ad9361e1ed046dc3a89fc94d6d806185c26f26437f1e622550e4318
+V2_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v2.md (preserved, sha256=eba2401a2ad9361e1ed046dc3a89fc94d6d806185c26f26437f1e622550e4318)
+V3_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v3.md (preserved, sha256=97be001d3d163c9fa66efc31d723d4d17525aef752e01552810ac1acd26101de)
+V4_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v4.md
+V4_BYTES=101056
+V4_LINES=345
+V4_SHA256=2f7eef0fdd44b1aaacb609b548337b9d5c805cca2328a28a2984548a2db963aa
 
-CONTROLLER_REVIEW_A1_TO_A14_APPLIED (against paper/REVIEW_MS1_controller.md):
-1. Replaced all misapplied E1 constancy phrasing with "target-baseline-free transfer predictor (uses source-line fold changes but not the target line's own control profile)" (Abstract, Intro, Results 2.1/2.2/2.3, Discussion, Methods 5.3, Legends, Table 4).
-2. Rewrote Discussion Claim 2 mechanism cleanly as unknown on this dataset (E1_ConstMed = -0.0201 / -0.020 under all_nontarget vs +0.2565 / +0.257 under resp_top50_split), removing causal/elimination overstatement.
-3. Removed single-dataset generalization phrasing in Discussion ("yields target-specific transcriptional ordering on this A549 CRISPRko dataset").
-4. Rewrote Source_Grand_Mean vs FCT discussion as an untested post-hoc "One possible explanation".
-5. Changed Round 14 essential-gene depletion wording to "is consistent with depletion of essential-gene knockout cells" and listed BMS1, DHDDS, and SEC61A1 qualitatively as "absent among the retained targets" (Results 2.5, Figure 5b, Table 6).
-6. Removed unsupported "~150-200 overlapping perturbations" conjecture in Discussion, grounding cohort size requirements in Round 14's observed 61 -> 32 attrition.
-7. Corrected Round 12 deviation D3 wording per PREREG_E §3.3 / RULING_R12_HEK293_UNITS.md ("HEK293 NTC subtraction switched from pooled batch_0 to split-half units with Stage-2 seed=42 pairing") in Results 2.2 and Limitations.
-8. Audited Arc VCC 2026 Wrap-Up (2026-11-19 blog post, cell-eval2 v0.22.0 omits slope formula, Dobin preprint 10.64898/2026.11.17.767214 unindexed) and tagged [CHECK].
-9. Removed Adduri A et al. attribution from CellularAI / AtlasShift and tagged public challenge codebases [CHECK].
-10. Updated byline exclusively to human author row: "Zijian Zeng [author list to be confirmed by the human project lead]"; retained AI contributions solely in Section 7.
-11. Added [USER TO CONFIRM] to every human project lead contribution statement in Section 7.
-12. Updated Abstract (219 whitespace words / 212 tokens <= 250) covering single-line K_conf=1, post-hoc R9-R11 origins, specificity vs accuracy, Claim 2 observation, and all three failed/insufficient second-dataset gate outcomes (R11 K_conf=1 < 2, R13 3 & 5 < 50, R14 32 < 50).
-13. Resolved review item A13 cleanly across v2 (updated HGNC symbol terminology to canonical HGNC symbols; zero causal-absolutist words or substrings).
-14. Retained [R14 DESCRIPTIVE PENDING] placeholders in Section 2.5, Table 2, and Table 6, and added [A-T5 VERIFICATION PENDING] + [VERIFY] notices in Section 8 awaiting paper/REFERENCES_VERIFIED.md (while applying controller's three confirmed fixes to Heidari, Kawsar, and Nicol v2).
+V4_UPDATES_APPLIED (per Master Controller 11:05 directive):
+1. Compressed Abstract strictly under 250 words across every tokenization method (209 rendered whitespace words, 213 whitespace words including HTML source comment, 211 slash-split words, 245 regex [A-Za-z0-9_]+ tokens <= 250), retaining all required qualifiers: single-line K_conf=1 (A549 GSE345058), post-hoc R9-R11 hypothesis origin, specificity distinct from overall accuracy (FCT +0.1898 below Source_Grand_Mean +0.4051), Claim 2 empirical methodological observation, three failed/insufficient second-dataset gates (R11 1<2, R13 3 & 5 < 50, R14 32 < 50), and the identical Round 14 summary sentence shared between Abstract and Discussion (not a confirmatory replication; directional descriptive intervals excluding zero).
+2. Preserved Sections 1-10 line-for-line identical to MANUSCRIPT_DRAFT_v3.md (followed only by a --- separator before Section 11).
+3. Appended Section 11 ("Figure Data Manifest") mapping Figures 1-5 and all panels (2a-c, 3a-c, 4a-b, 5a-b) to planned paper/figures/ deliverables and 45 verified on-disk source/result/QC files (0 missing paths).
 
 VERIFICATION_SUMMARY:
-- Abstract rendered length: 219 whitespace words / 212 prose+math tokens (<= 250).
-- Source tags in v2: 49 unique <!-- src: ... --> paths resolved, 0 missing.
-- Prohibited-term lexical audit on v2 and A-T4.txt: 0 prohibited word/substring violations (only factual "1.02 for experimental replicates").
-- Freeze manifests (R10..R13): R10 22/22 OK, R11 41/41 OK, R12 46/46 OK, R13 32/32 OK.
-- External safety compliance: zero git commands, zero public pushes or outreach drafts, README.md untouched.
+- Abstract word counts: ws rendered=209, ws incl comments=213, ws+slash=211, regex alnum=245 (all <= 250).
+- Section 1-10 parity vs v3: exact line equality confirmed across Sections 1-10; v1, v2, v3 checksums preserved unchanged.
+- Source & Figure Data Manifest paths checked on disk: 0 missing files.
+- Lexical compliance on v4 and A-T4.txt: 0 prohibited overclaiming, causal-absolutist, priority, or role-misnaming hits.
+- Freeze manifests (R10-R14) intact; zero git commands, zero external outputs.
 
-MS1_V2_DONE
+MS1_V4_DONE
