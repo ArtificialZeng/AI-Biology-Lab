@@ -1,26 +1,28 @@
 ROLE=A-T4
-TASK=MS1_Manuscript_Draft_v4
+TASK=MS1_Manuscript_Draft_v5
 DATE=2026-11-23
 HUMAN_PROJECT_LEAD=Zijian Zeng
 
 V1_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v1.md (preserved, sha256=5be95395a8179b7465fda95f472ae9c5d6234759c2c479a64d9d5b479c6f2cf8)
 V2_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v2.md (preserved, sha256=eba2401a2ad9361e1ed046dc3a89fc94d6d806185c26f26437f1e622550e4318)
 V3_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v3.md (preserved, sha256=97be001d3d163c9fa66efc31d723d4d17525aef752e01552810ac1acd26101de)
-V4_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v4.md
-V4_BYTES=101056
-V4_LINES=345
-V4_SHA256=2f7eef0fdd44b1aaacb609b548337b9d5c805cca2328a28a2984548a2db963aa
+V4_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v4.md (preserved, sha256=2f7eef0fdd44b1aaacb609b548337b9d5c805cca2328a28a2984548a2db963aa)
+V5_DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MANUSCRIPT_DRAFT_v5.md
+V5_BYTES=102857
+V5_LINES=345
+V5_SHA256=dc96e0c17699c6afb8a5396fb6981c6a7a653d96470bcba3562af1b180c96b56
 
-V4_UPDATES_APPLIED (per Master Controller 11:05 directive):
-1. Compressed Abstract strictly under 250 words across every tokenization method (209 rendered whitespace words, 213 whitespace words including HTML source comment, 211 slash-split words, 245 regex [A-Za-z0-9_]+ tokens <= 250), retaining all required qualifiers: single-line K_conf=1 (A549 GSE345058), post-hoc R9-R11 hypothesis origin, specificity distinct from overall accuracy (FCT +0.1898 below Source_Grand_Mean +0.4051), Claim 2 empirical methodological observation, three failed/insufficient second-dataset gates (R11 1<2, R13 3 & 5 < 50, R14 32 < 50), and the identical Round 14 summary sentence shared between Abstract and Discussion (not a confirmatory replication; directional descriptive intervals excluding zero).
-2. Preserved Sections 1-10 line-for-line identical to MANUSCRIPT_DRAFT_v3.md (followed only by a --- separator before Section 11).
-3. Appended Section 11 ("Figure Data Manifest") mapping Figures 1-5 and all panels (2a-c, 3a-c, 4a-b, 5a-b) to planned paper/figures/ deliverables and 45 verified on-disk source/result/QC files (0 missing paths).
+V5_UPDATES_APPLIED (per Master Controller 11:19 directive):
+1. Reconciled Transfer_Mean_GlobalScale r_cal masks across Section 1 (line 18), Section 2.1 (line 32), and Figure 2a legend (line 219): clarified that -0.3161..+0.3521 (uncalibrated Resid r; calibrated r_cal -0.3304..+0.3598 across R9 held-out/secondary and +0.5618/+0.3078 on R9 dev) come from resp_top50, whereas Figure 2a plots all_nontarget noise-calibrated r_cal (-0.8831 on nourreddine_kolf21j to +0.7551 on replogle_k562_essential in R9; -0.9939..+0.9288 across R9-R12; sources round14/status/A-T2.txt and paper/figures/fig2_data.csv); orthogonalized r_orth_cal = 0.0000 in both masks.
+2. Updated Figure 4 legend (line 221): specified that Transfer_Mean is the orthogonalization reference vector for r_orth_cal and is therefore undefined by construction (n/a, not 0).
+3. Updated Figure 5 legend (line 222): specified that all N <= 5 lines/subgroups (R13 mac_ctrl N=3 +0.1810, mac_lps N=5 +0.1885, R14 4-overlap subgroup N=4 +0.1058 / +0.106) are plotted strictly as point estimates without confidence intervals.
+4. All remaining 340 lines (Abstract, Sections 2.2-8, Section 10 Tables 1-6, Section 11 Figure Data Manifest, Figure 3 legend) kept byte-identical to preserved MANUSCRIPT_DRAFT_v4.md.
 
 VERIFICATION_SUMMARY:
-- Abstract word counts: ws rendered=209, ws incl comments=213, ws+slash=211, regex alnum=245 (all <= 250).
-- Section 1-10 parity vs v3: exact line equality confirmed across Sections 1-10; v1, v2, v3 checksums preserved unchanged.
+- Abstract word counts unchanged vs v4: ws rendered=209, ws incl comments=213, ws+slash=211, regex alnum=245 (all <= 250).
+- Diff vs v4: strictly lines [18, 32, 219, 221, 222] out of 345 lines.
 - Source & Figure Data Manifest paths checked on disk: 0 missing files.
-- Lexical compliance on v4 and A-T4.txt: 0 prohibited overclaiming, causal-absolutist, priority, or role-misnaming hits.
+- Lexical compliance on v5 and A-T4.txt: 0 prohibited overclaiming, causal-absolutist, priority, or role-misnaming hits.
 - Freeze manifests (R10-R14) intact; zero git commands, zero external outputs.
 
-MS1_V4_DONE
+MS1_V5_DONE

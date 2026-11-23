@@ -65,3 +65,28 @@ R14_EVAL_DONE
      * Figure 5 (`33` rows): `fig5_data.csv` (`a515a835...`) | `fig5_r13_r14_gate_failures.png` (`e43f621c...`) | `fig5_r13_r14_gate_failures.pdf` (`7c94c9a5...`) — R13 & R14 attrition (`3`, `5`, `32 < 50`), R14 Day-16 essential-gene counts, and R14 descriptive `FCT` + 6 paired contrasts (`N=32` & `§7 Novel N=28` + `N=4` overlap pt. est.), stamped `gate failed, descriptive only`.
 
 FIGURES_DONE
+
+6. Manuscript §9 Figures V2 Update & A-T4 Handover (`python3 -I paper/figures/make_figures.py`):
+   - Applied all 5 Master Control (`11:16`) revisions (freeze manifests verified post-run: `R14=27/27`, `R13=32/32`, `R12=46/46`; `python3 -I` exit `0`; all 5 PNGs visually verified clean):
+     1. **Fig 4(a) (`Transfer_Mean`)**: Removed `0.0000 [0, 0]` point/CI (`r_orth_cal` is `NaN`, `valid_frac = 0` in `round12/results/line_metrics_holdout_r12_r9_6_log1p.csv`), annotated in Fig 4(a) as `"n/a (reference vector; undefined by construction)"`; retained `Transfer_Mean_GlobalScale` at real `+0.0000 [+0.0000, +0.0000]` (`r_cal = +0.765`).
+     2. **Fig 5(c) (`N <= 5` lines)**: Plotted `R13 mac_ctrl` (`N=3`, `+0.1810`), `R13 mac_lps` (`N=5`, `+0.1885`), and `§7 R12-Overlap` (`N=4`, `+0.1058`) as point estimates only without CIs (`ci975_lo/hi = NaN` in `fig5_data.csv`), labeled `"N <= 5: point estimate only"`.
+     3. **Fig 5(b)**: Removed unverified `"(n < 10 cells in Day-16 Cas9 screen)"`; strictly wrote `"BMS1, DHDDS, SEC61A1: absent among retained targets"`.
+     4. **Layout**: Fig 1(b) x-axis capped cleanly at `10^4` (`xlim 1..9.5e4`, no `10^5`); Fig 4(a) x-axis tightened cleanly to `0.5` (`xlim -0.06..0.52`, ticks `0.0..0.5`); Fig 3 top gap between `(a)` and `(b)` tightened (`wspace=0.10`, `xlim -0.035..0.305`).
+     5. **Fig 2(a) GlobalScale Cross-Mask & Column Mapping (`@A-T4` 请按此统一论文第 1、2.1 节与图 2a 表述)**:
+        - **为什么论文第 2.1 节 (`-0.3161` 到 `+0.3521`) 与图 2(a) (`kolf -0.8831`, `k562 +0.7551`) 数值不同？** 原因有两层（掩码不同 + 是否经分半噪声校准）：
+          * **第 9 轮原文 `resp_top50`**：`round9/p2/vcc_linespecific/results/line_metrics_holdout_log1p_sh0.0_rep1.csv`（及 `REPORT_holdout_log1p_sh0.0_rep1.md` 第 47–162 行）中，正文第 2.1 节引用的 `-0.3161` (`nourreddine_kolf21j`)、`-0.1263` (`nadig_hepg2`)、`+0.2501` (`vcc2025_h1`)、`+0.3521` (`replogle_rpe1`) 是 `resp_top50` 掩码下的**未校准**残差相关列 **`ls_resid_corr_top50`**（表中的 `Resid r (raw)`）；同一 CSV 下 `resp_top50` 经噪声校准的 `ls_resid_corr_cal_top50` (`r_cal (raw)`) 为 `-0.3304` (`kolf21j`)、`-0.1306` (`hepg2`)、`+0.2506` (`vcc2025_h1`)、`+0.3598` (`rpe1`)、`+0.2849` (`k562`)、`-0.0058` (`jurkat`)。
+          * **图 2(a) 统一使用全基因 `all_nontarget` 噪声校准 `r_cal`（横跨 R9–R12 同口径，直接衔接表 4 `a549_ko r_cal = +0.7655 -> r_orth_cal = 0.0000`）**：
+            - R9 (`line_metrics_holdout_log1p_sh0.0_rep1.csv`, `ls_resid_corr_cal_all`): `nadig_hepg2 +0.4291`, `nadig_jurkat -0.5838`, `nourreddine_kolf21j -0.8831`, `replogle_k562_essential +0.7551`, `replogle_rpe1 -0.1442`, `vcc2025_h1 +0.6002`.
+            - R10 (`round10/audit/holdout/audit_r10_summary.json`, `methods.transfer_mean_global_scale.all_nontarget.r_cal_est`): `dld1 -0.4831`, `cd4t_rest -0.8261`（对比 R10 primary `resp_top50` `r_cal`: `+0.2404`, `-0.2616`）。
+            - R11 (`round11/results/holdout_r11_r9_6/line_metrics_holdout_r11_r9_6_log1p.csv`, `r_cal` on `all_nontarget`): `cd4t_stim48 -0.9939`, `feng_ipsc +0.9288`（对比 `resp_top50_r_cal`: `-0.2366`, `+0.7221`）。
+            - R12 (`round12/results/line_metrics_holdout_r12_r9_6_log1p.csv`, `r_cal` on `all_nontarget`): `a549_ko +0.7655`, `hek293_xucao -0.8439`（对比 `resp_top50_r_cal`: `+0.4651`, `-0.3603`）。
+          * 图 2(a) 标题及横轴已明确写明 `all_nontarget` 掩码，且 [paper/figures/fig2_data.csv](file:///Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/figures/fig2_data.csv) 已在 `source_column` 与 `source_file` 列逐行写明精确列名、文件及 `resp_top50` 对照值。请 A-T4 在正文第 1 节/第 2.1 节/图 2(a) 图注中写清 `resp_top50` (`ls_resid_corr_top50` `-0.3161..+0.3521` / `ls_resid_corr_cal_top50` `-0.3304..+0.3598`) 与 `all_nontarget` (`r_cal` `-0.8831..+0.7551` in R9, `-0.9939..+0.9288` across R9–12 -> `r_orth_cal = 0.0000`) 的掩码与校准对应关系。
+   - Updated V2 SHA-256 checksums (`paper/figures/`):
+     * `make_figures.py`: `c6a43fdbd26898d1135028524055e336465aca253c1430c5329cfe1cce416942`
+     * `fig1_data.csv`: `4964c2e03ad508c6655cb91aa60575e2e62c19565bed24c5ac37eddcfbb18516` | `fig1_study_funnel.png`: `dae1f4af7fa5af57bedcf52798b82bceccd51afd86a0ac69ab4fffefb01fdfc4` | `.pdf`: `b03637688815900dbe6fa4c27abd780a208ae0e43f3f154ce4955bc31ae1cb02`
+     * `fig2_data.csv`: `7ed45b2faf81508cc8e7a1fa69a2187c6cbd2c2dcf1d4f17b1df2200e99a456f` | `fig2_r9_r11_evolution.png`: `3846a3501c8bbea22c8f8372708cea1d31984bb3a35a357704bf434e4c7a3c2c` | `.pdf`: `f464c03dbdf9476e515f0d91d254cb02332e8cca291207b537596da9645db291`
+     * `fig3_data.csv`: `c9f66ac1e190d7e859453c3993f38b59b6e351d77aa32869ddf22e87356b4e57` | `fig3_r12_a549_confirmatory.png`: `b53bfaa3577bca3f378d0eb36231804e345f47c6ec59f706c57a23e0db736c41` | `.pdf`: `c75e5c31d79b6b1078a90c048b3669fa242e3bdb92a50d6863205b148a3b933b`
+     * `fig4_data.csv`: `de90b7fe7c32b10ccc98ac45597cb1d75b55d885822f7f63dfb3e204dd5077fe` | `fig4_specificity_accuracy_claim2.png`: `dff41d9b1aaac35922a11f38b279b8c753f70e32b3ca4f0a894c5a39e11f38b5dfbf` | `.pdf`: `a48ce10c005a7d5f311e633de9fc0ba96d2da76a1ecdf8b2afe856a817ad920a`
+     * `fig5_data.csv`: `f1fca33763905f03fbf2683d18d4c9c0b131d448012ccfe7d76f874e639fa395` | `fig5_r13_r14_gate_failures.png`: `441578abf0e242ed1e279b38cc13ae0671fb014477900b61e0c14be44766183c` | `.pdf`: `afd6aabfab3ec197048df36b684b9e13d9083f24b02d4092851589876179d273`
+
+FIGURES_V2_DONE

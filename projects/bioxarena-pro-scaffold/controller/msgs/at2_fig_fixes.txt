@@ -1,0 +1,7 @@
+主控 11:16：5 张图主控已逐张看过，整体很好、数字和判定文件一致。请只改以下几点，重新运行 paper/figures/make_figures.py（仍只用已提交的结果文件，不重算指标，不提交 git）：
+1. 图 4(a)：Transfer_Mean 不要画成 0.0000 [0, 0]。它是 r_orth_cal 的参照向量，按定义无法计算（结果文件里是 nan，有效比例 0）；改成文字标注 "n/a (reference vector; undefined by construction)" 或从图中去掉并在图注说明。Transfer_Mean_GlobalScale 的 0.0000 是真实结果，保留。
+2. 图 5(c)：N ≤ 5 的线（R13 mac_ctrl N = 3、mac_lps N = 5）和 N = 4 的重叠组一样，只画点估计、不画区间，标注 "N ≤ 5: point estimate only"。
+3. 图 5(b)：删掉 "(n < 10 cells in Day-16 Cas9 screen)"，只写 "absent among retained targets"（这个细胞数没有核实过）。
+4. 图 2(a)：GlobalScale 的 r_cal 数值（例如 kolf −0.88、k562 +0.76）和论文第 1、2.1 节的文字（第 9 轮 −0.3161 到 +0.3521）对不上，可能是掩码不同（all_nontarget vs resp_top50）。请在 fig2_data.csv 里写明每个数取自哪个结果文件、哪个掩码；坐标轴标题写明掩码；把对应关系告诉 A-T4（写进 round14/status/A-T2.txt），由 A-T4 统一正文。
+5. 版面：图 1(b) 的 x 轴不要延到 10^5；图 4(a) 的 x 轴到 0.5 左右即可；图 3 上半部 (a)(b) 之间空白太大。
+完成后 round14/status/A-T2.txt 最后单独一行写 FIGURES_V2_DONE。

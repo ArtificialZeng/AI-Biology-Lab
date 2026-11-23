@@ -1,0 +1,5 @@
+主控 11:19：请基于 v4 生成 paper/MANUSCRIPT_DRAFT_v5.md（保留 v4），只改三处：
+1. 第 1 节和第 2.1 节里 GlobalScale 的 r_cal 数值（−0.3161 到 +0.3521）是 resp_top50 掩码下的值；图 2(a) 画的是 all_nontarget 下的值（例如 kolf −0.88、k562 +0.76）。在正文写清楚各自的掩码，并在图 2 图注里说明图上是 all_nontarget、正文引用的是 resp_top50（数据来源见 round14/status/A-T2.txt 和 paper/figures/fig2_data.csv）。两种掩码下 r_orth_cal 都是 0，这一点不变。
+2. 图 4 图注：Transfer_Mean 是 r_orth_cal 的参照向量，按定义无法计算（n/a），不是 0。
+3. 图 5 图注：N ≤ 5 的线只画点估计，不画区间。
+其余不改。只在本地，不提交 git，不写对外文字。完成后 round14/status/A-T4.txt 最后单独一行写 MS1_V5_DONE。
