@@ -1,0 +1,6 @@
+d1ba905e6ae9a84c89d1ef5803b38b5d2e9de36c CODE_FREEZE_R15 (pre-release: readers, evaluation, controller check; verified on origin/main)
+prereg: 55f4ae48b4d830a293ada17e1bd56b3598bbbd6b (PREREG_H.md sha256 b6ec94aec5d742cfd47f850d5beac1a7bbe08b8dacab6d8bf0352a3eeeede9e9) + Addendum A 55c590d9872d1efa529b4a3ac13c8b2362aa4dfd
+manifest: round15/status/FREEZE_MANIFEST_R15.txt (sha256 9bbfb7d6c54f3f7b1d4ca6f3c000a5e3f1a23bae1df5eb3ae5037a02e3f11365; 31 entries, all match the committed blobs; no Section 3 because no VCC 2026 data exists)
+evaluation settings (PREREG_H): seed 20261231, 4,000 bootstraps, 100 permutations, 97.5% CIs; candidate lines cal33, hela, ac16, molm13, u87mg; Jurkat excluded
+next gates: open-license release (PREREG_H §2) -> R15_GO.txt -> download + counts-only QC -> FREEZE_MANIFEST_R15_DATA -> CONFIRMATORY_LINES_R15.txt -> evaluation
+frozen by: Claude (master controller) 2026-11-23 17:36 +0800
