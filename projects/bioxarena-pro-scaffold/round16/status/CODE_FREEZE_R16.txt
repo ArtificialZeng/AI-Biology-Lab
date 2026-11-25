@@ -1,0 +1,4 @@
+848bdac0e4b31c7ab878719858efac3d5a9c27be CODE_FREEZE_R16 (Round 16 code freeze before any real-cell inference)
+FREEZE_MANIFEST_R16.txt sha256 5b7eed55832cfa52f3185dd3174e997278c585578e55a7b9234c3f286483f6e6 ; 45/45 entries verified against origin/main ; model weights 77/77 via R16_MODEL_CHECKSUMS.sha256
+Locked: PREREG_I c1fc7c6 (sha 43d242e4…), Addendum A 4ecfc2c (sha bdb16818…). Environment: round16/.venv Python 3.11.15, arc-state 0.11.1, torch 2.15.0 (R16_VENV_FREEZE.txt).
+Next gates: external drive with Nadig raw files mounted -> FREEZE_MANIFEST_R16_DATA.txt (line data + raw control files) -> R16_GO.txt (controller only) -> Groups 1-2 run (main line and A-T3 independently) -> controller r16_check.py -> three-way comparison -> verdict.
