@@ -1,0 +1,16 @@
+entity_pair_type,total_relations,retracted_relations,retracted_rate_per10k,sole_source_retracted_triples
+Chemical--Disease,12935458,25466,19.69,2629
+Disease--Gene,10083765,44782,44.41,7590
+Chemical--Chemical,7035791,10118,14.38,1895
+Chemical--Gene,5568879,22549,40.49,7431
+Gene--Gene,3904515,26262,67.26,10151
+Disease--ProteinMutation,457297,412,9.01,226
+DNAMutation--Disease,278698,275,9.87,186
+Disease--SNP,200368,268,13.38,171
+Chemical--ProteinMutation,110320,103,9.34,64
+Chemical--DNAMutation,30221,30,9.93,19
+Chemical--SNP,17731,13,7.33,7
+ProteinMutation--ProteinMutation,13253,5,3.77,5
+DNAMutation--ProteinMutation,9209,2,2.17,2
+DNAMutation--DNAMutation,6438,8,12.43,5
+SNP--SNP,2780,3,10.79,3

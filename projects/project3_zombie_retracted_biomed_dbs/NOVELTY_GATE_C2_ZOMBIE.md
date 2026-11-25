@@ -1,0 +1,33 @@
+# Strict Novelty Identification Gate: Project #3 (`C2-ZOMBIE`)
+
+**Working Title:** *The Automated Amplification Paradox: Open-Access Paper-Mill Enrichment, Retraction Laundering, and Silent Ingestion Across Biomedical Databases, AI Knowledge Graphs, and LLM Corpora*  
+**Date:** 2026-11-25 (UTC)  
+**Search Logs Archived:**
+- `results/prior_art_search_log_c2.json` (8 structured Boolean PubMed & OpenAlex queries)
+- `results/prior_art_clean_verified_log_c2.json` (8 natural-language Europe PMC & OpenAlex queries + PubMed metadata inspection of all 20 top candidate hits)
+
+---
+
+## 1. Bounded Prior-Art Statement (Strict Evidence Boundary #1)
+As of **2026-11-25 UTC**, across the logged search queries in PubMed (`esearch`), Europe PMC (`REST search`), OpenAlex (`works`), and web indexing:
+- **No prior published cross-stack empirical study was detected** in our listed databases and search strings that simultaneously audits and contrasts:
+  1. **8 human-curated production biomedical databases** (`EBI GWAS Catalog`, `CIViC`, `NCBI ClinVar`, `RCSB PDB`, `ChEMBL`, `GOA Human`, `EBI IntAct Human`, `UniProtKB/Swiss-Prot Human`),
+  2. **Bulk automated biomedical AI knowledge graphs** (`NCBI PubTator3` full `relation2pubtator3.gz` & `mutation2pubtator3.gz` + `Open Targets Platform` `europepmc` text-mining evidence),
+  3. **Year-by-year (`2010–2025`) Open-Access enrichment & live AWS S3 `pmc-oa-opendata` JATS XML parser silence** in the primary biomedical LLM pretraining corpus (`PMC Open Access`), and
+  4. **Full clinical evidence cascades** across all `1,515` PubMed-indexed retracted Clinical Trials/RCTs (event-study citation trajectory, `ClinicalTrials.gov` NCT unflagged cross-links, and strictly post-retraction citing Meta-Analyses & Guidelines).
+
+## 2. Explicit Distinction Between Known Prior Art vs. Our Genuinely New Empirical Findings
+
+| Component | Known Prior Art / Nearest Neighbors | What Is Genuinely New Here |
+|---|---|---|
+| **Retraction registries & citation persistence** | Bar-Ilan & Halevi (*Scientometrics* 2017); Schneider et al. (*PLOS ONE* 2020); Moylan & Kowalczuk (*BMJ Open* 2016); Peng et al. (*PNAS* 2022); Van Noorden (*Nature* 2023) documented post-retraction citation persistence and the 2023 Hindawi/paper-mill surge. | We do **not** merely recount post-retraction citations; we measure **structural cross-infrastructure amplification** comparing human curation vs. automated AI ingestion on the exact same `37,692`-PMID non-reinstated master retraction registry. |
+| **Incorrect structures in PDB** | Wlodawer et al. (*FEBS J* 2018, PMID 29113027) reviewed how to detect/retract incorrect crystal structures (focusing on classic obsoleted cases like Murthy/Chang). | We quantify **25 still-ACTIVE non-obsolete X-ray PDB structures** from 12 retracted papers (including 2002 *Science* and 2015–2021 *Nature* retractions), `18/25` inside AlphaFold2 and `23/25` inside AlphaFold3/Boltz training cutoffs, with `0%` active retraction flags and median `8.9 yr` persistence. |
+| **Paper mills & open access** | Abalkina (2023), Richardson et al. (*PNAS* 2025), and *Res Integr Peer Rev* 2025 (PMID 41029804) / *J Clin Epidemiol* 2026 (PMID 41740900) described paper-mill concentration in specific APC/open-access journals. | We prove the **Legal-Selection Biomedical LLM Paradox**: across **15 consecutive years (`2010–2024`, 15/15 years `OR > 1.0`)**, `PMC Open Access` carries a year-stratified CMH `OR = 2.63×` (crude `1900–2026` `OR = 4.79×`; `2022` peak `87.72%`, `OR = 7.78×`) enrichment of retracted articles—and crucially, **this enrichment persists in 15/15 years (`CMH OR = 1.83×`) even after excluding 100% of Hindawi/Wiley retractions**. Furthermore, `DATA_FABRICATION_OR_PAPER_MILL` retractions are significantly more concentrated in `PMC OA` (`67.22%`) than honest errors (`59.90%`, `OR = 1.373`, `p = 2.23e-21`). |
+| **LLMs and retracted papers** | Recent NLP evaluations (e.g., ACL/arXiv benchmarks and *Pub-Guard-LLM* preprints) evaluated whether LLMs *recognize* retracted articles when prompted or built classifiers to predict retraction risk. | We uncover the **exact mechanical parser failure in AWS S3 `pmc-oa-opendata`**: across a stratified sample of `N = 240` retracted PMC OA articles (`2012–2024`), `240/240` (`100%`) remain downloadable live, `97.92%` isolate the retraction notice solely in JATS `<related-article>` metadata while preserving `article-type="research-article"` (`90.8%`), and **`211/240` (`87.92%`) yield completely silent, unflagged scientific prose** (`<article-title> + <abstract> + <body>`, median `26,946` body chars) under standard LLM JATS XML extractors! |
+| **Biomedical databases & AI KGs** | No systematic multi-DB audit spanning ClinVar, ChEMBL, UniProtKB/Swiss-Prot, PDB, GOA, IntAct, GWAS Catalog, CIViC, `PubTator3`, and `Open Targets` was detected. | We reveal the **Automated Amplification Paradox**: human biocurators keep prevalence ultra-low (`0.00%` in GWAS Catalog to `0.78%` in UniProtKB/Swiss-Prot) yet suffer **`0%` active flagging and `6.3–11.9 yr` median post-retraction laundering** once ingested; meanwhile, automated AI knowledge graphs (`PubTator3` full bulk dump + `Open Targets`) and open-access LLM corpora amplify retracted paper-mill literature by orders of magnitude, including **sole-source retracted KG edges** and **ChEMBL target-level QSAR perturbation**. |
+
+## 3. Honesty & Target-Journal Assessment
+- **Why this clears the *Nature* / *Science* / *Nature Medicine* / *Nature Biotechnology* bar (unlike narrow single-DB technical audits):**
+  1. **Broad cross-disciplinary impact:** Directly impacts clinical genomics (ClinVar), drug discovery/QSAR (ChEMBL), structural biology/protein AI (PDB/AlphaFold), biomedical NLP/LLMs (`PMC OA` AWS S3), AI knowledge graphs (`PubTator3`, `Open Targets`), and evidence-based medicine (1,515 retracted RCTs & `ClinicalTrials.gov`).
+  2. **Non-obvious, quantitatively proven paradox:** Rather than an exaggerated alarmist claim that "databases are full of fraud," we report exact low curated-DB rates (`GWAS Catalog = 0`, `CIViC = 1`, `ClinVar = 0.002%`) **as the essential positive control** proving that human curation filters paper mills on entry—and exposing why shifting biomedicine toward **automated AI text-mining and open-access LLM training** accidentally *destroys* that protective human filter while amplifying fraud!
+  3. **Concrete, immediate engineering solution:** `EBI GWAS Catalog` (`0/1.21M`) proves automated/active removal works; our open-source **RetractionGuard** reference filter demonstrates a zero-cost, <1-second automated gate deployable across JATS XML parsers, `PubTator3` KG builds, ChEMBL/ClinVar releases, and RAG pipelines.

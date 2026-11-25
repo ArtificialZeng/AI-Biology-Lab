@@ -1,0 +1,22 @@
+# Exclude large raw downloaded database dumps and temporary build/preview files from Git
+data/*.csv
+data/*.txt
+data/*.tsv
+data/*.zip
+data/*.gz
+data/*.parquet
+data/*.tar.gz
+!data/retraction_master_summary.json
+!data/master_retracted_pmids_100pct.json
+results/rendered_pages/
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.toc
+*.synctex.gz
+__pycache__/
+.DS_Store

@@ -1,0 +1,25 @@
+{
+  "audit_utc": "2026-11-25T09:39:23Z",
+  "registry_pmids": 37692,
+  "registry_dois": 62559,
+  "load_time_sec": 0.13,
+  "pubtator3_stream_benchmark": {
+    "total_rows": 40657168,
+    "blocked_retracted_rows": 130302,
+    "kept_clean_rows": 40526866,
+    "elapsed_sec": 23.472,
+    "throughput_rows_per_sec": 1732175
+  },
+  "clinvar_stream_benchmark": {
+    "total_rows": 5175401,
+    "blocked_retracted_rows": 95,
+    "kept_clean_rows": 5175306,
+    "elapsed_sec": 2.101,
+    "throughput_rows_per_sec": 2463327
+  },
+  "s3_jats_xml_test_n": 30,
+  "s3_jats_xml_caught_total": 30,
+  "s3_jats_xml_recall_pct": 100.0,
+  "s3_jats_xml_caught_by_jats_tag": 25,
+  "s3_jats_xml_caught_by_registry_fallback": 5
+}

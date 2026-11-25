@@ -1,0 +1,47 @@
+{
+  "pillar6_gwas_catalog": {
+    "total_gwas_associations": 1206717,
+    "retracted_gwas_associations": 0,
+    "unique_retracted_studies": 0,
+    "unique_retracted_pmids": 0,
+    "by_reason_class_assocs": {}
+  },
+  "pillar7_civic_oncology": {
+    "total_civic_evidence_items": 5024,
+    "retracted_civic_evidence_items": 1,
+    "accepted_retracted_items": 1,
+    "unique_retracted_pmids": 1,
+    "by_evidence_level": {
+      "D": 1
+    },
+    "by_reason_class": {
+      "IMAGE_MANIPULATION_OR_DUPLICATION": 1
+    }
+  },
+  "pillar8_clinicaltrials": {
+    "pubmed_retracted_clinical_trials": 1512,
+    "ctgov_nct_studies_linking_retracted_rcts": 0,
+    "ctgov_retracted_ref_links": 0,
+    "by_ref_type": {},
+    "unflagged_no_retract_word_in_citation": 0,
+    "by_reason_class": {}
+  },
+  "pillar9_pmc_oa_s3_llm_corpus": {},
+  "pillar10_intact_human_ppi": {
+    "total_intact_human_ppi_rows": 1268939,
+    "retracted_ppi_evidence_rows": 234,
+    "unique_retracted_pmids": 34,
+    "by_reason_class": {
+      "DATA_FABRICATION_OR_PAPER_MILL": 93,
+      "IMAGE_MANIPULATION_OR_DUPLICATION": 40,
+      "OTHER_MISCONDUCT_OR_ADMIN": 34,
+      "PUBMED_RETRACTED_ONLY": 27,
+      "ERROR_OR_UNRELIABLE_RESULTS": 24,
+      "PLAGIARISM_OR_TEXT_DUPLICATION": 11,
+      "PEER_REVIEW_MANIPULATION": 5
+    }
+  },
+  "wwpdb_obsolete_meta": {
+    "error": "HTTPSConnectionPool(host='ftp.wwpdb.org', port=443): Max retries exceeded with url: /pub/pdb/data/status/obsolete.dat (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))"
+  }
+}
