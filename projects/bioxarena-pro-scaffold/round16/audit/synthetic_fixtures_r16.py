@@ -8,7 +8,7 @@ Explicitly covers (`seed = 20261601`):
   3. Non-zero-signal control-invariant equivalence (`LINE_EQUIVALENT_NONZERO_SIGNAL`)
   4. Matched-better above delta (`LINE_MATCHED_SPECIFIC`) & sub-delta (`LINE_MATCHED_SPECIFIC_SUB_DELTA`)
   5. Mismatched-better (`LINE_MISMATCHED_BETTER`) & cross-stratum split (`MIXED_OR_INCONCLUSIVE`)
-  6. Degenerate Group 2 (`|G_2_qual| = 1` -> `MISSING_STRATUM` / `DOWNGRADED_SINGLE_STRATUM_DESCRIPTIVE_ONLY`)
+  6. Degenerate Group 2 (`|G_2_qual| = 1` -> `MISSING_STRATUM` / `SINGLE_STRATUM_DESCRIPTIVE_ONLY`)
   7. Batch-imbalanced control cohorts (`[701, 317, 103, 61, 18]` + equal-remainder ties, small-NTC truncation, exclusion floor)
   8. `r_dorth_cal` Property P1 null invariance fixtures (`span{1, t_mean, b_S}`)
   9. Real-weight `ST-HVG-Replogle` synthetic count matrix generator (zero real cells)

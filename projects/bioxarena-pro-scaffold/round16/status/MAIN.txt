@@ -157,3 +157,91 @@ Repo HEAD: 80f7c17 (0 commits made; zero real cells inferred)
 - Git HEAD: `80f7c17` (0 commits / 0 pushes made)
 
 PREREG_I_V5_READY
+
+
+---
+Round 16 Pre-Data Addendum A (Items 1-10), Freeze-Ready Code Alignment, & Cross-Process Determinism Complete
+Date: 2026-11-26 01:31 (+08:00)
+Repo HEAD: 56a9ce9 (PREREG_I.md locked at c1fc7c6, SHA-256 43d242e4...6ee4a8 untouched; 0 commits made by Main Line)
+
+1. Master Controller Directives Closed (00:25 Items 1-7 + 00:28 Items 8-10 + 01:01 Determinism Gate):
+- Deliverable: `round16/prereg/PREREG_I_ADDENDUM_A.md` (30568 B, 203 lines, SHA-256 944aa9b3737073887eb12aeec3544482297f10b3ea0155e8128b29efd19c2ee9)
+- Deliverable: `round16/status/FREEZE_LIST_R16_DRAFT.txt` (4347 B, 73 lines, SHA-256 aaa4ac8bae1fe6412d23749bdccb242adaf293ebdde16b377d9f09e220e9caa4)
+- Item 1 (Group 3 `full r9_6` sensitivity): Fixed strictly to the locked primary `N_eval^R16` target set & `G_eval^R16` gene universe (`_align_line_and_sources_r16(..., fixed_target_names=q_names, fixed_gene_names=g_eval)`), allowing `vcc2025_h1` to participate ONLY in `FCT` and `Transfer_Mean` (`Source_Grand_Mean`).
+- Item 2 (Group 3 `GSE295214` guide parsing, duplicate deduplication, & `P5` thresholds): Documented verbatim in `§2` matching `build_gse295214_parts`, `parse_gse295214_guide_r16`, `_resolve_single_guide_token` (handling Weissman `+`/`-` strand & coordinate guides while rejecting multi-gene `+`, `TP53_MYC_1`, `TP53_P2RX7_1`, safe-targeting, & intergenic guides), `select_canonical_genes`, and frozen `process_r10_line` (`n_cells >= 25`, `ad_counts >= 50`, `energy_test_p_value < 0.001`).
+- Item 3 (Arc archived `adata_pred.h5ad` check): Fixed strictly to `nadig_hepg2` ONLY (`ARC_ADAPTER_CHECK_LINE = "nadig_hepg2"`), single sequential chunked pass in `float64` across Dense/CSR/CSC (`verify_arc_archived_adata_pred_r16`), pass criteria `median_per_pert_pearson >= 0.90` AND `pooled_pearson >= 0.95` (halt & diagnose on failure; download strictly post-`R16_GO`, controller-managed).
+- Item 4 (`STATE_HVG` `Perm100` & `HGNCBridge`): Frozen `PREREG_E` gene-label permutation within `G_eval^R16` (`k = 0..99`, `np.random.default_rng(k).permutation(G)` via `metrics_r16.py::compute_gene_label_perm_null_r16`) with `G_model` harmonized via `HGNCBridge`.
+- Item 5 (`CellularAI_OpenCode_PublicRefit`): Explicitly DROPPED (`不做`), removing optional freedom (`role = "dropped_per_addendum_a"`).
+- Item 6 (`G4` 2x2 pairing & symmetry): Group 1 1-to-1 positional `0..511` native `gem_group` alignment (with float `.0` string normalization); Groups 2 & 3 `(B_M=0, B_S=17)` AND symmetric `(B_M=17, B_S=0)` across ALL mismatched sources, stratum-level `g4_stratum_summary` (`seen` vs `unseen`), plus single-index spread `{0, 1, 17, 35}`.
+- Item 7 (Three-party tolerances & mandatory control barcodes): Exact `100%` ordered cell barcode parity (exact integer Hamilton largest-remainder quotas in `sample_stratified_control_sets_r16`; exported to `control_barcodes_r16.json`, `summary_r16.json`, `observed.npz`, and every `preds_*.npz` including `G4` `S_BM`/`S_BS`), `<= 1e-4` independent `MPS float32` arrays, `<= 1e-10` same-array recomputation, `<= 1e-5` cross-party metrics, `100%` verdict parity. Added `--raw-nadig-dir` / `NADIG_DATA_DIR` override for local SSD Nadig `.h5ad` paths.
+- Items 8-9 (Within-line disjoint resample arm & `SUB_DELTA` interpretation lock): Implemented `sample_disjoint_resample_control_sets_r16` (`seed = 20261602`, strictly disjoint from primary `512` arm, `overlap == 0`, exporting second barcode list & `preds_*_resample.npz`), `compute_paired_with_within_line_resample_r16` (joint bootstrap `delta_pair(resample)` & per-source `delta_pair(s') - delta_pair(resample)` with 97.5% & 95.0% CIs), and `summarize_within_line_resample_r16` with locked narrative rules; `LINE_MATCHED_SPECIFIC_SUB_DELTA` locked to joint reporting with Item 8.
+- Item 10 (`EXACT_INVARIANCE` boundary): Added `max_pred_abs_diff <= 1e-12` check in `metrics_r16.py` & `adjudicate_r16.py::classify_pair_tost_r16` prior to conservative `ci975 == 0.0` tie rule, counted as `EQUIVALENT` at stratum/line level while preserving `INCONCLUSIVE` for non-identical `[0, 0]` ties.
+- Pre-Freeze Determinism Gate (`2026-11-26 01:01`): Audited all `round16/src/*.py` for zero unordered `set` iteration affecting sampling/ordering and locked all RNG streams (`random`, `np.random`, `torch`, `torch.mps`) to pre-registered seeds; verified all 18 tests write strictly inside `tempfile.TemporaryDirectory()`; added `test_18_cross_process_pythonhashseed_determinism` verifying fresh subprocesses (`PYTHONHASHSEED=1` vs `99991`) produce bit-exact (`0.0`) predicted deltas on CPU and `<= 1e-6` on MPS for BOTH `STATE_HVG` and primary `STATE_SE`.
+
+2. Final Two-Environment Verification Summary:
+- `py_compile` (all 7 `round16/src/*.py`): rc=0, 0 errors
+- `pyflakes` (all 7 `round16/src/*.py`): rc=0, 0 warnings
+- `test_unit_r16.py -v` (`/opt/anaconda3/bin/python3 -I`): rc=0, 17 OK + 1 skipped (`test_12` requires `.venv`) in 9.88s
+- `test_unit_r16.py -v` (`round16/.venv/bin/python`, offline): rc=0, **18/18 OK** in 29.32s (incl. `test_16` Dense/CSR/CSC parity `< 1e-10` and `test_18` cross-`PYTHONHASHSEED` CPU `0.0` / MPS `<= 1e-6` for both `STATE_HVG` and `STATE_SE`)
+- `run_eval_r16.py --synthetic-smoke`: rc=0 in both Python envs (`real_cells_touched=0`, `65` exported `.npz` arrays, `hvg_perm100_n_finite=100`, `within_line_resample_status=EXCEEDS_WITHIN_LINE_RESAMPLE`)
+- `run_eval_r16.py --cohort group2` (pre-gate refusal): rc=1 (`BlindingGateError` on missing `CODE_FREEZE_R16.txt`)
+- `theory_sim_r16.py`: rc=0 (`property_p1_pass=true`, `illustration_consistent=true`)
+- Rounds 12-15 Freeze Manifests: 136/136 OK (R12 46/46, R13 32/32, R14 27/27, R15 31/31; 0 bad)
+
+3. Final Deliverable SHA-256 Checksums (For Master Controller `FREEZE_MANIFEST_R16.txt`):
+- 43d242e460fd64db2e4af1e628e886cf1d94fb4ccd1e95925928a99cb96ee4a8  round16/prereg/PREREG_I.md (64308 B, 284 lines; UNMODIFIED)
+- 944aa9b3737073887eb12aeec3544482297f10b3ea0155e8128b29efd19c2ee9  round16/prereg/PREREG_I_ADDENDUM_A.md (30568 B, 203 lines)
+- aaa4ac8bae1fe6412d23749bdccb242adaf293ebdde16b377d9f09e220e9caa4  round16/status/FREEZE_LIST_R16_DRAFT.txt (4347 B, 73 lines)
+- 46fd153faa82a86def94da6c2febb00528119ece298f8433d7306f6123e4bc0b  round16/src/__init__.py (74 B, 1 line)
+- 03ef4b935b4ce83e15905452c7448f0345e6565ca955e81517fad629d28a8fda  round16/src/adjudicate_r16.py (22420 B, 495 lines)
+- 64e8a733179d1773e398b5649416f0fe291020add6e6dadc2029e4bb4f3afff0  round16/src/metrics_r16.py (37038 B, 893 lines)
+- 471024b2a386b92f39e8cd609f2c25fbd7dd90128f63ed8906de6a24f0757c9d  round16/src/model_adapters_r16.py (47905 B, 1135 lines)
+- e4822e8e1d0331e0ed5fe0dd6b19167f05c2831ca8d4ab9587a591fea962513c  round16/src/run_eval_r16.py (189881 B, 4230 lines)
+- c4c1e8be8cd385d318452757195cb354c6562fd232579e5e9ea7984e07fd352c  round16/src/test_unit_r16.py (95044 B, 1687 lines)
+- c96590bf369299ddc8022513ef0fc143a9ff14a4012d6f320ee731ccf5ba02f9  round16/src/theory_sim_r16.py (8583 B, 208 lines)
+
+4. Hard-Guard Attestation:
+- Real cells inferred: NONE (0); `GSE295214` / `Occam` / `adata_pred.h5ad` downloaded or opened: NONE (0)
+- `round16/prereg/PREREG_I.md`, `round16/shared/models/` (77 files), `round16/.venv/`, `round16/audit/`, `round16/shared/candidates/`, `paper/`, `README*`, Rounds 9-15 frozen files modified by Main Line: NONE
+- HF `arcinstitute` cache: NONE (0); base anaconda `state` spec: None; `>100 MB` extra files: NONE (0); wording hits (`TBD_GATE2`, priority claims): 0
+- Git HEAD: `56a9ce9` (0 commits / 0 pushes made by Main Line)
+
+R16_ADDENDUM_A_DRAFT_READY
+
+
+---
+Round 16 Pre-Data Addendum A Item 11 (`SE-600M` Official Collator Seeding, `X_state` Export, & Cross-Process Determinism) Complete
+Date: 2026-11-26 02:01 (+08:00)
+Repo HEAD: 56a9ce9 (PREREG_I.md locked at c1fc7c6, SHA-256 43d242e4...6ee4a8 untouched; 0 commits made by Main Line)
+
+1. Item 11 Closure (Master Controller Directives 2026-11-26 01:31 & 01:32):
+- Updated `round16/prereg/PREREG_I_ADDENDUM_A.md` title to `Items 1–11`, added `X_state` `<= 1e-5` row to §7, added §8.2 cross-reference, and added full `§11` locking:
+  (1) Official `arc-state 0.11.1` `FilteredGenesCounts` + `VCIDatasetSentenceCollator(training=False)` in `float32`;
+  (2) Per-pool seeding (`random.seed`, `np.random.seed`, `torch.manual_seed`, and on MPS `torch.mps.manual_seed`) called once per control pool immediately before `for batch in dl:` (strictly after `StateEmbeddingModel` load) using `20261601` for primary pools and `20261602` for within-line resample pools;
+  (3) Exact sampled cell order (`0..n_ctrl-1`), exact raw gene column order with exact symbol lookup into `protein_embeddings.pt` (`adata.var_names_make_unique()`), `batch_size=16`, `shuffle=False`, `num_workers=0`;
+  (4) Mandatory export of every pool's `2,058`-dim `float32` `X_state` (`round16/results/embeddings/x_state_<safe_key>.npz`, contiguous `float32`, `x_state_sha256` array-byte digest + `embeddings_manifest_sha256.json`), compared first by Master Controller (`max_abs <= 1e-5`) prior to predicted deltas (`<= 1e-4`);
+  (5) Cross-process `PYTHONHASHSEED` determinism coverage extended to real-weight `SE-600M` encoding (`test_18_cross_process_pythonhashseed_determinism`, exercising zero-count gene `randperm` tie-breaking, duplicate raw gene symbol `var_names_make_unique()`, pre-call global RNG scrambling, CPU bit-exact `0.0` + `x_state_sha256` match for both `20261601` & `20261602`, and MPS `<= 1e-6`).
+- Updated `round16/status/FREEZE_LIST_R16_DRAFT.txt` (`Items 1-11` comment + `round16/results/embeddings/**` Section 6 exclusion).
+
+2. Final Two-Environment Verification Summary:
+- `py_compile` & `pyflakes` (all 7 `round16/src/*.py`): rc=0, 0 errors/warnings
+- `test_unit_r16.py -v` (`/opt/anaconda3/bin/python3 -I`): rc=0, 17 OK + 1 skipped in 14.39s
+- `test_unit_r16.py -v` (`round16/.venv/bin/python`, offline): rc=0, **18/18 OK** in 84.11s (incl. real-weight `SE-600M` CPU `0.0` + `x_state_sha256` match for `20261601` & `20261602`, MPS `<= 1e-6`, `ST-SE`, and `ST-HVG` across `PYTHONHASHSEED=1` vs `99991`)
+- `run_eval_r16.py --synthetic-smoke`: rc=0 in both Python envs (`real_cells_touched=0`, `n_exported_arrays=65`, `n_exported_embeddings=7`)
+- `run_eval_r16.py --cohort group2`: rc=1 (`BlindingGateError` on missing `CODE_FREEZE_R16.txt`)
+- `theory_sim_r16.py`: rc=0 (`property_p1_pass=true`, `illustration_consistent=true`)
+- Rounds 12-15 Freeze Manifests: 136/136 OK (0 bad); `PREREG_I.md` SHA-256 unchanged (`43d242e4...6ee4a8`)
+
+3. Updated Deliverable SHA-256 Checksums:
+- 43d242e460fd64db2e4af1e628e886cf1d94fb4ccd1e95925928a99cb96ee4a8  round16/prereg/PREREG_I.md (64308 B, 284 lines; UNMODIFIED)
+- bdb16818c6e2499d1eb10f8690f3905dd19ce1d7af4c423c9f5afe5455ed3a3b  round16/prereg/PREREG_I_ADDENDUM_A.md (36411 B, 234 lines)
+- 93341f89211585595ebcc19f9a9f31cf67f22c87c003a4d2a17df690204d6728  round16/status/FREEZE_LIST_R16_DRAFT.txt (4528 B, 75 lines)
+- 46fd153faa82a86def94da6c2febb00528119ece298f8433d7306f6123e4bc0b  round16/src/__init__.py (74 B, 1 line)
+- 03ef4b935b4ce83e15905452c7448f0345e6565ca955e81517fad629d28a8fda  round16/src/adjudicate_r16.py (22420 B, 495 lines)
+- 64e8a733179d1773e398b5649416f0fe291020add6e6dadc2029e4bb4f3afff0  round16/src/metrics_r16.py (37038 B, 893 lines)
+- 8b4699a874913caf07eaa73c800f5bba52c4d4d254ed57e4f3121c49a1bd88a5  round16/src/model_adapters_r16.py (50875 B, 1188 lines)
+- cc73f5bc819f0a96606da57b2eebb13a9db029fead4528bc0e9a1a5422771fb5  round16/src/run_eval_r16.py (196399 B, 4370 lines)
+- 915d29457690cbef0e016bd8acbda0c2a5896430fdfdf92392d0ef8c7704cd84  round16/src/test_unit_r16.py (115696 B, 2034 lines)
+- c96590bf369299ddc8022513ef0fc143a9ff14a4012d6f320ee731ccf5ba02f9  round16/src/theory_sim_r16.py (8583 B, 208 lines)
+
+R16_ADDENDUM_A_ITEM11_DONE

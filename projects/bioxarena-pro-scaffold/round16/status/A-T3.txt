@@ -161,3 +161,46 @@ R16_AUDIT_RUNNER_READY
      - `§1.3` (`adata_pred.h5ad` line choice + parity pass threshold), `§2.4.4` (`full r9_6` target-set boundary), `§4.3.1` (`Perm100` unit & `ST-HVG` column match), `§4.3.3` (`CellularAI` optional flag governance), `§4.4.3` (`G4` `(B_M, B_S)` pairing & `(b_1=0, b_2=17)` orientation).
 
 PREREG_I_V5_AT3_AUDIT_DONE
+
+[2026-11-26 00:52 +08:00] Phase 6: Align `round16/audit/` Strictly to `PREREG_I v5` (`c1fc7c6d`) & `PREREG_I_ADDENDUM_A.md` (§1–§10)
+- `round16/src/` Isolation: Strictly preserved (zero reads, zero imports, zero edits). Real biological cell inference = `0`; data download = `0`.
+- Reconciled all `PREREG_I v5` (A1–A7) and `PREREG_I_ADDENDUM_A.md` (§1–§10) clauses across `round16/audit/`:
+  1. `audit_r16_state_adapter.py`:
+     - Defaulted `ST-HVG` normalization to `official_median_log1p` (`scanpy.pp.normalize_total(target_sum=None) -> log1p` over sampled control pool's full transcriptome) and `SE-600M` gene lookup to exact gene-symbol string match (`use_hgnc_rescue=False`).
+     - Added `HGNCBridge` raw-UMI collision resolution (`col_mean_scores`, breaking exact ties by smallest original raw column index per `Addendum A §2.2`), `batch_onehot_map.torch` per-cell `gem_group` / native batch mapping (`per_cell_native`), and both `2,048` + `2,058` uncentered & centered control centroid diagnostics.
+  2. `audit_r16_raw_controls.py`:
+     - `median_ntc_umi` computed strictly over the sampled control pool's full measured transcriptome (`v5 §2.1.4 L83`).
+     - Implemented `GSE295214` (`gse295214_h1`) CellRanger `.h5` ingestion, integer validation, bimodal `fit_poisson_gaussian_thresholds_from_hist`, `max_pct_mt=None`, `Addendum A §2.1` exact 3-stage + `|` guide parser (`parse_gse295214_guide_r16` / `_resolve_single_guide_token`), `R16_GSE295214_QC_COUNTS.md` counts gate, `r9_6 \ {vcc2025_h1}` primary `FCT`, and `Addendum A §1` locked-target/gene `full r9_6` secondary sensitivity.
+     - Aligned all canonical cell barcode exports to `Addendum A §7` (`dld1`: `{gsm}:{bc}`; `cd4t_rest`: `{donor_id}_{lane_tag}:{bc}`; `gse295214_h1`: `{GSM}:{bc}`; `nadig_*`: `obs` index; `a549_ko`: `cell_id`; `feng_ipsc`: `Cell_ID`).
+  3. `audit_r16_sampling.py`, `audit_r16_metrics.py`, `audit_r16_adjudicate.py`, `run_audit_r16.py`:
+     - Added `Addendum A §10` `EXACT_INVARIANCE` (`max_abs_diff <= 1e-12`, counted with `EQUIVALENT` at stratum/line level), `§9` locked `LINE_MATCHED_SPECIFIC_SUB_DELTA` wording (`δ=0.04` + joint resample reporting), `§8` non-overlapping same-line `resample` arm (`seed=20261602`, including `128 <= N_rem < 512` shuffle+truncate rule & all-exceed / none-exceed / mixed narrative rules), `v5 L203` `SINGLE_STRATUM_DESCRIPTIVE_ONLY`, and unmerged `group3_prospective` rollup.
+     - Locked `PREREG_I_V5_CONFIG` (`c1fc7c6d...`, `43d242e4...`, `cellularai_included=False`, `nadig_hepg2` `adata_pred.h5ad` check `median>=0.90 & pooled>=0.95`, Group 1 positional `G4` vs Group 2/3 `(0,17)` + `(17,0)` symmetry check + `{0,1,17,35}` spread, `Perm100` post-prediction `(P, G_eval)` gene-column permutation via `compute_gene_label_perm_null_r16` reporting `p_emp = (1 + #{perm >= obs}) / 101`, `control_barcodes_r16.json`, and 3-party tolerance verifier `verify_cross_party_arrays_and_barcodes`).
+- Re-generated `canonical_synthetic_parity_r16.json` (`9` synthetic scenarios) and verified full `round16/audit/` syntax + 12-test clean-room synthetic suite (`round16/.venv/bin/python -m unittest test_audit_r16.py -v`).
+
+R16_AUDIT_V5_ALIGNED
+
+[2026-11-26 01:19 +08:00] Phase 7: Pre-Freeze Determinism & Reproducibility Hardening (`round16/audit/`)
+- Root-Cause Analysis of Intermittent Concurrent `test_11` Failure (`2/22` in earlier controller loop):
+  1. Earlier draft of `test_11` (prior to `00:54` fix) passed independent pure Gaussian noise to `delta_half_a` and `delta_half_b`, causing `rho_ab_orth` to straddle `0` (~50% negative -> `spearman_brown_ceiling` returned `NaN`), compounded by concurrent runs during active edits; no shared `round16/status/` or `results/` file was written by tests (`test_5`, `test_7`, `test_10`, `test_12` use `tempfile.TemporaryDirectory()`).
+- Determinism & Isolation Fixes Applied:
+  1. `audit_r16_state_adapter.py::encode_with_loaded_se_model`: switched `torch.argsort(shuffled, descending=True)` to `stable=True` so ties follow `torch.Generator(seed)` `randperm` order deterministically. Confirmed zero unordered `set`/`dict` iteration affects sampling, feature selection, or array ordering across `round16/audit/*.py` (`sorted(...)` / list-preserving membership throughout).
+  2. `test_audit_r16.py::test_11`: moved `status_dir` strictly to a per-test `tempfile.TemporaryDirectory()`, strengthened synthetic fixture (`n_perts=24, n_genes=60, n_boot=200`, coherent `half_a`/`half_b` signal -> `rho_ab_orth > 0.5`, `valid_frac >= 0.95`), and asserted finiteness on both Group 1 (`nadig_hepg2`) and Group 2 (`a549_ko`) G4 contrasts.
+  3. `test_audit_r16.py::test_13_cross_process_pythonhashseed_reproducibility`: launches two independent fresh subprocesses (`PYTHONHASHSEED=17` vs `PYTHONHASHSEED=999983`, isolated `TemporaryDirectory` outputs) executing end-to-end sampling, preprocessing, real-weight inference (`ST-HVG-Replogle`, `SE-600M -> ST-SE-Replogle`), and `.npz` export; verifies CPU bitwise equality (`max_abs_diff == 0.0` via `assert_array_equal` on `cpu_se_emb.npz`, `cpu_hvg.npz`, `cpu_se.npz`) and MPS `max_abs_diff <= 1e-6` (`mps_hvg.npz`, `mps_se.npz`), plus exact sampled barcode identity.
+- Verification After Final Code Edit:
+  * `py_compile round16/audit/*.py`: rc=0.
+  * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 243.880s — OK` (0 failures, 0 errors, 0 skipped; zero real cells inferred).
+  * Stress repeat of `test_11` under `PYTHONHASHSEED={0, 42, 777777}`: 3/3 `OK`.
+
+R16_AUDIT_DETERMINISM_OK
+
+[2026-11-26 01:41 +08:00] Phase 8: Addendum A Item 11 Official SE-600M Collator & X_state SHA-256 Alignment
+- Aligned `round16/audit/` strictly to Master Controller Ruling `2026-11-26 01:31` (`Addendum A Item 11`):
+  1. `audit_r16_state_adapter.py::encode_with_loaded_se_model`: removed the custom sentence collator and switched to official `arc-state 0.11.1` `FilteredGenesCounts`, `VCIDatasetSentenceCollator(training=False, precision=torch.float32)`, and `DataLoader(batch_size=16, shuffle=False, num_workers=0)` in sampled cell row order and raw file gene column order (exact gene-symbol mapping onto `protein_embeddings.pt`, `use_hgnc_rescue=False`).
+  2. Per-Pool Seed Discipline: immediately before iterating each pool's `DataLoader`, invokes once in order `random.seed(seed)`, `np.random.seed(seed)`, `torch.manual_seed(seed)`, plus `torch.mps.manual_seed(seed)` when on MPS (`seed=20261601` for primary pools; `seed=20261602` for non-overlapping same-line resample arm).
+  3. `run_audit_r16.py`: exports `se600m_embeddings_r16.npz` (`{pool}__X_state`, `{pool}__barcodes`, `{pool}__sha256` including `__resample`) alongside `se600m_x_state_sha256` in `sampled_control_barcodes_r16.json`, `control_barcodes_r16.json`, and `manifest_r16_audit.json`; updated `verify_cross_party_arrays_and_barcodes` to verify `2,058`-dim `X_state` embeddings within `<= 1e-5` before comparing prediction deltas.
+  4. `test_audit_r16.py`: updated `test_7`, `test_8`, `test_12`, and `test_13` (`PYTHONHASHSEED=17` vs `999983`) to verify identical `X_state` SHA-256 & bitwise CPU identity (both `seed=20261601` and `seed=20261602` resample), MPS `X_state` `<= 1e-5`, and downstream predicted deltas (`0.0` CPU / `<= 1e-6` MPS).
+- Verification After Final Code Edit:
+  * `round16/.venv/bin/python -m py_compile round16/audit/*.py`: rc=0.
+  * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 264.472s — OK` (0 failures, 0 errors, 0 skipped; zero real cells inferred).
+
+R16_AUDIT_SE_OFFICIAL_OK

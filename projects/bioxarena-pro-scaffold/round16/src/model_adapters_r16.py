@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Round 16 Model Adapters, Zero-Leakage Guards, and Triple Hard Execution Gate (`PREREG_I v5`).
+Round 16 Model Adapters, Zero-Leakage Guards, and Triple Hard Execution Gate (`PREREG_I v5 + Addendum A`).
 
-Strict Safety & Licensing Guarantees (`I7`, `I8`, `I9`, `I10`, Gate 2 Verified):
+Strict Safety & Licensing Guarantees (`I7`, `I8`, `I9`, `I10`, Gate 2 Verified, Addendum A Items 1–11):
   1. `assert_zero_training_leakage(...)`: Refuses any combination where `target_line`
-     (or a homologous lineage such as `jurkat` / `nadig_jurkat`) overlaps the checkpoint's
-     training set or the public source summary catalog.
+     (or a homologous lineage such as `jurkat` / `nadig_jurkat` or `vcc2025_h1` / `gse295214_h1`)
+     overlaps the checkpoint's training set or the public source summary catalog.
   2. `assert_all_execution_gates_r16(...)`: Triple hard gate refusing real-cell execution
      unless ALL THREE non-empty files exist in `round16/status/`:
        - `PREREG_I_COMMIT.txt`
@@ -13,31 +13,41 @@ Strict Safety & Licensing Guarantees (`I7`, `I8`, `I9`, `I10`, Gate 2 Verified):
        - `R16_GO.txt`
   3. Gate-2 Verified `ArcStateAdapter` Runtime Hooks:
        - `SE-600M`: loads `model.safetensors` (`715M` params, `0` missing keys) + `protein_embeddings.pt`
-         (`19,790 x 5,120`) via `StateEmbeddingModel` in pure `float32` (`mps`/`cpu`; `bf16`/`fp16`
-         disallowed on MPS due to Metal assertion `MPSNDArrayMatrixMultiplication.mm:5799`).
+         (`19,790 x 5,120`, exact gene-symbol lookup per `PREREG_I §2.1.4`) via `StateEmbeddingModel`
+         in pure `float32` (`mps`/`cpu`; `bf16`/`fp16` disallowed on MPS due to Metal assertion),
+         using official `arc-state 0.11.1` `FilteredGenesCounts` + `VCIDatasetSentenceCollator`
+         (`training=False`, `batch_size=16`, `shuffle=False`, `num_workers=0`) with per-pool RNG
+         seeding immediately before encoding (`20261601` primary, `20261602` resample; Addendum A Item 11).
        - `ST-SE`: `padded=True` `16 x 32` sets -> trained `LatentToGeneDecoder` (`2058 -> 2000`) ->
          clip `[0.0, 14.0]` -> `mean(Y(p)) - mean(Y('non-targeting'))` on identical input controls.
        - `ST-HVG`: `padded=True` `16 x 32` sets -> direct `preds` (`2000`, NEVER untrained `gene_decoder`) ->
          clip `[0.0, 14.0]` -> `mean(Y(p)) - mean(Y('non-targeting'))`.
          Primary input normalization: official `arc-state` `normalize_total(median) -> log1p`
-         (`state/_cli/_tx/_preprocess_train.py:45-55`); secondary sensitivity: `libnorm(1e4) -> log1p`.
+         (`state/_cli/_tx/_preprocess_train.py:45-55`) with `G_model` mapped via `HGNCBridge`
+         (Addendum A Item 4); secondary sensitivity: `libnorm(1e4) -> log1p`.
        - Batch modes: `fixed_index_zero` (locked primary, `batch_idx=0`), `bypass_zero` (`0 in R^128`),
          `mean_batch_emb` (`mean_b W[b]`), `multi_batch_ens8` (`{0,7,14,21,28,35,42,49}`),
-         `fixed_index:<k>`, and `native_gem_group` (for `G4` 2x2 decomposition on Group 1).
+         `fixed_index:<k>`, and `native_gem_group` (for `G4` 2x2 decomposition on Group 1 and
+         `nadig_hepg2` Arc archived `adata_pred.h5ad` check per Addendum A Item 3).
+  4. Addendum A Item 5: `CellularAI_OpenCode_PublicRefit` is explicitly dropped pre-data (`不做`).
+  5. Addendum A Item 8: `sample_disjoint_resample_control_sets_r16` draws a disjoint within-line
+     second control set (`seed = 20261602`) without altering the primary `seed = 20261601` sample.
 """
 
 from __future__ import annotations
 
+import gc
 import hashlib
 import os
 import pickle
+import random
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, FrozenSet, List, Optional, Sequence, Tuple
 
 import numpy as np
 
-from metrics_r16 import DEFAULT_R16_SEED
+from metrics_r16 import DEFAULT_R16_SEED, DEFAULT_RESAMPLE_SEED
 
 ROUND16_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_STATUS_DIR = ROUND16_DIR / "status"
@@ -365,13 +375,13 @@ def sample_stratified_control_sets_r16(
     for k in unique_keys:
         groups[k] = np.array([i for i, lbl in enumerate(labels_str) if lbl == k], dtype=np.int64)
 
-    exact_q = {k: target_n * (len(groups[k]) / float(n_total)) for k in unique_keys}
-    quotas = {k: min(len(groups[k]), int(np.floor(exact_q[k]))) for k in unique_keys}
+    # Exact integer Hamilton / largest-remainder allocation (zero float64 rounding ties)
+    quotas = {k: min(len(groups[k]), (target_n * len(groups[k])) // n_total) for k in unique_keys}
     rem = target_n - sum(quotas.values())
     if rem > 0:
         order = sorted(
             unique_keys,
-            key=lambda k: (-(exact_q[k] - np.floor(exact_q[k])), k),
+            key=lambda k: (-(target_n * len(groups[k]) - quotas[k] * n_total), k),
         )
         while rem > 0:
             progressed = False
@@ -393,6 +403,89 @@ def sample_stratified_control_sets_r16(
     chosen = np.concatenate(parts, axis=0)
     rng.shuffle(chosen)
     return chosen.reshape(-1, cell_set_len)
+
+
+def sample_disjoint_resample_control_sets_r16(
+    n_total: int,
+    primary_sets: np.ndarray,
+    batch_labels: Optional[Sequence[object]] = None,
+    target_n: int = 512,
+    cell_set_len: int = 32,
+    min_ctrl: int = 128,
+    seed: int = DEFAULT_RESAMPLE_SEED,
+) -> Tuple[Optional[np.ndarray], Dict[str, Any]]:
+    """
+    `PREREG_I Addendum A Item 8` deterministic disjoint within-line resample control sampler
+    (`seed = 20261602`), leaving the locked `PREREG_I §2.2` primary sample (`primary_sets`,
+    `seed = 20261601`) completely unchanged:
+      - Excludes `primary_sets` from `0..n_total-1`, preserving ascending original cell order.
+      - If `n_remaining >= target_n` (i.e., `n_total >= 2 * target_n = 1024`): draws a second
+        batch-stratified `target_n` (`512`, `16 x 32`) set via `sample_stratified_control_sets_r16`
+        with `seed = 20261602` (`overlap_with_primary == 0`).
+      - If `min_ctrl <= n_remaining < target_n` (`640 <= n_total < 1024`): uses all disjoint
+        remaining cells without replacement, shuffled with `seed = 20261602`, truncated to
+        `(n_remaining // cell_set_len) * cell_set_len` (`>= 128`, `overlap_with_primary == 0`).
+      - If `n_remaining < min_ctrl` (`< 128` disjoint cells remain): returns `(None, audit)`
+        with `eligible = False`.
+    """
+    if n_total <= 0:
+        raise ValueError(f"n_total must be positive, got {n_total}.")
+    if batch_labels is not None and len(batch_labels) != n_total:
+        raise ValueError(
+            f"batch_labels length ({len(batch_labels)}) must equal n_total ({n_total})."
+        )
+    primary_flat = np.asarray(primary_sets, dtype=np.int64).ravel()
+    if primary_flat.size == 0 or np.any(primary_flat < 0) or np.any(primary_flat >= n_total):
+        raise ValueError(f"primary_sets contains out-of-range indices for n_total={n_total}.")
+    if len(set(primary_flat.tolist())) != int(primary_flat.size):
+        raise ValueError("primary_sets must not contain duplicate cell indices.")
+
+    in_primary = np.zeros(n_total, dtype=bool)
+    in_primary[primary_flat] = True
+    rem_orig_idx = np.flatnonzero(~in_primary).astype(np.int64)
+    n_rem = int(rem_orig_idx.size)
+
+    if n_rem < int(min_ctrl):
+        return None, {
+            "eligible": False,
+            "reason": f"remaining_disjoint_ntc={n_rem} < min_ctrl={int(min_ctrl)}",
+            "n_total": int(n_total),
+            "n_primary": int(primary_flat.size),
+            "n_remaining_disjoint": n_rem,
+            "n_resample": 0,
+            "n_sets": 0,
+            "cell_set_len": int(cell_set_len),
+            "seed": int(seed),
+            "overlap_with_primary": 0,
+        }
+
+    rem_batches = [batch_labels[int(i)] for i in rem_orig_idx] if batch_labels is not None else None
+    local_sets = sample_stratified_control_sets_r16(
+        n_total=n_rem,
+        batch_labels=rem_batches,
+        target_n=target_n,
+        cell_set_len=cell_set_len,
+        min_ctrl=min_ctrl,
+        seed=seed,
+    )
+    resample_sets = rem_orig_idx[local_sets].astype(np.int64)
+    overlap = len(set(primary_flat.tolist()) & set(resample_sets.ravel().tolist()))
+    if overlap != 0:
+        raise RuntimeError(f"Internal error: disjoint resample overlapped primary by {overlap} cells.")
+
+    regime = f"full_{int(target_n)}_disjoint" if n_rem >= int(target_n) else "truncated_disjoint_complement"
+    return resample_sets, {
+        "eligible": True,
+        "regime": regime,
+        "n_total": int(n_total),
+        "n_primary": int(primary_flat.size),
+        "n_remaining_disjoint": n_rem,
+        "n_resample": int(resample_sets.size),
+        "n_sets": int(resample_sets.shape[0]),
+        "cell_set_len": int(resample_sets.shape[1]),
+        "seed": int(seed),
+        "overlap_with_primary": 0,
+    }
 
 
 def preprocess_hvg_counts_r16(
@@ -529,12 +622,38 @@ def encode_controls_se600m_r16(
     device: str = "mps",
     batch_size: int = 16,
     dataset_name: str = "r16_ctrl",
+    seed: int = DEFAULT_R16_SEED,
 ) -> Tuple[np.ndarray, Dict[str, Any]]:
     """
     Encode raw integer UMI control cells into `2,058`-dim `X_state` embeddings using frozen
-    `SE-600M/model.safetensors` + `protein_embeddings.pt` + `config.yaml` in pure `float32`.
-    (Strictly avoids `MPS bfloat16`/`float16`, which abort inside macOS Metal.)
+    `SE-600M/model.safetensors` + `protein_embeddings.pt` + `config.yaml` in pure `float32`
+    (`PREREG_I Addendum A Item 11`):
+      - Official `arc-state 0.11.1` `FilteredGenesCounts` and `VCIDatasetSentenceCollator`
+        (`is_train=False`, `collator.training=False`).
+      - `batch_size=16`, `shuffle=False`, `num_workers=0`, preserving sampled cell order and
+        raw file gene-column order with exact gene-symbol lookup into `protein_embeddings.pt`.
+      - Calls `random.seed(seed)`, `np.random.seed(seed)`, `torch.manual_seed(seed)`, and
+        (on MPS) `torch.mps.manual_seed(seed)` ONCE per pool IMMEDIATELY before `for batch in dl:`
+        (strictly after `StateEmbeddingModel` construction & weight loading so model init never
+        perturbs global torch RNG prior to `loader.py` `torch.randperm`/`torch.randint`).
+      - Strictly avoids `MPS bfloat16`/`float16`, which abort inside macOS Metal.
     """
+    raw_arr = np.asarray(raw_counts, dtype=np.float32)
+    if raw_arr.ndim != 2 or raw_arr.shape[1] != len(raw_gene_names):
+        raise ValueError(
+            f"raw_counts shape {raw_arr.shape} incompatible with len(raw_gene_names)={len(raw_gene_names)}."
+        )
+    if raw_arr.shape[0] <= 0:
+        raise ValueError(f"raw_counts must contain at least 1 cell, got shape {raw_arr.shape}.")
+    if not np.all(np.isfinite(raw_arr)):
+        raise ValueError("raw_counts contains non-finite values (NaN/Inf).")
+    if isinstance(batch_size, bool) or int(batch_size) <= 0:
+        raise ValueError(f"batch_size must be a positive integer, got {batch_size!r}.")
+    if isinstance(seed, bool) or seed is None:
+        raise ValueError(f"seed must be an integer, got {seed!r}.")
+    seed_int = int(seed)
+    batch_size_int = int(batch_size)
+
     os.environ.setdefault("WANDB_MODE", "disabled")
     os.environ.setdefault("HF_HUB_OFFLINE", "1")
     os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
@@ -554,7 +673,14 @@ def encode_controls_se600m_r16(
     cfg = OmegaConf.load(se_path / "config.yaml")
     pe = torch.load(se_path / "protein_embeddings.pt", map_location="cpu", weights_only=False)
     pe_set = set(pe.keys())
-    mapped_raw = sum(1 for g in raw_gene_names if g in pe_set)
+    mapped_raw_rows = sum(1 for g in raw_gene_names if g in pe_set)
+    mapped_unique = len({g for g in raw_gene_names if g in pe_set})
+    min_required_genes = int(getattr(cfg.dataset, "cls_token_idx", 3)) + 1
+    if mapped_unique < min_required_genes:
+        raise ValueError(
+            f"SE-600M requires at least {min_required_genes} unique genes mapped to protein_embeddings.pt; "
+            f"got {mapped_unique} out of {len(raw_gene_names)} raw genes."
+        )
 
     dev_str = device if (device != "mps" or torch.backends.mps.is_available()) else "cpu"
     dev = torch.device(dev_str)
@@ -582,12 +708,14 @@ def encode_controls_se600m_r16(
     se_model.binary_decoder.requires_grad = False
     se_model.to(device=dev, dtype=torch.float32)
     se_model.pe_embedding.to(device=dev, dtype=torch.float32)
+    del all_pe
     se_model.eval()
 
-    X_csr = sp.csr_matrix(np.asarray(raw_counts, dtype=np.float32))
+    X_csr = sp.csr_matrix(raw_arr)
     adata = ad.AnnData(X=X_csr)
-    adata.var_names = list(raw_gene_names)
     adata.var["gene_name"] = list(raw_gene_names)
+    adata.var_names = list(raw_gene_names)
+    adata.var_names_make_unique()
     adata.obs_names = [f"{dataset_name}_{i}" for i in range(X_csr.shape[0])]
 
     ds = FilteredGenesCounts(
@@ -606,7 +734,15 @@ def encode_controls_se600m_r16(
         precision=torch.float32,
     )
     collator.training = False
-    dl = DataLoader(ds, batch_size=int(batch_size), shuffle=False, collate_fn=collator, num_workers=0)
+    dl = DataLoader(ds, batch_size=batch_size_int, shuffle=False, collate_fn=collator, num_workers=0)
+
+    # Addendum A Item 11: seed ONCE per control pool immediately before `for batch in dl:`
+    # (strictly after `StateEmbeddingModel` construction & weight loading).
+    random.seed(seed_int)
+    np.random.seed(seed_int)
+    torch.manual_seed(seed_int)
+    if dev_str == "mps" and hasattr(torch, "mps") and hasattr(torch.mps, "manual_seed"):
+        torch.mps.manual_seed(seed_int)
 
     embs, ds_embs = [], []
     with torch.no_grad():
@@ -626,22 +762,32 @@ def encode_controls_se600m_r16(
 
     embs_np = np.concatenate(embs, axis=0).astype(np.float32)
     ds_np = np.concatenate(ds_embs, axis=0).astype(np.float32)
-    x_state = np.concatenate([embs_np, ds_np], axis=-1)
+    x_state = np.ascontiguousarray(np.concatenate([embs_np, ds_np], axis=-1), dtype=np.float32)
+    x_state_sha256 = hashlib.sha256(x_state.tobytes()).hexdigest()
 
     del se_model
+    gc.collect()
     if dev_str == "mps":
         torch.mps.empty_cache()
 
     audit = {
         "device": dev_str,
         "dtype": "float32",
+        "seed": seed_int,
+        "batch_size": batch_size_int,
+        "shuffle": False,
+        "num_workers": 0,
+        "collator_training": False,
         "n_cells": int(x_state.shape[0]),
+        "embed_dim": int(x_state.shape[1]),
         "n_raw_genes": int(len(raw_gene_names)),
-        "n_mapped_to_pe19790": int(mapped_raw),
+        "n_mapped_to_pe19790": int(mapped_unique),
+        "n_mapped_to_pe19790_raw_rows": int(mapped_raw_rows),
         "pe_total_genes": int(len(pe)),
         "emb2048_norm_mean": float(np.linalg.norm(embs_np, axis=1).mean()),
         "ds10_norm_mean": float(np.linalg.norm(ds_np, axis=1).mean()),
         "all_finite": bool(np.isfinite(x_state).all()),
+        "x_state_sha256": x_state_sha256,
     }
     return x_state, audit
 
@@ -804,6 +950,11 @@ class ArcStateAdapter(BasePerturbModelAdapter):
 
         dev_use = device_str if (device_str != "mps" or torch.backends.mps.is_available()) else "cpu"
         dev = torch.device(dev_use)
+        random.seed(DEFAULT_R16_SEED)
+        np.random.seed(DEFAULT_R16_SEED)
+        torch.manual_seed(DEFAULT_R16_SEED)
+        if dev_use == "mps" and hasattr(torch, "mps") and hasattr(torch.mps, "manual_seed"):
+            torch.mps.manual_seed(DEFAULT_R16_SEED)
         ckpt_file = fold_dir / "checkpoints" / "final.ckpt"
         model = StateTransitionPerturbationModel.load_from_checkpoint(str(ckpt_file), map_location="cpu")
         model.eval().to(dev)
@@ -828,7 +979,15 @@ class ArcStateAdapter(BasePerturbModelAdapter):
         elif batch_mode == "native_gem_group":
             if native_batch_labels is None or len(native_batch_labels) != n_cells:
                 raise ValueError("native_gem_group mode requires native_batch_labels of length n_cells.")
-            idxs = [b_str_to_idx.get(str(lbl), 0) for lbl in native_batch_labels]
+            idxs = []
+            for lbl in native_batch_labels:
+                s_lbl = str(lbl).strip()
+                if s_lbl in b_str_to_idx:
+                    idxs.append(b_str_to_idx[s_lbl])
+                elif s_lbl.endswith(".0") and s_lbl[:-2] in b_str_to_idx:
+                    idxs.append(b_str_to_idx[s_lbl[:-2]])
+                else:
+                    idxs.append(0)
             runs.append(("orig", torch.tensor(idxs, dtype=torch.long, device=dev)))
         else:
             raise ValueError(f"Unsupported batch_mode: {batch_mode!r}")
@@ -885,11 +1044,13 @@ class ArcStateAdapter(BasePerturbModelAdapter):
         gene_canon_map: Optional[Dict[str, str]] = None,
         native_batch_labels: Optional[Sequence[str]] = None,
         return_per_fold: bool = False,
+        se_encode_seed: int = DEFAULT_R16_SEED,
     ) -> Any:
         """
         Execute frozen `STATE_SE` or `STATE_HVG` inference aligned strictly to `(pert_names, gene_names)`.
           - For `STATE_SE`: pass pre-cached `2,058`-dim `X_state` (`ctrl_is_embedded_x_state=True`),
-            or raw integer UMI counts + `ctrl_raw_gene_names` (encoded on the fly via `SE-600M`).
+            or raw integer UMI counts + `ctrl_raw_gene_names` (encoded on the fly via `SE-600M`
+            with per-pool seed `se_encode_seed`, default `20261601` per Addendum A Item 11).
           - For `STATE_HVG`: pass `2,000`-gene pre-normalized `X_hvg` (`ctrl_raw_gene_names=None`),
             or full-transcriptome raw integer UMI counts + `ctrl_raw_gene_names` (preprocessed via
             `self.hvg_norm_mode`, default `official_median_log1p`).
@@ -910,7 +1071,9 @@ class ArcStateAdapter(BasePerturbModelAdapter):
                     raw_gene_names=ctrl_raw_gene_names,
                     se_dir=se_dir,
                     device=self.device,
+                    batch_size=16,
                     dataset_name=control_line_label,
+                    seed=int(se_encode_seed),
                 )
         else:
             if ctrl_raw_gene_names is not None:
@@ -956,7 +1119,7 @@ class ArcStateAdapter(BasePerturbModelAdapter):
             )
             per_fold_out[fold_name] = d2000[:, col_sel_arr]
 
-        ens_mean = np.mean(list(per_fold_out.values()), axis=0)
+        ens_mean = np.mean([per_fold_out[k] for k in sorted(per_fold_out.keys())], axis=0)
         if return_per_fold:
             return ens_mean, per_fold_out
         return ens_mean
@@ -964,9 +1127,10 @@ class ArcStateAdapter(BasePerturbModelAdapter):
 
 class CellularAIOpenCodePublicRefitAdapter(BasePerturbModelAdapter):
     """
-    Optional secondary descriptive adapter (`I7`): re-fitting `Illumina/CellularAI`
-    open-source Apache-2.0 code strictly on public `r9_6` summaries (explicitly NOT
-    Illumina's proprietary Billion Cell Atlas VCC 2026 winning system).
+    DROPPED PRE-DATA (`PREREG_I Addendum A Item 5`):
+    `CellularAI_OpenCode_PublicRefit` will NOT be executed in Round 16 to eliminate
+    optional-analysis degrees of freedom. Retained only as a disabled stub preserving
+    leakage-guard unit coverage.
     """
 
     def __init__(
@@ -976,7 +1140,7 @@ class CellularAIOpenCodePublicRefitAdapter(BasePerturbModelAdapter):
     ):
         spec = ModelAuditSpec(
             model_key="CellularAI_OpenCode_PublicRefit",
-            role="secondary_optional",
+            role="dropped_per_addendum_a",
             license_id="Apache-2.0",
             checkpoint_id=None,
             supports_gene_perm=True,
@@ -995,13 +1159,9 @@ class CellularAIOpenCodePublicRefitAdapter(BasePerturbModelAdapter):
         gene_names: Sequence[str],
         **kwargs: Any,
     ) -> np.ndarray:
-        if self.catalog_json_path is None or not Path(self.catalog_json_path).exists():
-            raise FileNotFoundError(
-                f"Public summary catalog not present ({self.catalog_json_path})."
-            )
         raise NotImplementedError(
-            "CellularAIOpenCodePublicRefitAdapter runtime hook activates only if approved "
-            "as optional secondary analysis after Gate 4 freeze."
+            "CellularAI_OpenCode_PublicRefit was explicitly dropped pre-data per "
+            "PREREG_I_ADDENDUM_A.md Item 5 and will NOT be executed in Round 16."
         )
 
 

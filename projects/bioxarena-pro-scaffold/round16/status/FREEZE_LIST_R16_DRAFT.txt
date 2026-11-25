@@ -1,0 +1,75 @@
+# Round 16 Freeze List Draft (`FREEZE_LIST_R16_DRAFT.txt`)
+# Author: Main Line (`Antigravity`), 2026-11-26 (+08:00)
+# Purpose: Complete file list submitted to Master Controller (`Claude`) to generate the formal
+#          SHA-256 `FREEZE_MANIFEST_R16.txt` and `CODE_FREEZE_R16.txt` strictly BEFORE `R16_GO.txt`
+#          and BEFORE any real-cell inference, Arc `adata_pred.h5ad` download, or `GSE295214` download.
+# Note: SHA-256 digests are NOT populated in this draft (Master Controller computes and locks
+#       authoritative SHA-256 digests from git HEAD after final review and Addendum A lock).
+
+# ==============================================================================
+# Section 1: Preregistration & Pre-Data Addendum (Main Line Owned)
+# ==============================================================================
+# Already locked on origin/main at commit c1fc7c6d24dd128bc5e2d969d8c78224a2cbc118
+# (SHA-256: 43d242e460fd64db2e4af1e628e886cf1d94fb4ccd1e95925928a99cb96ee4a8; unmodified):
+round16/prereg/PREREG_I.md
+# Pre-data Addendum A (Items 1-11 + 2026-11-26 01:01 & 01:31-01:32 determinism/SE-600M directives; lock prior to CODE_FREEZE_R16.txt):
+round16/prereg/PREREG_I_ADDENDUM_A.md
+
+# ==============================================================================
+# Section 2: Main Line Round 16 Source Code (`round16/src/`)
+# ==============================================================================
+round16/src/__init__.py
+round16/src/adjudicate_r16.py
+round16/src/metrics_r16.py
+round16/src/model_adapters_r16.py
+round16/src/run_eval_r16.py
+round16/src/test_unit_r16.py
+round16/src/theory_sim_r16.py
+
+# ==============================================================================
+# Section 3: Independent Audit & Controller Verification Code (Other Owners — Controller to Populate)
+# ==============================================================================
+# Owned by A-T3 (unread by Main Line; Controller to enumerate exact frozen filenames):
+#   round16/audit/*.py
+# Owned by Master Controller:
+#   controller/checks/r16_check.py
+#   (and any additional controller/checks/r16_*.py scripts frozen for three-party verification)
+
+# ==============================================================================
+# Section 4: Round 16 Governance, Approval, Schema, & Weight Checksum Records
+# ==============================================================================
+round16/shared/R16_MODEL_CHECKSUMS.sha256
+round16/status/PREREG_I_COMMIT.txt
+round16/status/PREREG_I_LOCK_CHECK.txt
+round16/status/R16_HUMAN_APPROVAL.txt
+round16/status/R16_GATE2_SCHEMA.md
+round16/status/PREREG_I_V5_AUDIT_AT3.md
+round16/status/FREEZE_LIST_R16_DRAFT.txt
+
+# ==============================================================================
+# Section 5: Upstream Frozen Reference Code & Gene Catalog Imported Read-Only (Rounds 9-12)
+# (Already frozen in prior manifests; listed here for complete Round 16 execution provenance)
+# ==============================================================================
+round9/p2/shared/COMMON_GENES.txt
+round10/src/data_loader_r10.py
+round10/src/fct_pipeline.py
+round10/src/metrics_r10.py
+round10/shared/scripts/prepare_r10_lines.py
+round11/src/metrics_r11.py
+round12/src/metrics_r12.py
+
+# ==============================================================================
+# Section 6: Explicit Exclusions From Code Freeze Manifest
+# ==============================================================================
+# - Binary model weights (`round16/shared/models/**`, 77 files): already hashed in
+#   `round16/shared/R16_MODEL_CHECKSUMS.sha256` (77/77 OK); excluded from git.
+# - Isolated Python 3.11 virtual environment (`round16/.venv/**`): excluded from git;
+#   package versions (`arc-state 0.11.1`, `torch`, etc.) recorded in `R16_GATE2_SCHEMA.md`.
+# - Execution outputs (`round16/results/**`, including `control_barcodes_r16.json`,
+#   `summary_r16.json`, `arc_adapter_check_nadig_hepg2.json`, `round16/results/embeddings/**`
+#   [`x_state_*.npz`, `embeddings_manifest_sha256.json`], and `arrays/<line>/*.npz`):
+#   generated strictly post-`R16_GO.txt` and tracked via `embeddings_manifest_sha256.json`
+#   (Addendum A Item 11) and per-line `array_manifest_sha256.json`.
+# - Post-`R16_GO` Arc archived `nadig_hepg2` `adata_pred.h5ad` (Item 3) and optional post-approval
+#   Group 3 `GSE295214` raw/standardized data (`FREEZE_MANIFEST_R16_DATA.txt` per `PREREG_I §2.4`).
+# - Dropped model: `CellularAI_OpenCode_PublicRefit` will NOT be executed (Addendum A Item 5).

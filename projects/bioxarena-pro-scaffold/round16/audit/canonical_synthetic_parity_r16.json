@@ -21,6 +21,7 @@
   "degenerate_group2_check": {
     "group1_replogle4_loo": {
       "K": 0,
+      "adjudication_status": "RETROSPECTIVE_ADJUDICATED",
       "h_i1_counts": {},
       "h_i1_verdicts": {},
       "h_i2_verdicts": {},
@@ -29,7 +30,7 @@
     },
     "group2_crispri": {
       "K": 0,
-      "adjudication_status": "DOWNGRADED_SINGLE_STRATUM_DESCRIPTIVE_ONLY",
+      "adjudication_status": "SINGLE_STRATUM_DESCRIPTIVE_ONLY",
       "h_i1_counts": {},
       "h_i1_verdicts": {},
       "h_i2_verdicts": {},
@@ -37,7 +38,7 @@
     },
     "group2_crisprko": {
       "K": 1,
-      "adjudication_status": "DOWNGRADED_SINGLE_STRATUM_DESCRIPTIVE_ONLY",
+      "adjudication_status": "SINGLE_STRATUM_DESCRIPTIVE_ONLY",
       "h_i1_counts": {
         "MISSING_STRATUM": 1
       },
@@ -52,7 +53,20 @@
       ]
     },
     "group2_downgraded_single_stratum": true,
-    "group2_qualifying_count": 1
+    "group2_qualifying_count": 1,
+    "group3_prospective": {
+      "K": 0,
+      "adjudication_status": "NOT_EVALUATED_OR_OMITTED",
+      "h_i1_counts": {},
+      "h_i1_verdicts": {},
+      "h_i2_verdicts": {},
+      "lines": [],
+      "mandatory_disclosures": [
+        "shared H1 hESC lineage with Round 9 vcc2025_h1",
+        "shared Replogle/Weissman laboratory provenance with Replogle-4"
+      ],
+      "merged_with_group1_or_group2": false
+    }
   },
   "n_boot": 400,
   "scenarios": {
@@ -60,6 +74,7 @@
       "h_i1_all_within_delta": false,
       "h_i1_counts": {
         "EQUIVALENT": 2,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 3,
         "MATCHED_BETTER": 0,
         "MISMATCHED_BETTER": 0
@@ -151,6 +166,7 @@
       "h_i1_all_within_delta": true,
       "h_i1_counts": {
         "EQUIVALENT": 5,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 0,
         "MISMATCHED_BETTER": 0
@@ -242,6 +258,7 @@
       "h_i1_all_within_delta": false,
       "h_i1_counts": {
         "EQUIVALENT": 0,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 0,
         "MISMATCHED_BETTER": 5
@@ -333,6 +350,7 @@
       "h_i1_all_within_delta": false,
       "h_i1_counts": {
         "EQUIVALENT": 3,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 2,
         "MISMATCHED_BETTER": 0
@@ -424,6 +442,7 @@
       "h_i1_all_within_delta": true,
       "h_i1_counts": {
         "EQUIVALENT": 5,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 0,
         "MISMATCHED_BETTER": 0
@@ -515,6 +534,7 @@
       "h_i1_all_within_delta": true,
       "h_i1_counts": {
         "EQUIVALENT": 5,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 0,
         "MISMATCHED_BETTER": 0
@@ -606,6 +626,7 @@
       "h_i1_all_within_delta": false,
       "h_i1_counts": {
         "EQUIVALENT": 0,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 5,
         "MISMATCHED_BETTER": 0
@@ -697,6 +718,7 @@
       "h_i1_all_within_delta": true,
       "h_i1_counts": {
         "EQUIVALENT": 5,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 0,
         "MISMATCHED_BETTER": 0
@@ -788,6 +810,7 @@
       "h_i1_all_within_delta": true,
       "h_i1_counts": {
         "EQUIVALENT": 0,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MATCHED_BETTER": 5,
         "MISMATCHED_BETTER": 0

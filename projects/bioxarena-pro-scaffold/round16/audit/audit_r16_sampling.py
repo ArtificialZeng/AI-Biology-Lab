@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Clean-Room Round 16 Control-Cell Sampling & Stratified Mismatched Pool Builder
-(`A-T3`, strictly following `PREREG_I.md v4 §2.2–§2.3`, `seed = 20261601`).
+(`A-T3`, strictly following `PREREG_I.md v5 §2.2–§2.4` & Addendum A, `seed = 20261601`).
 
 Never reads or imports `round16/src/`.
 """
@@ -28,6 +28,7 @@ GROUP2_PRIMARY_LINES: Tuple[str, ...] = ("a549_ko", "dld1", "cd4t_rest")
 GROUP2_UNSEEN_RETAINED_SOURCES: Tuple[str, ...] = ("feng_ipsc",)
 GROUP2_CRISPRKO_LINES: Tuple[str, ...] = ("a549_ko",)
 GROUP2_CRISPRI_LINES: Tuple[str, ...] = ("dld1", "cd4t_rest")
+GROUP3_PROSPECTIVE_LINES: Tuple[str, ...] = ("gse295214_h1",)
 EXCLUDED_NO_LOCAL_RAW_LINES: Tuple[str, ...] = ("nourreddine_kolf21j",)
 OPTIONAL_EXTENSION_LINES: Tuple[str, ...] = (
     "replogle_k562_essential",
@@ -42,6 +43,7 @@ LOCAL_RAW_CONTROL_SOURCES: Tuple[str, ...] = (
     "cd4t_rest",
     "feng_ipsc",
 )
+PROSPECTIVE_RAW_CONTROL_SOURCES: Tuple[str, ...] = ("gse295214_h1",)
 
 
 def libnorm_log1p(counts: np.ndarray, target_sum: float = 1e4) -> np.ndarray:
@@ -101,9 +103,10 @@ def sample_stratified_control_sets_r16(
     cell_set_len: int = CELL_SET_LEN_DEFAULT,
     min_ctrl_floor: int = MIN_CTRL_FLOOR_DEFAULT,
     seed: int = DEFAULT_R16_SEED,
+    cell_barcodes: Optional[Sequence[Any]] = None,
 ) -> Dict[str, Any]:
     """
-    Deterministically sample control-cell sets per `PREREG_I.md v4 §2.2`:
+    Deterministically sample control-cell sets per `PREREG_I.md v5 §2.2`:
       1. Filter to QC-passing NTC indices.
       2. If `N_NTC < 128`, return `excluded=True` (zero sets).
       3. If `128 <= N_NTC < 512`, take all QC-valid NTCs without replacement, shuffle once under
@@ -111,6 +114,7 @@ def sample_stratified_control_sets_r16(
       4. If `N_NTC >= 512`, draw `512` NTCs without replacement, proportionally stratified by batch
          via exact largest-remainder with lexicographic tie-breaking (or unstratified if no batch),
          shuffle once under the same RNG, and partition into `16` disjoint sets of `32`.
+      5. When `cell_barcodes` is supplied, also record exact `selected_barcodes` in partition order.
     """
     if qc_mask is not None:
         mask_arr = np.asarray(qc_mask, dtype=bool)
@@ -125,6 +129,10 @@ def sample_stratified_control_sets_r16(
         valid_idx = np.arange(int(n_cells), dtype=np.int64)
 
     n_valid = int(valid_idx.size)
+    if cell_barcodes is not None:
+        expected_bc_len = int(mask_arr.size) if qc_mask is not None else int(n_cells or 0)
+        if len(cell_barcodes) != expected_bc_len:
+            raise ValueError(f"len(cell_barcodes)={len(cell_barcodes)} != total cells {expected_bc_len}")
     if batch_labels is not None:
         bl_arr = np.asarray([str(x) for x in batch_labels], dtype=object)
         expected_len = int(mask_arr.size) if qc_mask is not None else int(n_cells or 0)
@@ -157,6 +165,7 @@ def sample_stratified_control_sets_r16(
             "n_sets": 0,
             "sampling_fraction": 0.0,
             "selected_indices": np.zeros(0, dtype=np.int64),
+            "selected_barcodes": [] if cell_barcodes is not None else None,
             "sets": np.zeros((0, int(cell_set_len)), dtype=np.int64),
             "batch_counts_total": total_batch_counts,
             "batch_counts_sampled": {k: 0 for k in total_batch_counts},
@@ -202,6 +211,7 @@ def sample_stratified_control_sets_r16(
 
     n_sets = int(selected.size) // int(cell_set_len)
     sets = selected.reshape(n_sets, int(cell_set_len))
+    sel_bcs = [str(cell_barcodes[int(i)]) for i in selected] if cell_barcodes is not None else None
     return {
         "seed": int(seed),
         "n_ntc_valid": n_valid,
@@ -215,10 +225,116 @@ def sample_stratified_control_sets_r16(
         "n_sets": n_sets,
         "sampling_fraction": float(selected.size) / float(n_valid),
         "selected_indices": selected,
+        "selected_barcodes": sel_bcs,
         "sets": sets,
         "batch_counts_total": total_batch_counts,
         "batch_counts_sampled": sampled_batch_counts,
     }
+
+
+RESAMPLE_R16_SEED = 20261602
+
+
+def sample_nonoverlapping_resample_sets_r16(
+    primary_sampling_audit: Dict[str, Any],
+    n_cells: Optional[int] = None,
+    qc_mask: Optional[Sequence[bool]] = None,
+    batch_labels: Optional[Sequence[Any]] = None,
+    n_ctrl: int = N_CTRL_DEFAULT,
+    cell_set_len: int = CELL_SET_LEN_DEFAULT,
+    min_ctrl_floor: int = MIN_CTRL_FLOOR_DEFAULT,
+    resample_seed: int = RESAMPLE_R16_SEED,
+    cell_barcodes: Optional[Sequence[Any]] = None,
+) -> Dict[str, Any]:
+    """
+    Draw a strictly non-overlapping second control sample for the target line (`Addendum A Item 8`):
+      - Leaves the locked primary `seed=20261601` sample untouched so `H-I1`/`H-I2` are invariant.
+      - Masks out `primary_sampling_audit['selected_indices']` from QC-valid NTCs and applies
+        `§2.2` with `seed = 20261602` on the remaining pool (`512` stratified cells when total
+        QC NTCs `>= 1024`; truncated to `(N_rem // 32) * 32` when `128 <= N_rem < 512`;
+        excluded when `N_rem < 128`).
+    """
+    if primary_sampling_audit.get("excluded", False):
+        return {
+            "seed": int(resample_seed),
+            "excluded": True,
+            "exclusion_reason": "Primary sampling excluded; cannot draw resample arm.",
+            "n_sampled": 0,
+            "n_sets": 0,
+            "selected_indices": np.zeros(0, dtype=np.int64),
+            "selected_barcodes": [] if cell_barcodes is not None else None,
+            "n_overlap_with_primary": 0,
+        }
+
+    total_n = int(n_cells) if n_cells is not None else (len(qc_mask) if qc_mask is not None else len(cell_barcodes or ()))
+    if qc_mask is not None:
+        rem_mask = np.asarray(qc_mask, dtype=bool).copy()
+        if rem_mask.size != total_n:
+            raise ValueError(f"qc_mask len {rem_mask.size} != total_n {total_n}")
+    else:
+        rem_mask = np.ones(total_n, dtype=bool)
+
+    pri_idx = np.asarray(primary_sampling_audit.get("selected_indices", []), dtype=np.int64)
+    if pri_idx.size > 0:
+        rem_mask[pri_idx] = False
+
+    rem_mask_sum = int(np.sum(rem_mask))
+    if min_ctrl_floor <= rem_mask_sum < int(n_ctrl):
+        # Addendum A §8.1 (`640 <= N_NTC < 1,024` / `128 <= N_rem < 512`):
+        # use all disjoint remaining NTC cells shuffled once with `seed = 20261602`,
+        # truncated to `(N_rem // cell_set_len) * cell_set_len`.
+        rem_idx = np.flatnonzero(rem_mask).astype(np.int64)
+        n_keep = (int(rem_idx.size) // int(cell_set_len)) * int(cell_set_len)
+        rng = np.random.default_rng(int(resample_seed))
+        selected = rem_idx[rng.permutation(rem_idx.size)][:n_keep].astype(np.int64)
+        n_sets = int(n_keep) // int(cell_set_len)
+        total_batch_counts: Dict[str, int] = {}
+        sampled_batch_counts: Dict[str, int] = {}
+        if batch_labels is not None:
+            for gi in rem_idx.tolist():
+                b = str(batch_labels[gi])
+                total_batch_counts[b] = total_batch_counts.get(b, 0) + 1
+            for gi in selected.tolist():
+                b = str(batch_labels[gi])
+                sampled_batch_counts[b] = sampled_batch_counts.get(b, 0) + 1
+        else:
+            total_batch_counts = {"__ALL__": int(rem_idx.size)}
+            sampled_batch_counts = {"__ALL__": int(n_keep)}
+        sel_bcs = [str(cell_barcodes[int(i)]) for i in selected] if cell_barcodes is not None else None
+        res = {
+            "seed": int(resample_seed),
+            "n_ntc_valid": int(rem_idx.size),
+            "n_ctrl_requested": int(n_ctrl),
+            "cell_set_len": int(cell_set_len),
+            "min_ctrl_floor": int(min_ctrl_floor),
+            "excluded": False,
+            "exclusion_reason": None,
+            "sampling_mode": "small_ntc_truncated",
+            "n_sampled": int(selected.size),
+            "n_sets": int(n_sets),
+            "sampling_fraction": float(selected.size) / float(max(rem_idx.size, 1)),
+            "selected_indices": selected,
+            "selected_barcodes": sel_bcs,
+            "sets": selected.reshape(n_sets, int(cell_set_len)),
+            "batch_counts_total": dict(sorted(total_batch_counts.items())),
+            "batch_counts_sampled": dict(sorted(sampled_batch_counts.items())),
+        }
+    else:
+        res = sample_stratified_control_sets_r16(
+            n_cells=total_n,
+            qc_mask=rem_mask,
+            batch_labels=batch_labels,
+            n_ctrl=n_ctrl,
+            cell_set_len=cell_set_len,
+            min_ctrl_floor=min_ctrl_floor,
+            seed=resample_seed,
+            cell_barcodes=cell_barcodes,
+        )
+    overlap = len(set(pri_idx.tolist()) & set(res["selected_indices"].tolist()))
+    res["n_overlap_with_primary"] = int(overlap)
+    if res["excluded"]:
+        res["exclusion_reason"] = f"Remaining non-overlapping NTC={res['n_ntc_valid']} < floor {min_ctrl_floor}"
+    return res
 
 
 def _ckpt_seen_training_lines(checkpoint_id: str) -> Tuple[str, ...]:
@@ -246,11 +362,12 @@ def build_mismatched_strata_r16(
 ) -> Dict[str, Tuple[str, ...]]:
     """
     Build disjoint (`seen_by_checkpoint`, `unseen_by_checkpoint`) mismatched control pools
-    strictly following `PREREG_I.md v4 §2.3` (`I14`, `Q4`):
+    strictly following `PREREG_I.md v5 §2.3–§2.4` (`I14`, `Q4`):
       - Rejects `nourreddine_kolf21j` and non-local lines unless explicitly permitted via
         `allow_optional_extensions`.
+      - Supports Group 1, Group 2 (`3` primary + retained `feng_ipsc`), and Group 3
+        (`gse295214_h1` -> `seen={nadig_hepg2, nadig_jurkat}`, `unseen={a549_ko, cd4t_rest, dld1, feng_ipsc}`).
       - Target line itself is always excluded from mismatched sources.
-      - Includes retained unseen source `feng_ipsc` (`Q4`) in `unseen_by_checkpoint`.
     """
     ext_set = set(allow_optional_extensions)
     allowed_local = set(LOCAL_RAW_CONTROL_SOURCES) | ext_set

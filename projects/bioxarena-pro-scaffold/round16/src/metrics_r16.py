@@ -1,21 +1,28 @@
 #!/usr/bin/env python3
 """
-Round 16 Metrics Engine (`PREREG_I v2`).
+Round 16 Metrics Engine (`PREREG_I v5 + Addendum A`).
 
 Strictly imports frozen mathematical primitives from `round10/src/` and `round11/src/`
 without modifying any file in Rounds 9–15:
   1. Primary endpoint: `r_orth_cal` on `all_nontarget` (bit-compatible with frozen
      `round10/src/metrics_r10.py::_orth_pair` and `round12/src/metrics_r12.py`), with
-     2-claim Bonferroni (`alpha_claim = 0.025`, two-sided `97.5%` CI `[1.25%, 98.75%]`)
-     and TOST equivalence (`delta = 0.04`, two-sided `95.0%` CI `[2.5%, 97.5%]`).
+     2-claim Bonferroni (`alpha_claim = 0.025`, two-sided `97.5%` CI `[1.25%, 98.75%]`),
+     TOST equivalence (`delta = 0.04`, two-sided `95.0%` CI `[2.5%, 97.5%]`), and
+     Addendum A Item 10 exact-invariance flag (`max_abs_diff <= 1e-12`).
   2. Secondary endpoint (`§4.1`, Systema-inspired shared-axis removal): `r_dorth_cal`,
      projecting residuals orthogonal to `span(1, delta_transfer_p, source_grand_mean)`
      via deterministic float64 two-pass modified Gram-Schmidt with rank guard (`1e-10`)
      and zero-energy guard (`1e-12`). By construction, all target-agnostic affine
      predictors in `span(1, delta_transfer_p, source_grand_mean)` evaluate to 0.0.
-  3. Secondary diagnostic (`§4.2`, Mechanism Hypothesis M2): perturbation-level
-     saturation-weight excess shift `compute_winner_curse_weight_shift_r16` and
-     joint cross-mask shift `compute_joint_cross_mask_r16`.
+  3. Secondary diagnostics:
+       - `§4.2` Mechanism Hypothesis M2: perturbation-level saturation-weight excess shift
+         `compute_winner_curse_weight_shift_r16` and joint cross-mask shift
+         `compute_joint_cross_mask_r16`.
+       - Addendum A Item 4 (`ST-HVG` `Perm100`): `compute_gene_label_perm_null_r16`
+         (`k = 0..99`, `np.random.default_rng(k).permutation(G)` on `G_eval`).
+       - Addendum A Item 8 (within-line disjoint resample reference):
+         `compute_paired_with_within_line_resample_r16` computing `delta_pair(resample)`
+         and paired `delta_pair(s') - delta_pair(resample)` on identical bootstrap draws.
 """
 
 from __future__ import annotations
@@ -48,9 +55,27 @@ from metrics_r11 import (  # noqa: E402
 )
 
 DEFAULT_R16_SEED = 20261601
+DEFAULT_RESAMPLE_SEED = 20261602
 DEFAULT_TOST_DELTA = 0.04
+EXACT_INVARIANCE_TOL = 1e-12
 RANK_TOL = 1e-10
 ZERO_ENERGY_TOL = 1e-12
+
+
+def _array_max_abs_diff_and_exact_inv(
+    a: np.ndarray,
+    b: np.ndarray,
+    tol: float = EXACT_INVARIANCE_TOL,
+) -> Tuple[float, bool]:
+    """Compute max absolute difference between two predicted delta matrices and Addendum A Item 10 exact-invariance flag."""
+    arr_a = np.asarray(a, dtype=np.float64)
+    arr_b = np.asarray(b, dtype=np.float64)
+    if arr_a.shape != arr_b.shape or arr_a.size == 0:
+        return float("nan"), False
+    if not (np.all(np.isfinite(arr_a)) and np.all(np.isfinite(arr_b))):
+        return float("nan"), False
+    mad = float(np.max(np.abs(arr_a - arr_b)))
+    return mad, bool(np.isfinite(mad) and mad <= float(tol))
 
 
 def summarize_boot_r16(
@@ -398,12 +423,15 @@ def compute_paired_contrast_r16(
         pm_b, hm, draws, single_half=False, zero_null_to_zero=(b_s is not None)
     )
 
+    mad, exact_inv = _array_max_abs_diff_and_exact_inv(pa, pb)
     diff_sum = summarize_boot_r16(float(pt_a - pt_b), b_a - b_b, m, n_boot)
     diff_sum["a_summary"] = summarize_boot_r16(pt_a, b_a, m, n_boot)
     diff_sum["b_summary"] = summarize_boot_r16(pt_b, b_b, m, n_boot)
     diff_sum["rho_ab_orth"] = pt_rho
     diff_sum["ceiling"] = pt_ceil
     diff_sum["double_orth"] = b_s is not None
+    diff_sum["max_abs_diff"] = mad
+    diff_sum["exact_invariance"] = exact_inv
     return diff_sum
 
 
@@ -457,8 +485,11 @@ def compute_paired_model_vs_all_mismatched_r16(
         pt_s, b_s_boot, _, _, _ = _eval_boot_cal(
             moms[j], hm, draws, single_half=False, zero_null_to_zero=(b_s is not None)
         )
+        mad, exact_inv = _array_max_abs_diff_and_exact_inv(pm_mat, mismatched_preds[sk])
         d_sum = summarize_boot_r16(float(pt_m - pt_s), b_m - b_s_boot, m, n_boot)
         d_sum["mismatched_estimate"] = pt_s
+        d_sum["max_abs_diff"] = mad
+        d_sum["exact_invariance"] = exact_inv
         per_source[sk] = d_sum
 
     return {
@@ -468,6 +499,240 @@ def compute_paired_model_vs_all_mismatched_r16(
         "ceiling": pt_ceil,
         "double_orth": b_s is not None,
         "per_source": per_source,
+    }
+
+
+def compute_paired_with_within_line_resample_r16(
+    delta_obs: np.ndarray,
+    delta_pred_matched: np.ndarray,
+    delta_pred_resample: np.ndarray,
+    mismatched_preds: Dict[str, np.ndarray],
+    delta_transfer: np.ndarray,
+    target_gene_idx: Sequence[int],
+    source_grand_mean: Optional[np.ndarray] = None,
+    delta_half_a: Optional[np.ndarray] = None,
+    delta_half_b: Optional[np.ndarray] = None,
+    half_valid: Optional[np.ndarray] = None,
+    gene_keep_mask: Optional[np.ndarray] = None,
+    n_boot: int = 4000,
+    seed: int = DEFAULT_R16_SEED,
+) -> Dict[str, Any]:
+    """
+    `PREREG_I Addendum A Item 8` (secondary descriptive within-line resample reference):
+    Using the exact same joint perturbation bootstrap draws (`seed`, `n_boot`) and noise ceiling
+    as primary `H-I1`, compute:
+      - `delta_pair_resample = r(matched) - r(resample)` with `97.5%` and `95.0%` CIs;
+      - For every mismatched source `s'`:
+          `delta_pair_mis = r(matched) - r(mis[s'])` and
+          `delta_pair_excess_over_resample = delta_pair(s') - delta_pair(resample)`
+        computed on the exact same bootstrap draws.
+    """
+    d_obs = np.asarray(delta_obs, dtype=np.float64)
+    pm_mat = np.asarray(delta_pred_matched, dtype=np.float64)
+    pr_mat = np.asarray(delta_pred_resample, dtype=np.float64)
+    tm = np.asarray(delta_transfer, dtype=np.float64)
+    b_s = np.asarray(source_grand_mean, dtype=np.float64) if source_grand_mean is not None else None
+    src_keys = sorted(mismatched_preds.keys())
+
+    rows, idx_list = _extract_masked_idx_per_pert(
+        d_obs, target_gene_idx, gene_keep_mask=gene_keep_mask, mode="all_nontarget", top_k=50
+    )
+    m = len(rows)
+    if m == 0:
+        empty = summarize_boot_r16(float("nan"), np.array([float("nan")]), 0, n_boot)
+        return {
+            "n_rows": 0,
+            "matched_summary": empty,
+            "resample_summary": empty,
+            "delta_pair_resample": empty,
+            "rho_ab_orth": float("nan"),
+            "ceiling": float("nan"),
+            "double_orth": b_s is not None,
+            "per_source": {},
+        }
+
+    r_obs = d_obs - tm
+    pred_res_list = [
+        pm_mat - tm,
+        pr_mat - tm,
+    ] + [np.asarray(mismatched_preds[k], dtype=np.float64) - tm for k in src_keys]
+    ha_res = (np.asarray(delta_half_a, dtype=np.float64) - tm) if delta_half_a is not None else None
+    hb_res = (np.asarray(delta_half_b, dtype=np.float64) - tm) if delta_half_b is not None else None
+
+    moms, hm = _collect_mode_moments(
+        r_obs, pred_res_list, tm, rows, idx_list, b_s, ha_res, hb_res, half_valid
+    )
+    draws = np.random.default_rng(seed).integers(0, m, size=(n_boot, m))
+    pt_m, b_m, _, pt_rho, pt_ceil = _eval_boot_cal(
+        moms[0], hm, draws, single_half=False, zero_null_to_zero=(b_s is not None)
+    )
+    pt_r, b_r, _, _, _ = _eval_boot_cal(
+        moms[1], hm, draws, single_half=False, zero_null_to_zero=(b_s is not None)
+    )
+
+    mad_r, exact_inv_r = _array_max_abs_diff_and_exact_inv(pm_mat, pr_mat)
+    pt_dp_resamp = float(pt_m - pt_r)
+    b_dp_resamp = b_m - b_r
+    dp_resamp_sum = summarize_boot_r16(pt_dp_resamp, b_dp_resamp, m, n_boot)
+    dp_resamp_sum["resample_estimate"] = float(pt_r)
+    dp_resamp_sum["max_abs_diff"] = mad_r
+    dp_resamp_sum["exact_invariance"] = exact_inv_r
+
+    per_source: Dict[str, Dict[str, Any]] = {}
+    for j, sk in enumerate(src_keys, start=2):
+        pt_s, b_s_boot, _, _, _ = _eval_boot_cal(
+            moms[j], hm, draws, single_half=False, zero_null_to_zero=(b_s is not None)
+        )
+        mad_s, exact_inv_s = _array_max_abs_diff_and_exact_inv(pm_mat, mismatched_preds[sk])
+        pt_dp_mis = float(pt_m - pt_s)
+        b_dp_mis = b_m - b_s_boot
+        dp_mis_sum = summarize_boot_r16(pt_dp_mis, b_dp_mis, m, n_boot)
+        dp_mis_sum["mismatched_estimate"] = float(pt_s)
+        dp_mis_sum["max_abs_diff"] = mad_s
+        dp_mis_sum["exact_invariance"] = exact_inv_s
+
+        pt_excess = float(pt_dp_mis - pt_dp_resamp)
+        b_excess = b_dp_mis - b_dp_resamp
+        excess_sum = summarize_boot_r16(pt_excess, b_excess, m, n_boot)
+        per_source[sk] = {
+            "delta_pair_mis": dp_mis_sum,
+            "delta_pair_excess_over_resample": excess_sum,
+        }
+
+    return {
+        "n_rows": m,
+        "matched_summary": summarize_boot_r16(pt_m, b_m, m, n_boot),
+        "resample_summary": summarize_boot_r16(pt_r, b_r, m, n_boot),
+        "delta_pair_resample": dp_resamp_sum,
+        "rho_ab_orth": pt_rho,
+        "ceiling": pt_ceil,
+        "double_orth": b_s is not None,
+        "per_source": per_source,
+    }
+
+
+def compute_gene_label_perm_null_r16(
+    delta_obs: np.ndarray,
+    delta_pred: np.ndarray,
+    delta_transfer: np.ndarray,
+    target_gene_idx: Sequence[int],
+    source_grand_mean: Optional[np.ndarray] = None,
+    delta_half_a: Optional[np.ndarray] = None,
+    delta_half_b: Optional[np.ndarray] = None,
+    half_valid: Optional[np.ndarray] = None,
+    gene_keep_mask: Optional[np.ndarray] = None,
+    mode: str = "all_nontarget",
+    top_k: int = 50,
+    n_perm: int = 100,
+    perm_seed_offset: int = 0,
+) -> Dict[str, Any]:
+    """
+    `PREREG_I Addendum A Item 4` (`ST-HVG` `Perm100` null, following frozen `PREREG_E §4.1`):
+    Permutes the gene columns of `delta_pred` within `G_eval` (`G = delta_pred.shape[1]`)
+    using `np.random.default_rng(perm_seed_offset + k).permutation(G)` for `k = 0..n_perm-1`
+    (default `perm_seed_offset = 0`, i.e., `seed = k` verbatim per `PREREG_E §4.1`), holding
+    `delta_obs`, `delta_transfer`, `target_gene_idx`, and split halves fixed.
+    """
+    d_obs = np.asarray(delta_obs, dtype=np.float64)
+    p_mat = np.asarray(delta_pred, dtype=np.float64)
+    tm = np.asarray(delta_transfer, dtype=np.float64)
+    b_s = np.asarray(source_grand_mean, dtype=np.float64) if source_grand_mean is not None else None
+
+    if d_obs.shape != p_mat.shape or d_obs.ndim != 2:
+        raise ValueError(f"Shape mismatch: delta_obs={d_obs.shape}, delta_pred={p_mat.shape}")
+    G = int(d_obs.shape[1])
+
+    rows, idx_list = _extract_masked_idx_per_pert(
+        d_obs, target_gene_idx, gene_keep_mask=gene_keep_mask, mode=mode, top_k=top_k
+    )
+    m = len(rows)
+    if m == 0 or G == 0 or int(n_perm) <= 0:
+        return {
+            "n_perm": int(n_perm),
+            "perm_seed_offset": int(perm_seed_offset),
+            "perm_seed_rule": f"np.random.default_rng({int(perm_seed_offset)} + k).permutation(G) for k=0..{max(int(n_perm) - 1, 0)}",
+            "n_genes_permuted": G,
+            "double_orth": b_s is not None,
+            "observed_estimate": float("nan"),
+            "rho_ab_orth": float("nan"),
+            "ceiling": float("nan"),
+            "perm_estimates": [],
+            "n_finite_perms": 0,
+            "median": float("nan"),
+            "mean": float("nan"),
+            "q025": float("nan"),
+            "q975": float("nan"),
+            "max": float("nan"),
+            "empirical_p_ge": float("nan"),
+        }
+
+    r_obs = d_obs - tm
+    ha_res = (np.asarray(delta_half_a, dtype=np.float64) - tm) if delta_half_a is not None else None
+    hb_res = (np.asarray(delta_half_b, dtype=np.float64) - tm) if delta_half_b is not None else None
+    zero_null = b_s is not None
+
+    # Compute observed pred moments + split-half ceiling once (shared across all k permutations)
+    [pm_obs], hm = _collect_mode_moments(
+        r_obs, [p_mat - tm], tm, rows, idx_list, b_s, ha_res, hb_res, half_valid
+    )
+    if hm is not None:
+        hnv, hsx, hsy, hsxx, hsyy, hsxy = hm
+        _, pt_rho, _, _, _ = _moments_to_corr_and_slope(
+            float(hnv.sum()), float(hsx.sum()), float(hsy.sum()),
+            float(hsxx.sum()), float(hsyy.sum()), float(hsxy.sum()),
+        )
+        pt_rho = float(pt_rho)
+        pt_ceil = float(spearman_brown_ceiling(pt_rho))
+    else:
+        pt_rho = float("nan")
+        pt_ceil = float("nan")
+
+    def _eval_point_from_mom(pm: Tuple[np.ndarray, ...]) -> float:
+        nv, sx, sy, sxx, syy, sxy = pm
+        pt_r = float(
+            _moments_to_safe_corr(
+                float(nv.sum()), float(sx.sum()), float(sy.sum()),
+                float(sxx.sum()), float(syy.sum()), float(sxy.sum()),
+                zero_null_to_zero=zero_null,
+            )
+        )
+        if zero_null and pt_r == 0.0 and np.isfinite(pt_ceil) and pt_ceil > 0.0:
+            return 0.0
+        return float(disattenuated_r(pt_r, pt_ceil))
+
+    obs_est = _eval_point_from_mom(pm_obs)
+    perm_vals = np.empty(int(n_perm), dtype=np.float64)
+    for k in range(int(n_perm)):
+        perm = np.random.default_rng(int(perm_seed_offset) + k).permutation(G)
+        p_perm = p_mat[:, perm]
+        [pm_k], _ = _collect_mode_moments(
+            r_obs, [p_perm - tm], tm, rows, idx_list, b_s, None, None, None
+        )
+        perm_vals[k] = _eval_point_from_mom(pm_k)
+
+    fin_vals = perm_vals[np.isfinite(perm_vals)]
+    emp_p = (
+        float((1 + int(np.sum(fin_vals >= obs_est))) / (int(fin_vals.size) + 1))
+        if (fin_vals.size > 0 and np.isfinite(obs_est))
+        else float("nan")
+    )
+    return {
+        "n_perm": int(n_perm),
+        "perm_seed_offset": int(perm_seed_offset),
+        "perm_seed_rule": f"np.random.default_rng({int(perm_seed_offset)} + k).permutation(G) for k=0..{int(n_perm) - 1}",
+        "n_genes_permuted": G,
+        "double_orth": zero_null,
+        "observed_estimate": float(obs_est),
+        "rho_ab_orth": float(pt_rho),
+        "ceiling": float(pt_ceil),
+        "perm_estimates": [float(x) for x in perm_vals],
+        "n_finite_perms": int(fin_vals.size),
+        "median": float(np.median(fin_vals)) if fin_vals.size > 0 else float("nan"),
+        "mean": float(np.mean(fin_vals)) if fin_vals.size > 0 else float("nan"),
+        "q025": float(np.percentile(fin_vals, 2.5)) if fin_vals.size > 0 else float("nan"),
+        "q975": float(np.percentile(fin_vals, 97.5)) if fin_vals.size > 0 else float("nan"),
+        "max": float(np.max(fin_vals)) if fin_vals.size > 0 else float("nan"),
+        "empirical_p_ge": emp_p,
     }
 
 

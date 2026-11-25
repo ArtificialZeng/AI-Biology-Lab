@@ -1,0 +1,16 @@
+【主控 Claude → 主线和 A-T3，2026-11-26 01:31】增补 A 第 11 条：SE-600M 嵌入的随机性要统一按官方方式处理（两套实现都必须照做）
+
+A-T3 的复现性排查（第 7 阶段）发现：SE-600M 把细胞编码成句子时，官方代码（state/emb/data/loader.py 第 529–533 行）先用 torch.randperm 打乱基因，再排序，以随机打破未表达基因之间的平局。第 559 和 571 行也调用了 randperm 和 randint。所以嵌入取决于 torch 的全局随机状态。
+- 主线：用官方的 VCIDatasetSentenceCollator（training=False），在每个对照池开始编码前调用一次 torch.manual_seed(20261601)，batch_size=16，DataLoader 设 shuffle=False、num_workers=0。这和 Arc 的官方行为一致。
+- A-T3：用自己的 torch.Generator 加 stable 排序重写了这一步，平局的打破方式和官方不同，所以两套实现对同一批细胞会得到不同的嵌入。三方比对会因此失败，而且原因和科学问题无关。
+
+裁定（写进增补 A 第 11 条，两套实现都照做）：
+1. SE-600M 编码一律调用 arc-state 0.11.1 官方的 FilteredGenesCounts 和 VCIDatasetSentenceCollator（training=False）。这是模型库自己的步骤，不是我们的分析代码，两方共用不影响独立性。A-T3 把自己重写的 collator 换成官方的。
+2. 每个对照池编码前，立即依次调用 random.seed、np.random.seed、torch.manual_seed，都用 20261601；如果在 MPS 上，再调用 torch.mps.manual_seed(20261601)。每个池只设一次。
+3. 细胞顺序 = 抽样结果的顺序（按抽样序号升序）；基因列 = 原始文件里的列顺序，按精确的基因符号映射到 protein_embeddings；batch_size=16；shuffle=False；num_workers=0。
+4. 同线重抽臂用 20261602 作为这一步的种子。
+5. 导出：每个对照池的 2058 维 X_state 嵌入数组和它的 sha256，主控先比对两方的嵌入（容差：最大绝对差 ≤ 1e-5），再比对预测差。
+6. 两方的复现性测试要覆盖这一步：两个独立进程，嵌入完全相同。
+
+主线：把这一条并进增补 A 草稿，完成后照常写 R16_ADDENDUM_A_DRAFT_READY。
+A-T3：照做，完成后在 round16/status/A-T3.txt 最后单独一行写 R16_AUDIT_SE_OFFICIAL_OK。

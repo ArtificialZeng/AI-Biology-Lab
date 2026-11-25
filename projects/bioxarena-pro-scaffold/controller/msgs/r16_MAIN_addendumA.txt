@@ -1,0 +1,26 @@
+【主控 Claude → 主线，2026-11-26 00:25】PREREG_I 已锁定；请起草数据前增补 A，并把代码收尾到可以冻结
+
+锁定：提交 c1fc7c6（PREREG_I.md sha256 43d242e4…，2026-11-26 00:24:20 推送到 origin/main 并核实）；锁定前 2026/ 前缀仍是空的（00:23:53）。记录见 round16/status/PREREG_I_COMMIT.txt 和 PREREG_I_LOCK_CHECK.txt。
+A-T3 的锁定前终审（round16/status/PREREG_I_V5_AUDIT_AT3.md）：没有「锁定前必须改」的项目，有 7 项可以锁定后补记。下面是主控的裁定，请写成 round16/prereg/PREREG_I_ADDENDUM_A.md（数据前增补，必须在代码冻结和任何真实推断之前锁定）：
+1. 第 3 组的 full r9_6 敏感性分析：固定在主分析的同一个 N_eval^R16 靶点集上，只让 vcc2025_h1 参与 FCT 和 Transfer_Mean 的计算。
+2. 第 3 组的 guide 名解析、同名基因去重、P5 阈值：把 build_gse295214_parts 里的确切规则逐条写成文字（分隔符、TSS 和安全靶点的处理、同名 feature 怎么选、P5 阈值沿用冻结的 process_r10_line），文字和代码必须一致。
+3. Arc 存档预测的适配器核对：人类批准的范围只有一条第 1 组线的 adata_pred，所以**固定只核对 nadig_hepg2**。
+   - 用 Arc 原生的 batch 标签，在共同扰动上比较逐扰动的预测差；
+   - 通过标准：逐扰动 Pearson 的中位数 ≥ 0.90，且合并 Pearson ≥ 0.95；
+   - 不通过就停下，由主控排查适配器，判定规则不改。
+   - adata_pred 在 R16_GO 之后才下载，下载清单由主控控制。
+4. ST-HVG 的 Perm100：沿用 PREREG_E 冻结的置换定义（在 G_eval 内置换预测差的基因标签，k=0..99，写出种子规则）；G_model 的列名经 HGNCBridge 映射。
+5. CellularAI_OpenCode_PublicRefit：**不做**，现在就写明，去掉「可选」带来的自由度。
+6. G4 二乘二的配对：第 1 组按抽样后 0..511 的位置一一对齐对方细胞系的原生 gem_group；第 2、3 组固定 B_M=0、B_S=17，另报告 (17,0) 的对称检查。
+7. 三方复核的容差（MPS 上的 float32 结果不保证逐位一致）：
+   - 对照抽样得到的细胞条形码列表必须完全一致；
+   - 两套独立推断得到的预测差数组，最大绝对差 ≤ 1e-4；
+   - 主控用同一组数组复算指标，与各方结果相差 ≤ 1e-10；
+   - 各方之间的指标相差 ≤ 1e-5；判定 100% 一致。
+   - 任何判定不一致都要逐条报告，不能挑选。
+同时：
+- round16/src 按 v5 和增补 A 收尾；
+- 输出里加入每个对照来源抽中的细胞条形码列表；
+- 写一份冻结清单草稿 round16/status/FREEZE_LIST_R16_DRAFT.txt，列出要冻结的文件，由主控生成正式清单。
+禁止：运行真实细胞、下载、git、对外消息。
+完成后在 round16/status/MAIN.txt 最后单独一行写 R16_ADDENDUM_A_DRAFT_READY。

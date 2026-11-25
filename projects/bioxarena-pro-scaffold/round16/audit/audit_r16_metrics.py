@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Clean-Room Round 16 Endpoint Evaluation & Joint Perturbation Bootstrap
-(`A-T3`, strictly following `PREREG_I.md v4 §1.1, §3, §4`, `seed = 20261601`).
+(`A-T3`, strictly following `PREREG_I.md v5 §1.1, §3, §4` & Addendum A, `seed = 20261601`).
 
 Implements:
   - Primary `r_orth_cal` (`all_nontarget` default, plus `resp_top50` & `resp_top50_split`)
@@ -9,8 +9,9 @@ Implements:
     preserving exact Property P1 null invariance (`0.0 <= 1e-14`) by construction
   - Orthogonalized split-half correlation explicitly keyed `rho_ab_orth` (`M1`)
   - Joint perturbation-level bootstrap (`n_boot = 4,000`, `97.5%` & `95.0%` CIs, `valid_frac`)
-  - Paired contrast bootstrap `(pred_a - pred_b)` sharing identical draws & noise ceiling
-  - `M2` descriptive saturation-weight shift diagnostic
+  - Paired contrast bootstrap `(pred_a - pred_b)` sharing identical draws & noise ceiling,
+    plus `max_pred_abs_diff <= 1e-12` `EXACT_INVARIANCE` & same-line `resample` reference
+  - `M2` descriptive saturation-weight shift, `H-D_util` practical accuracy metrics, & `Perm100`
 
 Never reads or imports `round16/src/`.
 """
@@ -526,6 +527,12 @@ def compute_paired_contrast_r16(
         [_d(float(ra), float(c)) - _d(float(rb), float(c)) for ra, rb, c in zip(b_ra, b_rb, b_ceil)],
         dtype=np.float64,
     )
+    pa_arr = np.asarray(pred_a, dtype=np.float64)
+    pb_arr = np.asarray(pred_b, dtype=np.float64)
+    both_fin = np.isfinite(pa_arr) & np.isfinite(pb_arr)
+    max_pred_abs_diff = float(np.max(np.abs(pa_arr[both_fin] - pb_arr[both_fin]))) if np.any(both_fin) else float("nan")
+    exact_invariance = bool(np.isfinite(max_pred_abs_diff) and max_pred_abs_diff <= 1e-12)
+
     out = summarize_boot_r16(pt_diff, b_diff, m, int(n_boot))
     out.update(
         {
@@ -533,6 +540,8 @@ def compute_paired_contrast_r16(
             "rho_ab_orth": float(pt_rho_orth),
             "a_est": _d(pt_ra, pt_ceil),
             "b_est": _d(pt_rb, pt_ceil),
+            "max_pred_abs_diff": max_pred_abs_diff,
+            "exact_invariance": exact_invariance,
         }
     )
     return out
@@ -608,3 +617,336 @@ def compute_winner_curse_weight_shift_r16(
     rng = np.random.default_rng(int(seed))
     draws = rng.integers(0, arr.size, size=(int(n_boot), arr.size))
     return summarize_boot_r16(float(np.mean(arr)), arr[draws].mean(axis=1), arr.size, int(n_boot))
+
+
+def _vec_pearson(a: np.ndarray, b: np.ndarray) -> float:
+    x = np.asarray(a, dtype=np.float64)
+    y = np.asarray(b, dtype=np.float64)
+    if x.size < 2 or y.size != x.size:
+        return float("nan")
+    xc = x - float(np.mean(x))
+    yc = y - float(np.mean(y))
+    den = math.sqrt(float(np.dot(xc, xc)) * float(np.dot(yc, yc)))
+    return float(np.dot(xc, yc) / den) if den > EPS else float("nan")
+
+
+def compute_practical_metrics_r16(
+    delta_obs: np.ndarray,
+    delta_pred: np.ndarray,
+    target_gene_idx: Sequence[int],
+    top_k: int = 50,
+) -> Dict[str, Any]:
+    """
+    Practical non-residual accuracy diagnostics (`PREREG_I v5 §4.3.4`, `H-D_util`):
+      - pooled raw Pearson `Delta` (`all_nontarget`)
+      - per-perturbation median & mean Pearson (`all_nontarget`)
+      - per-perturbation mean/median & pooled centered DE-50 Pearson (ranked by `|delta_obs|`)
+      - pooled uncentered cosine similarity (`all_nontarget`)
+    """
+    obs = np.asarray(delta_obs, dtype=np.float64)
+    pred = np.asarray(delta_pred, dtype=np.float64)
+    if obs.shape != pred.shape:
+        raise ValueError(f"Shape mismatch obs={obs.shape} vs pred={pred.shape}")
+    n_t, n_g = obs.shape
+    obs_all: List[np.ndarray] = []
+    pred_all: List[np.ndarray] = []
+    per_pert_r: List[float] = []
+    de50_obs_c: List[np.ndarray] = []
+    de50_pred_c: List[np.ndarray] = []
+    de50_per_pert_r: List[float] = []
+
+    for p in range(n_t):
+        valid = np.isfinite(obs[p]) & np.isfinite(pred[p])
+        tc = int(target_gene_idx[p]) if p < len(target_gene_idx) else -1
+        if 0 <= tc < n_g:
+            valid[tc] = False
+        idx = np.flatnonzero(valid)
+        if idx.size < 2:
+            continue
+        ov = obs[p, idx]
+        pv = pred[p, idx]
+        obs_all.append(ov)
+        pred_all.append(pv)
+        rp = _vec_pearson(ov, pv)
+        if np.isfinite(rp):
+            per_pert_r.append(rp)
+        k = min(int(top_k), idx.size)
+        top_idx = idx[np.argsort(np.abs(obs[p, idx]), kind="mergesort")[-k:]]
+        ot = obs[p, top_idx]
+        pt = pred[p, top_idx]
+        r50 = _vec_pearson(ot, pt)
+        if np.isfinite(r50):
+            de50_per_pert_r.append(r50)
+        de50_obs_c.append(ot - float(np.mean(ot)))
+        de50_pred_c.append(pt - float(np.mean(pt)))
+
+    if not obs_all:
+        return {
+            "n_eval_perts": 0,
+            "raw_pearson_delta": float("nan"),
+            "per_pert_pearson_median": float("nan"),
+            "per_pert_pearson_mean": float("nan"),
+            "centered_de50_pearson_pooled": float("nan"),
+            "centered_de50_pearson_mean": float("nan"),
+            "centered_de50_pearson_median": float("nan"),
+            "cosine_similarity": float("nan"),
+        }
+
+    oa = np.concatenate(obs_all)
+    pa = np.concatenate(pred_all)
+    den_cos = math.sqrt(float(np.dot(oa, oa)) * float(np.dot(pa, pa)))
+    cos_val = float(np.dot(oa, pa) / den_cos) if den_cos > EPS else float("nan")
+    doc = np.concatenate(de50_obs_c)
+    dpc = np.concatenate(de50_pred_c)
+    return {
+        "n_eval_perts": int(len(obs_all)),
+        "raw_pearson_delta": _vec_pearson(oa, pa),
+        "per_pert_pearson_median": float(np.median(per_pert_r)) if per_pert_r else float("nan"),
+        "per_pert_pearson_mean": float(np.mean(per_pert_r)) if per_pert_r else float("nan"),
+        "centered_de50_pearson_pooled": _vec_pearson(doc, dpc),
+        "centered_de50_pearson_mean": float(np.mean(de50_per_pert_r)) if de50_per_pert_r else float("nan"),
+        "centered_de50_pearson_median": float(np.median(de50_per_pert_r)) if de50_per_pert_r else float("nan"),
+        "cosine_similarity": cos_val,
+    }
+
+
+def summarize_perm100_r16(
+    matched_orth_suite: Dict[str, Any],
+    perm_r_values: Sequence[float],
+    perm_dorth_values: Optional[Sequence[float]] = None,
+) -> Dict[str, Any]:
+    """
+    Summarize gene-label `Perm100` null distribution (`PREREG_E §4.1/4.3` & `Addendum A §4.2`).
+    Reports all `100` permutation scores, `median`, `mean`, `q025`, `q975`, `max`, and
+    one-sided empirical tail proportion `(1 + #{perm >= obs}) / 101`.
+    """
+    arr = np.asarray(list(perm_r_values), dtype=np.float64)
+    fin = arr[np.isfinite(arr)]
+    obs_est = float(matched_orth_suite.get("estimate", float("nan")))
+    lo975 = float(matched_orth_suite.get("ci975_lo", float("nan")))
+    if fin.size == 0:
+        out: Dict[str, Any] = {
+            "n_perm": int(arr.size),
+            "n_finite": 0,
+            "median": float("nan"),
+            "mean": float("nan"),
+            "q025": float("nan"),
+            "q975": float("nan"),
+            "max": float("nan"),
+            "p_emp": float("nan"),
+            "matched_estimate": obs_est,
+            "matched_ci975_lo": lo975,
+            "matched_gt_q975": False,
+            "perm_scores": arr.tolist(),
+        }
+    else:
+        q025, q50, q975 = np.percentile(fin, [2.5, 50.0, 97.5])
+        p_emp = (
+            float(1 + int(np.sum(fin >= obs_est))) / float(fin.size + 1)
+            if np.isfinite(obs_est)
+            else float("nan")
+        )
+        out = {
+            "n_perm": int(arr.size),
+            "n_finite": int(fin.size),
+            "median": float(q50),
+            "mean": float(np.mean(fin)),
+            "q025": float(q025),
+            "q975": float(q975),
+            "max": float(np.max(fin)),
+            "p_emp": p_emp,
+            "matched_estimate": obs_est,
+            "matched_ci975_lo": lo975,
+            "matched_gt_q975": bool(np.isfinite(lo975) and lo975 > float(q975)),
+            "perm_scores": arr.tolist(),
+        }
+    if perm_dorth_values is not None:
+        d_arr = np.asarray(list(perm_dorth_values), dtype=np.float64)
+        d_fin = d_arr[np.isfinite(d_arr)]
+        if d_fin.size > 0:
+            dq025, dq50, dq975 = np.percentile(d_fin, [2.5, 50.0, 97.5])
+            out["dorth_summary"] = {
+                "n_perm": int(d_arr.size),
+                "n_finite": int(d_fin.size),
+                "median": float(dq50),
+                "mean": float(np.mean(d_fin)),
+                "q025": float(dq025),
+                "q975": float(dq975),
+                "max": float(np.max(d_fin)),
+                "perm_scores": d_arr.tolist(),
+            }
+        else:
+            out["dorth_summary"] = {"n_perm": int(d_arr.size), "n_finite": 0, "perm_scores": d_arr.tolist()}
+    return out
+
+
+def compute_gene_label_perm_null_r16(
+    delta_obs: np.ndarray,
+    pred_matched: np.ndarray,
+    delta_transfer: np.ndarray,
+    target_gene_idx: Sequence[int],
+    source_grand_mean: Optional[np.ndarray] = None,
+    delta_half_a: Optional[np.ndarray] = None,
+    delta_half_b: Optional[np.ndarray] = None,
+    half_valid: Optional[np.ndarray] = None,
+    n_perm: int = 100,
+    matched_orth_suite: Optional[Dict[str, Any]] = None,
+    seed: int = DEFAULT_R16_SEED,
+) -> Dict[str, Any]:
+    """
+    Exact `Addendum A §4.2` `Perm100` null on `STATE_HVG` matched-arm predicted delta matrix:
+      For each `k = 0..n_perm-1`, permute gene columns using `np.random.default_rng(k).permutation(G)`
+      holding `delta_obs`, `delta_transfer`, `target_gene_idx`, split halves, and `source_grand_mean` fixed,
+      evaluating point-estimate `r_orth_cal` (and descriptively `r_dorth_cal`) on `all_nontarget`.
+    """
+    pm = np.asarray(pred_matched, dtype=np.float64)
+    if pm.ndim != 2:
+        raise ValueError(f"Expected 2D pred_matched matrix, got shape {pm.shape}")
+    if matched_orth_suite is None:
+        matched_orth_suite = compute_orth_suite_r16(
+            delta_obs=delta_obs,
+            delta_pred=pm,
+            delta_transfer=delta_transfer,
+            target_gene_idx=target_gene_idx,
+            source_grand_mean=None,
+            delta_half_a=delta_half_a,
+            delta_half_b=delta_half_b,
+            half_valid=half_valid,
+            mode="all_nontarget",
+            n_boot=0,
+            seed=seed,
+        )
+    n_genes = pm.shape[1]
+    perm_orth: List[float] = []
+    perm_dorth: Optional[List[float]] = [] if source_grand_mean is not None else None
+    for k in range(int(n_perm)):
+        pi_k = np.random.default_rng(int(k)).permutation(n_genes)
+        pm_perm = pm[:, pi_k]
+        res_o = compute_orth_suite_r16(
+            delta_obs=delta_obs,
+            delta_pred=pm_perm,
+            delta_transfer=delta_transfer,
+            target_gene_idx=target_gene_idx,
+            source_grand_mean=None,
+            delta_half_a=delta_half_a,
+            delta_half_b=delta_half_b,
+            half_valid=half_valid,
+            mode="all_nontarget",
+            n_boot=0,
+            seed=seed,
+        )
+        perm_orth.append(float(res_o["estimate"]))
+        if perm_dorth is not None and source_grand_mean is not None:
+            res_d = compute_orth_suite_r16(
+                delta_obs=delta_obs,
+                delta_pred=pm_perm,
+                delta_transfer=delta_transfer,
+                target_gene_idx=target_gene_idx,
+                source_grand_mean=source_grand_mean,
+                delta_half_a=delta_half_a,
+                delta_half_b=delta_half_b,
+                half_valid=half_valid,
+                mode="all_nontarget",
+                n_boot=0,
+                seed=seed,
+            )
+            perm_dorth.append(float(res_d["estimate"]))
+    return summarize_perm100_r16(matched_orth_suite, perm_orth, perm_dorth_values=perm_dorth)
+
+
+def compute_paired_diff_vs_resample_r16(
+    delta_obs: np.ndarray,
+    pred_matched: np.ndarray,
+    pred_resample: np.ndarray,
+    mismatched_preds: Dict[str, np.ndarray],
+    delta_transfer: np.ndarray,
+    target_gene_idx: Sequence[int],
+    source_grand_mean: Optional[np.ndarray] = None,
+    delta_half_a: Optional[np.ndarray] = None,
+    delta_half_b: Optional[np.ndarray] = None,
+    half_valid: Optional[np.ndarray] = None,
+    mode: str = "all_nontarget",
+    top_k: int = 50,
+    n_boot: int = 4000,
+    seed: int = DEFAULT_R16_SEED,
+    matched_positive_ci975: Optional[bool] = None,
+) -> Dict[str, Any]:
+    """
+    Descriptive same-line resample reference contrast (`Addendum A §8`):
+      - `delta_pair_resample = r(matched) - r(resample)`
+      - For each mismatched source `s'`, computes joint bootstrap of
+        `delta_pair(s') - delta_pair(resample) = [r(matched) - r(mis(s'))] - [r(matched) - r(resample)]`
+        under identical perturbation draws & projected noise ceiling (reporting both 97.5% & 95.0% CIs).
+      - Enforces locked Addendum A §8.3 wording rules:
+          * All pairs across both strata have `excess_ci975_lo > 0.0` alongside positive matched signal
+            -> `模型用到了目标线特有的对照信息`
+          * No pairs exceed -> `换成其他细胞系的对照，影响不超过重抽本细胞系的对照`
+          * Mixed outcomes -> per-source reporting without making a line-wide specificity claim.
+    """
+    pair_resample = compute_paired_contrast_r16(
+        delta_obs=delta_obs,
+        pred_a=pred_matched,
+        pred_b=pred_resample,
+        delta_transfer=delta_transfer,
+        target_gene_idx=target_gene_idx,
+        source_grand_mean=source_grand_mean,
+        delta_half_a=delta_half_a,
+        delta_half_b=delta_half_b,
+        half_valid=half_valid,
+        mode=mode,
+        top_k=top_k,
+        n_boot=n_boot,
+        seed=seed,
+    )
+
+    per_source_excess: Dict[str, Dict[str, Any]] = {}
+    valid_mask_match = np.all(np.isfinite(pred_matched), axis=0)
+    for sk in sorted(mismatched_preds.keys()):
+        pmis = mismatched_preds[sk]
+        ex = compute_paired_contrast_r16(
+            delta_obs=delta_obs,
+            pred_a=pred_resample,
+            pred_b=pmis,
+            delta_transfer=delta_transfer,
+            target_gene_idx=target_gene_idx,
+            source_grand_mean=source_grand_mean,
+            delta_half_a=delta_half_a,
+            delta_half_b=delta_half_b,
+            half_valid=half_valid,
+            mode=mode,
+            top_k=top_k,
+            n_boot=n_boot,
+            seed=seed,
+            gene_keep_mask=valid_mask_match,
+        )
+        lo975 = float(ex.get("ci975_lo", float("nan")))
+        vf = float(ex.get("valid_frac", 0.0))
+        exceeds = bool(np.isfinite(vf) and vf >= 0.95 and np.isfinite(lo975) and lo975 > 0.0)
+        ex["exceeds_resample_loss"] = exceeds
+        ex["interpretation"] = (
+            "超出同线重抽对照波动（需结合正向匹配信号判断是否属实）"
+            if exceeds
+            else "换成其他细胞系的对照，影响不超过重抽本细胞系的对照"
+        )
+        per_source_excess[sk] = ex
+
+    all_exceeds = bool(per_source_excess and all(v["exceeds_resample_loss"] for v in per_source_excess.values()))
+    any_exceeds = bool(any(v["exceeds_resample_loss"] for v in per_source_excess.values()))
+    pos_ok = True if matched_positive_ci975 is None else bool(matched_positive_ci975)
+    if all_exceeds and pos_ok:
+        overall_status = "ALL_EXCEED_WITH_POSITIVE_SIGNAL"
+        overall_interp = "模型用到了目标线特有的对照信息"
+    elif any_exceeds and not all_exceeds:
+        overall_status = "MIXED_SOURCE_BY_SOURCE"
+        overall_interp = "各错配来源与重抽对照比较结果不一致，须逐来源报告，不得作全细胞系特异性结论"
+    else:
+        overall_status = "NONE_EXCEED"
+        overall_interp = "换成其他细胞系的对照，影响不超过重抽本细胞系的对照"
+    return {
+        "delta_pair_resample": pair_resample,
+        "per_source_excess_vs_resample": per_source_excess,
+        "all_sources_exceed_resample": all_exceeds,
+        "any_source_exceeds_resample": any_exceeds,
+        "overall_status": overall_status,
+        "overall_interpretation": overall_interp,
+    }

@@ -1,0 +1,15 @@
+【主控 Claude → A-T3 和主线，2026-11-26 01:01】冻结前的硬要求：结果必须能逐次复现；A-T3 的 test_11 会偶尔失败
+
+主控重跑 round16/audit 的测试：test_11（test_11_addendum_a_per_cell_batch_nadig_hepg2_parity_g4_and_perm100）在 22 次运行里失败了 2 次。失败在 test_audit_r16.py 第 1242 行：dld1 的 G4 对称检查估计值是 NaN，NaN != NaN。另外 20 次都通过，包括 8 个固定的 PYTHONHASHSEED、12 个随机的、单线程和默认线程。失败的两次都发生在 A-T3 正在运行的时候。主控的推测是：测试读写了共享目录（例如 round16/status 或 results），和并发的运行互相干扰；或者是很小的合成夹具（64 个细胞，n_boot=30）落在 NaN 边界上。
+A-T3 请：
+1. 查明原因并修好：
+   - 测试只能写临时目录（tempfile），不能写 round16/status 或 results；
+   - 夹具要让 ρ⊥ 明显大于 0，不在 NaN 边界上；
+   - 断言只在确实应该是 NaN 的时候才接受 NaN。
+2. 加一个复现性测试：在两个独立的新进程里（不同的 PYTHONHASHSEED），用同一组合成计数和同样的种子跑完整的推断，导出的预测差数组要逐位相同（CPU）；在 MPS 上最大绝对差 ≤ 1e-6。
+主线也请在 round16/src 里加同样的复现性测试，确认：
+- 真实运行时没有任何地方遍历 set（或其他不保证顺序的容器）来决定抽样或数组顺序；
+- 所有随机性都来自写在预注册里的种子。
+完成后：
+- A-T3 在 round16/status/A-T3.txt 最后单独一行写 R16_AUDIT_DETERMINISM_OK；
+- 主线把这一项并进增补 A 那一轮一起交（marker 仍然是 R16_ADDENDUM_A_DRAFT_READY）。

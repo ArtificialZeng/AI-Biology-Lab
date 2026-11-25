@@ -2,20 +2,21 @@
 # R16 watcher, phase c (parallel workstreams, 2026-11-25 23:05). Fixed baselines; exits on the first event.
 P=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold
 cd "$P" || exit 9
-BASE_HEAD=80f7c17
+BASE_HEAD=56a9ce9
 M=round16/shared/models
 REF=$(mktemp); touch -t 202611252255 "$REF"
 NFILES=$(find $M -type f | wc -l | tr -d ' ')
 MSIG=$(find $M -type f -exec stat -f '%N %z %m' {} \; | sort | md5)
 last_change=$(date +%s); prev_sig=""
 while true; do
-  for m in "round16/status/A-T3.txt:PREREG_I_V5_AT3_AUDIT_DONE"; do
+  for m in "round16/status/MAIN.txt:R16_ADDENDUM_A_ITEM11_DONE"; do
     f=${m%%:*}; k=${m##*:}
     [ -f "$f" ] && grep -qx "$k" "$f" && { echo "EVENT marker $k in $f at $(date '+%F %T')"; exit 0; }
   done
-  for g in PREREG_I_COMMIT.txt CODE_FREEZE_R16.txt R16_GO.txt; do
+  for g in CODE_FREEZE_R16.txt R16_GO.txt; do
     [ -e "round16/status/$g" ] && { echo "GUARD gate file round16/status/$g appeared (only the controller may create it)"; exit 2; }
   done
+  [ "$(shasum -a 256 round16/prereg/PREREG_I.md | cut -c1-64)" != "43d242e460fd64db2e4af1e628e886cf1d94fb4ccd1e95925928a99cb96ee4a8" ] && { echo "GUARD locked PREREG_I.md was modified"; exit 2; }
   w=$(find /Users/mac/AI-Biology-Lab ~/.cache/huggingface/hub -newer "$REF" \( -name '*.ckpt' -o -name '*.safetensors' -o -name 'adata_pred*' -o -name 'adata_real*' -o -name 'eval_final*' \) -not -path "$P/$M/*" -not -path "$P/round16/.venv/*" 2>/dev/null | head -3)
   [ -n "$w" ] && { echo "GUARD model/eval file outside approved dir: $w"; exit 2; }
   [ -n "$(ls -d ~/.cache/huggingface/hub/models--arcinstitute* 2>/dev/null)" ] && { echo "GUARD arcinstitute HF cache created"; exit 2; }

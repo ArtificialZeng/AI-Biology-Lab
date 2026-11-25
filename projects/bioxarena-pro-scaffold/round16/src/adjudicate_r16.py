@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Round 16 Mechanical Adjudicator (`PREREG_I v4 §3`, incorporating `I14`, `M1–M6`, `Q4`).
+Round 16 Mechanical Adjudicator (`PREREG_I v5 §3 + Addendum A Items 5, 8, 9, 10`).
 
 Applies exact 2-claim Bonferroni (`alpha_claim = 0.05 / 2 = 0.025`) adjudication for:
   - `H-I1` (Primary model `STATE_SE`, matched vs. mismatched target controls under `r_orth_cal`
@@ -10,9 +10,13 @@ Applies exact 2-claim Bonferroni (`alpha_claim = 0.05 / 2 = 0.025`) adjudication
       * Two-sided `97.5%` CI (`[1.25%, 98.75%]`) for superiority/inferiority.
       * Two-sided `95.0%` CI (`[2.5%, 97.5%]`) inside `(-delta, +delta)` for TOST equivalence
         (`delta = 0.04`), with `within_delta` gated on `valid_frac >= 0.95` and finite CIs (`M2`).
-      * 4 mutually exclusive per-pair categories:
-        `MATCHED_BETTER` / `EQUIVALENT` / `INCONCLUSIVE` / `MISMATCHED_BETTER`.
-      * Mandatory two-stratum reporting and line-level verdicts (`M2`, `M3`):
+      * Per-pair mutually exclusive categories (Addendum A Item 10):
+        `MATCHED_BETTER` / `EQUIVALENT` / `EXACT_INVARIANCE` / `INCONCLUSIVE` / `MISMATCHED_BETTER`,
+        where `EXACT_INVARIANCE` (`max_abs_diff <= 1e-12` between matched and mismatched predicted
+        delta arrays under valid bootstrap) counts identically as `EQUIVALENT` in stratum and line
+        rules, while non-identical zero-boundary ties (`ci975_lo == 0.0` or `ci975_hi == 0.0`) remain
+        conservatively `INCONCLUSIVE`.
+      * Mandatory two-stratum reporting and line-level verdicts (`M2`, `M3`, Addendum A Item 9):
         `MISSING_STRATUM` | `INCONCLUSIVE` | `LINE_MATCHED_SPECIFIC` |
         `LINE_MATCHED_SPECIFIC_SUB_DELTA` | `LINE_EQUIVALENT_NONZERO_SIGNAL` |
         `LINE_EQUIVALENT_NULL_SIGNAL` | `LINE_MISMATCHED_BETTER` | `MIXED_OR_INCONCLUSIVE`.
@@ -22,8 +26,10 @@ Applies exact 2-claim Bonferroni (`alpha_claim = 0.05 / 2 = 0.025`) adjudication
       * Two-sided `97.5%` CI symmetric 3-way classification:
         `MODEL_SUPERIOR_TO_FCT` / `FCT_SUPERIOR_TO_MODEL` / `INDISTINGUISHABLE`.
 
-Secondary analyses (`r_dorth_cal`, Mechanism Hypothesis `M2`, `STATE_HVG`,
-`CellularAI_OpenCode_PublicRefit`) are strictly descriptive and are never adjudicated here.
+Secondary analyses (`r_dorth_cal`, Mechanism Hypothesis `M2`, `STATE_HVG`, `G4` 2x2 decomposition,
+and Addendum A Item 8 within-line resample reference) are strictly descriptive and never alter
+primary `H-I1`/`H-I2` adjudication. `CellularAI_OpenCode_PublicRefit` is dropped pre-data
+(Addendum A Item 5).
 """
 
 from __future__ import annotations
@@ -35,27 +41,38 @@ import numpy as np
 DEFAULT_TOST_DELTA = 0.04
 MIN_BOOT_VALID_FRAC = 0.95
 MIN_GROUP2_PRIMARY_LINES = 2
+EXACT_INVARIANCE_TOL = 1e-12
+
+SUB_DELTA_INTERPRETATION_NOTE = (
+    "能检测到，但小于事先规定的最小有意义效应 δ=0.04"
+    "（须结合同线重抽参照臂结果一并报告，不能单独写成「模型用到了对照」）。"
+)
+RESAMPLE_EXCEEDS_WORDING = "模型用到了目标线特有的对照信息"
+RESAMPLE_NOT_EXCEEDS_WORDING = "换成其他细胞系的对照，影响不超过重抽本细胞系的对照"
 
 
 def classify_pair_tost_r16(
     pair_summary: Dict[str, Any],
     delta: float = DEFAULT_TOST_DELTA,
+    exact_invariance_tol: float = EXACT_INVARIANCE_TOL,
 ) -> Dict[str, Any]:
     """
-    Classify a single `(line t, mismatched source s')` paired contrast into exactly one
-    of 4 mutually exclusive categories (`PREREG_I v5 §3.1`, audit items `I6`, `M2`,
-    and conservative `ci975 == 0.0` tie-precedence ruling `2026-11-25`):
+    Classify a single `(line t, mismatched source s')` paired contrast into mutually exclusive
+    categories (`PREREG_I v5 §3.1` + `Addendum A Item 10`):
       - `within_delta`: True iff `valid_frac >= 0.95`, finite `97.5%` and `95.0%` CIs,
         AND strict two-sided `ci95_lo > -delta and ci95_hi < +delta`.
-      - `INCONCLUSIVE` (highest precedence): `valid_frac < 0.95` or non-finite `97.5%` CI
-        (with `within_delta=False`), OR either endpoint of the `97.5%` CI equals `0.0`
-        (`ci975_lo == 0.0` or `ci975_hi == 0.0`, taking precedence over `EQUIVALENT` even
-        when `within_delta == True`).
-      - `MATCHED_BETTER`: `ci975_lo > 0.0` (accompanied by gated two-sided `within_delta`)
-      - `MISMATCHED_BETTER`: `ci975_hi < 0.0` (accompanied by gated two-sided `within_delta`)
-      - `EQUIVALENT`: NOT matched/mismatched better, neither `97.5%` CI endpoint equals `0.0`,
-        AND `within_delta == True`
-      - `INCONCLUSIVE`: all remaining cases (including exact `±delta` open-interval ties)
+      - Priority order:
+        1. `INCONCLUSIVE`: `valid_frac < 0.95` or non-finite `97.5%` CI (`within_delta = False`).
+        2. `EXACT_INVARIANCE` (Addendum A Item 10): finite matched and mismatched predicted delta
+           arrays are identical (`max_abs_diff <= 1e-12`, or `exact_invariance == True` when
+           `max_abs_diff` is omitted); counts identically as `EQUIVALENT` at stratum/line level.
+        3. `INCONCLUSIVE` (conservative zero-boundary tie precedence for non-identical arrays):
+           `ci975_lo == 0.0` or `ci975_hi == 0.0` (takes precedence over `EQUIVALENT` even when
+           `within_delta == True`).
+        4. `MATCHED_BETTER`: `ci975_lo > 0.0` (accompanied by gated two-sided `within_delta`).
+        5. `MISMATCHED_BETTER`: `ci975_hi < 0.0` (accompanied by gated two-sided `within_delta`).
+        6. `EQUIVALENT`: NOT matched/mismatched better, not exact zero-tie, AND `within_delta == True`.
+        7. `INCONCLUSIVE`: all remaining cases (including exact `±delta` open-interval ties).
     """
     lo975 = float(pair_summary.get("ci975_lo", float("nan")))
     hi975 = float(pair_summary.get("ci975_hi", float("nan")))
@@ -64,6 +81,18 @@ def classify_pair_tost_r16(
     est = float(pair_summary.get("estimate", float("nan")))
     vf = float(pair_summary.get("valid_frac", 0.0))
 
+    max_abs_diff_raw = pair_summary.get("max_abs_diff", None)
+    exact_inv_raw = pair_summary.get("exact_invariance", None)
+    if max_abs_diff_raw is not None:
+        mad_f = float(max_abs_diff_raw)
+        is_exact_inv = bool(np.isfinite(mad_f) and 0.0 <= mad_f <= float(exact_invariance_tol))
+    elif exact_inv_raw is not None:
+        mad_f = float("nan")
+        is_exact_inv = bool(exact_inv_raw)
+    else:
+        mad_f = float("nan")
+        is_exact_inv = False
+
     finite_975 = bool(np.isfinite(lo975) and np.isfinite(hi975))
     finite_95 = bool(np.isfinite(lo95) and np.isfinite(hi95))
     valid_boot = bool(vf >= MIN_BOOT_VALID_FRAC and finite_975)
@@ -71,7 +100,11 @@ def classify_pair_tost_r16(
         valid_boot and finite_95 and lo95 > -float(delta) and hi95 < float(delta)
     )
 
-    if not valid_boot or lo975 == 0.0 or hi975 == 0.0:
+    if not valid_boot:
+        cat = "INCONCLUSIVE"
+    elif is_exact_inv:
+        cat = "EXACT_INVARIANCE"
+    elif lo975 == 0.0 or hi975 == 0.0:
         cat = "INCONCLUSIVE"
     elif lo975 > 0.0:
         cat = "MATCHED_BETTER"
@@ -85,6 +118,8 @@ def classify_pair_tost_r16(
     return {
         "category": cat,
         "within_delta": within_delta,
+        "exact_invariance": is_exact_inv,
+        "max_abs_diff": mad_f,
         "delta": float(delta),
         "estimate": est,
         "ci975_lo": lo975,
@@ -106,6 +141,7 @@ def _summarize_stratum_r16(
     counts = {
         "MATCHED_BETTER": 0,
         "EQUIVALENT": 0,
+        "EXACT_INVARIANCE": 0,
         "INCONCLUSIVE": 0,
         "MISMATCHED_BETTER": 0,
     }
@@ -118,6 +154,8 @@ def _summarize_stratum_r16(
     n_pairs = len(pair_calls)
     all_within = bool(n_pairs > 0 and all(c["within_delta"] for c in pair_calls.values()))
     any_within = bool(any(c["within_delta"] for c in pair_calls.values()))
+    # Addendum A Item 10: EXACT_INVARIANCE counts identically as EQUIVALENT in stratum/line rules.
+    n_equiv_effective = counts["EQUIVALENT"] + counts["EXACT_INVARIANCE"]
 
     if n_pairs == 0:
         status = "STRATUM_EMPTY"
@@ -125,7 +163,7 @@ def _summarize_stratum_r16(
         status = "STRATUM_INCONCLUSIVE"
     elif matched_positive and counts["MATCHED_BETTER"] == n_pairs:
         status = "STRATUM_MATCHED_SPECIFIC_SUB_DELTA" if all_within else "STRATUM_MATCHED_SPECIFIC"
-    elif counts["EQUIVALENT"] == n_pairs:
+    elif n_equiv_effective == n_pairs:
         status = "STRATUM_EQUIVALENT_NONZERO_SIGNAL" if matched_positive else "STRATUM_EQUIVALENT_NULL_SIGNAL"
     elif counts["MISMATCHED_BETTER"] == n_pairs:
         status = "STRATUM_MISMATCHED_BETTER"
@@ -210,7 +248,7 @@ def adjudicate_claim_i1_line(
 
     combined_counts = {
         k: seen_res["counts"][k] + unseen_res["counts"][k]
-        for k in ("MATCHED_BETTER", "EQUIVALENT", "INCONCLUSIVE", "MISMATCHED_BETTER")
+        for k in ("MATCHED_BETTER", "EQUIVALENT", "EXACT_INVARIANCE", "INCONCLUSIVE", "MISMATCHED_BETTER")
     }
     combined_per_source: Dict[str, Dict[str, Any]] = {}
     for sk, val in seen_res["per_source"].items():
@@ -245,6 +283,26 @@ def adjudicate_claim_i1_line(
     else:
         line_summary = "MIXED_OR_INCONCLUSIVE"
 
+    if line_summary == "LINE_MATCHED_SPECIFIC_SUB_DELTA":
+        interp_note = SUB_DELTA_INTERPRETATION_NOTE
+    elif line_summary == "LINE_EQUIVALENT_NONZERO_SIGNAL":
+        interp_note = (
+            "Non-zero matched signal with matched-vs-mismatched equivalence within ±delta "
+            "(EXACT_INVARIANCE pairs counted as EQUIVALENT per Addendum A Item 10)."
+        )
+    elif line_summary == "LINE_EQUIVALENT_NULL_SIGNAL":
+        interp_note = (
+            "Trivial null-signal equivalence (matched arm not strictly positive; NEVER report as "
+            "non-zero signal ignoring target controls)."
+        )
+    elif line_summary in ("INCONCLUSIVE", "MIXED_OR_INCONCLUSIVE"):
+        interp_note = (
+            "Any INCONCLUSIVE pair reflects insufficient statistical power, NEVER equivalence ruled out "
+            "(PREREG_I §3.3)."
+        )
+    else:
+        interp_note = ""
+
     return {
         "matched_arm_valid": matched_arm_valid,
         "matched_positive_ci975": matched_positive,
@@ -260,6 +318,110 @@ def adjudicate_claim_i1_line(
         "counts": combined_counts,
         "per_source": combined_per_source,
         "line_summary": line_summary,
+        "interpretation_note": interp_note,
+    }
+
+
+def summarize_within_line_resample_r16(
+    resample_result: Dict[str, Any],
+    seen_sources: Sequence[str],
+    unseen_sources: Sequence[str],
+    matched_positive_ci975: bool = True,
+) -> Dict[str, Any]:
+    """
+    Secondary descriptive interpretation helper for `PREREG_I Addendum A Items 8 & 9`.
+    Strictly descriptive — NEVER modifies primary `H-I1` or `H-I2` adjudication.
+    """
+    seen_set = set(seen_sources)
+    unseen_set = set(unseen_sources)
+    overlap = seen_set & unseen_set
+    if overlap:
+        raise ValueError(f"Mismatched strata must be disjoint; overlap={sorted(overlap)}")
+
+    per_src_in = resample_result.get("per_source", {})
+    observed_keys = set(per_src_in.keys())
+    expected_keys = seen_set | unseen_set
+    if observed_keys != expected_keys:
+        raise ValueError(
+            "resample_result['per_source'] keys must match seen_sources | unseen_sources exactly "
+            f"(missing={sorted(expected_keys - observed_keys)}, extra={sorted(observed_keys - expected_keys)})."
+        )
+
+    per_source_out: Dict[str, Dict[str, Any]] = {}
+    for stratum_name, s_list in (
+        ("seen_by_checkpoint", sorted(seen_sources)),
+        ("unseen_by_checkpoint", sorted(unseen_sources)),
+    ):
+        for sk in s_list:
+            exc = per_src_in[sk]["delta_pair_excess_over_resample"]
+            vf = float(exc.get("valid_frac", 0.0))
+            lo975 = float(exc.get("ci975_lo", float("nan")))
+            hi975 = float(exc.get("ci975_hi", float("nan")))
+            lo95 = float(exc.get("ci95_lo", float("nan")))
+            hi95 = float(exc.get("ci95_hi", float("nan")))
+            est = float(exc.get("estimate", float("nan")))
+            valid_boot_exc = bool(
+                vf >= MIN_BOOT_VALID_FRAC
+                and np.isfinite(lo975)
+                and np.isfinite(hi975)
+            )
+            exceeds = bool(valid_boot_exc and lo975 > 0.0)
+            if not valid_boot_exc:
+                pair_interp_zh = "同线重抽比较无效（bootstrap 有效率不足或非有限值）"
+            elif exceeds:
+                pair_interp_zh = RESAMPLE_EXCEEDS_WORDING
+            else:
+                pair_interp_zh = RESAMPLE_NOT_EXCEEDS_WORDING
+            per_source_out[sk] = {
+                "stratum": stratum_name,
+                "excess_estimate": est,
+                "excess_ci975_lo": lo975,
+                "excess_ci975_hi": hi975,
+                "excess_ci95_lo": lo95,
+                "excess_ci95_hi": hi95,
+                "valid_frac": vf,
+                "valid_boot": valid_boot_exc,
+                "exceeds_resample_loss": exceeds,
+                "pair_interpretation_zh": pair_interp_zh,
+            }
+
+    n_total = len(per_source_out)
+    n_valid = sum(1 for v in per_source_out.values() if v["valid_boot"])
+    n_exceed = sum(1 for v in per_source_out.values() if v["exceeds_resample_loss"])
+    all_valid = bool(n_total > 0 and n_valid == n_total)
+    all_exceed = bool(all_valid and n_exceed == n_total)
+    none_exceed = bool(all_valid and n_exceed == 0)
+
+    if n_total == 0:
+        line_interp_zh = "无错配来源可与同线重抽参照臂比较"
+        line_status = "NO_MISMATCHED_SOURCES"
+    elif not all_valid:
+        line_interp_zh = "部分或全部错配来源的同线重抽比较无效（bootstrap 有效率不足或非有限值）"
+        line_status = "INCONCLUSIVE_VS_WITHIN_LINE_RESAMPLE"
+    elif all_exceed and bool(matched_positive_ci975):
+        line_interp_zh = RESAMPLE_EXCEEDS_WORDING
+        line_status = "EXCEEDS_WITHIN_LINE_RESAMPLE"
+    elif all_exceed:
+        line_interp_zh = "所有错配来源损失超过同线重抽，但匹配臂未显著为正（不作目标线特异对照结论）"
+        line_status = "EXCEEDS_RESAMPLE_BUT_MATCHED_NOT_POSITIVE"
+    elif none_exceed:
+        line_interp_zh = RESAMPLE_NOT_EXCEEDS_WORDING
+        line_status = "NOT_EXCEEDING_WITHIN_LINE_RESAMPLE"
+    else:
+        line_interp_zh = "部分错配来源超过同线重抽损失、部分未超过（按来源逐条报告，不作全线目标特异对照结论）"
+        line_status = "MIXED_VS_WITHIN_LINE_RESAMPLE"
+
+    return {
+        "role": "secondary_descriptive_only_does_not_alter_primary_H_I1_H_I2",
+        "n_pairs": n_total,
+        "n_valid_pairs": n_valid,
+        "n_exceeds_resample_loss": n_exceed,
+        "all_exceeds_resample_loss": all_exceed,
+        "none_exceeds_resample_loss": none_exceed,
+        "resample_comparison_status": line_status,
+        "interpretation_zh": line_interp_zh,
+        "delta_pair_resample": resample_result.get("delta_pair_resample", {}),
+        "per_source": per_source_out,
     }
 
 
@@ -270,9 +432,10 @@ def adjudicate_group_r16(
     min_group2_lines: int = MIN_GROUP2_PRIMARY_LINES,
 ) -> Dict[str, Any]:
     """
-    Group-level `H-I1` summary (`PREREG_I v4 §3.1`, audit item `M3`):
+    Group-level `H-I1` summary (`PREREG_I v5 §3.1 + Addendum A`, audit item `M3`):
       - Reports `k / K` counts separately by `(group_key, modality)` (`CRISPRi` vs `CRISPRko`),
-        strictly without pooling perturbations across lines or merging modalities.
+        strictly without pooling perturbations across lines or merging modalities or merging
+        Group 3 (`gse295214_h1`) with Groups 1/2.
       - Pre-locked Group 2 degenerate safeguard: if `group_key == "group2"` and fewer than
         `min_group2_lines` (`< 2`) primary target lines qualify, Group 2 is downgraded to
         `SINGLE_STRATUM_DESCRIPTIVE_ONLY` and no line-level verdicts are awarded.
