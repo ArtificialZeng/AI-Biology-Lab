@@ -1,0 +1,20 @@
+【主控 Claude → A-T3，2026-11-25 22:58】第十六轮独立实现（盲态，可以用 swarm）
+
+你的 M1–M6 已经全部被采纳进 PREREG_I v4。为了最后的三方复核，现在请在 round16/audit/ 里独立写一套第十六轮的实现：
+- 内容：STATE 推断适配器（匹配对照和错配对照两臂；对照抽样按 PREREG_I §2.2：种子 20261601，512 个，按 batch 分层，16×32 划分）；r_orth_cal 和 r_dorth_cal；配对 bootstrap；TOST 四分类；分层和线级判定。
+- 依据：只读 PREREG_I.md 正文；**不读 round16/src**。
+- 运行环境：round16/.venv/bin/python（arc-state 0.11.1）；权重在 round16/shared/models/（SE-600M 还在下载，先做 ST-HVG）。
+- 测试：只用合成数据。可以用随机生成的计数让真实权重跑通，但不准用任何真实细胞。
+- 另外写一套合成测试夹具（不同的 N、零信号、等价、匹配更好、批次不平衡），以后用来和主线的实现逐位比对。
+完成后在 round16/status/A-T3.txt 最后单独一行写 R16_AUDIT_SYNTH_READY。
+【共同规则（主控 Claude，2026-11-25 22:58）】人类最新指示：Antigravity 不设预算上限，可以用 swarm 模式，以尽快拿出顶刊水平的成果为目标。主控的评估和路线图见 controller/TOPJOURNAL_LEDGER.md（先读）。
+- 每个代理可以在自己负责的范围内用 swarm 或子代理并行，但文件归属不能交叉：
+  - round16/src、round16/prereg：主线；
+  - round16/audit：A-T3，且盲态，不读 round16/src；
+  - round16/shared/candidates：A-T1；
+  - paper/：A-T4（只在本地，不进 git）；
+  - 自己的 round16/status/<代理>.txt：各自。
+- 任何人都不准改 round16/shared/models、round16/.venv、第 9–15 轮的冻结文件。
+- 在 CODE_FREEZE_R16.txt 和主控的放行文件出现之前，不准在真实细胞上运行模型；锁定前不准打开 Arc 存档的预测文件；不准用 snapshot_download。
+- 本地计算不设上限；需要付费的服务、租用 GPU、下载 100 MB 以上的新数据，都要先报给主控，由主控逐项问人类。
+- 不提交 git，不对外发消息，不写新闻稿或推介，不写「首次」。

@@ -1,0 +1,23 @@
+【主控 Claude → 主线，2026-11-24 11:35】PREREG_I v4：处理 A-T3 的 M1–M6 和 A-T5 的 Q4（与 Gate 2 无关的部分现在就改）
+
+先读 round16/status/PREREG_I_AUDIT_AT3.md（A-T3，M1–M6）和 round16/status/PRIOR_ART_I_CONTROLLER_CHECK.md。主控的裁定：
+1. M1 采纳：判定代码统一用正交分半相关 rho_ab_orth；补负例测试。
+2. M2 采纳：within_delta 受 valid_frac ≥ 0.95 和有限 CI 门控，按双侧计算；线级新增 LINE_MATCHED_SPECIFIC_SUB_DELTA（显著大于 0，但所有配对都在 ±δ 内）。
+3. M3 采纳：
+   - 等价拆成 LINE_EQUIVALENT_NONZERO_SIGNAL（匹配臂 ci975_lo > 0）和 LINE_EQUIVALENT_NULL_SIGNAL（匹配臂与 0 不可区分），只有前者能写成「模型没有用到目标线对照」；
+   - 匹配臂 valid_frac < 0.95 或 rho_ab_orth ≤ 0 → INCONCLUSIVE；
+   - 组级规则：按组、按 CRISPRi/CRISPRko 报告 k/K，不合并数据；第 2 组主分析线少于 2 条时，只做单层描述，不给线级结论。现在就写死。
+4. M4 采纳：写明 N ≥ 50 的门槛不能保证 TOST 的检验力；INCONCLUSIVE 要解释为「检验力不足」，不能解释为「排除了等价」；附上 A-T3 估算的每条线的半宽。
+5. M5 采纳：
+   - 写死对照抽样：每条线、每个对照来源用种子 20261601 无放回抽 512 个 NTC 细胞（按 batch 比例分层），所有扰动共用同一组 16×32 划分；不足 512 时用全部细胞并截断到 32 的整数倍；少于 128 个就排除这个对照来源。
+   - 写入主控要求的那句：「第 2 组用 4 个检查点的平均，hepg2 和 jurkat 各被其中 3 个见过」；另外报告第 2 组逐个检查点的结果。
+   - batch 协变量留给 Gate 2，要求匹配臂和错配臂完全相同。
+6. M6 采纳：
+   - 附一张表，列出 δ=0.04 在每条线上相当于已知 FCT 得分的多少比例；
+   - 写明 H-I2 的解读规则：不能用 cd4t_rest 这类 FCT 弱的线来掩盖 FCT 强的线（a549_ko）的结果，逐线报告；
+   - 写入入选普查声明（A-T3 M6.3）。
+7. A-T5 Q4：feng_ipsc 早于 SE-600M（ENA 2024-11-08，SE 训练清单不公开），**作为目标线降为 SENSITIVITY_ONLY**，作为错配对照来源（检查点没见过的那一层）保留；第 2 组主分析线变为 a549_ko、dld1、cd4t_rest。第 1 组披露 Nadig 数据（GSE264667，2024-05）可能在 SE 预训练中。
+8. 引用更正：Zhang et al. 2026 用原句（见主控抽查文件）；STATE 引用正式版 Cell 2026, doi 10.1016/j.cell.2026.07.052。
+
+同步更新 adjudicate_r16.py 和单元测试。禁止事项与之前相同（不下载、不运行真实细胞、不 git、不对外）。权重下载完成后，主控会另外发 Gate 2 指令；v4 先不填 TBD_GATE2。
+完成后在 round16/status/MAIN.txt 最后单独一行写 PREREG_I_V4_READY。

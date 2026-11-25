@@ -1,0 +1,49 @@
+AGENT: A-T5 (Team A · Literature & Official Metrics)
+TASK: Round 16 Prior-Art & Official Implementation Audit (Q1-Q5)
+DELIVERABLE: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/status/PRIOR_ART_I.md
+
+SUMMARY_BY_QUESTION:
+- Q1 (Control-swap / scramble / ablation priors): No prior study found running a matched vs. mismatched target-line input ctrl_cell_emb swap or scramble on trained Arc STATE (fixing weights + perturbations and swapping control cell line). Closest neighbors explicitly distinguished in PRIOR_ART_I.md: Zhang et al. 2026 (arXiv:2611.05849, swaps internal L_0 SVD directions across cell-line decoders in Table 7 & fits ridge probes on control+batch vs. pert+batch in Appendix C.5), Mao et al. 2026 (arXiv:2604.27646, separate DecoderOnly baseline), Rezaei Jafari et al. 2026 (arXiv:2611.02335, ablates perturbation input on synthetic scGPT+STATE), CellCanon (arXiv:2611.05890, removes DMSO background in its own model), OCOO-T (arXiv:2606.12838, S1 categorical vs. S2-S7 own-line control mean), and CASTER (10.64898/2026.11.15.766815).
+- Q2 (Shared-axis removal): Systema (10.1038/s41587-025-02777-8) shifts the reference origin to the average perturbation centroid O_pert (single vector subtraction), not orthogonal complement projection onto span{1, \bar{\Delta}^{src}_p, \bar{b}_S}^\perp. Closest neighbors (AmbiModBench score contrast, PerturbBridge RA-AE architecture, Bison drug contrast) do not define r_orth_cal / r_dorth_cal.
+- Q3 (Post-split-half selection bias & log1p weight w(mu)=mu/(1+mu)): Nicol et al. 2026 v2 (10.64898/2026.05.07.723486) removes shared-control covariance via control splitting; Miller et al. 2026 computes evaluation DEGs on the same GT half; Occam and cell-eval2 use half-splits as reproducibility ceilings; Booeshaghi & Pachter 2021 and Ahlmann-Eltze & Huber 2023 analyze log1p normalization/Taylor asymptotics without deriving post-split-half true-amplitude winner's-curse bias or weighting |\delta| by w(mu)=mu/(1+mu).
+- Q4 (SE-600M & ST-*-Replogle data/covariate audit):
+  * Code/HF: cell_type_key (cell_line) only partitions control pools in _infer.py and does NOT enter StateTransitionPerturbationModel.forward; all 8 canonical ST-SE/HVG-Replogle zeroshot configs set batch_encoder=true, use_batch_token=false, batch_col=gem_group (unseen batch keys fall back to index 0, or bi=None if batch_col absent). SE-600M config.yaml lists scbasecamp-cellxgene-tahoe-filtered (14,420 datasets), rpe1_top5000_variable.h5ad in overrides/validations, and num_cells=36238464 (used only for TOTAL_N_CELL warmup steps in trainer.py; abstract reports 167M observational cells).
+  * CRITICAL LEAKAGE / TIMELINE FLAG: Not only Replogle K562/RPE1 (ENA PRJNA831566, 2022-04-26) and Nadig HepG2/Jurkat (GEO GSE264667, 2024-05-05 / ENA PRJNA1100571, 2024-06-23), but also Feng iPSC (ENA PRJEB81502, first_public=2024-11-08) predates scBaseCount v1 (2025-02-27/2025-03-04) and SE-600M (2025-06-23/2025-07); internal training CSVs could not be read so Feng iPSC cannot be classified as temporally isolated from SE-600M. Strictly post-SE-600M cohorts are Zhu CD4+ T (GSE314342, 2026-02-06 / PRJNA1359008, 2026-02-09), DLD1 (GSE337988, 2026-07-10 / PRJNA1492064, 2026-07-12), and A549 (GSE345058, 2026-08-26 / PRJNA1483600, 2026-07-03); VCC 2025 H1 launched 2025-06 using 10x Flex probe chemistry excluded from standard scRecounter RNA-seq processing.
+- Q5 (Illumina/CellularAI on public data): Zero evidence found of any external group executing Illumina/CellularAI end-to-end strictly on public data. Public repo explicitly excludes raw training preprocessing and summary generation (docs/input-files.md), requires an access-controlled summary bundle for full runs, ships only a 30-gene synthetic smoke test plus vcc2025 scoring scripts, and shows 1 non-technical issue and 0 PRs on GitHub.
+
+EXPLICIT_UNREADABLE_DISCLOSURES (未能读取):
+- STATE full text on bioRxiv (HTTP 403) and Elsevier API (HTTP 429) -> abstract/blog/code/HF configs verified instead.
+- Fan et al. 2026 on OpenReview API (HTTP 403) -> only secondary internal memo PRIOR_ART_H_CONTROLLER_FAN2026.md exists.
+- Vollenweider & Buehlmann SBB bioRxiv full HTML (HTTP 403) & CellFlow bioRxiv full text -> abstracts verified via bioRxiv API.
+- SE-600M private CSV training split list (esm_basecount_tahoe_cellxgene_train_filtered.csv) & Illumina/CellularAI proprietary training summary bundle.
+- Unauthenticated GitHub REST API (HTTP 403 rate limit exceeded) -> CellularAI repo/issues/PRs verified via GitHub HTML (HTTP 200) and cloned repo docs.
+
+COMPLIANCE_CHECKS:
+- No weights downloaded, no files >100 MB downloaded, no packages installed, no git commands executed, no anti-bot bypass, no saved ST-*-Replogle .h5ad files opened.
+- PRIOR_ART_I.md verified: 47/48 quotes exact substring matches in cached primary files + 1 exact substring from live bioRxiv CellFlow API output; 0 multi-sentence quotes; 0 forbidden investigator-acronym hits.
+
+PRIOR_ART_I_DONE
+
+ADDENDUM_1_TASK: Round 16 G3 Open-Weight Control-Swap Model Audit (PRIOR_ART_I_ADD1) + Zhang et al. 2026 Table 7 Verbatim Alignment
+ADDENDUM_1_DELIVERABLES:
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/status/PRIOR_ART_I_ADD1.md
+- /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/status/PRIOR_ART_I.md (Table 7 verbatim quote aligned to PRIOR_ART_I_CONTROLLER_CHECK.md)
+
+ADDENDUM_1_FINDINGS:
+- Local machine verified via sysctl: Apple M3 Pro, 38,654,705,664 bytes (36 GiB unified RAM), no NVIDIA CUDA GPU.
+- Audited 26 models/variants for non-gated open weights, control-cell input, cross-line control-swap feasibility, leakage against Group 1 (K562/RPE1/HepG2/Jurkat/H1/Feng iPSC) & Group 2 (A549/DLD1/Zhu CD4+ T), and M3 Pro 36 GB inference:
+  1. RECOMMENDED PRIMARY (#1): Occam (bendidiihab/Occam, checkpoints/occam_seeds/rhj_fewshot/all_sources/seed_42/best_model.pth, 2,550,066,734 B / 2.55 GB, MIT License, gated=False). Self-contained single file (no external KG/DB needed at inference); pure PyTorch MLP+GNN+FiLM taking single-cell control_expression with no discrete cell-line ID; finetuned on Nadig HepG2/Jurkat + Replogle RPE1 (6,983-gene Ensembl axis), zero perturbation finetuning on K562, VCC 2025 H1, or Group 2 (pretrain encoder from DiverseRNA-1.4M noted transparently); CPU/MPS fallback ready.
+  2. RECOMMENDED SECONDARY (#2 options, non-STATE architectures):
+     - #2A scGPT finetuned (matthewshu/scgpt-replogle-base-ft, best_model.pt 207,506,241 B / 207.5 MB, gated=False, bowang-lab/scGPT MIT code; flash_attn optional). Takes control expression x[:, 0] directly without cell-line ID; finetuned on K562+HepG2+Jurkat (held out RPE1, H1, and post-2023-05 Group 2 lines A549/DLD1/CD4 T).
+     - #2B TxPert (bendidiihab/Occam-competitor-checkpoints/txpert/rhj_fewshot/seed_42/checkpoint.ckpt, 102,901,694 B / 102.9 MB, gated=False, Recursion Non-Commercial EULA). MLP basal control + GO/STRING adjacency-map on rhj_fewshot; held out K562/H1/Group 2.
+  3. STATE VARIANTS & PIE NOTES:
+     - ST-HVG-Replogle (arcinstitute/ST-HVG-Replogle, 164.1 MB/fold, gated=False, non-commercial) removes SE-600M but remains the same Arc STATE architecture; ST-HVG/SE-Parse & Tahoe cover cytokine/drug spaces rather than CRISPRi genes; Zhang et al. 2026 scGPT+ST & Tahoe-x1+ST release audit scripts only (no trained ST decoder weights).
+     - ArcInstitute/PIE (arcinstitute/PIE_replogle_xdataset, 966.4 MB ckpt, replogle=0.0) outputs pseudobulk summaries conditioned on ctrl_means + context_text token AND PieDataModule inference triggers ~104 GB asset pulls (PIE_sources 44.0 GB + preprocessed datasets ~59.1 GB), making it heavy/non-plug-and-play.
+  4. EXCLUSIONS: CZI/Biohub scLDM (biohub/scldm_cd4, 830.5 MB MIT) excludes COUNTS and samples prior noise from discrete labels (plus trained on Zhu CD4 T); CellFlow Occam checkpoint is 18.94 GB JAX/cell_type-conditioned; PerturbDiff uses discrete celltype LLM dictionary lookup; X-Cell, flowstate, OCOO-T, CellCanon, S1Pert, PerturbJEPA, PerturbBridge, Wu et al. 2026 scLDM, Bison, CASTER, GEARS, CPA, scLAMBDA, SAMS-VAE, BioLORD, chemCPA, scGen either lack released cross-line weights (marked 未能读取 where inaccessible/unreleased) or cannot transfer across lines.
+- DOWNLOAD APPROVAL NOTICE FOR MASTER CONTROLLER: Every recommended checkpoint exceeds 100 MB (Occam 2.55 GB; scGPT 207.5 MB; TxPert 102.9 MB; ST-HVG-Replogle 164.1 MB). Zero weights have been downloaded; formal approval is requested before any Phase 2 downloads.
+
+ADDENDUM_1_COMPLIANCE_CHECKS:
+- Zero weights downloaded, zero >100 MB files downloaded, zero packages installed, zero git commands, zero .h5ad opened.
+- Regex audit: PRIOR_ART_I.md (39,243 B, 0 forbidden hits, Table 7 exact match to PRIOR_ART_I_CONTROLLER_CHECK.md) & PRIOR_ART_I_ADD1.md (45,019 B, 0 forbidden hits, 31/31 single-sentence verbatim quotes verified against primary API/repo logs).
+
+PRIOR_ART_I_ADD1_DONE

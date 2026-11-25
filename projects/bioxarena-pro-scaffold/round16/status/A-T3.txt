@@ -1,0 +1,163 @@
+Agent: A-T3 (Team A - Pre-Registration & Statistical Audit)
+Date: 2026-11-24 (+08:00) [Phase 1] / 2026-11-25 (+08:00) [Phase 2]
+
+========================================================================
+Phase 1: PREREG_I v3 Statistical Audit (2026-11-24)
+========================================================================
+- Audited Deliverables: round16/prereg/PREREG_I.md (v3-DRAFT), round16/src/adjudicate_r16.py, round16/src/test_unit_r16.py.
+- Output: round16/status/PREREG_I_AUDIT_AT3.md
+- Verdict: CONDITIONAL_PASS (M1-M6 Must-Fix; all 6 later incorporated into PREREG_I v4-DRAFT).
+- Prior marker: PREREG_I_AT3_AUDIT_DONE
+
+========================================================================
+Phase 2: Blind Clean-Room Implementation & Synthetic Suite (2026-11-25)
+========================================================================
+Specification Basis:
+- Read ONLY round16/prereg/PREREG_I.md (v4-DRAFT, 201 lines), controller/TOPJOURNAL_LEDGER.md,
+  round16/shared/models metadata, round16/.venv arc-state 0.11.1 package source, and frozen
+  Rounds 10-12 audit/reference code.
+- Clean-room blinding strictly enforced: ZERO reads or imports of round16/src/*.
+
+Deliverables Created in round16/audit/:
+1. round16/audit/__init__.py
+2. round16/audit/audit_r16_sampling.py
+   - Deterministic batch-stratified control-cell sampler (`sample_stratified_control_sets_r16`):
+     seed=20261601, exact integer largest-remainder quota with lexicographic tie-breaking,
+     single shuffle -> 16x32 partition (`N_NTC >= 512`), truncation to multiples of 32
+     (`128 <= N_NTC < 512`), exclusion floor (`N_NTC < 128`).
+   - Two-stratum mismatched-pool builder (`build_mismatched_strata_r16`) respecting `I14` & `Q4`
+     (`feng_ipsc` retained in `unseen_by_checkpoint`, non-local lines excluded).
+3. round16/audit/audit_r16_metrics.py
+   - Primary `r_orth_cal` & secondary Systema-inspired `r_dorth_cal` (`span{1, t_mean, b_S}^perp`,
+     Property P1 exact null invariance <= 1e-14 by construction).
+   - Orthogonal split-half correlation explicitly keyed `rho_ab_orth` (`M1`).
+   - Joint perturbation bootstrap (`seed=20261601`, `97.5%` & `95.0%` CIs, `valid_frac`) and
+     paired contrasts (`matched - mismatched_s'`, `model - FCT`) sharing identical draws & ceilings.
+4. round16/audit/audit_r16_adjudicate.py
+   - Exact `PREREG_I v4 §3` adjudicator: 4-way TOST (`delta=0.04`, `valid_frac`-gated `within_delta`),
+     `LINE_MATCHED_SPECIFIC` vs `LINE_MATCHED_SPECIFIC_SUB_DELTA`, `LINE_EQUIVALENT_NONZERO_SIGNAL`
+     vs `LINE_EQUIVALENT_NULL_SIGNAL`, `LINE_MISMATCHED_BETTER`, `MISSING_STRATUM`,
+     `MIXED_OR_INCONCLUSIVE`, `INCONCLUSIVE`, symmetric `H-I2`, and `|G_2_qual| < 2` degenerate
+     Group-2 safeguard (`adjudicate_group_r16`).
+5. round16/audit/audit_r16_state_adapter.py
+   - Clean-room `Arc STATE` adapter (`STATE_HVG` active with `round16/shared/models/ST-HVG-Replogle`;
+     `STATE_SE` ready interface pending `SE-600M` download completion).
+   - Identical matched vs mismatched control inference with neutral batch modes (`bypass_zero`
+     setting `batch_encoder=None` vs `index_zero` matching `_infer.py`), `[0, 14]` expression
+     clipping, `minus_pred_ntc` / `minus_input_ctrl` delta modes, zero-leakage & freeze guards.
+6. round16/audit/synthetic_fixtures_r16.py & round16/audit/canonical_synthetic_parity_r16.json
+   - Canonical parity pack across 9 synthetic scenarios: varying N (N=16 underpowered, N=86,
+     N=120, N=200, N=300, N=400), null-signal equivalence, nonzero-signal control-invariant
+     equivalence, matched_better strong & sub_delta, mismatched_better, cross-stratum split,
+     batch-imbalanced control cohorts ([701, 317, 103, 61, 18], remainder ties, truncation, floor),
+     and degenerate Group-2 safeguard.
+7. round16/audit/test_audit_r16.py
+   - End-to-end verification using round16/.venv/bin/python (arc-state 0.11.1, torch 2.15.0):
+     `Ran 6 tests in 11.082s — OK` (0 failures, 0 errors):
+     * test_1: exact <= 1e-12 parity vs frozen round10/src/metrics_r10.py (`r_orth_cal`, paired CI, `rho_ab_orth`)
+     * test_2: Property P1 (`r_dorth_cal` <= 1e-14 across Transfer_Mean, GlobalScale, SGM, random affine)
+     * test_3: batch-imbalanced stratified 16x32 sampling, tie-breaking, truncation, exclusion, strata
+     * test_4: M1-M4 edge cases & all 9 canonical multi-regime synthetic fixtures
+     * test_5: pre-freeze & training-leakage hard guards
+     * test_6: real-weight ST-HVG-Replogle (`zeroshot/hepg2`) end-to-end synthetic Poisson-count
+       smoke test across matched + batch-imbalanced mismatched synthetic pools (proving input-control
+       sensitivity under both `bypass_zero` and `index_zero` covariate modes; ZERO real cells used)
+
+Compliance Attestation:
+- Zero files read/imported from round16/src/*.
+- Zero real cells inferred; zero archived adata_pred.h5ad opened; zero downloads or snapshot_download calls.
+- Zero modifications to round16/src, round16/prereg, round16/shared/models, round16/.venv, paper/, or frozen R9-R15.
+- Zero git commands executed; zero external messages; zero priority claims.
+
+- Prior marker: R16_AUDIT_SYNTH_READY
+
+========================================================================
+Phase 3: PREREG_I §3.1 Conservative Zero-Tie Fix (2026-11-25 23:20 +08:00)
+========================================================================
+- Directive: Controller ruling (2026-11-25 23:20 +08:00, R16_CONTROLLER_NOTES.md) on PREREG_I §3.1
+  ambiguity (blind to round16/src).
+- Code Update (round16/audit/audit_r16_adjudicate.py):
+  * In classify_pair_tost_r16, exact 97.5% CI endpoint tie `ci975_lo == 0.0 or ci975_hi == 0.0`
+    (`zero_tie_975`) is evaluated BEFORE MATCHED_BETTER / MISMATCHED_BETTER / EQUIVALENT and
+    forces `category = "INCONCLUSIVE"`, even when the finite 95% CI falls strictly inside `(-delta, +delta)`.
+  * Confirmed adjudicate_claim_i2_line symmetrically classifies `ci975_lo == 0.0` / `ci975_hi == 0.0`
+    as `INDISTINGUISHABLE`.
+- Unit Test Additions (round16/audit/test_audit_r16.py::test_4):
+  * Added explicit regression tests covering `ci975_lo == 0.0`, `ci975_hi == 0.0`, and `-0.0` with
+    95% CI inside `(-0.04, +0.04)` (`category == "INCONCLUSIVE"`, `within_delta == True`), line-level
+    spillover preventing `LINE_EQUIVALENT_*` (`MIXED_OR_INCONCLUSIVE`), and `H-I2` `INDISTINGUISHABLE` ties.
+- Verification After Edit:
+  * py_compile (round16/audit/*.py): rc=0
+  * OMP_NUM_THREADS=1 round16/.venv/bin/python -u round16/audit/test_audit_r16.py -v: Ran 6 tests in 11.179s — OK (0 failures, 0 errors, 0 skipped).
+- Compliance Attestation: Zero reads/imports of round16/src/*; zero real cells run.
+
+- Prior marker: R16_AUDIT_TIEFIX_DONE
+
+========================================================================
+Phase 4: Clean-Room Real-Data Runner & Gate-2 Integration (2026-11-26 +08:00)
+========================================================================
+- Directive: Controller (2026-11-25 23:53 +08:00) post-R16_GATE2_SCHEMA.md (`round16/status/R16_GATE2_SCHEMA.md`).
+  Strict blinding preserved: zero reads or imports of `round16/src/*`, zero real cells run, zero downloads, zero git.
+- Updates & New Modules (`round16/audit/`):
+  1. `round16/audit/audit_r16_state_adapter.py`:
+     - Hard Freeze Gate (`assert_freeze_gates_r16`): refuses any real-data run unless ALL THREE exist & are non-empty:
+       `PREREG_I_COMMIT.txt`, `CODE_FREEZE_R16.txt`, AND `R16_GO.txt` (strictly checking `R16_GO.txt` mtime >=
+       `R16_GATE2_SCHEMA.md` mtime when present).
+     - `CleanRoomSE600MEncoder`: direct `safetensors.torch.load_file` (`model.safetensors`) + `config.yaml` +
+       `protein_embeddings.pt` (`19,790` ESM2 embeddings), strictly enforcing `float32` on Apple `MPS` (rejecting
+       `fp16`/`bf16` on MPS cleanly) with CPU `float32` fallback and zero missing keys.
+     - Exact Gate-2 decoding & covariates:
+       * `ST-SE`: `clip(gene_decoder(preds), 0.0, 14.0)` (`2,058 -> 2,000`).
+       * `ST-HVG`: `clip(preds, 0.0, 14.0)` directly (`gene_decoder` never used); supports `official_median_log1p`
+         and `libnorm1e4_log1p` preprocessing toggle (`hvg_preproc_mode`) pending `PREREG_I v5` lock.
+       * `16 x 32` cell sets (`padded=True`), fixed `batch = 0` (`index_zero`) identical across matched & mismatched
+         control arms, and `delta_pred(p) = pred(p) - pred("non-targeting")` over identical sampled input controls.
+       * Frozen R10 `HGNCBridge` symbol alignment across `G_model`, `G_eval^R16`, `P_model` (`2,023` keys -> 1-to-1
+         canonical), and `SE-600M` `protein_embeddings.pt` (`19,790` keys).
+  2. `round16/audit/audit_r16_raw_controls.py`:
+     - Memory-bounded single-cell NTC-only extractors for local raw cohorts (`a549_ko`, `dld1`, `cd4t_rest`,
+       `feng_ipsc`) + `nadig_hepg2`/`nadig_jurkat` (auto-resolving `--raw-nadig-dir` / `NADIG_DATA_DIR` / sync drive;
+       fails cleanly if unmounted unless HVG npz fallback explicitly opted in) plus R9-R12 `P5` target eligibility,
+       `delta_obs`, split-halves (`delta_half_a`/`delta_half_b`), `Transfer_Mean`, and frozen `FCT` (`H-I2`) reference builder.
+  3. `round16/audit/run_audit_r16.py`:
+     - Enforces `assert_freeze_gates_r16(status_dir)` first on `--phase real_r16` before touching real data.
+     - Isolates `PREREG_I_V5_CONFIG` slots (`locked_n_eval_exact`, `expected_g_eval_canon`, `hvg_preproc_primary`)
+       ready for immediate constant lock once `PREREG_I v5` is committed.
+     - Exports per-line, per-arm uncompressed `.npz` bundles (`delta_pred_matched`, `delta_pred_mismatched__*`,
+       `delta_pred_arms`, `delta_obs`, `delta_half_a`, `delta_half_b`, `half_valid`, `delta_transfer`,
+       `source_grand_mean`, `delta_fct`, `eval_genes`, `eval_perts`, `target_gene_idx`) for 3-way bitwise comparison,
+       plus JSON metric/adjudication summaries.
+  4. `round16/audit/test_audit_r16.py`:
+     - Expanded to 8 tests (`test_5` 3-lock + post-Gate2 timestamp gate; `test_7` HGNCBridge/HVG preproc/ST-HVG direct
+       preds/`padded=True`/synthetic SE model/`.npz` export schema; `test_8` REAL `SE-600M` `model.safetensors` on
+       Apple `MPS float32` -> REAL `ST-SE-Replogle` `zeroshot/hepg2` synthetic Poisson count smoke test).
+- Verification After Final Code Edits (Zero Real Cells):
+  * `round16/.venv/bin/python -m py_compile round16/audit/*.py`: rc=0
+  * `OMP_NUM_THREADS=1 WANDB_MODE=disabled HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 round16/.venv/bin/python -u round16/audit/test_audit_r16.py -v`:
+    `Ran 8 tests in 63.859s — OK` (0 failures, 0 errors, 0 skipped).
+  * `run_audit_r16.py --phase real_r16`: immediately blocked by `BlindingGateError` (`PREREG_I_COMMIT.txt` / `CODE_FREEZE_R16.txt` / `R16_GO.txt` gate).
+- Environment Note (Non-Blocking Pre-Freeze): External Thunderbolt sync volume (`/Volumes/雷雳传输/...`) containing `GSE264667_{hepg2,jurkat}_raw_singlecell_01.h5ad` is currently unmounted; must be mounted or passed via `--raw-nadig-dir` when Gate 5 real-cell execution is authorized.
+
+R16_AUDIT_RUNNER_READY
+
+[Phase 5: Pre-Lock Independent Final Audit of PREREG_I v5 — 2026-11-26 00:22 +08:00]
+- Status: PASS — READY FOR GATE 3 LOCK (0 items '锁定前必须改', 5 items '可以锁定后作为补记', 7 code-alignment items 'A1-A7' queued for post-lock Gate 4 update of round16/audit/).
+- Blinding & Scope Verified: Read strictly `round16/prereg/PREREG_I.md` (`v5-FINAL-PRE-LOCK`, 284 lines, SHA-256 `43d242e460fd64db2e4af1e628e886cf1d94fb4ccd1e95925928a99cb96ee4a8`) plus our clean-room `round16/audit/*.py` modules only. Zero reads/imports of `round16/src/`, zero downloads, zero real cells run, zero git commands, zero edits to `round16/prereg/` or `round16/audit/`.
+- Report Written: `round16/status/PREREG_I_V5_AUDIT_AT3.md`.
+- Summary of Audit Pillars:
+  1. Internal Consistency (§2 Constants / §3 Adjudication & Tie Rules / §2.4 Group 3 `GSE295214`):
+     - Zero contradictions across §0.2, §2.1, §2.3, §3.1, §3.3 (`N_eval = 740/873/403/75/245/88`, `|G_eval| = 1843/1843/1837/1832/1830/1575`, `K1=2, K2=3`, `Q4 feng_ipsc` demotion + retained unseen `S_mis`).
+     - §3.1 6-step pair TOST cascade (w/ priority-2 conservative `ci975_lo == 0.0 or ci975_hi == 0.0 -> INCONCLUSIVE`), 8-step line cascade, and §3.2 `H-I2` are mutually exclusive & exhaustive.
+     - Group 3 (`GSE295214`) pre-download gates, odd/even 85-GSM split-half (`min_batch_nt=15`), `r9_6 \ {vcc2025_h1}` primary FCT pool, `zeroshot/ensemble4` two-stratum pool (`n=2` seen, `n=4` unseen), and strict separate reporting require no pre-lock blockers; noted post-lock addendum items for secondary `full r9_6` target-set boundary (`§2.4.4`) & `build_gse295214_parts` inline guide/dedup specs (`§2.4.2`).
+  2. Mismatches vs. Existing `round16/audit/` (Queued Strictly for Post-Lock Gate 4 Alignment, `v5` Governs):
+     - A1: `audit_r16_raw_controls.py` computes `median_ntc_umi` across ALL QC-valid NTCs instead of the sampled 512-cell pool (`v5 §2.1.4 L83`).
+     - A2: `audit_r16_state_adapter.py::map_genes_to_se600m_pe` uses `HGNCBridge` fallback whereas `v5 §2.1.4 L81` specifies exact gene-symbol string lookup for `SE-600M` (plus confirm `ST-HVG` `HGNCBridge` vs exact).
+     - A3: `clean-room` `preprocess_hvg_expression` / `CleanRoomArcStateAdapter.__init__` defaults still `"libnorm1e4_log1p"` vs `v5` primary `"official_median_log1p"`.
+     - A4: `run_audit_r16.py::PREREG_I_V5_CONFIG` still `"v4-GATE2-PENDING-V5"` / `locked_n_eval_exact=None` (plus module `v4` docstrings).
+     - A5: `audit_r16_adjudicate.py` uses `"DOWNGRADED_SINGLE_STRATUM_DESCRIPTIVE_ONLY"` vs `v5 L203` `"SINGLE_STRATUM_DESCRIPTIVE_ONLY"` and lacks separate `group3_prospective` rollup.
+     - A6: Missing Group 3 (`gse295214_h1`) CellRanger `.h5` reader, `r9_6 \ {vcc2025_h1}` primary `FCT` pool handling, and `R16_GSE295214_QC_COUNTS.md` gate.
+     - A7: Adapter lacks cell-level native `gem_group` batch vector (`G4` Group 1 & `§1.3`), `2,048`-dim + uncentered centroid diagnostics, and runner orchestration for `round16/results/arrays/`, per-ckpt breakdown, `Perm100`, `G4` 2x2/panel, sensitivity cohorts, & `adata_pred.h5ad`.
+  3. Remaining Data-Dependent Discretion Clauses (All Post-Lock Addendum / Non-Confirmatory Only):
+     - `§1.3` (`adata_pred.h5ad` line choice + parity pass threshold), `§2.4.4` (`full r9_6` target-set boundary), `§4.3.1` (`Perm100` unit & `ST-HVG` column match), `§4.3.3` (`CellularAI` optional flag governance), `§4.4.3` (`G4` `(B_M, B_S)` pairing & `(b_1=0, b_2=17)` orientation).
+
+PREREG_I_V5_AT3_AUDIT_DONE

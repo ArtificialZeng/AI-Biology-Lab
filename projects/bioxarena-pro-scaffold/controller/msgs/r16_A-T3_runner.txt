@@ -1,0 +1,16 @@
+【主控 Claude → A-T3，2026-11-25 23:53】准备 round16/audit 的真实数据运行脚本（盲态不变）
+
+Gate 2 结构检查已完成，主控复核通过：round16/status/R16_GATE2_SCHEMA.md。这是对 STATE 结构的描述，可以读。round16/src 仍然不能读。
+请在 round16/audit/ 里写你自己的真实数据运行脚本：
+- 硬门：没有 PREREG_I_COMMIT.txt、CODE_FREEZE_R16.txt 和 R16_GATE2_SCHEMA 之后主控发的 R16_GO.txt，就拒绝运行。
+- 按 Gate 2 的结构事实写推断：
+  - ST-SE 的输出是 clip(gene_decoder(preds),0,14)；ST-HVG 的输出直接是 clip(preds,0,14)；
+  - 16×32 分组时 padded=True；
+  - batch 编号固定为 0，匹配臂和错配臂相同；
+  - 预测差 = 预测扰动 − 预测 non-targeting，两项用同一组输入对照；
+  - 基因名经过冻结的 R10 HGNCBridge 对齐；
+  - SE-600M 用 safetensors 直接加载，在 MPS 上用 float32。
+- 输出：每条线、每个对照臂的逐扰动预测差数组，加上观测差的分半数组，存成 npz，供三方逐位比对。
+- PREREG_I v5 锁定后，再按 v5 的确切常数（N_eval、G_eval、ST-HVG 的预处理）更新。
+只用合成数据测试；不跑真实细胞，不下载，不 git。
+完成后在 round16/status/A-T3.txt 最后单独一行写 R16_AUDIT_RUNNER_READY。

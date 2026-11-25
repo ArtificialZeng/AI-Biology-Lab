@@ -1,0 +1,159 @@
+Round 16 Main Line Status — PREREG_I v4 & Scaffold Verification (M1-M6, A-T5 Q4, Citation Corrections)
+Date: 2026-11-24 (+08:00)
+Target Audits:
+  - round16/status/PREREG_I_AUDIT_R1.md (I1-I14)
+  - round16/status/PREREG_I_AUDIT_AT3.md (M1-M6)
+  - round16/status/PRIOR_ART_I_CONTROLLER_CHECK.md (Q4 & citations)
+Repo HEAD: 80f7c17 (0 commits made; all TBD_GATE2 slots intentionally unfilled pending Gate 2)
+
+1. Master Controller v4 Rulings Closure Checklist (1-8):
+- [1] M1 (rho_ab_orth key standardization):
+  * Renamed split-half denominator key from "rho_ab" to "rho_ab_orth" across metrics_r16.py (compute_orth_suite_r16, compute_paired_contrast_r16, compute_paired_model_vs_all_mismatched_r16), adjudicate_r16.py (strict lookup with zero fallback to legacy "rho_ab"), PREREG_I.md §1.1 & §3.1, and test_unit_r16.py.
+  * Added negative unit tests confirming rho_ab_orth <= 0 (0.0, -0.15), legacy "rho_ab"-only dict, and valid_frac < 0.95 all return INCONCLUSIVE and never award LINE_MATCHED_SPECIFIC or LINE_EQUIVALENT_*.
+- [2] M2 (within_delta gating & LINE_MATCHED_SPECIFIC_SUB_DELTA):
+  * classify_pair_tost_r16 strictly gates within_delta on valid_frac >= 0.95, finite 97.5% & 95.0% CIs, and strict two-sided ci95_lo > -delta and ci95_hi < +delta (aligned text in PREREG_I.md §3.1).
+  * Added LINE_MATCHED_SPECIFIC_SUB_DELTA (and STRATUM_MATCHED_SPECIFIC_SUB_DELTA) when matched arm & both strata are MATCHED_BETTER yet all_within_delta == True (every pair strictly inside (-0.04, +0.04)); exported all_within_delta & any_within_delta.
+  * Added negative & open-boundary unit tests (valid_frac < 0.95, NaN CI, exact ties 0.0 / -0.04 / +0.04 -> INCONCLUSIVE & within_delta=False).
+- [3] M3 (Equivalent split, matched-arm gating, & group-level + Group 2 < 2 rule):
+  * Split equivalence into LINE_EQUIVALENT_NONZERO_SIGNAL (matched ci975_lo > 0; ONLY this label supports "model ignores target controls while exhibiting non-zero above-transfer-mean signal") and LINE_EQUIVALENT_NULL_SIGNAL (matched ci975_lo <= 0; trivial null-signal equivalence).
+  * Enforced matched-arm valid_frac < 0.95 or rho_ab_orth <= 0 -> INCONCLUSIVE.
+  * Added adjudicate_group_r16(...) & locked PREREG_I.md §3.1 group rules: report k/K separately by Group 1 (CRISPRi), Group 2 CRISPRi, and Group 2 CRISPRko without data pooling; if Group 2 qualifying primary lines < 2 after Gate 2, downgrade Group 2 to SINGLE_STRATUM_DESCRIPTIVE_ONLY with no line-level H-I1 verdict awarded.
+- [4] M4 (TOST delta=0.04 power disclosure & A-T3 half-width table):
+  * Locked explicit power caveat in PREREG_I.md §3.3: N >= 50 does NOT guarantee TOST power; INCONCLUSIVE MUST be interpreted as insufficient statistical power, NEVER as equivalence ruled out.
+  * Embedded full A-T3 empirical half-width h_0.95 & remaining margin (0.04 - h_0.95) table for all primary, sensitivity, and optional extension lines (including hek293_xucao 0% power).
+- [5] M5 (Locked control-cell sampling, 4-checkpoint 3/4 overlap disclosure, & Gate-2 batch checks):
+  * Locked exact sampling rule in PREREG_I.md §2.2 & implemented sample_stratified_control_sets_r16 in model_adapters_r16.py (seed 20261601, 512 NTC cells without replacement proportionally stratified by batch via largest-remainder allocation, shared 16x32 partition across all perturbations; <512 uses all cells without replacement truncated to multiple of 32; <128 raises InsufficientControlCellsError and excludes control source).
+  * Inserted Master Controller's exact 3/4 overlap disclosure in §0.2 & §2.3 ("第 2 组用 4 个检查点的平均，nadig_hepg2 和 nadig_jurkat 分别各被其中 3 个检查点见过") and per-checkpoint Group 2 reporting (including strict LOO single-checkpoint cross-checks) in §4.3.
+  * Kept batch_encoder covariate mapping in TBD_GATE2 with identical matched/mismatched neutral covariate requirement + Gate-2 synthetic X_ctrl sensitivity & SE-600M gene-coverage/embedding-distance checks.
+- [6] M6 (Hindsight-bias controls):
+  * Embedded delta=0.04 as % of known historical FCT r_orth_cal table in §3.3 (a549_ko 21.1%, dld1 28.6-29.5%, cd4t_rest 71.9%, feng_ipsc 33.0%).
+  * Locked H-I2 anti-masking rule in §3.2 (line-by-line reporting with known FCT; weak-FCT cd4t_rest MUST NOT mask strong-FCT a549_ko).
+  * Embedded complete exhaustive inclusion census statement in §2.3 (+ exact mounted sync-drive prefix).
+- [7] A-T5 Q4 (feng_ipsc demotion & Nadig disclosure):
+  * Demoted feng_ipsc (ENA PRJEB81502 first_public 2024-11-08 < SE-600M 2025-06) to SENSITIVITY_ONLY as a target line while RETAINING it as an unseen_by_checkpoint mismatched-control source (updated PREREG_I.md §0.2, §2.3, §3.1, model_adapters_r16.py, test_unit_r16.py).
+  * Group 2 primary targets are now {a549_ko, dld1, cd4t_rest} (K_2 <= 3: 1 CRISPRko + 2 CRISPRi).
+  * Disclosed Group 1 Nadig data (GSE264667, 2024-05) predates SE-600M and may appear in SE-600M pretraining.
+- [8] Citation corrections:
+  * Updated STATE formal citation to Adduri et al., Cell (2026 Sep 17), doi:10.1016/j.cell.2026.07.052 (PubMed 42673963).
+  * Cited Zhang et al. (2026, arXiv:2611.05849, NeurIPS 2026) with exact verbatim quotes and Table 7 caption from PRIOR_ART_I_CONTROLLER_CHECK.md, explicitly distinguishing internal L0 direction swapping from Round 16 input-control-cell swapping.
+  * Clarified Systema (Nat. Biotechnol. 2025) shifts the reference origin rather than projecting out a subspace.
+
+2. Verification Summary (/opt/anaconda3/bin/python3 -I):
+- py_compile (all 6 round16/src/*.py): rc=0, 0 errors
+- pyflakes (all 6 round16/src/*.py): rc=0, 0 warnings
+- test_unit_r16.py -v (TestRound16ScaffoldV4): rc=0, 8/8 tests OK (2.173s)
+- theory_sim_r16.py: rc=0, property_p1_pass=true, illustration_consistent=true
+- Legacy "rho_ab" grep in production code (metrics/adjudicate/adapters/theory_sim): 0 hits
+- Wording audit: 0 PI/principal investigator hits; 0 priority claims
+- Rounds 12-15 Freeze Manifests (Sections 1 & 2 SHA-256): 106/106 OK (R12 31/31, R13 22/22, R14 22/22, R15 31/31; 0 failures)
+
+3. v4 Deliverable SHA-256 Checksums:
+- 33c98c05bd6ef02bc5328658ad5ab74236c8226918d78cea5e50e33106a260c1  round16/prereg/PREREG_I.md (41615 B, 201 lines)
+- 46fd153faa82a86def94da6c2febb00528119ece298f8433d7306f6123e4bc0b  round16/src/__init__.py (74 B, 1 line)
+- 1522eecb53a58c76c0d122148e5f4d5e3c32c818c473eacc1436a44bcd71ebff  round16/src/adjudicate_r16.py (14254 B, 327 lines)
+- 4c159fc93d8675061305fda302e5661c94e8b6670fb0e9af54b8761c2745e352  round16/src/metrics_r16.py (25418 B, 628 lines)
+- 458ea597affd58e98e63b6c16387b7a58f38d341615480bf3958673b3a72e917  round16/src/model_adapters_r16.py (21106 B, 542 lines)
+- 419848c8c7adba36ce6d4d5b4ffd56f2b39bc464649007bc21ff26ef4033d5c3  round16/src/test_unit_r16.py (22927 B, 439 lines)
+- c96590bf369299ddc8022513ef0fc143a9ff14a4012d6f320ee731ccf5ba02f9  round16/src/theory_sim_r16.py (8583 B, 208 lines)
+
+4. Strict Prohibition Compliance Attestation:
+- Model weights downloaded: NONE (0 bytes)
+- arc-state installed / Illumina CellularAI cloned: NO
+- Arc archived adata_pred.h5ad opened: NO
+- Real-cell model inference executed: NONE (pure synthetic arrays only)
+- TBD_GATE2 slots filled prematurely: NONE
+- Rounds 9-15 frozen files, paper/, README* modified: NONE
+- Git commits / pushes made: NONE
+- External messages / press briefs sent: NONE
+
+PREREG_I_V4_READY
+
+
+---
+Round 16 Gate 2 Weight-Structure Audit & Conservative Tie-Fix Complete
+Date: 2026-11-25 23:50 (+08:00)
+Repo HEAD: 80f7c17 (0 commits made; round16/prereg/PREREG_I.md untouched pending controller review)
+
+1. Gate 2 Schema Deliverable (`round16/status/R16_GATE2_SCHEMA.md`):
+- SHA-256: b8fe2b16a418b18768694841854e43c15427af7e86a432779c7c791b9b7e3cfe (50372 B, 308 lines)
+- Covers all 7 required items with exact file paths and arc-state 0.11.1 / cell_load file:line citations:
+  (1) G_model=2,000 identical across all 8 checkpoints (HES4..MT-ND6); ST-SE decodes 2,058->2,000 via trained LatentToGeneDecoder; ST-HVG reads preds directly (gene_decoder verified 100% untrained init across all 4 folds, max_diff=0.0).
+  (2) P_model=2,024 keys (2,023 non-control + 'non-targeting'); raw & HGNC-bridged intersections strictly from genes.txt / targets.txt (zero .npz opened); G_2^qual = {a549_ko, dld1, cd4t_rest} (K_2=3 >= 2).
+  (3) cell_type never enters StateTransitionPerturbationModel; batch_encoder=Embedding(56,128) (row norms 9.77-12.43 >> basal/pert ~0.38-1.20) is mandatory; locked symmetric primary neutral scheme fixed_index_zero (batch_idx=0, matches official _infer.py:688 fallback, in-distribution, M5.3 PASS); drafted PREREG_I v5 §4.4 secondary neutral-batch panel (bypass_zero, mean, K=8 ensemble) & Ledger G4 2x2 factorial decomposition ("只换 batch 不换对照" vs "只换对照不换 batch").
+  (4) SE-600M safetensors (715M params, 0 missing keys; pe_embedding.weight bit-exact 0.0 diff vs protein_embeddings.pt) loaded via StateEmbeddingModel + safetensors.torch.load_file in MPS float32 (bf16/fp16 hit macOS Metal assertion; MPS fp32 vs CPU fp32 cos=0.999416, 4.0x speedup); exact 19,790-gene coverage from genes.txt (7,360-13,766); predict_residual=true adds hidden control_cells before project_out (state_transition.py:509); locked delta_pred = mean(clip(Y(p),0,14)) - mean(clip(Y('non-targeting'),0,14)).
+  (5) SE-600M pretraining audit: scbasecamp-cellxgene-tahoe-filtered (14,420 datasets), internal CSVs explicitly marked 未能确定; a549_ko (2026-08-26), dld1 (2026-07-10), cd4t_rest (2026-02-06) strictly post-date SE-600M (2025-06/07); Q4 disclosures unchanged.
+  (6) Full end-to-end pure-synthetic smoke tests (ZERO real cells, seed=20261601): SE-600M MPS fp32 331s/512 cells (peak RSS 5.70 GB), ST-SE 12.65 ms/pert, ST-HVG 10.21 ms/pert (padded=True 16x32 bit-exact parity vs 16x32 windows); M5.3 PASS; extrapolated total Gate 5 real-cell runtime ~1.5-2.2 hours on local Apple M3 Pro.
+  (7) Concrete line-by-line PREREG_I v5 replacement table for all TBD_GATE2 slots + v5 §3.1 conservative ci975==0.0 tie-precedence rule + v5 §4.4 G4 draft (PREREG_I.md left untouched pending review; Occam held untouched pending separate approval/addendum).
+
+2. Conservative ci975 == 0.0 Tie-Precedence Fix (2026-11-25 23:20 Ruling):
+- round16/src/adjudicate_r16.py (SHA-256: 3263aec59995e24e7fa79c5b38702260b2a0d915fda278f27addc16b938896c6)
+- round16/src/test_unit_r16.py (SHA-256: eb9414004a2e230a442bef32bb2e1bd6b4916debd96b821e7dfc9a3107d93b4c)
+- Verification: py_compile rc=0, pyflakes rc=0, 8/8 tests OK in both /opt/anaconda3/bin/python3 -I (1.45s) and round16/.venv/bin/python (1.31s).
+
+3. Hard-Guard Attestation:
+- Real cells inferred: NONE (0); .npz/.h5ad/adata_pred.h5ad opened: NONE (0)
+- round16/shared/models/ (77 files) & round16/.venv/ modified: NONE
+- round16/prereg/PREREG_I.md unchanged: YES (SHA-256 33c98c05...6a260c1)
+- HF arcinstitute cache / base anaconda arc_state / >100MB extra files / git commits / wording "首次": NONE (0)
+
+R16_GATE2_SCHEMA_READY
+
+
+---
+Round 16 Final Pre-Lock PREREG_I v5 & Gate 4 Execution Engine Complete
+Date: 2026-11-26 00:14 (+08:00)
+Repo HEAD: 80f7c17 (0 commits made; zero real cells inferred)
+
+1. Master Controller v5 Rulings Closure Checklist (2026-11-25 23:52 Rulings 1-7 + 23:58 Group 3 Supplement):
+- [Ruling 1] Gate 2 Schema Adoption (`PREREG_I.md` §1.2, §2.1, §3.1, §4.4):
+  * Replaced ALL Gate-2 placeholder slots (`tbd_gate2_hits = 0`) with verified constants from `R16_GATE2_SCHEMA.md` (`G_model = 2,000`, `P_model = 2,024`, `ST-SE` trained `LatentToGeneDecoder` vs `ST-HVG` direct `preds`, `SE-600M` `MPS float32`, `padded=True` `16x32`, `fixed_index_zero` primary).
+  * Locked conservative `ci975 == 0.0` tie-precedence rule in `PREREG_I.md §3.1` & `adjudicate_r16.py` (`INCONCLUSIVE` strictly prior to `MATCHED_BETTER` / `MISMATCHED_BETTER` / `EQUIVALENT`, even when `within_delta == True`).
+  * Locked `§4.4` `G4` 2x2 factorial decomposition (`delta_batch`, `delta_ctrl`, `delta_both`, `delta_int`, `batch_share`) & neutral-batch robustness panel (`bypass_zero`, `mean_batch_emb`, `multi_batch_ens8`).
+- [Ruling 2] Exact Locked `N_eval^R16(t)` & `|G_eval^R16(t)|` (`PREREG_I.md §2.1, §2.3, §3.3`):
+  * Computed strictly from frozen reproducibility masks & target lists via `HGNCBridge.dedup_map_indices` (`0` collisions, zero predictions read, zero metrics computed):
+    - Group 1: `nadig_hepg2 = 740` (`740` hv; `118` masked; `|G| = 1,843`), `nadig_jurkat = 873` (`873` hv; `137` masked; `|G| = 1,843`).
+    - Group 2: `a549_ko = 403` (`403` hv; `75` masked; `|G| = 1,837`), `dld1 = 75` (`75` hv; `7` masked; `|G| = 1,832`), `cd4t_rest = 245` (`230` hv; `46` masked; `|G| = 1,830`).
+    - Q4 Sensitivity / Unseen `S_mis`: `feng_ipsc = 88` (`88` hv; `13` masked; `|G| = 1,575`).
+    - Sensitivity Only: `cd4t_stim48 = 401`, `a549_ko_cas9pos = 403`, `a549_myllia = 20`, `hek293_xucao = 16`.
+- [Ruling 3] Official `ST-HVG` Input Preprocessing (`PREREG_I.md §1.2, §2.1, §4.3`, `model_adapters_r16.py`):
+  * Locked official `arc-state` `sc.pp.normalize_total(target_sum=None) -> sc.pp.log1p` (`_preprocess_train.py:45-55`, implemented as `official_median_log1p`) as PRIMARY for `STATE_HVG`, with `libnorm(1e4) -> log1p` (`libnorm1e4_log1p`) as SECONDARY sensitivity.
+- [Ruling 4] `gem_group` `'1'..'56'` Provenance Audit (`PREREG_I.md §4.4`):
+  * Documented exact finding (`未能确定` across all 77 downloaded files) explaining why `batch_idx = 0` (`'1'`) cannot be assumed lineage-neutral and motivating the neutral-batch panel and `G4` 2x2 decomposition.
+- [Ruling 5] Synthetic-Only Gate-2 Epistemic Boundary (`PREREG_I.md §2.1, §4.4`):
+  * Explicitly labeled Gate 2's `batch_encoder`-dominance observation as `Gate 2 在合成输入上观察到` (strictly pure-synthetic inputs; empirical real-cell test deferred to `§4.4`).
+- [Ruling 6] `Occam` Untouched (`PREREG_I.md §0.4`):
+  * Left untouched pending separate human download approval and standalone controller addendum.
+- [Ruling 7] Triple-Gated Gate 4 Execution Engine (`round16/src/run_eval_r16.py`, `model_adapters_r16.py`, `test_unit_r16.py`):
+  * Enforces triple hard gate (`PREREG_I_COMMIT.txt` + `CODE_FREEZE_R16.txt` + `R16_GO.txt`) via `assert_all_execution_gates_r16` before any real-data read or model inference (verified non-zero exit with `BlindingGateError` when any of the 3 files is missing or empty).
+  * Exports auditable per-line `observed.npz`, per-arm `preds_<arm>.npz`, and `array_manifest_sha256.json` under `round16/results/arrays/<line>/` for independent three-party recomputation (`<= 1e-10` & `100%` verdict parity; verified `<= 1e-12` on `--synthetic-smoke`).
+- [Group 3 Supplement 23:58] Pre-Download Locked Prospective Holdout `GSE295214` (`H1 hESC`, `PREREG_I.md §2.4`, `run_eval_r16.py`, `model_adapters_r16.py`, `test_unit_r16.py`):
+  * Locked all 7 Group 3 specifications: (1) download ONLY post-human-approval AND post-`PREREG_I_COMMIT.txt` (omitted honestly if unapproved); (2) exact ingestion (`Gene Expression` 100% integer raw-UMI check; `CRISPR Guide Capture` `PREREG_F §3.2` pooled Poisson-Gaussian `min_thr=5, max_thr=20, default_thr=7`, `n_pos==1`, `top1>=5`, `top2<3 or top1/max(top2,0.5)>=3`; strict `non-targeting_*` NTC; `n_umis>=300 & n_genes>=200 & max_pct_mt=None`; 85 GSM channels `PREREG_H §6` Tier-1 lexicographical 1-based odd/even parity + `< 15` NTC within-half fallback; pre-download reader `build_gse295214_parts` / `extract_gse295214_ntc_raw_counts` unit-tested on synthetic 10x `.h5` fixtures); (3) identical counts-only gate (`N_eval^R16 >= 50`, `|G_eval^R9| >= 3,000`, `per-half NTC >= 15`) logged to `round16/shared/R16_GSE295214_QC_COUNTS.md` pre-metric; (4) `FCT` primary = `r9_6 \ {vcc2025_h1}` (with `vcc2025_h1` lineage-leakage blocked in `assert_zero_training_leakage`), sensitivity = full `r9_6`; `STATE` `zeroshot/ensemble4` mismatched strata `seen={nadig_hepg2, nadig_jurkat}`, `unseen={a549_ko, cd4t_rest, dld1, feng_ipsc}`; (5) strictly separate Group 3 reporting with mandatory `H1` lineage & Replogle/Weissman lab provenance disclosures; (6) staged execution (Groups 1-2 first, separate `FREEZE_MANIFEST_R16_DATA.txt` for Group 3); (7) VCC 2026 companion analysis (`§0.3`) unchanged.
+
+2. Verification Summary:
+- `py_compile` (all 7 `round16/src/*.py`): rc=0, 0 errors
+- `pyflakes` (all 7 `round16/src/*.py`): rc=0, 0 warnings
+- `test_unit_r16.py -v` (`/opt/anaconda3/bin/python3 -I`): rc=0, 11 OK + 1 skipped (`test_12` requires `.venv`) in 2.21s
+- `test_unit_r16.py -v` (`round16/.venv/bin/python`, offline): rc=0, 12/12 OK (incl. `test_10` synthetic `GSE295214` 10x `.h5` reader, `test_11` end-to-end synthetic smoke + `.npz` independent recomputation `<= 1e-12`, and `test_12` real `ST-HVG-Replogle/zeroshot/hepg2` weights on pure-synthetic Poisson cells across all 4 neutral batch modes & both HVG normalizations) in 7.95s
+- `run_eval_r16.py --synthetic-smoke`: rc=0 in both `/opt/anaconda3/bin/python3 -I` and `round16/.venv/bin/python` (`real_cells_touched=0`, `24` exported `.npz` arrays)
+- `run_eval_r16.py --cohort group2` (pre-gate refusal test): rc=1 (`BlindingGateError` on missing `PREREG_I_COMMIT.txt`)
+- `PREREG_I.md` audit: `0` pre-Gate-2 `TBD_GATE2` hits, `0` priority-claim hits, `0` PI hits
+- Rounds 12-15 Freeze Manifests: 136/136 OK (R12 46/46, R13 32/32, R14 27/27, R15 31/31; 0 bad)
+
+3. v5 Deliverable SHA-256 Checksums:
+- 43d242e460fd64db2e4af1e628e886cf1d94fb4ccd1e95925928a99cb96ee4a8  round16/prereg/PREREG_I.md (64308 B, 284 lines)
+- 46fd153faa82a86def94da6c2febb00528119ece298f8433d7306f6123e4bc0b  round16/src/__init__.py (74 B, 1 line)
+- 3263aec59995e24e7fa79c5b38702260b2a0d915fda278f27addc16b938896c6  round16/src/adjudicate_r16.py (14617 B, 332 lines)
+- 4c159fc93d8675061305fda302e5661c94e8b6670fb0e9af54b8761c2745e352  round16/src/metrics_r16.py (25418 B, 628 lines)
+- d464be8393d1fff3d12ce1ca49973de0ff2709bdf9148da2cccb1cf6e9301f4d  round16/src/model_adapters_r16.py (42688 B, 1028 lines)
+- 4773c734a8baaa981622b05f17b09fc704f83f26e9410022920d72d702871f3a  round16/src/run_eval_r16.py (101295 B, 2318 lines)
+- 276ee055c02d5cb76f9d0271d0899cb0c6db8981302282cf835a5e231c7ede7e  round16/src/test_unit_r16.py (42388 B, 810 lines)
+- c96590bf369299ddc8022513ef0fc143a9ff14a4012d6f320ee731ccf5ba02f9  round16/src/theory_sim_r16.py (8583 B, 208 lines)
+
+4. Hard-Guard Attestation:
+- Real cells inferred: NONE (0); `GSE295214` / `Occam` / `adata_pred.h5ad` downloaded or opened: NONE (0)
+- `round16/shared/models/` (77 files) & `round16/.venv/` modified: NONE
+- `round16/audit/`, `round16/shared/candidates/`, `paper/`, `README*`, Rounds 9-15 frozen files touched: NONE
+- HF `arcinstitute` cache: NONE (0); base anaconda `state` spec: None; `>100 MB` extra files: NONE (0)
+- Git HEAD: `80f7c17` (0 commits / 0 pushes made)
+
+PREREG_I_V5_READY

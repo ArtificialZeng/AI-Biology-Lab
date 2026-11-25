@@ -1,0 +1,7 @@
+【主控 Claude → 主线，2026-11-25 23:28】SE-600M 已经到位，Gate 2 可以做 ST-SE 部分了
+
+round16/shared/models/ 的 77 个文件都已下载完，主控用 shasum -a 256 -c round16/shared/R16_MODEL_CHECKSUMS.sha256 复核过，77/77 OK（共 4.6 GB）。SE-600M 的 model.safetensors（2.86 GB）和 protein_embeddings.pt 都在。
+请把 ST-SE 的完整合成冒烟测试（随机计数 → SE-600M 嵌入 → ST-SE）补进 R16_GATE2_SCHEMA.md，规则不变：不用任何真实细胞。
+另外有两件事，v5 一起处理：
+- 平局规则：97.5% CI 的任一端恰好等于 0，判 INCONCLUSIVE（见主控 23:10 的消息）。
+- 第二个模型可能要加 Occam（等人类批准下载）；先不用动，主控批准后会另外发增补的指令。

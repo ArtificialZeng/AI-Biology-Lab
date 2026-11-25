@@ -1,0 +1,880 @@
+{
+  "batch_sampling_checks": {
+    "below_floor_excluded": true,
+    "large_imbalanced_n_sets": 16,
+    "large_imbalanced_sampled": {
+      "B_alpha": 299,
+      "B_beta": 135,
+      "B_delta": 26,
+      "B_eps": 8,
+      "B_gamma": 44
+    },
+    "small_truncated_n_sampled": 192,
+    "small_truncated_n_sets": 6,
+    "tie_remainder_sampled": {
+      "B_1": 171,
+      "B_2": 170,
+      "B_3": 171
+    }
+  },
+  "boot_seed": 20261601,
+  "degenerate_group2_check": {
+    "group1_replogle4_loo": {
+      "K": 0,
+      "h_i1_counts": {},
+      "h_i1_verdicts": {},
+      "h_i2_verdicts": {},
+      "lines": [],
+      "note_n_seen": 1
+    },
+    "group2_crispri": {
+      "K": 0,
+      "adjudication_status": "DOWNGRADED_SINGLE_STRATUM_DESCRIPTIVE_ONLY",
+      "h_i1_counts": {},
+      "h_i1_verdicts": {},
+      "h_i2_verdicts": {},
+      "lines": []
+    },
+    "group2_crisprko": {
+      "K": 1,
+      "adjudication_status": "DOWNGRADED_SINGLE_STRATUM_DESCRIPTIVE_ONLY",
+      "h_i1_counts": {
+        "MISSING_STRATUM": 1
+      },
+      "h_i1_verdicts": {
+        "a549_ko": "MISSING_STRATUM"
+      },
+      "h_i2_verdicts": {
+        "a549_ko": "FCT_SUPERIOR_TO_MODEL"
+      },
+      "lines": [
+        "a549_ko"
+      ]
+    },
+    "group2_downgraded_single_stratum": true,
+    "group2_qualifying_count": 1
+  },
+  "n_boot": 400,
+  "scenarios": {
+    "N016_underpowered_equiv": {
+      "h_i1_all_within_delta": false,
+      "h_i1_counts": {
+        "EQUIVALENT": 2,
+        "INCONCLUSIVE": 3,
+        "MATCHED_BETTER": 0,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "MIXED_OR_INCONCLUSIVE",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "INCONCLUSIVE",
+          "ci95": [
+            -0.0402408056821362,
+            0.032344210301564064
+          ],
+          "ci975": [
+            -0.04366370680172948,
+            0.04007775421860828
+          ],
+          "estimate": -0.004968471156960752,
+          "within_delta": false
+        },
+        "dld1": {
+          "category": "INCONCLUSIVE",
+          "ci95": [
+            -0.04011962228303468,
+            0.03754538472538936
+          ],
+          "ci975": [
+            -0.042873097922665415,
+            0.04167433109057571
+          ],
+          "estimate": -0.003437626623715384,
+          "within_delta": false
+        },
+        "feng_ipsc": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.03897480373216039,
+            0.03368204708405238
+          ],
+          "ci975": [
+            -0.041539287493646375,
+            0.03774366820985525
+          ],
+          "estimate": -0.00461750517777848,
+          "within_delta": true
+        },
+        "nadig_hepg2": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.03565404955520479,
+            0.03735664145342585
+          ],
+          "ci975": [
+            -0.03939970616963303,
+            0.040489497185090734
+          ],
+          "estimate": -0.00152711169014641,
+          "within_delta": true
+        },
+        "nadig_jurkat": {
+          "category": "INCONCLUSIVE",
+          "ci95": [
+            -0.03688948124872309,
+            0.042758339622422085
+          ],
+          "ci975": [
+            -0.03990823794352315,
+            0.04641339916963095
+          ],
+          "estimate": 0.00040224373131980684,
+          "within_delta": false
+        }
+      },
+      "h_i1_seen_status": "STRATUM_MIXED_OR_INCONCLUSIVE",
+      "h_i1_unseen_status": "STRATUM_MIXED_OR_INCONCLUSIVE",
+      "h_i2_classification": "MODEL_SUPERIOR_TO_FCT",
+      "h_i2_estimate": 0.1439981063831165,
+      "matched_ci975": [
+        0.8636317987540978,
+        0.9045679670265439
+      ],
+      "matched_r_dorth_cal": 0.9231186494399599,
+      "matched_r_orth_cal": 0.8783904232619084,
+      "matched_rho_ab_orth": 0.9667270552718673,
+      "n_genes": 120,
+      "n_perts": 16,
+      "seed": 20261609
+    },
+    "N086_borderline_equiv": {
+      "h_i1_all_within_delta": true,
+      "h_i1_counts": {
+        "EQUIVALENT": 5,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 0,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "LINE_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.023164803415121202,
+            0.012616125775389727
+          ],
+          "ci975": [
+            -0.026289246559797252,
+            0.015106180375085449
+          ],
+          "estimate": -0.0051350876074832685,
+          "within_delta": true
+        },
+        "dld1": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.022134322579024958,
+            0.01354885137381578
+          ],
+          "ci975": [
+            -0.024699807780531713,
+            0.016881916474191287
+          ],
+          "estimate": -0.0036355009376991543,
+          "within_delta": true
+        },
+        "feng_ipsc": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.02150168559019771,
+            0.014083600897342959
+          ],
+          "ci975": [
+            -0.023433278709941028,
+            0.01667249307580014
+          ],
+          "estimate": -0.0032192322993020994,
+          "within_delta": true
+        },
+        "nadig_hepg2": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.021091179994871173,
+            0.014287655894870237
+          ],
+          "ci975": [
+            -0.023687657510277908,
+            0.019115556269659027
+          ],
+          "estimate": -0.00229231771699534,
+          "within_delta": true
+        },
+        "nadig_jurkat": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.020644583015797174,
+            0.015038346316334899
+          ],
+          "ci975": [
+            -0.023009825319711925,
+            0.018332409883548843
+          ],
+          "estimate": -0.002406935435458224,
+          "within_delta": true
+        }
+      },
+      "h_i1_seen_status": "STRATUM_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i1_unseen_status": "STRATUM_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i2_classification": "MODEL_SUPERIOR_TO_FCT",
+      "h_i2_estimate": 0.1342066319022699,
+      "matched_ci975": [
+        0.8630328908623721,
+        0.8862763909793048
+      ],
+      "matched_r_dorth_cal": 0.9259635738649585,
+      "matched_r_orth_cal": 0.873931330134932,
+      "matched_rho_ab_orth": 0.9684776060275441,
+      "n_genes": 120,
+      "n_perts": 86,
+      "seed": 20261608
+    },
+    "N120_mismatched_better": {
+      "h_i1_all_within_delta": false,
+      "h_i1_counts": {
+        "EQUIVALENT": 0,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 0,
+        "MISMATCHED_BETTER": 5
+      },
+      "h_i1_line_summary": "LINE_MISMATCHED_BETTER",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "MISMATCHED_BETTER",
+          "ci95": [
+            -0.8677227613430076,
+            -0.8347737639787952
+          ],
+          "ci975": [
+            -0.8700415026401306,
+            -0.8329424545742076
+          ],
+          "estimate": -0.8517501077218061,
+          "within_delta": false
+        },
+        "dld1": {
+          "category": "MISMATCHED_BETTER",
+          "ci95": [
+            -0.8685236145576467,
+            -0.8356913222161972
+          ],
+          "ci975": [
+            -0.8710578054481588,
+            -0.8329232845911658
+          ],
+          "estimate": -0.8521359284926621,
+          "within_delta": false
+        },
+        "feng_ipsc": {
+          "category": "MISMATCHED_BETTER",
+          "ci95": [
+            -0.8672887592412042,
+            -0.8346330762484738
+          ],
+          "ci975": [
+            -0.8687794845594503,
+            -0.8315728521064852
+          ],
+          "estimate": -0.850600007830448,
+          "within_delta": false
+        },
+        "nadig_hepg2": {
+          "category": "MISMATCHED_BETTER",
+          "ci95": [
+            -0.8686448882428305,
+            -0.8367064639736819
+          ],
+          "ci975": [
+            -0.8708030064506046,
+            -0.8326491043376801
+          ],
+          "estimate": -0.8523907085324591,
+          "within_delta": false
+        },
+        "nadig_jurkat": {
+          "category": "MISMATCHED_BETTER",
+          "ci95": [
+            -0.8673627693539862,
+            -0.8357827664780754
+          ],
+          "ci975": [
+            -0.8689235719950433,
+            -0.8322046186445454
+          ],
+          "estimate": -0.8512783961913774,
+          "within_delta": false
+        }
+      },
+      "h_i1_seen_status": "STRATUM_MISMATCHED_BETTER",
+      "h_i1_unseen_status": "STRATUM_MISMATCHED_BETTER",
+      "h_i2_classification": "FCT_SUPERIOR_TO_MODEL",
+      "h_i2_estimate": -0.6684468211461154,
+      "matched_ci975": [
+        0.06271735002898818,
+        0.09962038786944527
+      ],
+      "matched_r_dorth_cal": 0.08584904902934781,
+      "matched_r_orth_cal": 0.0807501375355568,
+      "matched_rho_ab_orth": 0.9679517969631526,
+      "n_genes": 120,
+      "n_perts": 120,
+      "seed": 20261605
+    },
+    "N120_stratum_split": {
+      "h_i1_all_within_delta": false,
+      "h_i1_counts": {
+        "EQUIVALENT": 3,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 2,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "MIXED_OR_INCONCLUSIVE",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.0005993866349871257,
+            0.000444620920443439
+          ],
+          "ci975": [
+            -0.0006525280240888054,
+            0.0005335944611768164
+          ],
+          "estimate": -6.82961084765843e-05,
+          "within_delta": true
+        },
+        "dld1": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.00028289894108505517,
+            0.0007734649193131964
+          ],
+          "ci975": [
+            -0.0003363394019698734,
+            0.0007985217284191189
+          ],
+          "estimate": 0.00025271121898007287,
+          "within_delta": true
+        },
+        "feng_ipsc": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.0007388334799762697,
+            0.00025600671677359596
+          ],
+          "ci975": [
+            -0.0008115573542818236,
+            0.00030778763050634983
+          ],
+          "estimate": -0.00020793435542199035,
+          "within_delta": true
+        },
+        "nadig_hepg2": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.8850986544300088,
+            0.9135535906771163
+          ],
+          "ci975": [
+            0.8843645760039622,
+            0.9149734631211697
+          ],
+          "estimate": 0.8994643645831677,
+          "within_delta": false
+        },
+        "nadig_jurkat": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.8687818016110981,
+            0.9045091309941536
+          ],
+          "ci975": [
+            0.8640383650318335,
+            0.9074272390386402
+          ],
+          "estimate": 0.886371449999564,
+          "within_delta": false
+        }
+      },
+      "h_i1_seen_status": "STRATUM_MATCHED_SPECIFIC",
+      "h_i1_unseen_status": "STRATUM_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i2_classification": "MODEL_SUPERIOR_TO_FCT",
+      "h_i2_estimate": 0.1979159170794037,
+      "matched_ci975": [
+        0.9459206076652181,
+        0.9489855014369085
+      ],
+      "matched_r_dorth_cal": 0.9980398932464863,
+      "matched_r_orth_cal": 0.9476265625816389,
+      "matched_rho_ab_orth": 0.9689927235182632,
+      "n_genes": 120,
+      "n_perts": 120,
+      "seed": 20261606
+    },
+    "N200_nonzero_signal_equivalent": {
+      "h_i1_all_within_delta": true,
+      "h_i1_counts": {
+        "EQUIVALENT": 5,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 0,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "LINE_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.0004795101672691121,
+            0.00024418984930047724
+          ],
+          "ci975": [
+            -0.0005181422465532964,
+            0.0002880692879165371
+          ],
+          "estimate": -9.165968938495972e-05,
+          "within_delta": true
+        },
+        "dld1": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -8.70165425310626e-05,
+            0.0007266103118689332
+          ],
+          "ci975": [
+            -0.00012357154555144023,
+            0.0007630908721865772
+          ],
+          "estimate": 0.0003298285752640906,
+          "within_delta": true
+        },
+        "feng_ipsc": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.00026864038190478053,
+            0.0005113307275846437
+          ],
+          "ci975": [
+            -0.000293171431640199,
+            0.0005607850260333535
+          ],
+          "estimate": 0.00012259547934734272,
+          "within_delta": true
+        },
+        "nadig_hepg2": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.00018345191466959397,
+            0.000522961943758432
+          ],
+          "ci975": [
+            -0.00025004558870311,
+            0.0005524028192834841
+          ],
+          "estimate": 0.00015566294186708518,
+          "within_delta": true
+        },
+        "nadig_jurkat": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.0002743236670284255,
+            0.00043551867647565184
+          ],
+          "ci975": [
+            -0.0002991172749803428,
+            0.0005219743920257482
+          ],
+          "estimate": 6.5139800619618e-05,
+          "within_delta": true
+        }
+      },
+      "h_i1_seen_status": "STRATUM_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i1_unseen_status": "STRATUM_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i2_classification": "MODEL_SUPERIOR_TO_FCT",
+      "h_i2_estimate": 0.19999340498460694,
+      "matched_ci975": [
+        0.9505259403280187,
+        0.9529178610077536
+      ],
+      "matched_r_dorth_cal": 0.9976185160243849,
+      "matched_r_orth_cal": 0.951581760338725,
+      "matched_rho_ab_orth": 0.9678890150597914,
+      "n_genes": 120,
+      "n_perts": 200,
+      "seed": 20261603
+    },
+    "N200_null_signal_equivalent": {
+      "h_i1_all_within_delta": true,
+      "h_i1_counts": {
+        "EQUIVALENT": 5,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 0,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "LINE_EQUIVALENT_NULL_SIGNAL",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.033352182936792145,
+            0.00011290448211235418
+          ],
+          "ci975": [
+            -0.03442201653386478,
+            0.0026127673852028356
+          ],
+          "estimate": -0.016924622141095445,
+          "within_delta": true
+        },
+        "dld1": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.027836413364332575,
+            0.009773638146162068
+          ],
+          "ci975": [
+            -0.029478750880988402,
+            0.012661723956598384
+          ],
+          "estimate": -0.009604298467016763,
+          "within_delta": true
+        },
+        "feng_ipsc": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.0329916644129592,
+            0.005251552857072181
+          ],
+          "ci975": [
+            -0.03485399190774375,
+            0.007515347255186422
+          ],
+          "estimate": -0.01258669458500386,
+          "within_delta": true
+        },
+        "nadig_hepg2": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.016305647853052264,
+            0.01646262769641689
+          ],
+          "ci975": [
+            -0.01761276635082173,
+            0.021889563434115994
+          ],
+          "estimate": 0.0002019577890573507,
+          "within_delta": true
+        },
+        "nadig_jurkat": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.011586934986604664,
+            0.02346508035766018
+          ],
+          "ci975": [
+            -0.015130727176416092,
+            0.028149127728025313
+          ],
+          "estimate": 0.00664994936139029,
+          "within_delta": true
+        }
+      },
+      "h_i1_seen_status": "STRATUM_EQUIVALENT_NULL_SIGNAL",
+      "h_i1_unseen_status": "STRATUM_EQUIVALENT_NULL_SIGNAL",
+      "h_i2_classification": "FCT_SUPERIOR_TO_MODEL",
+      "h_i2_estimate": -0.7458982695498897,
+      "matched_ci975": [
+        -0.022190420478927955,
+        0.007673327160664597
+      ],
+      "matched_r_dorth_cal": -0.007368080717119308,
+      "matched_r_orth_cal": -0.007299699415116994,
+      "matched_rho_ab_orth": 0.9697903824286866,
+      "n_genes": 120,
+      "n_perts": 200,
+      "seed": 20261604
+    },
+    "N300_matched_better_strong": {
+      "h_i1_all_within_delta": false,
+      "h_i1_counts": {
+        "EQUIVALENT": 0,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 5,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "LINE_MATCHED_SPECIFIC",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.7847530449734091,
+            0.8050547242493084
+          ],
+          "ci975": [
+            0.7840611792082216,
+            0.8054895029182365
+          ],
+          "estimate": 0.7941679867233278,
+          "within_delta": false
+        },
+        "dld1": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.7898912357767447,
+            0.8091015031069633
+          ],
+          "ci975": [
+            0.7887404669632543,
+            0.8101691656312389
+          ],
+          "estimate": 0.8001957725732973,
+          "within_delta": false
+        },
+        "feng_ipsc": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.7846225895774509,
+            0.8060121142475843
+          ],
+          "ci975": [
+            0.7834668437868946,
+            0.8069145718741124
+          ],
+          "estimate": 0.7958791212259972,
+          "within_delta": false
+        },
+        "nadig_hepg2": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.7893152453517867,
+            0.8098627842055253
+          ],
+          "ci975": [
+            0.788794545304714,
+            0.8114556902296232
+          ],
+          "estimate": 0.7990762810121356,
+          "within_delta": false
+        },
+        "nadig_jurkat": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.7813569823009224,
+            0.8006718595794236
+          ],
+          "ci975": [
+            0.7805863056415757,
+            0.8021213166667273
+          ],
+          "estimate": 0.7905003161014064,
+          "within_delta": false
+        }
+      },
+      "h_i1_seen_status": "STRATUM_MATCHED_SPECIFIC",
+      "h_i1_unseen_status": "STRATUM_MATCHED_SPECIFIC",
+      "h_i2_classification": "MODEL_SUPERIOR_TO_FCT",
+      "h_i2_estimate": 0.18149030488572793,
+      "matched_ci975": [
+        0.9288928634138104,
+        0.9315136566315082
+      ],
+      "matched_r_dorth_cal": 0.9818841092070177,
+      "matched_r_orth_cal": 0.9302245614050074,
+      "matched_rho_ab_orth": 0.9687210509276544,
+      "n_genes": 120,
+      "n_perts": 300,
+      "seed": 20261601
+    },
+    "N300_noisy_wellpowered_equiv": {
+      "h_i1_all_within_delta": true,
+      "h_i1_counts": {
+        "EQUIVALENT": 5,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 0,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "LINE_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.010634205050734135,
+            0.008545569852923169
+          ],
+          "ci975": [
+            -0.01212009599863675,
+            0.009955007929623812
+          ],
+          "estimate": -0.0007934043130186641,
+          "within_delta": true
+        },
+        "dld1": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.009819395850739602,
+            0.009734987601817499
+          ],
+          "ci975": [
+            -0.011828425781801325,
+            0.01110403705853147
+          ],
+          "estimate": 1.0056596065011192e-05,
+          "within_delta": true
+        },
+        "feng_ipsc": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.010419467326650297,
+            0.009294629001794973
+          ],
+          "ci975": [
+            -0.011551490585034312,
+            0.011190246257177308
+          ],
+          "estimate": -0.00019180992792389162,
+          "within_delta": true
+        },
+        "nadig_hepg2": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.010385909605913488,
+            0.0088741334449949
+          ],
+          "ci975": [
+            -0.011963945964249958,
+            0.011410677494270074
+          ],
+          "estimate": -0.0004079867569539708,
+          "within_delta": true
+        },
+        "nadig_jurkat": {
+          "category": "EQUIVALENT",
+          "ci95": [
+            -0.010398899086795602,
+            0.008750131018250552
+          ],
+          "ci975": [
+            -0.011742433422326134,
+            0.009955078068381923
+          ],
+          "estimate": -0.0010010176578749697,
+          "within_delta": true
+        }
+      },
+      "h_i1_seen_status": "STRATUM_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i1_unseen_status": "STRATUM_EQUIVALENT_NONZERO_SIGNAL",
+      "h_i2_classification": "MODEL_SUPERIOR_TO_FCT",
+      "h_i2_estimate": 0.13219781591602453,
+      "matched_ci975": [
+        0.8866724566265971,
+        0.8978114366882383
+      ],
+      "matched_r_dorth_cal": 0.9294192491689995,
+      "matched_r_orth_cal": 0.8918796829275166,
+      "matched_rho_ab_orth": 0.9678767014869437,
+      "n_genes": 120,
+      "n_perts": 300,
+      "seed": 20261607
+    },
+    "N400_matched_better_sub_delta": {
+      "h_i1_all_within_delta": true,
+      "h_i1_counts": {
+        "EQUIVALENT": 0,
+        "INCONCLUSIVE": 0,
+        "MATCHED_BETTER": 5,
+        "MISMATCHED_BETTER": 0
+      },
+      "h_i1_line_summary": "LINE_MATCHED_SPECIFIC_SUB_DELTA",
+      "h_i1_per_source_est": {
+        "cd4t_rest": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.011334609426140863,
+            0.012873947067927407
+          ],
+          "ci975": [
+            0.01122385298174661,
+            0.013140083050216899
+          ],
+          "estimate": 0.012160045820417298,
+          "within_delta": true
+        },
+        "dld1": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.01101008133877115,
+            0.012462247186600309
+          ],
+          "ci975": [
+            0.01084979519658115,
+            0.012556432305542937
+          ],
+          "estimate": 0.011709836422283515,
+          "within_delta": true
+        },
+        "feng_ipsc": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.011238851514430635,
+            0.012759895378760678
+          ],
+          "ci975": [
+            0.011147564723264884,
+            0.01287396890377499
+          ],
+          "estimate": 0.012044163679567399,
+          "within_delta": true
+        },
+        "nadig_hepg2": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.010774141389058097,
+            0.012390951944587926
+          ],
+          "ci975": [
+            0.010714618720243927,
+            0.012513816856464853
+          ],
+          "estimate": 0.011628539943865146,
+          "within_delta": true
+        },
+        "nadig_jurkat": {
+          "category": "MATCHED_BETTER",
+          "ci95": [
+            0.011280092464120992,
+            0.01287040167640755
+          ],
+          "ci975": [
+            0.011160756111972092,
+            0.0129901672524425
+          ],
+          "estimate": 0.012053776414656436,
+          "within_delta": true
+        }
+      },
+      "h_i1_seen_status": "STRATUM_MATCHED_SPECIFIC_SUB_DELTA",
+      "h_i1_unseen_status": "STRATUM_MATCHED_SPECIFIC_SUB_DELTA",
+      "h_i2_classification": "MODEL_SUPERIOR_TO_FCT",
+      "h_i2_estimate": 0.19517357979998307,
+      "matched_ci975": [
+        0.9518662705121649,
+        0.9534819741957758
+      ],
+      "matched_r_dorth_cal": 0.9908910272805652,
+      "matched_r_orth_cal": 0.9526718127248064,
+      "matched_rho_ab_orth": 0.9674391298706149,
+      "n_genes": 120,
+      "n_perts": 400,
+      "seed": 20261602
+    }
+  },
+  "schema": "round16_at3_canonical_synthetic_parity_v1"
+}

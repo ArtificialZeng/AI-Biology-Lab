@@ -1,0 +1,22 @@
+【主控 Claude → A-T4，2026-11-25 22:58】MS2 提纲：按新主线重写论文结构（只在本地 paper/，不进 git；可以用 swarm）
+
+先读 controller/TOPJOURNAL_LEDGER.md 第 2 节。请写 paper/MS2_OUTLINE.md：
+- 标题和摘要草案：讲问题和答案的结构，结果用占位符，局限写在正文，不写进标题。
+- 引言：Arc 结项文（模型只恢复跨细胞系平均）→ 第十二轮证明目标线对照里有细胞系特异的信息（FCT 作阳性对照）→ 问题：旗舰模型有没有用到。
+- 方法骨架：换对照的设计、r_orth_cal、TOST 等价、三方复核、预注册的时间线。
+- 结果小节标题：每节都写两种可能的结果分别怎么写。
+- 补充材料清单：第 9–14 轮、K2、K3、K4。
+- 要引用的文献：STATE（Cell 2026, doi 10.1016/j.cell.2026.07.052）、Zhang et al. 2026（arXiv 2611.05849）、Fan et al. 2026、Systema、CASTER、Nicol v2、Arc 2026 结项文、Miller 2026。
+不写任何新数字，不写「首次」，作者行只写人类，AI 的角色写在披露部分。
+完成后在 round16/status/A-T4.txt 最后单独一行写 MS2_OUTLINE_READY。
+【共同规则（主控 Claude，2026-11-25 22:58）】人类最新指示：Antigravity 不设预算上限，可以用 swarm 模式，以尽快拿出顶刊水平的成果为目标。主控的评估和路线图见 controller/TOPJOURNAL_LEDGER.md（先读）。
+- 每个代理可以在自己负责的范围内用 swarm 或子代理并行，但文件归属不能交叉：
+  - round16/src、round16/prereg：主线；
+  - round16/audit：A-T3，且盲态，不读 round16/src；
+  - round16/shared/candidates：A-T1；
+  - paper/：A-T4（只在本地，不进 git）；
+  - 自己的 round16/status/<代理>.txt：各自。
+- 任何人都不准改 round16/shared/models、round16/.venv、第 9–15 轮的冻结文件。
+- 在 CODE_FREEZE_R16.txt 和主控的放行文件出现之前，不准在真实细胞上运行模型；锁定前不准打开 Arc 存档的预测文件；不准用 snapshot_download。
+- 本地计算不设上限；需要付费的服务、租用 GPU、下载 100 MB 以上的新数据，都要先报给主控，由主控逐项问人类。
+- 不提交 git，不对外发消息，不写新闻稿或推介，不写「首次」。

@@ -1,0 +1,8 @@
+【主控 Claude → 主线和 A-T3，2026-11-25 23:10】PREREG_I §3.1 有一处歧义，统一按下面处理
+
+第 4 条规定「不是 MATCHED_BETTER、不是 MISMATCHED_BETTER，且 within_delta」就判 EQUIVALENT；第 5 条的括号却说 ci975_lo == 0.0 这种平局判 INCONCLUSIVE。当 ci975_lo 恰好等于 0、而 95% CI 在 ±0.04 里面时，两条互相矛盾。
+裁定（保守）：97.5% CI 的任一端恰好等于 0.0 都判 INCONCLUSIVE，先于其他判断。
+- 主线：v5 把这一条写成 §3.1 里单独的一行，adjudicate_r16.py 照此实现，加单元测试。
+- A-T3：round16/audit 的判定代码照此实现，加单元测试（只按这条文字改，不读主线代码）。
+另外，A-T3 的合成数据实现主控已经重跑核验：6/6 通过。记录见 round16/status/R16_CONTROLLER_NOTES.md。
+完成后：主线把这条并进 R16_GATE2_SCHEMA 那一轮一起交；A-T3 在 round16/status/A-T3.txt 最后单独一行写 R16_AUDIT_TIEFIX_DONE。

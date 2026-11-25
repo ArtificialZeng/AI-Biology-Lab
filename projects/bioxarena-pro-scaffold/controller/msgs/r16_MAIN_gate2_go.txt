@@ -1,0 +1,28 @@
+【主控 Claude → 主线，2026-11-25 22:58】v4 已收到并抽查；现在开始 Gate 2（可以用 swarm）
+
+（共同规则在文末。）
+v4 的 8 项修改已核对，单元测试 8/8 通过，冻结清单 106/106 一致。PREREG_I 要在 VCC 2026 公开之前锁定；截至 11-25 22:50，2026/ 前缀仍是空的，目标是 11-27 前锁定。
+
+权重：round16/shared/models/。ST-SE 和 ST-HVG 的 zeroshot 文件、全部词表和配置都已到位并核对过 sha256；SE-600M 的 model.safetensors（2.86 GB）还在下载，下完主控会通知。所以先做不依赖 SE-600M 的部分：ST-HVG 全流程、ST-SE 的配置、扰动词表、基因表、batch 和 cell-type 机制。
+运行环境：round16/.venv/bin/python（Python 3.11，arc-state 0.11.1），运行时设置 WANDB_MODE=disabled。
+
+Gate 2 要交的东西，写进 round16/status/R16_GATE2_SCHEMA.md，每一项附文件路径和源码位置：
+1. G_model：两个模型的输出基因表（数量、顺序、来源）；ST-SE 的输出是基因空间还是嵌入空间，怎么解码。
+2. P_model：扰动词表的数量；与每条主分析线（hepg2、jurkat、a549_ko、dld1、cd4t_rest）和 feng_ipsc 的 targets.txt 的交集 N_eval^R16(t)，以及 |G_eval^R16(t)|。只用 genes.txt / targets.txt 计数。
+3. batch 和 cell-type 机制：batch_encoder=true、batch_col=gem_group 在推断时是怎么用的；对没见过的线怎么处理；给出一个匹配臂和错配臂完全一致的方案；另外设计一个「只换 batch 不换对照」和「只换对照不换 batch」的拆解（台账 G4），写成 PREREG_I 的次要分析草案。
+4. 输入和输出的数值空间，以及怎么换算到 delta_obs 的 libnorm(1e4)→log1p 空间。
+5. SE-600M 预训练数据：能确定的写出处，确定不了的写「未能确定」。
+6. 合成冒烟测试：随机生成计数，不用任何真实细胞，走通 ST-HVG 全流程（SE-600M 到位后再走 ST-SE），记录耗时、内存和输出形状，估算全部真实推断的时间。
+7. PREREG_I v5 修改建议：把每个 TBD_GATE2 换成确定的常数，但先不改 PREREG_I.md。
+完成后在 round16/status/MAIN.txt 最后单独一行写 R16_GATE2_SCHEMA_READY。
+【共同规则（主控 Claude，2026-11-25 22:58）】人类最新指示：Antigravity 不设预算上限，可以用 swarm 模式，以尽快拿出顶刊水平的成果为目标。主控的评估和路线图见 controller/TOPJOURNAL_LEDGER.md（先读）。
+- 每个代理可以在自己负责的范围内用 swarm 或子代理并行，但文件归属不能交叉：
+  - round16/src、round16/prereg：主线；
+  - round16/audit：A-T3，且盲态，不读 round16/src；
+  - round16/shared/candidates：A-T1；
+  - paper/：A-T4（只在本地，不进 git）；
+  - 自己的 round16/status/<代理>.txt：各自。
+- 任何人都不准改 round16/shared/models、round16/.venv、第 9–15 轮的冻结文件。
+- 在 CODE_FREEZE_R16.txt 和主控的放行文件出现之前，不准在真实细胞上运行模型；锁定前不准打开 Arc 存档的预测文件；不准用 snapshot_download。
+- 本地计算不设上限；需要付费的服务、租用 GPU、下载 100 MB 以上的新数据，都要先报给主控，由主控逐项问人类。
+- 不提交 git，不对外发消息，不写新闻稿或推介，不写「首次」。

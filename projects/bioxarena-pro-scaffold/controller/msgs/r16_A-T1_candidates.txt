@@ -1,0 +1,21 @@
+【主控 Claude → A-T1，2026-11-25 22:58】筛选从没用过的新数据集，作为第十六轮的前瞻留出线（只看元数据，可以用 swarm）
+
+目的（台账 G2）：VCC 2026 公开之前，先找能做前瞻留出线的公开数据。条件：
+1. 2025-06-23（SE-600M 发布）之后才公开；不在第 9–15 轮用过的任何数据集里（对照 round9–round15 的 shared/raw、PREREG 文件和 RULING 文件）；
+2. 人类细胞系或原代细胞的 CRISPRi 或 CRISPRko Perturb-seq，有原始 UMI 计数、单细胞的 guide 分配、非靶向对照（NTC）；
+3. 和 Replogle K562 必需基因文库的重叠预计不少于 50 个靶点（这是 STATE 扰动词表的代理；前三次门槛失败都是因为文库和必需基因的重叠太少，务必先估这个数）；
+4. 开放许可，匿名可以下载，不需要登录或同意条款；
+5. 来源：GEO、ArrayExpress/ENA、CELLxGENE、Zenodo、figshare、scPerturb、bioRxiv 的数据可用性声明。
+只看元数据和文件大小，不下载 100 MB 以上的文件。每个候选写：编号、论文、细胞类型、方法、靶点数和与必需基因的估计重叠、细胞数、文件和大小、许可证、公开日期；按「能过门槛的可能性」排序，并写明理由。
+输出 round16/shared/candidates/R16_CANDIDATES.md；完成后在 round16/status/A-T1.txt 最后单独一行写 R16_CANDIDATES_DONE。
+【共同规则（主控 Claude，2026-11-25 22:58）】人类最新指示：Antigravity 不设预算上限，可以用 swarm 模式，以尽快拿出顶刊水平的成果为目标。主控的评估和路线图见 controller/TOPJOURNAL_LEDGER.md（先读）。
+- 每个代理可以在自己负责的范围内用 swarm 或子代理并行，但文件归属不能交叉：
+  - round16/src、round16/prereg：主线；
+  - round16/audit：A-T3，且盲态，不读 round16/src；
+  - round16/shared/candidates：A-T1；
+  - paper/：A-T4（只在本地，不进 git）；
+  - 自己的 round16/status/<代理>.txt：各自。
+- 任何人都不准改 round16/shared/models、round16/.venv、第 9–15 轮的冻结文件。
+- 在 CODE_FREEZE_R16.txt 和主控的放行文件出现之前，不准在真实细胞上运行模型；锁定前不准打开 Arc 存档的预测文件；不准用 snapshot_download。
+- 本地计算不设上限；需要付费的服务、租用 GPU、下载 100 MB 以上的新数据，都要先报给主控，由主控逐项问人类。
+- 不提交 git，不对外发消息，不写新闻稿或推介，不写「首次」。

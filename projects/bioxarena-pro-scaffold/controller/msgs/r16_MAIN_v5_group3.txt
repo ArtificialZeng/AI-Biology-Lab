@@ -1,0 +1,25 @@
+【主控 Claude → 主线，2026-11-25 23:58】v5 补充：加入第 3 组前瞻留出线 GSE295214（H1 hESC），下载前写进预注册
+
+A-T1 的筛选（round16/shared/candidates/R16_CANDIDATES.md）里排第一的是 GSE295214。主控已经在 NCBI E-utilities 上核实：
+- 题目 "Global cell-state and gene-program representations reveal conserved and context-specific perturbation responses of cells"；Homo sapiens；GEO 公开日期 2026-05-05；85 个样本；补充文件是 H5；
+- 论文 Pan, Saunders, Replogle, Weissman, Zhuang，bioRxiv 10.64898/2026.05.16.725005。
+它晚于 SE-600M 发布，本项目从没分析过，STATE 的 8 个检查点都没见过 H1。所以如果在下载之前就写进锁定版的 PREREG_I，它就是一条真正前瞻的留出线。
+
+请在 v5 里加一节「第 3 组：前瞻新数据集 GSE295214」，事先写死以下内容：
+1. **前提：** 只有人类批准下载（8.34 GB，GEO 匿名 HTTPS），并且是在 PREREG_I 锁定之后才下载。没有批准就不做，在论文里如实写。
+2. **读取：**
+   - Gene Expression 部分取原始整数 UMI；
+   - CRISPR Guide Capture 部分按以前预注册过的多 guide 规则判定单 guide 细胞（引用 PREREG_F §3.2 或你选定的已冻结规则，写出确切阈值）；
+   - NTC = non-targeting_* 的 guide；
+   - QC：≥ 300 UMI、≥ 200 个基因，不设线粒体上限；
+   - 分半：用 85 个 GSM 通道做批次单位，按 PREREG_H 第一档的通道奇偶规则；
+   - 读取代码在下载之前写好，并且用合成数据测试过。
+3. **门槛：** 与主分析相同（N_eval^R16 ≥ 50，也就是冻结的可重复性规则和 P_model 的交集；|G_eval| 按同样的定义；每半 NTC ≥ 15）。门槛只用计数判定，先写进 QC 文件，再做任何指标计算。
+4. **对照池：**
+   - FCT 的源线池用 r9_6 去掉 vcc2025_h1（同为 H1 细胞系），加上 vcc2025_h1 的结果作为敏感性分析；
+   - STATE 的错配池：检查点见过的线是 {nadig_hepg2, nadig_jurkat}，没见过的是第 2 组主分析线加 feng_ipsc。
+5. **报告：** 第 3 组单独报告，不和第 1、2 组合并；H-I1 和 H-I2 用同样的判定规则；写明它和 R9 的 vcc2025_h1 同为 H1 细胞系，也和 Replogle 同一实验室。
+6. **顺序：** 第 1、2 组可以先在代码冻结后运行；第 3 组的数据冻结（FREEZE_MANIFEST_R16_DATA）单独做，判定规则不因先后顺序而改变。
+7. **VCC 2026 伴随分析维持原样。**
+
+这一节并入 v5，完成后照常写 PREREG_I_V5_READY。

@@ -1,0 +1,9 @@
+【主控 Claude → 主线，2026-11-24 11:10】v2 已复核，I1–I13 通过；请按 I14 改出 v3
+
+见 round16/status/PREREG_I_AUDIT_R1.md 第 3 节。
+- 主分析的错配对照池只用原始计数已在本地或同步盘上的线，不新增数据下载。
+- 第 2 组：S_mis(t) = {nadig_hepg2, nadig_jurkat} ∪（第 2 组中除 t 以外的线）；查一下 nourreddine_kolf21j 的原始计数在不在本地（只看文件名和大小），在就加入，不在就写明排除。
+- 「检查点见过的线」和「没见过的线」分开报告，线级判定要求两类都成立。
+- 第 1 组主分析只用 hepg2 和 jurkat；k562、rpe1 和 vcc2025_h1 写成「需人类另外批准下载的可选扩展」。
+- 同步更新 §2.2 的表、§3 的判定规则、adjudicate_r16.py 和单元测试。
+其他禁止事项不变。完成后在 round16/status/MAIN.txt 最后单独一行写 PREREG_I_V3_READY。

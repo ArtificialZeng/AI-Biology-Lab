@@ -1,0 +1,36 @@
+ROLE=A-T4
+TASK=MS2_Outline_Rewrite
+DATE=2026-11-25
+HUMAN_PROJECT_LEAD=Zijian Zeng
+
+DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/paper/MS2_OUTLINE.md
+BYTES=38759
+LINES=197
+SHA256=fc39b20d6a59be61336327b37bcc8ff9d2ffe887dc9b12fac20a7e11e04e60b2
+
+PRESERVED_MS1_DRAFTS:
+- paper/MANUSCRIPT_DRAFT_v1.md..v5.md (preserved unchanged locally)
+
+OUTLINE_CONTENTS (aligned with controller/TOPJOURNAL_LEDGER.md §2 & round16/prereg/PREREG_I.md v4-DRAFT):
+1. Title & Abstract Draft: problem-and-answer framing; all pending counts, margins, and dual-outcome answers represented strictly by [PLACEHOLDER] tokens; limitations scoped strictly to body sections (omitted from title).
+2. Authors & AI Disclosure: Authors line lists human contributor(s) only (Zijian Zeng); AI master controller (Claude) and Antigravity team agent roles (A-T1..A-T5) disclosed solely in Section 7.
+3. Introduction: Arc 2026 Wrap-Up average-response paradox -> Round 12 FCT positive control confirming target-line control information -> unanswered input-control-swap question for flagship open-weight virtual cell models (STATE, peer open-weight models, and Zhang et al. 2026 internal-direction boundary).
+4. Methods Skeleton: pre-registration & Gates 1-5 timeline (Rounds 9-14 -> Round 15 PREREG_H -> Round 16 PREREG_I), matched vs. two-stratum mismatched control-swap design (seen_by_checkpoint vs. unseen_by_checkpoint), r_orth_cal & secondary Systema-inspired r_dorth_cal, Bonferroni + TOST equivalence decision rules separating LINE_MATCHED_SPECIFIC / LINE_EQUIVALENT_NONZERO_SIGNAL / LINE_EQUIVALENT_NULL_SIGNAL / INCONCLUSIVE, and three-party clean-room verification.
+5. Results Outline (§4.1-§4.6): dual-outcome reporting templates (Branch A control-invariant vs. Branch B matched-control specificity, plus inconclusive/gate contingencies) covering positive-control verification, Group 1 Replogle-4 LOO, Group 2 cross-study unseen CRISPRi & CRISPRko, prospective VCC 2026 & post-SE-600M new holdout cohorts, multi-model & H-I2 vs. FCT comparisons, and control-vs.-batch + M2 mechanistic disentanglement.
+6. Supplementary Materials Inventory: Rounds 9-14 trajectory & K1 provenance (Supp. Note S1), K2 split-half selection warning & M2 mechanism (Supp. Note S2), K3 Rounds 13-14 gate-failure archive (Supp. Note S3), K4 pre-registration governance & triple-audit raw-data reconstruction protocol (Supp. Note S4), and extended Round 15/16 diagnostics (Supp. Notes S5-S6).
+7. Bibliography Verification (live API/search verification in session):
+   - STATE (Adduri et al., Cell 2026, doi:10.1016/j.cell.2026.07.052, PMID:42673963): Crossref API & PubMed E-utilities.
+   - Zhang et al. 2026 (arXiv:2611.05849, NeurIPS 2026): arXiv API + PRIOR_ART_I_CONTROLLER_CHECK.md.
+   - Fan et al. 2026 (NeurIPS 2026 Evaluations & Datasets Track, OpenReview lnpzb1HvwX): search_web (neurips.cc) + cached PRIOR_ART_H_CONTROLLER_FAN2026.md (OpenReview API HTTP 403 disclosed; PDF unread).
+   - Systema (Viñas Torné et al., Nat Biotechnol 2026 / Epub 2025, doi:10.1038/s41587-025-02777-8): Crossref API.
+   - CASTER (Kawsar et al., bioRxiv 2026, doi:10.64898/2026.11.15.766815): Crossref API.
+   - Nicol v2 (Nicol, Shivakumar & Irizarry, bioRxiv v2 2026-08-11, doi:10.64898/2026.05.07.723486): Crossref API & bioRxiv API.
+   - Arc 2026 Wrap-Up (2026-11-19) & Cell 2026 companion (doi:10.1016/j.cell.2026.08.004): search_web & Crossref API.
+   - Miller 2026 (Miller, Mejia et al., Nat Biotechnol 2026, doi:10.1038/s41587-026-03307-w, PMID:42823510): Crossref API & PubMed E-utilities.
+
+COMPLIANCE_ATTESTATION:
+- Local writes limited strictly to paper/MS2_OUTLINE.md and round16/status/A-T4.txt.
+- Zero git commands executed; zero real-cell model inference executed; zero Arc archived adata_pred.h5ad files opened; zero weights downloaded; zero snapshot_download calls; zero files in round16/shared/models, round16/.venv, round16/src, round16/audit, or Rounds 9-15 frozen manifests modified.
+- Zero new result numbers written; zero priority claims written; zero outreach/press text written.
+
+MS2_OUTLINE_READY

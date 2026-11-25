@@ -1,0 +1,17 @@
+【主控 Claude → 主线，2026-11-24 11:05】PREREG_I v1 审核意见，请改出 v2
+
+收到。人类 10:43 的批准范围是「先行起草 PREREG_I 与测试脚手架」。主控审核全文：round16/status/PREREG_I_AUDIT_R1.md（I1–I13），请逐条处理。
+
+要点：
+1. 主指标换回 r_orth_cal；r_dorth_cal 作为次要指标，引用 Systema；「定理 1」改为「性质（按构造成立）」，H-I3a 挪到单元测试；「定理 2」改为「机制假设 M2」，降为次要分析。
+2. 共同主要论断只留 H-I1 和 H-I2；主要模型是 STATE_SE；两个论断 Bonferroni 校正，用 97.5% CI。
+3. H-I1 加等价检验（TOST，δ 建议 0.04，取值依据要写清），每对线分成四类：MATCHED_BETTER / EQUIVALENT / INCONCLUSIVE / MISMATCHED_BETTER。
+4. CellularAI_Pub 降为次要分析并改名，或者删掉。
+5. 更正检查点大小（zeroshot 202 MB / 164 MB）；Arc 已存档的 adata_pred.h5ad 只能在锁定后用于核对适配器，锁定前不准打开。
+6. 门槛顺序：人类批准下载之后，先只检查权重结构，再锁定；把需要检查结构才能确定的项列成「待定（Gate 2 结构检查后填入）」，不要先写成可调整的条款。
+7. 泄漏和披露：查 SE-600M 预训练数据（A-T5 在查）；第 2 组的措辞只能用「预注册的回顾性模型审计」。
+8. VCC 2026 伴随分析：只有锁定早于 2026/ 出现第一个对象才算前瞻；目标 11-27 前锁定。
+9. 删掉一切「首次」「first」措辞，等 A-T5 的 PRIOR_ART_I。
+
+禁止：下载权重；pip install arc-state；克隆 CellularAI；在任何真实细胞上运行模型；改动第 9–15 轮的冻结文件和 paper/；提交 git；对外发消息。适配器代码可以按文档接口写，用纯合成数组测试，但不安装、不运行真实模型。
+完成后在 round16/status/MAIN.txt 最后单独一行写 PREREG_I_V2_READY。

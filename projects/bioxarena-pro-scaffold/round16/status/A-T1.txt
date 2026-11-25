@@ -1,0 +1,21 @@
+ROLE=A-T1
+TASK=R16_Prospective_Dataset_Screen
+DATE=2026-11-25
+STATUS=COMPLETED
+
+DELIVERABLE=/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/shared/candidates/R16_CANDIDATES.md
+
+SUMMARY_OF_FINDINGS:
+- Searched GEO, ArrayExpress/BioStudies/ENA, CELLxGENE (408 collections), Zenodo, Figshare, scPerturb (Zenodo 13350497), IGVF (26 AnalysisSets), bioRxiv, PubMed, and EuropePMC strictly for public human CRISPRi/CRISPRko Perturb-seq datasets released after 2025-06-23 (SE-600M cutoff) and absent from R9-R15 shared/raw, PREREG*, and RULING*.
+- Zero datasets satisfy BOTH completely unseen cell lineage (zero R9-R15 lineage overlap) AND replogle_k562_essential (2,049) overlap >= 50 with open raw UMI + guide + NTC counts.
+- Ranked #1 (highest gate-clearing probability; H1 lineage caveat from R9 vcc2025_h1): GSE295214 (Pan-GW-hESC, 10x 5' CRISPRi in H1 hESC, GEO 2026-05-05 / bioRxiv 10.64898/2026.05.16.725005 2026-05-18 CC BY; 2,971 canonical targets -> 1,563 essential / 1,291 R9_COMMON; 372 non-targeting NTCs; 85 .h5 files totaling 8.341 GB; Range-verified int32 raw UMIs & 54.5-56.1% strict 1-guide singlets).
+- Ranked #2 (new 2026 study absent from all R9-R15 docs; TeloHAEC lineage caveat from R10-R11 GSE210681 & 49.63 GiB file): Zenodo 18792213 imru_full.h5ad (Pfizer, 2026-03-04 CC BY 4.0 / bioRxiv 10.64898/2026.03.04.709607 / Digital Discovery 10.1039/d6dd00287k; TeloHAEC CRISPRi +/- IL-1beta+TNF-alpha; 864,115 cells x 38,606 genes; 1,740 gene_target categories -> 291 essential / 250 R9_COMMON; NO-TARGET & SAFE_TARGET NTCs; Range-verified float32 raw integer UMIs).
+- Ranked #3 (conditional/blocked fallback): Zenodo 18460279 VIPerturb-seq (K562 CRISPRi, 2026-02-02; filtered.rds 3.363 GiB fails NTC sufficiency with <2,000 pseudo-control / ~66 NTCs; full NTCs across binA/B/C.RDS 9.52 GiB; K562 cell line).
+- Watch-list / Disqualified unseen-lineage items documented: Figshare 30898748 (fibroblast 200 TFs, ndownloader HTTP 403 & likely <50 essential), PMC13648420 (PC9 110 paralogs, no public matrix), Zenodo 23470845 (embargoed to 2027-03-05, CD4+ T), S-BIAD3248 / Zenodo 23424820 (HeLa CROPseq-multi OPS images/restricted code only), Perturb-ME Figshare 33264225 (extreme 5% FACS bias), GSE301119 (33.7% singlets shallow depth), GSE256096 (21/28 >=25 singlets), GSE291147 (39 u6_rep), GSE343369 (12 ess), E-MTAB-14567 (50 total genes), IGVFDS9825FOBP (MOI~4 & excluded in PREREG_C), CM4AI PRJNA1321347 (FASTQs only & 17 ess in matching panel).
+
+COMPLIANCE:
+- Zero files > 100 MB downloaded (HTTP Range inspection <= 3.8 MB only).
+- Zero modifications to round16/shared/models, round16/.venv, round16/prereg, round16/src, round16/audit, paper/, or R9-R15 frozen files.
+- Zero git commands executed; zero Arc adata_pred.h5ad opened; zero banned terms written.
+
+R16_CANDIDATES_DONE

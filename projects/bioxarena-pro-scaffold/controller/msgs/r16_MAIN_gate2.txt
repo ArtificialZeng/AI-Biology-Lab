@@ -1,0 +1,23 @@
+【主控 Claude → 主线，2026-11-24】第十六轮 Gate 2：只检查权重结构（人类已批准下载）
+
+人类项目负责人已在主控会话里批准下载并接受 Arc 非商业许可，记录见 round16/status/R16_HUMAN_APPROVAL.txt。主控已经按明确的文件清单下载并核对了 sha256：
+- 权重：round16/shared/models/{ST-SE-Replogle,ST-HVG-Replogle,SE-600M}/（77 个文件；校验和在 round16/shared/R16_MODEL_CHECKSUMS.sha256）。
+- 运行环境：round16/.venv（Python 3.11，arc-state 0.11.1，与冻结轮次使用的 anaconda 环境隔离）。运行时设置 WANDB_MODE=disabled。
+
+请填写 PREREG_I 里全部 TBD_GATE2 项，写成 round16/status/R16_GATE2_SCHEMA.md，每一项都附上读取的文件路径和代码位置：
+1. G_model：ST-SE 和 ST-HVG 的输出基因表（数量、顺序、前后各 5 个基因名、来源文件）；ST-SE 的输出是基因空间还是嵌入空间，如果有解码器，说明是怎么解码的。
+2. P_model：pert_onehot_map 的扰动符号数量；与每条主分析线 targets.txt 的交集数 N_eval^R16(t)，以及和 G_eval^R16(t) 的大小（只用 genes.txt / targets.txt 计数，不读 .npz）。
+3. 协变量：batch_onehot_map、cell_type_onehot_map 在推断时是否必须提供；对没见过的线怎么处理（引用 arc-state 源码的具体函数）；提出一个匹配臂和错配臂完全相同的处理方案。
+4. 输入和输出的数值空间：SE-600M 需要什么输入（原始计数？哪张基因表？多少基因？），ST 的输入是什么（X_state 维度），输出是 log1p 归一化表达还是计数；怎么换算到我们 delta_obs 的 libnorm(1e4)→log1p 空间。
+5. SE-600M 预训练数据：从 arc-state 文档、模型卡和代码里找；能确定的写出处，确定不了的写「未能确定」，并提出处理方案（如果不能排除重叠，相关线怎么披露）。
+6. 合成冒烟测试：用随机生成的计数矩阵（不使用任何真实细胞）走一遍 SE-600M → ST-SE 和 ST-HVG 的完整推断流程，记录耗时、内存和输出形状，估算全部真实推断需要多长时间。
+7. 根据 1–6，写出 PREREG_I v4 的修改建议（把每个 TBD_GATE2 换成确定的常数），但先不要改 PREREG_I.md，等主控核对 R16_GATE2_SCHEMA.md 之后再改。
+
+禁止：
+- 在任何真实细胞上运行模型，包括从真实 h5ad 里读出的控制细胞；
+- 下载任何其他文件（包括 eval_final.ckpt/*、adata_pred.h5ad、adata_real.h5ad、metrics.csv、训练检查点）；
+- 用 huggingface_hub 的 snapshot_download；
+- 改动 round16/shared/models/ 和 round16/.venv 里的任何文件；
+- 在 base anaconda 环境里安装任何东西；
+- git、对外消息、改动冻结文件。
+完成后在 round16/status/MAIN.txt 最后单独一行写 R16_GATE2_SCHEMA_READY。

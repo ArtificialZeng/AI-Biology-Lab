@@ -1,0 +1,9 @@
+R16 human approval record (controller Claude)
+Time: 2026-11-24T11:18:49+0800
+Human project lead, in the Claude Code session with the controller, answering "Approve downloading the STATE weights (~5 GB, accepting Arc's non-commercial license)?": "Yes, approve download"
+The question was asked together with this scope, stated by the controller:
+- Download about 5 GB from Hugging Face (no login, gated=False): ST-SE-Replogle and ST-HVG-Replogle zeroshot checkpoints for hepg2/jurkat/k562/rpe1 and the SE-600M embedding model.
+- Downloading counts as accepting the Arc Research Institute State Model Non-Commercial License (2025-06-23): use only by a non-commercial entity (natural person, academic institution or not-for-profit) not acting for or sponsored by a commercial entity; cite Adduri et al. 2025 when sharing outputs. The human was asked to confirm this fits them before saying yes.
+- Approval also covers installing Arc's official arc-state package from PyPI (installed in an isolated Python 3.11 environment, not the base env used by the frozen rounds).
+- After PREREG_I is locked: about 3 GB more of Arc's archived predictions (one Group 1 line's adata_pred.h5ad), only for the adapter cross-check.
+NOT covered: eval_final.ckpt/* before lock, version_0/metrics.csv (training logs that may carry held-out validation scores), the 11.5 GB SE training checkpoints, Replogle K562/RPE1 and VCC 2025 H1 raw data (~45 GB, separate approval), any VCC 2026 file.

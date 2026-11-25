@@ -1,0 +1,20 @@
+【主控 Claude → A-T5，2026-11-24 11:05】第十六轮查新 PRIOR_ART_I（锁定 PREREG_I 前必须完成）
+
+背景：人类批准主线起草 round16/prereg/PREREG_I.md，内容是审计开放权重的虚拟细胞模型（Arc STATE：ST-SE-Replogle / ST-HVG-Replogle + SE-600M）：把目标线自己的对照细胞换成其他细胞系的对照，看预测的特异性会不会下降。主控审核见 round16/status/PREREG_I_AUDIT_R1.md（先读）。
+
+请回答，每条都附原文出处（URL 或 DOI）和一句原文引用；读不到的写「未能读取」，不绕过人机验证：
+Q1 有没有人对 STATE 或其他虚拟细胞模型（scGPT、GEARS、CPA、CellFlow、X-Cell、flowstate、CellularAI、CASTER 等）做过以下任一实验：把目标线的对照（basal）细胞换成别的细胞系或别的情境的对照；打乱情境；去掉对照输入。至少覆盖：
+ - STATE 论文（Adduri et al. 2025，bioRxiv 10.1101/2025.06.26.661135；主控直接访问 403，试 bioRxiv API 或 Europe PMC 全文）；
+ - Fan et al. 2026（OpenReview lnpzb1HvwX，已读部分见 round15/status/PRIOR_ART_H_CONTROLLER_FAN2026.md）；
+ - CASTER；
+ - Arc 的 VCC 2025、2026 回顾和参赛方的报告；
+ - arXiv 2604.27646（Mao et al.）全文、arXiv 2611.02335 全文、"An Empirical Comparison of Virtual Cell Models: Perturbation Prediction, Representation, and the Baseline Gap"、OCOO-T（arXiv 2606.12838）；
+ - 过去 24 个月里的 Ahlmann-Eltze 2025、Csendes 2025、PertEval-scFM、Miller 2026 等基线比较工作。
+Q2 去掉共享扰动轴的指标：Systema（Viñas Torné et al., Nat Biotechnol 2025, doi 10.1038/s41587-025-02777-8）具体是怎么做的？有没有人用过「投影到 {1, 该扰动的源线均值, 源线总均值} 的正交补」这类指标？
+Q3 分半选基因之后仍然存在的「真实幅度选择偏差」，以及 log1p 饱和加权 w(μ)=μ/(1+μ)：Nicol et al. 2026 v2 以外还有没有人讲过？
+Q4 SE-600M 预训练数据的组成，以及 ST-*-Replogle 的训练数据和推断时用的协变量（batch、cell type）。以下目标数据集的细胞是否在 SE 预训练数据里：GSE345058（A549）、DLD1、CD4 T（cd4t_rest、cd4t_stim48 的来源）、VCC 2025 H1、Feng iPSC、Nadig HepG2/Jurkat、Replogle K562/RPE1？
+Q5 Illumina CellularAI 开源代码（github.com/Illumina/CellularAI，Apache-2.0）：有没有人只用公开数据跑过完整流程？
+
+规则：只读网页和接口；不下载任何模型权重，不下载任何大于 100 MB 的文件；不安装软件包；不提交 git；不发对外消息；不写新闻稿。
+输出：round16/status/PRIOR_ART_I.md。
+完成后在 round16/status/A-T5.txt 最后单独一行写 PRIOR_ART_I_DONE。
