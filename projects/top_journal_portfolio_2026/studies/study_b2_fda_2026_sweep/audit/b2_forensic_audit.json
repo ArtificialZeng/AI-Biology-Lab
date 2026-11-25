@@ -1,0 +1,1792 @@
+{
+  "pcd_type_counts": {
+    "('nonus_p23_nonfda', 0)": {
+      "ACTUAL": 6400,
+      "ESTIMATED": 44
+    },
+    "('nonus_p23_nonfda', 1)": {
+      "ACTUAL": 3673,
+      "ESTIMATED": 20
+    },
+    "('us_fdareg_nonp1', 0)": {
+      "ACTUAL": 7571,
+      "ESTIMATED": 48
+    },
+    "('us_fdareg_nonp1', 1)": {
+      "ACTUAL": 8405,
+      "ESTIMATED": 54
+    },
+    "('us_notfdareg', 0)": {
+      "ACTUAL": 17025,
+      "ESTIMATED": 39
+    },
+    "('us_notfdareg', 1)": {
+      "ACTUAL": 1255,
+      "ESTIMATED": 5
+    },
+    "('us_p1_only', 0)": {
+      "ACTUAL": 4282,
+      "ESTIMATED": 5
+    },
+    "('us_p1_only', 1)": {
+      "ACTUAL": 5086,
+      "ESTIMATED": 15
+    }
+  },
+  "status_counts": {
+    "nonus_p23_nonfda": {
+      "ACTIVE_NOT_RECRUITING": 185,
+      "COMPLETED": 8644,
+      "TERMINATED": 1308
+    },
+    "us_fdareg_nonp1": {
+      "ACTIVE_NOT_RECRUITING": 990,
+      "COMPLETED": 11144,
+      "TERMINATED": 3944
+    },
+    "us_notfdareg": {
+      "ACTIVE_NOT_RECRUITING": 170,
+      "COMPLETED": 16680,
+      "TERMINATED": 1474
+    },
+    "us_p1_only": {
+      "ACTIVE_NOT_RECRUITING": 88,
+      "COMPLETED": 7595,
+      "TERMINATED": 1705
+    }
+  },
+  "strict_n_trials": 52491,
+  "weekly_exact_around_mar30": [
+    {
+      "rel_week": -16,
+      "week_start": "2025-12-08",
+      "ind_risk": 1190,
+      "ind_events": 16,
+      "ind_haz_pct": 1.345,
+      "aca_risk": 783,
+      "aca_events": 5,
+      "aca_haz_pct": 0.639
+    },
+    {
+      "rel_week": -15,
+      "week_start": "2025-12-15",
+      "ind_risk": 1183,
+      "ind_events": 12,
+      "ind_haz_pct": 1.014,
+      "aca_risk": 780,
+      "aca_events": 8,
+      "aca_haz_pct": 1.026
+    },
+    {
+      "rel_week": -14,
+      "week_start": "2025-12-22",
+      "ind_risk": 1178,
+      "ind_events": 3,
+      "ind_haz_pct": 0.255,
+      "aca_risk": 778,
+      "aca_events": 2,
+      "aca_haz_pct": 0.257
+    },
+    {
+      "rel_week": -13,
+      "week_start": "2025-12-29",
+      "ind_risk": 1180,
+      "ind_events": 2,
+      "ind_haz_pct": 0.169,
+      "aca_risk": 778,
+      "aca_events": 4,
+      "aca_haz_pct": 0.514
+    },
+    {
+      "rel_week": -12,
+      "week_start": "2026-01-05",
+      "ind_risk": 1192,
+      "ind_events": 4,
+      "ind_haz_pct": 0.336,
+      "aca_risk": 790,
+      "aca_events": 10,
+      "aca_haz_pct": 1.266
+    },
+    {
+      "rel_week": -11,
+      "week_start": "2026-01-12",
+      "ind_risk": 1199,
+      "ind_events": 5,
+      "ind_haz_pct": 0.417,
+      "aca_risk": 784,
+      "aca_events": 8,
+      "aca_haz_pct": 1.02
+    },
+    {
+      "rel_week": -10,
+      "week_start": "2026-01-19",
+      "ind_risk": 1202,
+      "ind_events": 4,
+      "ind_haz_pct": 0.333,
+      "aca_risk": 783,
+      "aca_events": 7,
+      "aca_haz_pct": 0.894
+    },
+    {
+      "rel_week": -9,
+      "week_start": "2026-01-26",
+      "ind_risk": 1211,
+      "ind_events": 4,
+      "ind_haz_pct": 0.33,
+      "aca_risk": 778,
+      "aca_events": 10,
+      "aca_haz_pct": 1.285
+    },
+    {
+      "rel_week": -8,
+      "week_start": "2026-02-02",
+      "ind_risk": 1223,
+      "ind_events": 3,
+      "ind_haz_pct": 0.245,
+      "aca_risk": 779,
+      "aca_events": 18,
+      "aca_haz_pct": 2.311
+    },
+    {
+      "rel_week": -7,
+      "week_start": "2026-02-09",
+      "ind_risk": 1229,
+      "ind_events": 6,
+      "ind_haz_pct": 0.488,
+      "aca_risk": 765,
+      "aca_events": 9,
+      "aca_haz_pct": 1.176
+    },
+    {
+      "rel_week": -6,
+      "week_start": "2026-02-16",
+      "ind_risk": 1228,
+      "ind_events": 3,
+      "ind_haz_pct": 0.244,
+      "aca_risk": 758,
+      "aca_events": 5,
+      "aca_haz_pct": 0.66
+    },
+    {
+      "rel_week": -5,
+      "week_start": "2026-02-23",
+      "ind_risk": 1230,
+      "ind_events": 4,
+      "ind_haz_pct": 0.325,
+      "aca_risk": 757,
+      "aca_events": 4,
+      "aca_haz_pct": 0.528
+    },
+    {
+      "rel_week": -4,
+      "week_start": "2026-03-02",
+      "ind_risk": 1237,
+      "ind_events": 5,
+      "ind_haz_pct": 0.404,
+      "aca_risk": 762,
+      "aca_events": 7,
+      "aca_haz_pct": 0.919
+    },
+    {
+      "rel_week": -3,
+      "week_start": "2026-03-09",
+      "ind_risk": 1246,
+      "ind_events": 7,
+      "ind_haz_pct": 0.562,
+      "aca_risk": 758,
+      "aca_events": 8,
+      "aca_haz_pct": 1.055
+    },
+    {
+      "rel_week": -2,
+      "week_start": "2026-03-16",
+      "ind_risk": 1244,
+      "ind_events": 9,
+      "ind_haz_pct": 0.723,
+      "aca_risk": 756,
+      "aca_events": 5,
+      "aca_haz_pct": 0.661
+    },
+    {
+      "rel_week": -1,
+      "week_start": "2026-03-23",
+      "ind_risk": 1241,
+      "ind_events": 6,
+      "ind_haz_pct": 0.483,
+      "aca_risk": 757,
+      "aca_events": 10,
+      "aca_haz_pct": 1.321
+    },
+    {
+      "rel_week": 0,
+      "week_start": "2026-03-30",
+      "ind_risk": 1244,
+      "ind_events": 14,
+      "ind_haz_pct": 1.125,
+      "aca_risk": 752,
+      "aca_events": 13,
+      "aca_haz_pct": 1.729
+    },
+    {
+      "rel_week": 1,
+      "week_start": "2026-04-06",
+      "ind_risk": 1244,
+      "ind_events": 12,
+      "ind_haz_pct": 0.965,
+      "aca_risk": 748,
+      "aca_events": 14,
+      "aca_haz_pct": 1.872
+    },
+    {
+      "rel_week": 2,
+      "week_start": "2026-04-13",
+      "ind_risk": 1242,
+      "ind_events": 13,
+      "ind_haz_pct": 1.047,
+      "aca_risk": 737,
+      "aca_events": 6,
+      "aca_haz_pct": 0.814
+    },
+    {
+      "rel_week": 3,
+      "week_start": "2026-04-20",
+      "ind_risk": 1234,
+      "ind_events": 7,
+      "ind_haz_pct": 0.567,
+      "aca_risk": 733,
+      "aca_events": 3,
+      "aca_haz_pct": 0.409
+    },
+    {
+      "rel_week": 4,
+      "week_start": "2026-04-27",
+      "ind_risk": 1237,
+      "ind_events": 7,
+      "ind_haz_pct": 0.566,
+      "aca_risk": 737,
+      "aca_events": 9,
+      "aca_haz_pct": 1.221
+    },
+    {
+      "rel_week": 5,
+      "week_start": "2026-05-04",
+      "ind_risk": 1241,
+      "ind_events": 8,
+      "ind_haz_pct": 0.645,
+      "aca_risk": 733,
+      "aca_events": 6,
+      "aca_haz_pct": 0.819
+    },
+    {
+      "rel_week": 6,
+      "week_start": "2026-05-11",
+      "ind_risk": 1245,
+      "ind_events": 3,
+      "ind_haz_pct": 0.241,
+      "aca_risk": 732,
+      "aca_events": 6,
+      "aca_haz_pct": 0.82
+    },
+    {
+      "rel_week": 7,
+      "week_start": "2026-05-18",
+      "ind_risk": 1249,
+      "ind_events": 9,
+      "ind_haz_pct": 0.721,
+      "aca_risk": 735,
+      "aca_events": 3,
+      "aca_haz_pct": 0.408
+    },
+    {
+      "rel_week": 8,
+      "week_start": "2026-05-25",
+      "ind_risk": 1251,
+      "ind_events": 16,
+      "ind_haz_pct": 1.279,
+      "aca_risk": 739,
+      "aca_events": 5,
+      "aca_haz_pct": 0.677
+    },
+    {
+      "rel_week": 9,
+      "week_start": "2026-06-01",
+      "ind_risk": 1247,
+      "ind_events": 9,
+      "ind_haz_pct": 0.722,
+      "aca_risk": 742,
+      "aca_events": 2,
+      "aca_haz_pct": 0.27
+    },
+    {
+      "rel_week": 10,
+      "week_start": "2026-06-08",
+      "ind_risk": 1243,
+      "ind_events": 5,
+      "ind_haz_pct": 0.402,
+      "aca_risk": 744,
+      "aca_events": 2,
+      "aca_haz_pct": 0.269
+    },
+    {
+      "rel_week": 11,
+      "week_start": "2026-06-15",
+      "ind_risk": 1243,
+      "ind_events": 9,
+      "ind_haz_pct": 0.724,
+      "aca_risk": 743,
+      "aca_events": 4,
+      "aca_haz_pct": 0.538
+    },
+    {
+      "rel_week": 12,
+      "week_start": "2026-06-22",
+      "ind_risk": 1245,
+      "ind_events": 12,
+      "ind_haz_pct": 0.964,
+      "aca_risk": 744,
+      "aca_events": 4,
+      "aca_haz_pct": 0.538
+    },
+    {
+      "rel_week": 13,
+      "week_start": "2026-06-29",
+      "ind_risk": 1244,
+      "ind_events": 11,
+      "ind_haz_pct": 0.884,
+      "aca_risk": 746,
+      "aca_events": 3,
+      "aca_haz_pct": 0.402
+    },
+    {
+      "rel_week": 14,
+      "week_start": "2026-07-06",
+      "ind_risk": 1242,
+      "ind_events": 10,
+      "ind_haz_pct": 0.805,
+      "aca_risk": 751,
+      "aca_events": 3,
+      "aca_haz_pct": 0.399
+    },
+    {
+      "rel_week": 15,
+      "week_start": "2026-07-13",
+      "ind_risk": 1240,
+      "ind_events": 2,
+      "ind_haz_pct": 0.161,
+      "aca_risk": 756,
+      "aca_events": 1,
+      "aca_haz_pct": 0.132
+    },
+    {
+      "rel_week": 16,
+      "week_start": "2026-07-20",
+      "ind_risk": 1246,
+      "ind_events": 8,
+      "ind_haz_pct": 0.642,
+      "aca_risk": 759,
+      "aca_events": 1,
+      "aca_haz_pct": 0.132
+    },
+    {
+      "rel_week": 17,
+      "week_start": "2026-07-27",
+      "ind_risk": 1243,
+      "ind_events": 3,
+      "ind_haz_pct": 0.241,
+      "aca_risk": 764,
+      "aca_events": 1,
+      "aca_haz_pct": 0.131
+    }
+  ],
+  "march_intramonth_split": {
+    "mar_1_29_29d": {
+      "ind": 27,
+      "aca": 31
+    },
+    "mar_30_31_2d": {
+      "ind": 8,
+      "aca": 8
+    },
+    "apr_1_30_30d": {
+      "ind": 45,
+      "aca": 39
+    }
+  },
+  "multiyear_seasonality": [
+    {
+      "year": 2023,
+      "month": 1,
+      "ind_h": 5.22,
+      "aca_h": 5.29,
+      "ratio_i_a": 0.99
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "ind_h": 4.06,
+      "aca_h": 3.69,
+      "ratio_i_a": 1.1
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "ind_h": 3.74,
+      "aca_h": 6.62,
+      "ratio_i_a": 0.56
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "ind_h": 3.44,
+      "aca_h": 5.38,
+      "ratio_i_a": 0.64
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "ind_h": 4.96,
+      "aca_h": 6.96,
+      "ratio_i_a": 0.71
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "ind_h": 5.94,
+      "aca_h": 5.2,
+      "ratio_i_a": 1.14
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "ind_h": 3.49,
+      "aca_h": 5.32,
+      "ratio_i_a": 0.66
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "ind_h": 2.99,
+      "aca_h": 4.94,
+      "ratio_i_a": 0.6
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "ind_h": 2.56,
+      "aca_h": 4.65,
+      "ratio_i_a": 0.55
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "ind_h": 5.05,
+      "aca_h": 6.66,
+      "ratio_i_a": 0.76
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "ind_h": 5.29,
+      "aca_h": 4.35,
+      "ratio_i_a": 1.22
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "ind_h": 3.74,
+      "aca_h": 5.08,
+      "ratio_i_a": 0.74
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "ind_h": 2.92,
+      "aca_h": 5.31,
+      "ratio_i_a": 0.55
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "ind_h": 3.62,
+      "aca_h": 4.97,
+      "ratio_i_a": 0.73
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "ind_h": 3.28,
+      "aca_h": 3.59,
+      "ratio_i_a": 0.91
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "ind_h": 3.74,
+      "aca_h": 4.07,
+      "ratio_i_a": 0.92
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "ind_h": 2.74,
+      "aca_h": 5.47,
+      "ratio_i_a": 0.5
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "ind_h": 2.38,
+      "aca_h": 4.68,
+      "ratio_i_a": 0.51
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "ind_h": 2.86,
+      "aca_h": 3.65,
+      "ratio_i_a": 0.78
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "ind_h": 4.04,
+      "aca_h": 4.27,
+      "ratio_i_a": 0.95
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "ind_h": 2.53,
+      "aca_h": 4.45,
+      "ratio_i_a": 0.57
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "ind_h": 1.51,
+      "aca_h": 4.19,
+      "ratio_i_a": 0.36
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "ind_h": 1.23,
+      "aca_h": 4.65,
+      "ratio_i_a": 0.26
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "ind_h": 2.75,
+      "aca_h": 4.49,
+      "ratio_i_a": 0.61
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "ind_h": 3.54,
+      "aca_h": 4.41,
+      "ratio_i_a": 0.8
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "ind_h": 2.91,
+      "aca_h": 3.01,
+      "ratio_i_a": 0.97
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "ind_h": 2.97,
+      "aca_h": 1.75,
+      "ratio_i_a": 1.69
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "ind_h": 2.33,
+      "aca_h": 1.07,
+      "ratio_i_a": 2.18
+    }
+  ],
+  "strict_models": {
+    "within_act_jul": {
+      "label": "Strict Symmetric Apr-Jul 2026",
+      "n_obs": 31240,
+      "n_trials": 2871,
+      "n_sponsors": 1568,
+      "n_events": 914,
+      "raw_hazards": {
+        "ind0_post0": {
+          "risk": 9220,
+          "events": 345,
+          "hazard_pct": 3.7419
+        },
+        "ind0_post1": {
+          "risk": 2972,
+          "events": 76,
+          "hazard_pct": 2.5572
+        },
+        "ind1_post0": {
+          "risk": 14078,
+          "events": 347,
+          "hazard_pct": 2.4648
+        },
+        "ind1_post1": {
+          "risk": 4970,
+          "events": 146,
+          "hazard_pct": 2.9376
+        }
+      },
+      "lpm_age_fe": {
+        "coef_pp": 1.37067567913916,
+        "se_pp": 0.47750152218041947,
+        "t": 2.870515831824434,
+        "p": 0.004098026749490349,
+        "ci95": [
+          0.43478989310248417,
+          2.306561465175836
+        ]
+      },
+      "lpm_sponsor_age_fe": {
+        "coef_pp": 1.265707708417546,
+        "se_pp": 0.48768241393487666,
+        "z": 2.5953523691886993,
+        "p": 0.009449398759597716,
+        "ci95": [
+          0.3098501771051879,
+          2.2215652397299044
+        ],
+        "n_sponsors_fe": 1506
+      },
+      "poisson_age_fe": {
+        "log_irr": 0.48460009202820004,
+        "se": 0.16614343447093965,
+        "z": 2.9167574004434225,
+        "p": 0.003536907533438443,
+        "irr": 1.623525618167503,
+        "irr_ci95": [
+          1.1722898354639464,
+          2.248450300520615
+        ]
+      },
+      "poisson_3group_vs_academic": {
+        "industry_vs_academic": {
+          "irr": 1.7031012738693092,
+          "p": 0.001870866793162564,
+          "ci95": [
+            1.2176140609290733,
+            2.382162002007484
+          ]
+        },
+        "nih_fed_vs_academic": {
+          "irr": 2.2672594519379317,
+          "p": 0.0056538506498599326,
+          "ci95": [
+            1.2697146876201804,
+            4.048520090790347
+          ]
+        }
+      }
+    },
+    "within_act_jun": {
+      "label": "Strict Symmetric Apr-Jun 2026",
+      "n_obs": 29246,
+      "n_trials": 2816,
+      "n_sponsors": 1549,
+      "n_events": 877,
+      "raw_hazards": {
+        "ind0_post0": {
+          "risk": 9220,
+          "events": 345,
+          "hazard_pct": 3.7419
+        },
+        "ind0_post1": {
+          "risk": 2223,
+          "events": 68,
+          "hazard_pct": 3.0589
+        },
+        "ind1_post0": {
+          "risk": 14078,
+          "events": 347,
+          "hazard_pct": 2.4648
+        },
+        "ind1_post1": {
+          "risk": 3725,
+          "events": 117,
+          "hazard_pct": 3.1409
+        }
+      },
+      "lpm_age_fe": {
+        "coef_pp": 1.0444294845483904,
+        "se_pp": 0.5450595421695552,
+        "t": 1.9161750299630438,
+        "p": 0.05534282057479003,
+        "ci95": [
+          -0.023867587533828782,
+          2.1127265566306095
+        ]
+      },
+      "lpm_sponsor_age_fe": {
+        "coef_pp": 0.9914931256351291,
+        "se_pp": 0.5575976736727364,
+        "z": 1.778151474529023,
+        "p": 0.07537898023152656,
+        "ci95": [
+          -0.10139831476343408,
+          2.0843845660336924
+        ],
+        "n_sponsors_fe": 1475
+      },
+      "poisson_age_fe": {
+        "log_irr": 0.36952966928371844,
+        "se": 0.17453902465337887,
+        "z": 2.1171750559370666,
+        "p": 0.03424499356720783,
+        "irr": 1.4470538607073213,
+        "irr_ci95": [
+          1.0278129353422631,
+          2.037301539789116
+        ]
+      },
+      "poisson_3group_vs_academic": {
+        "industry_vs_academic": {
+          "irr": 1.514075699950288,
+          "p": 0.02042798491778399,
+          "ci95": [
+            1.0662308053762302,
+            2.150027192631195
+          ]
+        },
+        "nih_fed_vs_academic": {
+          "irr": 2.16224358955534,
+          "p": 0.014820978544824224,
+          "ci95": [
+            1.1628566146968982,
+            4.020527794642843
+          ]
+        }
+      }
+    },
+    "within_act_p25": {
+      "label": "Strict Symmetric Placebo 2025",
+      "n_obs": 29586,
+      "n_trials": 2940,
+      "n_sponsors": 1549,
+      "n_events": 1092,
+      "raw_hazards": {
+        "ind0_post0": {
+          "risk": 8867,
+          "events": 383,
+          "hazard_pct": 4.3194
+        },
+        "ind0_post1": {
+          "risk": 3073,
+          "events": 131,
+          "hazard_pct": 4.2629
+        },
+        "ind1_post0": {
+          "risk": 13046,
+          "events": 442,
+          "hazard_pct": 3.388
+        },
+        "ind1_post1": {
+          "risk": 4600,
+          "events": 136,
+          "hazard_pct": 2.9565
+        }
+      },
+      "lpm_age_fe": {
+        "coef_pp": -0.6567417830160982,
+        "se_pp": 0.6118234366492004,
+        "t": -1.073417171811698,
+        "p": 0.2830839833412737,
+        "ci95": [
+          -1.8558936837460542,
+          0.5424101177138578
+        ]
+      },
+      "lpm_sponsor_age_fe": {
+        "coef_pp": 0.207281787094393,
+        "se_pp": 0.5900576909543572,
+        "z": 0.35129071321676386,
+        "p": 0.7253702613290698,
+        "ci95": [
+          -0.949231287176147,
+          1.363794861364933
+        ],
+        "n_sponsors_fe": 1472
+      },
+      "poisson_age_fe": {
+        "log_irr": -0.18464909476006647,
+        "se": 0.16304211479467304,
+        "z": -1.1325239186979643,
+        "p": 0.25741423433425525,
+        "irr": 0.8313959738750463,
+        "irr_ci95": [
+          0.6039815428209919,
+          1.1444377292511074
+        ]
+      },
+      "poisson_3group_vs_academic": {
+        "industry_vs_academic": {
+          "irr": 0.8472890018143727,
+          "p": 0.3190536358888417,
+          "ci95": [
+            0.6115993915172379,
+            1.173805374159471
+          ]
+        },
+        "nih_fed_vs_academic": {
+          "irr": 1.589004740766966,
+          "p": 0.3171128618092951,
+          "ci95": [
+            0.6413395454179249,
+            3.936972363889606
+          ]
+        }
+      }
+    },
+    "within_act_p24": {
+      "label": "Strict Symmetric Placebo 2024",
+      "n_obs": 27195,
+      "n_trials": 2960,
+      "n_sponsors": 1465,
+      "n_events": 1235,
+      "raw_hazards": {
+        "ind0_post0": {
+          "risk": 8369,
+          "events": 449,
+          "hazard_pct": 5.365
+        },
+        "ind0_post1": {
+          "risk": 2836,
+          "events": 140,
+          "hazard_pct": 4.9365
+        },
+        "ind1_post0": {
+          "risk": 11751,
+          "events": 481,
+          "hazard_pct": 4.0933
+        },
+        "ind1_post1": {
+          "risk": 4239,
+          "events": 165,
+          "hazard_pct": 3.8924
+        }
+      },
+      "lpm_age_fe": {
+        "coef_pp": -0.011024323628306076,
+        "se_pp": 0.6879695833083355,
+        "t": -0.016024434649119037,
+        "p": 0.9872148981652961,
+        "ci95": [
+          -1.359419929371672,
+          1.3373712821150598
+        ]
+      },
+      "lpm_sponsor_age_fe": {
+        "coef_pp": 0.9397435087364634,
+        "se_pp": 0.7501489727256385,
+        "z": 1.252742512359832,
+        "p": 0.21029942909247235,
+        "ci95": [
+          -0.5305484778057881,
+          2.4100354952787146
+        ],
+        "n_sponsors_fe": 1384
+      },
+      "poisson_age_fe": {
+        "log_irr": -0.010822159831858146,
+        "se": 0.15626860630501155,
+        "z": -0.06925357618365781,
+        "p": 0.9447877778076385,
+        "irr": 0.9892361890631425,
+        "irr_ci95": [
+          0.7282516421713099,
+          1.343750128505679
+        ]
+      },
+      "poisson_3group_vs_academic": {
+        "industry_vs_academic": {
+          "irr": 0.9709062721201013,
+          "p": 0.8529160058307577,
+          "ci95": [
+            0.7105931368928757,
+            1.3265804864989303
+          ]
+        },
+        "nih_fed_vs_academic": {
+          "irr": 0.6766525247271528,
+          "p": 0.10569024416690963,
+          "ci95": [
+            0.4215634466122197,
+            1.0860966312404143
+          ]
+        }
+      }
+    },
+    "ddd_clean_exempt_jul": {
+      "label": "Strict Symmetric DDD vs Clean Exempt Apr-Jul 2026",
+      "n_obs": 334766,
+      "n_trials": 24224,
+      "n_events": 1664,
+      "cell_hazards": [
+        {
+          "is_act": 0,
+          "is_industry": 0,
+          "post": 0,
+          "risk": 182396,
+          "events": 528,
+          "hazard_pct": 0.2895
+        },
+        {
+          "is_act": 0,
+          "is_industry": 0,
+          "post": 1,
+          "risk": 66493,
+          "events": 139,
+          "hazard_pct": 0.209
+        },
+        {
+          "is_act": 0,
+          "is_industry": 1,
+          "post": 0,
+          "risk": 39976,
+          "events": 76,
+          "hazard_pct": 0.1901
+        },
+        {
+          "is_act": 0,
+          "is_industry": 1,
+          "post": 1,
+          "risk": 14661,
+          "events": 7,
+          "hazard_pct": 0.0477
+        },
+        {
+          "is_act": 1,
+          "is_industry": 0,
+          "post": 0,
+          "risk": 9220,
+          "events": 345,
+          "hazard_pct": 3.7419
+        },
+        {
+          "is_act": 1,
+          "is_industry": 0,
+          "post": 1,
+          "risk": 2972,
+          "events": 76,
+          "hazard_pct": 2.5572
+        },
+        {
+          "is_act": 1,
+          "is_industry": 1,
+          "post": 0,
+          "risk": 14078,
+          "events": 347,
+          "hazard_pct": 2.4648
+        },
+        {
+          "is_act": 1,
+          "is_industry": 1,
+          "post": 1,
+          "risk": 4970,
+          "events": 146,
+          "hazard_pct": 2.9376
+        }
+      ],
+      "lpm_ddd_age_fe": {
+        "ddd": {
+          "coef_pp": 1.4425987424431934,
+          "se_pp": 0.48003871785892793,
+          "t": 3.005171642982221,
+          "p": 0.0026543101590327345,
+          "ci95": [
+            0.5017401442549102,
+            2.3834573406314767
+          ]
+        },
+        "act_post": {
+          "coef_pp": -0.6639646170678066,
+          "se_pp": 0.36331108372063764,
+          "t": -1.8275374653264138,
+          "p": 0.06761899844143701,
+          "ci95": [
+            -1.3760412563444726,
+            0.04811202220885946
+          ]
+        },
+        "ind_post": {
+          "coef_pp": -0.0745669649681519,
+          "se_pp": 0.0399713560521404,
+          "t": -1.8655100134927487,
+          "p": 0.06210994993360298,
+          "ci95": [
+            -0.15290938324357423,
+            0.0037754533072704016
+          ]
+        }
+      },
+      "poisson_ddd_age_fe": {
+        "ddd": {
+          "log_irr": 1.5323792293696363,
+          "se": 0.437857154158724,
+          "z": 3.499724087673913,
+          "p": 0.00046573995848782617,
+          "irr": 4.629177605733714,
+          "irr_ci95": [
+            1.9624525201847693,
+            10.919645232185747
+          ]
+        },
+        "act_post": {
+          "log_irr": -0.04437955781325131,
+          "se": 0.14844628544375799,
+          "z": -0.2989603793761848,
+          "p": 0.7649702764317696,
+          "irr": 0.9565908070442171,
+          "irr_ci95": [
+            0.7151028282303958,
+            1.2796285177419064
+          ]
+        },
+        "ind_post": {
+          "log_irr": -1.0493950527882865,
+          "se": 0.40944619857671166,
+          "z": -2.5629620117029304,
+          "p": 0.010378340325807487,
+          "irr": 0.35014950702147424,
+          "irr_ci95": [
+            0.15693950668771603,
+            0.7812225223273112
+          ]
+        }
+      },
+      "stratified_did": {
+        "industry": {
+          "irr": 4.435636624424037,
+          "log_irr": 1.489671150989528,
+          "se": 0.412459615506404,
+          "z": 3.611677592145743,
+          "p": 0.0003042226408909727,
+          "ci95": [
+            1.97634722411975,
+            9.955169832413887
+          ]
+        },
+        "industry_lpm": {
+          "coef_pp": 0.7801586355529401,
+          "se_pp": 0.3134743806450988,
+          "p": 0.012819391220242369
+        },
+        "academic": {
+          "irr": 0.9552738554585952,
+          "log_irr": -0.04575721996658651,
+          "se": 0.14818901996093906,
+          "z": -0.3087760481758203,
+          "p": 0.7574918902031991,
+          "ci95": [
+            0.7144746946602316,
+            1.2772294746655672
+          ]
+        },
+        "academic_lpm": {
+          "coef_pp": -0.6642685529392067,
+          "se_pp": 0.36338313605263584,
+          "p": 0.06754782518962632
+        }
+      }
+    },
+    "ddd_us_notfdareg_jul": {
+      "label": "Strict Symmetric DDD vs US Non-FDA Apr-Jul 2026",
+      "n_obs": 211338,
+      "n_trials": 15660,
+      "n_events": 1540,
+      "cell_hazards": [
+        {
+          "is_act": 0,
+          "is_industry": 0,
+          "post": 0,
+          "risk": 121055,
+          "events": 484,
+          "hazard_pct": 0.3998
+        },
+        {
+          "is_act": 0,
+          "is_industry": 0,
+          "post": 1,
+          "risk": 43850,
+          "events": 123,
+          "hazard_pct": 0.2805
+        },
+        {
+          "is_act": 0,
+          "is_industry": 1,
+          "post": 0,
+          "risk": 11144,
+          "events": 16,
+          "hazard_pct": 0.1436
+        },
+        {
+          "is_act": 0,
+          "is_industry": 1,
+          "post": 1,
+          "risk": 4049,
+          "events": 3,
+          "hazard_pct": 0.0741
+        },
+        {
+          "is_act": 1,
+          "is_industry": 0,
+          "post": 0,
+          "risk": 9220,
+          "events": 345,
+          "hazard_pct": 3.7419
+        },
+        {
+          "is_act": 1,
+          "is_industry": 0,
+          "post": 1,
+          "risk": 2972,
+          "events": 76,
+          "hazard_pct": 2.5572
+        },
+        {
+          "is_act": 1,
+          "is_industry": 1,
+          "post": 0,
+          "risk": 14078,
+          "events": 347,
+          "hazard_pct": 2.4648
+        },
+        {
+          "is_act": 1,
+          "is_industry": 1,
+          "post": 1,
+          "risk": 4970,
+          "events": 146,
+          "hazard_pct": 2.9376
+        }
+      ],
+      "lpm_ddd_age_fe": {
+        "ddd": {
+          "coef_pp": 1.3341823299422693,
+          "se_pp": 0.4805755664296181,
+          "t": 2.7762175673108525,
+          "p": 0.005499539321580956,
+          "ci95": [
+            0.39227152789028163,
+            2.276093131994257
+          ]
+        },
+        "act_post": {
+          "coef_pp": -0.637076133088091,
+          "se_pp": 0.36298310275489853,
+          "t": -1.755112368187209,
+          "p": 0.07924008916102837,
+          "ci95": [
+            -1.3485099414842938,
+            0.07435767530811188
+          ]
+        },
+        "ind_post": {
+          "coef_pp": 0.033736754919707096,
+          "se_pp": 0.050029574840129265,
+          "t": 0.6743362306698333,
+          "p": 0.5000975748691217,
+          "ci95": [
+            -0.06431940992879749,
+            0.13179291976821167
+          ]
+        }
+      },
+      "poisson_ddd_age_fe": {
+        "ddd": {
+          "log_irr": 0.6784669564308892,
+          "se": 0.5149960439206379,
+          "z": 1.3174216859332661,
+          "p": 0.18769731580724258,
+          "irr": 1.9708540100079963,
+          "irr_ci95": [
+            0.7182721506605684,
+            5.40779080073254
+          ]
+        },
+        "act_post": {
+          "log_irr": -0.013621450806482527,
+          "se": 0.15017526183303007,
+          "z": -0.09070369274020189,
+          "p": 0.9277280363471404,
+          "irr": 0.9864709013555268,
+          "irr_ci95": [
+            0.7349450419896714,
+            1.3240783781419965
+          ]
+        },
+        "ind_post": {
+          "log_irr": -0.19523499987662873,
+          "se": 0.4903233667258198,
+          "z": -0.3981760061331132,
+          "p": 0.690500451194838,
+          "irr": 0.8226413147316078,
+          "irr_ci95": [
+            0.3146636024786957,
+            2.1506736952494117
+          ]
+        }
+      },
+      "stratified_did": {
+        "industry": {
+          "irr": 1.9425972293502347,
+          "log_irr": 0.6640258557265744,
+          "se": 0.4937446336146205,
+          "z": 1.3448771095806227,
+          "p": 0.1786649234804648,
+          "ci95": [
+            0.7380722007605826,
+            5.1128927381229525
+          ]
+        },
+        "industry_lpm": {
+          "coef_pp": 0.6995213443389723,
+          "se_pp": 0.3141855465697973,
+          "p": 0.025983429636895955
+        },
+        "academic": {
+          "irr": 0.985390651889019,
+          "log_irr": -0.014717115532840892,
+          "se": 0.14990621226684286,
+          "z": -0.09817548792870213,
+          "p": 0.9217929462187675,
+          "ci95": [
+            0.7345234983473578,
+            1.3219382892650227
+          ]
+        },
+        "academic_lpm": {
+          "coef_pp": -0.6371469617128549,
+          "se_pp": 0.36316087337721054,
+          "p": 0.0793537284859133
+        }
+      }
+    },
+    "ddd_nonus_p23_jul": {
+      "label": "Strict Symmetric DDD vs Non-US P23 Apr-Jul 2026",
+      "n_obs": 154668,
+      "n_trials": 11435,
+      "n_events": 1038,
+      "cell_hazards": [
+        {
+          "is_act": 0,
+          "is_industry": 0,
+          "post": 0,
+          "risk": 61341,
+          "events": 44,
+          "hazard_pct": 0.0717
+        },
+        {
+          "is_act": 0,
+          "is_industry": 0,
+          "post": 1,
+          "risk": 22643,
+          "events": 16,
+          "hazard_pct": 0.0707
+        },
+        {
+          "is_act": 0,
+          "is_industry": 1,
+          "post": 0,
+          "risk": 28832,
+          "events": 60,
+          "hazard_pct": 0.2081
+        },
+        {
+          "is_act": 0,
+          "is_industry": 1,
+          "post": 1,
+          "risk": 10612,
+          "events": 4,
+          "hazard_pct": 0.0377
+        },
+        {
+          "is_act": 1,
+          "is_industry": 0,
+          "post": 0,
+          "risk": 9220,
+          "events": 345,
+          "hazard_pct": 3.7419
+        },
+        {
+          "is_act": 1,
+          "is_industry": 0,
+          "post": 1,
+          "risk": 2972,
+          "events": 76,
+          "hazard_pct": 2.5572
+        },
+        {
+          "is_act": 1,
+          "is_industry": 1,
+          "post": 0,
+          "risk": 14078,
+          "events": 347,
+          "hazard_pct": 2.4648
+        },
+        {
+          "is_act": 1,
+          "is_industry": 1,
+          "post": 1,
+          "risk": 4970,
+          "events": 146,
+          "hazard_pct": 2.9376
+        }
+      ],
+      "lpm_ddd_age_fe": {
+        "ddd": {
+          "coef_pp": 1.5271311551425695,
+          "se_pp": 0.48224189762732256,
+          "t": 3.1667326349207827,
+          "p": 0.0015416198449592193,
+          "ci95": [
+            0.5819544039567656,
+            2.4723079063283735
+          ]
+        },
+        "act_post": {
+          "coef_pp": -0.717498447636689,
+          "se_pp": 0.36544190253774733,
+          "t": -1.9633721329003233,
+          "p": 0.04960294942741617,
+          "ci95": [
+            -1.4337514150524704,
+            -0.0012454802209076465
+          ]
+        },
+        "ind_post": {
+          "coef_pp": -0.1584233398749125,
+          "se_pp": 0.04872811911509107,
+          "t": -3.2511687861526526,
+          "p": 0.001149316036279612,
+          "ci95": [
+            -0.25392869837486876,
+            -0.06291798137495623
+          ]
+        }
+      },
+      "poisson_ddd_age_fe": {
+        "ddd": {
+          "log_irr": 2.167042223015833,
+          "se": 0.638698940836231,
+          "z": 3.392900918511911,
+          "p": 0.0006915664796823978,
+          "irr": 8.732417262722509,
+          "irr_ci95": [
+            2.497312870515593,
+            30.53486495448626
+          ]
+        },
+        "act_post": {
+          "log_irr": -0.32487950978158414,
+          "se": 0.3238796692954703,
+          "z": -1.0030870739379498,
+          "p": 0.31581885081160843,
+          "irr": 0.7226144163657219,
+          "irr_ci95": [
+            0.38301849661814796,
+            1.3633064704448317
+          ]
+        },
+        "ind_post": {
+          "log_irr": -1.683052206795409,
+          "se": 0.6175415876781674,
+          "z": -2.7254070663051992,
+          "p": 0.00642222532880855,
+          "irr": 0.18580599136753645,
+          "irr_ci95": [
+            0.05538693864256906,
+            0.6233214413756896
+          ]
+        }
+      },
+      "stratified_did": {
+        "industry": {
+          "irr": 6.328057521248201,
+          "log_irr": 1.8449933203810875,
+          "se": 0.5506810257999608,
+          "z": 3.350384767117972,
+          "p": 0.0008069937836119842,
+          "ci95": [
+            2.1504099745814327,
+            18.621710495004734
+          ]
+        },
+        "industry_lpm": {
+          "coef_pp": 0.812007217157308,
+          "se_pp": 0.31436269443881865,
+          "p": 0.009793775775753345
+        },
+        "academic": {
+          "irr": 0.7221342983658069,
+          "log_irr": -0.3255441485698988,
+          "se": 0.3232049138105116,
+          "z": -1.0072376212719298,
+          "p": 0.31382059801806905,
+          "ci95": [
+            0.38326608978275867,
+            1.360615923970363
+          ]
+        },
+        "academic_lpm": {
+          "coef_pp": -0.719407897105774,
+          "se_pp": 0.36549692169225984,
+          "p": 0.04903343364415759
+        }
+      }
+    }
+  },
+  "qc_lag_by_quarter": {
+    "2024Q1_I0": {
+      "n": 252,
+      "median": 71.0,
+      "p75": 143.25
+    },
+    "2024Q1_I1": {
+      "n": 240,
+      "median": 70.5,
+      "p75": 100.25
+    },
+    "2024Q2_I0": {
+      "n": 249,
+      "median": 75.0,
+      "p75": 124.0
+    },
+    "2024Q2_I1": {
+      "n": 267,
+      "median": 55.0,
+      "p75": 99.5
+    },
+    "2024Q3_I0": {
+      "n": 233,
+      "median": 73.0,
+      "p75": 138.0
+    },
+    "2024Q3_I1": {
+      "n": 261,
+      "median": 55.0,
+      "p75": 95.0
+    },
+    "2024Q4_I0": {
+      "n": 215,
+      "median": 64.0,
+      "p75": 112.5
+    },
+    "2024Q4_I1": {
+      "n": 265,
+      "median": 55.0,
+      "p75": 104.0
+    },
+    "2025Q1_I0": {
+      "n": 243,
+      "median": 58.0,
+      "p75": 112.0
+    },
+    "2025Q1_I1": {
+      "n": 255,
+      "median": 55.0,
+      "p75": 89.0
+    },
+    "2025Q2_I0": {
+      "n": 264,
+      "median": 55.0,
+      "p75": 91.0
+    },
+    "2025Q2_I1": {
+      "n": 267,
+      "median": 43.0,
+      "p75": 78.0
+    },
+    "2025Q3_I0": {
+      "n": 212,
+      "median": 68.0,
+      "p75": 140.0
+    },
+    "2025Q3_I1": {
+      "n": 262,
+      "median": 53.0,
+      "p75": 83.75
+    },
+    "2025Q4_I0": {
+      "n": 186,
+      "median": 64.5,
+      "p75": 112.75
+    },
+    "2025Q4_I1": {
+      "n": 254,
+      "median": 50.0,
+      "p75": 80.75
+    },
+    "2026Q1_I0": {
+      "n": 231,
+      "median": 59.0,
+      "p75": 106.0
+    },
+    "2026Q1_I1": {
+      "n": 172,
+      "median": 58.0,
+      "p75": 85.75
+    },
+    "2026Q2_I0": {
+      "n": 184,
+      "median": 72.5,
+      "p75": 109.25
+    },
+    "2026Q2_I1": {
+      "n": 220,
+      "median": 55.0,
+      "p75": 77.25
+    },
+    "2026Q3_I0": {
+      "n": 66,
+      "median": 54.5,
+      "p75": 82.25
+    },
+    "2026Q3_I1": {
+      "n": 146,
+      "median": 48.5,
+      "p75": 69.0
+    }
+  },
+  "uniform_horizon_grid_strict": {
+    "H60_2026-09": {
+      "n_act_events": 485,
+      "within_act_irr": 1.5309432070316153,
+      "within_act_ci95": [
+        0.9652177728986975,
+        2.4282469396698887
+      ],
+      "within_act_p": 0.07036108821055828,
+      "ddd_irr": 4.121280074777217,
+      "ddd_p": 0.03912713682919707
+    },
+    "H90_2026-08": {
+      "n_act_events": 656,
+      "within_act_irr": 1.8725521174911102,
+      "within_act_ci95": [
+        1.264621619577421,
+        2.772727730127006
+      ],
+      "within_act_p": 0.0017345323734768204,
+      "ddd_irr": 7.857893896707538,
+      "ddd_p": 0.0013881478282466316
+    },
+    "H120_2026-07": {
+      "n_act_events": 712,
+      "within_act_irr": 1.452908804061552,
+      "within_act_ci95": [
+        1.0070852880582,
+        2.0960925732415
+      ],
+      "within_act_p": 0.045743016618847956,
+      "ddd_irr": 4.792608758192889,
+      "ddd_p": 0.002701823631014831
+    },
+    "H150_2026-06": {
+      "n_act_events": 726,
+      "within_act_irr": 1.3378885861091672,
+      "within_act_ci95": [
+        0.9191409179768147,
+        1.9474117992496311
+      ],
+      "within_act_p": 0.1285640595692566,
+      "ddd_irr": 3.360485865733679,
+      "ddd_p": 0.013296427985477664
+    },
+    "H180_2026-05": {
+      "n_act_events": 710,
+      "within_act_irr": 1.0960109207953959,
+      "within_act_ci95": [
+        0.7325356146892089,
+        1.639838274637908
+      ],
+      "within_act_p": 0.6556246951615294,
+      "ddd_irr": 1.8441276368974073,
+      "ddd_p": 0.21977705375154677
+    }
+  },
+  "twoway_cluster_strict": {
+    "coef_pp": 1.37067567913916,
+    "se_sponsor": 0.47750152218041947,
+    "se_month": 0.6180353003043613,
+    "se_2way": 0.6082596283870536,
+    "p_2way": 0.024231512823898904
+  },
+  "weekly_exact_poisson_strict": {
+    "irr": 1.6299868787349459,
+    "ci95": [
+      1.1902064289129344,
+      2.232265899684906
+    ],
+    "p": 0.002323965231394978
+  },
+  "sensitivity_2yr_pre": {
+    "label": "24-month pre-period (2024-04..2026-07)",
+    "n_obs": 53153,
+    "n_trials": 3696,
+    "n_sponsors": 1810,
+    "n_events": 1739,
+    "raw_hazards": {
+      "ind0_post0": {
+        "risk": 18087,
+        "events": 728,
+        "hazard_pct": 4.025
+      },
+      "ind0_post1": {
+        "risk": 2972,
+        "events": 76,
+        "hazard_pct": 2.5572
+      },
+      "ind1_post0": {
+        "risk": 27124,
+        "events": 789,
+        "hazard_pct": 2.9089
+      },
+      "ind1_post1": {
+        "risk": 4970,
+        "events": 146,
+        "hazard_pct": 2.9376
+      }
+    },
+    "lpm_age_fe": {
+      "coef_pp": 0.9770299851909418,
+      "se_pp": 0.46136436074732695,
+      "t": 2.117697135531513,
+      "p": 0.034200725617460966,
+      "ci95": [
+        0.0727724543758359,
+        1.8812875160060476
+      ]
+    },
+    "lpm_sponsor_age_fe": {
+      "coef_pp": 1.0018903096857918,
+      "se_pp": 0.47510331666435124,
+      "z": 2.108784078208409,
+      "p": 0.034963223539782866,
+      "ci95": [
+        0.07068780902366345,
+        1.9330928103479201
+      ],
+      "n_sponsors_fe": 1730
+    },
+    "poisson_age_fe": {
+      "log_irr": 0.32930583271638736,
+      "se": 0.16127632487715743,
+      "z": 2.041873368377016,
+      "p": 0.04116409410681189,
+      "irr": 1.3900028989505868,
+      "irr_ci95": [
+        1.0132917968478792,
+        1.9067637427850348
+      ]
+    },
+    "poisson_3group_vs_academic": {
+      "industry_vs_academic": {
+        "irr": 1.4602232430363118,
+        "p": 0.022982727622378758,
+        "ci95": [
+          1.053631402971892,
+          2.023717130572622
+        ]
+      },
+      "nih_fed_vs_academic": {
+        "irr": 2.2306956288563224,
+        "p": 0.005022104878884444,
+        "ci95": [
+          1.2735749079136534,
+          3.907114499256505
+        ]
+      }
+    }
+  },
+  "sensitivity_drop_nov25": {
+    "label": "Drop Nov 2025 outlier",
+    "n_obs": 29304,
+    "n_trials": 2868,
+    "n_sponsors": 1567,
+    "n_events": 885,
+    "raw_hazards": {
+      "ind0_post0": {
+        "risk": 8458,
+        "events": 339,
+        "hazard_pct": 4.008
+      },
+      "ind0_post1": {
+        "risk": 2972,
+        "events": 76,
+        "hazard_pct": 2.5572
+      },
+      "ind1_post0": {
+        "risk": 12904,
+        "events": 324,
+        "hazard_pct": 2.5108
+      },
+      "ind1_post1": {
+        "risk": 4970,
+        "events": 146,
+        "hazard_pct": 2.9376
+      }
+    },
+    "lpm_age_fe": {
+      "coef_pp": 1.567304270886572,
+      "se_pp": 0.4905695790945799,
+      "t": 3.1948664117723493,
+      "p": 0.0013989557814709501,
+      "ci95": [
+        0.6058055639502221,
+        2.528802977822922
+      ]
+    },
+    "lpm_sponsor_age_fe": {
+      "coef_pp": 1.3831925048394789,
+      "se_pp": 0.4984076478601096,
+      "z": 2.7752232751205814,
+      "p": 0.005516382203215456,
+      "ci95": [
+        0.4063135150336641,
+        2.3600714946452936
+      ],
+      "n_sponsors_fe": 1506
+    },
+    "poisson_age_fe": {
+      "log_irr": 0.5347308176283002,
+      "se": 0.167390334699233,
+      "z": 3.194514298505375,
+      "p": 0.001400663465984586,
+      "irr": 1.7069886891413804,
+      "irr_ci95": [
+        1.2295469419073615,
+        2.3698244333286667
+      ]
+    },
+    "poisson_3group_vs_academic": {
+      "industry_vs_academic": {
+        "irr": 1.7895723498852467,
+        "p": 0.0007402954010962645,
+        "ci95": [
+          1.2762493377195048,
+          2.50936012330975
+        ]
+      },
+      "nih_fed_vs_academic": {
+        "irr": 2.221210306596224,
+        "p": 0.00736933584998712,
+        "ci95": [
+          1.2390467579139068,
+          3.9819120582954697
+        ]
+      }
+    }
+  }
+}

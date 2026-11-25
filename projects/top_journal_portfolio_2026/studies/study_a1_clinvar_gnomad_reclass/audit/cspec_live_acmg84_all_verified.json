@@ -1,0 +1,4161 @@
+{
+  "fetched_at": "2026-11-25 10:23:21 CST",
+  "n_valid_svi_docs": 250,
+  "n_acmg_docs": 45,
+  "acmg_genes_covered": [
+    "ABCD1",
+    "ACTC1",
+    "ACVRL1",
+    "APC",
+    "APOB",
+    "BMPR1A",
+    "BRCA1",
+    "BRCA2",
+    "CYP27A1",
+    "ENG",
+    "FBN1",
+    "GAA",
+    "HNF1A",
+    "KCNQ1",
+    "LDLR",
+    "MLH1",
+    "MSH2",
+    "MSH6",
+    "MUTYH",
+    "MYBPC3",
+    "MYH7",
+    "MYL2",
+    "MYL3",
+    "OTC",
+    "PALB2",
+    "PKP2",
+    "PMS2",
+    "PTEN",
+    "RPE65",
+    "RYR1",
+    "RYR2",
+    "SCN5A",
+    "SDHB",
+    "SMAD4",
+    "STK11",
+    "TNNI3",
+    "TNNT2",
+    "TP53",
+    "TPM1",
+    "VHL"
+  ],
+  "docs": [
+    {
+      "cspec_id": "GN002",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MYH7 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:42:55.213Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "MYH7"
+      ],
+      "all_genes": [
+        "MYH7"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN002",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640453",
+          "rs_genes": [
+            "MYH7"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637791",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637791/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637791/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637791/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637791/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637791/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640453",
+          "rs_genes": [
+            "MYH7"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637772",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637772/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637772/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637772/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0001 for** _**MYH7**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>16</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>15</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637772/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637772/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN003",
+      "label": "ClinGen PTEN Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for PTEN Version 3.2",
+      "version": "3.2",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2026-04-06T16:10:17.933Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50012",
+        "@type": "Organization",
+        "label": "PTEN Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50012"
+      },
+      "hit_acmg_genes": [
+        "PTEN"
+      ],
+      "all_genes": [
+        "PTEN"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN003",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640513",
+          "rs_genes": [
+            "PTEN"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638187",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638187/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "gnomAD Filtering allele frequency >0.00056 (0.056%)",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638187/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638187/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638187/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638187/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640513",
+          "rs_genes": [
+            "PTEN"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638168",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638168/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638168/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638168/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "gnomAD Filtering allele frequency from 0.000043 (0.0043%) up to 0.00056 (0.056%)",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638168/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135638168/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency from 0.0000043 (0.00043%) up to 0.000043 (0.0043%).",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN009",
+      "label": "ClinGen TP53 Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for TP53 Version 2.4",
+      "version": "2.4",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2025-11-20T20:05:07.488Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50013",
+        "@type": "Organization",
+        "label": "TP53 Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50013"
+      },
+      "hit_acmg_genes": [
+        "TP53"
+      ],
+      "all_genes": [
+        "TP53"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN009",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640873",
+          "rs_genes": [
+            "TP53"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639225",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639225/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filtering allele frequency (FAF) of \u2265 0.001 or 0.1% in gnomAD continental subpopulations of a single genetic ancestry group (excluding genetic ancestry groups influenced by founder effects, such as Ashkenazi Jewish, Finnish, Amish, Middle Eastern, and \u201cRemaining\u201d). Genetic ancestry group must have \u22652,000 alleles tested and a minimum of 2 alleles present. Caution should be exerted if the majority of alleles have a variant allele fraction (\"allele balance\" in gnomAD) below 0.35.\u00a0 To set the stand-alone benign FAF cutoff, we used the FAF cutoff established for BS1 (0.0003) and increased this cutoff by one order of magnitude to come to a value of 0.001.\u00a0\n\nIn general, the most recent version of gnomAD should be used when available; however, other population databases or earlier versions of gnomAD may be utilized if they are able to provide information the curator deems necessary for optimal variant classification (e.g, they would provide superior information for a particular variant type; have a larger sample size; or better representation for certain subpopulations, etc.)",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639225/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639225/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639225/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639225/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640873",
+          "rs_genes": [
+            "TP53"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639206",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639206/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639206/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639206/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filtering allele frequency (FAF) of \u2265 0.0003 but \\< 0.001 in gnomAD continental subpopulations of a single genetic ancestry group (excluding genetic ancestry groups influenced by founder effects, such as Ashkenazi Jewish, Finnish, Amish, Middle Eastern, and \u201cRemaining\u201d). Genetic ancestry group must have \u22652,000 alleles tested and a minimum of 2 alleles present. Caution should be exerted if the majority of alleles have a variant allele fraction ( \u201callele balance\u201d in gnomAD) below 0.35. To set the strong benign FAF cutoff, we used a Whiffin-Ware calculation using prevalence of 1 in 5,000 (Lalloo, et al., 2006 PMID: 16644204). Genetic and allelic heterogeneity were set at 100% and penetrance at 30%.\u00a0\n\nIn general, the most recent version of gnomAD should be used when available; however, other population databases or earlier versions of gnomAD may be utilized if they are able to provide information the curator deems necessary for optimal variant classification (e.g, they would provide superior information for a particular variant type; have a larger sample size; or better representation for certain subpopulations, etc.)",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639206/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639206/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN010",
+      "label": "ClinGen Lysosomal Storage Disorders Variant Curation Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2021-06-02T05:00:00.000Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50009",
+        "@type": "Organization",
+        "label": "Lysosomal Diseases Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50009"
+      },
+      "hit_acmg_genes": [
+        "GAA"
+      ],
+      "all_genes": [
+        "GAA"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN010",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640933",
+          "rs_genes": [
+            "GAA"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639306",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639306/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Common in population databases.\n * Highest minor allele frequency >0.01 (>1%) in any continental population in gnomAD with >2000 alleles.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639306/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639306/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639306/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639306/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640933",
+          "rs_genes": [
+            "GAA"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639287",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639287/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639287/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639287/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Allele frequency greater than expected for disease.\n * Highest minor allele frequency >0.005 (>0.5%) in any continental population in gnomAD with >2000 alleles.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639287/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639287/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN012",
+      "label": "ClinGen Malignant Hyperthermia Susceptibility Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for RYR1 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2022-03-01T06:00:00.000Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50038",
+        "@type": "Organization",
+        "label": "Malignant Hyperthermia Susceptibility Variant Curation Expert Panel",
+        "url": "https://www.clinicalgenome.org/affiliation/50038"
+      },
+      "hit_acmg_genes": [
+        "RYR1"
+      ],
+      "all_genes": [
+        "RYR1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN012",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135641053",
+          "rs_genes": [
+            "RYR1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639468",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639468/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Popmax allele frequency >0.0038 (0.38%)",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639468/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639468/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639468/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639468/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135641053",
+          "rs_genes": [
+            "RYR1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639449",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639449/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639449/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639449/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Popmax allele frequency >0.0008 (0.08%)",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639449/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135639449/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN013",
+      "label": "ClinGen Familial Hypercholesterolemia Expert Panel Specifications to the ACMG/AMP Variant Classification Guidelines Version 1.2",
+      "version": "1.2",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2021-11-09T06:00:00.000Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50004",
+        "@type": "Organization",
+        "label": "Familial Hypercholesterolemia Variant Curation Expert Panel",
+        "url": "https://www.clinicalgenome.org/affiliation/50004"
+      },
+      "hit_acmg_genes": [
+        "LDLR"
+      ],
+      "all_genes": [
+        "LDLR"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN013",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640393",
+          "rs_genes": [
+            "LDLR"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637710",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637710/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Variant has a PopMax FAF \u22650.005 (0.5%) in gnomAD.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637710/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637710/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637710/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637710/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/135640393",
+          "rs_genes": [
+            "LDLR"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637691",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637691/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637691/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637691/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Variant has a PopMax FAF \u22650.002 (0.2%) in gnomAD.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637691/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/135637691/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN017",
+      "label": "ClinGen Monogenic Diabetes Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for HNF1A Version 3.1",
+      "version": "3.1",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2025-10-10T18:20:25.421Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50016",
+        "@type": "Organization",
+        "label": "Monogenic Diabetes Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50016"
+      },
+      "hit_acmg_genes": [
+        "HNF1A"
+      ],
+      "all_genes": [
+        "HNF1A"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN017",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/467903870",
+          "rs_genes": [
+            "HNF1A"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903887",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903887/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "gnomAD Grpmax FAF \u2265 1:10,000 (\u2265 0.01% or 0.0001)",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903887/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903887/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903887/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903887/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/467903870",
+          "rs_genes": [
+            "HNF1A"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903888",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903888/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903888/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903888/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "gnomAD Grpmax FAF \u2265 1:30,000 (\u22650.0033% or 0.000033)",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903888/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/467903888/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN022",
+      "label": "ClinGen FBN1 Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2022-01-05T06:00:00.000Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50046",
+        "@type": "Organization",
+        "label": "FBN1 Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50046"
+      },
+      "hit_acmg_genes": [
+        "FBN1"
+      ],
+      "all_genes": [
+        "FBN1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN022",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/643243099",
+          "rs_genes": [
+            "FBN1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243122",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243122/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Allele frequency above 0.1% in ExAc and gnomAD\n* Use the ethnic population with the highest allele frequency.\n* Caveat: Do not use Finnish, Ashkenazi Jewish, or \u201cOther\u201d populations in gnomAD.\n* Minimum amount of studied alleles should be 2000.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243122/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243122/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243122/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243122/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/643243099",
+          "rs_genes": [
+            "FBN1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243123",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243123/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243123/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243123/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable with VCEP specification",
+                "description": "Allele frequency greater than expected for disease (>0.005%).\n* Use the ethnic population with the highest allele frequency.\n* Caveat: Do not use Finnish, Ashkenazi Jewish, or \u201cOther\u201d populations in gnomAD.\n* Minimum amount of studied alleles should be 2000.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243123/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/643243123/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN077",
+      "label": "ClinGen Hereditary Breast, Ovarian and Pancreatic Cancer Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for PALB2 Version 1.3",
+      "version": "1.3",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2026-09-18T16:00:30.869Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50039",
+        "@type": "Organization",
+        "label": "Hereditary Breast, Ovarian and Pancreatic Cancer Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50039"
+      },
+      "hit_acmg_genes": [
+        "PALB2"
+      ],
+      "all_genes": [
+        "PALB2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN077",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1526222369",
+          "rs_genes": [
+            "PALB2"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584508",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584508/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Grpmax Filtering AF **\\>.1%** in gnomAD",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584508/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584508/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584508/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584508/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1526222369",
+          "rs_genes": [
+            "PALB2"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584509",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584509/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584509/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584509/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Grpmax Filtering AF **\\>.01%** in gnomAD",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584509/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1566584509/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN078",
+      "label": "ClinGen VHL Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for VHL Version 1.1",
+      "version": "1.1",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2025-01-10T22:36:48.784Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50036",
+        "@type": "Organization",
+        "label": "VHL Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50036"
+      },
+      "hit_acmg_genes": [
+        "VHL"
+      ],
+      "all_genes": [
+        "VHL"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN078",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1527855768",
+          "rs_genes": [
+            "VHL"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943299",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943299/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Use a BA1 cut off of >=0.000156 (0.0156%) GroupMax Filtering Allele Frequency in gnomAD (based on gnomAD v4 release).",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943299/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943299/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943299/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943299/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1527855768",
+          "rs_genes": [
+            "VHL"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943300",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943300/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943300/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable for this VCEP",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943300/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Use BS1 cut off of\u00a0 >=0.0000156 (0.00156%) GroupMax Filtering Allele Frequency in gnomAD (based on gnomAD v4).",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943300/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1743943300/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN089",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for APC Version 2.1",
+      "version": "2.1",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2023-11-24T13:46:56.766Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "APC"
+      ],
+      "all_genes": [
+        "APC"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN089",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1529292804",
+          "rs_genes": [
+            "APC"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527147",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527147/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD Popmax Filtering Allele Frequency (AF) **\u2265 0.1%** (0.001).",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527147/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527147/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527147/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527147/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1529292804",
+          "rs_genes": [
+            "APC"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527152",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527152/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527152/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527152/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD Popmax Filtering Allele Frequency (AF) **\u2265 0.001%** (0.00001).",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527152/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1553527152/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN092",
+      "label": "ClinGen ENIGMA BRCA1 and BRCA2 Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for BRCA1 Version 1.2",
+      "version": "1.2",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2025-01-09T01:11:34.495Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50087",
+        "@type": "Organization",
+        "label": "ENIGMA BRCA1 and BRCA2 Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50087"
+      },
+      "hit_acmg_genes": [
+        "BRCA1"
+      ],
+      "all_genes": [
+        "BRCA1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN092",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1530970800",
+          "rs_genes": [
+            "BRCA1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165308",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165308/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filter allele frequency (FAF) is above 0.1% (FAF > 0.001) in gnomAD v2.1 (non-cancer, exome only subset) and/or gnomAD v3.1 (non-cancer), non-founder population(s). See Appendix G for details.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165308/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165308/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165308/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165308/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1530970800",
+          "rs_genes": [
+            "BRCA1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165313",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165313/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165313/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165313/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filter allele frequency (FAF) is above 0.01% (FAF > 0.0001) in gnomAD v2.1 (non-cancer, exome only subset) and/or gnomAD v3.1 (non-cancer), non-founder population(s). See Appendix G for details.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165313/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614165313/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filter allele frequency (FAF) is above 0.002% (FAF > 0.00002) and less than or equal to 0.01% (FAF \u2264 0.0001) in gnomAD v2.1 (non-cancer, exome only subset) and/or gnomAD v3.1 (non-cancer), non-founder population(s). See Appendix G for details.",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN093",
+      "label": "ClinGen ENIGMA BRCA1 and BRCA2  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for BRCA2 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "CSpec Deleted",
+      "currentStatus": "CSpec Deleted",
+      "lastUpdated": "2023-01-17T16:15:03.634Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50087",
+        "@type": "Organization",
+        "label": "ENIGMA BRCA1 and BRCA2 Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50087"
+      },
+      "hit_acmg_genes": [
+        "BRCA2"
+      ],
+      "all_genes": [
+        "BRCA2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN093",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN095",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MYBPC3 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:43:45.212Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "MYBPC3"
+      ],
+      "all_genes": [
+        "MYBPC3"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN095",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535304693",
+          "rs_genes": [
+            "MYBPC3"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711159",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711159/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711159/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711159/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711159/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711159/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535304693",
+          "rs_genes": [
+            "MYBPC3"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711164",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711164/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711164/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711164/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0002 for** _**MYBPC3**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>18</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>19</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711164/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768711164/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN097",
+      "label": "ClinGen ENIGMA BRCA1 and BRCA2 Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for BRCA2 Version 1.2",
+      "version": "1.2",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2025-01-09T01:12:40.191Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50087",
+        "@type": "Organization",
+        "label": "ENIGMA BRCA1 and BRCA2 Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50087"
+      },
+      "hit_acmg_genes": [
+        "BRCA2"
+      ],
+      "all_genes": [
+        "BRCA2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN097",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535438847",
+          "rs_genes": [
+            "BRCA2"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166131",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166131/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filter allele frequency (FAF) is above 0.1% (FAF > 0.001) in gnomAD v2.1 (non-cancer, exome only subset) and/or gnomAD v3.1 (non-cancer), non-founder population(s). See Appendix G for details.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166131/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166131/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166131/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166131/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535438847",
+          "rs_genes": [
+            "BRCA2"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166136",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166136/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166136/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166136/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filter allele frequency (FAF) is above 0.01% (FAF > 0.0001) in gnomAD v2.1 (non-cancer, exome only subset) and/or gnomAD v3.1 (non-cancer), non-founder population(s). See Appendix G for details.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166136/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1614166136/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Filter allele frequency (FAF) is above 0.002% (FAF > 0.00002) and less than or equal to 0.01% (FAF \u2264 0.0001) in gnomAD v2.1 (non-cancer, exome only subset) and/or gnomAD v3.1 (non-cancer), non-founder population(s). See Appendix G for details.",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN098",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for TNNI3 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:44:13.911Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "TNNI3"
+      ],
+      "all_genes": [
+        "TNNI3"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN098",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535821579",
+          "rs_genes": [
+            "TNNI3"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712793",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712793/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712793/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712793/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712793/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712793/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535821579",
+          "rs_genes": [
+            "TNNI3"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712798",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712798/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712798/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712798/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0001 for** _**TNNI3**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>15</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>16</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712798/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768712798/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN099",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for TNNT2 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:44:40.270Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "TNNT2"
+      ],
+      "all_genes": [
+        "TNNT2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN099",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535826201",
+          "rs_genes": [
+            "TNNT2"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714448",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714448/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714448/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714448/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714448/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714448/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535826201",
+          "rs_genes": [
+            "TNNT2"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714453",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714453/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714453/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714453/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0001 for** _**TNNT2**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>15</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>16</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714453/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768714453/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN100",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for TPM1 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:45:10.424Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "TPM1"
+      ],
+      "all_genes": [
+        "TPM1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN100",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535827410",
+          "rs_genes": [
+            "TPM1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716023",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716023/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716023/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716023/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716023/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716023/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535827410",
+          "rs_genes": [
+            "TPM1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716028",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716028/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716028/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716028/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0001 for** _**TPM1**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>15</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>16</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716028/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768716028/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN101",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for ACTC1 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:45:38.513Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "ACTC1"
+      ],
+      "all_genes": [
+        "ACTC1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN101",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535829283",
+          "rs_genes": [
+            "ACTC1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717709",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717709/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717709/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717709/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717709/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717709/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535829283",
+          "rs_genes": [
+            "ACTC1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717714",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717714/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717714/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717714/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0001 for** _**ACTC1**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>14</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>15</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717714/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768717714/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN102",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MYL2 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:46:04.965Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "MYL2"
+      ],
+      "all_genes": [
+        "MYL2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN102",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535830819",
+          "rs_genes": [
+            "MYL2"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719202",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719202/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\n*   Caution should be applied when assessing variants in the _MYL2_ and _MYL3_ genes, as homozygous or compound heterozygous variants have been reported to cause a recessive HCM and heterozygous individuals show no sign of disease.\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719202/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719202/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719202/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719202/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535830819",
+          "rs_genes": [
+            "MYL2"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719207",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719207/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719207/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719207/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0001 for** _**MYL2**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>14</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>15</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719207/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768719207/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN103",
+      "label": "ClinGen Cardiomyopathy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MYL3 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-04-22T15:46:31.027Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50002",
+        "@type": "Organization",
+        "label": "Cardiomyopathy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50002"
+      },
+      "hit_acmg_genes": [
+        "MYL3"
+      ],
+      "all_genes": [
+        "MYL3"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN103",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535831955",
+          "rs_genes": [
+            "MYL3"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720716",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720716/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.001** based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nThe values used to calculate the BA1 threshold were derived from studies in Northern European populations that have been relatively well-characterized with regards to disease prevalence and variant spectrum. These thresholds can be applied to any population where disease prevalence is considered comparable (1/300 or lower).\n\nThe threshold is applicable when assessing variants in the context of autosomal dominant cardiomyopathy.\u00a0\n\n*   Caution should be applied when assessing variants in the _MYL2_ and _MYL3_ genes, as homozygous or compound heterozygous variants have been reported to cause a recessive HCM and heterozygous individuals show no sign of disease.\n\ngnomAD is the preferred database for this calculation. If a subpopulation specific FAF other than the popmax is needed, this value can be calculated using the AlleleFrequencyApp on the [CardioDB website](https://cardiodb.org/allelefrequencyapp/).\n\n1.  Using the Inverse AF tab, enter in the population size and the number of alleles identified and it will calculate the FAF.\u00a0\u00a0\n2.  Set confidence to 0.95 (95%).\n3.  If the FAF is \u22650.001, this rule can be applied.\n\nThe FAF by platform (e.g., exome vs. genome; v.2.1.1 vs. v.3.1.1) should be considered, the larger population is most likely to have the most accurate representation of \u201ctrue\u201d population allele frequency.\n\nCaution is needed when considering any population cohorts that are smaller than the smallest subpopulations within gnomAD v.2.1.1 (e.g., ~5000 individuals or ~10,000 alleles). Despite this conservative nature of this threshold and approach, in smaller cohorts, the observed allele frequency may less accurately reflect the true allele frequency. Traditionally, once a variant is classified as Benign, it is rarely re-evaluated and so the highest confidence is needed to establish that classification on an allele frequency alone.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720716/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720716/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720716/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720716/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1535831955",
+          "rs_genes": [
+            "MYL3"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720721",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720721/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720721/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720721/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is **\u22650.0001 for** _**MYL3**_ based on the **filtering allele frequency (FAF)** in **gnomAD** in the subpopulation with the highest frequency (popmax).\n\nCriterion BS1 may only be used as standalone evidence to classify a variant as Likely Benign in the absence of conflicting data. See SVI guidance (Tavtigian _et al._ 2018[<sup>14</sup>](#pmid_29300386); Tavtigian _et al._ 2020[<sup>15</sup>](#pmid_32720330)).\u00a0\n\nSee BA1 for additional specifications that also apply to BS1.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720721/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1768720721/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN105",
+      "label": "ClinGen Peroxisomal Disorders Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for ABCD1 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2026-04-06T20:44:54.151Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50049",
+        "@type": "Organization",
+        "label": "Peroxisomal Disorders Variant Curation Expert Panel ",
+        "url": "https://clinicalgenome.org/affiliation/50049"
+      },
+      "hit_acmg_genes": [
+        "ABCD1"
+      ],
+      "all_genes": [
+        "ABCD1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN105",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1537428530",
+          "rs_genes": [
+            "ABCD1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975064",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975064/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Use a Total Grpmax filtering allele frequency (FAF) cutoff of \u22650.017% (0.00017) from the most resent version of gnomAD.\u00a0This frequency was calculated using the Whiffen-Ware calculator with a prevalence estimated at 1 in 5000 (actual prevalence in hemizygotes and heterozygotes is reported to be 1 in 16800, GeneReviews, Bezman et al 2001; however, a more conservative BA1 was designated based on a value 1 order of magnitude higher than the BS1 cut-off), penetrance at 60% (based on penetrance in heterozygotes by expert judgment, maximum allelic contribution and maximum genetic contribution at 100%).",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975064/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975064/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975064/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975064/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1537428530",
+          "rs_genes": [
+            "ABCD1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975067",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975067/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975067/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975067/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Use a Total Grpmax filtering allele frequency (FAF) cutoff of\u00a0\u22650.0017% (0.000017) from the most recent version of gnomAD.\u00a0This frequency was calculated using the Whiffen-Ware calculator with a prevalence estimated at 1 in 50000 (upper limit of prevalence range in hemizygotes; GeneReviews), penetrance at 60% (based on penetrance in heterozygotes by expert judgment, maximum allelic contribution and maximum genetic contribution at 100%).",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975067/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1100975067/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN110",
+      "label": "ClinGen PTEN  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for PTEN Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "CSpec Deleted",
+      "currentStatus": "CSpec Deleted",
+      "lastUpdated": "2023-01-17T16:15:03.634Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50012",
+        "@type": "Organization",
+        "label": "PTEN Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50012"
+      },
+      "hit_acmg_genes": [
+        "PTEN"
+      ],
+      "all_genes": [
+        "PTEN"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN110",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN112",
+      "label": "ClinGen Potassium Channel Arrhythmia Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for KCNQ1 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Pilot Rules Submitted",
+      "lastUpdated": "2026-10-07T07:37:16.618Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50108",
+        "@type": "Organization",
+        "label": "Potassium Channel Arrhythmia Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50108"
+      },
+      "hit_acmg_genes": [
+        "KCNQ1"
+      ],
+      "all_genes": [
+        "KCNQ1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN112",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1562365913",
+          "rs_genes": [
+            "KCNQ1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433511",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433511/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.\n\n*   Maximum allele frequency in gnomAD (in one of the 5 continental populations; African/African-American, East Asian, European non-Finnish, Latino/Admixed-American, or South Asian) greater than or equal to 0.004 (0.4%).",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433511/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433511/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433511/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433511/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1562365913",
+          "rs_genes": [
+            "KCNQ1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433528",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433528/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433528/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433528/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is greater than expected for disorder\u00a0\u00a0\n\n*   Maximum allele frequency in gnomAD (in one of the 5 continental populations; African/African-American, East Asian, European non-Finnish, Latino/Admixed-American, or South Asian)\u00a0greater than or equal to 0.0004 (0.04%).",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433528/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/439433528/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN115",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MLH1 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Pilot Rules In Prep",
+      "lastUpdated": "2026-11-20T13:52:47.785Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "MLH1"
+      ],
+      "all_genes": [
+        "MLH1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN115",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1564688423",
+          "rs_genes": [
+            "MLH1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234328",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234328/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.001 (0.1%) and variant is excluded as founder pathogenic variant.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234328/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234328/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234328/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234328/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1564688423",
+          "rs_genes": [
+            "MLH1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234333",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234333/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234333/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234333/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.0001 and \\< 0.001 (0.01-0.1%) and variant is excluded as founder pathogenic variant.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234333/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829234333/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN120",
+      "label": "ClinGen Leber Congenital Amaurosis/early onset Retinal Dystrophy Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for RPE65 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2023-10-24T07:58:03.767Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50082",
+        "@type": "Organization",
+        "label": "Leber Congenital Amaurosis/early onset Retinal Dystrophy Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50082"
+      },
+      "hit_acmg_genes": [
+        "RPE65"
+      ],
+      "all_genes": [
+        "RPE65"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN120",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1566365968",
+          "rs_genes": [
+            "RPE65"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503915",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503915/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Use gnomAD PopMax FAF if available, cutoff of \u00a0\u22658 x 10<sup>-3</sup>\n\n*   Use large population databases (i.e. gnomAD).",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503915/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503915/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503915/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503915/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1566365968",
+          "rs_genes": [
+            "RPE65"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503917",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503917/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503917/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503917/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency greater than expected for disorder. Use gnomAD PopMax FAF if available.\n\n*   Allele frequency of between 8x10<sup>-3</sup> and 8x10<sup>-4</sup>",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503917/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1622503917/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN135",
+      "label": "ClinGen Hereditary Hemorrhagic Telangiectasia Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for ACVRL1 Version 1.1",
+      "version": "1.1",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-03-20T16:13:39.132Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50037",
+        "@type": "Organization",
+        "label": "Hereditary Hemorrhagic Telangiectasia Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50037"
+      },
+      "hit_acmg_genes": [
+        "ACVRL1"
+      ],
+      "all_genes": [
+        "ACVRL1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN135",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1576018580",
+          "rs_genes": [
+            "ACVRL1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531088",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531088/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is \u22651% in general population databases (e.g. gnomAD) based on Popmax FAF.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531088/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531088/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531088/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531088/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1576018580",
+          "rs_genes": [
+            "ACVRL1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531093",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531093/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531093/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531093/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "\\>0.2% to \\<1% in general population databases (e.g. gnomAD) based on Popmax FAF, **or** if variant meets BS1\\_Supporting and has \u22652 homozygotes.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531093/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531093/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "\u00a0>0.08% to 0.2% (based on gnomAD Popmax FAF).",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN136",
+      "label": "ClinGen Hereditary Hemorrhagic Telangiectasia Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for ENG Version 1.1",
+      "version": "1.1",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-03-20T16:14:11.019Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50037",
+        "@type": "Organization",
+        "label": "Hereditary Hemorrhagic Telangiectasia Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50037"
+      },
+      "hit_acmg_genes": [
+        "ENG"
+      ],
+      "all_genes": [
+        "ENG"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN136",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1576926556",
+          "rs_genes": [
+            "ENG"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531860",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531860/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency is \u22651% in general population databases (e.g. gnomAD) based on Popmax FAF.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531860/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531860/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531860/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531860/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1576926556",
+          "rs_genes": [
+            "ENG"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531865",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531865/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531865/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531865/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "\\>0.2% to \\<1% in general population databases (e.g. gnomAD) based on Popmax FAF, **or** if variant meets BS1\\_Supporting and has \u22652 homozygotes.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531865/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1744531865/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "\u00a0>0.08% to 0.2% (based on gnomAD Popmax FAF).",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN137",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MSH2 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Approved For Release",
+      "lastUpdated": "2026-09-09T17:33:00.946Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "MSH2"
+      ],
+      "all_genes": [
+        "MSH2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN137",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1577628949",
+          "rs_genes": [
+            "MSH2"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235335",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235335/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.001 (0.1%) and variant is excluded as founder pathogenic variant.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235335/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235335/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235335/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235335/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1577628949",
+          "rs_genes": [
+            "MSH2"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235340",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235340/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235340/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235340/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.0001 and \\< 0.001 (0.01-0.1%) and variant is excluded as founder pathogenic variant.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235340/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829235340/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN138",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MSH6 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Approved For Release",
+      "lastUpdated": "2026-09-09T17:33:30.291Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "MSH6"
+      ],
+      "all_genes": [
+        "MSH6"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN138",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1578294898",
+          "rs_genes": [
+            "MSH6"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236155",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236155/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.0022 (0.22%) and variant is excluded as founder pathogenic variant.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236155/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236155/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236155/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236155/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1578294898",
+          "rs_genes": [
+            "MSH6"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236160",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236160/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236160/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236160/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.00022 and \\< 0.0022 (0.022-0.22%) and variant is excluded as founder pathogenic variant.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236160/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236160/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN139",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for PMS2 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Approved For Release",
+      "lastUpdated": "2026-09-09T17:33:42.198Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "PMS2"
+      ],
+      "all_genes": [
+        "PMS2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN139",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1578297071",
+          "rs_genes": [
+            "PMS2"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236963",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236963/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.0028 (0.28%) and variant is excluded as founder pathogenic variant.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236963/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236963/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236963/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236963/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1578297071",
+          "rs_genes": [
+            "PMS2"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236968",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236968/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236968/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236968/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "GnomAD v4 Grpmax filtering allele frequency \u2265 0.00028 and \\< 0.0028 (0.028-0.28%) and variant is excluded as founder pathogenic variant.",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236968/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1829236968/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN150",
+      "label": "ClinGen Congenital Myopathies Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for RYR1 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-12-12T14:12:10.165Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50031",
+        "@type": "Organization",
+        "label": "Congenital Myopathies Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50031"
+      },
+      "hit_acmg_genes": [
+        "RYR1"
+      ],
+      "all_genes": [
+        "RYR1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN150",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1616389166",
+          "rs_genes": [
+            "RYR1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849601",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849601/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "The minor allele frequency using the filtering allele frequency of either exomes or genomes of continental populations in gnomAD is **\u22650.0000486** **for AD variants**. All populations used should have at least 2000 alleles and >1 observation.\u00a0\n\n**BA1 exclusion variants** (well-known pathogenic variants that are above the specified BA1 or BS1 threshold) are as follows:\u00a0\n\nNM\\_000540.3:c.14524G>A (p.Val4842Met)\n\nNM\\_000540.3:c.325C>T (p.Arg109Trp)",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849601/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849601/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849601/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849601/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1616389166",
+          "rs_genes": [
+            "RYR1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849606",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849606/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849606/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849606/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "The minor allele frequency using the filtering allele frequency of either exomes or genomes of continental populations in gnomAD is\u00a0**\u22650.00000486 for AD variants**. All populations used should have at least 2000 alleles and >1 observation.\u00a0\n\n**BA1/BS1 exclusion variants** (well-known pathogenic variants that are above the specified BA1 or BS1 threshold) are as follows:\u00a0\n\nNM\\_000540.3:c.14524G>A (p.Val4842Met)\n\nNM\\_000540.3:c.325C>T (p.Arg109Trp)",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849606/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828849606/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN156",
+      "label": "ClinGen Urea Cycle Disorders Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for OTC Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2026-02-27T19:37:08.107Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50100",
+        "@type": "Organization",
+        "label": "Urea Cycle Disorders Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50100"
+      },
+      "hit_acmg_genes": [
+        "OTC"
+      ],
+      "all_genes": [
+        "OTC"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN156",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1622722972",
+          "rs_genes": [
+            "OTC"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091207",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091207/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "Allele frequency above 0.010000 (1.0%), Grpmax Filtering Allele Frequency\u00a0OR \u226510 (female) homozygotes or (male) hemizygotes in the most current version of gnomAD available at the time of curation.",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091207/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091207/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091207/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091207/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1622722972",
+          "rs_genes": [
+            "OTC"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091226",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091226/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091226/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091226/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "An allele frequency >0.002000 (0.2%), Grpmax Filtering Allele Frequency in the\u00a0 most current version of gnomAD available at the time of curation.\u00a0\n\nNote: Both BS1 and BS2 cannot be applied if the same dataset is used to assess population data",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091226/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/797091226/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN168",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for MUTYH Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Pilot Rules In Prep",
+      "currentStatus": "Pilot Rules In Prep",
+      "lastUpdated": "2025-04-24T14:58:56.000Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "MUTYH"
+      ],
+      "all_genes": [
+        "MUTYH"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN168",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN179",
+      "label": "ClinGen Congenital Myopathies Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for RYR1 Version 2.0",
+      "version": "2.0",
+      "cspecStatus": "Released",
+      "currentStatus": "Released",
+      "lastUpdated": "2024-12-12T14:12:55.370Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50031",
+        "@type": "Organization",
+        "label": "Congenital Myopathies Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50031"
+      },
+      "hit_acmg_genes": [
+        "RYR1"
+      ],
+      "all_genes": [
+        "RYR1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN179",
+      "ba1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1795775094",
+          "rs_genes": [
+            "RYR1"
+          ],
+          "rs_diseases": [],
+          "code": "BA1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852601",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is above 5% in Exome Sequencing Project, 1000 Genomes or Exome Aggregation Consortium.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852601/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "The minor allele frequency using the filtering allele frequency of either exomes or genomes of continental populations in gnomAD is **\u22650.00697** **for AR variants**. All populations used should have at least 2000 alleles and >1 observation.\u00a0\n\n**BA1 exclusion variants** (well-known pathogenic variants that are above the specified BA1 or BS1 threshold) are as follows:\u00a0\n\nNM\\_000540.3:c.6721C>T (p.Arg2241Ter)\n\nNM\\_000540.3:c.10348-6C>G",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852601/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852601/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852601/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852601/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BA1"
+          }
+        }
+      ],
+      "bs1_rules": [
+        {
+          "rs_id": "https://cspec.genome.network/cspec/api/RuleSet/id/1795775094",
+          "rs_genes": [
+            "RYR1"
+          ],
+          "rs_diseases": [],
+          "code": "BS1",
+          "cc_raw": {
+            "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852606",
+            "@type": "CriteriaCode",
+            "description": "Allele frequency is greater than expected for disorder.",
+            "evidenceStrengths": [
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852606/str/Stand%20Alone",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Stand Alone"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852606/str/Very%20Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Not applicable",
+                "label": "Very Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852606/str/Strong",
+                "@type": "EvidenceStrength",
+                "applicability": "Applicable",
+                "description": "The minor allele frequency using the filtering allele frequency of either exomes or genomes of continental populations in gnomAD is\u00a0**\u22650.000697 for AR variants**. All populations used should have at least 2000 alleles and >1 observation.\u00a0\n\n**BA1/BS1 exclusion variants** (well-known pathogenic variants that are above the specified BA1 or BS1 threshold) are as follows:\u00a0\n\nNM\\_000540.3:c.6721C>T (p.Arg2241Ter)\n\nNM\\_000540.3:c.10348-6C>G",
+                "label": "Strong"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852606/str/Moderate",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Moderate"
+              },
+              {
+                "@id": "https://cspec.genome.network/cspec/api/CriteriaCode/id/1828852606/str/Supporting",
+                "@type": "EvidenceStrength",
+                "applicability": "Not Applicable",
+                "label": "Supporting"
+              }
+            ],
+            "label": "BS1"
+          }
+        }
+      ]
+    },
+    {
+      "cspec_id": "GN214",
+      "label": "ClinGen Endocrine Tumor Predisposition  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for SDHB Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Pilot Rules Submitted",
+      "currentStatus": "Pilot Rules Submitted",
+      "lastUpdated": "2026-10-30T20:03:19.741Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50150",
+        "@type": "Organization",
+        "label": "Endocrine Tumor Predisposition Variant Curation Expert Panel",
+        "url": "https://clinicalgenome.org/affiliation/50150"
+      },
+      "hit_acmg_genes": [
+        "SDHB"
+      ],
+      "all_genes": [
+        "SDHB"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN214",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN227",
+      "label": "ClinGen Pediatric Cataract  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for CYP27A1 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Pilot Rules In Prep",
+      "currentStatus": "Pilot Rules In Prep",
+      "lastUpdated": "2026-06-24T15:47:00.451Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50166",
+        "@type": "Organization",
+        "label": "Pediatric Cataract Variant Curation Expert Panel",
+        "url": "https://clinicalgenome.org/affiliation/50166"
+      },
+      "hit_acmg_genes": [
+        "CYP27A1"
+      ],
+      "all_genes": [
+        "CYP27A1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN227",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN234",
+      "label": "ClinGen FBN1  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for FBN1 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "CSpec Deleted",
+      "currentStatus": "CSpec Deleted",
+      "lastUpdated": "2026-07-16T13:15:44.418Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50046",
+        "@type": "Organization",
+        "label": "FBN1 Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50046"
+      },
+      "hit_acmg_genes": [
+        "FBN1"
+      ],
+      "all_genes": [
+        "FBN1"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN234",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN235",
+      "label": "ClinGen RYR2  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for RYR2 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Classification Rules In Prep",
+      "currentStatus": "Classification Rules In Prep",
+      "lastUpdated": "2026-06-22T18:06:12.543Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50169",
+        "@type": "Organization",
+        "label": "RYR2 Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50169"
+      },
+      "hit_acmg_genes": [
+        "RYR2"
+      ],
+      "all_genes": [
+        "RYR2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN235",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN237",
+      "label": "ClinGen Familial Hypercholesterolemia  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for APOB Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Classification Rules In Prep",
+      "currentStatus": "Classification Rules In Prep",
+      "lastUpdated": "2026-07-06T20:33:26.632Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50004",
+        "@type": "Organization",
+        "label": "Familial Hypercholesterolemia Variant Curation Expert Panel",
+        "url": "https://www.clinicalgenome.org/affiliation/50004"
+      },
+      "hit_acmg_genes": [
+        "APOB"
+      ],
+      "all_genes": [
+        "APOB"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN237",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN240",
+      "label": "ClinGen Desmosomal Cardiomyopathy  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for PKP2 Version 1.0",
+      "version": "1.0",
+      "cspecStatus": "Classification Rules In Prep",
+      "currentStatus": "Classification Rules In Prep",
+      "lastUpdated": "2026-11-19T00:16:55.417Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50148",
+        "@type": "Organization",
+        "label": "Desmosomal Cardiomyopathy Variant Curation Expert Panel",
+        "url": "https://clinicalgenome.org/affiliation/50148"
+      },
+      "hit_acmg_genes": [
+        "PKP2"
+      ],
+      "all_genes": [
+        "PKP2"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN240",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN245",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for SMAD4 Version 1.0.0",
+      "version": "1.0.0",
+      "cspecStatus": "Classification Rules In Prep",
+      "currentStatus": "Classification Rules In Prep",
+      "lastUpdated": "2026-10-09T14:00:09.521Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "SMAD4"
+      ],
+      "all_genes": [
+        "SMAD4"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN245",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN247",
+      "label": "ClinGen Sodium and Calcium Channel Arrhythmia  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for SCN5A Version 1.0.0",
+      "version": "1.0.0",
+      "cspecStatus": "Classification Rules In Prep",
+      "currentStatus": "Classification Rules In Prep",
+      "lastUpdated": "2026-10-19T18:49:27.823Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50160",
+        "@type": "Organization",
+        "label": "Sodium and Calcium Channel Arrhythmia Variant Curation Expert Panel",
+        "url": "https://clinicalgenome.org/affiliation/50160"
+      },
+      "hit_acmg_genes": [
+        "SCN5A"
+      ],
+      "all_genes": [
+        "SCN5A"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN247",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN249",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for STK11 Version 1.0.0",
+      "version": "1.0.0",
+      "cspecStatus": "Pilot Rules In Prep",
+      "currentStatus": "Pilot Rules In Prep",
+      "lastUpdated": "2026-11-09T04:12:08.182Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "STK11"
+      ],
+      "all_genes": [
+        "STK11"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN249",
+      "ba1_rules": [],
+      "bs1_rules": []
+    },
+    {
+      "cspec_id": "GN250",
+      "label": "ClinGen InSiGHT Hereditary Colorectal Cancer/Polyposis  Expert Panel Specifications to the ACMG/AMP Variant Interpretation Guidelines for BMPR1A Version 1.0.0",
+      "version": "1.0.0",
+      "cspecStatus": "Pilot Rules In Prep",
+      "currentStatus": "Pilot Rules In Prep",
+      "lastUpdated": "2026-11-09T09:45:44.238Z",
+      "affiliation": {
+        "@id": "https://cspec.genome.network/cspec/api/Organization/id/50099",
+        "@type": "Organization",
+        "label": "InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel",
+        "url": "http://clinicalgenome.org/affiliation/50099"
+      },
+      "hit_acmg_genes": [
+        "BMPR1A"
+      ],
+      "all_genes": [
+        "BMPR1A"
+      ],
+      "url": "https://cspec.genome.network/cspec/ui/svi/doc/GN250",
+      "ba1_rules": [],
+      "bs1_rules": []
+    }
+  ]
+}

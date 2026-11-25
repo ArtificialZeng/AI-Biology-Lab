@@ -1,0 +1,258 @@
+{
+  "total_papers": 600,
+  "total_unique_refs_resolved": 2893,
+  "by_field_period": {
+    "cs": {
+      "pre_2019_2022": {
+        "n_papers": 75,
+        "mean_n_refs": 37.84,
+        "mean_ref_age": 8.03,
+        "recency_le2yr": 0.258,
+        "recency_le5yr": 0.5373,
+        "mean_log_ref_cites": 4.955,
+        "small_1_3_n": 34,
+        "small_1_3_rec2": 0.2485,
+        "small_1_3_age": 8.14,
+        "large_ge6_n": 6,
+        "large_ge6_rec2": 0.1,
+        "large_ge6_age": 8.57
+      },
+      "post_2024_2026": {
+        "n_papers": 75,
+        "mean_n_refs": 36.93,
+        "mean_ref_age": 7.29,
+        "recency_le2yr": 0.3153,
+        "recency_le5yr": 0.608,
+        "mean_log_ref_cites": 4.764,
+        "small_1_3_n": 36,
+        "small_1_3_rec2": 0.3653,
+        "small_1_3_age": 7.2,
+        "large_ge6_n": 19,
+        "large_ge6_rec2": 0.1921,
+        "large_ge6_age": 7.72
+      }
+    },
+    "biochem": {
+      "pre_2019_2022": {
+        "n_papers": 75,
+        "mean_n_refs": 57.68,
+        "mean_ref_age": 8.93,
+        "recency_le2yr": 0.2353,
+        "recency_le5yr": 0.468,
+        "mean_log_ref_cites": 5.187,
+        "small_1_3_n": 8,
+        "small_1_3_rec2": 0.2313,
+        "small_1_3_age": 7.91,
+        "large_ge6_n": 44,
+        "large_ge6_rec2": 0.2318,
+        "large_ge6_age": 8.29
+      },
+      "post_2024_2026": {
+        "n_papers": 75,
+        "mean_n_refs": 53.52,
+        "mean_ref_age": 9.86,
+        "recency_le2yr": 0.1827,
+        "recency_le5yr": 0.4273,
+        "mean_log_ref_cites": 4.833,
+        "small_1_3_n": 12,
+        "small_1_3_rec2": 0.1,
+        "small_1_3_age": 9.82,
+        "large_ge6_n": 42,
+        "large_ge6_rec2": 0.1905,
+        "large_ge6_age": 9.8
+      }
+    },
+    "math": {
+      "pre_2019_2022": {
+        "n_papers": 75,
+        "mean_n_refs": 35.15,
+        "mean_ref_age": 15.44,
+        "recency_le2yr": 0.1751,
+        "recency_le5yr": 0.3256,
+        "mean_log_ref_cites": 4.697,
+        "small_1_3_n": 60,
+        "small_1_3_rec2": 0.1381,
+        "small_1_3_age": 15.82,
+        "large_ge6_n": 3,
+        "large_ge6_rec2": 0.35,
+        "large_ge6_age": 16.08
+      },
+      "post_2024_2026": {
+        "n_papers": 75,
+        "mean_n_refs": 32.41,
+        "mean_ref_age": 18.13,
+        "recency_le2yr": 0.118,
+        "recency_le5yr": 0.2607,
+        "mean_log_ref_cites": 4.327,
+        "small_1_3_n": 65,
+        "small_1_3_rec2": 0.1146,
+        "small_1_3_age": 18.9,
+        "large_ge6_n": 2,
+        "large_ge6_rec2": 0.4,
+        "large_ge6_age": 4.4
+      }
+    },
+    "humanities": {
+      "pre_2019_2022": {
+        "n_papers": 75,
+        "mean_n_refs": 24.6,
+        "mean_ref_age": 12.63,
+        "recency_le2yr": 0.1776,
+        "recency_le5yr": 0.3896,
+        "mean_log_ref_cites": 3.805,
+        "small_1_3_n": 67,
+        "small_1_3_rec2": 0.1719,
+        "small_1_3_age": 12.88,
+        "large_ge6_n": 3,
+        "large_ge6_rec2": 0.2,
+        "large_ge6_age": 8.67
+      },
+      "post_2024_2026": {
+        "n_papers": 75,
+        "mean_n_refs": 28.87,
+        "mean_ref_age": 13.29,
+        "recency_le2yr": 0.1541,
+        "recency_le5yr": 0.3311,
+        "mean_log_ref_cites": 3.615,
+        "small_1_3_n": 66,
+        "small_1_3_rec2": 0.1432,
+        "small_1_3_age": 14.03,
+        "large_ge6_n": 2,
+        "large_ge6_rec2": 0.3,
+        "large_ge6_age": 5.2
+      }
+    }
+  },
+  "within_field_tests": {
+    "cs": {
+      "n_refs": {
+        "diff_post_minus_pre": -0.9067,
+        "t": -0.309,
+        "p": 0.7574
+      },
+      "recency_le2yr": {
+        "diff_post_minus_pre": 0.0573,
+        "t": 1.277,
+        "p": 0.2037
+      },
+      "mean_ref_age": {
+        "diff_post_minus_pre": -0.734,
+        "t": -0.875,
+        "p": 0.3828
+      },
+      "small_team_recency_le2yr": {
+        "diff_post_minus_pre": 0.1167,
+        "t": 1.641,
+        "p": 0.1054
+      },
+      "large_team_recency_le2yr": {
+        "diff_post_minus_pre": 0.0921,
+        "t": 1.417,
+        "p": 0.175
+      }
+    },
+    "biochem": {
+      "n_refs": {
+        "diff_post_minus_pre": -4.16,
+        "t": -0.683,
+        "p": 0.4955
+      },
+      "recency_le2yr": {
+        "diff_post_minus_pre": -0.0527,
+        "t": -1.411,
+        "p": 0.1603
+      },
+      "mean_ref_age": {
+        "diff_post_minus_pre": 0.9333,
+        "t": 1.027,
+        "p": 0.3063
+      },
+      "small_team_recency_le2yr": {
+        "diff_post_minus_pre": -0.1313,
+        "t": -1.446,
+        "p": 0.1684
+      },
+      "large_team_recency_le2yr": {
+        "diff_post_minus_pre": -0.0413,
+        "t": -0.832,
+        "p": 0.4076
+      }
+    },
+    "math": {
+      "n_refs": {
+        "diff_post_minus_pre": -2.7333,
+        "t": -0.883,
+        "p": 0.3785
+      },
+      "recency_le2yr": {
+        "diff_post_minus_pre": -0.0571,
+        "t": -1.621,
+        "p": 0.1074
+      },
+      "mean_ref_age": {
+        "diff_post_minus_pre": 2.6929,
+        "t": 1.685,
+        "p": 0.09415
+      },
+      "small_team_recency_le2yr": {
+        "diff_post_minus_pre": -0.0234,
+        "t": -0.649,
+        "p": 0.5174
+      },
+      "large_team_recency_le2yr": null
+    },
+    "humanities": {
+      "n_refs": {
+        "diff_post_minus_pre": 4.2667,
+        "t": 1.455,
+        "p": 0.1479
+      },
+      "recency_le2yr": {
+        "diff_post_minus_pre": -0.0235,
+        "t": -0.643,
+        "p": 0.5214
+      },
+      "mean_ref_age": {
+        "diff_post_minus_pre": 0.6552,
+        "t": 0.441,
+        "p": 0.66
+      },
+      "small_team_recency_le2yr": {
+        "diff_post_minus_pre": -0.0287,
+        "t": -0.76,
+        "p": 0.4489
+      },
+      "large_team_recency_le2yr": null
+    }
+  },
+  "formal_did_bootstrap": {
+    "cs_vs_math_hum_n_refs": {
+      "did_estimate": -1.6733,
+      "ci95": [
+        -8.9207,
+        5.2872
+      ]
+    },
+    "cs_vs_math_hum_recency_le2yr": {
+      "did_estimate": 0.0978,
+      "ci95": [
+        -0.0054,
+        0.1952
+      ]
+    },
+    "cs_vs_math_hum_ref_age": {
+      "did_estimate": -2.4243,
+      "ci95": [
+        -4.9995,
+        0.3728
+      ]
+    },
+    "cs_small_vs_large_team_recency_did": {
+      "did_estimate": 0.0246,
+      "ci95": [
+        -0.158,
+        0.2122
+      ]
+    }
+  }
+}

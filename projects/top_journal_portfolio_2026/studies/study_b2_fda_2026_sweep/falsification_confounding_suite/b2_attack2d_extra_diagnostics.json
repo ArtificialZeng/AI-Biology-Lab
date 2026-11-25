@@ -1,0 +1,123 @@
+{
+  "epmc_a1x_q2_retry": {
+    "query": "ClinVar AND (\"CLNDN\" OR \"ModeOfInheritance\") AND (\"secondary findings\" OR \"VCF\")",
+    "total_hits": 6,
+    "top_records": [
+      {
+        "id": "42453582",
+        "pmid": "42453582",
+        "doi": "10.3389/fphar.2026.1804218",
+        "pubYear": "2026",
+        "journalTitle": "Front Pharmacol",
+        "title": "Comprehensive whole genome sequencing-based pharmacogenomics profiling using a personalized genome interpretation workflow."
+      },
+      {
+        "id": "39578691",
+        "pmid": "39578691",
+        "doi": "10.1093/nar/gkae1090",
+        "pubYear": "2025",
+        "journalTitle": "Nucleic Acids Res",
+        "title": "ClinVar: updates to support classifications of both germline and somatic variants."
+      },
+      {
+        "id": "38352937",
+        "pmid": "38352937",
+        "doi": "10.1016/j.csbj.2024.01.014",
+        "pubYear": "2024",
+        "journalTitle": "Comput Struct Biotechnol J",
+        "title": "Large language models assisted multi-effect variants mining on cerebral cavernous malformation familial whole genome sequencing."
+      },
+      {
+        "id": "39433808",
+        "pmid": "39433808",
+        "doi": "10.1038/s41598-024-75020-0",
+        "pubYear": "2024",
+        "journalTitle": "Sci Rep",
+        "title": "Identifying pathogenic variants in rare pediatric neurological diseases using exome sequencing."
+      },
+      {
+        "id": "39085881",
+        "pmid": "39085881",
+        "doi": "10.1186/s12967-024-05508-w",
+        "pubYear": "2024",
+        "journalTitle": "J Transl Med",
+        "title": "Accuracy of renovo predictions on variants reclassified over time."
+      },
+      {
+        "id": "38093005",
+        "pmid": "38093005",
+        "doi": "10.1038/s41586-023-06831-w",
+        "pubYear": "2023",
+        "journalTitle": "Nature",
+        "title": "Indigenous Australian genomes show deep structure and rich novel variation."
+      }
+    ]
+  },
+  "welland2026_natmed_talos": {
+    "ok": true,
+    "authors": [
+      "Welland, Matthew J.",
+      "Ahlquist, K. D.",
+      "De Fazio, Paul",
+      "Austin-Tse, Christina",
+      "Pais, Lynn",
+      "Wedd, Laura",
+      "Bryen, Samantha",
+      "Rius, Rocio"
+    ],
+    "n_authors": 37,
+    "title": "Automated reanalysis of genomic data for rare disease diagnostics at scale",
+    "journal": "Nature Medicine",
+    "year": 2026,
+    "volume": "32",
+    "issue": "8",
+    "page": "2991-2999",
+    "doi": "10.1038/s41591-026-04477-5"
+  },
+  "apr2024_vs_2026_concentration": {
+    "apr1_12_2024_ind_od": {
+      "n_events": 40,
+      "n_unique_sponsors": 24,
+      "top_sponsors": {
+        "ImmunityBio, Inc.": 10,
+        "Kodiak Sciences Inc": 3,
+        "Kissei Pharmaceutical Co., Ltd.": 3,
+        "Vanda Pharmaceuticals": 3,
+        "Pfizer": 2,
+        "ImaginAb, Inc.": 1,
+        "HiberCell, Inc.": 1,
+        "Merz North America, Inc.": 1,
+        "pharmaand GmbH": 1,
+        "Palisade Bio": 1
+      },
+      "by_day": {
+        "2024-04-01": 5,
+        "2024-04-02": 5,
+        "2024-04-03": 10,
+        "2024-04-04": 4,
+        "2024-04-05": 3,
+        "2024-04-08": 4,
+        "2024-04-09": 3,
+        "2024-04-10": 2,
+        "2024-04-11": 3,
+        "2024-04-12": 1
+      }
+    },
+    "mar30_apr12_2026_ind_od": {
+      "n_events": 31,
+      "n_unique_sponsors": 29,
+      "top_sponsors": {
+        "Novo Nordisk A/S": 2,
+        "QOL Medical, LLC": 2,
+        "Direct Biologics, LLC": 1,
+        "Solstice Neurosciences, LLC, a subsidiary of MDD US Operations, LLC": 1,
+        "ChemomAb Ltd.": 1,
+        "Immuron Ltd.": 1,
+        "Delcath Systems Inc.": 1,
+        "Quantum Biopharma": 1,
+        "Treos Bio Limited": 1,
+        "Pulmocide Ltd": 1
+      }
+    }
+  }
+}

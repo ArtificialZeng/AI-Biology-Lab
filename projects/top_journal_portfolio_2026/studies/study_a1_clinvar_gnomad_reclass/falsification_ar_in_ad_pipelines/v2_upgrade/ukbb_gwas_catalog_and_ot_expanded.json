@@ -1,0 +1,329 @@
+{
+  "opentargets_variants_with_cs": [
+    {
+      "variant_id": "2-21006019-CA-C",
+      "gene": "APOB",
+      "group": "APOB_pLoF_FHBL",
+      "hgvs": "NM_000384.3(APOB):c.10848del (p.Gly3617fs)",
+      "gnomad_het": 67,
+      "n_cs": 14,
+      "rsids": [
+        "rs982371659"
+      ],
+      "sample_traits": [
+        [
+          "Cholesterol to Total Lipids in Large VLDL percentage (PGS-adjusted)",
+          -1.35465,
+          "5.36e-33",
+          434646
+        ],
+        [
+          "Phospholipids to Total Lipids in Medium VLDL percentage (PGS-adjusted)",
+          -1.59388,
+          "1.53e-46",
+          434646
+        ],
+        [
+          "Free Cholesterol to Total Lipids in Very Large VLDL percentage (PGS-adjusted)",
+          -1.09773,
+          "1.72e-22",
+          434646
+        ],
+        [
+          "Cholesteryl Esters to Total Lipids in Large VLDL percentage (PGS-adjusted)",
+          -1.31591,
+          "1.53e-32",
+          434646
+        ],
+        [
+          "Triglycerides to Total Lipids in Very Large VLDL percentage (PGS-adjusted)",
+          1.43234,
+          "2.00e-37",
+          434646
+        ],
+        [
+          "Cholesterol levels (UKB data field 30690)",
+          -2.06449,
+          "2.30e-74",
+          412075
+        ],
+        [
+          "Total cholines levels",
+          -1.195,
+          "1.04e-27",
+          434646
+        ],
+        [
+          "Phosphoglycerides levels",
+          -1.25948,
+          "2.23e-30",
+          434646
+        ],
+        [
+          "Omega-6 fatty acids to omega-3 fatty acids ratio",
+          1.41076,
+          "1.97e-38",
+          434646
+        ],
+        [
+          "Direct bilirubin levels (UKB data field 30660)",
+          0.712299,
+          "4.15e-10",
+          351671
+        ],
+        [
+          "Phosphatidylcholine levels",
+          -1.27139,
+          "1.16e-31",
+          434646
+        ]
+      ]
+    },
+    {
+      "variant_id": "2-21032391-G-A",
+      "gene": "APOB",
+      "group": "APOB_pLoF_FHBL",
+      "hgvs": "NM_000384.3(APOB):c.1315C>T (p.Arg439Ter)",
+      "gnomad_het": 57,
+      "n_cs": 4,
+      "rsids": [
+        "rs142066904"
+      ],
+      "sample_traits": [
+        [
+          "Concentration of small HDL particles (PGS-adjusted)",
+          -1.38026,
+          "2.28e-24",
+          434646
+        ],
+        [
+          "Free cholesterol in small HDL",
+          -1.53299,
+          "7.57e-31",
+          434646
+        ],
+        [
+          "Total lipids in small HDL (PGS-adjusted)",
+          -1.28679,
+          "1.47e-21",
+          434646
+        ],
+        [
+          "Concentration of small HDL particles",
+          -1.3768,
+          "3.24e-24",
+          434646
+        ]
+      ]
+    },
+    {
+      "variant_id": "2-21006288-C-T",
+      "gene": "APOB",
+      "group": "APOB_Missense_TrueFH",
+      "hgvs": "NM_000384.3(APOB):c.10580G>A (p.Arg3527Gln)",
+      "gnomad_het": 677,
+      "n_cs": 129,
+      "rsids": [
+        "rs5742904"
+      ],
+      "sample_traits": [
+        [
+          "Cholesteryl Esters in LDL",
+          0.044558761128565154,
+          "2.07e-83",
+          185352
+        ],
+        [
+          "Total lipids in large LDL",
+          0.04705818479395107,
+          "3.81e-92",
+          185352
+        ],
+        [
+          "Cholesteryl Esters in Small VLDL",
+          0.029257694598352344,
+          "2.26e-39",
+          185352
+        ],
+        [
+          "Cholesteryl Esters to Total Lipids in Small LDL percentage (PGS-adjusted)",
+          -0.509375,
+          "1.12e-21",
+          434646
+        ],
+        [
+          "Total Lipids in LDL",
+          0.04568936100800704,
+          "7.67e-87",
+          185352
+        ],
+        [
+          "LDL direct, adjusted by medication - raw",
+          0.05392673186967016,
+          "1.10e-252",
+          398402
+        ],
+        [
+          "Direct low density lipoprotein levels (UKB data field 30780)",
+          0.025611128107472226,
+          "4.75e-59",
+          389189
+        ],
+        [
+          "Concentration of small LDL particles",
+          0.04162941705613693,
+          "4.92e-70",
+          185352
+        ],
+        [
+          "Phospholipids to total lipids ratio in very large VLDL",
+          0.11721814707586305,
+          "3.05e-41",
+          185352
+        ],
+        [
+          "Cholesteryl esters in very large VLDL",
+          0.017352462255849802,
+          "5.64e-16",
+          185352
+        ],
+        [
+          "Direct low density lipoprotein levels (UKB data field 30780)",
+          0.02559873958069801,
+          "5.44e-59",
+          389189
+        ],
+        [
+          "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)",
+          0.034214117698300524,
+          "2.68e-106",
+          404687
+        ],
+        [
+          "LDL cholesterol",
+          71,
+          "6.00e-34",
+          56538
+        ],
+        [
+          "LDL direct, adjusted by medication - raw",
+          0.05314301097045359,
+          "1.10e-252",
+          406387
+        ],
+        [
+          "Remnant cholesterol (non-HDL, non-LDL -cholesterol)",
+          0.04028709883262607,
+          "9.55e-71",
+          185352
+        ]
+      ]
+    },
+    {
+      "variant_id": "19-11113620-G-A",
+      "gene": "LDLR",
+      "group": "LDLR_TrueFH",
+      "hgvs": "NM_000527.5(LDLR):c.1444G>A (p.Asp482Asn)",
+      "gnomad_het": 118,
+      "n_cs": 7,
+      "rsids": [
+        "rs139624145"
+      ],
+      "sample_traits": [
+        [
+          "Direct low density lipoprotein levels (UKB data field 30780)",
+          0.915635,
+          "9.03e-22",
+          411351
+        ],
+        [
+          "High cholesterol",
+          2.129068260601652,
+          "1.08e-18",
+          331754
+        ],
+        [
+          "ICD10 E78.00: Pure hypercholesterolemia, unspecified",
+          2.5163084129275317,
+          "3.15e-10",
+          375399
+        ],
+        [
+          "Cholesterol levels (UKB data field 30690)",
+          0.772539,
+          "1.55e-16",
+          412075
+        ],
+        [
+          "Apolipoprotein B levels (UKB data field 30640)",
+          0.755754,
+          "3.26e-14",
+          410113
+        ],
+        [
+          "Lipid lowering medication use",
+          2.204820102606195,
+          "1.78e-18",
+          320758
+        ],
+        [
+          "Cholesterol to Total Lipids in Small HDL percentage (PGS-adjusted)",
+          0.616148,
+          "1.56e-11",
+          434646
+        ]
+      ]
+    },
+    {
+      "variant_id": "19-11120436-C-T",
+      "gene": "LDLR",
+      "group": "LDLR_TrueFH",
+      "hgvs": "NM_000527.5(LDLR):c.2054C>T (p.Pro685Leu)",
+      "gnomad_het": 56,
+      "n_cs": 3,
+      "rsids": [
+        "rs28942084"
+      ],
+      "sample_traits": [
+        [
+          "ICD10 E78.0: Pure hypercholesterolemia",
+          2.951540022761608,
+          "6.32e-14",
+          378271
+        ],
+        [
+          "ICD10 E78: high cholesterol",
+          2.9085554283297936,
+          "6.38e-14",
+          329052
+        ],
+        [
+          "ICD10 E78: Disorders of lipoprotein metabolism and other lipidemias",
+          3.3257372136522623,
+          "2.11e-16",
+          372199
+        ]
+      ]
+    },
+    {
+      "variant_id": "19-11102774-G-A",
+      "gene": "LDLR",
+      "group": "LDLR_TrueFH",
+      "hgvs": "NM_000527.5(LDLR):c.301G>A (p.Glu101Lys)",
+      "gnomad_het": 46,
+      "n_cs": 1,
+      "rsids": [
+        "rs144172724"
+      ],
+      "sample_traits": [
+        [
+          "Treatment or medication use - ezetimibe",
+          4.231511837008946,
+          "1.59e-12",
+          320758
+        ]
+      ]
+    }
+  ],
+  "gwas_catalog_hits": []
+}

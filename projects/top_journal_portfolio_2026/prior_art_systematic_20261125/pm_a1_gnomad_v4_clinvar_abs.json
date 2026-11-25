@@ -1,0 +1,177 @@
+[
+  {
+    "pmid": "40084622",
+    "title": "Optimizing gene panels for equitable reproductive carrier screening: The Goldilocks approach.",
+    "authors": [
+      "Gruzin MJ",
+      "Hobbs M",
+      "Ellsworth RE",
+      "Poll S",
+      "Aguilar S",
+      "Knezovich J",
+      "Faulkner N",
+      "Olsen N",
+      "Aradhya S",
+      "Burnett L"
+    ],
+    "journal": "Genetics in medicine : official journal of the American College of Medical Genetics",
+    "pubdate": "2025 Jun",
+    "doi": "10.1016/j.gim.2025.101387",
+    "abstract": "PURPOSE: Professional organizations recommend pan-ancestry carrier screening for autosomal recessive and X-linked conditions. Advances in DNA sequencing have allowed the analysis of hundreds of genes; however, the optimal number of genes for carrier screening remains unclear. The American College of Medical Genetics and Genomics (ACMG) has proposed a tiered approach recommending screening for 113 genes.\nMETHODS: We analyzed ClinVar and gnomAD v4.1.0, for genes associated with serious autosomal recessive and X-linked conditions and modeled screening performance across panels of varying compositions and sizes in diverse genetic ancestries. We also reevaluated the ACMG gene list using the updated gnomAD data.\nRESULTS: We identified potential inconsistencies in the ACMG gene lists, particularly in the carrier test performance (defined as a positive yield) for underrepresented genetic ancestry groups. Modeling of the population data for 1310 genes revealed that the screening of 152, 248, 531, and 725 genes achieved 90%, 95%, 99%, and 99.7% positive yields, respectively, in couples. Real-world data from the screening of more than 60,000 couples were used to validate the model.\nCONCLUSION: Our methodology optimizes the gene content of carrier screening panels for diverse ancestry groups, provides a mechanism for continually updating guidelines, ensures consistency with genomic population data, and improves equity across populations."
+  },
+  {
+    "pmid": "40900392",
+    "title": "Variant classification of hereditary cancer genes is affected by genomic underrepresentation of admixed populations.",
+    "authors": [
+      "Bianco BCF",
+      "Planello AC"
+    ],
+    "journal": "Molecular genetics and genomics : MGG",
+    "pubdate": "2025 Sep 03",
+    "doi": "10.1007/s00438-025-02295-x",
+    "abstract": "Variant classification in genetic testing often culminates in \"uncertain\" calls, known as variants of uncertain significance (VUS), which remain a major clinical challenge. Among the established criteria for variant classification, population allele frequency (AF) is fundamental, yet under-representation of non-European groups hinders accurate interpretation. In this study, we evaluated the impact of population-specific AF on the reclassification of VUS and conflicting variants in hereditary cancer genes. From ClinVar, we curated 487 variants present in both the Brazilian cohort ABraOM and gnomAD v4.1 databases. Comparative population analysis revealed that 43% of shared variants showed significantly different AFs (q\u2009\u2264\u20090.01), with 113 (23%) exhibiting large effect sizes (OR\u2009\u2265\u20094), including 39 VUS. Among these, 20 VUS had higher AF in the Brazilian cohort and exceeded benignity thresholds (BS1), while remaining rare in other populations. Functional prediction tools such as REVEL and CADD failed to distinguish these variants from globally rare VUS. Integrating Brazilian\u2011specific AF with ClinGen VCEP rules downgraded 15% (3/20) of candidate VUS and resolved five conflicting calls. These findings argue for routine incorporation of regional reference datasets in diagnostic curation to reduce uncertainty and avoid inappropriate clinical management in diverse populations."
+  },
+  {
+    "pmid": "40492992",
+    "title": "SCN9A should not be considered an epilepsy gene; Refuting a gene-disease association.",
+    "authors": [
+      "Ghanty I",
+      "Perez-Palma E",
+      "Villaman C",
+      "Stobo D",
+      "Symonds J",
+      "Zuberi S",
+      "Lal D",
+      "Brunklaus A"
+    ],
+    "journal": "Epilepsia",
+    "pubdate": "2025 Sep",
+    "doi": "10.1111/epi.18474",
+    "abstract": "OBJECTIVE: The SCN9A gene is primarily expressed in nociceptive pathways within the peripheral nervous system, and pathogenic variants are associated with human pain disorders. In recent years, several studies have proposed SCN9A as a monogenic cause of epilepsy. Our objective was to critically appraise the SCN9A-epilepsy gene-disease relationship.\nMETHODS: We assessed \"epilepsy-associated\" SCN9A variants from four sources: (1) the literature up to December 2023 (n\u2009=\u200927), (2) epilepsy patients referred for genetic testing at a regional service in Glasgow, UK over a 5-year period (n\u2009=\u200930), (3) the Human Genetics Mutation Database (n\u2009=\u200925), and (4) ClinVar (n\u2009=\u20091546). The latter two are genome-wide variant databases, accepting submissions from genetic laboratories and research groups. We checked whether each SCN9A variant is present in the Genome Aggregation Database (gnomAD) V4 (a reference population database for variant interpretation), and classified its pathogenicity based on the American College of Molecular Genetics and Genomics/Association of Molecular Pathologists guidelines.\nRESULTS: Only three SCN9A variants were classified as \"likely pathogenic,\" of which two were identified in healthy individuals in gnomAD. A total of 1540 of the 1546 SCN9A variants in ClinVar labeled as being associated with epilepsy were also reported in association with hereditary sensory and autonomic neuropathy. No further clinical data were provided in 1482 of these submissions.\nSIGNIFICANCE: There is no convincing genetic evidence to support SCN9A as a causative epilepsy gene. As such, the inclusion of SCN9A in epilepsy genetic testing panels should be reassessed. Research centers and genetic testing laboratories should be rigorous and consistent in their submissions to variant databases."
+  },
+  {
+    "pmid": "39479418",
+    "title": "Genetic Markers of Spina Bifida in an Indian Cohort.",
+    "authors": [
+      "Goel P",
+      "Sharma M",
+      "Kaushik H",
+      "Kumar S",
+      "Singh H",
+      "Jain V",
+      "Dhua AK",
+      "Yadav DK",
+      "Kumar N",
+      "Agarwala S"
+    ],
+    "journal": "Journal of Indian Association of Pediatric Surgeons",
+    "pubdate": "2024",
+    "doi": "10.4103/jiaps.jiaps_64_24",
+    "abstract": "OBJECTIVE: To identify the genetic markers of spina bifida through a systematic survey of the exome in an Indian cohort.\nMATERIALS AND METHODS: Three consecutive patients (P1: 1 year, male; P2: 2.8 years, male; and P3: 10 years, female) with spina bifida (lumbosacral meningomyelocele) underwent whole-exome sequencing (libraries: SureSelect Human All Exon V8; sequencing: 2 * 150 bp paired-end run, 100\u00d7) with NovaSeq 6000. Data analysis was performed using SMART-One\u2122 (secondary analysis) and SMARTer\u2122 (tertiary analysis) for automated quality check, alignment (GRCh38/hg38), variant calling, annotation (ClinVar, OMIM, avsnp150, 1000 Genomes v5b, ExAC v0.3, gnomAD v4.0, and esp6500vi2all v0.0.25), v0.0.25), interpretation. The pathogenic and likely pathogenic (ClinVar/ InterVar), non-synonymous, exonic markers (read depth \u2265 5) were matched with the Familial Neural Tube Defects (Version 1.10) panel (FNTD panel).\nRESULTS: Pathogenic variants overlapping with the FNTD panel were MTRR, CC2D2A, and ZIC2 in P1 and P2, TGIF1 in P1 only, and none in P3. Novel pathogenic/likely pathogenic variants common to all three patients were PRUNE1, PKD1, PDZD2, and DAB2 in the homozygous state as well as in the heterozygous state, PLK1 and NLGN2. The possible role of such markers in etiopathogenesis was explored through a literatur search.\nCONCLUSIONS: The genetic landscape of the spina bifida in an Indian cohort is diverse compared to that reported from other parts of the world. A comprehensive catalog of single-nucleotide variants in the etiopathogenesis of the spina bifida on a background of the Familial Neural Tube Defects Panel has been generated."
+  },
+  {
+    "pmid": "40950494",
+    "title": "Identification and Characterization of Rare Genetic Variants Associated with pathogenicity Breast Cancer Susceptibility Across Thousand Genome and GnomAD population.",
+    "authors": [
+      "Yadav K",
+      "Prasad A"
+    ],
+    "journal": "medRxiv : the preprint server for health sciences",
+    "pubdate": "2025 Sep 02",
+    "doi": "10.1101/2025.08.30.25334747",
+    "abstract": "BACKGROUND: Inherited variants in cancer susceptibility genes play a critical role in breast cancer risk, yet comprehensive comparative analyses across clinically relevant genes remain limited. While BRCA1 and BRCA2 are well-established high-risk contributors, the broader landscape of germline pathogenicity across breast cancer associated genes warrants systematic evaluation.\nMETHODS: We curated a panel of 15 breast cancer associated genes ( BRCA1, BRCA2, TP53, PTEN, CHEK2, ATM, CDH1, PALB2, LSP1, MAP3K1, NF1, RECQL, TOX3, FANCD2, RAD51C ) based on clinical and epidemiological relevance. Publicly available germline variant data from gnomAD v4.1 and the 1000 Genomes Project were integrated with ClinVar annotations. Variants were classified by clinical significance and filtered using allele frequency and phenotype annotation to stratify into high-risk and non-high-risk groups. We compared the distribution of variants and assessed penetrance patterns, and we evaluated the discriminatory power of computational pathogenicity predictors including CADD, REVEL, SIFT, and PolyPhen-2.\nRESULTS: BRCA1 and BRCA2 harbored the highest burden of pathogenic variants, consistent with their high penetrance status. Moderate-risk genes ( PALB2, RAD51C, CHEK2 ) showed intermediate levels of pathogenicity, while low-risk genes such as RECQL, TOX3 , and FANCD2 were predominantly enriched for variants of uncertain significance. High-risk variants exhibited significantly elevated CADD (>30), REVEL (>0.75), and SIFT (<0.05) scores compared to non-high-risk variants (p < 1\u00d710- 20 ), whereas PolyPhen-2 showed limited discriminatory power. Odds ratio analysis further supported CADD, REVEL, and ClinVar pathogenicity labels as strong discriminators between variant categories.\nCONCLUSIONS: Our analysis reaffirms the pathogenic burden concentrated in high penetrance genes and highlights the utility of combined in silico prediction tools and population frequency filters in variant prioritization. These findings support refined variant curation pipelines for hereditary breast cancer and provide a framework for interpreting gene-level pathogenicity across diverse susceptibility loci."
+  },
+  {
+    "pmid": "40974092",
+    "title": "Estimated global prevalence of genetic carriers of hereditary pheochromocytoma-paraganglioma syndrome in a large multiethnic genomic database.",
+    "authors": [
+      "Charoenngam N",
+      "Wannachalee T"
+    ],
+    "journal": "European journal of endocrinology",
+    "pubdate": "2025 Sep 30",
+    "doi": "10.1093/ejendo/lvaf191",
+    "abstract": "OBJECTIVES: To estimate the global prevalence of genetic carriers of pheochromocytoma-paraganglioma syndromes (PPGLs) in a large multiethnic genomic database.\nMETHODS: We analyzed sequencing data from 807 162 unrelated individuals in the gnomAD v4.1 database, representing a global population of diverse ethnic ancestries. Eleven PPGLs-associated genes were examined: FH, NF1, RET, SDHA, SDHAF2, SDHB, SDHC, SDHD, TMEM127, VHL, and MAX. Pathogenic or likely pathogenic variants (P/LP) were identified from ClinVar, while additional predicted deleterious variants were included based on loss-of-function annotations and splice prediction in silico tools. Prevalence estimates of genetic carriers were calculated by combining allele frequencies of qualifying variants.\nRESULTS: The prevalence of SDHA carriers was the highest when aggregating allele frequencies of both ClinVar P/LP and predicted deleterious variants (158.83 per 100 000), followed by NF1 (93.66 per 100 000) and FH (72.23 per 100 000), while VHL and MAX had the lowest prevalence. Substantial variation was observed across ancestries, with certain variants enriched in specific populations (eg, SDHC p.Tyr126Cys in non-Finnish Europeans; FH c.556-4A > G in East Asians). Carriers of SDHB, SDHC, and TMEM127 ClinVar P/LP or predicted deleterious variants were absent in the Middle Eastern group; SDHAF2 and SDHC were absent in the Ashkenazi Jewish group; and SDHAF2 and TMEM127 were absent in the Finnish group. Predicted deleterious variants significantly increased carrier estimates for SDHAF2, SDHD, and TMEM127.\nCONCLUSION: Our study highlights the variability in PPGL-associated mutation carrier prevalence across genes and ancestries. The findings underscore potential disparities in genetic risk that may not have been fully captured by clinical cohorts."
+  },
+  {
+    "pmid": "39492094",
+    "title": "Estimation of carrier frequencies of autosomal and X-linked recessive genetic conditions based on gnomAD v4.0 data in different ancestries.",
+    "authors": [
+      "Hotakainen R",
+      "J\u00e4rvinen T",
+      "Kettunen K",
+      "Anttonen AK",
+      "Jakkula E"
+    ],
+    "journal": "Genetics in medicine : official journal of the American College of Medical Genetics",
+    "pubdate": "2025 Jan",
+    "doi": "10.1016/j.gim.2024.101304",
+    "abstract": "PURPOSE: Monogenic rare diseases contribute significantly to infant deaths and pediatric hospitalizations and cause burden to the patients and their families. The American College of Medical Genetics and Genomics recommended in 2021 that carrier screening of autosomal recessive and X-linked conditions with a carrier frequency of \u22651/200 and a severe or moderate phenotype should be offered when planning or during pregnancy. In November 2023 gnomAD v4.0 was released. It contains in total 807,162 individuals, being nearly 5\u00d7 larger than previous versions, which have been used to estimate gene carrier frequencies (GCF).\nMETHODS: We utilized gnomAD v4.0 (GRCh38) to calculate the GCFs for available genetic ancestry groups for variants having pathogenic or likely pathogenic classification (>80% of submissions) in ClinVar. We calculated GCF separately for exomes and genomes, combined data, and at-risk couple frequencies (ACF) per genetic ancestry group.\nRESULTS: In total, 324 genes had a GCF \u22651/200 in at least 1 ancestry subgroup. The number of genes with GCF \u22651/200 varied greatly between subgroups. ACFs were more similar, Ashkenazi Jewish having the highest ACF of 6.11%.\nCONCLUSION: Improved understanding of carrier risks and updated carrier screening content would allow patients to make more informed reproductive decisions."
+  },
+  {
+    "pmid": "42727578",
+    "title": "CanVar-UK: A collaborative platform for germline interpretation in cancer susceptibility genes.",
+    "authors": [
+      "Rowlands CF",
+      "Choi S",
+      "Allen S",
+      "Kuzbari Z",
+      "\u00c7ubuk C",
+      "Sultana R",
+      "Torr B",
+      "Durkie M",
+      "Burghel GJ",
+      "Robinson R",
+      "Callaway A",
+      "Field J",
+      "Frugtniet B",
+      "Palmer-Smith S",
+      "Grant J",
+      "Pagan J",
+      "Johnston E",
+      "McDevitt T",
+      "Hughes L",
+      "Yarram-Smith L",
+      "Logan P",
+      "Reed L",
+      "Snape K",
+      "McVeigh T",
+      "Hanson H",
+      "Garrett A",
+      "Turnbull C",
+      "CanVIG-UK"
+    ],
+    "journal": "American journal of human genetics",
+    "pubdate": "2026 Oct 01",
+    "doi": "10.1016/j.ajhg.2026.08.006",
+    "abstract": "Germline variants in cancer susceptibility genes (CSGs) are typically inherited rather than arising de novo. Hence, wide cascade testing of families across geographies is common, meaning consistency in variant classification is particularly critical. Variant interpretation requires collation of variant-level data from diverse sources, as well as assembly of comprehensive clinical data, often necessitating sharing of information between genomic testing centers. Here, we describe CanVar-UK, a freely accessible web platform bespoke designed to support interpretation of germline CSG variants. CanVar-UK contains variant-level data for over 1.1 million single-nucleotide variants (SNVs), comprising all possible coding SNVs in 116 established CSGs. The data sources with which variants are annotated include in silico scores from 11 clinically relevant tools, population allele frequencies from gnomAD v4.1, case counts from multiple cohorts, including National Health Service (NHS) clinical laboratory testing, variant-level readouts from 47 selected functional and splicing datasets across 19 CSGs, genetic epidemiology studies, and live linkage to existing consensus classifications in the ClinVar database. The diagnostic discussion forum is only available to registered diagnostic scientist users. Through this, a variant-tagged email message can be dispatched in real time across the diagnostic forum community of >1,500 users, with all exchanges and classifications captured and stored in the platform. Already widely used by NHS diagnostic clinical scientists in the UK, CanVar-UK has a rapidly growing international diagnostic user base (>800 UK and >600 non-UK registered users). Survey of the NHS diagnostic user community illustrates the wide-ranging utility of CanVar-UK within their clinical workflows for interpretation of germline CSG variants."
+  },
+  {
+    "pmid": "42547507",
+    "title": "The clinical utility of carrier screening.",
+    "authors": [
+      "Gruzin MJ",
+      "Burnett L"
+    ],
+    "journal": "NPJ genomic medicine",
+    "pubdate": "2026 Jul 25",
+    "doi": "10.1038/s41525-026-00601-z",
+    "abstract": "Carrier screening aims to identify couples at risk of having children with serious genetic disorders. However, screening panels vary markedly in size, gene content and price, with little guidance to assess clinical utility or value. We analysed 89 carrier screening panels from 30 global providers, modelling test performance using pathogenic variants from gnomAD v4.1.0 and ClinVar across ten ancestry groups and two synthetic populations (representing the United States and Australia). We evaluated how panel size, content, price and clinical utility interrelate. We also compared value per dollar spent to guide clinical decision-making and fair pricing. Clinical utility showed no consistent relationship with panel size or price. Instead, mid-sized, pan-ancestry \"Goldilocks\" panels delivered the greatest utility, outperforming both smaller and larger panels, while delivering more equitable outcomes. We developed a visual \"clinical utility meter\" to compare relative test performance and an \"efficiency frontier\" framework to identify the best value tests for a given price. This data-driven framework and visual tool can support rational test design and selection for value-based laboratory medicine."
+  },
+  {
+    "pmid": "42991897",
+    "title": "Population-specific differences in ClinVar pathogenic and likely pathogenic variants of epilepsy-associated genes between East Asian and non-finnish European populations: a nucleotide-resolved gnomAD v4.1.1 analysis.",
+    "authors": [
+      "Lai JX",
+      "He MF",
+      "Fan ZC",
+      "Yan FJ",
+      "Guan BZ",
+      "Liu XH"
+    ],
+    "journal": "Frontiers in genetics",
+    "pubdate": "2026",
+    "doi": "10.3389/fgene.2026.1973684",
+    "abstract": "Pathogenic and likely pathogenic (P/LP) variants in ClinVar guide variant interpretation in clinical genetic testing, yet their population-specific frequency differences have not been systematically examined in epilepsy. We compiled 199 epilepsy-associated genes, extracted 46,746 unique P/LP variants from ClinVar, and retrieved allele frequencies from gnomAD v4.1.1 gene-level tables using nucleotide-resolved matching. Fisher's exact test with Benjamini-Hochberg correction (q < 0.05) identified nine variants significantly enriched in East Asian (EAS) relative to non-Finnish European (NFE) populations, with odds ratios of 36.3-867.9. Eight additional low-frequency EAS signals met the same enrichment criterion with at least two EAS alleles and an uncorrected p < 0.01 and are reported as exploratory. Thirteen of the seventeen variants reside in seven autosomal recessive genes, namely, ALDH7A1, ST3GAL5, GOSR2, AARS1, BRAT1, WWOX, and UBA5. In parallel, an rsID-level workflow, the standard approach in database mining, yielded 60 candidate EAS-enriched variants. Nucleotide-resolved matching confirmed only fifteen of these and additionally recovered two signals the rsID workflow missed, a false-positive rate of 75.0%. These findings show that epilepsy P/LP variant frequencies differ substantially between EAS and NFE populations and concentrate in recessive genes with direct relevance to carrier screening. rsID-level ClinVar-gnomAD integration systematically overestimates population specificity, and nucleotide-resolved allele matching should become a standard step in population frequency analyses."
+  }
+]

@@ -1,0 +1,269 @@
+{
+  "variant_id": "132994",
+  "allele_info": {
+    "chromosome": "19",
+    "position_start": "38433691",
+    "position_stop": "38587564",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "19q13.2",
+    "dbsnp_rsid": "rs193922837"
+  },
+  "conditions": [
+    {
+      "name": "Central core myopathy",
+      "medgen_cui": "C5830701",
+      "omim_id": "117000",
+      "orphanet_id": "597",
+      "hpo_terms": []
+    },
+    {
+      "name": "Malignant hyperthermia, susceptibility to, 1",
+      "medgen_cui": "C2930980",
+      "omim_id": "145600",
+      "orphanet_id": "423",
+      "hpo_terms": []
+    },
+    {
+      "name": "King Denborough syndrome",
+      "medgen_cui": "C1840365",
+      "omim_id": "619542",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Congenital multicore myopathy with external ophthalmoplegia",
+      "medgen_cui": "C1850674",
+      "omim_id": "255320",
+      "orphanet_id": "98905",
+      "hpo_terms": [
+        "HP:0003789",
+        "HP:0003789",
+        "HP:0003804"
+      ]
+    },
+    {
+      "name": "RYR1-related myopathy",
+      "medgen_cui": "CN305348",
+      "omim_id": null,
+      "orphanet_id": "98742",
+      "hpo_terms": []
+    },
+    {
+      "name": "Inborn genetic diseases",
+      "medgen_cui": "C0950123",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Myopathy, RYR1-associated",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "RYR1-related disorder",
+      "medgen_cui": "CN239331",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Centronuclear myopathy",
+      "medgen_cui": "C0175709",
+      "omim_id": "PS160150",
+      "orphanet_id": "595",
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": "C2930980",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "RYR1-Related Disorders",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "RYR1-related disorders",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "18253926",
+    "20839240",
+    "21062345",
+    "23553484",
+    "25525159",
+    "28818389",
+    "35627144"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "Color Diagnostics, LLC DBA Color Health",
+      "classification": "Uncertain significance",
+      "curator_notes": "This variant causes a C to G nucleotide substitution at the -6 position of intron 68 of the RYR1 gene. To our knowledge, functional studies have not been reported for this variant. This variant has not been reported in individuals affected with RYR1-related disorders in the literature. This variant has been identified in 9/282854 chromosomes in the general population by the Genome Aggregation Database (gnomAD). This variant has not been reported in individuals affected with autosomal dominant malignant hyperthermia in the literature, although it is associated with other phenotype(s) (ClinVar variation ID: 132994). Due to insufficient evidence, this variant is classified as a Variant of Uncertain Significance for autosomal dominant malignant hyperthermia.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-11-01"
+    },
+    {
+      "submitter_name": "PreventionGenetics, part of Exact Sciences",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2015-09-15"
+    },
+    {
+      "submitter_name": "HudsonAlpha Institute for Biotechnology, HudsonAlpha Institute for Biotechnology",
+      "classification": "Pathogenic",
+      "curator_notes": "ACMG codes: PS3; PS4M; PM2; PM3; PP5",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-10-13"
+    },
+    {
+      "submitter_name": "All of Us Research Program, National Institutes of Health",
+      "classification": "Uncertain Significance",
+      "curator_notes": "This variant causes a C to G nucleotide substitution at the -6 position of intron 68 of the RYR1 gene. To our knowledge, functional studies have not been reported for this variant. This variant has not been reported in individuals affected with RYR1-related disorders in the literature. This variant has been identified in 9/282854 chromosomes in the general population by the Genome Aggregation Database (gnomAD). This variant has not been reported in individuals affected with autosomal dominant malignant hyperthermia in the literature, although it is associated with other phenotype(s) (ClinVar variation ID: 132994). The available evidence is insufficient to determine the role of this variant in disease conclusively. Therefore, this variant is classified as a Variant of Uncertain Significance.; This study involves interpretation of variants in research participants for the purpose of population health screening. Participant phenotype was not available at the time of variant classification. Additional details can be found in publication PMID: 35346344, PMCID: PMC8962531; Notes: None; Reason: Outlier claim with insufficient supporting evidence",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-11-20"
+    },
+    {
+      "submitter_name": "Eurofins Ntd Llc (ga)",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "EGL Classification Definitions 2015",
+      "date_last_evaluated": "2017-08-15"
+    },
+    {
+      "submitter_name": "Ambry Genetics",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "Ambry exome assertion method (8-5-2015)",
+      "date_last_evaluated": "2016-03-31"
+    },
+    {
+      "submitter_name": "Muscle and Diseases Team, Institut de G\u00e9n\u00e9tique et Biologie Mol\u00e9culaire et Cellulaire",
+      "classification": "Pathogenic",
+      "curator_notes": "PS3+PP1_Strong+PM2+PM3",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-03-01"
+    },
+    {
+      "submitter_name": "ClinGen Congenital Myopathies Variant Curation Expert Panel, ClinGen",
+      "classification": "Pathogenic",
+      "curator_notes": "The variant NM_000540.3(RYR1):c.10348-6C>G in RYR1 is an intronic variant located in intron 68. The filtering allele frequency is 0.0003329 (34/75078 alleles, 0 homozygotes) for the African/African American population, which meets no codes. In addition, the SpliceAI Acceptor Loss value is 0.47. The variant was found in compound heterozygosity with variants of uncertain significance, likely pathogenic, or pathogenic variants in 22 patients (PM3_Very Strong; PMIDs: 18253926, 21062345, 20839240, 23553484, 28818389, 30932294, 31069529, 30611313, 34440373, 35627144, 35616356, 36939041). At least 3 patients with this variant displayed ophthalmoparesis and presence of cores on muscle biopsy, which is highly specific for RYR1-related myopathy (PP4; PMID: 20839240). This variant has been observed in at least 11 South African patients with RYR1-related myopathy, suggesting a possible founder variant (PMID: 20839240). The variant has also been reported in cis with the c.14524G>A (p.Val4842Met) variant in 17 of the 22 probands, which is part of a known haplotype and has been reported as a compound heterozygous change in individuals with RYR1-related myopathies (PMIDs: 18253926, 21062345, 20839240, 23553484, 30932294, 30611313, 35627144). The variant has been found to segregate with disease in 4 affected relatives from 2 families (PP1; PMIDs: 18253926, 21062345). Functional studies in patient cells showed that the variant resulted in a loss of splicing of intron 68 and the introduction of a premature stop codon causing the mRNA to undergo NMD (PMIDs: 18253926, 25525159) (PS3_Supporting). In summary, this variant meets the criteria to be classified as pathogenic for autosomal recessive RYR1-related myopathy based on the ACMG/AMP criteria applied, as specified by the ClinGen Congenital Myopathies VCEP: PM3_Very Strong, PP4, PP1, PS3_Supporting (ClinGen Congenital Myopathies VCEP specifications version 2; May 19th, 2025).",
+      "assertion_criteria": "ClinGen CongenMyopathy ACMG Specifications RYR1 AR V2.0.0",
+      "date_last_evaluated": "2025-05-19"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Pathogenic",
+      "curator_notes": "Reported in multiple unrelated individuals in the published literature and patients referred to GeneDx for genetic testing with congenital myopathy who also harbored at least one additional RYR1 variant, although phase is not always known (PMID: 20839240, 18253926, 23553484, 23394784, 28818389, 22473935); Published RNA analysis shows aberrant splicing that results in the inclusion of exon 68 and introduction of a premature stop codon in the majority of transcripts (PMID: 18253926); This variant is associated with the following publications: (PMID: 25525159, 30932294, 21062345, 16380615, 18765655, 30611313, 23919265, 16917943, 23553484, 20583297, 22473935, 23394784, 28818389, Bhanudeep2021[Article], 35627144, 35616356, 31069529, 34440373, 20839240, 18253926, 38702429, 34428338, 36939041, 35537032, 39096151, 39411402, 39020067, 39966651)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2026-08-15"
+    },
+    {
+      "submitter_name": "CeGaT Center for Human Genetics Tuebingen",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "CeGaT Center For Human Genetics Tuebingen Variant Classification Criteria Version 2",
+      "date_last_evaluated": "2020-01-01"
+    },
+    {
+      "submitter_name": "RYR1 database",
+      "classification": "not provided",
+      "curator_notes": null,
+      "assertion_criteria": "no classification provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Broad Center for Mendelian Genomics, Broad Institute of MIT and Harvard",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.10348-6C>G variant in RYR1 has been reported in at least 16 individuals of African descent in cis with p.Val4842Met (suggesting it is a founder variant in Africans) and 2 Chilean individuals with congenital myopathy, segregated with disease in 4 affected relatives from 2 families (PMID: 23553484, 20839240, 18253926, 21062345), and has been identified in 0.03204% (8/24966) of African chromosomes and 0.002822% (1/35438) of Latino chromosomes by the Genome Aggregation Database (gnomAD, http://gnomad.broadinstitute.org; dbSNP rs193922837). Although this variant has been seen in the general population, its frequency is low enough to be consistent with a recessive carrier frequency. This variant has also been reported pathogenic and likely pathogenic in ClinVar (Variation ID: 132994). In vitro functional studies provide some evidence that the c.10348-6C>G variant may slightly impact normal splicing and protein levels (PMID: 18253926, 21062345). However, these types of assays may not accurately represent biological function. Computational prediction tools, including splice predictors, and conservation analyses suggest that this variant may not impact the protein, though this information is not predictive enough to rule out pathogenicity. The presence of this variant in combination with loss of function variants and in at least 12 individuals with congenital myopathy increases the likelihood that the c.10348-6C>G variant is pathogenic (PMID: 23553484, 20839240, 18253926, 21062345). In summary, this variant meets criteria to be classified as pathogenic for congenital myopathy in an autosomal recessive manner based on multiple occurrences with loss of function variants in affected individuals and low prevalence in the general population. ACMG/AMP Criteria applied: PM3_VeryStrong, PM2, BP4, BP7, PP1, PS3_Supporting (Richards 2015).",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2020-01-29"
+    },
+    {
+      "submitter_name": "Division of Human Genetics, National Health Laboratory Service/University of the Witwatersrand",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-07-01"
+    },
+    {
+      "submitter_name": "Laboratory for Molecular Medicine, Mass General Brigham Personalized Medicine",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.10348-6C>G variant in RYR1 has been reported in the compound heterozygous state in at least 11 individuals of African descent in cis with p.Val4842Met (suggesting it is a founder variant in Africans) and 2 Chilean individuals with congenital myopathy, and segregated with disease in 4 affected relatives from 2 families (Bharucha-Goebel 2013 PMID: 23553484, Wilmshurst 2010 PMID: 20839240, Monnier 2008 PMID: 18253926, Bevilacqua 2011 PMID: 21062345). It has been reported in ClinVar (Variation ID 132994) and has also been identified in 13/41476 of African chromosomes by gnomAD (http://gnomad.broadinstitute.org). In vitro functional studies (using patient tissue) showed that the c.10348-6C>G variant resulted in a loss of splicing of intron 68 and the introduction of a premature stop codon (p.His3449ins33fsX54). Both unspliced and spliced transcripts were present, thus indicating an incomplete penetrance of this intronic variation (Monnier 2008 PMID: 18253926, Bevilacqua 2011 PMID: 1062345). In summary, this variant meets criteria to be classified as pathogenic for autosomal recessive congenital myopathy. ACMG/AMP Criteria applied: PM2_Supporting, PS3_Supporting, PM3_Very strong, PP1.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-11-03"
+    },
+    {
+      "submitter_name": "Women's Health and Genetics/Laboratory Corporation of America, LabCorp",
+      "classification": "Pathogenic",
+      "curator_notes": "Variant summary: RYR1 c.10348-6C>G alters a non-conserved nucleotide located close to a canonical splice site and therefore could affect mRNA splicing, leading to a significantly altered protein sequence. Computational tools predict a significant impact on normal splicing: Two predict the variant weakens a canonical 3' acceptor site. One predicts the variant abolishes this site. At least one publication reports experimental evidence that this variant affects mRNA splicing (Monnier_2008). The variant allele was found at a frequency of 2e-05 in 251458 control chromosomes (gnomAD). c.10348-6C>G has been reported in the literature in individuals affected with Myopathy, RYR1-Associated (e.g. Monnier_2008, Bevilacqua_2011, Abath Neto_2017). These data indicate that the variant is likely to be associated with disease. The following publications have been ascertained in the context of this evaluation (PMID: 28818389, 18253926, 21062345). ClinVar contains an entry for this variant (Variation ID: 132994). Based on the evidence outlined above, the variant was classified as pathogenic.",
+      "assertion_criteria": "LabCorp Variant Classification Summary - May 2015",
+      "date_last_evaluated": "2024-05-21"
+    },
+    {
+      "submitter_name": "Fulgent Genetics, Fulgent Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-05-08"
+    },
+    {
+      "submitter_name": "Department of Pathology and Laboratory Medicine, Sinai Health System",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-09-21"
+    },
+    {
+      "submitter_name": "3billion",
+      "classification": "Pathogenic",
+      "curator_notes": "The variant is observed at an extremely low frequency in the gnomAD v4.0.0 dataset (total allele frequency: 0.003%). Predicted Consequence/Location: Intron variant In silico tools predict the variant to alter splicing and produce an abnormal transcript [SpliceAI: 0.47 (>=0.2, moderate evidence for spliceogenicity)]. The variant has been reported to be in trans with a pathogenic variant as either compound heterozygous or homozygous in at least one similarly affected unrelated individual (PMID: 18253926). The variant has been reported to co-segregate with the disease in at least one similarly affected relative/individual in the same family or similarly affected unrelated family (PMID: 18253926). The variant has been reported at least twice as pathogenic with clinical assertions and evidence for the classification (ClinVar ID: VCV000132994 /PMID: 18253926). Therefore, this variant is classified as Pathogenic according to the recommendation of ACMG/AMP guideline.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-06-11"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change falls in intron 68 of the RYR1 gene. It does not directly change the encoded amino acid sequence of the RYR1 protein. RNA analysis indicates that this variant induces altered splicing and may result in an absent or altered protein product. This variant is present in population databases (rs193922837, gnomAD 0.03%). This variant has been observed in individual(s) with congenital myopathy (PMID: 18253926, 20839240, 21062345). In at least one individual the data is consistent with being in trans (on the opposite chromosome) from a pathogenic variant. ClinVar contains an entry for this variant (Variation ID: 132994). Studies have shown that this variant results in retention of intron 68, and produces a non-functional protein and/or introduces a premature termination codon (PMID: 18253926). For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2025-11-13"
+    },
+    {
+      "submitter_name": "Rady Children's Institute for Genomic Medicine, Rady Children's Hospital San Diego",
+      "classification": "Pathogenic",
+      "curator_notes": "Multiple splice prediction tools suggest this variant is likely to interfere with normal splicing. This variant has been previously reported as a compound heterozygous change in patients with RYR1-related myopathies (PMID: 18253926, 20839240, 21062345, 23553484, 28818389, 35627144). Additionally, this variant in cis with c.14524G>A (p.Val4842Met), is part of a known haplotype and has been described as a compound heterozygous change in individuals with RYR1-related myopathies (PMID: 18253926, 20839240). Functional studies have demonstrated that the c.10348-6C>G variant results in aberrant splicing that introduces a premature termination codon causing the mRNA to undergo nonsense-mediated decay (PMID: 18253926, 25525159). The c.10348-6C>G variant is present in the latest version of the gnomAD population database at an allele frequency of 0.002% (43/1614248), and is absent in the homozygous state, thus is presumed to be rare. Based on the available evidence, c.14524G>A (p.Val4842Met) is classified as Pathogenic.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-02-25"
+    }
+  ]
+}

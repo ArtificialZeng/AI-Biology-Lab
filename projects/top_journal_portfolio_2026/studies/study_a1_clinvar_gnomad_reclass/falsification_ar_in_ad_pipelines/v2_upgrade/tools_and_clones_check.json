@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "bcftools": null,
+    "tabix": null,
+    "samtools": null,
+    "bgzip": null,
+    "curl": "/opt/anaconda3/bin/curl",
+    "java": "/usr/bin/java"
+  },
+  "clones": {
+    "Exomiser": {
+      "ok": true,
+      "sha": "98f4e0b6f2f3f5bf790a9f955808c98968559996",
+      "date": "2026-06-09 12:21:31 +0100"
+    },
+    "AutoGVP": {
+      "ok": true,
+      "sha": "054e2b7838088d71f44a488847279c674139c86a",
+      "date": "2026-11-17 16:47:49 -0500"
+    },
+    "InterVar": {
+      "ok": true,
+      "sha": "4801682d37982bb3e99b50392790878a568b42cd",
+      "date": "2021-08-31 10:33:08 -0230"
+    }
+  },
+  "py_pkgs": "{'pysam': False, 'cyvcf2': False, 'requests': True, 'scipy': True, 'statsmodels': True, 'sklearn': True, 'rdkit': True}"
+}

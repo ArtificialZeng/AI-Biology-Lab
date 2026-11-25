@@ -1,0 +1,134 @@
+{
+  "pilot_a2_allele_exact_audit": {
+    "n_plp_checked": 0,
+    "exact_allele_confirmed": 0,
+    "multiallelic_rsid_collisions": 0,
+    "exact_confirm_rate": null,
+    "confirmed_examples": []
+  },
+  "pilot_a1_stat_tests": {
+    "sm_loeuf_bbw1_vs_0": {
+      "n1": 5,
+      "n0": 9,
+      "med1": 0.3798,
+      "med0": 1.0637,
+      "U": 5.0,
+      "p_mw": 0.023258
+    },
+    "sm_pleio_bbw1_vs_0": {
+      "n1": 5,
+      "n0": 9,
+      "med1": 1840.0,
+      "med0": 587.0,
+      "U": 34.0,
+      "p_mw": 0.14203
+    },
+    "sm_subum_bbw1_vs_0": {
+      "n1": 13,
+      "n0": 14,
+      "med1": 2.0,
+      "med0": 2.5,
+      "U": 91.5,
+      "p_mw": 1.0
+    },
+    "ab_loeuf_bbw1_vs_0": {
+      "n1": 13,
+      "n0": 12,
+      "med1": 0.7363,
+      "med0": 0.71,
+      "U": 87.0,
+      "p_mw": 0.64217
+    },
+    "ab_pleio_bbw1_vs_0": {
+      "n1": 13,
+      "n0": 12,
+      "med1": 756.0,
+      "med0": 1506.5,
+      "U": 53.0,
+      "p_mw": 0.18046
+    }
+  },
+  "pilot_b1_stat_tests": {
+    "cohort_2017_2023_ind_vs_nonus": {
+      "ind": [
+        16,
+        43
+      ],
+      "nonus": [
+        21,
+        12
+      ],
+      "OR": 4.703,
+      "p": 0.0008618
+    },
+    "cohort_2017_2023_ind_vs_other": {
+      "ind": [
+        16,
+        43
+      ],
+      "other": [
+        22,
+        15
+      ],
+      "OR": 3.942,
+      "p": 0.002515
+    },
+    "cohort_2024_ind_vs_nonus": {
+      "ind": [
+        77,
+        78
+      ],
+      "nonus": [
+        37,
+        16
+      ],
+      "OR": 2.343,
+      "p": 0.01601
+    },
+    "cohort_2024_ind_vs_other": {
+      "ind": [
+        77,
+        78
+      ],
+      "other": [
+        86,
+        33
+      ],
+      "OR": 2.64,
+      "p": 0.0001875
+    }
+  },
+  "pilot_b2_stat_tests": {
+    "tirz_vs_sita_pancreatitis_physician_only": {
+      "OR": 3.058,
+      "p": 3.986e-06
+    },
+    "tirz_vs_sita_pancreatitis_pooled_diluted": {
+      "OR": 1.039,
+      "p": 0.7781
+    },
+    "sema_impaired_gastric_emptying_lawyer_vs_consumer": {
+      "OR": 38.61,
+      "p": 0.0
+    },
+    "sema_impaired_gastric_emptying_lawyer_vs_md_lower_bound": {
+      "OR_lower_bound": 90.51,
+      "p_upper_bound": 0.0
+    }
+  },
+  "pilot_b3_stat_tests": {
+    "injectable_vs_oral_duration_mw": {
+      "n_inj": 1052,
+      "n_oral": 474,
+      "med_inj": 2369,
+      "med_oral": 1207,
+      "p_mw": 8.585e-71
+    },
+    "cgmp_vs_labeling_recall_firm_shortage_overlap": {
+      "cgmp": "61/355 (17.18%)",
+      "labeling_placebo": "2/39 (5.13%)",
+      "OR": 3.838,
+      "p_fisher": 0.063104
+    }
+  }
+}

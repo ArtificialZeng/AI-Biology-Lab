@@ -1,0 +1,366 @@
+{
+  "executed_at": "2026-11-25 09:44:08 CST",
+  "openalex_queries": {
+    "b2_fda_2026_sweep": {
+      "query": "ClinicalTrials.gov FDA reminder OR noncompliance 2026",
+      "rc": 2,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/oa_b2_fda_2026_sweep.json",
+      "stderr": "usage: openalex_cli.py [-h] [--api-key API_KEY]\n                       {resolve,get,download-pdf,filter,rate-limit} ...\nopenalex_cli.py: error: argument command: invalid choice: 'works' (choose from resolve, get, download-pdf, filter, rate-limit)"
+    },
+    "b2_fdaaa_enforcement": {
+      "query": "FDAAA 801 ClinicalTrials.gov enforcement compliance industry academic",
+      "rc": 2,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/oa_b2_fdaaa_enforcement.json",
+      "stderr": "usage: openalex_cli.py [-h] [--api-key API_KEY]\n                       {resolve,get,download-pdf,filter,rate-limit} ...\nopenalex_cli.py: error: argument command: invalid choice: 'works' (choose from resolve, get, download-pdf, filter, rate-limit)"
+    },
+    "b2_fda_notice_noncompliance": {
+      "query": "\"Notice of Noncompliance\" ClinicalTrials.gov FDA",
+      "rc": 2,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/oa_b2_fda_notice_noncompliance.json",
+      "stderr": "usage: openalex_cli.py [-h] [--api-key API_KEY]\n                       {resolve,get,download-pdf,filter,rate-limit} ...\nopenalex_cli.py: error: argument command: invalid choice: 'works' (choose from resolve, get, download-pdf, filter, rate-limit)"
+    },
+    "a1_gnomad_v4_clinvar_acmg": {
+      "query": "gnomAD v4 ClinVar ancestry reclassification ACMG",
+      "rc": 2,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/oa_a1_gnomad_v4_clinvar_acmg.json",
+      "stderr": "usage: openalex_cli.py [-h] [--api-key API_KEY]\n                       {resolve,get,download-pdf,filter,rate-limit} ...\nopenalex_cli.py: error: argument command: invalid choice: 'works' (choose from resolve, get, download-pdf, filter, rate-limit)"
+    },
+    "a1_rsid_multiallelic_clinvar": {
+      "query": "multiallelic rsID collision ClinVar gnomAD reclassification",
+      "rc": 2,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/oa_a1_rsid_multiallelic_clinvar.json",
+      "stderr": "usage: openalex_cli.py [-h] [--api-key API_KEY]\n                       {resolve,get,download-pdf,filter,rate-limit} ...\nopenalex_cli.py: error: argument command: invalid choice: 'works' (choose from resolve, get, download-pdf, filter, rate-limit)"
+    },
+    "a1_clinvar_submitters_ancestry": {
+      "query": "ClinVar submitters ancestry VUS disparity",
+      "rc": 2,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/oa_a1_clinvar_submitters_ancestry.json",
+      "stderr": "usage: openalex_cli.py [-h] [--api-key API_KEY]\n                       {resolve,get,download-pdf,filter,rate-limit} ...\nopenalex_cli.py: error: argument command: invalid choice: 'works' (choose from resolve, get, download-pdf, filter, rate-limit)"
+    }
+  },
+  "europepmc_queries": {
+    "b2_fda_2026_epmc": {
+      "query": "(\"ClinicalTrials.gov\" AND (\"2026\" OR \"Makary\" OR \"Notice of Noncompliance\") AND (FDA OR FDAAA))",
+      "rc": 0,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/epmc_b2_fda_2026_epmc.json",
+      "hit_count": 12816,
+      "top_hits": [
+        {
+          "year": "2027",
+          "title": "ONC201/dordaviprone for H3 K27M-mutant tumors: Discovery, mechanisms, therapeutic potential, and future directions.",
+          "pmid": "42751161",
+          "doi": "10.1016/j.gendis.2026.102335",
+          "journal": null
+        },
+        {
+          "year": "2027",
+          "title": "Clinical Translation of Patient-Derived Organoids: Perspectives for Personalized Therapy in Cancer.",
+          "pmid": "42629644",
+          "doi": "10.1002/ijc.70717",
+          "journal": null
+        },
+        {
+          "year": "2027",
+          "title": "Defining biomaterial-driven design principles for bioabsorbable flow diverters: current state and perspectives.",
+          "pmid": "42571485",
+          "doi": "10.1016/j.bioactmat.2026.07.045",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "ATMPs in oncology: A comprehensive review of CAR-T and CIK cell therapies within the European regulatory framework.",
+          "pmid": "43061481",
+          "doi": "10.1016/j.omton.2026.201371",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Gene-activated matrices as nanomedicine platforms for bone regeneration: Delivery, translation and patent landscape.",
+          "pmid": "43034744",
+          "doi": "10.1016/j.mtbio.2026.103808",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Non-Sugar Sweetener Consumption and Glycemic Control in Middle-Aged and Older Adults with Prediabetes: Background, Design, and Methods of a Controlled Feeding Trial.",
+          "pmid": "43034695",
+          "doi": "10.1016/j.conctc.2026.101707",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Optimized GENE TARGET framework characterizes barriers to therapeutic development for monogenic neurodevelopmental disorders.",
+          "pmid": "43034642",
+          "doi": "10.1016/j.omta.2026.201871",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Development of a whole-blood assay for assessing innate immune activation induced by RNA-targeting therapeutics.",
+          "pmid": "43022337",
+          "doi": "10.1016/j.omtn.2026.103141",
+          "journal": null
+        }
+      ]
+    },
+    "b2_fdaaa_industry_academic": {
+      "query": "(\"FDAAA\" AND \"ClinicalTrials.gov\" AND \"industry\" AND \"academic\" AND \"compliance\")",
+      "rc": 0,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/epmc_b2_fdaaa_industry_academic.json",
+      "hit_count": 49,
+      "top_hits": [
+        {
+          "year": "2026",
+          "title": "Assessing selective outcome reporting in sleep disorder trials: A registry-publication comparison study.",
+          "pmid": "42964402",
+          "doi": "10.1016/j.sleepx.2026.100204",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Results Reporting and Registry-Linked Publications Among Extracorporeal Membrane Oxygenation Studies Registered on ClinicalTrials.gov: A Cross-Sectional Meta-Research Study.",
+          "pmid": "42845574",
+          "doi": "10.7759/cureus.117548",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Oncology drug development in the UK: analysis of the past 25 years and focus on the 2026 reboot of the clinical trial regulatory framework.",
+          "pmid": "42493600",
+          "doi": "10.1038/s41416-026-03543-6",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Tracking outcome changes in benign prostatic hyperplasia trials: a version history review of ClinicalTrials.gov records.",
+          "pmid": "42458564",
+          "doi": "10.1186/s13063-026-09892-0",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Consistency Between Clinical Trial Registry Entries and Journal Publications in Transfusion Medicine: An Observational Study.",
+          "pmid": "42194944",
+          "doi": "10.3390/jcm15103981",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Evaluation of safety reporting in interventional trials of benign prostatic hyperplasia: a registry-publication comparison study.",
+          "pmid": "41664086",
+          "doi": "10.1186/s12894-026-02077-6",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Tyrosine kinase inhibitors for chronic myeloid leukemia: a landscape analysis of global clinical trials based on public registries.",
+          "pmid": "42769105",
+          "doi": "10.3389/fphar.2026.1904028",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "The global landscape of pediatric monoclonal antibody (mAb) clinical trials: an analysis of ClinicalTrials.gov.",
+          "pmid": "42745989",
+          "doi": "10.3389/fped.2026.1846142",
+          "journal": null
+        }
+      ]
+    },
+    "a1_gnomad_v4_clinvar_epmc": {
+      "query": "(\"gnomAD\" AND (\"v4\" OR \"v4.0\" OR \"v4.1\") AND \"ClinVar\" AND (\"ancestry\" OR \"reclassification\"))",
+      "rc": 0,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/epmc_a1_gnomad_v4_clinvar_epmc.json",
+      "hit_count": 389,
+      "top_hits": [
+        {
+          "year": "2026",
+          "title": "A New Case of Lethal Congenital Contracture Syndrome Type 3 With Hyperinsulinism and Optic Atrophy.",
+          "pmid": "42747333",
+          "doi": "10.1111/cge.70231",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "MARiO: Predicting Cancer Variant Pathogenicity by Integrating In Silico Evaluation and Patient-Level Mutational Contexts.",
+          "pmid": "43041015",
+          "doi": "10.1111/cas.70597",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Genetic testing considerations for hereditary duodenopancreatic neuroendocrine tumors.",
+          "pmid": "42971718",
+          "doi": "10.1111/jne.70305",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Biallelic DAW1 variants reveal a tissue-specific role in heterotaxy without primary ciliary dyskinesia.",
+          "pmid": "42773161",
+          "doi": "10.1038/s41431-026-02228-1",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Gene-specific machine learning model EpiPred identifies likely pathogenic variants in the epilepsy-related gene STXBP1.",
+          "pmid": "42752354",
+          "doi": "10.1172/jci207160",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Predicting genome-wide functional constraints with GPN-Star.",
+          "pmid": "42717086",
+          "doi": "10.1038/s41586-026-11005-5",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Kallmann Syndrome and MSI-H Colorectal Cancer in a Patient with a Germline &lt;i&gt;PROKR2&lt;/i&gt; Variant: A Case Report with Exploratory Cohort Analysis.",
+          "pmid": "43027951",
+          "doi": "10.3390/ijms27219703",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Combining MAVEs and computational predictors improves variant classification across ancestries in hereditary cancer genes.",
+          "pmid": "42989408",
+          "doi": "10.1186/s13073-026-01799-4",
+          "journal": null
+        }
+      ]
+    },
+    "a1_acmg_v33_reclass": {
+      "query": "(\"ACMG\" AND (\"v3.2\" OR \"v3.3\") AND \"ClinVar\" AND \"gnomAD\")",
+      "rc": 0,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/epmc_a1_acmg_v33_reclass.json",
+      "hit_count": 90,
+      "top_hits": [
+        {
+          "year": "2026",
+          "title": "The clinical spectrum of MECP2 variants in males: a multicenter Turkish cohort of 22 probands, with implications for diagnosis and variant interpretation.",
+          "pmid": "42920114",
+          "doi": "10.1186/s12887-026-07905-0",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Germline cancer predisposition variants and pharmacogenomic landscape of hepatocellular carcinoma in Egyptian patients",
+          "pmid": null,
+          "doi": null,
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Diagnostic yield and variant spectrum of whole-exome sequencing in Iranian probands with congenital and early-onset ocular disorders.",
+          "pmid": "42495084",
+          "doi": "10.1016/j.ymgmr.2026.101339",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Whole-Genome Sequencing Pilot of the Central Asian Genomic Diversity Project Reveals Distinct Histories, Adaptation, and Introgression.",
+          "pmid": "42411400",
+          "doi": "10.1002/advs.76320",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Position Statement of the Indian Academy of Medical Genetics on Next Generation Sequencing-Based Testing for Rare Genetic Disorders.",
+          "pmid": "42298261",
+          "doi": "10.1007/s12098-026-06124-w",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Implementation of comprehensive genome analysis in clinical sequencing at an academic institution.",
+          "pmid": "42215795",
+          "doi": "10.1038/s10038-026-01482-x",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Analysis of structure and conservation for supporting functional evaluation of PMS2 missense variants.",
+          "pmid": "41851261",
+          "doi": "10.1038/s41431-026-02072-3",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Automated patch clamp data improve variant classification and penetrance stratification for SCN5A-Brugada syndrome.",
+          "pmid": "41251004",
+          "doi": "10.1093/eurheartj/ehaf874",
+          "journal": null
+        }
+      ]
+    },
+    "a1_rsid_collision_epmc": {
+      "query": "(\"ClinVar\" AND \"gnomAD\" AND (\"multiallelic\" OR \"rsID\") AND \"reclassification\")",
+      "rc": 0,
+      "output_file": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/prior_art_systematic_20261125/epmc_a1_rsid_collision_epmc.json",
+      "hit_count": 21,
+      "top_hits": [
+        {
+          "year": "2026",
+          "title": "Phenotypic Evidence for the Reclassification of the &lt;i&gt;RYR1&lt;/i&gt; p.(Glu4410Asp) Variant: From Uncertain Significance to Likely Benign.",
+          "pmid": "42938406",
+          "doi": "10.3390/genes17101290",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "A translational pipeline for classification of variants of uncertain significance to support gene therapy clinical trial in OTOF-related deafness.",
+          "pmid": "42843343",
+          "doi": "10.1016/j.xcrm.2026.103093",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Extended Germline Profiling of Cancer Predisposition and Homologous Recombination Repair Genes in 275 Russian Patients with Triple-Negative Breast Cancer.",
+          "pmid": "42652125",
+          "doi": "10.3390/biomedicines14081742",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Integrating Genetic Data and Electronic Medical Records to Reassess Variant Pathogenicity in the Taiwanese Han Population.",
+          "pmid": "42510858",
+          "doi": "10.3390/genes17070818",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "MuSA: a Nextflow pipeline for deep, reproducible annotation and clinical ranking of genomic variants.",
+          "pmid": "42304195",
+          "doi": "10.1186/s12859-026-06513-0",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "&lt;i&gt;paRDal&lt;/i&gt;: bioinformatics framework for a parallel RNA and DNA NGS analysis in hereditary cancer diagnostics.",
+          "pmid": "42979107",
+          "doi": "10.3389/fbinf.2026.1944540",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Genomic landscape of autism spectrum disorder in Brazil.",
+          "pmid": "42721435",
+          "doi": "10.1590/1678-4685-gmb-2025-0247",
+          "journal": null
+        },
+        {
+          "year": "2025",
+          "title": "Whole-exome sequencing of kidney transplant recipients and donors: insights into end-stage renal disease and post-transplant genetic risk.",
+          "pmid": "41194031",
+          "doi": "10.1186/s12882-025-04553-x",
+          "journal": null
+        }
+      ]
+    }
+  },
+  "pubmed_scripts_found": [
+    "/Users/mac/.gemini/config/plugins/chemistry/skills/pubmed_database/scripts/pubmed_api.py"
+  ]
+}

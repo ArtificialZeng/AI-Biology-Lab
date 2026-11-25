@@ -1,0 +1,296 @@
+{
+  "variant_id": "8617",
+  "allele_info": {
+    "chromosome": "11",
+    "position_start": "47331406",
+    "position_stop": "47352702",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "11p11.2",
+    "dbsnp_rsid": "rs2856655"
+  },
+  "conditions": [
+    {
+      "name": "MYBPC3-related disorder",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Cardiovascular phenotype",
+      "medgen_cui": "CN230736",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Hypertrophic cardiomyopathy 4",
+      "medgen_cui": "C1861862",
+      "omim_id": "115197",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Left ventricular noncompaction 10",
+      "medgen_cui": "C3715165",
+      "omim_id": "615396",
+      "orphanet_id": "54260",
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Cardiomyopathy",
+      "medgen_cui": "C0878544",
+      "omim_id": null,
+      "orphanet_id": "167848",
+      "hpo_terms": [
+        "HP:0001638",
+        "HP:0001638"
+      ]
+    },
+    {
+      "name": "Primary familial hypertrophic cardiomyopathy",
+      "medgen_cui": "C0949658",
+      "omim_id": "PS192600",
+      "orphanet_id": "99739",
+      "hpo_terms": []
+    },
+    {
+      "name": "Hypertrophic cardiomyopathy",
+      "medgen_cui": "C0007194",
+      "omim_id": null,
+      "orphanet_id": "217569",
+      "hpo_terms": [
+        "HP:0001639",
+        "HP:0001639"
+      ]
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": "C0949658",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "MYBPC3-related condition",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "MYBPC3-related disorders",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "CARDIOMYOPATHY, FAMILIAL HYPERTROPHIC, 4",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "12628722",
+    "12951062",
+    "14563344",
+    "15671604",
+    "16181148",
+    "18761664",
+    "18929575",
+    "20542340",
+    "20800588",
+    "22112859",
+    "22267749",
+    "24510615",
+    "25281569",
+    "25351510",
+    "26688216",
+    "27483260",
+    "27532257",
+    "28087566",
+    "29398688",
+    "29907873",
+    "30165862",
+    "30847666",
+    "31447099",
+    "31524317",
+    "32380161",
+    "32492895",
+    "32830170",
+    "32841044",
+    "33407484",
+    "33487615",
+    "33495596",
+    "33495597",
+    "33658040",
+    "33673806",
+    "33782553",
+    "34542152",
+    "38489124",
+    "38757491",
+    "40115818"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "Women's Health and Genetics/Laboratory Corporation of America, LabCorp",
+      "classification": "Pathogenic",
+      "curator_notes": "Variant summary: MYBPC3 c.2459G>A (p.Arg820Gln) results in a conservative amino acid change located in the fibronectin type III domain (IPR003961) of the encoded protein sequence. Two of four in-silico tools predict a benign effect of the variant on protein function. The variant allele was found at a frequency of 2e-05 in 249220 control chromosomes (gnomAD). c.2459G>A has been reported in the literature in multiple individuals and several families affected with Hypertrophic Cardiomyopathy, many of East Asian ancestry (e.g. Konno_2003, Hodatsu_2014, Chung_2020). These data indicate that the variant is very likely to be associated with disease. A publication reporting experimental evidence evaluating an impact on protein function in a zebrafish model suggests the variant may result in a more severe cardiac phenotype when together with p.Val762Asp in comparison to p.Val762Asp alone; however, since p.Arg820Gln was not examined alone, this study does not necessarily allow convincing conclusions about the variant effect (Hodatsu_2014). The following publications have been ascertained in the context of this evaluation (PMID: 32380161, 25281569, 12628722). Nine submitters have cited clinical-significance assessments for this variant to ClinVar after 2014 and all classified the variant as pathogenic/likely pathogenic. Based on the evidence outlined above, the variant was classified as pathogenic.",
+      "assertion_criteria": "LabCorp Variant Classification Summary - May 2015",
+      "date_last_evaluated": "2023-07-10"
+    },
+    {
+      "submitter_name": "PreventionGenetics, part of Exact Sciences",
+      "classification": "Likely pathogenic",
+      "curator_notes": "The MYBPC3 c.2459G>A variant is predicted to result in the amino acid substitution p.Arg820Gln. This variant has been reported in the heterozygous state in individuals with hypertrophic cardiomyopathy and segregated with disease in multiple families (see, for example, Konno et al. 2003. PubMed ID: 12628722; Kim et al. 2020. PubMed ID: 32492895; Supplemental Table 2, Field et al. 2022. PubMed ID: 34400558), although it has been detected in the heterozygous state in asymptomatic carriers as well (Konno et al. 2003. PubMed ID: 12628722; Hayashi et al. 2018. PubMed ID: 29907873). It has also been described in the compound heterozygous state with a second MYBPC3 variant in one individual, who was noted to have substantial left ventricular hypertrophy at age 11 (Hodatsu et al. 2014. PubMed ID: 25281569). In vitro and in vivo experimental studies suggest this variant may affect protein function through impaired protein stability or protein-protein interactions within the sarcomere (Hodatsu et al. 2014. PubMed ID: 25281569; Nadvi et al. 2015. PubMed ID: 26688216; Pearce et al. 2024. PubMed ID: 38042491). Alternative nucleotide changes affecting the same amino acid (p.Arg820Trp, p.Arg820Pro) have been reported in individuals with hypertrophic cardiomyopathy (Ripoll Vera et al 2010. PubMed ID: 20542340; Supplementary Table S2, Sepp et al. 2022. PubMed ID: 35626289 ). This variant is reported in 0.0056% of alleles in individuals of East Asian descent in gnomAD. This variant is interpreted as likely pathogenic.",
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": "2024-03-14"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change replaces arginine, which is basic and polar, with glutamine, which is neutral and polar, at codon 820 of the MYBPC3 protein (p.Arg820Gln). This variant is present in population databases (rs2856655, gnomAD 0.006%). This missense change has been observed in individuals with hypertrophic cardiomyopathy (PMID: 12628722, 12951062, 18761664, 18929575, 20542340, 20800588, 22112859, 22267749, 25281569, 27483260, 28087566). It is commonly reported in individuals of Japan ancestry (PMID: 12628722, 12951062, 18761664, 18929575, 20542340, 20800588, 22112859, 22267749, 25281569, 27483260, 28087566). This variant is also known as c.2491G>A. ClinVar contains an entry for this variant (Variation ID: 8617). An algorithm developed to predict the effect of missense changes on protein structure and function (PolyPhen-2) suggests that this variant is likely to be disruptive. Experimental studies have shown that this missense change affects MYBPC3 function (PMID: 25281569). For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2026-01-19"
+    },
+    {
+      "submitter_name": "Blueprint Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-09-23"
+    },
+    {
+      "submitter_name": "CeGaT Center for Human Genetics Tuebingen",
+      "classification": "Pathogenic",
+      "curator_notes": "MYBPC3: PP1:Strong, PS4, PM5, PM2:Supporting, PS3:Supporting",
+      "assertion_criteria": "CeGaT Center For Human Genetics Tuebingen Variant Classification Criteria Version 2",
+      "date_last_evaluated": "2025-07-01"
+    },
+    {
+      "submitter_name": "OMIM",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": "2005-02-01"
+    },
+    {
+      "submitter_name": "CHEO Genetics Diagnostic Laboratory, Children's Hospital of Eastern Ontario",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2018-02-05"
+    },
+    {
+      "submitter_name": "AiLife Diagnostics, AiLife Diagnostics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-08-03"
+    },
+    {
+      "submitter_name": "Medical Genome Center, National Cerebral and Cardiovascular Center",
+      "classification": "Likely pathogenic",
+      "curator_notes": "NM_000256.3: c.2459G>A is identified in the Japanese general populations in a heterozygous manner (MAF 0.0003), and not all heterozygous carriers suffer cardiomyopathy. The variant seems to be a modifier for hypertrophic cardiomyopathy.",
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": "2025-03-01"
+    },
+    {
+      "submitter_name": "Ambry Genetics",
+      "classification": "Likely pathogenic",
+      "curator_notes": "Based on data from gnomAD, the T allele has an overall frequency of 0.002% (5/249220) total alleles studied. The highest observed frequency was 0.0056% (1/17976) of East Asian alleles. This alteration has been reported in multiple individuals with hypertrophic cardiomyopathy (HCM) and has been shown to segregate with disease (Konno, 2003; Nanni, 2003; Bahrudin, 2008; Otsuka, 2012; Lopes, 2015; Seidelmann, 2017; Walsh, 2017). This amino acid position is highly conserved in available vertebrate species. The in silico prediction for this alteration is inconclusive. Based on the available evidence, this alteration is classified as likely pathogenic.",
+      "assertion_criteria": "Ambry Variant Classification Scheme 2023",
+      "date_last_evaluated": "2026-04-07"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Likely pathogenic",
+      "curator_notes": "Not observed at significant frequency in large population cohorts (gnomAD); In silico analysis supports that this missense variant has a deleterious effect on protein structure/function; This variant is associated with the following publications: (PMID: 18761664, 23197398, 16181148, 31524317, 23396983, 26688216, 24510615, 12951062, 15671604, 25281569, 27483260, 27532257, 28420666, 29398688, 20975235, 17263690, 22112859, 19149795, 16115294, 24793961, 18929575, 20800588, 28087566, 25351510, 24621997, 20474083, 28679633, 29907873, 30165862, 31451005, 30847666, 31447099, 31142139, 33487615, 33673806, 33407484, 34135346, 33658040, 34542152, 34915024, 18533079, 22267749, 32492895, 36264615, 37652022, 34400558, 32830170, 37728764, 38042491, 33782553, 12628722, 40115818, 38757491, 32841044, 38489124, 33495596, Gagliardi2025[CaseReport], 38456273, 39472908, 39843441)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2026-06-24"
+    },
+    {
+      "submitter_name": "Fulgent Genetics, Fulgent Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-10-16"
+    },
+    {
+      "submitter_name": "Clinical Center for Gene Diagnosis and Therapy, Department of Cardiovascular Surgery, The Second Xiangya Hospital of Central South University",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-06-01"
+    },
+    {
+      "submitter_name": "Genomic Medicine Center of Excellence, King Faisal Specialist Hospital and Research Centre",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-03-26"
+    },
+    {
+      "submitter_name": "Laboratory for Molecular Medicine, Mass General Brigham Personalized Medicine",
+      "classification": "Likely Pathogenic",
+      "curator_notes": "The p.Arg820Gln variant in MYBPC3 has been reported in 16 individuals with HCM, segregated with disease in 6 affected relatives from 3 families (Konno 2003 PMID: 12628722, Nanni 2003 PMID: 12951062, Alders 2003 PMID: 14563344, Shimizu 2003 PMID: 15671604, Konno 2006 PMID: 16181148, Kapplinger 2014 PMID: 24510615, and Hodatsu 2014 PMID: 25281569, LMM data), and has also been reported in ClinVar (Variation ID 8617). Additionally, it has been identified in 3/111676 of European chromosomes and 1/17248 of East Asian chromosomes by the Genome Aggregation Database (gnomAD, http://gnomad.broadinstitute.org; dbSNP rs2856655). Animal models (zebrafish) support that this variant causes HCM (Hodatsu et al. 2014 PMID: 25281569). In summary, this variant meets criteria to be classified as likely pathogenic for hypertrophic cardiomyopathy in an autosomal dominant manner. ACMG/AMP Criteria Applied: PS4, PM2_Supporting, PS3_Moderate, PP1_Moderate.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-11-03"
+    },
+    {
+      "submitter_name": "All of Us Research Program, National Institutes of Health",
+      "classification": "Likely Pathogenic",
+      "curator_notes": "This missense variant replaces arginine with glutamine at codon 820 of the fibronectin type 3 domain C6 of the MYBPC3 protein. Computational prediction tools indicate that this variant has a neutral impact on protein structure and function. A functional study performed in a zebrafish model has shown that this variant causes a phenotype consistent with hypertrophic cardiomyopathy (PMID: 25281569). This variant has been reported in over 30 unrelated individuals affected with hypertrophic cardiomyopathy (PMID: 12628722, 14563344, 16181148, 22112859, 22267749, 24510615, 25351510, 27483260, 27532257, 28087566, 32492895, 32830170, 32841044, 33407484, 33487615, 33495596, 33495597, 33658040, 33673806, 33782553, 34542152, 38489124, 38757491). It has been shown that this variant segregates with disease in six affected individuals across three families (PMID: 12628722). This variant has been reported in an individual affected with pediatric hypertrophic cardiomyopathy in compound heterozygous state with a different MYBPC3 variant (PMID: 25281569). This variant has also been reported in two individuals affected with dilated cardiomyopathy (PMID: 12628722, 15671604, 31524317). A different variant affecting the same codon, p.Arg820Trp, is considered to be disease-causing (ClinVar variation ID: 195850), suggesting that arginine at this position is important for MYBPC3 protein function. This variant has been identified in 5/249220 chromosomes in the general population by the Genome Aggregation Database (gnomAD). Based on the available evidence, this variant is classified as Likely Pathogenic.; This study involves interpretation of variants in research participants for the purpose of population health screening. Participant phenotype was not available at the time of variant classification. Additional details can be found in publication PMID: 35346344, PMCID: PMC8962531",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-09-16"
+    },
+    {
+      "submitter_name": "Color Diagnostics, LLC DBA Color Health",
+      "classification": "Likely pathogenic",
+      "curator_notes": "This missense variant replaces arginine with glutamine at codon 820 of the fibronectin type 3 domain C6 of the MYBPC3 protein. Computational prediction tools indicate that this variant has a neutral impact on protein structure and function. A functional study performed in a zebrafish model has shown that this variant causes a phenotype consistent with hypertrophic cardiomyopathy (PMID: 25281569). This variant has been reported in over 30 unrelated individuals affected with hypertrophic cardiomyopathy (PMID: 12628722, 14563344, 16181148, 22112859, 22267749, 24510615, 25351510, 27483260, 27532257, 28087566, 32492895, 32830170, 32841044, 33407484, 33487615, 33495596, 33495597, 33658040, 33673806, 33782553, 34542152, 38489124, 38757491). It has been shown that this variant segregates with disease in six affected individuals across three families (PMID: 12628722). This variant has been reported in an individual affected with pediatric hypertrophic cardiomyopathy in compound heterozygous state with a different MYBPC3 variant (PMID: 25281569). This variant has also been reported in two individuals affected with dilated cardiomyopathy (PMID: 12628722, 15671604, 31524317). A different variant affecting the same codon, p.Arg820Trp, is considered to be disease-causing (ClinVar variation ID: 195850), suggesting that arginine at this position is important for MYBPC3 protein function. This variant has been identified in 5/249220 chromosomes in the general population by the Genome Aggregation Database (gnomAD). Based on the available evidence, this variant is classified as Likely Pathogenic.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-08-19"
+    },
+    {
+      "submitter_name": "Revvity Omics, Revvity",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-10-29"
+    },
+    {
+      "submitter_name": "3billion",
+      "classification": "Pathogenic",
+      "curator_notes": "The variant is observed at an extremely low frequency in the gnomAD v4.1.0 dataset (total allele frequency: 0.003%). Predicted Consequence/Location: Missense variant Functional studies provide moderate evidence of the variant having a damaging effect on the gene or gene product (PMID: 25281569). The same nucleotide change resulting in the same amino acid change has been previously reported as pathogenic/likely pathogenic with strong evidence (ClinVar ID: VCV000008617 /PMID: 12628722 /3billion dataset). The variant has been observed in multiple (>3) similarly affected unrelated individuals (PMID: 12628722, 12951062). The variant has been reported to co-segregate with the disease in at least 3 similarly affected relatives/individuals in the same family or similarly affected unrelated families (PMID: 12628722, 12951062). Different missense changes at the same codon (p.Arg820Pro, p.Arg820Trp) have been reported as pathogenic/likely pathogenic with strong evidence (ClinVar ID: VCV000180970, VCV000195850 /PMID: 20542340). Therefore, this variant is classified as Pathogenic according to the recommendation of ACMG/AMP guideline.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2026-01-19"
+    }
+  ]
+}

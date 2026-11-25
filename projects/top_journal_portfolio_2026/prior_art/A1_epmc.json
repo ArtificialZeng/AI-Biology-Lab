@@ -1,0 +1,1477 @@
+{
+  "hitCount": 7,
+  "nextCursorMark": "AoJBKDU0NTk1NzU1",
+  "results": [
+    {
+      "id": "37453362",
+      "source": "MED",
+      "pmid": "37453362",
+      "pmcid": "PMC10366401",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC10366401"
+        ]
+      },
+      "doi": "10.1016/j.ebiom.2023.104705",
+      "title": "Drug approval prediction based on the discrepancy in gene perturbation effects between cells and humans.",
+      "authorString": "Park M, Kim D, Kim I, Im SH, Kim S.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Park M",
+            "lastName": "Park",
+            "firstName": "Minhyuk",
+            "initials": "M",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-3466-2638"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, South Korea."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Kim D",
+            "lastName": "Kim",
+            "firstName": "Donghyo",
+            "initials": "D",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, South Korea."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Kim I",
+            "lastName": "Kim",
+            "firstName": "Inhae",
+            "initials": "I",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "ImmunoBiome Inc., Pohang, South Korea."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Im SH",
+            "lastName": "Im",
+            "firstName": "Sin-Hyeog",
+            "initials": "SH",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, South Korea; ImmunoBiome Inc., Pohang, South Korea."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Kim S",
+            "lastName": "Kim",
+            "firstName": "Sanguk",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, South Korea. Electronic address: sukim@postech.ac.kr."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0003-3466-2638"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "volume": "94",
+        "journalIssueId": 3613968,
+        "dateOfPublication": "2023 Aug",
+        "monthOfPublication": 8,
+        "yearOfPublication": 2023,
+        "journal": {
+          "medlineAbbreviation": "EBioMedicine",
+          "title": "EBioMedicine",
+          "essn": "2352-3964",
+          "issn": "2352-3964",
+          "isoabbreviation": "EBioMedicine",
+          "nlmid": "101647039"
+        },
+        "printPublicationDate": "2023-08-01"
+      },
+      "pubYear": "2023",
+      "pageInfo": "104705",
+      "abstractText": "<h4>Background</h4>Poor translation between in\u00a0vitro and clinical studies due to the cells/humans discrepancy in drug target perturbation effects leads to safety failures in clinical trials, thus increasing drug development costs and reducing patients' life quality. Therefore, developing a predictive model for drug approval considering the cells/humans discrepancy is needed to reduce drug attrition rates in clinical trials.<h4>Methods</h4>Our machine learning framework predicts drug approval in clinical trials based on the cells/humans discrepancy in drug target perturbation effects. To evaluate the discrepancy to predict drug approval (1404 approved and 1070 unapproved drugs), we analysed CRISPR-Cas9 knockout and loss-of-function mutation rate-based gene perturbation effects on cells and humans, respectively. To validate the risk of drug targets with the cells/humans discrepancy, we examined the targets of failed and withdrawn drugs due to safety problems.<h4>Findings</h4>Drug approvals in clinical trials were correlated with the cells/humans discrepancy in gene perturbation effects. Genes tolerant to perturbation effects on cells but intolerant to those on humans were associated with failed drug targets. Furthermore, genes with the cells/humans discrepancy were related to drugs withdrawn due to severe side effects. Motivated by previous studies assessing drug safety through chemical properties, we improved drug approval prediction by integrating chemical information with the cells/humans discrepancy.<h4>Interpretation</h4>The cells/humans discrepancy in gene perturbation effects facilitates drug approval prediction and explains drug safety failures in clinical trials.<h4>Funding</h4>S.K. received grants from the Korean National Research Foundation (2021R1A2B5B01001903 and 2020R1A6A1A03047902) and IITP (2019-0-01906, Artificial Intelligence Graduate School Program, POSTECH).",
+      "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, South Korea.",
+      "publicationStatus": "ppublish",
+      "language": "eng",
+      "pubModel": "Print-Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "Institute for Information and Communications Technology Promotion",
+            "grantId": "2019-0-01906",
+            "orderIn": 0
+          },
+          {
+            "agency": "National Research Foundation of Korea",
+            "grantId": "2020R1A6A1A03047902",
+            "orderIn": 0
+          },
+          {
+            "agency": "Pohang University of Science and Technology",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Drug Approval"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Artificial Intelligence"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Drug-Related Side Effects and Adverse Reactions"
+          }
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "Drug safety",
+          "Drug Approval",
+          "Machine Learning",
+          "Clinical Translation",
+          "Discrepancy",
+          "Gene Perturbation Effect"
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1016/j.ebiom.2023.104705"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10366401"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10366401?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 9,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by-nc-nd",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "doi"
+        ]
+      },
+      "dateOfCompletion": "2023-08-14",
+      "dateOfCreation": "2023-07-15",
+      "dateOfRevision": "2023-08-14",
+      "electronicPublicationDate": "2023-07-13",
+      "firstPublicationDate": "2023-07-13",
+      "firstIndexDate": "2023-07-16",
+      "fullTextReceivedDate": "2025-02-04",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "41736831",
+      "source": "MED",
+      "pmid": "41736831",
+      "pmcid": "PMC12926492",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC12926492"
+        ]
+      },
+      "doi": "10.3389/fcvm.2026.1735094",
+      "title": "From polygenic risk to digital twins: the future of personalised cardiovascular medicine.",
+      "authorString": "Antoun I, Alkhayer A, Abdelrazik A, Eldesouky M, Thu KM, Ibrahim M, Dhutia H, Somani R, Ng GA.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Antoun I",
+            "lastName": "Antoun",
+            "firstName": "Ibrahim",
+            "initials": "I",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "Department of Cardiovascular Sciences, Clinical Science Wing, University of Leicester, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Alkhayer A",
+            "lastName": "Alkhayer",
+            "firstName": "Alkassem",
+            "initials": "A",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, Guys and St Thomas Hospital, London, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Abdelrazik A",
+            "lastName": "Abdelrazik",
+            "firstName": "Ahmed",
+            "initials": "A",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Eldesouky M",
+            "lastName": "Eldesouky",
+            "firstName": "Mahmoud",
+            "initials": "M",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0009-0000-0317-1428"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Thu KM",
+            "lastName": "Thu",
+            "firstName": "Kaung Myat",
+            "initials": "KM",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "Department of Cardiovascular Sciences, Clinical Science Wing, University of Leicester, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Ibrahim M",
+            "lastName": "Ibrahim",
+            "firstName": "Mokhtar",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "Department of Cardiovascular Sciences, Clinical Science Wing, University of Leicester, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Dhutia H",
+            "lastName": "Dhutia",
+            "firstName": "Harshil",
+            "initials": "H",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "Department of Cardiovascular Sciences, Clinical Science Wing, University of Leicester, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Somani R",
+            "lastName": "Somani",
+            "firstName": "Riyaz",
+            "initials": "R",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "Department of Cardiovascular Sciences, Clinical Science Wing, University of Leicester, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Ng GA",
+            "lastName": "Ng",
+            "firstName": "G Andre",
+            "initials": "GA",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "Department of Cardiovascular Sciences, Clinical Science Wing, University of Leicester, Glenfield Hospital, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "National Institute for Health Research Leicester Research Biomedical Centre, Leicester, United Kingdom."
+                },
+                {
+                  "affiliation": "Leicester British Heart Foundation Centre of Research Excellence, Glenfield Hospital, Leicester, United Kingdom."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0009-0000-0317-1428"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "volume": "13",
+        "journalIssueId": 4112090,
+        "dateOfPublication": "2026 ",
+        "monthOfPublication": 0,
+        "yearOfPublication": 2026,
+        "journal": {
+          "medlineAbbreviation": "Front Cardiovasc Med",
+          "title": "Frontiers in cardiovascular medicine",
+          "essn": "2297-055X",
+          "issn": "2297-055X",
+          "isoabbreviation": "Front Cardiovasc Med",
+          "nlmid": "101653388"
+        },
+        "printPublicationDate": "2026-01-01"
+      },
+      "pubYear": "2026",
+      "pageInfo": "1735094",
+      "abstractText": "Cardiovascular disease (CVD) remains the leading cause of morbidity and mortality worldwide. Traditional risk assessment and treatment approaches often follow generalised strategies that inadequately capture individual variability in disease susceptibility, progression, and therapeutic response. Precision cardiology seeks to overcome these limitations by leveraging genomic, molecular, and computational innovations to enable more individualised care. Advances in polygenic risk scores have improved our ability to stratify cardiovascular risk at a population level, though challenges remain in ensuring clinical utility across diverse populations. Integrating multi-omics platforms, including transcriptomics, proteomics, and metabolomics, offers a more comprehensive understanding of CVD pathophysiology and potential diagnostic or prognostic biomarkers. Pharmacogenomic insights increasingly guide the selection and dosing of cardiovascular therapies such as statins and antiplatelets, supporting the shift toward personalised pharmacologic strategies. Applying artificial intelligence and machine learning to cardiovascular imaging, electronic health records, and wearable data enables more accurate, scalable predictive models. Emerging technologies, including CRISPR-based gene editing, single-cell sequencing, and digital twin modelling, further expand the frontiers of personalised cardiovascular medicine. However, real-world implementation remains limited by regulatory uncertainty, data integration challenges, cost, and concerns about equity and access. This review synthesises advances across genomic, omics, digital, and therapeutic domains in cardiovascular precision medicine, discusses key translational gaps, and highlights ethical and implementation challenges. We emphasise the need for multidisciplinary collaboration, robust validation frameworks, and equitable infrastructure to ensure these innovations lead to meaningful clinical impact. Personalised cardiology is poised to redefine prevention, diagnosis, and treatment paradigms as the field matures, moving from reactive care to proactive, patient-specific strategies.",
+      "affiliation": "Department of Cardiology, University Hospitals of Leicester NHS Trust, Glenfield Hospital, Leicester, United Kingdom.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic-eCollection",
+      "pubTypeList": {
+        "pubType": [
+          "review-article",
+          "Review",
+          "Journal Article"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "British Heart Foundation",
+            "grantId": "RG/17/3/32774",
+            "orderIn": 0
+          },
+          {
+            "agency": "National Institute for Health Research (NIHR)",
+            "grantId": "NIHR204553",
+            "orderIn": 0
+          }
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "Artificial intelligence",
+          "Polygenic Risk Scores",
+          "Precision Cardiology",
+          "Digital Twin Technology",
+          "Multi-omics Biomarkers"
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.3389/fcvm.2026.1735094"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12926492"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12926492?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 6,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "N",
+      "hasLabsLinks": "N",
+      "hasData": "Y",
+      "license": "cc by",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "doi"
+        ]
+      },
+      "dateOfCompletion": "2026-02-25",
+      "dateOfCreation": "2026-02-25",
+      "dateOfRevision": "2026-08-13",
+      "electronicPublicationDate": "2026-02-09",
+      "firstPublicationDate": "2026-02-09",
+      "firstIndexDate": "2026-02-25",
+      "fullTextReceivedDate": "2026-02-24",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "35194167",
+      "source": "MED",
+      "pmid": "35194167",
+      "pmcid": "PMC9133039",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC9133039"
+        ]
+      },
+      "doi": "10.1038/s41380-022-01480-3",
+      "title": "Time will tell. Reply to \"Comments to pharmacological and behavioral divergence of ketamine enantiomers by Jordi Bonaventura et al.\" by Chen et al.",
+      "authorString": "Bonaventura J, Lam S, Carlton M, Boehm M, Gomez JL, Sol\u00eds O, S\u00e1nchez-Soto M, Morris PJ, Fredriksson I, Thomas CJ, Sibley DR, Shaham Y, Zarate CA, Michaelides M.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Bonaventura J",
+            "lastName": "Bonaventura",
+            "firstName": "Jordi",
+            "initials": "J",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-4745-0151"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Departament de Patologia i Terap\u00e8utica Experimental, Institut de Neuroci\u00e8ncies, Universitat de Barcelona, Catalonia, Spain. jbonaventura@ub.edu."
+                },
+                {
+                  "affiliation": "Biobehavioral Imaging and Molecular Neuropsychopharmacology Unit, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA. jbonaventura@ub.edu."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Lam S",
+            "lastName": "Lam",
+            "firstName": "Sherry",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Biobehavioral Imaging and Molecular Neuropsychopharmacology Unit, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Carlton M",
+            "lastName": "Carlton",
+            "firstName": "Meghan",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Biobehavioral Imaging and Molecular Neuropsychopharmacology Unit, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Boehm M",
+            "lastName": "Boehm",
+            "firstName": "Matthew",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Biobehavioral Imaging and Molecular Neuropsychopharmacology Unit, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Gomez JL",
+            "lastName": "Gomez",
+            "firstName": "Juan L",
+            "initials": "JL",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Biobehavioral Imaging and Molecular Neuropsychopharmacology Unit, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Sol\u00eds O",
+            "lastName": "Sol\u00eds",
+            "firstName": "Oscar",
+            "initials": "O",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-8285-5891"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Biobehavioral Imaging and Molecular Neuropsychopharmacology Unit, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "S\u00e1nchez-Soto M",
+            "lastName": "S\u00e1nchez-Soto",
+            "firstName": "Marta",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Molecular Neuropharmacology Section, National Institute of Neurological Disorders and Stroke Intramural Research Program, Bethesda, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Morris PJ",
+            "lastName": "Morris",
+            "firstName": "Patrick J",
+            "initials": "PJ",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Preclinical Innovation, National Center for Advancing Translational Sciences, Rockville, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Fredriksson I",
+            "lastName": "Fredriksson",
+            "firstName": "Ida",
+            "initials": "I",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Neurobiology of Relapse Section, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Thomas CJ",
+            "lastName": "Thomas",
+            "firstName": "Craig J",
+            "initials": "CJ",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Preclinical Innovation, National Center for Advancing Translational Sciences, Rockville, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Sibley DR",
+            "lastName": "Sibley",
+            "firstName": "David R",
+            "initials": "DR",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-0624-962X"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Molecular Neuropharmacology Section, National Institute of Neurological Disorders and Stroke Intramural Research Program, Bethesda, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Shaham Y",
+            "lastName": "Shaham",
+            "firstName": "Yavin",
+            "initials": "Y",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-8242-3319"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Neurobiology of Relapse Section, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Zarate CA Jr",
+            "lastName": "Zarate",
+            "firstName": "Carlos A",
+            "initials": "CA",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Experimental Therapeutics and Pathophysiology Branch, Intramural Research Program, National Institute of Mental Health, Bethesda, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Michaelides M",
+            "lastName": "Michaelides",
+            "firstName": "Michael",
+            "initials": "M",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-0398-4917"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Biobehavioral Imaging and Molecular Neuropsychopharmacology Unit, National Institute on Drug Abuse Intramural Research Program, Baltimore, MD, USA. mike.michaelides@nih.gov."
+                },
+                {
+                  "affiliation": "Department of Psychiatry and Behavioral Sciences, Johns Hopkins University School of Medicine, Baltimore, MD, USA. mike.michaelides@nih.gov."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0002-0624-962X"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0002-4745-0151"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0002-8242-3319"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0002-8285-5891"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-0398-4917"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "issue": "4",
+        "volume": "27",
+        "journalIssueId": 3362919,
+        "dateOfPublication": "2022 Apr",
+        "monthOfPublication": 4,
+        "yearOfPublication": 2022,
+        "journal": {
+          "medlineAbbreviation": "Mol Psychiatry",
+          "title": "Molecular psychiatry",
+          "essn": "1476-5578",
+          "issn": "1359-4184",
+          "isoabbreviation": "Mol Psychiatry",
+          "nlmid": "9607835"
+        },
+        "printPublicationDate": "2022-04-01"
+      },
+      "pubYear": "2022",
+      "pageInfo": "1863-1865",
+      "affiliation": "Departament de Patologia i Terap\u00e8utica Experimental, Institut de Neuroci\u00e8ncies, Universitat de Barcelona, Catalonia, Spain. jbonaventura@ub.edu.",
+      "publicationStatus": "ppublish",
+      "language": "eng",
+      "pubModel": "Print-Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "Letter",
+          "article-commentary"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "Ministry of Economy and Competitiveness | Agencia Estatal de Investigaci\u00f3n (Spanish Agencia Estatal de Investigaci\u00f3n)",
+            "grantId": "PID2020-117989RA-I00",
+            "orderIn": 0
+          },
+          {
+            "agency": "Intramural NIH HHS",
+            "acronym": "ImNIH",
+            "grantId": "ZIA DA000069",
+            "orderIn": 0
+          },
+          {
+            "agency": "U.S. Department of Health & Human Services | NIH | National Institute on Drug Abuse (NIDA)",
+            "grantId": "ZIA000069",
+            "orderIn": 0
+          },
+          {
+            "agency": "Ministry of Economy and Competitiveness | Agencia Estatal de Investigaci\u00f3n (Spanish Agencia Estatal de Investigaci\u00f3n)",
+            "grantId": "RYC-2019-027371-I",
+            "orderIn": 0
+          },
+          {
+            "agency": "Ministry of Economy and Competitiveness | Agencia Estatal de Investigaci\u00f3n",
+            "grantId": "RYC-2019-027371-I",
+            "orderIn": 0
+          },
+          {
+            "agency": "U.S. Department of Health &amp; Human Services | NIH | National Institute on Drug Abuse",
+            "grantId": "ZIA000069",
+            "orderIn": 0
+          },
+          {
+            "agency": "Ministry of Economy and Competitiveness | Agencia Estatal de Investigaci\u00f3n",
+            "grantId": "PID2020-117989RA-I00",
+            "orderIn": 0
+          }
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Free",
+            "availabilityCode": "F",
+            "documentStyle": "html",
+            "site": "Unpaywall",
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/9133039"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1038/s41380-022-01480-3"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC9133039"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC9133039?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 4,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "N",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "authMan": "Y",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "Y",
+      "manuscriptId": "NIHMS1778909",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "doi"
+        ]
+      },
+      "dateOfCompletion": "2022-05-25",
+      "dateOfCreation": "2022-02-23",
+      "dateOfRevision": "2025-05-30",
+      "electronicPublicationDate": "2022-02-22",
+      "firstPublicationDate": "2022-02-22",
+      "firstIndexDate": "2022-02-24",
+      "fullTextReceivedDate": "2025-02-05",
+      "embargoDate": "2022-08-22",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "41161095",
+      "source": "MED",
+      "pmid": "41161095",
+      "pmcid": "PMC12597050",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC12597050"
+        ]
+      },
+      "doi": "10.1016/j.ebiom.2025.105994",
+      "title": "Drug toxicity prediction based on genotype-phenotype differences between preclinical models and humans.",
+      "authorString": "Park M, Song W, Ahn H, Kim S.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Park M",
+            "lastName": "Park",
+            "firstName": "Minhyuk",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, Republic of Korea; ImmunoBiome Inc., Pohang, Republic of Korea."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Song W",
+            "lastName": "Song",
+            "firstName": "Woomin",
+            "initials": "W",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0009-0002-7118-9106"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, Republic of Korea."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Ahn H",
+            "lastName": "Ahn",
+            "firstName": "Hyunsoo",
+            "initials": "H",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-2232-1983"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Graduate School of Artificial Intelligence, Pohang University of Science and Technology, Pohang, Republic of Korea."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Kim S",
+            "lastName": "Kim",
+            "firstName": "Sanguk",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, Republic of Korea; Graduate School of Artificial Intelligence, Pohang University of Science and Technology, Pohang, Republic of Korea. Electronic address: sukim@postech.ac.kr."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0003-2232-1983"
+          },
+          {
+            "type": "ORCID",
+            "value": "0009-0002-7118-9106"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "volume": "121",
+        "journalIssueId": 4041573,
+        "dateOfPublication": "2025 Nov",
+        "monthOfPublication": 11,
+        "yearOfPublication": 2025,
+        "journal": {
+          "medlineAbbreviation": "EBioMedicine",
+          "title": "EBioMedicine",
+          "essn": "2352-3964",
+          "issn": "2352-3964",
+          "isoabbreviation": "EBioMedicine",
+          "nlmid": "101647039"
+        },
+        "printPublicationDate": "2025-11-01"
+      },
+      "pubYear": "2025",
+      "pageInfo": "105994",
+      "abstractText": "<h4>Background</h4>A major hurdle in drug development is the poor translatability of preclinical toxicity findings to human outcomes, largely due to biological differences between humans and model organisms. This gap leads to high clinical trial attrition and post-marketing drug withdrawals. Existing toxicity prediction methods primarily rely on chemical properties and typically overlook these inter-species (or -organism) differences.<h4>Methods</h4>We developed a machine learning framework that incorporates genotype-phenotype differences (GPD) between preclinical models (cell lines and mice) and humans to improve the prediction of human drug toxicity. Clinical risk information on drugs (e.g., clinical trials or post-marketing surveillance) was obtained without bias from published reports, data sources, and databases. GPD of drug target was assessed across three biological contexts: gene essentiality, tissue expression profiles, and network connectivity. We benchmarked the GPD-based model against state-of-the-art toxicity predictors and evaluated its performance using independent datasets and chronological validation.<h4>Findings</h4>Using a dataset of 434 risky and 790 approved drugs, GPD features were significantly associated with drug failures due to severe adverse events. The Random Forest model integrating GPD with chemical features demonstrated enhanced predictive accuracy (AUPRC = 0.63 vs. baseline 0.35; AUROC = 0.75 vs. baseline 0.50), particularly for neurotoxicity and cardiovascular toxicity, two major causes of clinical failures that were previously overlooked due to their chemical properties alone. Our model outperformed state-of-the-art chemical structure-based models and demonstrated a practical ability to anticipate future drug withdrawals in real-world settings.<h4>Interpretation</h4>Incorporating differences in genotype-phenotype relationships offers a biologically grounded strategy for drug toxicity prediction. Our framework enables early identification of high-risk drugs in clinical development. This approach holds promise for reducing development costs, improving patient safety, and increasing the success rate of therapeutic approvals.<h4>Funding</h4>Korean National Research Foundation (2020R1A6A1A03047902, RS-2025-16070008), IITP (2019-0-01906, Artificial Intelligence Graduate School Program and IITP-2024-RS-2024-00441244, Global Data-X Leader HRD program, POSTECH).",
+      "affiliation": "Department of Life Sciences, Pohang University of Science and Technology, Pohang, Republic of Korea; ImmunoBiome Inc., Pohang, Republic of Korea.",
+      "publicationStatus": "ppublish",
+      "language": "eng",
+      "pubModel": "Print-Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "National Research Foundation of Korea",
+            "orderIn": 0
+          },
+          {
+            "agency": "Pohang University of Science and Technology",
+            "orderIn": 0
+          },
+          {
+            "agency": "Institute for Information and Communications Technology Promotion",
+            "grantId": "2019-0-01906",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Animals"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Mice"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Drug Evaluation, Preclinical",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "MT",
+                  "qualifierName": "methods"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Computational Biology",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "MT",
+                  "qualifierName": "methods"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Genotype"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Phenotype"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Genetic Association Studies"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Drug-Related Side Effects and Adverse Reactions"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Machine Learning"
+          }
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "Artificial intelligence",
+          "Drug safety",
+          "Machine Learning",
+          "Translational Medicine",
+          "Cross-species Translation"
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1016/j.ebiom.2025.105994"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12597050"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12597050?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 2,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by-nc-nd",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "doi"
+        ]
+      },
+      "dateOfCompletion": "2025-11-14",
+      "dateOfCreation": "2025-10-29",
+      "dateOfRevision": "2026-09-25",
+      "electronicPublicationDate": "2025-10-28",
+      "firstPublicationDate": "2025-10-28",
+      "firstIndexDate": "2025-10-30",
+      "fullTextReceivedDate": "2025-12-03",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "41493926",
+      "source": "MED",
+      "pmid": "41493926",
+      "pmcid": "PMC12775296",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC12775296"
+        ]
+      },
+      "doi": "10.1177/10760296251413253",
+      "title": "Association of Venous Thromboembolism Risk with Atopic Dermatitis and Janus Kinase Inhibitors Treatment: A Mendelian Randomization Study.",
+      "authorString": "Chen Z, Wang S, Wang Y.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Chen Z",
+            "lastName": "Chen",
+            "firstName": "Zhiqiang",
+            "initials": "Z",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Vascular Surgery, the Fuyang Affiliated Hospital of Anhui Medical University, Fuyang, China."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Wang S",
+            "lastName": "Wang",
+            "firstName": "Shuaibo",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "College of Clinical Medicine, North Henan Medical University, Xinxiang, China."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Wang Y",
+            "lastName": "Wang",
+            "firstName": "Yifei",
+            "initials": "Y",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-3951-2279"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Dermatology, The First Affiliated Hospital of Bengbu Medical University, Bengbu, China."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0002-3951-2279"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "volume": "32",
+        "journalIssueId": 4086749,
+        "dateOfPublication": "2026 Jan-Dec",
+        "monthOfPublication": 0,
+        "yearOfPublication": 2026,
+        "journal": {
+          "medlineAbbreviation": "Clin Appl Thromb Hemost",
+          "title": "Clinical and applied thrombosis/hemostasis : official journal of the International Academy of Clinical and Applied Thrombosis/Hemostasis",
+          "essn": "1938-2723",
+          "issn": "1076-0296",
+          "isoabbreviation": "Clin Appl Thromb Hemost",
+          "nlmid": "9508125"
+        },
+        "printPublicationDate": "2026-01-01"
+      },
+      "pubYear": "2026",
+      "pageInfo": "10760296251413253",
+      "abstractText": "BackgroundThe risk of venous thromboembolism (VTE) among patients with atopic dermatitis (AD), especially when receiving treatment with Janus kinase inhibitors (JAKi), has been reported in observational studies. however, the causal relationships between them remain unclear. We aim to explore the causal effects of AD and JAKi on VTE, including deep vein thrombosis (DVT) and pulmonary embolism (PE).MethodsTwo-sample Mendelian randomization (MR) analyses were conducted to examine the causal between genetic susceptibility to AD or JAKi target genes (including JAK1, JAK2, JAK3 and tyrosine kinase 2 [TYK2]) and VTE (encompassing DVT and PE) using summary statistics from genome-wide association studies and eQTLGen project. Inverse variance weighting with random effect method was used as the main analytic approach. Pleiotropy and heterogeneity tests were conducted to assess the robustness of the findings.ResultsNo significant causal effects were found between AD and the risk of (odds ratio [OR]: 0.97, 95% confidence interval [CI]: 0.91-1.03, <i>P</i>\u2009=\u2009.352), DVT (OR: 0.99, 95% CI: 0.89-1.10, <i>P</i>\u2009=\u2009.789), and PE (OR: 1.06, 95% CI: 0.93-1.20, <i>P</i>\u2009=\u2009.387). Similarly, there was no causal association between the expression of JAK1, JAK2, JAK3 or TYK2 and VTE, DVT and PE.ConclusionThe MR analysis revealed no genetic causal relationships between either AD or JAKi target genes and VTE. These findings may provide a reference for clinicians in prescribing JAKi for patients with AD.",
+      "affiliation": "Department of Vascular Surgery, the Fuyang Affiliated Hospital of Anhui Medical University, Fuyang, China.",
+      "publicationStatus": "ppublish",
+      "language": "eng",
+      "pubModel": "Print-Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "Anhui Provincial Health Commission Scientific Research Project",
+            "grantId": "AHWJ2024BAc30041",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Dermatitis, Atopic",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "CO",
+                  "qualifierName": "complications"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "DT",
+                  "qualifierName": "drug therapy"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Risk Factors"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Male"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Venous Thromboembolism",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "CI",
+                  "qualifierName": "chemically induced"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "ET",
+                  "qualifierName": "etiology"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Mendelian Randomization Analysis"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Janus Kinase Inhibitors",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "AE",
+                  "qualifierName": "adverse effects"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "PD",
+                  "qualifierName": "pharmacology"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "TU",
+                  "qualifierName": "therapeutic use"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "Venous Thromboembolism",
+          "Atopic Dermatitis",
+          "Mendelian Randomization",
+          "Janus Kinase Inhibitors"
+        ]
+      },
+      "chemicalList": {
+        "chemical": [
+          {
+            "name": "Janus Kinase Inhibitors",
+            "registryNumber": "0"
+          }
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1177/10760296251413253"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12775296"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12775296?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 1,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by-nc",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "N",
+      "dateOfCompletion": "2026-01-06",
+      "dateOfCreation": "2026-01-06",
+      "dateOfRevision": "2026-01-09",
+      "electronicPublicationDate": "2026-01-06",
+      "firstPublicationDate": "2026-01-06",
+      "firstIndexDate": "2026-01-06",
+      "fullTextReceivedDate": "2026-01-08",
+      "hasEvaluations": "N"
+    }
+  ]
+}

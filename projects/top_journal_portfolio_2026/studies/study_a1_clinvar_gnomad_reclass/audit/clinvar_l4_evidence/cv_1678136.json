@@ -1,0 +1,110 @@
+{
+  "variant_id": "1678136",
+  "allele_info": {
+    "chromosome": "2",
+    "position_start": "178525989",
+    "position_stop": "178807423",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "2q31.2",
+    "dbsnp_rsid": "rs542074139"
+  },
+  "conditions": [
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Autosomal recessive limb-girdle muscular dystrophy type 2J",
+      "medgen_cui": "C1837342",
+      "omim_id": "608807",
+      "orphanet_id": "140922",
+      "hpo_terms": []
+    },
+    {
+      "name": "Hypertrophic cardiomyopathy 9",
+      "medgen_cui": "C1861065",
+      "omim_id": "613765",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Dilated cardiomyopathy 1G",
+      "medgen_cui": "C1858763",
+      "omim_id": "604145",
+      "orphanet_id": "154",
+      "hpo_terms": []
+    },
+    {
+      "name": "Tibial muscular dystrophy",
+      "medgen_cui": "C1838244",
+      "omim_id": "600334",
+      "orphanet_id": "609",
+      "hpo_terms": []
+    },
+    {
+      "name": "Early-onset myopathy with fatal cardiomyopathy",
+      "medgen_cui": "C2673677",
+      "omim_id": "611705",
+      "orphanet_id": "289377",
+      "hpo_terms": []
+    },
+    {
+      "name": "Myopathy, myofibrillar, 9, with early respiratory failure",
+      "medgen_cui": "C1863599",
+      "omim_id": "603689",
+      "orphanet_id": "34521",
+      "hpo_terms": []
+    },
+    {
+      "name": "Not provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": null,
+      "omim_id": "600334",
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [],
+  "submissions": [
+    {
+      "submitter_name": "AiLife Diagnostics, AiLife Diagnostics",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-11-20"
+    },
+    {
+      "submitter_name": "Fulgent Genetics, Fulgent Genetics",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-11-06"
+    },
+    {
+      "submitter_name": "Neuberg Centre For Genomic Medicine, NCGM",
+      "classification": "Likely pathogenic",
+      "curator_notes": "The stop gained variant c.77185A>T (p.Lys25729Ter) in TTN gene has not been reported previously as a pathogenic variant nor as a benign variant, to our knowledge. This variant is present in the gnomAD exomes database with a frequency of 0.003%. The nucleotide change in TTN is predicted as conserved by GERP++ and PhyloP across 100 vertebrates. For these reasons, this variant has been classified as Likely Pathogenic.; Current age: 39 years. Gender: Male. Consanguinity: Absent. Clinical symptoms and progression: P1L1-Male-6yrs-FTCS-fetal distress-2016; MTP1-22 weeks pregnancy-congenital anomaly (6/6/20)- microarray done- 15q11.2 microdeletion syndrome. The fetus was noted with hypoplastic nasal bone. Investigation: CMA analysis of the patient reported 15q11.2 microdeletion. Wife\u2019s CMA report- Negative",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Revvity Omics, Revvity",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-10-17"
+    }
+  ]
+}

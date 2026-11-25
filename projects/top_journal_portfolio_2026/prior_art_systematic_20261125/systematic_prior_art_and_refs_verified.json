@@ -1,0 +1,1362 @@
+{
+  "executed_at": "2026-11-25 09:47:16 CST",
+  "latex_tools": {
+    "pdflatex": "/Library/TeX/texbin/pdflatex",
+    "xelatex": "/Library/TeX/texbin/xelatex",
+    "lualatex": "/Library/TeX/texbin/lualatex",
+    "bibtex": "/Library/TeX/texbin/bibtex",
+    "biber": "/Library/TeX/texbin/biber",
+    "latexmk": "/Library/TeX/texbin/latexmk",
+    "pandoc": "/opt/anaconda3/bin/pandoc",
+    "gs": "/opt/homebrew/bin/gs",
+    "pdfinfo": "/opt/homebrew/bin/pdfinfo"
+  },
+  "openalex": {
+    "b2_fda_2026_sweep": {
+      "query": "ClinicalTrials.gov FDA reminder noncompliance",
+      "filter": "publication_year:2025-2026",
+      "rc": 0,
+      "total_count": 7,
+      "top_hits": [
+        {
+          "year": 2026,
+          "title": "PRIME: Towards Verifiable Evidence-Grounded Reasoning in LLM Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2610.22426",
+          "cited": 0,
+          "venue": "arXiv"
+        },
+        {
+          "year": 2026,
+          "title": "Remote vs. In-Person Study Evaluation (RISE) Trial 1 of 3 to examine the impact of decentralized trial methods on accrual efficiency, retention, biospecimen capture, and treatment utilization: study protocol for a multi-center randomized controlled trial in the context of smoking cessation (RISE Above Smoking)",
+          "doi": "https://doi.org/10.1186/s13063-026-09910-1",
+          "cited": 0,
+          "venue": "Trials"
+        },
+        {
+          "year": 2026,
+          "title": "Suvorexant for alcohol use disorder and post-traumatic stress disorder: study protocol for a phase II randomized clinical trial",
+          "doi": "https://doi.org/10.1186/s13063-026-09489-7",
+          "cited": 1,
+          "venue": "Trials"
+        },
+        {
+          "year": 2025,
+          "title": "Topical antibiotic therapy to reduce infection after operative treatment of fractures at high risk of infection: TOBRA\u2014a multicenter randomized controlled trial protocol",
+          "doi": "https://doi.org/10.1097/oi9.0000000000000459",
+          "cited": 3,
+          "venue": "OTA International The Open Access Journal of Orthopaedic Trauma"
+        },
+        {
+          "year": 2025,
+          "title": "Medical Trustworthiness and COVID-19: Examining Health Beliefs and Vaccine Uptake in Disinvested Black Communities",
+          "doi": "https://doi.org/10.1007/s40615-025-02742-w",
+          "cited": 1,
+          "venue": "Journal of Racial and Ethnic Health Disparities"
+        },
+        {
+          "year": 2025,
+          "title": "Pragmatic Comparative Effectiveness of Primary Care Treatments for Posttraumatic Stress Disorder: A Randomized Clinical Trial",
+          "doi": "https://doi.org/10.1001/jamapsychiatry.2025.2962",
+          "cited": 10,
+          "venue": "JAMA Psychiatry"
+        },
+        {
+          "year": 2025,
+          "title": "The American Academy of Health Behavior 2025 Annual Scientific Meeting: \u201cBridging the Gap: Advancing Health Behavior Research through Implementation Science\"",
+          "doi": "https://doi.org/10.4148/2572-1836.1342",
+          "cited": 0,
+          "venue": "Health Behavior Research"
+        }
+      ]
+    },
+    "b2_fdaaa_enforcement_all": {
+      "query": "FDAAA 801 ClinicalTrials.gov enforcement compliance industry academic",
+      "filter": "publication_year:>2017",
+      "rc": 0,
+      "total_count": 37,
+      "top_hits": [
+        {
+          "year": 2026,
+          "title": "Assessing selective outcome reporting in sleep disorder trials: A registry-publication comparison study",
+          "doi": "https://doi.org/10.1016/j.sleepx.2026.100204",
+          "cited": 0,
+          "venue": "Sleep Medicine X"
+        },
+        {
+          "year": 2026,
+          "title": "The global landscape of pediatric monoclonal antibody (mAb) clinical trials: an analysis of ClinicalTrials.gov",
+          "doi": "https://doi.org/10.3389/fped.2026.1846142",
+          "cited": 0,
+          "venue": "Frontiers in Pediatrics"
+        },
+        {
+          "year": 2026,
+          "title": "Tracking outcome changes in benign prostatic hyperplasia trials: a version history review of ClinicalTrials.gov records",
+          "doi": "https://doi.org/10.1186/s13063-026-09892-0",
+          "cited": 1,
+          "venue": "Trials"
+        },
+        {
+          "year": 2026,
+          "title": "Examining characteristics of compliant clinical trials: results reporting pre & post punctuated regulatory rulings exploring transparency & accountability in clinical trials",
+          "doi": "https://doi.org/10.17918/00011274",
+          "cited": 0,
+          "venue": "iDEA - Drexel University Institutional Repository"
+        },
+        {
+          "year": 2026,
+          "title": "Post-Approval Problems",
+          "doi": "https://doi.org/10.63140/ulg36hfp9n",
+          "cited": 0,
+          "venue": "Utah law review"
+        },
+        {
+          "year": 2026,
+          "title": "Enhancing the transparency and communication of the results of randomised trials to patients and the public",
+          "doi": "https://doi.org/10.5287/ora-azkee7mxg",
+          "cited": 0,
+          "venue": "Oxford University Research Archive (ORA) (University of Oxford)"
+        },
+        {
+          "year": 2025,
+          "title": "The Legal Regulation of Academic Freedom: The Case of Biomedicine",
+          "doi": "https://doi.org/10.4324/9781003622642",
+          "cited": 0,
+          "venue": "Routledge eBooks"
+        },
+        {
+          "year": 2025,
+          "title": "Reporting and representation of race and ethnicity data in phase III clinical trials for hematological malignancies",
+          "doi": "https://doi.org/10.1080/20565623.2025.2563483",
+          "cited": 1,
+          "venue": "Future Science OA"
+        }
+      ]
+    },
+    "b2_notice_noncompliance": {
+      "query": "\"Notice of Noncompliance\" ClinicalTrials.gov",
+      "filter": null,
+      "rc": 0,
+      "total_count": 25,
+      "top_hits": [
+        {
+          "year": 2026,
+          "title": "PRIME: Towards Verifiable Evidence-Grounded Reasoning in LLM Agents",
+          "doi": "https://doi.org/10.48550/arxiv.2610.22426",
+          "cited": 0,
+          "venue": "arXiv"
+        },
+        {
+          "year": 2026,
+          "title": "The global landscape of pediatric monoclonal antibody (mAb) clinical trials: an analysis of ClinicalTrials.gov",
+          "doi": "https://doi.org/10.3389/fped.2026.1846142",
+          "cited": 0,
+          "venue": "Frontiers in Pediatrics"
+        },
+        {
+          "year": 2026,
+          "title": "Changes in evidence used for FDA Novel Drug Approvals: 2016-2024",
+          "doi": "https://doi.org/10.1371/journal.pone.0342878",
+          "cited": 1,
+          "venue": "PLoS ONE"
+        },
+        {
+          "year": 2026,
+          "title": "Pediatric Strabismus Clinical Trial Analysis and Reporting Statuses within the National Library of Medicine",
+          "doi": null,
+          "cited": 0,
+          "venue": "Oklahoma State Medical Proceedings"
+        },
+        {
+          "year": 2026,
+          "title": "Examining characteristics of compliant clinical trials: results reporting pre & post punctuated regulatory rulings exploring transparency & accountability in clinical trials",
+          "doi": "https://doi.org/10.17918/00011274",
+          "cited": 0,
+          "venue": "iDEA - Drexel University Institutional Repository"
+        },
+        {
+          "year": 2026,
+          "title": "Post-Approval Problems",
+          "doi": "https://doi.org/10.63140/ulg36hfp9n",
+          "cited": 0,
+          "venue": "Utah law review"
+        },
+        {
+          "year": 2025,
+          "title": "The importance of ClinicalTrials.gov in informing trial design, conduct, and results",
+          "doi": "https://doi.org/10.1017/cts.2025.9",
+          "cited": 7,
+          "venue": "Journal of Clinical and Translational Science"
+        },
+        {
+          "year": 2025,
+          "title": "Beyond the Magic Pill: Reassessing the Role of Pharmacology in Autism Care through Restorative Perspectives",
+          "doi": "https://doi.org/10.4236/jss.2025.139014",
+          "cited": 0,
+          "venue": "Open Journal of Social Sciences"
+        }
+      ]
+    },
+    "a1_gnomad_v4_clinvar_reclass": {
+      "query": "gnomAD v4 ClinVar ancestry reclassification",
+      "filter": "publication_year:2023-2026",
+      "rc": 0,
+      "total_count": 39,
+      "top_hits": [
+        {
+          "year": 2026,
+          "title": "Ancestry-stratified frequency assessment of 50,634 ClinVar variants in 32 kidney-disease genes: a targeted West African comparison",
+          "doi": "https://doi.org/10.21203/rs.3.rs-11762334/v1",
+          "cited": 0,
+          "venue": "Research Square"
+        },
+        {
+          "year": 2026,
+          "title": "Saturation genome editing of BRCA1 across cell types improves interpretation of variant pathogenicity",
+          "doi": "https://doi.org/10.1038/s41588-026-02832-3",
+          "cited": 6,
+          "venue": "Nature Genetics"
+        },
+        {
+          "year": 2026,
+          "title": "ClinGen Hemoglobinopathy VCEP ACMG/AMP specifications for HBB and HBA2 variant interpretation in thalassemia",
+          "doi": "https://doi.org/10.64898/2026.10.30.26366794",
+          "cited": 1,
+          "venue": "medRxiv"
+        },
+        {
+          "year": 2026,
+          "title": "The fallacy of the national average in structured populations: clinical and population genomics across 9,768 Indian genomes",
+          "doi": "https://doi.org/10.21203/rs.3.rs-11445997/v1",
+          "cited": 0,
+          "venue": "Research Square"
+        },
+        {
+          "year": 2026,
+          "title": "A genomic foundation model for interpreting human genetic diversity",
+          "doi": "https://doi.org/10.64898/2026.10.19.760276",
+          "cited": 0,
+          "venue": "bioRxiv (Cold Spring Harbor Laboratory)"
+        },
+        {
+          "year": 2026,
+          "title": "A translational pipeline for classification of variants of uncertain significance to support gene therapy clinical trial in OTOF-related deafness",
+          "doi": "https://doi.org/10.1016/j.xcrm.2026.103093",
+          "cited": 0,
+          "venue": "Cell Reports Medicine"
+        },
+        {
+          "year": 2026,
+          "title": "Recurrent homozygous FASLG pathogenic variant in an unrelated consanguineous Moroccan family with ALPS: a possible North African founder allele",
+          "doi": "https://doi.org/10.1016/j.clicom.2026.100143",
+          "cited": 0,
+          "venue": "Clinical Immunology Communications"
+        },
+        {
+          "year": 2026,
+          "title": "A novel TYR variant implicated in oculocutaneous albinism type 1 (OCA1): a study in an indigenous population in Southern Brazil",
+          "doi": "https://doi.org/10.1007/s12687-026-00948-x",
+          "cited": 0,
+          "venue": "Journal of Community Genetics"
+        }
+      ]
+    },
+    "a1_acmg_sf_v32_v33_gnomad": {
+      "query": "\"ACMG SF\" ClinVar gnomAD ancestry",
+      "filter": "publication_year:2021-2026",
+      "rc": 0,
+      "total_count": 131,
+      "top_hits": [
+        {
+          "year": 2026,
+          "title": "Beyond the molecular diagnosis: clinically relevant findings from genomic reassessment in patients with Prader-Willi syndrome",
+          "doi": "https://doi.org/10.21203/rs.3.rs-11051425/v1",
+          "cited": 0,
+          "venue": "Research Square"
+        },
+        {
+          "year": 2026,
+          "title": "Clinical utility and implementation of genomic newborn screening: findings from the SNUseq Baby Project",
+          "doi": "https://doi.org/10.1038/s41431-026-02263-y",
+          "cited": 0,
+          "venue": "European Journal of Human Genetics"
+        },
+        {
+          "year": 2026,
+          "title": "Exome-wide characterization of genetic diversity and population-specific functional variants in indigenous tribal populations of India",
+          "doi": "https://doi.org/10.1016/j.jgg.2026.11.002",
+          "cited": 2,
+          "venue": "Journal of genetics and genomics/Journal of Genetics and Genomics"
+        },
+        {
+          "year": 2026,
+          "title": "Reference calibration, autozygosity and blood-derived variant interpretation in older adults",
+          "doi": "https://doi.org/10.64898/2026.10.28.26366687",
+          "cited": 0,
+          "venue": "medRxiv"
+        },
+        {
+          "year": 2026,
+          "title": "Integrating sequence-to-omics predictions and personal multi-omics for rare variant prioritization",
+          "doi": "https://doi.org/10.64898/2026.10.24.26366361",
+          "cited": 0,
+          "venue": "medRxiv"
+        },
+        {
+          "year": 2026,
+          "title": "Exome-based Preconception Carrier Screening for the Mexican Jewish Community; Yields and Implications",
+          "doi": "https://doi.org/10.64898/2026.10.21.26366106",
+          "cited": 0,
+          "venue": "medRxiv"
+        },
+        {
+          "year": 2026,
+          "title": "The fallacy of the national average in structured populations: clinical and population genomics across 9,768 Indian genomes",
+          "doi": "https://doi.org/10.21203/rs.3.rs-11445997/v1",
+          "cited": 0,
+          "venue": "Research Square"
+        },
+        {
+          "year": 2026,
+          "title": "The average individual genome: a survey of nearly 1 million whole-genome sequences",
+          "doi": "https://doi.org/10.1186/s13073-026-01792-x",
+          "cited": 0,
+          "venue": "Genome Medicine"
+        }
+      ]
+    },
+    "a1_rsid_multiallelic_clinvar": {
+      "query": "multiallelic rsID ClinVar gnomAD",
+      "filter": null,
+      "rc": 0,
+      "total_count": 23,
+      "top_hits": [
+        {
+          "year": 2026,
+          "title": "GI-DB: a comprehensive variant database for exploring the extensive genetic diversity of the Indian population",
+          "doi": "https://doi.org/10.1093/nar/gkag1179",
+          "cited": 0,
+          "venue": "Nucleic Acids Research"
+        },
+        {
+          "year": 2026,
+          "title": "A catalog of transcriptome genetic regulation in a consanguineous Middle Eastern biobank",
+          "doi": "https://doi.org/10.1038/s41588-026-02785-7",
+          "cited": 0,
+          "venue": "Nature Genetics"
+        },
+        {
+          "year": 2026,
+          "title": "RASSF2 Under the Computational Microscope: Prediction of Destabilizing Missense Variants",
+          "doi": "https://doi.org/10.3390/biology15201818",
+          "cited": 0,
+          "venue": "Biology"
+        },
+        {
+          "year": 2026,
+          "title": "Gene and Isoform Misassignment Among Candidate TP53 and CDKN2A Variants of Uncertain Significance in Oral Squamous Cell Carcinoma: A Public-Database Curation Study",
+          "doi": "https://doi.org/10.3390/jmp7040035",
+          "cited": 0,
+          "venue": "Journal of Molecular Pathology"
+        },
+        {
+          "year": 2026,
+          "title": "Population prevalence of high-risk pharmacogenetic configurations in a healthy older Australian reference cohort",
+          "doi": "https://doi.org/10.3389/fphar.2026.1881869",
+          "cited": 0,
+          "venue": "Frontiers in Pharmacology"
+        },
+        {
+          "year": 2026,
+          "title": "Assessing Hardy-Weinberg equilibrium in T2T-aligned 1000 genomes project",
+          "doi": "https://doi.org/10.1371/journal.pgen.1012280",
+          "cited": 2,
+          "venue": "PLoS Genetics"
+        },
+        {
+          "year": 2026,
+          "title": "Allelic Variants of the DPYD Gene in Russian Patients with Cancer: The Results of Exome Sequencing",
+          "doi": "https://doi.org/10.3390/genes17091082",
+          "cited": 0,
+          "venue": "Genes"
+        },
+        {
+          "year": 2026,
+          "title": "Whole genome sequencing of 1427 Mexican individuals from the oriGen cohort",
+          "doi": "https://doi.org/10.1038/s41467-026-77389-0",
+          "cited": 0,
+          "venue": "Nature Communications"
+        }
+      ]
+    },
+    "a1_clinvar_submitters_vus": {
+      "query": "ClinVar submitters ancestry VUS disparity",
+      "filter": "publication_year:2018-2026",
+      "rc": 0,
+      "total_count": 151,
+      "top_hits": [
+        {
+          "year": 2026,
+          "title": "Ancestry-stratified frequency assessment of 50,634 ClinVar variants in 32 kidney-disease genes: a targeted West African comparison",
+          "doi": "https://doi.org/10.21203/rs.3.rs-11762334/v1",
+          "cited": 0,
+          "venue": "Research Square"
+        },
+        {
+          "year": 2026,
+          "title": "Reclassification Is All You Missed: Surfacing Variant Reinterpretation Need in Online Health Communities at Population Scale",
+          "doi": "https://doi.org/10.48550/arxiv.2611.07054",
+          "cited": 0,
+          "venue": "arXiv"
+        },
+        {
+          "year": 2026,
+          "title": "Features influencing diagnostic yield of exome sequencing in the DECIPHERD rare diseases study in Chile",
+          "doi": "https://doi.org/10.1038/s41598-026-78591-2",
+          "cited": 1,
+          "venue": "Scientific Reports"
+        },
+        {
+          "year": 2026,
+          "title": "Beyond a single threshold: calibration of CADD v1.7 and AlphaGenome for ACMG/AMP computational evidence across variant classes, model versions, and reference data",
+          "doi": "https://doi.org/10.64898/2026.10.31.763309",
+          "cited": 0,
+          "venue": "bioRxiv (Cold Spring Harbor Laboratory)"
+        },
+        {
+          "year": 2026,
+          "title": "The Genomic Representation Gap in Pediatric Precision Oncology: Quantifying RB1 Variant Disparities Between a Brazilian Cohort and Global Databases",
+          "doi": "https://doi.org/10.1200/go-26-14200",
+          "cited": 0,
+          "venue": "JCO Global Oncology"
+        },
+        {
+          "year": 2026,
+          "title": "The average individual genome: a survey of nearly 1 million whole-genome sequences",
+          "doi": "https://doi.org/10.1186/s13073-026-01792-x",
+          "cited": 0,
+          "venue": "Genome Medicine"
+        },
+        {
+          "year": 2026,
+          "title": "Combining MAVEs and computational predictors improves variant classification across ancestries in hereditary cancer genes",
+          "doi": "https://doi.org/10.1186/s13073-026-01799-4",
+          "cited": 0,
+          "venue": "Genome Medicine"
+        },
+        {
+          "year": 2026,
+          "title": "Harnessing the human mutational spectrum to advance missense variant effect prediction",
+          "doi": "https://doi.org/10.7488/era/7794",
+          "cited": 0,
+          "venue": "Edinburgh Research Archive (University of Edinburgh)"
+        }
+      ]
+    }
+  },
+  "pubmed": {
+    "b2_fda_2026_makary": {
+      "query": "(\"ClinicalTrials.gov\"[All Fields]) AND (\"Makary\"[All Fields] OR \"2,200\"[All Fields] OR \"Notice of Noncompliance\"[All Fields])",
+      "rc": 0,
+      "n_returned": 15,
+      "pmids": [
+        "40684778",
+        "39288844",
+        "37592288",
+        "39287651",
+        "38295949",
+        "36326731",
+        "30898520",
+        "41333097",
+        "34999737",
+        "41029298",
+        "29366724",
+        "41107724",
+        "24681017",
+        "28104702",
+        "29462229"
+      ],
+      "articles": [
+        {
+          "pmid": "40684778",
+          "year": null,
+          "title": "Efficacy and safety of intravenous induction and subcutaneous maintenance therapy with guselkumab for patients with Crohn's disease (GALAXI-2 and GALAXI-3): 48-week results from two phase 3, randomised, placebo and active comparator-controlled, double-blind, triple-dummy trials.",
+          "journal": "Lancet (London, England)"
+        },
+        {
+          "pmid": "39288844",
+          "year": null,
+          "title": "Subcutaneous versus intravenous nivolumab for renal cell carcinoma.",
+          "journal": "Annals of oncology : official journal of the European Society for Medical Oncology"
+        },
+        {
+          "pmid": "37592288",
+          "year": null,
+          "title": "Physiological effects of awake prone position in acute hypoxemic respiratory failure.",
+          "journal": "Critical care (London, England)"
+        },
+        {
+          "pmid": "39287651",
+          "year": null,
+          "title": "Pressure control plus spontaneous ventilation versus volume assist-control ventilation in acute respiratory distress syndrome. A randomised clinical trial.",
+          "journal": "Intensive care medicine"
+        },
+        {
+          "pmid": "38295949",
+          "year": null,
+          "title": "High vs Low PEEP in Patients With ARDS Exhibiting Intense Inspiratory Effort During Assisted Ventilation: A Randomized Crossover Trial.",
+          "journal": "Chest"
+        },
+        {
+          "pmid": "36326731",
+          "year": null,
+          "title": "Interplay of Immunosuppression and Immunotherapy Among Patients With Cancer and COVID-19.",
+          "journal": "JAMA oncology"
+        },
+        {
+          "pmid": "30898520",
+          "year": null,
+          "title": "Non-invasive ventilation versus high-flow nasal cannula oxygen therapy with apnoeic oxygenation for preoxygenation before intubation of patients with acute hypoxaemic respiratory failure: a randomised, multicentre, open-label trial.",
+          "journal": "The Lancet. Respiratory medicine"
+        },
+        {
+          "pmid": "41333097",
+          "year": null,
+          "title": "Apixaban Concentrations and Effects on Coagulation in Patients With Nephrotic Syndrome.",
+          "journal": "Kidney medicine"
+        },
+        {
+          "pmid": "34999737",
+          "year": null,
+          "title": "Identification of \u22069-tetrahydrocannabinol (THC) impairment using functional brain imaging.",
+          "journal": "Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology"
+        },
+        {
+          "pmid": "41029298",
+          "year": null,
+          "title": "Early C-reactive protein reduction predicts survival in COVID-19 severe pneumonia treated with glucocorticoids.",
+          "journal": "BMC pulmonary medicine"
+        }
+      ]
+    },
+    "b2_fdaaa_2025_2026": {
+      "query": "(\"ClinicalTrials.gov\"[Title/Abstract]) AND (\"FDAAA\"[Title/Abstract] OR \"noncompliance\"[Title/Abstract]) AND (\"2025\"[PDAT] : \"2026\"[PDAT])",
+      "rc": 0,
+      "n_returned": 15,
+      "pmids": [
+        "42214397",
+        "40378099",
+        "41286643",
+        "41185506",
+        "42964402",
+        "41440531",
+        "41068963",
+        "42628554",
+        "42974145",
+        "40010172",
+        "42142276",
+        "38831158",
+        "42438747",
+        "40398949",
+        "42057905"
+      ],
+      "articles": [
+        {
+          "pmid": "42214397",
+          "year": null,
+          "title": "Efficacy and safety of the CD40 ligand inhibitor dapirolizumab pegol in systemic lupus erythematosus (PHOENYCS GO): a randomised, double-blind, placebo-controlled, phase 3 trial.",
+          "journal": "Lancet (London, England)"
+        },
+        {
+          "pmid": "40378099",
+          "year": null,
+          "title": "Assessing compliance to reporting mandates in glioblastoma-related clinical trials.",
+          "journal": "PloS one"
+        },
+        {
+          "pmid": "41286643",
+          "year": null,
+          "title": "Compliance with ESAIC guidelines for fibrinogen concentrate prescription in cardiac surgery: a multicentre French cohort study.",
+          "journal": "BMC anesthesiology"
+        },
+        {
+          "pmid": "41185506",
+          "year": null,
+          "title": "Low-dose Olanzapine and Sertraline Combination Therapy for Metabolic Disturbance in Patients with Schizophrenia: A Large-scale, Open-label Randomized Trial.",
+          "journal": "Current neuropharmacology"
+        },
+        {
+          "pmid": "42964402",
+          "year": null,
+          "title": "Assessing selective outcome reporting in sleep disorder trials: A registry-publication comparison study.",
+          "journal": "Sleep medicine: X"
+        },
+        {
+          "pmid": "41440531",
+          "year": null,
+          "title": "Misreporting of Patient-Relevant and Study Design Elements in Anesthesiology Randomized Controlled Trials: An Observational Study.",
+          "journal": "Medical sciences (Basel, Switzerland)"
+        },
+        {
+          "pmid": "41068963",
+          "year": null,
+          "title": "Examining the effects of engagement with an app-based mental health intervention: a secondary analysis of a randomized control trial with treatment non-compliance.",
+          "journal": "International journal of mental health systems"
+        },
+        {
+          "pmid": "42628554",
+          "year": null,
+          "title": "Rezpegaldesleukin treatment of moderate-to-severe atopic dermatitis (REZOLVE-AD): final results from the 16-week induction period of an international, double-blind, placebo-controlled, randomised phase 2b study.",
+          "journal": "Lancet (London, England)"
+        },
+        {
+          "pmid": "42974145",
+          "year": null,
+          "title": "Discrepancies in Adverse Event Reporting Between ClinicalTrials.gov and Publications in HIV/AIDS Clinical Trials: A Pre-Post Analysis of the FDAAA Final Rule.",
+          "journal": "Clinical epidemiology"
+        },
+        {
+          "pmid": "40010172",
+          "year": null,
+          "title": "Compliance and factors affecting reporting of spinal stenosis and spinal-fusion-related clinical trials to ClinicalTrials.gov.",
+          "journal": "Journal of clinical neuroscience : official journal of the Neurosurgical Society of Australasia"
+        }
+      ]
+    },
+    "a1_gnomad_v4_clinvar": {
+      "query": "(\"gnomAD\"[Title/Abstract]) AND (\"v4\"[Title/Abstract] OR \"v4.0\"[Title/Abstract] OR \"v4.1\"[Title/Abstract]) AND (\"ClinVar\"[Title/Abstract])",
+      "rc": 0,
+      "n_returned": 15,
+      "pmids": [
+        "40084622",
+        "40900392",
+        "40492992",
+        "39479418",
+        "40950494",
+        "40974092",
+        "39492094",
+        "42727578",
+        "42547507",
+        "42991897",
+        "40964703",
+        "41857113",
+        "42935958",
+        "42326196",
+        "42225447"
+      ],
+      "articles": [
+        {
+          "pmid": "40084622",
+          "year": null,
+          "title": "Optimizing gene panels for equitable reproductive carrier screening: The Goldilocks approach.",
+          "journal": "Genetics in medicine : official journal of the American College of Medical Genetics"
+        },
+        {
+          "pmid": "40900392",
+          "year": null,
+          "title": "Variant classification of hereditary cancer genes is affected by genomic underrepresentation of admixed populations.",
+          "journal": "Molecular genetics and genomics : MGG"
+        },
+        {
+          "pmid": "40492992",
+          "year": null,
+          "title": "SCN9A should not be considered an epilepsy gene; Refuting a gene-disease association.",
+          "journal": "Epilepsia"
+        },
+        {
+          "pmid": "39479418",
+          "year": null,
+          "title": "Genetic Markers of Spina Bifida in an Indian Cohort.",
+          "journal": "Journal of Indian Association of Pediatric Surgeons"
+        },
+        {
+          "pmid": "40950494",
+          "year": null,
+          "title": "Identification and Characterization of Rare Genetic Variants Associated with pathogenicity Breast Cancer Susceptibility Across Thousand Genome and GnomAD population.",
+          "journal": "medRxiv : the preprint server for health sciences"
+        },
+        {
+          "pmid": "40974092",
+          "year": null,
+          "title": "Estimated global prevalence of genetic carriers of hereditary pheochromocytoma-paraganglioma syndrome in a large multiethnic genomic database.",
+          "journal": "European journal of endocrinology"
+        },
+        {
+          "pmid": "39492094",
+          "year": null,
+          "title": "Estimation of carrier frequencies of autosomal and X-linked recessive genetic conditions based on gnomAD v4.0 data in different ancestries.",
+          "journal": "Genetics in medicine : official journal of the American College of Medical Genetics"
+        },
+        {
+          "pmid": "42727578",
+          "year": null,
+          "title": "CanVar-UK: A collaborative platform for germline interpretation in cancer susceptibility genes.",
+          "journal": "American journal of human genetics"
+        },
+        {
+          "pmid": "42547507",
+          "year": null,
+          "title": "The clinical utility of carrier screening.",
+          "journal": "NPJ genomic medicine"
+        },
+        {
+          "pmid": "42991897",
+          "year": null,
+          "title": "Population-specific differences in ClinVar pathogenic and likely pathogenic variants of epilepsy-associated genes between East Asian and non-finnish European populations: a nucleotide-resolved gnomAD v4.1.1 analysis.",
+          "journal": "Frontiers in genetics"
+        }
+      ]
+    },
+    "a1_acmg_sf_v33_gnomad": {
+      "query": "(\"ACMG SF\"[Title/Abstract] OR \"secondary findings\"[Title/Abstract]) AND (\"gnomAD\"[Title/Abstract]) AND (\"ClinVar\"[Title/Abstract]) AND (\"2024\"[PDAT] : \"2026\"[PDAT])",
+      "rc": 0,
+      "n_returned": 0,
+      "pmids": []
+    }
+  },
+  "europepmc": {
+    "b2_fda_2026_exact": {
+      "query": "(\"ClinicalTrials.gov\" AND (\"Makary\" OR \"Notice of Noncompliance\" OR \"Pre-Notice\" OR \"42 CFR Part 11\"))",
+      "rc": 0,
+      "hit_count": 73,
+      "top_hits": [
+        {
+          "year": "2026",
+          "title": "The Withholding Enteral Feeds Around Transfusion (WHEAT) International Trial: protocol.",
+          "doi": "10.1136/bmjopen-2026-127305",
+          "pmid": "42994925",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Guidance for defining outcomes in clinical trials.",
+          "doi": "10.1371/journal.pmed.1005275",
+          "pmid": "42905861",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "ESICM LIVES 2026.",
+          "doi": "10.1186/s40635-026-00962-w",
+          "pmid": "42855639",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Histotripsy Outcomes for Primary and Metastatic Hepatic Disease.",
+          "doi": "10.3390/cancers18182931",
+          "pmid": "42794898",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "A Practical Guide to Implementing Real-World Evidence as Primary Basis for Approval and Label Expansion.",
+          "doi": "10.1002/cpt.70487",
+          "pmid": "42778975",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Cross-sectional analysis of safety reporting in sleep disorder clinical trials.",
+          "doi": "10.1136/bmjopen-2025-112962",
+          "pmid": "42711075",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Locoregional Therapy Pressure-Enabled Drug Delivery for Liver Cancers.",
+          "doi": "10.3390/cancers18152367",
+          "pmid": "42588588",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Tracking outcome changes in benign prostatic hyperplasia trials: a version history review of ClinicalTrials.gov records.",
+          "doi": "10.1186/s13063-026-09892-0",
+          "pmid": "42458564",
+          "journal": null
+        }
+      ]
+    },
+    "a1_gnomad_v4_exact": {
+      "query": "(\"gnomAD v4\" OR \"gnomAD v4.0\" OR \"gnomAD v4.1\") AND \"ClinVar\" AND (\"reclassification\" OR \"ancestry\")",
+      "rc": 0,
+      "hit_count": 201,
+      "top_hits": [
+        {
+          "year": "2026",
+          "title": "A New Case of Lethal Congenital Contracture Syndrome Type 3 With Hyperinsulinism and Optic Atrophy.",
+          "doi": "10.1111/cge.70231",
+          "pmid": "42747333",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "MARiO: Predicting Cancer Variant Pathogenicity by Integrating In Silico Evaluation and Patient-Level Mutational Contexts.",
+          "doi": "10.1111/cas.70597",
+          "pmid": "43041015",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Biallelic DAW1 variants reveal a tissue-specific role in heterotaxy without primary ciliary dyskinesia.",
+          "doi": "10.1038/s41431-026-02228-1",
+          "pmid": "42773161",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Gene-specific machine learning model EpiPred identifies likely pathogenic variants in the epilepsy-related gene STXBP1.",
+          "doi": "10.1172/jci207160",
+          "pmid": "42752354",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Kallmann Syndrome and MSI-H Colorectal Cancer in a Patient with a Germline &lt;i&gt;PROKR2&lt;/i&gt; Variant: A Case Report with Exploratory Cohort Analysis.",
+          "doi": "10.3390/ijms27219703",
+          "pmid": "43027951",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Combining MAVEs and computational predictors improves variant classification across ancestries in hereditary cancer genes.",
+          "doi": "10.1186/s13073-026-01799-4",
+          "pmid": "42989408",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "Saturation mutagenesis enables RAD51D clinical variant interpretation and identifies distinct biochemical functions.",
+          "doi": "10.1038/s41467-026-77941-y",
+          "pmid": "42967931",
+          "journal": null
+        },
+        {
+          "year": "2026",
+          "title": "A multicenter whole-genome sequencing cohort of bleomycin-induced pneumonitis in predominantly clinically low-risk patients.",
+          "doi": "10.1007/s00438-026-02534-9",
+          "pmid": "42957900",
+          "journal": null
+        }
+      ]
+    }
+  },
+  "reference_doi_audit": {
+    "devito2020": {
+      "title": "Compliance with legal requirement to report clinical trial results on ClinicalTrials.gov: a cohort study",
+      "year": 2020,
+      "authors": [
+        "Nicholas DeVito",
+        "Seb Bacon",
+        "Ben M. Goldacre"
+      ],
+      "journal": "The Lancet",
+      "volume": "395",
+      "issue": "10221",
+      "first_page": "361",
+      "last_page": "369",
+      "doi": "https://doi.org/10.1016/s0140-6736(19)33220-9",
+      "cited_by_count": 387
+    },
+    "zarin2019": {
+      "title": "10-Year Update on Study Results Submitted to ClinicalTrials.gov",
+      "year": 2019,
+      "authors": [
+        "Deborah A. Zarin",
+        "Kevin M. Fain",
+        "Heather D. Dobbins",
+        "Tony Tse",
+        "Rebecca J. Williams"
+      ],
+      "journal": "New England Journal of Medicine",
+      "volume": "381",
+      "issue": "20",
+      "first_page": "1966",
+      "last_page": "1974",
+      "doi": "https://doi.org/10.1056/nejmsr1907644",
+      "cited_by_count": 174
+    },
+    "turner2008": {
+      "title": "Selective Publication of Antidepressant Trials and Its Influence on Apparent Efficacy",
+      "year": 2008,
+      "authors": [
+        "Erick H. Turner",
+        "Annette M. Matthews",
+        "Eftihia Linardatos",
+        "Robert A. Tell",
+        "Robert Rosenthal"
+      ],
+      "journal": "New England Journal of Medicine",
+      "volume": "358",
+      "issue": "3",
+      "first_page": "252",
+      "last_page": "260",
+      "doi": "https://doi.org/10.1056/nejmsa065779",
+      "cited_by_count": 2802
+    },
+    "oostrom2024": {
+      "title": "Funding of Clinical Trials and Reported Drug Efficacy",
+      "year": 2024,
+      "authors": [
+        "Tamar Oostrom"
+      ],
+      "journal": "Journal of Political Economy",
+      "volume": "132",
+      "issue": "10",
+      "first_page": "3298",
+      "last_page": "3333",
+      "doi": "https://doi.org/10.1086/730383",
+      "cited_by_count": 30
+    },
+    "krieger2021": {
+      "title": "Trials and Terminations: Learning from Competitors\u2019 R&D Failures",
+      "year": 2021,
+      "authors": [
+        "Joshua Krieger"
+      ],
+      "journal": "Management Science",
+      "volume": "67",
+      "issue": "9",
+      "first_page": "5525",
+      "last_page": "5548",
+      "doi": "https://doi.org/10.1287/mnsc.2020.3775",
+      "cited_by_count": 126
+    },
+    "blundell2020": {
+      "title": "Escalation of Scrutiny: The Gains from Dynamic Enforcement of Environmental Regulations",
+      "year": 2020,
+      "authors": [
+        "Wesley Blundell",
+        "Gautam Gowrisankaran",
+        "Ashley Langer"
+      ],
+      "journal": "American Economic Review",
+      "volume": "110",
+      "issue": "8",
+      "first_page": "2558",
+      "last_page": "2585",
+      "doi": "https://doi.org/10.1257/aer.20181012",
+      "cited_by_count": 178
+    },
+    "shimshack2005": {
+      "title": "Regulator reputation, enforcement, and environmental compliance",
+      "year": 2005,
+      "authors": [
+        "Jay P. Shimshack",
+        "Michael Ward"
+      ],
+      "journal": "Journal of Environmental Economics and Management",
+      "volume": "50",
+      "issue": "3",
+      "first_page": "519",
+      "last_page": "540",
+      "doi": "https://doi.org/10.1016/j.jeem.2005.02.002",
+      "cited_by_count": 458
+    },
+    "jin2003": {
+      "title": "The Effect of Information on Product Quality: Evidence from Restaurant Hygiene Grade Cards",
+      "year": 2003,
+      "authors": [
+        "G. Z. Jin",
+        "Phillip Leslie"
+      ],
+      "journal": "The Quarterly Journal of Economics",
+      "volume": "118",
+      "issue": "2",
+      "first_page": "409",
+      "last_page": "451",
+      "doi": "https://doi.org/10.1162/003355303321675428",
+      "cited_by_count": 1035
+    },
+    "dranove2010": {
+      "title": "Quality Disclosure and Certification: Theory and Practice",
+      "year": 2010,
+      "authors": [
+        "David Dranove",
+        "Ginger Zhe Jin"
+      ],
+      "journal": "Journal of Economic Literature",
+      "volume": "48",
+      "issue": "4",
+      "first_page": "935",
+      "last_page": "963",
+      "doi": "https://doi.org/10.1257/jel.48.4.935",
+      "cited_by_count": 954
+    },
+    "akerlof1970": {
+      "title": "The Market for \"Lemons\": Quality Uncertainty and the Market Mechanism",
+      "year": 1970,
+      "authors": [
+        "George A. Akerlof"
+      ],
+      "journal": "The Quarterly Journal of Economics",
+      "volume": "84",
+      "issue": "3",
+      "first_page": "488",
+      "last_page": "488",
+      "doi": "https://doi.org/10.2307/1879431",
+      "cited_by_count": 33765
+    },
+    "becker1968": {
+      "title": "Crime and Punishment: An Economic Approach",
+      "year": 1968,
+      "authors": [
+        "Gary S. Becker"
+      ],
+      "journal": "Journal of Political Economy",
+      "volume": "76",
+      "issue": "2",
+      "first_page": "169",
+      "last_page": "217",
+      "doi": "https://doi.org/10.1086/259394",
+      "cited_by_count": 18126
+    },
+    "bloom2007": {
+      "title": "Measuring and Explaining Management Practices Across Firms and Countries",
+      "year": 2007,
+      "authors": [
+        "Nicholas Bloom",
+        "John Michael Van Reenen"
+      ],
+      "journal": "The Quarterly Journal of Economics",
+      "volume": "122",
+      "issue": "4",
+      "first_page": "1351",
+      "last_page": "1408",
+      "doi": "https://doi.org/10.1162/qjec.2007.122.4.1351",
+      "cited_by_count": 4055
+    },
+    "milgrom1981": {
+      "title": "Good News and Bad News: Representation Theorems and Applications",
+      "year": 1981,
+      "authors": [
+        "Paul Milgrom"
+      ],
+      "journal": "The Bell Journal of Economics",
+      "volume": "12",
+      "issue": "2",
+      "first_page": "380",
+      "last_page": "380",
+      "doi": "https://doi.org/10.2307/3003562",
+      "cited_by_count": 3793
+    },
+    "kao2023": {
+      "title": "Evidence for the Selective Reporting of Analyses and Discrepancies in Clinical Trials: A Systematic Review of Cohort Studies of Clinical Trials",
+      "year": 2014,
+      "authors": [
+        "Kerry M. Dwan",
+        "Douglas G. Altman",
+        "Mike J Clarke",
+        "Carrol L. Gamble",
+        "Julian P. T. Higgins",
+        "Jonathan A C Sterne"
+      ],
+      "journal": "PLoS Medicine",
+      "volume": "11",
+      "issue": "6",
+      "first_page": "e1001666",
+      "last_page": "e1001666",
+      "doi": "https://doi.org/10.1371/journal.pmed.1001666",
+      "cited_by_count": 205
+    },
+    "lee2025_acmg33": {
+      "title": "ACMG SF v3.3 list for reporting of secondary findings in clinical exome and genome sequencing: A policy statement of the American College of Medical Genetics and Genomics (ACMG)",
+      "year": 2025,
+      "authors": [
+        "Kristy Lee",
+        "Noura S. Abul\u2010Husn",
+        "Laura M. Amendola",
+        "Kyle Bertram Brothers",
+        "Wendy K. Chung",
+        "Michael H. Gollob"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "27",
+      "issue": "8",
+      "first_page": "101454",
+      "last_page": "101454",
+      "doi": "https://doi.org/10.1016/j.gim.2025.101454",
+      "cited_by_count": 148
+    },
+    "miller2023_acmg32": {
+      "title": "ACMG SF v3.2 list for reporting of secondary findings in clinical exome and genome sequencing: A policy statement of the American College of Medical Genetics and Genomics (ACMG)",
+      "year": 2023,
+      "authors": [
+        "David T. Miller",
+        "Kristy Lee",
+        "Noura S. Abul\u2010Husn",
+        "Laura M. Amendola",
+        "Kyle Bertram Brothers",
+        "Wendy K. Chung"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "25",
+      "issue": "8",
+      "first_page": "100866",
+      "last_page": "100866",
+      "doi": "https://doi.org/10.1016/j.gim.2023.100866",
+      "cited_by_count": 534
+    },
+    "miller2022_acmg31": {
+      "title": "ACMG SF v3.1 list for reporting of secondary findings in clinical exome and genome sequencing: A policy statement of the American College of Medical Genetics and Genomics (ACMG)",
+      "year": 2022,
+      "authors": [
+        "David T. Miller",
+        "Kristy Lee",
+        "Noura S. Abul\u2010Husn",
+        "Laura M. Amendola",
+        "Kyle Bertram Brothers",
+        "Wendy K. Chung"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "24",
+      "issue": "7",
+      "first_page": "1407",
+      "last_page": "1414",
+      "doi": "https://doi.org/10.1016/j.gim.2022.04.006",
+      "cited_by_count": 317
+    },
+    "miller2021_acmg30": {
+      "title": "ACMG SF v3.0 list for reporting of secondary findings in clinical exome and genome sequencing: a policy statement of the American College of Medical Genetics and Genomics (ACMG)",
+      "year": 2021,
+      "authors": [
+        "David T. Miller",
+        "Kristy Lee",
+        "Wendy K. Chung",
+        "ALLAN S. GORDON",
+        "Gail E. Herman",
+        "Teri E. Klein"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "23",
+      "issue": "8",
+      "first_page": "1381",
+      "last_page": "1390",
+      "doi": "https://doi.org/10.1038/s41436-021-01172-3",
+      "cited_by_count": 610
+    },
+    "kalia2017_acmg20": {
+      "title": "Recommendations for reporting of secondary findings in clinical exome and genome sequencing, 2016 update (ACMG SF v2.0): a policy statement of the American College of Medical Genetics and Genomics",
+      "year": 2016,
+      "authors": [
+        "Sarah S. Kalia",
+        "Kathy Adelman",
+        "Sherri J. Bale",
+        "Wendy K. Chung",
+        "Christine M. Eng",
+        "James P. Evans"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "19",
+      "issue": "2",
+      "first_page": "249",
+      "last_page": "255",
+      "doi": "https://doi.org/10.1038/gim.2016.190",
+      "cited_by_count": 1828
+    },
+    "manrai2016": {
+      "title": "Genetic Misdiagnoses and the Potential for Health Disparities",
+      "year": 2016,
+      "authors": [
+        "Arjun Kumar Manrai",
+        "Birgit Funke",
+        "Heidi L. Rehm",
+        "MORTEN SALLING OLESEN",
+        "Bradley A. Maron",
+        "Peter Szolovits"
+      ],
+      "journal": "New England Journal of Medicine",
+      "volume": "375",
+      "issue": "7",
+      "first_page": "655",
+      "last_page": "665",
+      "doi": "https://doi.org/10.1056/nejmsa1507092",
+      "cited_by_count": 918
+    },
+    "whiffin2017": {
+      "title": "Using high-resolution variant frequencies to empower clinical genome interpretation",
+      "year": 2017,
+      "authors": [
+        "Nicola Whiffin",
+        "Eric Vallabh Minikel",
+        "Roddy Walsh",
+        "Anne O\u2019Donnell\u2010Luria",
+        "Konrad J. Karczewski",
+        "Alexander Y. Ing"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "19",
+      "issue": "10",
+      "first_page": "1151",
+      "last_page": "1158",
+      "doi": "https://doi.org/10.1038/gim.2017.26",
+      "cited_by_count": 487
+    },
+    "ghosh2018": {
+      "title": "Updated recommendation for the benign stand\u2010alone ACMG/AMP criterion",
+      "year": 2018,
+      "authors": [
+        "Rajarshi Ghosh",
+        "Steven M. Harrison",
+        "Heidi L. Rehm",
+        "Sharon E. Plon",
+        "Leslie G. Biesecker",
+        "on behalf of ClinGen Sequence Variant Interpretation Working Group"
+      ],
+      "journal": "Human Mutation",
+      "volume": "39",
+      "issue": "11",
+      "first_page": "1525",
+      "last_page": "1530",
+      "doi": "https://doi.org/10.1002/humu.23642",
+      "cited_by_count": 199
+    },
+    "richards2015": {
+      "title": "An openly available online tool for implementing the ACMG/AMP standards and guidelines for the interpretation of sequence variants",
+      "year": 2016,
+      "authors": [
+        "Jeffrey W. Kleinberger",
+        "Kristin A. Maloney",
+        "Toni I. Pollin",
+        "Linda Jo Bone Jeng"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "18",
+      "issue": "11",
+      "first_page": "1165",
+      "last_page": "1165",
+      "doi": "https://doi.org/10.1038/gim.2016.13",
+      "cited_by_count": 131
+    },
+    "chen2024_gnomad": {
+      "title": "A genomic mutational constraint map using variation in 76,156 human genomes",
+      "year": 2023,
+      "authors": [
+        "Siwei Chen",
+        "Laurent C. Francioli",
+        "Julia K. Goodrich",
+        "Ryan L. Collins",
+        "Masahiro Kanai",
+        "Qingbo Seiha Wang"
+      ],
+      "journal": "Nature",
+      "volume": "625",
+      "issue": "7993",
+      "first_page": "92",
+      "last_page": "100",
+      "doi": "https://doi.org/10.1038/s41586-023-06045-0",
+      "cited_by_count": 2104
+    },
+    "caswelljin2018": {
+      "title": "Racial/ethnic differences in multiple-gene sequencing results for hereditary cancer risk",
+      "year": 2017,
+      "authors": [
+        "Jennifer Lee Caswell-Jin",
+        "Tanya Gupta",
+        "Evan Thomas Hall",
+        "Iva Petrovchich",
+        "Meredith A. Mills",
+        "Kerry E. Kingham"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "20",
+      "issue": "2",
+      "first_page": "234",
+      "last_page": "239",
+      "doi": "https://doi.org/10.1038/gim.2017.96",
+      "cited_by_count": 226
+    },
+    "popejoy2016": {
+      "title": "Genomics is failing on diversity",
+      "year": 2016,
+      "authors": [
+        "Alice B. Popejoy",
+        "Stephanie Malia Fullerton"
+      ],
+      "journal": "Nature",
+      "volume": "538",
+      "issue": "7624",
+      "first_page": "161",
+      "last_page": "164",
+      "doi": "https://doi.org/10.1038/538161a",
+      "cited_by_count": 2203
+    },
+    "chora2022_ldlr": {
+      "title": "The Clinical Genome Resource (ClinGen) Familial Hypercholesterolemia Variant Curation Expert Panel consensus guidelines for LDLR variant classification",
+      "year": 2021,
+      "authors": [
+        "Joana Rita Chora",
+        "Michael A. Iacocca",
+        "Luk\u00e1\u0161 Tich\u00fd",
+        "Hannah Wand",
+        "C. Lisa Kurtz",
+        "Heather Zimmermann"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "24",
+      "issue": "2",
+      "first_page": "293",
+      "last_page": "306",
+      "doi": "https://doi.org/10.1016/j.gim.2021.09.012",
+      "cited_by_count": 196
+    },
+    "johnston2021_ryr1": {
+      "title": "Variant curation expert panel recommendations for RYR1 pathogenicity classifications in malignant hyperthermia susceptibility",
+      "year": 2021,
+      "authors": [
+        "Jennifer J. Johnston",
+        "Robert T. Dirksen",
+        "Thierry Girard",
+        "Stephen G. Gonsalves",
+        "Philip Morgan Hopkins",
+        "Sheila Riazi"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "23",
+      "issue": "7",
+      "first_page": "1288",
+      "last_page": "1295",
+      "doi": "https://doi.org/10.1038/s41436-021-01125-w",
+      "cited_by_count": 92
+    },
+    "kelly2018_myh7": {
+      "title": "Adaptation and validation of the ACMG/AMP variant classification framework for MYH7-associated inherited cardiomyopathies: recommendations by ClinGen\u2019s Inherited Cardiomyopathy Expert Panel",
+      "year": 2018,
+      "authors": [
+        "Melissa Kelly",
+        "Colleen A. Caleshu",
+        "Ana Morales",
+        "Jillian G. Buchan",
+        "Zena T. Wolf",
+        "Steven M. Harrison"
+      ],
+      "journal": "Genetics in Medicine",
+      "volume": "20",
+      "issue": "3",
+      "first_page": "351",
+      "last_page": "359",
+      "doi": "https://doi.org/10.1038/gim.2017.218",
+      "cited_by_count": 407
+    },
+    "landrum2025_clinvar": {
+      "title": "ClinVar: updates to support classifications of both germline and somatic variants",
+      "year": 2024,
+      "authors": [
+        "Melissa Landrum",
+        "Shanmuga Chitipiralla",
+        "Kuljeet Kaur",
+        "Garth Brown",
+        "Chao Chen",
+        "Jennifer Anne Hart"
+      ],
+      "journal": "Nucleic Acids Research",
+      "volume": "53",
+      "issue": "D1",
+      "first_page": "D1313",
+      "last_page": "D1321",
+      "doi": "https://doi.org/10.1093/nar/gkae1090",
+      "cited_by_count": 231
+    }
+  }
+}

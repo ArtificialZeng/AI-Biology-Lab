@@ -1,0 +1,933 @@
+{
+  "h1_denominator_diagnostics": {
+    "nfe": {
+      "n_raw_af1e4": 663,
+      "median_an_p": 1179788,
+      "ac1_singleton_share": 0.0,
+      "ac_le2_share": 0.0,
+      "median_ac_p": 259.0,
+      "faf95_ge_1e4_count": 587
+    },
+    "afr": {
+      "n_raw_af1e4": 4061,
+      "median_an_p": 74930,
+      "ac1_singleton_share": 0.0,
+      "ac_le2_share": 0.0,
+      "median_ac_p": 33.0,
+      "faf95_ge_1e4_count": 3008
+    },
+    "amr": {
+      "n_raw_af1e4": 2511,
+      "median_an_p": 59964,
+      "ac1_singleton_share": 0.0,
+      "ac_le2_share": 0.0,
+      "median_ac_p": 12.0,
+      "faf95_ge_1e4_count": 1319
+    },
+    "eas": {
+      "n_raw_af1e4": 3342,
+      "median_an_p": 44842,
+      "ac1_singleton_share": 0.0,
+      "ac_le2_share": 0.0,
+      "median_ac_p": 13.0,
+      "faf95_ge_1e4_count": 2063
+    },
+    "sas": {
+      "n_raw_af1e4": 2909,
+      "median_an_p": 91046,
+      "ac1_singleton_share": 0.0,
+      "ac_le2_share": 0.0,
+      "median_ac_p": 27.0,
+      "faf95_ge_1e4_count": 2100
+    },
+    "mid": {
+      "n_raw_af1e4": 4470,
+      "median_an_p": 6006,
+      "ac1_singleton_share": 0.6474,
+      "ac_le2_share": 0.7971,
+      "median_ac_p": 1.0,
+      "faf95_ge_1e4_count": 603
+    },
+    "asj": {
+      "n_raw_af1e4": 844,
+      "median_an_p": 29596,
+      "ac1_singleton_share": 0.0,
+      "ac_le2_share": 0.0,
+      "median_ac_p": 28.0,
+      "faf95_ge_1e4_count": 653
+    },
+    "fin": {
+      "n_raw_af1e4": 683,
+      "median_an_p": 63966,
+      "ac1_singleton_share": 0.0,
+      "ac_le2_share": 0.0,
+      "median_ac_p": 25.0,
+      "faf95_ge_1e4_count": 511
+    }
+  },
+  "h1_clean_specs": {
+    "A_faf95_ge_1e4": {
+      "label": "FAF95 >= 1e-4 (Zero Singletons)",
+      "n_non_nfe": 9387,
+      "n_nfe": 587,
+      "med_af_nn": 0.00040610197089063836,
+      "med_af_nfe": 0.0002273549677080633,
+      "med_subs_nn": 7.0,
+      "med_subs_nfe": 11.0,
+      "outcomes": {
+        "VUS": {
+          "rate_nn": 0.1201,
+          "rate_nfe": 0.0647,
+          "cmh_or": 2.782,
+          "cmh_ci95": [
+            1.984,
+            3.901
+          ],
+          "cmh_p": 6.841646272612788e-10,
+          "logit_or": 3.607,
+          "logit_p": 2.676947499671126e-11,
+          "logit_subs_adj_or": 1.207,
+          "logit_subs_adj_p": 0.3781554176842886
+        },
+        "B_LB": {
+          "rate_nn": 0.4386,
+          "rate_nfe": 0.2862,
+          "cmh_or": 1.556,
+          "cmh_ci95": [
+            1.291,
+            1.875
+          ],
+          "cmh_p": 3.0039256909158408e-06,
+          "logit_or": 1.931,
+          "logit_p": 5.243403410595293e-08,
+          "logit_subs_adj_or": 0.9,
+          "logit_subs_adj_p": 0.4226651402196536
+        },
+        "CONFLICTING": {
+          "rate_nn": 0.4332,
+          "rate_nfe": 0.6422,
+          "cmh_or": 0.451,
+          "cmh_ci95": [
+            0.378,
+            0.537
+          ],
+          "cmh_p": 1.4071219494364648e-19,
+          "logit_or": 0.392,
+          "logit_p": 1.6554581532653108e-20,
+          "logit_subs_adj_or": 0.953,
+          "logit_subs_adj_p": 0.6626695790832311
+        },
+        "P_LP": {
+          "rate_nn": 0.0082,
+          "rate_nfe": 0.0068,
+          "cmh_or": 1.486,
+          "cmh_ci95": [
+            0.544,
+            4.056
+          ],
+          "cmh_p": 0.43392318055093626,
+          "logit_or": 1.232,
+          "logit_p": 0.7136622989697072,
+          "logit_subs_adj_or": 5.96,
+          "logit_subs_adj_p": 0.0157654684780959
+        }
+      }
+    },
+    "B_ac10_af5e4_4major": {
+      "label": "4 Major Non-NFE (AFR/AMR/EAS/SAS) AC>=10 & AF>=5e-4",
+      "n_non_nfe": 4765,
+      "n_nfe": 167,
+      "med_af_nn": 0.0015991897438631093,
+      "med_af_nfe": 0.0010153368409633325,
+      "med_subs_nn": 9.0,
+      "med_subs_nfe": 17.0,
+      "outcomes": {
+        "VUS": {
+          "rate_nn": 0.0489,
+          "rate_nfe": 0.012,
+          "cmh_or": 5.957,
+          "cmh_ci95": [
+            1.451,
+            24.455
+          ],
+          "cmh_p": 0.005111676427647166,
+          "logit_or": 6.287,
+          "logit_p": 0.014192282528272105,
+          "logit_subs_adj_or": 0.678,
+          "logit_subs_adj_p": 0.6238862883949138
+        },
+        "B_LB": {
+          "rate_nn": 0.5215,
+          "rate_nfe": 0.3234,
+          "cmh_or": 1.715,
+          "cmh_ci95": [
+            1.223,
+            2.407
+          ],
+          "cmh_p": 0.0016534237902548472,
+          "logit_or": 2.031,
+          "logit_p": 0.0009773952325847085,
+          "logit_subs_adj_or": 0.894,
+          "logit_subs_adj_p": 0.6332212867334314
+        },
+        "CONFLICTING": {
+          "rate_nn": 0.4248,
+          "rate_nfe": 0.6527,
+          "cmh_or": 0.493,
+          "cmh_ci95": [
+            0.355,
+            0.685
+          ],
+          "cmh_p": 1.8248466508395115e-05,
+          "logit_or": 0.456,
+          "logit_p": 5.117254232825638e-05,
+          "logit_subs_adj_or": 1.278,
+          "logit_subs_adj_p": 0.25040481911265366
+        },
+        "P_LP": {
+          "rate_nn": 0.0048,
+          "rate_nfe": 0.012,
+          "cmh_or": 0.51,
+          "cmh_ci95": [
+            0.118,
+            2.199
+          ],
+          "cmh_p": 0.3587863394770453,
+          "logit_or": 0.282,
+          "logit_p": 0.1500160759518137,
+          "logit_subs_adj_or": 5.72,
+          "logit_subs_adj_p": 0.10077886122535083
+        }
+      }
+    },
+    "C_af1e3_ac5_all5": {
+      "label": "All 5 Non-NFE AF>=1e-3 & AC>=5",
+      "n_non_nfe": 3448,
+      "n_nfe": 76,
+      "med_af_nn": 0.0033534224777614263,
+      "med_af_nfe": 0.0020333789602389263,
+      "med_subs_nn": 11.0,
+      "med_subs_nfe": 21.0,
+      "outcomes": {
+        "VUS": {
+          "rate_nn": 0.0267,
+          "rate_nfe": 0.0,
+          "cmh_or": NaN,
+          "cmh_ci95": [
+            NaN,
+            NaN
+          ],
+          "cmh_p": NaN,
+          "logit_or": 69571769.574,
+          "logit_p": 0.996818669849056,
+          "logit_subs_adj_or": 26955973.184,
+          "logit_subs_adj_p": 0.9986402401202868
+        },
+        "B_LB": {
+          "rate_nn": 0.567,
+          "rate_nfe": 0.4079,
+          "cmh_or": 1.36,
+          "cmh_ci95": [
+            0.844,
+            2.192
+          ],
+          "cmh_p": 0.20872953421391127,
+          "logit_or": 1.33,
+          "logit_p": 0.33773155179764336,
+          "logit_subs_adj_or": 0.732,
+          "logit_subs_adj_p": 0.3231268490168828
+        },
+        "CONFLICTING": {
+          "rate_nn": 0.404,
+          "rate_nfe": 0.5921,
+          "cmh_or": 0.627,
+          "cmh_ci95": [
+            0.391,
+            1.008
+          ],
+          "cmh_p": 0.053454274583113574,
+          "logit_or": 0.641,
+          "logit_p": 0.1176778343122931,
+          "logit_subs_adj_or": 1.527,
+          "logit_subs_adj_p": 0.1678608967771965
+        },
+        "P_LP": {
+          "rate_nn": 0.0023,
+          "rate_nfe": 0.0,
+          "cmh_or": NaN,
+          "cmh_ci95": [
+            NaN,
+            NaN
+          ],
+          "cmh_p": NaN,
+          "logit_or": 121052464.035,
+          "logit_p": 0.9993517067022513,
+          "logit_subs_adj_or": null,
+          "logit_subs_adj_p": null
+        }
+      }
+    }
+  },
+  "h1_hypergeometric_downsampling": {
+    "afr": {
+      "downsampled_an": 33480,
+      "mean_n_pop": 4451.4,
+      "mean_n_nfe_ds": 2102.2,
+      "vus_cmh_or_mean": 2.185,
+      "vus_cmh_p_max": 4.32987780122243e-14,
+      "plp_cmh_or_mean": 0.441,
+      "plp_cmh_p_median": 0.0008875228300942938,
+      "conf_cmh_or_mean": 0.528,
+      "conf_cmh_p_max": 4.691087872807613e-28
+    },
+    "amr": {
+      "downsampled_an": 44724,
+      "mean_n_pop": 4182.0,
+      "mean_n_nfe_ds": 1596.0,
+      "vus_cmh_or_mean": 1.62,
+      "vus_cmh_p_max": 1.2684757029011343e-05,
+      "plp_cmh_or_mean": 0.624,
+      "plp_cmh_p_median": 0.0510954697439071,
+      "conf_cmh_or_mean": 0.424,
+      "conf_cmh_p_max": 1.4499693458061576e-42
+    },
+    "eas": {
+      "downsampled_an": 39700,
+      "mean_n_pop": 3669.0,
+      "mean_n_nfe_ds": 3443.0,
+      "vus_cmh_or_mean": 2.722,
+      "vus_cmh_p_max": 3.603680622521135e-36,
+      "plp_cmh_or_mean": 1.272,
+      "plp_cmh_p_median": 0.2818498073591956,
+      "conf_cmh_or_mean": 0.545,
+      "conf_cmh_p_max": 2.3636500301496596e-33
+    },
+    "sas": {
+      "downsampled_an": 86258,
+      "mean_n_pop": 3607.6,
+      "mean_n_nfe_ds": 2167.4,
+      "vus_cmh_or_mean": 2.67,
+      "vus_cmh_p_max": 6.360489869462929e-24,
+      "plp_cmh_or_mean": 0.891,
+      "plp_cmh_p_median": 0.6498118520043803,
+      "conf_cmh_or_mean": 0.429,
+      "conf_cmh_p_max": 5.391181869525643e-49
+    },
+    "mid": {
+      "downsampled_an": 5768,
+      "mean_n_pop": 2570.4,
+      "mean_n_nfe_ds": 1171.6,
+      "vus_cmh_or_mean": 2.011,
+      "vus_cmh_p_max": 6.783717773543536e-07,
+      "plp_cmh_or_mean": 0.417,
+      "plp_cmh_p_median": 0.0022650776040170754,
+      "conf_cmh_or_mean": 0.444,
+      "conf_cmh_p_max": 4.470160022808528e-27
+    }
+  },
+  "l4_clinvar_evidence": [
+    {
+      "gene": "RYR1",
+      "variant_id": "19-38527014-C-T",
+      "variation_id": "281479",
+      "hgvs": "NM_000540.3(RYR1):c.10648C>T (p.Arg3550Trp)",
+      "stars": 3,
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.001443,
+      "hom_joint": 0,
+      "conditions": [
+        "RYR1-related myopathy",
+        "RYR1-related disorder",
+        "King Denborough syndrome",
+        "Central core myopathy",
+        "Congenital multicore myopathy with external ophthalmoplegia"
+      ],
+      "n_submissions_in_ev": 19,
+      "submission_classifications": {
+        "Likely benign": 3,
+        "Uncertain Significance": 1,
+        "Uncertain significance": 7,
+        "Likely pathogenic": 5,
+        "Pathogenic": 1,
+        "Likely Pathogenic": 2
+      },
+      "n_citations": 5,
+      "sample_notes": [
+        "The p.Arg3550Trp variant in RYR1 has been reported as compound heterozyguos with a pathogenic/likely pathogenic variant in at least two individuals with myopathy (Laughlin 2017 PMI",
+        "This variant was observed in the ICSL laboratory as part of a predisposition screen in an ostensibly healthy population. It had not been previously curated by ICSL or reported in t"
+      ]
+    },
+    {
+      "gene": "RYR1",
+      "variant_id": "19-38523211-C-G",
+      "variation_id": "132994",
+      "hgvs": "NM_000540.3(RYR1):c.10348-6C>G",
+      "stars": 3,
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.000322,
+      "hom_joint": 0,
+      "conditions": [
+        "Central core myopathy",
+        "Malignant hyperthermia, susceptibility to, 1",
+        "King Denborough syndrome",
+        "Congenital multicore myopathy with external ophthalmoplegia",
+        "RYR1-related myopathy"
+      ],
+      "n_submissions_in_ev": 20,
+      "submission_classifications": {
+        "Uncertain significance": 1,
+        "Pathogenic": 16,
+        "Uncertain Significance": 1,
+        "Likely pathogenic": 1,
+        "not provided": 1
+      },
+      "n_citations": 7,
+      "sample_notes": [
+        "This variant causes a C to G nucleotide substitution at the -6 position of intron 68 of the RYR1 gene. To our knowledge, functional studies have not been reported for this variant.",
+        "ACMG codes: PS3; PS4M; PM2; PM3; PP5"
+      ]
+    },
+    {
+      "gene": "LDLR",
+      "variant_id": "19-11116900-C-T",
+      "variation_id": "200921",
+      "hgvs": "NM_000527.5(LDLR):c.1747C>T (p.His583Tyr)",
+      "stars": 3,
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.000313,
+      "hom_joint": 1,
+      "conditions": [
+        "LDLR-related disorder",
+        "Cardiovascular phenotype",
+        "Homozygous familial hypercholesterolemia",
+        "not provided",
+        "Familial hypercholesterolemia"
+      ],
+      "n_submissions_in_ev": 37,
+      "submission_classifications": {
+        "Likely pathogenic": 5,
+        "Pathogenic": 31,
+        "Likely benign": 1
+      },
+      "n_citations": 49,
+      "sample_notes": [
+        "Variant summary: LDLR c.1747C>T (p.His583Tyr) results in a conservative amino acid change located in the LDLR class B repeat of the encoded protein sequence. Four of five in-silico",
+        "In silico analysis supports that this missense variant has a deleterious effect on protein structure/function; Published functional studies demonstrate that this variant causes rec"
+      ]
+    },
+    {
+      "gene": "LDLR",
+      "variant_id": "19-11102741-G-A",
+      "variation_id": "251105",
+      "hgvs": "NM_000527.5(LDLR):c.268G>A (p.Asp90Asn)",
+      "stars": 3,
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.000171,
+      "hom_joint": 0,
+      "conditions": [
+        "LDLR-related disorder",
+        "Homozygous familial hypercholesterolemia",
+        "Cardiovascular phenotype",
+        "Familial hypercholesterolemia",
+        "not provided"
+      ],
+      "n_submissions_in_ev": 31,
+      "submission_classifications": {
+        "Likely pathogenic": 4,
+        "Likely benign": 1,
+        "Pathogenic": 25,
+        "pathogenic": 1
+      },
+      "n_citations": 40,
+      "sample_notes": [
+        "subject mutated among 2600 FH index cases screened = 1 , family members = 2 with co-segregation / other mutations at same codon / Software predictions: Damaging",
+        "Variant summary: LDLR c.268G>A (p.Asp90Asn) results in a conservative amino acid change in the encoded protein sequence. Three of five in-silico tools predict a damaging effect of "
+      ]
+    },
+    {
+      "gene": "APC",
+      "variant_id": "5-112775626-T-A",
+      "variation_id": "142189",
+      "hgvs": "NM_000038.6(APC):c.423-3T>A",
+      "stars": 2,
+      "faf95_pop8": "amr",
+      "faf95_max8": 0.001578,
+      "hom_joint": 0,
+      "conditions": [
+        "Hereditary cancer-predisposing syndrome",
+        "not provided",
+        "Familial adenomatous polyposis 1",
+        "Not provided",
+        "Unknown"
+      ],
+      "n_submissions_in_ev": 9,
+      "submission_classifications": {
+        "Likely pathogenic": 5,
+        "Uncertain significance": 1,
+        "Pathogenic": 2,
+        "pathogenic": 1
+      },
+      "n_citations": 6,
+      "sample_notes": [
+        "SCV000256993 was merged into SCV001714738 because sCV000256993 was merged into SCV001714738 to remove duplication; PS3+PS4_mod",
+        "The APC c.423-3T>A variant was identified in 1 of 2332 proband chromosomes (frequency: 0.0004) from German individuals or families with FAP (Friedl 2005). The variant was identifie"
+      ]
+    },
+    {
+      "gene": "CACNA1S",
+      "variant_id": "1-201060816-G-T",
+      "variation_id": "156288",
+      "hgvs": "NM_000069.3(CACNA1S):c.3256C>A (p.Arg1086Ser)",
+      "stars": 2,
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.000218,
+      "hom_joint": 1,
+      "conditions": [
+        "Hypokalemic periodic paralysis, type 1",
+        "Thyrotoxic periodic paralysis, susceptibility to, 1",
+        "Congenital myopathy 18",
+        "Malignant hyperthermia, susceptibility to, 5",
+        "Malignant hyperthermia of anesthesia"
+      ],
+      "n_submissions_in_ev": 5,
+      "submission_classifications": {
+        "not provided": 1,
+        "Likely Pathogenic": 1,
+        "Likely pathogenic": 2,
+        "Pathogenic": 1
+      },
+      "n_citations": 3,
+      "sample_notes": [
+        "An individual homozygous for this allele developed fulminant malignant hyperthermia with sevoflurane anesthesia.",
+        "The p.Arg1086Ser variant in CACNA1S has been reported in three individuals with malignant hyperthermia susceptibility (Toppin 2010 PMID: 20431982, Miller 2018 PMID: 30236257). It h"
+      ]
+    },
+    {
+      "gene": "MYBPC3",
+      "variant_id": "11-47333189-C-G",
+      "variation_id": "42706",
+      "hgvs": "NM_000256.3(MYBPC3):c.3330+5G>C",
+      "stars": 2,
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.000188,
+      "hom_joint": 0,
+      "conditions": [
+        "MYBPC3-related disorder",
+        "Left ventricular noncompaction 10",
+        "Cardiovascular phenotype",
+        "Hypertrophic cardiomyopathy 4",
+        "not provided"
+      ],
+      "n_submissions_in_ev": 26,
+      "submission_classifications": {
+        "Pathogenic": 24,
+        "Likely pathogenic": 2
+      },
+      "n_citations": 27,
+      "sample_notes": [
+        "Splice site variant demonstrated to result in loss-of-function (Watkins et al., 1995); Other splice site variants in the MYBPC3 gene have been reported in the Human Gene Mutation D",
+        "The MYBPC3 c.3330+5G>C variant is predicted to interfere with splicing. This variant has been reported in multiple individuals with hypertrophic cardiomyopathy (Watkins et al. 1995"
+      ]
+    },
+    {
+      "gene": "KCNQ1",
+      "variant_id": "11-2445461-A-AT",
+      "variation_id": "200915",
+      "hgvs": "NM_000218.3(KCNQ1):c.364dup (p.Cys122fs)",
+      "stars": 2,
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.000164,
+      "hom_joint": 0,
+      "conditions": [
+        "Cardiovascular phenotype",
+        "KCNQ1-related disorder",
+        "not provided",
+        "Long QT syndrome",
+        "Long QT syndrome 1"
+      ],
+      "n_submissions_in_ev": 8,
+      "submission_classifications": {
+        "Pathogenic": 7,
+        "Likely pathogenic": 1
+      },
+      "n_citations": 6,
+      "sample_notes": [
+        "This variant was classified as: Pathogenic. The following ACMG criteria were applied in classifying this variant: PVS1,PS1,PP4.",
+        "Frameshift variant predicted to result in protein truncation or nonsense mediated decay in a gene for which loss-of-function is a known mechanism of disease; Not observed at signif"
+      ]
+    },
+    {
+      "gene": "TTN",
+      "variant_id": "2-178568947-T-A",
+      "variation_id": "1678136",
+      "hgvs": "NM_001267550.2(TTN):c.77185A>T (p.Lys25729Ter)",
+      "stars": 2,
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.000146,
+      "hom_joint": 0,
+      "conditions": [
+        "not provided",
+        "Autosomal recessive limb-girdle muscular dystrophy type 2J",
+        "Hypertrophic cardiomyopathy 9",
+        "Dilated cardiomyopathy 1G",
+        "Tibial muscular dystrophy"
+      ],
+      "n_submissions_in_ev": 4,
+      "submission_classifications": {
+        "Likely pathogenic": 4
+      },
+      "n_citations": 0,
+      "sample_notes": [
+        "The stop gained variant c.77185A>T (p.Lys25729Ter) in TTN gene has not been reported previously as a pathogenic variant nor as a benign variant, to our knowledge. This variant is p"
+      ]
+    },
+    {
+      "gene": "RYR1",
+      "variant_id": "19-38505338-CAT-C",
+      "variation_id": "590611",
+      "hgvs": "NM_000540.3(RYR1):c.8342_8343del (p.Ile2781fs)",
+      "stars": 2,
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.000113,
+      "hom_joint": 0,
+      "conditions": [
+        "Centronuclear myopathy",
+        "Malignant hyperthermia, susceptibility to, 1",
+        "Central core myopathy",
+        "Congenital multicore myopathy with external ophthalmoplegia",
+        "King Denborough syndrome"
+      ],
+      "n_submissions_in_ev": 12,
+      "submission_classifications": {
+        "Pathogenic": 11,
+        "Uncertain significance": 1
+      },
+      "n_citations": 8,
+      "sample_notes": [
+        "The heterozygous p.Ile2781ArgfsTer49 variant in RYR1 was identified by our study, in the compound heterozygous state with a variant of uncertain significance (ClinVar Variation ID:",
+        "Frameshift variant predicted to result in protein truncation or nonsense mediated decay in a gene for which loss-of-function is a known mechanism of disease; Observed in 5/23,590 ("
+      ]
+    },
+    {
+      "gene": "MYBPC3",
+      "variant_id": "11-47337534-C-T",
+      "variation_id": "8617",
+      "hgvs": "NM_000256.3(MYBPC3):c.2459G>A (p.Arg820Gln)",
+      "stars": 2,
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.000105,
+      "hom_joint": 0,
+      "conditions": [
+        "MYBPC3-related disorder",
+        "Cardiovascular phenotype",
+        "Hypertrophic cardiomyopathy 4",
+        "Left ventricular noncompaction 10",
+        "not provided"
+      ],
+      "n_submissions_in_ev": 19,
+      "submission_classifications": {
+        "Pathogenic": 10,
+        "Likely pathogenic": 7,
+        "Likely Pathogenic": 2
+      },
+      "n_citations": 39,
+      "sample_notes": [
+        "Variant summary: MYBPC3 c.2459G>A (p.Arg820Gln) results in a conservative amino acid change located in the fibronectin type III domain (IPR003961) of the encoded protein sequence. ",
+        "The MYBPC3 c.2459G>A variant is predicted to result in the amino acid substitution p.Arg820Gln. This variant has been reported in the heterozygous state in individuals with hypertr"
+      ]
+    },
+    {
+      "gene": "SCN5A",
+      "variant_id": "3-38613773-G-A",
+      "variation_id": "68032",
+      "hgvs": "NM_000335.5(SCN5A):c.673C>T (p.Arg225Trp)",
+      "stars": 2,
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.000103,
+      "hom_joint": 1,
+      "conditions": [
+        "Cardiovascular phenotype",
+        "Cardiac arrhythmia",
+        "SCN5A-related disorder",
+        "Familial long QT syndrome",
+        "Progressive familial heart block, type 1A"
+      ],
+      "n_submissions_in_ev": 21,
+      "submission_classifications": {
+        "not provided": 1,
+        "Pathogenic": 15,
+        "Likely pathogenic": 2,
+        "Uncertain significance": 1,
+        "Likely Pathogenic": 1,
+        "Unknown": 1
+      },
+      "n_citations": 29,
+      "sample_notes": [
+        "This variant has been reported as associated with Long QT syndrome in the following publications (PMID:19716085). This is a literature report, and does not necessarily reflect the ",
+        "Reported in association with Long QT syndrome, Brugada syndrome, sudden arrhythmia death syndrome (SADS), and other conduction disorders (Bezzina et al., 2003; Kapplinger et al., 2"
+      ]
+    }
+  ],
+  "gnomad_qc_audit": [
+    {
+      "layer": "L1_LowCallability_TechnicalArtifact",
+      "gene": "MSH2",
+      "variant_id": "2-47414421-A-T",
+      "global_flags": [
+        "lcr"
+      ],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.0023499800000000098,
+      "joint_faf95_pop": "nfe"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "RYR1",
+      "variant_id": "19-38527014-C-T",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.0014524099999999997,
+      "joint_faf95_pop": "sas"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "RYR1",
+      "variant_id": "19-38523211-C-G",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.0003329200000000002,
+      "joint_faf95_pop": "afr"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "LDLR",
+      "variant_id": "19-11116900-C-T",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00033136000000000027,
+      "joint_faf95_pop": "eas"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "LDLR",
+      "variant_id": "19-11102741-G-A",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00018821999999999998,
+      "joint_faf95_pop": "eas"
+    },
+    {
+      "layer": "L1_LowCallability_TechnicalArtifact",
+      "gene": "MSH2",
+      "variant_id": "2-47414419-G-T",
+      "global_flags": [
+        "lcr"
+      ],
+      "exome_filters": [
+        "AS_VQSR"
+      ],
+      "exome_flags": [],
+      "genome_filters": [
+        "AC0",
+        "AS_VQSR"
+      ],
+      "genome_flags": [],
+      "joint_faf95": 0.00017093,
+      "joint_faf95_pop": "nfe"
+    },
+    {
+      "layer": "L1_LowCallability_TechnicalArtifact",
+      "gene": "PTEN",
+      "variant_id": "10-87960892-A-T",
+      "global_flags": [],
+      "exome_filters": [
+        "AS_VQSR"
+      ],
+      "exome_flags": [],
+      "genome_filters": [
+        "AS_VQSR"
+      ],
+      "genome_flags": [],
+      "joint_faf95": 7.971999999999998e-05,
+      "joint_faf95_pop": "amr"
+    },
+    {
+      "layer": "L1_LowCallability_TechnicalArtifact",
+      "gene": "RB1",
+      "variant_id": "13-48464984-C-G",
+      "global_flags": [],
+      "exome_filters": [
+        "AS_VQSR"
+      ],
+      "exome_flags": [],
+      "genome_filters": [
+        "AS_VQSR"
+      ],
+      "genome_flags": [],
+      "joint_faf95": 0.00539794,
+      "joint_faf95_pop": "nfe"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "APC",
+      "variant_id": "5-112775626-T-A",
+      "global_flags": [],
+      "exome_filters": [
+        "AS_VQSR"
+      ],
+      "exome_flags": [],
+      "genome_filters": [
+        "AC0",
+        "AS_VQSR"
+      ],
+      "genome_flags": [],
+      "joint_faf95": 0.0015947199999999996,
+      "joint_faf95_pop": "amr"
+    },
+    {
+      "layer": "L1_LowCallability_TechnicalArtifact",
+      "gene": "MLH1",
+      "variant_id": "3-37025636-G-T",
+      "global_flags": [],
+      "exome_filters": [
+        "AS_VQSR"
+      ],
+      "exome_flags": [],
+      "genome_filters": [
+        "AS_VQSR"
+      ],
+      "genome_flags": [],
+      "joint_faf95": 0.00067636,
+      "joint_faf95_pop": "nfe"
+    },
+    {
+      "layer": "L1_LowCallability_TechnicalArtifact",
+      "gene": "MEN1",
+      "variant_id": "11-64810109-T-G",
+      "global_flags": [],
+      "exome_filters": [
+        "AS_VQSR"
+      ],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.0005448900000000002,
+      "joint_faf95_pop": "sas"
+    },
+    {
+      "layer": "L1_LowCallability_TechnicalArtifact",
+      "gene": "MSH2",
+      "variant_id": "2-47414420-T-A",
+      "global_flags": [
+        "lcr"
+      ],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [
+        "AS_VQSR"
+      ],
+      "genome_flags": [],
+      "joint_faf95": 0.0005271900000000003,
+      "joint_faf95_pop": "afr"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "CACNA1S",
+      "variant_id": "1-201060816-G-T",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00022773999999999998,
+      "joint_faf95_pop": "sas"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "MYBPC3",
+      "variant_id": "11-47333189-C-G",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00019901999999999997,
+      "joint_faf95_pop": "afr"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "KCNQ1",
+      "variant_id": "11-2445461-A-AT",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00017224,
+      "joint_faf95_pop": "sas"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "TTN",
+      "variant_id": "2-178568947-T-A",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00015376,
+      "joint_faf95_pop": "sas"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "RYR1",
+      "variant_id": "19-38505338-CAT-C",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00012291,
+      "joint_faf95_pop": "afr"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "MYBPC3",
+      "variant_id": "11-47337534-C-T",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00012014999999999998,
+      "joint_faf95_pop": "eas"
+    },
+    {
+      "layer": "L4_PriorityNonBottleneckAuditCandidate",
+      "gene": "SCN5A",
+      "variant_id": "3-38613773-G-A",
+      "global_flags": [],
+      "exome_filters": [],
+      "exome_flags": [],
+      "genome_filters": [],
+      "genome_flags": [],
+      "joint_faf95": 0.00011217999999999999,
+      "joint_faf95_pop": "afr"
+    }
+  ]
+}

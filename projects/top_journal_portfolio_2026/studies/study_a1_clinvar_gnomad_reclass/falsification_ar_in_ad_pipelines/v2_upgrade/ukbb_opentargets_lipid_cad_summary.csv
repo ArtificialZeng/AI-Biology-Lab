@@ -1,0 +1,7 @@
+variant_id,gene,group,hgvs,gnomad_het,n_cs,ldl_beta,ldl_p,ldl_n,ldl_trait,chol_beta,chol_p,chol_n,chol_trait,apob_beta,apob_p,cad_beta,cad_p,cad_trait
+2-21006019-CA-C,APOB,APOB_pLoF_FHBL,NM_000384.3(APOB):c.10848del (p.Gly3617fs),67,14,-1.59388,1.53e-46,434646.0,Phospholipids to Total Lipids in Medium VLDL percentage (PGS-adjusted),-2.06449,2.30e-74,412075.0,Cholesterol levels (UKB data field 30690),,,,,
+2-21032391-G-A,APOB,APOB_pLoF_FHBL,NM_000384.3(APOB):c.1315C>T (p.Arg439Ter),57,4,,,,,,,,,,,,,
+2-21006288-C-T,APOB,APOB_Missense_TrueFH,NM_000384.3(APOB):c.10580G>A (p.Arg3527Gln),677,129,0.05392673186967016,1.10e-252,398402.0,"LDL direct, adjusted by medication - raw",0.028342583894245574,9.77e-72,397478.0,"total cholesterol (maximum, inv-norm transformed)",0.028132834441200523,2.18e-74,1.8177017072153454,8.42e-40,Lipid lowering medication use
+19-11113620-G-A,LDLR,LDLR_TrueFH,NM_000527.5(LDLR):c.1444G>A (p.Asp482Asn),118,7,0.915635,9.03e-22,411351.0,Direct low density lipoprotein levels (UKB data field 30780),2.129068260601652,1.08e-18,331754.0,High cholesterol,0.755754,3.26e-14,2.204820102606195,1.78e-18,Lipid lowering medication use
+19-11120436-C-T,LDLR,LDLR_TrueFH,NM_000527.5(LDLR):c.2054C>T (p.Pro685Leu),56,3,,,,,2.951540022761608,6.32e-14,378271.0,ICD10 E78.0: Pure hypercholesterolemia,,,,,
+19-11102774-G-A,LDLR,LDLR_TrueFH,NM_000527.5(LDLR):c.301G>A (p.Glu101Lys),46,1,,,,,,,,,,,,,

@@ -1,0 +1,195 @@
+{
+  "n_checked": 25,
+  "exact_allele_confirmed": 7,
+  "multiallelic_rsid_collisions": 11,
+  "indel_or_unparsed": 7,
+  "confirmed_list": [
+    {
+      "gene": "MYH7",
+      "clinvar_id": "14106",
+      "title": "NM_000257.4(MYH7):c.2803G>A (p.Glu935Lys)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2025/01/15 00:00",
+      "rsid": "rs121913639",
+      "gnomad_vid": "14-23424026-C-T",
+      "nfe_af": 0.0,
+      "non_nfe_pop": "eas",
+      "non_nfe_af": 0.000101,
+      "ratio": 100.8
+    },
+    {
+      "gene": "MYH7",
+      "clinvar_id": "161326",
+      "title": "NM_000257.4(MYH7):c.2608C>T (p.Arg870Cys)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "reviewed by expert panel",
+      "last_evaluated": "2021/11/30 00:00",
+      "rsid": "rs138049878",
+      "gnomad_vid": "14-23424840-G-A",
+      "nfe_af": 1.6e-05,
+      "non_nfe_pop": "eas",
+      "non_nfe_af": 0.000156,
+      "ratio": 9.7
+    },
+    {
+      "gene": "MYH7",
+      "clinvar_id": "177667",
+      "title": "NM_000257.4(MYH7):c.2606G>A (p.Arg869His)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "reviewed by expert panel",
+      "last_evaluated": "2021/09/28 00:00",
+      "rsid": "rs202141173",
+      "gnomad_vid": "14-23424842-C-T",
+      "nfe_af": 1.3e-05,
+      "non_nfe_pop": "afr",
+      "non_nfe_af": 0.000133,
+      "ratio": 10.5
+    },
+    {
+      "gene": "SCN5A",
+      "clinvar_id": "67732",
+      "title": "NM_000335.5(SCN5A):c.2441G>A (p.Arg814Gln)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/01/12 00:00",
+      "rsid": "rs199473584",
+      "gnomad_vid": "3-38586037-C-T",
+      "nfe_af": 1.4e-05,
+      "non_nfe_pop": "eas",
+      "non_nfe_af": 0.000156,
+      "ratio": 10.8
+    },
+    {
+      "gene": "SCN5A",
+      "clinvar_id": "67842",
+      "title": "NM_000335.5(SCN5A):c.3985G>A (p.Ala1329Thr)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/06/18 00:00",
+      "rsid": "rs199473224",
+      "gnomad_vid": "3-38560404-C-T",
+      "nfe_af": 4e-06,
+      "non_nfe_pop": "eas",
+      "non_nfe_af": 0.000101,
+      "ratio": 28.0
+    },
+    {
+      "gene": "SCN5A",
+      "clinvar_id": "68032",
+      "title": "NM_000335.5(SCN5A):c.673C>T (p.Arg225Trp)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/03/27 00:00",
+      "rsid": "rs199473072",
+      "gnomad_vid": "3-38613773-G-A",
+      "nfe_af": 2.5e-05,
+      "non_nfe_pop": "afr",
+      "non_nfe_af": 0.000187,
+      "ratio": 7.6
+    },
+    {
+      "gene": "KCNQ1",
+      "clinvar_id": "200872",
+      "title": "NM_000218.3(KCNQ1):c.387-5T>A",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2025/09/10 00:00",
+      "rsid": "rs794728549",
+      "gnomad_vid": "11-2527923-T-A",
+      "nfe_af": 1e-06,
+      "non_nfe_pop": "mid",
+      "non_nfe_af": 0.000347,
+      "ratio": 346.7
+    }
+  ],
+  "sample_collisions": [
+    {
+      "gene": "MYH7",
+      "clinvar_id": "1184902",
+      "title": "NM_000257.4(MYH7):c.2480G>C (p.Trp827Ser)",
+      "rsid": "rs542565151",
+      "expected_allele": "C>G",
+      "gnomad_alleles_at_rsid": [
+        [
+          "14-23424968-C-A",
+          "sas",
+          0.000207,
+          0.0
+        ]
+      ]
+    },
+    {
+      "gene": "MYH7",
+      "clinvar_id": "1929447",
+      "title": "NM_000257.4(MYH7):c.2606G>C (p.Arg869Pro)",
+      "rsid": "rs202141173",
+      "expected_allele": "C>G",
+      "gnomad_alleles_at_rsid": [
+        [
+          "14-23424842-C-T",
+          "afr",
+          0.000133,
+          1.3e-05
+        ]
+      ]
+    },
+    {
+      "gene": "MYH7",
+      "clinvar_id": "42895",
+      "title": "NM_000257.4(MYH7):c.2348G>C (p.Arg783Pro)",
+      "rsid": "rs397516142",
+      "expected_allele": "C>G",
+      "gnomad_alleles_at_rsid": [
+        [
+          "14-23425357-C-T",
+          "mid",
+          0.000164,
+          2.5e-05
+        ],
+        [
+          "14-23425357-C-A",
+          "amr",
+          2.2e-05,
+          2e-06
+        ]
+      ]
+    },
+    {
+      "gene": "MYH7",
+      "clinvar_id": "42948",
+      "title": "NM_000257.4(MYH7):c.3134G>T (p.Arg1045Leu)",
+      "rsid": "rs397516178",
+      "expected_allele": "C>A",
+      "gnomad_alleles_at_rsid": [
+        [
+          "14-23422291-C-A",
+          "amr",
+          0.0,
+          1.7e-05
+        ],
+        [
+          "14-23422291-C-T",
+          "eas",
+          0.000134,
+          8e-06
+        ]
+      ]
+    },
+    {
+      "gene": "SCN5A",
+      "clinvar_id": "2203341",
+      "title": "NM_000335.5(SCN5A):c.674G>C (p.Arg225Pro)",
+      "rsid": "rs199473071",
+      "expected_allele": "C>G",
+      "gnomad_alleles_at_rsid": [
+        [
+          "3-38613772-C-T",
+          "eas",
+          0.000179,
+          5e-06
+        ]
+      ]
+    }
+  ]
+}

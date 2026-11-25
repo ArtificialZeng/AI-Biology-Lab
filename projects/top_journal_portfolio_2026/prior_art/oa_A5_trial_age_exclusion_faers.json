@@ -1,0 +1,422 @@
+{
+  "meta": {
+    "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+    "count": 15,
+    "db_response_time_ms": 94,
+    "page": 1,
+    "per_page": 8,
+    "groups_count": null,
+    "x_query": {
+      "oql": "get works since 2022 with (ClinicalTrials.gov age exclusion FAERS post-marketing mortality older adults) in the title, abstract, or full text",
+      "x_new_oql": "get works since 2022 with (ClinicalTrials.gov age exclusion FAERS post-marketing mortality older adults) in the title, abstract, or full text",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "ClinicalTrials.gov age exclusion FAERS post-marketing mortality older adults",
+            "operator": "has"
+          },
+          {
+            "column_id": "publication_year",
+            "value": 2021,
+            "operator": ">"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:ClinicalTrials.gov age exclusion FAERS post-marketing mortality older adults,publication_year:%3E2021&per_page=8&page=1",
+      "order": "best matches first",
+      "order_default": true
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W7212821695",
+      "doi": "https://doi.org/10.3802/jgo.2027.38.e27",
+      "display_name": "Post-marketing safety assessment of mirvetuximab soravtansine: a disproportionality analysis based on the FDA Adverse Event Reporting System",
+      "publication_year": 2027,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.3802/jgo.2027.38.e27",
+        "doi": "https://doi.org/10.3802/jgo.2027.38.e27",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.3802/jgo.2027.38.e27",
+        "pdf_url": "http://ejgo.org/Synapse/Data/PDFData/1114JGO/jgo-38-e27.pdf",
+        "source": {
+          "id": "https://openalex.org/S111213320",
+          "display_name": "Journal of Gynecologic Oncology",
+          "issn_l": "2005-0380",
+          "issn": [
+            "2005-0380",
+            "2005-0399"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-b",
+            "doyens",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "oarl",
+            "poland-100",
+            "russia-white-list-1"
+          ],
+          "host_organization": "https://openalex.org/P4310319472",
+          "host_organization_name": "Korean Society of Gynecologic Oncology",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319472"
+          ],
+          "host_organization_lineage_names": [
+            "Korean Society of Gynecologic Oncology"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc",
+        "license_id": "https://openalex.org/licenses/cc-by-nc",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Gynecologic Oncology",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4400109537",
+      "doi": "https://doi.org/10.1016/j.jtct.2024.06.024",
+      "display_name": "Dermatologic Adverse Events Associated With Chimeric Antigen Receptor T-Cell Therapy: A Pharmacovigilance Analysis of the FDA Reporting System",
+      "publication_year": 2024,
+      "cited_by_count": 20,
+      "primary_location": {
+        "id": "doi:10.1016/j.jtct.2024.06.024",
+        "doi": "https://doi.org/10.1016/j.jtct.2024.06.024",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1016/j.jtct.2024.06.024",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S59987174",
+          "display_name": "Transplantation and Cellular Therapy",
+          "issn_l": "1083-8791",
+          "issn": [
+            "1083-8791",
+            "1523-6536",
+            "2666-6367"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core",
+            "dongbi-b",
+            "doyens",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "poland-100",
+            "poland-20",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Transplantation and Cellular Therapy",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4297148472",
+      "doi": "https://doi.org/10.3390/brainsci12101286",
+      "display_name": "Pimavanserin and Parkinson\u2019s Disease Psychosis: A Narrative Review",
+      "publication_year": 2022,
+      "cited_by_count": 27,
+      "primary_location": {
+        "id": "doi:10.3390/brainsci12101286",
+        "doi": "https://doi.org/10.3390/brainsci12101286",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.3390/brainsci12101286",
+        "pdf_url": "https://www.mdpi.com/2076-3425/12/10/1286/pdf?version=1665388360",
+        "source": {
+          "id": "https://openalex.org/S122317144",
+          "display_name": "Brain Sciences",
+          "issn_l": "2076-3425",
+          "issn": [
+            "2076-3425"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "norway-1",
+            "poland-100",
+            "russia-white-list-3",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310310987",
+          "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310310987"
+          ],
+          "host_organization_lineage_names": [
+            "Multidisciplinary Digital Publishing Institute"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Brain Sciences",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7212126374",
+      "doi": "https://doi.org/10.21203/rs.3.rs-10976576/v1",
+      "display_name": "Semaglutide and Suicidality in Adults with Overweight or Obesity: A Bayesian Meta-Analysis of Randomized Trials",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.21203/rs.3.rs-10976576/v1",
+        "doi": "https://doi.org/10.21203/rs.3.rs-10976576/v1",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.21203/rs.3.rs-10976576/v1",
+        "pdf_url": "https://www.researchsquare.com/article/rs-10976576/latest.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306525896",
+          "display_name": "Research Square",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "Research Square",
+        "raw_type": "posted-content"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4205238742",
+      "doi": "https://doi.org/10.3390/vaccines10010082",
+      "display_name": "Effectiveness and Efficacy of Vaccine on Mutated SARS-CoV-2 Virus and Post Vaccination Surveillance: A Narrative Review",
+      "publication_year": 2022,
+      "cited_by_count": 33,
+      "primary_location": {
+        "id": "doi:10.3390/vaccines10010082",
+        "doi": "https://doi.org/10.3390/vaccines10010082",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.3390/vaccines10010082",
+        "pdf_url": "https://www.mdpi.com/2076-393X/10/1/82/pdf?version=1641464562",
+        "source": {
+          "id": "https://openalex.org/S4210226234",
+          "display_name": "Vaccines",
+          "issn_l": "2076-393X",
+          "issn": [
+            "2076-393X"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "norway-1",
+            "poland-140",
+            "russia-white-list-2",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310310987",
+          "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310310987"
+          ],
+          "host_organization_lineage_names": [
+            "Multidisciplinary Digital Publishing Institute"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Vaccines",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7162612633",
+      "doi": null,
+      "display_name": "THE ROLE OF HYPOGLYCEMIC AGENTS IN AMELIORATING COGNITIVE FUNCTIONS AND PSYCHIATRIC SYMPTOMS: FROM THE PSYCHIATRIC PATIENT TO EVIDENCE-BASED AND PHARMACOEPIDEMIOLOGIC APPROACHES FOR SUPPORTING THE CLINICAL PRACTICE",
+      "publication_year": 2024,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:air.unimi.it:2434/1119675",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://hdl.handle.net/2434/1119675",
+        "pdf_url": "https://air.unimi.it/bitstream/2434/1119675/2/phd_unimi_R13248.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306400516",
+          "display_name": "Archivio Istituzionale della Ricerca (Universita Degli Studi Di Milano)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I189158943",
+          "host_organization_name": "University of Milan",
+          "host_organization_lineage": [
+            "https://openalex.org/I189158943"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "other-oa",
+        "license_id": "https://openalex.org/licenses/other-oa",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "info:eu-repo/semantics/doctoralThesis"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4381996588",
+      "doi": "https://doi.org/10.3389/fpsyt.2023.1188101",
+      "display_name": "Navigating the complex landscape of benzodiazepine- and Z-drug diversity: insights from comprehensive FDA adverse event reporting system analysis and beyond",
+      "publication_year": 2023,
+      "cited_by_count": 8,
+      "primary_location": {
+        "id": "doi:10.3389/fpsyt.2023.1188101",
+        "doi": "https://doi.org/10.3389/fpsyt.2023.1188101",
+        "is_oa": true,
+        "landing_page_url": "http://dx.doi.org/10.3389/fpsyt.2023.1188101",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S92766711",
+          "display_name": "Frontiers in Psychiatry",
+          "issn_l": "1664-0640",
+          "issn": [
+            "1664-0640"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "ki-jl-1",
+            "norway-1",
+            "poland-100",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320527",
+          "host_organization_name": "Frontiers Media",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320527"
+          ],
+          "host_organization_lineage_names": [
+            "Frontiers Media"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Frontiers in Psychiatry",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4412517516",
+      "doi": "https://doi.org/10.3390/toxics13070606",
+      "display_name": "Nephrotoxicity of New Antibiotics: A Systematic Review",
+      "publication_year": 2025,
+      "cited_by_count": 8,
+      "primary_location": {
+        "id": "doi:10.3390/toxics13070606",
+        "doi": "https://doi.org/10.3390/toxics13070606",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.3390/toxics13070606",
+        "pdf_url": "https://www.mdpi.com/2305-6304/13/7/606/pdf?version=1753084360",
+        "source": {
+          "id": "https://openalex.org/S2738661068",
+          "display_name": "Toxics",
+          "issn_l": "2305-6304",
+          "issn": [
+            "2305-6304"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "norway-1",
+            "poland-70",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310310987",
+          "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310310987"
+          ],
+          "host_organization_lineage_names": [
+            "Multidisciplinary Digital Publishing Institute"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Toxics",
+        "raw_type": "journal-article"
+      }
+    }
+  ],
+  "group_by": []
+}

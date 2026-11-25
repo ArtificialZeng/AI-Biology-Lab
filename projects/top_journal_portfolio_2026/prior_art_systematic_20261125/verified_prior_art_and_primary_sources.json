@@ -1,0 +1,411 @@
+{
+  "gudmundsson2025": {
+    "status": "ok",
+    "title": "Exploring penetrance of clinically relevant variants in over 800,000 humans from the Genome Aggregation Database",
+    "year": 2025,
+    "pub_date": "2025-10-31",
+    "authors": [
+      "Sanna Gudmundsson",
+      "Moriel Singer\u2010Berk",
+      "Sarah L. Stenton",
+      "Julia K. Goodrich",
+      "Michael W. Wilson",
+      "Jonah E. Einson",
+      "Nicholas A. Watts",
+      "Maria Teresa Abreu"
+    ],
+    "journal": "Nature Communications",
+    "biblio": {
+      "volume": "16",
+      "issue": "1",
+      "first_page": "9623",
+      "last_page": "9623"
+    },
+    "doi": "https://doi.org/10.1038/s41467-025-61698-x",
+    "cited_by_count": 41,
+    "abstract": "Incomplete penetrance, or absence of disease phenotype in an individual with a disease-associated variant, is a major challenge in variant interpretation. Studying individuals with apparent incomplete penetrance can shed light on underlying drivers of altered phenotype penetrance. Here, we investigate clinically relevant variants from ClinVar in 807,162 individuals from the Genome Aggregation Database (gnomAD), demonstrating improved representation in gnomAD version 4. We then conduct a comprehensive case-by-case assessment of 734 predicted loss of function variants in 77 genes associated with severe, early-onset, highly penetrant haploinsufficient disease. Here, we identify explanations for the presumed lack of disease manifestation in 701 of 734 variants (95%). Individuals with unexplained lack of disease manifestation in this set of disorders are rare, underscoring the need and power of deep case-by-case assessment presented here to minimize false assignments of disease risk, particularly in unaffected individuals with higher rates of secondary properties that result in rescue."
+  },
+  "monogenic_diabetes_2026": {
+    "status": "ok",
+    "title": "Ancestry\u2010Stratified Variant Classification in Monogenic Diabetes Genes: Annotation Coverage and Differential Curation Burden",
+    "year": 2026,
+    "pub_date": "2026-08-23",
+    "authors": [
+      "Paulo Dario"
+    ],
+    "journal": "Annals of Human Genetics",
+    "biblio": {
+      "volume": "90",
+      "issue": "6",
+      "first_page": "346",
+      "last_page": "355"
+    },
+    "doi": "https://doi.org/10.1111/ahg.70054",
+    "cited_by_count": 0,
+    "abstract": "Background Variant databases ClinVar and gnomAD underpin clinical variant interpretation, but their composition is skewed toward European ancestry. Whether this produces systematic disadvantages for non\u2010European patients with monogenic diabetes has not been examined at the database level with mutually exclusive ancestry groups. Objective To quantify ClinVar annotation coverage and ancestry\u2010stratified classification outcomes across monogenic diabetes genes, using mutually exclusive population\u2010private variant groups. Methods gnomAD v4.0 (genomes and exomes; 807,162 individuals) was cross\u2010referenced with the ClinVar GRCh38 record (accessed June 29, 2026) for 16 monogenic diabetes (maturity\u2010onset diabetes of the young [MODY]) genes, and variants were classified as population\u2010private to European or non\u2010European ancestry from ancestry\u2010specific allele counts. Results Across 54,865 gnomAD variants, 86.7% carried no ClinVar classification. The annotation gap was near\u2010universal rather than ancestry\u2010specific (unannotated fraction 89.4% European\u2010private, 87.5% non\u2010European\u2010private). Among classified population\u2010private variants, however, the pathogenic or likely pathogenic rate was 19.8% for European\u2010private but only 8.6% for non\u2010European\u2010private variants (Fisher exact OR 2.6, 95% CI 2.1\u20133.3, p = 1 \u00d7 10 \u2212 1 8 ), with a higher uncertain\u2010significance rate in non\u2010European\u2010private variants (52.1% vs. 45.8%). Conclusion The dominant problem is therefore an annotation deficit affecting all ancestries; the ancestry inequity the data support is one of actionability, not of raw uncertain\u2010significance rates. Closing it requires ClinVar submissions and population\u2010specific sequencing from underrepresented populations."
+  },
+  "kidney32_2026": {
+    "status": "ok",
+    "title": "Ancestry-stratified frequency assessment of 50,634 ClinVar variants in 32 kidney-disease genes: a targeted West African comparison",
+    "year": 2026,
+    "pub_date": "2026-11-18",
+    "authors": [
+      "Achab-Awelana Ernest",
+      "Lucy Binnah Owusu Ansah"
+    ],
+    "journal": "Research Square",
+    "biblio": {
+      "volume": null,
+      "issue": null,
+      "first_page": null,
+      "last_page": null
+    },
+    "doi": "https://doi.org/10.21203/rs.3.rs-11762334/v1",
+    "cited_by_count": 0,
+    "abstract": "Background Ancestry-stratified population frequencies can inform clinical interpretation of kidney-disease variants, but reference-genome representation differs across ancestry groups. We assessed 50,634 ClinVar classifications in 32 kidney-disease-associated genes using gnomAD v4.1, model-derived gene-specific frequency ceilings, submission-level records, and selected variants from 421 continental West African reference genomes (Nigeria, Sierra Leone, and The Gambia). Results Among 29,214 ClinVar variants observed in gnomAD, five of 2,339 pathogenic/likely pathogenic variants (0.21%) and 846 of 3,211 conflicting variants (26.3%) exceeded the primary frequency ceiling in at least one reference group. The observed within-variant comparison among 3,208 conflicting variants was not significant (African/African American-only flags 240; non-Finnish European-only flags 231; exact McNemar P = 0.712). Following 500 simulated allele-number equalizations, median discordant counts were 253 versus 160; this sensitivity result does not replace the observed comparison. Five flagged pathogenic/likely pathogenic variants materially influenced estimated allele load (modelled frequency ratio 7.24; 95% Poisson-based confidence interval 5.11\u201310.27). Expected rare unresolved coding-variant loads were 1.51 and 1.02 alleles per reference individual in the respective groups. In the selected West African subset, 90 of 99 flagged conflicting variants had also been flagged in gnomAD v4.1 African/African American data. Conclusions Ancestry-stratified frequencies highlight ClinVar kidney-gene classifications warranting condition-specific expert review. Findings depend on reference-group coverage and assumed disease models; selected West African genomes provide cross-resource concordance, not a representative population replication. Frequency flags do not independently establish pathogenicity, misclassification or clinical diagnostic risk."
+  },
+  "richards2015": {
+    "status": "ok",
+    "title": "Standards and guidelines for the interpretation of sequence variants: a joint consensus recommendation of the American College of Medical Genetics and Genomics and the Association for Molecular Pathology",
+    "year": 2015,
+    "pub_date": "2015-03-05",
+    "authors": [
+      "Sue Richards",
+      "Nazneen Aziz",
+      "Sherri J. Bale",
+      "David P Bick",
+      "Soma Das",
+      "Julie M. Gastier",
+      "Wayne W. Grody",
+      "Madhuri Hegde"
+    ],
+    "journal": "Genetics in Medicine",
+    "biblio": {
+      "volume": "17",
+      "issue": "5",
+      "first_page": "405",
+      "last_page": "424"
+    },
+    "doi": "https://doi.org/10.1038/gim.2015.30",
+    "cited_by_count": 35758,
+    "abstract": null
+  },
+  "karczewski2020": {
+    "status": "ok",
+    "title": "The mutational constraint spectrum quantified from variation in 141,456 humans",
+    "year": 2020,
+    "pub_date": "2020-05-27",
+    "authors": [
+      "Konrad J. Karczewski",
+      "Laurent C. Francioli",
+      "Grace Tiao",
+      "Beryl B. Cummings",
+      "Jessica Alf\u00f6ldi",
+      "Qingbo Seiha Wang",
+      "Ryan L. Collins",
+      "Kristen M. Laricchia"
+    ],
+    "journal": "Nature",
+    "biblio": {
+      "volume": "581",
+      "issue": "7809",
+      "first_page": "434",
+      "last_page": "443"
+    },
+    "doi": "https://doi.org/10.1038/s41586-020-2308-7",
+    "cited_by_count": 11330,
+    "abstract": "Genetic variants that inactivate protein-coding genes are a powerful source of information about the phenotypic consequences of gene disruption: genes that are crucial for the function of an organism will be depleted of such variants in natural populations, whereas non-essential genes will tolerate their accumulation. However, predicted loss-of-function variants are enriched for annotation errors, and tend to be found at extremely low frequencies, so their analysis requires careful variant annotation and very large sample sizes 1 . Here we describe the aggregation of 125,748 exomes and 15,708 genomes from human sequencing studies into the Genome Aggregation Database (gnomAD). We identify 443,769 high-confidence predicted loss-of-function variants in this cohort after filtering for artefacts caused by sequencing and annotation errors. Using an improved model of human mutation rates, we classify human protein-coding genes along a spectrum that represents tolerance to inactivation, validate this classification using data from model organisms and engineered human cells, and show that it can be used to improve the power of gene discovery for both common and rare diseases."
+  },
+  "rambachan2023": {
+    "status": "ok",
+    "title": "A More Credible Approach to Parallel Trends",
+    "year": 2023,
+    "pub_date": "2023-02-15",
+    "authors": [
+      "Ashesh Rambachan",
+      "Jonathan Roth"
+    ],
+    "journal": "The Review of Economic Studies",
+    "biblio": {
+      "volume": "90",
+      "issue": "5",
+      "first_page": "2555",
+      "last_page": "2591"
+    },
+    "doi": "https://doi.org/10.1093/restud/rdad018",
+    "cited_by_count": 2189,
+    "abstract": "This paper proposes tools for robust inference in difference-in-differences and event-study designs where the parallel trends assumption may be violated. Instead of requiring that parallel trends holds exactly, we impose restrictions on how different the post-treatment violations of parallel trends can be from the pre-treatment differences in trends (\u201cpre-trends\u201d). The causal parameter of interest is partially identified under these restrictions. We introduce two approaches that guarantee uniformly valid inference under the imposed restrictions, and we derive novel results showing that they have desirable power properties in our context. We illustrate how economic knowledge can inform the restrictions on the possible violations of parallel trends in two economic applications. We also highlight how our approach can be used to conduct sensitivity analyses showing what causal conclusions can be drawn under various restrictions on the possible violations of the parallel trends assumption."
+  },
+  "altman1995": {
+    "status": "ok",
+    "title": "Statistics notes: Absence of evidence is not evidence of absence",
+    "year": 1995,
+    "pub_date": "1995-08-19",
+    "authors": [
+      "Douglas G. Altman",
+      "J Martin Bland"
+    ],
+    "journal": "BMJ",
+    "biblio": {
+      "volume": "311",
+      "issue": "7003",
+      "first_page": "485",
+      "last_page": "485"
+    },
+    "doi": "https://doi.org/10.1136/bmj.311.7003.485",
+    "cited_by_count": 2371,
+    "abstract": "Randomized controlled clinical trials are conducted to determine whether differences of clinical importance exist between selected treatment regimens. When statistical analysis of the study data finds a P value greater than 5%, it is convention to deem the assessed difference nonsignificant. Just because convention dictates that such study findings be termed nonsignificant, or negative, however, it does not necessarily follow that the study found nothing of clinical importance. Subject samples used in controlled trials tend to be too small. The studies therefore lack the necessary power to detect real, and clinically worthwhile, differences in treatment. Freiman et al. found that only 30% of a sample of 71 trials published in the New England Journal of Medicine in 1978-79 with a P value greater than 10% were large enough to have a 90% chance of detecting even a 50% difference in the effectiveness of the treatments being compared, and they found no improvement in a similar sample of trials published in 1988. It is therefore wrong and unwise to interpret so many negative trials as providing evidence of the ineffectiveness of new treatments. One must instead seriously question whether the absence of evidence is a valid justification for inaction. Efforts must be made to look for quantification of an association rather than just a P value, especially when the risks under investigation are small. The authors cite a recent trial comparing octreotide and sclerotherapy in patients with variceal bleeding, as well as the overview of clinical trials evaluating fibrinolytic treatment for preventing reinfarction after acute myocardial infarction as examples."
+  },
+  "imai2010": {
+    "status": "ok",
+    "title": "A general approach to causal mediation analysis.",
+    "year": 2010,
+    "pub_date": "2010-12-01",
+    "authors": [
+      "Kosuke Imai",
+      "Luke J Keele",
+      "Dustin H. Tingley"
+    ],
+    "journal": "Psychological Methods",
+    "biblio": {
+      "volume": "15",
+      "issue": "4",
+      "first_page": "309",
+      "last_page": "334"
+    },
+    "doi": "https://doi.org/10.1037/a0020761",
+    "cited_by_count": 4996,
+    "abstract": "Traditionally in the social sciences, causal mediation analysis has been formulated, understood, and implemented within the framework of linear structural equation models. We argue and demonstrate that this is problematic for 3 reasons: the lack of a general definition of causal mediation effects independent of a particular statistical model, the inability to specify the key identification assumption, and the difficulty of extending the framework to nonlinear models. In this article, we propose an alternative approach that overcomes these limitations. Our approach is general because it offers the definition, identification, estimation, and sensitivity analysis of causal mediation effects without reference to any specific statistical model. Further, our approach explicitly links these 4 elements closely together within a single framework. As a result, the proposed framework can accommodate linear and nonlinear relationships, parametric and nonparametric models, continuous and discrete mediators, and various types of outcome variables. The general definition and identification result also allow us to develop sensitivity analysis in the context of commonly used models, which enables applied researchers to formally assess the robustness of their empirical conclusions to violations of the key assumption. We illustrate our approach by applying it to the Job Search Intervention Study. We also offer easy-to-use software that implements all our proposed methods."
+  },
+  "mood2010": {
+    "status": "ok",
+    "title": "Logistic Regression: Why We Cannot Do What We Think We Can Do, and What We Can Do About It",
+    "year": 2009,
+    "pub_date": "2009-03-09",
+    "authors": [
+      "Carina Mood"
+    ],
+    "journal": "European Sociological Review",
+    "biblio": {
+      "volume": "26",
+      "issue": "1",
+      "first_page": "67",
+      "last_page": "82"
+    },
+    "doi": "https://doi.org/10.1093/esr/jcp006",
+    "cited_by_count": 4001,
+    "abstract": "Logistic regression estimates do not behave like linear regression estimates in one important respect: They are affected by omitted variables, even when these variables are unrelated to the independent variables in the model. This fact has important implications that have gone largely unnoticed by sociologists. Importantly, we cannot straightforwardly interpret log-odds ratios or odds ratios as effect measures, because they also reflect the degree of unobserved heterogeneity in the model. In addition, we cannot compare log-odds ratios or odds ratios for similar models across groups, samples, or time points, or across models with different independent variables in a sample. This article discusses these problems and possible ways of overcoming them."
+  },
+  "vanderweele2010": {
+    "status": "ok",
+    "title": "Table of contents",
+    "year": 2010,
+    "pub_date": "2010-07-23",
+    "authors": [],
+    "journal": "American Journal of Epidemiology",
+    "biblio": {
+      "volume": "172",
+      "issue": "3",
+      "first_page": "NP",
+      "last_page": "NP"
+    },
+    "doi": "https://doi.org/10.1093/aje/kwq272",
+    "cited_by_count": 0,
+    "abstract": null
+  },
+  "kaufman2010": {
+    "status": "ok",
+    "title": "Table of contents",
+    "year": 2010,
+    "pub_date": "2010-08-10",
+    "authors": [],
+    "journal": "American Journal of Epidemiology",
+    "biblio": {
+      "volume": "172",
+      "issue": "4",
+      "first_page": "NP",
+      "last_page": "NP"
+    },
+    "doi": "https://doi.org/10.1093/aje/kwq298",
+    "cited_by_count": 0,
+    "abstract": null
+  },
+  "shannon_gnomad_carrier_2025": {
+    "status": "ok",
+    "title": "Using cancer phenotype sex-specificity to enable unbiased penetrance estimation of SMARCA4 pathogenic variants for small cell carcinoma of the ovary, hypercalcemic type (SCCOHT)",
+    "year": 2024,
+    "pub_date": "2024-10-02",
+    "authors": [
+      "Isaac Wade",
+      "Leora Witkowski",
+      "Afrida Ahmed",
+      "Charlie F Rowlands",
+      "Susana Banerjee",
+      "Joseph Gerald Pressey",
+      "Terri Patricia McVeigh",
+      "Marc D. Tischkowitz"
+    ],
+    "journal": "Genetics in Medicine",
+    "biblio": {
+      "volume": "27",
+      "issue": "1",
+      "first_page": "101287",
+      "last_page": "101287"
+    },
+    "doi": "https://doi.org/10.1016/j.gim.2024.101287",
+    "cited_by_count": 9,
+    "abstract": null
+  },
+  "biesecker2024": {
+    "status": "ok",
+    "title": "This Month in The Journal",
+    "year": 2024,
+    "pub_date": "2024-01-01",
+    "authors": [
+      "Alyson B. Barnes",
+      "Kylee L. Spencer",
+      "Sara B. Cullinan"
+    ],
+    "journal": "The American Journal of Human Genetics",
+    "biblio": {
+      "volume": "111",
+      "issue": "1",
+      "first_page": "3",
+      "last_page": "4"
+    },
+    "doi": "https://doi.org/10.1016/j.ajhg.2023.12.012",
+    "cited_by_count": 0,
+    "abstract": null
+  },
+  "cameron2011_twoway": {
+    "status": "ok",
+    "title": "Robust Inference With Multiway Clustering",
+    "year": 2011,
+    "pub_date": "2011-02-24",
+    "authors": [
+      "A. Colin Cameron",
+      "Jonah B. Gelbach",
+      "Douglas L. Miller"
+    ],
+    "journal": "Journal of Business and Economic Statistics",
+    "biblio": {
+      "volume": "29",
+      "issue": "2",
+      "first_page": "238",
+      "last_page": "249"
+    },
+    "doi": "https://doi.org/10.1198/jbes.2010.07136",
+    "cited_by_count": 3913,
+    "abstract": "In this article we propose a variance estimator for the OLS estimator as well as for nonlinear estimators such as logit, probit, and GMM. This variance estimator enables cluster-robust inference when there is two-way or multiway clustering that is nonnested. The variance estimator extends the standard cluster-robust variance estimator or sandwich estimator for one-way clustering (e.g., Liang and Zeger 1986; Arellano 1987) and relies on similar relatively weak distributional assumptions. Our method is easily implemented in statistical packages, such as Stata and SAS, that already offer cluster-robust standard errors when there is one-way clustering. The method is demonstrated by a Monte Carlo analysis for a two-way random effects model; a Monte Carlo analysis of a placebo law that extends the state\u2013year effects example of Bertrand, Duflo, and Mullainathan (2004) to two dimensions; and by application to studies in the empirical literature where two-way clustering is present."
+  },
+  "roth2022_pretrends": {
+    "status": "ok",
+    "title": "Pretest with Caution: Event-Study Estimates after Testing for Parallel Trends",
+    "year": 2022,
+    "pub_date": "2022-08-31",
+    "authors": [
+      "Jonathan Roth"
+    ],
+    "journal": "American Economic Review Insights",
+    "biblio": {
+      "volume": "4",
+      "issue": "3",
+      "first_page": "305",
+      "last_page": "322"
+    },
+    "doi": "https://doi.org/10.1257/aeri.20210236",
+    "cited_by_count": 1392,
+    "abstract": "This paper discusses two important limitations of the common practice of testing for preexisting differences in trends (\u201c pre-trends\u201d) when using difference-in-differences and related methods. First, conventional pre-trends tests may have low power. Second, conditioning the analysis on the result of a pretest can distort estimation and inference, potentially exacerbating the bias of point estimates and under-coverage of confidence intervals. I analyze these issues both in theory and in simulations calibrated to a survey of recent papers in leading economics journals, which suggest that these limitations are important in practice. I conclude with practical recommendations for mitigating these issues. (JEL A14, C23, C51)"
+  },
+  "sunabraham2021": {
+    "status": "ok",
+    "title": "Estimating dynamic treatment effects in event studies with heterogeneous treatment effects",
+    "year": 2020,
+    "pub_date": "2020-12-16",
+    "authors": [
+      "Liyang Sun",
+      "Sarah Abraham"
+    ],
+    "journal": "Journal of Econometrics",
+    "biblio": {
+      "volume": "225",
+      "issue": "2",
+      "first_page": "175",
+      "last_page": "199"
+    },
+    "doi": "https://doi.org/10.1016/j.jeconom.2020.09.006",
+    "cited_by_count": 7484,
+    "abstract": null
+  },
+  "parsons2024_brca": {
+    "status": "ok",
+    "title": "Congenital microcoria deletion in mouse links Sox21 dysregulation to disease and suggests a role for TGFB2 in glaucoma and myopia",
+    "year": 2024,
+    "pub_date": "2024-09-17",
+    "authors": [
+      "Elisa Erjavec",
+      "Cl\u00e9mentine Ang\u00e9e",
+      "Djihad Hadjadj",
+      "Bruno Passet",
+      "Pierre David",
+      "Corinne Kostic",
+      "Emmanuel Dod\u00e9",
+      "Xavier Zanlonghi"
+    ],
+    "journal": "The American Journal of Human Genetics",
+    "biblio": {
+      "volume": "111",
+      "issue": "10",
+      "first_page": "2265",
+      "last_page": "2282"
+    },
+    "doi": "https://doi.org/10.1016/j.ajhg.2024.08.019",
+    "cited_by_count": 7,
+    "abstract": null
+  },
+  "gudmundsson_epmc": {
+    "title": "Exploring penetrance of clinically relevant variants in over 800,000 humans from the Genome Aggregation Database.",
+    "authorString": "Gudmundsson S, Singer-Berk M, Stenton SL, Goodrich JK, Wilson MW, Einson J, Watts NA, Genome Aggregation Database Consortium, Lappalainen T, Rehm HL, MacArthur DG, O'Donnell-Luria A.",
+    "journalTitle": null,
+    "pubYear": "2025",
+    "doi": "10.1038/s41467-025-61698-x",
+    "pmid": "41173899",
+    "pmcid": "PMC12579199",
+    "abstractText": "Incomplete penetrance, or absence of disease phenotype in an individual with a disease-associated variant, is a major challenge in variant interpretation. Studying individuals with apparent incomplete penetrance can shed light on underlying drivers of altered phenotype penetrance. Here, we investigate clinically relevant variants from ClinVar in 807,162 individuals from the Genome Aggregation Database (gnomAD), demonstrating improved representation in gnomAD version 4. We then conduct a comprehensive case-by-case assessment of 734 predicted loss of function variants in 77 genes associated with severe, early-onset, highly penetrant haploinsufficient disease. Here, we identify explanations for the presumed lack of disease manifestation in 701 of 734 variants (95%). Individuals with unexplained lack of disease manifestation in this set of disorders are rare, underscoring the need and power of deep case-by-case assessment presented here to minimize false assignments of disease risk, particularly in unaffected individuals with higher rates of secondary properties that result in rescue."
+  },
+  "epilepsy_gnomadv411_2026": {
+    "title": "Population-specific differences in ClinVar pathogenic and likely pathogenic variants of epilepsy-associated genes between East Asian and non-finnish European populations: a nucleotide-resolved gnomAD v4.1.1 analysis.",
+    "authorString": "Lai JX, He MF, Fan ZC, Yan FJ, Guan BZ, Liu XH.",
+    "journalTitle": null,
+    "pubYear": "2026",
+    "doi": "10.3389/fgene.2026.1973684",
+    "pmid": "42991897",
+    "pmcid": "PMC13739471",
+    "abstractText": "Pathogenic and likely pathogenic (P/LP) variants in ClinVar guide variant interpretation in clinical genetic testing, yet their population-specific frequency differences have not been systematically examined in epilepsy. We compiled 199 epilepsy-associated genes, extracted 46,746 unique P/LP variants from ClinVar, and retrieved allele frequencies from gnomAD v4.1.1 gene-level tables using nucleotide-resolved matching. Fisher's exact test with Benjamini-Hochberg correction (q < 0.05) identified nine variants significantly enriched in East Asian (EAS) relative to non-Finnish European (NFE) populations, with odds ratios of 36.3-867.9. Eight additional low-frequency EAS signals met the same enrichment criterion with at least two EAS alleles and an uncorrected p < 0.01 and are reported as exploratory. Thirteen of the seventeen variants reside in seven autosomal recessive genes, namely, <i>ALDH7A1</i>, <i>ST3GAL5</i>, <i>GOSR2</i>, <i>AARS1</i>, <i>BRAT1</i>, <i>WWOX</i>, and <i>UBA5</i>. In parallel, an rsID-level workflow, the standard approach in database mining, yielded 60 candidate EAS-enriched variants. Nucleotide-resolved matching confirmed only fifteen of these and additionally recovered two signals the rsID workflow missed, a false-positive rate of 75.0%. These findings show that epilepsy P/LP variant frequencies differ substantially between EAS and NFE populations and concentrate in recessive genes with direct relevance to carrier screening. rsID-level ClinVar-gnomAD integration systematically overestimates population specificity, and nucleotide-resolved allele matching should become a standard step in population frequency analyses."
+  },
+  "carrier_gnomadv40_2025": {
+    "title": "Estimation of carrier frequencies of autosomal and X-linked recessive genetic conditions based on gnomAD v4.0 data in different ancestries.",
+    "authorString": "Hotakainen R, J\u00e4rvinen T, Kettunen K, Anttonen AK, Jakkula E.",
+    "journalTitle": null,
+    "pubYear": "2025",
+    "doi": "10.1016/j.gim.2024.101304",
+    "pmid": "39492094",
+    "pmcid": null,
+    "abstractText": "<h4>Purpose</h4>Monogenic rare diseases contribute significantly to infant deaths and pediatric hospitalizations and cause burden to the patients and their families. The American College of Medical Genetics and Genomics recommended in 2021 that carrier screening of autosomal recessive and X-linked conditions with a carrier frequency of \u22651/200 and a severe or moderate phenotype should be offered when planning or during pregnancy. In November 2023 gnomAD v4.0 was released. It contains in total 807,162 individuals, being nearly 5\u00d7 larger than previous versions, which have been used to estimate gene carrier frequencies (GCF).<h4>Methods</h4>We utilized gnomAD v4.0 (GRCh38) to calculate the GCFs for available genetic ancestry groups for variants having pathogenic or likely pathogenic classification (>80% of submissions) in ClinVar. We calculated GCF separately for exomes and genomes, combined data, and at-risk couple frequencies (ACF) per genetic ancestry group.<h4>Results</h4>In total, 324 genes had a GCF \u22651/200 in at least 1 ancestry subgroup. The number of genes with GCF \u22651/200 varied greatly between subgroups. ACFs were more similar, Ashkenazi Jewish having the highest ACF of 6.11%.<h4>Conclusion</h4>Improved understanding of carrier risks and updated carrier screening content would allow patients to make more informed reproductive decisions."
+  },
+  "nlm_2020_qc_policy": {
+    "status": "ok",
+    "len": 3482,
+    "excerpt": "ClinicalTrials.gov: Updated Quality Control and Posting Procedures. NLM Technical Bulletin. 2020 Jan&#8211;Feb Skip to main content An official website of the United States government Here\u2019s how you know Here\u2019s how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( Lock A locked padlock ) or https:// means you\u2019ve safely connected to the .gov website. Share sensitive information only on official, secure websites. Search archive Menu Home Current Issue Past Issues About Contact Us Subscribe &nbsp; This is archived content. Links may have become inactive over time. Visit Archive-It &nbsp; to find the original published layout. ClinicalTrials.gov: Updated Quality Control and Posting Procedures ClinicalTrials.gov ClinicalTrials.gov: Updated Quality Control and Posting Procedures. NLM Tech Bull. 2020 Jan-Feb;( 432 ):e2. January 29, 2020 [posted] On January 1, 2020, the National Library of Medicine (NLM) implemented updates to ClinicalTrials.gov procedures for posting results information submitted for applicable clinical trials (ACTs). This article highlights key features of these updates. ClinicalTrials.gov is a resource maintained by NLM that provides the public with standardized, up-to-date information from sponsors and investigators about their ongoing and completed clinical studies and results. Listing of a study on ClinicalTrials.gov does not reflect endorsement by the National Institutes of Health. Consistent with 42 CFR Part 11, the updated procedures allow NLM to publicly post submitted results information within 30 days of submission, regardless of whether the quality control (QC) review process has been completed. Only studies meeting the following criteria are posted under these updated procedures: Is an applicable clinical trial Has a study start date that is on or after January 18, 2017 First submitted results information on or after January 1, 2020 Submissions with QC Comments Posted study records with results information that have not completed the QC review process are identifiable by a prominent note on the study record and brief QC review comments indicating the location where there may be apparent errors, deficiencies, or inconsistencies (see Figure 1 ). These submissions with QC review comments are accessed from the Results Submitted tab of the study record. Figure 1: Study record displaying note that QC review process has not concluded Find Previous Versions in the Archive When the QC process has concluded, the study record is posted without the note and QC review comments. All previously posted versions of the study record are available through the ClinicalTrials.gov Archive, including versions with QC comments. The Archive can be accessed through the History of Changes link on a study record. New Advanced Search Field The Results Submitted field has been added to the Advanced Search page (see Figure 2 ) allowing searchers to find study records based on whether the study sponsor or investigator has submitted summary results information and if submissions with QC comments are available. Figure 2: New Results Submitted field on Advanced Search page ISSN 2161-2986 (Online) Last updated on 29 January 2020 Connect with NLM National Library of Medicine 8600 Rockville Pike Bethesda, MD 20894 Web Policies FOIA HHS Vulnerability Disclosure NLM Support Center Accessibility Careers NLM | NIH | HHS | USA.gov"
+  },
+  "fda_2026_04_13_bulletin": {
+    "status": "ok",
+    "len": 3679,
+    "excerpt": "FDA Reminds More Than 2,200 Sponsors and Researchers to Disclose Trial Results FDA Reminds More Than 2,200 Sponsors and Researchers to Disclose Trial Results U.S. Food and Drug Administration sent this bulletin at 04/13/2026 12:12 PM EDT If your email program has trouble displaying this email, view as a webpage . FDA Reminds More Than 2,200 Sponsors and Researchers to Disclose Trial Results The U.S. Food and Drug Administration has reminded more than 2,200 medical product companies and researchers of the requirements to submit certain clinical trial results information to ClinicalTrials.gov. Companies and researchers often fail to disclose negative trial results, resulting in significant gaps in the public record and a publication bias that obscures the true landscape of drug development outcomes\u2014overrepresenting successes and underrepresenting failures. This gap can also create a distorted perception of the safety and efficacy of medical products. According to an internal analysis, 29.6% of studies that are highly likely to fall under mandatory reporting requirements have no results information submitted to ClinicalTrials.gov. Studies subject to the mandatory reporting requirements include interventional studies with a U.S. nexus and an FDA-regulated product that are past the deadline to report; it excludes Phase 1 and device feasibility studies. \"Far too often, companies are suppressing unfavorable clinical trial results and keeping them secret from patients and the scientific community. Those sponsoring clinical trials have an ethical obligation to make results public regardless of the data\u2019s influence on the company\u2019s share price,\" said FDA Commissioner Marty Makary, M.D., M.P.H. \"Too many clinical trial sponsors and researchers are failing to report their results, leaving important information unavailable to clinicians and other researchers. If you are a doctor deciding whether or not to prescribe a medication to a patient, you deserve to have the best data about clinical studies on that medication.\u201d Certain clinical trial sponsors and researchers are required to submit clinical trial results information to ClinicalTrials.gov one year after trial completion. On March 30, 2026, the agency sent messages to more than 2,200 companies and researchers (associated with more than 3,000 registered clinical trials, including some that were publicly funded) that do not appear to have submitted required results information to ClinicalTrials.gov, or that may have not completed the National Library of Medicine's quality control review process. The messages seek voluntary compliance with requirements. The FDA also may send Pre-Notices of Noncompliance and Notices of Noncompliance as part of risk-based compliance efforts related to ClinicalTrials.gov. The messages issued on March 30, 2026, represent an extra step the agency is taking to provide the relevant responsible parties with the opportunity to comply with federal law before the agency considers whether to take further regulatory action. \u201cI fully support this new initiative to increase the prompt publication\u2014as required by law\u2014of results information from interventional studies of the medical products we regulate,\u201d said Tracy Beth Hoeg, M.D., Ph.D., Acting Director of the Center for Drug Evaluation and Research . \u201cWe hope that the thousands of messages sent to sponsors and investigators reminding them to publicly report their findings will improve patient safety and keep researchers and the public better informed of benefits and risks of new and investigational products.\u201d Manage Subscriptions | Unsubscribe All | Help Powered by Privacy Policy | Cookie Statement | Help"
+  },
+  "gnomad_v41_blog": {
+    "status": "ok",
+    "len": 10884,
+    "excerpt": "gnomAD v4.1 | gnomAD browser gnomAD browser \u2630 Menu About Team Federated Stats Policies Publications Blog Changelog Data Forum Contact Help/FAQ gnomAD v4.1 April 19, 2024 in Announcements / Release Katherine Chao , Michael Wilson , Julia Goodrich , gnomAD Production Team We have released gnomAD v4.1, an update to our latest major release . This update fixes the allele number issue in gnomAD v4.0 previously described here and critically adds two new functionalities: joint allele number across all called sites in the exomes and genomes and a new flag indicating when the frequencies in the exomes and genomes are highly discordant. Allele numbers across all possible sites As part of gnomAD v4.1, we have calculated allele number across all callable sites in the gnomAD exomes and genomes. In traditional callset processing, allele number (AN) information is only retained at sites where at least one sample has a non-reference genotype call (i.e., AN information is not retained at sites where all samples have homozygous reference genotypes). However, due to the lossless conversion of sample genomic VCF ( gVCF ) data to the Hail VariantDataset ( VDS ) format, we actually retain AN information across all called sites within the raw gnomAD callsets. We have leveraged this VDS feature for the first time as part of gnomAD v4.1 and created two new files that contain sample ANs across every called site in the gnomAD exomes and genomes. This means that for any loci absent from these files, zero gnomAD samples had any kind of genotype call (either reference or alternate) in their sample gVCF. The calculation of AN across all called sites allows us to do two new things: Combine exome and genome allele numbers at all sites with gnomAD variation [Downloads only] Provide AN information for loci that do not have variation observed within gnomAD to date Joint allele numbers at all sites with gnomAD variation On the browser and in the downloadable files, we now report AN for both data types if the variant was called in either data type. In previous gnomAD releases, if a variant was exclusive to a single data type (i.e., variant present in only the exomes or only the genomes), we only reported AN for that data type. For example, 1-55505582-TC-T in gnomAD v2.1.1 is present only in the v2.1.1 exomes, and therefore the total AN at this site only contains information from the exomes. This variant maps to 1-55039909-TC-T in gnomAD v4.1, where it still has an allele count of 1 (still present in only a single exome sample). However, the total AN of this variant is now 1,565,390, which reflects the sum of exome AN (1,413,216) and the previously uncalculated genome AN (152,174). Allele number information at non-variant loci We have calculated AN information for loci that do not yet have variation observed within gnomAD. This means that even for loci where zero gnomAD samples have a non-reference genotype call, we report the exact AN based on the total number of defined sample genotype calls at that site, something that users were previously only able to estimate based on coverage data. For more information, see our help page . Note that we do not display this information on the browser; users will need to download our new files to extract this information. Other considerations Our new calculations have allowed us to report sample AN across all called sites within gnomAD. This means that sites not present within these files do not have any genotype information (reference or any alternates) in the gnomAD samples. The main reasons why sites do not have genotype calls are because they are not within our calling intervals , or they are sites that are not amenable to short read sequencing. The gnomAD v4.1 callset includes 416,555 UK Biobank and 314,392 non-UK Biobank exomes, requiring the use of two calling interval lists for processing and quality control pipelines. The non-UK Biobank samples were called with the standard Broad exome calling intervals intervals with "
+  }
+}

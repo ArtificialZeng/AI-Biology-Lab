@@ -1,0 +1,820 @@
+{
+  "unseen20_overview": {
+    "n_genes": 20,
+    "n_clinvar": 99249,
+    "n_gnomad": 157021,
+    "n_joined": 38023
+  },
+  "pv1_rsid_mirage": {
+    "all_plp_faf95_ge_1e4": {
+      "naive": 149,
+      "exact": 23,
+      "fp_rate": 0.8456
+    },
+    "hc_2to4star_faf95_ge_1e4": {
+      "naive": 96,
+      "exact": 19,
+      "fp_rate": 0.8021
+    }
+  },
+  "pv2_equity_and_mediation": {
+    "n_nn": 2371,
+    "n_nfe": 151,
+    "med_subs_nn": 4.0,
+    "med_subs_nfe": 8.0,
+    "subs_mw_p": 4.051919311260372e-14,
+    "outcomes": {
+      "VUS": {
+        "rate_nn": 0.1645,
+        "rate_nfe": 0.0993,
+        "cmh_or": 2.346,
+        "cmh_ci95": [
+          1.346,
+          4.09
+        ],
+        "cmh_p": 0.002135678288713122,
+        "logit_or": 3.483,
+        "logit_p": 0.00023054699818597575,
+        "subs_adj_or": 1.228,
+        "subs_adj_p": 0.592144176435444,
+        "log_or_atten_pct": 83.5
+      },
+      "CONFLICTING": {
+        "rate_nn": 0.2813,
+        "rate_nfe": 0.5033,
+        "cmh_or": 0.421,
+        "cmh_ci95": [
+          0.301,
+          0.589
+        ],
+        "cmh_p": 2.249282331290243e-07,
+        "logit_or": 0.333,
+        "logit_p": 3.1105172046746704e-08,
+        "subs_adj_or": 0.845,
+        "subs_adj_p": 0.4517937203167467,
+        "log_or_atten_pct": 84.7
+      },
+      "B_LB": {
+        "rate_nn": 0.5496,
+        "rate_nfe": 0.3841,
+        "cmh_or": 1.588,
+        "cmh_ci95": [
+          1.126,
+          2.237
+        ],
+        "cmh_p": 0.007377140084818435,
+        "logit_or": 2.16,
+        "logit_p": 0.0015995653106953404,
+        "subs_adj_or": 1.199,
+        "subs_adj_p": 0.4924586081178395,
+        "log_or_atten_pct": 76.4
+      },
+      "P_LP": {
+        "rate_nn": 0.0046,
+        "rate_nfe": 0.0132,
+        "cmh_or": 0.36,
+        "cmh_ci95": [
+          0.079,
+          1.647
+        ],
+        "cmh_p": 0.16894077183036182,
+        "logit_or": null,
+        "logit_p": null,
+        "subs_adj_or": null,
+        "subs_adj_p": null,
+        "log_or_atten_pct": null
+      }
+    }
+  },
+  "pv3_vus_liberation": {
+    "total_hc_vus": 13279,
+    "faf95_1e4": {
+      "n": 472,
+      "nfe_invisible": 392,
+      "nfe_invisible_share": 0.8305
+    },
+    "faf95_5e4": {
+      "n": 67,
+      "nfe_invisible": 57,
+      "nfe_invisible_share": 0.8507
+    },
+    "faf95_1e3": {
+      "n": 19,
+      "nfe_invisible": 17,
+      "nfe_invisible_share": 0.8947
+    }
+  },
+  "acmg55_complete_qc_audit": {
+    "n_total": 55,
+    "n_fetched_new": 36,
+    "n_qc_fail_or_low_an": 8,
+    "failed_variants": [
+      {
+        "variant_id": "2-47414421-A-T",
+        "gene": "MSH2",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.0072,
+        "global_flags": [
+          "lcr"
+        ],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "2-47414419-G-T",
+        "gene": "MSH2",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.3134,
+        "global_flags": [
+          "lcr"
+        ],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AC0",
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "10-87960892-A-T",
+        "gene": "PTEN",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.79,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "13-48464984-C-G",
+        "gene": "RB1",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.3531,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "5-112775626-T-A",
+        "gene": "APC",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9388,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AC0",
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "3-37025636-G-T",
+        "gene": "MLH1",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.6323,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "11-64810109-T-G",
+        "gene": "MEN1",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.6227,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "2-47414420-T-A",
+        "gene": "MSH2",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.6469,
+        "global_flags": [
+          "lcr"
+        ],
+        "exome_filters": [],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      }
+    ],
+    "all_55": [
+      {
+        "variant_id": "2-47414421-A-T",
+        "gene": "MSH2",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.0072,
+        "global_flags": [
+          "lcr"
+        ],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "16-23634953-CA-C",
+        "gene": "PALB2",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-38527014-C-T",
+        "gene": "RYR1",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "17-43057062-T-TG",
+        "gene": "BRCA1",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "12-120994314-G-GC",
+        "gene": "HNF1A",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9938,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-11105556-ATGG-A",
+        "gene": "LDLR",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9884,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-2778009-G-A",
+        "gene": "KCNQ1",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9996,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "7-6005918-C-A",
+        "gene": "PMS2",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9978,
+        "global_flags": [
+          "segdup"
+        ],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-38523211-C-G",
+        "gene": "RYR1",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 1.0,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-11116900-C-T",
+        "gene": "LDLR",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "14-23422267-C-T",
+        "gene": "MYH7",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "16-23621362-C-T",
+        "gene": "PALB2",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9929,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "2-47806605-AAAGC-A",
+        "gene": "MSH6",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9049,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "13-32346841-C-T",
+        "gene": "BRCA2",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9016,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "13-32398209-TTGTA-T",
+        "gene": "BRCA2",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.999,
+        "global_flags": [
+          "lc_lof"
+        ],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-11102741-G-A",
+        "gene": "LDLR",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "15-48411280-G-A",
+        "gene": "FBN1",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "2-47414419-G-T",
+        "gene": "MSH2",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.3134,
+        "global_flags": [
+          "lcr"
+        ],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AC0",
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "10-87960892-A-T",
+        "gene": "PTEN",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.79,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "2-47803500-A-AC",
+        "gene": "MSH6",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9973,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-2768881-C-T",
+        "gene": "KCNQ1",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-11116937-G-A",
+        "gene": "LDLR",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "13-32380005-A-G",
+        "gene": "BRCA2",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "7-5977629-G-A",
+        "gene": "PMS2",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9877,
+        "global_flags": [
+          "segdup"
+        ],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "2-47475171-G-C",
+        "gene": "MSH2",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-38499993-G-A",
+        "gene": "RYR1",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "13-48464984-C-G",
+        "gene": "RB1",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.3531,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "5-112775626-T-A",
+        "gene": "APC",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9388,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AC0",
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "2-178589849-G-A",
+        "gene": "TTN",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9993,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "3-37025636-G-T",
+        "gene": "MLH1",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.6323,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "12-120994313-G-GC",
+        "gene": "HNF1A",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9882,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-64810109-T-G",
+        "gene": "MEN1",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.6227,
+        "global_flags": [],
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "7-150951738-A-G",
+        "gene": "KCNH2",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9988,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "2-47414420-T-A",
+        "gene": "MSH2",
+        "layer_v1": "L1_LowCallability_TechnicalArtifact",
+        "an_frac": 0.6469,
+        "global_flags": [
+          "lcr"
+        ],
+        "exome_filters": [],
+        "genome_filters": [
+          "AS_VQSR"
+        ],
+        "any_qc_fail_or_low_an": true
+      },
+      {
+        "variant_id": "2-21006289-G-A",
+        "gene": "APOB",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "6-7583571-GA-G",
+        "gene": "DSP",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-11120425-C-A",
+        "gene": "LDLR",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9055,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "1-201060816-G-T",
+        "gene": "CACNA1S",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9999,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-47333189-C-G",
+        "gene": "MYBPC3",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9921,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-38457546-G-A",
+        "gene": "RYR1",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-47342698-G-A",
+        "gene": "MYBPC3",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-2445461-A-AT",
+        "gene": "KCNQ1",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9889,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "2-178568947-T-A",
+        "gene": "TTN",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9995,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "16-23629985-CAT-C",
+        "gene": "PALB2",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9998,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-11107497-AACCCATC-A",
+        "gene": "LDLR",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9965,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-47333566-G-A",
+        "gene": "MYBPC3",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9912,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "2-178579702-G-A",
+        "gene": "TTN",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9992,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "19-38505338-CAT-C",
+        "gene": "RYR1",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9987,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "10-43119548-G-A",
+        "gene": "RET",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9945,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "11-47337534-C-T",
+        "gene": "MYBPC3",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "3-38613773-G-A",
+        "gene": "SCN5A",
+        "layer_v1": "L4_PriorityNonBottleneckAuditCandidate",
+        "an_frac": 0.9969,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "13-32340300-GT-G",
+        "gene": "BRCA2",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "17-43124027-ACT-A",
+        "gene": "BRCA1",
+        "layer_v1": "L2_BottleneckFounder_FIN_ASJ",
+        "an_frac": 0.9986,
+        "global_flags": [
+          "segdup"
+        ],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "18-31598655-G-A",
+        "gene": "TTR",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9999,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      },
+      {
+        "variant_id": "2-21006288-C-T",
+        "gene": "APOB",
+        "layer_v1": "L3_EstablishedContinentalFounder_LowPen",
+        "an_frac": 0.9997,
+        "global_flags": [],
+        "exome_filters": [],
+        "genome_filters": [],
+        "any_qc_fail_or_low_an": false
+      }
+    ]
+  }
+}

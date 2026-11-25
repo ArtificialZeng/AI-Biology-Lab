@@ -1,0 +1,398 @@
+{
+  "meta": {
+    "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+    "count": 13,
+    "db_response_time_ms": 120,
+    "page": 1,
+    "per_page": 8,
+    "groups_count": null,
+    "x_query": {
+      "oql": "get works since 2022 with (FDA drug shortage cGMP recall market concentration sterile injectable) in the title, abstract, or full text",
+      "x_new_oql": "get works since 2022 with (FDA drug shortage cGMP recall market concentration sterile injectable) in the title, abstract, or full text",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "FDA drug shortage cGMP recall market concentration sterile injectable",
+            "operator": "has"
+          },
+          {
+            "column_id": "publication_year",
+            "value": 2021,
+            "operator": ">"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:FDA drug shortage cGMP recall market concentration sterile injectable,publication_year:%3E2021&per_page=8&page=1",
+      "order": "best matches first",
+      "order_default": true
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W4220723077",
+      "doi": "https://doi.org/10.1787/b5d9e15d-en",
+      "display_name": "Shortages of medicines in OECD countries",
+      "publication_year": 2022,
+      "cited_by_count": 63,
+      "primary_location": {
+        "id": "doi:10.1787/b5d9e15d-en",
+        "doi": "https://doi.org/10.1787/b5d9e15d-en",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1787/b5d9e15d-en",
+        "pdf_url": "https://www.oecd-ilibrary.org/deliver/b5d9e15d-en.pdf?itemId=%2Fcontent%2Fpaper%2Fb5d9e15d-en&mimeType=pdf",
+        "source": {
+          "id": "https://openalex.org/S4210233738",
+          "display_name": "OECD health working papers",
+          "issn_l": "1815-2015",
+          "issn": [
+            "1815-2015"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/P4310320232",
+          "host_organization_name": "Organization for Economic Cooperation and Development",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320232"
+          ],
+          "host_organization_lineage_names": [
+            "Organization for Economic Cooperation and Development"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "OECD Health Working Papers",
+        "raw_type": "report"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7167263414",
+      "doi": "https://doi.org/10.3390/ddc5030039",
+      "display_name": "Drug Recall Systems in Pharmaceutical Regulation: Regulatory Frameworks, Procedures, and Global Perspectives",
+      "publication_year": 2026,
+      "cited_by_count": 3,
+      "primary_location": {
+        "id": "doi:10.3390/ddc5030039",
+        "doi": "https://doi.org/10.3390/ddc5030039",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.3390/ddc5030039",
+        "pdf_url": "https://www.mdpi.com/2813-2998/5/3/39/pdf?version=1783067149",
+        "source": {
+          "id": "https://openalex.org/S4387281899",
+          "display_name": "Drugs and Drug Candidates",
+          "issn_l": "2813-2998",
+          "issn": [
+            "2813-2998"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj"
+          ],
+          "host_organization": "https://openalex.org/P4310310987",
+          "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310310987"
+          ],
+          "host_organization_lineage_names": [
+            "Multidisciplinary Digital Publishing Institute"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Drugs and Drug Candidates",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4309119814",
+      "doi": "https://doi.org/10.1007/s12247-022-09692-4",
+      "display_name": "Content Analysis of US FDA Warning Letters Issued to Compounding Pharmacies Regarding Violations of Current Good Manufacturing Practices Between 2017 and 2022",
+      "publication_year": 2022,
+      "cited_by_count": 12,
+      "primary_location": {
+        "id": "doi:10.1007/s12247-022-09692-4",
+        "doi": "https://doi.org/10.1007/s12247-022-09692-4",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1007/s12247-022-09692-4",
+        "pdf_url": "https://link.springer.com/content/pdf/10.1007/s12247-022-09692-4.pdf",
+        "source": {
+          "id": "https://openalex.org/S168111969",
+          "display_name": "Journal of Pharmaceutical Innovation",
+          "issn_l": "1872-5120",
+          "issn": [
+            "1872-5120",
+            "1939-8042"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "jufo-1",
+            "ki-jl-1",
+            "norway-1",
+            "poland-70",
+            "russia-white-list-2"
+          ],
+          "host_organization": "https://openalex.org/P4310319900",
+          "host_organization_name": "Springer Science+Business Media",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319900",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "Springer Science+Business Media",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Pharmaceutical Innovation",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7222765959",
+      "doi": null,
+      "display_name": "The Misuse of Drug Compounding in the United States.",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:pubmedcentral.nih.gov:13668097",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668097/",
+        "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668097/pdf/jcad_19_8_67.pdf",
+        "source": {
+          "id": "https://openalex.org/S2764455111",
+          "display_name": "PubMed Central",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I1299303238",
+          "host_organization_name": "National Institutes of Health",
+          "host_organization_lineage": [
+            "https://openalex.org/I1299303238"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "J Clin Aesthet Dermatol",
+        "raw_type": "Text"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7154897100",
+      "doi": "https://doi.org/10.63125/xjeq4377",
+      "display_name": "The Role of Pharmaceutical Quality Control in Preventing Public Health Risks in United States",
+      "publication_year": 2025,
+      "cited_by_count": 21,
+      "primary_location": {
+        "id": "doi:10.63125/xjeq4377",
+        "doi": "https://doi.org/10.63125/xjeq4377",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.63125/xjeq4377",
+        "pdf_url": "https://ajates-scholarly.com/index.php/ajates/article/download/95/90",
+        "source": {
+          "id": "https://openalex.org/S5407048842",
+          "display_name": "American Journal of Advanced Technology and Engineering Solutions",
+          "issn_l": "3067-0470",
+          "issn": [
+            "3067-0470"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/P4404680967",
+          "host_organization_name": "American Scholarly Publishing Group Inc",
+          "host_organization_lineage": [
+            "https://openalex.org/P4404680967"
+          ],
+          "host_organization_lineage_names": [
+            "American Scholarly Publishing Group Inc"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "American Journal of Advanced Technology and Engineering Solutions",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7155029096",
+      "doi": "https://doi.org/10.1080/14740338.2026.2663185",
+      "display_name": "A novel, widespread impurity in mass-compounded tirzepatide/B12 products: potential patient safety implications",
+      "publication_year": 2026,
+      "cited_by_count": 2,
+      "primary_location": {
+        "id": "doi:10.1080/14740338.2026.2663185",
+        "doi": "https://doi.org/10.1080/14740338.2026.2663185",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1080/14740338.2026.2663185",
+        "pdf_url": "https://www.tandfonline.com/doi/pdf/10.1080/14740338.2026.2663185",
+        "source": {
+          "id": "https://openalex.org/S20709540",
+          "display_name": "Expert Opinion on Drug Safety",
+          "issn_l": "1474-0338",
+          "issn": [
+            "1474-0338",
+            "1744-764X"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "dongbi-c",
+            "doyens",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "poland-100",
+            "russia-white-list-2",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320547",
+          "host_organization_name": "Taylor & Francis",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320547",
+            "https://openalex.org/P4310320449"
+          ],
+          "host_organization_lineage_names": [
+            "Taylor & Francis",
+            "Informa"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Expert Opinion on Drug Safety",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4413744933",
+      "doi": "https://doi.org/10.1007/s44395-025-00020-6",
+      "display_name": "Challenges of growth-based microbiological methods in sterility assurance of pharmaceutical product manufacturing",
+      "publication_year": 2025,
+      "cited_by_count": 18,
+      "primary_location": {
+        "id": "doi:10.1007/s44395-025-00020-6",
+        "doi": "https://doi.org/10.1007/s44395-025-00020-6",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1007/s44395-025-00020-6",
+        "pdf_url": "https://link.springer.com/content/pdf/10.1007/s44395-025-00020-6.pdf",
+        "source": {
+          "id": "https://openalex.org/S5407042912",
+          "display_name": "Discover Pharmaceutical Sciences",
+          "issn_l": "3005-1835",
+          "issn": [
+            "3005-1835"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj"
+          ],
+          "host_organization": "https://openalex.org/P4310319900",
+          "host_organization_name": "Springer Science+Business Media",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319900",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "Springer Science+Business Media",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Discover Pharmaceutical Sciences",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4380875750",
+      "doi": "https://doi.org/10.1002/9781119764991.ch2",
+      "display_name": "Risk\u2013Benefit Analysis of Compounded Medications",
+      "publication_year": 2023,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1002/9781119764991.ch2",
+        "doi": "https://doi.org/10.1002/9781119764991.ch2",
+        "is_oa": true,
+        "landing_page_url": "http://dx.doi.org/10.1002/9781119764991.ch2",
+        "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/9781119764991.ch2",
+        "source": {
+          "id": "https://openalex.org/S4306464293",
+          "display_name": "Wiley eBooks",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/P4310320595",
+          "host_organization_name": "Wiley",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320595"
+          ],
+          "host_organization_lineage_names": [
+            "Wiley"
+          ],
+          "type": "ebook platform"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Drug Compounding for Veterinary Professionals",
+        "raw_type": "other"
+      }
+    }
+  ],
+  "group_by": []
+}

@@ -1,0 +1,588 @@
+{
+  "totals": {
+    "non_nfe_enriched": {
+      "gnomad_coding_enriched": 1694,
+      "clinvar_records": 2407,
+      "Conflicting": 1016,
+      "VUS": 758,
+      "B_LB": 375,
+      "P_LP": 216,
+      "P_LP_2star": 181,
+      "Other": 42
+    },
+    "nfe_enriched": {
+      "gnomad_coding_enriched": 46,
+      "clinvar_records": 76,
+      "VUS": 9,
+      "Conflicting": 38,
+      "B_LB": 27,
+      "P_LP": 1,
+      "P_LP_2star": 1,
+      "Other": 1
+    }
+  },
+  "non_nfe_driver_populations": {
+    "amr": 223,
+    "eas": 379,
+    "mid": 464,
+    "sas": 307,
+    "afr": 321
+  },
+  "fisher_tests": {
+    "ambiguous_or_plp_among_clinvar": {
+      "non_nfe_rate": 0.8268,
+      "nfe_rate": 0.6316,
+      "odds_ratio": 2.784,
+      "p_fisher": 9.325e-05
+    },
+    "conflicting_among_clinvar": {
+      "non_nfe_rate": 0.4221,
+      "nfe_rate": 0.5,
+      "odds_ratio": 0.73,
+      "p_fisher": 0.1951
+    },
+    "vus_among_clinvar": {
+      "non_nfe_rate": 0.3149,
+      "nfe_rate": 0.1184,
+      "odds_ratio": 3.422,
+      "p_fisher": 0.0001241
+    },
+    "plp_among_clinvar": {
+      "non_nfe_rate": 0.0897,
+      "nfe_rate": 0.0132,
+      "odds_ratio": 7.394,
+      "p_fisher": 0.01236
+    },
+    "benign_resolved_among_clinvar": {
+      "non_nfe_rate": 0.1558,
+      "nfe_rate": 0.3553,
+      "odds_ratio": 0.335,
+      "p_fisher": 2.507e-05
+    }
+  },
+  "per_gene": [
+    {
+      "gene": "MYH7",
+      "loeuf": 0.6625,
+      "gnomad_total_vars": 8212,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 130,
+        "clinvar_records": 169,
+        "Conflicting": 49,
+        "VUS": 84,
+        "B_LB": 28,
+        "P_LP": 8,
+        "P_LP_2star": 6
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 2,
+        "clinvar_records": 3,
+        "VUS": 1,
+        "Conflicting": 2
+      }
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.3776,
+      "gnomad_total_vars": 9470,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 256,
+        "clinvar_records": 310,
+        "VUS": 161,
+        "Conflicting": 107,
+        "B_LB": 30,
+        "P_LP": 8,
+        "P_LP_2star": 4,
+        "Other": 4
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 5,
+        "clinvar_records": 6,
+        "VUS": 1,
+        "Conflicting": 4,
+        "B_LB": 1
+      }
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.8593,
+      "gnomad_total_vars": 6967,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 122,
+        "clinvar_records": 129,
+        "Conflicting": 36,
+        "VUS": 52,
+        "B_LB": 28,
+        "P_LP": 12,
+        "P_LP_2star": 9,
+        "Other": 1
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 4,
+        "clinvar_records": 6,
+        "Conflicting": 4,
+        "B_LB": 2
+      }
+    },
+    {
+      "gene": "LMNA",
+      "loeuf": 0.4129,
+      "gnomad_total_vars": 4617,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 77,
+        "clinvar_records": 83,
+        "Conflicting": 34,
+        "VUS": 33,
+        "B_LB": 9,
+        "P_LP": 6,
+        "P_LP_2star": 2,
+        "Other": 1
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 1,
+        "clinvar_records": 2,
+        "Conflicting": 1,
+        "VUS": 1
+      }
+    },
+    {
+      "gene": "MYBPC3",
+      "loeuf": 0.7954,
+      "gnomad_total_vars": 10785,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 242,
+        "clinvar_records": 300,
+        "VUS": 132,
+        "Conflicting": 112,
+        "P_LP": 18,
+        "P_LP_2star": 15,
+        "B_LB": 38
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 5,
+        "clinvar_records": 5,
+        "Conflicting": 5
+      }
+    },
+    {
+      "gene": "LDLR",
+      "loeuf": 1.1219,
+      "gnomad_total_vars": 5497,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 185,
+        "clinvar_records": 226,
+        "VUS": 104,
+        "B_LB": 22,
+        "Conflicting": 34,
+        "P_LP": 66,
+        "P_LP_2star": 61
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 4,
+        "clinvar_records": 5,
+        "VUS": 3,
+        "B_LB": 2
+      }
+    },
+    {
+      "gene": "BRCA1",
+      "loeuf": 0.9276,
+      "gnomad_total_vars": 7287,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 226,
+        "clinvar_records": 417,
+        "Conflicting": 193,
+        "VUS": 61,
+        "P_LP": 32,
+        "P_LP_2star": 28,
+        "B_LB": 95,
+        "Other": 36
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 5,
+        "clinvar_records": 12,
+        "Conflicting": 4,
+        "P_LP": 1,
+        "P_LP_2star": 1,
+        "VUS": 1,
+        "B_LB": 5,
+        "Other": 1
+      }
+    },
+    {
+      "gene": "BRCA2",
+      "loeuf": 0.8241,
+      "gnomad_total_vars": 10769,
+      "non_nfe_enriched": {
+        "gnomad_coding_enriched": 456,
+        "clinvar_records": 773,
+        "VUS": 131,
+        "Conflicting": 451,
+        "B_LB": 125,
+        "P_LP": 66,
+        "P_LP_2star": 56
+      },
+      "nfe_enriched": {
+        "gnomad_coding_enriched": 20,
+        "clinvar_records": 37,
+        "Conflicting": 18,
+        "B_LB": 17,
+        "VUS": 2
+      }
+    }
+  ],
+  "flagged_non_nfe_plp_examples": [
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "1184902",
+      "title": "NM_000257.4(MYH7):c.2480G>C (p.Trp827Ser)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2021/06/17 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "14106",
+      "title": "NM_000257.4(MYH7):c.2803G>A (p.Glu935Lys)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2025/01/15 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "161326",
+      "title": "NM_000257.4(MYH7):c.2608C>T (p.Arg870Cys)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "reviewed by expert panel",
+      "last_evaluated": "2021/11/30 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "177667",
+      "title": "NM_000257.4(MYH7):c.2606G>A (p.Arg869His)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "reviewed by expert panel",
+      "last_evaluated": "2021/09/28 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "1929447",
+      "title": "NM_000257.4(MYH7):c.2606G>C (p.Arg869Pro)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2024/10/15 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "42895",
+      "title": "NM_000257.4(MYH7):c.2348G>C (p.Arg783Pro)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2022/06/05 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "42948",
+      "title": "NM_000257.4(MYH7):c.3134G>T (p.Arg1045Leu)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "reviewed by expert panel",
+      "last_evaluated": "2021/08/25 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "960135",
+      "title": "NM_000257.4(MYH7):c.5769del (p.Ser1924fs)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2025/11/13 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "2203341",
+      "title": "NM_000335.5(SCN5A):c.674G>C (p.Arg225Pro)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2022/04/24 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "2764562",
+      "title": "NM_000335.5(SCN5A):c.2597C>A (p.Ser866Ter)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2025/08/13 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "406434",
+      "title": "NM_000335.5(SCN5A):c.3282G>A (p.Trp1094Ter)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2025/10/10 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "440850",
+      "title": "NM_000335.4(SCN5A):c.[3919C>T;694G>A]",
+      "clinsig": "Pathogenic",
+      "review_status": "no assertion criteria provided",
+      "last_evaluated": "2008/08/15 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "67732",
+      "title": "NM_000335.5(SCN5A):c.2441G>A (p.Arg814Gln)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/01/12 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "67842",
+      "title": "NM_000335.5(SCN5A):c.3985G>A (p.Ala1329Thr)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/06/18 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "67843",
+      "title": "NM_000335.5(SCN5A):c.3985G>C (p.Ala1329Pro)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2023/11/09 00:00"
+    },
+    {
+      "gene": "SCN5A",
+      "loeuf": 0.378,
+      "clinvar_id": "68032",
+      "title": "NM_000335.5(SCN5A):c.673C>T (p.Arg225Trp)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/03/27 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "1708065",
+      "title": "NM_000218.3(KCNQ1):c.1459G>T (p.Glu487Ter)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2022/08/23 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "200872",
+      "title": "NM_000218.3(KCNQ1):c.387-5T>A",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2025/09/10 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "200915",
+      "title": "NM_000218.3(KCNQ1):c.364dup (p.Cys122fs)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2025/05/25 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "405255",
+      "title": "NM_000218.3(KCNQ1):c.721G>T (p.Val241Phe)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2023/04/24 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "52977",
+      "title": "NM_000218.3(KCNQ1):c.1343del (p.Pro448fs)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2023/08/01 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "52978",
+      "title": "NM_000218.3(KCNQ1):c.1343dup (p.Glu449fs)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2025/10/06 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "53026",
+      "title": "NM_000218.3(KCNQ1):c.1893del (p.Arg632fs)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/02/01 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "53027",
+      "title": "NM_000218.3(KCNQ1):c.1893dup (p.Arg632fs)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/08/26 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "53109",
+      "title": "NM_000218.3(KCNQ1):c.815G>A (p.Gly272Asp)",
+      "clinsig": "Pathogenic/Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2025/05/21 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "53127",
+      "title": "NM_000218.3(KCNQ1):c.921G>A (p.Val307=)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2026/06/15 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "67108",
+      "title": "NM_000218.3(KCNQ1):c.815G>T (p.Gly272Val)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2026/08/25 00:00"
+    },
+    {
+      "gene": "KCNQ1",
+      "loeuf": 0.859,
+      "clinvar_id": "869435",
+      "title": "NM_000218.3(KCNQ1):c.1109C>A (p.Ala370Glu)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2023/08/01 00:00"
+    },
+    {
+      "gene": "LMNA",
+      "loeuf": 0.413,
+      "clinvar_id": "1386753",
+      "title": "NM_170707.4(LMNA):c.142C>G (p.Arg48Gly)",
+      "clinsig": "Likely pathogenic",
+      "review_status": "criteria provided, single submitter",
+      "last_evaluated": "2022/12/23 00:00"
+    },
+    {
+      "gene": "LMNA",
+      "loeuf": 0.413,
+      "clinvar_id": "14481",
+      "title": "NM_170707.4(LMNA):c.1580G>C (p.Arg527Pro)",
+      "clinsig": "Pathogenic",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "last_evaluated": "2024/11/25 00:00"
+    }
+  ],
+  "flagged_non_nfe_conflict_examples": [
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "1012831",
+      "title": "NM_000257.4(MYH7):c.2065G>C (p.Val689Leu)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2026/01/05 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "1317127",
+      "title": "NM_000257.4(MYH7):c.4354-7C>G",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2025/08/14 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "1332027",
+      "title": "NM_000257.4(MYH7):c.1887G>T (p.Ala629=)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2022/06/26 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "1333012",
+      "title": "NM_000257.4(MYH7):c.4679G>C (p.Arg1560Pro)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2025/06/10 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "138393",
+      "title": "NM_000257.4(MYH7):c.1407T>C (p.Asp469=)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2024/10/23 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "164264",
+      "title": "NM_000257.4(MYH7):c.5690G>A (p.Arg1897His)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2026/06/16 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "164304",
+      "title": "NM_000257.4(MYH7):c.3235C>T (p.Arg1079Trp)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2025/11/10 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "177788",
+      "title": "NM_000257.4(MYH7):c.4145G>A (p.Arg1382Gln)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2026/08/10 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "178082",
+      "title": "NM_000257.4(MYH7):c.4075C>T (p.Arg1359Cys)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2026/08/27 00:00"
+    },
+    {
+      "gene": "MYH7",
+      "loeuf": 0.662,
+      "clinvar_id": "180101",
+      "title": "NM_000257.4(MYH7):c.4075C>A (p.Arg1359Ser)",
+      "clinsig": "Conflicting classifications of pathogenicity",
+      "last_evaluated": "2026/08/12 00:00"
+    }
+  ]
+}

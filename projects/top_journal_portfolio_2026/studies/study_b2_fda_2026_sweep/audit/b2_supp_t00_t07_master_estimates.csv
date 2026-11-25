@@ -1,0 +1,62 @@
+panel,spec,estimand,n_obs,n_events,estimate_irr_or_pp,ci95_lo,ci95_hi,p_spon,p_2way
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_jul_2026,OT/OD DDD (Ind vs Acad),50488,2650,1.5894,1.0883,2.3214,0.01649408910063313,0.0029550165706018414
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_jul_2026,Industry Overdue vs On-Time DiD,50488,2650,1.4691,1.1548,1.8688,0.001734755420519032,
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_jul_2026,Academic Overdue vs On-Time DiD,50488,2650,0.9292,0.6942,1.2439,0.6219109153624263,
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_sep_2026,OT/OD DDD (Ind vs Acad),55996,2902,1.5984,1.1283,2.2644,0.008306897574474198,0.002514626604588231
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_sep_2026,Industry Overdue vs On-Time DiD,55996,2902,1.3612,1.1024,1.6809,0.004161741532811728,
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_sep_2026,Academic Overdue vs On-Time DiD,55996,2902,0.8585,0.6508,1.1323,0.28003050486181313,
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_oct_2026,OT/OD DDD (Ind vs Acad),58608,3059,1.5215,1.0866,2.1304,0.014548318681462962,0.006052944133023915
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_oct_2026,Industry Overdue vs On-Time DiD,58608,3059,1.3992,1.1427,1.7133,0.001148856087920013,
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_oct_2026,Academic Overdue vs On-Time DiD,58608,3059,0.9275,0.7091,1.213,0.5822893500552249,
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_jun_2026,OT/OD DDD (Ind vs Acad),47680,2516,1.5854,1.0644,2.3614,0.02340000992826173,0.0034509759211390303
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_jun_2026,Industry Overdue vs On-Time DiD,47680,2516,1.5737,1.2171,2.0348,0.0005433056136617916,
+T00_Combined_Proxy_OT_OD,true_ot_od_apr_jun_2026,Academic Overdue vs On-Time DiD,47680,2516,0.998,0.7364,1.3525,0.9896978182489371,
+T00_Combined_Proxy_OT_OD,true_ot_od_placebo_2025,OT/OD DDD (Ind vs Acad),55330,2806,0.9642,0.6611,1.4064,0.8499643583526804,0.8798063984902269
+T00_Combined_Proxy_OT_OD,true_ot_od_placebo_2025,Industry Overdue vs On-Time DiD,55330,2806,0.8111,0.6193,1.0623,0.1282201449849122,
+T00_Combined_Proxy_OT_OD,true_ot_od_placebo_2025,Academic Overdue vs On-Time DiD,55330,2806,0.8441,0.6477,1.1,0.20970753309337276,
+T00_Combined_Proxy_OT_OD,true_ot_od_placebo_2024,OT/OD DDD (Ind vs Acad),56209,2824,0.8596,0.6016,1.2283,0.4061183715495872,0.44715004157254445
+T00_Combined_Proxy_OT_OD,true_ot_od_placebo_2024,Industry Overdue vs On-Time DiD,56209,2824,0.8126,0.6235,1.0591,0.12479244758824587,
+T00_Combined_Proxy_OT_OD,true_ot_od_placebo_2024,Academic Overdue vs On-Time DiD,56209,2824,0.944,0.7421,1.2009,0.6389651475232415,
+T00_Combined_Proxy_WithinACT,true_sub_apr_jul_2026,Within-ACT Overdue DiD (Pre-Trend Rejected),25427,1065,1.3145,0.9848,1.7548,0.06349278046947676,0.11594116858995422
+T00_Combined_Proxy_WithinACT,true_sub_apr_sep_2026,Within-ACT Overdue DiD (Pre-Trend Rejected),28443,1161,1.4288,1.0911,1.871,0.009497778163854017,0.04379802596952855
+T00_Combined_Proxy_WithinACT,true_sub_apr_oct_2026,Within-ACT Overdue DiD (Pre-Trend Rejected),29957,1242,1.4006,1.0819,1.8132,0.010539089717886576,0.03865209593290193
+T00_Combined_Proxy_WithinACT,true_sub_apr_jun_2026,Within-ACT Overdue DiD (Pre-Trend Rejected),23914,1015,1.2624,0.931,1.7118,0.13360942842128956,0.20000756771580663
+T00_Combined_Proxy_WithinACT,true_sub_placebo_2025,Within-ACT Overdue DiD (Pre-Trend Rejected),25566,1187,0.893,0.6541,1.219,0.4758944957478731,0.48822451465500805
+T00_Combined_Proxy_WithinACT,true_sub_placebo_2024,Within-ACT Overdue DiD (Pre-Trend Rejected),24652,1320,0.9624,0.7154,1.2946,0.7999310677226834,0.8076109585261517
+T00_Excl_Delayed_Certs,apr_sep_excl_2219_disp,"OT/OD DDD (n=14,114 trials)",14114,,2.2878,1.5472,3.383,3.366921349227584e-05,
+T00_Excl_Delayed_Certs,apr_sep_excl_2219_disp,"Industry OD/OT DiD (n=14,114 trials)",14114,,1.8175,1.3958,2.3664,9.138908387306108e-06,
+T01_DateVerified_ZeroCens_QC,H90_fullmonth_apr_jul,"OT/OD DDD (end=2026-07-31, margin=27d)",56426,1774,1.9604,1.1356,3.3842,0.015675084811835112,0.004075718824028106
+T01_DateVerified_ZeroCens_QC,H90_fullmonth_apr_jul,Industry OD/OT DiD (end=2026-07-31),56426,1774,1.5235,1.1392,2.0376,0.004535773259059168,
+T01_DateVerified_ZeroCens_QC,H90_fullmonth_apr_jul,Within-ACT Overdue DiD (end=2026-07-31),31240,624,1.7508,1.1676,2.6252,0.006729959666337716,0.019740537983439884
+T01_DateVerified_ZeroCens_QC,H120_fullmonth_apr_jun,"OT/OD DDD (end=2026-06-30, margin=28d)",53128,1940,1.6541,1.0145,2.6971,0.043629596780880985,0.031791336450186405
+T01_DateVerified_ZeroCens_QC,H120_fullmonth_apr_jun,Industry OD/OT DiD (end=2026-06-30),53128,1940,1.514,1.1267,2.0344,0.005940989473997978,
+T01_DateVerified_ZeroCens_QC,H120_fullmonth_apr_jun,Within-ACT Overdue DiD (end=2026-06-30),29246,677,1.2779,0.8699,1.8771,0.21135831758810386,0.33728230412957627
+T01_DateVerified_ZeroCens_QC,H150_fullmonth_apr_may,"OT/OD DDD (end=2026-05-31, margin=28d)",49797,1911,1.5228,0.8553,2.7113,0.15300541178058,0.017410037364143104
+T01_DateVerified_ZeroCens_QC,H150_fullmonth_apr_may,Industry OD/OT DiD (end=2026-05-31),49797,1911,1.6904,1.1746,2.4326,0.004704483350848046,
+T01_DateVerified_ZeroCens_QC,H150_fullmonth_apr_may,Within-ACT Overdue DiD (end=2026-05-31),27257,678,1.1252,0.7318,1.7301,0.5908793439805735,0.4871830573193092
+T01_DateVerified_ZeroCens_QC,H90_exactday_thru_aug27,"OT/OD DDD (end=2026-08-27, margin=0d)",59711,1848,1.9992,1.1918,3.3533,0.008664058986530488,0.0014753089557964613
+T01_DateVerified_ZeroCens_QC,H90_exactday_thru_aug27,Industry OD/OT DiD (end=2026-08-27),59711,1848,1.5078,1.1392,1.9957,0.004090229179165691,
+T01_DateVerified_ZeroCens_QC,H90_exactday_thru_aug27,Within-ACT Overdue DiD (end=2026-08-27),33255,653,1.8308,1.2351,2.7136,0.002596997020938753,0.008150295149575618
+T01_DateVerified_ZeroCens_QC,H120_exactday_thru_jul28,"OT/OD DDD (end=2026-07-28, margin=0d)",56426,2035,1.7825,1.1141,2.8519,0.01592526340204396,0.01506070557591052
+T01_DateVerified_ZeroCens_QC,H120_exactday_thru_jul28,Industry OD/OT DiD (end=2026-07-28),56426,2035,1.4627,1.1115,1.9249,0.006643655916209551,
+T01_DateVerified_ZeroCens_QC,H120_exactday_thru_jul28,Within-ACT Overdue DiD (end=2026-07-28),31240,710,1.4628,1.012,2.1142,0.043010364231245116,0.16546409307587306
+T01_DateVerified_ZeroCens_QC,H150_exactday_thru_jun28,"OT/OD DDD (end=2026-06-28, margin=0d)",53128,2025,1.7215,1.0467,2.8315,0.032369166402929674,0.005426734109910561
+T01_DateVerified_ZeroCens_QC,H150_exactday_thru_jun28,Industry OD/OT DiD (end=2026-06-28),53128,2025,1.6139,1.1952,2.1794,0.0017862633625837074,
+T01_DateVerified_ZeroCens_QC,H150_exactday_thru_jun28,Within-ACT Overdue DiD (end=2026-06-28),29246,721,1.3108,0.8965,1.9164,0.16258365995205581,0.19460788877916668
+T01_DateVerified_ZeroCens_QC,H120_placebo_2025_jun,"OT/OD DDD (end=2025-06-30, margin=393d)",55813,2007,1.1686,0.73,1.8708,0.5163462091476221,0.5295894815341509
+T01_DateVerified_ZeroCens_QC,H120_placebo_2025_jun,Industry OD/OT DiD (end=2025-06-30),55813,2007,0.9042,0.6514,1.2551,0.5470551172469635,
+T01_DateVerified_ZeroCens_QC,H120_placebo_2025_jun,Within-ACT Overdue DiD (end=2025-06-30),27675,751,0.9387,0.6336,1.3905,0.7521820987774588,0.7900936256437234
+T01_DateVerified_ZeroCens_QC,H120_placebo_2024_jun,"OT/OD DDD (end=2024-06-30, margin=758d)",55086,1954,0.9064,0.5709,1.439,0.6767488175541947,0.7057658551309557
+T01_DateVerified_ZeroCens_QC,H120_placebo_2024_jun,Industry OD/OT DiD (end=2024-06-30),55086,1954,0.8057,0.5788,1.1215,0.20040615895090563,
+T01_DateVerified_ZeroCens_QC,H120_placebo_2024_jun,Within-ACT Overdue DiD (end=2024-06-30),25395,826,0.947,0.6463,1.3876,0.7797948726158425,0.7886356809189208
+T00_Clean_Exempt_DDD,true_ddd_clean_exempt_jul,Exempt Control DDD,320475,2099,2.7099,1.4503,5.0635,0.0017739580568594683,
+T00_Clean_Exempt_DDD,true_ddd_clean_exempt_sep,Exempt Control DDD,363860,2291,2.4856,1.449,4.264,0.0009435021101934678,
+T00_Clean_Exempt_DDD,true_ddd_us_nonfda_sep,Exempt Control DDD,226896,2070,2.1726,0.959,4.922,0.06294923950769504,
+T00_Clean_Exempt_DDD,true_ddd_nonus_p23_sep,Exempt Control DDD,165407,1382,2.52,1.2023,5.2819,0.014367903549547367,
+T00_Clean_Exempt_DDD,true_ddd_placebo_2025,Exempt Control DDD,278766,2173,0.6498,0.3612,1.1691,0.15024624693212266,
+Mechanism_Spillover,within_firm_phase1_apr_sep,Phase-1 Spillover IRR (NULL),3910,125,0.893,0.407,1.957,0.7772618417774971,
+T03_T04_H4_WithinSponsor_FE,is_terminated,Post-Overdue vs On-Time (pp; MDE80=10.05pp; TOST5 p=0.1932),4224,555,-1.8922,-8.9244,5.14,0.597927494760578,
+T03_T04_H4_WithinSponsor_FE,omitted_pval,Post-Overdue vs On-Time (pp; MDE80=10.0pp; TOST5 p=0.4763),4224,555,-4.7875,-11.7801,2.2052,0.1796270018314471,
+T03_T04_H4_WithinSponsor_FE,nonsig_p05,Post-Overdue vs On-Time (pp; MDE80=22.86pp; TOST5 p=0.2756),1035,184,-0.1382,-16.1309,15.8545,0.9864838770240257,
+T03_T04_H4_WithinSponsor_FE,sae_rate,Post-Overdue vs On-Time (pp; MDE80=4.38pp; TOST5 p=0.0016),4179,554,0.3863,-2.6809,3.4536,0.8050063698414138,
+T03_T04_H4_WithinSponsor_FE,mortality_rate,Post-Overdue vs On-Time (pp; MDE80=4.03pp; TOST5 p=0.0014),4180,553,0.7096,-2.1089,3.5282,0.6216772713337821,

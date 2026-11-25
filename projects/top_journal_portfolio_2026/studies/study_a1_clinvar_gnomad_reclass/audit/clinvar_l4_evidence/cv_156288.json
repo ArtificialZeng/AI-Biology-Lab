@@ -1,0 +1,110 @@
+{
+  "variant_id": "156288",
+  "allele_info": {
+    "chromosome": "1",
+    "position_start": "201039512",
+    "position_stop": "201112426",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "1q32.1",
+    "dbsnp_rsid": "rs80338782"
+  },
+  "conditions": [
+    {
+      "name": "Hypokalemic periodic paralysis, type 1",
+      "medgen_cui": "C3714580",
+      "omim_id": "170400",
+      "orphanet_id": "681",
+      "hpo_terms": []
+    },
+    {
+      "name": "Thyrotoxic periodic paralysis, susceptibility to, 1",
+      "medgen_cui": "C2749982",
+      "omim_id": "188580",
+      "orphanet_id": "79102",
+      "hpo_terms": []
+    },
+    {
+      "name": "Congenital myopathy 18",
+      "medgen_cui": "C5830283",
+      "omim_id": "620246",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Malignant hyperthermia, susceptibility to, 5",
+      "medgen_cui": "C1866077",
+      "omim_id": "601887",
+      "orphanet_id": "423",
+      "hpo_terms": []
+    },
+    {
+      "name": "Malignant hyperthermia of anesthesia",
+      "medgen_cui": "C0024591",
+      "omim_id": null,
+      "orphanet_id": "423",
+      "hpo_terms": [
+        "HP:0034733",
+        "HP:0034733"
+      ]
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": "ORPHA423",
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "20431982",
+    "26332594",
+    "30236257"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "ClinVar Staff, National Center for Biotechnology Information (NCBI)",
+      "classification": "not provided",
+      "curator_notes": "An individual homozygous for this allele developed fulminant malignant hyperthermia with sevoflurane anesthesia.",
+      "assertion_criteria": "no classification provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Laboratory for Molecular Medicine, Mass General Brigham Personalized Medicine",
+      "classification": "Likely Pathogenic",
+      "curator_notes": "The p.Arg1086Ser variant in CACNA1S has been reported in three individuals with malignant hyperthermia susceptibility (Toppin 2010 PMID: 20431982, Miller 2018 PMID: 30236257). It has also been identified in 0.016% (5/30616) of South Asian chromosomes by gnomAD (http://gnomad.broadinstitute.org). This variant has also been reported in ClinVar (Variation ID 156288). Computational prediction tools and conservation analysis suggest that this variant may impact the protein, though this information is not predictive enough to determine pathogenicity. Another variant involving this codon (p.Arg1086His) has been identified in individuals with malignant hyperthermia susceptibility and is classified as \"drug response\" by the Pharcogenomics Knowledge Base (PharmGKB) expert panel. In summary, although additional studies are required to fully establish its clinical significance, the p.Arg1086Ser variant is likely pathogenic for autosomal dominant malignant hyperthermia susceptibility. ACMG/AMP Criteria applied: PM5, PM2_Supporting, PP3, PS4_Moderate.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-06-14"
+    },
+    {
+      "submitter_name": "CeGaT Center for Human Genetics Tuebingen",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "CeGaT Center For Human Genetics Tuebingen Variant Classification Criteria Version 2",
+      "date_last_evaluated": "2020-09-01"
+    },
+    {
+      "submitter_name": "Fulgent Genetics, Fulgent Genetics",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-06-19"
+    },
+    {
+      "submitter_name": "Hong-Tao Li Lab, Institute of Brain Science and Brain-inspired Research, Shandong First Medical University & Shandong Academy of Medical Sciences China",
+      "classification": "Pathogenic",
+      "curator_notes": "Observed in affected individuals from a Pakistani neurodevelopmental-disorder research cohort of 263 individuals. Classification assigned using the ACMG/AMP framework. Population-frequency evidence: gnomAD AF 2.386e-05.; Aggregate observation from 1 affected individual in the submitted cohort. Zygosity: 1 single heterozygote. Existing ClinVar Variation ID: 156288.",
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    }
+  ]
+}

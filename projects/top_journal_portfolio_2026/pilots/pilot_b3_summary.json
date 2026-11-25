@@ -1,0 +1,211 @@
+{
+  "n_shortage_records_downloaded": 1581,
+  "n_unique_generics_in_shortage": 225,
+  "n_unique_shortage_companies": 126,
+  "status_counts": {
+    "Current": 1116,
+    "To Be Discontinued": 406,
+    "Resolved": 59
+  },
+  "top_reasons": {
+    "UNSPECIFIED": 1135,
+    "Other": 170,
+    "Demand increase for the drug": 128,
+    "Shortage of an active ingredient": 60,
+    "Discontinuation of the manufacture of the drug": 50,
+    "Delay in shipping of the drug": 22,
+    "Requirements related to complying with good manufacturing practices": 13,
+    "Regulatory delay": 2,
+    "Shortage of an inactive ingredient component": 1
+  },
+  "top_dosage_forms": {
+    "Injection": 994,
+    "Tablet": 300,
+    "Capsule": 130,
+    "Solution": 35,
+    "Tablet, Chewable": 18,
+    "Capsule, Extended Release": 14,
+    "Suppository": 12,
+    "Oral Suspension": 11,
+    "UNKNOWN": 10,
+    "Irrigant": 9
+  },
+  "duration_days_by_form": {
+    "injectable": {
+      "n": 1052,
+      "median_days": 2369,
+      "mean_days": 2151.5
+    },
+    "oral": {
+      "n": 474,
+      "median_days": 1207,
+      "mean_days": 825.0
+    },
+    "other": {
+      "n": 55,
+      "median_days": 0,
+      "mean_days": 525.5
+    }
+  },
+  "n_enforcement_records_2023_2026": 3468,
+  "enforcement_classes": {
+    "Class II": 2931,
+    "Class III": 275,
+    "Class I": 260,
+    "Not Yet Classified": 2
+  },
+  "cgmp_recall_firms": 355,
+  "labeling_only_recall_firms": 39,
+  "cgmp_firms_in_shortage_overlap": 61,
+  "labeling_only_firms_in_shortage_overlap": 2,
+  "top_shortage_generics_ndc_concentration": [
+    {
+      "generic": "LISDEXAMFETAMINE DIMESYLATE CAPSULE",
+      "shortage_ndc_rows": 90,
+      "shortage_companies": 13,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current"
+      ],
+      "dosage_forms": [
+        "Capsule"
+      ]
+    },
+    {
+      "generic": "AMPHETAMINE ASPARTATE MONOHYDRATE, AMPHETAMINE SULFATE, DEXTROAMPHETAMINE SACCHARATE, DEXTROAMPHETAMINE SULFATE TABLET",
+      "shortage_ndc_rows": 73,
+      "shortage_companies": 11,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current"
+      ],
+      "dosage_forms": [
+        "Tablet"
+      ]
+    },
+    {
+      "generic": "LIDOCAINE HYDROCHLORIDE INJECTION",
+      "shortage_ndc_rows": 65,
+      "shortage_companies": 10,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    },
+    {
+      "generic": "BUPIVACAINE HYDROCHLORIDE INJECTION",
+      "shortage_ndc_rows": 62,
+      "shortage_companies": 8,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current",
+        "To Be Discontinued"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    },
+    {
+      "generic": "DEXMEDETOMIDINE HYDROCHLORIDE INJECTION",
+      "shortage_ndc_rows": 60,
+      "shortage_companies": 17,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current",
+        "To Be Discontinued"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    },
+    {
+      "generic": "ROPIVACAINE HYDROCHLORIDE INJECTION",
+      "shortage_ndc_rows": 49,
+      "shortage_companies": 5,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    },
+    {
+      "generic": "CLONAZEPAM TABLET",
+      "shortage_ndc_rows": 40,
+      "shortage_companies": 6,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Resolved"
+      ],
+      "dosage_forms": [
+        "Tablet"
+      ]
+    },
+    {
+      "generic": "DEXTROSE MONOHYDRATE 5% INJECTION",
+      "shortage_ndc_rows": 36,
+      "shortage_companies": 4,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    },
+    {
+      "generic": "CARBOPLATIN INJECTION",
+      "shortage_ndc_rows": 35,
+      "shortage_companies": 9,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current",
+        "To Be Discontinued"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    },
+    {
+      "generic": "METHYLPHENIDATE HYDROCHLORIDE TABLET, EXTENDED RELEASE",
+      "shortage_ndc_rows": 34,
+      "shortage_companies": 6,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current"
+      ],
+      "dosage_forms": [
+        "Tablet"
+      ]
+    },
+    {
+      "generic": "MIDAZOLAM HYDROCHLORIDE INJECTION",
+      "shortage_ndc_rows": 30,
+      "shortage_companies": 6,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    },
+    {
+      "generic": "FUROSEMIDE INJECTION",
+      "shortage_ndc_rows": 30,
+      "shortage_companies": 8,
+      "active_ndc_labelers_sampled": null,
+      "statuses": [
+        "Current",
+        "To Be Discontinued"
+      ],
+      "dosage_forms": [
+        "Injection"
+      ]
+    }
+  ]
+}

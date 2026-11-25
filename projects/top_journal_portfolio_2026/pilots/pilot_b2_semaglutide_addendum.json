@@ -1,0 +1,153 @@
+{
+  "pre_2019_2021": {
+    "qual_counts": {
+      "consumer": 5799,
+      "physician": 2003,
+      "other_hp": 1368,
+      "pharmacist": 407,
+      "lawyer": 36
+    },
+    "total_with_qual": 9613,
+    "consumer_plus_lawyer_share": 0.607,
+    "lawyer_share": 0.0037,
+    "physician_share": 0.2084,
+    "death_rate_all": 0.0155,
+    "death_rate_md": 0.03245,
+    "death_rate_cons": 0.00759,
+    "pancreatitis_rate_all": 0.03381,
+    "pancreatitis_rate_md": 0.07888,
+    "gastroparesis_all": 1,
+    "gastroparesis_md": 0,
+    "gastroparesis_law": 0,
+    "gastroparesis_rate_md": 0.0,
+    "gastroparesis_rate_law": 0.0,
+    "top_lawyer_reactions": [],
+    "top_physician_reactions": [],
+    "top_consumer_reactions": []
+  },
+  "post_2023_2026": {
+    "qual_counts": {
+      "consumer": 44593,
+      "physician": 7928,
+      "other_hp": 5006,
+      "pharmacist": 2231,
+      "lawyer": 959
+    },
+    "total_with_qual": 60717,
+    "consumer_plus_lawyer_share": 0.7502,
+    "lawyer_share": 0.0158,
+    "physician_share": 0.1306,
+    "death_rate_all": 0.01799,
+    "death_rate_md": 0.04125,
+    "death_rate_cons": 0.01014,
+    "pancreatitis_rate_all": 0.01407,
+    "pancreatitis_rate_md": 0.03607,
+    "gastroparesis_all": 5,
+    "gastroparesis_md": 0,
+    "gastroparesis_law": 0,
+    "gastroparesis_rate_md": 0.0,
+    "gastroparesis_rate_law": 0.0,
+    "top_lawyer_reactions": [
+      {
+        "term": "VOMITING",
+        "count": 754
+      },
+      {
+        "term": "NAUSEA",
+        "count": 743
+      },
+      {
+        "term": "IMPAIRED GASTRIC EMPTYING",
+        "count": 719
+      },
+      {
+        "term": "ABDOMINAL PAIN",
+        "count": 617
+      },
+      {
+        "term": "DIARRHOEA",
+        "count": 508
+      },
+      {
+        "term": "CONSTIPATION",
+        "count": 419
+      },
+      {
+        "term": "GASTROINTESTINAL HYPOMOTILITY",
+        "count": 320
+      },
+      {
+        "term": "INTESTINAL OBSTRUCTION",
+        "count": 181
+      }
+    ],
+    "top_physician_reactions": [
+      {
+        "term": "NAUSEA",
+        "count": 593
+      },
+      {
+        "term": "OFF LABEL USE",
+        "count": 509
+      },
+      {
+        "term": "VOMITING",
+        "count": 503
+      },
+      {
+        "term": "PRODUCT USE IN UNAPPROVED INDICATION",
+        "count": 410
+      },
+      {
+        "term": "DIARRHOEA",
+        "count": 391
+      },
+      {
+        "term": "WEIGHT DECREASED",
+        "count": 317
+      },
+      {
+        "term": "PANCREATITIS",
+        "count": 286
+      },
+      {
+        "term": "OPTIC ISCHAEMIC NEUROPATHY",
+        "count": 255
+      }
+    ],
+    "top_consumer_reactions": [
+      {
+        "term": "NAUSEA",
+        "count": 6207
+      },
+      {
+        "term": "OFF LABEL USE",
+        "count": 5603
+      },
+      {
+        "term": "DIARRHOEA",
+        "count": 3902
+      },
+      {
+        "term": "VOMITING",
+        "count": 3848
+      },
+      {
+        "term": "CONSTIPATION",
+        "count": 3331
+      },
+      {
+        "term": "DECREASED APPETITE",
+        "count": 3260
+      },
+      {
+        "term": "IMPAIRED GASTRIC EMPTYING",
+        "count": 3211
+      },
+      {
+        "term": "WEIGHT DECREASED",
+        "count": 3008
+      }
+    ]
+  }
+}

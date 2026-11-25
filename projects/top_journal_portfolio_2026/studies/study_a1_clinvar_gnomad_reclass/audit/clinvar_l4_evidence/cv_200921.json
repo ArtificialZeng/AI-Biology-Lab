@@ -1,0 +1,444 @@
+{
+  "variant_id": "200921",
+  "allele_info": {
+    "chromosome": "19",
+    "position_start": "11089463",
+    "position_stop": "11133820",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "19p13.2",
+    "dbsnp_rsid": "rs730882109"
+  },
+  "conditions": [
+    {
+      "name": "LDLR-related disorder",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Cardiovascular phenotype",
+      "medgen_cui": "CN230736",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Homozygous familial hypercholesterolemia",
+      "medgen_cui": "C0342881",
+      "omim_id": null,
+      "orphanet_id": "391665",
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Familial hypercholesterolemia",
+      "medgen_cui": "C0020445",
+      "omim_id": "PS143890",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Hypercholesterolemia, familial, 1",
+      "medgen_cui": "C0745103",
+      "omim_id": "143890",
+      "orphanet_id": "391665",
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": "C0020445",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Dutch Lipid Clinic Network Criteria score",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "low-density lipoprotein cholesterol level",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Hyperbetalipoproteinemia",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": [
+        "HP:0003141"
+      ]
+    },
+    {
+      "name": "Hypercholesterolemia",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": [
+        "HP:0003124"
+      ]
+    },
+    {
+      "name": "Familial Hypercholesterolemia",
+      "medgen_cui": null,
+      "omim_id": "143890",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Familial hypercholesterolaemia",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "LDLR-related disorders",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "15494314",
+    "15741231",
+    "16205024",
+    "19318025",
+    "20538126",
+    "21376320",
+    "21511053",
+    "21520341",
+    "22353362",
+    "22698793",
+    "22883975",
+    "23155708",
+    "23375686",
+    "25741868",
+    "25846081",
+    "26608663",
+    "27206935",
+    "28028493",
+    "29233637",
+    "29353225",
+    "30526649",
+    "30586733",
+    "30592178",
+    "30949068",
+    "31447099",
+    "31491741",
+    "32015373",
+    "32041611",
+    "32154576",
+    "32331935",
+    "32695144",
+    "32719484",
+    "32759540",
+    "32800790",
+    "33261662",
+    "33418990",
+    "33533259",
+    "33569482",
+    "33746137",
+    "33994402",
+    "34037665",
+    "34456200",
+    "34906454",
+    "35741760",
+    "36011335",
+    "36172582",
+    "37409534",
+    "38506081",
+    "7903864"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "LDLR-LOVD, British Heart Foundation",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACGS Guidelines, 2013",
+      "date_last_evaluated": "2016-03-25"
+    },
+    {
+      "submitter_name": "Clinical Genetics, Academic Medical Center",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Mendelics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "Mendelics Assertion Criteria 2019",
+      "date_last_evaluated": "2022-05-04"
+    },
+    {
+      "submitter_name": "Women's Health and Genetics/Laboratory Corporation of America, LabCorp",
+      "classification": "Pathogenic",
+      "curator_notes": "Variant summary: LDLR c.1747C>T (p.His583Tyr) results in a conservative amino acid change located in the LDLR class B repeat of the encoded protein sequence. Four of five in-silico tools predict a damaging effect of the variant on protein function. The variant allele was found at a frequency of 0.00011 in 251488 control chromosomes (gnomAD). This frequency is not higher than expected for a pathogenic variant in LDLR causing Familial Hypercholesterolemia (0.00011 vs 0.0013), allowing no conclusion about variant significance. c.1747C>T has been reported in the literature in multiple individuals affected with Familial Hypercholesterolemia and is reported as a common mutation in Chinese/East Asian populations. These data indicate that the variant is very likely to be associated with disease. Multiple publications report experimental evidence evaluating LDLR expression, cell surface localization, and LDL uptake, and all results suggest a partial deficiency of ~50% of normal activity. Fourteen ClinVar submitters (evaluation after 2014) cite the variant as pathogenic/likely pathogenic and one ClinVar submitter (evaluation after 2014) cites it as likely benign. Based on the evidence outlined above, the variant was classified as pathogenic.",
+      "assertion_criteria": "LabCorp Variant Classification Summary - May 2015",
+      "date_last_evaluated": "2022-06-16"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Pathogenic",
+      "curator_notes": "In silico analysis supports that this missense variant has a deleterious effect on protein structure/function; Published functional studies demonstrate that this variant causes receptor-ligand complex degradation, with cells expressing this variant producing only about 50% mature protein and showing reduced surface expression of receptors (Sun et al., 1994; Van Hoof et al., 2005; Zhao et al., 2011); Also known as H562Y; This variant is associated with the following publications: (PMID: 16205024, 30270083, 21376320, 31491741, 7903864, 20538126, 15741231, 22353362, 21511053, 28028493, 27206935, 23155708, 30526649, 30592178, 30586733, 15494314, 29233637, 25846081, 28235710, 31447099, 32800790, 33223521, 32759540, 32695144, 33418990, 33569482, 32041611, 32719484, 32154576, 32331935, 34037665, 33994402, 34526433, 34573395, 34176852)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2021-12-13"
+    },
+    {
+      "submitter_name": "Molecular Genetics, Royal Melbourne Hospital",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change in LDLR is predicted to replace histidine with tyrosine at codon 583, p.(His583Tyr). The histidine residue is highly conserved (100 vertebrates, Multiz Alignments), and is located in LDL-receptor class B repeat 5. There is a moderate physicochemical difference between histidine and tyrosine. The highest population minor allele frequency in the population database gnomAD v4.0 is 0.05% (22/44,896 alleles) in the East Asian population and is a known Chinese/East Asian founder variant for familial hypercholesterolaemia (FH, PMID: 26608663, 33746137). The variant has been reported to segregate with FH in multiple families (PMID: 22353362, 23155708, 29233637, 33569482, 33994402). The variant has been detected in the homozygous and compound heterozygous state in multiple individuals with a phenotype consistent with biallelic FH (PMID: 7903864, 23155708, 29233637, 33569482, 33994402). Functional studies demonstrate a damaging effect with defective protein processing and trafficking to the plasma membrane and decreased LDL internalisation (PMID: 21511053, 32695144). Computational evidence predicts a deleterious effect for the missense substitution (REVEL = 0.884). Based on the classification scheme RMH Modified ACMG/AMP Guidelines v1.6.1, this variant is classified as PATHOGENIC. Following criteria are met: PS3, PP1_Strong, PM3, PP3.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-02-05"
+    },
+    {
+      "submitter_name": "Ambry Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": "The p.H583Y pathogenic mutation (also known as c.1747C>T and p.H562Y), located in coding exon 12 of the LDLR gene, results from a C to T substitution at nucleotide position 1747. The histidine at codon 583 is replaced by tyrosine, an amino acid with similar properties. This variant, which has been described as a Chinese founder mutation, was identified in one or more individuals with features consistent with familial hypercholesterolemia (FH) and segregated with disease in at least one family (Sun XM et al, Arterioscler. Thromb. 1994 Jan; 14(1):85-94; Yao RE et al, J. Pediatr. Endocrinol. Metab. 2012; 25(7-8):769-73; Chiou KR et al, Gene 2012 Apr; 498(1):100-6; Hooper AJ et al, Atherosclerosis 2012 Oct; 224(2):430-4; Fan LL et al, Appl. Biochem. Biotechnol. 2015 May; 176(1):101-9; Ma Y et al. J Clin Lipidol Oct;12:230-235.e6). This variant has been identified in the homozygous state and/or in conjunction with other LDLR variant(s) in individual(s) with features consistent with homozygous FH; in at least one instance, the variants were identified in trans (Chiou KR et al, Gene 2012 Apr; 498(1):100-6). Other variant(s) at the same codon, p.H583D (c.1747C>G), p.H583Q (c.1749C>A), have been identified in individual(s) with features consistent with FH (Bertolini S et al, Atherosclerosis 2013 Apr; 227(2):342-8; Alonso R et al, Clin. Biochem. 2009 Jun; 42(9):899-903). This amino acid position is highly conserved in available vertebrate species. In addition, this alteration is predicted to be deleterious by in silico analysis. Based on the supporting evidence, this alteration is interpreted as a disease-causing mutation.",
+      "assertion_criteria": "Ambry Variant Classification Scheme 2023",
+      "date_last_evaluated": "2025-01-20"
+    },
+    {
+      "submitter_name": "Color Diagnostics, LLC DBA Color Health",
+      "classification": "Pathogenic",
+      "curator_notes": "This missense variant replaces histidine with tyrosine at codon 583 of the LDLR protein. This variant is also known as p.His562Tyr in the mature protein. This variant alters a conserved histidine residue in the fifth LDLR type B repeat of the EGF precursor homology domain of the LDLR protein (a.a. 572-615), where pathogenic missense variants are found enriched (ClinVar-LDLR). Computational prediction tool suggests that this variant may have a deleterious impact on protein structure and function (internally defined REVEL score threshold >=0.7, PMID: 27666373). Functional studies have shown that this variant causes partially defective protein processing and trafficking to the plasma membrane (PMID: 7903864, 32695144), decrease in LDL internalization (PMID: 32695144), and reduction in recycling of LDLR when bound to LDL (PMID: 15494314, 15741231). This variant has been observed in over fifty individuals affected with familial hypercholesterolemia, mostly of East Asian ancestry (PMID: 7903864, 16205024, 20538126, 22353362, 23155708, 29233637, 30949068, 32759540, 33418990, 33746137, 36011335, 36172582; Color internal data). This variant has been reported to segregate with disease in two families (PMID: 22353362, 23155708). Individuals who were compound heterozygous for this variant and other pathogenic variant in the same gene have shown a more severe phenotype than heterozygous carriers of this variant (PMID: 7903864, 20538126, 23155708, 29233637, 36011335). This variant has been identified in 29/282882 chromosomes (24/19952 East Asian chromosomes) by the Genome Aggregation Database (gnomAD). Based on the available evidence, this variant is classified as Pathogenic.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-10-12"
+    },
+    {
+      "submitter_name": "Natera, Inc.",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.1747C>T variant in LDLR is a missense variant predicted to cause substitution of histidine to tyrosine at amino acid 583. This variant is rare in the general population with a frequency below the threshold expected for the associated phenotype(s). This variant has been observed in one or more individuals affected with the associated recessive disease, as either homozygous or compound heterozygous with a second variant (PMID: 25846081, 23155708). This variant has been observed in affected individual(s) with monoallelic occurrence (heterozygous/hemizygous) (PMID: 25846081, 20538126). Computational prediction algorithms indicate this variant is likely to affect gene or protein function. Given the available evidence, this variant is classified as Pathogenic.",
+      "assertion_criteria": "Natera Variant Classification Schema (03/2026)",
+      "date_last_evaluated": "2025-11-18"
+    },
+    {
+      "submitter_name": "Cardiovascular Genetics Laboratory, PathWest Laboratory Medicine WA - Fiona Stanley Hospital",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-09-11"
+    },
+    {
+      "submitter_name": "Robarts Research Institute, Western University",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "Wang et al. (Arterioscler Thromb Vasc Biol. 2016)",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Centre de G\u00e9n\u00e9tique Mol\u00e9culaire et Chromosomique, Unit\u00e9 de g\u00e9n\u00e9tique de l'Ob\u00e9sit\u00e9 et des Dyslipid\u00e9mies, APHP, GH H\u00f4pitaux Universitaires Piti\u00e9-Salp\u00eatri\u00e8re / Charles-Foix",
+      "classification": "Likely benign",
+      "curator_notes": "subject mutated among 2600 FH index cases screened = 1 /previously described in association with FH /Software predictions: Conflicting; Notes: None; Reason: Older and outlier claim with insufficient supporting evidence",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2016-12-16"
+    },
+    {
+      "submitter_name": "Cardiovascular Research Group, Instituto Nacional de Saude Doutor Ricardo Jorge",
+      "classification": "Pathogenic",
+      "curator_notes": "%MAF(ExAC):0.009061; Assay Description:Retrovirus transfected LDLR-/- fibroblasts, FACS and 125I-LDL assays / Heterologous cells (COS), immunoblot",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2016-03-01"
+    },
+    {
+      "submitter_name": "Laboratorium voor Moleculaire Diagnostiek Experimentele Vasculaire Geneeskunde, Academisch Medisch Centrum",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "HudsonAlpha Institute for Biotechnology, HudsonAlpha Institute for Biotechnology",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2018-01-23"
+    },
+    {
+      "submitter_name": "Brunham Lab, Centre for Heart and Lung Innovation, University of British Columbia",
+      "classification": "Likely pathogenic",
+      "curator_notes": "8 (clinical Dutch Lipid Clinic Network Criteria score); 4.6 mmol/L (calculated low-density lipoprotein cholesterol level)",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2019-06-05"
+    },
+    {
+      "submitter_name": "Laboratory for Molecular Medicine, Mass General Brigham Personalized Medicine",
+      "classification": "Pathogenic",
+      "curator_notes": "proposed classification - variant undergoing re-assessment, contact laboratory",
+      "assertion_criteria": "LMM Criteria",
+      "date_last_evaluated": "2020-12-16"
+    },
+    {
+      "submitter_name": "Clinical Genetics DNA and cytogenetics Diagnostics Lab, Erasmus MC, Erasmus Medical Center",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "AiLife Diagnostics, AiLife Diagnostics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-06-15"
+    },
+    {
+      "submitter_name": "Quest Diagnostics Nichols Institute San Juan Capistrano",
+      "classification": "Pathogenic",
+      "curator_notes": "The frequency of this variant in the general population, 0.0012 (24/19952 chromosomes, http://gnomad.broadinstitute.org), is uninformative in assessment of its pathogenicity. In the published literature, the variant has been reported as a common familial hypercholesterolemia (FH) variant within the Chinese and East Asian populations (PMIDs: 33994402 (2021), 32759540 (2020), 32331935 (2020), 32800790 (2020), 30592178 (2019), 27206935 (2016), 23155708 (2012), 22353362 (2012), 7903864 (1994)). Additionally, the variant has been reported in individuals with FH across multiple ethnicities (PMIDs: 35741760 (2022), 33569482 (2021), 34037665 (2021), 32041611 (2020), 30526649 (2018), 29233637 (2018)). A functional study found that the presence of this variant is damaging to proper LDLR function (PMID: 15741231 (2005)). Analysis of this variant using bioinformatics tools for the prediction of the effect of amino acid changes on protein structure and function yielded predictions that this variant is damaging. Based on the available information, this variant is classified as pathogenic.",
+      "assertion_criteria": "Quest Diagnostics criteria",
+      "date_last_evaluated": "2023-05-01"
+    },
+    {
+      "submitter_name": "All of Us Research Program, National Institutes of Health",
+      "classification": "Pathogenic",
+      "curator_notes": "This missense variant replaces histidine with tyrosine at codon 583 of the LDLR protein. This variant is also known as p.His562Tyr in the mature protein. This variant alters a conserved histidine residue in the fifth LDLR type B repeat of the EGF precursor homology domain of the LDLR protein (a.a. 572-615), where pathogenic missense variants are found enriched (ClinVar-LDLR). Computational prediction tool suggests that this variant may have a deleterious impact on protein structure and function (internally defined REVEL score threshold >=0.7, PMID: 27666373). Functional studies have shown that this variant causes partially defective protein processing and trafficking to the plasma membrane (PMID: 7903864, 32695144), decrease in LDL internalization (PMID: 32695144), and reduction in recycling of LDLR when bound to LDL (PMID: 15494314, 15741231). This variant has been observed in over fifty individuals affected with familial hypercholesterolemia, mostly of East Asian ancestry (PMID: 7903864, 16205024, 20538126, 22353362, 23155708, 29233637, 30949068, 32759540, 33418990, 33746137, 36011335, 36172582; Color internal data). This variant has been reported to segregate with disease in two families (PMID: 22353362, 23155708). Individuals who were compound heterozygous for this variant and other pathogenic variant in the same gene have shown a more severe phenotype than heterozygous carriers of this variant (PMID: 7903864, 20538126, 23155708, 29233637, 36011335). This variant has been identified in 29/282882 chromosomes (24/19952 East Asian chromosomes) by the Genome Aggregation Database (gnomAD). Based on the available evidence, this variant is classified as Pathogenic.; This study involves interpretation of variants in research participants for the purpose of population health screening. Participant phenotype was not available at the time of variant classification. Additional details can be found in publication PMID: 35346344, PMCID: PMC8962531",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-09-16"
+    },
+    {
+      "submitter_name": "ClinGen Familial Hypercholesterolemia Variant Curation Expert Panel",
+      "classification": "Pathogenic",
+      "curator_notes": "The NM_000527.5(LDLR):c.1747C>T (p.His583Tyr) variant is classified as Pathogenic for Familial Hypercholesterolemia by applying ACMG/AMP evidence codes PS3, PS4, PP1_Strong, PM2, PM3, PP3 and PP4 as defined by the ClinGen Familial Hypercholesterolemia Expert Panel LDLR-specific variant curation guidelines (specification version 1.2) on 7 November 2023. The supporting evidence is as follows: PM2: PopMax MAF = 0.001203 (0.12%) in East Asian (gnomAD v2.1.1). PopMax MAF > 0.02% (PM2 is \"not met\"), however, after reviewing literature cases, a founder effect - mostly Asian ancestry - seems to be associated (PMID 27206935 - Chiou et al. 2016; several case reports used for PS4). This variant was also found in other populations: PopMax MAF = 0.016% in South Asian (gnomAD v2.1.1). PP3: REVEL = 0.884. PS3: Functional studies reported in PMID 32695144 (Du\u0161kov\u00e1 et al., 2020) performed using heterologous cells (CHO), WB and FACS - results - 52% expression and 44% internalization. The variant showed a deleterious effect on the protein localization and function, and was associated with the accumulation of the protein in the ER. Results are below 70%, so PS3 is met. // Functional studies reported in PMID 21511053 (Zhao et al., 2011) performed using retrovirus transfected LDLR-/- fibroblasts, FACS and 125I-LDL assays - results - approximately 50% cell surface LDLR, 50-60% LDL-LDLR uptake and normal LDL-LDLR binding. Results are below 70%, so PS3 is met. -------- Overall, both functional studies are consistent with damaging effect. PS4, PP4: Variant meets PM2 and is identified in at least 17 unrelated index cases fulfilling criteria for FH (2 index cases from Centre de G\u00e9n\u00e9tique Mol\u00e9culaire et Chromosomique, Unit\u00e9 de g\u00e9n\u00e9tique de l'Ob\u00e9sit\u00e9 et des Dyslipid\u00e9mies, APHP.Sorbonne Universit\u00e9, H\u00f4pital de la Piti\u00e9-Salp\u00eatri\u00e8re, France; at least 15 cases from PMID 20538126, 22353362, 21376320, 25846081, 19318025). PP1_Strong: Variant segregates with FH phenotype in at least 9 informative meioses (minimum 6) from 3 families from different PMIDs (23155708, 2923363, 22353362): 9 affected family members have the variant. PM3: Variant meets PM2 and is identified in 1 index case (PMID 7903864) with homozygous FH phenotype and a deletion of LDLR exons 4-11, confirmed in trans, classified as Pathogenic by these guidelines; 1 index case (PMID 23155708) with homozygous FH phenotype and the LDLR c.2054C>T, p.(Pro685Leu) variant, confirmed in trans, classified as Pathogenic by these guidelines; 1 index case (PMID 29233637) with homozygous FH phenotype and the LDLR c.724C>T, p.(Gln242*) variant, confirmed in trans, classified as Pathogenic by these guidelines.",
+      "assertion_criteria": "ClinGen FH ACMG Specifications v1-2",
+      "date_last_evaluated": "2023-11-07"
+    },
+    {
+      "submitter_name": "U4M - Lille University & CHRU Lille, Universit\u00e9 de Lille - CHRU de Lille",
+      "classification": "Pathogenic",
+      "curator_notes": "\"Dutch Lipid Clinic\" Diagnostic Scoring ESC/EAS Guidelines 2016 - PMID: 27567407; Dutch Lipid Clinic Scoring : Definite FH; ACMG Guidelines: Pathogenic (ii)",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2017-03-30"
+    },
+    {
+      "submitter_name": "Laboratory of Molecular Genetics, National Medical Research Center for Therapy and Preventive Medicine",
+      "classification": "Likely pathogenic",
+      "curator_notes": "Based on the ACMG/AMP 2015 guidelines (Richards 2015), the His583Tyr variant has the following pathogenicity criteria: PM1- is located in the EGF-precursor homology domain: YWTD repeat (Galicia-Garcia 2020). Has a deleterious effect on protein localization and function (Du\u0161kov\u00e1 2020, Sun 1994). His583 is localised on the interface between the beta-propeller and the ligand-binding repeat R5. Most probably, the variant p.His583Tyr, resulting in loss of charge, will have a more severe effect on the protein structure than p.His583Arg (Du\u0161kov\u00e1 2020); PM2 - detected in control samples of gnomAD v4.1.0 with a frequency of 0.002788%; PP3; PP4-registered in patients with FH. According to the ClinGen guidelines for LDLR variant classification (Chora 2022), PS4 - variant is found in \u226510 unrelated FH cases, including 2 FH cases in Russia (Kim 2022 (n = 1), Doi 2021 (n=1), Huang 2022 (n=1), Chiou 2010 (n=6), Meshkov 2021 and Vasilyev 2022 (n = 2)); PM2 - has a PopMax MAF \u2264 0.0002 (0.02%) in gnomAD (0.002788% v4.1.0 gnomAD); PP3 - REVEL score 0.884 (Liu 2011, Liu 2020); PP4 - identified in 6 probands with FH based on Simon Broome criteria (Chiou 2010), and in 1 proband with FH based on DLCN-criteria (data from the Laboratory of Molecular Genetics, Moscow, Russia (Meshkov 2021)). Based on a combination of criteria, this variant is likely pathogenic. p.His583Tyr has been verified in cohorts with coronary heart disease (Chen 2022, Kim 2018, Li 2024) including in 230 subjects from the Chen 2022 study. p.His583Tyr associated with an approximately 4-fold increased risk of acute myocardial infarction compared with individuals without this variant (p<0 .0001) (Chen 2022)",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-07-18"
+    },
+    {
+      "submitter_name": "Department of Pathology and Laboratory Medicine, Sinai Health System",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-01-02"
+    },
+    {
+      "submitter_name": "Revvity Omics, Revvity",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-02-27"
+    },
+    {
+      "submitter_name": "3billion",
+      "classification": "Pathogenic",
+      "curator_notes": "The variant is observed at an extremely low frequency in the gnomAD v4.0.0 dataset (total allele frequency: 0.003%). Predicted Consequence/Location: Missense variant Functional studies provide strong evidence of the variant having a damaging effect on the gene or gene product (PMID: 21511053, 7903864). In silico tool predictions suggest damaging effect of the variant on gene or gene product [REVEL: 0.88 (>=0.6, sensitivity 0.68 and specificity 0.92); 3Cnet: 0.98 (>=0.6, sensitivity 0.72 and precision 0.9)]. The same nucleotide change resulting in the same amino acid change has been previously reported as pathogenic/likely pathogenic with strong evidence (ClinVar ID: VCV000200921 /PMID: 7903864 /3billion dataset). The variant has been reported to co-segregate with the disease in at least 7 similarly affected relatives/individuals in at least two unrelated families (PMID: 16205024, 21376320, 22353362, 23155708, 27206935, 28028493, 7903864). Different missense changes at the same codon (p.His583Arg, p.His583Asp, p.His583Gln) have been reported as pathogenic/likely pathogenic with strong evidence (ClinVar ID: VCV000183124, VCV000252012, VCV000252014, VCV000441220 /PMID: 19318025, 22698793, 23375686, 28475941). Therefore, this variant is classified as Pathogenic according to the recommendation of ACMG/AMP guideline.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-08-22"
+    },
+    {
+      "submitter_name": "Molecular Genetics Laboratory, BC Children's and BC Women's Hospitals",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-09-08"
+    },
+    {
+      "submitter_name": "Mayo Clinic Laboratories, Mayo Clinic",
+      "classification": "Pathogenic",
+      "curator_notes": "PP1_strong, PP3, PP4, PM2_supporting, PM3, PS3, PS4",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-09-05"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change replaces histidine, which is basic and polar, with tyrosine, which is neutral and polar, at codon 583 of the LDLR protein (p.His583Tyr). This variant is present in population databases (rs730882109, gnomAD 0.1%). This missense change has been observed in individual(s) with familial hypercholesterolemia (PMID: 7903864, 16205024, 21376320, 22353362, 23155708, 27206935, 28028493). It is commonly reported in individuals of Chinese and Southeast Asian ancestry (PMID: 7903864, 16205024, 21376320, 22353362, 23155708, 27206935, 28028493). Invitae Evidence Modeling of clinical and family history, age, sex, and reported ancestry of multiple individuals with this LDLR variant has been performed. This variant is expected to be pathogenic with a positive predictive value of at least 99%. This is a validated machine learning model that incorporates the clinical features of 377,766 individuals referred to our laboratory for LDLR testing. This variant is also known as p.His562Tyr. ClinVar contains an entry for this variant (Variation ID: 200921). Invitae Evidence Modeling of protein sequence and biophysical properties (such as structural, functional, and spatial information, amino acid conservation, physicochemical variation, residue mobility, and thermodynamic stability) indicates that this missense variant is expected to disrupt LDLR protein function with a positive predictive value of 95%. Experimental studies have shown that this missense change affects LDLR function (PMID: 7903864, 21511053). This variant disrupts the p.His583 amino acid residue in LDLR. Other variant(s) that disrupt this residue have been determined to be pathogenic (PMID: 19318025, 22698793, 23375686). This suggests that this residue is clinically significant, and that variants that disrupt this residue are likely to be disease-causing. For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2025-12-21"
+    },
+    {
+      "submitter_name": "Cambridge Genomics Laboratory, East Genomic Laboratory Hub, NHS Genomic Medicine Service",
+      "classification": "Pathogenic",
+      "curator_notes": "PM2, PP3, PS3, PM3_Strong, PP4, PP1_Strong, PS4 The rare missense variant c.1747C>T p.His583Tyr in the LDLR gene has been reported for several individuals affected with familial hypercholesterolemia (Ma et al. 2018, J Clin Lipidol. 12: 230 Yao et al. 2012, J Pediatr Endocrinol Metab. 25: 769 Chiou et al. 2010, Am J Cardiol. 105: 1752). Both functional studies and in silico analyses indicate a deleterious effect of the variant (Zhao et al. 2011, Biochim Biophys Acta 1811: 397). Four alternative variants have been described for position this amino acid residue to date, but these can only be classified as likely pathogenic based on the data available. Individuals who were compound heterozygous for this variant with other pathogenic variant in the same gene have shown a more severe phenotype than heterozygous carriers of this variant (Ma et al. 2018, J Clin Lipidol. 12: 230 Yao et al. 2012, J Pediatr Endocrinol Metab. 25: 769 Chiou et al. 2010, Am J Cardiol. 105: 1752).",
+      "assertion_criteria": "ACGS Best Practice Guidelines for Variant Classification in Rare Disease 2020",
+      "date_last_evaluated": "2025-02-21"
+    },
+    {
+      "submitter_name": "Khoo Teck Puat Hospital, NHG Health",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.1747C>T (p.His583Tyr) variant results in the substitution of histidine by tyrosine at codon 583 in exon 12 of the LDLR gene. The variant is present in population database, with a PopMax allele frequency of 0.049% in the East Asian subgroup (gnomAD v4.1.0). This variant has been reported in multiple individuals affected with familial hypercholesterolemia in published literature and was detected in our cohort in more than ten unrelated individuals with Dutch Lipid Criteria Network (DLCN) criteria \u22656 (PMID: 29353225, internal data) (PS4). This variant has been segregated with disease in at least one family (PMID: 22353362, 23155708) (PP1_Strong). This variant has also been reported in individual(s) who were compound heterzygous and exhibited a homozygous FH phenotype (PMID: 23155708, 29233637) (PM3). Functional studies demonstrate that this variant leads to reduced LDLR surface expression and impaired LDL uptake (PMID: 21511053) (PS3). Computational predictions (REVEL score=0.88) supports a deleterious effect on protein function (PP3). Based on the available evidence, this variant is classified as pathogenic.",
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": "2026-02-01"
+    },
+    {
+      "submitter_name": "Variantyx, Inc.",
+      "classification": "Pathogenic",
+      "curator_notes": "This is a nonsynonymous variant in the LDLR gene (OMIM: 606945). Pathogenic variants in this gene have been associated with autosomal semidominant familial hypercholesterolemia 1. This variant has been observed to segregate with disease in at least 7 individuals from 3 families (PMID: 22353362, 7903864, 29233637, 23155708) (PP1). Functional studies have shown that this variant alters LDLR protein function (PMID: 32695144, 21511053, 7903864) (PS3) and multiple computational algorithms predict a deleterious effect for this variant (REVEL score: 0.884) (PP3). Other reputable laboratories have reported this variant as pathogenic or likely pathogenic, and this classification has been validated by an expert panel in ClinVar. This variant has a 0.0490% maximum allele frequency in non-founder control populations (https://gnomad.broadinstitute.org/). Based on the current evidence, this variant is classified as pathogenic for autosomal semidominant familial hypercholesterolemia 1.",
+      "assertion_criteria": "Variantyx Assertion Criteria 2022",
+      "date_last_evaluated": "2025-09-10"
+    },
+    {
+      "submitter_name": "New York Genome Center",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.1747C>T variant in LDLR has previously been reported in literature in more than 10 unrelated individuals, predominantly of Asian ancestry, affected with hypercholesterolemia (PMID: 7903864, 26608663, 30526649, 30592178, 23155708, 29233637, 33569482, 37409534, 38506081), and deposited in Clinvar by multiple submitters with affected status provided [Clinvar ID: 200921]. The c.1747C>T variant is observed in 45 alleles (~0.05% and ~0.018% maximum population allele frequencies in East Asian and South Asian populations, respectively, with 43 heterozygous and 1 homozygous individual in total) on gnomad v4.1.0, suggesting it is not a common benign variant in the populations represented in that dataset, which might also include individuals affected with hypercholesterolemia. The c.1747C>T variant in LDLR is located in exon 12 of this 18-exon gene and predicted to replace an evolutionarily conserved histidine amino acid with tyrosine at position 583 (p.(His583Tyr)) within the LDL-receptor class B5 repeat of the epidermal growth factor domain of the encoded protein [UniProt ID: P01130] (PMID: 7903864, 18677035). Multiple in vitro studies demonstrated a functional effect for the p.(His583Tyr) variant, suggesting a precursor protein is not fully processed resulting in reduced number of surface receptors (50% compared to wild type) (PMID: 7903864, 21511053, 32695144). Other missense variants affecting the p.His583 residue (c.1747C>G p.(His583Asp); c.1748A>G p.(His583Arg); c.1749C>A p.(His583Gln)) in LDLR have also been reported in multiple affected individuals [ClinVar IDs: 183124, 252012, 252014] (PMID: 32596782). Based on available evidence this inherited heterozygous c.1747C>T p.(His583Tyr) variant identified in LDLR is classified as Pathogenic.",
+      "assertion_criteria": "NYGC Assertion Criteria 2020",
+      "date_last_evaluated": "2024-07-24"
+    },
+    {
+      "submitter_name": "Blueprint Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-03-22"
+    },
+    {
+      "submitter_name": "Genetics Laboratory, Great Ormond Street Hospital NHS Foundation Trust, North Thames Genomic Laboratory Hub",
+      "classification": "Pathogenic",
+      "curator_notes": "PS4_strong, PM2_supporting, PP3_supporting, PS3_supporting, PP1_supporting, PM3_moderate",
+      "assertion_criteria": "ClinGen LDLR ACMG Specifications (J.R. Chora et al. 2021)",
+      "date_last_evaluated": "2026-08-11"
+    },
+    {
+      "submitter_name": "Juno Genomics, Hangzhou Juno Genomics, Inc",
+      "classification": "Pathogenic",
+      "curator_notes": "Absent from controls (or at extremely low frequency if recessive) in Genome Aggregation Database.;The prevalence of the variant in affected individuals is significantly increased compared to the prevalence in controls.;Co-segregation with disease in multiple affected family members.;Well-established in vitro or in vivo functional studies supportive of a damaging effect on the gene or gene product.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": null
+    }
+  ]
+}

@@ -1,0 +1,2117 @@
+[
+  {
+    "variant_id": "2-21006019-CA-C",
+    "ot_id": "2_21006019_CA_C",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.10848del (p.Gly3617fs)",
+    "gnomad_het": 67,
+    "stars": 2,
+    "n_credible_sets": 14,
+    "ldl_hits": [
+      {
+        "study_id": "GCST90498120",
+        "trait": "Cholesterol to Total Lipids in Large VLDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": -1.35465,
+        "se": 0.113209,
+        "p_mantissa": 5.355000019073486,
+        "p_exp": -33,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90499022",
+        "trait": "Phospholipids to Total Lipids in Medium VLDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": -1.59388,
+        "se": 0.111265,
+        "p_mantissa": 1.5260000228881836,
+        "p_exp": -46,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90500579",
+        "trait": "Free Cholesterol to Total Lipids in Very Large VLDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": -1.09773,
+        "se": 0.112504,
+        "p_mantissa": 1.715999960899353,
+        "p_exp": -22,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90498151",
+        "trait": "Cholesteryl Esters to Total Lipids in Large VLDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": -1.31591,
+        "se": 0.110781,
+        "p_mantissa": 1.531999945640564,
+        "p_exp": -32,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90500674",
+        "trait": "Triglycerides to Total Lipids in Very Large VLDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": 1.43234,
+        "se": 0.112036,
+        "p_mantissa": 1.996000051498413,
+        "p_exp": -37,
+        "method": "PICS"
+      }
+    ],
+    "chol_hits": [
+      {
+        "study_id": "GCST90079024",
+        "trait": "Cholesterol levels (UKB data field 30690)",
+        "n_samples": 412075,
+        "beta": -2.06449,
+        "se": 0.113159,
+        "p_mantissa": 2.302000045776367,
+        "p_exp": -74,
+        "method": "PICS"
+      }
+    ],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [
+      {
+        "study_id": "GCST90497178",
+        "trait": "Total cholines levels",
+        "n_samples": 434646,
+        "beta": -1.195,
+        "se": 0.109536,
+        "p_mantissa": 1.0360000133514404,
+        "p_exp": -27,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90499256",
+        "trait": "Phosphoglycerides levels",
+        "n_samples": 434646,
+        "beta": -1.25948,
+        "se": 0.109954,
+        "p_mantissa": 2.2309999465942383,
+        "p_exp": -30,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90499198",
+        "trait": "Omega-6 fatty acids to omega-3 fatty acids ratio",
+        "n_samples": 434646,
+        "beta": 1.41076,
+        "se": 0.108827,
+        "p_mantissa": 1.9730000495910645,
+        "p_exp": -38,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90079021",
+        "trait": "Direct bilirubin levels (UKB data field 30660)",
+        "n_samples": 351671,
+        "beta": 0.712299,
+        "se": 0.113996,
+        "p_mantissa": 4.145999908447266,
+        "p_exp": -10,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90499242",
+        "trait": "Phosphatidylcholine levels",
+        "n_samples": 434646,
+        "beta": -1.27139,
+        "se": 0.108594,
+        "p_mantissa": 1.1629999876022339,
+        "p_exp": -31,
+        "method": "PICS"
+      }
+    ],
+    "rsids": [
+      "rs982371659"
+    ]
+  },
+  {
+    "variant_id": "2-21032391-G-A",
+    "ot_id": "2_21032391_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.1315C>T (p.Arg439Ter)",
+    "gnomad_het": 57,
+    "stars": 2,
+    "n_credible_sets": 4,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [
+      {
+        "study_id": "GCST90499476",
+        "trait": "Concentration of small HDL particles (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": -1.38026,
+        "se": 0.1355,
+        "p_mantissa": 2.2799999713897705,
+        "p_exp": -24,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90499437",
+        "trait": "Free cholesterol in small HDL",
+        "n_samples": 434646,
+        "beta": -1.53299,
+        "se": 0.132752,
+        "p_mantissa": 7.574999809265137,
+        "p_exp": -31,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90499454",
+        "trait": "Total lipids in small HDL (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": -1.28679,
+        "se": 0.134926,
+        "p_mantissa": 1.4709999561309814,
+        "p_exp": -21,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90499474",
+        "trait": "Concentration of small HDL particles",
+        "n_samples": 434646,
+        "beta": -1.3768,
+        "se": 0.135618,
+        "p_mantissa": 3.244999885559082,
+        "p_exp": -24,
+        "method": "PICS"
+      }
+    ],
+    "rsids": [
+      "rs142066904"
+    ]
+  },
+  {
+    "variant_id": "2-21009304-G-A",
+    "ot_id": "2_21009304_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.7564C>T (p.Arg2522Ter)",
+    "gnomad_het": 42,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs121918390"
+    ]
+  },
+  {
+    "variant_id": "2-21023524-C-T",
+    "ot_id": "2_21023524_C_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.2604+1G>A",
+    "gnomad_het": 29,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs775345377"
+    ]
+  },
+  {
+    "variant_id": "2-21011300-AAC-A",
+    "ot_id": "2_21011300_AAC_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.5566_5567del (p.Val1856fs)",
+    "gnomad_het": 28,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs121918384"
+    ]
+  },
+  {
+    "variant_id": "2-21006629-AG-A",
+    "ot_id": "2_21006629_AG_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.10238del (p.Thr3413fs)",
+    "gnomad_het": 27,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs756209187"
+    ]
+  },
+  {
+    "variant_id": "2-21038086-C-A",
+    "ot_id": "2_21038086_C_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.409G>T (p.Glu137Ter)",
+    "gnomad_het": 25,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs766243954"
+    ]
+  },
+  {
+    "variant_id": "2-21010615-G-A",
+    "ot_id": "2_21010615_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.6253C>T (p.Arg2085Ter)",
+    "gnomad_het": 25,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs121918386"
+    ]
+  },
+  {
+    "variant_id": "2-21006087-C-T",
+    "ot_id": "2_21006087_C_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.10781G>A (p.Trp3594Ter)",
+    "gnomad_het": 19,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1663129046"
+    ]
+  },
+  {
+    "variant_id": "2-21009310-G-A",
+    "ot_id": "2_21009310_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.7558C>T (p.Arg2520Ter)",
+    "gnomad_het": 15,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs746483297"
+    ]
+  },
+  {
+    "variant_id": "2-21005743-CA-C",
+    "ot_id": "2_21005743_CA_C",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.11124del (p.Phe3708fs)",
+    "gnomad_het": 14,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1282116285"
+    ]
+  },
+  {
+    "variant_id": "2-21010834-G-A",
+    "ot_id": "2_21010834_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.6034C>T (p.Arg2012Ter)",
+    "gnomad_het": 9,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs147863759"
+    ]
+  },
+  {
+    "variant_id": "2-21007748-TGAAAA-T",
+    "ot_id": "2_21007748_TGAAAA_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.9115_9119del (p.Phe3039fs)",
+    "gnomad_het": 9,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1215189537"
+    ]
+  },
+  {
+    "variant_id": "2-21009268-G-A",
+    "ot_id": "2_21009268_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.7600C>T (p.Arg2534Ter)",
+    "gnomad_het": 9,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs145143533"
+    ]
+  },
+  {
+    "variant_id": "2-21028540-T-G",
+    "ot_id": "2_21028540_T_G",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.1618-2A>C",
+    "gnomad_het": 7,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs373251374"
+    ]
+  },
+  {
+    "variant_id": "2-21009331-G-A",
+    "ot_id": "2_21009331_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.7537C>T (p.Arg2513Ter)",
+    "gnomad_het": 6,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs146538280"
+    ]
+  },
+  {
+    "variant_id": "2-21032427-G-A",
+    "ot_id": "2_21032427_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.1279C>T (p.Arg427Ter)",
+    "gnomad_het": 5,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1168594259"
+    ]
+  },
+  {
+    "variant_id": "2-21043858-ACTCACCGGCC-A",
+    "ot_id": "2_21043858_ACTCACCGGCC_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.78_82+5del",
+    "gnomad_het": 5,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs2465463570"
+    ]
+  },
+  {
+    "variant_id": "2-21005538-G-T",
+    "ot_id": "2_21005538_G_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.11330C>A (p.Ser3777Ter)",
+    "gnomad_het": 3,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": []
+  },
+  {
+    "variant_id": "2-21011303-A-AG",
+    "ot_id": "2_21011303_A_AG",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.5564dup (p.Val1856fs)",
+    "gnomad_het": 3,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": []
+  },
+  {
+    "variant_id": "2-21013379-G-A",
+    "ot_id": "2_21013379_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.3997C>T (p.Arg1333Ter)",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs121918383"
+    ]
+  },
+  {
+    "variant_id": "2-21037957-C-A",
+    "ot_id": "2_21037957_C_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.537+1G>T",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs2103384749"
+    ]
+  },
+  {
+    "variant_id": "2-21037162-G-A",
+    "ot_id": "2_21037162_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.631C>T (p.Gln211Ter)",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs143301836"
+    ]
+  },
+  {
+    "variant_id": "2-21007667-CT-C",
+    "ot_id": "2_21007667_CT_C",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.9200del (p.Lys3067fs)",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs121918387"
+    ]
+  },
+  {
+    "variant_id": "2-21015258-C-A",
+    "ot_id": "2_21015258_C_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.3511G>T (p.Glu1171Ter)",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs2103362763"
+    ]
+  },
+  {
+    "variant_id": "2-21010188-TG-T",
+    "ot_id": "2_21010188_TG_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.6679del (p.His2227fs)",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs2103356720"
+    ]
+  },
+  {
+    "variant_id": "2-21013370-G-A",
+    "ot_id": "2_21013370_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.4006C>T (p.Gln1336Ter)",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1663384393"
+    ]
+  },
+  {
+    "variant_id": "2-21014512-C-A",
+    "ot_id": "2_21014512_C_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.3778G>T (p.Glu1260Ter)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs144892654"
+    ]
+  },
+  {
+    "variant_id": "2-21012365-A-C",
+    "ot_id": "2_21012365_A_C",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.4503T>G (p.Tyr1501Ter)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs368825685"
+    ]
+  },
+  {
+    "variant_id": "2-21011309-TGCTTTATA-T",
+    "ot_id": "2_21011309_TGCTTTATA_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.5551_5558del (p.Tyr1851fs)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1356095864"
+    ]
+  },
+  {
+    "variant_id": "2-21008791-G-GAT",
+    "ot_id": "2_21008791_G_GAT",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.8075_8076dup (p.Leu2693fs)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs2103354801"
+    ]
+  },
+  {
+    "variant_id": "2-21008476-C-A",
+    "ot_id": "2_21008476_C_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.8392G>T (p.Glu2798Ter)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs923192918"
+    ]
+  },
+  {
+    "variant_id": "2-21012217-G-A",
+    "ot_id": "2_21012217_G_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.4651C>T (p.Gln1551Ter)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs142017360"
+    ]
+  },
+  {
+    "variant_id": "2-21035656-AGTGTG-A",
+    "ot_id": "2_21035656_AGTGTG_A",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.741_745del (p.Thr248fs)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": []
+  },
+  {
+    "variant_id": "2-21011601-CTGTT-C",
+    "ot_id": "2_21011601_CTGTT_C",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.5263_5266del (p.Asn1755fs)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs281865425"
+    ]
+  },
+  {
+    "variant_id": "2-21011551-TG-T",
+    "ot_id": "2_21011551_TG_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.5316del (p.Asn1772fs)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1663321162"
+    ]
+  },
+  {
+    "variant_id": "2-21007235-G-GT",
+    "ot_id": "2_21007235_G_GT",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.9632dup (p.Asn3211fs)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs2103352780"
+    ]
+  },
+  {
+    "variant_id": "2-21010324-CA-C",
+    "ot_id": "2_21010324_CA_C",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.6543del (p.Phe2181fs)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1558564161"
+    ]
+  },
+  {
+    "variant_id": "2-21028066-C-T",
+    "ot_id": "2_21028066_C_T",
+    "gene": "APOB",
+    "group": "APOB_pLoF_FHBL",
+    "hgvs": "NM_000384.3(APOB):c.1830-1G>A",
+    "gnomad_het": 0,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1399892057"
+    ]
+  },
+  {
+    "variant_id": "2-21006288-C-T",
+    "ot_id": "2_21006288_C_T",
+    "gene": "APOB",
+    "group": "APOB_Missense_TrueFH",
+    "hgvs": "NM_000384.3(APOB):c.10580G>A (p.Arg3527Gln)",
+    "gnomad_het": 677,
+    "stars": 2,
+    "n_credible_sets": 129,
+    "ldl_hits": [
+      {
+        "study_id": "GCST90449407",
+        "trait": "Cholesteryl Esters in LDL",
+        "n_samples": 185352,
+        "beta": 0.044558761128565154,
+        "se": null,
+        "p_mantissa": 2.0707509517669678,
+        "p_exp": -83,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90449434",
+        "trait": "Total lipids in large LDL",
+        "n_samples": 185352,
+        "beta": 0.04705818479395107,
+        "se": null,
+        "p_mantissa": 3.8082051277160645,
+        "p_exp": -92,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90449532",
+        "trait": "Cholesteryl Esters in Small VLDL",
+        "n_samples": 185352,
+        "beta": 0.029257694598352344,
+        "se": null,
+        "p_mantissa": 2.2558505535125732,
+        "p_exp": -39,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90499585",
+        "trait": "Cholesteryl Esters to Total Lipids in Small LDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": -0.509375,
+        "se": 0.0532509,
+        "p_mantissa": 1.1160000562667847,
+        "p_exp": -21,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90449410",
+        "trait": "Total Lipids in LDL",
+        "n_samples": 185352,
+        "beta": 0.04568936100800704,
+        "se": null,
+        "p_mantissa": 7.66840124130249,
+        "p_exp": -87,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90691895",
+        "trait": "LDL direct, adjusted by medication - raw",
+        "n_samples": 398402,
+        "beta": 0.05392673186967016,
+        "se": null,
+        "p_mantissa": 1.0997142791748047,
+        "p_exp": -252,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90013871",
+        "trait": "Direct low density lipoprotein levels (UKB data field 30780)",
+        "n_samples": 389189,
+        "beta": 0.025611128107472226,
+        "se": null,
+        "p_mantissa": 4.749154567718506,
+        "p_exp": -59,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90449527",
+        "trait": "Concentration of small LDL particles",
+        "n_samples": 185352,
+        "beta": 0.04162941705613693,
+        "se": null,
+        "p_mantissa": 4.92138671875,
+        "p_exp": -70,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90449583",
+        "trait": "Phospholipids to total lipids ratio in very large VLDL",
+        "n_samples": 185352,
+        "beta": 0.11721814707586305,
+        "se": null,
+        "p_mantissa": 3.0525848865509033,
+        "p_exp": -41,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90449577",
+        "trait": "Cholesteryl esters in very large VLDL",
+        "n_samples": 185352,
+        "beta": 0.017352462255849802,
+        "se": null,
+        "p_mantissa": 5.636792182922363,
+        "p_exp": -16,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90014009",
+        "trait": "Direct low density lipoprotein levels (UKB data field 30780)",
+        "n_samples": 389189,
+        "beta": 0.02559873958069801,
+        "se": null,
+        "p_mantissa": 5.4432783126831055,
+        "p_exp": -59,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90475412",
+        "trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)",
+        "n_samples": 404687,
+        "beta": 0.034214117698300524,
+        "se": null,
+        "p_mantissa": 2.6789968013763428,
+        "p_exp": -106,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST007848",
+        "trait": "LDL cholesterol",
+        "n_samples": 56538,
+        "beta": 71,
+        "se": 5.845387747257516,
+        "p_mantissa": 6,
+        "p_exp": -34,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90692973",
+        "trait": "LDL direct, adjusted by medication - raw",
+        "n_samples": 406387,
+        "beta": 0.05314301097045359,
+        "se": null,
+        "p_mantissa": 1.0997142791748047,
+        "p_exp": -252,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90449503",
+        "trait": "Remnant cholesterol (non-HDL, non-LDL -cholesterol)",
+        "n_samples": 185352,
+        "beta": 0.04028709883262607,
+        "se": null,
+        "p_mantissa": 9.547652244567871,
+        "p_exp": -71,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90475420",
+        "trait": "low density lipoprotein cholesterol (LDLC, minimum, inv-norm transformed)",
+        "n_samples": 404745,
+        "beta": 0.028459156034763698,
+        "se": null,
+        "p_mantissa": 1.652347207069397,
+        "p_exp": -74,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90497920",
+        "trait": "Cholesterol to Total Lipids in Large LDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": 0.57692,
+        "se": 0.05124,
+        "p_mantissa": 2.0869998931884766,
+        "p_exp": -29,
+        "method": "PICS"
+      }
+    ],
+    "chol_hits": [
+      {
+        "study_id": "GCST90475489",
+        "trait": "Biological Mother: High cholesterol",
+        "n_samples": 315668,
+        "beta": 0.012463677285467618,
+        "se": null,
+        "p_mantissa": 5.501999855041504,
+        "p_exp": -13,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90475208",
+        "trait": "Takes medication for high cholesterol?",
+        "n_samples": 315668,
+        "beta": 0.016785126215454384,
+        "se": null,
+        "p_mantissa": 3.7790000438690186,
+        "p_exp": -22,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90691571",
+        "trait": "Cholesterol levels",
+        "n_samples": 400963,
+        "beta": 0.02240829798407093,
+        "se": null,
+        "p_mantissa": 3.065186023712158,
+        "p_exp": -46,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90077883",
+        "trait": "High cholesterol",
+        "n_samples": 331754,
+        "beta": 2.1811155204030337,
+        "se": 0.13536779618342568,
+        "p_mantissa": 2.0980000495910645,
+        "p_exp": -58,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90476371",
+        "trait": "Biological Sibling: High cholesterol",
+        "n_samples": 315668,
+        "beta": 0.013373835332165627,
+        "se": null,
+        "p_mantissa": 2.1549999713897705,
+        "p_exp": -14,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90476424",
+        "trait": "total cholesterol (mean, inv-norm transformed)",
+        "n_samples": 397615,
+        "beta": 0.02776036589887795,
+        "se": null,
+        "p_mantissa": 4.726169109344482,
+        "p_exp": -69,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90079766",
+        "trait": "ICD10 E78.0: Pure hypercholesterolemia",
+        "n_samples": 378271,
+        "beta": 1.6026066322810824,
+        "se": 0.14477956043106016,
+        "p_mantissa": 1.7719999551773071,
+        "p_exp": -28,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90476427",
+        "trait": "total cholesterol (minimum, inv-norm transformed)",
+        "n_samples": 397646,
+        "beta": 0.022451375607851758,
+        "se": null,
+        "p_mantissa": 1.7742723226547241,
+        "p_exp": -46,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90013919",
+        "trait": "Cholesterol lowering medication use (UKB data field 6177_1) (Firth correction)",
+        "n_samples": 407746,
+        "beta": 0.012434488275210173,
+        "se": null,
+        "p_mantissa": 5.39926290512085,
+        "p_exp": -16,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90014000",
+        "trait": "Cholesterol levels (UKB data field 30690)",
+        "n_samples": 389864,
+        "beta": 0.021065377022664134,
+        "se": null,
+        "p_mantissa": 1.5022923946380615,
+        "p_exp": -40,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90013882",
+        "trait": "High cholesterol (Firth correction)",
+        "n_samples": 407746,
+        "beta": 0.023100617737787054,
+        "se": null,
+        "p_mantissa": 2.9969096183776855,
+        "p_exp": -51,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90476420",
+        "trait": "total cholesterol (maximum, inv-norm transformed)",
+        "n_samples": 397478,
+        "beta": 0.028342583894245574,
+        "se": null,
+        "p_mantissa": 9.774609565734863,
+        "p_exp": -72,
+        "method": "SuSiE-inf"
+      }
+    ],
+    "apob_hits": [
+      {
+        "study_id": "GCST90013994",
+        "trait": "Apolipoprotein B levels (UKB data field 30640)",
+        "n_samples": 388022,
+        "beta": 0.026104642399013916,
+        "se": null,
+        "p_mantissa": 2.4915826320648193,
+        "p_exp": -64,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90691568",
+        "trait": "Apolipoprotein B levels",
+        "n_samples": 399003,
+        "beta": 0.028132834441200523,
+        "se": null,
+        "p_mantissa": 2.175278663635254,
+        "p_exp": -74,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90692824",
+        "trait": "Apolipoprotein B levels",
+        "n_samples": 407355,
+        "beta": 0.02811497036013299,
+        "se": null,
+        "p_mantissa": 2.175278663635254,
+        "p_exp": -74,
+        "method": "SuSiE-inf"
+      }
+    ],
+    "cad_statin_hits": [
+      {
+        "study_id": "GCST90692159",
+        "trait": "Illnesses of father - Heart disease (UKB data field 20107)",
+        "n_samples": 7200,
+        "beta": 0.9756,
+        "se": 0.1532,
+        "p_mantissa": 1.8969999551773071,
+        "p_exp": -10,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90692468",
+        "trait": "Illnesses of father - Heart disease (UKB data field 20107)",
+        "n_samples": 2089,
+        "beta": 0.9756,
+        "se": 0.1532,
+        "p_mantissa": 1.8969999551773071,
+        "p_exp": -10,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90692027",
+        "trait": "Illnesses of father - Heart disease (UKB data field 20107)",
+        "n_samples": 4554,
+        "beta": 0.9756,
+        "se": 0.1532,
+        "p_mantissa": 1.8969999551773071,
+        "p_exp": -10,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90475198",
+        "trait": "Coronary artery / coronary heart disease (including heart attack, angina)",
+        "n_samples": 315668,
+        "beta": 0.012417356755299104,
+        "se": null,
+        "p_mantissa": 7.701000213623047,
+        "p_exp": -13,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90691631",
+        "trait": "Illnesses of father - Heart disease (UKB data field 20107)",
+        "n_samples": 371343,
+        "beta": 0.010168727970553522,
+        "se": null,
+        "p_mantissa": 1.9132648706436157,
+        "p_exp": -10,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90081493",
+        "trait": "Lipid lowering medication use",
+        "n_samples": 320758,
+        "beta": 1.8177017072153454,
+        "se": 0.13766992518697743,
+        "p_mantissa": 8.420000076293945,
+        "p_exp": -40,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90475929",
+        "trait": "Ischemic heart disease (PheCode 411)",
+        "n_samples": 417274,
+        "beta": 0.01452551201671792,
+        "se": null,
+        "p_mantissa": 2.740999937057495,
+        "p_exp": -21,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90692659",
+        "trait": "Illnesses of father - Heart disease (UKB data field 20107)",
+        "n_samples": 385186,
+        "beta": 0.009984381591282456,
+        "se": null,
+        "p_mantissa": 1.9132648706436157,
+        "p_exp": -10,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90078178",
+        "trait": "Treatment or medication use - atorvastatin",
+        "n_samples": 320758,
+        "beta": 1.6475791970601252,
+        "se": 0.18267077639773294,
+        "p_mantissa": 1.8940000534057617,
+        "p_exp": -19,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90475936",
+        "trait": "Coronary atherosclerosis (PheCode 411.4)",
+        "n_samples": 424341,
+        "beta": 0.014779287276481146,
+        "se": null,
+        "p_mantissa": 3.4590001106262207,
+        "p_exp": -23,
+        "method": "SuSiE-inf"
+      },
+      {
+        "study_id": "GCST90475199",
+        "trait": "Takes medication for coronary artery/ coronary heart disease?",
+        "n_samples": 315668,
+        "beta": 0.009975757953019271,
+        "se": null,
+        "p_mantissa": 4.64900016784668,
+        "p_exp": -9,
+        "method": "SuSiE-inf"
+      }
+    ],
+    "other_top_hits": [
+      {
+        "study_id": "GCST90102117",
+        "trait": "Sphingomyelin (d33:1) levels",
+        "n_samples": 650,
+        "beta": 1.06299,
+        "se": 0.12031429438745277,
+        "p_mantissa": 1,
+        "p_exp": -18,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90102140",
+        "trait": "Sphingomyelin (d42:2)A levels",
+        "n_samples": 650,
+        "beta": 1.0360055,
+        "se": 0.11972275986157319,
+        "p_mantissa": 5,
+        "p_exp": -18,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90102096",
+        "trait": "Phosphatidylcholines (o-32:0) levels",
+        "n_samples": 650,
+        "beta": 0.7393471,
+        "se": 0.1256496949402289,
+        "p_mantissa": 4,
+        "p_exp": -9,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90102118",
+        "trait": "Sphingomyelin (d34:0) levels",
+        "n_samples": 650,
+        "beta": 1.2181222,
+        "se": 0.11865289021289468,
+        "p_mantissa": 1,
+        "p_exp": -24,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90102130",
+        "trait": "Sphingomyelin (d40:1) levels",
+        "n_samples": 650,
+        "beta": 0.91480005,
+        "se": 0.12245794599587113,
+        "p_mantissa": 8,
+        "p_exp": -14,
+        "method": "PICS"
+      }
+    ],
+    "rsids": [
+      "rs5742904"
+    ]
+  },
+  {
+    "variant_id": "2-21006289-G-A",
+    "ot_id": "2_21006289_G_A",
+    "gene": "APOB",
+    "group": "APOB_Missense_TrueFH",
+    "hgvs": "NM_000384.3(APOB):c.10579C>T (p.Arg3527Trp)",
+    "gnomad_het": 93,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs144467873"
+    ]
+  },
+  {
+    "variant_id": "2-21029900-G-A",
+    "ot_id": "2_21029900_G_A",
+    "gene": "APOB",
+    "group": "APOB_Missense_TrueFH",
+    "hgvs": "NM_000384.3(APOB):c.1468C>T (p.Arg490Trp)",
+    "gnomad_het": 12,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs771541567"
+    ]
+  },
+  {
+    "variant_id": "2-21006686-C-A",
+    "ot_id": "2_21006686_C_A",
+    "gene": "APOB",
+    "group": "APOB_Missense_TrueFH",
+    "hgvs": "NM_000384.3(APOB):c.10182G>T (p.Lys3394Asn)",
+    "gnomad_het": 2,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1382988295"
+    ]
+  },
+  {
+    "variant_id": "19-11105599-C-G",
+    "ot_id": "19_11105599_C_G",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.693C>G (p.Cys231Trp)",
+    "gnomad_het": 123,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs121908035"
+    ]
+  },
+  {
+    "variant_id": "19-11113620-G-A",
+    "ot_id": "19_11113620_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.1444G>A (p.Asp482Asn)",
+    "gnomad_het": 118,
+    "stars": 3,
+    "n_credible_sets": 7,
+    "ldl_hits": [
+      {
+        "study_id": "GCST90079033",
+        "trait": "Direct low density lipoprotein levels (UKB data field 30780)",
+        "n_samples": 411351,
+        "beta": 0.915635,
+        "se": 0.0955033,
+        "p_mantissa": 9.027000427246094,
+        "p_exp": -22,
+        "method": "PICS"
+      }
+    ],
+    "chol_hits": [
+      {
+        "study_id": "GCST90077883",
+        "trait": "High cholesterol",
+        "n_samples": 331754,
+        "beta": 2.129068260601652,
+        "se": 0.24121992531678205,
+        "p_mantissa": 1.0839999914169312,
+        "p_exp": -18,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90079765",
+        "trait": "ICD10 E78.00: Pure hypercholesterolemia, unspecified",
+        "n_samples": 375399,
+        "beta": 2.5163084129275317,
+        "se": 0.399972,
+        "p_mantissa": 3.1500000953674316,
+        "p_exp": -10,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90079024",
+        "trait": "Cholesterol levels (UKB data field 30690)",
+        "n_samples": 412075,
+        "beta": 0.772539,
+        "se": 0.0936083,
+        "p_mantissa": 1.5460000038146973,
+        "p_exp": -16,
+        "method": "PICS"
+      }
+    ],
+    "apob_hits": [
+      {
+        "study_id": "GCST90079018",
+        "trait": "Apolipoprotein B levels (UKB data field 30640)",
+        "n_samples": 410113,
+        "beta": 0.755754,
+        "se": 0.0996068,
+        "p_mantissa": 3.2639999389648438,
+        "p_exp": -14,
+        "method": "PICS"
+      }
+    ],
+    "cad_statin_hits": [
+      {
+        "study_id": "GCST90081493",
+        "trait": "Lipid lowering medication use",
+        "n_samples": 320758,
+        "beta": 2.204820102606195,
+        "se": 0.2513822336964422,
+        "p_mantissa": 1.7769999504089355,
+        "p_exp": -18,
+        "method": "PICS"
+      }
+    ],
+    "other_top_hits": [
+      {
+        "study_id": "GCST90499351",
+        "trait": "Cholesterol to Total Lipids in Small HDL percentage (PGS-adjusted)",
+        "n_samples": 434646,
+        "beta": 0.616148,
+        "se": 0.0913883,
+        "p_mantissa": 1.5609999895095825,
+        "p_exp": -11,
+        "method": "PICS"
+      }
+    ],
+    "rsids": [
+      "rs139624145"
+    ]
+  },
+  {
+    "variant_id": "19-11116928-G-A",
+    "ot_id": "19_11116928_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.1775G>A (p.Gly592Glu)",
+    "gnomad_het": 71,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs137929307"
+    ]
+  },
+  {
+    "variant_id": "19-11113329-C-T",
+    "ot_id": "19_11113329_C_T",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.1238C>T (p.Thr413Met)",
+    "gnomad_het": 68,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs368562025"
+    ]
+  },
+  {
+    "variant_id": "19-11106588-G-A",
+    "ot_id": "19_11106588_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.718G>A (p.Glu240Lys)",
+    "gnomad_het": 64,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs768563000"
+    ]
+  },
+  {
+    "variant_id": "19-11105408-G-A",
+    "ot_id": "19_11105408_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.502G>A (p.Asp168Asn)",
+    "gnomad_het": 58,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs200727689"
+    ]
+  },
+  {
+    "variant_id": "19-11105243-G-A",
+    "ot_id": "19_11105243_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.337G>A (p.Glu113Lys)",
+    "gnomad_het": 58,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs769383881"
+    ]
+  },
+  {
+    "variant_id": "19-11120436-C-T",
+    "ot_id": "19_11120436_C_T",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.2054C>T (p.Pro685Leu)",
+    "gnomad_het": 56,
+    "stars": 2,
+    "n_credible_sets": 3,
+    "ldl_hits": [],
+    "chol_hits": [
+      {
+        "study_id": "GCST90079766",
+        "trait": "ICD10 E78.0: Pure hypercholesterolemia",
+        "n_samples": 378271,
+        "beta": 2.951540022761608,
+        "se": 0.3934649900930361,
+        "p_mantissa": 6.320000171661377,
+        "p_exp": -14,
+        "method": "PICS"
+      },
+      {
+        "study_id": "GCST90077884",
+        "trait": "ICD10 E78: high cholesterol",
+        "n_samples": 329052,
+        "beta": 2.9085554283297936,
+        "se": 0.387792609905742,
+        "p_mantissa": 6.375,
+        "p_exp": -14,
+        "method": "PICS"
+      }
+    ],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [
+      {
+        "study_id": "GCST90079768",
+        "trait": "ICD10 E78: Disorders of lipoprotein metabolism and other lipidemias",
+        "n_samples": 372199,
+        "beta": 3.3257372136522623,
+        "se": 0.4048080262867959,
+        "p_mantissa": 2.114000082015991,
+        "p_exp": -16,
+        "method": "PICS"
+      }
+    ],
+    "rsids": [
+      "rs28942084"
+    ]
+  },
+  {
+    "variant_id": "19-11110738-G-A",
+    "ot_id": "19_11110738_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.1027G>A (p.Gly343Ser)",
+    "gnomad_het": 55,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs730882096"
+    ]
+  },
+  {
+    "variant_id": "19-11106668-T-A",
+    "ot_id": "19_11106668_T_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.798T>A (p.Asp266Glu)",
+    "gnomad_het": 52,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs139043155"
+    ]
+  },
+  {
+    "variant_id": "19-11120143-C-T",
+    "ot_id": "19_11120143_C_T",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.1897C>T (p.Arg633Cys)",
+    "gnomad_het": 52,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs746118995"
+    ]
+  },
+  {
+    "variant_id": "19-11120480-G-A",
+    "ot_id": "19_11120480_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.2098G>A (p.Asp700Asn)",
+    "gnomad_het": 50,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs375009082"
+    ]
+  },
+  {
+    "variant_id": "19-11102774-G-A",
+    "ot_id": "19_11102774_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.301G>A (p.Glu101Lys)",
+    "gnomad_het": 46,
+    "stars": 3,
+    "n_credible_sets": 1,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [
+      {
+        "study_id": "GCST90078226",
+        "trait": "Treatment or medication use - ezetimibe",
+        "n_samples": 320758,
+        "beta": 4.231511837008946,
+        "se": 0.598783,
+        "p_mantissa": 1.5850000381469727,
+        "p_exp": -12,
+        "method": "PICS"
+      }
+    ],
+    "rsids": [
+      "rs144172724"
+    ]
+  },
+  {
+    "variant_id": "19-11107436-G-A",
+    "ot_id": "19_11107436_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.862G>A (p.Glu288Lys)",
+    "gnomad_het": 45,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs368657165"
+    ]
+  },
+  {
+    "variant_id": "19-11116900-C-T",
+    "ot_id": "19_11116900_C_T",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.1747C>T (p.His583Tyr)",
+    "gnomad_het": 43,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs730882109"
+    ]
+  },
+  {
+    "variant_id": "19-11102787-G-A",
+    "ot_id": "19_11102787_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.4(LDLR):c.313+1G>A",
+    "gnomad_het": 42,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs112029328"
+    ]
+  },
+  {
+    "variant_id": "19-11113590-G-T",
+    "ot_id": "19_11113590_G_T",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.1414G>T (p.Asp472Tyr)",
+    "gnomad_het": 40,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs730882102"
+    ]
+  },
+  {
+    "variant_id": "19-11105568-A-G",
+    "ot_id": "19_11105568_A_G",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.662A>G (p.Asp221Gly)",
+    "gnomad_het": 40,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs373822756"
+    ]
+  },
+  {
+    "variant_id": "19-11105587-C-G",
+    "ot_id": "19_11105587_C_G",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.681C>G (p.Asp227Glu)",
+    "gnomad_het": 33,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs121908028"
+    ]
+  },
+  {
+    "variant_id": "19-11102741-G-A",
+    "ot_id": "19_11102741_G_A",
+    "gene": "LDLR",
+    "group": "LDLR_TrueFH",
+    "hgvs": "NM_000527.5(LDLR):c.268G>A (p.Asp90Asn)",
+    "gnomad_het": 32,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs749038326"
+    ]
+  },
+  {
+    "variant_id": "1-55052398-G-A",
+    "ot_id": "1_55052398_G_A",
+    "gene": "PCSK9",
+    "group": "PCSK9_Missense_TrueFH",
+    "hgvs": "NM_174936.4(PCSK9):c.644G>A (p.Arg215His)",
+    "gnomad_het": 6,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs794728683"
+    ]
+  },
+  {
+    "variant_id": "1-55057454-G-T",
+    "ot_id": "1_55057454_G_T",
+    "gene": "PCSK9",
+    "group": "PCSK9_Missense_TrueFH",
+    "hgvs": "NM_174936.4(PCSK9):c.1120G>T (p.Asp374Tyr)",
+    "gnomad_het": 4,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs137852912"
+    ]
+  },
+  {
+    "variant_id": "1-55043958-T-G",
+    "ot_id": "1_55043958_T_G",
+    "gene": "PCSK9",
+    "group": "PCSK9_Missense_TrueFH",
+    "hgvs": "NM_174936.4(PCSK9):c.323T>G (p.Leu108Arg)",
+    "gnomad_het": 1,
+    "stars": 2,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1057519691"
+    ]
+  },
+  {
+    "variant_id": "19-38505082-G-T",
+    "ot_id": "19_38505082_G_T",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.8310+1G>T",
+    "gnomad_het": 3,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs1970380121"
+    ]
+  },
+  {
+    "variant_id": "19-38507783-T-C",
+    "ot_id": "19_38507783_T_C",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.8888T>C (p.Leu2963Pro)",
+    "gnomad_het": 4,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs756870293"
+    ]
+  },
+  {
+    "variant_id": "19-38512484-G-A",
+    "ot_id": "19_38512484_G_A",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.9472+1G>A",
+    "gnomad_het": 6,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs776697656"
+    ]
+  },
+  {
+    "variant_id": "19-38519366-G-T",
+    "ot_id": "19_38519366_G_T",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.10171G>T (p.Glu3391Ter)",
+    "gnomad_het": 5,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": []
+  },
+  {
+    "variant_id": "19-38519399-T-G",
+    "ot_id": "19_38519399_T_G",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.10204T>G (p.Cys3402Gly)",
+    "gnomad_het": 111,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs367543058"
+    ]
+  },
+  {
+    "variant_id": "19-38523116-G-A",
+    "ot_id": "19_38523116_G_A",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.10347+1G>A",
+    "gnomad_het": 13,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs111436401"
+    ]
+  },
+  {
+    "variant_id": "19-38523211-C-G",
+    "ot_id": "19_38523211_C_G",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.10348-6C>G",
+    "gnomad_het": 43,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs193922837"
+    ]
+  },
+  {
+    "variant_id": "19-38527014-C-T",
+    "ot_id": "19_38527014_C_T",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.10648C>T (p.Arg3550Trp)",
+    "gnomad_het": 220,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs536304635"
+    ]
+  },
+  {
+    "variant_id": "19-38565341-TCTGGGCAGCAGTGACGCGCG-T",
+    "ot_id": "19_38565341_TCTGGGCAGCAGTGACGCGCG_T",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.13013_13032del (p.Ala4338fs)",
+    "gnomad_het": 6,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs193922856"
+    ]
+  },
+  {
+    "variant_id": "19-38586150-C-G",
+    "ot_id": "19_38586150_C_G",
+    "gene": "RYR1",
+    "group": "RYR1_3star_AR_Myopathy",
+    "hgvs": "NM_000540.3(RYR1):c.14928C>G (p.Phe4976Leu)",
+    "gnomad_het": 13,
+    "stars": 3,
+    "n_credible_sets": 0,
+    "ldl_hits": [],
+    "chol_hits": [],
+    "apob_hits": [],
+    "cad_statin_hits": [],
+    "other_top_hits": [],
+    "rsids": [
+      "rs368874586"
+    ]
+  }
+]

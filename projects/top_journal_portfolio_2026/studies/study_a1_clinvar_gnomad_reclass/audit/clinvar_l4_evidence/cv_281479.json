@@ -1,0 +1,260 @@
+{
+  "variant_id": "281479",
+  "allele_info": {
+    "chromosome": "19",
+    "position_start": "38433691",
+    "position_stop": "38587564",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "19q13.2",
+    "dbsnp_rsid": "rs536304635"
+  },
+  "conditions": [
+    {
+      "name": "RYR1-related myopathy",
+      "medgen_cui": "CN305348",
+      "omim_id": null,
+      "orphanet_id": "98742",
+      "hpo_terms": []
+    },
+    {
+      "name": "RYR1-related disorder",
+      "medgen_cui": "CN239331",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "King Denborough syndrome",
+      "medgen_cui": "C1840365",
+      "omim_id": "619542",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Central core myopathy",
+      "medgen_cui": "C5830701",
+      "omim_id": "117000",
+      "orphanet_id": "597",
+      "hpo_terms": []
+    },
+    {
+      "name": "Congenital multicore myopathy with external ophthalmoplegia",
+      "medgen_cui": "C1850674",
+      "omim_id": "255320",
+      "orphanet_id": "98905",
+      "hpo_terms": [
+        "HP:0003789",
+        "HP:0003789",
+        "HP:0003804"
+      ]
+    },
+    {
+      "name": "Malignant hyperthermia, susceptibility to, 1",
+      "medgen_cui": "C2930980",
+      "omim_id": "145600",
+      "orphanet_id": "423",
+      "hpo_terms": []
+    },
+    {
+      "name": "Inborn genetic diseases",
+      "medgen_cui": "C0950123",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "not specified",
+      "medgen_cui": "CN169374",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": "ORPHA597",
+      "hpo_terms": []
+    },
+    {
+      "name": "congenital myopathy",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "RYR1-related condition",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "29178655",
+    "31135626",
+    "31321302",
+    "32153140",
+    "32337335"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "Dubai Health Genomic Medicine Center, Dubai Health",
+      "classification": "Likely benign",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2020-09-07"
+    },
+    {
+      "submitter_name": "Laboratory for Molecular Medicine, Mass General Brigham Personalized Medicine",
+      "classification": "Uncertain Significance",
+      "curator_notes": "The p.Arg3550Trp variant in RYR1 has been reported as compound heterozyguos with a pathogenic/likely pathogenic variant in at least two individuals with myopathy (Laughlin 2017 PMID: 29178655; Peddareddygari 2019 PMID: 31135626). It segreagated with disease in one family, but in a second family was not detected in a son of an affected proband who had some features of myopathy. It has also been identified in 0.15% (7/4824) of South Asian chromosomes and 0.013% (2/15276) of Latine/Admixed American chromosomes by gnomAD (http://gnomad.broadinstitute.org). This variant has been reported in ClinVar (Variation ID 281479). Computational prediction tools and conservation analyses suggest that this variant may impact the protein, though this information is not predictive enough to determine pathogenicity. In summary, while there is some suspicion for a pathogenic role, the clinical significance of this variant is uncertain. ACMG/AMP Criteria applied: PM3, PP1, PP3",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-08-07"
+    },
+    {
+      "submitter_name": "Eurofins Ntd Llc (ga)",
+      "classification": "Uncertain significance",
+      "curator_notes": null,
+      "assertion_criteria": "EGL Classification Definitions 2015",
+      "date_last_evaluated": "2015-06-22"
+    },
+    {
+      "submitter_name": "Genetics and Genomic Medicine Centre, NeuroGen Healthcare, NeuroGen Healthcare",
+      "classification": "Uncertain significance",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-03-25"
+    },
+    {
+      "submitter_name": "Blueprint Genetics",
+      "classification": "Uncertain significance",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-10-24"
+    },
+    {
+      "submitter_name": "Illumina Laboratory Services, Illumina",
+      "classification": "Uncertain significance",
+      "curator_notes": "This variant was observed in the ICSL laboratory as part of a predisposition screen in an ostensibly healthy population. It had not been previously curated by ICSL or reported in the Human Gene Mutation Database (HGMD: prior to June 1st, 2018), and was therefore a candidate for classification through an automated scoring system. Utilizing variant allele frequency, disease prevalence and penetrance estimates, and inheritance mode, an automated score was calculated to assess if this variant is too frequent to cause the disease. Based on the score, this variant could not be ruled out of causing disease and therefore its association with disease required further investigation. A literature search was performed for the gene, cDNA change, and amino acid change (if applicable). No publications were found based on this search. This variant was therefore classified as a variant of unknown significance for this disease.",
+      "assertion_criteria": "ICSL Variant Classification Criteria 13 December 2019",
+      "date_last_evaluated": "2018-01-13"
+    },
+    {
+      "submitter_name": "Illumina Laboratory Services, Illumina",
+      "classification": "Likely benign",
+      "curator_notes": "This variant was observed in the ICSL laboratory as part of a predisposition screen in an ostensibly healthy population. It had not been previously curated by ICSL or reported in the Human Gene Mutation Database (HGMD: prior to June 1st, 2018), and was therefore a candidate for classification through an automated scoring system. Utilizing variant allele frequency, disease prevalence and penetrance estimates, and inheritance mode, an automated score was calculated to assess if this variant is too frequent to cause the disease. Based on the score and internal cut-off values, a variant classified as likely benign is not then subjected to further curation. The score for this variant resulted in a classification of likely benign for this disease.",
+      "assertion_criteria": "ICSL Variant Classification Criteria 13 December 2019",
+      "date_last_evaluated": "2018-01-13"
+    },
+    {
+      "submitter_name": "Fulgent Genetics, Fulgent Genetics",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-05-07"
+    },
+    {
+      "submitter_name": "Color Diagnostics, LLC DBA Color Health",
+      "classification": "Likely benign",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-08-03"
+    },
+    {
+      "submitter_name": "Women's Health and Genetics/Laboratory Corporation of America, LabCorp",
+      "classification": "Likely pathogenic",
+      "curator_notes": "Variant summary: RYR1 c.10648C>T (p.Arg3550Trp) results in a non-conservative amino acid change in the encoded protein sequence. Five of five in-silico tools predict a damaging effect of the variant on protein function. The variant allele was found at a frequency of 0.00025 in 251424 control chromosomes (gnomAD). This frequency is not significantly higher than estimated for a pathogenic variant in RYR1 causing Congenital multicore myopathy with external ophthalmoplegia (0.00025 vs 0.0011), allowing no conclusion about variant significance. c.10648C>T has been reported in the literature in individuals affected with autosomal recessive congenital myopathy (Laughlin_2017, Peddareddygari_2019, Beecroft_2020). These data indicate that the variant is likely to be associated with disease. To our knowledge, no experimental evidence demonstrating an impact on protein function has been reported. The following publications have been ascertained in the context of this evaluation (PMID: 29178655, 32153140, 31135626). ClinVar contains an entry for this variant (Variation ID: 281479). Based on the evidence outlined above, the variant was classified as likely pathogenic.",
+      "assertion_criteria": "LabCorp Variant Classification Summary - May 2015",
+      "date_last_evaluated": "2025-01-07"
+    },
+    {
+      "submitter_name": "Revvity Omics, Revvity",
+      "classification": "Uncertain significance",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-03-06"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Uncertain significance",
+      "curator_notes": "Reported in an individual with myopathy, who also harbored a second RYR1 frameshift pathogenic variant; his affected son was found to only harbor the frameshift variant, thus indicating that R3550W did not segregate with the phenotype in the family (PMID: 29178655); In silico analysis supports that this missense variant has a deleterious effect on protein structure/function; In silico analysis is inconclusive as to whether the variant alters gene splicing. In the absence of RNA/functional studies, the actual effect of this sequence change is unknown.; This variant is associated with the following publications: (PMID: 31321302, 29178655, 36417990, tpnkov2025[Abstract], 32153140, 31135626)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2026-01-12"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change replaces arginine, which is basic and polar, with tryptophan, which is neutral and slightly polar, at codon 3550 of the RYR1 protein (p.Arg3550Trp). This variant is present in population databases (rs536304635, gnomAD 0.2%). This missense change has been observed in individual(s) with autosomal recessive RYR1-related myopathy (PMID: 29178655, 31135626, 31321302). In at least one individual the data is consistent with being in trans (on the opposite chromosome) from a pathogenic variant. It has also been observed to segregate with disease in related individuals. ClinVar contains an entry for this variant (Variation ID: 281479). Invitae Evidence Modeling of protein sequence and biophysical properties (such as structural, functional, and spatial information, amino acid conservation, physicochemical variation, residue mobility, and thermodynamic stability) indicates that this missense variant is not expected to disrupt RYR1 protein function with a negative predictive value of 80%. For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2026-01-28"
+    },
+    {
+      "submitter_name": "Ambry Genetics",
+      "classification": "Likely pathogenic",
+      "curator_notes": "The c.10648C>T (p.R3550W) alteration is located in coding exon 72 of the RYR1 gene. This alteration results from a C to T substitution at nucleotide position 10648, causing the arginine (R) at amino acid position 3550 to be replaced by a tryptophan (W). for autosomal recessive RYR1-related myopathy; however, it is unlikely to be causative of autosomal dominant RYR1-related myopathy and autosomal dominant malignant hyperthermia susceptibility. Based on data from gnomAD, the T allele has an overall frequency of 0.023% (64/282816) total alleles studied. The highest observed frequency was 0.18% (55/30616) of South Asian alleles. This variant has been identified in conjunction with other RYR1 variant(s) in individual(s) with features consistent with autosomal recessive RYR1-related myopathy; in at least one instance, the variants were identified in trans (Laughlin, 2017; Peddareddygari, 2019; Thuriot, 2020). This amino acid position is highly conserved in available vertebrate species. This alteration is predicted to be deleterious by in silico analysis. Based on the available evidence, this alteration is classified as likely pathogenic.",
+      "assertion_criteria": "Ambry Variant Classification Scheme 2023",
+      "date_last_evaluated": "2026-02-06"
+    },
+    {
+      "submitter_name": "ClinGen Congenital Myopathies Variant Curation Expert Panel, ClinGen",
+      "classification": "Likely Pathogenic",
+      "curator_notes": "The NM_000540.3:c.10648C>T variant in RYR1 is a missense variant predicted to cause substitution of arginine by tryptophan at amino acid 3550 (p.Arg3550Trp). This variant has been detected in a compound heterozygous state in at least 4 probands with clinical features of RYR1-related myopathy. Of those, at least two individuals with this variant displayed characteristic muscle imaging, and muscle biopsy showing features consistent with centronuclear myopathy, which is compatible with autosomal recessive RYR1-related myopathy (PP4, PM3_Strong; PMID: 29178655, 31135626; ClinGen Congenital Myopathies VCEP internal contributors). The variant has been reported to segregate with RYR1-related myopathy in 2 affected family members from 1 family (PP1; PMID 31135626). The highest population minor allele frequency in gnomAD v4.1 is 0.001669 (152/91070 alleles) in the South Asian population, which is higher than the ClinGen Congenital Myopathies VCEP threshold \u22650.000697 for BS1. However, based on the additional evidence, the ClinGen Congenital Myopathies Expert Panel believes that the evidence for pathogenicity of this variant for RYR1-related myopathy outweighs its high allele frequency in population databases. Therefore, the BS1 code will not contribute to the overall classification. The computational predictor REVEL gives a score of 0.767, which is above the threshold of \u2265 0.7, evidence that correlates with impact to RYR1 function (PP3). In summary, this variant meets the criteria to be classified as likely pathogenic for autosomal recessive RYR1-related myopathy based on the ACMG/AMP criteria applied, as specified by the ClinGen Congenital Myopathies: PM3_Strong, PP1, PP3, PP4 (ClinGen Congenital Myopathies VCEP specifications version 2.0.0).",
+      "assertion_criteria": "ClinGen CongenMyopathy ACMG Specifications RYR1 AR V2.0.0",
+      "date_last_evaluated": "2026-04-13"
+    },
+    {
+      "submitter_name": "PreventionGenetics, part of Exact Sciences",
+      "classification": "Uncertain significance",
+      "curator_notes": "The RYR1 c.10648C>T variant is predicted to result in the amino acid substitution p.Arg3550Trp. This variant has been reported with a second RYR1 frameshift variant in three individuals with features of RYR1-related myopathy (Laughlin et al. 2017. PubMed ID: 29178655; Peddareddygari et al. 2019. PubMed ID: 31135626; Table S4, Beecroft et al. 2020. PubMed ID: 32153140). This variant is reported in 0.18% of alleles in individuals of South Asian descent in gnomAD, which likely too frequent to be a primary cause of autosomal dominant disease. This variant has conflicting classifications listed in ClinVar ranging from likely benign to pathogenic (https://www.ncbi.nlm.nih.gov/clinvar/variation/281479/). An alternate missense substitution affecting the same amino acid (p.Arg3550Pro) has also been reported with a second RYR1 in an individual congenital myopathy (Table S2, Juntas Morales et al. 2021. PubMed ID: 34440373). At this time, the clinical significance of this variant for autosomal recessive RYR1-related disorders is uncertain due to the absence of conclusive functional and genetic evidence. This variant is categorized as likely benign for autosomal dominant RYR1-related disorders.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-07-01"
+    },
+    {
+      "submitter_name": "OLLIN Analises Genomicas, OLLIN",
+      "classification": "Likely pathogenic",
+      "curator_notes": "This missense variant, located in exon 72 (of 106), has been reported in ClinVar (accession VCV000281479.55), in gnomAD with an allele frequency of 0.014%, and in the scientific literature, in compound heterozygosity, in individuals with RYR1 related disorders (PMID: 31135626, 29178655). In silico analysis predicts that this variant has a deleterious effect. According to the currently available evidence, this variant has been classified as likely pathogenic (PM2_P, PM3_S, PP3, PP4).",
+      "assertion_criteria": "ACMG Guidelines 2015 PMID 25741868",
+      "date_last_evaluated": "2026-08-06"
+    },
+    {
+      "submitter_name": "CeGaT Center for Human Genetics Tuebingen",
+      "classification": "Likely pathogenic",
+      "curator_notes": "RYR1: PM3:Strong, PM2:Supporting, PP3",
+      "assertion_criteria": "CeGaT Center For Human Genetics Tuebingen Variant Classification Criteria Version 2",
+      "date_last_evaluated": "2024-04-01"
+    },
+    {
+      "submitter_name": "Kariminejad - Najmabadi Pathology & Genetics Center",
+      "classification": "Likely Pathogenic",
+      "curator_notes": "This variant was identified through clinical carrier screening in an individual without a reported clinical phenotype associated with the condition.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": null
+    }
+  ]
+}

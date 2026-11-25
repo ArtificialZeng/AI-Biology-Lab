@@ -1,0 +1,478 @@
+{
+  "canonical_2504": {
+    "Exomiser_AutoGVP": {
+      "primary_all_stars_emitted_persons": 54,
+      "primary_all_stars_fp_persons": 7,
+      "primary_all_stars_fdr_pct": 12.96,
+      "primary_all_stars_fp_per1k": 2.8,
+      "primary_2to4star_emitted_persons": 49,
+      "primary_2to4star_fp_persons": 4,
+      "primary_2to4star_fdr_pct": 8.16,
+      "primary_2to4star_fp_per1k": 1.6,
+      "incl_nthl1_bleed_all_fp_persons": 9,
+      "incl_nthl1_bleed_2to4star_fp_persons": 6,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 661,
+          "all_stars_emitted": 30,
+          "all_stars_fp": 1,
+          "all_stars_fp_per1k": 1.51,
+          "hc24_emitted": 30,
+          "hc24_fp": 1,
+          "hc24_fp_per1k": 1.51
+        },
+        "EAS": {
+          "N": 504,
+          "all_stars_emitted": 9,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 5.95,
+          "hc24_emitted": 5,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "EUR": {
+          "N": 503,
+          "all_stars_emitted": 3,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 2,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 489,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 6.13,
+          "hc24_emitted": 6,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 6.13
+        },
+        "AMR": {
+          "N": 347,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 6,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    },
+    "CPSR_v2.4.0": {
+      "primary_all_stars_emitted_persons": 55,
+      "primary_all_stars_fp_persons": 7,
+      "primary_all_stars_fdr_pct": 12.73,
+      "primary_all_stars_fp_per1k": 2.8,
+      "primary_2to4star_emitted_persons": 49,
+      "primary_2to4star_fp_persons": 4,
+      "primary_2to4star_fdr_pct": 8.16,
+      "primary_2to4star_fp_per1k": 1.6,
+      "incl_nthl1_bleed_all_fp_persons": 9,
+      "incl_nthl1_bleed_2to4star_fp_persons": 6,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 661,
+          "all_stars_emitted": 30,
+          "all_stars_fp": 1,
+          "all_stars_fp_per1k": 1.51,
+          "hc24_emitted": 30,
+          "hc24_fp": 1,
+          "hc24_fp_per1k": 1.51
+        },
+        "EAS": {
+          "N": 504,
+          "all_stars_emitted": 9,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 5.95,
+          "hc24_emitted": 5,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "EUR": {
+          "N": 503,
+          "all_stars_emitted": 3,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 2,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 489,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 6.13,
+          "hc24_emitted": 6,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 6.13
+        },
+        "AMR": {
+          "N": 347,
+          "all_stars_emitted": 7,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 6,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    },
+    "SFtool": {
+      "primary_all_stars_emitted_persons": 54,
+      "primary_all_stars_fp_persons": 7,
+      "primary_all_stars_fdr_pct": 12.96,
+      "primary_all_stars_fp_per1k": 2.8,
+      "primary_2to4star_emitted_persons": 48,
+      "primary_2to4star_fp_persons": 4,
+      "primary_2to4star_fdr_pct": 8.33,
+      "primary_2to4star_fp_per1k": 1.6,
+      "incl_nthl1_bleed_all_fp_persons": 9,
+      "incl_nthl1_bleed_2to4star_fp_persons": 6,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 661,
+          "all_stars_emitted": 30,
+          "all_stars_fp": 1,
+          "all_stars_fp_per1k": 1.51,
+          "hc24_emitted": 30,
+          "hc24_fp": 1,
+          "hc24_fp_per1k": 1.51
+        },
+        "EAS": {
+          "N": 504,
+          "all_stars_emitted": 9,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 5.95,
+          "hc24_emitted": 5,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "EUR": {
+          "N": 503,
+          "all_stars_emitted": 3,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 2,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 489,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 6.13,
+          "hc24_emitted": 6,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 6.13
+        },
+        "AMR": {
+          "N": 347,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 5,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    },
+    "OwnGenome": {
+      "primary_all_stars_emitted_persons": 53,
+      "primary_all_stars_fp_persons": 5,
+      "primary_all_stars_fdr_pct": 9.43,
+      "primary_all_stars_fp_per1k": 2.0,
+      "primary_2to4star_emitted_persons": 49,
+      "primary_2to4star_fp_persons": 4,
+      "primary_2to4star_fdr_pct": 8.16,
+      "primary_2to4star_fp_per1k": 1.6,
+      "incl_nthl1_bleed_all_fp_persons": 7,
+      "incl_nthl1_bleed_2to4star_fp_persons": 6,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 661,
+          "all_stars_emitted": 30,
+          "all_stars_fp": 1,
+          "all_stars_fp_per1k": 1.51,
+          "hc24_emitted": 30,
+          "hc24_fp": 1,
+          "hc24_fp_per1k": 1.51
+        },
+        "EAS": {
+          "N": 504,
+          "all_stars_emitted": 7,
+          "all_stars_fp": 1,
+          "all_stars_fp_per1k": 1.98,
+          "hc24_emitted": 5,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "EUR": {
+          "N": 503,
+          "all_stars_emitted": 3,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 2,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 489,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 6.13,
+          "hc24_emitted": 6,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 6.13
+        },
+        "AMR": {
+          "N": 347,
+          "all_stars_emitted": 7,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 6,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    }
+  },
+  "all_3202": {
+    "Exomiser_AutoGVP": {
+      "primary_all_stars_emitted_persons": 86,
+      "primary_all_stars_fp_persons": 9,
+      "primary_all_stars_fdr_pct": 10.47,
+      "primary_all_stars_fp_per1k": 2.81,
+      "primary_2to4star_emitted_persons": 78,
+      "primary_2to4star_fp_persons": 5,
+      "primary_2to4star_fdr_pct": 6.41,
+      "primary_2to4star_fp_per1k": 1.56,
+      "incl_nthl1_bleed_all_fp_persons": 11,
+      "incl_nthl1_bleed_2to4star_fp_persons": 7,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 893,
+          "all_stars_emitted": 45,
+          "all_stars_fp": 2,
+          "all_stars_fp_per1k": 2.24,
+          "hc24_emitted": 45,
+          "hc24_fp": 2,
+          "hc24_fp_per1k": 2.24
+        },
+        "EUR": {
+          "N": 633,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 4,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 601,
+          "all_stars_emitted": 9,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 4.99,
+          "hc24_emitted": 9,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 4.99
+        },
+        "EAS": {
+          "N": 585,
+          "all_stars_emitted": 14,
+          "all_stars_fp": 4,
+          "all_stars_fp_per1k": 6.84,
+          "hc24_emitted": 8,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "AMR": {
+          "N": 490,
+          "all_stars_emitted": 12,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 12,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    },
+    "CPSR_v2.4.0": {
+      "primary_all_stars_emitted_persons": 90,
+      "primary_all_stars_fp_persons": 9,
+      "primary_all_stars_fdr_pct": 10.0,
+      "primary_all_stars_fp_per1k": 2.81,
+      "primary_2to4star_emitted_persons": 78,
+      "primary_2to4star_fp_persons": 5,
+      "primary_2to4star_fdr_pct": 6.41,
+      "primary_2to4star_fp_per1k": 1.56,
+      "incl_nthl1_bleed_all_fp_persons": 11,
+      "incl_nthl1_bleed_2to4star_fp_persons": 7,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 893,
+          "all_stars_emitted": 45,
+          "all_stars_fp": 2,
+          "all_stars_fp_per1k": 2.24,
+          "hc24_emitted": 45,
+          "hc24_fp": 2,
+          "hc24_fp_per1k": 2.24
+        },
+        "EUR": {
+          "N": 633,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 4,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 601,
+          "all_stars_emitted": 9,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 4.99,
+          "hc24_emitted": 9,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 4.99
+        },
+        "EAS": {
+          "N": 585,
+          "all_stars_emitted": 14,
+          "all_stars_fp": 4,
+          "all_stars_fp_per1k": 6.84,
+          "hc24_emitted": 8,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "AMR": {
+          "N": 490,
+          "all_stars_emitted": 16,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 12,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    },
+    "SFtool": {
+      "primary_all_stars_emitted_persons": 88,
+      "primary_all_stars_fp_persons": 9,
+      "primary_all_stars_fdr_pct": 10.23,
+      "primary_all_stars_fp_per1k": 2.81,
+      "primary_2to4star_emitted_persons": 76,
+      "primary_2to4star_fp_persons": 5,
+      "primary_2to4star_fdr_pct": 6.58,
+      "primary_2to4star_fp_per1k": 1.56,
+      "incl_nthl1_bleed_all_fp_persons": 11,
+      "incl_nthl1_bleed_2to4star_fp_persons": 7,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 893,
+          "all_stars_emitted": 45,
+          "all_stars_fp": 2,
+          "all_stars_fp_per1k": 2.24,
+          "hc24_emitted": 45,
+          "hc24_fp": 2,
+          "hc24_fp_per1k": 2.24
+        },
+        "EUR": {
+          "N": 633,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 4,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 601,
+          "all_stars_emitted": 9,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 4.99,
+          "hc24_emitted": 9,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 4.99
+        },
+        "EAS": {
+          "N": 585,
+          "all_stars_emitted": 14,
+          "all_stars_fp": 4,
+          "all_stars_fp_per1k": 6.84,
+          "hc24_emitted": 8,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "AMR": {
+          "N": 490,
+          "all_stars_emitted": 14,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 10,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    },
+    "OwnGenome": {
+      "primary_all_stars_emitted_persons": 88,
+      "primary_all_stars_fp_persons": 7,
+      "primary_all_stars_fdr_pct": 7.95,
+      "primary_all_stars_fp_per1k": 2.19,
+      "primary_2to4star_emitted_persons": 78,
+      "primary_2to4star_fp_persons": 5,
+      "primary_2to4star_fdr_pct": 6.41,
+      "primary_2to4star_fp_per1k": 1.56,
+      "incl_nthl1_bleed_all_fp_persons": 9,
+      "incl_nthl1_bleed_2to4star_fp_persons": 7,
+      "by_superpop_primary": {
+        "AFR": {
+          "N": 893,
+          "all_stars_emitted": 45,
+          "all_stars_fp": 2,
+          "all_stars_fp_per1k": 2.24,
+          "hc24_emitted": 45,
+          "hc24_fp": 2,
+          "hc24_fp_per1k": 2.24
+        },
+        "EUR": {
+          "N": 633,
+          "all_stars_emitted": 6,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 4,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "SAS": {
+          "N": 601,
+          "all_stars_emitted": 9,
+          "all_stars_fp": 3,
+          "all_stars_fp_per1k": 4.99,
+          "hc24_emitted": 9,
+          "hc24_fp": 3,
+          "hc24_fp_per1k": 4.99
+        },
+        "EAS": {
+          "N": 585,
+          "all_stars_emitted": 12,
+          "all_stars_fp": 2,
+          "all_stars_fp_per1k": 3.42,
+          "hc24_emitted": 8,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        },
+        "AMR": {
+          "N": 490,
+          "all_stars_emitted": 16,
+          "all_stars_fp": 0,
+          "all_stars_fp_per1k": 0.0,
+          "hc24_emitted": 12,
+          "hc24_fp": 0,
+          "hc24_fp_per1k": 0.0
+        }
+      }
+    }
+  }
+}

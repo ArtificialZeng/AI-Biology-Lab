@@ -1,0 +1,34 @@
+{
+  "data": {
+    "variant": {
+      "variant_id": "5-112775626-T-A",
+      "flags": [],
+      "exome": {
+        "ac": 249,
+        "an": 1365834,
+        "filters": [
+          "AS_VQSR"
+        ],
+        "flags": []
+      },
+      "genome": {
+        "ac": 0,
+        "an": 149646,
+        "filters": [
+          "AC0",
+          "AS_VQSR"
+        ],
+        "flags": []
+      },
+      "joint": {
+        "ac": 249,
+        "an": 1515480,
+        "faf95": {
+          "popmax": 0.0015947199999999996,
+          "popmax_population": "amr"
+        },
+        "faf99": null
+      }
+    }
+  }
+}

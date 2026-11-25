@@ -1,0 +1,771 @@
+{
+  "meta": {
+    "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+    "count": 151,
+    "db_response_time_ms": 84,
+    "page": 1,
+    "per_page": 15,
+    "groups_count": null,
+    "x_query": {
+      "oql": "get works from 2018\u20132026 with (ClinVar submitters ancestry VUS disparity) in the title, abstract, or full text, newest first",
+      "x_new_oql": "get works from 2018\u20132026 with (ClinVar submitters ancestry VUS disparity) in the title, abstract, or full text, newest first",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "ClinVar submitters ancestry VUS disparity",
+            "operator": "has"
+          },
+          {
+            "column_id": "publication_year",
+            "value": 2018,
+            "operator": ">="
+          },
+          {
+            "column_id": "publication_year",
+            "value": 2026,
+            "operator": "<="
+          }
+        ],
+        "sort_by": [
+          {
+            "column_id": "publication_year",
+            "direction": "desc"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:ClinVar submitters ancestry VUS disparity,publication_year:2018-2026&sort=publication_year:desc&per_page=15&page=1",
+      "order": "newest first",
+      "order_default": false
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W7236472063",
+      "doi": "https://doi.org/10.21203/rs.3.rs-11762334/v1",
+      "title": "Ancestry-stratified frequency assessment of 50,634 ClinVar variants in 32 kidney-disease genes: a targeted West African comparison",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.21203/rs.3.rs-11762334/v1",
+        "doi": "https://doi.org/10.21203/rs.3.rs-11762334/v1",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.21203/rs.3.rs-11762334/v1",
+        "pdf_url": "https://www.researchsquare.com/article/rs-11762334/latest.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306525896",
+          "display_name": "Research Square",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "Research Square",
+        "raw_type": "posted-content"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7225413221",
+      "doi": "https://doi.org/10.48550/arxiv.2611.07054",
+      "title": "Reclassification Is All You Missed: Surfacing Variant Reinterpretation Need in Online Health Communities at Population Scale",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:arXiv.org:2611.07054",
+        "doi": "https://doi.org/10.48550/arxiv.2611.07054",
+        "is_oa": true,
+        "landing_page_url": "https://arxiv.org/abs/2611.07054",
+        "pdf_url": "https://arxiv.org/pdf/2611.07054",
+        "source": {
+          "id": "https://openalex.org/S4306400194",
+          "display_name": "arXiv",
+          "issn_l": "2331-8422",
+          "issn": [
+            "2331-8422"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I4402554005",
+          "host_organization_name": "arXiv",
+          "host_organization_lineage": [
+            "https://openalex.org/I4402554005"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "text"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7130956910",
+      "doi": "https://doi.org/10.1038/s41598-026-78591-2",
+      "title": "Features influencing diagnostic yield of exome sequencing in the DECIPHERD rare diseases study in Chile",
+      "publication_year": 2026,
+      "cited_by_count": 1,
+      "primary_location": {
+        "id": "doi:10.1038/s41598-026-78591-2",
+        "doi": "https://doi.org/10.1038/s41598-026-78591-2",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1038/s41598-026-78591-2",
+        "pdf_url": "https://www.nature.com/articles/s41598-026-78591-2_reference.pdf",
+        "source": {
+          "id": "https://openalex.org/S196734849",
+          "display_name": "Scientific Reports",
+          "issn_l": "2045-2322",
+          "issn": [
+            "2045-2322"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-class-a",
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "dongbi-c",
+            "doyens",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "poland-140",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310319908",
+          "host_organization_name": "Nature Portfolio",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319908",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "Nature Portfolio",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Scientific Reports",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7225122161",
+      "doi": "https://doi.org/10.64898/2026.10.31.763309",
+      "title": "Beyond a single threshold: calibration of CADD v1.7 and AlphaGenome for ACMG/AMP computational evidence across variant classes, model versions, and reference data",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.64898/2026.10.31.763309",
+        "doi": "https://doi.org/10.64898/2026.10.31.763309",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.64898/2026.10.31.763309",
+        "pdf_url": "https://www.biorxiv.org/content/biorxiv/early/2026/11/02/2026.10.31.763309.full.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306402567",
+          "display_name": "bioRxiv (Cold Spring Harbor Laboratory)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I2750212522",
+          "host_organization_name": "Cold Spring Harbor Laboratory",
+          "host_organization_lineage": [
+            "https://openalex.org/I2750212522"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "bioRxiv",
+        "raw_type": "posted-content"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7225042130",
+      "doi": "https://doi.org/10.1200/go-26-14200",
+      "title": "The Genomic Representation Gap in Pediatric Precision Oncology: Quantifying RB1 Variant Disparities Between a Brazilian Cohort and Global Databases",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1200/go-26-14200",
+        "doi": "https://doi.org/10.1200/go-26-14200",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1200/go-26-14200",
+        "pdf_url": "https://ascopubs.org/doi/pdfdirect/10.1200/GO-26-14200",
+        "source": {
+          "id": "https://openalex.org/S4210209558",
+          "display_name": "JCO Global Oncology",
+          "issn_l": "2687-8941",
+          "issn": [
+            "2687-8941"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-c",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "poland-20",
+            "russia-white-list-2",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310315671",
+          "host_organization_name": "Lippincott Williams & Wilkins",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310315671",
+            "https://openalex.org/P4310318547"
+          ],
+          "host_organization_lineage_names": [
+            "Lippincott Williams & Wilkins",
+            "Wolters Kluwer"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "JCO Global Oncology",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7223117946",
+      "doi": "https://doi.org/10.1186/s13073-026-01792-x",
+      "title": "The average individual genome: a survey of nearly 1 million whole-genome sequences",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1186/s13073-026-01792-x",
+        "doi": "https://doi.org/10.1186/s13073-026-01792-x",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1186/s13073-026-01792-x",
+        "pdf_url": "https://link.springer.com/content/pdf/10.1186/s13073-026-01792-x.pdf",
+        "source": {
+          "id": "https://openalex.org/S149201819",
+          "display_name": "Genome Medicine",
+          "issn_l": "1756-994X",
+          "issn": [
+            "1756-994X"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-b",
+            "doyens",
+            "jufo-3",
+            "ki-jl-2",
+            "medline",
+            "norway-1",
+            "oarl",
+            "poland-140",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320256",
+          "host_organization_name": "BioMed Central",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320256",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "BioMed Central",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Genome Medicine",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7222884048",
+      "doi": "https://doi.org/10.1186/s13073-026-01799-4",
+      "title": "Combining MAVEs and computational predictors improves variant classification across ancestries in hereditary cancer genes",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1186/s13073-026-01799-4",
+        "doi": "https://doi.org/10.1186/s13073-026-01799-4",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1186/s13073-026-01799-4",
+        "pdf_url": "https://link.springer.com/content/pdf/10.1186/s13073-026-01799-4.pdf",
+        "source": {
+          "id": "https://openalex.org/S149201819",
+          "display_name": "Genome Medicine",
+          "issn_l": "1756-994X",
+          "issn": [
+            "1756-994X"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-b",
+            "doyens",
+            "jufo-3",
+            "ki-jl-2",
+            "medline",
+            "norway-1",
+            "oarl",
+            "poland-140",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320256",
+          "host_organization_name": "BioMed Central",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320256",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "BioMed Central",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Genome Medicine",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7214790449",
+      "doi": "https://doi.org/10.7488/era/7794",
+      "title": "Harnessing the human mutational spectrum to advance missense variant effect prediction",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:era.ed.ac.uk:1842/45279",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://hdl.handle.net/1842/45279",
+        "pdf_url": "https://era.ed.ac.uk/bitstreams/62e3def0-6cfa-45bb-9c56-4963588d5e6e/download",
+        "source": {
+          "id": "https://openalex.org/S4377196353",
+          "display_name": "Edinburgh Research Archive (University of Edinburgh)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I98677209",
+          "host_organization_name": "University of Edinburgh",
+          "host_organization_lineage": [
+            "https://openalex.org/I98677209"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Thesis"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7214391224",
+      "doi": "https://doi.org/10.1016/j.jacadv.2026.103286",
+      "title": "Peripartum Cardiomyopathy Genetic Screening Protocol and Registry",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1016/j.jacadv.2026.103286",
+        "doi": "https://doi.org/10.1016/j.jacadv.2026.103286",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1016/j.jacadv.2026.103286",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4220651314",
+          "display_name": "JACC Advances",
+          "issn_l": "2772-963X",
+          "issn": [
+            "2772-963X"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "doyens",
+            "jufo-1",
+            "ki-jl-1",
+            "norway-1",
+            "oarl",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "JACC: Advances",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7213779855",
+      "doi": "https://doi.org/10.21203/rs.3.rs-10983210/v1",
+      "title": "EthniVar: a source-stratified catalogue of BRCA1/2 germline variants quantifies the classification gap for variants reported in Indian patients",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.21203/rs.3.rs-10983210/v1",
+        "doi": "https://doi.org/10.21203/rs.3.rs-10983210/v1",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.21203/rs.3.rs-10983210/v1",
+        "pdf_url": "https://www.researchsquare.com/article/rs-10983210/latest.pdf",
+        "source": {
+          "id": "https://openalex.org/S4306525896",
+          "display_name": "Research Square",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": "Research Square",
+        "raw_type": "posted-content"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7204188134",
+      "doi": "https://doi.org/10.1016/j.ajhg.2026.08.003",
+      "title": "Distinct mutational landscapes for germline and somatic cancer variants in forty tumor suppressor genes",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1016/j.ajhg.2026.08.003",
+        "doi": "https://doi.org/10.1016/j.ajhg.2026.08.003",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1016/j.ajhg.2026.08.003",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S134425043",
+          "display_name": "The American Journal of Human Genetics",
+          "issn_l": "0002-9297",
+          "issn": [
+            "0002-9297",
+            "1537-6605"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "dongbi-a",
+            "doyens",
+            "jufo-3",
+            "ki-jl-2",
+            "medline",
+            "norway-2",
+            "poland-200",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "The American Journal of Human Genetics",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7151637210",
+      "doi": "https://doi.org/10.1111/ahg.70054",
+      "title": "Ancestry\u2010Stratified Variant Classification in Monogenic Diabetes Genes: Annotation Coverage and Differential Curation Burden",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1111/ahg.70054",
+        "doi": "https://doi.org/10.1111/ahg.70054",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1111/ahg.70054",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S131700781",
+          "display_name": "Annals of Human Genetics",
+          "issn_l": "0003-4800",
+          "issn": [
+            "0003-4800",
+            "1469-1809"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core",
+            "dongbi-d",
+            "doyens",
+            "erih-plus",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "poland-70",
+            "russia-white-list-3",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320595",
+          "host_organization_name": "Wiley",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320595"
+          ],
+          "host_organization_lineage_names": [
+            "Wiley"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Annals of Human Genetics",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7202054299",
+      "doi": "https://doi.org/10.1186/s13073-026-01740-9",
+      "title": "Challenges and approaches to genetic variants of uncertain significance in clinical practice and research",
+      "publication_year": 2026,
+      "cited_by_count": 2,
+      "primary_location": {
+        "id": "doi:10.1186/s13073-026-01740-9",
+        "doi": "https://doi.org/10.1186/s13073-026-01740-9",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1186/s13073-026-01740-9",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S149201819",
+          "display_name": "Genome Medicine",
+          "issn_l": "1756-994X",
+          "issn": [
+            "1756-994X"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-b",
+            "doyens",
+            "jufo-3",
+            "ki-jl-2",
+            "medline",
+            "norway-1",
+            "oarl",
+            "poland-140",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320256",
+          "host_organization_name": "BioMed Central",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320256",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "BioMed Central",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Genome Medicine",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7171413886",
+      "doi": "https://doi.org/10.1093/jbmrpl/ziag118",
+      "title": "Abstracts of the 12th International Conference on Children's Bone Health",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1093/jbmrpl/ziag118",
+        "doi": "https://doi.org/10.1093/jbmrpl/ziag118",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1093/jbmrpl/ziag118",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4210170492",
+          "display_name": "JBMR Plus",
+          "issn_l": "2473-4039",
+          "issn": [
+            "2473-4039"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-d",
+            "jufo-1",
+            "ki-jl-1",
+            "norway-1",
+            "oarl",
+            "poland-20",
+            "russia-white-list-2",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320595",
+          "host_organization_name": "Wiley",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320595"
+          ],
+          "host_organization_lineage_names": [
+            "Wiley"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "JBMR Plus",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7213485111",
+      "doi": null,
+      "title": "Solving the genetics of neuromuscular disorders using multi-omic long-read sequencing",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:mspace.lib.umanitoba.ca:1993/40101",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "http://hdl.handle.net/1993/40101",
+        "pdf_url": "https://mspace.lib.umanitoba.ca/bitstreams/3f3e3f06-7730-4817-a0a0-b64b7a2ad53c/download",
+        "source": {
+          "id": "https://openalex.org/S4306400554",
+          "display_name": "Mspace (University of Manitoba)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I46247651",
+          "host_organization_name": "University of Manitoba",
+          "host_organization_lineage": [
+            "https://openalex.org/I46247651"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": null
+      }
+    }
+  ],
+  "group_by": []
+}

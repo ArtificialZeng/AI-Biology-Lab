@@ -1,0 +1,46 @@
+{
+  "og_executed": true,
+  "og_binary": "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/cloned_pipelines/OwnGenome/rust/target/release/og",
+  "n_panel": 24,
+  "pipelines": {
+    "CPSR_v2.4.0": {
+      "locked_core_3_AR_RYR1_false_positives": "3/3",
+      "all_15_AR_in_AD_and_opposite_mech_false_positives": "14/15",
+      "true_AD_pos_controls_sensitivity": "4/4",
+      "pure_AR_het_neg_controls_specificity": "4/4"
+    },
+    "SFtool_0d72249": {
+      "locked_core_3_AR_RYR1_false_positives": "3/3",
+      "all_15_AR_in_AD_and_opposite_mech_false_positives": "14/15",
+      "true_AD_pos_controls_sensitivity": "4/4",
+      "pure_AR_het_neg_controls_specificity": "4/4"
+    },
+    "OwnGenome_c324b61": {
+      "locked_core_3_AR_RYR1_false_positives": "3/3",
+      "all_15_AR_in_AD_and_opposite_mech_false_positives": "13/15",
+      "true_AD_pos_controls_sensitivity": "4/4",
+      "pure_AR_het_neg_controls_specificity": "4/4",
+      "silent_no_warning_core_3_AR_RYR1": "3/3",
+      "silent_no_warning_among_15_bad": "9/15",
+      "returned_with_condition_not_acmg_true_among_15_bad": "4/15"
+    },
+    "CPHI_DRAGEN_SickKids": {
+      "locked_core_3_AR_RYR1_false_positives": "3/3",
+      "all_15_AR_in_AD_and_opposite_mech_false_positives": "15/15",
+      "true_AD_pos_controls_sensitivity": "4/4",
+      "pure_AR_het_neg_controls_specificity": "0/4"
+    },
+    "VikingGenes_3ea7abe": {
+      "locked_core_3_AR_RYR1_false_positives": "2/3",
+      "all_15_AR_in_AD_and_opposite_mech_false_positives": "13/15",
+      "true_AD_pos_controls_sensitivity": "4/4",
+      "pure_AR_het_neg_controls_specificity": "2/4"
+    },
+    "DNA_f459b22": {
+      "locked_core_3_AR_RYR1_false_positives": "3/3",
+      "all_15_AR_in_AD_and_opposite_mech_false_positives": "14/15",
+      "true_AD_pos_controls_sensitivity": "4/4",
+      "pure_AR_het_neg_controls_specificity": "0/4"
+    }
+  }
+}

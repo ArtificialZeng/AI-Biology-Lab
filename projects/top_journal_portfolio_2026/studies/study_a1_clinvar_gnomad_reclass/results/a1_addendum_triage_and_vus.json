@@ -1,0 +1,1187 @@
+{
+  "triage_4layer_ad_55": {
+    "L1_LowCallability_TechnicalArtifact": {
+      "n": 7,
+      "share": 0.1273,
+      "n_3star": 3,
+      "n_2star": 4,
+      "n_nfe_invisible": 2,
+      "n_with_hom": 0,
+      "domains": {
+        "Cancer": 7
+      },
+      "pops": {
+        "nfe": 4,
+        "fin": 1,
+        "sas": 1,
+        "afr": 1
+      },
+      "variants": [
+        {
+          "variant_id": "2-47414421-A-T",
+          "gene": "MSH2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Sep 05, 2013",
+          "hgvs_name": "NM_000251.3(MSH2):c.942+3A>T",
+          "an_joint": 11582,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0022328831865551,
+          "faf95_max8": 0.0022328831865551,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "2-47414419-G-T",
+          "gene": "MSH2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Jun 21, 2019",
+          "hgvs_name": "NM_000251.3(MSH2):c.942+1G>T",
+          "an_joint": 505866,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0001691772734562,
+          "faf95_max8": 0.0001691772734562,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "10-87960892-A-T",
+          "gene": "PTEN",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Dec 05, 2025",
+          "hgvs_name": "NM_000314.8(PTEN):c.802-2A>T",
+          "an_joint": 1275290,
+          "hom_joint": 0,
+          "faf95_nfe": 7.867652609103572e-05,
+          "faf95_max8": 0.0001601926247674,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "13-48464984-C-G",
+          "gene": "RB1",
+          "domain": "Cancer",
+          "stars": 2,
+          "last_evaluated": "Jun 20, 2025",
+          "hgvs_name": "NM_000321.3(RB1):c.2212-14C>G",
+          "an_joint": 570050,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0053959993598293,
+          "faf95_max8": 0.0053959993598293,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "3-37025636-G-T",
+          "gene": "MLH1",
+          "domain": "Cancer",
+          "stars": 2,
+          "last_evaluated": "Aug 18, 2023",
+          "hgvs_name": "NM_000249.4(MLH1):c.1039-1G>T",
+          "an_joint": 1020778,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0006752629864388,
+          "faf95_max8": 0.0006752629864388,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "11-64810109-T-G",
+          "gene": "MEN1",
+          "domain": "Cancer",
+          "stars": 2,
+          "last_evaluated": "Jun 16, 2025",
+          "hgvs_name": "NM_001370259.2(MEN1):c.1A>C (p.Met1Leu)",
+          "an_joint": 1005232,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0001584195793876,
+          "faf95_max8": 0.0005620750763625,
+          "faf95_pop8": "sas"
+        },
+        {
+          "variant_id": "2-47414420-T-A",
+          "gene": "MSH2",
+          "domain": "Cancer",
+          "stars": 2,
+          "last_evaluated": "Mar 26, 2025",
+          "hgvs_name": "NM_000251.3(MSH2):c.942+2T>A",
+          "an_joint": 1044382,
+          "hom_joint": 0,
+          "faf95_nfe": 2.028854153660381e-05,
+          "faf95_max8": 0.0005065925287613,
+          "faf95_pop8": "afr"
+        }
+      ]
+    },
+    "L2_BottleneckFounder_FIN_ASJ": {
+      "n": 22,
+      "share": 0.4,
+      "n_3star": 14,
+      "n_2star": 8,
+      "n_nfe_invisible": 22,
+      "n_with_hom": 0,
+      "domains": {
+        "Cardiovascular": 11,
+        "Cancer": 8,
+        "Miscellaneous": 3
+      },
+      "pops": {
+        "fin": 15,
+        "asj": 7
+      },
+      "variants": [
+        {
+          "variant_id": "16-23634953-CA-C",
+          "gene": "PALB2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Sep 15, 2022",
+          "hgvs_name": "NM_024675.4(PALB2):c.1592del (p.Leu531fs)",
+          "an_joint": 1613984,
+          "hom_joint": 0,
+          "faf95_nfe": 3.0114361436787053e-07,
+          "faf95_max8": 0.0014725853068737,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "17-43057062-T-TG",
+          "gene": "BRCA1",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Apr 22, 2016",
+          "hgvs_name": "NM_007294.4(BRCA1):c.5266dup (p.Gln1756fs)",
+          "an_joint": 1613912,
+          "hom_joint": 0,
+          "faf95_nfe": 4.283073293218387e-05,
+          "faf95_max8": 0.0008451647954563,
+          "faf95_pop8": "asj"
+        },
+        {
+          "variant_id": "12-120994314-G-GC",
+          "gene": "HNF1A",
+          "domain": "Miscellaneous",
+          "stars": 3,
+          "last_evaluated": "Apr 15, 2022",
+          "hgvs_name": "NM_000545.8(HNF1A):c.872dup (p.Gly292fs)",
+          "an_joint": 1604382,
+          "hom_joint": 0,
+          "faf95_nfe": 9.218136786353376e-06,
+          "faf95_max8": 0.0006755149057629,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "19-11105556-ATGG-A",
+          "gene": "LDLR",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Jun 02, 2022",
+          "hgvs_name": "NM_000527.5(LDLR):c.651TGG[1] (p.Gly219del)",
+          "an_joint": 1595642,
+          "hom_joint": 0,
+          "faf95_nfe": 1.6852568906886192e-06,
+          "faf95_max8": 0.0004017092918115,
+          "faf95_pop8": "asj"
+        },
+        {
+          "variant_id": "11-2778009-G-A",
+          "gene": "KCNQ1",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Jul 01, 2025",
+          "hgvs_name": "NM_000218.3(KCNQ1):c.1766G>A (p.Gly589Asp)",
+          "an_joint": 1613604,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0003933274089759,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "14-23422267-C-T",
+          "gene": "MYH7",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Nov 30, 2021",
+          "hgvs_name": "NM_000257.4(MYH7):c.3158G>A (p.Arg1053Gln)",
+          "an_joint": 1613984,
+          "hom_joint": 0,
+          "faf95_nfe": 3.011497392396899e-07,
+          "faf95_max8": 0.0002976062499022,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "2-47806605-AAAGC-A",
+          "gene": "MSH6",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Sep 05, 2013",
+          "hgvs_name": "NM_000179.3(MSH6):c.3959_3962del (p.Ala1320fs)",
+          "an_joint": 1460866,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0002360890658015,
+          "faf95_pop8": "asj"
+        },
+        {
+          "variant_id": "15-48411280-G-A",
+          "gene": "FBN1",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Aug 22, 2024",
+          "hgvs_name": "NM_000138.5(FBN1):c.8326C>T (p.Arg2776Ter)",
+          "an_joint": 1613900,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001695860656335,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "2-47803500-A-AC",
+          "gene": "MSH6",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Sep 05, 2013",
+          "hgvs_name": "NM_000179.3(MSH6):c.3261dup (p.Phe1088fs)",
+          "an_joint": 1610042,
+          "hom_joint": 0,
+          "faf95_nfe": 4.213203834473741e-05,
+          "faf95_max8": 0.0001588721977564,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "19-11116937-G-A",
+          "gene": "LDLR",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Feb 02, 2022",
+          "hgvs_name": "NM_000527.5(LDLR):c.1784G>A (p.Arg595Gln)",
+          "an_joint": 1614046,
+          "hom_joint": 0,
+          "faf95_nfe": 1.669629597539246e-06,
+          "faf95_max8": 0.0001444152452281,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "13-32380005-A-G",
+          "gene": "BRCA2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Jun 18, 2019",
+          "hgvs_name": "NM_000059.4(BRCA2):c.9118-2A>G",
+          "an_joint": 1613896,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001322159697921,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "2-47475171-G-C",
+          "gene": "MSH2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Sep 05, 2013",
+          "hgvs_name": "NM_000251.3(MSH2):c.1906G>C (p.Ala636Pro)",
+          "an_joint": 1613998,
+          "hom_joint": 0,
+          "faf95_nfe": 4.346764109131646e-08,
+          "faf95_max8": 0.0001109679015028,
+          "faf95_pop8": "asj"
+        },
+        {
+          "variant_id": "2-178589849-G-A",
+          "gene": "TTN",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Sep 16, 2026",
+          "hgvs_name": "NM_001267550.2(TTN):c.61876C>T (p.Arg20626Ter)",
+          "an_joint": 1613266,
+          "hom_joint": 0,
+          "faf95_nfe": 2.2152190063500212e-06,
+          "faf95_max8": 0.0010202641976734,
+          "faf95_pop8": "asj"
+        },
+        {
+          "variant_id": "12-120994313-G-GC",
+          "gene": "HNF1A",
+          "domain": "Miscellaneous",
+          "stars": 2,
+          "last_evaluated": "Jul 20, 2025",
+          "hgvs_name": "NM_000545.8(HNF1A):c.863_864insC (p.Pro289fs)",
+          "an_joint": 1595200,
+          "hom_joint": 0,
+          "faf95_nfe": 6.27941639004951e-05,
+          "faf95_max8": 0.0005740640433227,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "7-150951738-A-G",
+          "gene": "KCNH2",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Feb 03, 2026",
+          "hgvs_name": "NM_000238.4(KCNH2):c.1655T>C (p.Leu552Ser)",
+          "an_joint": 1612396,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0005268308349184,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "6-7583571-GA-G",
+          "gene": "DSP",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "May 13, 2026",
+          "hgvs_name": "NM_004415.4(DSP):c.6310del (p.Thr2104fs)",
+          "an_joint": 1614072,
+          "hom_joint": 0,
+          "faf95_nfe": 3.011425935801224e-07,
+          "faf95_max8": 0.0003108017931511,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "19-38457546-G-A",
+          "gene": "RYR1",
+          "domain": "Miscellaneous",
+          "stars": 2,
+          "last_evaluated": "Jan 24, 2026",
+          "hgvs_name": "NM_000540.3(RYR1):c.1841G>A (p.Arg614His)",
+          "an_joint": 1614018,
+          "hom_joint": 0,
+          "faf95_nfe": 1.1578930213370725e-06,
+          "faf95_max8": 0.0001817576083338,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "19-11107497-AACCCATC-A",
+          "gene": "LDLR",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Jun 10, 2025",
+          "hgvs_name": "NM_000527.5(LDLR):c.925_931del (p.Pro309fs)",
+          "an_joint": 1608706,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001332441913386,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "11-47333566-G-A",
+          "gene": "MYBPC3",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Mar 03, 2025",
+          "hgvs_name": "NM_000256.3(MYBPC3):c.3181C>T (p.Gln1061Ter)",
+          "an_joint": 1600156,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001222553961433,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "2-178579702-G-A",
+          "gene": "TTN",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "May 15, 2026",
+          "hgvs_name": "NM_001267550.2(TTN):c.67495C>T (p.Arg22499Ter)",
+          "an_joint": 1613046,
+          "hom_joint": 0,
+          "faf95_nfe": 2.193364621177791e-05,
+          "faf95_max8": 0.0001202360804895,
+          "faf95_pop8": "fin"
+        },
+        {
+          "variant_id": "13-32340300-GT-G",
+          "gene": "BRCA2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Jun 11, 2024",
+          "hgvs_name": "NM_000059.4(BRCA2):c.5946del (p.Ser1982fs)",
+          "an_joint": 1613878,
+          "hom_joint": 0,
+          "faf95_nfe": 2.119648706702045e-05,
+          "faf95_max8": 0.0046281258941927,
+          "faf95_pop8": "asj"
+        },
+        {
+          "variant_id": "17-43124027-ACT-A",
+          "gene": "BRCA1",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Jun 11, 2024",
+          "hgvs_name": "NM_007294.4(BRCA1):c.68_69del (p.Glu23fs)",
+          "an_joint": 1612084,
+          "hom_joint": 0,
+          "faf95_nfe": 2.4152010816126737e-05,
+          "faf95_max8": 0.0035302594416567,
+          "faf95_pop8": "asj"
+        }
+      ]
+    },
+    "L3_EstablishedContinentalFounder_LowPen": {
+      "n": 14,
+      "share": 0.2545,
+      "n_3star": 7,
+      "n_2star": 7,
+      "n_nfe_invisible": 7,
+      "n_with_hom": 2,
+      "domains": {
+        "Cancer": 7,
+        "Cardiovascular": 6,
+        "Miscellaneous": 1
+      },
+      "pops": {
+        "nfe": 7,
+        "eas": 2,
+        "amr": 2,
+        "sas": 1,
+        "mid": 1,
+        "afr": 1
+      },
+      "variants": [
+        {
+          "variant_id": "7-6005918-C-A",
+          "gene": "PMS2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Jun 21, 2019",
+          "hgvs_name": "NM_000535.7(PMS2):c.137G>T (p.Ser46Ile)",
+          "an_joint": 1610770,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0003238242368064,
+          "faf95_max8": 0.0003238242368064,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "16-23621362-C-T",
+          "gene": "PALB2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Apr 05, 2023",
+          "hgvs_name": "NM_024675.4(PALB2):c.3113G>A (p.Trp1038Ter)",
+          "an_joint": 1602804,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0002521127800781,
+          "faf95_max8": 0.0002521127800781,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "13-32346841-C-T",
+          "gene": "BRCA2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Apr 22, 2016",
+          "hgvs_name": "NM_000059.4(BRCA2):c.6952C>T (p.Arg2318Ter)",
+          "an_joint": 1455550,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.000194889960757,
+          "faf95_pop8": "eas"
+        },
+        {
+          "variant_id": "13-32398209-TTGTA-T",
+          "gene": "BRCA2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Jun 11, 2024",
+          "hgvs_name": "NM_000059.4(BRCA2):c.9699_9702del (p.Cys3233fs)",
+          "an_joint": 1612780,
+          "hom_joint": 0,
+          "faf95_nfe": 8.508523593768085e-06,
+          "faf95_max8": 0.0001809518618869,
+          "faf95_pop8": "amr"
+        },
+        {
+          "variant_id": "11-2768881-C-T",
+          "gene": "KCNQ1",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Jul 01, 2025",
+          "hgvs_name": "NM_000218.3(KCNQ1):c.1552C>T (p.Arg518Ter)",
+          "an_joint": 1613912,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0001534661994938,
+          "faf95_max8": 0.0001534661994938,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "7-5977629-G-A",
+          "gene": "PMS2",
+          "domain": "Cancer",
+          "stars": 3,
+          "last_evaluated": "Sep 05, 2013",
+          "hgvs_name": "NM_000535.7(PMS2):c.2404C>T (p.Arg802Ter)",
+          "an_joint": 1594456,
+          "hom_joint": 0,
+          "faf95_nfe": 2.2422112937102766e-06,
+          "faf95_max8": 0.0001291437761904,
+          "faf95_pop8": "sas"
+        },
+        {
+          "variant_id": "19-38499993-G-A",
+          "gene": "RYR1",
+          "domain": "Miscellaneous",
+          "stars": 3,
+          "last_evaluated": "Jul 11, 2022",
+          "hgvs_name": "NM_000540.3(RYR1):c.7300G>A (p.Gly2434Arg)",
+          "an_joint": 1614004,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0001089596558228,
+          "faf95_max8": 0.0001089596558228,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "2-21006289-G-A",
+          "gene": "APOB",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Aug 11, 2026",
+          "hgvs_name": "NM_000384.3(APOB):c.10579C>T (p.Arg3527Trp)",
+          "an_joint": 1613988,
+          "hom_joint": 0,
+          "faf95_nfe": 1.9744306672277304e-05,
+          "faf95_max8": 0.0003319160844275,
+          "faf95_pop8": "eas"
+        },
+        {
+          "variant_id": "19-11120425-C-A",
+          "gene": "LDLR",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Sep 01, 2026",
+          "hgvs_name": "NM_000527.5(LDLR):c.2043C>A (p.Cys681Ter)",
+          "an_joint": 1461784,
+          "hom_joint": 0,
+          "faf95_nfe": 7.353366803153549e-07,
+          "faf95_max8": 0.0002368790563019,
+          "faf95_pop8": "mid"
+        },
+        {
+          "variant_id": "11-47342698-G-A",
+          "gene": "MYBPC3",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Apr 24, 2026",
+          "hgvs_name": "NM_000256.3(MYBPC3):c.1504C>T (p.Arg502Trp)",
+          "an_joint": 1613896,
+          "hom_joint": 0,
+          "faf95_nfe": 0.000165472226195,
+          "faf95_max8": 0.000165472226195,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "16-23629985-CAT-C",
+          "gene": "PALB2",
+          "domain": "Cancer",
+          "stars": 2,
+          "last_evaluated": "Sep 12, 2026",
+          "hgvs_name": "NM_024675.4(PALB2):c.2167_2168del (p.Met723fs)",
+          "an_joint": 1614024,
+          "hom_joint": 0,
+          "faf95_nfe": 8.504730952637482e-06,
+          "faf95_max8": 0.0001411126629244,
+          "faf95_pop8": "amr"
+        },
+        {
+          "variant_id": "10-43119548-G-A",
+          "gene": "RET",
+          "domain": "Cancer",
+          "stars": 2,
+          "last_evaluated": "Jul 24, 2026",
+          "hgvs_name": "NM_020975.6(RET):c.2410G>A (p.Val804Met)",
+          "an_joint": 1605504,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0001051937745516,
+          "faf95_max8": 0.0001051937745516,
+          "faf95_pop8": "nfe"
+        },
+        {
+          "variant_id": "18-31598655-G-A",
+          "gene": "TTR",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Sep 01, 2026",
+          "hgvs_name": "NM_000371.4(TTR):c.424G>A (p.Val142Ile)",
+          "an_joint": 1614082,
+          "hom_joint": 8,
+          "faf95_nfe": 1.758103865852653e-05,
+          "faf95_max8": 0.016181584522616,
+          "faf95_pop8": "afr"
+        },
+        {
+          "variant_id": "2-21006288-C-T",
+          "gene": "APOB",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Sep 01, 2026",
+          "hgvs_name": "NM_000384.3(APOB):c.10580G>A (p.Arg3527Gln)",
+          "an_joint": 1613860,
+          "hom_joint": 1,
+          "faf95_nfe": 0.0004592759992656,
+          "faf95_max8": 0.0004592759992656,
+          "faf95_pop8": "nfe"
+        }
+      ]
+    },
+    "L4_PriorityNonBottleneckAuditCandidate": {
+      "n": 12,
+      "share": 0.2182,
+      "n_3star": 4,
+      "n_2star": 8,
+      "n_nfe_invisible": 12,
+      "n_with_hom": 3,
+      "domains": {
+        "Cardiovascular": 7,
+        "Miscellaneous": 4,
+        "Cancer": 1
+      },
+      "pops": {
+        "sas": 4,
+        "afr": 4,
+        "eas": 3,
+        "amr": 1
+      },
+      "variants": [
+        {
+          "variant_id": "19-38527014-C-T",
+          "gene": "RYR1",
+          "domain": "Miscellaneous",
+          "stars": 3,
+          "last_evaluated": "Apr 13, 2026",
+          "hgvs_name": "NM_000540.3(RYR1):c.10648C>T (p.Arg3550Trp)",
+          "an_joint": 1613912,
+          "hom_joint": 0,
+          "faf95_nfe": 3.078243216989918e-05,
+          "faf95_max8": 0.0014425383871802,
+          "faf95_pop8": "sas"
+        },
+        {
+          "variant_id": "19-38523211-C-G",
+          "gene": "RYR1",
+          "domain": "Miscellaneous",
+          "stars": 3,
+          "last_evaluated": "May 19, 2025",
+          "hgvs_name": "NM_000540.3(RYR1):c.10348-6C>G",
+          "an_joint": 1614248,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0003217012835649,
+          "faf95_pop8": "afr"
+        },
+        {
+          "variant_id": "19-11116900-C-T",
+          "gene": "LDLR",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Nov 07, 2023",
+          "hgvs_name": "NM_000527.5(LDLR):c.1747C>T (p.His583Tyr)",
+          "an_joint": 1613954,
+          "hom_joint": 1,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0003134360466041,
+          "faf95_pop8": "eas"
+        },
+        {
+          "variant_id": "19-11102741-G-A",
+          "gene": "LDLR",
+          "domain": "Cardiovascular",
+          "stars": 3,
+          "last_evaluated": "Aug 28, 2022",
+          "hgvs_name": "NM_000527.5(LDLR):c.268G>A (p.Asp90Asn)",
+          "an_joint": 1613844,
+          "hom_joint": 0,
+          "faf95_nfe": 7.173278258307087e-06,
+          "faf95_max8": 0.0001713440503505,
+          "faf95_pop8": "eas"
+        },
+        {
+          "variant_id": "5-112775626-T-A",
+          "gene": "APC",
+          "domain": "Cancer",
+          "stars": 2,
+          "last_evaluated": "Jan 26, 2025",
+          "hgvs_name": "NM_000038.6(APC):c.423-3T>A",
+          "an_joint": 1515480,
+          "hom_joint": 0,
+          "faf95_nfe": 5.1979600581646425e-05,
+          "faf95_max8": 0.0015780238546777,
+          "faf95_pop8": "amr"
+        },
+        {
+          "variant_id": "1-201060816-G-T",
+          "gene": "CACNA1S",
+          "domain": "Miscellaneous",
+          "stars": 2,
+          "last_evaluated": "Jun 19, 2024",
+          "hgvs_name": "NM_000069.3(CACNA1S):c.3256C>A (p.Arg1086Ser)",
+          "an_joint": 1614144,
+          "hom_joint": 1,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.000218481861268,
+          "faf95_pop8": "sas"
+        },
+        {
+          "variant_id": "11-47333189-C-G",
+          "gene": "MYBPC3",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Apr 21, 2026",
+          "hgvs_name": "NM_000256.3(MYBPC3):c.3330+5G>C",
+          "an_joint": 1601506,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001882293305021,
+          "faf95_pop8": "afr"
+        },
+        {
+          "variant_id": "11-2445461-A-AT",
+          "gene": "KCNQ1",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "May 25, 2025",
+          "hgvs_name": "NM_000218.3(KCNQ1):c.364dup (p.Cys122fs)",
+          "an_joint": 1596406,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001640677095819,
+          "faf95_pop8": "sas"
+        },
+        {
+          "variant_id": "2-178568947-T-A",
+          "gene": "TTN",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Oct 17, 2024",
+          "hgvs_name": "NM_001267550.2(TTN):c.77185A>T (p.Lys25729Ter)",
+          "an_joint": 1613482,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001455499483709,
+          "faf95_pop8": "sas"
+        },
+        {
+          "variant_id": "19-38505338-CAT-C",
+          "gene": "RYR1",
+          "domain": "Miscellaneous",
+          "stars": 2,
+          "last_evaluated": "May 20, 2026",
+          "hgvs_name": "NM_000540.3(RYR1):c.8342_8343del (p.Ile2781fs)",
+          "an_joint": 1612278,
+          "hom_joint": 0,
+          "faf95_nfe": 0.0,
+          "faf95_max8": 0.0001130514708849,
+          "faf95_pop8": "afr"
+        },
+        {
+          "variant_id": "11-47337534-C-T",
+          "gene": "MYBPC3",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Jun 24, 2026",
+          "hgvs_name": "NM_000256.3(MYBPC3):c.2459G>A (p.Arg820Gln)",
+          "an_joint": 1613862,
+          "hom_joint": 0,
+          "faf95_nfe": 1.974517682968557e-05,
+          "faf95_max8": 0.0001045847449624,
+          "faf95_pop8": "eas"
+        },
+        {
+          "variant_id": "3-38613773-G-A",
+          "gene": "SCN5A",
+          "domain": "Cardiovascular",
+          "stars": 2,
+          "last_evaluated": "Mar 27, 2026",
+          "hgvs_name": "NM_000335.5(SCN5A):c.673C>T (p.Arg225Trp)",
+          "an_joint": 1609370,
+          "hom_joint": 1,
+          "faf95_nfe": 1.6896249166222877e-05,
+          "faf95_max8": 0.0001027221979164,
+          "faf95_pop8": "afr"
+        }
+      ]
+    }
+  },
+  "l4_priority_carrier_burden": {
+    "nfe": {
+      "per_1000": 0.342,
+      "carrier_prob": 0.00034157119963573734,
+      "ratio_vs_nfe": 1.0
+    },
+    "afr": {
+      "per_1000": 2.741,
+      "carrier_prob": 0.0027406790010332527,
+      "ratio_vs_nfe": 8.02
+    },
+    "amr": {
+      "per_1000": 4.022,
+      "carrier_prob": 0.00402178224189309,
+      "ratio_vs_nfe": 11.77
+    },
+    "eas": {
+      "per_1000": 2.183,
+      "carrier_prob": 0.0021832294226928894,
+      "ratio_vs_nfe": 6.39
+    },
+    "sas": {
+      "per_1000": 5.965,
+      "carrier_prob": 0.005964769192204344,
+      "ratio_vs_nfe": 17.46
+    },
+    "mid": {
+      "per_1000": 2.4,
+      "carrier_prob": 0.002399503910761047,
+      "ratio_vs_nfe": 7.02
+    },
+    "asj": {
+      "per_1000": 0.426,
+      "carrier_prob": 0.0004257885911362891,
+      "ratio_vs_nfe": 1.25
+    },
+    "fin": {
+      "per_1000": 0.685,
+      "carrier_prob": 0.0006846579362304039,
+      "ratio_vs_nfe": 2.0
+    }
+  },
+  "vus_liberation_debt": {
+    "all_84_genes_all_vus": {
+      "label": "All 84 ACMG SF v3.3 genes (all VUS)",
+      "n_total_vus_in_gnomad": 55608,
+      "tiers": {
+        "faf95_grpmax5_ge_1e4": {
+          "n_vus_liberable": 1303,
+          "n_nfe_invisible": 1146,
+          "nfe_invisible_share": 0.8795,
+          "by_pop5": {
+            "sas": 343,
+            "eas": 294,
+            "afr": 276,
+            "amr": 251,
+            "nfe": 139
+          },
+          "by_domain": {
+            "Cardiovascular": 899,
+            "Miscellaneous": 238,
+            "Metabolic": 91,
+            "Cancer": 75
+          },
+          "median_submitters": 3.0
+        },
+        "faf95_grpmax5_ge_5e4_BS1_AD": {
+          "n_vus_liberable": 171,
+          "n_nfe_invisible": 153,
+          "nfe_invisible_share": 0.8947,
+          "by_pop5": {
+            "eas": 70,
+            "sas": 36,
+            "afr": 29,
+            "amr": 22,
+            "nfe": 14
+          },
+          "by_domain": {
+            "Cardiovascular": 110,
+            "Miscellaneous": 33,
+            "Metabolic": 18,
+            "Cancer": 10
+          },
+          "median_submitters": 3.0
+        },
+        "faf95_grpmax5_ge_1e3_BS1_strict": {
+          "n_vus_liberable": 59,
+          "n_nfe_invisible": 54,
+          "nfe_invisible_share": 0.9153,
+          "by_pop5": {
+            "eas": 28,
+            "afr": 12,
+            "amr": 8,
+            "sas": 8,
+            "nfe": 3
+          },
+          "by_domain": {
+            "Cardiovascular": 40,
+            "Miscellaneous": 8,
+            "Metabolic": 6,
+            "Cancer": 5
+          },
+          "median_submitters": 2.0
+        },
+        "faf95_grpmax5_ge_5e3_BA1_near": {
+          "n_vus_liberable": 9,
+          "n_nfe_invisible": 8,
+          "nfe_invisible_share": 0.8889,
+          "by_pop5": {
+            "afr": 4,
+            "eas": 3,
+            "amr": 2
+          },
+          "by_domain": {
+            "Miscellaneous": 3,
+            "Cardiovascular": 3,
+            "Cancer": 3
+          },
+          "median_submitters": 2.0
+        },
+        "af_grpmax5_ge_5e2_BA1_standalone": {
+          "n_vus_liberable": 1,
+          "n_nfe_invisible": 1,
+          "nfe_invisible_share": 1.0,
+          "by_pop5": {
+            "amr": 1
+          },
+          "by_domain": {
+            "Miscellaneous": 1
+          },
+          "median_submitters": 1.0
+        }
+      },
+      "n_high_callability_vus": 50861
+    },
+    "ad_72_genes_all_vus": {
+      "label": "72 AD ACMG SF v3.3 genes (all VUS)",
+      "n_total_vus_in_gnomad": 52023,
+      "tiers": {
+        "faf95_grpmax5_ge_1e4": {
+          "n_vus_liberable": 1106,
+          "n_nfe_invisible": 982,
+          "nfe_invisible_share": 0.8879,
+          "by_pop5": {
+            "sas": 290,
+            "eas": 261,
+            "afr": 226,
+            "amr": 219,
+            "nfe": 110
+          },
+          "by_domain": {
+            "Cardiovascular": 866,
+            "Miscellaneous": 168,
+            "Cancer": 72
+          },
+          "median_submitters": 3.0
+        },
+        "faf95_grpmax5_ge_5e4_BS1_AD": {
+          "n_vus_liberable": 133,
+          "n_nfe_invisible": 121,
+          "nfe_invisible_share": 0.9098,
+          "by_pop5": {
+            "eas": 60,
+            "sas": 29,
+            "afr": 18,
+            "amr": 16,
+            "nfe": 10
+          },
+          "by_domain": {
+            "Cardiovascular": 103,
+            "Miscellaneous": 20,
+            "Cancer": 10
+          },
+          "median_submitters": 2.0
+        },
+        "faf95_grpmax5_ge_1e3_BS1_strict": {
+          "n_vus_liberable": 48,
+          "n_nfe_invisible": 44,
+          "nfe_invisible_share": 0.9167,
+          "by_pop5": {
+            "eas": 24,
+            "afr": 9,
+            "sas": 7,
+            "amr": 6,
+            "nfe": 2
+          },
+          "by_domain": {
+            "Cardiovascular": 39,
+            "Cancer": 5,
+            "Miscellaneous": 4
+          },
+          "median_submitters": 2.0
+        },
+        "faf95_grpmax5_ge_5e3_BA1_near": {
+          "n_vus_liberable": 8,
+          "n_nfe_invisible": 7,
+          "nfe_invisible_share": 0.875,
+          "by_pop5": {
+            "afr": 3,
+            "eas": 3,
+            "amr": 2
+          },
+          "by_domain": {
+            "Cardiovascular": 3,
+            "Cancer": 3,
+            "Miscellaneous": 2
+          },
+          "median_submitters": 2.0
+        },
+        "af_grpmax5_ge_5e2_BA1_standalone": {
+          "n_vus_liberable": 1,
+          "n_nfe_invisible": 1,
+          "nfe_invisible_share": 1.0,
+          "by_pop5": {
+            "amr": 1
+          },
+          "by_domain": {
+            "Miscellaneous": 1
+          },
+          "median_submitters": 1.0
+        }
+      },
+      "n_high_callability_vus": 47940
+    },
+    "all_84_genes_coding_splice_vus": {
+      "label": "All 84 ACMG SF v3.3 genes (coding/splice VUS)",
+      "n_total_vus_in_gnomad": 52965,
+      "tiers": {
+        "faf95_grpmax5_ge_1e4": {
+          "n_vus_liberable": 1198,
+          "n_nfe_invisible": 1065,
+          "nfe_invisible_share": 0.889,
+          "by_pop5": {
+            "sas": 314,
+            "eas": 269,
+            "afr": 256,
+            "amr": 238,
+            "nfe": 121
+          },
+          "by_domain": {
+            "Cardiovascular": 845,
+            "Miscellaneous": 215,
+            "Metabolic": 83,
+            "Cancer": 55
+          },
+          "median_submitters": 3.0
+        },
+        "faf95_grpmax5_ge_5e4_BS1_AD": {
+          "n_vus_liberable": 141,
+          "n_nfe_invisible": 128,
+          "nfe_invisible_share": 0.9078,
+          "by_pop5": {
+            "eas": 57,
+            "sas": 33,
+            "afr": 21,
+            "amr": 19,
+            "nfe": 11
+          },
+          "by_domain": {
+            "Cardiovascular": 93,
+            "Miscellaneous": 27,
+            "Metabolic": 17,
+            "Cancer": 4
+          },
+          "median_submitters": 4.0
+        },
+        "faf95_grpmax5_ge_1e3_BS1_strict": {
+          "n_vus_liberable": 43,
+          "n_nfe_invisible": 39,
+          "nfe_invisible_share": 0.907,
+          "by_pop5": {
+            "eas": 20,
+            "sas": 8,
+            "amr": 6,
+            "afr": 6,
+            "nfe": 3
+          },
+          "by_domain": {
+            "Cardiovascular": 30,
+            "Miscellaneous": 6,
+            "Metabolic": 5,
+            "Cancer": 2
+          },
+          "median_submitters": 4.0
+        },
+        "faf95_grpmax5_ge_5e3_BA1_near": {
+          "n_vus_liberable": 4,
+          "n_nfe_invisible": 3,
+          "nfe_invisible_share": 0.75,
+          "by_pop5": {
+            "amr": 2,
+            "afr": 1,
+            "eas": 1
+          },
+          "by_domain": {
+            "Miscellaneous": 2,
+            "Cardiovascular": 1,
+            "Cancer": 1
+          },
+          "median_submitters": 6.5
+        },
+        "af_grpmax5_ge_5e2_BA1_standalone": {
+          "n_vus_liberable": 1,
+          "n_nfe_invisible": 1,
+          "nfe_invisible_share": 1.0,
+          "by_pop5": {
+            "amr": 1
+          },
+          "by_domain": {
+            "Miscellaneous": 1
+          },
+          "median_submitters": 1.0
+        }
+      },
+      "n_high_callability_vus": 48591
+    }
+  },
+  "curation_velocity_mediation": {
+    "n_high_callability_comp": 18265,
+    "log_submitters_gap_nonnfe_vs_nfe": {
+      "coef": -0.7539299645646662,
+      "se": 0.014510388973061113,
+      "p": 0.0,
+      "pct_fewer_submitters": 52.9
+    },
+    "vus_base_or": 7.180251779095702,
+    "vus_base_p": 8.261315530830763e-32,
+    "vus_submitter_adjusted_or": 1.886297686269604,
+    "vus_submitter_adjusted_p": 0.0006764476989145082,
+    "vus_log_or_attenuation_pct": 67.8,
+    "conf_base_or": 0.26498155605745183,
+    "conf_base_p": 1.5097281131059198e-46,
+    "conf_submitter_adjusted_or": 0.8441097284211297,
+    "conf_submitter_adjusted_p": 0.09750807903672219,
+    "conf_log_or_attenuation_pct": 87.2,
+    "submitters_by_ancestry": {
+      "nfe": {
+        "n": 663,
+        "median_submitters": 11.0,
+        "mean_submitters": 12.05,
+        "single_submitter_share": 0.0151
+      },
+      "afr": {
+        "n": 4061,
+        "median_submitters": 7.0,
+        "mean_submitters": 8.56,
+        "single_submitter_share": 0.0431
+      },
+      "amr": {
+        "n": 2511,
+        "median_submitters": 5.0,
+        "mean_submitters": 5.82,
+        "single_submitter_share": 0.1079
+      },
+      "eas": {
+        "n": 3342,
+        "median_submitters": 5.0,
+        "mean_submitters": 6.03,
+        "single_submitter_share": 0.1332
+      },
+      "sas": {
+        "n": 2909,
+        "median_submitters": 4.0,
+        "mean_submitters": 5.7,
+        "single_submitter_share": 0.1299
+      },
+      "mid": {
+        "n": 4470,
+        "median_submitters": 4.0,
+        "mean_submitters": 5.19,
+        "single_submitter_share": 0.1902
+      },
+      "asj": {
+        "n": 844,
+        "median_submitters": 8.0,
+        "mean_submitters": 9.59,
+        "single_submitter_share": 0.0569
+      },
+      "fin": {
+        "n": 683,
+        "median_submitters": 4.0,
+        "mean_submitters": 5.99,
+        "single_submitter_share": 0.1962
+      }
+    }
+  }
+}

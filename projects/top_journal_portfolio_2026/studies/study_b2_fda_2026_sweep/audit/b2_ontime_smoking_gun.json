@@ -1,0 +1,322 @@
+{
+  "monthly_table": {
+    "2025-04": {
+      "OD_ACA": 38,
+      "OD_IND": 28,
+      "OT_ACA": 52,
+      "OT_IND": 50,
+      "OT_IND_share": 49.0,
+      "OD_IND_share": 42.4
+    },
+    "2025-05": {
+      "OD_ACA": 31,
+      "OD_IND": 35,
+      "OT_ACA": 45,
+      "OT_IND": 47,
+      "OT_IND_share": 51.1,
+      "OD_IND_share": 53.0
+    },
+    "2025-06": {
+      "OD_ACA": 42,
+      "OD_IND": 48,
+      "OT_ACA": 56,
+      "OT_IND": 59,
+      "OT_IND_share": 51.3,
+      "OD_IND_share": 53.3
+    },
+    "2025-07": {
+      "OD_ACA": 34,
+      "OD_IND": 29,
+      "OT_ACA": 44,
+      "OT_IND": 63,
+      "OT_IND_share": 58.9,
+      "OD_IND_share": 46.0
+    },
+    "2025-08": {
+      "OD_ACA": 24,
+      "OD_IND": 32,
+      "OT_ACA": 42,
+      "OT_IND": 60,
+      "OT_IND_share": 58.8,
+      "OD_IND_share": 57.1
+    },
+    "2025-09": {
+      "OD_ACA": 31,
+      "OD_IND": 27,
+      "OT_ACA": 38,
+      "OT_IND": 51,
+      "OT_IND_share": 57.3,
+      "OD_IND_share": 46.6
+    },
+    "2025-10": {
+      "OD_ACA": 35,
+      "OD_IND": 25,
+      "OT_ACA": 46,
+      "OT_IND": 59,
+      "OT_IND_share": 56.2,
+      "OD_IND_share": 41.7
+    },
+    "2025-11": {
+      "OD_ACA": 9,
+      "OD_IND": 26,
+      "OT_ACA": 33,
+      "OT_IND": 53,
+      "OT_IND_share": 61.6,
+      "OD_IND_share": 74.3
+    },
+    "2025-12": {
+      "OD_ACA": 27,
+      "OD_IND": 43,
+      "OT_ACA": 42,
+      "OT_IND": 48,
+      "OT_IND_share": 53.3,
+      "OD_IND_share": 61.4
+    },
+    "2026-01": {
+      "OD_ACA": 37,
+      "OD_IND": 18,
+      "OT_ACA": 42,
+      "OT_IND": 29,
+      "OT_IND_share": 40.8,
+      "OD_IND_share": 32.7
+    },
+    "2026-02": {
+      "OD_ACA": 38,
+      "OD_IND": 16,
+      "OT_ACA": 42,
+      "OT_IND": 36,
+      "OT_IND_share": 46.2,
+      "OD_IND_share": 29.6
+    },
+    "2026-03": {
+      "OD_ACA": 39,
+      "OD_IND": 35,
+      "OT_ACA": 47,
+      "OT_IND": 44,
+      "OT_IND_share": 48.4,
+      "OD_IND_share": 47.3
+    },
+    "2026-04": {
+      "OD_ACA": 39,
+      "OD_IND": 45,
+      "OT_ACA": 46,
+      "OT_IND": 37,
+      "OT_IND_share": 44.6,
+      "OD_IND_share": 53.6
+    },
+    "2026-05": {
+      "OD_ACA": 23,
+      "OD_IND": 37,
+      "OT_ACA": 46,
+      "OT_IND": 40,
+      "OT_IND_share": 46.5,
+      "OD_IND_share": 61.7
+    },
+    "2026-06": {
+      "OD_ACA": 13,
+      "OD_IND": 39,
+      "OT_ACA": 46,
+      "OT_IND": 43,
+      "OT_IND_share": 48.3,
+      "OD_IND_share": 75.0
+    },
+    "2026-07": {
+      "OD_ACA": 9,
+      "OD_IND": 30,
+      "OT_ACA": 29,
+      "OT_IND": 40,
+      "OT_IND_share": 58.0,
+      "OD_IND_share": 76.9
+    },
+    "2026-08": {
+      "OD_ACA": 11,
+      "OD_IND": 28,
+      "OT_ACA": 17,
+      "OT_IND": 29,
+      "OT_IND_share": 63.0,
+      "OD_IND_share": 71.8
+    },
+    "2026-09": {
+      "OD_ACA": 9,
+      "OD_IND": 13,
+      "OT_ACA": 11,
+      "OT_IND": 29,
+      "OT_IND_share": 72.5,
+      "OD_IND_share": 59.1
+    }
+  },
+  "tests": {
+    "raw_apr_jul_2026": {
+      "on_time_2x2": {
+        "pre_ind": 599,
+        "pre_aca": 529,
+        "post_ind": 160,
+        "post_aca": 167,
+        "ind_vs_aca_OR": 0.846,
+        "p": 0.1873283002792548,
+        "ind_mo_ratio": 0.801,
+        "aca_mo_ratio": 0.947
+      },
+      "overdue_2x2": {
+        "pre_ind": 362,
+        "pre_aca": 385,
+        "post_ind": 151,
+        "post_aca": 84,
+        "ind_vs_aca_OR": 1.912,
+        "p": 2.6033426605963408e-05,
+        "ind_mo_ratio": 1.251,
+        "aca_mo_ratio": 0.655
+      },
+      "ddd_overdue_vs_ontime_OR": 2.26,
+      "ddd_p": 4.2781020201359116e-05
+    },
+    "raw_apr_jun_2026": {
+      "on_time_2x2": {
+        "pre_ind": 599,
+        "pre_aca": 529,
+        "post_ind": 120,
+        "post_aca": 138,
+        "ind_vs_aca_OR": 0.768,
+        "p": 0.06216148214179332,
+        "ind_mo_ratio": 0.801,
+        "aca_mo_ratio": 1.043
+      },
+      "overdue_2x2": {
+        "pre_ind": 362,
+        "pre_aca": 385,
+        "post_ind": 121,
+        "post_aca": 75,
+        "ind_vs_aca_OR": 1.716,
+        "p": 0.0009862469430577526,
+        "ind_mo_ratio": 1.337,
+        "aca_mo_ratio": 0.779
+      },
+      "ddd_overdue_vs_ontime_OR": 2.234,
+      "ddd_p": 0.00018080942400627227
+    },
+    "raw_apr_sep_2026": {
+      "on_time_2x2": {
+        "pre_ind": 599,
+        "pre_aca": 529,
+        "post_ind": 218,
+        "post_aca": 195,
+        "ind_vs_aca_OR": 0.987,
+        "p": 0.9540576719015873,
+        "ind_mo_ratio": 0.728,
+        "aca_mo_ratio": 0.737
+      },
+      "overdue_2x2": {
+        "pre_ind": 362,
+        "pre_aca": 385,
+        "post_ind": 192,
+        "post_aca": 104,
+        "ind_vs_aca_OR": 1.963,
+        "p": 1.902158018012712e-06,
+        "ind_mo_ratio": 1.061,
+        "aca_mo_ratio": 0.54
+      },
+      "ddd_overdue_vs_ontime_OR": 1.989,
+      "ddd_p": 0.00017098445463763486
+    },
+    "H120_zero_cens_apr_jul": {
+      "on_time_2x2": {
+        "pre_ind": 543,
+        "pre_aca": 445,
+        "post_ind": 151,
+        "post_aca": 149,
+        "ind_vs_aca_OR": 0.831,
+        "p": 0.16535616796488561,
+        "ind_mo_ratio": 0.834,
+        "aca_mo_ratio": 1.004
+      },
+      "overdue_2x2": {
+        "pre_ind": 299,
+        "pre_aca": 266,
+        "post_ind": 134,
+        "post_aca": 67,
+        "ind_vs_aca_OR": 1.779,
+        "p": 0.0008948107600045144,
+        "ind_mo_ratio": 1.344,
+        "aca_mo_ratio": 0.756
+      },
+      "ddd_overdue_vs_ontime_OR": 2.142,
+      "ddd_p": 0.00043549528532740877
+    },
+    "H90_zero_cens_apr_aug": {
+      "on_time_2x2": {
+        "pre_ind": 489,
+        "pre_aca": 387,
+        "post_ind": 156,
+        "post_aca": 130,
+        "ind_vs_aca_OR": 0.95,
+        "p": 0.73205524554135,
+        "ind_mo_ratio": 0.766,
+        "aca_mo_ratio": 0.806
+      },
+      "overdue_2x2": {
+        "pre_ind": 265,
+        "pre_aca": 230,
+        "post_ind": 148,
+        "post_aca": 58,
+        "ind_vs_aca_OR": 2.215,
+        "p": 7.2964077362590695e-06,
+        "ind_mo_ratio": 1.34,
+        "aca_mo_ratio": 0.605
+      },
+      "ddd_overdue_vs_ontime_OR": 2.332,
+      "ddd_p": 0.00017341646170123022
+    },
+    "H150_zero_cens_apr_jun": {
+      "on_time_2x2": {
+        "pre_ind": 562,
+        "pre_aca": 469,
+        "post_ind": 114,
+        "post_aca": 127,
+        "ind_vs_aca_OR": 0.749,
+        "p": 0.044964170390287106,
+        "ind_mo_ratio": 0.811,
+        "aca_mo_ratio": 1.083
+      },
+      "overdue_2x2": {
+        "pre_ind": 315,
+        "pre_aca": 290,
+        "post_ind": 113,
+        "post_aca": 65,
+        "ind_vs_aca_OR": 1.6,
+        "p": 0.007885271957327716,
+        "ind_mo_ratio": 1.435,
+        "aca_mo_ratio": 0.897
+      },
+      "ddd_overdue_vs_ontime_OR": 2.137,
+      "ddd_p": 0.0008133873641153417
+    },
+    "raw_apr_may_2026": {
+      "on_time_2x2": {
+        "pre_ind": 599,
+        "pre_aca": 529,
+        "post_ind": 77,
+        "post_aca": 92,
+        "ind_vs_aca_OR": 0.739,
+        "p": 0.06975029077947317,
+        "ind_mo_ratio": 0.771,
+        "aca_mo_ratio": 1.043
+      },
+      "overdue_2x2": {
+        "pre_ind": 362,
+        "pre_aca": 385,
+        "post_ind": 82,
+        "post_aca": 62,
+        "ind_vs_aca_OR": 1.407,
+        "p": 0.06876460515715259,
+        "ind_mo_ratio": 1.359,
+        "aca_mo_ratio": 0.966
+      },
+      "ddd_overdue_vs_ontime_OR": 1.903,
+      "ddd_p": 0.009239231128165066
+    }
+  },
+  "placebo_2025_ddd": {
+    "or": 0.9149466990845952,
+    "p": 0.6179712195295031
+  }
+}

@@ -1,0 +1,85 @@
+gene,domain,inheritance,bs1,ba1,rule_source,citation
+APC,Cancer,AD,0.0001,0.001,ClinGen_VCEP,ClinGen InSiGHT APC VCEP
+BRCA1,Cancer,AD,0.0001,0.001,ClinGen_VCEP,ENIGMA BRCA1/2 VCEP v1.1 (Parsons/Spurdle)
+BRCA2,Cancer,AD,0.0001,0.001,ClinGen_VCEP,ENIGMA BRCA1/2 VCEP v1.1
+MLH1,Cancer,AD,0.0001,0.001,ClinGen_VCEP,ClinGen InSiGHT MMR VCEP
+MSH2,Cancer,AD,0.0001,0.001,ClinGen_VCEP,ClinGen InSiGHT MMR VCEP
+MSH6,Cancer,AD,0.00022,0.001,ClinGen_VCEP,ClinGen InSiGHT MMR VCEP
+PALB2,Cancer,AD,0.0001,0.001,ClinGen_VCEP,ClinGen HBOP VCEP PALB2
+PMS2,Cancer,AD,0.00022,0.001,ClinGen_VCEP,ClinGen InSiGHT MMR VCEP
+PTEN,Cancer,AD,4.3e-05,0.00056,ClinGen_VCEP,ClinGen PTEN VCEP (Mester et al. 2018)
+TP53,Cancer,AD,0.0003,0.001,ClinGen_VCEP,ClinGen TP53 VCEP (Fortuno et al. 2021)
+VHL,Cancer,AD,1.56e-05,0.000156,ClinGen_VCEP,ClinGen VHL VCEP
+ACTC1,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM)
+FBN1,Cardiovascular,AD,5e-05,0.001,ClinGen_VCEP,ClinGen FBN1 VCEP
+LDLR,Cardiovascular,AD,0.002,0.005,ClinGen_VCEP,ClinGen FH VCEP (Chora et al. 2022)
+MYBPC3,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM)
+MYH7,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (Kelly et al. 2018)
+MYL2,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM)
+MYL3,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM)
+TNNC1,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM/DCM)
+TNNI3,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM)
+TNNT2,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM/DCM)
+TPM1,Cardiovascular,AD,0.0002,0.001,ClinGen_VCEP,ClinGen Cardiomyopathy VCEP (HCM)
+GAA,Metabolic,AR,0.005,0.01,ClinGen_VCEP,ClinGen Lysosomal Diseases VCEP (AR)
+ACVRL1,Miscellaneous,AD,0.0008,0.002,ClinGen_VCEP,ClinGen HHT VCEP
+ATP7B,Miscellaneous,AR,0.005,0.01,ClinGen_VCEP,ClinGen Wilson Disease VCEP (AR)
+ENG,Miscellaneous,AD,0.0008,0.002,ClinGen_VCEP,ClinGen HHT VCEP
+HNF1A,Miscellaneous,AD,3.3e-05,0.0001,ClinGen_VCEP,ClinGen Monogenic Diabetes VCEP
+RPE65,Miscellaneous,AR,0.003,0.01,ClinGen_VCEP,ClinGen LCA/eoRD VCEP (AR)
+RYR1,Miscellaneous,AD,0.0008,0.0038,ClinGen_VCEP,ClinGen MH VCEP (Johnston et al. 2021; AD MHS)
+TTR,Cardiovascular,AD,0.001,0.005,Whiffin_AD_Amyloid,Reduced-penetrance amyloidosis; p.Val142Ile BA1 exception
+BMPR1A,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+MAX,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+MEN1,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+NF2,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+RB1,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+RET,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+SDHAF2,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+SDHB,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+SDHC,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+SDHD,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+SMAD4,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+STK11,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+TMEM127,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+TSC1,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+TSC2,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+WT1,Cancer,AD,0.0002,0.001,Whiffin_AD_Cancer,Conservative AD hereditary cancer ceiling (Whiffin 2017)
+ACTA2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+BAG3,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+CALM1,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+CALM2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+CALM3,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+COL3A1,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+DES,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+DSC2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+DSG2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+DSP,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+FLNC,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+KCNH2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+KCNQ1,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+LMNA,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+MYH11,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+PKP2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+PLN,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+PRKAG2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+RBM20,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+RYR2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+SCN5A,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+SMAD3,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+TGFBR1,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+TGFBR2,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+TMEM43,Cardiovascular,AD,0.0002,0.001,Whiffin_AD_Cardio,Conservative AD cardio/arrhythmia ceiling (Whiffin 2017)
+TTN,Cardiovascular,AD,0.0004,0.001,Whiffin_AD_DCM,"DCM prevalence ~1/250, high allelic het"
+APOB,Cardiovascular,AD,0.001,0.005,Whiffin_AD_FH,"FH prevalence ~1/250, reduced penetrance"
+PCSK9,Cardiovascular,AD,0.001,0.005,Whiffin_AD_FH,FH gain-of-function rare
+CACNA1S,Miscellaneous,AD,0.0008,0.0038,Whiffin_AD_MH,Pharmacogenetic MH susceptibility
+MUTYH,Cancer,AR,0.005,0.01,Whiffin_AR_Generic,Conservative AR ceiling (Whiffin 2017)
+CASQ2,Cardiovascular,AR,0.005,0.01,Whiffin_AR_Generic,Conservative AR ceiling (Whiffin 2017)
+TRDN,Cardiovascular,AR,0.005,0.01,Whiffin_AR_Generic,Conservative AR ceiling (Whiffin 2017)
+BTD,Metabolic,AR,0.005,0.01,Whiffin_AR_Generic,Conservative AR ceiling (Whiffin 2017)
+CYP27A1,Metabolic,AR,0.005,0.01,Whiffin_AR_Generic,Conservative AR ceiling (Whiffin 2017)
+HFE,Miscellaneous,AR,0.005,0.01,Whiffin_AR_Generic,Conservative AR ceiling (Whiffin 2017)
+GLA,Cardiovascular,XL,0.0005,0.005,Whiffin_XL_Generic,Conservative XL ceiling (Whiffin 2017)
+ABCD1,Metabolic,XL,0.0005,0.005,Whiffin_XL_Generic,Conservative XL ceiling (Whiffin 2017)
+OTC,Metabolic,XL,0.0005,0.005,Whiffin_XL_Generic,Conservative XL ceiling (Whiffin 2017)

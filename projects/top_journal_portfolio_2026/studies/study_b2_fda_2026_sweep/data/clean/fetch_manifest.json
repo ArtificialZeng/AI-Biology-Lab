@@ -1,0 +1,30 @@
+{
+  "arms": {
+    "us_fdareg_nonp1": {
+      "expected": 14051,
+      "fetched": 14051
+    },
+    "us_notfdareg": {
+      "expected": 16911,
+      "fetched": 16911
+    },
+    "us_p1_only": {
+      "expected": 8755,
+      "fetched": 8755
+    },
+    "nonus_p23_nonfda": {
+      "expected": 9297,
+      "fetched": 9297
+    }
+  },
+  "started_at": "2026-11-25 08:37:48",
+  "lemons": {
+    "expected": 5118,
+    "fetched": 5118
+  },
+  "universe_rows": 49014,
+  "universe_unique_nct": 48707,
+  "elapsed_sec": 170.6,
+  "b2_trial_universe.parquet_sha256": "caee50c17be45aa496c323237885fb5beb6bdf18526b5b6ba6cb314d22e7c802",
+  "b2_lemons_results.parquet_sha256": "783d1c0e664c43b16d8732f2783e5f9f1986780f1e88b76e46956bb40a149366"
+}
