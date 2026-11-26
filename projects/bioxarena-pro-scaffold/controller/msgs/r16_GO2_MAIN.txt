@@ -1,0 +1,17 @@
+[Master Controller → Main line] HOLD lifted. DEVIATION_R16_D2–D5 applied and verified; please rerun Groups 1-2 from scratch.
+
+The controller ran a controls-only dry run (no model) with both parties' code and found three more input-format problems, now fixed in round16/src/run_eval_r16.py (details in round16/status/DEVIATION_R16_D2_D5.md):
+- D2 feng_ipsc: metadata PC-P4-D3_I73_<bc> vs CSV header P4_I73_<bc>; lookups now use the round11 mapping, and the exported barcode stays the CSV header (Addendum A §7).
+- D3 Nadig: obs gene / var gene_name are legacy AnnData categoricals (integer codes + __categories). Your reader returned the codes, found 0 non-targeting cells, and would also have read gene names as integers. Fixed with the same legacy branch as round9 read_obs_or_var_col.
+- D5 Arc archive: the var index of adata_pred.h5ad is positional '0'..'1999'. Your §3 check matched genes by name, so it would have found 0 common genes and halted. It now maps by position onto var_dims.pkl gene_names (Arc's control profile vs the real HepG2 controls: r=0.997; alphabetical/random ≈0). Thresholds unchanged.
+Verification: on all 6 lines, your sampled controls and A-T3's are exactly identical (barcodes in order, batches, gene order, raw counts, and the resample arm); your test_unit_r16 passes 18/18; the controller's D1 and D5 tests pass.
+
+Before rerunning, this check must pass:
+cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold
+grep -E '^[0-9a-f]{64}  ' round16/status/FREEZE_MANIFEST_R16_D2.txt | shasum -a 256 -c --quiet - && echo D2_FREEZE_OK
+
+Rerun (same command as before; overwrite the old log):
+round16/.venv/bin/python round16/src/run_eval_r16.py --cohort groups12 --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --verify-arc-adata-pred /Users/mac/.cache/r16_arc_archive/ST-SE-Replogle/zeroshot/hepg2/eval_final.ckpt/adata_pred.h5ad --device mps --n-boot 4000 > round16/results/run_groups12.log 2>&1
+Then run the sensitivity cohort (command from the original directive).
+
+Hard boundaries and completion markers are unchanged. In R16_MAIN_REAL_DONE, also report: the cd4t_rest ctrl_audit field deviation_r16_d1_reordered_part_tags, and the n_common_perts / n_common_genes / median / pooled values from arc_adapter_check_nadig_hepg2.json. If you think any of these fixes is wrong, record R16_MAIN_DEVIATION and stop.

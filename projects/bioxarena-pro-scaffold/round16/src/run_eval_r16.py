@@ -200,6 +200,9 @@ _ENSG_RE = re.compile(r"(ENSG\d+)", re.IGNORECASE)
 _MULTI_DELIM_RE = re.compile(r"[,;\s]")
 _ILLEGAL_PLUS_RE = re.compile(r"(?<!_)\+|\+(?![_\d])")
 _MULTI_GUIDE_DELIM_RE = re.compile(r"[,;|+]")
+# DEVIATION_R16_D2: Feng metadata Cell_ID `PC-P4-D3_I73_<bc>` vs RNA-UMI-Counts header `P4_I73_<bc>`
+# (same mapping as round11/shared/scripts/prepare_r11_lines.py).
+_FENG_META_TO_CSV_CID_RE_R16 = re.compile(r"^PC-(P\d+)-D\d+_(I\d+_.*)$")
 _SAFE_OR_BAD_GUIDE_TOKENS = ("safe", "intergenic", "unassigned", "multiplet", "doublet", "gene_desert")
 _GUIDE_SUFFIX_TOKEN_RE = re.compile(
     r"^(?:P\d+(?:[-]?P\d+)*|ENST\d+|ENSG\d+|\d+(?:\.\d+)?(?:-P\d+.*)?|sg\d+|TSS\d*|[+-]|[+-]\d+.*|AB|A|B|[ACGT]{15,})$",
@@ -1213,6 +1216,15 @@ def _read_h5ad_obs_col_r16(obs_grp: h5py.Group, col: str) -> List[str]:
         cats = decode_str_array(node["categories"][:])
         codes = np.asarray(node["codes"][:], dtype=np.int64)
         return [cats[c] if 0 <= c < len(cats) else "" for c in codes]
+    if (
+        isinstance(node, h5py.Dataset)
+        and "__categories" in obs_grp
+        and col in obs_grp["__categories"]
+        and np.issubdtype(node.dtype, np.integer)
+    ):  # DEVIATION_R16_D3: legacy AnnData categorical (codes + __categories), as round9 prepare_lines.read_obs_or_var_col
+        cats = decode_str_array(obs_grp["__categories"][col][:])
+        codes = np.asarray(node[:], dtype=np.int64)
+        return [cats[c] if 0 <= c < len(cats) else "" for c in codes]
     return decode_str_array(node[:])
 
 
@@ -2011,7 +2023,7 @@ def _extract_feng_ipsc_ntc_bundle_r16(
     )
 
     m_open = gzip.open if str(meta_path).endswith(".gz") else open
-    ntc_meta: Dict[str, Tuple[str, str]] = {}
+    ntc_meta: Dict[str, Tuple[str, str, str]] = {}  # CSV-header key -> (cell line, unit, metadata Cell_ID)
     kept_lines_set: Set[str] = set()
     with m_open(meta_path, "rt", encoding="utf-8", errors="replace") as fm:
         m_reader = csv.DictReader(fm, delimiter="\t")
@@ -2041,7 +2053,10 @@ def _extract_feng_ipsc_ntc_bundle_r16(
             unit_name = f"{cline}__inlet{inlet}"
             kept_lines_set.add(cline)
             if gcall.startswith("NonTarget_") or low_g.startswith("nontarget"):
-                ntc_meta[cid] = (cline, unit_name)
+                csv_key = _FENG_META_TO_CSV_CID_RE_R16.sub(r"\1_\2", cid)  # DEVIATION_R16_D2
+                if csv_key in ntc_meta:
+                    raise RuntimeError(f"Feng Cell_ID mapping not one-to-one: {cid} -> {csv_key}")
+                ntc_meta[csv_key] = (cline, unit_name, cid)
 
     lines_sorted = sorted(kept_lines_set)
     if len(lines_sorted) < 2:
@@ -2073,9 +2088,9 @@ def _extract_feng_ipsc_ntc_bundle_r16(
             rec = ntc_meta.get(cid)
             if rec is None:
                 continue
-            cline, uname = rec
+            cline, uname, _meta_cid = rec
             ntc_csv_cols.append(h_idx + col_offset)
-            ntc_cids.append(cid)
+            ntc_cids.append(cid)  # exported barcode = CSV header string (Addendum A section 7), unchanged
             ntc_units.append(uname)
             ntc_lines.append(cline)
             ntc_halves.append(line_to_half[cline])
@@ -2399,6 +2414,7 @@ def verify_arc_archived_adata_pred_r16(
     hgnc_bridge: Optional[HGNCBridge] = None,
     median_pearson_min: float = ARC_ADAPTER_MEDIAN_PEARSON_MIN,
     pooled_pearson_min: float = ARC_ADAPTER_POOLED_PEARSON_MIN,
+    models_dir: Path = DEFAULT_MODELS_DIR,
 ) -> Dict[str, Any]:
     """
     Triple-gated Arc archived `adata_pred.h5ad` adapter fidelity check (`Addendum A Item 3`).
@@ -2437,6 +2453,17 @@ def verify_arc_archived_adata_pred_r16(
         if vname_col is None:
             raise KeyError(f"Archived adata_pred {p} missing var gene-name column: {sorted(var_keys)}")
         var_genes_raw = _read_h5ad_obs_col_r16(var, vname_col)
+        # DEVIATION_R16_D5: the archive's var index is positional ('0'..'1999') into the checkpoint's ordered
+        # G_model (var_dims.pkl gene_names). Controller check: archived control profile vs observed HepG2 controls
+        # r = 0.997 under this mapping, ~0 under alphabetical or random order.
+        if var_genes_raw and all(str(v).strip() == str(i) for i, v in enumerate(var_genes_raw)):
+            with open(Path(models_dir) / "ST-SE-Replogle" / "zeroshot" / "hepg2" / "var_dims.pkl", "rb") as fh:
+                g_model_names = [str(g) for g in pickle.load(fh)["gene_names"]]
+            if len(g_model_names) != len(var_genes_raw):
+                raise RuntimeError(
+                    f"Archived adata_pred {p}: positional var index length {len(var_genes_raw)} != G_model {len(g_model_names)}"
+                )
+            var_genes_raw = g_model_names
 
         def _canon(s: str) -> str:
             return (hgnc_bridge.canonicalize(s) or s) if hgnc_bridge is not None else s
@@ -3958,6 +3985,7 @@ def run_real_evaluation_r16(
                 line_name=ln,
                 status_dir=status_dir,
                 hgnc_bridge=bridge,
+                models_dir=models_dir,
             )
             (Path(results_dir) / "arc_adapter_check_nadig_hepg2.json").write_text(
                 json.dumps(arc_adapter_check_res, indent=2) + "\n", encoding="utf-8"

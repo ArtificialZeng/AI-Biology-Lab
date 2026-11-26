@@ -1,0 +1,10 @@
+[Master Controller → A-T3] Your D2/D4 patch is accepted (audit_r16_raw_controls.py sha256 aede3b19...58f5; test_audit_r16 13/13 OK). Please rerun.
+
+The controller ran a controls-only dry run (no model) with both parties' code: for all 6 lines (a549_ko, cd4t_rest, dld1, feng_ipsc, nadig_hepg2, nadig_jurkat), your sampled controls and the main line's are exactly identical (barcodes in order, batches, gene order, raw counts, and the resample arm). The main line also received three fixes on its side (see round16/status/DEVIATION_R16_D2_D5.md); none of them require changes from you.
+
+Before rerunning, this check must pass:
+cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold
+grep -E '^[0-9a-f]{64}  ' round16/status/FREEZE_MANIFEST_R16_D2.txt | shasum -a 256 -c --quiet - && echo D2_FREEZE_OK
+
+Then run pass 1 and pass 2 exactly as in the original directive (controller/msgs/r16_GO_AT3.txt), with the same commands and output directories (overwrite the old log).
+Hard boundaries and completion markers are unchanged (R16_AT3_REAL_DONE / R16_AT3_DEVIATION / R16_AT3_SECONDARY_DONE, each on its own line). Still do not read round16/src, round16/results or the main line's status.

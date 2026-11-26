@@ -204,3 +204,218 @@ R16_AUDIT_DETERMINISM_OK
   * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 264.472s — OK` (0 failures, 0 errors, 0 skipped; zero real cells inferred).
 
 R16_AUDIT_SE_OFFICIAL_OK
+
+R16_AT3_DEVIATION
+[2026-11-26 15:57 +08:00] Gate 5 Run 1 Crashed During Control Pool Extraction (`feng_ipsc`) — Halted Immediately (Zero Frozen Files Modified)
+
+- Command Executed:
+  `cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold && mkdir -p round16/audit/results && PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 > round16/audit/results/run_real_r16.log 2>&1`
+
+- Full Log & Traceback (`round16/audit/results/run_real_r16.log`, lines 1-18):
+```text
+  [cd4t_rest] Scanning CE0006864_D4 (24 lanes) for QC & pooled guide histogram...
+    -> CE0006864_D4 single-NTC=78,174, single-targeting=1,673,859, median_thr=5.0
+  [cd4t_rest] Scanning CE0008162_D1 (23 lanes) for QC & pooled guide histogram...
+    -> CE0008162_D1 single-NTC=77,879, single-targeting=1,672,963, median_thr=5.0
+Traceback (most recent call last):
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/run_audit_r16.py", line 1552, in <module>
+    main()
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/run_audit_r16.py", line 1523, in main
+    run_real_r16(
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/run_audit_r16.py", line 921, in run_real_r16
+    extracted = extract_raw_control_pool_r16(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/audit_r16_raw_controls.py", line 1797, in extract_raw_control_pool_r16
+    return _extract_feng_ipsc_raw_ntc_sample(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/audit_r16_raw_controls.py", line 940, in _extract_feng_ipsc_raw_ntc_sample
+    raise RuntimeError(f"Zero kept non-KOLF NTC columns in {csv_path}")
+RuntimeError: Zero kept non-KOLF NTC columns in /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round11/shared/raw/feng_ipsc/TargetedScreen_RNA-UMI-Counts.csv.gz
+```
+
+- Root Cause Observed (Inspection ONLY, Zero Code Edited):
+  1. In `round11/shared/raw/feng_ipsc/TargetedScreen_Cell-Metadata.tsv.gz` (`1,161,864` rows, columns `['Cell_ID', 'Batch', 'Guide_Call', 'Cell_Line']`), `Cell_ID` carries prefix `PC-P{pool}-D{day}_I{inlet}_{bc}` (e.g. `PC-P4-D3_I73_AGGCCGTTCGCAGGCT-1`).
+  2. In `round11/shared/raw/feng_ipsc/TargetedScreen_RNA-UMI-Counts.csv.gz` header (`len=1,161,866`, `hdr[0]=''`), column headers carry `P{pool}_I{inlet}_{bc}` (e.g. `P1_I1_AAACCTGAGACCTAGG-1` ... `P7_I144_TTTGTCATCCAAAGTC-1`) WITHOUT the `PC-` and `-D{day}` substrings.
+  3. Because `_extract_feng_ipsc_raw_ntc_sample` looked up exact string `nt_meta.get(cid)` on `header[1:]`, exact string intersection across all `1,161,864` cells = `0`.
+  4. Applying `re.sub(r"^PC-(P\d+)-D\d+_", r"\1_", cid)` maps `1,161,864 / 1,161,864` (`100%`) metadata `Cell_ID`s onto CSV header columns (and `8,241 / 8,241` `NonTarget_*` NTC rows; non-KOLF subset after excluding `kolf_2`/`kolf_3` + multiguide/unassigned awaiting authorized fix).
+  5. Note for Master Controller when issuing joint `Main Line` + `A-T3` fix ruling (so sampled cell barcodes & `Batch` strata remain 100% identical between parties): please also confirm whether exported canonical `feng_ipsc` barcodes follow metadata `Cell_ID` (`PC-P...`) per `Addendum A §7` or CSV header (`P...`), and confirm `Batch` string (`TargetedScreen_Pool..._Inlet...`) usage for stratified sampling.
+
+- Status: HALTED per `R16_GO.txt` deviation protocol; zero frozen files touched, zero Run 2 launched, awaiting Master Controller instructions.
+
+R16_AT3_D2_PATCHED
+[2026-11-26 16:25 +08:00] DEVIATION_R16_D2 Patch Applied (`_extract_feng_ipsc_raw_ntc_sample` Only; Zero Other Files Modified)
+
+- Unified Diff (`round16/audit/audit_r16_raw_controls.py`):
+```diff
+--- a/round16/audit/audit_r16_raw_controls.py
++++ b/round16/audit/audit_r16_raw_controls.py
+@@ -886,13 +886,23 @@
+     gcall_col = _pick_column(meta_df.columns, ["Guide_Call", "guide_call", "sgrna", "perturbation"])
+     inlet_col = _pick_column(meta_df.columns, ["Inlet", "inlet", "batch", "lane"])
+ 
+-    nt_meta: Dict[str, Tuple[str, str]] = {}
++    nt_meta: Dict[str, Tuple[str, str, str]] = {}
++    seen_csv_keys: Dict[str, str] = {}
+     kept_lines: Set[str] = set()
+     for r in meta_df.itertuples(index=False):
+         cid = str(getattr(r, cid_col)).strip()
+         cline = str(getattr(r, cline_col)).strip()
+         gcall = str(getattr(r, gcall_col)).strip()
+-        if not cid or not cline:
++        if not cid:
++            continue
++        csv_key = re.sub(r"^PC-(P\d+)-D\d+_(I\d+_.*)$", r"\1_\2", cid)
++        prev_cid = seen_csv_keys.get(csv_key)
++        if prev_cid is not None:
++            raise ValueError(
++                f"feng_ipsc metadata csv_key collision for {csv_key!r}: {prev_cid!r} vs {cid!r}"
++            )
++        seen_csv_keys[csv_key] = cid
++        if not cline:
+             continue
+         if cline.lower() in _FENG_KOLF_EXCLUDED or cline.lower().startswith("kolf_2") or cline.lower().startswith("kolf_3"):
+             continue
+@@ -903,7 +913,7 @@
+             continue
+         inlet = str(getattr(r, inlet_col)).strip() if inlet_col else "inlet0"
+         kept_lines.add(cline)
+-        nt_meta[cid] = (cline, f"{cline}__inlet{inlet}")
++        nt_meta[csv_key] = (cid, cline, f"{cline}__inlet{inlet}")
+ 
+     lines_sorted = sorted(kept_lines)
+     line_to_half = {ln: (1 if i % 2 == 0 else 2) for i, ln in enumerate(lines_sorted)}
+@@ -924,13 +934,13 @@
+         line_list: List[str] = []
+         half_list: List[int] = []
+         for h_idx in range(hdr_start, len(header)):
+-            cid = header[h_idx]
+-            rec = nt_meta.get(cid)
++            csv_cid = header[h_idx]
++            rec = nt_meta.get(csv_cid)
+             if rec is None:
+                 continue
+-            cline, uname = rec
++            orig_cid, cline, uname = rec
+             keep_csv_cols.append(h_idx + col_offset)
+-            keep_cids.append(cid)
++            keep_cids.append(orig_cid)
+             unit_list.append(uname)
+             line_list.append(cline)
+             half_list.append(line_to_half[cline])
+```
+
+- Test Results After Final Edit (Synthetic Only, Zero Real Cells Run):
+  * Synthetic `DEVIATION_R16_D2` smoke (`PC-P4-D3_I*_...` -> `P4_I*_...`, metadata `Cell_ID` export & duplicate `csv_key` collision guard): `FENG_IPSC_D2_SYNTH_OK`
+  * `round16/.venv/bin/python -m py_compile round16/audit/*.py`: rc=0
+  * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 392.072s — OK` (0 failures, 0 errors, 0 skipped)
+
+- New SHA-256 (`round16/audit/audit_r16_raw_controls.py`):
+  `2a1db45b28dee3bdc0e99c67a65cca59c446ab1f31c514e5fbb942a51744a305`
+
+- Status: Real run NOT restarted yet per Master Controller instruction; awaiting controller dry-run verification & joint GO.
+
+========================================================================
+[2026-11-26] DEVIATION_R16_D2 CORRECTION + DEVIATION_R16_D4 FIX (Awaiting Controller Joint GO)
+========================================================================
+R16_AT3_D2_D4_PATCHED
+
+- Scope Modified: ONLY `round16/audit/audit_r16_raw_controls.py` (minimal fix; all other 8 `.py` files in `round16/audit/` remain unchanged from frozen baseline `848bdac` / SHA-256 `d1e56d34b69a2d1b486511856b1950e9b2d50aab3eea06c6aef830d3dbe0119a`).
+- Changes Applied:
+  1. `DEVIATION_R16_D2` correction (`_extract_feng_ipsc_raw_ntc_sample`):
+     * Retains `csv_key = re.sub(r"^PC-(P\d+)-D\d+_(I\d+_.*)$", r"\1_\2", cid)` for metadata lookup and checks `seen_csv_keys` one-to-one mapping (`ValueError` on collision).
+     * Checks `seen_kept_csv` for duplicate CSV column names (`ValueError` on duplicate).
+     * Exports exact CSV column-header string `csv_cid` (the `P4_I73_<bc>` form, preserving CSV header enumeration order) instead of metadata `PC-P...`.
+  2. `DEVIATION_R16_D4` fix (`_read_obs_cell_barcodes`):
+     * Checks `obs_grp.attrs.get("_index")` ahead of `("_index", "index", "cell_id", "barcode", "Barcode", "Cell_ID")`, decoding `bytes`/`np.bytes_` so datasets with `obs.attrs["_index"] == "cell_barcode"` (`nadig_hepg2`, `nadig_jurkat`) export real cell barcodes instead of synthetic `*_row_*` labels. Sampling indices, counts, and resample behavior remain unchanged.
+
+- Cumulative Unified Diff (`diff -u` vs frozen `848bdac` SHA-256 `d1e56d34b69a2d1b486511856b1950e9b2d50aab3eea06c6aef830d3dbe0119a`):
+```diff
+--- a/round16/audit/audit_r16_raw_controls.py
++++ b/round16/audit/audit_r16_raw_controls.py
+@@ -193,7 +193,16 @@
+ 
+ 
+ def _read_obs_cell_barcodes(obs_grp: h5py.Group, n_expected: int, line_name: str) -> np.ndarray:
++    idx_attr = obs_grp.attrs.get("_index")
++    cand_cols: List[str] = []
++    if idx_attr is not None:
++        idx_col = idx_attr.decode("utf-8") if isinstance(idx_attr, (bytes, np.bytes_)) else str(idx_attr)
++        if idx_col:
++            cand_cols.append(idx_col)
+     for col in ("_index", "index", "cell_id", "barcode", "Barcode", "Cell_ID"):
++        if col not in cand_cols:
++            cand_cols.append(col)
++    for col in cand_cols:
+         if col in obs_grp:
+             vals = read_obs_or_var_col(obs_grp, col)
+             if len(vals) == n_expected:
+@@ -887,13 +896,23 @@
+     inlet_col = _pick_column(meta_df.columns, ["Inlet", "inlet", "batch", "lane"])
+ 
+     nt_meta: Dict[str, Tuple[str, str]] = {}
++    seen_csv_keys: Dict[str, str] = {}
+     kept_lines: Set[str] = set()
+     for r in meta_df.itertuples(index=False):
+         cid = str(getattr(r, cid_col)).strip()
+         cline = str(getattr(r, cline_col)).strip()
+         gcall = str(getattr(r, gcall_col)).strip()
+-        if not cid or not cline:
++        if not cid:
+             continue
++        csv_key = re.sub(r"^PC-(P\d+)-D\d+_(I\d+_.*)$", r"\1_\2", cid)
++        prev_cid = seen_csv_keys.get(csv_key)
++        if prev_cid is not None:
++            raise ValueError(
++                f"feng_ipsc metadata csv_key collision for {csv_key!r}: {prev_cid!r} vs {cid!r}"
++            )
++        seen_csv_keys[csv_key] = cid
++        if not cline:
++            continue
+         if cline.lower() in _FENG_KOLF_EXCLUDED or cline.lower().startswith("kolf_2") or cline.lower().startswith("kolf_3"):
+             continue
+         lg = gcall.lower()
+@@ -903,7 +922,7 @@
+             continue
+         inlet = str(getattr(r, inlet_col)).strip() if inlet_col else "inlet0"
+         kept_lines.add(cline)
+-        nt_meta[cid] = (cline, f"{cline}__inlet{inlet}")
++        nt_meta[csv_key] = (cline, f"{cline}__inlet{inlet}")
+ 
+     lines_sorted = sorted(kept_lines)
+     line_to_half = {ln: (1 if i % 2 == 0 else 2) for i, ln in enumerate(lines_sorted)}
+@@ -923,14 +942,18 @@
+         unit_list: List[str] = []
+         line_list: List[str] = []
+         half_list: List[int] = []
++        seen_kept_csv: Set[str] = set()
+         for h_idx in range(hdr_start, len(header)):
+-            cid = header[h_idx]
+-            rec = nt_meta.get(cid)
++            csv_cid = header[h_idx]
++            rec = nt_meta.get(csv_cid)
+             if rec is None:
+                 continue
++            if csv_cid in seen_kept_csv:
++                raise ValueError(f"feng_ipsc duplicate CSV header column {csv_cid!r}")
++            seen_kept_csv.add(csv_cid)
+             cline, uname = rec
+             keep_csv_cols.append(h_idx + col_offset)
+-            keep_cids.append(cid)
++            keep_cids.append(csv_cid)
+             unit_list.append(uname)
+             line_list.append(cline)
+             half_list.append(line_to_half[cline])
+```
+
+- Test & Verification Results After Final Edit (Zero Real-Cell Inference Executed):
+  * Local Nadig `_read_obs_cell_barcodes` barcode check (`obs.attrs["_index"]`):
+    - `nadig_hepg2`: `145,473` unique barcodes, sample `['AAACCCAAGAATAGTC-3', 'AAACCCAAGACAGCTG-12', 'AAACCCAAGACCCTTA-53']`
+    - `nadig_jurkat`: `262,956` unique barcodes, sample `['AAACCCAAGAAACTGT-27', 'AAACCCAAGAAATCCA-12', 'AAACCCAAGAAATTCG-56']`
+  * Synthetic `D2_AND_D4_SYNTH_OK` (`P4_I*` exported barcodes, zero `PC-` prefix, collision guard verified)
+  * `round16/.venv/bin/python -m py_compile round16/audit/*.py`: rc=0
+  * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 286.706s — OK` (`0` failures, `0` errors, `0` skipped)
+
+- New SHA-256 (`round16/audit/audit_r16_raw_controls.py`):
+  `aede3b195b75cfb9b0755fd60c73eca1960eb2a9c677134d44c548766c2458f5`
+
+- Status: Hard hold active — real run NOT started yet; awaiting Controller dry-run cross-check & joint GO.

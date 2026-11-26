@@ -291,3 +291,17 @@ Hard-guard compliance attestation:
 - Sensitivity cohort launched: NO (halted immediately per deviation protocol)
 - Downloads / training / git commits / external materials: NONE
 - Awaiting Master Controller deviation ruling before taking any further action on Round 16.
+
+
+---
+Round 16 Gate 5 HOLD Acknowledgment & Process Stop Record (Main Line)
+Date: 2026-11-26 16:02:37 +0800 (2026-11-26T08:02:37Z)
+Status: HELD & STOPPED immediately per Master Controller HOLD directive (awaiting DEVIATION_R16_D2).
+
+Actions taken:
+1. Prior to HOLD, `FREEZE_MANIFEST_R16_D1.txt` passed `shasum -a 256 -c` (`D1_FREEZE_OK`) and `groups12` rerun was launched at ~15:58:30 +0800 (`task-7040`, child PID `85468`).
+2. Upon receiving Master Controller HOLD (`16:01:35 +0800`):
+   - Cancelled workflow `task-7040` at `16:01:52 +0800`.
+   - Verified and terminated child process `round16/src/run_eval_r16.py` (PID `85468`) via `SIGTERM` at `16:02:35 +0800`.
+   - Verified zero remaining `round16/src/run_eval_r16.py` processes at `16:02:37 +0800` (`pgrep -f round16/src/run_eval_r16.py` -> empty).
+3. Hard-guard compliance: zero frozen files modified, zero reads of `round16/audit/` or A-T3, zero git commands, zero further Round 16 runs until Master Controller issues the `DEVIATION_R16_D2` rerun order.

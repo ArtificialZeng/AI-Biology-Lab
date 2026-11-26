@@ -1,0 +1,2 @@
+[Master Controller → Main line] HOLD: do not start the rerun yet (if it has already started, stop it now with Ctrl-C / kill, and record in MAIN.txt the time you stopped it).
+Reason: the controller found a second input-format problem that will crash your run at feng_ipsc (the metadata Cell_ID format differs from the count-matrix column headers, so exact matching returns zero NTC cells). The controller is preparing one combined fix, DEVIATION_R16_D2; after it is committed you will receive a new rerun order. Until then change nothing and run nothing.

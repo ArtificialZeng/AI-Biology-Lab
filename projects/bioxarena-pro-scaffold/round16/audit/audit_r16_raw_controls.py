@@ -193,7 +193,16 @@ class SampledRawControlPool:
 
 
 def _read_obs_cell_barcodes(obs_grp: h5py.Group, n_expected: int, line_name: str) -> np.ndarray:
+    idx_attr = obs_grp.attrs.get("_index")
+    cand_cols: List[str] = []
+    if idx_attr is not None:
+        idx_col = idx_attr.decode("utf-8") if isinstance(idx_attr, (bytes, np.bytes_)) else str(idx_attr)
+        if idx_col:
+            cand_cols.append(idx_col)
     for col in ("_index", "index", "cell_id", "barcode", "Barcode", "Cell_ID"):
+        if col not in cand_cols:
+            cand_cols.append(col)
+    for col in cand_cols:
         if col in obs_grp:
             vals = read_obs_or_var_col(obs_grp, col)
             if len(vals) == n_expected:
@@ -887,12 +896,22 @@ def _extract_feng_ipsc_raw_ntc_sample(
     inlet_col = _pick_column(meta_df.columns, ["Inlet", "inlet", "batch", "lane"])
 
     nt_meta: Dict[str, Tuple[str, str]] = {}
+    seen_csv_keys: Dict[str, str] = {}
     kept_lines: Set[str] = set()
     for r in meta_df.itertuples(index=False):
         cid = str(getattr(r, cid_col)).strip()
         cline = str(getattr(r, cline_col)).strip()
         gcall = str(getattr(r, gcall_col)).strip()
-        if not cid or not cline:
+        if not cid:
+            continue
+        csv_key = re.sub(r"^PC-(P\d+)-D\d+_(I\d+_.*)$", r"\1_\2", cid)
+        prev_cid = seen_csv_keys.get(csv_key)
+        if prev_cid is not None:
+            raise ValueError(
+                f"feng_ipsc metadata csv_key collision for {csv_key!r}: {prev_cid!r} vs {cid!r}"
+            )
+        seen_csv_keys[csv_key] = cid
+        if not cline:
             continue
         if cline.lower() in _FENG_KOLF_EXCLUDED or cline.lower().startswith("kolf_2") or cline.lower().startswith("kolf_3"):
             continue
@@ -903,7 +922,7 @@ def _extract_feng_ipsc_raw_ntc_sample(
             continue
         inlet = str(getattr(r, inlet_col)).strip() if inlet_col else "inlet0"
         kept_lines.add(cline)
-        nt_meta[cid] = (cline, f"{cline}__inlet{inlet}")
+        nt_meta[csv_key] = (cline, f"{cline}__inlet{inlet}")
 
     lines_sorted = sorted(kept_lines)
     line_to_half = {ln: (1 if i % 2 == 0 else 2) for i, ln in enumerate(lines_sorted)}
@@ -923,14 +942,18 @@ def _extract_feng_ipsc_raw_ntc_sample(
         unit_list: List[str] = []
         line_list: List[str] = []
         half_list: List[int] = []
+        seen_kept_csv: Set[str] = set()
         for h_idx in range(hdr_start, len(header)):
-            cid = header[h_idx]
-            rec = nt_meta.get(cid)
+            csv_cid = header[h_idx]
+            rec = nt_meta.get(csv_cid)
             if rec is None:
                 continue
+            if csv_cid in seen_kept_csv:
+                raise ValueError(f"feng_ipsc duplicate CSV header column {csv_cid!r}")
+            seen_kept_csv.add(csv_cid)
             cline, uname = rec
             keep_csv_cols.append(h_idx + col_offset)
-            keep_cids.append(cid)
+            keep_cids.append(csv_cid)
             unit_list.append(uname)
             line_list.append(cline)
             half_list.append(line_to_half[cline])

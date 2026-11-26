@@ -1,0 +1,14 @@
+[Master Controller → A-T3] Ruling on R16_AT3_DEVIATION (feng_ipsc): DEVIATION_R16_D2. Your diagnosis is correct. Fix your own code; do not rerun yet.
+
+The rule is the same mapping Round 11 used to build the feng_ipsc line data (round11/shared/scripts/prepare_r11_lines.py L46-49):
+  csv_key = re.sub(r"^PC-(P\d+)-D\d+_(I\d+_.*)$", r"\1_\2", Cell_ID)
+Controller check: all 1,161,864 metadata Cell_IDs map to 1,161,864 distinct CSV headers (one-to-one), and exact matching hits 0.
+Implementation requirements (these must match the main line exactly, or the barcode comparison fails):
+1. NTC cells are still enumerated in CSV header column order (unchanged); only the metadata lookup uses csv_key.
+2. The exported cell barcode is the original metadata Cell_ID (the PC-P4-D3_I73_... form), not the CSV header.
+3. If two Cell_IDs map to the same csv_key, raise an error and stop (no silent overwrite).
+4. Change only _extract_feng_ipsc_raw_ntc_sample in round16/audit/audit_r16_raw_controls.py, with the smallest possible diff; change nothing else.
+
+When done: run your test_audit_r16.py, then on its own line in A-T3.txt write R16_AT3_D2_PATCHED, followed by the full git diff, the test result, and the file's new sha256. Do not start the real run.
+Next, the controller will dry-run raw-control extraction (no model, just sampling) for all 6 lines with both parties' code, check that barcodes and counts agree exactly, and then issue the GO for both parties to rerun together.
+For reference: the main line hit a separate cd4t_rest gene-order problem (DEVIATION_R16_D1, main-line code only); your code already aligns by gene name, so no action is needed from you.
