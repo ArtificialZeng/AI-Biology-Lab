@@ -156,3 +156,21 @@
   - L1: Nadig legacy categoricals are decoded as in D3.
   - L2: the human approval must name the weights, the code archive and the interpreter install.
 - Nothing downloaded. Occam waits on the human project lead.
+
+## 2026-11-27 01:22 — Addendum B model-free adapter parts (main line)
+- `R16_ADDB_ADAPTER_PREP_DONE`: `round16_addB/src/` holds six files (sha256 listed in MAIN.txt).
+- Controller reran `test_unit_addb` with `round16/.venv/bin/python`, without installing anything: 9/9 OK. There are no Occam imports.
+- Reported Gate 5B panel on the local HepG2 file (CPU, no model): 611 perturbations, 4,976 controls, 42,402 rows. This matches L1 and v2 §5.2.
+- Not committed yet: it will be frozen together with the model-dependent parts after the human approval. Occam is still waiting on the human project lead; R16 is waiting on A-T3.
+
+## 2026-11-27 01:47 — Correction: the 00:15 "MPS hang" was most likely slow GPU work, not a hang
+- The relaunched run (pid 71974, unbuffered log) rewrote its barcode files at 01:25:55. It then logged 4 of 11 SE-600M pools by 01:46, about 5 minutes per pool, while its CPU time barely moved.
+- That matches the main line's own measurement: SE-600M on MPS float32 takes 331 s per 512 cells (MAIN.txt, synthetic smoke test).
+- The controller's 00:15 reasoning had two mistakes:
+  - It assumed the 20:35 pass 1 needed about 2 minutes for all embeddings. That was read from the order of lines in a block-buffered log, which is not chronological.
+  - It took near-zero CPU time and a single long `waitUntilCompleted` as proof of a hang. During GPU-bound work both are normal. The small MPS probe finishing quickly also proves nothing, because the GPU is time-shared.
+- So pid 34240 was most likely still encoding when it was stopped, 20 minutes into the stage, about 4 pools in. The controller's own `r16_d7_embed_test.py` at 22:32 was probably also just slow, queued behind two runs. Neither event shows an MPS deadlock.
+- Consequence: about 90 minutes lost to a restart. Correctness is not affected: same code, same command, all pools recomputed from scratch.
+- 01:47: told A-T3 not to stop the run, withdrew the 10-minute stall rule, and said to stay on MPS (`controller/msgs/r16_D7c_AT3_keep_running.txt`). MPS and CPU embeddings differ (the main line measured cos 0.9994), so a CPU fallback would break cross-party agreement for STATE.
+- Addendum B's P6 rule (10 minutes with no progress → CPU for both parties) still stands for Occam. Its encode is under a second per pool, and both parties switch together. The lock record's reasoning for it, however, came from the misdiagnosis above.
+- Revised controller practice: judge a GPU stage by per-unit progress lines, set against the measured per-unit time, never by CPU time.

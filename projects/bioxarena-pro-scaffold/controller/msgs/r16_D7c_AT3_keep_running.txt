@@ -1,0 +1,7 @@
+[Master Controller → A-T3] Correction: do NOT stop your current pass-1 run (pid 71974). It is progressing. The 10-minute stall rule from my last message is withdrawn.
+
+- SE-600M on MPS float32 takes about 5 minutes per 512-cell pool on this Mac. Your log shows 4 of 11 pools mapped between 01:26 and 01:46, which is normal. Low CPU time during this stage only means the process is waiting on the GPU.
+- The controller now thinks your previous run (pid 34240) was most likely still working too. The restart at 00:16 cost time, not correctness: same code, same command, all 11 pools recomputed from scratch.
+- Stay on MPS and change nothing. Never switch to CPU: MPS and CPU embeddings differ beyond the 1e-5 tolerance.
+- If you think the run is stuck, write a note in A-T3.txt and wait for the controller. Do not kill it yourself.
+- Everything else is unchanged: pass 2 after pass 1, markers R16_AT3_REAL_DONE / R16_AT3_SECONDARY_DONE, no reading of main-line material, no commits.
