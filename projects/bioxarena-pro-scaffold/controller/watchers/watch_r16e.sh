@@ -5,7 +5,8 @@ cd "$P" || exit 9
 BASE_HEAD=${BASE_HEAD:-7106a3b}
 M=round16/shared/models
 S=round16/status
-REF=$(mktemp); touch -t 202611261455 "$REF"
+REF=$(mktemp); touch -t ${REF_TIME:-202611261455} "$REF"
+MAN=${MAN:-FREEZE_MANIFEST_R16.txt}
 HB=${HB:-/private/tmp/claude-503/r16e_heartbeat.txt}
 mk() { local c; c=$(grep -c "^$2" "$S/$1" 2>/dev/null); echo "${c:-0}"; }
 MARKS="MAIN.txt:R16_MAIN_REAL_DONE MAIN.txt:R16_MAIN_DEVIATION MAIN.txt:R16_ADAPTER_CHECK_FAIL MAIN.txt:R16_MAIN_SENSITIVITY_DONE A-T3.txt:R16_AT3_REAL_DONE A-T3.txt:R16_AT3_DEVIATION A-T3.txt:R16_AT3_SECONDARY_DONE"
@@ -29,8 +30,8 @@ while true; do
   [ "$el" -ge 2700 ] && [ "$seen_at3" = 0 ] && { echo "EVENT A-T3 runner not started 45 min after dispatch"; exit 0; }
   [ -n "${MAIN_SENT:-}" ] && [ "$el" -ge 2700 ] && [ "$seen_main" = 0 ] && { echo "EVENT main-line runner not started 45 min after dispatch"; exit 0; }
   if [ $((i % 5)) -eq 0 ]; then
-    bad=$(grep -E '^[0-9a-f]{64}  ' $S/FREEZE_MANIFEST_R16.txt | shasum -a 256 -c 2>/dev/null | grep -vc ': OK$')
-    [ "$bad" != "0" ] && { echo "GUARD frozen file changed ($bad entries fail FREEZE_MANIFEST_R16)"; exit 2; }
+    bad=$(grep -E '^[0-9a-f]{64}  ' $S/$MAN | shasum -a 256 -c 2>/dev/null | grep -vc ': OK$')
+    [ "$bad" != "0" ] && { echo "GUARD frozen file changed ($bad entries fail $MAN)"; exit 2; }
     [ "$(DSIG)" != "$D0" ] && { echo "GUARD frozen data file size/mtime changed (FREEZE_MANIFEST_R16_DATA)"; exit 2; }
   fi
   [ "$(find $M -type f -exec stat -f '%N %z %m' {} \; | sort | md5)" != "$MSIG" ] && { echo "GUARD approved model files modified"; exit 2; }
