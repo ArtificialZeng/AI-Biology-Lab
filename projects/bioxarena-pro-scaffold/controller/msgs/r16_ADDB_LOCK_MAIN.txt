@@ -1,0 +1,20 @@
+[Master Controller → Main line] Addendum B v2 is locked (commit 3d36d0c). See round16_addB/PREREG_I_ADDENDUM_B_LOCK.md, including two binding clarifications:
+- L1: Nadig labels are legacy categoricals; decode them as in D3. Gate 5B must find 611 perturbations and 4,976 controls, or it halts.
+- L2: the scope of the human approval.
+
+Allowed now (CPU only, no downloads, no GPU, no commits):
+- Write the model-free parts of your adapter under round16_addB/src/:
+  - raw control loading by the locked R16 barcodes;
+  - normalization (target_sum 2000, log1p);
+  - RHJ axis scatter and the pairwise_common_axis masks;
+  - Tier-1/Tier-2 perturbation-key resolution;
+  - the Gate 5B panel builder;
+  - export of the delta arrays.
+- Add unit tests under round16_addB/src/ that use synthetic data and the small public text files you already read.
+- You may run the panel builder on the local HepG2 file to check the 611 / 4,976 / 42,402 counts. No model is involved.
+
+Not allowed:
+- Do not import or vendor any Occam code until the approved code archive exists.
+- Do not touch round16/ (except a MAIN.txt line) or round16/.venv.
+
+Done: a line in MAIN.txt starting with R16_ADDB_ADAPTER_PREP_DONE, with file list, test results and the counts. Then wait. Occam downloads need the human project lead's approval, and A-T3 must finish its R16 run first.

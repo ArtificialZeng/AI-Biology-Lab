@@ -305,3 +305,702 @@ Actions taken:
    - Verified and terminated child process `round16/src/run_eval_r16.py` (PID `85468`) via `SIGTERM` at `16:02:35 +0800`.
    - Verified zero remaining `round16/src/run_eval_r16.py` processes at `16:02:37 +0800` (`pgrep -f round16/src/run_eval_r16.py` -> empty).
 3. Hard-guard compliance: zero frozen files modified, zero reads of `round16/audit/` or A-T3, zero git commands, zero further Round 16 runs until Master Controller issues the `DEVIATION_R16_D2` rerun order.
+
+
+---
+Round 16 Gate 5 Groups 1-2 Real-Data Evaluation Complete (Main Line, DEVIATION_R16_D2-D5)
+Date: 2026-11-26 22:06:47 +0800 (2026-11-26T14:06:47Z)
+Manifest Verified Pre-Run: FREEZE_MANIFEST_R16_D2.txt -> D2_FREEZE_OK (rc=0)
+Command: round16/.venv/bin/python round16/src/run_eval_r16.py --cohort groups12 --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --verify-arc-adata-pred /Users/mac/.cache/r16_arc_archive/ST-SE-Replogle/zeroshot/hepg2/eval_final.ckpt/adata_pred.h5ad --device mps --n-boot 4000 > round16/results/run_groups12.log 2>&1
+Exit code: 0 | Elapsed: 16258.26 s
+
+R16_MAIN_REAL_DONE
+
+1. Addendum A Section 3 Arc Archived adata_pred.h5ad Check (round16/results/arc_adapter_check_nadig_hepg2.json):
+- line_name: nadig_hepg2
+- n_common_perts: 639 (n_finite_perts: 639)
+- n_common_genes: 1843
+- median_per_pert_pearson: 0.974858 (threshold >= 0.9: PASS)
+- pooled_pearson: 0.973280 (threshold >= 0.95: PASS)
+- passed: True (stop_for_controller_diagnosis: False)
+
+2. DEVIATION_R16_D1 Reordered Part Tags Audit:
+- cd4t_rest ctrl_audit.deviation_r16_d1_reordered_part_tags (count=34 of 47 lanes; 13 genomic-order lanes matched parts[0]=CD4i_R2L01 natively, 34 Ensembl-ID-order lanes reindexed onto parts[0]):
+  ["CD4i_R2L02", "CD4i_R2L03", "CD4i_R2L04", "CD4i_R2L05", "CD4i_R2L06", "CD4i_R2L07", "CD4i_R2L08", "CD4i_R2L09", "CD4i_R2L11", "CD4i_R2L12", "CD4i_R2L24", "CD4i_R1L01", "CD4i_R1L02", "CD4i_R1L03", "CD4i_R1L04", "CD4i_R1L05", "CD4i_R1L06", "CD4i_R1L07", "CD4i_R1L08", "CD4i_R1L09", "CD4i_R1L10", "CD4i_R1L11", "CD4i_R1L12", "CD4i_R1L13", "CD4i_R1L14", "CD4i_R1L15", "CD4i_R1L16", "CD4i_R1L17", "CD4i_R1L18", "CD4i_R1L19", "CD4i_R1L20", "CD4i_R1L21", "CD4i_R1L22", "CD4i_R1L23"]
+- dld1 ctrl_audit.deviation_r16_d1_reordered_part_tags (count=0): []
+
+3. Per-Line Primary STATE_SE H-I1 and H-I2 Adjudications (n_boot=4000, delta_tost=0.04):
+- nadig_hepg2 (group1, CRISPRi, N=740, G=1843): H-I1=LINE_MATCHED_SPECIFIC (matched r_orth_cal=0.105321, 97.5% CI [0.097998, 0.112760], rho_ab_orth=0.591800, all_within_delta=False, strata: seen_by_checkpoint=STRATUM_MATCHED_SPECIFIC, unseen_by_checkpoint=STRATUM_MATCHED_SPECIFIC) | H-I2=FCT_SUPERIOR_TO_MODEL (STATE_SE - FCT = -0.096138, 97.5% CI [-0.109921, -0.083157]; FCT r_orth_cal=0.201459)
+- nadig_jurkat (group1, CRISPRi, N=873, G=1843): H-I1=MIXED_OR_INCONCLUSIVE (matched r_orth_cal=0.038339, 97.5% CI [0.032419, 0.044000], rho_ab_orth=0.453187, all_within_delta=True, strata: seen_by_checkpoint=STRATUM_MATCHED_SPECIFIC_SUB_DELTA, unseen_by_checkpoint=STRATUM_MIXED_OR_INCONCLUSIVE) | H-I2=FCT_SUPERIOR_TO_MODEL (STATE_SE - FCT = -0.109196, 97.5% CI [-0.125015, -0.093119]; FCT r_orth_cal=0.147535)
+- a549_ko (group2, CRISPRko, N=403, G=1837): H-I1=MIXED_OR_INCONCLUSIVE (matched r_orth_cal=0.114298, 97.5% CI [0.098000, 0.130871], rho_ab_orth=0.827125, all_within_delta=False, strata: seen_by_checkpoint=STRATUM_MIXED_OR_INCONCLUSIVE, unseen_by_checkpoint=STRATUM_MIXED_OR_INCONCLUSIVE) | H-I2=FCT_SUPERIOR_TO_MODEL (STATE_SE - FCT = -0.099082, 97.5% CI [-0.124548, -0.072809]; FCT r_orth_cal=0.213380)
+- dld1 (group2, CRISPRi, N=75, G=1832): H-I1=MIXED_OR_INCONCLUSIVE (matched r_orth_cal=0.102350, 97.5% CI [0.081088, 0.123765], rho_ab_orth=0.293122, all_within_delta=False, strata: seen_by_checkpoint=STRATUM_MATCHED_SPECIFIC, unseen_by_checkpoint=STRATUM_MIXED_OR_INCONCLUSIVE) | H-I2=FCT_SUPERIOR_TO_MODEL (STATE_SE - FCT = -0.065810, 97.5% CI [-0.104933, -0.026404]; FCT r_orth_cal=0.168160)
+- cd4t_rest (group2, CRISPRi, N=245, G=1830): H-I1=MIXED_OR_INCONCLUSIVE (matched r_orth_cal=0.036557, 97.5% CI [0.010460, 0.063028], rho_ab_orth=0.206196, all_within_delta=False, strata: seen_by_checkpoint=STRATUM_MIXED_OR_INCONCLUSIVE, unseen_by_checkpoint=STRATUM_EQUIVALENT_NONZERO_SIGNAL) | H-I2=INDISTINGUISHABLE (STATE_SE - FCT = -0.021731, 97.5% CI [-0.049056, +0.005980]; FCT r_orth_cal=0.058288)
+
+4. Group-Level Adjudications:
+{
+  "group1": {
+    "group_key": "group1",
+    "K_total": 2,
+    "line_level_verdicts_awarded": true,
+    "group_status": "ADJUDICATED_BY_MODALITY",
+    "by_modality": {
+      "CRISPRi": {
+        "K": 2,
+        "lines": [
+          "nadig_hepg2",
+          "nadig_jurkat"
+        ],
+        "verdict_counts": {
+          "LINE_MATCHED_SPECIFIC": 1,
+          "MIXED_OR_INCONCLUSIVE": 1
+        },
+        "k_over_K": {
+          "LINE_MATCHED_SPECIFIC": "1/2",
+          "MIXED_OR_INCONCLUSIVE": "1/2"
+        }
+      }
+    }
+  },
+  "group2": {
+    "group_key": "group2",
+    "K_total": 3,
+    "line_level_verdicts_awarded": true,
+    "group_status": "ADJUDICATED_BY_MODALITY",
+    "by_modality": {
+      "CRISPRko": {
+        "K": 1,
+        "lines": [
+          "a549_ko"
+        ],
+        "verdict_counts": {
+          "MIXED_OR_INCONCLUSIVE": 1
+        },
+        "k_over_K": {
+          "MIXED_OR_INCONCLUSIVE": "1/1"
+        }
+      },
+      "CRISPRi": {
+        "K": 2,
+        "lines": [
+          "cd4t_rest",
+          "dld1"
+        ],
+        "verdict_counts": {
+          "MIXED_OR_INCONCLUSIVE": 2
+        },
+        "k_over_K": {
+          "MIXED_OR_INCONCLUSIVE": "2/2"
+        }
+      }
+    }
+  }
+}
+
+5. Key Top-Level Output & Embedding SHA-256 Checksums:
+  642456c9d4a21a6665561634662b96fdf482f5ead195c7f9786343a1d3da2864  round16/results/summary_r16.json
+  62258e8b70cf79248866a75192646bae50c8a20940a2d576ba8b6cb99488d7fa  round16/results/control_barcodes_r16.json
+  f66cc6e40acaf2bc808fb667c006c8ab8232d03d2276f18092a3a32ee6241a05  round16/results/arc_adapter_check_nadig_hepg2.json
+  03c01cf9789506fa2e35d12ae4a2a7624b7df16034bc3197821e82cbf94fe6bc  round16/results/embeddings/embeddings_manifest_sha256.json
+
+6. Complete Per-Line Array NPZ SHA-256 Checksums under round16/results/arrays/<line>/ (total=379 files):
+  44fc8f1d7961d56e18576dc1bce2e73c2270b6da6abeb33662a72d9ba5da2183  round16/results/arrays/a549_ko/observed.npz
+  20aa469cf9b0791e2470f82fbb3418694180f635adf66a303226446178283eee  round16/results/arrays/a549_ko/preds_STATE_HVG_libnorm1e4_log1p_matched.npz
+  a3b9ecbd337303b84e47a301a6dd5fbcd60fbfdebdaef9f22b640847c997b991  round16/results/arrays/a549_ko/preds_STATE_HVG_official_median_log1p_matched.npz
+  0b5ce11d7474bde3c3cabfe4bcc7784c9994450086974fc18b2c69a535a73ac1  round16/results/arrays/a549_ko/preds_STATE_HVG_official_median_log1p_mis_cd4t_rest.npz
+  b6b7d4f1d4ef859d6ba80de45d642d135e616bb341d861bf92b43714984b043f  round16/results/arrays/a549_ko/preds_STATE_HVG_official_median_log1p_mis_dld1.npz
+  015a86e7f19d4fcbc66fcf12dfe855899fa750f3d8d4fb61522cea6a4801abdd  round16/results/arrays/a549_ko/preds_STATE_HVG_official_median_log1p_mis_feng_ipsc.npz
+  860da845340d9beedaf8542e57b11642d313f3bfea770ae3d2500614b1ca964a  round16/results/arrays/a549_ko/preds_STATE_HVG_official_median_log1p_mis_nadig_hepg2.npz
+  8506a028a88972efd01543f946f382dcbb575e8bf45e603762eca91f40f3f093  round16/results/arrays/a549_ko/preds_STATE_HVG_official_median_log1p_mis_nadig_jurkat.npz
+  2d9445d1193d965e2e9a0880cc81d8bc39c6d66a5af9df3301a710d72d0ea8ac  round16/results/arrays/a549_ko/preds_STATE_HVG_official_median_log1p_resample.npz
+  2176dc9baa4d46850fc8ed3e6ea7f8143dc60de118c272d7b09aadb44bdaf00f  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_M_BM.npz
+  3659c31969a3a5e1f92d147d754accf981e39476b311446fe954c0d70b8719c2  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_M_BS.npz
+  2b40c11929b197517f80cecc4f79e0237203131de183bd7108aa22ed45808cea  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_S_BM.npz
+  977686c2737b7e1f37773882cca24a113de1d1eff9552ba1a77b2405dd2c1a67  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_S_BS.npz
+  9a6df7ee3dbdd9c9826d02ad8a264be048d55ac9982ec7c9d25dc581577aeddd  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_M_BM.npz
+  2495e0fc16a40d06605f4a12889fd6248a8a547ffc752f06cb05596a39ddcd28  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_M_BS.npz
+  a84817e2486dbaf23babd66318c25668663f300357c866a9b79d82bcbd1c6dac  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_S_BM.npz
+  4509c6d4b7d5e0c53cb2ae58c2b3f363b9d4a945d6788a8a1fd3a897cb78ef67  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_S_BS.npz
+  684f7ccd064aaf4a8dd2bff453af6165118109ce0f47dd0c05e95eb1ea08b6f0  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_M_BM.npz
+  14a8852e58c6602381ae92e177a20734a19401a671be15173b95020b150b8019  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_M_BS.npz
+  1986d7e58b5b68212c15cc56557418bd5778eb1d9735c0f3c6d09c00e52f2e86  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_S_BM.npz
+  944756cb1231ebecb461125ecbb4b051a42532c7a5e90fe502d46c2e4934214b  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_S_BS.npz
+  e477cf518e90f9b050db19763c68d5d9dd1cab715fbca26fb5244cb6e8fb511b  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BM.npz
+  225db0b266119588330fec08140876fe2f4cc508bfbac792c2dae7090be760fa  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BS.npz
+  876f149c36988ceb6ee0d73b197ea50ebc380f37deb64bb8f5cd09e9e9b7ca08  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BM.npz
+  061c4ce3df5edd10c27cb2f70f539dbf209bd25bc84795d213db9436dbc6f4a5  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BS.npz
+  fa147fa47f1da9bb9af0db5195062e964939088e1238df9fa4fde2b1a6bd6b0d  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BM.npz
+  37492d18c8649aba44d49b5aaec49529a015390c3bc6c76a129d74dc66de18b6  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BS.npz
+  7c96b530a64d3ff0d655104afebb164acfc12ac4d29cdda3cb83a324d0496a1f  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BM.npz
+  bc66c291e3ffe2f2d853758b3e5c5dc0f38e37c13a6a7ff9f24b9ff7cffef633  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BS.npz
+  c9ed07cf2697d174c45e47213b734fafeb6590c4bf3365a38e0ca196a36253d5  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_M_BM.npz
+  6c2dae28c07b35653b45b0404cf7ce4faba20a34e3d455c77b6fb5f42d20e117  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_M_BS.npz
+  58ccf5b55b85aa8ff90a90993305e13b3b3d886933c07c502ec55a258c6fd41d  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_S_BM.npz
+  44a368f965a77048cd8c144f3ff9e5f3805aad84ce1332539a0a9a0596f076f1  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_S_BS.npz
+  6a9f04cf7e865dfbe2866ffe6f3ed29b1017d81f2f53ada56b974b994cfc8c1d  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_M_BM.npz
+  d9c66ec0bed62d81b8e057dcb8bcb3281c26a3b02da189383db373ebe9fcbbd0  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_M_BS.npz
+  2fbd9e2952265d5f33b72ed84421098db121d58ff5d592933ffbf00d74b0cf0b  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_S_BM.npz
+  ddafe052ab8dec75805abb4ffdab7fcb718a6951e523c499bafd32c41bfccb0f  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_S_BS.npz
+  55a0355fb2039d536532c825f193c902be9e4eeaa1a9876c47700963b99dd33a  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_M_BM.npz
+  c807d83243ebe218771b295494554bb24827937b82b83030865193246b602d9a  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_M_BS.npz
+  54c7650bad19d0417ea60fc8c57d0c084f6ba1eff2344da216b9b81c898dc953  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_S_BM.npz
+  4456875532dc69dab3cb35507c4ffe59279d97c78b87c84a38258a9662fe47a5  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_S_BS.npz
+  70d2a538f98c9609a4b84e437099ae890be7159568ad9f52868a10a7137f4c7e  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BM.npz
+  1f0033ff199a7c062c7cc02ca7bb50b27577817561a4b9fab2065fa01b283b58  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BS.npz
+  4ca9432165d1f59fe3766b0dc3921839e9c62f0eb8c939083df87cc39d58563a  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BM.npz
+  d448a7cc721cb5ac77db76b9f50cb073c335efbffda91353baf6b05e7cbc6f27  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BS.npz
+  8d9d3b8a36dc442fb8c6d52aac63d64ccc75e4eb4e437dc26ef5575b90da91cd  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BM.npz
+  7d98e045284a366f7b27c16ef63fd43fcd1fba4ff187cf77af5d98e5a9642977  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BS.npz
+  c65b4ffc401ee23c5472ca9a90a6fd1acb9d5a602e572d9dc52df20dc5b3634b  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BM.npz
+  a2a51a0be0273cc3804b835233a7fa4f59c8f352da0c248a7bcbb419c1622afb  round16/results/arrays/a549_ko/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BS.npz
+  bbe7021eaa3ffba4a0bd7f08d83fc779a2f1907f9ffe786c1be8c4b097742e4d  round16/results/arrays/a549_ko/preds_STATE_SE_bypass_zero_matched.npz
+  196920c8fa1134503c51d2caac59fb984d5322e0258815c03e49e3f4bf0dae93  round16/results/arrays/a549_ko/preds_STATE_SE_bypass_zero_mis_cd4t_rest.npz
+  6e631b85efb8a24ccd6b7432a7ab4b02281fa9aaecd7e930d7ed1efbec3e654f  round16/results/arrays/a549_ko/preds_STATE_SE_bypass_zero_mis_dld1.npz
+  16a7752432e8000e094f80fd206f2f1407bccac9d33564434e60dd6232f9d81a  round16/results/arrays/a549_ko/preds_STATE_SE_bypass_zero_mis_feng_ipsc.npz
+  9a0b980ecad41e4b2aaf96c809660d69ae9c443b905cd308b56c5faf672ab4f3  round16/results/arrays/a549_ko/preds_STATE_SE_bypass_zero_mis_nadig_hepg2.npz
+  6a84772318767aeed01cf1fb3891728275614c19d1b252af492d57e08c9a700a  round16/results/arrays/a549_ko/preds_STATE_SE_bypass_zero_mis_nadig_jurkat.npz
+  2cc134c4a35bf2c1efc4f255ebeec975f85076e07345da3c807ea57359eda65c  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_b17_matched.npz
+  1bcb5ed411d51ee5baebd9c63d95af4fc4f52320cda42a8cd25918a7a4f8aafa  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_b1_matched.npz
+  b9917a528ff49678bf901b2a90b0cdf4da6fc68bc6174c8f6cbdbd70e452e40b  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_b35_matched.npz
+  2daad11a932edd212dc3ce0b8ea7382e1051cc44541f415fcd2ee490c4437f81  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_zero_matched.npz
+  113fa176fd98efa8489541e0b43fac4adbe960a2cfd5e1cf9a7fe3ae1def46d5  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_zero_mis_cd4t_rest.npz
+  d9f197f316c79c80e9fa26260a60d8732c45eba0b39262831620fc9f740e149e  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_zero_mis_dld1.npz
+  23fd88a07bba49c79f98e57672e5d54f5b0405ab52d5e2b499ed915eab44570d  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_zero_mis_feng_ipsc.npz
+  95db4402334e6457dea36240e75b7efcac02da9d94350dc9c605523b29833d58  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_zero_mis_nadig_hepg2.npz
+  260af151e7dc2dccb3f022c286f5d94a0e26891624cea92d239e50119453e198  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_zero_mis_nadig_jurkat.npz
+  0cc68d6c96fc6208909f15e211b4990c6b2200d829c617c5e4ef77404ffb0581  round16/results/arrays/a549_ko/preds_STATE_SE_fixed_index_zero_resample.npz
+  34f6b32fd0d367716278c6c6c333208a1bac38652da334615ba1a6fb27998d26  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_hepg2_matched.npz
+  47139342d78f02ef24fd1df5aa7b65f5348b8e4abb73c3537eeec9f72ac65fc5  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_hepg2_mis_cd4t_rest.npz
+  6f4148d257a8b67a5d9f3e009c205a4bfbcdecafca2aba6496641c98bfb07ffa  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_hepg2_mis_dld1.npz
+  985fdfc26af33b85675c83aa806a5f1c6e06fc3b002750874cade04e21e67bb0  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_hepg2_mis_feng_ipsc.npz
+  1c709e12acac0501ce3cfe6076d6f9cf6785156a62b84214aab82ec69903f810  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_hepg2.npz
+  dad592fe0cbddbaa5c05bfbb833a01bf4a103c45ea788e3b5f399c54ddcf08f7  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_jurkat.npz
+  e264fa57074bcf9b22e3178679b8cfd602964cfc4266ee046c0896dcfc20063a  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_jurkat_matched.npz
+  1a6a0dd3d500715e523fffae6395cc9944614e5ea9ecaa1bb683c5a22c1c2b48  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_jurkat_mis_cd4t_rest.npz
+  0683c591533ebc16bfbb17646630580826f80d33eff9df65b53a20fc741813e1  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_jurkat_mis_dld1.npz
+  c9e2468912aeaca92dcfc548c4b32d2b9a14bce443047c97d504058886015d78  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_jurkat_mis_feng_ipsc.npz
+  7110de59af35f27d5464280c229d5362a1b87a6b680c3ad2a318441ad62e80c9  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_hepg2.npz
+  013898b064b08bcd76f181e59a6ad705f8a96bcde1ed66c0b4e80b1a1f2e7d48  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_jurkat.npz
+  ea9ff91341a472d30454d24c713ae09e77b04a6c43744a08d3b288857cf2b1c4  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_k562_matched.npz
+  6d86a45b05753cb4a4cf7a533710606cb9b0f8e7f7b58bfc630b1d175888ee89  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_k562_mis_cd4t_rest.npz
+  30dc8264afb41fcf19417379bc572d16cb1dfa1602ee2208493bb6fe302ae486  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_k562_mis_dld1.npz
+  a79dc2cf628449c1e9342f4b5f2beb9d026f5e716f4918bf4fa0777c3629f762  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_k562_mis_feng_ipsc.npz
+  4c259d946e449072b5b5d2b5ae8d83dd1b9c5161205a8a725a6c1fdce1b95139  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_hepg2.npz
+  6439344b2799ebf2226936b16dc371a9a8ce9acab3a111d9fac800ee77e737f8  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_jurkat.npz
+  dce6d4c0d12eb710d327bff213a1fa8159d785a6ca5b0fb4ce8a43fa73bf57e7  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_rpe1_matched.npz
+  6a9d21ef439129ec1d8cd668f34037237f520de35f5a45f263ef962604ecda9c  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_rpe1_mis_cd4t_rest.npz
+  7e5048a4d1683e8894fa1a6c1004fbe88c93eaed46422e84aadecf80a53db4a9  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_rpe1_mis_dld1.npz
+  fb84b1ee8c76f89e2368db7f47a8b42c9ae3abffd0368881ba46d6521b14fb8d  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_rpe1_mis_feng_ipsc.npz
+  07e8d8e503163f2c91436dcd3a6ce07eb63ee5d5fe2a88ecddd50819218477ca  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_hepg2.npz
+  1521bdc871e488f6e84539b7fe39ff8e51ea6344ecc567ad55446af9ff346cc9  round16/results/arrays/a549_ko/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_jurkat.npz
+  4f7d152521b9b0baa4526b2cd635ecc486e1a21b423ae745bdd8ba73f8fd7e6c  round16/results/arrays/a549_ko/preds_STATE_SE_mean_batch_emb_matched.npz
+  0b80ee3576c1954abfbc331906998eb815923fb719bef06379b4628f54c14cc5  round16/results/arrays/a549_ko/preds_STATE_SE_mean_batch_emb_mis_cd4t_rest.npz
+  98c0299f8e9e3ef321f1af0386ec06b18d8a9a39f1bf6614d814e7c377d4604c  round16/results/arrays/a549_ko/preds_STATE_SE_mean_batch_emb_mis_dld1.npz
+  422667ca13b6c93fb072f0a2f18154c53033382d52da12138758559f0cadb852  round16/results/arrays/a549_ko/preds_STATE_SE_mean_batch_emb_mis_feng_ipsc.npz
+  3a5e0702d2404a0d0219bb59c1f2c4255b127c02ae5641e0fbe5918ea5d749c8  round16/results/arrays/a549_ko/preds_STATE_SE_mean_batch_emb_mis_nadig_hepg2.npz
+  a288aa92012c64aa16c35ca91303ea377a93f82b0e0bf0b3c202f52f45f78321  round16/results/arrays/a549_ko/preds_STATE_SE_mean_batch_emb_mis_nadig_jurkat.npz
+  2b3b1276abcbc0c7b585178f51c7537c1e393a720ecc72bd0d7677318fb42da6  round16/results/arrays/a549_ko/preds_STATE_SE_multi_batch_ens8_matched.npz
+  dc584562aa379e05cd5b2a1638c981caf9418f428691972791cc6ae2428d4842  round16/results/arrays/a549_ko/preds_STATE_SE_multi_batch_ens8_mis_cd4t_rest.npz
+  45f4b913e03a509e1a8d06cf1b371c68a62100a4956d4f3d8186933c12f07ffc  round16/results/arrays/a549_ko/preds_STATE_SE_multi_batch_ens8_mis_dld1.npz
+  017d669f320b1eb0d0f84c7b3b9b3e1999b50f918bb8cd23dd7da9e4dad8b111  round16/results/arrays/a549_ko/preds_STATE_SE_multi_batch_ens8_mis_feng_ipsc.npz
+  bc663b38f945a7474220a5103cde55c7796b872f27cee49c23b124327038a161  round16/results/arrays/a549_ko/preds_STATE_SE_multi_batch_ens8_mis_nadig_hepg2.npz
+  d3fea77088ccd3cfeefa60b1a3856258060de5777a367e3c519c52b0b9960315  round16/results/arrays/a549_ko/preds_STATE_SE_multi_batch_ens8_mis_nadig_jurkat.npz
+  4301372d965972febc3dad54a5bbc8442d752b05bff6a14e7936dc20d3a10f02  round16/results/arrays/cd4t_rest/observed.npz
+  836262355f1b7cd4d307825d744657bac2635d3964f3699cbe4f4112b29d130b  round16/results/arrays/cd4t_rest/preds_STATE_HVG_libnorm1e4_log1p_matched.npz
+  40ab4292c205783bb7e5beb574ce1f2b94994acbffb3ce1777e8802fd3c680c8  round16/results/arrays/cd4t_rest/preds_STATE_HVG_official_median_log1p_matched.npz
+  deff2d706c75a968462e7d3e5375c097a5196530572128424ade5b69a5e5964f  round16/results/arrays/cd4t_rest/preds_STATE_HVG_official_median_log1p_mis_a549_ko.npz
+  16caf3b3ec48f71614aadd30860fdd1db10311ccfc766fe76b474adb7e0c848b  round16/results/arrays/cd4t_rest/preds_STATE_HVG_official_median_log1p_mis_dld1.npz
+  09bbd36aad4888693d64bbe5c54c1b9005dd3a27cad29d0c70a9b54447111b34  round16/results/arrays/cd4t_rest/preds_STATE_HVG_official_median_log1p_mis_feng_ipsc.npz
+  7540d8f4e7a34aad012d856bee034e455dffb44e90a4f57df57221f4268e7c4f  round16/results/arrays/cd4t_rest/preds_STATE_HVG_official_median_log1p_mis_nadig_hepg2.npz
+  1850de6d569be35963ce3e80a7f9a2693408eee03e9fe5594a2861af246827d5  round16/results/arrays/cd4t_rest/preds_STATE_HVG_official_median_log1p_mis_nadig_jurkat.npz
+  829d562d57583d3d1567f2a8652a182f13d32a08cc74d291ab4cef1ab89defb5  round16/results/arrays/cd4t_rest/preds_STATE_HVG_official_median_log1p_resample.npz
+  531fd5d27ffff5d26906df62d9f9fd0f256ce58cb34e0edaad5a59903dc69b04  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_M_BM.npz
+  f236726e008f7a2d3b47d388e24c8e75c7bef74362e8d3c624a85ad674965a46  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_M_BS.npz
+  76999d35ef239b98eae26f754a06ac56c779be220567d8dc27f457423c372850  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_S_BM.npz
+  535e470bad6af8892cc3dc9386e7d63382c6d38cdbf31142accefea76a3a98aa  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_S_BS.npz
+  3df783a8ef03f92389ac23a7dc796e30fc2f9d1747087914f6fdf229ddfe15e5  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_M_BM.npz
+  0953419cde5172c0a78c4f5b6d6fd2180e2bb37111a4fcce080cc43dc8dab7ed  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_M_BS.npz
+  c5c8128e115f687e950f5a6167d9f69c2117494fdd557bcc1f64a84a144a0c73  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_S_BM.npz
+  6c844a6df379fc3344b629cecaed3863d2c8109e6c48b8d33294cac611ac6af3  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_S_BS.npz
+  2d28364b978c63033389adeb5ef9d76b3790d09a65583b66600f616d2801b458  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_M_BM.npz
+  85ee66b764a3fcb61f7b04bfda6c8166940860aae1f696af9dcc26b32d25d22a  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_M_BS.npz
+  169433aae34ae53c0460c013fd134066f38f90060e5ad7350ec6700ca66818b6  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_S_BM.npz
+  c3fb8fd9bc2e37d20b0255967f3821b3ec72bbb44fa3b06d162b0028fe97a556  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_S_BS.npz
+  a4d675830d0dbd9546f6a1ce81d6e6ee2c96cbe57bfef97009fa4509a1ee4a89  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BM.npz
+  0edf7e10a10b70ec7ad018757f95d80d2db627f14876319c77606ae8c445b930  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BS.npz
+  33a41eb0ea55ec909416aa0b77d4bdbf0cfbeda67118adadfb3d716a809a395f  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BM.npz
+  e5092404a9de7a9e984871320918a9eae9338ebf345c14739785036cdf9b988d  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BS.npz
+  037f5fe6e90f6868658103cf5b1c23699fd19e565e0c67c8a6eeb5d8ab6fbdf6  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BM.npz
+  b10e47ee12249457d5037d6f5bd33f54356b3e865ba9649887f615a9b7010559  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BS.npz
+  8f62254ed6ed4149b391c40a83348954d8284e4339fea54ff4350037ca827b9b  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BM.npz
+  39115f1229f878fec514506369c336fe4054fcfca1475c83bb83fd5fda262c39  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BS.npz
+  67a271902fcb9f3102a595f866028cf391fbaa5071544a49f8ce0dc3fbca98ab  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_M_BM.npz
+  cb1398727f2b83ad03832fdd2333a2b3246ae4566bfaea09c4a304dc7af53f86  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_M_BS.npz
+  4f75af3b034a167e768c00848cfc5aeff8dbce145677d3d1d0573b5668236c69  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_S_BM.npz
+  6b8de1b196ed67b7a34bce5997c1d7f040c5856cbb3403a2510b8fa33f6f7828  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_S_BS.npz
+  8a64d9b165d12f0c5a2088606dc58cda973cfa1eb506569ba619a8724a8bc9f7  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_M_BM.npz
+  efa083a5ea8a82933735097e3517a4edecb1a810f56fc81c23442adaca298a99  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_M_BS.npz
+  6192b9670d7f73b81a27124643df7115b65b93a96d187ce2a74ac87782e66f13  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_S_BM.npz
+  d6f3bf0f1ee1a735fc30dae002b7154f86a719f04df48d143cd8ecc1d903336e  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_S_BS.npz
+  9e60ab4c07a0033b3271242034161d9f317a444fa8e30ef9db25a77cf436d168  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_M_BM.npz
+  10cebed7067398ddda8b877da6bfcb67552bbb1e7d8ab4939a0ae96156857448  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_M_BS.npz
+  d76d591b2d2b6b0517eb1dbe5acec50fd006d79e546aa17ce36d93bb664765a2  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_S_BM.npz
+  a478a4b11a565f190b484e1ec7d122e70c0cb0b8b632e1a1074f22c86e1a092d  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_S_BS.npz
+  2aa6f71e04554fd56619a93f9595b79adcf13b31207fc7e8bdc9aa64b14f86c5  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BM.npz
+  f2976fff6f49c77bd4f2a1ed34c9315ada02183d5647e6e66afe2797e0c7280d  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BS.npz
+  51b6874a55846dbf3aa0ebecc76d5f6c6c91d2416ae34cf59dfe320691d8feb7  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BM.npz
+  e41042311b8a65013299164560f7920d51e9e1bff2b88c59e1c895f758e4bf35  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BS.npz
+  062551cae811af085e1a3c2bd110908fbc8c6b80701fc1aa3b33e3be507351ab  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BM.npz
+  86ea0b5c48dd10e0c03283ffc6d38992b26afdea20f6d109d728816e0306a1dc  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BS.npz
+  76384e22fe31000b5009996fb0821e48f84e4fada3706d36cb4c086be96aad37  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BM.npz
+  99473d12ad7a065c4ae6a6fc36b7fea671d9b3a2e85a56bf86b3f53173a29ba8  round16/results/arrays/cd4t_rest/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BS.npz
+  382dd8f2dbfa6b28119f766bf39c7ad93e8c1c72c093eb53095f1472c1d070f0  round16/results/arrays/cd4t_rest/preds_STATE_SE_bypass_zero_matched.npz
+  36577a8536bf7cc8ca0af671279392778da692513d2c6d28fc53a8d53e9e12ad  round16/results/arrays/cd4t_rest/preds_STATE_SE_bypass_zero_mis_a549_ko.npz
+  71e982c2b24fcd57a01a7b0f859f7d8dc5ec9542e011bcf4052158646dea73d8  round16/results/arrays/cd4t_rest/preds_STATE_SE_bypass_zero_mis_dld1.npz
+  1aa5c0d5819d483b9910e75023917b96e2f42d0c4e760510dc37ae6fa398c362  round16/results/arrays/cd4t_rest/preds_STATE_SE_bypass_zero_mis_feng_ipsc.npz
+  15f370ed1a40b6be3d5efafbe23bffe4963c2185d794953204c62da9708a1b99  round16/results/arrays/cd4t_rest/preds_STATE_SE_bypass_zero_mis_nadig_hepg2.npz
+  7a763b876e4685f5a25912e50da12a0e85889964bc3f56cb20d28f89815347fa  round16/results/arrays/cd4t_rest/preds_STATE_SE_bypass_zero_mis_nadig_jurkat.npz
+  c2cb863a7cab02928a0ed7b18cdfb3921bc53f4a839c2caf44efffcfd4120433  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_b17_matched.npz
+  18867fe9a037d5fc31ba747230a86ee314690ea0454f03da8e0b324ba12b3ea5  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_b1_matched.npz
+  2f4b00bcca1c7b6bf8135c4fb06f12d5572e29062bff22b8eeea2527028d3637  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_b35_matched.npz
+  4395696f39c974929dd656d9801fa7b85b5c98b95bb95ae31dd639886ce064cf  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_zero_matched.npz
+  aa854e45d9a9c14a073ec4e6e63fe4df640be1915b6dcf46254216b36660dd5d  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_zero_mis_a549_ko.npz
+  bd60682d80785191cec08138cf9b2ade27e438de3fe29607af4cd89f86c70c08  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_zero_mis_dld1.npz
+  e28d73366c03fd558d60126a4a78d210c5a8b72717de1b81c83ea16a878a9147  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_zero_mis_feng_ipsc.npz
+  d4bb29c59e0176c0cc327d3b6ceed0bbe1258572f361378f22ee9da96a8310c2  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_zero_mis_nadig_hepg2.npz
+  2435ae2d75dd350d1d13500e8185efcc0b28c852702f1ffdac817e23e3652422  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_zero_mis_nadig_jurkat.npz
+  3b1bcb3ee9913760f8638b52bf8ec2672c3a3110a92a5e52b09f97a57f8b9342  round16/results/arrays/cd4t_rest/preds_STATE_SE_fixed_index_zero_resample.npz
+  27da4926391a4855200c933cef110bf42f1b47831e99788b6b14f747795055e9  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_hepg2_matched.npz
+  4802415b8d500948fe2a450c9642bbd491def7119ff900c7cf3e2d00f55e644d  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_hepg2_mis_a549_ko.npz
+  791f9413007084a24014ba4c78e9ad3d548a0bd1af69c67aabf95091dc2894ca  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_hepg2_mis_dld1.npz
+  3788157d29728f2509a4db5ca90e2ff5d4862f707a5495fdf7a448d2677a2491  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_hepg2_mis_feng_ipsc.npz
+  28df985de90b347bf659eb618316a4518629ba9e1f3f6235b8c2a5f10fba9aa3  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_hepg2.npz
+  807dc3e291a2007d8f4a37c6f704284c9dd98707594d749f9f491acec037ad7c  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_jurkat.npz
+  4ae72535618f4cb8f284effea3f6638ce37ad2d97e2d114704735c032d1b8ba6  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_jurkat_matched.npz
+  4fe1a84609763f9030e8bbd08620919132f79142f49ee7eeae7ca304a6f5b685  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_jurkat_mis_a549_ko.npz
+  1dd409d64ac98adf393870dd4d48de6b23b20b50fd8fe753b6e58ac02082cd94  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_jurkat_mis_dld1.npz
+  d99b78b3ff7ab1790ecdf31d0a2d67f47642f87a431df23a60fd0676efab42e3  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_jurkat_mis_feng_ipsc.npz
+  e48bd12a3793507b82b0166b5c49b74651e48f16de856542a092d92f8c27af43  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_hepg2.npz
+  7793954c8b4240adb6eb792c0d44b06bbcfab2b10f3e6e5c3907c382a403cb56  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_jurkat.npz
+  d72d733cd9ae9b62544d997344aec477c293eaff6755bdd1449098c7ba7fe4d5  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_k562_matched.npz
+  e2678f492072b69dbc746da2c37612e80635ce74adf963a0cfcc73963debe39d  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_k562_mis_a549_ko.npz
+  1c8448c415e79ba2cf095981452846480a9531ccad5696fd8cff0333ab28fe21  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_k562_mis_dld1.npz
+  058c42b94e85f28d2633e41cf24a543a9fe907aad7877eba3f65fea70e56719e  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_k562_mis_feng_ipsc.npz
+  6f8da7eb7ea6304f408b07e73d4ac700535bd63dab61c956b40ad74afebc8171  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_hepg2.npz
+  16532567f37e5845d9a7fd9d001fc71f67beeab8658ef3efee2cf1d6cbfb4e08  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_jurkat.npz
+  afec73c7862f130be687ff7dee9c1cff286c2a6c82c43fc04c46204b02cbeb8b  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_rpe1_matched.npz
+  480b37f25dedcdd18a098cf485c0e7851d86c5ea8421edffa540a5a4e778a8fd  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_rpe1_mis_a549_ko.npz
+  c72caa36bbceac8cf4c66343797f3eacbea2695f2def8e507b152232b299a9e9  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_rpe1_mis_dld1.npz
+  ab22bea7d3202a814c06978356b5940746d86c66b54d78826fe79d0b1a8cb5bc  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_rpe1_mis_feng_ipsc.npz
+  df34165fb6cb642c566fe4d96478ad0a47409bdcf82be1a69f579066323222a7  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_hepg2.npz
+  d32111e67a2d1c20462c375eca398e95dae28f3da8edb852aad71214c636fbd5  round16/results/arrays/cd4t_rest/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_jurkat.npz
+  3663b9f085dc10a1dbcde0967cbf3862e562fb330037a07c18bf3e0a0b93d58c  round16/results/arrays/cd4t_rest/preds_STATE_SE_mean_batch_emb_matched.npz
+  d9699e672165f81ab5beaa717d6328492d2cee1eadb954e4dd86492dc26d14ff  round16/results/arrays/cd4t_rest/preds_STATE_SE_mean_batch_emb_mis_a549_ko.npz
+  0bd78956c46d2c417559e522ebb5f0273fb2e20e842a5a23802c7a0d6bda57db  round16/results/arrays/cd4t_rest/preds_STATE_SE_mean_batch_emb_mis_dld1.npz
+  bda11aec121f576a8763d954d71591d0ff4378e39821487200454da17bfe9c6c  round16/results/arrays/cd4t_rest/preds_STATE_SE_mean_batch_emb_mis_feng_ipsc.npz
+  2c6cc85453461c0e509432f2c13551cac3bf74a7dcbdc4f199d4f748e5d7db68  round16/results/arrays/cd4t_rest/preds_STATE_SE_mean_batch_emb_mis_nadig_hepg2.npz
+  e4f30053f252cda570abf01d1e548d9a7d1f8a772151c2b99b11eaae3fc8e7be  round16/results/arrays/cd4t_rest/preds_STATE_SE_mean_batch_emb_mis_nadig_jurkat.npz
+  5adac55ec2c7953ba141b66ee04011a8cad83746db5271ef2faafb5230387f1f  round16/results/arrays/cd4t_rest/preds_STATE_SE_multi_batch_ens8_matched.npz
+  bd830802f743324d01a2db41f00000714ee90d31c0f34e60783c0dac89637059  round16/results/arrays/cd4t_rest/preds_STATE_SE_multi_batch_ens8_mis_a549_ko.npz
+  62b542ae2bd6de9cf294fb37425212b70d57aa52cc8904ed93312503e70e83bd  round16/results/arrays/cd4t_rest/preds_STATE_SE_multi_batch_ens8_mis_dld1.npz
+  d9fd6e4c45231ee85e80062f0c0e698774fb4b977e637d82dffb88cd85348f93  round16/results/arrays/cd4t_rest/preds_STATE_SE_multi_batch_ens8_mis_feng_ipsc.npz
+  3c972c9e92915569651ce22c5e43de0411b9e5d458494561a2ce39f3a1359a40  round16/results/arrays/cd4t_rest/preds_STATE_SE_multi_batch_ens8_mis_nadig_hepg2.npz
+  9e1030fec9c5bb995b7ea3f67a3b7c26e0295c833759a8cc8d3ec4bbd30c1266  round16/results/arrays/cd4t_rest/preds_STATE_SE_multi_batch_ens8_mis_nadig_jurkat.npz
+  8ed392c020f5018018f15f0421bc588dc129db245eece2a58bb71cfd0c404b11  round16/results/arrays/dld1/observed.npz
+  e6014d79265796ef44990df21dfa5f1770c811bc4f24e9433151090d18768759  round16/results/arrays/dld1/preds_STATE_HVG_libnorm1e4_log1p_matched.npz
+  0ed3174cf1bb153b4dd2db12133e79340a1e38a3e602857ea17336545370004a  round16/results/arrays/dld1/preds_STATE_HVG_official_median_log1p_matched.npz
+  61b47e9be8ac2d17198719dba7df6e1973405a5b37210f01bb7f9b43f327154b  round16/results/arrays/dld1/preds_STATE_HVG_official_median_log1p_mis_a549_ko.npz
+  5493b4970e6c737489aaecf6fdeb0ca13bc976bd89375392117928779604fd6a  round16/results/arrays/dld1/preds_STATE_HVG_official_median_log1p_mis_cd4t_rest.npz
+  f567264b346927ae57bb2ba3f27f15ff8675ef233924ac45044dfa8397cec023  round16/results/arrays/dld1/preds_STATE_HVG_official_median_log1p_mis_feng_ipsc.npz
+  353a2f30f95f7863431eb99d610126a96aab3d3c588a80e9bc77264f47a93bfc  round16/results/arrays/dld1/preds_STATE_HVG_official_median_log1p_mis_nadig_hepg2.npz
+  0bbf0d987ac18c0df3c055133baffdf7bd63fc1f4b44c95b8d8172d099f3fb5f  round16/results/arrays/dld1/preds_STATE_HVG_official_median_log1p_mis_nadig_jurkat.npz
+  4c85808f5a17afcc8b02de24855021f0038d67a68b0bb2cb3a0a97056865dba2  round16/results/arrays/dld1/preds_STATE_HVG_official_median_log1p_resample.npz
+  94030f261b37209ed2250a973e0efeea1fc7f50dec56c8acbb3c46398ee69784  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_M_BM.npz
+  ff35bb507a29cdc547791e05fda4739aeec875dc1330823ecb0682ea5827ca22  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_M_BS.npz
+  08b0c7d1f598d1da6406e0f56d4b180eb163c119ee65a7d048ace4ddb2882e2f  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_S_BM.npz
+  04e66f6ed22b93801a3717daa4e37787966b194345933a8e7532c5a9d12a0943  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_S_BS.npz
+  355ea4f4b1c7060a39981df5cfdefe6767cfe205f17a27767c918124a76ae5e0  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_M_BM.npz
+  b6cbee40b293f8f8345697cac3893595b6fd79dd8cdf33fee80b760827b49fde  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_M_BS.npz
+  bf86f651bb6099f23248c16f8994542721f94ab35a084eb69e7b2da5485bb08a  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_S_BM.npz
+  323d7929271cf3d77e92b443f043fea885eee84e2d8327940f076e3e5fe4742c  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_S_BS.npz
+  033da5aefb385725855e4f387875a06f3836da140416296a36fbec9f77ac6cd1  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_M_BM.npz
+  5dff3b62fa6f163bb431870bb8de045e30b0308053d67fd8fd91a88f65a39367  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_M_BS.npz
+  562867c861279bff238cf2bd187038ef75c5aed3c4e888b5bfc615c92959e1d8  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_S_BM.npz
+  35454f67bc7f4d6e83e2559d974d9dc395151244de34e2de0f329cb388c52c53  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_feng_ipsc_S_BS.npz
+  8247e904f64aa00351ba7b485408c98d564f17220dfe6c7f637bbf0dea3d3a41  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BM.npz
+  7d43ead323c53ffab784f677183392405b55046ca9828e5455aec8578d7efb7d  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BS.npz
+  a5bc465dfc19c885b9862861e21cdd8eb5721a324f24a5bc7a420ef24ed20484  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BM.npz
+  fcf627ab79d1e2ee07db61464fb82f321cae36843ecacb32669abf5f1305c775  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BS.npz
+  fcdb9aa622c8f0e829901a6d27184176c699d61a9d5d5f87113fee2d70bc82b8  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BM.npz
+  fb30e8b796facf77c1e9ac27aafbab0040f492668ce08254077d50ffbb6bc1f1  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BS.npz
+  ff7f877863bfd78230695bd375758810987a60a9791438d4f2a036e1ae004704  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BM.npz
+  9e84126ed7c2923702a07164c7411c6710d145bbacfcece55fcd249d946aeac3  round16/results/arrays/dld1/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BS.npz
+  d0a5eb23292e00e62e17da08d69a315f51f979844ffe2bc56597009512417020  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_M_BM.npz
+  f86b4246f11bb64b491c1c7ebe2028eca6c9d110f56906e23bde138a47eb69e7  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_M_BS.npz
+  137afbcb44aeb6587d283395874cc7d469b1f2baad7b0126874ee7ad355bb820  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_S_BM.npz
+  bd1bb203dd1dfe2def446057050676b18488ae96aa544ae00627a888ae336db3  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_S_BS.npz
+  08753a5ebb7dc9a95dbcb060d1f9ebd0084baaa5517ed14b57d53f1c6dc7b9b5  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_M_BM.npz
+  77635d388261f58b32da86a08d847466d1d3116a5b514e413a6a793c6abfed7d  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_M_BS.npz
+  b2efd3a81112f4c353669040f618b7e219ec9d79fc19fbba12779ceb70f1e5fe  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_S_BM.npz
+  e3dbf0b3e490a23d9c1d34f09ce57e352ecc53b9d600945fd74b62deaaa118b0  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_S_BS.npz
+  5b35187bfe7e99e07b709f95fa22468ae500e04e37d62ee2c762deea689a9c69  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_M_BM.npz
+  c91e27f263d49f874d3bf6d85a00d65b2caeff29664872a262c05a2bd2361b27  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_M_BS.npz
+  3fa057825c9125f0e8b6b76c30044a4e61087ca10dc4b7e4899827726182c6d1  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_S_BM.npz
+  7a45324204bab61e38fb5ef8628cbaa83f0b4ebec2a00e140bcb450c40cb7345  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_feng_ipsc_S_BS.npz
+  c89925be8be04fa5fdebedfaa70a666e893659df64f3b1e3aa4538e76be3c5f8  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BM.npz
+  8e24db4dd1f2bf73565e07d61b1eed84eeda3bebf38121089eba2c5ddb7b7caf  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BS.npz
+  7d70f9eea5b06acca009b86d785a964ae6d4bcf72da584a14314940349bbad6f  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BM.npz
+  b1f0988782a4df442def2b8480d1bfc65887bfa4fd9333f172495f731e1a5980  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BS.npz
+  7ccf5acf8954a8ed758a907f975718537284345689858a668c94c339ded958b2  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BM.npz
+  736a4965a13760008ed72a7901452a8a557a4f74ed97df6de64f317a21c9a027  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BS.npz
+  54962fd222c0880241a3ff09090c9f09a612bd30b9d40ea3d108b724b599647e  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BM.npz
+  1b79bccbfe61c5ae319861c3c12a666f2b5410828e256f9be4011bf70b5da7af  round16/results/arrays/dld1/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BS.npz
+  1b233876c8d4e7a73401157623b3baeb226f1cecb6cfba0fe13947f31c7356c8  round16/results/arrays/dld1/preds_STATE_SE_bypass_zero_matched.npz
+  10ed1a362d93f5c6d6247b26709fd57dd51eee0a8ca8b47874d01e0e83bfa25d  round16/results/arrays/dld1/preds_STATE_SE_bypass_zero_mis_a549_ko.npz
+  3aafe50d64ac66c9e096015f5bbcaa89c317bb641232a640a421d0715f6b8087  round16/results/arrays/dld1/preds_STATE_SE_bypass_zero_mis_cd4t_rest.npz
+  472ec64f5d5f4e374fa6fcbdeb969379a4f8fcee362ce7e3d599029f280ba70d  round16/results/arrays/dld1/preds_STATE_SE_bypass_zero_mis_feng_ipsc.npz
+  972daff2927c1ea9844aba2e07a6d6e1020f4e303fd84c6e8b371df5c0ad6916  round16/results/arrays/dld1/preds_STATE_SE_bypass_zero_mis_nadig_hepg2.npz
+  d68d6e69dda7f59426d5d3c6244e26000bc4fdb5ed503aba18af3f3eed0f133e  round16/results/arrays/dld1/preds_STATE_SE_bypass_zero_mis_nadig_jurkat.npz
+  1de2ac911ab6d90499aecd8777a6a064f04182a26e2fe02796e2ebd78d484b95  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_b17_matched.npz
+  e826f3f726e05520006a5557267781ed910636db101a5059d2d3aafce9a9a564  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_b1_matched.npz
+  472ac4c6f6e6b926c8f89f56c3b1efc7e051df09152c4a1e693ae463cb5a77e0  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_b35_matched.npz
+  68393ee8c1a1e1aaea3ae6468a83da1303982bf26ceb1d6e1a0f527ad95d926a  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_zero_matched.npz
+  a60e1ecf748a23bee544741f9ac2fe0086adcb0e76a56511d369684c3e937c07  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_zero_mis_a549_ko.npz
+  e222763e9a048ad4ef2590ff7d88b6f677fa9853959afd8aa0cf5690f07f75cc  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_zero_mis_cd4t_rest.npz
+  bfc041fb22078f163d896026e32a908b2ada04e483c6ce6f4346d5f2d77155af  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_zero_mis_feng_ipsc.npz
+  78efb73941cd3002b1e396d7b9d66e5583740af3df5b33b206a40af2bee04748  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_zero_mis_nadig_hepg2.npz
+  e0f4c2694ef12640b6ea467f1538cf8f6e9c43fff3b9dbb0014975d05dd82fff  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_zero_mis_nadig_jurkat.npz
+  3aee0f752aba04beb803b393149ddc49124c4c4d913c7c4f0ab0fafbbe567a4b  round16/results/arrays/dld1/preds_STATE_SE_fixed_index_zero_resample.npz
+  c0d1397e299a8b5f5e7a81fd6632e178f5dceab63a98d9c74cf394a1e20db5a8  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_hepg2_matched.npz
+  fb6f6b9f5f9aac9201264a1049e6efac284677b665451b57e8647e3f869ae474  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_hepg2_mis_a549_ko.npz
+  51ce79472cdf0835fad3026f6fc2dcf8f5dbb3e76b79069fea91993372fecfbd  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_hepg2_mis_cd4t_rest.npz
+  bac64e5c0622ba6e56a3b15974c6ed7f38d6d8556b42e59b9b52317d0ed23ce6  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_hepg2_mis_feng_ipsc.npz
+  baced839544df56276f1458dcfff9040e50ca13f17c8e1079ae622b1f3b13194  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_hepg2.npz
+  2468f00b7d19e74d5546b9580b00e24e02845eca5f8e90f2200086bb29f7bdc4  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_jurkat.npz
+  dc07c6d676ae467b3f995829ac4f7b4eed2d85aab11454281c7d9e36e3500eb6  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_jurkat_matched.npz
+  860b5b376de99cabe1a3bf0a373d4158d24cb1b07edbc1c24a30cdd0dc31822a  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_jurkat_mis_a549_ko.npz
+  e4b4d7dc9efd79ae246b73e119ce0c29f030efb9f221bee41daaabd7922f44f3  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_jurkat_mis_cd4t_rest.npz
+  14b70a7accec808002263db61b187a98c709c15ad1efcbabc8e81924d6d73510  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_jurkat_mis_feng_ipsc.npz
+  984991278d1973c08376787d360d07a845fb22050cf7ead6f019e17182ce3b6e  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_hepg2.npz
+  f545c60b85cce1f1935fc3f025d8d5d8f99258b9515059f656e3b203f2edb2d3  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_jurkat.npz
+  e23896e5b89a0a07d4aa1f59e61434c0261fd0463261430f21679603db68cf6b  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_k562_matched.npz
+  d48108c6eb426297ea3f012b0c12b01a7291cfd1dcf099a6599cf12dbc0a02f0  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_k562_mis_a549_ko.npz
+  d8bae24c67ab927855df59011c580d7a61140e74f928f0baacf68b847a99fb2c  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_k562_mis_cd4t_rest.npz
+  dc54c4149801145614647bed9a7fddf4fd67d93369b07efabf9fdb3934f48d6c  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_k562_mis_feng_ipsc.npz
+  89541879d2d5b12f556f1d9682255fa1eebbd85c53ba6412867f761575aeb924  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_hepg2.npz
+  79e54da9c9ecddad66d11327397e89c89ca0d75f4910bc31c4bb4c3c03d2d8e0  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_jurkat.npz
+  0afa703d67d0062dacbcefc362e5360a8e6313ae95a27f632f61f818876ed56d  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_rpe1_matched.npz
+  baa28934a6b509635e571167c60ba3dfa88f246ad9ee2225b6df9de2161a149c  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_rpe1_mis_a549_ko.npz
+  5803e956940a716d570aa31990f912664c7e9d6b4b626bd4b052f49af77643e7  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_rpe1_mis_cd4t_rest.npz
+  4cb641d83272f73f2b07770b7cd75fd04782b2a3ddc2f5955c71170bd2c76eff  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_rpe1_mis_feng_ipsc.npz
+  bfaefeb1320b6e2967cda1b3ec6b3edc48010b0068f19fc64e5d41d40d016af2  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_hepg2.npz
+  ce43bedba67f40129e0e8a0648a9b2f6e340246e28c1324aef73e8cbe79e9224  round16/results/arrays/dld1/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_jurkat.npz
+  e279e8fe0ce260cb27a5df4502ba9b6070fb062c073ebd98f3282e5ffa9f7ed4  round16/results/arrays/dld1/preds_STATE_SE_mean_batch_emb_matched.npz
+  cee18f75367632f8ba95ce0827aad0ed97807b20c0664fb351740a4888485d21  round16/results/arrays/dld1/preds_STATE_SE_mean_batch_emb_mis_a549_ko.npz
+  386f1e19b67f2f88441a5c50eefff9314ac5fef3495825badb1a282047078164  round16/results/arrays/dld1/preds_STATE_SE_mean_batch_emb_mis_cd4t_rest.npz
+  ad1ec49431c7e1cadb190cb4583498cbd597fdd43269de01cdc2f09d471add90  round16/results/arrays/dld1/preds_STATE_SE_mean_batch_emb_mis_feng_ipsc.npz
+  856daf3e185d4475a41127d7ef1fa15e7abd7f3125eb71714f4e3e2ba4c9dda8  round16/results/arrays/dld1/preds_STATE_SE_mean_batch_emb_mis_nadig_hepg2.npz
+  49831021871f5f88610b9281b96850561fd5987b052d2c803eda1777494af7aa  round16/results/arrays/dld1/preds_STATE_SE_mean_batch_emb_mis_nadig_jurkat.npz
+  683221e7a36da123eddb68e7dc791af4f4567eac53e7cccb0b1c7e4d949423cf  round16/results/arrays/dld1/preds_STATE_SE_multi_batch_ens8_matched.npz
+  ccf4beb9f23bf930d584e2f71bda43dc28fae2a4597c85e9a9b734b298b1694e  round16/results/arrays/dld1/preds_STATE_SE_multi_batch_ens8_mis_a549_ko.npz
+  602da7015396a185bffbaf5771510028a4ff49c085df328b54fa9a14d72b1626  round16/results/arrays/dld1/preds_STATE_SE_multi_batch_ens8_mis_cd4t_rest.npz
+  d178d17fdf673dea94fb6cba12d94691d5f6fbdbdd14c434c85d8f8bbdebff0a  round16/results/arrays/dld1/preds_STATE_SE_multi_batch_ens8_mis_feng_ipsc.npz
+  a44d0401cd7398dcc057ce19dd47e2c221755e2fc37d54f8e7cf90c55c415497  round16/results/arrays/dld1/preds_STATE_SE_multi_batch_ens8_mis_nadig_hepg2.npz
+  aefd8fa8485133140388e41b30bbd95443238601773b1f162633746088643d58  round16/results/arrays/dld1/preds_STATE_SE_multi_batch_ens8_mis_nadig_jurkat.npz
+  f0d6aedf08f6b5f5a9132705eb49218d1af034f4492befbeb42e431e2b5fa163  round16/results/arrays/nadig_hepg2/observed.npz
+  2d44e40b943d50029574aaf1b24ce83c56cc645f3eac546b59c73a28a0e208c7  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_libnorm1e4_log1p_matched.npz
+  8ebd9e279e6e5146daac256b3d945dc56777db1c327e8c565cac2b77b917b398  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_official_median_log1p_matched.npz
+  b29738e9ddac2c6ca9020ac27111d0671bf18c3c9a4f38adb34dd5d864695148  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_official_median_log1p_mis_a549_ko.npz
+  bb00ee14b84ce26c770a7409cfd6698f7224c4279c44090083bbf7add04f1902  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_official_median_log1p_mis_cd4t_rest.npz
+  697af7447fae18375c0400d4bd4e43c49e8699350163df5a38e4ec5313c2e72f  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_official_median_log1p_mis_dld1.npz
+  ddc6fe277d8a7dd96aa9c50415fd36c13f7af6c1f02cf99112b077bd7ba1b5cd  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_official_median_log1p_mis_feng_ipsc.npz
+  d8238ceaf3b65fdf02ffa422da9c9a4b5ef3484578906b4f16cd3217c78ec969  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_official_median_log1p_mis_nadig_jurkat.npz
+  f2fe92a9cb1eb82ad885c71a038dd71a06d840cceee77fdbc487932ff021d8f5  round16/results/arrays/nadig_hepg2/preds_STATE_HVG_official_median_log1p_resample.npz
+  1b212d5da7cbfaf298e1384bce95cf3eabd83ffae891f5a8dd6b63ea3fdcf38b  round16/results/arrays/nadig_hepg2/preds_STATE_SE_G4_native_vs_nadig_jurkat_M_BM.npz
+  03f1a13ae98af9c8d71a93e7f2e82b0f1b8943b01ddee564eb9b1e4a8a05298e  round16/results/arrays/nadig_hepg2/preds_STATE_SE_G4_native_vs_nadig_jurkat_M_BS.npz
+  158589b4813dff6e09cefeb187bf179b63d69a05c9078f0af31faead5067fd34  round16/results/arrays/nadig_hepg2/preds_STATE_SE_G4_native_vs_nadig_jurkat_S_BM.npz
+  696994610dea7381f05b06f844059e36390feb5fd66c098a96d65fd5ff06ed21  round16/results/arrays/nadig_hepg2/preds_STATE_SE_G4_native_vs_nadig_jurkat_S_BS.npz
+  57ccf455391f4dc4ace193c4756e54c6f5bffe1677124827f761473b8a948c7b  round16/results/arrays/nadig_hepg2/preds_STATE_SE_bypass_zero_matched.npz
+  0dec9877a081ef14301936c663f21dc1d3d5f8d4c33738e736fd9c70401a2b7d  round16/results/arrays/nadig_hepg2/preds_STATE_SE_bypass_zero_mis_a549_ko.npz
+  3b19b15561430af0af772315f4a9490778f7a9adf0d5afc9dfe3a3995a80d70b  round16/results/arrays/nadig_hepg2/preds_STATE_SE_bypass_zero_mis_cd4t_rest.npz
+  3282c5b271cb4c45e475faa01f43bb20b928bc2a7a9cf9f897f62c4b696b02a2  round16/results/arrays/nadig_hepg2/preds_STATE_SE_bypass_zero_mis_dld1.npz
+  8df8dc49a991dcfae045f6a7d1200ec03ffad881a11f54ba8f5723d1a76e460b  round16/results/arrays/nadig_hepg2/preds_STATE_SE_bypass_zero_mis_feng_ipsc.npz
+  35f5a29003a559d3d234cebbf93c7ebdf64d283b9a2135ecaece347dd3f35e05  round16/results/arrays/nadig_hepg2/preds_STATE_SE_bypass_zero_mis_nadig_jurkat.npz
+  33c73e41cc4b5c0f0c6b5fbffe690257c451a5d9029ae57ad44808fec84b04b6  round16/results/arrays/nadig_hepg2/preds_STATE_SE_fixed_index_zero_matched.npz
+  1259743f258b16b447fe0842c345870f5a9786268003b86243d0994c1acfb4cb  round16/results/arrays/nadig_hepg2/preds_STATE_SE_fixed_index_zero_mis_a549_ko.npz
+  c8f76b838d0679fafdb7c1ab00070c1b3168b179e3be191425c71cae9e6ea6b0  round16/results/arrays/nadig_hepg2/preds_STATE_SE_fixed_index_zero_mis_cd4t_rest.npz
+  c399581f9fdf8675cb0909fdd9d364513dd352ee1c9fadbaa98243565ca48c11  round16/results/arrays/nadig_hepg2/preds_STATE_SE_fixed_index_zero_mis_dld1.npz
+  d0eafb000390c9bc39a24a831e578dd1dda3105312036adbd4887ddafce144f5  round16/results/arrays/nadig_hepg2/preds_STATE_SE_fixed_index_zero_mis_feng_ipsc.npz
+  279bc291679ae7111d637e5ef78ff11779dcb0d272ee3b476644f687c8d80b80  round16/results/arrays/nadig_hepg2/preds_STATE_SE_fixed_index_zero_mis_nadig_jurkat.npz
+  94600e283796f7e10d12f5e4bd3b7f36b0298629dfe3e3a9ab070038e78e9e7d  round16/results/arrays/nadig_hepg2/preds_STATE_SE_fixed_index_zero_resample.npz
+  bf57e8dfbd51916e767236053706c47a8a6ec1757e0011d781691446c4ccb02a  round16/results/arrays/nadig_hepg2/preds_STATE_SE_mean_batch_emb_matched.npz
+  4c8c84b7d1a2ba7eeb2857e048a265a163c7399de7d311bee9c4ace72f9ce6d8  round16/results/arrays/nadig_hepg2/preds_STATE_SE_mean_batch_emb_mis_a549_ko.npz
+  ee6c05d4d40e01077741a002e199f3e91d5133a78dc632e3f0ec7ee035ade7cc  round16/results/arrays/nadig_hepg2/preds_STATE_SE_mean_batch_emb_mis_cd4t_rest.npz
+  3fdd13ee734bbf36056205694769b0c889f4a4fb8337d94be61377c1b4f83d8c  round16/results/arrays/nadig_hepg2/preds_STATE_SE_mean_batch_emb_mis_dld1.npz
+  adfc60d702ced47d1c9f8017f046869d42360be573f5ab064897400be31bd8b4  round16/results/arrays/nadig_hepg2/preds_STATE_SE_mean_batch_emb_mis_feng_ipsc.npz
+  4c89332124611016b519bb4c15ec0f96ddb7813a10710771740f58fee2c49b22  round16/results/arrays/nadig_hepg2/preds_STATE_SE_mean_batch_emb_mis_nadig_jurkat.npz
+  979b4c1541bcc50512829b6ccf3c74de103d99640fb29b2a0bb44bf2b596c8fb  round16/results/arrays/nadig_hepg2/preds_STATE_SE_multi_batch_ens8_matched.npz
+  dcb5fbd3effcd02f734d5a01e820019546455a31367a9dfda5fd0b28015b441d  round16/results/arrays/nadig_hepg2/preds_STATE_SE_multi_batch_ens8_mis_a549_ko.npz
+  66eb3ad6ae9935b35355638c13cd27b0b6c366fc3d8f371f92e1e0d33d23d107  round16/results/arrays/nadig_hepg2/preds_STATE_SE_multi_batch_ens8_mis_cd4t_rest.npz
+  e16ef75da8b40fc3b0176d5144aade93ba9add772851a1de20eef7465a60c49c  round16/results/arrays/nadig_hepg2/preds_STATE_SE_multi_batch_ens8_mis_dld1.npz
+  3d5fc2fa35d93e9b72aa384333fbc766e5919d6c2da05f975afd4603f0129782  round16/results/arrays/nadig_hepg2/preds_STATE_SE_multi_batch_ens8_mis_feng_ipsc.npz
+  92ec6ad3df5b066621b9a5e7f423c059846c58e9e1175bfd6952a573531bfd1c  round16/results/arrays/nadig_hepg2/preds_STATE_SE_multi_batch_ens8_mis_nadig_jurkat.npz
+  7664f8e6a71e4eb52463bb51e76d9ff8427cb98d35d07d99054a6bd4e940718c  round16/results/arrays/nadig_jurkat/observed.npz
+  2fd35bcd94ceec2b4ece794de594e3a969a30eeaa76f66699336439323da6bab  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_libnorm1e4_log1p_matched.npz
+  f00b54c9582ea5336f863af34bc86d8e91f36f47987e11e8255cbf2e739a9988  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_official_median_log1p_matched.npz
+  8f3a0da516844b9f02deae52c61d5a827e45348193cd5eab6dc85cb82a59e4fa  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_official_median_log1p_mis_a549_ko.npz
+  89a10cb9e228727f10fbdcd0266b88469fcc0c822e3e82544522ad0104ee8fc4  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_official_median_log1p_mis_cd4t_rest.npz
+  3ae0bb886305664b4b3632eeed5fbf08e2b9ddccd255b93de118415bc4d2f125  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_official_median_log1p_mis_dld1.npz
+  4adaaeb6db666f6378f89471b81e1cb4c68f4bdbd22100852ed17139886cc95c  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_official_median_log1p_mis_feng_ipsc.npz
+  dcbd113c8c3a9d6eba192c75a1e0fa232f4f9b2705af38d8159630bdf56df423  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_official_median_log1p_mis_nadig_hepg2.npz
+  bc7fef88898d4661d67022cf3107827f669825ed2e744f14d9cb0464c9d9378e  round16/results/arrays/nadig_jurkat/preds_STATE_HVG_official_median_log1p_resample.npz
+  cca51d06a04b3070ec05672d4cebf3230caa05b0bfd57790a169f38448dcc610  round16/results/arrays/nadig_jurkat/preds_STATE_SE_G4_native_vs_nadig_hepg2_M_BM.npz
+  c828cc2f3b9e26648b12a1a70ef6634d00f987b9b55f4f68de1969da247f2955  round16/results/arrays/nadig_jurkat/preds_STATE_SE_G4_native_vs_nadig_hepg2_M_BS.npz
+  9628087031a8205c94bf6b25c84bbfdf1776afcc9622a84c1aab9d8388264cf7  round16/results/arrays/nadig_jurkat/preds_STATE_SE_G4_native_vs_nadig_hepg2_S_BM.npz
+  74127e704254b22ad4d53315eccb02eeedb54928b9f314d665bd2382b5afb53c  round16/results/arrays/nadig_jurkat/preds_STATE_SE_G4_native_vs_nadig_hepg2_S_BS.npz
+  8f4c06a298bf38547b6dff1548dcb2702a3715499da77b2bcf47eaefe354484d  round16/results/arrays/nadig_jurkat/preds_STATE_SE_bypass_zero_matched.npz
+  987cc13c2408e8b9ed53dbc20760d7b765cad8d7ddd6ea6da0d1477aaec7ebc9  round16/results/arrays/nadig_jurkat/preds_STATE_SE_bypass_zero_mis_a549_ko.npz
+  1d18ad1de7c61e4366640731474e651136aabb52a55716791fca90b2ccb4ca10  round16/results/arrays/nadig_jurkat/preds_STATE_SE_bypass_zero_mis_cd4t_rest.npz
+  e82e9ea8304962119490e02d82eb96653fa44b6bfacd323c9357986995529763  round16/results/arrays/nadig_jurkat/preds_STATE_SE_bypass_zero_mis_dld1.npz
+  060c1dfed75021ac90fa6631b50dc47913b4d641081841c96a792d0bfb5bf6f9  round16/results/arrays/nadig_jurkat/preds_STATE_SE_bypass_zero_mis_feng_ipsc.npz
+  b0d2f874317305780795916dd2d14ee29ce0435f7046cb835f25f18286cd1d85  round16/results/arrays/nadig_jurkat/preds_STATE_SE_bypass_zero_mis_nadig_hepg2.npz
+  3a29653bed6c3be6d9405c3f81ed146075ae5e225adb669f2a903a11b9e8d399  round16/results/arrays/nadig_jurkat/preds_STATE_SE_fixed_index_zero_matched.npz
+  6ea01dc7fe5b3667ddf1cff6e24bbd32de15bf8deb9eefbcdca314a059cf71a4  round16/results/arrays/nadig_jurkat/preds_STATE_SE_fixed_index_zero_mis_a549_ko.npz
+  a6b1cf30f5d99634a5ce3e7bdea995b8753392a3a2e0f6a3ef9f5c12e31750cd  round16/results/arrays/nadig_jurkat/preds_STATE_SE_fixed_index_zero_mis_cd4t_rest.npz
+  116271a80f0938fc80f561e5073b7482cfa8f043b6656c5185237261aaba150e  round16/results/arrays/nadig_jurkat/preds_STATE_SE_fixed_index_zero_mis_dld1.npz
+  9ebe70dd9cf751927f0c8c245683a7b5e92bc8a2653989d3ed3a4791bad1b2da  round16/results/arrays/nadig_jurkat/preds_STATE_SE_fixed_index_zero_mis_feng_ipsc.npz
+  c7137860dd1ed02e7537e4747689d5c3e25112632c20f8dbf34df1e9172e9051  round16/results/arrays/nadig_jurkat/preds_STATE_SE_fixed_index_zero_mis_nadig_hepg2.npz
+  53bb1c2651e7c31ab97d344aba68bf7d5b82996b40ee5b71e1a21c8416c9a1b9  round16/results/arrays/nadig_jurkat/preds_STATE_SE_fixed_index_zero_resample.npz
+  b72923aad850017f04317518bddf24c18faf91dde6ae45eaebebc5b3bde2133e  round16/results/arrays/nadig_jurkat/preds_STATE_SE_mean_batch_emb_matched.npz
+  f75ea996f146a9a11c1e1ae83a139ad4e09cf272ef15d518c8e1ed544df920b1  round16/results/arrays/nadig_jurkat/preds_STATE_SE_mean_batch_emb_mis_a549_ko.npz
+  6b019281dfbd2c161b6cfb53f9cf8a510addf8176c96f872368fbe4452f60dff  round16/results/arrays/nadig_jurkat/preds_STATE_SE_mean_batch_emb_mis_cd4t_rest.npz
+  dbf49ab76545571e21574c6eff87c5dc5c674d49370f5328217109445e7f99d9  round16/results/arrays/nadig_jurkat/preds_STATE_SE_mean_batch_emb_mis_dld1.npz
+  64ef89b69c99dc90f15c53951b327c005445d2da55ed040f96e8bdb3bda2f209  round16/results/arrays/nadig_jurkat/preds_STATE_SE_mean_batch_emb_mis_feng_ipsc.npz
+  f3b1a7b80d0fa865af46b7e602fff6d3f2d5aa753b598fde70ae70764a9784c3  round16/results/arrays/nadig_jurkat/preds_STATE_SE_mean_batch_emb_mis_nadig_hepg2.npz
+  73a90d66a400755335d9bfddb3d3a10e594ec3fa63c15f08c65421fe95ea75c3  round16/results/arrays/nadig_jurkat/preds_STATE_SE_multi_batch_ens8_matched.npz
+  523f20924388bb0eb1405b28c85c47e7962cae5173ad039de8bd39ce1c7ab006  round16/results/arrays/nadig_jurkat/preds_STATE_SE_multi_batch_ens8_mis_a549_ko.npz
+  7d84fa103217df1c1313daa567dd890d2e5f9f21e58adf07d93ad95fce107d63  round16/results/arrays/nadig_jurkat/preds_STATE_SE_multi_batch_ens8_mis_cd4t_rest.npz
+  9d252103b9a34306016b0e722932801ff4c3626c144aaa8fbdf2c740386ccd29  round16/results/arrays/nadig_jurkat/preds_STATE_SE_multi_batch_ens8_mis_dld1.npz
+  56f0809cce69e7ffe7f8e288ea717e158dd531b29a0976c1f99a60b8371c2252  round16/results/arrays/nadig_jurkat/preds_STATE_SE_multi_batch_ens8_mis_feng_ipsc.npz
+  ebe02b72f5b097725cf49727b85ac5b128ffaf2ade2a90179d5822b24cabf1c4  round16/results/arrays/nadig_jurkat/preds_STATE_SE_multi_batch_ens8_mis_nadig_hepg2.npz
+
+7. Hard-Guard Compliance Attestation:
+- Written exclusively under round16/results/ and round16/status/MAIN.txt; zero reads of round16/audit/, A-T3 logs, or A-T3.txt.
+- Frozen files (prereg/src/audit/data/models): UNMODIFIED; downloads/training/git commits/external material: NONE.
+- Pre-registered sensitivity cohort (feng_ipsc -> round16/results/sensitivity/) launched immediately after groups12 completion.
+
+
+---
+Round 16 Gate 5 Sensitivity Cohort (feng_ipsc) Real-Data Evaluation Complete (Main Line, DEVIATION_R16_D2-D5)
+Date: 2026-11-27 00:10:13 +0800 (2026-11-26T16:10:13Z)
+Command: round16/.venv/bin/python round16/src/run_eval_r16.py --cohort sensitivity --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --results-dir round16/results/sensitivity > round16/results/run_sensitivity.log 2>&1
+Exit code: 0 | Elapsed: 7432.06 s
+
+R16_MAIN_SENSITIVITY_DONE
+
+1. Sensitivity Target Line Primary STATE_SE H-I1 and H-I2 Adjudications (n_boot=4000, delta_tost=0.04):
+- feng_ipsc (sensitivity, CRISPRi, N=88, G=1575): H-I1=MIXED_OR_INCONCLUSIVE (matched r_orth_cal=0.015809, 97.5% CI [-0.012312, 0.045768], rho_ab_orth=0.617719, all_within_delta=False, strata: seen_by_checkpoint=STRATUM_MIXED_OR_INCONCLUSIVE, unseen_by_checkpoint=STRATUM_MIXED_OR_INCONCLUSIVE) | H-I2=FCT_SUPERIOR_TO_MODEL (STATE_SE - FCT = -0.114372, 97.5% CI [-0.152863, -0.074197]; FCT r_orth_cal=0.130181)
+
+2. Sensitivity Top-Level Output & Embedding SHA-256 Checksums:
+  33c8956f1056df1414773f8f9e2761fdf09f71320931d18b7376baed25f30fa5  round16/results/sensitivity/summary_r16.json
+  461f221987f3ed4a48bfd34350e1715be4034b330c4a51ace490b339bc36ec4d  round16/results/sensitivity/control_barcodes_r16.json
+  329f06fb2e0285a7f99af9709c3e97207c0e1d7910fd4874d110e04463a6b0e8  round16/results/sensitivity/embeddings/embeddings_manifest_sha256.json
+
+3. Complete Sensitivity Array NPZ SHA-256 Checksums under round16/results/sensitivity/arrays/ (total=101 files):
+  6acad91e32bccd68d1390e3bd69783774e0e7f3817dbc15bb82f8041c091f354  round16/results/sensitivity/arrays/feng_ipsc/observed.npz
+  54c4fa87ad3f6357751f8312eccf2578a5c3bfee8eed77d93ec571fa035da24b  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_libnorm1e4_log1p_matched.npz
+  afab03ae9022b69b7064fdc79dee8993effa98a1b63c819ca6d05c2780fe2656  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_official_median_log1p_matched.npz
+  cf066195f926f2337d43e8fea39a0516a4f09431260ccea6b8c36b9a8ed75f0e  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_official_median_log1p_mis_a549_ko.npz
+  b1c6fbc5cd794f630fc2f981ee849acde2a15c6a40122a3f00ae331042d2a641  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_official_median_log1p_mis_cd4t_rest.npz
+  cc55d00685dd74ea4b8dbd857553e1b7cd6a96f7e15de77f838b35b82166b284  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_official_median_log1p_mis_dld1.npz
+  1acd9a52df391c3bcb6c42d87234f0f264a6a43d201f2e671d23e271e5f372c6  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_official_median_log1p_mis_nadig_hepg2.npz
+  8bae2471df04aee8110683c841201272ba30bb298ed17893a53dbb3afca9646c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_official_median_log1p_mis_nadig_jurkat.npz
+  26d0b59c2a05018e5b931fbf89b1966716277e9f35c3fcc60663a1fabfc55b79  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_HVG_official_median_log1p_resample.npz
+  b1974092880539a96080099f9b96d6b2fa750db8a92aa371ea0a86db9331c48b  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_M_BM.npz
+  5672fa928ddde60e39aa67da6e56ef30f80f70a565c829b93b1ee31a7a0ab08f  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_M_BS.npz
+  c85178bf7940004bf37c4725b341e3afdf3b9ed56466314ecfb5ab48ea654c21  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_S_BM.npz
+  e496ebf5f88779160bbfaffc4e1e1371177d56299c92d95ae9fbc0caf6cfeab2  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_a549_ko_S_BS.npz
+  60d096aa2c0cf103df1862ca87827d236d930fcef7b336105554de8f92ef0ad8  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_M_BM.npz
+  b004d9a21992a57aed99fa55fc4bf32401b6db84ce7f4f873a8676b1686cc5eb  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_M_BS.npz
+  38ea5e636e8c6986a3e971b010bcd522e0151bbe18140662af19b681a040e834  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_S_BM.npz
+  725d10a74e68a2af8c28a20055c056ecd44f7d557cf124a895f48d294048e598  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_cd4t_rest_S_BS.npz
+  ae6087ba8002894f2597c7448484ec1d4bb94f9baca1bf2203d44592683a5570  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_M_BM.npz
+  5f9cb99a71fb6c339fb695936cf5fd676cee1b20892b5a6ddeb6e7865cfda799  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_M_BS.npz
+  f668159c1ddc989beb5f8cce751078f8879e580120f1c150c0d9d1d97d42ca41  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_S_BM.npz
+  a5ab29d66403395eae5ac5585f04a64ea59f686a126f5f8bab1d706cd1b6f76a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_dld1_S_BS.npz
+  c45970b45c6296a873be1638b16f97c8fe16a65737e498c30de5da2e2e0650b4  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BM.npz
+  21327e50545d85842af71e17d68f5c296f1f160ab66ff9174c79504f2d224e4e  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_M_BS.npz
+  f1a9fa888dc28fefd224cd6c7035e5cf67c5d08ec186bdc89d813f12cf26bd95  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BM.npz
+  3c64f8dc1f5221594840d2c9fdd29c6feb6972f8fa7fca34b3044217d027dd27  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_hepg2_S_BS.npz
+  5c1c3b3332fb8e6ca31166f83c0055f0aa590cb2a51fd36d863c6975e60bd128  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BM.npz
+  3f7946f4d5ba6e8fe24145420de6e9e44f135f1a71423bc90366906b568ed072  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_M_BS.npz
+  587d33ce0c61ba88185d3b07343d4c924af8fb7a5dd9ac6f1fc2e7d3ec590014  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BM.npz
+  25ff21319d7b72c568f239003b600dea52217110803cde67628297354654c21c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b0_vs_b17_mis_nadig_jurkat_S_BS.npz
+  05db596943335a274fa7b1a42e777abf16101ffb59e0bd709a25b09885aa423c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_M_BM.npz
+  d1f69bb48d1f04f86197f601aaa74566f28a31f1c82f9ad589f0c38a3f33897d  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_M_BS.npz
+  18f5e94a66cc034c55d168ecbba9f1e456e17f040e8667b7887357b271b6a62e  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_S_BM.npz
+  d331c59087fa475e9132a72da887ef7cdf3a8bcc0296ee7d5f0b538f4a0e9bd0  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_a549_ko_S_BS.npz
+  448a55f5fb21c114a683b69200d110870a916302437764d17cbfd768b8886043  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_M_BM.npz
+  a3b5916205aaf856e62163935b68ba813a7db1975e86b5952103a05c690c4904  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_M_BS.npz
+  004cc45d9a4a1f40a60fbda76e3c331ad232ab042fe453b264de02ce42a2cbb6  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_S_BM.npz
+  289e576f2cc33e5b6d6ffe4505583349c6a1dd432d7c767b4fcc327370c22af4  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_cd4t_rest_S_BS.npz
+  139509091791357fd93c014c6ff448bfe38a50e0db88a9843617dba5b21a975d  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_M_BM.npz
+  f20330d0da406e559048f2c2b7fbcd64bea24d53969fbfd81573e718f0cbe215  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_M_BS.npz
+  fdcfee0a58f33b2a9fdf2fa170b10c2bdc9cd8ee802a3dbb230139aad1fbd35a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_S_BM.npz
+  52e794cfd401b5863b870da17ef0724f436e01b87947185da925e94819cb1481  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_dld1_S_BS.npz
+  ed96f6ae13b969892f485982b7223887f48ed7d7884190c89e3f0a9faf547643  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BM.npz
+  0442d0b80bfd9c699c19211ff585edcb4cf9ee0d1f6f3641f465a010eb30752d  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_M_BS.npz
+  1cd0743a41406fabd9cc40a6896c72aab989f40670a36bc5410d7dc90ef1e176  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BM.npz
+  040e4c050e3384cda4c49c3cef5a47ca7dd2783b4d23bc177c6699faa3c6a51c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_hepg2_S_BS.npz
+  2c6613ad99237d0405ea5bd4e393c6864874baeb23809514cb16446729ebcb72  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BM.npz
+  496aaf4d055fe1f7f25f7da4e6bde033975f9949591149a94dd54487582e3e24  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_M_BS.npz
+  0f525136ad3f667780b1ac086b1c3b96357b96018f85711295d63f378343f027  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BM.npz
+  c37c46c4e15b6ee1b7e0c197ab04afe193fc87def85519fba9165c62d431da8a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_G4_b17_vs_b0_sym_mis_nadig_jurkat_S_BS.npz
+  2756881bc18e79c2aa6dd3a7030746d6c35b5fdf86555b033a69a3ca1e9d34b7  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_bypass_zero_matched.npz
+  21890535639f38e6275dbdff96b3943521dde2fa732b8b49202b87ed7e42dfeb  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_bypass_zero_mis_a549_ko.npz
+  8059d71d4a5f759a2dc5bbb7e5614a2e75bb2463f9ac268edbdb591371ae68d2  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_bypass_zero_mis_cd4t_rest.npz
+  5316136c64e2206e021fedff58aae8d2571f7800b38ff3737982df5e9a1260a1  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_bypass_zero_mis_dld1.npz
+  0ecd83b26c3cf07eb010c4d7951c39c40a10c6cdb00a32fb321ceabeb7e6f91a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_bypass_zero_mis_nadig_hepg2.npz
+  de16c40e8ff9e8d8d678273bccf5f77f01c6f9436235c1b212c79ec6845a52ac  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_bypass_zero_mis_nadig_jurkat.npz
+  26dc0bc8759217ed3aa2b227381ea62973c25f2a17a8d27fcdbe0995f5ac32be  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_b17_matched.npz
+  8347700d5d9966413810ee57e928a93cdb95ca810e83549fff2ce3c997e41386  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_b1_matched.npz
+  8182c35a3b1007bf94441f11ea91d242a9738ced61ddc46cb48ef94b9f102278  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_b35_matched.npz
+  2ca57da285dbbdad6960562f62c710249ff936deafb77c06b64edc4329edbd65  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_zero_matched.npz
+  7353cb241c4a82ae4b860ccd987e43a31032e9c839865c6dfe2cffd44c7efb21  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_zero_mis_a549_ko.npz
+  a54c2cfdb55317f9cf734fb7bac5dfde250dce13238c5e30d25fb8182c06da8e  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_zero_mis_cd4t_rest.npz
+  dfc7d4d73bb8d37f7a6a062f82daee4231b2237642bd8ab7a5043f42f7cf3612  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_zero_mis_dld1.npz
+  43392eeff6d7bfbe5347bcb950b97b8ac436582c4f41592ac630ac1ec38979b9  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_zero_mis_nadig_hepg2.npz
+  6d5f059dbca9f1a12826fd93aa6b9eaa52f1ff4763be9e39fd89e96e97e2f562  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_zero_mis_nadig_jurkat.npz
+  02149745e5976efc076b6f26bf044d0b8ab4de1b1ff3430dfe7ed6667525740a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fixed_index_zero_resample.npz
+  85e361506b4a0444e4d70c9398fc2c2d20ac2885231a45f78404a3ae3486043a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_hepg2_matched.npz
+  a36b438810c5337756f04684c1af2cf4b90d293bb47fd22fc2dafb29199eab4e  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_hepg2_mis_a549_ko.npz
+  a541b90ad2fa9560297156602be89914adac4d2cd43502c0ed90cf7a01b6ebd9  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_hepg2_mis_cd4t_rest.npz
+  adcba8f391203414dc72b42c7ffe2b9fb34b034ef2128c51cd68fb04b6d096d5  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_hepg2_mis_dld1.npz
+  0e8403a73070c546721c0cff042f289d109389d64d3457d3fab046fb0a582696  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_hepg2.npz
+  f0463f666009042f5410354ff474f05e87890a3df2e36c8df78f5d68a65774c1  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_hepg2_mis_nadig_jurkat.npz
+  58d623b050093b74605b7442e0d49c0feb80fde5ff30cb89983147aab80b2879  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_jurkat_matched.npz
+  564d94c7691f2d061b42be321653840c67614e331314dc823bae17df8d34d799  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_jurkat_mis_a549_ko.npz
+  9d3c3e26e04b8de238a0df3408df89d61cc73307d3f8a17cedbafad277d6b751  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_jurkat_mis_cd4t_rest.npz
+  5105b67545dd3e286bdce0d8dc26a570d269dc4f54257b6d1f045f771662352d  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_jurkat_mis_dld1.npz
+  0881b51eda93a2ea3d8cbcc6731b39f74d0c6d0ed0b691ec1b80ede6c5a7272d  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_hepg2.npz
+  666610f81f18949bd7e666c25ec84aa454e8f33c343808d93a693a6f0289b3a2  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_jurkat_mis_nadig_jurkat.npz
+  91c9f9d3204a6f9696f7f9dd246c1ab9bf879d3746e9909dd7202acdbc47ec32  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_k562_matched.npz
+  20763bfd7760f00518483681cf5dfc5f975b1e3f5da7fbd4b6f9a89d21a367ef  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_k562_mis_a549_ko.npz
+  9f9718b7e24c02692577eff5ed64e4a35d462e17418c8bd85fdcbe0796de1d2f  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_k562_mis_cd4t_rest.npz
+  1835603f1b10eb817133f28c0e5d0abe2930fceebbf454ba178736d766dd358c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_k562_mis_dld1.npz
+  a8f968ce08f1af22e308e7397d0f19a5df3f049a95376253172e2db89a389781  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_hepg2.npz
+  db86ce470691545bf5743bb2f998e5760ef22775b4d7a23f12468d670f08d531  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_k562_mis_nadig_jurkat.npz
+  33acf537dec1b17d078bc636d1eda27b393497b04733dd54e3bb12e42b23fbdd  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_rpe1_matched.npz
+  341913ac219f71f15be93c7193db45972bdec947460bad677cefb48ed0bd1fd6  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_rpe1_mis_a549_ko.npz
+  33b85d717c771b8cf0d6cccba68b79c632db7688c9e6145cbc10f7261c4318dd  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_rpe1_mis_cd4t_rest.npz
+  c0eedb122df11d9bf13cf1715d0718de355afc5b8460bbd1e44baece725c9878  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_rpe1_mis_dld1.npz
+  ab88bb2f92cb571399c23a0b356a5e490b73f90c75f6f6aebe30859ee3bd1df1  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_hepg2.npz
+  a96f18c5b012d145e38af1e0ab9557ad32bca5ebb0291fdd2a8ffa700c33720c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_fold_zeroshot_rpe1_mis_nadig_jurkat.npz
+  7a024263386bdbb37db058b16130c521e913a2f80b694979ae27e6c05ebd0718  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_mean_batch_emb_matched.npz
+  9262a1b5f8d5f98f39aa5879dd12ae98af2f666db8dda9cb2086226fde84103a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_mean_batch_emb_mis_a549_ko.npz
+  42747ea9a2c61145bf3e5d42949a8798a584cacc224c0dcc93f8f54eb9b11c9a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_mean_batch_emb_mis_cd4t_rest.npz
+  e2cf36a351216b52ad6b49df50c3bab9fe878455cb42b148515f5118296bb4e8  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_mean_batch_emb_mis_dld1.npz
+  799d61620e4b9b9e2afb7f0c24e5d80b9e247b5f10c987b0b12646a1814c04b8  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_mean_batch_emb_mis_nadig_hepg2.npz
+  5abbe309dca0b8899ae7e9ad83a7068a75504ed8ae2b43a26b7e0ccdc4180e5a  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_mean_batch_emb_mis_nadig_jurkat.npz
+  23215c9dc7d98913102b6c3a2a2003432573f2426c29b7f290783c869a84ccdb  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_multi_batch_ens8_matched.npz
+  45cbc160d53ee856aaf2c5f6dbec45a01057456c179a81e6a42eedd1c95f4a2c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_multi_batch_ens8_mis_a549_ko.npz
+  03a9222a6dd10940c2351c405fedd332f569c74de35b0d7248f47b00227a19f4  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_multi_batch_ens8_mis_cd4t_rest.npz
+  4292cae545dd96b6717808b7cc06036accb77aa731583cfba94661e68655db13  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_multi_batch_ens8_mis_dld1.npz
+  3e88fcc5e5631fd080dc12bd07ad178619f5102d60a0e82014e9c862f3ce0359  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_multi_batch_ens8_mis_nadig_hepg2.npz
+  94ef1a1d0b0a6d3ac22bf91a0048a57737ad6638ce3bc067d57dcbfdfd76089c  round16/results/sensitivity/arrays/feng_ipsc/preds_STATE_SE_multi_batch_ens8_mis_nadig_jurkat.npz
+
+4. Hard-Guard Compliance Attestation:
+- Written exclusively under round16/results/sensitivity/ and round16/status/MAIN.txt; zero reads of round16/audit/, A-T3 logs, or A-T3.txt.
+- Frozen files (prereg/src/audit/data/models): UNMODIFIED; downloads/training/git commits/external material: NONE.
+- Both Groups 1-2 (`R16_MAIN_REAL_DONE`) and sensitivity (`R16_MAIN_SENSITIVITY_DONE`) complete; awaiting Master Controller three-party check (`controller/checks/r16_check.py`).
+
+[2026-11-26 16:45:52Z] Round 16 Addendum B Pre-Lock Draft & Prior-Art Refresh Complete (Occam, arXiv:2611.21959)
+R16_ADDB_DRAFT_READY round16_addB/PREREG_I_ADDENDUM_B_DRAFT.md sha256=6117709ac459947c90c56b4906f9171ccc0027e02dc953cd78bc2250905dcd6d bytes=54965 round16_addB/PRIOR_ART_I_ADD2.md sha256=9362e83cd47013a70d08ef99ee807ab3e83abccc5e0116d19511a210e2d46309 bytes=29129
+- Artifacts written exclusively under round16_addB/ (zero other files modified in round16/).
+- Hard-guard compliance: zero GPU/MPS compute; zero model weight/dataset downloads (.pth/.pkl/.npz/.h5ad/GSE295214); zero Occam code cloned or executed; zero reads of round16/audit/, A-T3 logs, or A-T3.txt; zero git operations; zero priority claims. Pending Master Controller audit, A-T3 completion, and explicit human weights/assets license approval (R16_ADDB_HUMAN_APPROVAL.txt).
+
+
+[2026-11-26 17:03:12Z] Round 16 Addendum B v2 Pre-Lock Draft & Prior-Art Refresh Complete (Addresses Controller Review R1 P1-P6)
+R16_ADDB_V2_READY round16_addB/PREREG_I_ADDENDUM_B_DRAFT_v2.md sha256=537467db51b00b8e178ad5d7638e25b5d809f350c8feae229d86cdb96acb281e bytes=57887 round16_addB/PRIOR_ART_I_ADD2_v2.md sha256=2e432d4779a0cb1ee463951cb435fc93732ddd05dd3a6365cadc968dd9faeaa1 bytes=37288
+- Addresses P1 (Molina & Zhang 2026 + R12 K1 reconciliation, COMPASS, CELLAUDIT full-text direct precedent, MDPI Cells PMC13605750, removal of unverified secondary OpenReview claims), P2 (isolated round16_addB/.venv + arm64 fallback, pinned code archive under human approval, shared model classes + independent adapters), P3 (621 vs 611 reconciled, splits_manifest.json/cohort.json cell-index audit + dual tolerance, local cache HepG2 path), P4 (pre-registered pairwise_common_axis arm: 6557/6570/6950), P5 (per-cell encoding + full determinism), P6 (no concurrent MPS + 10-min stall CPU float32 switch for both parties).
+- Hard-guard compliance: v1 files untouched; zero GPU/MPS; zero downloads/clones/code execution; zero reads of round16/audit/ or A-T3; zero git operations; zero priority claims.
+
+
+[2026-11-26 17:22:00Z] Round 16 Addendum B Model-Free Adapter Preparation Complete (Lock 3d36d0c, L1/L2 Compliant)
+R16_ADDB_ADAPTER_PREP_DONE files=round16_addB/src/__init__.py,round16_addB/src/raw_controls_addb.py,round16_addB/src/preprocess_addb.py,round16_addB/src/gate5b_panel_addb.py,round16_addB/src/export_addb.py,round16_addB/src/test_unit_addb.py tests=9/9_OK(py_compile=0,pyflakes=0,1.835s) gate5b_hepg2_counts=611_perts/4976_controls/42402_panel_rows(37426_perturbed,10_too_shallow,splits_manifest_hash_match=20/20_CASE_A,ctrl_batch_max_abs_diff=1,exp_pearson_delta=0.3721742_vs_0.372174_absdiff=2.06e-7)
+- File SHA-256 checksums:
+  26499d3f9b9d1a7e39b5358010ef0e053fe8cbd3d33ce004b6afb0b65b04e6f6  round16_addB/src/__init__.py (426 B, 15 lines)
+  95077f90836d672d397dace41a3b9b5c67b042da3300e291df9fd349980887fa  round16_addB/src/raw_controls_addb.py (38898 B, 929 lines)
+  8881232144750ec0f7943af567011767eae196b08788888f8858c4ac0bdd3e6c  round16_addB/src/preprocess_addb.py (24002 B, 610 lines)
+  73f8f34aa2fc9907500061baa5e9f7f88a25e292a5507f31e30b18e22f550bb7  round16_addB/src/gate5b_panel_addb.py (28180 B, 689 lines)
+  beb43d74bb31c3548f3bc53f511ffb9514cfef638f2a5c551e24d4ac788e245d  round16_addB/src/export_addb.py (11977 B, 290 lines)
+  69b0fb70b4e402d3545e5c25c5f1c43f39543bb0b378619128e31206bf48126e  round16_addB/src/test_unit_addb.py (45792 B, 982 lines)
+- Local HepG2 Gate 5B panel verification (`/Users/mac/.cache/r9_p2_raw/nadig2025/GSE264667_hepg2_raw_singlecell_01.h5ad`, CPU only, zero model, 14.29s): Lock L1 legacy categoricals decoded cleanly; exact 611 cohort perts / 4,976 controls / 42,402 panel rows (`cohort_sha256=86c91f938024b2a25e2aeeece0532a36be16fe83ec9f2e41881d4a523a7b534a`, `gene_axis_sha256=ef64f2ba7ff7816ed947796066cd8a68014884c6176619d750ef79462c78d4c0`); 20/20 split SHA-256 hashes match `splits_manifest.json` (`CASE_A_EXACT_SPLIT_MATCH`, 18,575 pert/half, 2,488 ctrl/half, 276 odd dropped, `ctrl_batch_max_abs_diff=1`); model-free experimental replicate `pearson_delta_mean=0.372174206` vs author `0.372174` (`abs_diff=2.06e-7`, 5-split range `0.370873-0.373463`).
+- Hard-guard compliance: zero Occam imports or vendored code (verified by AST test_09); zero downloads; zero GPU/MPS; zero modifications to `round16/` (except this MAIN.txt entry) or `round16/.venv`; zero reads of `round16/audit/` or A-T3; zero git operations. Waiting for human approval (`R16_ADDB_HUMAN_APPROVAL.txt`) and A-T3 Round 16 completion.
+
+
+[2026-11-27 05:10:10+08:00] Round 16 Addendum B Task 2 — Isolated Venv Built (`PRIMARY_PY3819_TORCH241`), Adapters Ready, & Exact `torch_geometric` Import Blocker Reported (Zero Workarounds)
+R16_ADDB_DEVIATION
+- Isolated venv built on PRIMARY target (`PREREG_I_ADDENDUM_B_DRAFT_v2.md §6.1`): `PRIMARY_PY3819_TORCH241` (`Python 3.8.19`, `torch==2.4.1`, `numpy==1.24.4`, `scipy==1.9.3`, `scikit-learn==1.1.3`, `pandas==2.0.3`, `anndata==0.9.2`, `h5py==3.9.0`, `pyyaml==6.0.3`, `tqdm==4.70.1`, `psutil==7.2.2`; 26 packages frozen to `round16_addB/R16_ADDB_VENV_FREEZE.txt`; `round16/.venv` and base env untouched; `test_unit_addb.py` 9/9 OK in `round16_addB/.venv/bin/python`).
+- Exact import blocker (zero patches to Occam source; zero mocking/workarounds; zero downloads outside §6.1 pins):
+  - Importing unchanged `occam.vcell.pipeline.VirtualCellTrainer` via `PYTHONPATH=round16_addB/shared/models/occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/src` fails with:
+    `ModuleNotFoundError: No module named 'torch_geometric'`
+  - Exhaustive AST import scan across all 25 Occam modules reachable from `occam.vcell.pipeline`, `occam.api`, `occam.vcell.model`, and `occam.vcell.adjacency_map` confirms `torch_geometric` is the SOLE missing top-level third-party dependency (none of the 7 controller-removed `data/` files are imported; `wandb` is lazy inside `train()` only; `pyarrow` is not imported on the inference path):
+    1. `src/occam/vcell/gnn.py:13`: `from torch_geometric.nn import GATv2Conv, GCNConv, GINConv, GATConv` (imported unconditionally by `occam/vcell/model.py:21` and `occam/vcell/pipeline.py:49`);
+    2. `src/occam/vcell/adjacency_map.py:12`: `from torch_geometric.utils import to_undirected, add_self_loops`, and `to_undirected(edge_index)` is invoked at runtime at `adjacency_map.py:71` inside `ConcatKnowledgeModel.empty_like_state(...)`.
+  - Root cause: `PREREG_I_ADDENDUM_B_DRAFT_v2.md §6.1` erroneously noted "`torch-geometric` is unnecessary at inference for `adjacency_map`", whereas `Occam/pyproject.toml:48` pins `graph = ["torch-geometric==2.6.1", "pyarrow>=14.0"]`.
+- Requested Controller ruling: Approve installing `torch-geometric==2.6.1` (exact `Occam/pyproject.toml:48` pin, pure-Python PyPI wheel) into `round16_addB/.venv` and updating `round16_addB/R16_ADDB_VENV_FREEZE.txt`, after which `round16_addB/src/run_gates_cpu_addb.py` is ready to run Gate 5A (items 1-2) and Gate 5B on CPU (`torch.set_num_threads(6)`) immediately.
+- Prepared files verified (`py_compile=0`, `pyflakes=0`, `test_unit_addb.py` 9/9 OK in `round16_addB/.venv/bin/python`):
+  18e4da07143ff0df42981f323cde3bfd283bc52d0b3b16f92057c504bd846641  round16_addB/R16_ADDB_VENV_FREEZE.txt (405 B)
+  b6f9d257416d9f4d822584b8c4608741ca2cd3a651762e4acea1538788ca21ce  round16_addB/src/occam_adapter_addb.py (24185 B)
+  0541cb1b885b263737e0be6f9f7a37914b8157dac0083ae19f2a823e177f41f6  round16_addB/src/run_gates_cpu_addb.py (20762 B)
+  527428c5edcc407e75374e276237e8f0b28f69707c31fbf483b1bfd13e73b2bb  round16_addB/src/test_unit_addb.py (46052 B)
+- Task 1 (`prepare_gse295214_line_r16` counts-only QC on 85 `.h5` files in `/Users/mac/.cache/r16_gse295214/raw/`, CPU only, frozen `round16/.venv`) is actively running in background; `R16_MAIN_G3_QC_DONE` will be posted upon completion.
+- Hard-guard compliance: zero MPS/GPU; zero downloads outside §6.1 pins; zero edits to Occam extracted source or frozen `round16/` files; zero reads of `round16/audit/` or `A-T3.txt`; zero git operations.
+
+
+[2026-11-27 05:15:40+08:00] Round 16 Addendum B Task 2 — Occam CPU Gates 5A (Items 1-2) & 5B (`nadig_hepg2`) PASSED (`CASE_A_EXACT_SPLIT_MATCH`, 20/20 splits, <3e-7 vs author targets)
+R16_ADDB_GATES_CPU_DONE
+- Environment (`PRIMARY_PY3819_TORCH241` + `DEVIATION_R16_ADDB_D1`):
+  - Venv tier: PRIMARY (`PREREG_I_ADDENDUM_B_DRAFT_v2.md §6.1` exact upstream pins, zero fallback needed), isolated in `round16_addB/.venv` (`round16/.venv` and base env untouched).
+  - Versions: `Python 3.8.19`, `torch==2.4.1`, `numpy==1.24.4`, `scipy==1.9.3`, `scikit-learn==1.1.3`, `pandas==2.0.3`, `anndata==0.9.2`, `h5py==3.9.0`, `pyyaml==6.0.3`, `tqdm==4.70.1`, `psutil==7.2.2`, plus `DEVIATION_R16_ADDB_D1` hash-pinned `torch-geometric==2.6.1` (`sha256:8faeb353f9655f7dbec44c5e0b44c721773bdfb279994da96b9b8b12fd30f427`) and its core pure-Python runtime deps (0 changes to any §6.1 pin; 0 forbidden packages `pyarrow`/`torch-scatter`/`torch-sparse`/`pyg-lib`).
+  - Runtime: strictly CPU (`device="cpu"`, `torch.set_num_threads(6)`, ZERO MPS/GPU); unchanged Occam classes imported via `PYTHONPATH` from `round16_addB/shared/models/occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/src` (zero patches).
+- Gate 5A Results (Items 1-2 PASSED; Item 3 MPS-vs-CPU parity strictly deferred until Controller confirms A-T3 finished R16):
+  - Item 1 (Checksums, Config, & Strict Load): PASS — `best_model.pth` SHA-256 `11d5ba5515e79710b3a952532c60aa29515046117292528c59d452a0937685ff` MATCH; `7/7` Hub sidecars in `R16_ADDB_CHECKSUMS.sha256` MATCH; `gene_axis_sha256` content hash `ef64f2ba7ff7816ed947796066cd8a68014884c6176619d750ef79462c78d4c0` MATCH (both `gene_axis.csv` and `ckpt["benchmark"]["gene_axis_sha256"]`); `is_virtual_cell_checkpoint=True`, `target_sum=2000.0`, `output_activation="softplus"`, `interaction_type="film"`, `film_mode="multiplicative_only"`, `film_mean_free=True`, `film_hidden_dim=256`, `len(gene_names)=44728`, `len(pert2id)=18216`, `source_emb=None`, `modality_emb=None`, `n_batch_encoder_params=0`, `strict=True` load PASS on all 4 submodules (`encoder` 12 tensors, `gnn` 11 tensors, `decoder` 81 tensors, `interaction` 8 tensors: 0 missing, 0 unexpected).
+  - Item 2 (Pure-Synthetic Smoke & Determinism, `n=32`, `seed=20261601`): PASS — `all_finite=True`, `min_output=0.002796 > 0` (`softplus`), `dead_gene_frac_all=0.0` & `dead_gene_frac_rhj=0.0` (`< 0.01`), CPU repeat determinism `max_abs=0.0`, encoder-cache `z_ctrl` parity `max_abs=0.0`, cross-process `PYTHONHASHSEED=1 vs 99991` `max_abs=0.0`, control-swap sensitivity `recon max_abs=0.092024 > 1e-4` & `real max_abs=0.133817 > 1e-4`, single-pert `decode_seq_mean == sum` `max_abs=0.0 <= 1e-6`.
+- Gate 5B Results (Local `/Users/mac/.cache/r9_p2_raw/nadig2025/GSE264667_hepg2_raw_singlecell_01.h5ad`, CPU 6 threads, `124.78 s`, Lock L1 exact `611` perts / `4,976` controls / `42,402` panel rows, `ctrl_batch_max_abs_diff=1`):
+  - Tolerance Case: `CASE_A_EXACT_SPLIT_MATCH` (`20/20` split SHA-256 hashes matched `splits_manifest.json`).
+  - Metric 1 (`pearson_delta_mean`): got `0.39417822` vs target `0.394178` (`abs_diff = 2.19e-7 <= 0.005`) -> **PASS** (splits `0..4`: `0.392850`, `0.397798`, `0.395306`, `0.392278`, `0.392659`).
+  - Metric 2 (`mae_mean`): got `0.03015723` vs target `0.030157` (`abs_diff = 2.31e-7 <= 0.002`) -> **PASS** (also `mae_delta_mean = 0.03028424` vs author `0.030284`).
+  - Metric 3 (`experimental_pearson_delta_mean`): got `0.37217421` vs target `0.372174` (`abs_diff = 2.06e-7 <= 0.002`) -> **PASS**.
+  - Overall Gate 5B Verdict: **PASS** (3/3 metrics within `< 3e-7` of author GPU reference).
+- SHA-256 of every new or changed file:
+  c42fb612d772fc92d183739c10d9479548a898b880a433a2eeb12a85b710b3ae  round16_addB/R16_ADDB_VENV_FREEZE.txt (692 B, 42 lines)
+  7010fe43dcfb884b139edf36b4a41b6ee7c653c60a736f7f79cdce39aff1a512  round16_addB/results/gates_cpu_summary.json (5432 B)
+  b6f9d257416d9f4d822584b8c4608741ca2cd3a651762e4acea1538788ca21ce  round16_addB/src/occam_adapter_addb.py (24185 B)
+  0541cb1b885b263737e0be6f9f7a37914b8157dac0083ae19f2a823e177f41f6  round16_addB/src/run_gates_cpu_addb.py (20762 B)
+  527428c5edcc407e75374e276237e8f0b28f69707c31fbf483b1bfd13e73b2bb  round16_addB/src/test_unit_addb.py (46052 B)
+- Hard-guard compliance: zero MPS/GPU; zero Group 2, Group 3, or `feng_ipsc` inference; zero patches to Occam source; zero reads of `round16/audit/` or `A-T3.txt`; zero commits. Stopping on Addendum B pending A-T3 R16 completion (for Gate 5A item 3), code freeze, and Controller GO.
+
+
+[2026-11-27 05:19:10+08:00] Round 16 Task 1 — Group 3 `GSE295214` (`gse295214_h1`) Counts-Only QC Complete (`PRIMARY`, Zero Model / Zero Metrics)
+R16_MAIN_G3_QC_DONE
+- Frozen code & environment: `round16/src/run_eval_r16.py::prepare_gse295214_line_r16(raw_dir=Path("/Users/mac/.cache/r16_gse295214/raw"))` with defaults under frozen `round16/.venv/bin/python` (CPU only, zero model loaded, zero prediction or correlation computed, zero frozen files edited).
+- Gate Outcomes (`PREREG_I §2.4`):
+  - `N_eval^R16`: `406` (`>= 50` PASS; `n_eval_p5_r9_excl_vcc2025_h1 = 427`; total standardized targets = `2,970`, `rep = 918`, `half_valid = 2,970/2,970`).
+  - `|G_eval^R9|`: `6,131` (`>= 3,000` PASS; `|G_eval^R16| = 1,837`; `G_final = 15,510` of `38,606` raw genes).
+  - Per-half NTC: `Half A = 28,929`, `Half B = 29,224` (`>= 15` PASS; `per_half_ntc_ge15 = True`; `20,000` controls stored in `ctrl_cells.npz`).
+  - Qualifying Classification: **`PRIMARY`** (`qualifies_group3_primary = True`).
+- Reader Audit (`85` GSM channels from `/Users/mac/.cache/r16_gse295214/raw/`):
+  - Channels: `85` (`GSM8943713`..`GSM8943797`), split via `PREREG_H_Tier1_lexicographical_GSM_1based_odd_HalfA_even_HalfB` into `43` Half A channels / `42` Half B channels.
+  - Cells after RNA QC (`min_umi=300`, `min_ngenes=200`, `max_pct_mt=None`): `1,499,727` out of `1,521,921` raw cells.
+  - Single-guide cells kept: `892,356` (`58,153` NTC + `834,203` targeting; `1,100` excluded-guide singlets dropped; `21` low-NTC channel fallback cells).
+  - Guide features: `6,638` (`370` NTC guides, `6,257` targeting guides, `11` excluded guides; `median_guide_threshold = 5.0`).
+  - NTC count: `58,153` total (`Half A = 28,929`, `Half B = 29,224`).
+- SHA-256 of every file written (6 files):
+  b79d39e6e0c2b60000399d024158d9c16dac57fd21502009ef61e047127a874c  round16/shared/lines/gse295214_h1/ctrl_cells.npz (1365086523 B)
+  7c8c274e33df626aecd1947c9cb5be44925d2cf4380730dfcc65b58a9d673c9b  round16/shared/lines/gse295214_h1/genes.txt (112771 B)
+  796a5aff55da7ff6cf642d31182cf60f8ac70479f8468539588b87b082bb34c8  round16/shared/lines/gse295214_h1/line_metadata.json (13574 B)
+  cded1a925410cb0b4b1e1b500e551694942e9cacf90338a1f2dbe91d215f0806  round16/shared/lines/gse295214_h1/pseudobulk_delta.npz (1545122842 B)
+  473d188d0c49f34c0dea52a9f9382867ee1b6fbe37697048e17795a1c79489b2  round16/shared/lines/gse295214_h1/targets.txt (18431 B)
+  9388a5e2cd402f7bc757de4d471e100ed588ba47ed63b8dded1ca468a12194bb  round16/shared/R16_GSE295214_QC_COUNTS.md (1590 B)
+- Hard-guard compliance: zero MPS/GPU; zero Group 3 inference; zero frozen files edited; zero reads of `round16/audit/` or `A-T3.txt`; zero commits. Stopping on Group 3 pending Master Controller data freeze, `PREREG_J` lock, and Group 3 GO.

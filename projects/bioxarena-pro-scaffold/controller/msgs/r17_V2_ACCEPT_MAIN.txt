@@ -1,0 +1,8 @@
+[Master Controller -> Antigravity main line] PREREG_J v2 (7033337d...) is accepted in substance: J1-J7 and Rulings 1-3 are resolved. The controller reran the TeloHAEC reader tests independently: 4/4 pass.
+
+Lock plan (controller):
+1. When the TeloHAEC download finishes (about 06:00) and its md5 matches, the controller runs one structure-only check. It reads obs/var column names, the categories of obs["condition"], and presence flags for the control labels your reader matches (NTC, SAFE_TARGET), plus the flask/welltag column names. No X values, no perturbation lists, no counts.
+2. If everything the reader assumes is present, the controller locks PREREG_J v2 unchanged. The lock is committed as sha256 values of PREREG_J_DRAFT_v2.md, PRIOR_ART_J.md, LINE_INVENTORY_J.json and the two reader files. The full round17/ text follows after A-T3's R16 pass 2 is verified, because it quotes R16 numbers.
+3. If anything is missing or named differently, you get the exact mismatch and make a v3 reader-only fix before the lock.
+
+Until then, do not edit round17/ files that will be hashed. Your two R16 CPU tasks (Group 3 QC; Occam venv and CPU gates) continue as dispatched.

@@ -1,0 +1,79 @@
+[2026-11-26 20:49:14Z] Round 17 Pre-Registration Draft (`PREREG_J`) & Model-Free Line Inventory Complete
+R17_PREREG_DRAFT_READY
+3f31bce74be8003d6412af32fd9674b86272bee6f7cbb1e7b28cba6c6146e90b  round17/prereg/PREREG_J_DRAFT.md  bytes=55672
+3f9210df9c4a42dc17e68f08d2133c130f5265693ec2d0bd24558b5840180b75  round17/prereg/PRIOR_ART_J.md  bytes=21687
+102faba3d6df2b6c77b89dfb74c77c96de294cdfe589f69a00434ce3562e81b2  round17/status/LINE_INVENTORY_J.json  bytes=30100
+3dce1a2f6dfa840179cd1cbef4a4d430aa70a68212b5191f6e043ed55ad96a39  round17/src/build_line_inventory_j.py  bytes=31884
+
+Summary:
+- Scope: Draft + model-free counts-only inventory of all 9 local never-STATE-run lines (zero inference, zero MPS/GPU, zero downloads, zero package installs, zero git operations).
+- Models included under identical rules (H-J1, H-J2, H-J3, secondary G4 2x2): primary STATE_SE (ST-SE-Replogle, batch_dim=56) + co-evaluated second model STATE_HVG (ST-HVG-Replogle, batch_dim=56).
+- Inventory findings: 9/9 lines have prior_state_exposure=NONE and verified raw integer UMI counts; PREREG_I-eligible lines = cd4t_stim48 (N=401, |G_ST|=1836, disjoint donors D2/D3 & 48h stimulated vs R16 cd4t_rest, mandatory shared-study disclosure) and a549_ko_cas9pos (N=403, excluded from confirmatory as strict 73.3% CAS9>0 cell subset of R16 discovery a549_ko); secondary fresh lines = a549_myllia (N=20), hek293_xucao (N=16); micro-N = telohaec (N=9), calu3 (N=8), mac_lps (N=4), mac_ctrl (N=3, paired with mac_lps); wtc11_i3neuron (N=1, excluded from inference).
+- Quarantine: All 6 R16 discovery lines (nadig_hepg2, nadig_jurkat, a549_ko, dld1, cd4t_rest, feng_ipsc) strictly excluded from confirmatory family.
+- Hard-guard attestation: Written exclusively under round17/; zero modifications under round16/ or round16_addB/; zero reads of round16/audit/ or A-T3.txt; zero priority claims; Human project lead wording verified.
+
+
+[2026-11-27 05:05:30+08:00] Round 17 Pre-Registration Draft v2 (`PREREG_J_DRAFT_v2.md`) & Pfizer TeloHAEC Pre-Download Reader Complete
+R17_PREREG_V2_READY
+7033337d1f42588ee9277804c6a803eb940312fe95a4ee31e2c000555b0fb85b  round17/prereg/PREREG_J_DRAFT_v2.md  bytes=67941
+35e41ab80d513242e8710a5c0eb52e9ffd1a16b4710975927a145df6ef6683c3  round17/src/pfizer_telohaec_reader_r17.py  bytes=41756
+05edefceec7a517a2a32eb485fba6490b64adebe734e3dc766e58fbf04f89941  round17/src/test_pfizer_telohaec_reader_r17.py  bytes=18541
+3f31bce74be8003d6412af32fd9674b86272bee6f7cbb1e7b28cba6c6146e90b  round17/prereg/PREREG_J_DRAFT.md  bytes=55672  (v1 UNCHANGED)
+
+Summary:
+- Addresses ALL Master Controller Review R1 items J1-J7 and §6 Rulings 1-3:
+  - J1 & Ruling 1: Confirmatory cohort = Track 1 + Track 2 (K_conf = 2-3): cd4t_stim48 (N=401, shared-study disclosure) + gse295214_h1 (prospective sequencing rule: PREREG_J locked before ANY STATE inference on gse295214_h1; R16 G3 GO held until lock) + pfizer_telohaec_basal (Zenodo 18792213, imru_full.h5ad, 53,290,123,849 B, md5 0594ddd25e224e5e9cc22414e71daf48, CC BY 4.0, 2026-03-04, Wong et al. bioRxiv 10.64898/2026.03.04.709607; Untreated primary, Treated IL-1b+TNF-a secondary within-family replication, TeloHAEC lineage disclosure vs local telohaec N=9). Cohort claim rule locked: k/K per model, zero pooling, general claim requires BATCH_DEPENDENCE_PRACTICALLY_MEANINGFUL on >= 2 independent confirmatory units.
+  - J2: Detectable-signal predicate (CF-Oracle OR L1_ens56 98.333% CI lower bound > 0) required for both H-J1 BATCH_INVARIANT_WITHIN_DELTA and H-J2 CALL_STABLE; otherwise INCONCLUSIVE_LOW_SIGNAL. Reports max_b r(b) and L1_ens56 score with every H-J1 and H-J2 call.
+  - J3: Added R16 discovery heterogeneity caveat (4-index ranges: a549_ko 0.1563, dld1 0.0598, feng_ipsc 0.0539, cd4t_rest 0.0374) and closed-form parametric precision/MDE/power table as a function of N_eval (50..600) for gse295214_h1 and pfizer_telohaec_basal (mechanically filled from counts-only QC pre-inference).
+  - J4: Locked all 56 trained indices (0..55), anchored row 0 (fixed_index_zero) to arc-state 0.11.1 unseen-batch fallback (state/_cli/_tx/_infer.py:688, verified Gate 2), and locked that no index is ever dropped after inference.
+  - J5: Added cross-fitted G4 2x2 decomposition at (b*_1, b_dagger_1) selected on P1 and evaluated strictly on P2 only, plus pairwise Spearman rank correlation of the 56 per-index scores across lines with exact 10,000-permutation index-label null (seed=20261701).
+  - J6: Explicitly locked blinding/release rule (round17/ contains R16 main-line numbers, stays uncommitted and hidden from A-T3 until Controller verifies A-T3 R16 pass 2; A-T3 joins R17 only after R16 release).
+  - J7: Documented A-T1 parallel screening deliverable round17/status/R17_CANDIDATES.md (non-blocking for PREREG_J v2).
+  - Ruling 2: Run micro-N lines (telohaec, calu3, mac_ctrl, mac_lps) and a549_ko_cas9pos as descriptive / subset-sensitivity only; omit inference on wtc11_i3neuron (N=1).
+  - Ruling 3: Locked L2_ntc_recon_match (Pearson primary; negative L2 & per-fold secondary) + mandatory top1 - top2 criterion margin reporting.
+- Verification (Pfizer TeloHAEC pre-download reader & synthetic tests in /opt/anaconda3/bin/python3 -I): py_compile rc=0, pyflakes rc=0 (0 warnings), unittest 4/4 OK (0.266s).
+- Hard-guard compliance: PREREG_J_DRAFT.md v1 untouched; /Users/mac/.cache/r17_telohaec_pfizer/imru_full.h5ad NOT opened; zero inference; zero MPS/GPU; zero git operations; zero priority claims; Human project lead wording verified.
+
+
+[2026-11-27 06:53:00+08:00] Round 17 Post-Lock Pfizer TeloHAEC (`Zenodo 18792213`, `imru_full.h5ad`) Counts-Only QC Complete
+R17_MAIN_TELOHAEC_QC_DONE
+53e08f7a3d06024d23cc974558701d219ba64288fb2d1e5afa5e736b9320dc94  round17/shared/lines/pfizer_telohaec_basal/ctrl_cells.npz  bytes=574595598
+3b0bfaba730d92defa6260d0b90e7df78fc3bdd00c2b6a70ba185c4044fc13a8  round17/shared/lines/pfizer_telohaec_basal/genes.txt  bytes=218722
+4e5ed146f2474bbbec9c20161762c39ed9c6bf0da87be9f6ec16703462ccfdef  round17/shared/lines/pfizer_telohaec_basal/line_metadata.json  bytes=2738
+26ad737ab045afd38ebb98dd33ec684f461c494987b5c5bde5f215a966023b5d  round17/shared/lines/pfizer_telohaec_basal/pseudobulk_delta.npz  bytes=1322243112
+6f05ddd4c494efb552cb69079d3c87133cfc7cb6efd8245d857706a09c3348e5  round17/shared/lines/pfizer_telohaec_basal/targets.txt  bytes=10125
+b2ad4a0b39c482e2dc8f15514a0100c01199bb648626930a70ed69afefd832f2  round17/shared/lines/pfizer_telohaec_cytokine/ctrl_cells.npz  bytes=624326433
+dad842b3a15ec70f9bc85314add4a1e6a32c898e88d7db4020a0357b4fc7421b  round17/shared/lines/pfizer_telohaec_cytokine/genes.txt  bytes=224448
+c2eabc0e3bd9c4fcc46f31a21430acceea66c8df6b9b3e0fc43f5a731d83e2fb  round17/shared/lines/pfizer_telohaec_cytokine/line_metadata.json  bytes=2735
+9806f6d587a413cd16eb49f434c4209002ce4e813b3a408482a126fe04b81c49  round17/shared/lines/pfizer_telohaec_cytokine/pseudobulk_delta.npz  bytes=1362842740
+594644a6dadb152c6af85e2c7633e6f62ce2a34656dc4716decb704145eed9fd  round17/shared/lines/pfizer_telohaec_cytokine/targets.txt  bytes=10201
+95f1c9915c345992b735b1bc722d0558c9894abdd11c682196c0ea1a00370a76  round17/shared/R17_PFIZER_TELOHAEC_QC_COUNTS.md  bytes=4951
+
+Gate Outcomes (Model-Free Counts-Only, PREREG_J Lock Commit 9789b0b):
+- pfizer_telohaec_basal (Untreated; Primary Confirmatory Unit 3):
+  - Role: PASS_CONFIRMATORY_PRIMARY (passes_prereg_i_floors=True)
+  - N_eval^R17 = 114 (>= 50 PASS); N_eval_P5_R9 = 131; deduplicated targets = 1,616; reproducible = 440; half_valid = 1,614/1,616; in_line_genes = 1,615
+  - |G_eval^R9| = 6,141 (>= 3,000 PASS); |G_eval^STATE| = 1,843; G_final = 24,461 / 38,606 (unmapped_hgnc=5,226; duplicate_dropped=46)
+  - Per-half NTC (NO-TARGET only; SAFE_TARGET excluded): Half A = 2,414, Half B = 3,087 (>= 15 PASS; total NTC = 5,501)
+  - Elapsed: 816.72s (standardize_line_from_reader 713.1s)
+- pfizer_telohaec_cytokine (Treated IL-1b + TNF-a; Secondary Within-Family Replication):
+  - Role: SECONDARY_WITHIN_FAMILY_REPLICATION (passes_prereg_i_floors=True; never counted as second independent confirmatory unit)
+  - N_eval^R17 = 116 (>= 50 PASS); N_eval_P5_R9 = 134; deduplicated targets = 1,628; reproducible = 368; half_valid = 1,627/1,628; in_line_genes = 1,628
+  - |G_eval^R9| = 6,141 (>= 3,000 PASS); |G_eval^STATE| = 1,843; G_final = 25,028 / 38,606 (unmapped_hgnc=5,410; duplicate_dropped=51)
+  - Per-half NTC (NO-TARGET only; SAFE_TARGET excluded): Half A = 2,740, Half B = 3,120 (>= 15 PASS; total NTC = 5,860)
+  - Elapsed: 847.86s (standardize_line_from_reader 743.6s)
+
+Reader Audit (Both Conditions, Source Zenodo 18792213 / imru_full.h5ad):
+- Input SHA-256: 4b22ad11de666f7a9b3710740995da8efc916a73991a3615720df87017550565 (53,290,123,849 B)
+- Matrix slot: x_slot_used="X", layout="csr", int_slots_found=["X"], slot_selection_mode="unique_candidate" (raw integer UMI verified)
+- Obs columns resolved: condition="condition", gene_target="gene_target", guide="guide", cellID="cellID", flask="flask", welltag="welltag", n_guides=null
+- Raw cell counts: n_raw_obs_total=864,115 (untreated=428,417; treated=435,698; other=0); n_var_total=38,606 (n_var_rna_kept=38,606; non_rna_excluded=0)
+- Untreated (pfizer_telohaec_basal): n_safe_targeting_excluded=6,073; multiguide/unassigned=0; unapproved_symbol=0; rna_qc_excluded=0 (min_umi=300, min_ngenes=200, max_pct_mt=null); n_qc_kept_cells=422,344 (5,501 NTC + 416,843 targeting singlets); half_rule_used="flask_lexicographic_odd_even" (half_a=["flask1"], half_b=["flask2"], fallback_cells=0); n_unique_pert_keys=4,626; n_unique_canon_target_genes=1,733; kept_barcodes_sha256=d499cc8067811b7e2b66d21be6f4300a33c4cc9569460e9ee2e326a58c02625d
+- Treated (pfizer_telohaec_cytokine): n_safe_targeting_excluded=6,154; multiguide/unassigned=0; unapproved_symbol=0; rna_qc_excluded=0 (min_umi=300, min_ngenes=200, max_pct_mt=null); n_qc_kept_cells=429,544 (5,860 NTC + 423,684 targeting singlets); half_rule_used="flask_lexicographic_odd_even" (half_a=["flask1"], half_b=["flask2"], fallback_cells=0); n_unique_pert_keys=4,487; n_unique_canon_target_genes=1,732; kept_barcodes_sha256=238c3f95f172c70c9977641753a013cb903c2a01e150fa80c65dda83d88becb5
+
+Confirmatory Cohort Readiness (Pre-Inference):
+- K_conf = 3 independent confirmatory units pass all PREREG_I / PREREG_J floors: cd4t_stim48 (N_eval=401, shared-study disclosure), gse295214_h1 (N_eval=406), pfizer_telohaec_basal (N_eval=114); plus pfizer_telohaec_cytokine (N_eval=116) as secondary within-family replication.
+
+Hard-Guard Attestation:
+- Executed strictly post-lock (PREREG_J_LOCK.md commit 9789b0b) using locked round17/src/pfizer_telohaec_reader_r17.py (unchanged) in /opt/anaconda3/bin/python3 -I (OMP_NUM_THREADS=4, workers=4).
+- Zero torch/state imports, zero MPS/GPU usage, zero Round 17 STATE inference before R17_GO, zero edits to locked round17/ or frozen round16/ files, zero reads of round16/audit/ or A-T3.txt, zero git operations, zero priority claims.

@@ -1,0 +1,45 @@
+[Master Controller -> Antigravity main line] PREREG_J draft, controller review R1. The design is sound: cross-fitting for the winner's curse, a variance test against the bootstrap noise floor, label-free rules fixed in advance, and an honest inventory. Items J1-J7 below must be addressed in v2. Rulings on your §6 open items come after them.
+
+J1. Confirmatory cohort: use Track 1 + Track 2 together, so K_conf can reach 2-3. One confirmatory line from the same lab and lineage as a discovery line is too thin.
+- Add gse295214_h1 (H1 hESC, already human-approved; download in progress) as a confirmatory line. This holds only if it passes the R16 counts-only QC unchanged, which you will run under the separate Task 1 message.
+- Sequencing rule, to be written into PREREG_J: PREREG_J is locked before ANY STATE inference on gse295214_h1. The controller will therefore hold the R16 Group 3 GO until PREREG_J is locked. Its R16 index-0 / {0,1,17,35} analyses and the R17 56-index analyses are then both prospective.
+- Pre-register, contingent on a separate human download approval that the controller will ask for, the Pfizer TeloHAEC Perturb-seq release:
+  - Zenodo 18792213, imru_full.h5ad, 53,290,123,849 B, md5 0594ddd25e224e5e9cc22414e71daf48, CC BY 4.0, released 2026-03-04; Wong et al., bioRxiv 10.64898/2026.03.04.709607.
+  - It is a confirmatory unit only after counts-only QC with the PREREG_I floors.
+  - Untreated (basal) is that unit's primary condition. IL-1b+TNF-a treated is the same cells under a second condition: report it as a secondary within-family replication, never as a second independent line.
+  - Disclose that the TeloHAEC lineage also underlies the local micro-N telohaec line (GSE210681; N = 9; never run through STATE).
+  - Write its reader spec and a synthetic-fixture test before any download, as for GSE295214.
+- Keep cd4t_stim48 confirmatory, with the shared-study disclosure you wrote.
+- Cohort-level claim rule, fixed now: report k/K per model with no pooling of perturbations across lines. A general claim ("STATE zero-shot accuracy depends on the batch index on unseen contexts") requires BATCH_DEPENDENCE_PRACTICALLY_MEANINGFUL on at least 2 independent confirmatory units. Otherwise only per-line statements are made.
+
+J2. Floor effect.
+- Low-signal lines (R16 cd4t_rest had little STATE signal) can look batch-invariant simply because no index gives any signal. BATCH_INVARIANT_WITHIN_DELTA therefore also requires detectable signal: the cross-fitted oracle score, or L1_ens56, must have a 98.333% CI lower bound > 0.
+- If not, the call is INCONCLUSIVE_LOW_SIGNAL. Report max_b r(b) and the L1_ens56 score with every H-J1 call.
+- Apply the same qualifier to CALL_STABLE in H-J2.
+
+J3. Power statement.
+- The power figures are conditional on a true spread of 0.04 or 0.06. Add one sentence that the R16 discovery ranges differ widely by line (state the observed 4-index ranges you already cite). The design therefore guards against false positives, not against low-signal lines; J2 handles those.
+- For gse295214_h1 and TeloHAEC, write the precision statement as a function of N_eval, to be filled in mechanically from counts-only QC before any inference.
+
+J4. Selection-free index set. "All 56 trained indices" is right. State that row 0 (fixed_index_zero) is the arc-state 0.11.1 unseen-batch fallback, cite _infer.py:688 as verified at Gate 2, and lock that no index is ever dropped after inference.
+
+J5. Mechanism tie-in (secondary).
+- For each fresh line, also report the R16-style per-index G4 decomposition at the cross-fitted best and worst indices (selected on P1, evaluated on P2 only).
+- Report whether the ordering of the 56 indices correlates across lines (Spearman over the 56 per-index scores, pairwise between lines, with a permutation null over index labels). A shared ordering points to a property of the batch embeddings; an idiosyncratic one points to line-specific interaction. That distinction decides whether a fixed better default exists.
+
+J6. Blinding and release.
+- round17/ contains R16 main-line numbers (§0.2, §4.1). It stays uncommitted, and is not shown to A-T3, until the controller has verified A-T3's R16 pass 2.
+- A-T3 joins R17 only after it is released from R16; it then re-implements from the locked PREREG_J alone.
+
+J7. Additional candidates (swarm, model-free).
+- Ask A-T1 to screen for further public CRISPR Perturb-seq datasets released after 2025-06 in cell contexts absent from STATE-Replogle training (not K562, RPE1, HepG2 or Jurkat), with plausible N_eval >= 50 under PREREG_I. Report exact sizes, licences and access.
+- Small HTTP range reads (< 100 MB in total) for format checks are fine. No full downloads, and no VCC 2026 participant-channel data.
+- Output: round17/status/R17_CANDIDATES.md. The controller will take any shortlist to the Human project lead for download approval.
+
+Rulings on §6 open items
+1. Cohort: see J1.
+2. Micro-N lines and a549_ko_cas9pos: run them (descriptive and subset-sensitivity only, as you specified). Omit inference on wtc11_i3neuron.
+3. L2_ntc_recon_match: accepted. Pearson is primary; negative L2 distance and per-fold selection are logged as secondary. Also report the gap between the best and second-best criterion values, so near-degenerate selections are visible.
+
+Deliverable: round17/prereg/PREREG_J_DRAFT_v2.md (v1 stays unchanged), the TeloHAEC reader spec with its synthetic test, and the marker R17_PREREG_V2_READY with the sha256 values. A-T1's R17_CANDIDATES.md may follow separately.
+Hard boundaries: unchanged from the R17 dispatch (no inference, no MPS, no downloads, no commits, writes only under round17/). The two CPU-only R16 tasks in the separate message (Group 3 QC, Occam gates) have priority if they are ready to start.

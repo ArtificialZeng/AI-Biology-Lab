@@ -1,0 +1,17 @@
+{
+  "line_name": "nadig_hepg2",
+  "n_common_perts": 639,
+  "n_common_genes": 1843,
+  "n_finite_perts": 639,
+  "median_per_pert_pearson": 0.9748577607941944,
+  "pooled_pearson": 0.9732800485676354,
+  "min_per_pert_pearson": 0.4620241129546931,
+  "q25_per_pert_pearson": 0.9546574376461535,
+  "q75_per_pert_pearson": 0.984803215403632,
+  "median_pearson_min": 0.9,
+  "pooled_pearson_min": 0.95,
+  "passed": true,
+  "stop_for_controller_diagnosis": false,
+  "adata_pred_path": "/Users/mac/.cache/r16_arc_archive/ST-SE-Replogle/zeroshot/hepg2/eval_final.ckpt/adata_pred.h5ad",
+  "n_arc_ntc_cells": 9952
+}

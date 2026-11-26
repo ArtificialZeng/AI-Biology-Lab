@@ -633,3 +633,268 @@ R16_AT3_D6_PATCHED
   `6ebf9992916ad63fded30be089326f908a33c61ecef5e486a3b02c1d31d4332f`
 
 - Status: Verified cleanly; proceeding immediately to rerun Pass 1 and Pass 2 per Master Controller D6 authorization.
+
+========================================================================
+[2026-11-26 22:42 +0800] DEVIATION_R16_D7 PATCHED (SE-600M Duplicate Raw Symbol Fix)
+========================================================================
+R16_AT3_D7_PATCHED
+
+- Authorization: `[Master Controller → A-T3]` `DEVIATION_R16_D7` (`2026-11-26 22:35 +0800`).
+- Action Taken First: Terminated pre-D7 Pass 1 run (`task-5485` / `PID 86771`, `NO_RUN_AUDIT_PROCS` verified) and deleted stale pre-D7 `round16/audit/results/se600m_embeddings_r16.npz`.
+- Scope Modified: ONLY `round16/audit/audit_r16_state_adapter.py` (smallest possible diff, `+1/-0` line; all 8 other `.py` files in `round16/audit/` remain unchanged).
+- Change Applied (`encode_with_loaded_se_model`, immediately after `adata.var_names = gene_syms`):
+  Added `adata.var_names_make_unique()` per `PREREG_I_ADDENDUM_A §11` Item 3 (nothing else altered).
+
+- Unified Diff (`diff -u` vs `1ee78e90de07c897f86efd0de887d0cc1fc5dbcd817e48abc9378b096820bc19`):
+```diff
+--- a/round16/audit/audit_r16_state_adapter.py
++++ b/round16/audit/audit_r16_state_adapter.py
+@@ -588,6 +588,7 @@
+         warnings.simplefilter("ignore", UserWarning)
+         adata = ad.AnnData(X=np.ascontiguousarray(x_arr, dtype=np.float32))
+         adata.var_names = gene_syms
++        adata.var_names_make_unique()
+ 
+     ds_tag = str(dataset_name)
+     dataset = FilteredGenesCounts(
+```
+
+- Test & Verification Results After Final Edit:
+  * `round16/.venv/bin/python -m py_compile round16/audit/*.py`: rc=0
+  * Duplicate raw-symbol `FilteredGenesCounts` + `encode_cells` self-check:
+    - `["HSPA14", "GAPDH", "HSPA14", "NOT_A_GENE"]`: mapped `2` of `4` (only first `"HSPA14"` and `"GAPDH"` mapped; second `"HSPA14"` and `"NOT_A_GENE"` `-1`; zero duplicate SE-600M global IDs; count equals `2` unique mapped symbols).
+    - `["TBCE", "HSPA14", "GAPDH", "TBCE", "HSPA14", "NOT_A_GENE"]`: mapped `3` of `6` (only first occurrence of each mapped; second copies `-1`; zero duplicate SE-600M global IDs; count equals `3` unique mapped symbols).
+    - End-to-end `CleanRoomSE600MEncoder.encode_cells` on `["HSPA14", "GAPDH", "HSPA14", "NOT_A_GENE"] + 2500 unique PE genes`: `n_mapped_genes=2502`, `n_raw_exact=2502`, finite output (`D7_DUPLICATE_SYMBOL_SELFCHECK_OK small_exact=2,3 e2e_mapped= 2502`).
+  * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 314.571s — OK` (`0` failures, `0` errors, `0` skipped)
+
+- New SHA-256 (`round16/audit/audit_r16_state_adapter.py`):
+  `bd47c9f01922c958a48d1de051d8edd9fd16aac24bd78f49101e7e85def98e65`
+
+- Status: Verified cleanly; restarting Pass 1 from scratch (all 11 `SE-600M` embeddings recomputed) followed by Pass 2.
+- Operational restart (GPU waitUntilCompleted hang on PID 34240, D4_FREEZE_OK verified): relaunched Pass 1 (`PYTHONUNBUFFERED=1`) PID `71974` started `2026-11-27 00:16:08 +0800`.
+
+========================================================================
+[2026-11-27 02:45 +0800] PASS 1 REAL-CELL PRIMARY AUDIT COMPLETED
+========================================================================
+R16_AT3_REAL_DONE
+
+- Run Command (Pass 1, `exit code 0`, `elapsed_sec = 8878.63`):
+  `cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold && PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 > round16/audit/results/run_real_r16.log 2>&1`
+- Post-run Freeze Verification: `D4_FREEZE_OK` (`FREEZE_MANIFEST_R16_D4.txt` verified `rc=0`).
+- `manifest_r16_audit.json` SHA-256:
+  `f205518b704e418b478d9b5153a52fd4f6b87a15345f4463d2c2edc271424555`
+
+- All Pass 1 Output Files in `round16/audit/results/` (`shasum -a 256`):
+  * `3e07570b7f86951a6358abac74b3cd066b985f70b78f7e60f5c5b777278cc8ed  round16/audit/results/STATE_HVG_ensemble4__a549_ko.npz`
+  * `944c18856dc6d63756931884cbf90149253b8024feeb051572ad35d4c29993e3  round16/audit/results/STATE_HVG_ensemble4__a549_ko_metrics.json`
+  * `10db4e2a1e2a5f6006af2704eaebf6c17b458701912987a77da63af568e4289f  round16/audit/results/STATE_HVG_ensemble4__cd4t_rest.npz`
+  * `2c14f03a7a982c8e744ee7d5d056bc6b426f8f444668e1d8c8dec909cd07c98a  round16/audit/results/STATE_HVG_ensemble4__cd4t_rest_metrics.json`
+  * `e90f720d6ff6e77dbaf29f17af7933599fabed7a51bb727b1198ff13397c1203  round16/audit/results/STATE_HVG_ensemble4__dld1.npz`
+  * `054fd0aba1672a3c11f855a0252aad2b8eee3819d8135fd8ee7dae8b2ab28b39  round16/audit/results/STATE_HVG_ensemble4__dld1_metrics.json`
+  * `11578ec68dc224765d15b6a28356f87d77549a37f6d396603bfc6d5cbdca3483  round16/audit/results/STATE_HVG_hepg2__nadig_hepg2.npz`
+  * `f6f831def3d69652a9f081bd66be5426c27eb44d40fd7f7d16bb983dab31bc15  round16/audit/results/STATE_HVG_hepg2__nadig_hepg2_metrics.json`
+  * `203800cb25b66790802c3c6167d85eb9240ff701bc66a295024d693444c2b6c7  round16/audit/results/STATE_HVG_jurkat__nadig_jurkat.npz`
+  * `301f5dea08f7a385f18bbca06142cbf2fce59a69c8408319cd2fa0b61ee62a41  round16/audit/results/STATE_HVG_jurkat__nadig_jurkat_metrics.json`
+  * `bf4eb2741b61de73cf87e5cb55e92dbfcd4944d12fb800965fac9818994b456b  round16/audit/results/STATE_SE_ensemble4__a549_ko.npz`
+  * `d1af07ea7b7ef5a0c5a242bae117e1cdae08c6fda285984135131136891fc582  round16/audit/results/STATE_SE_ensemble4__a549_ko_metrics.json`
+  * `44e1929e310cc40b236da34a6cdf57841d598d59e7d1ae1c6f5d086306696cd7  round16/audit/results/STATE_SE_ensemble4__cd4t_rest.npz`
+  * `d686109994241fdfca27b8fa4989a952e2414784fce1d0d172fa56768d85825d  round16/audit/results/STATE_SE_ensemble4__cd4t_rest_metrics.json`
+  * `bbe88c5fe62ac6cf2d74e189b0332913ba5b2054b82864c7a1ec59e481f620fb  round16/audit/results/STATE_SE_ensemble4__dld1.npz`
+  * `fe4e362b9b3452fc3dd89cf1a8b581a068566405183e2c19b3f652de5a60c2fc  round16/audit/results/STATE_SE_ensemble4__dld1_metrics.json`
+  * `de44e77cbee58d1c7702bc9972bb495a9bf29ba98fc20e2b9f04f1d42bb8a24d  round16/audit/results/STATE_SE_hepg2__nadig_hepg2.npz`
+  * `2dbb951780ffd8f49cf9678e73ee612792382b2ac59434ddf3cf0afa49fed9de  round16/audit/results/STATE_SE_hepg2__nadig_hepg2_metrics.json`
+  * `5ee16759f92c6912a7d29fc9e59cd9f003145031ff8f0bf2f21e4d4c78405089  round16/audit/results/STATE_SE_jurkat__nadig_jurkat.npz`
+  * `3414300175a47feff4927ea0061f14b112d180ae65f92542cf62a9ae371fcf0c  round16/audit/results/STATE_SE_jurkat__nadig_jurkat_metrics.json`
+  * `82dfaa4e5d800efadc9858db35771333dc1d21ab7ed46cfacef70a004de2aac4  round16/audit/results/control_barcodes_r16.json`
+  * `f205518b704e418b478d9b5153a52fd4f6b87a15345f4463d2c2edc271424555  round16/audit/results/manifest_r16_audit.json`
+  * `bdc1a5e2c2b04435b8b1fa730a0f67f2a302c23a7a75235f92edef3eeedc943a  round16/audit/results/run_real_r16.log`
+  * `82dfaa4e5d800efadc9858db35771333dc1d21ab7ed46cfacef70a004de2aac4  round16/audit/results/sampled_control_barcodes_r16.json`
+  * `1db7cc682884ff7422a0c9cb78f4cabb1d43da7dae7ee5aa1dcfd904379f16c2  round16/audit/results/se600m_embeddings_r16.npz`
+
+- `SE-600M` Per-Pool `X_state` SHA-256 (`se600m_embeddings_sha256` in `manifest_r16_audit.json`):
+  * `a549_ko`: `453d63679321ce150e27f32b0c6db9c33ff7aaff4ed12511a6540446f1aec586` (`18,098 / 29,891`)
+  * `a549_ko__resample`: `57d52d33e49486ef410f504b18ce5ba5194af20877346e0602d645ce5ffb5c7f`
+  * `cd4t_rest`: `d491e9953fc5e40945d843ea32495e6723541d451998596fa0425bbeefea9188` (`17,958 / 18,130`)
+  * `cd4t_rest__resample`: `d2f29516804754cb9f821488edfbfcfcdd8566cc68b9f24d44024892f12a4832`
+  * `dld1`: `38ea12aec04d859d4775955edfc943de343fa44cca225d8c82c3e0d9db2b474d` (`19,324 / 36,601`)
+  * `dld1__resample`: `effdafa641b379cc34e8cf27b5520ae69f3f95224d525e78e4c5a33a9c852992`
+  * `feng_ipsc`: `4f44560a34eb66b3c862aef946b79177580a44b04549eca6da249d014ed0baa4` (`19,279 / 36,518`)
+  * `nadig_hepg2`: `c19386246f8fbee6d177495e54774fb87aff5e8f51717f8218d4371659f7015c` (`9,192 / 9,624`)
+  * `nadig_hepg2__resample`: `9759ba12755ddec94a34a11b503c0551bda310594ab3c19c777a1b0d623321be`
+  * `nadig_jurkat`: `283edafae3ad25c0fe7bc52ef981adf7acfde677e0286ad65c1260ca7c05451c` (`8,441 / 8,882`)
+  * `nadig_jurkat__resample`: `3c3601b0ef1afb8dbaffb391dbf50011f9821ca00be4707d36abac5c885af548`
+
+- `STATE_SE` Independent Verdicts (`A-T3`, `n_boot = 4000`, `seed = 20261601`):
+  * `nadig_hepg2` (`Group 1`, `n_eval=740`, `g_eval=1843`):
+    - `H-I1`: **`LINE_MATCHED_SPECIFIC`** (`seen=STRATUM_MATCHED_SPECIFIC`, `unseen=STRATUM_MATCHED_SPECIFIC`; `matched r_orth_cal = 0.105321`, 97.5% CI `[0.097998, 0.112760]`; `overall_resample=ALL_EXCEED_WITH_POSITIVE_SIGNAL`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.105321` vs `FCT=0.201459`, `delta=-0.096138`, 97.5% CI `[-0.109921, -0.083157]`)
+  * `nadig_jurkat` (`Group 1`, `n_eval=873`, `g_eval=1843`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_MATCHED_SPECIFIC_SUB_DELTA`, `unseen=STRATUM_MIXED_OR_INCONCLUSIVE`; `matched r_orth_cal = 0.038339`, 97.5% CI `[0.032419, 0.044000]`; `overall_resample=MIXED_SOURCE_BY_SOURCE`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.038339` vs `FCT=0.147535`, `delta=-0.109196`, 97.5% CI `[-0.125015, -0.093119]`)
+  * `a549_ko` (`Group 2 CRISPRko`, `n_eval=403`, `g_eval=1837`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_MIXED_OR_INCONCLUSIVE`, `unseen=STRATUM_MIXED_OR_INCONCLUSIVE`; `matched r_orth_cal = 0.114298`, 97.5% CI `[0.098000, 0.130871]`; `overall_resample=MIXED_SOURCE_BY_SOURCE`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.114298` vs `FCT=0.213380`, `delta=-0.099082`, 97.5% CI `[-0.124548, -0.072809]`)
+  * `dld1` (`Group 2 CRISPRi`, `n_eval=75`, `g_eval=1832`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_MATCHED_SPECIFIC`, `unseen=STRATUM_MIXED_OR_INCONCLUSIVE`; `matched r_orth_cal = 0.102350`, 97.5% CI `[0.081088, 0.123765]`; `overall_resample=MIXED_SOURCE_BY_SOURCE`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.102350` vs `FCT=0.168160`, `delta=-0.065810`, 97.5% CI `[-0.104933, -0.026404]`)
+  * `cd4t_rest` (`Group 2 CRISPRi`, `n_eval=245`, `g_eval=1830`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_MIXED_OR_INCONCLUSIVE`, `unseen=STRATUM_EQUIVALENT_NONZERO_SIGNAL`; `matched r_orth_cal = 0.036557`, 97.5% CI `[0.010460, 0.063028]`; `overall_resample=MIXED_SOURCE_BY_SOURCE`)
+    - `H-I2`: **`INDISTINGUISHABLE`** (`model=0.036557` vs `FCT=0.058288`, `delta=-0.021731`, 97.5% CI `[-0.049056, 0.005980]`)
+
+- `STATE_HVG` Independent Verdicts Summary (`A-T3`, secondary model):
+  * `nadig_hepg2`: `H-I1 = MIXED_OR_INCONCLUSIVE` (`0.148430 [0.138085, 0.158701]`), `H-I2 = FCT_SUPERIOR_TO_MODEL` (`-0.053030 [-0.068778, -0.037839]`)
+  * `nadig_jurkat`: `H-I1 = MIXED_OR_INCONCLUSIVE` (`0.067488 [0.060285, 0.074826]`), `H-I2 = FCT_SUPERIOR_TO_MODEL` (`-0.080047 [-0.092387, -0.067653]`)
+  * `a549_ko`: `H-I1 = LINE_MATCHED_SPECIFIC` (`0.237308 [0.208873, 0.266555]`), `H-I2 = INDISTINGUISHABLE` (`+0.023929 [-0.012757, +0.063459]`)
+  * `dld1`: `H-I1 = MIXED_OR_INCONCLUSIVE` (`0.104049 [0.070538, 0.139618]`), `H-I2 = FCT_SUPERIOR_TO_MODEL` (`-0.064111 [-0.107381, -0.019208]`)
+  * `cd4t_rest`: `H-I1 = MIXED_OR_INCONCLUSIVE` (`0.015512 [-0.020996, 0.053386]`), `H-I2 = FCT_SUPERIOR_TO_MODEL` (`-0.042776 [-0.073731, -0.009739]`)
+
+- Next: Launching Pass 2 (secondary diagnostics: `--include-hvg-perm100 --include-g4 --output-dir round16/audit/results/secondary`).
+
+========================================================================
+[2026-11-27 02:55 +0800] DEVIATION_R16_D8 PATCHED (Nadig STATE_HVG Row-Sum Normalization Fix)
+========================================================================
+R16_AT3_D8_PATCHED
+
+- Authorization: `[Master Controller → A-T3]` `DEVIATION_R16_D8` (`2026-11-27 02:49 +0800`).
+- Action Taken First: Stopped Pass 2 (`task-5650` / `PID 38323`, `NO_RUN_AUDIT_PROCS` verified); preserved `round16/audit/results/secondary` untouched for moving to `secondary_pre_d8` prior to the fresh Pass 2 rerun, and left Pass 1 `STATE_SE` outputs untouched.
+- Scope Modified: ONLY `round16/audit/audit_r16_raw_controls.py` (`+1/-1` line; all 8 other `.py` files in `round16/audit/` remain unchanged).
+- Change Applied (`_slice_nadig`, line 333):
+  `sel_umis = row_sum_umis` (using row sums over the file's gene features for `cell_total_umis` and `median_ntc_umi` instead of `obs["UMI_count"]`; QC thresholds, `median_ntc_umi_all_valid`, barcodes, sampling, gene mapping, and 10x branches remain unchanged).
+
+- Unified Diff (`diff -u` vs `aede3b195b75cfb9b0755fd60c73eca1960eb2a9c677134d44c548766c2458f5`):
+```diff
+--- a/round16/audit/audit_r16_raw_controls.py
++++ b/round16/audit/audit_r16_raw_controls.py
+@@ -330,7 +330,7 @@
+             raw_counts = np.empty_like(mat_sorted)
+             raw_counts[ord_pos] = mat_sorted
+             row_sum_umis = raw_counts.sum(axis=1, dtype=np.float64)
+-            sel_umis = row_sum_umis if nt_umis is None else nt_umis[sel_local]
++            sel_umis = row_sum_umis
+             return SampledRawControlPool(
+                 line_name=line_name,
+                 raw_counts=raw_counts,
+```
+
+- Test & Verification Results After Final Edit:
+  * `round16/.venv/bin/python -m py_compile round16/audit/*.py`: rc=0
+  * Real Nadig files self-check (`nadig_hepg2`, `nadig_jurkat`, primary `seed=20261601` + resample `seed=20261602`, asserting exact `cell_total_umis == raw_counts.sum(1)`, `median_ntc_umi == median(positive row sums)`, and exact ordered barcode match vs `round16/audit/results/control_barcodes_r16.json`):
+    - `VERIFIED nadig_hepg2 primary: n=512, median_row_sum=16134.0, barcodes_exact=True`
+    - `VERIFIED nadig_hepg2 resample: n=512, median_row_sum=16303.5, barcodes_exact=True`
+    - `VERIFIED nadig_jurkat primary: n=512, median_row_sum=10828.5, barcodes_exact=True`
+    - `VERIFIED nadig_jurkat resample: n=512, median_row_sum=10642.5, barcodes_exact=True`
+    - `D8_NADIG_ROWSUM_SELFCHECK_OK`
+  * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 265.811s — OK` (`0` failures, `0` errors, `0` skipped)
+
+- New SHA-256 (`round16/audit/audit_r16_raw_controls.py`):
+  `82d7abe5982e7e1bace0e9162a1af618ae067be0999773d097df858bf7b610aa`
+
+- Next: Rerunning Pass 1 `STATE_HVG` only into `round16/audit/results/hvg_d8`, then Pass 2 into fresh `round16/audit/results/secondary`.
+
+========================================================================
+[2026-11-27 04:13 +0800] PASS 1 STATE_HVG D8 RERUN COMPLETED (results/hvg_d8)
+========================================================================
+R16_AT3_HVG_D8_DONE
+
+- Run Command (`exit code 0`, `elapsed_sec = 4639.78`):
+  `cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold && PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 --output-dir round16/audit/results/hvg_d8 > round16/audit/results/run_hvg_d8.log 2>&1`
+- Cross-check vs Pass 1:
+  * Ordered barcodes & batches in `hvg_d8/sampled_control_barcodes_r16.json` match Pass 1 `sampled_control_barcodes_r16.json` identically across all pools (`BARCODES_AND_BATCHES_IDENTICAL_TO_PASS1_OK`).
+  * `delta_pred_matched` diff vs pre-D8 Pass 1 `STATE_HVG`: `a549_ko = 0.0`, `dld1 = 0.0`, `cd4t_rest = 0.0`, `nadig_hepg2 = 1.063921e-03`, `nadig_jurkat = 2.751914e-03`.
+  * Pass 1 `STATE_SE` files in `round16/audit/results/` remain completely untouched.
+
+- `round16/audit/results/hvg_d8/manifest_r16_audit.json` SHA-256:
+  `7c5e79025dc513088c12e493301a80e39ba0eb97fb2f293457a51b14802dc2b8`
+
+- All `round16/audit/results/hvg_d8/` Output Files + Log (`shasum -a 256`):
+  * `962e3b803e47310268f2665633b275780f72a9a115a76514fd48686f4ff12400  round16/audit/results/hvg_d8/STATE_HVG_ensemble4__a549_ko.npz`
+  * `04faee9423991a8651a0b3d4161d4dcf8926edc3b6c179b2a78c732b43866be1  round16/audit/results/hvg_d8/STATE_HVG_ensemble4__a549_ko_metrics.json`
+  * `d0d8a33edeff23ea9ef3c0db6685558d153ff41c9f5523a61bd41bd6b0a3144f  round16/audit/results/hvg_d8/STATE_HVG_ensemble4__cd4t_rest.npz`
+  * `6e67edde8fcc4e6f4102876bc2d75bbccd696ef22f95a66845e34ed5b2180f3b  round16/audit/results/hvg_d8/STATE_HVG_ensemble4__cd4t_rest_metrics.json`
+  * `7e1588e0f49b60f6a46978e8799da2bf5f91320505c8c73ea4e4578c34e0da64  round16/audit/results/hvg_d8/STATE_HVG_ensemble4__dld1.npz`
+  * `e5d8839ad67b55f2ca05d12eca1acf629b921478e1f1aa38c0b305d4fc7e11dc  round16/audit/results/hvg_d8/STATE_HVG_ensemble4__dld1_metrics.json`
+  * `a81e1a616ad08e23094cb9649bfff682d20629cf75a2d9574141c91361bd3195  round16/audit/results/hvg_d8/STATE_HVG_hepg2__nadig_hepg2.npz`
+  * `492363e36b2e417f9a40a7da4b8e1b12e726a4fd75aca89780fa015e5a5a6e65  round16/audit/results/hvg_d8/STATE_HVG_hepg2__nadig_hepg2_metrics.json`
+  * `2b71d7f057984dfadba860431e94603295c9cf886bdbe25571b54597dc7cf187  round16/audit/results/hvg_d8/STATE_HVG_jurkat__nadig_jurkat.npz`
+  * `83d0b78f0200337aaffd3849948d4a384c7682a9105f1afb65269c504d6f8dfb  round16/audit/results/hvg_d8/STATE_HVG_jurkat__nadig_jurkat_metrics.json`
+  * `35d0c09e95adfd7a5f8466e132ee3c7f0a2b872fee09d29b1fc633d196ab3f07  round16/audit/results/hvg_d8/control_barcodes_r16.json`
+  * `7c5e79025dc513088c12e493301a80e39ba0eb97fb2f293457a51b14802dc2b8  round16/audit/results/hvg_d8/manifest_r16_audit.json`
+  * `35d0c09e95adfd7a5f8466e132ee3c7f0a2b872fee09d29b1fc633d196ab3f07  round16/audit/results/hvg_d8/sampled_control_barcodes_r16.json`
+  * `e42233c97af326b7f45393cdf0581a304f114cb823cdbfadfbf88d8fc74cbd98  round16/audit/results/run_hvg_d8.log`
+
+- `STATE_HVG` D8 Independent Verdicts (`A-T3`, `n_boot = 4000`, `seed = 20261601`):
+  * `nadig_hepg2` (`Group 1`, `n_eval=740`, `g_eval=1843`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_MATCHED_SPECIFIC`, `unseen=STRATUM_MIXED_OR_INCONCLUSIVE`; `matched r_orth_cal = 0.148376`, 97.5% CI `[0.138031, 0.158649]`; `overall_resample=MIXED_SOURCE_BY_SOURCE`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.148376` vs `FCT=0.201459`, `delta=-0.053083`, 97.5% CI `[-0.068835, -0.037891]`)
+  * `nadig_jurkat` (`Group 1`, `n_eval=873`, `g_eval=1843`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_MATCHED_SPECIFIC_SUB_DELTA`, `unseen=STRATUM_MIXED_OR_INCONCLUSIVE`; `matched r_orth_cal = 0.067482`, 97.5% CI `[0.060282, 0.074819]`; `overall_resample=MIXED_SOURCE_BY_SOURCE`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.067482` vs `FCT=0.147535`, `delta=-0.080052`, 97.5% CI `[-0.092392, -0.067656]`)
+  * `a549_ko` (`Group 2 CRISPRko`, `n_eval=403`, `g_eval=1837`):
+    - `H-I1`: **`LINE_MATCHED_SPECIFIC`** (`seen=STRATUM_MATCHED_SPECIFIC`, `unseen=STRATUM_MATCHED_SPECIFIC`; `matched r_orth_cal = 0.237308`, 97.5% CI `[0.208873, 0.266555]`; `overall_resample=ALL_EXCEED_WITH_POSITIVE_SIGNAL`)
+    - `H-I2`: **`INDISTINGUISHABLE`** (`model=0.237308` vs `FCT=0.213380`, `delta=+0.023929`, 97.5% CI `[-0.012757, +0.063459]`)
+  * `dld1` (`Group 2 CRISPRi`, `n_eval=75`, `g_eval=1832`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_EQUIVALENT_NONZERO_SIGNAL`, `unseen=STRATUM_MIXED_OR_INCONCLUSIVE`; `matched r_orth_cal = 0.104049`, 97.5% CI `[0.070538, 0.139618]`; `overall_resample=NONE_EXCEED`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.104049` vs `FCT=0.168160`, `delta=-0.064111`, 97.5% CI `[-0.107381, -0.019208]`)
+  * `cd4t_rest` (`Group 2 CRISPRi`, `n_eval=245`, `g_eval=1830`):
+    - `H-I1`: **`MIXED_OR_INCONCLUSIVE`** (`seen=STRATUM_EQUIVALENT_NULL_SIGNAL`, `unseen=STRATUM_MIXED_OR_INCONCLUSIVE`; `matched r_orth_cal = 0.015512`, 97.5% CI `[-0.020996, 0.053386]`; `overall_resample=NONE_EXCEED`)
+    - `H-I2`: **`FCT_SUPERIOR_TO_MODEL`** (`model=0.015512` vs `FCT=0.058288`, `delta=-0.042776`, 97.5% CI `[-0.073731, -0.009739]`)
+
+- Next: Moving `round16/audit/results/secondary` -> `round16/audit/results/secondary_pre_d8` and launching fresh Pass 2 (`STATE_SE` + `STATE_HVG`, `--include-hvg-perm100 --include-g4`).
+
+========================================================================
+[2026-11-27 07:05 +0800] PASS 2 SECONDARY DIAGNOSTICS COMPLETED (results/secondary)
+========================================================================
+R16_AT3_SECONDARY_DONE
+
+- Run Command (`exit code 0`, `elapsed_sec = 10265.86`):
+  `cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold && mv round16/audit/results/secondary round16/audit/results/secondary_pre_d8 && PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 --include-hvg-perm100 --include-g4 --output-dir round16/audit/results/secondary > round16/audit/results/secondary_run.log 2>&1`
+- Cross-Run Bitwise & Parity Verification:
+  * `BARCODES_BATCHES_MEDIANS_AND_SE600M_VERIFIED_OK`: ordered barcodes & batches match Pass 1 & `hvg_d8`; `median_ntc_umi_sampled` matches `hvg_d8` (D8 Nadig row-sum fix); `se600m_embeddings_r16.npz` SHA-256 (`1db7cc682884ff7422a0c9cb78f4cabb1d43da7dae7ee5aa1dcfd904379f16c2`) matches Pass 1 identically.
+  * All 5 `STATE_SE_*.npz` SHA-256s in `secondary/` match Pass 1 `results/` identically.
+  * All 5 `STATE_HVG_*.npz` SHA-256s in `secondary/` match `results/hvg_d8/` identically.
+
+- `round16/audit/results/secondary/manifest_r16_audit.json` SHA-256:
+  `f816bc03be48e01e226297f0d79ed1cda4c8edf3ea678b4c200ec14288cafee6`
+
+- All `round16/audit/results/secondary/` Output Files + Log (`shasum -a 256`):
+  * `962e3b803e47310268f2665633b275780f72a9a115a76514fd48686f4ff12400  round16/audit/results/secondary/STATE_HVG_ensemble4__a549_ko.npz`
+  * `931e856fb3c92dff6e3a2494abdc5c6e1c2d5aa41e33e10959ed9379c7b8fc9e  round16/audit/results/secondary/STATE_HVG_ensemble4__a549_ko_metrics.json`
+  * `d0d8a33edeff23ea9ef3c0db6685558d153ff41c9f5523a61bd41bd6b0a3144f  round16/audit/results/secondary/STATE_HVG_ensemble4__cd4t_rest.npz`
+  * `15cf83fd0687c94fd2c88b7c0dc53d143c57fb6458c413931ca6a4efd18d83bf  round16/audit/results/secondary/STATE_HVG_ensemble4__cd4t_rest_metrics.json`
+  * `7e1588e0f49b60f6a46978e8799da2bf5f91320505c8c73ea4e4578c34e0da64  round16/audit/results/secondary/STATE_HVG_ensemble4__dld1.npz`
+  * `1bf4257fd33e8aef0a80901110937070d770a0426679dcd0c63a2fe0d7fa012d  round16/audit/results/secondary/STATE_HVG_ensemble4__dld1_metrics.json`
+  * `a81e1a616ad08e23094cb9649bfff682d20629cf75a2d9574141c91361bd3195  round16/audit/results/secondary/STATE_HVG_hepg2__nadig_hepg2.npz`
+  * `d525cdce8593bd9566c85a08197fe76b667e4e81156e3282f8bc29b2031a276f  round16/audit/results/secondary/STATE_HVG_hepg2__nadig_hepg2_metrics.json`
+  * `2b71d7f057984dfadba860431e94603295c9cf886bdbe25571b54597dc7cf187  round16/audit/results/secondary/STATE_HVG_jurkat__nadig_jurkat.npz`
+  * `5195b9dde992c20413c796c152a9bbde1828b1980605721b6dee1c6d1350cdfe  round16/audit/results/secondary/STATE_HVG_jurkat__nadig_jurkat_metrics.json`
+  * `bf4eb2741b61de73cf87e5cb55e92dbfcd4944d12fb800965fac9818994b456b  round16/audit/results/secondary/STATE_SE_ensemble4__a549_ko.npz`
+  * `4b57c834f12513fe93041f70ef743acb0aa7b30da52cc2e9fb31efabfa35c910  round16/audit/results/secondary/STATE_SE_ensemble4__a549_ko_metrics.json`
+  * `44e1929e310cc40b236da34a6cdf57841d598d59e7d1ae1c6f5d086306696cd7  round16/audit/results/secondary/STATE_SE_ensemble4__cd4t_rest.npz`
+  * `a69f5ba305bebab81e2c742fc91f3f11efebbe2f28c29cc249c3cf11c3963d55  round16/audit/results/secondary/STATE_SE_ensemble4__cd4t_rest_metrics.json`
+  * `bbe88c5fe62ac6cf2d74e189b0332913ba5b2054b82864c7a1ec59e481f620fb  round16/audit/results/secondary/STATE_SE_ensemble4__dld1.npz`
+  * `453e80ed78d4edd963b7c97a28e7b931ad252711e3177d96d40d31898f7c8b1f  round16/audit/results/secondary/STATE_SE_ensemble4__dld1_metrics.json`
+  * `de44e77cbee58d1c7702bc9972bb495a9bf29ba98fc20e2b9f04f1d42bb8a24d  round16/audit/results/secondary/STATE_SE_hepg2__nadig_hepg2.npz`
+  * `83a7fe16b0dbc94dab64bd8acf871588af6600628218fdbf8e93538288f58943  round16/audit/results/secondary/STATE_SE_hepg2__nadig_hepg2_metrics.json`
+  * `5ee16759f92c6912a7d29fc9e59cd9f003145031ff8f0bf2f21e4d4c78405089  round16/audit/results/secondary/STATE_SE_jurkat__nadig_jurkat.npz`
+  * `46a031ffc795d5db6ca54bb838df50595750a315743798f65224a617686b02f1  round16/audit/results/secondary/STATE_SE_jurkat__nadig_jurkat_metrics.json`
+  * `f077d8b5e7c084712ed742c25e6802c5edc61fc86104ec0a122e7cc39fbb3af0  round16/audit/results/secondary/control_barcodes_r16.json`
+  * `f816bc03be48e01e226297f0d79ed1cda4c8edf3ea678b4c200ec14288cafee6  round16/audit/results/secondary/manifest_r16_audit.json`
+  * `f077d8b5e7c084712ed742c25e6802c5edc61fc86104ec0a122e7cc39fbb3af0  round16/audit/results/secondary/sampled_control_barcodes_r16.json`
+  * `1db7cc682884ff7422a0c9cb78f4cabb1d43da7dae7ee5aa1dcfd904379f16c2  round16/audit/results/secondary/se600m_embeddings_r16.npz`
+  * `db0c079b3ecd1ce59dedccc65dcad64c73ce27957b529de4b97d9d6c02e1f1ea  round16/audit/results/secondary_run.log`
+
+- `STATE_SE` `G4` 2×2 Factorial Decomposition Summary:
+  * `nadig_hepg2` (native `gem_group` pairing vs `nadig_jurkat`): `median_delta_batch_orth = 0.006230`, `median_delta_ctrl_orth = 0.290435`, `median_batch_share_orth = 0.0210`
+  * `nadig_jurkat` (native `gem_group` pairing vs `nadig_hepg2`): `median_delta_batch_orth = -0.006239`, `median_delta_ctrl_orth = 0.233253`, `median_batch_share_orth = 0.0260`
+  * `a549_ko` (`B_M=0, B_S=17`): seen `median_delta_batch_orth = 0.027990`, `median_delta_ctrl_orth = 0.029570`, `median_batch_share_orth = 0.2020`; unseen `median_delta_ctrl_orth = 0.006829`, `median_batch_share_orth = 0.5775`
+  * `dld1` (`B_M=0, B_S=17`): seen `median_delta_batch_orth = 0.059826`, `median_delta_ctrl_orth = 0.050976`, `median_batch_share_orth = 0.5417`; unseen `median_delta_ctrl_orth = 0.010329`, `median_batch_share_orth = 0.8528`
+  * `cd4t_rest` (`B_M=0, B_S=17`): seen `median_delta_batch_orth = 0.037373`, `median_delta_ctrl_orth = 0.015162`, `median_batch_share_orth = 0.7263`; unseen `median_delta_ctrl_orth = 0.002234`, `median_batch_share_orth = 0.9436`
+
+- `STATE_HVG` `Perm100` Gene-Label Null Summary (`n_perm = 100`):
+  * `nadig_hepg2`: `median = -0.000056`, `q975 = 0.015778`, `p_emp = 0.009901`, `matched = 0.148376`, `ci975_lo = 0.138031`, `matched_gt_q975 = True`
+  * `nadig_jurkat`: `median = 0.004444`, `q975 = 0.018137`, `p_emp = 0.009901`, `matched = 0.067482`, `ci975_lo = 0.060282`, `matched_gt_q975 = True`
+  * `a549_ko`: `median = -0.002160`, `q975 = 0.020796`, `p_emp = 0.009901`, `matched = 0.237308`, `ci975_lo = 0.208873`, `matched_gt_q975 = True`
+  * `dld1`: `median = -0.001066`, `q975 = 0.015438`, `p_emp = 0.009901`, `matched = 0.104049`, `ci975_lo = 0.070538`, `matched_gt_q975 = True`
+  * `cd4t_rest`: `median = -0.004393`, `q975 = 0.002394`, `p_emp = 0.009901`, `matched = 0.015512`, `ci975_lo = -0.020996`, `matched_gt_q975 = False`
+
+- Status: Round 16 Pass 1 (`STATE_SE` + `hvg_d8` `STATE_HVG`) and Pass 2 (`results/secondary`) ALL COMPLETE under D1–D8 fixes; awaiting Master Controller three-way adjudication (`controller/checks/r16_check.py`).

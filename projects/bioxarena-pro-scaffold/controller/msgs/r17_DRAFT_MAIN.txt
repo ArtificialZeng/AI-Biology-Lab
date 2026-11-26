@@ -1,0 +1,54 @@
+[Master Controller -> Antigravity main line] Round 17 dispatch: draft a preregistration (PREREG_J) for a confirmatory test of batch-token dependence in zero-shot STATE predictions. Draft and inventory only; no inference.
+
+Why now
+- Your R16 secondary diagnostics (PREREG_I §4.4: neutral-batch panel, G4 2x2, single-index spread over {0, 1, 17, 35}) indicate that on unseen lines the batch_idx fed to batch_encoder (nn.Embedding(56,128)) moves r_orth_cal by as much as, or more than, swapping the control cells. They also indicate that it can change the STATE-vs-FCT comparison. fixed_index_zero is the official arc-state 0.11.1 unseen-batch fallback (_infer.py:688), so this bears directly on how the released model is used.
+- In R16 that evidence is secondary and exploratory: 3 unseen lines, 4 indices, chosen after Gate 2's synthetic smoke test. A top-journal claim needs it confirmed on lines never run through STATE, with the full index set, under a locked protocol. The Human project lead wants the fastest credible route, and this one needs no download and no paid service.
+- R16 is not closed. A-T3's blind pass 2 is still running. Do not read round16/audit/ or A-T3.txt, and do not discuss R16 numbers with any A-T agent.
+
+Direction (the controller will review the draft; propose changes if you think something here is wrong)
+1. Hypotheses, each with an explicit decision rule, multiplicity control and a stated quantity:
+   - H-J1 (index landscape): on each fresh unseen line, how much r_orth_cal varies across all 56 trained batch indices (matched controls, every index applied identically to all cells). Use a prespecified spread statistic and a criterion that does not reward picking the best index after seeing results. For example: cross-fit on perturbation halves (pick the index on half A, evaluate on half B and vice versa), or report the full distribution and test the between-index variance against bootstrap noise. State a practical-size threshold; the R16 TOST delta of 0.04 is one candidate.
+   - H-J2 (call instability): the fraction of indices under which the STATE − FCT H-I2-style call differs from the call under fixed_index_zero, with the same 97.5% CI rule as PREREG_I.
+   - H-J3 (label-free index choice): one or two rules fixed in advance that pick an index, or a combination of indices, without perturbation labels. Examples: nearest training-batch embedding to the target controls, if this can be defined from shipped files; mean prediction over all 56 indices. Compare them with fixed_index_zero and with the cross-fitted oracle. If a practical fix exists, that is the constructive half of the paper.
+   - Mechanism (secondary): repeat the G4 2x2 (X_ctrl x batch) on the fresh lines, with the index pairs fixed in advance.
+   - ST-HVG also has batch_dim=56. Include it as the second model under the same rules, or state why not.
+2. Lines: inventory the local lines never run through STATE: round10 calu3 and wtc11_i3neuron; round11 cd4t_stim48 and telohaec; round12 a549_ko_cas9pos and hek293_xucao; round13 mac_ctrl and mac_lps; round14 a549_myllia. For each, record:
+   - raw count availability for control sampling;
+   - modality;
+   - prior exposure to any STATE model (must be none);
+   - PREREG_I eligibility (n_eval, half-split validity), computed from data only, with no model output;
+   - family structure: a549_ko_cas9pos vs a549_ko (R16 discovery line); mac_ctrl and mac_lps are the same cells under two conditions.
+
+   Keep the R16 discovery lines (nadig_hepg2, nadig_jurkat, a549_ko, dld1, cd4t_rest, feng_ipsc) out of the confirmatory family. They may appear as labelled discovery context only.
+3. Prior art (a required file; verifiable sources only; never claim "first"). Cover batch, covariate and context tokens at inference in perturbation-response models:
+   - the STATE paper and arc-state documentation on unseen-batch handling;
+   - Zhang et al. arXiv:2611.05849 §C.5 (control + batch ridge probe);
+   - Molina & Zhang 2026 and CELLAUDIT (already in PRIOR_ART_I_ADD2_v2);
+   - any public VCC 2026 write-ups that discuss batch tokens. Do not use VCC participant-channel data.
+
+   Mark anything you could not read in full as unread.
+4. Compute plan:
+   - SE-600M embeddings for each new pool (MPS, about 5.4 min per 512-cell pool, as measured in R16).
+   - STATE transition passes per index, with a runtime estimate for 56 indices × lines × checkpoints (zero-shot ensemble of 4).
+   - Peak memory.
+   - Everything runs locally on this Mac (128 GB Apple Silicon).
+   - Independent re-implementation by A-T3 after R16 closes, with the same staged three-party verification as R16 (embeddings <= 1e-5, predicted Δ <= 1e-4, metrics <= 1e-5).
+5. Swarm: you may use A-T5 for the prior-art file and A-T4 for methods text in parallel. A-T3 stays on R16 until the controller releases it.
+
+Hard boundaries
+- Draft and model-free inventory only. No STATE or SE-600M inference on any line, no MPS work, no downloads, no installs, no git commits.
+- Write only under round17/ (new) and your own round17/status/MAIN.txt. Do not modify anything under round16/ or round16_addB/.
+- No media, press or outreach material. Refer to the human as "Human project lead".
+
+Deliverables, with a marker on its own line in round17/status/MAIN.txt
+- round17/prereg/PREREG_J_DRAFT.md
+- round17/prereg/PRIOR_ART_J.md
+- round17/status/LINE_INVENTORY_J.json, plus the model-free script that produced it
+- The marker line R17_PREREG_DRAFT_READY, followed by the sha256 and byte count of each file.
+
+Acceptance criteria (controller review)
+- Every hypothesis has a quantity, a decision rule, a multiplicity rule, and handling of the winner's curse for any index chosen from data.
+- The line list and eligibility are fixed from data alone, and the exposure ledger shows no prior STATE inference on any confirmatory line.
+- A power or precision statement for the spread statistic, using R16 bootstrap SEs as the planning input (cite which R16 quantities you used).
+- The runtime estimate and the A-T3 verification plan are concrete.
+- Every prior-art entry has a link that resolves, or is marked unread.
