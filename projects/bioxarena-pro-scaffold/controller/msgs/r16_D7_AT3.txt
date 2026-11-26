@@ -1,0 +1,31 @@
+[Master Controller → A-T3] HOLD, then the ruling on DEVIATION_R16_D7 (SE-600M gene mapping on duplicate raw symbols). Stop your current pass-1 run now. Then fix your own code and rerun.
+
+1. Stop now: end the pass-1 process you started at 20:47 (run_audit_r16.py --phase real_r16, pid 86771). Its STATE_SE embeddings do not follow Addendum A §11, so nothing that run produces can be used.
+
+2. Diagnosis (staged verification step 1, Addendum A §11 item 5: embeddings compared first):
+- Control barcodes and batch labels are identical across parties on all 6 lines.
+- SE-600M X_state is bitwise identical on a549_ko and cd4t_rest (primary and resample), but differs by 0.04–0.09 on dld1, feng_ipsc, nadig_hepg2 and nadig_jurkat. The tolerance is 1e-5. No metric was involved, so blinding is intact.
+- Cause: in round16/audit/audit_r16_state_adapter.py::encode_with_loaded_se_model (line 590), you set adata.var_names = gene_syms but never call adata.var_names_make_unique(). arc-state 0.11.1 FilteredGenesCounts (state/emb/data/loader.py:223-226) maps genes by adata.var_names, so every copy of a duplicated raw symbol maps to the same SE-600M global ID.
+- Addendum A §11 item 3 locks: adata.var_names = raw symbols, then adata.var_names_make_unique(), keeping the first occurrence of each duplicated raw symbol and never producing duplicate global IDs.
+- Controller check, using FilteredGenesCounts itself on the identical dry-run gene lists. Your code maps these columns a second time:
+  - dld1 and feng_ipsc: 8 columns (TBCE, CYB561D2, MATR3, HSPA14, GOLGA8M, GGT1, ARMCX5-GPRASP2, TMSB15B);
+  - nadig_hepg2 and nadig_jurkat: 1 column (HSPA14).
+  a549_ko and cd4t_rest have no duplicated mapped symbols, so their mapping is unaffected. That matches exactly the lines whose embeddings already agree.
+
+3. Required fix (smallest possible diff, only audit_r16_state_adapter.py):
+- Immediately after adata.var_names = gene_syms in encode_with_loaded_se_model, add adata.var_names_make_unique().
+- Change nothing else: not the FilteredGenesCounts / collator call, gene_column, the seeds, batch size, dataset_name, the HVG path, or map_genes_to_se600m_pe.
+
+4. Tests:
+- round16/.venv/bin/python -m py_compile round16/audit/*.py
+- test_audit_r16.py
+- Your own self-check with synthetic gene lists that include one duplicated symbol present in protein_embeddings.pt (for example ["HSPA14","GAPDH","HSPA14","NOT_A_GENE"]). Build FilteredGenesCounts the way your patched code does, then assert:
+  - only the first HSPA14 column maps (the second is -1);
+  - no SE-600M global ID appears twice;
+  - the count of mapped genes equals the number of unique mapped symbols.
+  Write your own check; do not read controller/checks or the main line's code.
+
+5. Then: on its own line in A-T3.txt write R16_AT3_D7_PATCHED, with the full diff, the test results and the new sha256 of audit_r16_state_adapter.py.
+- Then, without waiting for the controller (unless a test fails), run pass 1 again from scratch with the identical command, so all 11 embeddings are recomputed and round16/audit/results/se600m_embeddings_r16.npz is overwritten.
+- After pass 1, run pass 2 as before. Completion markers are unchanged (R16_AT3_REAL_DONE, R16_AT3_SECONDARY_DONE).
+- The controller will record D7 and add the new hash to the next manifest. As before: do not read the main line's code, results or status, and do not commit.

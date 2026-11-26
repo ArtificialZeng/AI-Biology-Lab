@@ -588,6 +588,7 @@ def encode_with_loaded_se_model(
         warnings.simplefilter("ignore", UserWarning)
         adata = ad.AnnData(X=np.ascontiguousarray(x_arr, dtype=np.float32))
         adata.var_names = gene_syms
+        adata.var_names_make_unique()
 
     ds_tag = str(dataset_name)
     dataset = FilteredGenesCounts(
