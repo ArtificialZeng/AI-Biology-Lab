@@ -1,0 +1,77 @@
+{
+ "top_keys": [
+  "X",
+  "layers",
+  "obs",
+  "obsm",
+  "obsp",
+  "uns",
+  "var",
+  "varm",
+  "varp"
+ ],
+ "X": {
+  "kind": "group",
+  "encoding": "csr_matrix",
+  "keys": [
+   "data",
+   "indices",
+   "indptr"
+  ],
+  "shape": [
+   864115,
+   38606
+  ],
+  "data_dtype": "float32"
+ },
+ "layers": {},
+ "raw": null,
+ "obs_columns": [
+  "cellID",
+  "cell_treat",
+  "condition",
+  "flask",
+  "gene_target",
+  "guide",
+  "knockdown_efficiencies",
+  "log10GenesPerUMI",
+  "mitoRatio",
+  "nGene",
+  "nUMI",
+  "n_genes",
+  "welltag"
+ ],
+ "var_columns": [
+  "_index"
+ ],
+ "reader_resolved_obs_columns": {
+  "condition": "condition",
+  "gene_target": "gene_target",
+  "guide": "guide",
+  "flask": "flask",
+  "welltag": "welltag",
+  "n_guides": null
+ },
+ "condition_categories": [
+  "Treated",
+  "Untreated"
+ ],
+ "flask_n_categories": 2,
+ "welltag_n_categories": 47,
+ "guide_n_categories": 5097,
+ "gene_target": {
+  "n_categories": 1740,
+  "ntc_labels": [
+   "NO-TARGET"
+  ],
+  "safe_labels": [
+   "SAFE_TARGET"
+  ],
+  "unassigned_labels": [],
+  "n_multi_guide_labels": 0,
+  "non_plain_symbol_labels_first30": [
+   "SAFE_TARGET"
+  ],
+  "n_non_plain_symbol_labels": 1
+ }
+}
