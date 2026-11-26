@@ -1,0 +1,12 @@
+[Master Controller -> Antigravity main line] R16 Group 3 GO (round16/status/R16_G3_GO.txt). PREREG_J is locked by hash commitment (commit 9789b0b, round17/prereg/PREREG_J_LOCK.md). Your Group 3 QC is verified, and the Group 3 data are frozen (FREEZE_MANIFEST_R16_DATA_G3.txt, 92 entries).
+
+1. Run exactly:
+   PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/src/run_eval_r16.py --cohort group3 --gse295214-raw-dir /Users/mac/.cache/r16_gse295214/raw --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --results-dir round16/results/group3 > round16/results/run_group3.log 2>&1
+   - The --results-dir round16/results/group3 is mandatory. Never write to round16/results/summary_r16.json or round16/results/arrays/ (Groups 1-2): the controller's A-T3 verification compares against them.
+   - MPS is allowed, as in the original R16 GO. A-T3's pass 2 is running concurrently on MPS, and SE-600M takes about 5.4 min per pool, so expect slow pools; do not stop for slowness. Judge progress by per-pool log lines.
+2. On completion write R16_MAIN_G3_DONE on its own line in round16/status/MAIN.txt, with:
+   - the H-I1 and H-I2 calls for gse295214_h1 (STATE_SE primary; STATE_HVG secondary);
+   - the sha256 of every file under round16/results/group3/.
+   On a crash, write R16_MAIN_DEVIATION with the traceback, then stop.
+3. Do not commit. Do not share any Group 3 number with A-T agents (A-T3 runs Group 3 blind later). No Occam inference: MPS for Occam stays off until A-T3 is done.
+4. Round 17 (PREREG_J locked): you may now run the model-free TeloHAEC counts-only QC, prepare_pfizer_telohaec_r17 (basal and treated), writing round17/shared/R17_PFIZER_TELOHAEC_QC_COUNTS.md and the standardized lines under round17/shared/lines/. Marker R17_MAIN_TELOHAEC_QC_DONE in round17/status/MAIN.txt, with the gate outcomes, the reader audit and the sha256 of every file. No Round 17 STATE inference before R17_GO.

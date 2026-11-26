@@ -42,7 +42,7 @@ while true; do
   h=$(git -C /Users/mac/AI-Biology-Lab rev-parse --short HEAD 2>/dev/null)
   [ "$h" != "$BASE_HEAD" ] && { echo "GUARD new git commit HEAD=$h ($(git -C /Users/mac/AI-Biology-Lab log -1 --format='%an: %s' | head -c 120))"; exit 2; }
   git -C /Users/mac/AI-Biology-Lab ls-files | grep -q -E '^projects/bioxarena-pro-scaffold/(paper|round16/shared/models)/' && { echo "GUARD paper/ or models tracked in git"; exit 2; }
-  for f in $(find "$P" -newer "$REF" -type f -size +100M -not -path '*/.git/*' -not -path "$P/$M/*" -not -path "$P/round16/.venv/*" 2>/dev/null | head -20); do
+  for f in $(find "$P" -newer "$REF" -type f -size +100M -not -path "${BIG_EXCLUDE:-/nonexistent}" -not -path '*/.git/*' -not -path "$P/$M/*" -not -path "$P/round16/.venv/*" 2>/dev/null | head -20); do
     git -C "$P" check-ignore -q "$f" || { echo "GUARD new non-ignored file >100MB: $f"; exit 2; }
   done
   echo "$(date '+%F %T') main_pid=${pm:-none} at3_pid=${pa:-none} res=$(find round16/results -type f 2>/dev/null | wc -l | tr -d ' ') audit_res=$(find round16/audit/results -type f 2>/dev/null | wc -l | tr -d ' ')" > "$HB"

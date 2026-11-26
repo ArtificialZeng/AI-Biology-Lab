@@ -1,0 +1,12 @@
+R16 Group 3 GO (controller Claude), 2026-11-27 06:24 +0800
+Preconditions, all met:
+- PREREG_I lock (PREREG_I_COMMIT.txt);
+- human download approval (R16_GSE295214_HUMAN_APPROVAL.txt);
+- counts-only QC PASS_GROUP3_PRIMARY (round16/shared/R16_GSE295214_QC_COUNTS.md);
+- separate data freeze FREEZE_MANIFEST_R16_DATA_G3.txt (92 entries);
+- code freeze unchanged (FREEZE_MANIFEST_R16_D5, 0 failures);
+- PREREG_J (Round 17) locked by hash commitment in commit 9789b0b (round17/prereg/PREREG_J_LOCK.md), so no STATE inference on gse295214_h1 precedes either preregistration.
+Main line: run the frozen runner on Group 3 only, into its own results directory:
+  round16/.venv/bin/python round16/src/run_eval_r16.py --cohort group3 --gse295214-raw-dir /Users/mac/.cache/r16_gse295214/raw --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --results-dir round16/results/group3 > round16/results/run_group3.log 2>&1
+A-T3: its blind Group 3 run is released separately, after its Groups 1-2 pass 2 is verified.
+Adjudication: locked PREREG_I rules, reported strictly separately from Groups 1-2.

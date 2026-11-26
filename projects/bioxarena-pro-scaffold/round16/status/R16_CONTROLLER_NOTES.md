@@ -260,3 +260,9 @@
 - 05:22: Group 3 data freeze `round16/status/FREEZE_MANIFEST_R16_DATA_G3.txt` (92 entries: tar, 85 .h5, 5 line files, QC record). Its raw hashes equal `R16_GSE295214_CHECKSUMS.sha256`.
   - The R16 Group 3 GO is still held for the PREREG_J lock.
   - A-T3's Group 3 run follows its R16 pass 2, blind, from the raw files.
+- 06:16–06:24:
+  - TeloHAEC download complete: size exact, md5 equal to Zenodo, sha256 4b22ad11….
+  - Structure-only check (`controller/checks/r17/r17_telohaec_struct_check.py`): every column and label the reader resolves exists, and the mixed symbol/Ensembl var index is handled by the frozen HGNC resolver.
+  - **PREREG_J locked by hash commitment, commit 9789b0b** (`round17/prereg/PREREG_J_LOCK.md`; verified on origin/main).
+  - Then **R16 Group 3 GO** (`round16/status/R16_G3_GO.txt`, `controller/msgs/r16_G3_GO_MAIN.txt`): main line only, `--results-dir round16/results/group3`, MPS concurrent with A-T3 as in the original R16 GO. A-T3's blind Group 3 run comes after its pass 2 is verified.
+  - The main line may also run the model-free TeloHAEC counts-only QC (Round 17).
