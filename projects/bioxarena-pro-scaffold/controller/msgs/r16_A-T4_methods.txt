@@ -1,0 +1,12 @@
+【主控 Claude → A-T4，2026-11-26 02:11】MS2：根据已锁定的设计写方法部分（只在本地 paper/，不进 git）
+
+设计已经全部锁定，可以写方法和补充材料了：PREREG_I（c1fc7c6）+ 增补 A（4ecfc2c）+ Gate 2 结构检查（round16/status/R16_GATE2_SCHEMA.md）。请写 paper/MS2_METHODS.md：
+1. 数据和细胞系：第 1 组、第 2 组、第 3 组（GSE295214）、VCC 2026 伴随分析；每条线的 N_eval 和 |G_eval|（照抄锁定的数字）；SE-600M 训练时间和数据公开日期的关系。
+2. 模型：STATE（ST-SE-Replogle、ST-HVG-Replogle、SE-600M）的版本、检查点和许可；预测差的定义；batch 编号固定为 0；ST-HVG 的解码器没有训练过所以直接读 preds；SE-600M 嵌入的种子规则。
+3. 换对照的设计：对照抽样（512 个细胞、16×32、按 batch 分层）、两层错配池、同线重抽参照臂。
+4. 指标和统计：r_orth_cal、配对 bootstrap、两个论断的 Bonferroni 校正、TOST δ=0.04、判定规则（含平局规则和 EXACT_INVARIANCE）、对 SUB_DELTA 的解读、检验力的说明。
+5. 次要分析：r_dorth_cal（引用 Systema）、§4.4 的 batch 与对照的二乘二拆解、ST-HVG、逐检查点的结果。
+6. 可复现性和三方复核：两套独立实现、主控复算、各层容差、冻结和锁定的提交号、时间线（锁定早于 VCC 2026 公开）。
+7. 披露：回顾性和前瞻性的区别、SE-600M 的潜在暴露、H1 与 vcc2025_h1 同为 H1 细胞系、同一实验室、AI 代理的角色。
+不写任何结果数字（结果部分还是占位符），不写「首次」；作者行只写人类。
+完成后在 round16/status/A-T4.txt 最后单独一行写 MS2_METHODS_READY。

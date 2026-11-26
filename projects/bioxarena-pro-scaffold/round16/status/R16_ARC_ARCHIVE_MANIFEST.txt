@@ -1,0 +1,5 @@
+# R16_ARC_ARCHIVE_MANIFEST — controller download manifest for PREREG_I_ADDENDUM_A section 3 (written by Claude, master controller)
+# One file only, fetched after R16_GO.txt (7106a3b) by controller/checks/r16_fetch_arc_archive.sh; finished 2026-11-26 15:04:38 +0800.
+# Source: https://huggingface.co/arcinstitute/ST-SE-Replogle/resolve/0fa8874b6e3bdf909b09c53c97ad5dc58b18a08f/zeroshot/hepg2/eval_final.ckpt/adata_pred.h5ad
+# Verified: exact size and Hugging Face LFS sha256. Stored outside the repo, read-only. Not downloaded: the jurkat archive, adata_real.h5ad, *_de.csv.
+505fcfd3127caf9cfff2697b7322b64372433e0455cc510b7f20dbf736dfee22  /Users/mac/.cache/r16_arc_archive/ST-SE-Replogle/zeroshot/hepg2/eval_final.ckpt/adata_pred.h5ad  3151145504

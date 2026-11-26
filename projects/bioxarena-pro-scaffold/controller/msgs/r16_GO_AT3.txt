@@ -1,0 +1,23 @@
+[Master Controller → A-T3] Round 16 Gate 5 已放行（R16_GO.txt，commit 7106a3b）。请立即独立运行 Groups 1-2 真实数据审计。
+
+冻结依据：PREREG_I v5 c1fc7c6 + Addendum A 4ecfc2c；代码冻结 848bdac（45/45 复核通过）；数据冻结 6f6c303（FREEZE_MANIFEST_R16_DATA.txt，183 文件复核通过）；权重 77/77。
+Nadig 原始数据已复制到本机：/Users/mac/.cache/r9_p2_raw/nadig2025（sha256 与 GEO 一致）。不要读同步盘。
+
+运行（第 1 遍，主分析）：
+cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold
+mkdir -p round16/audit/results
+round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 > round16/audit/results/run_real_r16.log 2>&1
+
+第 1 遍完成后（第 2 遍，次要诊断，另一个输出目录）：
+round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 --include-hvg-perm100 --include-g4 --output-dir round16/audit/results/secondary > round16/audit/results/secondary_run.log 2>&1
+
+硬边界：
+- 只写 round16/audit/results/ 和你自己的 round16/status/A-T3.txt。不读 round16/src/、round16/results/、主线日志或 MAIN.txt。
+- 不改任何冻结文件（prereg/src/audit/数据/模型），不下载任何东西，不训练，不 git commit，不写任何媒体或对外材料。
+- 若崩溃或需要改代码：立即停止，在 A-T3.txt 写一整行 R16_AT3_DEVIATION，后面附完整报错，然后等待。不要自行修补冻结代码。
+- 主线与你可同时在 MPS 上运行；结果不应受并发影响。
+
+完成标记（在 A-T3.txt 里各占一整行）：
+- 第 1 遍完成：R16_AT3_REAL_DONE，并列出 round16/audit/results/ 下每个输出文件的 sha256、每条线 STATE_SE 的 H-I1 判定与 H-I2 判定、manifest_r16_audit.json 的 sha256。
+- 第 2 遍完成：R16_AT3_SECONDARY_DONE。
+裁决以主控用 controller/checks/r16_check.py 三方重算为准，你的判定是独立的一方。

@@ -65,3 +65,23 @@
 - 主控自己写的脚本：从 a549_ko 的 genes.txt 取 4,000 个真实基因符号，生成 32 个细胞的合成 Poisson 计数（种子 424242）；主线的 encode_controls_se600m_r16 和 A-T3 的 CleanRoomSE600MEncoder.encode_cells 都在 CPU 上运行，batch_size=16，种子 20261601。
 - 结果：两方都映射到 3,132 个基因；嵌入形状都是 (32, 2058)；**逐位相同**（最大绝对差 0.0）。主线自己重跑一次，结果也逐位相同。
 - 结论：嵌入这一步在 CPU 上逐位可复现、两方逐位一致。三方复核里预测差那一层（≤ 1e-4）剩下的差异只可能来自 MPS 运算或我们自己的代码。
+
+## 2026-11-26 02:15 冻结完成；等外置硬盘
+- 增补 A 锁定 4ecfc2c；代码冻结 848bdac（FREEZE_MANIFEST_R16 共 45 项，和 origin 核对 45/45）；CODE_FREEZE_R16.txt 3c357c7。
+- 阻碍：外置硬盘「雷雳传输」没有挂载，Nadig HepG2/Jurkat 的原始文件只有那一份（Spotlight 没有找到别的副本）。已请人类接上；另一个办法是从 GEO 重新下载约 14 GB，需要人类批准。
+- A-T4 的 paper/MS2_METHODS.md 主控已抽查：锁定的数字都对，没有结果，没有优先权的说法，没有进 git。
+
+## 2026-11-26 02:40 监控误报：别的项目里出现了大文件
+- watch_r16d 报警：projects/project4_b1_faers_algorithmic_failure/data/processed/master_demo_dedup.parquet（211 MB，02:38），没有被 git 忽略。
+- 这是同一个仓库里的另一个项目（FAERS，02:19 有自己的预注册锁定文件 PREREG_B1_LOCK.json）。最近 12 个 Antigravity 会话里都没有提到它，所以不是本项目的代理做的，和第十六轮无关。主控不动它。
+- 主控提交时只 add 明确列出的第十六轮路径，所以不会把它带进 git；已告诉人类这个文件没有被忽略。监控的大文件检查已改为只看 bioxarena-pro-scaffold 目录。
+
+## 2026-11-26 15:00 — Gate 5 released (controller)
+- 14:41 the sync share 雷雳传输 came back (it is SMB //192.168.3.2, not a USB drive). At the human lead's request, data now lives on the internal disk: Nadig raw files copied to /Users/mac/.cache/r9_p2_raw/nadig2025 and verified against the GEO sha256 sidecars (14:45); the rest of the share's external_data folder mirrored to /Users/mac/.cache/sync_external_data (55 files, 11 GB).
+- Only the two Nadig raw h5ad files were read by Round 16 from the share; every other input was already local (round9/p2, round10-12 shared lines and raw). Both runners accept --raw-nadig-dir, so no frozen code changed.
+- FREEZE_MANIFEST_R16_DATA.txt: 183 files, 82.4 GB, written and then re-hashed (VERIFY OK). feng_ipsc and a549_ko line files equal FREEZE_MANIFEST_R11 / R12 (5/5 each). Commit 6f6c303.
+- Re-verified before GO: FREEZE_MANIFEST_R16 45/45, R16_MODEL_CHECKSUMS 77/77, no round16/results, no runner process. R16_GO.txt committed 7106a3b.
+- 14:55 GO sent to A-T3 (controller/msgs/r16_GO_AT3.txt). A-T3 runner started 14:55 with the exact dispatched command (pid 60770).
+- The archived nadig_hepg2 adata_pred.h5ad (3,151,145,504 bytes, LFS sha256 505fcfd3...ee22) is fetched by the controller via controller/checks/r16_fetch_arc_archive.sh into /Users/mac/.cache/r16_arc_archive (outside the repo). The main-line GO (controller/msgs/r16_GO_MAIN.txt) goes out after that file verifies, because the main run includes the Addendum A section 3 check.
+- Run-phase watcher controller/watchers/watch_r16e.sh. A bash-3 marker-count bug was fixed before it was relied on.
+- 15:04 Arc archive verified (size + LFS sha256; R16_ARC_ARCHIVE_MANIFEST.txt). Single-connection direct speed was about 740 KB/s (the local proxy is not running), so the fetch used 12 parallel byte-range segments, about 11 MB/s. 15:05 main-line GO sent (controller/msgs/r16_GO_MAIN.txt).
