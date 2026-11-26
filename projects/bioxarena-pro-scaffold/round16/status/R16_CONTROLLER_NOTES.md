@@ -196,3 +196,30 @@
   - A-T3's py_compile, test_audit_r16 (13/13) and its Nadig self-check (totals = row sums, barcodes unchanged on the hepg2 and jurkat primary and resample pools) all pass.
   - The new code manifest is FREEZE_MANIFEST_R16_D5 (54 entries; D4 plus the new hash plus the D8 record): D5_FREEZE_OK.
   - A-T3's STATE_HVG-only pass-1 rerun started at about 02:56 (pid 43630) into `round16/audit/results/hvg_d8/`.
+
+## 2026-11-27 04:14–04:25 — A-T3 STATE_HVG rerun after D8: verified against the main line
+- `R16_AT3_HVG_D8_DONE` at 04:14 (pid 43630, about 75 minutes on MPS, output in `round16/audit/results/hvg_d8/`).
+- Step 2 (`r16_compare_arrays.py`, each `hvg_d8/STATE_HVG_*__<line>.npz` vs `round16/results/arrays/<line>/`): **R16_ARRAYS_MATCH on all 5 lines**, 17 checks per line, worst predicted-Δ |diff| 0. Every Nadig-fed arm that differed before D8 (matched, resample, and mismatched arms from a Nadig source) is now bitwise identical.
+- Step 3b (new `controller/checks/r16_compare_at3_metrics.py`: A-T3's own metric JSONs vs the main line's `summary_r16.json`, STATE_HVG section): **R16_AT3_METRICS_MATCH**, 490 checks, worst |diff| 1.4e-17. That covers the matched, double-orthogonal matched, model − FCT, per-source paired and resample estimates with all CI bounds, every H-I1 category, stratum summary and line verdict, and the H-I2 call (derived for the main line from its 97.5% CI under the PREREG_I rule).
+- Negative control: the same comparator on A-T3's pre-D8 pass-1 HVG files gives R16_AT3_METRICS_DIFF (80 of 490 numeric checks, worst 1.6e-4, all on Nadig-fed quantities; no categorical difference). So the comparator does detect the deviation.
+- Correction to the D8 record (DEVIATION_R16_D8.md is frozen in D5 and stays unchanged): its "up to about 5e-5" for the pre-fix metric gaps came from the matched and model − FCT estimates only. Over all HVG quantities the largest pre-fix gap was 1.6e-4, on the nadig_hepg2 within-line resample delta. The conclusion stands: no STATE_HVG call changed, and STATE_SE was unaffected.
+- **So STATE_HVG pass 1 (Groups 1–2) now agrees across main line and A-T3 (blind); the controller's own HVG recompute is implied by bitwise-identical arrays.**
+- A-T3 moved the stopped pass 2 to `secondary_pre_d8/` and started pass 2 from scratch at about 04:13 (pid 77604, `--models STATE_SE STATE_HVG --include-hvg-perm100 --include-g4`, output `round16/audit/results/secondary/`). Its log `secondary_run.log` is block-buffered (still 0 bytes), so progress is judged from output files and the completion marker `R16_AT3_SECONDARY_DONE`, not from log silence.
+- 04:40: pass-2 verification tools prepared (no A-T3 output read yet):
+  - `controller/checks/r16_compare_at3_pass2.py` covers the G4 decomposition, the (17, 0) symmetry check, the single-index spread and the HVG Perm100 null;
+  - `controller/checks/r16_pass2_check.sh` drives it together with the arrays and HVG-metric comparators.
+  - Self-test on synthetic inputs built from the main-line summary: MATCH on faithful copies, DIFF on 2e-5 to 5e-5 perturbations.
+  - A-T3's Perm100 uses the same seed rule as the main line (`default_rng(k).permutation(G)`, k = 0..99), so the permutation scores are compared element by element.
+- 04:45: a Round 17 preregistration-draft task was dispatched to the main line (`controller/msgs/r17_DRAFT_MAIN.txt`). It is draft and model-free inventory only: no inference, no MPS, no downloads, writes only under `round17/`. The topic follows from R16 secondary diagnostics, so the message file stays uncommitted, and its content unrecorded here, until A-T3's pass 2 is verified.
+
+## 2026-11-27 04:41 — human approval: Occam bundle and GSE295214
+- Human project lead: "Approve both" (question: "Approve the Occam bundle and GSE295214 downloads?").
+- Records: `round16_addB/R16_ADDB_HUMAN_APPROVAL.txt` (lock L2 scope: Minimal Inference Bundle, archive 9ddb890e, Python 3.8.19 via uv or the §6.1 fallback chain) and `round16/status/R16_GSE295214_HUMAN_APPROVAL.txt` (PREREG_I §2.4).
+- Pre-download HEAD checks:
+  - GSE295214_RAW.tar Content-Length 8,340,520,960;
+  - best_model.pth X-Linked-Size 2,550,066,734, with X-Linked-ETag equal to the locked SHA-256 11d5ba55…;
+  - all sidecars resolve at revision acd080b7.
+- Downloads started by the controller at 04:42, each into a new empty folder:
+  - Occam under `round16_addB/shared/models/` (git-ignored by a new root `.gitignore` rule);
+  - GSE295214 under `/Users/mac/.cache/r16_gse295214/` (internal disk, outside the repository).
+- Conditions: no MPS for Occam until A-T3 has finished R16 and `R16_ADDB_GO.txt` exists. Group 3 runs only after counts-only QC and its own data freeze.

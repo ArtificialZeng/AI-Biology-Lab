@@ -1,0 +1,24 @@
+R16 Addendum B (Occam) human approval record (controller Claude)
+Time: 2026-11-27T04:41+0800
+Human project lead, in the Claude Code session with the controller, answering "Approve the Occam bundle and GSE295214 downloads?": "Approve both"
+
+Scope stated by the controller before the answer, and required by the Addendum B lock (PREREG_I_ADDENDUM_B_LOCK.md, L2):
+(a) Occam weights: bendidiihab/Occam @ acd080b788d028911807b87e11a56498f984f279, licence "other / see-repository". The model card declares no weight-licence text; the repository root ships only the MIT licence for the software. GenePT and ESM2 licensing is not recorded by the authors; those tables are baked into the checkpoint.
+    The controller takes download option (a), the Minimal Inference Bundle of Addendum B v2 §1.3:
+    - checkpoints/occam_seeds/rhj_fewshot/all_sources/seed_42/best_model.pth, 2,550,066,734 B, SHA-256 11d5ba5515e79710b3a952532c60aa29515046117292528c59d452a0937685ff;
+    - the tiny text sidecars at the same revision: seed_42/resolved_config.yaml, benchmarks/rhj_fewshot/gene_axis.csv, benchmarks/rhj_fewshot/perturbations.csv, benchmarks/rhj_fewshot/splithalf/cohort.json, benchmarks/rhj_fewshot/splithalf/splits_manifest.json, and the author score table official_comparisons/selected_scores_by_seed_split.csv named in §5.2 (each under 1 MB).
+(b) Occam source code: the GitHub source archive https://github.com/IhabBendidi/Occam/archive/9ddb890e65ca1ec2f81882c78311002a75b52f67.tar.gz (MIT licence, code only, no git clone, no LFS).
+(c) Interpreter and packages for round16_addB/.venv only:
+    - a Python 3.8.19 interpreter installed with uv (python-build-standalone), plus the §6.1 PyPI pins;
+    - or, if that cannot be built cleanly on macOS arm64, the §6.1 fallback chain in its stated order.
+    round16/.venv and the base environment are not touched.
+
+NOT covered (each needs a new approval):
+- full-bundle items #2-#4 (the GenePT and ESM2 .pkl tables);
+- seeds 43-46, occam_small_encoder_decoder.pth, panel.npz, splits.npz;
+- any competitor checkpoint, any other Hub revision or commit.
+
+Conditions unchanged from the lock:
+- no MPS/GPU execution until the controller confirms that A-T3 has finished Round 16 and issues R16_ADDB_GO.txt;
+- Gates 5A and 5B and the code freeze come before any Group 2, Group 3 or sensitivity scoring;
+- all downloads are hashed into round16_addB/R16_ADDB_CHECKSUMS.sha256.

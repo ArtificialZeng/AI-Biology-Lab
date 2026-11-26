@@ -1,0 +1,16 @@
+R16 Group 3 (GSE295214) human download approval record (controller Claude)
+Time: 2026-11-27T04:41+0800
+Human project lead, in the Claude Code session with the controller, answering "Approve the Occam bundle and GSE295214 downloads?": "Approve both"
+
+Scope (PREREG_I §2.4; download allowed only after both human approval and the PREREG_I lock, which is already in place):
+- File: GSE295214_RAW.tar, 8,340,520,960 B (HTTP Content-Length checked 2026-11-27 04:40; Last-Modified Wed, 06 May 2026 04:32:06 GMT). It contains the 85 standard 10x CellRanger .h5 files for GSM8943713-GSM8943797.
+- Source: anonymous public GEO HTTPS, https://ftp.ncbi.nlm.nih.gov/geo/series/GSE295nnn/GSE295214/suppl/GSE295214_RAW.tar. No login, no terms to accept.
+- Paper: Pan, Saunders, Replogle, Weissman & Zhuang, bioRxiv 10.64898/2026.05.16.725005.
+- Local destination: the internal disk, /Users/mac/.cache/r16_gse295214/ (not the sync share, not the git repository). The .tar SHA-256 and the per-file SHA-256 of the extracted .h5 files are recorded before any analysis.
+
+Sequence (unchanged from PREREG_I §2.4 and §5):
+1. counts-only QC into round16/shared/R16_GSE295214_QC_COUNTS.md, before any prediction or metric;
+2. a separate data freeze in FREEZE_MANIFEST_R16_DATA;
+3. Group 3 run with the identical frozen code and locked adjudication rules, reported strictly separately from Groups 1-2.
+
+NOT covered: any other GEO series, any VCC 2026 file.
