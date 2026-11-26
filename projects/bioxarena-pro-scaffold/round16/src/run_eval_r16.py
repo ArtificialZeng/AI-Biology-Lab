@@ -942,8 +942,12 @@ def _read_part_rows_by_indices(
     ntc_refs: Sequence[Tuple[int, int]],
     flat_idx: np.ndarray,
     n_genes: int,
+    col_perms: Optional[Sequence[Optional[np.ndarray]]] = None,
 ) -> np.ndarray:
-    """Read exact `flat_idx` rows across `parts` into a `(len(flat_idx), n_genes)` float32 matrix."""
+    """Read exact `flat_idx` rows across `parts` into a `(len(flat_idx), n_genes)` float32 matrix.
+
+    DEVIATION_R16_D1: `col_perms[p]` (if not None) reorders part `p`'s gene columns onto the `parts[0]` axis.
+    """
     raw_out = np.empty((len(flat_idx), n_genes), dtype=np.float32)
     by_part: Dict[int, List[Tuple[int, int]]] = defaultdict(list)
     for out_pos, g_i in enumerate(flat_idx):
@@ -962,6 +966,8 @@ def _read_part_rows_by_indices(
             rows_mat = np.vstack(
                 [part.read_chunk_fn(int(r), int(r) + 1) for r in loc_sorted]
             ).astype(np.float32, copy=False)
+        if col_perms is not None and col_perms[p_idx] is not None:
+            rows_mat = rows_mat[:, col_perms[p_idx]]
         raw_out[out_arr[ord_loc]] = rows_mat
     return raw_out
 
@@ -984,8 +990,20 @@ def extract_ntc_bundle_from_parts_r16(
     ntc_refs: List[Tuple[int, int]] = []
     ntc_batches: List[str] = []
     ntc_barcodes: List[str] = []
+    # DEVIATION_R16_D1 (2026-11-26, controller): parts whose gene list is the same set of unique names as
+    # parts[0] in a different order are reordered by name onto the parts[0] axis (as round10 prepare_r10_lines
+    # and round16/audit do). Any other mismatch still raises. Parts that already match are untouched.
+    col_perms: List[Optional[np.ndarray]] = []
+    reordered_tags: List[str] = []
     for p_idx, part in enumerate(parts):
-        if list(part.var_gene_names) != ref_genes:
+        pg = list(part.var_gene_names)
+        if pg == ref_genes:
+            col_perms.append(None)
+        elif len(set(pg)) == len(pg) == len(ref_genes) == len(set(ref_genes)) and set(pg) == set(ref_genes):
+            pos = {g: j for j, g in enumerate(pg)}
+            col_perms.append(np.asarray([pos[g] for g in ref_genes], dtype=np.int64))
+            reordered_tags.append(str(part.tag))
+        else:
             raise ValueError(f"Gene axis mismatch across parts: {part.tag} != {parts[0].tag}")
         part_bcs = getattr(part, "cell_barcodes", None)
         for loc_i in np.where(part.nt_mask)[0]:
@@ -1008,7 +1026,7 @@ def extract_ntc_bundle_from_parts_r16(
     )
     flat_idx = sets.ravel()
     n_sampled = len(flat_idx)
-    raw_out = _read_part_rows_by_indices(parts, ntc_refs, flat_idx, len(ref_genes))
+    raw_out = _read_part_rows_by_indices(parts, ntc_refs, flat_idx, len(ref_genes), col_perms)
     sampled_batches = [ntc_batches[int(i)] for i in flat_idx]
     sampled_barcodes = [ntc_barcodes[int(i)] for i in flat_idx]
 
@@ -1028,7 +1046,7 @@ def extract_ntc_bundle_from_parts_r16(
         )
         if resamp_sets is not None:
             r_flat = resamp_sets.ravel()
-            resamp_raw = _read_part_rows_by_indices(parts, ntc_refs, r_flat, len(ref_genes))
+            resamp_raw = _read_part_rows_by_indices(parts, ntc_refs, r_flat, len(ref_genes), col_perms)
             resamp_batches = [ntc_batches[int(i)] for i in r_flat]
             resamp_barcodes = [ntc_barcodes[int(i)] for i in r_flat]
             resamp_audit["sampled_barcodes"] = resamp_barcodes
@@ -1041,6 +1059,7 @@ def extract_ntc_bundle_from_parts_r16(
         "cell_set_len": int(sets.shape[1]),
         "ctrl_sampling_fraction": float(n_sampled / max(n_total, 1)),
         "n_raw_genes": int(len(ref_genes)),
+        "deviation_r16_d1_reordered_part_tags": reordered_tags,
         "seed": int(seed),
         "sampled_barcodes": sampled_barcodes,
         "sampled_batch_labels": sampled_batches,

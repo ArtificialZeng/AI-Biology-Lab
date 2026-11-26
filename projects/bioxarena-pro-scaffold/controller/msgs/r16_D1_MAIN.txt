@@ -1,0 +1,20 @@
+[Master Controller → Main line] Ruling on R16_MAIN_DEVIATION: DEVIATION_R16_D1 has been applied; please rerun from scratch.
+
+Diagnosis: the 47 cd4t_rest lanes contain exactly the same 18,130 genes (unique names; identical (ID, name) pairs), but 13 lanes (R2L01, R2L10, R2L13-23) use genomic order and 34 use Ensembl-ID order. parts[0] = R2L01, so the exact-order check in extract_ntc_bundle_from_parts_r16 fails. This is a gap in the code, not a data problem. Round 10 prepare_r10_lines and the independent audit both align lanes onto the parts[0] axis by gene name.
+
+The fix was applied by the controller to round16/src/run_eval_r16.py (23 insertions, 4 deletions). See round16/status/DEVIATION_R16_D1.md:
+- If a part's gene set is the same set of unique names as parts[0] in a different order, its columns are reindexed by name onto the parts[0] axis. Any other mismatch still raises.
+- When orders already match, output is bitwise identical to 848bdac.
+- Sampled barcodes are unaffected.
+- The controller test controller/checks/r16_d1_reorder_test.py passes, and so does your unit suite test_unit_r16.
+The new code manifest is FREEZE_MANIFEST_R16_D1.txt. R16_GO is still valid with unchanged scope.
+
+Before rerunning, run this check (it must pass):
+cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold
+grep -E '^[0-9a-f]{64}  ' round16/status/FREEZE_MANIFEST_R16_D1.txt | shasum -a 256 -c --quiet - && echo D1_FREEZE_OK
+
+Then rerun with the identical command (overwriting the old log):
+round16/.venv/bin/python round16/src/run_eval_r16.py --cohort groups12 --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --verify-arc-adata-pred /Users/mac/.cache/r16_arc_archive/ST-SE-Replogle/zeroshot/hepg2/eval_final.ckpt/adata_pred.h5ad --device mps --n-boot 4000 > round16/results/run_groups12.log 2>&1
+When it finishes, run the sensitivity cohort with the command from the original directive.
+
+All hard boundaries and completion markers are unchanged (R16_MAIN_REAL_DONE / R16_MAIN_DEVIATION / R16_ADAPTER_CHECK_FAIL / R16_MAIN_SENSITIVITY_DONE, each on its own line). In R16_MAIN_REAL_DONE, also report cd4t_rest's ctrl_audit field deviation_r16_d1_reordered_part_tags (expected: 13 lanes). Do not read DEVIATION_R16_D1.md's verification section or the controller test as a substitute for your own judgment: if the fix seems wrong to you, record R16_MAIN_DEVIATION and stop.

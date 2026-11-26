@@ -245,3 +245,49 @@ Repo HEAD: 56a9ce9 (PREREG_I.md locked at c1fc7c6, SHA-256 43d242e4...6ee4a8 unt
 - c96590bf369299ddc8022513ef0fc143a9ff14a4012d6f320ee731ccf5ba02f9  round16/src/theory_sim_r16.py (8583 B, 208 lines)
 
 R16_ADDENDUM_A_ITEM11_DONE
+
+
+---
+Round 16 Gate 5 Real-Data Execution Deviation Report (Main Line)
+Date: 2026-11-26 15:43 (+08:00)
+Status: HALTED IMMEDIATELY upon crash per Gate 5 deviation rule (no frozen code modified; sensitivity cohort not launched; awaiting Master Controller ruling).
+
+R16_MAIN_DEVIATION
+
+Command executed (Cwd: /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold):
+  round16/.venv/bin/python round16/src/run_eval_r16.py --cohort groups12 --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --verify-arc-adata-pred /Users/mac/.cache/r16_arc_archive/ST-SE-Replogle/zeroshot/hepg2/eval_final.ckpt/adata_pred.h5ad --device mps --n-boot 4000 > round16/results/run_groups12.log 2>&1
+
+Exit code: 1
+Files present in round16/results/: run_groups12.log (1218 B) only (no arrays/embeddings/summary JSON written prior to crash).
+
+Full verbatim log & traceback (round16/results/run_groups12.log, lines 1-17):
+```
+!!! 18098 genes mapped to embedding file (out of 29891)
+!!! 18098 genes mapped to embedding file (out of 29891)
+Traceback (most recent call last):
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/src/run_eval_r16.py", line 4370, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/src/run_eval_r16.py", line 4351, in main
+    run_real_evaluation_r16(
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/src/run_eval_r16.py", line 3569, in run_real_evaluation_r16
+    bundle = extract_local_ntc_bundle_r16(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/src/run_eval_r16.py", line 2237, in extract_local_ntc_bundle_r16
+    return extract_ntc_bundle_from_parts_r16(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/src/run_eval_r16.py", line 989, in extract_ntc_bundle_from_parts_r16
+    raise ValueError(f"Gene axis mismatch across parts: {part.tag} != {parts[0].tag}")
+ValueError: Gene axis mismatch across parts: CD4i_R2L02 != CD4i_R2L01
+```
+
+Failure location (read-only inspection of frozen Main Line source only):
+- `round16/src/run_eval_r16.py:2235-2239` (`cd4t_rest` -> `_build_cd4t_rest_ntc_lightweight_parts_r16(REPO_ROOT / "round10" / "shared" / "raw")`)
+- `round16/src/run_eval_r16.py:983-989` (`extract_ntc_bundle_from_parts_r16` enforces exact ordered `list(part.var_gene_names) == ref_genes` across parts; `CD4i_R2L02` differs from `CD4i_R2L01`).
+
+Hard-guard compliance attestation:
+- Frozen files (`round16/prereg/`, `round16/src/`, `round16/audit/`, frozen data, models) modified: NONE
+- `round16/audit/`, A-T3 logs, or `A-T3.txt` read: NONE
+- Sensitivity cohort launched: NO (halted immediately per deviation protocol)
+- Downloads / training / git commits / external materials: NONE
+- Awaiting Master Controller deviation ruling before taking any further action on Round 16.
