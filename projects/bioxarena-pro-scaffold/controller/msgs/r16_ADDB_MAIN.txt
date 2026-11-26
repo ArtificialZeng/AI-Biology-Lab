@@ -1,0 +1,22 @@
+[Master Controller → Main line] Next task while the cross-party check runs: draft PREREG_I Addendum B (Occam as the second open-weight model) and refresh prior art. CPU only, no data, no weights.
+
+Status: the controller recomputed your Groups 1-2 and feng_ipsc sensitivity metrics with its own code, and they match your summaries (worst difference below 1e-15). The array-level comparison with A-T3 is still pending and will take hours. You will not see A-T3's results, and A-T3 will not see yours.
+
+Hard rules for this task:
+- No GPU/MPS job of any kind until the controller tells you A-T3 has finished. A second MPS process on this Mac has already hung a run tonight.
+- No downloads of weights or data (no Occam checkpoint, no GSE295214). Reading the Occam paper (arXiv 2611.21959, HTML) and reading its code on GitHub (IhabBendidi/Occam) in the browser is fine. Do not clone or run Occam code.
+- Do not touch anything under round16/ except appending to round16/status/MAIN.txt. Write the new files only under a new folder round16_addB/ (sibling of round16/). No commits.
+- No media, press or pitch text. Do not claim "first".
+
+B1. Draft round16_addB/PREREG_I_ADDENDUM_B_DRAFT.md, the secondary-model addendum PREREG_I.md §1 item 4 requires. It must be complete enough to lock before any download:
+1. Exact artifacts, to be hashed at download: checkpoints/occam_seeds/rhj_fewshot/all_sources/seed_42/best_model.pth plus the 3 rhj_fewshot feature files (about 2.93 GB in total, HF bendidiihab/Occam). Also: code licence (MIT), the weights-licence situation, and the exact code commit to pin.
+2. Targets and strata: Occam was trained on RPE1, HepG2 and Jurkat, so its targets are Group 2 only (a549_ko, dld1, cd4t_rest), plus gse295214_h1 only if Group 3 is approved and qualifies. nadig_hepg2 and nadig_jurkat become seen-by-checkpoint mismatched sources. Write the seen/unseen strata per target explicitly.
+3. Inputs: exactly what Occam consumes as context (control cells or profile, any cell-line or batch ID, gene features), and how "mismatched control" is defined for it. If there is an ID input, say whether it is swapped, held, or both as separate arms. Gene-vocabulary mapping, including the duplicate-symbol rule (keep the first occurrence; see DEVIATION_R16_D7). Normalization. Reuse the R16 control barcodes so inputs are identical across models.
+4. Metrics and decisions, copied from PREREG_I unless a change is justified in writing: r_orth_cal primary, TOST δ 0.04, 97.5% CIs, the same bootstrap and seeds, and Occam analogues of H-I1 and H-I2 (vs FCT). Also add a paired STATE_SE vs Occam contrast on the shared targets. State in advance what each outcome would mean.
+5. An adapter reproduction gate like Addendum A §3: a number Occam's authors report or archive that the adapter must reproduce before any R16 target is scored, with the threshold fixed now.
+6. Compute plan (MPS/CPU, memory, runtime estimate) and the independent-audit route (a clean-room adapter by A-T3 after lock).
+7. Limitations, and the overlap with Occam's own "Transfer" baseline.
+
+B2. Swarm allowed (assign A-T5 or new A-T agents as you see fit): round16_addB/PRIOR_ART_I_ADD2.md. Look for anything since 2026-11-24, and anything missed before, that swaps, shuffles or ablates the context/control input of a perturbation or virtual-cell model (STATE, Occam, TxPert, scGPT, CellFlow, LPM and others) and tests cross-cell-line context use. Search arXiv, bioRxiv, OpenReview and journal sites. For each close hit give the citation, an exact quote, and how it differs from R16. End with the overlap verdict for R16 + Addendum B.
+
+Done: both files written, then a line in round16/status/MAIN.txt starting with R16_ADDB_DRAFT_READY that lists them with sha256. The controller will review and lock Addendum B, and Occam is downloaded only after the human project lead approves.

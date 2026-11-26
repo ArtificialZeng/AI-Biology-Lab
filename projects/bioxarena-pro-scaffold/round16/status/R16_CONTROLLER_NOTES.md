@@ -112,3 +112,47 @@
 - An MPS rerun of A-T3's encoder (`r16_d7_embed_test.py`) was stopped unfinished at 22:32, because it was queued behind both live runs on the GPU. The mapping test explains the pattern without it. The bitwise confirmation will come from the post-fix comparison.
 - Ruling (`controller/msgs/r16_D7_AT3.txt`, sent 22:35): HOLD A-T3 pass 1. The fix is one line, `adata.var_names_make_unique()`, in `audit_r16_state_adapter.py`, with tests and a self-check. Then pass 1 reruns from scratch, then pass 2. No change to the preregistration, Addendum A, the main line or the data. The main line is compliant, and its metrics and status were not disclosed.
 - Watcher relaunched (MAN_EXCLUDE / STRAY_EXCLUDE for audit_r16_state_adapter.py only; extra marker R16_AT3_D7_PATCHED).
+
+## 2026-11-27 00:11–00:17 — main-line sensitivity verified; A-T3 rerun hung on MPS and was restarted
+
+- `R16_MAIN_SENSITIVITY_DONE` at 00:11 (feng_ipsc as a SENSITIVITY_ONLY target, N 88, G 1,575).
+  - Controller recompute: `controller/checks/r16_check.py` on `round16/results/sensitivity/arrays/feng_ipsc`. Strata follow the main summary: seen = nadig_hepg2, nadig_jurkat; unseen = a549_ko, cd4t_rest, dld1. n_boot 4000, seed 20261601. Output is `controller/checks/r16_results/main_sensitivity/feng_ipsc.json`.
+  - `r16_compare_main.py` against `round16/results/sensitivity/summary_r16.json`: **R16_MAIN_VS_CONTROLLER_MATCH**, worst |diff| 3.3e-16.
+  - As for Groups 1–2, this covers the metric layer only; the arrays are checked against A-T3's pass 2.
+- A-T3 pass-1 rerun (pid 34240, started 22:43) wrote its control barcode files at 23:55:45. After that it gained under 2 s of CPU time in about 20 minutes.
+  - Its main thread was in a single `-[_MTLCommandBuffer waitUntilCompleted]` (`MPSStream::commitAndWait` from `Tensor.cpu()`) in every stack sample.
+  - A separate MPS probe (20 matmuls of 1024×1024) finished in 0.14 s, so the GPU was usable. The same kind of hang hit the controller's own `r16_d7_embed_test.py` at 22:32. Both hangs happened while another MPS process was running; this time the main-line sensitivity run was on the GPU until 00:11.
+  - A-T3's earlier pass 1 (20:35) needed about 2 minutes for all 11 SE-600M pools.
+- 00:15: operational restart sent (`controller/msgs/r16_D7b_AT3_restart.txt`).
+  - Kill pid 34240, re-verify FREEZE_MANIFEST_R16_D4, and relaunch the identical pass-1 command with only `PYTHONUNBUFFERED=1` added, which changes no computation.
+  - If it hangs again, A-T3 reports R16_AT3_DEVIATION with a stack sample and changes no code.
+- A-T3 relaunched at 00:16 (pid 71974). No code, data or protocol change. Rule until A-T3's pass 1 finishes: no other MPS job runs.
+
+## 2026-11-27 00:20–00:52 — Addendum B (Occam) draft and prior-art refresh: review R1
+- 00:20 task sent to the main line (`controller/msgs/r16_ADDB_MAIN.txt`): CPU only, no downloads, no GPU, files only under `round16_addB/`.
+- 00:46 `R16_ADDB_DRAFT_READY`: `round16_addB/PREREG_I_ADDENDUM_B_DRAFT.md` (6117709a…) and `round16_addB/PRIOR_ART_I_ADD2.md` (9362e83c…).
+- Review R1 (`round16_addB/ADDB_CONTROLLER_REVIEW_R1.md`): the design is sound. Changes are needed before lock:
+  - P1: three close works are missing. Molina & Zhang 2026, bioRxiv 10.64898/2026.07.24.740459; CELLAUDIT, arXiv 2609.27234; MDPI Cells 10.3390/cells15181711. One characterization is unsupported ("The Construct Is Part of the Target").
+  - P2: a separate venv and pinned code provenance.
+  - P3: Gate 5B uses the authors' split assignments; the 621 vs 611 count needs reconciling.
+  - P4: a pairwise common-axis sensitivity for the gene-coverage confound.
+  - P5: the exact forward definition.
+  - P6: an MPS-hang fallback to CPU.
+- Molina & Zhang abstract (bioRxiv API, read by the controller): "the perturbation and cell-line specific components are high-dimensional and cannot be recovered from control expression". The full text is behind Cloudflare (403) and is not in Europe PMC (PPR1286577), so it is not read yet. This matters for how new the R16 finding is. It does not change the R16 analysis.
+- Nothing about A-T3 or the cross-party check was passed to the main line.
+
+## 2026-11-27 01:03–01:15 — Addendum B v2 reviewed and locked
+- 01:03 `R16_ADDB_V2_READY`: `PREREG_I_ADDENDUM_B_DRAFT_v2.md` (537467db…) and `PRIOR_ART_I_ADD2_v2.md` (2e432d47…). P1–P6 are all addressed:
+  - Molina & Zhang, COMPASS, CELLAUDIT and Stańczak & Niazi are added. The unverified OpenReview items are removed.
+  - Separate venv and code provenance.
+  - 621 → 611 explained (min_cells 10). Author splits are regenerated with their blake2b recipe and checked against their 20 hashes, with a tighter tolerance if they match.
+  - pairwise_common_axis arm.
+  - Per-cell forward, deterministic.
+  - MPS stall → CPU rule.
+- Controller checks:
+  - scanned both files for R16 main-line numbers: none found;
+  - read Molina & Zhang's `models/state/predict.py`: it scores saved predictions, with no control swap.
+- Locked with two binding clarifications (`round16_addB/PREREG_I_ADDENDUM_B_LOCK.md`):
+  - L1: Nadig legacy categoricals are decoded as in D3.
+  - L2: the human approval must name the weights, the code archive and the interpreter install.
+- Nothing downloaded. Occam waits on the human project lead.

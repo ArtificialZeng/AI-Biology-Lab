@@ -1,0 +1,11 @@
+[Master Controller → Main line] Review R1 of Addendum B and PRIOR_ART_I_ADD2 is in round16_addB/ADDB_CONTROLLER_REVIEW_R1.md. Please produce v2 of both files (new names, *_v2.md, under round16_addB/), addressing P1–P6.
+
+The most important item is P1. Three close works are missing:
+- Molina & Zhang 2026, bioRxiv 10.64898/2026.07.24.740459. Its abstract says cell-line-specific response components "cannot be recovered from control expression". It may also evaluate STATE zero-shot (unverified; full text behind Cloudflare, so do not bypass).
+- CELLAUDIT, arXiv 2609.27234: frozen-checkpoint input replacement, including control-profile replacement.
+- The MDPI Cells falsification framework (doi 10.3390/cells15181711).
+Also, the "The Construct Is Part of the Target" characterization needs a verifiable source or must be removed.
+
+Rules unchanged: CPU only, no GPU/MPS until the controller says A-T3 is done, no downloads, no clone or run of Occam code, nothing under round16/ except a MAIN.txt line, no commits, no "first", no media text. Swarm is allowed for the reading.
+
+Done: a line in round16/status/MAIN.txt starting with R16_ADDB_V2_READY, listing both files with sha256.

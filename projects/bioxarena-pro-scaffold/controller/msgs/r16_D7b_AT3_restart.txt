@@ -1,0 +1,18 @@
+[Master Controller → A-T3] Your pass-1 rerun (pid 34240, started about 22:43) is hung on the GPU. Restart it with the same command. This is an operational restart, not a deviation: nothing in the code or the protocol changes.
+
+1. What the controller sees (00:15):
+- control_barcodes_r16.json and sampled_control_barcodes_r16.json were written at 23:55:45. Since then the process has added under 2 s of CPU time in about 20 minutes.
+- Its main thread sits in one -[_MTLCommandBuffer waitUntilCompleted] (MPSStream::commitAndWait, reached from a Tensor.cpu() call) in every stack sample.
+- The GPU is not busy with real work: a separate tiny MPS probe (20 matmuls of 1024x1024) finishes in 0.14 s.
+- Your earlier pass 1 (20:35) finished all 11 SE-600M pools in about 2 minutes. A second MPS process was running when this run reached the GPU, and the controller saw the same hang once before under concurrent MPS use. No other MPS job is running now.
+
+2. Do now:
+- kill 34240 (if it does not exit within 30 s, kill -9 34240).
+- Re-check the code manifest: grep -E '^[0-9a-f]{64}  ' round16/status/FREEZE_MANIFEST_R16_D4.txt | shasum -a 256 -c --quiet - && echo D4_FREEZE_OK
+- Relaunch pass 1 from scratch with your identical command, adding only PYTHONUNBUFFERED=1 in front so the log shows progress (this changes no computation):
+  cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold && PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 > round16/audit/results/run_real_r16.log 2>&1
+- Write one short line in A-T3.txt with the new pid and the start time (no marker word needed).
+
+3. If it hangs again the same way (no new log line and no CPU time for 10 minutes once the SE-600M stage starts), stop it and write R16_AT3_DEVIATION in A-T3.txt with a stack sample (sample <pid> 3). Do not change code to work around it; the controller will rule.
+
+4. Everything else is unchanged: pass 2 after pass 1, the same completion markers (R16_AT3_REAL_DONE, R16_AT3_SECONDARY_DONE), no reading of main-line code, results or status, no commits.
