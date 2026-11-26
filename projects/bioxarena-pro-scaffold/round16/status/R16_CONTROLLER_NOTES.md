@@ -252,3 +252,11 @@
   - Gate 5B, Case A: 20/20 split hashes. The main line's five per-split pearson_delta values equal the authors' `selected_scores_by_seed_split.csv` rows (rhj_fewshot, ABL_N_ALL, seed 42, nocal) to 6 decimals: 0.392850, 0.397797, 0.395306, 0.392278, 0.392659. The mean 0.394178 differs from the target by 2.2e-7; mae and the experimental replicate are also within 3e-7.
   - **Gate 5B PASS confirmed by the controller.**
   - Gate 5A item 3 (MPS vs CPU parity) waits until A-T3 has finished R16. Then come A-T3's independent adapter and gates, the code freeze, and `R16_ADDB_GO`.
+- 05:19: main-line `R16_MAIN_G3_QC_DONE`. gse295214_h1 is **PASS_GROUP3_PRIMARY**:
+  - N_eval^R16 406 (n_eval with P5 reproducibility, excluding vcc2025_h1: 427), |G_eval^R9| 6,131, |G_eval^R16| 1,837;
+  - per-half NTC 28,929 / 29,224;
+  - 85 channels (43 / 42 by the GSM-parity half rule); 1,499,727 cells after QC; 892,356 single-guide cells.
+  - Controller recomputed the sha256 of all 6 written files (equal to the main line's report). The temporary shard files are gone.
+- 05:22: Group 3 data freeze `round16/status/FREEZE_MANIFEST_R16_DATA_G3.txt` (92 entries: tar, 85 .h5, 5 line files, QC record). Its raw hashes equal `R16_GSE295214_CHECKSUMS.sha256`.
+  - The R16 Group 3 GO is still held for the PREREG_J lock.
+  - A-T3's Group 3 run follows its R16 pass 2, blind, from the raw files.
