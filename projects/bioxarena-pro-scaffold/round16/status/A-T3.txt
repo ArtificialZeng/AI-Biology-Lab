@@ -419,3 +419,217 @@ R16_AT3_D2_D4_PATCHED
   `aede3b195b75cfb9b0755fd60c73eca1960eb2a9c677134d44c548766c2458f5`
 
 - Status: Hard hold active — real run NOT started yet; awaiting Controller dry-run cross-check & joint GO.
+
+========================================================================
+[2026-11-26 20:38 +0800] PASS 1 REAL-CELL RERUN HALTED AT EXPORT SERIALIZATION
+========================================================================
+R16_AT3_DEVIATION
+
+- Precheck Verified Before Run:
+  `grep -E '^[0-9a-f]{64}  ' round16/status/FREEZE_MANIFEST_R16_D2.txt | shasum -a 256 -c --quiet - && echo D2_FREEZE_OK` -> `D2_FREEZE_OK` (rc=0)
+
+- Command Executed (Pass 1):
+  `cd /Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold && mkdir -p round16/audit/results && round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 > round16/audit/results/run_real_r16.log 2>&1`
+
+- Exit Code: `1` (at 20:37 +0800, after completing all 6 raw control extractions, all 11 `SE-600M` MPS control-pool embeddings, and `ST-SE-Replogle` `zeroshot/hepg2` inference on `nadig_hepg2`).
+
+- Full Error Output (`round16/audit/results/run_real_r16.log`, L1-92 verbatim):
+```text
+  [cd4t_rest] Scanning CE0006864_D4 (24 lanes) for QC & pooled guide histogram...
+    -> CE0006864_D4 single-NTC=78,174, single-targeting=1,673,859, median_thr=5.0
+  [cd4t_rest] Scanning CE0008162_D1 (23 lanes) for QC & pooled guide histogram...
+    -> CE0008162_D1 single-NTC=77,879, single-targeting=1,672,963, median_thr=5.0
+W1126 20:35:20.779000 7878 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+!!! 18098 genes mapped to embedding file (out of 29891)
+!!! 18098 genes mapped to embedding file (out of 29891)
+!!! 17958 genes mapped to embedding file (out of 18130)
+!!! 17958 genes mapped to embedding file (out of 18130)
+!!! 19332 genes mapped to embedding file (out of 36601)
+!!! 19332 genes mapped to embedding file (out of 36601)
+!!! 19287 genes mapped to embedding file (out of 36518)
+!!! 9193 genes mapped to embedding file (out of 9624)
+!!! 9193 genes mapped to embedding file (out of 9624)
+!!! 8442 genes mapped to embedding file (out of 8882)
+!!! 8442 genes mapped to embedding file (out of 8882)
+StateTransitionPerturbationModel(
+  (loss_fn): SamplesLoss()
+  (gene_decoder): LatentToGeneDecoder(
+    (decoder): Sequential(
+      (0): Linear(in_features=2058, out_features=1024, bias=True)
+      (1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+      (2): GELU(approximate='none')
+      (3): Dropout(p=0.1, inplace=False)
+      (4): Linear(in_features=1024, out_features=1024, bias=True)
+      (5): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+      (6): GELU(approximate='none')
+      (7): Dropout(p=0.1, inplace=False)
+      (8): Linear(in_features=1024, out_features=512, bias=True)
+      (9): LayerNorm((512,), eps=1e-05, elementwise_affine=True, bias=True)
+      (10): GELU(approximate='none')
+      (11): Dropout(p=0.1, inplace=False)
+      (12): Linear(in_features=512, out_features=2000, bias=True)
+      (13): ReLU()
+    )
+  )
+  (pert_encoder): Sequential(
+    (0): Linear(in_features=2024, out_features=128, bias=True)
+  )
+  (basal_encoder): Sequential(
+    (0): Linear(in_features=2058, out_features=128, bias=True)
+  )
+  (transformer_backbone): LlamaBidirectionalModel(
+    (embed_tokens): Embedding(32000, 128, padding_idx=0)
+    (layers): ModuleList(
+      (0-7): 8 x LlamaDecoderLayer(
+        (self_attn): LlamaAttention(
+          (q_proj): Linear(in_features=128, out_features=128, bias=False)
+          (k_proj): Linear(in_features=128, out_features=128, bias=False)
+          (v_proj): Linear(in_features=128, out_features=128, bias=False)
+          (o_proj): Linear(in_features=128, out_features=128, bias=False)
+        )
+        (mlp): LlamaMLP(
+          (gate_proj): Linear(in_features=128, out_features=3072, bias=False)
+          (up_proj): Linear(in_features=128, out_features=3072, bias=False)
+          (down_proj): Linear(in_features=3072, out_features=128, bias=False)
+          (act_fn): SiLUActivation()
+        )
+        (input_layernorm): LlamaRMSNorm((128,), eps=1e-06)
+        (post_attention_layernorm): LlamaRMSNorm((128,), eps=1e-06)
+      )
+    )
+    (norm): LlamaRMSNorm((128,), eps=1e-06)
+    (rotary_emb): NoRoPE()
+  )
+  (project_out): Sequential(
+    (0): Linear(in_features=128, out_features=2058, bias=True)
+  )
+  (batch_encoder): Embedding(56, 128)
+)
+Traceback (most recent call last):
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/run_audit_r16.py", line 1552, in <module>
+    main()
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/run_audit_r16.py", line 1523, in main
+    run_real_r16(
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/run_audit_r16.py", line 1175, in run_real_r16
+    export_line_arm_npz(
+  File "/Users/mac/AI-Biology-Lab/projects/bioxarena-pro-scaffold/round16/audit/run_audit_r16.py", line 277, in export_line_arm_npz
+    "arm_metadata_json": np.asarray(json.dumps(arm_metadata, sort_keys=True)),
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Users/mac/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/mac/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+```
+
+- Root-Cause Diagnosis (strictly in frozen `round16/audit/`, ZERO edits made):
+  1. `round16/audit/run_audit_r16.py:1164-1172` builds `arm_meta` containing `"matched_sampling": raw_pools[tl].sampling_audit` and `"resample_sampling": rp_res.sampling_audit`.
+  2. `sample_stratified_control_sets_r16` (`round16/audit/audit_r16_sampling.py:167,169,227,229`) and `sample_nonoverlapping_resample_sets_r16` (`round16/audit/audit_r16_sampling.py:264,316,318`) populate `"selected_indices"` (`np.ndarray`) and `"sets"` (`np.ndarray`) inside `sampling_audit`.
+  3. Both `export_line_arm_npz` (`round16/audit/run_audit_r16.py:277`) and `metrics_json.write_text` (`round16/audit/run_audit_r16.py:1269`) — as well as `manifest_r16_audit.json` (`run_audit_r16.py:1293`) — call `json.dumps(...)` without a NumPy `default=` handler (`np.ndarray` / `np.integer` / `np.floating` / `np.bool_`). Synthetic tests passed (`13/13 OK`) because `run_synthetic_runner_smoke` (`L1432`) passed `arm_metadata={"synthetic": True}` instead of `sampling_audit`.
+  4. Note: `sampling_audit["selected_indices"]` and `sampling_audit["sets"]` are used as `np.ndarray` elsewhere in `audit_r16_raw_controls.py` and `test_audit_r16.py:504`, so a future controller-authorized fix should add a pure JSON `default` converter in `run_audit_r16.py` (`L277`, `L1269`, `L1293`) without changing `sampling_audit` itself or any scientific/sampling logic.
+
+- Partial Outputs Written in `round16/audit/results/` Before Crash (`shasum -a 256`):
+  * `f4d98343c51694012467ff48f50cc8183de4d2898b0b842512032a1b550b8208  round16/audit/results/control_barcodes_r16.json`
+  * `f4d98343c51694012467ff48f50cc8183de4d2898b0b842512032a1b550b8208  round16/audit/results/sampled_control_barcodes_r16.json`
+  * `5a4576b6dffccaf619a345705c25aab705d07a04411e3efd41f254ea5241b183  round16/audit/results/se600m_embeddings_r16.npz` (`45M`, `33` arrays across all 11 control pools)
+  * `7a18bb3e27d83c988c26999b80d44896e9f3f4248645c3f069650b08c026a7eb  round16/audit/results/run_real_r16.log`
+
+- Status: STOPPED immediately per deviation rule. Zero frozen files touched; Pass 2 NOT started; awaiting Master Controller decision/authorization.
+
+========================================================================
+[2026-11-26 20:47 +0800] DEVIATION_R16_D6 PATCHED (run_audit_r16.py JSON Serialization Fix)
+========================================================================
+R16_AT3_D6_PATCHED
+
+- Authorization: `[Master Controller → A-T3]` `DEVIATION_R16_D6` (`2026-11-26 20:40 +0800`).
+- Scope Modified: ONLY `round16/audit/run_audit_r16.py` (smallest possible diff; all 8 other `.py` files in `round16/audit/` remain unchanged).
+- Changes Applied:
+  1. Added `_json_default_r16(obj)` converting `np.ndarray -> obj.tolist()`, `np.generic -> obj.item()`, `Path -> str(obj)`, `set`/`tuple -> sorted(obj)` if all elements are `str` else `list(obj)`, and raising `TypeError` for any other unsupported object.
+  2. Passed `default=_json_default_r16` to all 5 result-writing `json.dumps` calls (`arm_metadata_json`, initial/updated `sampled_control_barcodes_r16.json` / `control_barcodes_r16.json`, `*_metrics.json`, and `manifest_r16_audit.json`), without modifying any values, keys, `sort_keys`, computation, or sampling code.
+
+- Unified Diff (`diff -u` vs `e54b1e807306a8d8135b28e9491863c4aacd871c3915e65f2040db21eee737dd`):
+```diff
+--- a/round16/audit/run_audit_r16.py
++++ b/round16/audit/run_audit_r16.py
+@@ -210,6 +210,21 @@
+     if missing:
+         raise KeyError(f"eval_genes missing from model output genes: {missing[:5]}")
+     return np.asarray(delta_model[:, np.asarray(col_idx, dtype=np.int64)], dtype=np.float64)
++
++
++def _json_default_r16(obj: Any) -> Any:
++    """Serialize NumPy arrays/scalars, Paths, and sets/tuples deterministically without altering values."""
++    if isinstance(obj, np.ndarray):
++        return obj.tolist()
++    if isinstance(obj, np.generic):
++        return obj.item()
++    if isinstance(obj, Path):
++        return str(obj)
++    if isinstance(obj, (set, tuple)):
++        if all(isinstance(x, str) for x in obj):
++            return sorted(obj)
++        return list(obj)
++    raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
+ 
+ 
+ def export_line_arm_npz(
+@@ -274,7 +289,7 @@
+         "unseen_sources": np.asarray(list(unseen_sources), dtype=str),
+         "delta_pred_arms": stacked_arms,
+         "delta_pred_matched": np.asarray(delta_pred_matched_eval, dtype=np.float64),
+-        "arm_metadata_json": np.asarray(json.dumps(arm_metadata, sort_keys=True)),
++        "arm_metadata_json": np.asarray(json.dumps(arm_metadata, sort_keys=True, default=_json_default_r16)),
+     }
+     if matched_barcodes is not None:
+         arr_m_bc = np.asarray(list(matched_barcodes), dtype=str)
+@@ -964,7 +979,7 @@
+             for cl, rp2 in sorted(resample_pools.items())
+         },
+     }
+-    bc_text = json.dumps(barcode_registry, indent=2)
++    bc_text = json.dumps(barcode_registry, indent=2, default=_json_default_r16)
+     (output_dir / "sampled_control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
+     (output_dir / "control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
+ 
+@@ -1021,7 +1036,7 @@
+ 
+         se_emb_npz_path = output_dir / "se600m_embeddings_r16.npz"
+         np.savez(se_emb_npz_path, **se_payload)
+-        bc_text = json.dumps(barcode_registry, indent=2)
++        bc_text = json.dumps(barcode_registry, indent=2, default=_json_default_r16)
+         (output_dir / "sampled_control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
+         (output_dir / "control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
+ 
+@@ -1276,6 +1291,7 @@
+                         "results": eval_res,
+                     },
+                     indent=2,
++                    default=_json_default_r16,
+                 ),
+                 encoding="utf-8",
+             )
+@@ -1290,7 +1306,7 @@
+         summary_manifest["models"][model_key] = {"lines": model_entries, "group_rollup": grp}
+ 
+     summary_manifest["elapsed_sec"] = round(float(time.time() - t0), 2)
+-    (output_dir / "manifest_r16_audit.json").write_text(json.dumps(summary_manifest, indent=2), encoding="utf-8")
++    (output_dir / "manifest_r16_audit.json").write_text(json.dumps(summary_manifest, indent=2, default=_json_default_r16), encoding="utf-8")
+     return summary_manifest
+```
+
+- Test & Verification Results After Final Edit (Zero Real Cells Executed Yet):
+  * `round16/.venv/bin/python -m py_compile round16/audit/*.py`: rc=0
+  * Real-path serialization self-check (`np.ndarray`, `np.float32`, `np.float64`, `np.int64`, `np.bool_`, `Path`, `set`/`tuple`, `TypeError` on `object()`, plus `export_line_arm_npz` with `sample_stratified_control_sets_r16` & `sample_nonoverlapping_resample_sets_r16` round-trip): `D6_SERIALIZATION_CHECK_OK`
+  * `round16/.venv/bin/python -m unittest test_audit_r16.py -v`: `Ran 13 tests in 319.759s — OK` (`0` failures, `0` errors, `0` skipped)
+
+- New SHA-256 (`round16/audit/run_audit_r16.py`):
+  `6ebf9992916ad63fded30be089326f908a33c61ecef5e486a3b02c1d31d4332f`
+
+- Status: Verified cleanly; proceeding immediately to rerun Pass 1 and Pass 2 per Master Controller D6 authorization.

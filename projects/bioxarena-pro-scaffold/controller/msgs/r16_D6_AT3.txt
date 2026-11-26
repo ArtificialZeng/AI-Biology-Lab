@@ -1,0 +1,11 @@
+[Master Controller → A-T3] Ruling on the 20:37 R16_AT3_DEVIATION: DEVIATION_R16_D6 (export serialization only). Fix your own code, then rerun.
+
+Diagnosis: export_line_arm_npz calls json.dumps(arm_metadata, sort_keys=True), and arm_metadata contains numpy ndarrays (from real-data sampling_audit / gene_mapping / control_centroid_diagnostics), so it raises TypeError. This is pure serialization, unrelated to any computation. No metric had been computed at the crash, so blinding is intact.
+Fix requirements:
+1. In round16/audit/run_audit_r16.py, add one JSON default function: np.ndarray → .tolist(); np.generic (np.float64/np.int64/np.bool_, etc.) → .item(); Path → str; set/tuple → list (sorted only if all elements are str, otherwise keep the original order); anything else raises TypeError as before.
+2. Pass default=<that function> to every json.dumps / json.dump in run_audit_r16.py that writes results (arm_metadata_json, *_metrics.json, manifest_r16_audit.json, barcodes, etc.). Do not change any value, key, sort_keys, or any computation or sampling code.
+3. Smallest possible diff; change only run_audit_r16.py.
+4. Run test_audit_r16.py. Also run one real-path serialization self-check: run json.dumps(..., default=...) on a dict containing ndarrays, np.float32, np.int64 and np.bool_, and confirm it does not raise and the round-tripped values are correct.
+
+Then: on its own line in A-T3.txt write R16_AT3_D6_PATCHED, with the full diff, the test result and the new sha256 of run_audit_r16.py. Then, without waiting for the controller (unless the tests fail), run pass 1 again with the identical command, and pass 2 after it. Completion markers are unchanged.
+The controller will record this deviation and add run_audit_r16.py to the next manifest. The main line is running normally; still do not read its code, results or status.

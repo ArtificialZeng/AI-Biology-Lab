@@ -9,7 +9,7 @@ REF=$(mktemp); touch -t ${REF_TIME:-202611261455} "$REF"
 MAN=${MAN:-FREEZE_MANIFEST_R16.txt}
 HB=${HB:-/private/tmp/claude-503/r16e_heartbeat.txt}
 mk() { local c; c=$(grep -c "^$2" "$S/$1" 2>/dev/null); echo "${c:-0}"; }
-MARKS="MAIN.txt:R16_MAIN_REAL_DONE MAIN.txt:R16_MAIN_DEVIATION MAIN.txt:R16_ADAPTER_CHECK_FAIL MAIN.txt:R16_MAIN_SENSITIVITY_DONE A-T3.txt:R16_AT3_REAL_DONE A-T3.txt:R16_AT3_DEVIATION A-T3.txt:R16_AT3_SECONDARY_DONE"
+MARKS="${EXTRA_MARKS:-} MAIN.txt:R16_MAIN_REAL_DONE MAIN.txt:R16_MAIN_DEVIATION MAIN.txt:R16_ADAPTER_CHECK_FAIL MAIN.txt:R16_MAIN_SENSITIVITY_DONE A-T3.txt:R16_AT3_REAL_DONE A-T3.txt:R16_AT3_DEVIATION A-T3.txt:R16_AT3_SECONDARY_DONE"
 BASEF=$(mktemp); for m in $MARKS; do echo "$m $(mk "${m%%:*}" "${m##*:}")" >> "$BASEF"; done
 MSIG=$(find $M -type f -exec stat -f '%N %z %m' {} \; | sort | md5)
 DSIG() { grep -v '^#' $S/FREEZE_MANIFEST_R16_DATA.txt | awk '{print $2}' | while read -r f; do [ -f "$f" ] || f="$P/$f"; stat -f '%N %z %m' "$f" 2>/dev/null || echo "MISSING $f"; done | md5; }
@@ -30,14 +30,14 @@ while true; do
   [ "$el" -ge 2700 ] && [ "$seen_at3" = 0 ] && { echo "EVENT A-T3 runner not started 45 min after dispatch"; exit 0; }
   [ -n "${MAIN_SENT:-}" ] && [ "$el" -ge 2700 ] && [ "$seen_main" = 0 ] && { echo "EVENT main-line runner not started 45 min after dispatch"; exit 0; }
   if [ $((i % 5)) -eq 0 ]; then
-    bad=$(grep -E '^[0-9a-f]{64}  ' $S/$MAN | shasum -a 256 -c 2>/dev/null | grep -vc ': OK$')
+    bad=$(grep -E '^[0-9a-f]{64}  ' $S/$MAN | grep -v -E "${MAN_EXCLUDE:-^$}" | shasum -a 256 -c 2>/dev/null | grep -vc ': OK$')
     [ "$bad" != "0" ] && { echo "GUARD frozen file changed ($bad entries fail $MAN)"; exit 2; }
     [ "$(DSIG)" != "$D0" ] && { echo "GUARD frozen data file size/mtime changed (FREEZE_MANIFEST_R16_DATA)"; exit 2; }
   fi
   [ "$(find $M -type f -exec stat -f '%N %z %m' {} \; | sort | md5)" != "$MSIG" ] && { echo "GUARD approved model files modified"; exit 2; }
   w=$(find /Users/mac/AI-Biology-Lab ~/.cache/huggingface/hub -newer "$REF" \( -name '*.ckpt' -o -name '*.safetensors' -o -name 'adata_pred*.h5ad' -o -name 'adata_real*.h5ad' -o -name '*_de.csv' -o -name 'GSE295214*' \) -not -path "$P/$M/*" -not -path "$P/round16/.venv/*" 2>/dev/null | head -3)
   [ -n "$w" ] && { echo "GUARD model/archive/new-data file appeared: $w"; exit 2; }
-  stray=$(find round16 -newer "$REF" -type f -not -path 'round16/.venv/*' -not -path 'round16/results/*' -not -path 'round16/audit/results/*' -not -path '*/__pycache__/*' -not -path 'round16/status/MAIN.txt' -not -path 'round16/status/A-T*.txt' -not -path 'round16/status/R16_CONTROLLER_NOTES.md' -not -path 'round16/status/R16_ARC_ARCHIVE_MANIFEST.txt' 2>/dev/null | head -3)
+  stray=$(find round16 -newer "$REF" -type f -not -path 'round16/.venv/*' -not -path 'round16/results/*' -not -path 'round16/audit/results/*' -not -path '*/__pycache__/*' -not -path 'round16/status/MAIN.txt' -not -path 'round16/status/A-T*.txt' -not -path 'round16/status/R16_CONTROLLER_NOTES.md' -not -path 'round16/status/R16_ARC_ARCHIVE_MANIFEST.txt' -not -path "${STRAY_EXCLUDE:-/nonexistent}" 2>/dev/null | head -3)
   [ -n "$stray" ] && { echo "GUARD write outside the allowed output areas: $stray"; exit 2; }
   h=$(git -C /Users/mac/AI-Biology-Lab rev-parse --short HEAD 2>/dev/null)
   [ "$h" != "$BASE_HEAD" ] && { echo "GUARD new git commit HEAD=$h ($(git -C /Users/mac/AI-Biology-Lab log -1 --format='%an: %s' | head -c 120))"; exit 2; }

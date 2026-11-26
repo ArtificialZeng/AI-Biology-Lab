@@ -212,6 +212,21 @@ def project_model_deltas_to_eval_genes(
     return np.asarray(delta_model[:, np.asarray(col_idx, dtype=np.int64)], dtype=np.float64)
 
 
+def _json_default_r16(obj: Any) -> Any:
+    """Serialize NumPy arrays/scalars, Paths, and sets/tuples deterministically without altering values."""
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    if isinstance(obj, np.generic):
+        return obj.item()
+    if isinstance(obj, Path):
+        return str(obj)
+    if isinstance(obj, (set, tuple)):
+        if all(isinstance(x, str) for x in obj):
+            return sorted(obj)
+        return list(obj)
+    raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
+
+
 def export_line_arm_npz(
     out_path: Path,
     model_key: str,
@@ -274,7 +289,7 @@ def export_line_arm_npz(
         "unseen_sources": np.asarray(list(unseen_sources), dtype=str),
         "delta_pred_arms": stacked_arms,
         "delta_pred_matched": np.asarray(delta_pred_matched_eval, dtype=np.float64),
-        "arm_metadata_json": np.asarray(json.dumps(arm_metadata, sort_keys=True)),
+        "arm_metadata_json": np.asarray(json.dumps(arm_metadata, sort_keys=True, default=_json_default_r16)),
     }
     if matched_barcodes is not None:
         arr_m_bc = np.asarray(list(matched_barcodes), dtype=str)
@@ -964,7 +979,7 @@ def run_real_r16(
             for cl, rp2 in sorted(resample_pools.items())
         },
     }
-    bc_text = json.dumps(barcode_registry, indent=2)
+    bc_text = json.dumps(barcode_registry, indent=2, default=_json_default_r16)
     (output_dir / "sampled_control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
     (output_dir / "control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
 
@@ -1021,7 +1036,7 @@ def run_real_r16(
 
         se_emb_npz_path = output_dir / "se600m_embeddings_r16.npz"
         np.savez(se_emb_npz_path, **se_payload)
-        bc_text = json.dumps(barcode_registry, indent=2)
+        bc_text = json.dumps(barcode_registry, indent=2, default=_json_default_r16)
         (output_dir / "sampled_control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
         (output_dir / "control_barcodes_r16.json").write_text(bc_text, encoding="utf-8")
 
@@ -1276,6 +1291,7 @@ def run_real_r16(
                         "results": eval_res,
                     },
                     indent=2,
+                    default=_json_default_r16,
                 ),
                 encoding="utf-8",
             )
@@ -1290,7 +1306,7 @@ def run_real_r16(
         summary_manifest["models"][model_key] = {"lines": model_entries, "group_rollup": grp}
 
     summary_manifest["elapsed_sec"] = round(float(time.time() - t0), 2)
-    (output_dir / "manifest_r16_audit.json").write_text(json.dumps(summary_manifest, indent=2), encoding="utf-8")
+    (output_dir / "manifest_r16_audit.json").write_text(json.dumps(summary_manifest, indent=2, default=_json_default_r16), encoding="utf-8")
     return summary_manifest
 
 
