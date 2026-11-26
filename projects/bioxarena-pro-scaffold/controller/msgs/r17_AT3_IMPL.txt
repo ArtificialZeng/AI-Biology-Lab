@@ -1,0 +1,18 @@
+[Master Controller -> A-T3] Your clean-room Occam adapter is verified: Gate 5B agrees with the author table and with the other party to about 1e-10, and the code is independent. Thank you. Let your Group 3 run continue in the background; nothing else changes for it.
+
+Next: implement Round 17 clean-room, under round17/audit/ (new). Write the code now; run it only after the controller freezes it and sends you a GO.
+- Protocol, and the only inputs you may use:
+  - round17/prereg/PREREG_J_DRAFT_v2.md (hash-locked in round17/prereg/PREREG_J_LOCK.md);
+  - round17/prereg/PREREG_J_CLARIFICATIONS_C1.md (binding; it fixes seeds, the half-split allocation, the Holm p-values, the Bonferroni-56 companion, the medoid, the J5 details, the array schema and the run configuration);
+  - round17/src/R17_ARRAY_SCHEMA.md (the export schema both parties must write, so that arrays can be compared before metrics);
+  - the locked reader round17/src/pfizer_telohaec_reader_r17.py (shared data reader, like the R16 line data);
+  - the standardized lines under round17/shared/lines/ and round16/shared/lines/gse295214_h1, and the raw control files.
+- You may reuse your own frozen R16 audit code (round16/audit/), for example SE-600M encoding, STATE inference, sampling and the metric suite.
+- Do not read round17/src/*.py except the locked reader, round17/results/, round16/results/group3/, round16/src/ or MAIN.txt files.
+- Unit tests on synthetic data (CPU), plus a synthetic end-to-end run that exports the schema.
+- Real-cell execution must refuse unless round17/status/R17_CODE_FREEZE_AT3.txt and round17/status/R17_GO_AT3.txt exist.
+- Marker R17_AT3_IMPL_READY in round16/status/A-T3.txt, with:
+  - the file sha256 values;
+  - test results;
+  - every point where PREREG_J plus C1 still left you to interpret. List them; do not resolve them silently.
+- No commits, no downloads, no MPS beyond your Group 3 run.

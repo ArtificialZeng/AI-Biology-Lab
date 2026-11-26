@@ -77,3 +77,76 @@ Confirmatory Cohort Readiness (Pre-Inference):
 Hard-Guard Attestation:
 - Executed strictly post-lock (PREREG_J_LOCK.md commit 9789b0b) using locked round17/src/pfizer_telohaec_reader_r17.py (unchanged) in /opt/anaconda3/bin/python3 -I (OMP_NUM_THREADS=4, workers=4).
 - Zero torch/state imports, zero MPS/GPU usage, zero Round 17 STATE inference before R17_GO, zero edits to locked round17/ or frozen round16/ files, zero reads of round16/audit/ or A-T3.txt, zero git operations, zero priority claims.
+
+
+[2026-11-27 07:41:00+08:00] Round 17 Pre-Registered Evaluation Engine Implementation Complete & CPU-Verified (Pre-Freeze; Zero Real Cells Touched)
+R17_MAIN_IMPL_READY
+
+1. Exact SHA-256 & Byte Sizes of All New Round 17 Implementation Files:
+d7ecc91c079b1ce755f6b6a98d53e7092d06595ea3f0cf41cbd085796b89c5b1  round17/src/stats_r17.py  bytes=106130
+80b1b01c18ace0d552928cc67b9a29cc68f1d45f5db256cfbbedb83937f18e3e  round17/src/ntc_extractors_r17.py  bytes=52125
+466223c97c2a6f03633e9e7bb797552b0dbf48b3bc98b260911961eaaf4e2293  round17/src/inference_r17.py  bytes=22456
+17a35ea6c93cfc4c406cddaaeb943b34a86bfd489ed69c5ae33da8e261ed6ac4  round17/src/run_eval_r17.py  bytes=65952
+d46be2d03bfcf7176dd911fce6eae56129c58d2c1ceadad3a684eb26f33d3682  round17/src/test_unit_r17.py  bytes=32999
+041bbfc8953ae548d7a791d4148eede09f494c9204e2900e8f96e3ee0c1db8e2  round17/src/R17_ARRAY_SCHEMA.md  bytes=12663
+
+Locked PREREG_J Integrity Check (PREREG_J_LOCK.md, commit 9789b0b): 6/6 locked files verified byte-for-byte unchanged (PREREG_J_DRAFT_v2.md, PRIOR_ART_J.md, LINE_INVENTORY_J.json, build_line_inventory_j.py, pfizer_telohaec_reader_r17.py, test_pfizer_telohaec_reader_r17.py). Frozen round16/src/* imported read-only with zero modifications.
+
+2. Static & Unit Test Results (CPU Only, Zero Real Cells, round16/.venv/bin/python):
+- py_compile (all 5 new .py files): rc=0 (0.051s)
+- /opt/anaconda3/bin/pyflakes (all 5 new .py files): rc=0 (0.241s, 0 warnings)
+- unittest test_unit_r17.py: 17/17 OK (rc=0, 65.577s)
+  - Covers: triple hard execution gate refusal (`BlindingGateError`), omitted (`wtc11_i3neuron`) & quarantined (6 R16 discovery lines) refusal, exact J5a mismatched-strata exclusions (including `a549_ko` on `a549_myllia`/`a549_ko_cas9pos` and `cd4t_rest` resting comparator on `cd4t_stim48`), fast `n_boot x 56` bootstrap parity vs frozen `round16/src/metrics_r16.py` (`<= 1e-14`), stratified half-split sizes & target-order invariance, variance-component `tau_batch` / `p_var` null vs signal, J2 detectable-signal predicate, all 6 H-J1 verdict branches, H-J2 sign reversal + Bonferroni-56 normal/empirical companions + J2 `INCONCLUSIVE_LOW_SIGNAL` qualifier, H-J3 / L2 Ruling 3 Pearson + negative-L2 + per-fold + `top1-top2` margin + `EXACT_TIE_SELECTED_ZERO`, exact Holm-Bonferroni step-down (separate M=3K and pooled M=6K), weight-only medoid + §4.3 parametric power fill-in, J5a cross-fitted G4 zero-leakage (strictly P2-only invariance to P1 perturbations), J5b 56-index Spearman + 10,000-perm null + order invariance, fast Pfizer NTC sampler bit-exact parity vs locked `pfizer_telohaec_reader_r17.py`, K_conf=1 general-claim block, and full CPU synthetic end-to-end + Stage 4 from-disk `.npz` recomputation (`max_abs_diff = 0.0 <= 1e-12`).
+- unittest test_pfizer_telohaec_reader_r17.py (locked reader regression check): 4/4 OK (rc=0, 0.204s).
+
+3. Synthetic End-to-End Run Output (CPU Only, Zero Real Cells):
+Command: round16/.venv/bin/python round17/src/run_eval_r17.py --synthetic-smoke
+Exit code: 0 (elapsed_sec=60.22, n_boot=800, n_boot_bonf56=1000, n_perm=1000, seed=20261701)
+JSON output:
+  mode="synthetic_smoke", protocol="PREREG_J_v2", real_cells_touched=0, device="cpu", K_conf=3,
+  STATE_SE: k_over_K="2/3", general_claim=true, conf_verdicts={cd4t_stim48: BATCH_DEPENDENCE_PRACTICALLY_MEANINGFUL, gse295214_h1: BATCH_DEPENDENCE_PRACTICALLY_MEANINGFUL, pfizer_telohaec_basal: BATCH_INVARIANT_WITHIN_DELTA},
+  STATE_HVG: k_over_K="1/3", general_claim=false, conf_verdicts={cd4t_stim48: BATCH_DEPENDENCE_PRACTICALLY_MEANINGFUL, gse295214_h1: BATCH_INVARIANT_WITHIN_DELTA, pfizer_telohaec_basal: INCONCLUSIVE_LOW_SIGNAL},
+  stage4_from_disk_recompute_max_abs_diff=0.0, stage4_from_disk_recompute_passed=true,
+  n_exported_lines=6, n_exported_embeddings=6.
+
+4. MPS Float32 Runtime Estimate for Real Run (Anchored to Realized N_eval & R16 Verified Latencies):
+Latency anchors (PREREG_J §5.1): SE-600M = 5.5 min / 512-cell pool; ST-SE = 12.65 ms/query/fold; ST-HVG = 10.21 ms/query/fold; 4 zero-shot folds; queries/batch = N_eval + 1; Phase 1 = 58 batch vectors (b=0..55 + bypass_zero + mean_batch_emb); Phase 2 J5a = n_mis_pools x B_g4 unique indices (B_g4 <= 7 with auxiliary P2->P1 G4; B_g4 <= 5 with `--skip-p2-to-p1-g4` primary P1->P2 + continuity {0,17,35} only).
+- Confirmatory Cohort Only (`--cohort confirmatory`, K_conf=3, sum N_eval=921, 9 unique SE-600M pools):
+  - cd4t_stim48 (N=401, 6 mis pools): Phase1 SE 19.66 + HVG 15.87 min; Phase2(B=7) SE 14.24 + HVG 11.49 min (subtotal 61.26 min; B=5: 53.91 min)
+  - gse295214_h1 (N=406, 6 mis pools): Phase1 SE 19.91 + HVG 16.07 min; Phase2(B=7) SE 14.42 + HVG 11.64 min (subtotal 62.03 min; B=5: 54.58 min)
+  - pfizer_telohaec_basal (N=114, 6 mis pools): Phase1 SE 5.63 + HVG 4.54 min; Phase2(B=7) SE 4.07 + HVG 3.29 min (subtotal 17.53 min; B=5: 15.42 min)
+  - Confirmatory Total: SE-600M 49.5 min + Transitions 140.8 min (B=7) = 190.3 min (3.17 hr) [or 173.4 min (2.89 hr) with `--skip-p2-to-p1-g4`].
+- Full 11-Line Run (`--cohort all`, sum N_eval=1,500, 17 unique SE-600M pools; wtc11_i3neuron N=1 omitted per Ruling 2):
+  - Adds: pfizer_telohaec_cytokine (N=116, 17.83 min B=7 / 15.69 B=5), a549_myllia (N=20, 2.98 / 2.66), hek293_xucao (N=16, 2.59 / 2.28), telohaec (N=9, 1.52 / 1.34), calu3 (N=8, 1.37 / 1.21), mac_lps (N=4, 0.76 / 0.67), mac_ctrl (N=3, 0.61 / 0.54), a549_ko_cas9pos (N=403, 57.26 / 51.10).
+  - All-11 Total: SE-600M 93.5 min + Transitions 225.7 min (B=7: SE 73.9+51.0, HVG 59.7+41.2) = 319.2 min (5.32 hr) [or 292.9 min (4.88 hr) with `--skip-p2-to-p1-g4`].
+  - Note: All 17 pools are freshly encoded at `--ctrl-seed` so Main Line and A-T3 remain 100% self-contained. If Controller rules `--ctrl-seed 20261601` and allows reusing verified R16 embeddings for the 6 R16 mismatched pools, SE-600M time drops by 33.0 min. Peak RSS ~5.70 GB (<4.5% of 128 GB unified RAM).
+
+5. Explicit List of Every Place Where PREREG_J Had to Be Interpreted (Nothing Resolved Silently):
+[1] CONTROL-SAMPLING / SE-600M SEED CONFLICT (REQUIRES CONTROLLER RULING BEFORE R17_CODE_FREEZE.txt):
+    Hash-locked PREREG_J_DRAFT_v2.md (lines 21-22, 68, 330, 352-353) specifies fresh Round 17 seed `20261701` (resample `20261702`) for control sampling, SE-600M per-pool encoding, and Stage 1/2 barcodes/embeddings (explicitly noting at line 330 that R17 uses fresh seed `20261701`), whereas Controller Dispatch Item 2 wrote `(512 cells, seed 20261601; resample 20261602)`. We defaulted `--ctrl-seed=20261701` and `--ctrl-resample-seed=20261702` to match hash-locked PREREG_J (guaranteeing A-T3 clean-room parity from PREREG_J alone), and exposed both as explicit CLI flags (`--ctrl-seed`, `--ctrl-resample-seed`) in case Controller rules `20261601` pre-freeze.
+[2] EXECUTION GATE FILENAMES (PREREG_J §5.2 vs. Controller Dispatch Item 3):
+    PREREG_J §5.2 (line 347) named `PREREG_J_COMMIT.txt`, `CODE_FREEZE_R17.txt`, and `R17_GO.txt`, whereas Controller Dispatch Item 3 specifies `round17/status/R17_CODE_FREEZE.txt` and `round17/status/R17_GO.txt`, and the binding lock record is `round17/prereg/PREREG_J_LOCK.md`. `assert_all_execution_gates_r17` enforces non-empty `round17/status/R17_CODE_FREEZE.txt`, `round17/status/R17_GO.txt`, and `round17/prereg/PREREG_J_LOCK.md` (raising frozen `BlindingGateError`).
+[3] PFIZER TREATED LINE KEY ALIAS (`pfizer_telohaec_cytokine` vs. `pfizer_telohaec_treated`):
+    PREREG_J prose refers to `pfizer_telohaec_treated`, while locked `pfizer_telohaec_reader_r17.py` (line 914), standardized data directory `round17/shared/lines/pfizer_telohaec_cytokine/`, and Controller Dispatch Item 2 all use `pfizer_telohaec_cytokine`. Canonicalized internally to `pfizer_telohaec_cytokine` with explicit disclosure noting the alias.
+[4] STRATIFIED HALF-SPLIT STRATUM ORDERING & ODD-N ALLOCATION (PREREG_J §3.2 line 176):
+    After canonical sorting by target symbol, when both `half_valid=True` and `half_valid=False` targets exist, `make_stratified_half_split_r17` draws `rng.permutation` on `half_valid=True` indices first, then `half_valid=False` indices second using `np.random.default_rng(seed)`, concatenates `[perm_true, perm_false]`, assigns odd positions (`1::2`) to `P1` (`floor(N/2)`) and even positions (`0::2`) to `P2` (`ceil(N/2)`), and canonically sorts indices within each half prior to within-half bootstrapping. Exact `split_s0_p1_indices` and `split_s0_p2_indices` are exported in `observed.npz`.
+[5] BOOTSTRAP EMPIRICAL P-VALUE & H-J1 INTERSECTION-UNION TEST (IUT) P-VALUE IN HOLM-BONFERRONI (§3.1-§3.2):
+    For two-sided contrasts (`H-J3a`, `H-J3b`), `p_two_sided = min(1, 2*(1 + min(#{d<=0}, #{d>=0})) / (B_valid + 1))`; for `EXACT_TIE_SELECTED_ZERO` (`b_ntc == 0`), `p = 1.0`. For H-J1 (conjunction of `p_var < alpha_adj` AND `ci_{1-alpha_adj}_lo(Delta_CF,0) > 0`), Holm ordering uses the IUT p-value `p_H_J1 = max(p_var, p_delta_pos)` where `p_delta_pos = min(1, 2*(1 + #{Delta_CF <= 0}) / (B_valid + 1))` (mapping non-positive spreads to 1.0), and rejection requires BOTH Holm step-down pass AND exact `(1 - alpha_adj)` percentile CI lower bound `> 0` (matching the two-sided CI criterion exactly). Non-confirmatory lines use base line-level `alpha = 0.05/3`.
+[6] VARIANCE-COMPONENT `V_noise` DENOMINATOR & JOINT-ROW VALIDITY (§3.2 lines 186-187):
+    `Var_boot` across bootstrap rows uses unbiased `ddof=1` over joint-finite rows where all 56 indices are finite (`n_valid_rows`); `p_var` uses `(1 + count) / (n_valid_rows + 1)` (`4001` at `n_boot=4000`); H-J1 validity requires `min_per_index_valid_frac >= 0.95` AND `joint_valid_frac >= 0.95`.
+[7] H-J1 6TH BRANCH / SUBREASON LABELING (§3.2 lines 193-202):
+    PREREG_J §3.2 heading says "5-Way" while listing 6 numbered decision outcomes; items #1 (validity fail) and #6 (insufficient precision) both emit `verdict="INCONCLUSIVE"` disambiguated by `subreason="VALIDITY_FAIL"` vs. `"INSUFFICIENT_PRECISION"`.
+[8] H-J2 BONFERRONI-56 COMPANION (§3.3 line 217):
+    Normal-calibrated companion uses exact `scipy.stats.norm.ppf(1 - 0.025/112) = 3.511653...` (vs. rounded `3.5117` in prose) with 4,000-boot `boot_se`; empirical 20,000-boot companion draws `np.random.default_rng(seed).integers(0, m, size=(20000, m))` at exact quantiles `[0.0223214286%, 99.9776785714%]`. Both are reported side-by-side.
+[9] WEIGHT-ONLY `medoid_idx` DEFINITION (§3.4 Item 4 line 251):
+    Defined as Euclidean geometric medoid on the 4-fold mean `batch_encoder.weight` matrix (`argmin_b sum_{b'} ||W_mean[b] - W_mean[b']||_2`, lowest-index tie-break), with cosine medoid logged alongside as a companion diagnostic.
+[10] J5b SHARED PERMUTATION TABLE & `all_fresh_n_ge_16_pairs` SCOPE (§3.5 lines 266-270):
+     Generates one shared `(n_perm, 56)` permutation matrix from `np.random.default_rng(20261701)` and reuses it across every line pair so every pair's `p_perm` is strictly invariant to which other lines are present; excludes `a549_ko_cas9pos` (`r16_subset_sensitivity`, not a fresh line) from `all_fresh_n_ge_16_pairs` while retaining it in `cross_model_within_line`.
+[11] J5a AUXILIARY `P2->P1` G4 BOOTSTRAP SEED & `a549_ko` EXCLUSION (§3.5 lines 260, 264):
+     Locked primary `(b*_1, b_dag_1)` G4 on `P2` uses bootstrap `seed = 20261701`; optional auxiliary `(b*_2, b_dag_2)` G4 on `P1` uses `seed = 20261701 + 10000` (matching §3.2's `P1` bootstrap seed) and can be disabled via `--skip-p2-to-p1-g4`. Explicitly excludes `a549_ko` from `unseen_by_checkpoint` on both `a549_myllia` and `a549_ko_cas9pos` per §3.5 line 264.
+[12] STACKED `.npz` ARRAY LAYOUT, ENSEMBL-ID CANONICALIZATION & MICRO-N GENE FLOOR (§5.2, R17_ARRAY_SCHEMA.md):
+     Exports all 56 indices atomically in `preds_{MODEL}_sweep56.npz` (`delta_pred_56`, `ntc_pb_ensemble_56`, `ntc_pb_per_fold_56`, `per_fold_r_orth_cal_56`, `L1`/`L2`/neutral comparators) and `preds_{MODEL}_g4_mismatched.npz` rather than 56 separate `.npz` files per line per model (fully specified in `round17/src/R17_ARRAY_SCHEMA.md` and verified bit-exact by Stage 4 `recompute_cohort_from_exported_arrays_r17`). Routes `ENSG...` raw var IDs (e.g., Pfizer TeloHAEC) via `HGNCBridge.canonicalize(g, ensembl_id=g.split('.')[0])` for `ST-HVG` and `L2_ntc_recon_match` (passing raw names unmodified to frozen `encode_controls_se600m_r16`), and uses `min_gene_overlap=1` in `align_line_and_sources_r17` so micro-N `telohaec` (`|G_eval^R9|=4,869 < 5,000`) loads cleanly.
+
+Hard-Guard Attestation:
+- Zero real-cell Round 17 inference executed (hard-gated on `R17_CODE_FREEZE.txt` + `R17_GO.txt`); zero Round 17 MPS/GPU usage (all verification strictly CPU-only); Occam MPS remains OFF.
+- Zero modifications to frozen `round16/` or locked `round17/` files; zero reads of `round16/audit/`, `round17/audit/`, or `A-T3.txt`; zero git commands; zero downloads; zero priority claims; Human project lead wording verified.

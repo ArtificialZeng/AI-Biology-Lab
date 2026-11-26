@@ -266,3 +266,26 @@
   - **PREREG_J locked by hash commitment, commit 9789b0b** (`round17/prereg/PREREG_J_LOCK.md`; verified on origin/main).
   - Then **R16 Group 3 GO** (`round16/status/R16_G3_GO.txt`, `controller/msgs/r16_G3_GO_MAIN.txt`): main line only, `--results-dir round16/results/group3`, MPS concurrent with A-T3 as in the original R16 GO. A-T3's blind Group 3 run comes after its pass 2 is verified.
   - The main line may also run the model-free TeloHAEC counts-only QC (Round 17).
+- 06:53 (Round 17): main-line `R17_MAIN_TELOHAEC_QC_DONE`, after the lock, with the locked reader unchanged.
+  - pfizer_telohaec_basal PASS_CONFIRMATORY_PRIMARY: N_eval 114, |G_eval^R9| 6,141, per-half NTC 2,414 / 3,087, flask-parity halves.
+  - pfizer_telohaec_cytokine (secondary, same family): N_eval 116.
+  - So the R17 confirmatory cohort is K_conf = 3: cd4t_stim48 401, gse295214_h1 406, pfizer_telohaec_basal 114.
+  - The main line ran the QC with `/opt/anaconda3/bin/python3 -I` (numpy 2.2.3), not `round16/.venv` (numpy 2.4.6); PREREG_J does not fix the interpreter. The controller is rerunning the basal QC in `round16/.venv` into the scratchpad to check that the outputs do not depend on the environment (the P5 energy test uses PCA and permutation p-values).
+- Main-line Group 3 run in progress (pid 33705, SE-600M encoding).
+
+## 2026-11-27 07:20 — Addendum B: A-T3 clean-room Occam adapter passes the CPU gates
+- `R16_AT3_ADDB_GATES_CPU_DONE`: Case A, 20/20 split hashes; pearson_delta 0.394178 (diff 2.19e-7), mae 0.030157, experimental 0.372174; PASS. MPS is held.
+- Independence check (controller): A-T3's `round16_addB/audit/` shares only 7 of its 463 substantive code lines (1.5%) with the main line's `round16_addB/src/`. Those are generic path strings and hash helpers, and A-T3's code never references the main line's files.
+- Cross-party Gate 5B parity: mean pearson_delta 0.39417821857779 (A-T3) vs 0.39417821859052 (main), |diff| 1.3e-11; per-split |diff| < 5e-11; experimental replicate identical. This is far inside the Addendum B layer-5 tolerance (1e-5).
+- Remaining for Addendum B, in order: both parties' STATE Group 3 runs finish (no concurrent MPS for Occam) → Gate 5A item 3 (MPS vs CPU parity), both parties → code freeze of `round16_addB/src/` and `round16_addB/audit/` → `R16_ADDB_GO.txt`.
+
+## 2026-11-27 07:41–07:47 — Round 17: main-line implementation frozen; GO
+- Main line `R17_MAIN_IMPL_READY`: 6 files.
+  - Controller rerun: unit tests 17/17 OK. Gate refusal verified: `BlindingGateError` without `R17_CODE_FREEZE.txt`.
+  - Synthetic end-to-end run exits 0, and its from-disk recompute differs by 0.
+- 12 interpretation points were listed. They are resolved in `round17/prereg/PREREG_J_CLARIFICATIONS_C1.md`, which binds both parties.
+  - C1.1: seeds 20261701 / 20261702 per the locked text. The controller's dispatch "20261601" was a controller error and is withdrawn.
+- `round17/status/R17_CODE_FREEZE.txt` (15 entries, 0 failures), `round17/status/PREREG_J_COMMIT.txt`, `round17/status/R17_GO.txt`.
+  - The main line starts after its R16 Group 3 run finishes; MPS is shared with A-T3.
+  - Expected runtime about 5.3 h for 11 lines.
+- A-T3 dispatched to its Round 17 clean-room implementation (`controller/msgs/r17_AT3_IMPL.txt`), from PREREG_J + C1 + the array schema only. Its code is frozen separately before it runs.

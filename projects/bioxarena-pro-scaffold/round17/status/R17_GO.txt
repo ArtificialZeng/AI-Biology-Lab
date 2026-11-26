@@ -1,0 +1,10 @@
+R17_GO (controller Claude), 2026-11-27 07:46 +0800 — main line.
+Preconditions, all met:
+- PREREG_J locked (9789b0b), with the full text committed unchanged;
+- clarifications C1 (round17/prereg/PREREG_J_CLARIFICATIONS_C1.md);
+- R17_CODE_FREEZE.txt: 15 entries, 0 failures; controller reran the unit tests (17/17 OK) and verified the gate refusal;
+- confirmatory lines qualified by counts-only QC (cd4t_stim48 401, gse295214_h1 406, pfizer_telohaec_basal 114).
+Start: after the main line's R16 Group 3 run has written R16_MAIN_G3_DONE, so that no more than two STATE processes share MPS.
+Command (C1.13):
+  PYTHONUNBUFFERED=1 round16/.venv/bin/python round17/src/run_eval_r17.py --cohort all --gse295214-raw-dir /Users/mac/.cache/r16_gse295214/raw --pfizer-raw-path /Users/mac/.cache/r17_telohaec_pfizer/imru_full.h5ad --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --n-boot-bonf56 20000 --n-perm 10000 --n-splits-diag 20 --seed 20261701 --ctrl-seed 20261701 --ctrl-resample-seed 20261702 --results-dir round17/results > round17/results/run_r17.log 2>&1
+A-T3: its clean-room Round 17 implementation is frozen separately (R17_CODE_FREEZE_AT3.txt) before it runs. The main line's Round 17 results are never shown to A-T3, and are not committed, until A-T3's run is verified.

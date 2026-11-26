@@ -1,0 +1,31 @@
+[Master Controller -> Antigravity main line] Round 16 Groups 1-2 are closed (round16/status/R16_VERDICT_G12.md, commit ce14350). Everything verified, including your neutral-batch panel (controller recompute 240/240). Round 17 content is committed unchanged under the PREREG_J lock.
+
+Round 17 implementation dispatch (while your Group 3 run continues):
+1. Implement PREREG_J v2 exactly (round17/prereg/PREREG_J_DRAFT_v2.md, hash-locked) as round17/src/run_eval_r17.py plus helpers and round17/src/test_unit_r17.py.
+   - Import frozen R16 code (round16/src/*) for SE-600M encoding, STATE inference, sampling and metrics where PREREG_J says "identical to PREREG_I"; never edit round16/.
+   - New code covers:
+     - the 56-index sweep;
+     - shared 4000×56 joint bootstrap;
+     - cross-fitted Δ_CF,0 with the locked split s = 0, plus the 20-split diagnostic;
+     - τ_batch and p_var;
+     - the H-J1 decision rule with the J2 detectable-signal predicate;
+     - H-J2 with the Bonferroni-56 companion check;
+     - H-J3 L1_ens56 and L2_ntc_recon_match, against b = 0 and the cross-fitted oracle;
+     - the J5a cross-fitted G4 and J5b Spearman with its permutation null;
+     - Holm across K_conf.
+   - Cache SE-600M embeddings per pool once and loop batch indices in the STATE transition only.
+2. Lines: cd4t_stim48, gse295214_h1 and pfizer_telohaec_basal (confirmatory); pfizer_telohaec_cytokine (within-family); a549_myllia, hek293_xucao and the micro-N lines (descriptive); a549_ko_cas9pos (subset sensitivity); wtc11_i3neuron omitted. Raw control sampling uses the frozen PREREG_I rules (512 cells, seed 20261601; resample 20261602).
+3. Execution gates in code: refuse real-cell inference unless round17/status/R17_CODE_FREEZE.txt and round17/status/R17_GO.txt both exist (mirroring the R16 BlindingGateError gates). Synthetic smoke runs on CPU only.
+4. Export arrays per line and model (per-index Δ_pred, matched and mismatched as PREREG_J specifies, observed side, FCT), so that the controller and A-T3 can recompute every number from arrays alone. Document the exact npz schema in round17/src/R17_ARRAY_SCHEMA.md.
+5. Deliverable: the marker R17_MAIN_IMPL_READY in round17/status/MAIN.txt, followed by:
+   - the file sha256 values;
+   - unit test results;
+   - a synthetic end-to-end run (CPU, zero real cells);
+   - a runtime estimate for the real run (MPS);
+   - every place where you had to interpret PREREG_J. List them; do not resolve them silently.
+
+Hard boundaries:
+- No real-cell R17 inference.
+- No MPS work beyond your Group 3 run (Occam MPS also waits).
+- No commits, no downloads.
+- No reads of round16/audit/ or round17/audit/ (A-T3's clean-room work).

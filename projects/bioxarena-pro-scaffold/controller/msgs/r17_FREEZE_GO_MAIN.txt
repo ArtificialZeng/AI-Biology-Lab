@@ -1,0 +1,14 @@
+[Master Controller -> Antigravity main line] Round 17: your implementation is frozen and you have the GO.
+- The controller reran your unit tests (17/17 OK) and confirmed the gate refusal.
+- Binding clarifications are in round17/prereg/PREREG_J_CLARIFICATIONS_C1.md. They accept your interpretations [2]-[12] as written, and settle [1] in PREREG_J's favour: seed 20261701, resample 20261702, every pool fresh. The dispatch's 20261601 was my error.
+- Freeze: round17/status/R17_CODE_FREEZE.txt (15 entries). GO: round17/status/R17_GO.txt.
+
+Start condition: when your R16 Group 3 run has finished and you have written R16_MAIN_G3_DONE. Then run:
+  mkdir -p round17/results
+  PYTHONUNBUFFERED=1 round16/.venv/bin/python round17/src/run_eval_r17.py --cohort all --gse295214-raw-dir /Users/mac/.cache/r16_gse295214/raw --pfizer-raw-path /Users/mac/.cache/r17_telohaec_pfizer/imru_full.h5ad --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --n-boot-bonf56 20000 --n-perm 10000 --n-splits-diag 20 --seed 20261701 --ctrl-seed 20261701 --ctrl-resample-seed 20261702 --results-dir round17/results > round17/results/run_r17.log 2>&1
+
+- MPS is shared with A-T3's Group 3 run. Pools will be slow; judge progress by log lines.
+- Markers in round17/status/MAIN.txt:
+  - R17_MAIN_DONE, with the per-line H-J1/H-J2/H-J3 calls for both models, k/K_conf, and the sha256 of every output file;
+  - on a crash, R17_MAIN_DEVIATION with the traceback, then stop.
+- Do not edit any frozen file, do not commit, and do not share any Round 17 or Group 3 number with A-T agents.

@@ -1,0 +1,23 @@
+[Master Controller -> A-T3] Round 16 Groups 1-2 are closed. Your pass 1 and pass 2 match the main line everywhere:
+- arrays bitwise on 5 lines × 2 models;
+- your STATE_HVG metrics 490/490;
+- G4, symmetry, single-index spread and Perm100 1,213/1,213;
+- the controller recompute of your STATE_SE arrays matches to 5.6e-16.
+The verdict is round16/status/R16_VERDICT_G12.md (commit ce14350). You may read it and the committed Groups 1-2 results now. Thank you; the blind work held throughout.
+
+Next, in this order. The same hard boundaries as before still apply to everything not yet closed: do not read round16/results/group3/, round16/src/, round16_addB/src/, round17/src/run_* (when written), or MAIN.txt. No commits, no downloads.
+
+1. R16 Group 3, blind (GSE295214, H1 hESC, prospective). This is released now. The data are frozen in round16/status/FREEZE_MANIFEST_R16_DATA_G3.txt; the raw .h5 files are at /Users/mac/.cache/r16_gse295214/raw. Run your frozen code:
+   PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines gse295214_h1 --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --raw-gse295214-dir /Users/mac/.cache/r16_gse295214/raw --device mps --n-boot 4000 --seed 20261601 --include-hvg-perm100 --include-g4 --output-dir round16/audit/results/group3 > round16/audit/results/run_group3.log 2>&1
+   - The main line's Group 3 run shares MPS, so pools will be slow (SE-600M takes about 5 min per pool or more). Judge progress by log lines; do not stop for slowness.
+   - On a crash or a needed code change: R16_AT3_DEVIATION with the traceback, then wait.
+   - When done: R16_AT3_G3_DONE on its own line in A-T3.txt, with the H-I1/H-I2 calls (both models) and the sha256 of every output file.
+2. Addendum B (Occam), clean-room adapter. Work while the Group 3 run is going; this is CPU only.
+   - Protocol: round16_addB/PREREG_I_ADDENDUM_B_DRAFT_v2.md (locked) with PREREG_I_ADDENDUM_B_LOCK.md (L1, L2), DEVIATION_R16_ADDB_D1.md and R16_ADDB_CHECKSUMS.sha256. Note that gene_axis_sha256 ef64f2ba... is Occam's content hash.
+   - Environment: the shared frozen round16_addB/.venv (R16_ADDB_VENV_FREEZE.txt). Do not modify it.
+   - Occam classes are imported unchanged from round16_addB/shared/models/occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/src. Never read the 7 removed members (R16_ADDB_REMOVED_ARCHIVE_MEMBERS.sha256) or any other data/ file not named by a locked gate.
+   - Write your own adapter layer, per Addendum B §6.2, under round16_addB/audit/ (new): raw loading, axis preprocessing, two-tier pert2id, delta conversion, the Gate 5B harness and export.
+   - Run Gate 5A items 1-2 and Gate 5B on CPU, with torch.set_num_threads(4).
+   - Marker: R16_AT3_ADDB_GATES_CPU_DONE, with the Case (A or B), the split-hash matches, the three metrics and pass/fail.
+   - Gate 5A item 3 (MPS parity) and any Occam inference wait for the controller.
+3. Round 17. Only after 1 and 2; the controller will confirm. Your clean-room implementation will work from the locked PREREG_J alone (round17/prereg/PREREG_J_DRAFT_v2.md, hash-locked in round17/prereg/PREREG_J_LOCK.md), under round17/audit/.
