@@ -1,0 +1,35 @@
+[Master Controller → A-T3] HOLD pass 2, then the ruling on DEVIATION_R16_D8 (STATE_HVG normalization totals on the Nadig lines). Stop your pass-2 run now (run_audit_r16.py ... --output-dir round16/audit/results/secondary, pid 38323). Then make a one-line fix and rerun only STATE_HVG in pass 1, then pass 2.
+
+1. Stop now: kill 38323 (kill -9 if it has not exited within 30 s). Its STATE_HVG arms would carry the same deviation. Do not delete round16/audit/results/secondary yet; just stop.
+
+2. Diagnosis (staged verification, step 2):
+- STATE_SE: your pass-1 predicted Δ arrays are bitwise identical to the main line on all 5 lines, and observed Δ, transfer, grand mean and FCT agree. Nothing changes for STATE_SE.
+- STATE_HVG: every arm that feeds Nadig control cells differs by 4e-4 to 2.8e-3, above the 1e-4 tolerance. These are the nadig_hepg2 and nadig_jurkat matched and resample arms, and every mismatched arm whose source is a Nadig line. Every arm fed by a549_ko, dld1, cd4t_rest or feng_ipsc controls agrees.
+- Cause: in round16/audit/audit_r16_raw_controls.py, Nadig branch (_slice_nadig, around line 332):
+  sel_umis = row_sum_umis if nt_umis is None else nt_umis[sel_local]
+  nt_umis comes from obs["UMI_count"] (line 265). So cell_total_umis and median_ntc_umi for the Nadig pools use the dataset's UMI_count column, not the sum over the gene features in the file.
+- PREREG_I §2.1 (line 83) and Addendum A (line 59) lock sc.pp.normalize_total on "the full measured transcriptome of the sampled control pool": normalization factors "computed over ALL raw Gene Expression features in the sampled control pool". normalize_total sums the features in X. In the Nadig files that is 9,624 genes (HepG2) and 8,882 (Jurkat).
+- The controller checked the data: for 40 sampled HepG2 controls, UMI_count / row sum is 1.0067–1.0141 (median 1.0091). Median UMI_count is 15,586.5 against a median row sum of 15,436. That per-cell scale difference reproduces the size and pattern of the HVG gaps.
+- No metric was involved in finding this. You were not shown any main-line number.
+
+3. Required fix (smallest possible diff, only audit_r16_raw_controls.py):
+- In the Nadig branch, use the row sums over the file's gene features for the totals used in normalization:
+  sel_umis = row_sum_umis
+  Then cell_total_umis and median_ntc_umi for the sampled Nadig pools are both row sums.
+- Change nothing else: not QC, not the UMI_count used for any QC threshold or descriptive field (median_ntc_umi_all_valid may stay as it is), not barcodes, sampling, gene mapping, or the 10x branches.
+
+4. Tests:
+- round16/.venv/bin/python -m py_compile round16/audit/*.py
+- test_audit_r16.py
+- Your own self-check on the real Nadig files (no model): for nadig_hepg2 and nadig_jurkat, primary and resample pools, assert that:
+  - cell_total_umis == raw_counts.sum(1) exactly;
+  - median_ntc_umi == the median of the positive row sums;
+  - the ordered barcodes are unchanged from round16/audit/results/control_barcodes_r16.json.
+
+5. Then:
+- On its own line in A-T3.txt write R16_AT3_D8_PATCHED, with the full diff, the test results and the new sha256 of audit_r16_raw_controls.py.
+- Without waiting for the controller (unless a test fails), rerun pass 1 for STATE_HVG only into a fresh folder, so your pass-1 STATE_SE outputs stay untouched:
+  PYTHONUNBUFFERED=1 round16/.venv/bin/python round16/audit/run_audit_r16.py --phase real_r16 --models STATE_HVG --lines nadig_hepg2 nadig_jurkat a549_ko dld1 cd4t_rest --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --device mps --n-boot 4000 --seed 20261601 --output-dir round16/audit/results/hvg_d8 > round16/audit/results/run_hvg_d8.log 2>&1
+- When it finishes, write R16_AT3_HVG_D8_DONE on its own line in A-T3.txt, with the STATE_HVG verdicts in the same format as before.
+- Then run pass 2 from scratch with your original pass-2 command, into a fresh round16/audit/results/secondary (move the stopped one to secondary_pre_d8 first). The completion marker is still R16_AT3_SECONDARY_DONE.
+- As before: SE-600M on MPS takes about 5 minutes per pool, which is normal. Do not read the main line's code, results or status, and do not commit. The controller will record D8 and add the new hash to the next manifest.

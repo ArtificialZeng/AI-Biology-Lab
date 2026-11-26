@@ -174,3 +174,25 @@
 - 01:47: told A-T3 not to stop the run, withdrew the 10-minute stall rule, and said to stay on MPS (`controller/msgs/r16_D7c_AT3_keep_running.txt`). MPS and CPU embeddings differ (the main line measured cos 0.9994), so a CPU fallback would break cross-party agreement for STATE.
 - Addendum B's P6 rule (10 minutes with no progress → CPU for both parties) still stands for Occam. Its encode is under a second per pool, and both parties switch together. The lock record's reasoning for it, however, came from the misdiagnosis above.
 - Revised controller practice: judge a GPU stage by per-unit progress lines, set against the measured per-unit time, never by CPU time.
+
+## 2026-11-27 02:27 — staged verification step 1 passes
+- A-T3 SE-600M embeddings vs the main line: all 11 pools bitwise identical, with barcodes equal (DEVIATION_R16_D7.md itself is frozen in FREEZE_MANIFEST_R16_D4 and stays unchanged; this note is the confirmation record). Pools took about 5.4 minutes each on MPS.
+- Waiting for `R16_AT3_REAL_DONE` (STATE inference on 5 lines), then step 2 (predicted Δ) and step 3 (metrics).
+- Detail of the step-1 result: A-T3's `se600m_embeddings_r16.npz` was written 02:26. `r16_compare_embeddings.py` → R16_EMBEDDINGS_MATCH: 11/11 pools, ordered barcodes equal, shape 512×2058, max |diff| 0, including dld1, feng_ipsc, nadig_hepg2 and nadig_jurkat, which differed before D7. A-T3's `control_barcodes_r16.json` (rewritten 02:26 with SE-600M x_state sha256 fields added) matches the main line's barcodes and batch labels on all 6 primary pools and 5 resample pools.
+- 02:30: the controller briefly appended this confirmation to DEVIATION_R16_D7.md. That file is frozen in FREEZE_MANIFEST_R16_D4, so the watcher guard fired, and the controller reverted the append with `git checkout`. D4_FREEZE_OK again.
+
+## 2026-11-27 02:46–02:52 — A-T3 pass 1 done; primary STATE_SE verified across three parties; DEVIATION_R16_D8 (STATE_HVG, Nadig totals)
+- `R16_AT3_REAL_DONE` at 02:46.
+- Step 2 (`controller/checks/r16_compare_arrays.py`, run by `r16_step23.sh`):
+  - STATE_SE predicted Δ is bitwise identical to the main line on all 5 lines, for matched, every mismatched source and resample.
+  - Observed Δ, halves, transfer, grand mean and FCT are within 1e-5. Targets and genes are exactly equal.
+- Step 3 (controller `r16_check.py` on A-T3's STATE_SE arrays vs the main line's `summary_r16.json`): **R16_MAIN_VS_CONTROLLER_MATCH**, worst |diff| 5.6e-16. That covers every estimate, CI bound, per-source category and the H-I1/H-I2 calls.
+- A-T3's own STATE_SE verdict text in A-T3.txt agrees with the main line's to six decimals on all 5 lines.
+- **So the primary R16 result (STATE_SE, Groups 1–2) now agrees across main line, A-T3 (blind) and controller.** It is not released to A-T3 or committed until A-T3's secondary work is done, so that verification stays blind.
+- STATE_HVG (secondary): Nadig-fed arms differ by 3.7e-4 to 2.8e-3. Cause: A-T3 uses obs UMI_count for the Nadig normalization totals instead of the sum over the file's features. This is DEVIATION_R16_D8 (record in `round16/status/DEVIATION_R16_D8.md`; ruling in `controller/msgs/r16_D8_AT3.txt`). No STATE_HVG line call changes.
+- A-T3's pass 2 (pid 38323) is on hold. Next: R16_AT3_D8_PATCHED → STATE_HVG-only pass-1 rerun into `round16/audit/results/hvg_d8/` → pass 2 from scratch.
+- 02:56 `R16_AT3_D8_PATCHED`.
+  - Controller `git diff`: exactly 1 changed line in `round16/audit/audit_r16_raw_controls.py` (`sel_umis = row_sum_umis`). New sha256 82d7abe5…, which matches A-T3's report.
+  - A-T3's py_compile, test_audit_r16 (13/13) and its Nadig self-check (totals = row sums, barcodes unchanged on the hepg2 and jurkat primary and resample pools) all pass.
+  - The new code manifest is FREEZE_MANIFEST_R16_D5 (54 entries; D4 plus the new hash plus the D8 record): D5_FREEZE_OK.
+  - A-T3's STATE_HVG-only pass-1 rerun started at about 02:56 (pid 43630) into `round16/audit/results/hvg_d8/`.

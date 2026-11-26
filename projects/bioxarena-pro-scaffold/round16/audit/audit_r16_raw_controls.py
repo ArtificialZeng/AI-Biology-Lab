@@ -330,7 +330,7 @@ def _extract_nadig_raw_ntc_sample(
             raw_counts = np.empty_like(mat_sorted)
             raw_counts[ord_pos] = mat_sorted
             row_sum_umis = raw_counts.sum(axis=1, dtype=np.float64)
-            sel_umis = row_sum_umis if nt_umis is None else nt_umis[sel_local]
+            sel_umis = row_sum_umis
             return SampledRawControlPool(
                 line_name=line_name,
                 raw_counts=raw_counts,
