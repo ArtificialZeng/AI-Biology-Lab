@@ -1,0 +1,17 @@
+Round 17 candidate line (Pfizer TeloHAEC Perturb-seq) human download approval record (controller Claude)
+Time: 2026-11-27T04:55+0800
+Human project lead, in the Claude Code session with the controller, answering "Approve downloading the Pfizer TeloHAEC dataset (53.3 GB, CC BY 4.0)?": "Approve TeloHAEC"
+
+Scope:
+- File: imru_full.h5ad from Zenodo record 18792213, 53,290,123,849 B, md5 0594ddd25e224e5e9cc22414e71daf48 (Zenodo API, checked 2026-11-27 04:54).
+- Licence: CC BY 4.0, open access, no login. Released 2026-03-04.
+- Paper: Wong et al., bioRxiv 10.64898/2026.03.04.709607.
+- Source: https://zenodo.org/api/records/18792213/files/imru_full.h5ad/content
+- Local destination: /Users/mac/.cache/r17_telohaec_pfizer/ (internal disk, outside the repository).
+
+NOT covered: the record's other files (scgpt/state/scimilarity/umap processed embeddings), any other Zenodo record.
+
+Conditions:
+- After the md5/sha256 check, the file is not opened until the Round 17 preregistration (PREREG_J) with this line's reader spec and synthetic-fixture test is locked.
+- Then counts-only QC comes before any prediction or metric.
+- The line joins the R17 confirmatory family only if it passes the PREREG_I floors. The basal condition is primary; the treated condition is a within-family secondary replication.

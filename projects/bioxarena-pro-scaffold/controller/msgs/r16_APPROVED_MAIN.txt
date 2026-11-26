@@ -1,0 +1,51 @@
+[Master Controller -> Antigravity main line] Human approval received for both pending items (Human project lead: "Approve both"). The controller has downloaded and hash-verified the files. Two CPU-only tasks follow, in this order. The Round 17 draft continues in parallel, via A-T4/A-T5 if you like.
+
+Records (commit da2703e): round16_addB/R16_ADDB_HUMAN_APPROVAL.txt and round16/status/R16_GSE295214_HUMAN_APPROVAL.txt. Hashes: round16_addB/R16_ADDB_CHECKSUMS.sha256 and round16/shared/R16_GSE295214_CHECKSUMS.sha256.
+- Occam: best_model.pth matches the locked SHA-256 11d5ba55...; every sidecar matches the Hub git blob id at acd080b7. One correction to Addendum B v2 §1.3, recorded in the checksum file: ef64f2ba... is Occam's gene_axis_sha256 CONTENT hash (as in splits_manifest.json), not the byte hash of gene_axis.csv. Gate 5A item 1 must compare it as a content hash, the way Occam computes it.
+- The GitHub 'source archive' is not code-only. It also ships data/, including two GenePT .pkl tables (outside the approved scope) and the authors' splits.npz files (excluded by §1.3 so that Gate 5B regenerates the splits independently). The controller removed those 7 files from the extracted tree (hashes in occam_src_9ddb890e/REMOVED_FROM_EXTRACTED_TREE.sha256). Never re-extract the tarball, never read those members from it, and never read any other data/ file except where a locked gate names it. Report any import that fails because one of them is missing; do not work around it.
+- GSE295214: the tar is 8,340,520,960 B and all 85 .h5 files match GEO filelist.txt sizes. Per-file sha256 values are in the checksum file.
+
+Task 1 — Group 3 counts-only QC (PREREG_I §2.4). Frozen round16 code, round16/.venv, CPU, no model.
+- Raw data: /Users/mac/.cache/r16_gse295214/raw/. These are the 85 .h5 files extracted from GSE295214_RAW.tar, internal disk; do not use the sync share.
+- Run prepare_gse295214_line_r16(raw_dir=Path("/Users/mac/.cache/r16_gse295214/raw")) from round16/src/run_eval_r16.py with its defaults. It writes round16/shared/lines/gse295214_h1/ and round16/shared/R16_GSE295214_QC_COUNTS.md, and computes no prediction or correlation.
+- Do not edit any frozen file. If the reader fails on the real files, stop and post R16_MAIN_DEVIATION with the full traceback.
+- Marker: R16_MAIN_G3_QC_DONE on its own line in round16/status/MAIN.txt, followed by:
+  - the gate outcomes (N_eval^R16, |G_eval^R9|, per-half NTC, PRIMARY or SENSITIVITY_ONLY);
+  - the reader audit (channels, cells after QC, single-guide cells, NTC count);
+  - the sha256 of every file written.
+- Then stop. The controller does the Group 3 data freeze and the Group 3 GO. No Group 3 inference before that.
+
+Task 2 — Occam (Addendum B): environment, adapters, CPU parts of the gates.
+- Files (git-ignored):
+  - weights and sidecars under round16_addB/shared/models/occam_hf_acd080b7/ (same relative paths as on the Hub);
+  - the source archive extracted, unchanged, under round16_addB/shared/models/occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/.
+  Import Occam's own classes from there (for example via PYTHONPATH). Do not patch them, and do not pip-install the archive with its dependencies.
+- round16_addB/.venv:
+  - First try: uv python install 3.8.19, then a venv on it with the Addendum B v2 §6.1 pins.
+  - If that cannot be built cleanly, use the §6.1 fallback chain in its stated order and record which tier you used.
+  - Do not touch round16/.venv or the base env.
+  - Freeze the result to round16_addB/R16_ADDB_VENV_FREEZE.txt.
+- Write the model-dependent parts of your adapters (the model-free parts in round16_addB/src/ already pass 9/9 tests).
+- Run on CPU now, with torch.set_num_threads(6) so that A-T3's bootstrap keeps its cores:
+  - Gate 5A items 1-2 (checksums and config assertions, synthetic smoke, CPU determinism, cross-process PYTHONHASHSEED);
+  - Gate 5B on the local nadig_hepg2 file, exactly as locked: split-hash parity decides Case A or Case B, and all 3 metrics are required.
+  Gate 5A item 3 (MPS vs CPU parity) waits. MPS stays off until the controller confirms A-T3 has finished R16. If item 3 locks MPS, Gate 5B is rerun on MPS (a few minutes).
+- Halt rule as locked: any 5A or 5B failure means stop and escalate; no threshold changes.
+- Marker: R16_ADDB_GATES_CPU_DONE in round16/status/MAIN.txt, followed by:
+  - the venv tier and Python/torch versions;
+  - the 5A results;
+  - for 5B: the Case (A or B), the split-hash matches out of 20, and the three metrics against their targets with pass/fail;
+  - the sha256 of every new or changed file.
+
+Round 17 note (TeloHAEC). The Human project lead also approved the Pfizer TeloHAEC download (controller/approvals/R17_TELOHAEC_HUMAN_APPROVAL.txt). The controller is downloading it to /Users/mac/.cache/r17_telohaec_pfizer/imru_full.h5ad. Until PREREG_J v2 with this line's reader spec and synthetic test is locked:
+- you may read structure only: HDF5 keys, shapes, dtypes, obs/var column names, and the category labels of the condition/treatment column;
+- no X values, no perturbation-label lists, no counts;
+- counts-only QC comes after the lock.
+
+Hard boundaries (both tasks)
+- No MPS/GPU.
+- No downloads beyond the uv interpreter and the §6.1 PyPI pins; no other Hub or GEO files.
+- No commits.
+- Do not read round16/audit/ or A-T3.txt.
+- No Group 2, Group 3 or feng_ipsc inference with Occam or STATE.
+- No media material; refer to the human as "Human project lead".

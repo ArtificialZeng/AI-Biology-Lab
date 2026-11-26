@@ -223,3 +223,21 @@
   - Occam under `round16_addB/shared/models/` (git-ignored by a new root `.gitignore` rule);
   - GSE295214 under `/Users/mac/.cache/r16_gse295214/` (internal disk, outside the repository).
 - Conditions: no MPS for Occam until A-T3 has finished R16 and `R16_ADDB_GO.txt` exists. Group 3 runs only after counts-only QC and its own data freeze.
+- 04:50: Round 17 draft received from the main line (`R17_PREREG_DRAFT_READY`). Controller review R1 was sent (`controller/msgs/r17_REVIEW_R1_MAIN.txt`; uncommitted for the same blinding reason as the dispatch).
+  - Main ruling affecting R16: gse295214_h1 also becomes an R17 confirmatory line. The R16 Group 3 GO is therefore held until PREREG_J is locked, so that no STATE inference on GSE295214 precedes either preregistration.
+  - The R16 Group 3 counts-only QC is model-free and is not held.
+
+## 2026-11-27 04:46–05:00 — downloads verified; TeloHAEC approved for Round 17
+- **Occam** (`round16_addB/R16_ADDB_CHECKSUMS.sha256`):
+  - best_model.pth matches the locked SHA-256 11d5ba55…;
+  - resolved_config.yaml, gene_axis.csv, perturbations.csv, cohort.json, splits_manifest.json and selected_scores_by_seed_split.csv each match the Hub git blob id at acd080b7.
+  - Correction to Addendum B v2 §1.3: `ef64f2ba…` is Occam's `gene_axis_sha256` content hash (it appears in splits_manifest.json, and the main line computed it from the local HepG2 file), not the byte hash of gene_axis.csv. The file's byte SHA-256 is a8eb6e4b…, and its blob id matches the Hub.
+- **Occam source archive** (0253be5c…, 2,446 entries, no absolute or `..` paths, no symlinks) is not code-only. It also ships `data/`, about 251 MB:
+  - two GenePT `.pkl` tables, which are outside the approved Minimal Inference Bundle;
+  - five author `splits.npz` files, which §1.3 excludes so that Gate 5B regenerates splits independently.
+  - These 7 members were removed from the extracted tree (`round16_addB/R16_ADDB_REMOVED_ARCHIVE_MEMBERS.sha256`). The tarball itself is kept unchanged as the hash-pinned record. The main line was told never to re-extract it or read those members.
+- **GSE295214** (`round16/shared/R16_GSE295214_CHECKSUMS.sha256`):
+  - the tar is 8,340,520,960 B (sha256 a925b04a…), 85 `.h5` entries, no unsafe paths;
+  - extracted to `/Users/mac/.cache/r16_gse295214/raw/`, where all 85 file sizes match GEO `filelist.txt`.
+- **TeloHAEC:** Human project lead: "Approve TeloHAEC" (record: `controller/approvals/R17_TELOHAEC_HUMAN_APPROVAL.txt`). The download of Zenodo 18792213 imru_full.h5ad (53.29 GB, CC BY 4.0) started at 04:55 into `/Users/mac/.cache/r17_telohaec_pfizer/`. The md5 check follows, and the file is not opened until PREREG_J v2 is locked; structure-only reads are allowed.
+- 05:00: the main line was sent the two CPU-only R16 tasks (`controller/msgs/r16_APPROVED_MAIN.txt`): Group 3 counts-only QC, and the Occam venv, adapters and CPU parts of Gates 5A/5B. No MPS until A-T3 is done.

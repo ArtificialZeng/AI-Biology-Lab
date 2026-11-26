@@ -1,0 +1,13 @@
+# Occam (Addendum B) downloads, controller Claude, 2026-11-27 04:59:53 +0800. Minimal Inference Bundle (R16_ADDB_HUMAN_APPROVAL.txt).
+# Hub bendidiihab/Occam @ acd080b788d028911807b87e11a56498f984f279: best_model.pth matches the locked LFS SHA-256; every sidecar matches the Hub git blob id.
+# NOTE: the locked 'gene_axis.csv SHA-256 ef64f2ba...' in v2 s1.3 is Occam's gene_axis_sha256 CONTENT hash (splits_manifest.json), not the file-byte hash; the file matches the Hub blob id.
+a8eb6e4be12bff488ac70faec072eeaf8138fe2aac929e5f45bd8e43dbaea4ee  occam_hf_acd080b7/benchmarks/rhj_fewshot/gene_axis.csv
+15b104a158c265c37970973ce060385f7669fa2ce83fa063806d8675a04f536a  occam_hf_acd080b7/benchmarks/rhj_fewshot/perturbations.csv
+e6b466d10e2d7e2f1aebf40e29928c8b49fe1cb1fb0301d5bc44065917b7c611  occam_hf_acd080b7/benchmarks/rhj_fewshot/splithalf/cohort.json
+80539b934892295d856641714c0062956ebb72c13ec38d6b2c623c0859ceb1e1  occam_hf_acd080b7/benchmarks/rhj_fewshot/splithalf/splits_manifest.json
+11d5ba5515e79710b3a952532c60aa29515046117292528c59d452a0937685ff  occam_hf_acd080b7/checkpoints/occam_seeds/rhj_fewshot/all_sources/seed_42/best_model.pth
+91b65f6e5b74a0e6c3cb09fd48a856ac13302215ef8d2160ad81f4569830f137  occam_hf_acd080b7/checkpoints/occam_seeds/rhj_fewshot/all_sources/seed_42/resolved_config.yaml
+7980875c949adcef32d1fbd04862e3ba514d760c8faa38eba9c43defd083798e  occam_hf_acd080b7/official_comparisons/selected_scores_by_seed_split.csv
+0253be5ccaa2b2139aed922880100e2089366700761b5cfbfe58ff66e9bf8c8f  occam_src_9ddb890e/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67.tar.gz
+# extracted tree (after removing the members listed in occam_src_9ddb890e/REMOVED_FROM_EXTRACTED_TREE.sha256): sha256 over sorted per-file sha256 lines
+bdc41d4dfdd5e3792d178b3864eda7ee2fc52ef3f682b159a502c883bb5f238b  occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/ (tree, 2034 files)
