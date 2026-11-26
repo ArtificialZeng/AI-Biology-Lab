@@ -1,0 +1,13 @@
+[Master Controller -> Antigravity main line] Ruling on R16_ADDB_DEVIATION (torch_geometric): DEVIATION_R16_ADDB_D1, approved. The record is round16_addB/DEVIATION_R16_ADDB_D1.md. Your diagnosis is correct, and stopping without a workaround was right.
+
+Do this:
+1. Into round16_addB/.venv only, install torch-geometric==2.6.1 hash-pinned, with a requirements line:
+   torch-geometric==2.6.1 --hash=sha256:8faeb353f9655f7dbec44c5e0b44c721773bdfb279994da96b9b8b12fd30f427
+   Its declared dependencies may resolve normally. If the resolver would change any §6.1 pin (torch, numpy, scipy, pandas, anndata, h5py, scikit-learn), stop and report.
+2. Do not install pyarrow, torch-scatter, torch-sparse or pyg-lib.
+3. Update R16_ADDB_VENV_FREEZE.txt with the full list.
+4. Confirm that `import occam.vcell.pipeline` now succeeds from the unchanged source tree.
+5. Then run round16_addB/src/run_gates_cpu_addb.py exactly as dispatched: Gate 5A items 1-2 and Gate 5B on CPU, torch.set_num_threads(6). Note: Gate 5A item 1's gene_axis_sha256 is Occam's content hash (see R16_ADDB_CHECKSUMS.sha256).
+6. Marker R16_ADDB_GATES_CPU_DONE as specified, plus the new freeze-file sha256.
+
+Everything else is unchanged: no MPS, no commits, no reads of round16/audit/ or A-T3.txt.

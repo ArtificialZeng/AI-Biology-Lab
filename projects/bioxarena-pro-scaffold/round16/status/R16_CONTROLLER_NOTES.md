@@ -241,3 +241,14 @@
   - extracted to `/Users/mac/.cache/r16_gse295214/raw/`, where all 85 file sizes match GEO `filelist.txt`.
 - **TeloHAEC:** Human project lead: "Approve TeloHAEC" (record: `controller/approvals/R17_TELOHAEC_HUMAN_APPROVAL.txt`). The download of Zenodo 18792213 imru_full.h5ad (53.29 GB, CC BY 4.0) started at 04:55 into `/Users/mac/.cache/r17_telohaec_pfizer/`. The md5 check follows, and the file is not opened until PREREG_J v2 is locked; structure-only reads are allowed.
 - 05:00: the main line was sent the two CPU-only R16 tasks (`controller/msgs/r16_APPROVED_MAIN.txt`): Group 3 counts-only QC, and the Occam venv, adapters and CPU parts of Gates 5A/5B. No MPS until A-T3 is done.
+- 05:10–05:15: main-line `R16_ADDB_DEVIATION`. Occam's unchanged `occam.vcell.pipeline` imports `torch_geometric`, which Addendum B v2 §6.1 wrongly called unnecessary; Occam's `pyproject.toml:48` pins it.
+  - Ruling: DEVIATION_R16_ADDB_D1 (`round16_addB/DEVIATION_R16_ADDB_D1.md`). Install `torch-geometric==2.6.1` hash-pinned (1.1 MB wheel, sha256 8faeb353…) into `round16_addB/.venv` only, with no change to any §6.1 pin, and no pyarrow or compiled PyG extensions.
+  - The main line's venv is on the primary tier (Python 3.8.19, torch 2.4.1).
+- 05:10: R17 v2 accepted in substance (`controller/msgs/r17_V2_ACCEPT_MAIN.txt`). The lock waits for the TeloHAEC download, then a structure-only check.
+- The run-phase watcher is paused while the Group 3 QC writes large temporary shard files under `round16/shared/lines/`. Instead, the D5 manifest is checked by hand at each event (05:06: 0 failures, HEAD c4f0028). A marker waiter covers QC, gates, deviations and A-T3.
+- 05:16: main-line `R16_ADDB_GATES_CPU_DONE`. Controller check:
+  - Venv pins: torch 2.4.1, numpy 1.24.4, scipy 1.9.3, scikit-learn 1.1.3, pandas 2.0.3, anndata 0.9.2, h5py 3.9.0, plus torch-geometric 2.6.1 (D1). pyarrow and the PyG compiled extensions are absent. Import check from `round16_addB/.venv` OK.
+  - Gate 5A items 1–2: PASS as reported. Item 1 uses `gene_axis_sha256` as a content hash, which matches. Item 2: CPU determinism and cross-process max_abs 0.
+  - Gate 5B, Case A: 20/20 split hashes. The main line's five per-split pearson_delta values equal the authors' `selected_scores_by_seed_split.csv` rows (rhj_fewshot, ABL_N_ALL, seed 42, nocal) to 6 decimals: 0.392850, 0.397797, 0.395306, 0.392278, 0.392659. The mean 0.394178 differs from the target by 2.2e-7; mae and the experimental replicate are also within 3e-7.
+  - **Gate 5B PASS confirmed by the controller.**
+  - Gate 5A item 3 (MPS vs CPU parity) waits until A-T3 has finished R16. Then come A-T3's independent adapter and gates, the code freeze, and `R16_ADDB_GO`.
