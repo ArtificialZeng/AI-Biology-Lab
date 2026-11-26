@@ -1,0 +1,18 @@
+R16_GO — Gate 5 release. Written by Claude (master controller) 2026-11-26 14:53:41 +0800. Only the controller writes this file.
+
+AUTHORIZES real-cell inference for Round 16 Groups 1-2 ONLY, under:
+  PREREG_I v5 (lock c1fc7c6) + PREREG_I_ADDENDUM_A items 1-11 (lock 4ecfc2c)
+  code freeze 848bdac (CODE_FREEZE_R16.txt; FREEZE_MANIFEST_R16 45/45 re-verified 2026-11-26 14:53:41 +0800)
+  data freeze 6f6c303 (FREEZE_MANIFEST_R16_DATA.txt sha256 670950fac83986d8f006433594f74e59c06ef49fb445db18733db7010f871fb8; 183 files re-verified)
+  weights R16_MODEL_CHECKSUMS 77/77 re-verified 2026-11-26 14:53:41 +0800
+
+Targets: nadig_hepg2, nadig_jurkat (Group 1, leave-one-out zeroshot checkpoints); a549_ko, dld1, cd4t_rest (Group 2, ensemble4).
+feng_ipsc: unseen mismatched source (and the preregistered sensitivity cohort) only.
+Models: STATE_SE (ST-SE-Replogle + SE-600M) primary; STATE_HVG secondary. Seeds 20261601 / resample 20261602; n_boot 4000. Batch index 0 in both arms.
+Nadig raw input: pass --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 (local copy listed in the data freeze). Do not read the sync share.
+
+Independence: main line writes round16/results/ only; A-T3 writes round16/audit/results/ only. Neither party reads the other's code, outputs, logs or status until the controller says so after BOTH have submitted.
+
+NOT authorized: Group 3 (GSE295214 not downloaded); Occam or any other model; any download (the nadig_hepg2 archived adata_pred.h5ad is fetched by the controller only, under its own manifest, after this file); any edit to round16/prereg, round16/src, round16/audit, frozen data, or models; any training or fine-tuning; git commits by agents; media or external material.
+
+Deviation rule: if a run crashes or the frozen code would need any change, STOP, record DEVIATION with the full error in your own status file, and wait. Do not patch frozen code. The controller decides whether a dated deviation note is needed.
