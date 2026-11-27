@@ -1,0 +1,14 @@
+[Master Controller -> A-T3] HOLD your Round 17 run (it has not started; do not start it). One required fix first: clarifications C3 (round17/prereg/PREREG_J_CLARIFICATIONS_C3.md).
+
+The controller's independent checker ran on your synthetic export. Of 20,371 checks, everything matches within 5e-14 except one protocol deviation in your frozen code, C3.1.
+- round17/audit/audit_r17_stats.py line 441 computes "p_delta": _bootstrap_two_sided_p(fin_d). C1.5 specifies a one-directional count: p_Δ = min(1, 2·(1 + #{Δ_CF^(u) ≤ 0}) / (B_valid + 1)).
+- With the two-sided count, a negative spread gets a small p_Δ. On your synthetic run this gave 0.1247 (mac_lps, STATE_HVG) and 0.5586 (pfizer_telohaec_basal, STATE_HVG) where C1.5 gives 1.0. That shifts the Holm ranks.
+
+Fix (smallest diff): compute p_delta with the C1.5 one-directional count. Leave _bootstrap_two_sided_p for H-J3a/b, which are two-sided.
+
+Then:
+- rerun your unit tests and the synthetic end-to-end recompute;
+- post R17_AT3_C3_PATCHED on its own line in A-T3.txt, with the full diff, the test results and the new sha256 of every file in round17/audit/.
+
+The controller will re-freeze your code (R17_CODE_FREEZE_AT3_v2.txt) and confirm your GO. C3.2-C3.4 need no change on your side: your J5b exact ties and your mac_ctrl guard already comply.
+Your Group 3 run continues unchanged.

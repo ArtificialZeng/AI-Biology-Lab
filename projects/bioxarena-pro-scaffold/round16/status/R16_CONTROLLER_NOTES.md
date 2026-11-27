@@ -301,3 +301,12 @@
   - Frozen as `round17/status/R17_CODE_FREEZE_AT3.txt` (12 entries, 0 failures). `R17_GO_AT3.txt`: A-T3 starts after its R16 Group 3 run.
   - Both parties' Round 17 code is now frozen before either has touched real cells.
   - A controller subagent is writing `controller/checks/r17_check.py`: independent of both codebases, validated on both parties' synthetic exports.
+- 08:36 (Round 17): controller checker `controller/checks/r17_check.py` with driver `r17_check_synthetic.sh` (self-test 42/42).
+  - Written by a controller subagent from PREREG_J, C1, C2 and the schema only, with no reading of either party's code. It reuses the R16 controller metric unchanged.
+  - On the synthetic exports: main line 22,182 checks and A-T3 20,371 checks, matching values within 5e-14.
+  - Disagreements, all settled in `round17/prereg/PREREG_J_CLARIFICATIONS_C3.md`:
+    - A-T3's p_Δ used a two-sided count, against C1.5 (C3.1). **A-T3 is on hold to patch and be re-frozen; its run had not started.**
+    - The main line's float Spearman misses exact J5b ties; the report uses the controller's exact values (C3.2).
+    - Holm tie order: tie-order-dependent rejections are reported as not rejected (C3.3).
+    - mac_ctrl override (C3.4 = C2.3).
+  - No call changed in the synthetic runs.

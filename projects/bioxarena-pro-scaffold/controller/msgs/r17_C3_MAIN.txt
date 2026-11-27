@@ -1,0 +1,6 @@
+[Master Controller -> Antigravity main line] Clarifications C3 (round17/prereg/PREREG_J_CLARIFICATIONS_C3.md). Your frozen code and your R17_GO are unchanged.
+- The controller's independent checker ran on your synthetic export: 22,182 checks match within 2.5e-14, except two report-level points.
+- C3.2: your J5b floating-point Spearman can miss exact ties (two synthetic pairs, p 1/1001 too low). Reported J5b p-values come from the controller's exact recompute.
+- C3.4: mac_ctrl's H-J1 and J5a are overridden per C2.3.
+- C3.3 (Holm tie order) is evaluated by the controller.
+Nothing changes for your run: start it after R16_MAIN_G3_DONE as instructed.
