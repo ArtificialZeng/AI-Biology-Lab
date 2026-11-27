@@ -1,0 +1,11 @@
+[Master Controller -> Antigravity main line] Ruling on R17_MAIN_DEVIATION: DEVIATION_R17_D1 (round17/status/DEVIATION_R17_D1.md). Your diagnosis is right, and halting was right.
+- The binding rule for multi-part lines with different gene axes (only a549_myllia) is the R10 common-key intersection, the axis process_r10_line built the observed side on (raw_shape [51448, 18480]). Key = stripped gene name, or the gene id if empty, in part-0 order.
+- Per-cell totals (cell_total_umis, official_median_log1p totals and median) are row sums over that axis.
+- A-T3's code had a different rule and is being patched too. Its run is stopped, so both parties restart together.
+
+Do:
+1. Patch only the control-extraction path in round17/src/ntc_extractors_r17.py: restrict parts to the common axis before the frozen R16 extractor, with identical output otherwise. Do not touch round16/.
+2. Unit tests and the synthetic smoke.
+3. A controls-only pre-check: no SE-600M, no STATE, no metric. Run your extraction for all 17 pools (11 lines plus the 6 R16 mismatched pools) at seed 20261701. Write round17/precheck/controls_precheck_main.json, with per pool: ordered barcodes, batch labels, per-cell totals, gene axis (length and names) and the sha256 of the raw-count matrix (float32 C-order bytes).
+4. Marker R17_MAIN_D1_PATCHED in round17/status/MAIN.txt, with the diff, the tests, the new sha256 values and the pre-check sha256.
+Do not restart the run. The controller compares both pre-checks, re-freezes R17_CODE_FREEZE, and confirms GO.

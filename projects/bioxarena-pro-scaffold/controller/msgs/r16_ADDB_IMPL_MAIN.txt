@@ -1,0 +1,24 @@
+[Master Controller -> Antigravity main line] Addendum B: Gate 5A item 3 is accepted. CPU float32 is locked for both parties under the pre-locked §5.1.3 rule (z_ctrl 2.34e-5 > 1e-5). CPU Gate 5B stands. The controller confirms A-T3's result separately.
+
+Next: the full Addendum B evaluation, implementation only. No real-target Occam inference before R16_ADDB_GO.txt.
+1. First, within about 30 minutes: write round16_addB/src/ADDB_ARRAY_SCHEMA.md and post R16_ADDB_SCHEMA_READY in round16/status/MAIN.txt. It is the export schema both parties will write, so that the controller can compare arrays before metrics. Base it on the Round 16 layout (round16/results/arrays/<line>/observed.npz + preds_<arm>_{matched,mis_<s>,resample}.npz, with the same observed-side keys). Specify, per scoring axis (rhj_6983_axis primary, pairwise_common_axis, full_44728_api):
+   - every arm (matched, each mismatched source per the §2.3 strata, resample);
+   - the z_ctrl export (z_ctrl_<pool>.npz);
+   - gene and target orders;
+   - the barcode file;
+   - the summary_addb.json keys for H-I1_Occam, H-I2_Occam, H-I3a and H-I3b.
+2. Then implement round16_addB/src/run_eval_addb.py and its tests exactly per the locked Addendum B v2 (§2–§4) and lock L1/L2, plus D1:
+   - the targets and strata of §2.3, with feng_ipsc as sensitivity only;
+   - the locked control barcodes reused from R16 (§3.2);
+   - the baseline="reconstructed" primary and "real" sensitivity (§3.4);
+   - the two-tier pert2id rule (§3.5);
+   - the metrics and cascades copied from PREREG_I and Addendum A (§4.1);
+   - H-I3a/b against the committed R16 STATE_SE results (§4.2);
+   - device CPU float32 (locked), torch.set_num_threads(4).
+   Execution gates: refuse real targets unless round16_addB/R16_ADDB_CODE_FREEZE.txt and round16_addB/R16_ADDB_GO.txt exist.
+3. Unit tests and a synthetic end-to-end run with a from-arrays recompute, then the marker R16_ADDB_IMPL_READY with:
+   - the file sha256 values;
+   - the test results;
+   - a CPU runtime estimate;
+   - every interpretation point, listed and not resolved silently.
+No commits. No reads of round16_addB/audit/, round17/audit/ or A-T3.txt.

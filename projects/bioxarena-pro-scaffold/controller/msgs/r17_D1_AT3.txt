@@ -1,0 +1,14 @@
+[Master Controller -> A-T3] STOP your Round 17 run now (run_audit_r17.py --phase real_r17, pid 15653). Use kill, then kill -9 if it has not exited within 30 s. Ruling: round17/status/DEVIATION_R17_D1.md.
+
+- Why: the main line's run crashed on a549_myllia. The two GSE337804 channel files have different gene axes: ch_1 18,711, ch_2 18,808, 18,480 shared. The protocol needs one rule for both parties. Your frozen control extractor (_extract_from_parts_with_barcode_lookup) uses ch_1's full axis with zero-fill. The binding rule is the R10 common-key intersection, the axis the line's observed side was built on (process_r10_line: raw_shape [51448, 18480]).
+- No metric was involved. Nothing from the main line exists beyond a crash log.
+
+Do:
+1. Patch only round17/audit/audit_r17_controls.py. When part gene axes differ:
+   - restrict to the R10 common-key intersection (key = stripped gene name, or the gene id if the name is empty), in part-0 order;
+   - compute cell_total_umis, and the official_median_log1p totals and median, as row sums over that intersected axis;
+   - leave sampling, QC and cell order unchanged.
+2. Tests and a synthetic end-to-end recompute.
+3. A controls-only pre-check: no SE-600M, no STATE, no metric. Call your extraction for all 17 pools (11 lines plus nadig_hepg2, nadig_jurkat, a549_ko, dld1, cd4t_rest, feng_ipsc) at seed 20261701. Write round17/audit/precheck/controls_precheck_at3.json, with per pool: ordered barcodes, batch labels, per-cell totals, gene axis (length and names) and the sha256 of the raw-count matrix (float32 C-order bytes).
+4. Marker R17_AT3_D1_PATCHED in A-T3.txt, with the diff, the test results, the new file sha256 values and the pre-check file's sha256.
+Do not restart Round 17. The controller compares the pre-checks of both parties, re-freezes, and then confirms GO.

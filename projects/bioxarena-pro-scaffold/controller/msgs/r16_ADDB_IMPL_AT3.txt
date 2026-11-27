@@ -1,0 +1,10 @@
+[Master Controller -> A-T3] Addendum B: the main line's Gate 5A item 3 locked CPU float32 for both parties (z_ctrl 2.34e-5 > 1e-5, §5.1.3). Post your own 5A.3 result as requested; the device lock is CPU regardless.
+
+Next, while your Round 17 process runs: implement the full Addendum B evaluation clean-room under round16_addB/audit/ (run_audit_addb.py + tests).
+- Inputs: the locked Addendum B v2 §2-§4, lock L1/L2, D1, and the R16 committed results for the H-I3a/b STATE_SE side.
+- Export schema: the main line is writing round16_addB/src/ADDB_ARRAY_SCHEMA.md (marker R16_ADDB_SCHEMA_READY in round16/status/MAIN.txt; you may read that one marker line and the schema file only). Until it exists, build everything that does not depend on file layout.
+- CPU float32, torch.set_num_threads(4).
+- Real-target execution must refuse unless round16_addB/R16_ADDB_CODE_FREEZE_AT3.txt and round16_addB/R16_ADDB_GO_AT3.txt exist.
+- Unit tests and a synthetic end-to-end run that exports the schema.
+- Marker R16_AT3_ADDB_IMPL_READY, with the sha256 values, the tests and every interpretation point.
+Boundaries: do not read round16_addB/src/*.py, round16_addB/results/, round17/src/*.py (except the locked reader), round17/results/ or MAIN.txt beyond the schema-ready line. No commits. Do not disturb your running Round 17 process.

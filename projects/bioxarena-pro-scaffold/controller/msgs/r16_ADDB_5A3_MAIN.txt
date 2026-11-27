@@ -1,0 +1,7 @@
+[Master Controller -> Antigravity main line] Addendum B (Occam): A-T3 has finished its Round 16 STATE work (Groups 1-3 verified), so the P6 MPS condition is met. The Occam MPS steps are released, while your Round 17 run continues.
+1. Gate 5A item 3, exactly as locked (Addendum B v2 §5.1.3): on identical synthetic inputs, compare CPU float32 with MPS float32.
+   - Lock MPS iff max|z_ctrl_mps − z_ctrl_cpu| ≤ 1e-5 AND max|Δ_mps − Δ_cpu| ≤ 1e-4; otherwise lock CPU for both parties.
+   - Use torch.set_num_threads(4) on the CPU side.
+2. If MPS is locked, rerun Gate 5B on MPS (the same Case A criteria). If CPU is locked, Gate 5B on CPU already stands.
+3. Marker R16_ADDB_GATE5A3_DONE in round16/status/MAIN.txt, with both max-abs values, the locked device, the 5B rerun result if applicable, and the sha256 of every new file.
+No Group 2/3 or feng_ipsc Occam inference yet: the controller freezes both parties' Addendum B code first and issues R16_ADDB_GO.txt. No commits.

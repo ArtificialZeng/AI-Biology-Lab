@@ -1,0 +1,7 @@
+[Master Controller -> A-T3] Addendum B (Occam), while your Round 17 run is going (it is MPS/GPU-bound, and this needs only minutes).
+1. Gate 5A item 3, as locked (§5.1.3), with your own adapter: on identical synthetic inputs, compare CPU float32 with MPS float32.
+   - Lock MPS iff max|z_ctrl_mps − z_ctrl_cpu| ≤ 1e-5 AND max|Δ_mps − Δ_cpu| ≤ 1e-4; otherwise CPU.
+   - Use torch.set_num_threads(4).
+2. If MPS is locked, rerun your Gate 5B on MPS.
+3. Marker R16_AT3_ADDB_GATE5A3_DONE in A-T3.txt, with both max-abs values, the locked device, the 5B result and file sha256 values.
+No Occam inference on Group 2/3 or feng_ipsc until R16_ADDB_GO.txt. Do not touch your running Round 17 process.

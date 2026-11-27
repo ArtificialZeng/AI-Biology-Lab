@@ -322,3 +322,20 @@
   - Controller checker on a fresh A-T3 synthetic export: **R17_CHECK_MATCH** (20,371 checks, 0 fail). The main-line synthetic export has only the 10 expected report-level differences: 6 on mac_ctrl (C2.3) and 4 J5b exact ties (C3.2).
   - Re-frozen as `round17/status/R17_CODE_FREEZE_AT3_v2.txt`; the old file is marked superseded. A-T3 is cleared to start its Round 17 run (its R16 Group 3 run is done and verified).
   - Group 3 verdict and results committed now.
+- 09:35 (Addendum B): main-line Gate 5A item 3. max|z_ctrl MPS−CPU| 2.34e-5 > 1e-5 (FAIL); max|Δ| 1.5e-6 ≤ 1e-4.
+  - By the pre-locked §5.1.3 rule, **CPU float32 is locked for both parties**, and the CPU Gate 5B stands.
+  - Occam therefore never shares MPS with the Round 17 STATE runs.
+- Both parties dispatched to implement the full Addendum B evaluation:
+  - the main line first writes `round16_addB/src/ADDB_ARRAY_SCHEMA.md`, mirroring the R16 export layout;
+  - A-T3 works clean-room from the locked addendum plus that schema;
+  - real targets only after `R16_ADDB_CODE_FREEZE*` and `R16_ADDB_GO*`.
+- The Round 17 runs are both in progress: main-line pid 11669 from about 09:20, A-T3 pid 15653 from about 09:33.
+- 09:40: main-line R16_ADDB_SCHEMA_READY, round16_addB/src/ADDB_ARRAY_SCHEMA.md (sha256 e610a67d79cc2061d18d8ac02443971b91db73d54d5b8ef8b5435b3783596754); A-T3 notified.
+- 09:50: main-line R16_ADDB_IMPL_READY: run_eval_addb.py + tests (18/18; controller rerun of test_eval_addb 9/9 OK); synthetic smoke with exact from-disk recompute; CPU estimate ~6.4 h for 5 lines. 8 interpretation points listed; review together with A-T3's when it reports.
+
+## 2026-11-27 09:52–09:55 — Round 17: DEVIATION_R17_D1 (a549_myllia gene axes)
+- The main-line Round 17 run crashed at 09:52 in control extraction for a549_myllia: the two Seurat channel exports have different gene axes (18,711 vs 18,808; 18,480 shared). No arrays or results had been written.
+- A-T3's frozen code would have used a different rule (ch_1 axis, zero-filled).
+- Ruling (`round17/status/DEVIATION_R17_D1.md`): use the R10 common-key intersection, the axis the line's observed side was built on, with per-cell totals as row sums over it.
+  - Both parties patch their control path, and A-T3 stops its run.
+  - Each party then runs a controls-only pre-check for all 17 pools. The controller compares the two before re-freezing and restarting both runs.
