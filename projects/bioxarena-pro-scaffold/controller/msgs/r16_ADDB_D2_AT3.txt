@@ -1,0 +1,10 @@
+[Master Controller -> A-T3] Ruling on R16_AT3_ADDB_DEVIATION: DEVIATION_R16_ADDB_D2 (round16_addB/DEVIATION_R16_ADDB_D2.md). Approved. Good audit, and stopping was correct.
+
+Patch only your own files, with the smallest diffs:
+1. audit_addb_controls_and_metrics.py:71: set EXPECTED_ADDB_V2_SHA256 to 537467db51b00b8e178ad5d7638e25b5d809f350c8feae229d86cdb96acb281e.
+2. run_audit_addb.py:1467: call load_rhj_gene_axis(DEFAULT_GENE_AXIS_CSV) with the frozen signature and unpack 2 values. Fix the fallback at lines 1438-1439 to run_stage_5b_cpu(adapter, batch_size=batch_size) and g5b.get("overall_cpu_gates_pass").
+3. audit_addb_controls_and_metrics.py:342 and 429: n_ctrl_total from the top-level n_nt_total, falling back to adapter_audit.n_kept_ntc.
+4. Add a test that runs assert_freeze_gates_addb against the real round16_addB/ files, so the hash branch is exercised.
+5. Rerun the full suite and the synthetic end-to-end recompute.
+
+Then post R16_AT3_ADDB_D2_PATCHED with the diff, the test results and the new sha256 values. The controller re-freezes your code (R16_ADDB_CODE_FREEZE_AT3_v2.txt) and confirms the relaunch. Leave your Round 17 run untouched.

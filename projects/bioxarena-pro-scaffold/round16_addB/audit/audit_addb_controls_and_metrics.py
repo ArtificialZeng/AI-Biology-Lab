@@ -68,7 +68,7 @@ from audit_r16_metrics import (  # noqa: E402
     summarize_boot_r16,
 )
 
-EXPECTED_ADDB_V2_SHA256 = "537467db51b00b8e178ad7d7638e25b5d809f350c8feae229d86cdb96acb281e"
+EXPECTED_ADDB_V2_SHA256 = "537467db51b00b8e178ad5d7638e25b5d809f350c8feae229d86cdb96acb281e"
 DEFAULT_LOCKED_SE_AUDIT_DIR = REPO_ROOT / "round16" / "audit" / "results"
 DEFAULT_LOCKED_MAIN_SENS_DIR = REPO_ROOT / "round16" / "results" / "sensitivity"
 DEFAULT_LOCKED_MAIN_R16_DIR = REPO_ROOT / "round16" / "results"
@@ -339,7 +339,7 @@ def _build_gse295214_observed_extras(
     n_ctrl_total = 512
     if meta_fp.is_file():
         meta_j = json.loads(meta_fp.read_text(encoding="utf-8"))
-        n_ctrl_total = int(meta_j.get("n_kept_ntc", 512))
+        n_ctrl_total = int(meta_j.get("n_nt_total") or meta_j.get("adapter_audit", {}).get("n_kept_ntc", 512))
 
     return {
         "mu_sources": np.asarray(mu_sources, dtype=np.float64),
@@ -426,7 +426,8 @@ def load_locked_control_barcodes_addb(
         if n_ctrl_total is None and pname == "gse295214_h1":
             meta_fp = Path(repo_root) / "round16" / "shared" / "lines" / "gse295214_h1" / "line_metadata.json"
             if meta_fp.is_file():
-                n_ctrl_total = json.loads(meta_fp.read_text(encoding="utf-8")).get("n_kept_ntc")
+                meta_j = json.loads(meta_fp.read_text(encoding="utf-8"))
+                n_ctrl_total = meta_j.get("n_nt_total") or meta_j.get("adapter_audit", {}).get("n_kept_ntc")
         if n_ctrl_total is None:
             n_ctrl_total = len(p_bcs)
 

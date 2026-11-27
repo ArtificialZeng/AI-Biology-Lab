@@ -357,3 +357,5 @@
 - Addendum B: `round16_addB/R16_ADDB_CODE_FREEZE.txt` (21 entries) and `R16_ADDB_CODE_FREEZE_AT3.txt` (19 entries), both 0 failures. `R16_ADDB_GO.txt` and `R16_ADDB_GO_AT3.txt` (CPU float32, 4 threads).
 - Both parties are told to restart Round 17 (MPS) and start Occam (CPU) concurrently.
 - Host is an M3 Pro, 12 cores, 36 GB, not the 128 GB in AGENTS.md. Parties are asked to report swapping.
+- 13:05 (Addendum B): A-T3 R16_AT3_ADDB_DEVIATION. Its freeze gate failed on a one-character hash typo, before inference. A-T3 also found a latent loader-call crash and a wrong descriptive n_ctrl_total key for gse295214_h1. DEVIATION_R16_ADDB_D2 approved (A-T3's own files; re-freeze AT3 v2 before relaunch). Main line asked to confirm its gse295214_h1 n_ctrl_total (58,153).
+- 13:15 (Addendum B): A-T3 R16_AT3_ADDB_D2_PATCHED verified (hash constant correct; suite 14/14, controller rerun). Re-frozen R16_ADDB_CODE_FREEZE_AT3_v2.txt; relaunch sent.

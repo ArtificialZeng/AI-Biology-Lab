@@ -84,16 +84,46 @@ class TestAddBFreezeGatesAndExtractors(unittest.TestCase):
             self.assertEqual(res["r16_addb_code_freeze_at3"], "FREEZE_OK")
             self.assertEqual(res["r16_addb_go_at3"], "GO_OK")
 
+    def test_freeze_gate_exercises_real_addb_draft_v2_hash_and_d2_fixes(self) -> None:
+        from audit_addb_occam_adapter import DEFAULT_GENE_AXIS_CSV, load_rhj_gene_axis
+        from audit_addb_controls_and_metrics import load_locked_control_barcodes_addb
+
+        # Exercise hash verification against real round16_addB/ files
+        res = assert_freeze_gates_addb(ADDB_ROOT)
+        actual_v2_sha = sha256_file(ADDB_ROOT / "PREREG_I_ADDENDUM_B_DRAFT_v2.md")
+        self.assertEqual(res["addb_v2_sha256"], EXPECTED_ADDB_V2_SHA256)
+        self.assertEqual(res["addb_v2_sha256"], actual_v2_sha)
+
+        # Negative check: mismatched draft v2 file inside tempdir must raise AddBBlindingGateError
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "PREREG_I_ADDENDUM_B_LOCK.md").write_text("LOCK\n", encoding="utf-8")
+            (root / "R16_ADDB_CODE_FREEZE_AT3.txt").write_text("FREEZE_OK\n", encoding="utf-8")
+            (root / "R16_ADDB_GO_AT3.txt").write_text("GO_OK\n", encoding="utf-8")
+            (root / "PREREG_I_ADDENDUM_B_DRAFT_v2.md").write_text("CORRUPT_V2\n", encoding="utf-8")
+            with self.assertRaises(AddBBlindingGateError):
+                assert_freeze_gates_addb(root)
+
+        # DEVIATION_R16_ADDB_D2 item 2: load_rhj_gene_axis 2-tuple signature & gse295214_h1 n_ctrl_total=58153
+        rhj_ens, rhj_syms = load_rhj_gene_axis(DEFAULT_GENE_AXIS_CSV)
+        self.assertEqual(len(rhj_ens), 6983)
+        self.assertEqual(len(rhj_syms), 6983)
+        cb = load_locked_control_barcodes_addb(["gse295214_h1"])
+        self.assertEqual(int(cb["pools"]["gse295214_h1"]["n_ctrl_total"]), 58153)
+
     def test_cli_real_addb_refuses_without_freeze_and_go_gates(self) -> None:
-        cmd = [
-            sys.executable,
-            str(AUDIT_ADDB_DIR / "run_audit_addb.py"),
-            "--phase",
-            "real_addb",
-        ]
-        proc = subprocess.run(cmd, capture_output=True, text=True)
-        self.assertNotEqual(proc.returncode, 0)
-        self.assertIn("AddBBlindingGateError", proc.stderr)
+        with tempfile.TemporaryDirectory() as td:
+            empty_root = Path(td) / "empty_addb"
+            empty_root.mkdir()
+            out_dir = Path(td) / "out"
+            py_snippet = (
+                f"import sys; sys.path.insert(0, {str(AUDIT_ADDB_DIR)!r}); "
+                "from pathlib import Path; from run_audit_addb import run_real_addb; "
+                f"run_real_addb(output_dir=Path({str(out_dir)!r}), addb_root=Path({str(empty_root)!r}))"
+            )
+            proc = subprocess.run([sys.executable, "-c", py_snippet], capture_output=True, text=True)
+            self.assertNotEqual(proc.returncode, 0)
+            self.assertIn("AddBBlindingGateError", proc.stderr)
 
     def test_nadig_legacy_csr_and_10x_extractors_exact_row_sums(self) -> None:
         with tempfile.TemporaryDirectory() as td:

@@ -1,3 +1,4 @@
+# SUPERSEDED 2026-11-27 13:13 +0800 by R16_ADDB_CODE_FREEZE_AT3_v2.txt (DEVIATION_R16_ADDB_D2).
 # R16_ADDB_CODE_FREEZE_AT3 — controller Claude 2026-11-27 12:59 +0800. A-T3 clean-room Addendum B (Occam) code frozen before any real-target Occam inference.
 # Controller checks: A-T3 test suite OK (controller rerun); Gate 5B Case A (agrees with main to ~1e-10); Gate 5A item 3 -> CPU; CB1 + CB1.2a applied; independence 1.5% shared lines (adapter). Format: sha256  path
 0c2448523091251880d40c3d581de54a917995424e0467b64877ccb520fe130d  round16_addB/audit/__init__.py

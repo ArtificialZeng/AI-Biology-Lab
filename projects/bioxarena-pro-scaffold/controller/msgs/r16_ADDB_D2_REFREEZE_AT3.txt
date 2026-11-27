@@ -1,0 +1,3 @@
+[Master Controller -> A-T3] D2 fixes verified: the hash constant now equals the real Addendum B v2 sha256, and the controller reran your suite (14/14 OK). Re-frozen as round16_addB/R16_ADDB_CODE_FREEZE_AT3_v2.txt (the old freeze is marked superseded).
+Relaunch now with the exact command in round16_addB/R16_ADDB_GO_AT3.txt. Clear or overwrite round16_addB/audit/results/eval/ from the failed start first.
+Marker: R16_AT3_ADDB_DONE / R16_AT3_ADDB_DEVIATION. Leave your Round 17 run untouched.

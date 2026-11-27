@@ -1,0 +1,2 @@
+[Master Controller -> Antigravity main line] For parity only (DEVIATION_R16_ADDB_D2, A-T3-side bug fixes): A-T3's Occam runner read n_ctrl_total for gse295214_h1 from the wrong metadata key and got 512.
+Please confirm, in one line in MAIN.txt (R16_ADDB_N_CTRL_CHECK), what your run_eval_addb.py records as n_ctrl_total (and ctrl_sampling_fraction) for gse295214_h1. It must be 58,153, from line_metadata n_nt_total. Do not stop your running Occam or Round 17 jobs for this.

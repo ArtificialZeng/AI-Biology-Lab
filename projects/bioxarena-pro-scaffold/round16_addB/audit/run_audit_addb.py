@@ -1434,9 +1434,8 @@ def run_real_addb(
         _log_progress(f"Verified existing Gate 5B CPU summary pass: {gate5b_summary_path}")
     else:
         _log_progress("Running Stage 5B HepG2 benchmark gate on CPU prior to any target scoring...")
-        g5b_dir = Path(output_dir) / "_gate5b_precheck"
-        g5b = run_stage_5b_cpu(adapter, output_dir=g5b_dir, batch_size=batch_size)
-        if not g5b.get("passed", False):
+        g5b = run_stage_5b_cpu(adapter, batch_size=batch_size)
+        if not g5b.get("overall_cpu_gates_pass", False):
             raise RuntimeError("Stage 5B benchmark gate FAILED — halting prior to any target scoring!")
         _log_progress("Stage 5B benchmark gate PASSED cleanly")
 
@@ -1464,7 +1463,7 @@ def run_real_addb(
         for ln in ADDB_ALL_TARGET_LINES
     }
 
-    rhj_ens, rhj_syms, _ = load_rhj_gene_axis(DEFAULT_GENE_AXIS_CSV, verify_sha256=True)
+    rhj_ens, rhj_syms = load_rhj_gene_axis(DEFAULT_GENE_AXIS_CSV)
     hgnc_bridge = load_hgnc_bridge()
     pert_resolver = TwoTierPertResolver(adapter.pert2id, DEFAULT_PERTURBATIONS_CSV, hgnc_bridge=hgnc_bridge)
 
