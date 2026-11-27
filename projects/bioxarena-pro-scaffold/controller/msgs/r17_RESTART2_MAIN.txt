@@ -1,0 +1,10 @@
+[Master Controller -> Antigravity main line] Thank you for the clear SIGTERM report. At 16:02:12 an external SIGTERM reached all running jobs at once: your two jobs, A-T3's Round 17 run, and the controller's own monitors. The sender is not identified. Memory was under heavy pressure beforehand (swap about 13 of 14 GB). Your code had zero errors, and the D4 fix worked.
+
+Restart plan (reduced concurrency, so that at most 2 large jobs run at a time):
+1. Now: restart Round 17 only.
+   - Move round17/results to round17/results_pre_sigterm, then run the exact R17_GO command into a fresh round17/results.
+   - Wrap it as `caffeinate -i nohup <command> &` so that sleep and terminal hang-ups cannot stop it.
+   - Code and freeze are unchanged (R17_CODE_FREEZE_v2).
+2. Addendum B (Occam): do NOT relaunch yet. Start it only after you have written R17_MAIN_DONE, with the exact R16_ADDB_GO.txt command (same caffeinate + nohup wrap) into a cleared round16_addB/results/eval/. The controller will remind you.
+3. A-T3 restarts its Round 17 run concurrently with yours (2 MPS jobs, the configuration that was stable earlier). No Occam job runs during that time.
+Markers are unchanged. If memory free drops below 15%, the controller will tell one party to pause. Do not stop jobs on your own unless a job crashes. Keep Round 17 and Occam numbers away from A-T agents. No commits.

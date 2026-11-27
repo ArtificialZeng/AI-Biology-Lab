@@ -20,7 +20,7 @@ while true; do
     c=$(mk "${m%%:*}" "${m##*:}")
     [ "$c" -gt "$(awk -v k="$m" '$1==k{print $2}' "$BASEF")" ] && { echo "EVENT marker ${m##*:} in ${m%%:*} at $(date '+%F %T')"; exit 0; }
   done
-  pm=$(pgrep -f 'round16/src/run_eval_r16.py' | head -1); pa=$(pgrep -f 'round16/audit/run_audit_r16.py' | head -1)
+  pm=$(pgrep -f "${MAIN_PAT:-round16/src/run_eval_r16.py}" | head -1); pa=$(pgrep -f "${AT3_PAT:-round16/audit/run_audit_r16.py}" | head -1)
   [ -n "$pm" ] && { seen_main=1; gone_main=0; }; [ -n "$pa" ] && { seen_at3=1; gone_at3=0; }
   [ "$seen_main" = 1 ] && [ -z "$pm" ] && gone_main=$((gone_main + 1))
   [ "$seen_at3" = 1 ] && [ -z "$pa" ] && gone_at3=$((gone_at3 + 1))

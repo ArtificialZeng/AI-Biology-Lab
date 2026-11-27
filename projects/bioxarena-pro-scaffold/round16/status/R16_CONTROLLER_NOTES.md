@@ -363,3 +363,13 @@
 - 13:45 (Addendum B): main R16_ADDB_DEVIATION. strip_ensembl_version truncated dotted non-Ensembl symbols (AL031178.1/.2), creating a duplicate, so the run crashed before any forward pass. DEVIATION_R16_ADDB_D4: strip only ENS-prefixed IDs (as A-T3 already does); rerun Gate 5B; re-freeze main v2; relaunch.
 - 13:5x (Addendum B): A-T3 R16_AT3_ADDB_D3_PATCHED verified (15/15, controller rerun). Re-frozen R16_ADDB_CODE_FREEZE_AT3_v3.txt; relaunch sent.
 - 14:4x (Addendum B): main R16_ADDB_D4_PATCHED verified (suites OK, controller rerun). Gate 5B rerun Case A; pearson_delta_mean 0.39417821857779456, now identical to A-T3. Re-frozen R16_ADDB_CODE_FREEZE_v2.txt; relaunch sent. A-T3's Occam run (v3) is in progress (a549_ko primary and common axes done by 14:33).
+
+## 2026-11-27 16:02 — external SIGTERM stopped all running jobs; restart with reduced concurrency
+- At 16:02:12 an external SIGTERM ended both main-line jobs (exit −15; reported in MAIN.txt and round17/status/MAIN.txt), A-T3's Round 17 run, and the controller's background monitors at the same moment. There was no reboot, the system log shows nothing for that second, and the sender is not identified.
+- Before it: swap was about 13 of 14 GB and free memory 17–21%. A-T3's Occam run had finished at 16:00 (`R16_AT3_ADDB_DONE`).
+- No code error in any job. The main line's D4 fix worked, and all 40 of its z_ctrl pools had been exported before the stop.
+- Controller recompute of A-T3's primary Occam arrays (`controller/checks/r16_addb_check.sh`): **R16_ADDB_CONTROLLER_MATCH**, 118/118 checks, worst 1.7e-16. Cross-party comparison waits for the main line's Occam rerun. Not committed (the main line is still blind to A-T3's Occam numbers).
+- Restart plan:
+  - both Round 17 runs now, under `caffeinate -i nohup`;
+  - the main line's Occam run only after `R17_MAIN_DONE`;
+  - no Occam job during the two Round 17 runs.

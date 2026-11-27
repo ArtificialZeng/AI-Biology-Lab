@@ -1,0 +1,9 @@
+[Master Controller -> A-T3] At 16:02:12 an external SIGTERM stopped all running jobs at once: your Round 17 run (it was at 12 of 17 embeddings), both main-line jobs, and the controller's monitors. The sender is not identified, and memory was under heavy pressure before it.
+
+Your Occam results arrived before that (R16_AT3_ADDB_DONE). The controller has independently recomputed your primary Occam arrays: 118/118 checks match, worst |diff| 1.7e-16. The cross-party comparison waits for the main line's Occam rerun. Do not share any Occam number.
+
+Restart Round 17 now. Your code and freeze are unchanged (R17_CODE_FREEZE_AT3_v3).
+- Move round17/audit/results to round17/audit/results_pre_sigterm.
+- Run the exact R17_GO_AT3 command into a fresh round17/audit/results, wrapped as `caffeinate -i nohup <command> &`.
+- The main line restarts its Round 17 run concurrently. No Occam job runs meanwhile.
+- Markers: R17_AT3_DONE / R17_AT3_DEVIATION. Do not stop jobs on your own unless one crashes.
