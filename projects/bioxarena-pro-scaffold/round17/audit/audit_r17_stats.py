@@ -86,6 +86,15 @@ def _bootstrap_two_sided_p(draws_fin: np.ndarray) -> float:
     return float(min(1.0, 2.0 * (1.0 + min(n_le, n_ge)) / float(b_val + 1)))
 
 
+def _bootstrap_one_dir_p(draws_fin: np.ndarray) -> float:
+    """One-directional H-J1 empirical bootstrap p-value (`C1.5`, `C3.1`): `min(1, 2*(1 + #{d<=0})/(B+1))`."""
+    b_val = int(draws_fin.size)
+    if b_val == 0:
+        return 1.0
+    n_le = int(np.sum(draws_fin <= 0.0))
+    return float(min(1.0, 2.0 * (1.0 + n_le) / float(b_val + 1)))
+
+
 def _compute_orth_vectors_and_boot(
     delta_obs: np.ndarray,
     delta_pred: np.ndarray,
@@ -438,7 +447,7 @@ def compute_h_j1_for_subset(
                 "delta_cf_valid_frac": vf_cf,
                 "oracle_valid_frac": vf_or,
                 "half_rho_ok": bool(half_rho_ok),
-                "p_delta": _bootstrap_two_sided_p(fin_d),
+                "p_delta": _bootstrap_one_dir_p(fin_d),
                 "p1_boot_draws": dr1,
                 "p2_boot_draws": dr2,
             }

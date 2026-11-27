@@ -1,0 +1,17 @@
+# R17_CODE_FREEZE_AT3_v2 — controller Claude 2026-11-27 09:31 +0800. Supersedes R17_CODE_FREEZE_AT3.txt after the C3.1 patch (p_delta one-directional, audit_r17_stats.py) and test updates; no Round 17 real-cell run by A-T3 had started.
+# Controller checks: A-T3 unit tests OK (controller rerun); controller independent checker r17_check.py on a fresh A-T3 synthetic export: R17_CHECK_MATCH (20,371 checks, 0 fail, worst 4.3e-14). Main-line synthetic export: only the 10 report-level differences of C2.3 (mac_ctrl) and C3.2 (exact J5b ties).
+# Format: sha256  path
+80a72b17de70fb934dce29eccd70847ba06a071e6ea1d02d876d2c6044fcaa13  round17/audit/__init__.py
+97a4ade8c5c8295294987e29e17f09ff10839aecdfe9cd6f612cc18abc64c3ee  round17/audit/audit_r17_controls.py
+6154b3a35e84b8f85ad08503f7082934153d6d99ad1c96c523f473889a51ed47  round17/audit/audit_r17_stats.py
+6bf5712f97ae217555084392b6b0cc05f6cd8abdc0ce8be211633113428370e5  round17/audit/run_audit_r17.py
+e83879fe458c4d2025dde4226644518ec41df8fd12fe3dc756b5e2bb815f9b7b  round17/audit/test_audit_r17.py
+7033337d1f42588ee9277804c6a803eb940312fe95a4ee31e2c000555b0fb85b  round17/prereg/PREREG_J_DRAFT_v2.md
+7933d338a4773afeff59748311b925393ff49eaeed0c31df6584f12ae167e0be  round17/prereg/PREREG_J_LOCK.md
+c20aa773e6651edaf897724cd7ec617ab0b42fa41771080389770dccae264d9b  round17/prereg/PREREG_J_CLARIFICATIONS_C1.md
+ab8e39049d23472b106ba9cde3b97cd9d94658933ce3bfe2f2044734170f7ada  round17/prereg/PREREG_J_CLARIFICATIONS_C2.md
+55c286efa2c719d7280ccface0635f48dcac7b328e632f9d17d64164776dee9c  round17/prereg/PREREG_J_CLARIFICATIONS_C3.md
+041bbfc8953ae548d7a791d4148eede09f494c9204e2900e8f96e3ee0c1db8e2  round17/src/R17_ARRAY_SCHEMA.md
+35e41ab80d513242e8710a5c0eb52e9ffd1a16b4710975927a145df6ef6683c3  round17/src/pfizer_telohaec_reader_r17.py
+320b1d196f414d8ee034d78412a73dd48bd39b2df627cffe541f3cb4623ab7ea  round16/status/FREEZE_MANIFEST_R16_D5.txt
+4d5fbd09ff8c0dbbc29c35761825b2f5fcd7301e666344abdc17f6a9f7f9e694  controller/checks/r17_check.py

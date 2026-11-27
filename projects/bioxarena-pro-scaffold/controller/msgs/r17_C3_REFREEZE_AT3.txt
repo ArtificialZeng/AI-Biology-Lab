@@ -1,0 +1,10 @@
+[Master Controller -> A-T3] C3.1 patch verified. Your one-line p_delta change matches C1.5, and the controller reran your tests (OK). The controller's independent checker on a fresh synthetic export of yours prints R17_CHECK_MATCH (20,371 checks, 0 failures, worst 4.3e-14).
+
+Your code is re-frozen in round17/status/R17_CODE_FREEZE_AT3_v2.txt (the old freeze file is marked superseded). Your R16 Group 3 run is verified too:
+- arrays bitwise identical to the main line;
+- the controller recompute on your arrays matches;
+- your STATE_HVG metrics 109/109;
+- pass-2 items 433/433.
+Thank you.
+
+R17_GO_AT3 stands. You may start your Round 17 run now, with the exact command in round17/status/R17_GO_AT3.txt. The main line's Round 17 run is already on MPS; expect slow pools. Markers: R17_AT3_DONE / R17_AT3_DEVIATION. Boundaries are unchanged.

@@ -71,16 +71,15 @@ from run_audit_r17 import (  # noqa: E402
 
 class TestR17FreezeGatesAndSplits(unittest.TestCase):
     def test_freeze_gates_refuse_real_execution_until_unlocked(self) -> None:
-        # Live repo status_dir currently lacks R17_CODE_FREEZE_AT3.txt & R17_GO_AT3.txt -> MUST refuse!
-        with self.assertRaises(BlindingGateError):
-            assert_freeze_gates_r17()
-
         with tempfile.TemporaryDirectory() as td:
             td_p = Path(td)
             prereg_d = td_p / "prereg"
             status_d = td_p / "status"
             prereg_d.mkdir()
             status_d.mkdir()
+            # Empty status/prereg dirs -> MUST refuse!
+            with self.assertRaises(BlindingGateError):
+                assert_freeze_gates_r17(status_dir=status_d, prereg_dir=prereg_d)
             (prereg_d / "PREREG_J_DRAFT_v2.md").write_bytes((R17_ROOT / "prereg" / "PREREG_J_DRAFT_v2.md").read_bytes())
             (prereg_d / "PREREG_J_LOCK.md").write_text("LOCKED\n", encoding="utf-8")
             (status_d / "R17_CODE_FREEZE_AT3.txt").write_text("FROZEN\n", encoding="utf-8")
@@ -164,6 +163,13 @@ class TestR17StatisticsAndRules(unittest.TestCase):
         self.assertEqual(res_3["classification"], "INCONCLUSIVE")
         self.assertEqual(res_3["subreason"], "VALIDITY_FAIL")
         self.assertEqual(res_3["_internal"]["s0"]["reason"], "HALF_SIZE_LT_2")
+
+        # Case D: C3.1 one-directional p_delta -> strictly negative draws yield p_delta == 1.0 (not small!)
+        from audit_r17_stats import _bootstrap_one_dir_p
+        neg_draws = -np.linspace(0.05, 0.25, 200)
+        self.assertEqual(_bootstrap_one_dir_p(neg_draws), 1.0)
+        pos_draws = np.linspace(0.05, 0.25, 200)
+        self.assertAlmostEqual(_bootstrap_one_dir_p(pos_draws), 2.0 / 201.0, places=12)
 
     def test_h_j2_full_reversal_and_bonferroni56(self) -> None:
         rng = np.random.default_rng(2026)
@@ -404,9 +410,14 @@ class TestR17SyntheticEndToEndSchemaAndStage4(unittest.TestCase):
             self.assertEqual(s1["holm_pooled_sensitivity"]["m_tests"], 18)
             self.assertEqual(len(s1["holm_pooled_sensitivity"]["steps"]), 18)
 
-            # 4. Verify CLI `--phase real_r17` fails cleanly without unlock receipts
+            # 4. Verify CLI `--phase real_r17` fails cleanly when unlock receipts are absent
+            empty_status = Path(td) / "empty_status"
+            empty_status.mkdir()
             cli_real = subprocess.run(
-                [sys.executable, str(AUDIT_R17_DIR / "run_audit_r17.py"), "--phase", "real_r17", "--device", "cpu"],
+                [
+                    sys.executable, str(AUDIT_R17_DIR / "run_audit_r17.py"),
+                    "--phase", "real_r17", "--status-dir", str(empty_status), "--device", "cpu",
+                ],
                 capture_output=True, text=True,
             )
             self.assertNotEqual(cli_real.returncode, 0)

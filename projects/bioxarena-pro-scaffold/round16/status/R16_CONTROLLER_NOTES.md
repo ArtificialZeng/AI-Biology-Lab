@@ -310,3 +310,15 @@
     - Holm tie order: tie-order-dependent rejections are reported as not rejected (C3.3).
     - mac_ctrl override (C3.4 = C2.3).
   - No call changed in the synthetic runs.
+
+## 2026-11-27 09:20–09:30 — Group 3 verified across parties
+- Main-line `R16_MAIN_G3_DONE` 09:20 (elapsed 10,491 s). A-T3's blind Group 3 outputs were written at 09:18; its marker is pending, as it is also patching for C3.
+- Arrays: STATE_SE and STATE_HVG predicted Δ bitwise identical (worst 0).
+- Controller recompute on A-T3's STATE_SE arrays vs main: R16_MAIN_VS_CONTROLLER_MATCH (5.6e-16). A-T3's HVG metrics: 109/109. Pass-2 items: 433/433. Neutral panel (controller): 33/33.
+- Verdict drafted in `round16/status/R16_VERDICT_G3.md`. STATE_SE is 0.022 against FCT 0.152, FCT superior under every batch setting, with low signal.
+- Not committed until A-T3's Round 17 code is re-frozen after the C3.1 patch, so that no Group 3 number is in view while A-T3 edits code.
+- The main-line Round 17 run started at about 09:20 (pid 11669).
+- 09:25–09:33: A-T3 `R17_AT3_C3_PATCHED`. The diff is one line (`p_delta` → one-directional helper, `min(1, 2(1+#{d≤0})/(B+1))`) plus tests. Controller rerun of the tests: OK.
+  - Controller checker on a fresh A-T3 synthetic export: **R17_CHECK_MATCH** (20,371 checks, 0 fail). The main-line synthetic export has only the 10 expected report-level differences: 6 on mac_ctrl (C2.3) and 4 J5b exact ties (C3.2).
+  - Re-frozen as `round17/status/R17_CODE_FREEZE_AT3_v2.txt`; the old file is marked superseded. A-T3 is cleared to start its Round 17 run (its R16 Group 3 run is done and verified).
+  - Group 3 verdict and results committed now.

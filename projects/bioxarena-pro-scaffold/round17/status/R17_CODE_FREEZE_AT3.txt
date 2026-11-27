@@ -1,3 +1,4 @@
+# SUPERSEDED 2026-11-27 09:31 +0800 by round17/status/R17_CODE_FREEZE_AT3_v2.txt (C3.1 patch). The entries below for audit_r17_stats.py and test_audit_r17.py are the pre-C3 versions; v2 is the binding A-T3 code freeze.
 # R17_CODE_FREEZE_AT3 — controller Claude 2026-11-27 08:23 +0800. A-T3 clean-room Round 17 implementation frozen before any Round 17 real-cell inference by A-T3.
 # Controller checks: unit tests 8/8 OK (controller rerun, 127 s), synthetic end-to-end recompute exact (A-T3 report), independence 2.3% shared lines (schema keys, paths). C2 patch (Holm C2.1) verified by hash. Frozen R16 audit code reused read-only: FREEZE_MANIFEST_R16_D5 (0 failures).
 # Format: sha256  path

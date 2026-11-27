@@ -898,3 +898,480 @@ R16_AT3_SECONDARY_DONE
   * `cd4t_rest`: `median = -0.004393`, `q975 = 0.002394`, `p_emp = 0.009901`, `matched = 0.015512`, `ci975_lo = -0.020996`, `matched_gt_q975 = False`
 
 - Status: Round 16 Pass 1 (`STATE_SE` + `hvg_d8` `STATE_HVG`) and Pass 2 (`results/secondary`) ALL COMPLETE under D1–D8 fixes; awaiting Master Controller three-way adjudication (`controller/checks/r16_check.py`).
+
+## 2026-11-27 07:19 +08:00 — Round 16 Addendum B (Occam) Clean-Room Adapter + Stage 5A (items 1–2) & Stage 5B CPU Gates Complete (`Group 3` MPS Active)
+- Round 16 Groups 1–2 Verdict Confirmed Closed: `round16/status/R16_VERDICT_G12.md` (Controller three-way parity verified).
+- Round 16 Group 3 (`gse295214_h1`) Blind Run Active on MPS:
+  - Verified all `91` non-tar entries in `round16/status/FREEZE_MANIFEST_R16_DATA_G3.txt` (`G3_DATA_91_FILES_OK`, `D4_MINUS_D8_FREEZE_OK`, `/Users/mac/.cache/r16_gse295214/raw`).
+  - Launched `round16/audit/run_audit_r16.py --phase real_r16 --models STATE_SE STATE_HVG --lines gse295214_h1 --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --raw-gse295214-dir /Users/mac/.cache/r16_gse295214/raw --device mps --n-boot 4000 --seed 20261601 --include-hvg-perm100 --include-g4 --output-dir round16/audit/results/group3` logging to `round16/audit/results/run_group3.log` (`task-5794`, PID `54934`, actively scanning raw control pools prior to MPS inference; zero concurrent MPS from Addendum B).
+- Addendum B Clean-Room Audit Code (`round16_addB/audit/`, Python `3.8.19` in frozen `round16_addB/.venv`, importing ONLY unchanged pinned Occam classes from `round16_addB/shared/models/occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/src`):
+  - `round16_addB/audit/__init__.py` (`sha256=0c2448523091251880d40c3d581de54a917995424e0467b64877ccb520fe130d`)
+  - `round16_addB/audit/audit_addb_occam_adapter.py` (`sha256=1c38deb4cd98e5aeb8b295b29930bc44d542c5295a4689a2bad90b6a9b12f5c5`) — L1 legacy-categorical HDF5 reader, duplicate-Ensembl leading-column guard, `rhj_6983_axis` / `pairwise_common_axis` / `full_44728_api` normalization, Two-Tier `pert2id` resolver via frozen `HGNCBridge`, `baseline="reconstructed"` (`[[-1]]`) / `"real"`, `.npz` exporter, `cell_eval`-equivalent pseudobulk scorer
+  - `round16_addB/audit/run_addb_gates_cpu.py` (`sha256=9173cd0cd69f5f219f6a5ac63a3ca01cbba15c8d860dd6ca016a2fb2f5002950`) — CPU-only (`torch.set_num_threads(4)`) Stage 5A (items 1–2) & Stage 5B gate runner
+  - `round16_addB/audit/test_addb_audit.py` (`sha256=b80886f87fc443c8bbcb07669902daf1c8e9d601e183bcdb35b86ee0b1ee59af`) — synthetic unit tests: `4/4 OK` (`0.235s`)
+- Stage 5A (Items 1–2 on `CPU float32`, `torch==2.4.1`, `torch.set_num_threads(4)`): **PASS** (`item_3_mps_parity = DEFERRED_PENDING_CONTROLLER_MPS_GO`)
+  - Checksums (`R16_ADDB_CHECKSUMS.sha256` `8/8` files exact) + `gene_axis_sha256 = ef64f2ba7ff7816ed947796066cd8a68014884c6176619d750ef79462c78d4c0` + all checkpoint invariants verified (`is_virtual_cell_checkpoint=True`, `target_sum=2000.0`, `output_activation=softplus`, `interaction_type=film`, `film_mode=multiplicative_only`, `film_mean_free=True`, `film_hidden_dim=256`, `len(gene_names)=44728`, `len(pert2id)=18216`, `source_emb=None`, `modality_emb=None`, `n_batch_encoder_params=0`, `strict=True`).
+  - `32`-cell synthetic smoke (`seed=20261601`): strictly positive finite outputs (`dead_gene_frac=0.0 < 0.01`), exact repeat determinism `max_abs=0.0`, cross-process `PYTHONHASHSEED` (`1` vs `99991`) `max_abs=0.0`, control-swap delta `max_abs=0.537270 > 1e-4`, `forward_composed(..., "decode_seq_mean")` vs `("sum")` `max_abs=0.0 <= 1e-6`.
+- Stage 5B Quantitative Reproduction on Local `GSE264667_hepg2_raw_singlecell_01.h5ad` (`sha256=e1ad7c3c5a201c861a207a858aa7e59f5e6ac1955674c415f7de0d1dadadb52e`, `42,402` panel rows: `37,426` pert across `611` cohort perts + `4,976` NTCs; `6,983/6,983` RHJ genes): **Case A PASS** (`20/20` split hashes matched `splits_manifest.json`; `ctrl_batch_max_abs_diff_max=1`):
+  - `adapter_mean_pearson_delta = 0.39417821857779456` vs target `0.394178` (`|diff| = 2.19e-07 <= 0.005`, PASS)
+  - `adapter_mean_mae = 0.03015723091576918` vs target `0.030157` (`|diff| = 2.31e-07 <= 0.002`, PASS)
+  - `local_experimental_pearson_delta = 0.37217420618788294` vs target `0.372174` (`|diff| = 2.06e-07 <= 0.002`, PASS)
+  - Per-split `(occam_pd, occam_mae, exp_pd)`: split 0 `(0.392850, 0.030145, 0.371669)`, split 1 `(0.397798, 0.030116, 0.370873)`, split 2 `(0.395306, 0.030132, 0.373463)`, split 3 `(0.392278, 0.030165, 0.372176)`, split 4 `(0.392659, 0.030228, 0.372690)`.
+- Gate Outputs:
+  - `round16_addB/audit/results/gates_cpu_summary.json` (`sha256=fb57384cf884f6a84e857ef2cc11c6ada6bde2bb741bf98813de1a4d19f879c2`)
+  - `round16_addB/audit/results/run_gates_cpu.log` (`sha256=49d7a932ded1f13f9547e6822fb8feea1890c6fafd08500130593624d10429e5`)
+R16_AT3_ADDB_GATES_CPU_DONE | Case=A | splits=20/20 | pearson_delta=0.394178 (diff=2.19e-07) | mae=0.030157 (diff=2.31e-07) | exp_pearson_delta=0.372174 (diff=2.06e-07) | PASS | MPS_HELD
+
+
+### Round 17 (`PREREG_J`) Clean-Room Implementation Ready (CPU Verification Passed; Real Execution Gated)
+- Clean-room implementation files under `round17/audit/` (strictly isolated from `round17/src/*.py` except locked `round17/src/pfizer_telohaec_reader_r17.py`, and zero access to `round17/results/`, `round16/results/`, `round16/src/`, `round16_addB/`, or `MAIN.txt`):
+  - `round17/audit/__init__.py`: `sha256=80a72b17de70fb934dce29eccd70847ba06a071e6ea1d02d876d2c6044fcaa13`
+  - `round17/audit/audit_r17_controls.py`: `sha256=97a4ade8c5c8295294987e29e17f09ff10839aecdfe9cd6f612cc18abc64c3ee`
+  - `round17/audit/audit_r17_stats.py`: `sha256=a6228accce1c3657de36a6301fbe82634eb93b877cb410161fa4a6dc1b3b92cc`
+  - `round17/audit/run_audit_r17.py`: `sha256=ed84b559387eb43f08a442155620a2606ea6f7cc74f40a9b478cf2253f3af666`
+  - `round17/audit/test_audit_r17.py`: `sha256=82fafffd5e8c51634ad4b49d2977f6648940f648c439ea611a21e1f27a26ec6b`
+- CPU Verification Results (`round16/.venv/bin/python`, `2026-11-27`):
+  - `python -m py_compile round17/audit/*.py`: `PY_COMPILE_OK`.
+  - `python -m unittest discover -s round17/audit -p "test_*.py" -v`: **8/8 tests `OK` (`130.481s`)**:
+    1. `test_freeze_gates_refuse_real_execution_until_unlocked`: confirmed `assert_freeze_gates_r17()` raises `BlindingGateError` without `R17_CODE_FREEZE_AT3.txt` and `R17_GO_AT3.txt`, and verifies `PREREG_J_DRAFT_v2.md` SHA-256 (`7033337d1f42588ee9277804c6a803eb940312fe95a4ee31e2c000555b0fb85b`).
+    2. `test_stratified_split_halves_c1_4`: verified exact odd/even alternating assignment (`P1` odd, `P2` even), sorted index order within each half, and `N=3` (`mac_ctrl`) `|P1|=1, |P2|=2` split.
+    3. `test_mismatched_strata_exclusions`: verified `a549_ko` exclusion on `a549_ko_cas9pos` and `a549_myllia`, and `cd4t_rest` reassignment from foreign `unseen_sources` to `same_lineage_sources` on `cd4t_stim48`.
+    4. `test_h_j1_precision_and_batch_dependence_detection`: verified `BATCH_DEPENDENCE_PRACTICALLY_MEANINGFUL` (`delta_cf_0 > 0.04`, `tau_batch > 0.02`, `p_hj1_iu < 0.05/3`), `BATCH_INVARIANT_WITHIN_DELTA` (`delta_cf_0 = 0`, `tau_batch = 0`), and `N=3` (`mac_ctrl`) `INCONCLUSIVE (subreason=VALIDITY_FAIL, HALF_SIZE_LT_2)`.
+    5. `test_h_j2_full_reversal_and_bonferroni56`: verified `CALL_UNSTABLE_SIGN_REVERSAL` + normal Bonferroni-56 `z_critical = norm.ppf(1 - 0.025/112)` + empirical 20k-style quantile calibration.
+    6. `test_l2_selection_tie_and_medoid_tie_break`: verified exact tie-breaking to `b=0` in `L2` correlation selection, per-fold agreement diagnostics, and lowest-index tie-breaking in Euclidean geometric medoid over 4-fold mean `batch_encoder.weight`.
+    7. `test_holm_intersection_union_gate_and_j5b_exclusions`: verified Holm step-down stopping when intersection-union CI gate fails even if `p < alpha_step`, `J5b` `a549_ko_cas9pos` exclusion from `fresh_n_ge_16_lines`, `pfizer_telohaec_cytokine` toggle, and BH FDR.
+    8. `test_synthetic_e2e_cli_schema_allow_pickle_false_and_recompute_parity`: ran `--phase synthetic_e2e` across all 11 lines + 17 pools + `SENS_FCT_full_r9_6_incl_vcc2025_h1.npz`, verified `allow_pickle=False` across every `.npz`, verified `--recompute-from-arrays` (`104,606` numeric leaves, `max_abs_diff = 0.0 <= 1e-12`), and confirmed CLI `--phase real_r17` refusal (`BlindingGateError`).
+  - Standalone CLI `--phase synthetic_e2e --cohort all --n-boot 250 --n-boot-bonf56 400 --n-perm 300 --n-splits-diag 4 --device cpu` + `--recompute-from-arrays`: `SYNTHETIC_E2E_OK` and `RECOMPUTE_OK` (`n_leaves = 104,606`, `max_abs_diff = 0.0 <= 1e-12`).
+- **Explicit List of Interpretation Points Where `PREREG_J` + `Clarifications C1` + `R17_ARRAY_SCHEMA.md` Required Explicit Choices (NOT resolved silently):**
+  1. **Real-execution gate filenames (`C1.2` vs Controller directive):** `C1.2` names `R17_CODE_FREEZE.txt` + `R17_GO.txt` + `PREREG_J_COMMIT.txt`, whereas Controller's A-T3 mandate specifies `R17_CODE_FREEZE_AT3.txt` + `R17_GO_AT3.txt` (with `PREREG_J_LOCK.md`). `assert_freeze_gates_r17()` strictly enforces `PREREG_J_LOCK.md` + `R17_CODE_FREEZE_AT3.txt` + `R17_GO_AT3.txt` (+ `PREREG_J_DRAFT_v2.md` SHA-256).
+  2. **`control_barcodes_r17.json` barcode prefix conventions on newly added R10–R14 lines:** `cd4t_stim48` formats `{donor_id}_{lane_tag}:{bc}` (mirroring `cd4t_rest`) and `mac_lps`/`mac_ctrl` prefix `{ltag}:{bc}`, whereas h5ad-backed lines (`a549_myllia`, `hek293_xucao`, `telohaec`, `calu3`, `pfizer_telohaec_{basal,cytokine}`) store exact `.obs` barcodes (`cell_id` on `a549_ko_cas9pos`). Row indices/UMI sums come deterministically from frozen `build_*_parts`, though barcode string prefixes across Main Line vs A-T3 could differ if Main Line omitted/altered directory prefixes.
+  3. **`obs_ntc_mean_official_median_log1p` normalization denominator & collision tie-break:** Computed from full-transcriptome raw cell total UMIs normalized to the sampled NTC pool median (`official_median_log1p` -> `log1p`), aligned onto `eval_genes` via `HGNCBridge` resolving duplicate symbols by highest sampled raw pool mean count (`Addendum A §2.2`), rather than re-normalizing only over `G_eval` or `G_model`.
+  4. **Shared `(eval_genes, eval_perts)` across `STATE_SE` & `STATE_HVG` in `observed.npz`:** `R17_ARRAY_SCHEMA.md §3.1` exports a single `observed.npz` per line for both models; `run_real_r17` takes the common intersection across both models and all 4 `zeroshot/{hepg2,jurkat,k562,rpe1}` folds (`model_genes` / `model_perts`) so `(P, G)` dimensions match identically across `STATE_SE` and `STATE_HVG`.
+  5. **Within-half `rho_ab_orth` & `source_grand_mean=None` in `H-J1` split `s = 0` (`C1.4`–`C1.7`):** When computing $r_{\mathcal{P}_k}(b)$ inside `compute_h_j1_for_subset -> _eval_split`, disattenuation `rho_ab_orth` is estimated strictly inside that half (`P1` or `P2`), and `s = 0` requires both `s2_star1["rho_ab_orth"] > 0` and `s1_star2["rho_ab_orth"] > 0` (`half_rho_ok`, plus `delta_cf_valid_frac >= 0.95`) for `valid_all = True`. Primary calls (`H-J1`, `H-J2`, `H-J3`, `J5a`) use `r_orth_cal` (`source_grand_mean=None`), with `r_dorth_cal` (`source_grand_mean != None`) exported as secondary diagnostic.
+  6. **`mac_ctrl` (`N_eval = 3`) `|P1| = 1` half-split guard (`C1.4` & `J5a`):** For `mac_ctrl` (`N=3`), `floor(3/2)=1` leaves 1 perturbation in `P1`, giving identically zero perturbation-bootstrap variance. `_eval_split` explicitly marks splits with `p1_idx.size < 2 or p2_idx.size < 2` invalid (`reason="HALF_SIZE_LT_2"`), classifying `H-J1` as `INCONCLUSIVE (VALIDITY_FAIL)`, setting `b_star_1 = b_dag_1 = b_star_2 = b_dag_2 = -1` in `preds_<M>_g4_mismatched.npz`, setting `cross_fit_primary_on_p2 = None` in `J5a`, while still running `continuity_0_17` & `continuity_0_35` on all `N=3` rows and full-line `r_obs_56`.
+  7. **Centered-bootstrap variance & null (`C1.6`):** `V_noise` uses `ddof=1` across row-centered valid joint bootstrap vectors (`r_row_c = r_fin - mean_b(r_fin)`), and the centered null centers columns at the valid-bootstrap mean THEN row-centers (`z_null = r_fin - mean_boot(r_fin); z_row_c = z_null - mean_b(z_null)`), rather than centering columns at `r_obs`.
+  8. **Holm step-down stopping with `H-J1` intersection-union CI gate (`C1.5`):** Step-down checks BOTH `p_raw < alpha_step` AND the step-specific `(1 - alpha_step)` percentile CI gate (`ci_adj_lo > 0` for `H-J1`; two-sided exclusion of `0` for `H-J3a/b`, forced `False` for `H-J3b` if `l2_selected_batch_idx == 0`) and halts rejection upon failure of either condition. Confirmatory Holm entries include lines with `role == "confirmatory"` and `n_eval >= 50`.
+  9. **Batch-encoder Euclidean medoid & `multi_batch_ens8` / fold averaging (`C1.9` & `R17_ARRAY_SCHEMA.md §3.2`):**
+     - `medoid_batch_idx` averages `batch_encoder.weight` across the 4 folds to `(56, 128)` BEFORE computing pairwise Euclidean distance sums (ties broken to lowest index; cosine medoid and per-fold Euclidean medoids logged in `run_metadata`), rather than averaging per-fold distance matrices.
+     - `delta_pred_multi_batch_ens8` equals `delta_pred_56[[0, 7, 14, 21, 28, 35, 42, 49]].mean(axis=0)` (equivalent to per-cell averaging over those 8 indices up to `float32->float64` accumulation order `~1e-7`).
+     - Fold ordering in `ntc_pb_per_fold_56` and `per_fold_r_orth_cal_56` is fixed as `("zeroshot/hepg2", "zeroshot/jurkat", "zeroshot/k562", "zeroshot/rpe1")`, with per-fold `[0, 14]` cell clipping before `float64` cell averaging and `float64` 4-fold averaging.
+  10. **`J5b` `fresh_n_ge_16` vs `pfizer_telohaec_cytokine` (`C1.10`) & permutation ties:** `pfizer_telohaec_cytokine` (`N=116`) shares cellular background with `pfizer_telohaec_basal`; `compute_j5b_rank_correlations()` exports BOTH `fresh_n_ge_16_pairs` (including `cytokine`) and `fresh_n_ge_16_excl_cytokine_pairs` (excluding `cytokine`, while always excluding `a549_ko_cas9pos`), using average-rank ties and `p_perm = (1 + #{|rho_perm| >= |rho_obs| - 1e-12}) / (n_perm + 1)` across one shared `(n_perm, 56)` permutation table.
+  11. **`--ctrl-resample-seed 20261702` CLI flag (`C1.13` vs `C1.1` / `R17_ARRAY_SCHEMA.md`):** Accepted on CLI and recorded in `control_barcodes_r17.json` & `run_metadata` without exporting an unrequested resample array artifact (`C1.1` removed mandatory resample draws).
+  12. **Synthetic E2E validation scope:** CPU E2E verification exercised `SyntheticStateSweepBackend` cleanly through every file-export and Stage 4 recomputation path; `RealStateSweepBackend` wraps the frozen `round16/audit/audit_r16_state_adapter.py` primitives verbatim and remains on hard hold for real cells/MPS until `R17_CODE_FREEZE_AT3.txt` and `R17_GO_AT3.txt` are issued and `task-5794` completes.
+R17_AT3_IMPL_READY
+
+### Round 17 (`PREREG_J`) Clarifications `C2` Patch & Verification (`C2.1`, `C2.2`, `C2.4`)
+- Implemented binding `PREREG_J_CLARIFICATIONS_C2.md` updates:
+  1. `C2.1` Holm (`round17/audit/audit_r17_stats.py`): step-down now executes strictly on raw `C1.5` p-values (`holm_p_rejected`); each test evaluates its interval gate at `alpha_eff` (`alpha_step` if `holm_p_rejected`, else `stopping_alpha`), with `rejected = holm_p_rejected and ci_gate_passed`. Interval-gate failure removes only that test without halting step-down; `h_j1_holm` classification evaluates at `alpha_eff`; `_hj1_ci` explicitly returns `False` when `valid_all == False`.
+  2. `C2.2` `J5b`: verified `_spearman_vectorized_against_perms` line 1077 (`round17/audit/audit_r17_stats.py`) already implements exact `np.abs(rho_null) >= abs(rho_obs)` with zero tolerance (confirmed no `- 1e-12` term in code); added explicit exact-equality unit check in `test_audit_r17.py`.
+  3. `C2.4` `control_barcodes_r17.json`: added `barcode_prefix_convention` and `cell_total_umis` per sampled control pool in `round17/audit/run_audit_r17.py` alongside `barcodes`.
+  4. Kept all accepted items unchanged (`C2.3` `HALF_SIZE_LT_2`, `C2.5` `obs_ntc_mean_official_median_log1p`, `C2.6` items 3/4/5/7/9/11).
+- Updated SHA-256 checksums (`round17/audit/*.py`):
+  - `round17/audit/__init__.py`: `sha256=80a72b17de70fb934dce29eccd70847ba06a071e6ea1d02d876d2c6044fcaa13`
+  - `round17/audit/audit_r17_controls.py`: `sha256=97a4ade8c5c8295294987e29e17f09ff10839aecdfe9cd6f612cc18abc64c3ee`
+  - `round17/audit/audit_r17_stats.py`: `sha256=11879f6b00929a28b770e8856b51f8bde41e260c0eb258c8384fc91dd606f7e5`
+  - `round17/audit/run_audit_r17.py`: `sha256=6bf5712f97ae217555084392b6b0cc05f6cd8abdc0ce8be211633113428370e5`
+  - `round17/audit/test_audit_r17.py`: `sha256=0dc113fe4e566f9041c23c4dcada9580fb60ea04cff31192b088f7a6af02afdf`
+- Verification Results (`round16/.venv/bin/python`, `2026-11-27`):
+  - `py_compile round17/audit/*.py`: `PY_COMPILE_OK`.
+  - `unittest discover -s round17/audit -p "test_*.py" -v`: **8/8 `OK` (`130.679s`)** (specifically verified `C2.1` rank-1 CI gate failure does not halt step-down to rank-2 `t2` while `t3`/`t4` inherit `stopping_alpha=0.025`, `C2.2` exact `p_perm = 2/3` without tolerance, `C2.4` `barcode_prefix_convention` + `cell_total_umis`, and CLI `--phase real_r17` freeze-gate refusal).
+  - CLI `--phase synthetic_e2e --cohort all --n-boot 250 --n-boot-bonf56 400 --n-perm 300 --n-splits-diag 4 --device cpu`: `SYNTHETIC_E2E_OK`, `stage4_self_audit`: `n_leaves=104687`, `max_abs_diff=0.0`, `passed=true`.
+  - CLI `--recompute-from-arrays ...`: `RECOMPUTE_OK`, `n_leaves=104687`, `max_abs_diff=0.0 <= 1e-12`, `passed=true`.
+- Full Unified Diff (`pre_c2` -> current):
+```diff
+--- pre_c2/audit_r17_stats.py	2026-11-27 08:13:14
++++ round17/audit/audit_r17_stats.py	2026-11-27 08:13:50
+@@ -884,41 +884,79 @@
+     alpha_family: float = 0.05,
+ ) -> Dict[str, Any]:
+     """
+-    Apply Holm-Bonferroni step-down across `M` confirmatory tests (`C1.5`).
+-    Each item in `p_entries` has `key`, `p_value`, and optional `ci_check_fn(alpha_adj) -> bool`.
++    Apply Holm-Bonferroni step-down across `M` confirmatory tests (`C1.5`, `C2.1`):
++      - Step-down runs on raw p-values only (`p_raw < alpha_family / (M - rank)`).
++      - Each test gets `alpha_eff`: its step `alpha` if Holm rejects it, else `stopping_alpha`
++        (the `alpha_step` at which the p-value step-down first failed).
++      - A test is declared `rejected` iff Holm rejects it AND its interval gate passes at
++        `alpha_eff`. Interval-gate failure removes only that test without halting step-down.
+     """
+     m = len(p_entries)
+     if m == 0:
+-        return {"m_tests": 0, "steps": [], "by_key": {}}
+-    ordered = sorted(enumerate(p_entries), key=lambda kv: (float(kv[1]["p_value"]), kv[1]["key"]))
+-    steps: List[Dict[str, Any]] = []
+-    by_key: Dict[str, Dict[str, Any]] = {}
+-    still_rejecting = True
++        return {
++            "m_tests": 0,
++            "alpha_family": float(alpha_family),
++            "stopping_alpha": None,
++            "steps": [],
++            "by_key": {},
++        }
++    ordered = sorted(enumerate(p_entries), key=lambda kv: (float(kv[1]["p_value"]), str(kv[1]["key"])))
++
++    # Pass 1: Holm step-down on raw p-values alone
++    holm_p_still_rejecting = True
++    stopping_alpha: Optional[float] = None
+     running_max_p_holm = 0.0
++    step_alphas: List[float] = []
++    p_holms: List[float] = []
++    p_holm_rejected: List[bool] = []
+ 
+     for rank, (_, item) in enumerate(ordered):
+         alpha_step = float(alpha_family) / float(m - rank)
+         p_raw = float(item["p_value"])
+         p_h = min(1.0, p_raw * float(m - rank))
+         running_max_p_holm = max(running_max_p_holm, p_h)
+-        ci_ok = True if "ci_check_fn" not in item or item["ci_check_fn"] is None else bool(item["ci_check_fn"](alpha_step))
+-        rej = bool(still_rejecting and p_raw < alpha_step and ci_ok)
+-        if not rej:
+-            still_rejecting = False
++        p_hol_rej = bool(holm_p_still_rejecting and np.isfinite(p_raw) and p_raw < alpha_step)
++        if not p_hol_rej and holm_p_still_rejecting:
++            holm_p_still_rejecting = False
++            stopping_alpha = alpha_step
++        step_alphas.append(alpha_step)
++        p_holms.append(float(running_max_p_holm))
++        p_holm_rejected.append(p_hol_rej)
++
++    # Pass 2: Evaluate each test's own interval gate at its effective alpha
++    steps: List[Dict[str, Any]] = []
++    by_key: Dict[str, Dict[str, Any]] = {}
++    for rank, (_, item) in enumerate(ordered):
++        p_hol_rej = p_holm_rejected[rank]
++        alpha_eff = step_alphas[rank] if p_hol_rej else float(stopping_alpha)  # type: ignore[arg-type]
++        ci_ok = (
++            True
++            if "ci_check_fn" not in item or item["ci_check_fn"] is None
++            else bool(item["ci_check_fn"](alpha_eff))
++        )
++        rej = bool(p_hol_rej and ci_ok)
+         rec = {
+             "key": item["key"],
+             "rank": rank + 1,
+             "m_tests": m,
+-            "p_raw": p_raw,
+-            "p_holm": float(running_max_p_holm),
+-            "alpha_step": alpha_step,
++            "p_raw": float(item["p_value"]),
++            "p_holm": p_holms[rank],
++            "alpha_step": step_alphas[rank],
++            "holm_p_rejected": bool(p_hol_rej),
++            "alpha_eff": float(alpha_eff),
+             "ci_gate_passed": ci_ok,
+             "rejected": rej,
+         }
+         steps.append(rec)
+         by_key[item["key"]] = rec
+ 
+-    return {"m_tests": m, "alpha_family": float(alpha_family), "steps": steps, "by_key": by_key}
++    return {
++        "m_tests": m,
++        "alpha_family": float(alpha_family),
++        "stopping_alpha": stopping_alpha,
++        "steps": steps,
++        "by_key": by_key,
++    }
+ 
+ 
+ def _decompose_g4_cell_quad(
+@@ -1474,12 +1512,14 @@
+             hi = ev["_holm_inputs"]
+ 
+             def _hj1_ci(alpha_s: float, hi_ref=hi) -> bool:
++                if not hi_ref["valid_all"]:
++                    return False
+                 c_res = classify_h_j1_under_alpha(
+                     hi_ref["valid_all"], hi_ref["p_var"], hi_ref["delta_cf_est"],
+                     hi_ref["delta_cf_boot"], hi_ref["tau_batch"], hi_ref["has_detectable_signal"],
+                     alpha_adj=alpha_s,
+                 )
+-                return np.isfinite(c_res["ci_adj_lo"]) and c_res["ci_adj_lo"] > 0.0
++                return bool(np.isfinite(c_res["ci_adj_lo"]) and c_res["ci_adj_lo"] > 0.0)
+ 
+             def _rule_ci(alpha_s: float, boot_arr=None) -> bool:
+                 lo, hi_c, _ = _percentile_ci(boot_arr, alpha=alpha_s)
+@@ -1534,9 +1574,9 @@
+             if h1_step is not None:
+                 c_holm = classify_h_j1_under_alpha(
+                     hi["valid_all"], hi["p_var"], hi["delta_cf_est"], hi["delta_cf_boot"],
+-                    hi["tau_batch"], hi["has_detectable_signal"], alpha_adj=float(h1_step["alpha_step"]),
++                    hi["tau_batch"], hi["has_detectable_signal"], alpha_adj=float(h1_step["alpha_eff"]),
+                 )
+-                # Ensure Holm sequential gate consistency
++                # Ensure Holm classification stays synchronized with p-value step-down & CI gate
+                 if not h1_step["rejected"] and c_holm["classification"] in (
+                     "BATCH_DEPENDENCE_PRACTICALLY_MEANINGFUL",
+                     "BATCH_DEPENDENCE_DETECTED_SUB_DELTA",
+--- pre_c2/run_audit_r17.py	2026-11-27 08:13:14
++++ round17/audit/run_audit_r17.py	2026-11-27 08:13:55
+@@ -91,6 +91,30 @@
+ )
+ FOLD_SHORT_NAMES_R17: Tuple[str, ...] = ("hepg2", "jurkat", "k562", "rpe1")
+ ENS8_BATCH_INDICES: Tuple[int, ...] = (0, 7, 14, 21, 28, 35, 42, 49)
++
++
++def _describe_barcode_prefix_r17(pool_name: str) -> str:
++    """Document party barcode prefix convention cleanly per `PREREG_J C2.4`."""
++    mapping = {
++        "cd4t_rest": "donor_lane:barcode (strip before ':')",
++        "cd4t_stim48": "donor_lane:barcode (strip before ':')",
++        "mac_lps": "lane_tag:barcode (strip before ':')",
++        "mac_ctrl": "lane_tag:barcode (strip before ':')",
++        "a549_myllia": "channel:barcode (strip before ':')",
++        "calu3": "gem_group:barcode (strip before ':')",
++        "a549_ko": "cell_id (exact .obs string; no synthetic prefix)",
++        "a549_ko_cas9pos": "cell_id (exact .obs string; no synthetic prefix)",
++        "pfizer_telohaec_basal": "exact .obs barcode (no synthetic prefix)",
++        "pfizer_telohaec_cytokine": "exact .obs barcode (no synthetic prefix)",
++        "hek293_xucao": "exact .obs barcode (no synthetic prefix)",
++        "telohaec": "exact .obs barcode (no synthetic prefix)",
++        "gse295214_h1": "donor_lane:barcode (strip before ':') or exact .obs string",
++        "dld1": "lane_tag:barcode (strip before ':') or exact .obs string",
++        "nadig_hepg2": "exact .obs barcode (no synthetic prefix)",
++        "nadig_jurkat": "exact .obs barcode (no synthetic prefix)",
++        "feng_ipsc": "exact .obs barcode (no synthetic prefix)",
++    }
++    return mapping.get(pool_name, "pool_prefix:barcode (strip substring through first ':')")
+ 
+ 
+ def _json_default_r17(obj: Any) -> Any:
+@@ -940,6 +964,8 @@
+             "n_ctrl_total": int(n_total),
+             "n_ctrl_sampled": int(pool.raw_counts.shape[0]),
+             "barcodes": pool.cell_barcodes.tolist(),
++            "barcode_prefix_convention": _describe_barcode_prefix_r17(pname),
++            "cell_total_umis": [float(u) for u in pool.cell_total_umis.tolist()],
+             "batch_labels": pool.batch_labels.tolist(),
+             "sampling_mode": pool.sampling_audit.get("sampling_mode"),
+         }
+@@ -1125,6 +1151,8 @@
+             "n_ctrl_total": int(n_ctrl * 4),
+             "n_ctrl_sampled": int(n_ctrl),
+             "barcodes": bcs.tolist(),
++            "barcode_prefix_convention": _describe_barcode_prefix_r17(pname),
++            "cell_total_umis": [float(u) for u in umis.tolist()],
+             "batch_labels": b_lbls.tolist(),
+             "sampling_mode": "synthetic_stratified_hamilton",
+         }
+--- pre_c2/test_audit_r17.py	2026-11-27 08:13:14
++++ round17/audit/test_audit_r17.py	2026-11-27 08:14:11
+@@ -225,15 +225,47 @@
+         self.assertEqual(compute_batch_encoder_medoids(w_19)["euclid_medoid_idx"], 19)
+ 
+     def test_holm_intersection_union_gate_and_j5b_exclusions(self) -> None:
+-        # Entry sorted lowest p=0.005 < 0.05/2=0.025, BUT CI gate fails -> Holm sequential rejection stops!
++        # C2.1: Holm step-down runs on raw p-values only!
++        # Rank-1 t1 (p=0.001 < 0.0125) fails CI gate -> t1 removed only; step-down DOES NOT stop!
++        # Rank-2 t2 (p=0.010 < 0.01667) passes CI gate -> t2 rejected!
++        # Rank-3 t3 (p=0.030 >= 0.025) fails Holm step-down -> stopping_alpha=0.025!
++        # Rank-4 t4 (p=0.040 < 0.05) gets holm_p_rejected=False & alpha_eff=stopping_alpha=0.025!
++        seen_alphas = {}
++
++        def _gate(name: str, ret: bool):
++            def _fn(alpha_eff: float) -> bool:
++                seen_alphas[name] = alpha_eff
++                return ret
++            return _fn
++
+         entries = [
+-            {"key": "t1", "p_value": 0.005, "ci_check_fn": lambda a: False},
+-            {"key": "t2", "p_value": 0.001, "ci_check_fn": lambda a: True},
++            {"key": "t4", "p_value": 0.040, "ci_check_fn": _gate("t4", True)},
++            {"key": "t1", "p_value": 0.001, "ci_check_fn": _gate("t1", False)},
++            {"key": "t3", "p_value": 0.030, "ci_check_fn": _gate("t3", True)},
++            {"key": "t2", "p_value": 0.010, "ci_check_fn": _gate("t2", True)},
+         ]
+         holm = apply_holm_fwer_r17(entries, alpha_family=0.05)
++        self.assertAlmostEqual(holm["stopping_alpha"], 0.025, places=12)
++        self.assertTrue(holm["by_key"]["t1"]["holm_p_rejected"])
++        self.assertFalse(holm["by_key"]["t1"]["ci_gate_passed"])
++        self.assertFalse(holm["by_key"]["t1"]["rejected"])
++        self.assertAlmostEqual(seen_alphas["t1"], 0.05 / 4.0, places=12)
++
++        self.assertTrue(holm["by_key"]["t2"]["holm_p_rejected"])
++        self.assertTrue(holm["by_key"]["t2"]["ci_gate_passed"])
+         self.assertTrue(holm["by_key"]["t2"]["rejected"])
+-        self.assertFalse(holm["by_key"]["t1"]["rejected"])  # p<alpha_step but CI gate blocked
++        self.assertAlmostEqual(seen_alphas["t2"], 0.05 / 3.0, places=12)
+ 
++        self.assertFalse(holm["by_key"]["t3"]["holm_p_rejected"])
++        self.assertAlmostEqual(holm["by_key"]["t3"]["alpha_eff"], 0.025, places=12)
++        self.assertAlmostEqual(seen_alphas["t3"], 0.025, places=12)
++        self.assertFalse(holm["by_key"]["t3"]["rejected"])
++
++        self.assertFalse(holm["by_key"]["t4"]["holm_p_rejected"])
++        self.assertAlmostEqual(holm["by_key"]["t4"]["alpha_eff"], 0.025, places=12)
++        self.assertAlmostEqual(seen_alphas["t4"], 0.025, places=12)
++        self.assertFalse(holm["by_key"]["t4"]["rejected"])
++
+         # J5b exclusion check (`a549_ko_cas9pos` excluded from fresh_n_ge_16_lines; pfizer_cytokine toggle checked)
+         rng = np.random.default_rng(9)
+         scores_se = {ln: rng.normal(size=56) for ln in R17_ALL_EVAL_LINES}
+@@ -253,7 +285,17 @@
+         fdrs = compute_bh_fdr([0.001, 0.04, 0.20])
+         self.assertAlmostEqual(fdrs[0], 0.003, places=12)
+ 
++        # C2.2 exact >= |rho_obs| without tolerance
++        from audit_r17_stats import _spearman_vectorized_against_perms
++        a = np.arange(56, dtype=np.float64)
++        b = a.copy()
++        perm_ident = np.stack([np.arange(56), np.concatenate([[1, 0], np.arange(2, 56)])], axis=0)
++        sp_exact = _spearman_vectorized_against_perms(a, b, perm_ident)
++        # Identity perm has |rho|==1.0 (>=1.0), single-swap perm has |rho|<1.0 -> (1+1)/(2+1) = 2/3
++        self.assertAlmostEqual(sp_exact["spearman_rho"], 1.0, places=12)
++        self.assertAlmostEqual(sp_exact["p_perm"], 2.0 / 3.0, places=12)
+ 
++
+ class TestR17SyntheticEndToEndSchemaAndStage4(unittest.TestCase):
+     def test_synthetic_e2e_cli_schema_allow_pickle_false_and_recompute_parity(self) -> None:
+         with tempfile.TemporaryDirectory() as td:
+@@ -285,6 +327,8 @@
+             self.assertEqual(set(cb.keys()), expected_pools)
+ 
+             for pname in expected_pools:
++                self.assertIn("barcode_prefix_convention", cb[pname])
++                self.assertEqual(len(cb[pname]["cell_total_umis"]), 64)
+                 xp = out_dir / "embeddings" / f"x_state_{pname}.npz"
+                 self.assertTrue(xp.is_file())
+                 with np.load(xp, allow_pickle=False) as xz:
+```
+R17_AT3_C2_PATCHED
+
+### Round 16 Group 3 (`gse295214_h1`, MPS) Blind Audit Completion Report
+- Run completed cleanly (`exit_code=0`, `elapsed_sec=7605.76` s, `device=mps`, `neutral_batch_mode=index_zero`, `hvg_preproc_mode=official_median_log1p`, `n_boot=4000`, `seed=20261601`, `resample_seed=20261602`).
+- Verified Output Files & SHA-256 Checksums (`round16/audit/results/group3/`):
+  - `round16/audit/results/group3/STATE_HVG_ensemble4__gse295214_h1.npz`: `sha256=7282dae8bfa5b7ff8657cee44e4072b6eec509ad3341dec4898d7fecd9599a8c`
+  - `round16/audit/results/group3/STATE_HVG_ensemble4__gse295214_h1_metrics.json`: `sha256=54b2c94f9250751a6087863cbab9435e8b4904606c63baaee51919d904c2d3f7`
+  - `round16/audit/results/group3/STATE_SE_ensemble4__gse295214_h1.npz`: `sha256=cef72eeb260eec320461edda897a97cee402a6373321004b484ed2ca72e60657`
+  - `round16/audit/results/group3/STATE_SE_ensemble4__gse295214_h1_metrics.json`: `sha256=ec05538e58de96bd4125e993c135430b7c3fd73a084dc33fbff8059e57e00e82`
+  - `round16/audit/results/group3/control_barcodes_r16.json`: `sha256=147a86bbd169569bb8b76e72f247795d7c9a36479f50e2e4a37efbfa1ca77328`
+  - `round16/audit/results/group3/manifest_r16_audit.json`: `sha256=183137d1e9b31031cce86c8e4facbb60dc92c1532d3ed8364deeacadaae87c5f`
+  - `round16/audit/results/group3/sampled_control_barcodes_r16.json`: `sha256=147a86bbd169569bb8b76e72f247795d7c9a36479f50e2e4a37efbfa1ca77328`
+  - `round16/audit/results/group3/se600m_embeddings_r16.npz`: `sha256=5d93dbe266b8342219794b3faabb0b2dc90bb36375151f3b6e94e9b5e4393712`
+- Stage 2 Per-Pool `SE-600M` Embedding SHA-256 (`se600m_embeddings_sha256` inside `manifest_r16_audit.json`):
+  - `gse295214_h1`: `803d55228bc476a64f8ad9a5fcdba603957357ebff6c508b707e25720e46df8a`
+  - `gse295214_h1__resample`: `78af1fd455f5754cc4e21a307ddc638e16cbc1bc36541304f22978a66df955a1`
+  - `nadig_hepg2`: `c19386246f8fbee6d177495e54774fb87aff5e8f51717f8218d4371659f7015c`
+  - `nadig_jurkat`: `283edafae3ad25c0fe7bc52ef981adf7acfde677e0286ad65c1260ca7c05451c`
+  - `a549_ko`: `453d63679321ce150e27f32b0c6db9c33ff7aaff4ed12511a6540446f1aec586`
+  - `cd4t_rest`: `d491e9953fc5e40945d843ea32495e6723541d451998596fa0425bbeefea9188`
+  - `dld1`: `38ea12aec04d859d4775955edfc943de343fa44cca225d8c82c3e0d9db2b474d`
+  - `feng_ipsc`: `4f44560a34eb66b3c862aef946b79177580a44b04549eca6da249d014ed0baa4`
+- Extracted Calls & Key Metrics (`gse295214_h1`, `N_eval=406`, `G_eval=1837`, `rho_ab_orth=0.525234`):
+  - **`STATE_SE` (`zeroshot/ensemble4`)**:
+    - `orth_matched = 0.022032` (`97.5% CI [0.013009, 0.031257]`), `dorth_matched = 0.024510` (`97.5% CI [0.016076, 0.032952]`), `resample delta_pair = -0.000399` (`[-0.000754, -0.000035]`, `max_pred_abs_diff = 0.040751`).
+    - **`H-I1` (TOST `delta=0.04`)**: `all_within_delta = True`; per-source calls (`6` sources): `MATCHED_BETTER = 3` (`nadig_hepg2: +0.017354 [0.010066, 0.024716]`, `a549_ko: +0.006559 [0.000774, 0.012564]`, `cd4t_rest: +0.005262 [0.000334, 0.010137]`), `EQUIVALENT = 2` (`nadig_jurkat: -0.008716 [-0.017745, 0.000084]`, `dld1: +0.003797 [-0.000710, 0.008621]`), `MISMATCHED_BETTER = 1` (`feng_ipsc: -0.004068 [-0.006646, -0.001607]`); `seen_by_checkpoint = STRATUM_MIXED_OR_INCONCLUSIVE`, `unseen_by_checkpoint = STRATUM_MIXED_OR_INCONCLUSIVE` (identical counts under `h_i1_dorth`).
+    - **`H-I2` (`vs FCT primary r9_6 \ {vcc2025_h1}`)**: `FCT_SUPERIOR_TO_MODEL` (`estimate = -0.129750`, `97.5% CI [-0.145909, -0.113947]`; `FCT r_orth_cal = 0.151782`); `vs_fct_dorth = -0.135318 [-0.151225, -0.119846]`.
+    - **`H-I2` (`secondary_full_r9_6_same_targets` incl. `vcc2025_h1`)**: `FCT_SUPERIOR_TO_MODEL` (`r_orth_cal diff = -0.135581 [-0.152103, -0.119797]`; `r_dorth_cal diff = -0.141174 [-0.157057, -0.125828]`).
+    - `G4` factorial (`STATE_SE`): `seen_by_checkpoint` (`n=2`) `median_delta_batch_orth = 0.013697`, `median_batch_share_orth = 0.526118`; `unseen_by_checkpoint` (`n=4`) `median_delta_batch_orth = 0.013697`, `median_batch_share_orth = 0.746726`.
+  - **`STATE_HVG` (`zeroshot/ensemble4`)**:
+    - `orth_matched = 0.034920` (`97.5% CI [0.022907, 0.047483]`), `dorth_matched = 0.047143` (`97.5% CI [0.036692, 0.058142]`), `resample delta_pair = +0.000151` (`[-0.000104, +0.000402]`, `max_pred_abs_diff = 0.047140`).
+    - **`H-I1` (TOST `delta=0.04`)**: `all_within_delta = True`; per-source calls (`6` sources): `MATCHED_BETTER = 3` (`a549_ko: +0.029815 [0.021510, 0.038481]`, `dld1: +0.012260 [0.007843, 0.016656]`, `feng_ipsc: +0.005486 [0.003260, 0.007789]`), `EQUIVALENT = 3` (`nadig_hepg2: +0.001695 [-0.007998, 0.010831]`, `nadig_jurkat: +0.001965 [-0.005491, 0.010137]`, `cd4t_rest: +0.005129 [-0.003673, 0.013265]`), `MISMATCHED_BETTER = 0`; `seen_by_checkpoint = STRATUM_EQUIVALENT_NONZERO_SIGNAL`, `unseen_by_checkpoint = STRATUM_MIXED_OR_INCONCLUSIVE` (`h_i1_dorth`: `seen = {EQUIV:2}`, `unseen = {MATCHED_BETTER:3, EQUIV:1}`).
+    - **`H-I2` (`vs FCT primary r9_6 \ {vcc2025_h1}`)**: `FCT_SUPERIOR_TO_MODEL` (`estimate = -0.116862`, `97.5% CI [-0.133972, -0.100317]`; `FCT r_orth_cal = 0.151782`); `vs_fct_dorth = -0.112685 [-0.128964, -0.096485]`.
+    - **`H-I2` (`secondary_full_r9_6_same_targets` incl. `vcc2025_h1`)**: `FCT_SUPERIOR_TO_MODEL` (`r_orth_cal diff = -0.123001 [-0.140967, -0.105693]`; `r_dorth_cal diff = -0.118666 [-0.135912, -0.102168]`).
+R16_AT3_G3_DONE
+
+### Round 17 (`PREREG_J`) Clarifications `C3` Patch (`C3.1` One-Directional `p_delta`) & Verification
+- Implemented binding `PREREG_J_CLARIFICATIONS_C3.md` item `C3.1` (only `audit_r17_stats.py` and hermetic test isolation in `test_audit_r17.py` changed; `C3.2`–`C3.4` verified already compliant with zero change):
+  - Added `_bootstrap_one_dir_p(draws_fin)` implementing `p_Delta = min(1, 2 * (1 + #{Delta_CF^(u) <= 0}) / (B_valid + 1))` and updated `"p_delta"` in `compute_h_j1_for_subset -> _eval_split` (`audit_r17_stats.py`), leaving `_bootstrap_two_sided_p` intact for two-sided `H-J3a/b`.
+  - Updated `test_audit_r17.py` to test negative-spread `_bootstrap_one_dir_p == 1.0` (`C3.1`) and made freeze-gate refusal tests hermetic against temporary `--status-dir` so tests remain independent of live `round17/status/` unlocks.
+- Updated SHA-256 checksums (`round17/audit/*.py`):
+  - `round17/audit/__init__.py`: `sha256=80a72b17de70fb934dce29eccd70847ba06a071e6ea1d02d876d2c6044fcaa13`
+  - `round17/audit/audit_r17_controls.py`: `sha256=97a4ade8c5c8295294987e29e17f09ff10839aecdfe9cd6f612cc18abc64c3ee`
+  - `round17/audit/audit_r17_stats.py`: `sha256=6154b3a35e84b8f85ad08503f7082934153d6d99ad1c96c523f473889a51ed47`
+  - `round17/audit/run_audit_r17.py`: `sha256=6bf5712f97ae217555084392b6b0cc05f6cd8abdc0ce8be211633113428370e5`
+  - `round17/audit/test_audit_r17.py`: `sha256=e83879fe458c4d2025dde4226644518ec41df8fd12fe3dc756b5e2bb815f9b7b`
+- Verification Results (`round16/.venv/bin/python`, `2026-11-27`):
+  - `py_compile round17/audit/*.py`: `PY_COMPILE_OK`.
+  - `unittest discover -s round17/audit -p "test_*.py" -v`: **8/8 `OK` (`126.107s`)**.
+  - CLI `--phase synthetic_e2e --cohort all --n-boot 250 --n-boot-bonf56 400 --n-perm 300 --n-splits-diag 4 --device cpu`: `SYNTHETIC_E2E_OK`, `stage4_self_audit`: `n_leaves=104687`, `max_abs_diff=0.0`, `passed=true`.
+  - CLI `--recompute-from-arrays ...`: `RECOMPUTE_OK`, `n_leaves=104687`, `max_abs_diff=0.0 <= 1e-12`, `passed=true`.
+  - `C3.1` verification on synthetic `STATE_HVG` negative-spread lines:
+    - `mac_lps`: `delta_cf_0=-0.08910273281938691`, `p_delta=1.0`, `p_var=0.3386454183266932`, `p_hj1_iu=1.0`.
+    - `pfizer_telohaec_basal`: `delta_cf_0=-0.006320492588462729`, `p_delta=1.0`, `p_var=0.7091633466135459`, `p_hj1_iu=1.0`.
+- Full Unified Diff (`pre_c3` -> current):
+```diff
+--- pre_c3/audit_r17_stats.py	2026-11-27 08:36:23
++++ round17/audit/audit_r17_stats.py	2026-11-27 08:36:44
+@@ -86,6 +86,15 @@
+     return float(min(1.0, 2.0 * (1.0 + min(n_le, n_ge)) / float(b_val + 1)))
+ 
+ 
++def _bootstrap_one_dir_p(draws_fin: np.ndarray) -> float:
++    """One-directional H-J1 empirical bootstrap p-value (`C1.5`, `C3.1`): `min(1, 2*(1 + #{d<=0})/(B+1))`."""
++    b_val = int(draws_fin.size)
++    if b_val == 0:
++        return 1.0
++    n_le = int(np.sum(draws_fin <= 0.0))
++    return float(min(1.0, 2.0 * (1.0 + n_le) / float(b_val + 1)))
++
++
+ def _compute_orth_vectors_and_boot(
+     delta_obs: np.ndarray,
+     delta_pred: np.ndarray,
+@@ -438,7 +447,7 @@
+                 "delta_cf_valid_frac": vf_cf,
+                 "oracle_valid_frac": vf_or,
+                 "half_rho_ok": bool(half_rho_ok),
+-                "p_delta": _bootstrap_two_sided_p(fin_d),
++                "p_delta": _bootstrap_one_dir_p(fin_d),
+                 "p1_boot_draws": dr1,
+                 "p2_boot_draws": dr2,
+             }
+--- pre_c3/test_audit_r17.py	2026-11-27 08:36:23
++++ round17/audit/test_audit_r17.py	2026-11-27 09:19:47
+@@ -71,16 +71,15 @@
+ 
+ class TestR17FreezeGatesAndSplits(unittest.TestCase):
+     def test_freeze_gates_refuse_real_execution_until_unlocked(self) -> None:
+-        # Live repo status_dir currently lacks R17_CODE_FREEZE_AT3.txt & R17_GO_AT3.txt -> MUST refuse!
+-        with self.assertRaises(BlindingGateError):
+-            assert_freeze_gates_r17()
+-
+         with tempfile.TemporaryDirectory() as td:
+             td_p = Path(td)
+             prereg_d = td_p / "prereg"
+             status_d = td_p / "status"
+             prereg_d.mkdir()
+             status_d.mkdir()
++            # Empty status/prereg dirs -> MUST refuse!
++            with self.assertRaises(BlindingGateError):
++                assert_freeze_gates_r17(status_dir=status_d, prereg_dir=prereg_d)
+             (prereg_d / "PREREG_J_DRAFT_v2.md").write_bytes((R17_ROOT / "prereg" / "PREREG_J_DRAFT_v2.md").read_bytes())
+             (prereg_d / "PREREG_J_LOCK.md").write_text("LOCKED\n", encoding="utf-8")
+             (status_d / "R17_CODE_FREEZE_AT3.txt").write_text("FROZEN\n", encoding="utf-8")
+@@ -165,6 +164,13 @@
+         self.assertEqual(res_3["subreason"], "VALIDITY_FAIL")
+         self.assertEqual(res_3["_internal"]["s0"]["reason"], "HALF_SIZE_LT_2")
+ 
++        # Case D: C3.1 one-directional p_delta -> strictly negative draws yield p_delta == 1.0 (not small!)
++        from audit_r17_stats import _bootstrap_one_dir_p
++        neg_draws = -np.linspace(0.05, 0.25, 200)
++        self.assertEqual(_bootstrap_one_dir_p(neg_draws), 1.0)
++        pos_draws = np.linspace(0.05, 0.25, 200)
++        self.assertAlmostEqual(_bootstrap_one_dir_p(pos_draws), 2.0 / 201.0, places=12)
++
+     def test_h_j2_full_reversal_and_bonferroni56(self) -> None:
+         rng = np.random.default_rng(2026)
+         p_cnt, g_cnt = 40, 80
+@@ -404,9 +410,14 @@
+             self.assertEqual(s1["holm_pooled_sensitivity"]["m_tests"], 18)
+             self.assertEqual(len(s1["holm_pooled_sensitivity"]["steps"]), 18)
+ 
+-            # 4. Verify CLI `--phase real_r17` fails cleanly without unlock receipts
++            # 4. Verify CLI `--phase real_r17` fails cleanly when unlock receipts are absent
++            empty_status = Path(td) / "empty_status"
++            empty_status.mkdir()
+             cli_real = subprocess.run(
+-                [sys.executable, str(AUDIT_R17_DIR / "run_audit_r17.py"), "--phase", "real_r17", "--device", "cpu"],
++                [
++                    sys.executable, str(AUDIT_R17_DIR / "run_audit_r17.py"),
++                    "--phase", "real_r17", "--status-dir", str(empty_status), "--device", "cpu",
++                ],
+                 capture_output=True, text=True,
+             )
+             self.assertNotEqual(cli_real.returncode, 0)
+```
+R17_AT3_C3_PATCHED
