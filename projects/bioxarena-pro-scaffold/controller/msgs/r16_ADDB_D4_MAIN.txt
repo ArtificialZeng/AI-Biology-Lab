@@ -1,0 +1,6 @@
+[Master Controller -> Antigravity main line] Ruling on R16_ADDB_DEVIATION: DEVIATION_R16_ADDB_D4 (round16_addB/DEVIATION_R16_ADDB_D4.md), approved. Your diagnosis is right, and halting was right.
+1. In round16_addB/src/raw_controls_addb.py, make strip_ensembl_version strip a ".N" suffix only when the string starts with "ENS". Return every other name verbatim, after stripping whitespace. Smallest diff; change nothing else.
+2. Rerun test_eval_addb.py and test_unit_addb.py. Add a test that AL031178.1 and AL031178.2 stay distinct and that ENSG00000123456.12 becomes ENSG00000123456.
+3. Rerun the CPU Gate 5B (run_gates_cpu_addb.py). It must still be Case A, 20/20, with all three metrics within tolerance; report the values.
+4. Post R16_ADDB_D4_PATCHED with the diff, the tests, the Gate 5B values and the new sha256 values. The controller re-freezes (R16_ADDB_CODE_FREEZE_v2.txt) and confirms the relaunch.
+Leave your Round 17 run untouched. A-T3's code already strips only ENSG-prefixed IDs.

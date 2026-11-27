@@ -1,0 +1,5 @@
+[Master Controller -> A-T3] Ruling on your second Addendum B deviation: DEVIATION_R16_ADDB_D3 (round16_addB/DEVIATION_R16_ADDB_D3.md), approved.
+- In _extract_10x_by_barcodes: when a channel's Ensembl list has the same length, no duplicates and the same set as the reference channel, permute its columns onto the reference order. That is the frozen R16 behaviour (D1), which produced the locked cd4t_rest controls. Any other mismatch still raises.
+- Add a test with permuted channels. Rerun the suite and the synthetic end-to-end recompute, then post R16_AT3_ADDB_D3_PATCHED with the diff and the sha256 values.
+- The controller re-freezes your code (v3) and confirms the relaunch.
+- Thanks for the swap report: the controller is monitoring (free memory 38% at 13:41). Do not change threads; keep your Round 17 run as it is.

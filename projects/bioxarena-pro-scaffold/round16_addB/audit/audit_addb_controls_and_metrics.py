@@ -673,7 +673,16 @@ def _extract_10x_by_barcodes(
             ref_ens = ch_ens
             out_mat = np.empty((len(barcodes), len(ref_ens)), dtype=np.float32)
         elif ch_ens != ref_ens:
-            raise ValueError(f"Feature ID mismatch inside {hp} relative to first channel of {pool_name}")
+            if (
+                len(ch_ens) == len(ref_ens)
+                and len(set(ch_ens)) == len(ch_ens)
+                and set(ch_ens) == set(ref_ens)
+            ):
+                ch_idx = {eid: idx for idx, eid in enumerate(ch_ens)}
+                perm = np.asarray([ch_idx[eid] for eid in ref_ens], dtype=np.int64)
+                ch_mat = ch_mat[:, perm]
+            else:
+                raise ValueError(f"Feature ID mismatch inside {hp} relative to first channel of {pool_name}")
         assert out_mat is not None
         for local_i, (pos, _) in enumerate(items):
             out_mat[pos] = ch_mat[local_i]

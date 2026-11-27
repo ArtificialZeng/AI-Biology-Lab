@@ -173,6 +173,90 @@ class TestAddBFreezeGatesAndExtractors(unittest.TestCase):
             np.testing.assert_allclose(ext_10x.raw_counts, np.asarray([[0, 3], [7, 1]], dtype=np.float32))
             np.testing.assert_allclose(ext_10x.row_sum_umis, np.asarray([3.0, 8.0]))
 
+    def test_10x_permuted_channel_order_aligns_and_mismatch_raises(self) -> None:
+        def _write_10x(path: Path, bcs: list[bytes], fids: list[bytes], ftypes: list[bytes], cols_by_cell: np.ndarray) -> None:
+            indptr = [0]
+            indices = []
+            data = []
+            for ci in range(cols_by_cell.shape[0]):
+                nz = np.flatnonzero(cols_by_cell[ci])
+                indices.extend(nz.tolist())
+                data.extend(cols_by_cell[ci, nz].tolist())
+                indptr.append(len(indices))
+            with h5py.File(str(path), "w") as f:
+                m = f.create_group("matrix")
+                m.create_dataset("barcodes", data=np.asarray(bcs))
+                fg = m.create_group("features")
+                fg.create_dataset("id", data=np.asarray(fids))
+                fg.create_dataset("feature_type", data=np.asarray(ftypes))
+                m.create_dataset("indptr", data=np.asarray(indptr, dtype=np.int64))
+                m.create_dataset("indices", data=np.asarray(indices, dtype=np.int64))
+                m.create_dataset("data", data=np.asarray(data, dtype=np.float32))
+
+        with tempfile.TemporaryDirectory() as td:
+            cdir = Path(td)
+            # Channel 1 (R2L01): canonical order ENSG10, ENSG20, ENSG30 (+ CRISPR guide)
+            _write_10x(
+                cdir / "GSM998_CD4i_R2L01_D4_filtered.h5",
+                [b"AA-1", b"BB-1"],
+                [b"ENSG10.1", b"ENSG20.2", b"ENSG30.1", b"GUIDE_1"],
+                [b"Gene Expression", b"Gene Expression", b"Gene Expression", b"CRISPR Guide Capture"],
+                np.asarray([[7, 1, 2, 999], [0, 3, 5, 500]], dtype=np.float32),
+            )
+            # Channel 2 (R2L02): same unique RNA set in permuted order [ENSG30, ENSG10, ENSG20]
+            _write_10x(
+                cdir / "GSM999_CD4i_R2L02_D4_filtered.h5",
+                [b"CC-1"],
+                [b"ENSG30.9", b"ENSG10.4", b"ENSG20.8", b"GUIDE_2"],
+                [b"Gene Expression", b"Gene Expression", b"Gene Expression", b"CRISPR Guide Capture"],
+                np.asarray([[11, 4, 6, 888]], dtype=np.float32),
+            )
+            # Channel 3 (R2L03): genuine gene-set mismatch (ENSG99 != ENSG30)
+            _write_10x(
+                cdir / "GSM997_CD4i_R2L03_D4_filtered.h5",
+                [b"DD-1"],
+                [b"ENSG10.1", b"ENSG20.2", b"ENSG99.1"],
+                [b"Gene Expression", b"Gene Expression", b"Gene Expression"],
+                np.asarray([[1, 2, 3]], dtype=np.float32),
+            )
+            # Channel 4 (R2L04): same length as Channel 1 but duplicate Ensembl ID
+            _write_10x(
+                cdir / "GSM996_CD4i_R2L04_D4_filtered.h5",
+                [b"EE-1"],
+                [b"ENSG10.1", b"ENSG10.2", b"ENSG20.2"],
+                [b"Gene Expression", b"Gene Expression", b"Gene Expression"],
+                np.asarray([[1, 2, 3]], dtype=np.float32),
+            )
+
+            ext = _extract_10x_by_barcodes(
+                cdir,
+                "cd4t_rest",
+                [
+                    "CE0006864_D4_CD4i_R2L02:CC-1",
+                    "CE0006864_D4_CD4i_R2L01:AA-1",
+                    "CE0006864_D4_CD4i_R2L01:BB-1",
+                ],
+            )
+            self.assertEqual(ext.raw_ensembl_ids, ["ENSG10", "ENSG20", "ENSG30"])
+            np.testing.assert_allclose(
+                ext.raw_counts,
+                np.asarray([[4, 6, 11], [7, 1, 2], [0, 3, 5]], dtype=np.float32),
+            )
+            np.testing.assert_allclose(ext.row_sum_umis, np.asarray([21.0, 10.0, 8.0]))
+
+            with self.assertRaises(ValueError):
+                _extract_10x_by_barcodes(
+                    cdir,
+                    "cd4t_rest",
+                    ["CE0006864_D4_CD4i_R2L01:AA-1", "CE0006864_D4_CD4i_R2L03:DD-1"],
+                )
+            with self.assertRaises(ValueError):
+                _extract_10x_by_barcodes(
+                    cdir,
+                    "cd4t_rest",
+                    ["CE0006864_D4_CD4i_R2L01:AA-1", "CE0006864_D4_CD4i_R2L04:EE-1"],
+                )
+
     def test_a549_excludes_cas9_and_feng_wide_csv(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)

@@ -1,3 +1,4 @@
+# SUPERSEDED 2026-11-27 13:51 +0800 by R16_ADDB_CODE_FREEZE_AT3_v3.txt (DEVIATION_R16_ADDB_D3).
 # R16_ADDB_CODE_FREEZE_AT3_v2 — controller Claude 2026-11-27 13:13 +0800. Supersedes R16_ADDB_CODE_FREEZE_AT3.txt after DEVIATION_R16_ADDB_D2 (A-T3 bug fixes: hash constant, loader call, n_ctrl_total key). No real-target Occam inference had run.
 # Controller checks: hash constant = actual Addendum B v2 sha256; A-T3 suite 14/14 OK (controller rerun, 128 s). Format: sha256  path
 0c2448523091251880d40c3d581de54a917995424e0467b64877ccb520fe130d  round16_addB/audit/__init__.py
