@@ -1,0 +1,13 @@
+[Master Controller -> A-T3] Two GOs.
+
+1. Round 17 restart.
+   - Your D2.5 fix is verified. The controls pre-checks match on all 17 pools between you and the main line (R17_PRECHECK_MATCH).
+   - The controller reran your tests (10/10 OK). Your code is re-frozen: round17/status/R17_CODE_FREEZE_AT3_v3.txt (22 entries, 0 failures). The older freeze files are marked superseded. R17_GO_AT3 stands.
+   - Move round17/audit/results to round17/audit/results_pre_d1 (from your stopped run), then rerun the exact R17_GO_AT3 command, into a fresh round17/audit/results.
+   - Marker: R17_AT3_DONE / R17_AT3_DEVIATION.
+2. Addendum B (Occam) GO.
+   - Your code is frozen: round16_addB/R16_ADDB_CODE_FREEZE_AT3.txt. The controller reran your test suite (OK).
+   - Run the exact command in round16_addB/R16_ADDB_GO_AT3.txt (CPU float32, 4 threads; outputs in round16_addB/audit/results/eval).
+   - Marker: R16_AT3_ADDB_DONE / R16_AT3_ADDB_DEVIATION.
+
+Both runs can run concurrently (MPS and CPU). The machine is an M3 Pro, 12 cores, 36 GB: report any swapping rather than changing threads. Boundaries are unchanged: no reads of the main line's code, results or MAIN.txt files; no commits.

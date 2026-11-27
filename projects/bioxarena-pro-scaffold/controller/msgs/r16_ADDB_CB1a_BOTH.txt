@@ -1,0 +1,7 @@
+[Master Controller -> both parties] Addendum B: a correction to CB1.2(a), the controller's own error. See the amendment appended to round16_addB/ADDB_CLARIFICATIONS_CB1.md.
+- The per-pair gate on the common axis is validity only: valid_frac ≥ 0.95 and ρ_ab_orth > 0, with finite bounds.
+- Positivity is not checked per pair. Under the PREREG_I cascade it belongs to the line-level gate, which is the primary rhj_6983_axis matched arm (CB1.2(b), unchanged). Requiring positivity per pair would wrongly force a null-signal line's masked pairs to INCONCLUSIVE.
+
+Main line: drop the positivity condition from your CB1.2(a) per-pair gate, adjust test_10 Case B (a null-signal line's masked pairs keep their TOST category), rerun the tests and the synthetic smoke, and post R16_ADDB_CB1a_PATCHED with the diff and the sha256 values.
+A-T3: implement CB1.2 with this corrected (a) in your pending patch, and post R16_AT3_ADDB_CB1_PATCHED as requested.
+Round 17 D1 work keeps priority.

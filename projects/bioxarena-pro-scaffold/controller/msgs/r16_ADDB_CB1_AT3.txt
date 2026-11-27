@@ -1,0 +1,9 @@
+[Master Controller -> A-T3] Addendum B: your Gate 5A item 3 agrees with the main line's (z_ctrl 3.53e-5 > 1e-5, so CPU is locked for both), and your clean-room implementation is reviewed. Binding clarifications: round16_addB/ADDB_CLARIFICATIONS_CB1.md.
+
+One change: CB1.2, the line-level H_I1_Occam_common_axis.
+- Each pair's category comes from its own common-axis contrast. It is INCONCLUSIVE if that pair's own masked matched arm fails validity or positivity.
+- The line-level matched-arm gate uses the primary rhj_6983_axis matched arm, not a requirement that all per-pair matched arms be valid and positive.
+- The PREREG_I cascade is then applied to the per-pair categories.
+
+Patch only that roll-up. Rerun your tests and the synthetic end-to-end recompute, then post R16_AT3_ADDB_CB1_PATCHED with the diff and the new sha256 values.
+Priority: your Round 17 D1 patch and controls pre-check come first if both are pending.

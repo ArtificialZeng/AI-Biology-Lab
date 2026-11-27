@@ -301,6 +301,137 @@ class TestR17StatisticsAndRules(unittest.TestCase):
         self.assertAlmostEqual(sp_exact["spearman_rho"], 1.0, places=12)
         self.assertAlmostEqual(sp_exact["p_perm"], 2.0 / 3.0, places=12)
 
+    def test_extract_from_parts_differing_gene_axes_intersection(self) -> None:
+        from audit_r17_controls import (
+            PartSpec,
+            _extract_from_parts_with_barcode_lookup,
+            compute_obs_ntc_mean_official_median_log1p,
+        )
+
+        # Part 0 has [G_ONLY0, G_B, "", G_A]; empty name falls back to gene_id "ENSG_FALLBACK"
+        # Part 1 has reordered common keys + G_ONLY1 (and G_A2 alias not in part 0)
+        mat0 = np.asarray(
+            [[10.0, 2.0, 3.0, 5.0]] * 20,
+            dtype=np.float32,
+        )
+        mat1 = np.asarray(
+            [[7.0, 4.0, 1.0, 99.0]] * 20,
+            dtype=np.float32,
+        )
+        p0 = PartSpec(
+            tag="line_ch_1",
+            path=Path("ch1.h5ad"),
+            n_cells=20,
+            n_genes_raw=4,
+            var_gene_ids=["E0", "EB", "ENSG_FALLBACK", "EA"],
+            var_gene_names=["G_ONLY0", " G_B ", "", "G_A"],
+            nt_mask=np.ones(20, dtype=bool),
+            batches=np.asarray(["B1"] * 20, dtype=object),
+            half_flags=np.ones(20, dtype=np.int8),
+            umi=mat0.sum(axis=1, dtype=np.float64),
+            pert_keys=["non-targeting"] * 20,
+            pert_meta={},
+            read_chunk_fn=lambda s, e: mat0[s:e],
+            read_rows_fn=lambda idx: mat0[idx],
+        )
+        p1 = PartSpec(
+            tag="line_ch_2",
+            path=Path("ch2.h5ad"),
+            n_cells=20,
+            n_genes_raw=4,
+            var_gene_ids=["EA", "EB", "ENSG_FALLBACK", "E1"],
+            var_gene_names=["G_A", "G_B", "", "G_ONLY1"],
+            nt_mask=np.ones(20, dtype=bool),
+            batches=np.asarray(["B2"] * 20, dtype=object),
+            half_flags=np.full(20, 2, dtype=np.int8),
+            umi=mat1.sum(axis=1, dtype=np.float64),
+            pert_keys=["non-targeting"] * 20,
+            pert_meta={},
+            read_chunk_fn=lambda s, e: mat1[s:e],
+            read_rows_fn=lambda idx: mat1[idx],
+        )
+        seen_resolver_widths = []
+
+        def _resolver(part: PartSpec, rows_mat: np.ndarray, umi_arr: np.ndarray, loc_arr: np.ndarray) -> list:
+            seen_resolver_widths.append((part.tag, rows_mat.shape[1], float(umi_arr[0])))
+            return [f"{part.tag}:{int(r)}" for r in loc_arr]
+
+        pool = _extract_from_parts_with_barcode_lookup(
+            line_name="a549_myllia",
+            parts=[p0, p1],
+            barcode_resolver_fn=_resolver,
+            n_ctrl=30,
+            cell_set_len=15,
+            min_ctrl_floor=15,
+            seed=20261701,
+        )
+        # Intersection strictly in part-0 order: G_B, ENSG_FALLBACK, G_A
+        self.assertEqual(pool.gene_names, ["G_B", "ENSG_FALLBACK", "G_A"])
+        self.assertEqual(pool.gene_ids, ["EB", "ENSG_FALLBACK", "EA"])
+        self.assertEqual(pool.raw_counts.shape, (30, 3))
+        # Resolver must have seen un-intersected width=4 & full UMI (20.0 / 111.0)
+        self.assertTrue(all(w == 4 for _, w, _ in seen_resolver_widths))
+        # Intersected row sums: ch1 -> 2+3+5=10.0; ch2 -> 4+1+7=12.0; median([10..]*15 + [12..]*15) == 11.0
+        for b, tot in zip(pool.batch_labels.tolist(), pool.cell_total_umis.tolist()):
+            self.assertAlmostEqual(tot, 10.0 if b == "B1" else 12.0, places=6)
+        self.assertAlmostEqual(pool.median_ntc_umi, 11.0, places=6)
+        obs_mean = compute_obs_ntc_mean_official_median_log1p(pool, ["G_A", "G_B"])
+        expected_ga = 0.5 * (np.log1p(5.0 / 10.0 * 11.0) + np.log1p(7.0 / 12.0 * 11.0))
+        self.assertAlmostEqual(float(obs_mean[0]), float(expected_ga), places=5)
+
+    def test_telohaec_branch_uses_prepare_r11_lines_builder(self) -> None:
+        from unittest.mock import patch
+        from audit_r17_controls import extract_raw_control_pool_r17
+        from prepare_r10_lines import PartSpec
+
+        r11_scripts = str(REPO_ROOT / "round11" / "shared" / "scripts")
+        r11_src = str(REPO_ROOT / "round11" / "src")
+        for sp_dir in (r11_src,):
+            if sp_dir not in sys.path:
+                sys.path.insert(0, sp_dir)
+        if r11_scripts not in sys.path:
+            sys.path.append(r11_scripts)
+        import dataset_readers_r11  # type: ignore
+        import prepare_r11_lines  # type: ignore
+
+        mat = np.ones((30, 3), dtype=np.float32) * 2.0
+        part = PartSpec(
+            tag="TeloHAEC_2285",
+            path=Path("/nonexistent/IGVFFI8645YMGX.h5ad"),
+            n_cells=30,
+            n_genes_raw=3,
+            nt_mask=np.ones(30, dtype=bool),
+            batches=np.asarray([f"ch_{(i % 20) + 1:02d}" for i in range(30)], dtype=object),
+            half_flags=np.asarray([1 if ((i % 20) + 1) % 2 == 1 else 2 for i in range(30)], dtype=np.int8),
+            umi=np.full(30, 999.0, dtype=np.float64),
+            pert_keys=[""] * 30,
+            pert_meta={},
+            var_gene_ids=["E1", "E2", "E3"],
+            var_gene_names=["G1", "G2", "G3"],
+            read_chunk_fn=lambda s, e, m=mat: m[s:e],
+            read_rows_fn=lambda idx_arr, m=mat: m[np.asarray(idx_arr, dtype=np.int64)],
+        )
+        with (
+            patch.object(prepare_r11_lines, "build_telohaec_parts", return_value=([part], {"n_kept_ntc": 30})) as mock_prep,
+            patch.object(dataset_readers_r11, "build_telohaec_parts", side_effect=AssertionError("must not call dataset_readers_r11.build_telohaec_parts")),
+        ):
+            pool = extract_raw_control_pool_r17(
+                line_name="telohaec",
+                seed=20261701,
+                n_ctrl=30,
+                cell_set_len=15,
+                min_ctrl_floor=15,
+                hgnc_lookup=object(),
+            )
+        mock_prep.assert_called_once()
+        self.assertEqual(pool.line_name, "telohaec")
+        self.assertEqual(pool.raw_counts.shape, (30, 3))
+        self.assertEqual(int(pool.sampling_audit["n_ntc_valid"]), 30)
+        self.assertEqual(len(pool.sampling_audit["batch_counts_total"]), 20)
+        # DEVIATION_R17_D2.5: cell_total_umis and median_ntc_umi must equal exported raw_counts row sums (6.0), not part.umi (999.0).
+        self.assertTrue(np.allclose(pool.cell_total_umis, 6.0, atol=1e-12))
+        self.assertAlmostEqual(pool.median_ntc_umi, 6.0, places=6)
+
 
 class TestR17SyntheticEndToEndSchemaAndStage4(unittest.TestCase):
     def test_synthetic_e2e_cli_schema_allow_pickle_false_and_recompute_parity(self) -> None:

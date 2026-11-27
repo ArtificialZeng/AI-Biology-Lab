@@ -48,6 +48,7 @@ R14_SRC_DIR = REPO_ROOT / "round14" / "src"
 R13_SRC_DIR = REPO_ROOT / "round13" / "src"
 R12_SRC_DIR = REPO_ROOT / "round12" / "src"
 R11_SRC_DIR = REPO_ROOT / "round11" / "src"
+R11_SCRIPTS_DIR = REPO_ROOT / "round11" / "shared" / "scripts"
 R10_SRC_DIR = REPO_ROOT / "round10" / "src"
 R10_SCRIPTS_DIR = REPO_ROOT / "round10" / "shared" / "scripts"
 for _p in (
@@ -57,6 +58,7 @@ for _p in (
     str(R13_SRC_DIR),
     str(R12_SRC_DIR),
     str(R11_SRC_DIR),
+    str(R11_SCRIPTS_DIR),
     str(R10_SRC_DIR),
     str(R10_SCRIPTS_DIR),
 ):
@@ -965,6 +967,113 @@ def _extract_a549_cas9pos_ntc_bundle_r17(
     }
 
 
+class _CommonAxisPartProxyR17:
+    """Read-only proxy restricting a PartSpec's gene axis onto an exact common-key column map (DEVIATION_R17_D1)."""
+
+    def __init__(
+        self,
+        part: Any,
+        col_idx: np.ndarray,
+        common_gene_names: List[str],
+        common_gene_ids: Optional[List[str]],
+    ) -> None:
+        self._part = part
+        self._col_idx = np.asarray(col_idx, dtype=np.int64)
+        self.var_gene_names = list(common_gene_names)
+        if common_gene_ids is not None:
+            self.var_gene_ids = list(common_gene_ids)
+        self.n_genes_raw = int(len(common_gene_names))
+
+        orig_rows_fn = getattr(part, "read_rows_fn", None)
+        if orig_rows_fn is not None:
+            def _read_rows(
+                idx_arr: np.ndarray,
+                _fn: Any = orig_rows_fn,
+                _c: np.ndarray = self._col_idx,
+            ) -> np.ndarray:
+                return np.asarray(_fn(idx_arr), dtype=np.float32)[:, _c]
+
+            self.read_rows_fn = _read_rows
+        else:
+            self.read_rows_fn = None
+
+        orig_chunk_fn = getattr(part, "read_chunk_fn", None)
+        if orig_chunk_fn is not None:
+            def _read_chunk(
+                s: int,
+                e: int,
+                _fn: Any = orig_chunk_fn,
+                _c: np.ndarray = self._col_idx,
+            ) -> np.ndarray:
+                return np.asarray(_fn(s, e), dtype=np.float32)[:, _c]
+
+            self.read_chunk_fn = _read_chunk
+        else:
+            self.read_chunk_fn = None
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._part, name)
+
+
+def _restrict_parts_to_common_axis_r17(parts: Sequence[Any]) -> Tuple[List[Any], Dict[str, Any]]:
+    """
+    `DEVIATION_R17_D1`: Restrict multi-part lines whose files/channels have unequal gene sets
+    (specifically `a549_myllia`: `ch_1` 18,711 vs `ch_2` 18,808 -> 18,480 common keys) onto the
+    exact Round 10 `process_r10_line` common-key intersection (`key = stripped gene name or gene id`,
+    in part-0 order) before calling frozen `extract_ntc_bundle_from_parts_r16`.
+    Parts already matching `parts[0]` or `DEVIATION_R16_D1` are returned untouched.
+    """
+    parts_list = list(parts)
+    if len(parts_list) <= 1:
+        return parts_list, {"applied": False, "n_genes_multifile_dropped": 0}
+
+    ref_genes = list(parts_list[0].var_gene_names)
+    ref_set = set(ref_genes)
+    all_compatible_r16_d1 = True
+    for part in parts_list[1:]:
+        pg = list(part.var_gene_names)
+        if pg == ref_genes:
+            continue
+        if len(set(pg)) == len(pg) == len(ref_genes) == len(ref_set) and set(pg) == ref_set:
+            continue
+        all_compatible_r16_d1 = False
+        break
+
+    if all_compatible_r16_d1:
+        return parts_list, {"applied": False, "n_genes_multifile_dropped": 0}
+
+    sym_maps: List[Dict[str, int]] = []
+    for part in parts_list:
+        raw_names = list(part.var_gene_names)
+        raw_ids = list(getattr(part, "var_gene_ids", None) or ([""] * len(raw_names)))
+        smap: Dict[str, int] = {}
+        for j, (gid, gnm) in enumerate(zip(raw_ids, raw_names)):
+            key = str(gnm).strip() or str(gid).strip()
+            if key and key not in smap:
+                smap[key] = j
+        sym_maps.append(smap)
+
+    common_keys = [k for k in sym_maps[0] if all(k in sm for sm in sym_maps[1:])]
+    if not common_keys:
+        raise ValueError("Multi-part common-key gene intersection is empty (DEVIATION_R17_D1).")
+    col_maps = [np.asarray([sm[k] for k in common_keys], dtype=np.int64) for sm in sym_maps]
+    p0_ids = getattr(parts_list[0], "var_gene_ids", None)
+    common_ids = [p0_ids[int(j)] for j in col_maps[0]] if p0_ids is not None else None
+
+    wrapped = [
+        _CommonAxisPartProxyR17(part, cmap, common_keys, common_ids)
+        for part, cmap in zip(parts_list, col_maps)
+    ]
+    raw_total_p0 = len(set(str(x).strip() for x in parts_list[0].var_gene_names))
+    return wrapped, {
+        "applied": True,
+        "rule": "DEVIATION_R17_D1_R10_common_key_intersection_part0_order",
+        "n_genes_part0": int(len(parts_list[0].var_gene_names)),
+        "n_genes_common": int(len(common_keys)),
+        "n_genes_multifile_dropped": int(raw_total_p0 - len(common_keys)),
+    }
+
+
 def _extract_bundle_from_frozen_reader_r17(
     line_name: str,
     seed: int = DEFAULT_R17_SEED,
@@ -989,7 +1098,8 @@ def _extract_bundle_from_frozen_reader_r17(
 
         parts, audit = build_hek293_parts(REPO_ROOT / "round12" / "shared" / "raw", hgnc_l)
     elif line_name == "telohaec":
-        from dataset_readers_r11 import build_telohaec_parts  # noqa: E402
+        # DEVIATION_R17_D2: use the exact Round 11 observed-data builder (`prepare_r11_lines.py`).
+        from prepare_r11_lines import build_telohaec_parts  # noqa: E402
 
         parts, audit = build_telohaec_parts(REPO_ROOT / "round11" / "shared" / "raw", hgnc_l)
     elif line_name == "calu3":
@@ -1003,6 +1113,7 @@ def _extract_bundle_from_frozen_reader_r17(
     else:
         raise ValueError(f"Unsupported small fresh line: {line_name!r}")
 
+    parts, d1_axis_audit = _restrict_parts_to_common_axis_r17(parts)
     bundle = extract_ntc_bundle_from_parts_r16(
         parts=parts,
         target_n=target_n,
@@ -1013,6 +1124,8 @@ def _extract_bundle_from_frozen_reader_r17(
         include_resample=include_resample,
     )
     bundle["ctrl_audit"]["reader_audit"] = audit
+    if d1_axis_audit.get("applied"):
+        bundle["ctrl_audit"]["deviation_r17_d1_axis_audit"] = d1_axis_audit
     return bundle
 
 

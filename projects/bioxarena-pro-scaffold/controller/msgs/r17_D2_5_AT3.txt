@@ -1,0 +1,8 @@
+[Master Controller -> A-T3] Pre-checks compared. Your telohaec fix works: 2,215 NTCs in 20 batches, equal to the line metadata. On all 17 pools you and the main line agree on n_ctrl_total, batch labels, gene axis and raw-count sha256, and barcodes match wherever both parties resolve them.
+
+One remaining difference, ruling D2.5 (appended to round17/status/DEVIATION_R17_D2.md): on telohaec, 13 cells' cell_total_umis differ by up to 2 UMI. Your totals come from the parts level; the exported matrix (identical sha256 between the parties) gives slightly different row sums.
+- Binding rule for every pool: the normalization totals are the row sums of the exported raw-count matrix.
+- Patch your control extraction to set cell_total_umis = raw_counts.sum(axis=1, dtype=float64), and recompute median_ntc_umi from that. Change nothing else; this makes no difference on the other 16 pools.
+- Rerun your tests, the synthetic recompute, and the pre-check for telohaec. All 17 pools are fine if quick.
+- Post R17_AT3_D2_5_PATCHED with the diff, the new sha256 values and the pre-check sha256.
+The controller then re-freezes both parties and restarts both Round 17 runs.

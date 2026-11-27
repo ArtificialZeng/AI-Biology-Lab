@@ -1,3 +1,4 @@
+# SUPERSEDED 2026-11-27 12:57 +0800 by R17_CODE_FREEZE_v2.txt (DEVIATION_R17_D1/D2). Entries below are the earlier versions.
 # R17_CODE_FREEZE — controller Claude 2026-11-27 07:44 +0800. Main-line Round 17 implementation frozen before any Round 17 real-cell inference.
 # Controller checks: unit tests 17/17 OK (controller rerun), locked reader tests 4/4 OK, gate refusal verified (BlindingGateError without this file). Frozen R16 code imported read-only: round16/status/FREEZE_MANIFEST_R16_D5.txt (0 failures at freeze).
 # A-T3's clean-room implementation will be added as R17_CODE_FREEZE_AT3.txt before A-T3 runs. Format: sha256  path

@@ -1,0 +1,6 @@
+R16_ADDB_GO (controller Claude), 2026-11-27 12:59 +0800 — main line. Addendum B (Occam) real-target run, CPU float32 (locked).
+Preconditions: human approval; downloads hashed; Gates 5A (1-3) and 5B passed by both parties; CB1/CB1.2a; R16_ADDB_CODE_FREEZE.txt (0 failures); A-T3 finished all R16 STATE work.
+Command:
+  mkdir -p round16_addB/results/eval
+  PYTHONUNBUFFERED=1 PYTHONPATH=round16_addB/shared/models/occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/src round16_addB/.venv/bin/python round16_addB/src/run_eval_addb.py --cohort all --results-dir round16_addB/results/eval --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --gse295214-raw-dir /Users/mac/.cache/r16_gse295214/raw --device cpu --num-threads 4 --batch-size 256 --n-boot 4000 --seed 20261601 > round16_addB/results/eval/run_addb.log 2>&1
+Marker: R16_ADDB_DONE (or R16_ADDB_DEVIATION) in round16/status/MAIN.txt.

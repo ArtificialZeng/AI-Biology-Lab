@@ -316,8 +316,31 @@ def _extract_from_parts_with_barcode_lookup(
     if samp["excluded"]:
         raise ValueError(f"{line_name} NTC pool excluded: {samp['exclusion_reason']}")
 
-    ref_names = [str(x) for x in parts[0].var_gene_names]
-    ref_ids = [str(x) for x in parts[0].var_gene_ids]
+    ref_names = [str(x).strip() for x in parts[0].var_gene_names]
+    ref_ids = [str(x).strip() for x in parts[0].var_gene_ids]
+    same_var = all(
+        [str(x).strip() for x in p.var_gene_names] == ref_names
+        and [str(x).strip() for x in p.var_gene_ids] == ref_ids
+        for p in parts[1:]
+    )
+    if same_var:
+        col_maps: List[Optional[np.ndarray]] = [None] * len(parts)
+        out_names = ref_names
+        out_ids = ref_ids
+    else:
+        sym_maps: List[Dict[str, int]] = []
+        for p in parts:
+            smap: Dict[str, int] = {}
+            for j, (gid, gnm) in enumerate(zip(p.var_gene_ids, p.var_gene_names)):
+                key = str(gnm).strip() or str(gid).strip()
+                if key and key not in smap:
+                    smap[key] = j
+            sym_maps.append(smap)
+        common_keys = [k for k in sym_maps[0] if all(k in sm for sm in sym_maps[1:])]
+        col_maps = [np.asarray([sm[k] for k in common_keys], dtype=np.int64) for sm in sym_maps]
+        out_names = list(common_keys)
+        out_ids = [str(parts[0].var_gene_ids[j]).strip() for j in col_maps[0]]
+
     sel = samp["selected_indices"]
 
     by_part: Dict[int, List[Tuple[int, int, float]]] = {}
@@ -325,7 +348,7 @@ def _extract_from_parts_with_barcode_lookup(
         p_idx, loc_i, _, umi_v = nt_recs[rec_i]
         by_part.setdefault(p_idx, []).append((pos_out, loc_i, umi_v))
 
-    raw_counts = np.zeros((len(sel), len(ref_names)), dtype=np.float32)
+    raw_counts = np.zeros((len(sel), len(out_names)), dtype=np.float32)
     barcodes_out = [""] * len(sel)
 
     for p_idx, items in by_part.items():
@@ -336,32 +359,33 @@ def _extract_from_parts_with_barcode_lookup(
         umi_arr = np.asarray([kv[2] for kv in items_sorted], dtype=np.float64)
         rows_mat = _read_part_selected_rows(p, loc_arr)
 
+        # Barcode resolvers inspect part-native row UMIs/patterns BEFORE axis intersection.
         matched_bcs = barcode_resolver_fn(p, rows_mat, umi_arr, loc_arr)
         for pos_i, bc_str in zip(out_arr.tolist(), matched_bcs):
             barcodes_out[pos_i] = str(bc_str)
 
-        if [str(x) for x in p.var_gene_names] == ref_names:
+        cmap = col_maps[p_idx]
+        if cmap is None:
             raw_counts[out_arr] = rows_mat
         else:
-            pm = {str(g): j for j, g in enumerate(p.var_gene_names)}
-            cidx = [pm[g] for g in ref_names if g in pm]
-            oidx = [i for i, g in enumerate(ref_names) if g in pm]
-            raw_counts[np.ix_(out_arr, oidx)] = rows_mat[:, cidx]
+            raw_counts[out_arr] = rows_mat[:, cmap]
 
     samp["selected_barcodes"] = barcodes_out
-    sel_umis = all_umis[sel]
+    # DEVIATION_R17_D2.5: per-cell totals and median must always be row sums of exported raw_counts.
+    sel_umis = np.asarray(raw_counts, dtype=np.float32).sum(axis=1, dtype=np.float64)
+    med_umi = _median_positive(sel_umis)
     return SampledRawControlPool(
         line_name=line_name,
         raw_counts=raw_counts,
-        gene_names=ref_names,
-        gene_ids=ref_ids,
+        gene_names=out_names,
+        gene_ids=out_ids,
         batch_labels=all_batches[sel].astype(str),
         cell_barcodes=np.asarray(barcodes_out, dtype=str),
         cell_total_umis=sel_umis,
-        median_ntc_umi=_median_positive(sel_umis),
+        median_ntc_umi=med_umi,
         sampling_audit=samp,
         is_log1p=False,
-        median_ntc_umi_all_valid=_median_positive(all_umis),
+        median_ntc_umi_all_valid=med_umi,
     )
 
 
@@ -499,6 +523,14 @@ def _make_h5ad_obs_exact_barcode_resolver(line_name: str):
     return _resolver
 
 
+def _enforce_exported_row_sum_umis(pool: SampledRawControlPool) -> SampledRawControlPool:
+    """DEVIATION_R17_D2.5: bind cell_total_umis and median_ntc_umi to exported raw_counts row sums."""
+    row_umis = np.asarray(pool.raw_counts, dtype=np.float32).sum(axis=1, dtype=np.float64)
+    pool.cell_total_umis = row_umis
+    pool.median_ntc_umi = _median_positive(row_umis)
+    return pool
+
+
 def extract_raw_control_pool_r17(
     line_name: str,
     seed: int = DEFAULT_R17_SEED,
@@ -528,7 +560,7 @@ def extract_raw_control_pool_r17(
             return_resample=False,
         )
         assert isinstance(res, SampledRawControlPool)
-        return res
+        return _enforce_exported_row_sum_umis(res)
 
     if line_name == "a549_ko_cas9pos":
         res = _extract_a549_raw_ntc_sample(
@@ -542,7 +574,7 @@ def extract_raw_control_pool_r17(
         )
         assert isinstance(res, SampledRawControlPool)
         res.line_name = "a549_ko_cas9pos"
-        return res
+        return _enforce_exported_row_sum_umis(res)
 
     hgnc_l = hgnc_lookup if hgnc_lookup is not None else build_hgnc_lookup()
 
@@ -646,7 +678,10 @@ def extract_raw_control_pool_r17(
         )
 
     if line_name == "telohaec":
-        from dataset_readers_r11 import build_telohaec_parts  # type: ignore
+        r11_scripts_dir = str(REPO_ROOT / "round11" / "shared" / "scripts")
+        if r11_scripts_dir not in sys.path:
+            sys.path.append(r11_scripts_dir)
+        from prepare_r11_lines import build_telohaec_parts  # type: ignore
 
         parts, _ = build_telohaec_parts(REPO_ROOT / "round11" / "shared" / "raw", hgnc_l)
         return _extract_from_parts_with_barcode_lookup(

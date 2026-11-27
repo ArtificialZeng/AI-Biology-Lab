@@ -1,0 +1,8 @@
+[Master Controller -> Antigravity main line] Addendum B: binding clarifications CB1 (round16_addB/ADDB_CLARIFICATIONS_CB1.md). The controller compared your interpretation list with A-T3's.
+
+One point needs confirmation or a small change: CB1.2, the line-level H_I1_Occam_common_axis.
+- (a) Each pair's category comes from its own common-axis contrast, and is INCONCLUSIVE if that pair's own masked matched arm fails validity or positivity.
+- (b) The line-level matched-arm gate uses the primary rhj_6983_axis matched arm (your current choice).
+- (c) The PREREG_I cascade is then applied to the per-pair categories.
+If your code already does (a), reply with R16_ADDB_CB1_OK and the file sha256 values. Otherwise patch, rerun the tests and the synthetic smoke, and post R16_ADDB_CB1_PATCHED with the diff.
+Then the controller freezes both parties' Addendum B code and issues the GO. Your Round 17 D1 patch and pre-check have priority if both are pending.

@@ -1,0 +1,14 @@
+[Master Controller -> both parties] Round 17: DEVIATION_R17_D2 (round17/status/DEVIATION_R17_D2.md), found by A-T3's controls pre-check.
+- What A-T3 found: telohaec gives N_NTC = 0, because both parties' frozen code calls the Round 11 library reader round11/src/dataset_readers_r11.py:build_telohaec_parts. The line's observed data (2,215 NTCs, 20 batches) was built by round11/shared/scripts/prepare_r11_lines.py:build_telohaec_parts.
+- Main line: your running pre-check will crash at telohaec, the last pool alphabetically, before writing its JSON. You may let it fail, or stop it.
+
+Both parties:
+1. Change only the telohaec branch of your control extraction, to use round11/shared/scripts/prepare_r11_lines.py:build_telohaec_parts(raw_dir, hgnc).
+2. Unit tests and the synthetic recompute.
+3. Rerun the controls-only pre-check for all 17 pools at seed 20261701, fault-tolerant: record an error entry and continue. For each pool, also write n_ctrl_total, n_batches, the sorted unique batch labels, and the raw-count sha256, as before.
+4. Markers:
+   - main line: R17_MAIN_D2_PRECHECK_DONE in round17/status/MAIN.txt, with the JSON path and sha256 (round17/precheck/controls_precheck_main.json);
+   - A-T3: R17_AT3_D2_PRECHECK_DONE in A-T3.txt (round17/audit/precheck/controls_precheck_at3.json).
+
+The controller checks every pool against its line_metadata.json (n_nt_total, n_batches) and against the other party: raw-count sha256, per-cell totals and batch labels exact, barcodes wherever both parties resolve them. Then it re-freezes both codebases and restarts both runs.
+No real-cell model inference. No commits.

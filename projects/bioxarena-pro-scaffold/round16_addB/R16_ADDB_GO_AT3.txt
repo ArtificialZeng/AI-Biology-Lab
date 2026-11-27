@@ -1,0 +1,6 @@
+R16_ADDB_GO_AT3 (controller Claude), 2026-11-27 12:59 +0800 — A-T3. Addendum B (Occam) real-target run, CPU float32 (locked).
+Preconditions: as R16_ADDB_GO.txt; R16_ADDB_CODE_FREEZE_AT3.txt (0 failures).
+Command:
+  mkdir -p round16_addB/audit/results/eval
+  PYTHONUNBUFFERED=1 PYTHONPATH=round16_addB/shared/models/occam_src_9ddb890e/src/Occam-9ddb890e65ca1ec2f81882c78311002a75b52f67/src round16_addB/.venv/bin/python round16_addB/audit/run_audit_addb.py --phase real_addb --output-dir round16_addB/audit/results/eval --device cpu --num-threads 4 --batch-size 256 --n-boot 4000 --seed 20261601 --gate5b-summary round16_addB/audit/results/gates_cpu_summary.json --se-audit-dir round16/audit/results --main-r16-dir round16/results --main-sens-dir round16/results/sensitivity --nadig-raw-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --gse295214-raw-dir /Users/mac/.cache/r16_gse295214/raw > round16_addB/audit/results/eval/run_addb.log 2>&1
+Marker: R16_AT3_ADDB_DONE (or R16_AT3_ADDB_DEVIATION) in round16/status/A-T3.txt.

@@ -339,3 +339,21 @@
 - Ruling (`round17/status/DEVIATION_R17_D1.md`): use the R10 common-key intersection, the axis the line's observed side was built on, with per-cell totals as row sums over it.
   - Both parties patch their control path, and A-T3 stops its run.
   - Each party then runs a controls-only pre-check for all 17 pools. The controller compares the two before re-freezing and restarting both runs.
+- 10:0x (Addendum B): A-T3 Gate 5A.3 also fails z_ctrl (3.53e-5), so CPU is confirmed by both parties. A-T3 R16_AT3_ADDB_IMPL_READY (12/12 tests). Interpretation lists compared; ADDB_CLARIFICATIONS_CB1.md issued. One roll-up rule (CB1.2, common-axis line gate) needs a small change from A-T3 and confirmation from the main line.
+- 10:15: main R16_ADDB_CB1_PATCHED (10/10). Its test exposed a controller error in CB1.2(a): per-pair positivity would wrongly force a null-signal line's masked pairs to INCONCLUSIVE. Amendment CB1.2a: the per-pair gate is validity only; positivity stays line-level. Both parties notified.
+- 10:17: main R16_ADDB_CB1a_PATCHED (per-pair gate validity only; 19/19 tests; run_eval_addb.py 4bd7aea0…, test_eval_addb.py 37ee4b75…).
+- 11:0x (Round 17): A-T3's D1 pre-check found telohaec N_NTC = 0. Both parties' frozen code calls the faulty Round 11 library reader, while the line was built by `round11/shared/scripts/prepare_r11_lines.py`.
+  - Ruling DEVIATION_R17_D2: controls come from the builder of each line's observed data. Every pool's n_ctrl_total and n_batches must equal its line metadata. Telohaec switches builder in both codebases.
+  - Pre-checks are rerun fault-tolerant.
+  - A-T3's Addendum B CB1.2a patch is done (13/13 tests).
+- 12:5x (Round 17): pre-checks compared (r17_compare_precheck.py). All 17 pools match on n_ctrl_total (= line metadata), batches, gene axis and raw sha; barcodes match where resolved. Only telohaec's per-cell totals differ (13 cells, ≤ 2 UMI; A-T3's parts-level totals). D2.5: totals = row sums of the exported matrix; A-T3 patches. The main line's code (ntc_extractors_r17.py e22ec774…) needs no change.
+
+## 2026-11-27 12:55–13:00 — pre-checks match; Round 17 re-frozen and restarted; Addendum B GO
+- A-T3 `R17_AT3_D2_5_PATCHED`. Pre-check comparison: **R17_PRECHECK_MATCH** (17/17 pools).
+- Controller test reruns: main R17 17/17; A-T3 R17 10/10; A-T3 Addendum B suite OK; main test_eval_addb and test_unit_addb OK.
+- Round 17 freezes:
+  - `round17/status/R17_CODE_FREEZE_v2.txt` (main) and `R17_CODE_FREEZE_AT3_v3.txt` (A-T3), 22 entries each, 0 failures;
+  - the earlier freeze files are marked superseded.
+- Addendum B: `round16_addB/R16_ADDB_CODE_FREEZE.txt` (21 entries) and `R16_ADDB_CODE_FREEZE_AT3.txt` (19 entries), both 0 failures. `R16_ADDB_GO.txt` and `R16_ADDB_GO_AT3.txt` (CPU float32, 4 threads).
+- Both parties are told to restart Round 17 (MPS) and start Occam (CPU) concurrently.
+- Host is an M3 Pro, 12 cores, 36 GB, not the 128 GB in AGENTS.md. Parties are asked to report swapping.

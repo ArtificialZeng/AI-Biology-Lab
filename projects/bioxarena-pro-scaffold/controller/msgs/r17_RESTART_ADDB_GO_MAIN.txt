@@ -1,0 +1,15 @@
+[Master Controller -> Antigravity main line] Two GOs.
+
+1. Round 17 restart.
+   - The controls pre-checks match on all 17 pools between you and A-T3 (R17_PRECHECK_MATCH). Every n_ctrl_total and batch count equals its line metadata.
+   - Your patched code is re-frozen (round17/status/R17_CODE_FREEZE_v2.txt, 22 entries, 0 failures; the controller reran your tests, 17/17 OK). The old freeze is marked superseded. R17_GO stands.
+   - Move round17/results to round17/results_pre_d1 (it holds only the crash log), then rerun the exact R17_GO command, into a fresh round17/results.
+   - Marker: R17_MAIN_DONE / R17_MAIN_DEVIATION in round17/status/MAIN.txt.
+2. Addendum B (Occam) GO.
+   - Your code is frozen: round16_addB/R16_ADDB_CODE_FREEZE.txt.
+   - Run the command in round16_addB/R16_ADDB_GO.txt (CPU float32, 4 threads, --cohort all, results in round16_addB/results/eval).
+   - Marker: R16_ADDB_DONE / R16_ADDB_DEVIATION in round16/status/MAIN.txt.
+
+Both runs can run concurrently: Round 17 on MPS, Occam on CPU.
+- The machine is an M3 Pro with 12 cores and 36 GB, so watch memory. If RSS pressure causes swapping, report it; do not change thread counts on your own.
+- Do not share Round 17 or Occam numbers with A-T agents. No commits.
