@@ -1,0 +1,72 @@
+{
+  "frozen_utc": "2026-11-25T08:27:27Z",
+  "a1x_v2_checks": {
+    "abstract_words": 190,
+    "overfull_boxes": 0,
+    "undefined_refs": 0,
+    "resizebox": 0
+  },
+  "files": {
+    "manuscript_a1_pdf": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/manuscript/manuscript_a1.pdf",
+      "bytes": 1710591,
+      "sha256": "73e625710e011f09fb33c8a124ef9e7ed3d8e1ee3697615b436ec03610e7bceb"
+    },
+    "manuscript_b2_pdf": {
+      "relpath": "studies/study_b2_fda_2026_sweep/manuscript/manuscript_b2.pdf",
+      "bytes": 1776233,
+      "sha256": "8ab4219b0171d2e4522c8d09904156cd3dc1d310d74c4482f73b59255ee70b47"
+    },
+    "manuscript_a1x_v1_pdf": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/manuscript_a1x/manuscript_a1x.pdf",
+      "bytes": 694254,
+      "sha256": "dfa6532c20c067064182e520617445e861466c6c1e203ddf9350b51445b0317d"
+    },
+    "manuscript_a1x_v2_pdf": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/manuscript_a1x_v2.pdf",
+      "bytes": 1523010,
+      "sha256": "33a49efdd3d406476f2b83f80640ba588f149e5a5e5e817e9004309d9f288887"
+    },
+    "fig1_v2_png": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/fig1_v2_unbiased_8pipeline_and_1000g.png",
+      "bytes": 798973,
+      "sha256": "ed01d041b98faff1b3e4aac462092581a9ea1b88b06442da2216b7f33bad5332"
+    },
+    "fig2_v2_png": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/fig2_v2_ukbb_opposite_direction_lipids.png",
+      "bytes": 911234,
+      "sha256": "e79abdbe4c4f406da494b4eea44ac2292d212ad56f4395c8db9104d2f928ada2"
+    },
+    "unbiased_7427_benchmark_csv": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/unbiased_7427_benchmark_v2_airtight.csv",
+      "bytes": 6850,
+      "sha256": "e826d683acf1aafd73d97100854677398004d33bcb3dd5baad08e49f72319e5e"
+    },
+    "g1k_2504_exec_json": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/g1k_2504_real_pipeline_execution_results.json",
+      "bytes": 13368,
+      "sha256": "c952f154fcec2fc765b85f808da7a1a729aed0baf8e4ffe5b9ea53e6701f149f"
+    },
+    "backman2021_ukbb_csv": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/backman2021_ukbb_exact_apob_ldlr_clinvar_matches.csv",
+      "bytes": 53497,
+      "sha256": "29a10013e3db9d259c01780c3df24ce5a350db911f45ee28c467a202fa4296f9"
+    },
+    "backman2021_meta_json": {
+      "relpath": "studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/backman2021_ukbb_meta_summary.json",
+      "bytes": 5425,
+      "sha256": "aacc88c675016c99cd842a956cdd6279132c9183e4e3c11b0bcca994d1ab6fe0"
+    },
+    "literature_search_log_json": {
+      "relpath": "literature_search_log_phase2.json",
+      "bytes": 51116,
+      "sha256": "a61076a7f9dc30b066d444d63156ef571cbce2e65f6e0b10eccb15d2a4b27f34"
+    },
+    "freeze_decision_md": {
+      "relpath": "FREEZE_DECISION.md",
+      "bytes": 4311,
+      "sha256": "cbbe91973f8466715e6f60fc0a47d729a8cfb96bcf396e0b040981f8606a9ec6"
+    }
+  },
+  "round16_newest_mtime": "2026-11-24T13:03:05"
+}

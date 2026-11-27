@@ -1,0 +1,33 @@
+{
+  "data": {
+    "variant": {
+      "variant_id": "2-47414420-T-A",
+      "flags": [
+        "lcr"
+      ],
+      "exome": {
+        "ac": 7,
+        "an": 982170,
+        "filters": [],
+        "flags": []
+      },
+      "genome": {
+        "ac": 60,
+        "an": 62212,
+        "filters": [
+          "AS_VQSR"
+        ],
+        "flags": []
+      },
+      "joint": {
+        "ac": 67,
+        "an": 1044382,
+        "faf95": {
+          "popmax": 0.0005271900000000003,
+          "popmax_population": "afr"
+        },
+        "faf99": null
+      }
+    }
+  }
+}

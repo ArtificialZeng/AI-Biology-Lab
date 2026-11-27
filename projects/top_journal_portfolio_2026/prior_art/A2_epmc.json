@@ -1,0 +1,2556 @@
+{
+  "hitCount": 27,
+  "nextCursorMark": "AoJGKDU0MDgyNzc3",
+  "results": [
+    {
+      "id": "39627863",
+      "source": "MED",
+      "pmid": "39627863",
+      "pmcid": "PMC11616159",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC11616159"
+        ]
+      },
+      "doi": "10.1186/s13073-024-01392-7",
+      "title": "Using multiplexed functional data to reduce variant classification inequities in underrepresented populations.",
+      "authorString": "Dawood M, Fayer S, Pendyala S, Post M, Kalra D, Patterson K, Venner E, Muffley LA, Fowler DM, Rubin AF, Posey JE, Plon SE, Lupski JR, Gibbs RA, Starita LM, Robles-Espinoza CD, Coyote-Maestas W, Gallego Romero I.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Dawood M",
+            "lastName": "Dawood",
+            "firstName": "Moez",
+            "initials": "M",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-0192-1277"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Human Genome Sequencing Center, Baylor College of Medicine, Houston, TX, USA. Moez.Dawood@bcm.edu."
+                },
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA. Moez.Dawood@bcm.edu."
+                },
+                {
+                  "affiliation": "Medical Scientist Training Program, Baylor College of Medicine, Houston, TX, USA. Moez.Dawood@bcm.edu."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Fayer S",
+            "lastName": "Fayer",
+            "firstName": "Shawn",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Brotman Baty Institute for Precision Medicine, Seattle, WA, USA."
+                },
+                {
+                  "affiliation": "Department of Genome Sciences, University of Washington, Seattle, WA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Pendyala S",
+            "lastName": "Pendyala",
+            "firstName": "Sriram",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Genome Sciences, University of Washington, Seattle, WA, USA."
+                },
+                {
+                  "affiliation": "Medical Scientist Training Program, University of Washington, Seattle, WA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Post M",
+            "lastName": "Post",
+            "firstName": "Mason",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Brotman Baty Institute for Precision Medicine, Seattle, WA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Kalra D",
+            "lastName": "Kalra",
+            "firstName": "Divya",
+            "initials": "D",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0001-5254-4067"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Human Genome Sequencing Center, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Patterson K",
+            "lastName": "Patterson",
+            "firstName": "Karynne",
+            "initials": "K",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Genome Sciences, University of Washington, Seattle, WA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Venner E",
+            "lastName": "Venner",
+            "firstName": "Eric",
+            "initials": "E",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Human Genome Sequencing Center, Baylor College of Medicine, Houston, TX, USA."
+                },
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Muffley LA",
+            "lastName": "Muffley",
+            "firstName": "Lara A",
+            "initials": "LA",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Brotman Baty Institute for Precision Medicine, Seattle, WA, USA."
+                },
+                {
+                  "affiliation": "Department of Genome Sciences, University of Washington, Seattle, WA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Fowler DM",
+            "lastName": "Fowler",
+            "firstName": "Douglas M",
+            "initials": "DM",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Brotman Baty Institute for Precision Medicine, Seattle, WA, USA."
+                },
+                {
+                  "affiliation": "Department of Genome Sciences, University of Washington, Seattle, WA, USA."
+                },
+                {
+                  "affiliation": "Department of Bioengineering, University of Washington, Seattle, WA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Rubin AF",
+            "lastName": "Rubin",
+            "firstName": "Alan F",
+            "initials": "AF",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-1474-605X"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Bioinformatics Division, The Walter and Eliza Hall Institute of Medical Research, Parkville, VIC, Australia."
+                },
+                {
+                  "affiliation": "Department of Medical Biology, University of Melbourne, Melbourne, VIC, Australia."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Posey JE",
+            "lastName": "Posey",
+            "firstName": "Jennifer E",
+            "initials": "JE",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Plon SE",
+            "lastName": "Plon",
+            "firstName": "Sharon E",
+            "initials": "SE",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Human Genome Sequencing Center, Baylor College of Medicine, Houston, TX, USA."
+                },
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Lupski JR",
+            "lastName": "Lupski",
+            "firstName": "James R",
+            "initials": "JR",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Human Genome Sequencing Center, Baylor College of Medicine, Houston, TX, USA."
+                },
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA."
+                },
+                {
+                  "affiliation": "Texas Children's Hospital, Houston, TX, USA."
+                },
+                {
+                  "affiliation": "Department of Pediatrics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Gibbs RA",
+            "lastName": "Gibbs",
+            "firstName": "Richard A",
+            "initials": "RA",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Human Genome Sequencing Center, Baylor College of Medicine, Houston, TX, USA."
+                },
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Starita LM",
+            "lastName": "Starita",
+            "firstName": "Lea M",
+            "initials": "LM",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Brotman Baty Institute for Precision Medicine, Seattle, WA, USA."
+                },
+                {
+                  "affiliation": "Department of Genome Sciences, University of Washington, Seattle, WA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Robles-Espinoza CD",
+            "lastName": "Robles-Espinoza",
+            "firstName": "Carla Daniela",
+            "initials": "CD",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Laboratorio Internacional de Investigaci\u00f3n Sobre El Genoma Humano, Universidad Nacional Aut\u00f3noma de M\u00e9xico, Campus Juriquilla, Quer\u00e9taro, Qro, Mexico."
+                },
+                {
+                  "affiliation": "CASM, Wellcome Sanger Institute, Hinxton, UK."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Coyote-Maestas W",
+            "lastName": "Coyote-Maestas",
+            "firstName": "Willow",
+            "initials": "W",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Bioengineering and Therapeutic Sciences, University of California, San Francisco, USA. willow.coyote-maestas@ucsf.edu."
+                },
+                {
+                  "affiliation": "Quantitative Biosciences Institute, University of California, San Francisco, USA. willow.coyote-maestas@ucsf.edu."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Gallego Romero I",
+            "lastName": "Gallego Romero",
+            "firstName": "Irene",
+            "initials": "I",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-1613-8998"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Human Genomics and Evolution, St Vincent's Institute of Medical Research, Fitzroy, 3065, Australia. irene.gallego@svi.edu.au."
+                },
+                {
+                  "affiliation": "School of BioSciences and Melbourne Integrative Genomics, The University of Melbourne, Royal Parade, Parkville, 3010, Australia. irene.gallego@svi.edu.au."
+                },
+                {
+                  "affiliation": "Center for Genomics, Evolution and Medicine, Institute of Genomics, University of Tartu, Riia 23B, 51010, Tartu, Estonia. irene.gallego@svi.edu.au."
+                },
+                {
+                  "affiliation": "Mary MacKillop Institute for Health Research, Australian Catholic University, Fitzroy, Australia. irene.gallego@svi.edu.au."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0001-5254-4067"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-0192-1277"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-1474-605X"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-1613-8998"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "issue": "1",
+        "volume": "16",
+        "journalIssueId": 3862101,
+        "dateOfPublication": "2024 Dec",
+        "monthOfPublication": 12,
+        "yearOfPublication": 2024,
+        "journal": {
+          "medlineAbbreviation": "Genome Med",
+          "title": "Genome medicine",
+          "essn": "1756-994X",
+          "issn": "1756-994X",
+          "isoabbreviation": "Genome Med",
+          "nlmid": "101475844"
+        },
+        "printPublicationDate": "2024-12-01"
+      },
+      "pubYear": "2024",
+      "pageInfo": "143",
+      "abstractText": "<h4>Background</h4>Multiplexed Assays of Variant Effects (MAVEs) can test all possible single variants in a gene of interest. The resulting saturation-style functional data may help resolve variant classification disparities between populations, especially for Variants of Uncertain Significance (VUS).<h4>Methods</h4>We analyzed clinical significance classifications in 213,663 individuals of European-like genetic ancestry versus 206,975 individuals of non-European-like genetic ancestry from All of Us and the Genome Aggregation Database. Then, we incorporated clinically calibrated MAVE data into the Clinical Genome Resource's Variant Curation Expert Panel rules to automate VUS reclassification for BRCA1, TP53, and PTEN.<h4>Results</h4>Using two orthogonal statistical approaches, we show a higher prevalence (p\u2009\u2264\u20095.95e\u2009-\u200906) of VUS in individuals of non-European-like genetic ancestry across all medical specialties assessed in all three databases. Further, in the non-European-like genetic ancestry group, higher rates of Benign or Likely Benign and variants with no clinical designation (p\u2009\u2264\u20092.5e\u2009-\u200905) were found across many medical specialties, whereas Pathogenic or Likely Pathogenic assignments were increased in individuals of European-like genetic ancestry (p\u2009\u2264\u20092.5e\u2009-\u200905). Using MAVE data, we reclassified VUS in individuals of non-European-like genetic ancestry at a significantly higher rate in comparison to reclassified VUS from European-like genetic ancestry (p\u2009=\u20099.1e\u2009-\u200903) effectively compensating for the VUS disparity. Further, essential code analysis showed equitable impact of MAVE evidence codes but inequitable impact of allele frequency (p\u2009=\u20097.47e\u2009-\u200906) and computational predictor (p\u2009=\u20096.92e\u2009-\u200905) evidence codes for individuals of non-European-like genetic ancestry.<h4>Conclusions</h4>Generation of saturation-style MAVE data should be a priority to reduce VUS disparities and produce equitable training data for future computational predictors.",
+      "affiliation": "Human Genome Sequencing Center, Baylor College of Medicine, Houston, TX, USA. Moez.Dawood@bcm.edu.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article",
+          "Research Support, N.I.H., Extramural"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "NHGRI NIH HHS",
+            "acronym": "HG",
+            "grantId": "UM1 HG011969",
+            "orderIn": 0
+          },
+          {
+            "agency": "Wellcome Trust",
+            "grantId": "227228/Z/23/Z",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "BRCA1 Protein",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Gene Frequency"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Minority Groups"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Databases, Genetic"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Tumor Suppressor Protein p53",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "PTEN Phosphohydrolase"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Genetic Variation"
+          }
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "Pathogenic",
+          "Missense",
+          "Benign",
+          "Equity",
+          "Inequity",
+          "Genetic Ancestry",
+          "Vus",
+          "Variants Of Uncertain Significance",
+          "Mave",
+          "All Of Us",
+          "Gnomad",
+          "Multiplexed Assay Of Variant Effects"
+        ]
+      },
+      "chemicalList": {
+        "chemical": [
+          {
+            "name": "BRCA1 Protein",
+            "registryNumber": "0"
+          },
+          {
+            "name": "Tumor Suppressor Protein p53",
+            "registryNumber": "0"
+          },
+          {
+            "name": "PTEN Phosphohydrolase",
+            "registryNumber": "EC 3.1.3.67"
+          },
+          {
+            "name": "TP53 protein, human",
+            "registryNumber": "0"
+          },
+          {
+            "name": "BRCA1 protein, human",
+            "registryNumber": "0"
+          },
+          {
+            "name": "PTEN protein, human",
+            "registryNumber": "EC 3.1.3.67"
+          }
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s13073-024-01392-7"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11616159"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11616159?pdf=render"
+          }
+        ]
+      },
+      "commentCorrectionList": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "38645101",
+            "reference": "medRxiv. 2024 Apr 12:2024.04.11.24305690. doi: 10.1101/2024.04.11.24305690.",
+            "type": "Update of",
+            "orderIn": 1
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 36,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by-nc-nd",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "N",
+      "dateOfCompletion": "2024-12-04",
+      "dateOfCreation": "2024-12-04",
+      "dateOfRevision": "2026-09-23",
+      "electronicPublicationDate": "2024-12-03",
+      "firstPublicationDate": "2024-12-03",
+      "firstIndexDate": "2024-12-05",
+      "fullTextReceivedDate": "2025-02-05",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "41053080",
+      "source": "MED",
+      "pmid": "41053080",
+      "pmcid": "PMC12500861",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC12500861"
+        ]
+      },
+      "doi": "10.1038/s41467-025-63340-2",
+      "title": "Improved allele frequencies in gnomAD through local ancestry inference.",
+      "authorString": "Kore P, Wilson MW, Tiao G, Chao K, Darnowsky PW, Watts NA, Mauer JH, Baxter SM, Genome Aggregation Database Consortium, Rehm HL, Daly MJ, Karczewski KJ, Atkinson EG.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Kore P",
+            "lastName": "Kore",
+            "firstName": "Pragati",
+            "initials": "P",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-1877-5819"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Wilson MW",
+            "lastName": "Wilson",
+            "firstName": "Michael W",
+            "initials": "MW",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Tiao G",
+            "lastName": "Tiao",
+            "firstName": "Grace",
+            "initials": "G",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Chao K",
+            "lastName": "Chao",
+            "firstName": "Katherine",
+            "initials": "K",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-2897-2410"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Darnowsky PW",
+            "lastName": "Darnowsky",
+            "firstName": "Philip W",
+            "initials": "PW",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Watts NA",
+            "lastName": "Watts",
+            "firstName": "Nicholas A",
+            "initials": "NA",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Mauer JH",
+            "lastName": "Mauer",
+            "firstName": "Jessica Honorato",
+            "initials": "JH",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Baxter SM",
+            "lastName": "Baxter",
+            "firstName": "Samantha M",
+            "initials": "SM",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-4616-9234"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "collectiveName": "Genome Aggregation Database Consortium"
+          },
+          {
+            "fullName": "Rehm HL",
+            "lastName": "Rehm",
+            "firstName": "Heidi L",
+            "initials": "HL",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                },
+                {
+                  "affiliation": "Center for Genomic Medicine, Massachusetts General Hospital, Boston, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Daly MJ",
+            "lastName": "Daly",
+            "firstName": "Mark J",
+            "initials": "MJ",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-0949-8752"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                },
+                {
+                  "affiliation": "Stanley Center for Psychiatric Research, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                },
+                {
+                  "affiliation": "Analytic and Translational Genetics Unit, Massachusetts General Hospital, Boston, MA, USA."
+                },
+                {
+                  "affiliation": "Institute for Molecular Medicine Finland, Helsinki, Finland."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Karczewski KJ",
+            "lastName": "Karczewski",
+            "firstName": "Konrad J",
+            "initials": "KJ",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Medical and Population Genetics, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                },
+                {
+                  "affiliation": "Stanley Center for Psychiatric Research, The Broad Institute of MIT and Harvard, Cambridge, MA, USA."
+                },
+                {
+                  "affiliation": "Analytic and Translational Genetics Unit, Massachusetts General Hospital, Boston, MA, USA."
+                },
+                {
+                  "affiliation": "Novo Nordisk Foundation Center for Genomic Mechanisms of Disease, Broad Institute of MIT and Harvard, Cambridge, Massachusetts, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Atkinson EG",
+            "lastName": "Atkinson",
+            "firstName": "Elizabeth G",
+            "initials": "EG",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-6308-776X"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA. Elizabeth.atkinson@bcm.edu."
+                },
+                {
+                  "affiliation": "Stanley Center for Psychiatric Research, The Broad Institute of MIT and Harvard, Cambridge, MA, USA. Elizabeth.atkinson@bcm.edu."
+                },
+                {
+                  "affiliation": "Analytic and Translational Genetics Unit, Massachusetts General Hospital, Boston, MA, USA. Elizabeth.atkinson@bcm.edu."
+                },
+                {
+                  "affiliation": "Jan and Dan Duncan Neurological Research Institute, Texas Children's Hospital, Houston, TX, USA. Elizabeth.atkinson@bcm.edu."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0002-0949-8752"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0002-6308-776X"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-1877-5819"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-2897-2410"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-4616-9234"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "summaries",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "issue": "1",
+        "volume": "16",
+        "journalIssueId": 4025269,
+        "dateOfPublication": "2025 Oct",
+        "monthOfPublication": 10,
+        "yearOfPublication": 2025,
+        "journal": {
+          "medlineAbbreviation": "Nat Commun",
+          "title": "Nature communications",
+          "essn": "2041-1723",
+          "issn": "2041-1723",
+          "isoabbreviation": "Nat Commun",
+          "nlmid": "101528555"
+        },
+        "printPublicationDate": "2025-10-01"
+      },
+      "pubYear": "2025",
+      "pageInfo": "8734",
+      "abstractText": "The Genome Aggregation Database (gnomAD) is a foundational resource for allele frequency data, widely used in genomic research and clinical interpretation. However, traditional estimates rely on individual-level genetic ancestry groupings that may obscure variation in recently admixed populations. To improve resolution, we applied local ancestry inference (LAI) to over 27 million variants in two admixed groups: Admixed American (n\u2009=\u20097612) and African/African American (n\u2009=\u200920,250), deriving ancestry-specific allele frequencies. We show that 78.5% and 85.1% of variants in these groups, respectively, exhibit at least a twofold difference in ancestry-specific frequencies. Moreover, 81.49% of variants with LAI information would be assigned a higher gnomAD-wide maximum frequency after incorporating LAI, potentially altering clinical interpretations. This LAI-informed release reveals clinically relevant frequency differences that are masked in aggregate estimates and may support reclassifying some variants from Uncertain Significance to Benign or Likely Benign.",
+      "affiliation": "Department of Molecular and Human Genetics, Baylor College of Medicine, Houston, TX, USA.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "NIGMS NIH HHS",
+            "acronym": "GM",
+            "grantId": "T32 GM139534",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHGRI NIH HHS",
+            "acronym": "HG",
+            "grantId": "U24 HG011450",
+            "orderIn": 0
+          },
+          {
+            "agency": "NIGMS NIH HHS",
+            "acronym": "GM",
+            "grantId": "T32 GM136554",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHGRI NIH HHS",
+            "acronym": "HG",
+            "grantId": "R01 HG012869",
+            "orderIn": 0
+          },
+          {
+            "agency": "NIMH NIH HHS",
+            "acronym": "MH",
+            "grantId": "K01 MH121659",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Genetics, Population"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Genomics",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "MT",
+                  "qualifierName": "methods"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Gene Frequency"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Polymorphism, Single Nucleotide"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Genome, Human"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Databases, Genetic"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Black or African American",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "American Indian or Alaska Native",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "European People",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1038/s41467-025-63340-2"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12500861"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12500861?pdf=render"
+          }
+        ]
+      },
+      "commentCorrectionList": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "40661606",
+            "reference": "bioRxiv. 2025 Jun 09:2024.10.30.620961. doi: 10.1101/2024.10.30.620961.",
+            "type": "Update of",
+            "orderIn": 1
+          },
+          {
+            "source": "PPR",
+            "id": "PPR933406",
+            "type": "Preprint in",
+            "note": "CrossRef Pre-print loader",
+            "orderIn": 10002
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 22,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by-nc-nd",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "N",
+      "dateOfCompletion": "2025-10-06",
+      "dateOfCreation": "2025-10-06",
+      "dateOfRevision": "2025-11-14",
+      "electronicPublicationDate": "2025-10-06",
+      "firstPublicationDate": "2025-10-06",
+      "firstIndexDate": "2025-10-07",
+      "fullTextReceivedDate": "2025-10-09",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "39333091",
+      "source": "MED",
+      "pmid": "39333091",
+      "pmcid": "PMC11437130",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC11437130"
+        ]
+      },
+      "doi": "10.1038/s41467-024-52474-4",
+      "title": "ParSE-seq: a calibrated multiplexed assay to facilitate the clinical classification of putative splice-altering variants.",
+      "authorString": "O'Neill MJ, Yang T, Laudeman J, Calandranis ME, Harvey ML, Solus JF, Roden DM, Glazer AM.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "O'Neill MJ",
+            "lastName": "O'Neill",
+            "firstName": "Matthew J",
+            "initials": "MJ",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-2014-7950"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt University School of Medicine, Nashville, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Yang T",
+            "lastName": "Yang",
+            "firstName": "Tao",
+            "initials": "T",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt Center for Arrhythmia Research and Therapeutics (VanCART), Division of Clinical Pharmacology, Department of Medicine, Vanderbilt University Medical Center, Nashville, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Laudeman J",
+            "lastName": "Laudeman",
+            "firstName": "Julie",
+            "initials": "J",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt Center for Arrhythmia Research and Therapeutics (VanCART), Division of Clinical Pharmacology, Department of Medicine, Vanderbilt University Medical Center, Nashville, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Calandranis ME",
+            "lastName": "Calandranis",
+            "firstName": "Maria E",
+            "initials": "ME",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt Center for Arrhythmia Research and Therapeutics (VanCART), Division of Clinical Pharmacology, Department of Medicine, Vanderbilt University Medical Center, Nashville, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Harvey ML",
+            "lastName": "Harvey",
+            "firstName": "M Lorena",
+            "initials": "ML",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0009-0008-4752-6081"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt Center for Arrhythmia Research and Therapeutics (VanCART), Division of Clinical Pharmacology, Department of Medicine, Vanderbilt University Medical Center, Nashville, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Solus JF",
+            "lastName": "Solus",
+            "firstName": "Joseph F",
+            "initials": "JF",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt Center for Arrhythmia Research and Therapeutics (VanCART), Division of Clinical Pharmacology, Department of Medicine, Vanderbilt University Medical Center, Nashville, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Roden DM",
+            "lastName": "Roden",
+            "firstName": "Dan M",
+            "initials": "DM",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-6302-0389"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt Center for Arrhythmia Research and Therapeutics (VanCART), Division of Clinical Pharmacology, Department of Medicine, Vanderbilt University Medical Center, Nashville, TN, USA. dan.roden@vumc.org."
+                },
+                {
+                  "affiliation": "Department of Pharmacology, Vanderbilt University Medical Center, Nashville, TN, USA. dan.roden@vumc.org."
+                },
+                {
+                  "affiliation": "Department of Biomedical Informatics, Vanderbilt University Medical Center, Nashville, TN, USA. dan.roden@vumc.org."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Glazer AM",
+            "lastName": "Glazer",
+            "firstName": "Andrew M",
+            "initials": "AM",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-3938-4713"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Vanderbilt Center for Arrhythmia Research and Therapeutics (VanCART), Division of Clinical Pharmacology, Department of Medicine, Vanderbilt University Medical Center, Nashville, TN, USA. andrew.m.glazer@vumc.org."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0002-3938-4713"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0002-6302-0389"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-2014-7950"
+          },
+          {
+            "type": "ORCID",
+            "value": "0009-0008-4752-6081"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "issue": "1",
+        "volume": "15",
+        "journalIssueId": 3820976,
+        "dateOfPublication": "2024 Sep",
+        "monthOfPublication": 9,
+        "yearOfPublication": 2024,
+        "journal": {
+          "medlineAbbreviation": "Nat Commun",
+          "title": "Nature communications",
+          "essn": "2041-1723",
+          "issn": "2041-1723",
+          "isoabbreviation": "Nat Commun",
+          "nlmid": "101528555"
+        },
+        "printPublicationDate": "2024-09-01"
+      },
+      "pubYear": "2024",
+      "pageInfo": "8320",
+      "abstractText": "Interpreting the clinical significance of putative splice-altering variants outside canonical splice sites remains difficult without time-intensive experimental studies. To address this, we introduce Parallel Splice Effect Sequencing (ParSE-seq), a multiplexed assay to quantify variant effects on RNA splicing. We first apply this technique to study hundreds of variants in the arrhythmia-associated gene SCN5A. Variants are studied in 'minigene' plasmids with molecular barcodes to allow pooled variant effect quantification. We perform experiments in two cell types, including disease-relevant induced pluripotent stem cell-derived cardiomyocytes (iPSC-CMs). The assay strongly separates known control variants from ClinVar, enabling quantitative calibration of the ParSE-seq assay. Using these evidence strengths and experimental data, we reclassify 29 of 34 variants with conflicting interpretations and 11 of 42 variants of uncertain significance. In addition to intronic variants, we show that many synonymous and missense variants disrupted RNA splicing. Two splice-altering variants in the assay also disrupt splicing and sodium current when introduced into iPSC-CMs by CRISPR-Cas9 editing. ParSE-seq provides high-throughput experimental data for RNA-splicing to support precision medicine efforts and can be readily adopted to study\u00a0other loss-of-function genotype-phenotype relationships.",
+      "affiliation": "Vanderbilt University School of Medicine, Nashville, TN, USA.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article",
+          "Research Support, N.I.H., Extramural"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "NIGMS NIH HHS",
+            "acronym": "GM",
+            "grantId": "R35 GM150465",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHLBI NIH HHS",
+            "acronym": "HL",
+            "grantId": "F30 HL163923",
+            "orderIn": 0
+          },
+          {
+            "agency": "NCI NIH HHS",
+            "acronym": "CA",
+            "grantId": "P30 CA068485",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHGRI NIH HHS",
+            "acronym": "HG",
+            "grantId": "R00 HG010904",
+            "orderIn": 0
+          },
+          {
+            "agency": "NIH HHS",
+            "acronym": "OD",
+            "grantId": "S10 OD025281",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHLBI NIH HHS",
+            "acronym": "HL",
+            "grantId": "R01 HL149826",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHLBI NIH HHS",
+            "acronym": "HL",
+            "grantId": "R01 HL164675",
+            "orderIn": 0
+          },
+          {
+            "agency": "NIGMS NIH HHS",
+            "acronym": "GM",
+            "grantId": "T32 GM007347",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Myocytes, Cardiac",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "CY",
+                  "qualifierName": "cytology"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "ME",
+                  "qualifierName": "metabolism"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "RNA Splice Sites",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Calibration"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "RNA Splicing",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Introns",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Arrhythmias, Cardiac",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Genetic Variation"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Induced Pluripotent Stem Cells",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "ME",
+                  "qualifierName": "metabolism"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "HEK293 Cells"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "High-Throughput Nucleotide Sequencing",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "MT",
+                  "qualifierName": "methods"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "NAV1.5 Voltage-Gated Sodium Channel",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "ME",
+                  "qualifierName": "metabolism"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "CRISPR-Cas Systems",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "chemicalList": {
+        "chemical": [
+          {
+            "name": "SCN5A protein, human",
+            "registryNumber": "0"
+          },
+          {
+            "name": "RNA Splice Sites",
+            "registryNumber": "0"
+          },
+          {
+            "name": "NAV1.5 Voltage-Gated Sodium Channel",
+            "registryNumber": "0"
+          }
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1038/s41467-024-52474-4"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11437130"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11437130?pdf=render"
+          }
+        ]
+      },
+      "commentCorrectionList": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "37732247",
+            "reference": "medRxiv. 2023 Sep 08:2023.09.04.23295019. doi: 10.1101/2023.09.04.23295019.",
+            "type": "Update of",
+            "orderIn": 1
+          },
+          {
+            "source": "PPR",
+            "id": "PPR722291",
+            "type": "Preprint in",
+            "note": "CrossRef Pre-print loader",
+            "orderIn": 10002
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 21,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by-nc-nd",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "ensembl",
+          "omim"
+        ]
+      },
+      "dateOfCompletion": "2024-09-27",
+      "dateOfCreation": "2024-09-27",
+      "dateOfRevision": "2026-11-22",
+      "electronicPublicationDate": "2024-09-27",
+      "firstPublicationDate": "2024-09-27",
+      "firstIndexDate": "2024-09-28",
+      "fullTextReceivedDate": "2025-02-05",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "40329382",
+      "source": "MED",
+      "pmid": "40329382",
+      "pmcid": "PMC12054230",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC12054230"
+        ]
+      },
+      "doi": "10.1186/s13059-025-03581-y",
+      "title": "PRESCOTT: a population aware, epistatic, and structural model accurately predicts missense effects.",
+      "authorString": "Tekpinar M, David L, Henry T, Carbone A.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Tekpinar M",
+            "lastName": "Tekpinar",
+            "firstName": "Mustafa",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Computational, Quantitative and Synthetic Biology (CQSB), Sorbonne Universit\u00e9, CNRS, IBPS, UMR 7238, Paris, 75005, France."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "David L",
+            "lastName": "David",
+            "firstName": "Laurent",
+            "initials": "L",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Computational, Quantitative and Synthetic Biology (CQSB), Sorbonne Universit\u00e9, CNRS, IBPS, UMR 7238, Paris, 75005, France."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Henry T",
+            "lastName": "Henry",
+            "firstName": "Thomas",
+            "initials": "T",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-0687-8565"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Centre International de Recherche en Infectiologie (CIRI), Inserm U1111, Universit\u00e9 Claude Bernard Lyon 1, CNRS, UMR5308, ENS de Lyon, Univ Lyon, Lyon, 69007, France."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Carbone A",
+            "lastName": "Carbone",
+            "firstName": "Alessandra",
+            "initials": "A",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-2098-5743"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Computational, Quantitative and Synthetic Biology (CQSB), Sorbonne Universit\u00e9, CNRS, IBPS, UMR 7238, Paris, 75005, France. alessandra.carbone@lip6.fr."
+                },
+                {
+                  "affiliation": "Institut Universitaire de France (IUF), Paris, France. alessandra.carbone@lip6.fr."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0002-0687-8565"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-2098-5743"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "issue": "1",
+        "volume": "26",
+        "journalIssueId": 3936630,
+        "dateOfPublication": "2025 May",
+        "monthOfPublication": 5,
+        "yearOfPublication": 2025,
+        "journal": {
+          "medlineAbbreviation": "Genome Biol",
+          "title": "Genome biology",
+          "essn": "1474-760X",
+          "issn": "1474-7596",
+          "isoabbreviation": "Genome Biol",
+          "nlmid": "100960660"
+        },
+        "printPublicationDate": "2025-05-01"
+      },
+      "pubYear": "2025",
+      "pageInfo": "113",
+      "abstractText": "Predicting the functional impact of point mutations is a critical challenge in genomics. PRESCOTT reconstructs complete mutational landscapes, identifies mutation-sensitive regions, and categorizes missense variants as benign, pathogenic, or variants of uncertain significance. Leveraging protein sequences, structural models, and population-specific allele frequencies, PRESCOTT surpasses existing methods in classifying ClinVar variants, the ACMG dataset, and over 1800 proteins from the Human Protein Dataset. Its online server facilitates mutation effect predictions for any protein and variant, and includes a database of over 19,000 human proteins, ready for population-specific analyses. Open access to residue-specific scores offers transparency and valuable insights for genomic medicine.",
+      "affiliation": "Department of Computational, Quantitative and Synthetic Biology (CQSB), Sorbonne Universit\u00e9, CNRS, IBPS, UMR 7238, Paris, 75005, France.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "Agence Nationale de la Recherche",
+            "grantId": "ANR-21-CE17-0046",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Proteins",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "CH",
+                  "qualifierName": "chemistry"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Epistasis, Genetic"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Gene Frequency"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Mutation, Missense"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Software"
+          }
+        ]
+      },
+      "chemicalList": {
+        "chemical": [
+          {
+            "name": "Proteins",
+            "registryNumber": "0"
+          }
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://genomebiology.biomedcentral.com/counter/pdf/10.1186/s13059-025-03581-y"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s13059-025-03581-y"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12054230"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12054230?pdf=render"
+          }
+        ]
+      },
+      "commentCorrectionList": {
+        "commentCorrection": [
+          {
+            "source": "PPR",
+            "id": "PPR801408",
+            "type": "Preprint in",
+            "note": "CrossRef Pre-print loader",
+            "orderIn": 10002
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 13,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "uniprot",
+          "doi"
+        ]
+      },
+      "dateOfCompletion": "2025-05-07",
+      "dateOfCreation": "2025-05-06",
+      "dateOfRevision": "2025-05-09",
+      "electronicPublicationDate": "2025-05-06",
+      "firstPublicationDate": "2025-05-06",
+      "firstIndexDate": "2025-05-07",
+      "fullTextReceivedDate": "2025-12-02",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "41126324",
+      "source": "MED",
+      "pmid": "41126324",
+      "pmcid": "PMC12548217",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC12548217"
+        ]
+      },
+      "doi": "10.1186/s13073-025-01536-3",
+      "title": "A quantitative, Bayesian-informed approach to gene-specific variant classification: Updated Expert Panel recommendations improve classification of TP53 germline variants for Li-Fraumeni syndrome.",
+      "authorString": "Fortuno C, Frone MN, Mester J, de la Hoya M, Mai PL, Pesaran T, Achatz MI, Bassett R, Bustamante C, Crowley S, de Andrade KC, Evans DG, Feng B, Fuqua L, Harrell MI, Hatton JN, Huether R, Kesserwan C, Lee K, MacFarland SP, Maciaszek JL, Maxwell K, McGoldrick K, Murphy M, Nehoray B, Penkert J, Pinto EM, Plon SE, Schwartz-Levine A, Thompson AS, Wang W, Zambetti GP, Zelley K, James PA, Savage SA, Kratz CP, Spurdle AB.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Fortuno C",
+            "lastName": "Fortuno",
+            "firstName": "Cristina",
+            "initials": "C",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Population Health Program, QIMR Berghofer Medical Research Institute, Brisbane, QLD, Australia. cristina.fortuno@qimrberghofer.edu.au."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Frone MN",
+            "lastName": "Frone",
+            "firstName": "Megan N",
+            "initials": "MN",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Clinical Genetics Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute, National Institutes of Health, Rockville, MD, USA. megan.frone@nih.gov."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Mester J",
+            "lastName": "Mester",
+            "firstName": "Jessica",
+            "initials": "J",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "GeneDx, Gaithersburg, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "de la Hoya M",
+            "lastName": "de la Hoya",
+            "firstName": "Miguel",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Molecular Oncology Laboratory, Hospital Clinico San Carlos, Instituto de Investigaci\u00f3n Sanitaria San Carlos (IdISSC), Madrid, Spain."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Mai PL",
+            "lastName": "Mai",
+            "firstName": "Phuong L",
+            "initials": "PL",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Center for Clinical Genetics and Genomics, Department of Obstetrics, Gynecology, and Reproductive Sciences, University of Pittsburgh, Pittsburgh, PA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Pesaran T",
+            "lastName": "Pesaran",
+            "firstName": "Tina",
+            "initials": "T",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Ambry Genetics, Aliso Viejo, CA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Achatz MI",
+            "lastName": "Achatz",
+            "firstName": "Maria Isabel",
+            "initials": "MI",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Centro de Oncologia, Hospital S\u00edrio-Liban\u00eas, S\u00e3o Paulo, Brazil."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Bassett R",
+            "lastName": "Bassett",
+            "firstName": "Rebecca",
+            "initials": "R",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Moanalua Medical Center, Hawaii Permanente Medical Group, Kaiser Permanente, Honolulu, HI, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Bustamante C",
+            "lastName": "Bustamante",
+            "firstName": "Carolina",
+            "initials": "C",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "OC Precision Medicine, S\u00e3o Paulo, Brazil."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Crowley S",
+            "lastName": "Crowley",
+            "firstName": "Stephanie",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Invitae Corporation, San Francisco, CA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "de Andrade KC",
+            "lastName": "de Andrade",
+            "firstName": "Kelvin Cesar",
+            "initials": "KC",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Clinical Genetics Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute, National Institutes of Health, Rockville, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Evans DG",
+            "lastName": "Evans",
+            "firstName": "D Gareth",
+            "initials": "DG",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0002-8482-5784"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Evolution, Infection and Genomics, School of Biological Sciences, Faculty of Biology, Medicine and Health, The University of Manchester, Manchester, UK."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Feng B",
+            "lastName": "Feng",
+            "firstName": "Bingjian",
+            "initials": "B",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "University of Utah, Salt Lake City, UT, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Fuqua L",
+            "lastName": "Fuqua",
+            "firstName": "Laura",
+            "initials": "L",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Baylor Genetics, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Harrell MI",
+            "lastName": "Harrell",
+            "firstName": "Maria Isabel",
+            "initials": "MI",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Labcorp Genetics (Formerly Invitae Corp), Burlington, NC, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Hatton JN",
+            "lastName": "Hatton",
+            "firstName": "Jessica N",
+            "initials": "JN",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Clinical Genetics Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute, National Institutes of Health, Rockville, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Huether R",
+            "lastName": "Huether",
+            "firstName": "Robert",
+            "initials": "R",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Tempus AI, Chicago, IL, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Kesserwan C",
+            "lastName": "Kesserwan",
+            "firstName": "Chimene",
+            "initials": "C",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Pathology, NYU Grossman School of Medicine, New York, NY, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Lee K",
+            "lastName": "Lee",
+            "firstName": "Kristy",
+            "initials": "K",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Genetics, University of North Carolina at Chapel Hill, Chapel Hill, NC, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "MacFarland SP",
+            "lastName": "MacFarland",
+            "firstName": "Suzanne P",
+            "initials": "SP",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Oncology, Children's Hospital of Philadelphia, Philadelphia, PA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Maciaszek JL",
+            "lastName": "Maciaszek",
+            "firstName": "Jamie L",
+            "initials": "JL",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Pathology, St. Jude Children's Research Hospital, Memphis, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Maxwell K",
+            "lastName": "Maxwell",
+            "firstName": "Kara",
+            "initials": "K",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Oncology, Children's Hospital of Philadelphia, Philadelphia, PA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "McGoldrick K",
+            "lastName": "McGoldrick",
+            "firstName": "Kelly",
+            "initials": "K",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Ambry Genetics, Aliso Viejo, CA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Murphy M",
+            "lastName": "Murphy",
+            "firstName": "Maureen",
+            "initials": "M",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Program in Molecular and Cellular Oncogenesis, The Wistar Institute, Philadelphia, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Nehoray B",
+            "lastName": "Nehoray",
+            "firstName": "Bita",
+            "initials": "B",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Clinical Cancer Genomics, Departments of Medical Oncology and Therapeutics Research and Population Sciences, City of Hope, Duarte, CA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Penkert J",
+            "lastName": "Penkert",
+            "firstName": "Judith",
+            "initials": "J",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Human Genetics, Hannover Medical School, Hannover, Germany."
+                },
+                {
+                  "affiliation": "Pediatric Hematology and Oncology, Hannover Medical School, Hannover, Germany."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Pinto EM",
+            "lastName": "Pinto",
+            "firstName": "Emilia Modolo",
+            "initials": "EM",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Pathology, St. Jude Children's Research Hospital, Memphis, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Plon SE",
+            "lastName": "Plon",
+            "firstName": "Sharon E",
+            "initials": "SE",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Dan L. Duncan Cancer Center and the Department of Pediatrics, Baylor College of Medicine, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Schwartz-Levine A",
+            "lastName": "Schwartz-Levine",
+            "firstName": "Alison",
+            "initials": "A",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Cancer Genetics and Prevention, Dana-Farber Cancer Institute, Boston, MA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Thompson AS",
+            "lastName": "Thompson",
+            "firstName": "Ashley S",
+            "initials": "AS",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Pathology, Microbiology, and Immunology, Molecular Diagnostics Section, Vanderbilt Medical Laboratories, Nashville, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Wang W",
+            "lastName": "Wang",
+            "firstName": "Wenyi",
+            "initials": "W",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Bioinformatics and Computational Biology, The University of Texas MD Anderson Cancer Center, Houston, TX, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Zambetti GP",
+            "lastName": "Zambetti",
+            "firstName": "Gerard P",
+            "initials": "GP",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Pathology, St. Jude Children's Research Hospital, Memphis, TN, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Zelley K",
+            "lastName": "Zelley",
+            "firstName": "Kristin",
+            "initials": "K",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Division of Oncology, Children's Hospital of Philadelphia, Philadelphia, PA, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "James PA",
+            "lastName": "James",
+            "firstName": "Paul A",
+            "initials": "PA",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Familial Cancer Centre, Peter MacCallum Cancer Centre, Melbourne, VIC, Australia."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Savage SA",
+            "lastName": "Savage",
+            "firstName": "Sharon A",
+            "initials": "SA",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Clinical Genetics Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute, National Institutes of Health, Rockville, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Kratz CP",
+            "lastName": "Kratz",
+            "firstName": "Christian P",
+            "initials": "CP",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Pediatric Hematology and Oncology, Hannover Medical School, Hannover, Germany."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Spurdle AB",
+            "lastName": "Spurdle",
+            "firstName": "Amanda B",
+            "initials": "AB",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Population Health Program, QIMR Berghofer Medical Research Institute, Brisbane, QLD, Australia."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0002-8482-5784"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "issue": "1",
+        "volume": "17",
+        "journalIssueId": 4026159,
+        "dateOfPublication": "2025 Oct",
+        "monthOfPublication": 10,
+        "yearOfPublication": 2025,
+        "journal": {
+          "medlineAbbreviation": "Genome Med",
+          "title": "Genome medicine",
+          "essn": "1756-994X",
+          "issn": "1756-994X",
+          "isoabbreviation": "Genome Med",
+          "nlmid": "101475844"
+        },
+        "printPublicationDate": "2025-10-01"
+      },
+      "pubYear": "2025",
+      "pageInfo": "128",
+      "abstractText": "<h4>Background</h4>Germline pathogenic variants in TP53 cause Li-Fraumeni syndrome, with significantly elevated cancer risk from infancy. Accurate classification of TP53 variants is essential to guide clinical management and surveillance, yet many variants remain classified as variants of uncertain significance (VUS). To improve classification accuracy and reduce the proportion of VUS, the ClinGen TP53 Variant Curation Expert Panel (VCEP) has updated its specifications.<h4>Methods</h4>The updated specifications incorporate the latest ClinGen recommendations and methodological advances, providing greater granularity for multiple evidence types, and also introduce the novel use of variant allele fraction as evidence of pathogenicity, particularly in the context of clonal hematopoiesis. Whenever feasible, the VCEP followed a data-driven approach using likelihood ratio-based quantitative analyses to guide code application and determine strength modifications, while also factoring in expert judgment. Proposed modifications were first discussed in working group meetings and then subjected to comprehensive review during monthly general VCEP meetings to reach consensus.<h4>Results</h4>The performance of new specifications was compared to that of the old specifications for 43 pilot variants, and led to both decreased VUS and increased certainty, with clinically meaningful classifications for 93% of variants.<h4>Conclusions</h4>The updated TP53 specfications are expected to reduce VUS rates, increase inter-laboratory concordance, and improve medical management for individuals with germline TP53 variants. The most current version is available at the ClinGen Criteria Specifications Registry (CSpec): https://cspec.genome.network/cspec/ui/svi/svi/GN009 .",
+      "affiliation": "Population Health Program, QIMR Berghofer Medical Research Institute, Brisbane, QLD, Australia. cristina.fortuno@qimrberghofer.edu.au.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "Research Support, N.I.H., Intramural",
+          "Research Support, Non-U.S. Gov't",
+          "review-article",
+          "Review",
+          "Journal Article",
+          "Research Support, N.I.H., Extramural"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "National Breast Cancer Foundation",
+            "grantId": "IIRS-21-102",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHGRI NIH HHS",
+            "acronym": "HG",
+            "grantId": "U24 HG006834",
+            "orderIn": 0
+          },
+          {
+            "agency": "NCI NIH HHS",
+            "acronym": "CA",
+            "grantId": "R01 CA268380",
+            "orderIn": 0
+          },
+          {
+            "agency": "NIH HHS",
+            "acronym": "NH",
+            "grantId": "R01CA239342",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHGRI NIH HHS",
+            "acronym": "HG",
+            "grantId": "U24 HG009649",
+            "orderIn": 0
+          },
+          {
+            "agency": "NCI NIH HHS",
+            "acronym": "CA",
+            "grantId": "R01 CA239342",
+            "orderIn": 0
+          },
+          {
+            "agency": "NHMRC Investigator Fellowship",
+            "grantId": "APP177524",
+            "orderIn": 0
+          },
+          {
+            "agency": "German Childhood Cancer Foundation (Grant 2024.03) and by the Federal Ministry of Education and Research",
+            "grantId": "Grant 01GM2205A",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Li-Fraumeni Syndrome",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "DI",
+                  "qualifierName": "diagnosis"
+                },
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Genetic Predisposition to Disease"
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Bayes Theorem"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Germ-Line Mutation"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Tumor Suppressor Protein p53",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "GE",
+                  "qualifierName": "genetics"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "Li-fraumeni Syndrome",
+          "Tp53",
+          "Acmg Guidelines",
+          "Clingen Variant Curation Expert Panel (Vcep)"
+        ]
+      },
+      "chemicalList": {
+        "chemical": [
+          {
+            "name": "Tumor Suppressor Protein p53",
+            "registryNumber": "0"
+          },
+          {
+            "name": "TP53 protein, human",
+            "registryNumber": "0"
+          }
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s13073-025-01536-3"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12548217"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC12548217?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 6,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "nct"
+        ]
+      },
+      "dateOfCompletion": "2025-10-23",
+      "dateOfCreation": "2025-10-23",
+      "dateOfRevision": "2026-05-05",
+      "electronicPublicationDate": "2025-10-22",
+      "firstPublicationDate": "2025-10-22",
+      "firstIndexDate": "2025-10-23",
+      "fullTextReceivedDate": "2025-11-29",
+      "hasEvaluations": "N"
+    }
+  ]
+}

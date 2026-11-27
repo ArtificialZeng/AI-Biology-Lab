@@ -1,0 +1,681 @@
+{
+  "completed_at": "2026-11-25 08:55:35",
+  "elapsed_sec": 615.3,
+  "n_genes_total": 84,
+  "n_genes_nonzero": 84,
+  "total_gnomad_variants": 545493,
+  "genes": [
+    {
+      "gene": "BRCA1",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 7287,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "BRCA2",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 10769,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TP53",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3340,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "STK11",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3867,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MLH1",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4365,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MSH2",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 6097,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MSH6",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 6156,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "PMS2",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4700,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "APC",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 8249,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MUTYH",
+      "domain": "Cancer",
+      "inheritance": "AR",
+      "version": "v2.0",
+      "gnomad_n": 2767,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "VHL",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1263,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MEN1",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 2943,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "RET",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 6544,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "PTEN",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3103,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "RB1",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 6343,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "SDHD",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1737,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "SDHAF2",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1520,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "SDHC",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1810,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "SDHB",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1951,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TSC1",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4515,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TSC2",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 13480,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "WT1",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3659,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "NF2",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3517,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "BMPR1A",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1865,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "SMAD4",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 2502,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "PALB2",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 4211,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MAX",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 1937,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TMEM127",
+      "domain": "Cancer",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 1168,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "COL3A1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 8907,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "FBN1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 12107,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TGFBR1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 2181,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TGFBR2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 2153,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "SMAD3",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3570,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "ACTA2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1363,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MYH11",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 11769,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MYBPC3",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 10785,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MYH7",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 8212,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TNNT2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3019,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TNNI3",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 2181,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TPM1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3950,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MYL3",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1082,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "ACTC1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1307,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "PRKAG2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4575,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "GLA",
+      "domain": "Cardiovascular",
+      "inheritance": "XL",
+      "version": "v2.0",
+      "gnomad_n": 1704,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "MYL2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 1559,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "LMNA",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4617,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "RYR2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 29809,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "PKP2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4609,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "DSP",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 8592,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "DSC2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3980,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TMEM43",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 3046,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "DSG2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4451,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "KCNQ1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 6967,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "KCNH2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 8526,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "SCN5A",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 9470,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "LDLR",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 5497,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "APOB",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 13260,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "PCSK9",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 4544,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TTN",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 112412,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "FLNC",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 11966,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TRDN",
+      "domain": "Cardiovascular",
+      "inheritance": "AR",
+      "version": "v3.0",
+      "gnomad_n": 11632,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "CASQ2",
+      "domain": "Cardiovascular",
+      "inheritance": "AR",
+      "version": "v3.0",
+      "gnomad_n": 3122,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "BAG3",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.1",
+      "gnomad_n": 2153,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "DES",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.1",
+      "gnomad_n": 2623,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "RBM20",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.1",
+      "gnomad_n": 5529,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TNNC1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.1",
+      "gnomad_n": 1012,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "TTR",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.1",
+      "gnomad_n": 667,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "CALM1",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.2",
+      "gnomad_n": 1141,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "CALM2",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.2",
+      "gnomad_n": 2788,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "CALM3",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.2",
+      "gnomad_n": 1819,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "PLN",
+      "domain": "Cardiovascular",
+      "inheritance": "AD",
+      "version": "v3.3",
+      "gnomad_n": 267,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "OTC",
+      "domain": "Metabolic",
+      "inheritance": "XL",
+      "version": "v2.0",
+      "gnomad_n": 1797,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "GAA",
+      "domain": "Metabolic",
+      "inheritance": "AR",
+      "version": "v3.0",
+      "gnomad_n": 5995,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "BTD",
+      "domain": "Metabolic",
+      "inheritance": "AR",
+      "version": "v3.0",
+      "gnomad_n": 2461,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "ABCD1",
+      "domain": "Metabolic",
+      "inheritance": "XL",
+      "version": "v3.3",
+      "gnomad_n": 3496,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "CYP27A1",
+      "domain": "Metabolic",
+      "inheritance": "AR",
+      "version": "v3.3",
+      "gnomad_n": 2419,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "RYR1",
+      "domain": "Miscellaneous",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 29985,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "CACNA1S",
+      "domain": "Miscellaneous",
+      "inheritance": "AD",
+      "version": "v2.0",
+      "gnomad_n": 11482,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "ATP7B",
+      "domain": "Miscellaneous",
+      "inheritance": "AR",
+      "version": "v2.0",
+      "gnomad_n": 5981,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "HFE",
+      "domain": "Miscellaneous",
+      "inheritance": "AR",
+      "version": "v3.0",
+      "gnomad_n": 1629,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "HNF1A",
+      "domain": "Miscellaneous",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 3326,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "RPE65",
+      "domain": "Miscellaneous",
+      "inheritance": "AR",
+      "version": "v3.0",
+      "gnomad_n": 2453,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "ACVRL1",
+      "domain": "Miscellaneous",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 3501,
+      "mode": "gene_ok"
+    },
+    {
+      "gene": "ENG",
+      "domain": "Miscellaneous",
+      "inheritance": "AD",
+      "version": "v3.0",
+      "gnomad_n": 4380,
+      "mode": "gene_ok"
+    }
+  ]
+}

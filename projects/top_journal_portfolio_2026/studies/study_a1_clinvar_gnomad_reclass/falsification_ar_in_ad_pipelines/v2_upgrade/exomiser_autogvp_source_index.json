@@ -1,0 +1,248 @@
+{
+  "Exomiser": [
+    {
+      "file": "exomiser-core/src/test/java/org/monarchinitiative/exomiser/core/genome/dao/ClinVarDaoMvStoreTest.java",
+      "clinvar_hits": 162,
+      "moi_hits": 14,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/test/java/org/monarchinitiative/exomiser/core/analysis/acmg/Acmg2015EvidenceAssignerTest.java",
+      "clinvar_hits": 93,
+      "moi_hits": 116,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-data-genome/src/test/java/org/monarchinitiative/exomiser/data/genome/model/parsers/ClinVarAlleleParserTest.java",
+      "clinvar_hits": 98,
+      "moi_hits": 0,
+      "sf_hits": 2
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/model/pathogenicity/ClinVarData.java",
+      "clinvar_hits": 36,
+      "moi_hits": 1,
+      "sf_hits": 26
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/analysis/acmg/Acmg2015EvidenceAssigner.java",
+      "clinvar_hits": 73,
+      "moi_hits": 49,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/test/java/org/monarchinitiative/exomiser/core/model/pathogenicity/ClinVarDataTest.java",
+      "clinvar_hits": 24,
+      "moi_hits": 0,
+      "sf_hits": 23
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/model/AlleleProtoAdaptor.java",
+      "clinvar_hits": 73,
+      "moi_hits": 0,
+      "sf_hits": 2
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/genome/dao/ClinVarWhiteListReader.java",
+      "clinvar_hits": 46,
+      "moi_hits": 12,
+      "sf_hits": 8
+    },
+    {
+      "file": "exomiser-data-genome/src/main/java/org/monarchinitiative/exomiser/data/genome/indexers/AlleleConverter.java",
+      "clinvar_hits": 64,
+      "moi_hits": 0,
+      "sf_hits": 2
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/analysis/acmg/AcmgSpliceEvidenceAssigner.java",
+      "clinvar_hits": 61,
+      "moi_hits": 4,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/test/java/org/monarchinitiative/exomiser/core/genome/dao/ClinVarWhiteListReaderTest.java",
+      "clinvar_hits": 55,
+      "moi_hits": 4,
+      "sf_hits": 2
+    },
+    {
+      "file": "exomiser-core/src/test/java/org/monarchinitiative/exomiser/core/model/AlleleProtoAdaptorTest.java",
+      "clinvar_hits": 47,
+      "moi_hits": 0,
+      "sf_hits": 5
+    },
+    {
+      "file": "exomiser-data-genome/src/main/java/org/monarchinitiative/exomiser/data/genome/model/parsers/ClinVarAlleleParser.java",
+      "clinvar_hits": 44,
+      "moi_hits": 0,
+      "sf_hits": 6
+    },
+    {
+      "file": "exomiser-data-genome/src/test/java/org/monarchinitiative/exomiser/data/genome/indexers/AlleleConverterTest.java",
+      "clinvar_hits": 48,
+      "moi_hits": 0,
+      "sf_hits": 3
+    },
+    {
+      "file": "exomiser-cli/src/main/java/org/monarchinitiative/exomiser/cli/commands/annotate/AnnotateCommandRunner.java",
+      "clinvar_hits": 34,
+      "moi_hits": 40,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/analysis/acmg/AcmgMissenseInFrameIndelEvidenceAssigner.java",
+      "clinvar_hits": 51,
+      "moi_hits": 3,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/genome/dao/ClinVarDaoMvStore.java",
+      "clinvar_hits": 51,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/model/VariantEvaluation.java",
+      "clinvar_hits": 2,
+      "moi_hits": 90,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/CHANGELOG.md",
+      "clinvar_hits": 22,
+      "moi_hits": 38,
+      "sf_hits": 1
+    },
+    {
+      "file": "exomiser-data-genome/src/test/java/org/monarchinitiative/exomiser/data/genome/indexers/ClinVarWhiteListFileAlleleIndexerTest.java",
+      "clinvar_hits": 37,
+      "moi_hits": 13,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/test/java/org/monarchinitiative/exomiser/core/genome/TestVariantDataService.java",
+      "clinvar_hits": 34,
+      "moi_hits": 13,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/genome/VariantDataServiceImpl.java",
+      "clinvar_hits": 33,
+      "moi_hits": 14,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-core/src/main/java/org/monarchinitiative/exomiser/core/genome/dao/SvPathogenicityDao.java",
+      "clinvar_hits": 40,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-data-genome/src/main/java/org/monarchinitiative/exomiser/data/genome/ClinVarBuildRunner.java",
+      "clinvar_hits": 38,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "exomiser-data-genome/src/main/java/org/monarchinitiative/exomiser/data/genome/indexers/ClinVarWhiteListFileAlleleIndexer.java",
+      "clinvar_hits": 29,
+      "moi_hits": 8,
+      "sf_hits": 1
+    }
+  ],
+  "AutoGVP": [
+    {
+      "file": "scripts/update_intervar.R",
+      "clinvar_hits": 92,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "scripts/02-annotate_variants.R",
+      "clinvar_hits": 35,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "run_autogvp.sh",
+      "clinvar_hits": 30,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "data/output_colnames_default.tsv",
+      "clinvar_hits": 30,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "README.md",
+      "clinvar_hits": 26,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "scripts/resolve-clinvar-intepretations.R",
+      "clinvar_hits": 18,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "docs/release-notes.md",
+      "clinvar_hits": 13,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "scripts/make_concept_ids.sh",
+      "clinvar_hits": 5,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "scripts/download_db_files.sh",
+      "clinvar_hits": 3,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "scripts/04-filter_gene_annotations.R",
+      "clinvar_hits": 3,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "scripts/util/variant_ids.R",
+      "clinvar_hits": 3,
+      "moi_hits": 0,
+      "sf_hits": 0
+    },
+    {
+      "file": "data/test_pbta.hg38_multianno.txt",
+      "clinvar_hits": 2,
+      "moi_hits": 0,
+      "sf_hits": 0
+    }
+  ],
+  "InterVar": [
+    {
+      "file": "Intervar.py",
+      "clinvar_hits": 25,
+      "moi_hits": 1,
+      "sf_hits": 0
+    },
+    {
+      "file": "intervardb/orpha.txt",
+      "clinvar_hits": 0,
+      "moi_hits": 13,
+      "sf_hits": 5
+    },
+    {
+      "file": "docs/user-guide/manual.md",
+      "clinvar_hits": 9,
+      "moi_hits": 0,
+      "sf_hits": 0
+    }
+  ]
+}

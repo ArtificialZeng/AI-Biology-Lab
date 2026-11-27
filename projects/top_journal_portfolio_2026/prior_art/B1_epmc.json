@@ -1,0 +1,763 @@
+{
+  "hitCount": 4,
+  "nextCursorMark": "",
+  "results": [
+    {
+      "id": "38781227",
+      "source": "MED",
+      "pmid": "38781227",
+      "pmcid": "PMC11181113",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC11181113"
+        ]
+      },
+      "doi": "10.1073/pnas.2321809121",
+      "title": "A call for open science in forensics.",
+      "authorString": "Albright TD, Scurich N.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Albright TD",
+            "lastName": "Albright",
+            "firstName": "Thomas D",
+            "initials": "TD",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-0691-5992"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "The Salk Institute for Biological Studies, La Jolla, CA 92037."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Scurich N",
+            "lastName": "Scurich",
+            "firstName": "Nicholas",
+            "initials": "N",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0001-6370-9189"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Psychological Science, University of California, Irvine, CA 92697."
+                },
+                {
+                  "affiliation": "Department of Criminology, Law and Society, University of California, Irvine, CA 92697."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0001-6370-9189"
+          },
+          {
+            "type": "ORCID",
+            "value": "0000-0003-0691-5992"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "issue": "24",
+        "volume": "121",
+        "journalIssueId": 3774901,
+        "dateOfPublication": "2024 Jun",
+        "monthOfPublication": 6,
+        "yearOfPublication": 2024,
+        "journal": {
+          "medlineAbbreviation": "Proc Natl Acad Sci U S A",
+          "title": "Proceedings of the National Academy of Sciences of the United States of America",
+          "essn": "1091-6490",
+          "issn": "0027-8424",
+          "isoabbreviation": "Proc Natl Acad Sci U S A",
+          "nlmid": "7505876"
+        },
+        "printPublicationDate": "2024-06-01"
+      },
+      "pubYear": "2024",
+      "pageInfo": "e2321809121",
+      "abstractText": "The modern canon of open science consists of five \"schools of thought\" that justify unfettered access to the fruits of scientific research: i) public engagement, ii) democratic right of access, iii) efficiency of knowledge gain, iv) shared technology, and v) better assessment of impact. Here, we introduce a sixth school: due process. Due process under the law includes a right to \"discovery\" by a defendant of potentially exculpatory evidence held by the prosecution. When such evidence is scientific, due process becomes a Constitutional mandate for open science. To illustrate the significance of this new school, we present a case study from forensics, which centers on a federally funded investigation that reports summary statistics indicating that identification decisions made by forensic firearms examiners are highly accurate. Because of growing concern about validity of forensic methods, the larger scientific community called for public release of the complete analyzable dataset for independent audit and verification. Those in possession of the data opposed release for three years while summary statistics were used by prosecutors to gain admissibility of evidence in criminal trials. Those statistics paint an incomplete picture and hint at flaws in experimental design and analysis. Under the circumstances, withholding the underlying data in a criminal proceeding violates due process. Following the successful open-science model of drug validity testing through \"clinical trials,\" which place strict requirements on experimental design and timing of data release, we argue for registered and open \"forensic trials\" to ensure transparency and accountability.",
+      "affiliation": "The Salk Institute for Biological Studies, La Jolla, CA 92037.",
+      "publicationStatus": "ppublish",
+      "language": "eng",
+      "pubModel": "Print-Electronic",
+      "pubTypeList": {
+        "pubType": [
+          "Research Support, Non-U.S. Gov't",
+          "research-article",
+          "Journal Article"
+        ]
+      },
+      "grantsList": {
+        "grant": [
+          {
+            "agency": "Center for Statistics and Applications in Forensic Evidence (CSAFE)",
+            "orderIn": 0
+          },
+          {
+            "agency": "Salk Institute for Biological Studies",
+            "orderIn": 0
+          }
+        ]
+      },
+      "meshHeadingList": {
+        "meshHeading": [
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Humans"
+          },
+          {
+            "majorTopic_YN": "Y",
+            "descriptorName": "Forensic Sciences",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "MT",
+                  "qualifierName": "methods"
+                }
+              ]
+            }
+          },
+          {
+            "majorTopic_YN": "N",
+            "descriptorName": "Firearms",
+            "meshQualifierList": {
+              "meshQualifier": [
+                {
+                  "majorTopic_YN": "N",
+                  "abbreviation": "LJ",
+                  "qualifierName": "legislation & jurisprudence"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "data sharing",
+          "Due Process",
+          "Forensic Firearms Identification",
+          "Forensic Trials"
+        ]
+      },
+      "subsetList": {
+        "subset": [
+          {
+            "code": "IM",
+            "name": "Index Medicus"
+          }
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1073/pnas.2321809121"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11181113"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11181113?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 5,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "N",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "doi"
+        ]
+      },
+      "dateOfCompletion": "2024-05-23",
+      "dateOfCreation": "2024-05-23",
+      "dateOfRevision": "2026-09-06",
+      "electronicPublicationDate": "2024-05-23",
+      "firstPublicationDate": "2024-05-23",
+      "firstIndexDate": "2024-05-24",
+      "fullTextReceivedDate": "2025-02-03",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "40201648",
+      "source": "MED",
+      "pmid": "40201648",
+      "pmcid": "PMC11975776",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC11975776"
+        ]
+      },
+      "doi": "10.1017/cts.2025.9",
+      "title": "The importance of ClinicalTrials.gov in informing trial design, conduct, and results.",
+      "authorString": "Califf RM, Cutler TL, Marston HD, Meeker-O'Connell A.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Califf RM",
+            "lastName": "Califf",
+            "firstName": "Robert M",
+            "initials": "RM",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-0231-3724"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medicine, Duke University School of Medicine, Durham, NC, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Cutler TL",
+            "lastName": "Cutler",
+            "firstName": "Tracy L",
+            "initials": "TL",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "U.S. Food and Drug Administration, Silver Spring, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Marston HD",
+            "lastName": "Marston",
+            "firstName": "Hilary D",
+            "initials": "HD",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "U.S. Food and Drug Administration, Silver Spring, MD, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Meeker-O'Connell A",
+            "lastName": "Meeker-O'Connell",
+            "firstName": "Ann",
+            "initials": "A",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "U.S. Food and Drug Administration, Silver Spring, MD, USA."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0003-0231-3724"
+          }
+        ]
+      },
+      "journalInfo": {
+        "issue": "1",
+        "volume": "9",
+        "journalIssueId": 3889596,
+        "dateOfPublication": "2025 ",
+        "monthOfPublication": 0,
+        "yearOfPublication": 2025,
+        "journal": {
+          "medlineAbbreviation": "J Clin Transl Sci",
+          "title": "Journal of clinical and translational science",
+          "essn": "2059-8661",
+          "issn": "2059-8661",
+          "isoabbreviation": "J Clin Transl Sci",
+          "nlmid": "101689953"
+        },
+        "printPublicationDate": "2025-01-01"
+      },
+      "pubYear": "2025",
+      "pageInfo": "e42",
+      "affiliation": "Department of Medicine, Duke University School of Medicine, Durham, NC, USA.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic-eCollection",
+      "pubTypeList": {
+        "pubType": [
+          "Editorial"
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1017/cts.2025.9"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11975776"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11975776?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 3,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "N",
+      "hasLabsLinks": "N",
+      "hasData": "N",
+      "license": "cc by",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "N",
+      "dateOfCreation": "2025-04-09",
+      "dateOfRevision": "2025-04-10",
+      "electronicPublicationDate": "2025-02-25",
+      "firstPublicationDate": "2025-02-25",
+      "firstIndexDate": "2025-04-09",
+      "fullTextReceivedDate": "2025-11-28",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "38259323",
+      "source": "MED",
+      "pmid": "38259323",
+      "pmcid": "PMC10801241",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC10801241"
+        ]
+      },
+      "doi": "10.1016/j.gloepi.2023.100134",
+      "title": "Improved clinical trial race/ethnicity reporting and updated inclusion profile, 2017-2022: A New Jersey snapshot.",
+      "authorString": "Paleoudis EG, Han Z, Gelman S, Arias-Ruiz H, Carter D, Bertrand J, Mastrogiovanni N, Terlecky SR.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Paleoudis EG",
+            "lastName": "Paleoudis",
+            "firstName": "Elli Gourna",
+            "initials": "EG",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA."
+                },
+                {
+                  "affiliation": "Office of Research Administration, Hackensack Meridian Health Research Institute, Nutley, NJ, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Han Z",
+            "lastName": "Han",
+            "firstName": "Zhiyong",
+            "initials": "Z",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Gelman S",
+            "lastName": "Gelman",
+            "firstName": "Simon",
+            "initials": "S",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Office of Research Administration, Hackensack Meridian Health Research Institute, Nutley, NJ, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Arias-Ruiz H",
+            "lastName": "Arias-Ruiz",
+            "firstName": "Hernan",
+            "initials": "H",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Carter D",
+            "lastName": "Carter",
+            "firstName": "Destiney",
+            "initials": "D",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Bertrand J",
+            "lastName": "Bertrand",
+            "firstName": "Jovan",
+            "initials": "J",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Mastrogiovanni N",
+            "lastName": "Mastrogiovanni",
+            "firstName": "Nicole",
+            "initials": "N",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Terlecky SR",
+            "lastName": "Terlecky",
+            "firstName": "Stanley R",
+            "initials": "SR",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics",
+          "supporting_data"
+        ]
+      },
+      "journalInfo": {
+        "volume": "7",
+        "journalIssueId": 3686196,
+        "dateOfPublication": "2024 Jun",
+        "monthOfPublication": 6,
+        "yearOfPublication": 2024,
+        "journal": {
+          "medlineAbbreviation": "Glob Epidemiol",
+          "title": "Global epidemiology",
+          "essn": "2590-1133",
+          "issn": "2590-1133",
+          "isoabbreviation": "Glob Epidemiol",
+          "nlmid": "101759263"
+        },
+        "printPublicationDate": "2024-06-01"
+      },
+      "pubYear": "2024",
+      "pageInfo": "100134",
+      "abstractText": "<h4>Background</h4>Diverse representation in clinical trials is an important goal in the testing of a medical, diagnostic, or therapeutic intervention. To date, the desired level of trial equity and inclusivity has been unevenly achieved.<h4>Methods</h4>Employing the US National Library of Medicine's Clinicaltrials.gov registry, we examined 481 clinical trials conducted - at least in part - in the state of New Jersey. These trials were initiated after the FDA-mandated Common Rule changes, i.e., between January 2017 and October 2022, were enacted, and had their results posted. We analyzed sex/race/ethnicity reporting as well as applicable enrollment. Using meta-analysis, we estimated group participation proportions of a subset of the 481 identified trials; specifically, the 229 studies that were conducted solely within the US (i.e., without international sites) and compared them to US census data.<h4>Findings</h4>Within the 481 clinical trials analyzed, over 97% reported on the race and/or ethnicity of their enrollees; all included information on sex. Reporting was not affected by funding source or therapeutic area. Based on the 229 solely US-based studies, the participants overall were 76.7% White; 14.1% Black; 2.7% Asian; and 15% Hispanic. Inclusion of Black participants did not differ from the 2020 US census data; in contrast, the levels of Asian and Hispanic participation were below the corresponding census percentages.<h4>Interpretation</h4>The past five years have seen an overall uptick in the equity of race/ethnicity reporting and inclusivity of clinical trials, as compared to previously reported data, presaging the potential acquisition of ever more powerful and meaningful results of such interventional studies going forward.<h4>Funding</h4>Support for this study comes from the Hackensack Meridian <i>Health</i> Research Institute and the Hackensack Meridian School of Medicine.<h4>Research in context</h4><i>Evidence before this study</i>Clinical trials are a critical part of determining whether or not a medical (drug/device/biologic) or socio-behavioral intervention is safe and truly effective. Through their use, scientific understanding is advanced and, ideally, human health is improved. To gain the most impactful information from a clinical trial, it should be sufficiently representative, that is, should enroll an adequate number of participants, and include a diverse population. Without such inclusion, the study is of only limited generalizability. Efforts are underway by funders, sites, and other stakeholders, to enhance reporting and promote inclusive enrollment. The extent to which such attempts are yielding results - at least for clinical trials in the state of New Jersey - is the focus of this data-driven analysis. The ClinicalTrials.gov registry database was carefully mined for the information contained in this report.<i>Added value of this study</i>Our analysis of clinical trials initiated in the state of New Jersey and conducted there or elsewhere in the US reveals several positive trends. Our 5-year snapshot reveals that a very large percentage of trials report on race/ethnicity - and inclusivity is improving. While there is still some way to go to have the demographic numbers in these trials match US census values, our results suggest that recent efforts are having an effect.<i>Implications of all the available evidence</i>For myriad reasons, clinical trials have not enjoyed the public's universal trust over the years. In many ways, medicine moves at the speed of trust - without it, the promise of modern healthcare is brought into question. Clinical trials must include a commitment to diverse enrollment pools and equitable reporting under the law. Creating a legacy of trust - through greater inclusivity in clinical trials and more transparent reporting of results - will begin to heal the divide and engender faith in modern medicine and today's healthcare system. It would also allow for the desired far-reaching generalizability of results across patient populations. To better appreciate what needs to be done going forward, we must truly understand the state of clinical trials reporting and demographic inclusion. This report initiates such an analysis, by carefully documenting how New Jersey's clinical trials are performing. By virtue of its location (e.g., proximity to the cities of New York and Philadelphia) the state is part of a large biopharma cluster and healthcare nexus; it is critical that it performs well with respect to adopting/adhering to updated clinical trial guideline mandates. This report provides a glimpse - an important first look - into the state of clinical trials in New Jersey - from 2017 through 2022.",
+      "affiliation": "Department of Medical Sciences, Hackensack Meridian School of Medicine, Nutley, NJ, USA.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic-eCollection",
+      "pubTypeList": {
+        "pubType": [
+          "research-article",
+          "Journal Article"
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "RACE",
+          "Clinical Trials",
+          "Ethnicity",
+          "evidence-based medicine",
+          "Clinicaltrials.gov"
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1016/j.gloepi.2023.100134"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10801241"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10801241?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 3,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "Y",
+      "hasLabsLinks": "Y",
+      "hasData": "Y",
+      "license": "cc by-nc-nd",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "Y",
+      "tmAccessionTypeList": {
+        "accessionType": [
+          "doi"
+        ]
+      },
+      "dateOfCreation": "2024-01-23",
+      "dateOfRevision": "2024-10-23",
+      "electronicPublicationDate": "2023-12-23",
+      "firstPublicationDate": "2023-12-23",
+      "firstIndexDate": "2024-01-24",
+      "fullTextReceivedDate": "2024-01-24",
+      "hasEvaluations": "N"
+    },
+    {
+      "id": "35128141",
+      "source": "MED",
+      "pmid": "35128141",
+      "pmcid": "PMC8810363",
+      "fullTextIdList": {
+        "fullTextId": [
+          "PMC8810363"
+        ]
+      },
+      "doi": "10.1016/j.conctc.2022.100890",
+      "title": "ClinicalTrials.Gov: Pitfalls for pregnant women looking to enroll in studies.",
+      "authorString": "Franceschini R, Wicks SL.",
+      "authorList": {
+        "author": [
+          {
+            "fullName": "Franceschini R",
+            "lastName": "Franceschini",
+            "firstName": "Robert",
+            "initials": "R",
+            "authorId": {
+              "type": "ORCID",
+              "value": "0000-0003-0854-809X"
+            },
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "BluePath Health, 80 E Sir Francis Drake Blvd, Suite 4H Larkspur, CA 94939 USA."
+                }
+              ]
+            }
+          },
+          {
+            "fullName": "Wicks SL",
+            "lastName": "Wicks",
+            "firstName": "Sarah L",
+            "initials": "SL",
+            "authorAffiliationDetailsList": {
+              "authorAffiliation": [
+                {
+                  "affiliation": "Goodwin Procter LLP, 1900 N Street NW, Washington, DC, 20036, USA."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "authorIdList": {
+        "authorId": [
+          {
+            "type": "ORCID",
+            "value": "0000-0003-0854-809X"
+          }
+        ]
+      },
+      "dataLinksTagsList": {
+        "dataLinkstag": [
+          "altmetrics"
+        ]
+      },
+      "journalInfo": {
+        "volume": "26",
+        "journalIssueId": 3299363,
+        "dateOfPublication": "2022 Apr",
+        "monthOfPublication": 4,
+        "yearOfPublication": 2022,
+        "journal": {
+          "medlineAbbreviation": "Contemp Clin Trials Commun",
+          "title": "Contemporary clinical trials communications",
+          "essn": "2451-8654",
+          "issn": "2451-8654",
+          "isoabbreviation": "Contemp Clin Trials Commun",
+          "nlmid": "101671157"
+        },
+        "printPublicationDate": "2022-04-01"
+      },
+      "pubYear": "2022",
+      "pageInfo": "100890",
+      "abstractText": "The common exclusion of pregnant women from clinical HIV research warrants inquiry into those few studies that do include pregnant women. This commentary highlights some of the pitfalls of the ClinicalTrials.gov platform for its intended users--study participants, particularly pregnant women--and investigators looking to use its data for study. Some of the pitfalls include missing information; lack of historical reporting enforcement; difficulty searching for studies focused on pregnant women versus the fetus; inability to consistently find studies targeted at specific stages of pregnancy; and lack of information relating to whether a study intervention is investigational or previously approved by the FDA.",
+      "affiliation": "BluePath Health, 80 E Sir Francis Drake Blvd, Suite 4H Larkspur, CA 94939 USA.",
+      "publicationStatus": "epublish",
+      "language": "eng",
+      "pubModel": "Electronic-eCollection",
+      "pubTypeList": {
+        "pubType": [
+          "brief-report",
+          "Journal Article"
+        ]
+      },
+      "keywordList": {
+        "keyword": [
+          "Pregnant women",
+          "Clinicaltrials.gov",
+          "Hiv Research",
+          "Clinical Trials Registries"
+        ]
+      },
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "doi",
+            "site": "Unpaywall",
+            "url": "https://doi.org/10.1016/j.conctc.2022.100890"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1016/j.conctc.2022.100890"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC8810363"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC8810363?pdf=render"
+          }
+        ]
+      },
+      "isOpenAccess": "Y",
+      "inEPMC": "Y",
+      "inPMC": "Y",
+      "citedByCount": 3,
+      "hasReferences": "Y",
+      "hasTextMinedTerms": "Y",
+      "hasDbCrossReferences": "N",
+      "hasPDF": "Y",
+      "hasBook": "N",
+      "hasSuppl": "N",
+      "hasLabsLinks": "Y",
+      "hasData": "N",
+      "license": "cc by-nc-nd",
+      "authMan": "N",
+      "epmcAuthMan": "N",
+      "nihAuthMan": "N",
+      "hasTMAccessionNumbers": "N",
+      "dateOfCreation": "2022-02-07",
+      "dateOfRevision": "2024-08-22",
+      "electronicPublicationDate": "2022-01-20",
+      "firstPublicationDate": "2022-01-20",
+      "firstIndexDate": "2022-02-10",
+      "fullTextReceivedDate": "2025-02-04",
+      "hasEvaluations": "N"
+    }
+  ]
+}

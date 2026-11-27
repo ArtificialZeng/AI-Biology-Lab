@@ -1,0 +1,100 @@
+{
+  "codex_monitor_files": [
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/baseline_manifest.json",
+      "size": 864
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/independent_critical_checks.json",
+      "size": 2508
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/last_snapshot.json",
+      "size": 79728
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/progress.jsonl",
+      "size": 119976
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/selected_claims_pass1.json",
+      "size": 1806
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/snapshot.py",
+      "size": 1212
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/verify_critical_findings.py",
+      "size": 1714
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/baseline/studies/study_a1_clinvar_gnomad_reclass/MANUSCRIPT_A1_DRAFT.md",
+      "size": 32863
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/baseline/studies/study_a1_clinvar_gnomad_reclass/PREREG_A1.md",
+      "size": 8054
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/baseline/studies/study_b2_fda_2026_sweep/MANUSCRIPT_B2_DRAFT.md",
+      "size": 50207
+    },
+    {
+      "path": "/Users/mac/Documents/Codex/2026-11-25/qk/work/antigravity_monitor/baseline/studies/study_b2_fda_2026_sweep/PREREG_B2.md",
+      "size": 9050
+    }
+  ],
+  "study_b2_fda_2026_sweep": {
+    "src": [
+      "__pycache__",
+      "analyze_b2_full.py",
+      "analyze_b2_v2_stationary.py",
+      "fetch_b2_supp_steady.py",
+      "fetch_b2_universe.py",
+      "make_b2_figures.py",
+      "verify_b2_censoring_and_pretrends.py"
+    ],
+    "audit": [
+      "b2_forensic_audit.json",
+      "b2_ontime_smoking_gun.json",
+      "b2_riskset_ontime_ddd_and_legacy.json",
+      "fetch_b2_ontime_and_unseen.py",
+      "forensic_audit_b2.py",
+      "run_b2_exact_ontime_ddd_and_unseen_validation.py",
+      "test_b2_ontime_falsification.py"
+    ],
+    "results": [
+      "b2_econometric_results.json",
+      "b2_monthly_hazards.parquet",
+      "b2_v2_censoring_pretrend_audit.json",
+      "b2_v2_stationary_monthly_hazards.parquet",
+      "b2_v2_stationary_results.json"
+    ]
+  },
+  "study_a1_clinvar_gnomad_reclass": {
+    "src": [
+      "__pycache__",
+      "analyze_a1_addendum_triage.py",
+      "analyze_a1_full.py",
+      "fetch_a1_gnomad_acmg84.py",
+      "make_a1_figures.py"
+    ],
+    "audit": [
+      "a1_forensic_audit.json",
+      "clinvar_l4_evidence",
+      "clinvar_unseen20_grch38.parquet",
+      "forensic_audit_a1.py",
+      "gnomad_qc_flags",
+      "gnomad_v4_unseen20",
+      "run_a1_prospective_unseen_20genes.py"
+    ],
+    "results": [
+      "a1_ad_highconf_reclassification_catalog.csv",
+      "a1_ad_highconf_triaged_55.csv",
+      "a1_addendum_triage_and_vus.json",
+      "a1_reclassification_results.json",
+      "faf95_api_validation"
+    ]
+  }
+}

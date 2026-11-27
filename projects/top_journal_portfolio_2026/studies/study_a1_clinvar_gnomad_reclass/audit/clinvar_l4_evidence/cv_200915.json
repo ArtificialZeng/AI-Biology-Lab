@@ -1,0 +1,145 @@
+{
+  "variant_id": "200915",
+  "allele_info": {
+    "chromosome": "11",
+    "position_start": "2445008",
+    "position_stop": "2849105",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "11p15.5-15.4",
+    "dbsnp_rsid": "rs397508109"
+  },
+  "conditions": [
+    {
+      "name": "Cardiovascular phenotype",
+      "medgen_cui": "CN230736",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "KCNQ1-related disorder",
+      "medgen_cui": "CN239322",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Long QT syndrome",
+      "medgen_cui": "C0023976",
+      "omim_id": "PS192500",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Long QT syndrome 1",
+      "medgen_cui": "C4551647",
+      "omim_id": "192500",
+      "orphanet_id": "768",
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": null,
+      "omim_id": "192500",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "KCNQ1-related condition",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "KCNQ1-related disorders",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "15840476",
+    "19716085",
+    "19862833",
+    "24665220",
+    "30609406",
+    "9323054"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "Genetic Services Laboratory, University of Chicago",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2015-03-04"
+    },
+    {
+      "submitter_name": "Centre for Mendelian Genomics, University Medical Centre Ljubljana",
+      "classification": "Pathogenic",
+      "curator_notes": "This variant was classified as: Pathogenic. The following ACMG criteria were applied in classifying this variant: PVS1,PS1,PP4.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2019-08-12"
+    },
+    {
+      "submitter_name": "Arcensus",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2013-02-01"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Pathogenic",
+      "curator_notes": "Frameshift variant predicted to result in protein truncation or nonsense mediated decay in a gene for which loss-of-function is a known mechanism of disease; Not observed at significant frequency in large population cohorts (gnomAD); This variant is associated with the following publications: (PMID: 34505893, 28606196, 23631430, 19716085, 30609406, 29625023, 26582918, 15840476)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2023-12-28"
+    },
+    {
+      "submitter_name": "PreventionGenetics, part of Exact Sciences",
+      "classification": "Pathogenic",
+      "curator_notes": "The KCNQ1 c.364dupT variant is predicted to result in a frameshift and premature protein termination (p.Cys122Leufs*163). This variant has been reported in the heterozygous state in multiple individuals with long QT syndrome and in the homozygous state in an individual with Jervell and Lange-Nielsen syndrome (described as InsG 2025-2026 K121fs/629* in Tester et al. 2005. PubMed ID: 15840476; Table S1, Schwartz et al. 2021. PubMed ID: 34505893; described as c.365insT in Table S1, Kapplinger et al. 2009. PubMed ID: 19716085; Whiffin et al. 2019. PubMed ID: 30609406; Jacobson et al. 2014. PubMed ID: 24665220). This variant is reported in 0.017% of alleles in individuals of South Asian descent in gnomAD. Frameshift variants in KCNQ1 are expected to be pathogenic. This variant is interpreted as pathogenic.",
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": "2024-05-06"
+    },
+    {
+      "submitter_name": "Ambry Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.364dupT pathogenic mutation, located in coding exon 1 of the KCNQ1 gene, results from a duplication of T at nucleotide position 364, causing a translational frameshift with a predicted alternate stop codon (p.C122Lfs*163). This alteration has been detected in the homozygous state in a child of consanguineous parents who was reported to have Jervell and Lange-Nielsen syndrome. The parents were reported to have normal ECGs (Jacobson D et al. Paediatr Child Health, 2014 Mar;19:123-4). This alteration (also referred to as K121fs/629* and 365insT) has also been detected in long QT syndrome genetic testing cohorts; however, details were limited (Tester DJ et al. Heart Rhythm, 2005 May;2:507-17; Kapplinger JD et al. Heart Rhythm, 2009 Sep;6:1297-303). This alteration is expected to result in loss of function by premature protein truncation or nonsense-mediated mRNA decay. As such, this alteration is interpreted as a disease-causing mutation.",
+      "assertion_criteria": "Ambry Variant Classification Scheme 2023",
+      "date_last_evaluated": "2019-06-18"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change creates a premature translational stop signal (p.Cys122Leufs*163) in the KCNQ1 gene. It is expected to result in an absent or disrupted protein product. Loss-of-function variants in KCNQ1 are known to be pathogenic (PMID: 9323054, 19862833). This variant is present in population databases (rs397508109, gnomAD 0.02%). This premature translational stop signal has been observed in individual(s) with clinical features of long QT syndrome (PMID: 15840476). This variant is also known as Ins G 2025-2026 (K121fs/629*). ClinVar contains an entry for this variant (Variation ID: 200915). For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2025-05-25"
+    },
+    {
+      "submitter_name": "Blueprint Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-04-09"
+    }
+  ]
+}

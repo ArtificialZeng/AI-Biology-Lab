@@ -1,0 +1,732 @@
+{
+  "meta": {
+    "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+    "count": 25,
+    "db_response_time_ms": 89,
+    "page": 1,
+    "per_page": 15,
+    "groups_count": null,
+    "x_query": {
+      "oql": "get works with (ClinicalTrials.gov AND stemmed \"Notice of Noncompliance\") in the title, abstract, or full text, newest first",
+      "x_new_oql": "get works with (ClinicalTrials.gov AND stemmed \"Notice of Noncompliance\") in the title, abstract, or full text, newest first",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "ClinicalTrials.gov",
+            "operator": "has"
+          },
+          {
+            "column_id": "fulltext.search",
+            "value": "\"Notice of Noncompliance\"",
+            "operator": "has"
+          }
+        ],
+        "sort_by": [
+          {
+            "column_id": "publication_year",
+            "direction": "desc"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:ClinicalTrials.gov,fulltext.search:%22Notice of Noncompliance%22&sort=publication_year:desc&per_page=15&page=1",
+      "order": "newest first",
+      "order_default": false
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W7222948265",
+      "doi": "https://doi.org/10.48550/arxiv.2610.22426",
+      "title": "PRIME: Towards Verifiable Evidence-Grounded Reasoning in LLM Agents",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:arXiv.org:2610.22426",
+        "doi": "https://doi.org/10.48550/arxiv.2610.22426",
+        "is_oa": true,
+        "landing_page_url": "https://arxiv.org/abs/2610.22426",
+        "pdf_url": "https://arxiv.org/pdf/2610.22426",
+        "source": {
+          "id": "https://openalex.org/S4306400194",
+          "display_name": "arXiv",
+          "issn_l": "2331-8422",
+          "issn": [
+            "2331-8422"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I4402554005",
+          "host_organization_name": "arXiv",
+          "host_organization_lineage": [
+            "https://openalex.org/I4402554005"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "text"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7204948160",
+      "doi": "https://doi.org/10.3389/fped.2026.1846142",
+      "title": "The global landscape of pediatric monoclonal antibody (mAb) clinical trials: an analysis of ClinicalTrials.gov",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.3389/fped.2026.1846142",
+        "doi": "https://doi.org/10.3389/fped.2026.1846142",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.3389/fped.2026.1846142",
+        "pdf_url": "https://www.frontiersin.org/journals/pediatrics/articles/10.3389/fped.2026.1846142/pdf",
+        "source": {
+          "id": "https://openalex.org/S2596117549",
+          "display_name": "Frontiers in Pediatrics",
+          "issn_l": "2296-2360",
+          "issn": [
+            "2296-2360"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "norway-1",
+            "poland-70",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320527",
+          "host_organization_name": "Frontiers Media",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320527"
+          ],
+          "host_organization_lineage_names": [
+            "Frontiers Media"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Frontiers in Pediatrics",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7204273426",
+      "doi": "https://doi.org/10.1371/journal.pone.0342878",
+      "title": "Changes in evidence used for FDA Novel Drug Approvals: 2016-2024",
+      "publication_year": 2026,
+      "cited_by_count": 1,
+      "primary_location": {
+        "id": "doi:10.1371/journal.pone.0342878",
+        "doi": "https://doi.org/10.1371/journal.pone.0342878",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1371/journal.pone.0342878",
+        "pdf_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0342878&type=printable",
+        "source": {
+          "id": "https://openalex.org/S202381698",
+          "display_name": "PLoS ONE",
+          "issn_l": "1932-6203",
+          "issn": [
+            "1932-6203"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-class-a",
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "dongbi-c",
+            "doyens",
+            "erih-plus",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "poland-100",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310315706",
+          "host_organization_name": "Public Library of Science",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310315706"
+          ],
+          "host_organization_lineage_names": [
+            "Public Library of Science"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "PLOS One",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7215465055",
+      "doi": null,
+      "title": "Pediatric Strabismus Clinical Trial Analysis and Reporting Statuses within the National Library of Medicine",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:ojs.192.234.12.163:article/299",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://okstatemedicalproceedings.com/index.php/OSMP/article/view/299",
+        "pdf_url": "https://okstatemedicalproceedings.com/index.php/OSMP/article/download/299/676",
+        "source": {
+          "id": "https://openalex.org/S7407067217",
+          "display_name": "Oklahoma State Medical Proceedings",
+          "issn_l": "2475-8914",
+          "issn": [
+            "2475-8914"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I74022624",
+          "host_organization_name": "Oklahoma State University Center for Health Sciences",
+          "host_organization_lineage": [
+            "https://openalex.org/I74022624"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "2475-8914",
+        "raw_type": "info:eu-repo/semantics/article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7133246893",
+      "doi": "https://doi.org/10.17918/00011274",
+      "title": "Examining characteristics of compliant clinical trials: results reporting pre & post punctuated regulatory rulings exploring transparency & accountability in clinical trials",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.17918/00011274",
+        "doi": "https://doi.org/10.17918/00011274",
+        "is_oa": false,
+        "landing_page_url": "https://doi.org/10.17918/00011274",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S7407064447",
+          "display_name": "iDEA - Drexel University Institutional Repository",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Drexel University",
+        "raw_type": "dissertation"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7212776816",
+      "doi": "https://doi.org/10.63140/ulg36hfp9n",
+      "title": "Post-Approval Problems",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.63140/ulg36hfp9n",
+        "doi": "https://doi.org/10.63140/ulg36hfp9n",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.63140/ulg36hfp9n",
+        "pdf_url": "https://dc.law.utah.edu/cgi/viewcontent.cgi?article=3551&context=ulr",
+        "source": {
+          "id": "https://openalex.org/S2764895072",
+          "display_name": "Utah law review",
+          "issn_l": "0042-1448",
+          "issn": [
+            "0042-1448",
+            "1942-8529"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": null,
+          "host_organization_name": null,
+          "host_organization_lineage": [],
+          "host_organization_lineage_names": [],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Utah Law Review",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4407929517",
+      "doi": "https://doi.org/10.1017/cts.2025.9",
+      "title": "The importance of ClinicalTrials.gov in informing trial design, conduct, and results",
+      "publication_year": 2025,
+      "cited_by_count": 7,
+      "primary_location": {
+        "id": "doi:10.1017/cts.2025.9",
+        "doi": "https://doi.org/10.1017/cts.2025.9",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1017/cts.2025.9",
+        "pdf_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/125B3C69C8923DC03550090EBB7E7A12/S2059866125000093a.pdf/div-class-title-the-importance-of-clinicaltrials-gov-in-informing-trial-design-conduct-and-results-div.pdf",
+        "source": {
+          "id": "https://openalex.org/S4210205013",
+          "display_name": "Journal of Clinical and Translational Science",
+          "issn_l": "2059-8661",
+          "issn": [
+            "2059-8661"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-d",
+            "ki-jl-1",
+            "poland-20",
+            "russia-white-list-2"
+          ],
+          "host_organization": "https://openalex.org/P4310311721",
+          "host_organization_name": "Cambridge University Press",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310311721",
+            "https://openalex.org/P4310311702"
+          ],
+          "host_organization_lineage_names": [
+            "Cambridge University Press",
+            "University of Cambridge"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Clinical and Translational Science",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4414397700",
+      "doi": "https://doi.org/10.4236/jss.2025.139014",
+      "title": "Beyond the Magic Pill: Reassessing the Role of Pharmacology in Autism Care through Restorative Perspectives",
+      "publication_year": 2025,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.4236/jss.2025.139014",
+        "doi": "https://doi.org/10.4236/jss.2025.139014",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.4236/jss.2025.139014",
+        "pdf_url": "https://www.scirp.org/pdf/jss_6500608.pdf",
+        "source": {
+          "id": "https://openalex.org/S2784850370",
+          "display_name": "Open Journal of Social Sciences",
+          "issn_l": "2327-5952",
+          "issn": [
+            "2327-5952",
+            "2327-5960"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core"
+          ],
+          "host_organization": "https://openalex.org/P4310320480",
+          "host_organization_name": "Scientific Research Publishing",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320480"
+          ],
+          "host_organization_lineage_names": [
+            "Scientific Research Publishing"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Open Journal of Social Sciences",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4403569966",
+      "doi": "https://doi.org/10.48550/arxiv.2410.09645",
+      "title": "AI Model Registries: A Foundational Tool for AI Governance",
+      "publication_year": 2024,
+      "cited_by_count": 18,
+      "primary_location": {
+        "id": "pmh:oai:arXiv.org:2410.09645",
+        "doi": "https://doi.org/10.48550/arxiv.2410.09645",
+        "is_oa": true,
+        "landing_page_url": "http://arxiv.org/abs/2410.09645",
+        "pdf_url": "https://arxiv.org/pdf/2410.09645",
+        "source": {
+          "id": "https://openalex.org/S4306400194",
+          "display_name": "arXiv",
+          "issn_l": "2331-8422",
+          "issn": [
+            "2331-8422"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I4402554005",
+          "host_organization_name": "arXiv",
+          "host_organization_lineage": [
+            "https://openalex.org/I4402554005"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "text"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4403132241",
+      "doi": "https://doi.org/10.56012/timm8993",
+      "title": "Navigating the complex landscape of clinical trial transparency: What medical writers need to know",
+      "publication_year": 2024,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.56012/timm8993",
+        "doi": "https://doi.org/10.56012/timm8993",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.56012/timm8993",
+        "pdf_url": "https://journal.emwa.org/clinical-trial-transparency-and-disclosure/navigating-the-complex-landscape-of-clinical-trial-transparency-what-medical-writers-need-to-know/article/16068/3-navigating-the-complex-landscape-of-clinical-trial-transparency.pdf",
+        "source": {
+          "id": "https://openalex.org/S2765017934",
+          "display_name": "Medical Writing",
+          "issn_l": "2047-4806",
+          "issn": [
+            "2047-4806",
+            "2047-4814"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "poland-20",
+            "russia-white-list-4"
+          ],
+          "host_organization": "https://openalex.org/P4310320547",
+          "host_organization_name": "Taylor & Francis",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320547",
+            "https://openalex.org/P4310320449"
+          ],
+          "host_organization_lineage_names": [
+            "Taylor & Francis",
+            "Informa"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Medical Writing",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4400255911",
+      "doi": "https://doi.org/10.1542/peds.2023-063466",
+      "title": "Pediatric Device Clinical Trials Activity: 1999\u20132022",
+      "publication_year": 2024,
+      "cited_by_count": 8,
+      "primary_location": {
+        "id": "doi:10.1542/peds.2023-063466",
+        "doi": "https://doi.org/10.1542/peds.2023-063466",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1542/peds.2023-063466",
+        "pdf_url": "https://publications.aap.org/pediatrics/article-pdf/154/2/e2023063466/1685347/peds.2023-063466.pdf",
+        "source": {
+          "id": "https://openalex.org/S77494981",
+          "display_name": "PEDIATRICS",
+          "issn_l": "0031-4005",
+          "issn": [
+            "0031-4005",
+            "1098-4275"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "anvur-class-a",
+            "anvur-scientific",
+            "cwts-core",
+            "dongbi-a",
+            "doyens",
+            "erih-plus",
+            "jufo-3",
+            "ki-jl-3",
+            "medline",
+            "norway-2",
+            "poland-200",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310315734",
+          "host_organization_name": "American Academy of Pediatrics",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310315734"
+          ],
+          "host_organization_lineage_names": [
+            "American Academy of Pediatrics"
+          ],
+          "type": "journal"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Pediatrics",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4396945209",
+      "doi": "https://doi.org/10.48550/arxiv.2405.08030",
+      "title": "Counting Clinical Trials: New Evidence on Pharmaceutical Sector Productivity",
+      "publication_year": 2024,
+      "cited_by_count": 3,
+      "primary_location": {
+        "id": "pmh:oai:RePEc:arx:papers:2405.08030",
+        "doi": null,
+        "is_oa": false,
+        "landing_page_url": "http://arxiv.org/pdf/2405.08030",
+        "pdf_url": "http://arxiv.org/pdf/2405.08030",
+        "source": {
+          "id": "https://openalex.org/S4306401271",
+          "display_name": "RePEc: Research Papers in Economics",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I77793887",
+          "host_organization_name": "Federal Reserve Bank of St. Louis",
+          "host_organization_lineage": [
+            "https://openalex.org/I77793887"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": null,
+        "license_id": null,
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "preprint"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4390145848",
+      "doi": "https://doi.org/10.1016/j.gloepi.2023.100134",
+      "title": "Improved clinical trial race/ethnicity reporting and updated inclusion profile, 2017\u20132022: A New Jersey snapshot",
+      "publication_year": 2023,
+      "cited_by_count": 4,
+      "primary_location": {
+        "id": "doi:10.1016/j.gloepi.2023.100134",
+        "doi": "https://doi.org/10.1016/j.gloepi.2023.100134",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1016/j.gloepi.2023.100134",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4210212062",
+          "display_name": "Global Epidemiology",
+          "issn_l": "2590-1133",
+          "issn": [
+            "2590-1133"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "jufo-1",
+            "ki-jl-1",
+            "norway-1",
+            "oarl",
+            "poland-20"
+          ],
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Global Epidemiology",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4387734473",
+      "doi": "https://doi.org/10.20944/preprints202310.1108.v1",
+      "title": "Clinical Trial Registration and Reporting in China and the United States: Legal and Regulatory Frameworks, Compliance and Enforcement",
+      "publication_year": 2023,
+      "cited_by_count": 2,
+      "primary_location": {
+        "id": "doi:10.20944/preprints202310.1108.v1",
+        "doi": "https://doi.org/10.20944/preprints202310.1108.v1",
+        "is_oa": true,
+        "landing_page_url": "http://dx.doi.org/10.20944/preprints202310.1108.v1",
+        "pdf_url": "https://www.preprints.org/manuscript/202310.1108/v1/download",
+        "source": {
+          "id": "https://openalex.org/S6309402219",
+          "display_name": "Preprints.org",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/P4310310987",
+          "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310310987"
+          ],
+          "host_organization_lineage_names": [
+            "Multidisciplinary Digital Publishing Institute"
+          ],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "posted-content"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4366777393",
+      "doi": "https://doi.org/10.1080/03007995.2023.2194075",
+      "title": "Original Abstract from the 19th Annual Meeting of ISMPP",
+      "publication_year": 2023,
+      "cited_by_count": 10,
+      "primary_location": {
+        "id": "doi:10.1080/03007995.2023.2194075",
+        "doi": "https://doi.org/10.1080/03007995.2023.2194075",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1080/03007995.2023.2194075",
+        "pdf_url": "https://www.tandfonline.com/doi/pdf/10.1080/03007995.2023.2194075?download=true",
+        "source": {
+          "id": "https://openalex.org/S206643269",
+          "display_name": "Current Medical Research and Opinion",
+          "issn_l": "0300-7995",
+          "issn": [
+            "0300-7995",
+            "1473-4877"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "anvur-scientific",
+            "cwts-core",
+            "dongbi-d",
+            "doyens",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "poland-70",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320547",
+          "host_organization_name": "Taylor & Francis",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320547",
+            "https://openalex.org/P4310320449"
+          ],
+          "host_organization_lineage_names": [
+            "Taylor & Francis",
+            "Informa"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Current Medical Research and Opinion",
+        "raw_type": "journal-article"
+      }
+    }
+  ],
+  "group_by": []
+}

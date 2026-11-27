@@ -1,0 +1,186 @@
+{
+  "variant_id": "590611",
+  "allele_info": {
+    "chromosome": "19",
+    "position_start": "38505190",
+    "position_stop": "38506389",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "19q13.2",
+    "dbsnp_rsid": "rs758580075"
+  },
+  "conditions": [
+    {
+      "name": "Centronuclear myopathy",
+      "medgen_cui": "C0175709",
+      "omim_id": "PS160150",
+      "orphanet_id": "595",
+      "hpo_terms": []
+    },
+    {
+      "name": "Malignant hyperthermia, susceptibility to, 1",
+      "medgen_cui": "C2930980",
+      "omim_id": "145600",
+      "orphanet_id": "423",
+      "hpo_terms": []
+    },
+    {
+      "name": "Central core myopathy",
+      "medgen_cui": "C5830701",
+      "omim_id": "117000",
+      "orphanet_id": "597",
+      "hpo_terms": []
+    },
+    {
+      "name": "Congenital multicore myopathy with external ophthalmoplegia",
+      "medgen_cui": "C1850674",
+      "omim_id": "255320",
+      "orphanet_id": "98905",
+      "hpo_terms": [
+        "HP:0003789",
+        "HP:0003789",
+        "HP:0003804"
+      ]
+    },
+    {
+      "name": "King Denborough syndrome",
+      "medgen_cui": "C1840365",
+      "omim_id": "619542",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "RYR1-related disorder",
+      "medgen_cui": "CN239331",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "RYR1-Related Disorders",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "20839240",
+    "21062345",
+    "23919265",
+    "25960145",
+    "28818389",
+    "30611313",
+    "30872186",
+    "34411415"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "PreventionGenetics, part of Exact Sciences",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2018-04-18"
+    },
+    {
+      "submitter_name": "Broad Center for Mendelian Genomics, Broad Institute of MIT and Harvard",
+      "classification": "Pathogenic",
+      "curator_notes": "The heterozygous p.Ile2781ArgfsTer49 variant in RYR1 was identified by our study, in the compound heterozygous state with a variant of uncertain significance (ClinVar Variation ID: 845794), in one individual with minicore myopathy with external ophthalmoplegia. Trio exome analysis revealed that this variant was in trans with a variant of uncertain significance (ClinVar Variation ID: 845794). The p.Ile2781ArgfsTer49 variant in RYR1 has been previously reported in 5 unrelated individuals with minicore myopathy with external ophthalmoplegia (PMID: 30872186, PMID: 20839240, PMID: 20839240), but has been identified in 0.02% (9/41444) of African/African American chromosomes by the Genome Aggregation Database (gnomAD, http://gnomad.broadinstitute.org; dbSNP ID: rs758580075). Although this variant has been seen in the general population in a heterozygous state, its frequency is not high enough to rule out a pathogenic role. Of these 5 unrelated individuals, 2 were compound heterozygotes who carried pathogenic variants in trans (PMID: 21062345, PMID: 20839240, ClinVar Variation ID: 132994) and 2 were compound heterozygotes who carried pathogenic variants with unknown phase (PMID: 20839240, ClinVar Variation ID: 132994), which increases the likelihood that the p.Ile2781ArgfsTer49 is pathogenic. This variant has also been reported in ClinVar (Variation ID: 590611) and has been interpreted as pathogenic by multiple submitters. This variant is predicted to cause a frameshift, which alters the protein\u201a\u00c4\u00f4s amino acid sequence beginning at position 2781 and leads to a premature termination codon 49 amino acids downstream. This alteration is then predicted to lead to a truncated or absent protein. Loss of function of the RYR1 gene is an established disease mechanism of autosomal recessive minicore myopathy with external ophthalmoplegia. In summary, this variant meets criteria to be classified as pathogenic for minicore myopathy with external ophthalmoplegia. ACMG/AMP Criteria applied: PVS1, PM3_Strong (Richards 2015).",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-01-25"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Pathogenic",
+      "curator_notes": "Frameshift variant predicted to result in protein truncation or nonsense mediated decay in a gene for which loss-of-function is a known mechanism of disease; Observed in 5/23,590 (0.02%) alleles from individuals of African background, in large population cohorts (Lek et al., 2016); This variant is associated with the following publications: (PMID: 21062345, 30611313, 27535533, 20839240, 30872186)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2021-12-06"
+    },
+    {
+      "submitter_name": "Laboratorio de Genetica e Diagnostico Molecular, Hospital Israelita Albert Einstein",
+      "classification": "Pathogenic",
+      "curator_notes": "ACMG classification criteria: PVS1 very strong, PM2 moderated, PM3 supporting, PP1 supporting",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-11-04"
+    },
+    {
+      "submitter_name": "Fulgent Genetics, Fulgent Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-04-25"
+    },
+    {
+      "submitter_name": "Revvity Omics, Revvity",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-04-29"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change creates a premature translational stop signal (p.Ile2781Argfs*49) in the RYR1 gene. It is expected to result in an absent or disrupted protein product. Loss-of-function variants in RYR1 are known to be pathogenic (PMID: 23919265, 25960145, 28818389, 30611313). This variant is present in population databases (rs758580075, gnomAD 0.02%). This premature translational stop signal has been observed in individual(s) with autosomal recessive congenital myopathy (PMID: 20839240, 21062345). In at least one individual the data is consistent with being in trans (on the opposite chromosome) from a pathogenic variant. It has also been observed to segregate with disease in related individuals. ClinVar contains an entry for this variant (Variation ID: 590611). For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2025-03-27"
+    },
+    {
+      "submitter_name": "Rady Children's Institute for Genomic Medicine, Rady Children's Hospital San Diego",
+      "classification": "Pathogenic",
+      "curator_notes": "This frameshifting variant in exon 53 of 106 introduces a premature stop codon and is therefore predicted to result in loss of normal protein function through either protein truncation or nonsense-mediated mRNA decay (NMD). This variant has been previously reported as a compound heterozygous change in patients with congenital myopathy with central nuclei (PMID: 21062345, 30611313, 20839240). The c.8342_8343del (p.Ile2781ArgfsTer49) variant is present in the heterozygous state in the gnomAD population database at a frequency of 0.002% (5/280914) and is absent in the homozygous state, thus is presumed to be rare. Based on the available evidence, the c.8342_8343del (p.Ile2781ArgfsTer49) variant is classified as Pathogenic.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Muscle and Diseases Team, Institut de G\u00e9n\u00e9tique et Biologie Mol\u00e9culaire et Cellulaire",
+      "classification": "Pathogenic",
+      "curator_notes": "PVS1+PM2+PM3_Supporting",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-03-01"
+    },
+    {
+      "submitter_name": "Color Diagnostics, LLC DBA Color Health",
+      "classification": "Uncertain significance",
+      "curator_notes": "This variant deletes 2 nucleotides in exon 53 of the RYR1 gene, creating a frameshift and premature translation stop signal. This variant is expected to result in an absent or non-functional protein product. To our knowledge, this variant has not been reported in individuals affected with malignant hyperthermia susceptibility in the literature. This variant has been identified in 5/280914 chromosomes in the general population by the Genome Aggregation Database (gnomAD). Loss of RYR1 function due to haploinsufficiency is not an established disease mechanism for autosomal dominant malignant hyperthermia, although it is associated with other phenotype(s) (ClinVar Variation ID: 590611). Due to insufficient evidence, this variant is classified as a Variant of Uncertain Significance for autosomal dominant malignant hyperthermia.; Notes: None; Reason: Outlier claim with insufficient supporting evidence",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-03-30"
+    },
+    {
+      "submitter_name": "Women's Health and Genetics/Laboratory Corporation of America, LabCorp",
+      "classification": "Pathogenic",
+      "curator_notes": "Variant summary: RYR1 c.8342_8343delTA (p.Ile2781ArgfsX49) results in a premature termination codon, predicted to cause absence of the protein due to nonsense mediated decay, which is a commonly known mechanism for disease. The variant allele was found at a frequency of 8e-06 in 249520 control chromosomes. c.8342_8343delTA has been observed at a compound heterozygous state along with a second pathogenic variant in RYR1 in at-least one patient with Autosomal recessive Dusty Core Disease (Garibaldi_2019). This variant was also observed in a heterozygous state, without second pathogenic change, in a few individuals affected with RYR1-related myopathy (example, Schoonen_2019, Mellis_2021, Wilmshurst_2010). These data indicate that the variant is very likely to be associated with disease. To our knowledge, no experimental evidence demonstrating an impact on protein function has been reported. The following publications have been ascertained in the context of this evaluation (PMID: 30611313, 34411415, 30872186, 20839240). ClinVar contains an entry for this variant (Variation ID: 590611). While this variant has been reported in the literature, the clinical significance of the variant for AD RYR1-realted conditions could not be established. Based on the evidence outlined above, the variant was classified as pathogenic for AR RYR1-related diseases.",
+      "assertion_criteria": "LabCorp Variant Classification Summary - May 2015",
+      "date_last_evaluated": "2026-05-20"
+    },
+    {
+      "submitter_name": "Dasa",
+      "classification": "Pathogenic",
+      "curator_notes": "NM_000540.3(RYR1):c.8342_8343del (p.Ile2781Argfs*49) is a frameshift variant in RYR1 predicted to alter the reading frame and introduce a premature termination codon and is predicted to result in an absent or altered protein product. Loss of function is an established disease mechanism for RYR1-associated disorders. Segregation data support an association with disease in the reported family/families. This variant has been observed in affected individuals with RYR1-related disorders. Also, this variant is absent from population databases. Based on the currently available evidence, this variant is classified as pathogenic.",
+      "assertion_criteria": "DASA Assertion Criteria",
+      "date_last_evaluated": "2025-08-27"
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "meta": {
+    "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+    "count": 31,
+    "db_response_time_ms": 115,
+    "page": 1,
+    "per_page": 8,
+    "groups_count": null,
+    "x_query": {
+      "oql": "get works since 2022 with (large language model citation concentration reference list OpenAlex atypical) in the title, abstract, or full text",
+      "x_new_oql": "get works since 2022 with (large language model citation concentration reference list OpenAlex atypical) in the title, abstract, or full text",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "large language model citation concentration reference list OpenAlex atypical",
+            "operator": "has"
+          },
+          {
+            "column_id": "publication_year",
+            "value": 2021,
+            "operator": ">"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:large language model citation concentration reference list OpenAlex atypical,publication_year:%3E2021&per_page=8&page=1",
+      "order": "best matches first",
+      "order_default": true
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W7214726194",
+      "doi": "https://doi.org/10.1016/j.bsheal.2026.09.006",
+      "display_name": "Beyond keywords: Semantic classification with large language models for mapping synthetic biology literature",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1016/j.bsheal.2026.09.006",
+        "doi": "https://doi.org/10.1016/j.bsheal.2026.09.006",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1016/j.bsheal.2026.09.006",
+        "pdf_url": "https://www.sciencedirect.com/science/article/pii/S2590053626001734/pdf",
+        "source": {
+          "id": "https://openalex.org/S4210211253",
+          "display_name": "Biosafety and Health",
+          "issn_l": "2590-0536",
+          "issn": [
+            "2590-0536"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "dongbi-c",
+            "norway-1",
+            "oarl",
+            "poland-20"
+          ],
+          "host_organization": "https://openalex.org/P4310320990",
+          "host_organization_name": "Elsevier BV",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320990"
+          ],
+          "host_organization_lineage_names": [
+            "Elsevier BV"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Biosafety and Health",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7125415342",
+      "doi": "https://doi.org/10.1162/qss.a.506",
+      "display_name": "Turning citation networks inside out: Studying science using content-based knowledge graphs from LLM-derived taxonomies",
+      "publication_year": 2026,
+      "cited_by_count": 5,
+      "primary_location": {
+        "id": "doi:10.1162/qss.a.506",
+        "doi": "https://doi.org/10.1162/qss.a.506",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1162/qss.a.506",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S4210195326",
+          "display_name": "Quantitative Science Studies",
+          "issn_l": "2641-3337",
+          "issn": [
+            "2641-3337"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-class-a",
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "jufo-2",
+            "norway-1",
+            "poland-20",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310315718",
+          "host_organization_name": "The MIT Press",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310315718",
+            "https://openalex.org/P4310316440"
+          ],
+          "host_organization_lineage_names": [
+            "The MIT Press",
+            "Massachusetts Institute of Technology"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Quantitative Science Studies",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7226027270",
+      "doi": "https://doi.org/10.3389/fimmu.2026.2010172",
+      "display_name": "Chemokine organization of tumor-associated tertiary lymphoid structures and the candidate roles of atypical receptors",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.3389/fimmu.2026.2010172",
+        "doi": "https://doi.org/10.3389/fimmu.2026.2010172",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.3389/fimmu.2026.2010172",
+        "pdf_url": "https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2026.2010172/pdf",
+        "source": {
+          "id": "https://openalex.org/S2595292759",
+          "display_name": "Frontiers in Immunology",
+          "issn_l": "1664-3224",
+          "issn": [
+            "1664-3224"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "cwts-core",
+            "doaj",
+            "jufo-1",
+            "ki-jl-1",
+            "medline",
+            "norway-1",
+            "oarl",
+            "poland-140",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320527",
+          "host_organization_name": "Frontiers Media",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320527"
+          ],
+          "host_organization_lineage_names": [
+            "Frontiers Media"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Frontiers in Immunology",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4414968537",
+      "doi": "https://doi.org/10.48550/arxiv.2510.03240",
+      "display_name": "Generalization and the Rise of System-level Creativity in Science",
+      "publication_year": 2025,
+      "cited_by_count": 5,
+      "primary_location": {
+        "id": "pmh:oai:arXiv.org:2510.03240",
+        "doi": "https://doi.org/10.48550/arxiv.2510.03240",
+        "is_oa": true,
+        "landing_page_url": "https://arxiv.org/abs/2510.03240",
+        "pdf_url": "https://arxiv.org/pdf/2510.03240",
+        "source": {
+          "id": "https://openalex.org/S4306400194",
+          "display_name": "arXiv (Cornell University)",
+          "issn_l": "2331-8422",
+          "issn": [
+            "2331-8422"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I205783295",
+          "host_organization_name": "Cornell University",
+          "host_organization_lineage": [
+            "https://openalex.org/I205783295"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "text"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7167215595",
+      "doi": "https://doi.org/10.48550/arxiv.2607.02416",
+      "display_name": "The Future of NLP may not be at NLP Conferences: Scholarly Migration Patterns in Natural Language Processing",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:arXiv.org:2607.02416",
+        "doi": "https://doi.org/10.48550/arxiv.2607.02416",
+        "is_oa": true,
+        "landing_page_url": "https://arxiv.org/abs/2607.02416",
+        "pdf_url": "https://arxiv.org/pdf/2607.02416",
+        "source": {
+          "id": "https://openalex.org/S4306400194",
+          "display_name": "arXiv (Cornell University)",
+          "issn_l": "2331-8422",
+          "issn": [
+            "2331-8422"
+          ],
+          "is_oa": true,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I205783295",
+          "host_organization_name": "Cornell University",
+          "host_organization_lineage": [
+            "https://openalex.org/I205783295"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "other-oa",
+        "license_id": "https://openalex.org/licenses/other-oa",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "text"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4399116274",
+      "doi": "https://doi.org/10.1073/pnas.2611349123",
+      "display_name": "Generating interesting scientific ideas using knowledge graphs and LLMs: Evaluations with 100 research group leaders",
+      "publication_year": 2026,
+      "cited_by_count": 66,
+      "primary_location": {
+        "id": "doi:10.1073/pnas.2611349123",
+        "doi": "https://doi.org/10.1073/pnas.2611349123",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1073/pnas.2611349123",
+        "pdf_url": null,
+        "source": {
+          "id": "https://openalex.org/S125754415",
+          "display_name": "Proceedings of the National Academy of Sciences",
+          "issn_l": "0027-8424",
+          "issn": [
+            "0027-8424",
+            "1091-6490"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "anvur-class-a",
+            "anvur-scientific",
+            "cwts-core",
+            "dongbi-a",
+            "doyens",
+            "erih-plus",
+            "jufo-3",
+            "ki-jl-3",
+            "medline",
+            "norway-2",
+            "poland-200",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320052",
+          "host_organization_name": "National Academy of Sciences",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320052"
+          ],
+          "host_organization_lineage_names": [
+            "National Academy of Sciences"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Proceedings of the National Academy of Sciences",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W7204442244",
+      "doi": "https://doi.org/10.1007/s11192-026-05781-0",
+      "display_name": "Context-dependent leadership in global health science: Brazil's role across North\u2013South, South\u2013South, and triangular collaboration models (2010\u20132019)",
+      "publication_year": 2026,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "doi:10.1007/s11192-026-05781-0",
+        "doi": "https://doi.org/10.1007/s11192-026-05781-0",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1007/s11192-026-05781-0",
+        "pdf_url": "https://link.springer.com/content/pdf/10.1007/s11192-026-05781-0.pdf",
+        "source": {
+          "id": "https://openalex.org/S148561398",
+          "display_name": "Scientometrics",
+          "issn_l": "0138-9130",
+          "issn": [
+            "0138-9130",
+            "1588-2861"
+          ],
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": true,
+          "listed_in": [
+            "abdc-a",
+            "anvur-class-a",
+            "anvur-scientific",
+            "cwts-core",
+            "erih-plus",
+            "fnege-3",
+            "jufo-2",
+            "ki-jl-1",
+            "norway-1",
+            "poland-100",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310320108",
+          "host_organization_name": "Springer Nature (Netherlands)",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310320108",
+            "https://openalex.org/P4310319965"
+          ],
+          "host_organization_lineage_names": [
+            "Springer Nature (Netherlands)",
+            "Springer Nature"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Scientometrics",
+        "raw_type": "journal-article"
+      }
+    },
+    {
+      "id": "https://openalex.org/W4411885786",
+      "doi": "https://doi.org/10.1057/s41599-025-05124-z",
+      "display_name": "The innovation trade-off: how following superstars shapes academic novelty",
+      "publication_year": 2025,
+      "cited_by_count": 15,
+      "primary_location": {
+        "id": "doi:10.1057/s41599-025-05124-z",
+        "doi": "https://doi.org/10.1057/s41599-025-05124-z",
+        "is_oa": true,
+        "landing_page_url": "https://doi.org/10.1057/s41599-025-05124-z",
+        "pdf_url": "https://www.nature.com/articles/s41599-025-05124-z.pdf",
+        "source": {
+          "id": "https://openalex.org/S4210206302",
+          "display_name": "Humanities and Social Sciences Communications",
+          "issn_l": "2055-1045",
+          "issn": [
+            "2055-1045",
+            "2662-9992"
+          ],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": true,
+          "listed_in": [
+            "anvur-class-a",
+            "anvur-scientific",
+            "cwts-core",
+            "doaj",
+            "jufo-1",
+            "ki-jl-1",
+            "norway-1",
+            "poland-20",
+            "russia-white-list-1",
+            "vabb-shw"
+          ],
+          "host_organization": "https://openalex.org/P4310319702",
+          "host_organization_name": "Palgrave Macmillan",
+          "host_organization_lineage": [
+            "https://openalex.org/P4310319702",
+            "https://openalex.org/P4310319964"
+          ],
+          "host_organization_lineage_names": [
+            "Palgrave Macmillan",
+            "Macmillan Publishers"
+          ],
+          "type": "journal"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Humanities and Social Sciences Communications",
+        "raw_type": "journal-article"
+      }
+    }
+  ],
+  "group_by": []
+}

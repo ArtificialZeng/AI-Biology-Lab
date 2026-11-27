@@ -1,0 +1,34 @@
+{
+  "retraction_watch_probe": [
+    {
+      "url": "https://api.labs.crossref.org/data/retractionwatch?name=audit@example.org",
+      "error": "HTTP Error 405: Method Not Allowed"
+    },
+    {
+      "url": "https://gitlab.com/crossref/retraction-watch-data/-/raw/main/retraction_watch.csv",
+      "status": 200,
+      "content_length": "68335726",
+      "content_type": "text/plain; charset=utf-8"
+    }
+  ],
+  "pubmed_retracted_pt_count": 35847,
+  "rcsb_human_phospho_error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1035)>",
+  "chembl_doc_probe": {
+    "ok": true,
+    "total_count": 101100
+  },
+  "uniprot_human_reviewed_probe": {
+    "ok": true,
+    "keys": [
+      "results"
+    ]
+  },
+  "openfda_510k_probe": {
+    "ok": true,
+    "total": 176747
+  },
+  "openfda_recall_probe": {
+    "ok": true,
+    "total": 59705
+  }
+}

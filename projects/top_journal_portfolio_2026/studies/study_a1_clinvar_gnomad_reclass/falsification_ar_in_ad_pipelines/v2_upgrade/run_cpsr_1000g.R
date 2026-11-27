@@ -1,0 +1,11 @@
+
+suppressPackageStartupMessages({ library(dplyr); library(stringr) })
+assertable_env <- new.env()
+assertable_env$assert_colnames <- function(data, colnames, only_colnames=FALSE, quiet=TRUE) invisible(TRUE)
+utils_lines <- readLines("/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/cloned_pipelines/cpsr/R/utils.R")
+fn_lines <- gsub("assertable::assert_colnames", "assertable_env$assert_colnames", utils_lines[127:215], fixed=TRUE)
+eval(parse(text = paste(fn_lines, collapse="\n")))
+df <- read.delim("/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/cpsr_1000g_in.tsv", stringsAsFactors=FALSE)
+df$PRIMARY_TARGET <- as.logical(df$PRIMARY_TARGET); df$LOSS_OF_FUNCTION <- as.logical(df$LOSS_OF_FUNCTION)
+res <- retrieve_secondary_calls(df)
+write.table(res, "/Users/mac/AI-Biology-Lab/projects/top_journal_portfolio_2026/studies/study_a1_clinvar_gnomad_reclass/falsification_ar_in_ad_pipelines/v2_upgrade/cpsr_1000g_out.tsv", sep="\t", row.names=FALSE, quote=FALSE)

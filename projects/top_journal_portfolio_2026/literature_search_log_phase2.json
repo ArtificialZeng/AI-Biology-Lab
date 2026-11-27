@@ -1,0 +1,1126 @@
+{
+  "retrieval_timestamp_utc": "2026-11-25T04:43:22.656018+00:00",
+  "databases_queried": [
+    "NCBI PubMed (E-utilities esearch + esummary)",
+    "Europe PMC REST API (articles/preprints)",
+    "OpenAlex Works API"
+  ],
+  "epistemic_boundary": "Absence of retrieval across the logged databases and query strings reflects indexed coverage as of the retrieval timestamp and does not prove absolute priority.",
+  "queries": [
+    {
+      "query_id": "A1X_Q1_dual_moi_acmg_sf",
+      "pubmed": {
+        "query": "(\"secondary findings\" OR \"ACMG SF\") AND (\"mode of inheritance\" OR \"autosomal recessive\" OR \"dual inheritance\" OR \"recessive\") AND (RYR1 OR APOB OR TTN OR ClinVar)",
+        "total_hits": 8,
+        "top_records": [
+          {
+            "pmid": "42650317",
+            "pubdate": "2026 Jul 23",
+            "source": "Children (Basel)",
+            "title": "Second-Tier Whole Exome Sequencing Following Abnormal Newborn Screening: Diagnostic Yield, Secondary Findings, and Carrier Burden in a Taiwanese Neonatal Cohort.",
+            "first_author": "Lee CY"
+          },
+          {
+            "pmid": "41927590",
+            "pubdate": "2026 Apr 2",
+            "source": "NPJ Genom Med",
+            "title": "Population-scale genomic screening reveals high frequency of actionable secondary findings in Chinese newborns.",
+            "first_author": "Huang Y"
+          },
+          {
+            "pmid": "40679974",
+            "pubdate": "2025",
+            "source": "PLoS One",
+            "title": "Certain vs. uncertain actionable secondary findings in a cohort of 500 Lebanese participants: What to report to the patient?",
+            "first_author": "Hanna EM"
+          },
+          {
+            "pmid": "39020067",
+            "pubdate": "2024 Nov",
+            "source": "Eur J Hum Genet",
+            "title": "Analysis of 14,392 whole genomes reveals 3.5% of Qataris carry medically actionable variants.",
+            "first_author": "Elfatih A"
+          },
+          {
+            "pmid": "39669250",
+            "pubdate": "2023",
+            "source": "Genet Med Open",
+            "title": "Clinically actionable incidental and secondary parental genomic findings after proband exome sequencing: Yield and dilemmas.",
+            "first_author": "Basel-Salmon L"
+          },
+          {
+            "pmid": "34691145",
+            "pubdate": "2021",
+            "source": "Front Genet",
+            "title": "Targeted Sequencing of 242 Clinically Important Genes in the Russian Population From the Ivanovo Region.",
+            "first_author": "Ramensky VE"
+          },
+          {
+            "pmid": "34621001",
+            "pubdate": "2022 Mar",
+            "source": "J Hum Genet",
+            "title": "Actionable secondary findings in the 73 ACMG-recommended genes in 1559 Thai exomes.",
+            "first_author": "Chetruengchai W"
+          },
+          {
+            "pmid": "26195989",
+            "pubdate": "2015",
+            "source": "Genome Med",
+            "title": "Secondary findings and carrier test frequencies in a large multiethnic sample.",
+            "first_author": "Gambin T"
+          }
+        ]
+      },
+      "europepmc": {
+        "query": "(\"secondary findings\" OR \"ACMG SF\") AND (\"mode of inheritance\" OR \"autosomal recessive\" OR \"dual inheritance\") AND (RYR1 OR APOB OR ClinVar)",
+        "total_hits": 527,
+        "top_records": [
+          {
+            "id": "42900003",
+            "source": "MED",
+            "pmid": "42900003",
+            "doi": "10.70962/jhi.20250192",
+            "pubYear": "2027",
+            "journalTitle": "J Hum Immun",
+            "authorString": "Quinn J, Fern\u00e1ndez-Tabanera E, Perea-Romero I, Leon-Otegui M, Moreno-Coca M, Palao B, Izqu",
+            "title": "Jeffrey's Insights: Next-generation sequencing for primary immunodeficiency diagnosis, 2019-2025."
+          },
+          {
+            "id": "42360464",
+            "source": "MED",
+            "pmid": "42360464",
+            "doi": "10.1007/s00467-026-07407-2",
+            "pubYear": "2026",
+            "journalTitle": "Pediatr Nephrol",
+            "authorString": "Hejenkowska ED, Kruszka P, Swiatecka-Urban A.",
+            "title": "Genetic insights into congenital and infantile nephrotic syndrome: predicting severity and informing care."
+          },
+          {
+            "id": "43005388",
+            "source": "MED",
+            "pmid": "43005388",
+            "doi": "10.1002/ccr3.73754",
+            "pubYear": "2026",
+            "journalTitle": "Clin Case Rep",
+            "authorString": "Luo X, Luo J.",
+            "title": "Primary Systemic Carnitine Deficiency Complicated With Severe Cardiomyopathy: A Case Report."
+          },
+          {
+            "id": "42979320",
+            "source": "MED",
+            "pmid": "42979320",
+            "doi": "10.1002/ccr3.73869",
+            "pubYear": "2026",
+            "journalTitle": "Clin Case Rep",
+            "authorString": "Eghbali A, Poortavakol M, Mirmohammadi HS.",
+            "title": "GATA2 Deficiency Presenting With a WHIM-Like Phenotype and Subsequent Development of Monosomy 7-Associated Myelodysplastic Syndrome in an Adolescent Female: A Case Report."
+          },
+          {
+            "id": "42608469",
+            "source": "MED",
+            "pmid": "42608469",
+            "doi": "10.1038/s41431-026-02214-7",
+            "pubYear": "2026",
+            "journalTitle": "Eur J Hum Genet",
+            "authorString": "Kennis MGP, van Haaften L, van Hulst K, Pfundt R, de Leeuw N, van Reeuwijk J, Wijngaard R,",
+            "title": "Genome sequencing reveals high diagnostic yield in children with severe sporadic developmental language disorder."
+          },
+          {
+            "id": "42942128",
+            "source": "MED",
+            "pmid": "42942128",
+            "doi": "10.3390/ijms27209357",
+            "pubYear": "2026",
+            "journalTitle": "Int J Mol Sci",
+            "authorString": "Cal\u00ec F, Musumeci A, Vinci M, L'Episcopo S, Bartolone M, Gloria A, Ferri R, Treccarichi S, ",
+            "title": "Whole-Exome Sequencing in Patients with Tooth Agenesis and Neurodevelopmental Disorders: A Descriptive Case Series."
+          },
+          {
+            "id": "42938196",
+            "source": "MED",
+            "pmid": "42938196",
+            "doi": "10.3390/diagnostics16203356",
+            "pubYear": "2026",
+            "journalTitle": "Diagnostics (Basel)",
+            "authorString": "Lee CL, Chang YH, Chuang CK, Chiu HC, Tu YR, Lo YT, Wu JY, Huang HY, Lin HY, Lin SP.",
+            "title": "Multi-Locus Molecular Findings in Pediatric-Onset Inherited Metabolic Disorders: An Eight-Year Series of Outsourced Genomic Testing in Taiwan."
+          },
+          {
+            "id": "42925246",
+            "source": "MED",
+            "pmid": "42925246",
+            "doi": "10.1111/cas.70566",
+            "pubYear": "2026",
+            "journalTitle": "Cancer Sci",
+            "authorString": "Yoshida R, Hirasawa A, Imoto I, Yamaguchi T, Kumamoto K, Araki M, Ueki A, Masuda K, Urakaw",
+            "title": "Japanese Society for Hereditary Tumors Guidance: Hereditary Cancer Syndromes With Multigene Panel Testing, 2025 Edition."
+          }
+        ]
+      },
+      "openalex": {
+        "query": "secondary findings ACMG mode of inheritance autosomal recessive RYR1 APOB ClinVar",
+        "total_hits": 20,
+        "top_records": [
+          {
+            "id": "https://openalex.org/W7127272078",
+            "doi": "https://doi.org/10.3390/ijms27031491",
+            "year": 2026,
+            "venue": "International Journal of Molecular Sciences",
+            "title": "ACMG-Recommended Actionable Secondary Findings from 1600 Clinical Exomes in the South Marmara Region in Turkiye",
+            "cited_by_count": 1
+          },
+          {
+            "id": "https://openalex.org/W2346043562",
+            "doi": "https://doi.org/10.1016/j.ajhg.2016.02.024",
+            "year": 2016,
+            "venue": "The American Journal of Human Genetics",
+            "title": "Evaluation of ACMG-Guideline-Based Variant Classification of Cancer Susceptibility and Non-Cancer-Associated Genes in Families Affected by Breast Cancer",
+            "cited_by_count": 153
+          },
+          {
+            "id": "https://openalex.org/W4315785015",
+            "doi": "https://doi.org/10.26508/lsa.202201673",
+            "year": 2023,
+            "venue": "Life Science Alliance",
+            "title": "Secondary findings in a large Pakistani cohort tested with whole genome sequencing",
+            "cited_by_count": 13
+          },
+          {
+            "id": "https://openalex.org/W4385295548",
+            "doi": "https://doi.org/10.1002/mgg3.2237",
+            "year": 2023,
+            "venue": "Molecular Genetics & Genomic Medicine",
+            "title": "Clinically actionable secondary findings in 130 triads from sub\u2010Saharan African families with non\u2010syndromic orofacial clefts",
+            "cited_by_count": 7
+          },
+          {
+            "id": "https://openalex.org/W2940989728",
+            "doi": "https://doi.org/10.1038/s41431-019-0384-7",
+            "year": 2019,
+            "venue": "European Journal of Human Genetics",
+            "title": "Secondary actionable findings identified by exome sequencing: expected impact on the organisation of care from the study of 700 consecutive tests",
+            "cited_by_count": 29
+          },
+          {
+            "id": "https://openalex.org/W2497953609",
+            "doi": null,
+            "year": 2016,
+            "venue": "Scholarly and Creative Works from DePauw University (DePauw University)",
+            "title": "Genetic Analysis and the Ethics of Secondary Findings",
+            "cited_by_count": 0
+          },
+          {
+            "id": "https://openalex.org/W4401341353",
+            "doi": "https://doi.org/10.1101/2024.08.01.24311343",
+            "year": 2024,
+            "venue": "medRxiv",
+            "title": "Unveiling the Landscape of Reportable Genetic Secondary Findings in the Spanish Population: A Comprehensive Analysis Using the Collaborative Spanish Variant Server Database",
+            "cited_by_count": 2
+          },
+          {
+            "id": "https://openalex.org/W4230784750",
+            "doi": "https://doi.org/10.21203/rs.3.rs-51673/v1",
+            "year": 2020,
+            "venue": "Research Square",
+            "title": "A Comprehensive Follow-Up Study Identifying Diagnostic Evidences for Secondary Finding",
+            "cited_by_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "query_id": "A1X_Q2_clinvar_vcf_moi_clndn",
+      "pubmed": {
+        "query": "ClinVar AND (\"ModeOfInheritance\" OR \"CLNDN\" OR \"CLNDISDB\" OR \"VCF\") AND (\"secondary findings\" OR \"mode of inheritance\" OR \"false positive\" OR \"misclassification\")",
+        "total_hits": 0,
+        "top_records": []
+      },
+      "europepmc": {
+        "query": "ClinVar AND (\"CLNDN\" OR \"ModeOfInheritance\") AND (\"secondary findings\" OR \"VCF\")",
+        "total_hits": 6,
+        "top_records": [
+          {
+            "id": "42453582",
+            "pmid": "42453582",
+            "doi": "10.3389/fphar.2026.1804218",
+            "pubYear": "2026",
+            "journalTitle": "Front Pharmacol",
+            "title": "Comprehensive whole genome sequencing-based pharmacogenomics profiling using a personalized genome interpretation workflow."
+          },
+          {
+            "id": "39578691",
+            "pmid": "39578691",
+            "doi": "10.1093/nar/gkae1090",
+            "pubYear": "2025",
+            "journalTitle": "Nucleic Acids Res",
+            "title": "ClinVar: updates to support classifications of both germline and somatic variants."
+          },
+          {
+            "id": "38352937",
+            "pmid": "38352937",
+            "doi": "10.1016/j.csbj.2024.01.014",
+            "pubYear": "2024",
+            "journalTitle": "Comput Struct Biotechnol J",
+            "title": "Large language models assisted multi-effect variants mining on cerebral cavernous malformation familial whole genome sequencing."
+          },
+          {
+            "id": "39433808",
+            "pmid": "39433808",
+            "doi": "10.1038/s41598-024-75020-0",
+            "pubYear": "2024",
+            "journalTitle": "Sci Rep",
+            "title": "Identifying pathogenic variants in rare pediatric neurological diseases using exome sequencing."
+          },
+          {
+            "id": "39085881",
+            "pmid": "39085881",
+            "doi": "10.1186/s12967-024-05508-w",
+            "pubYear": "2024",
+            "journalTitle": "J Transl Med",
+            "title": "Accuracy of renovo predictions on variants reclassified over time."
+          },
+          {
+            "id": "38093005",
+            "pmid": "38093005",
+            "doi": "10.1038/s41586-023-06831-w",
+            "pubYear": "2023",
+            "journalTitle": "Nature",
+            "title": "Indigenous Australian genomes show deep structure and rich novel variation."
+          }
+        ]
+      },
+      "openalex": {
+        "query": "ClinVar VCF ModeOfInheritance CLNDN secondary findings pipeline",
+        "total_hits": 0,
+        "top_records": []
+      }
+    },
+    {
+      "query_id": "A1X_Q3_ryr1_myopathy_mhs_sf",
+      "pubmed": {
+        "query": "RYR1 AND (\"secondary findings\" OR \"incidental findings\") AND (\"congenital myopathy\" OR \"recessive\") AND (\"malignant hyperthermia\")",
+        "total_hits": 0,
+        "top_records": []
+      },
+      "europepmc": {
+        "query": "RYR1 AND (\"secondary findings\" OR \"incidental findings\") AND (\"congenital myopathy\" OR \"recessive\") AND \"malignant hyperthermia\"",
+        "total_hits": 103,
+        "top_records": [
+          {
+            "id": "42448966",
+            "source": "MED",
+            "pmid": "42448966",
+            "doi": "10.1038/s41431-026-02160-4",
+            "pubYear": "2026",
+            "journalTitle": "Eur J Hum Genet",
+            "authorString": "AURAGEN consortium.",
+            "title": "Unveiling ocular developmental disorders through short-read whole-genome sequencing."
+          },
+          {
+            "id": "PMC13655823",
+            "source": "PMC",
+            "pmid": null,
+            "doi": null,
+            "pubYear": "2026",
+            "journalTitle": "Transl Pediatr",
+            "authorString": "Yang X, Liu D.",
+            "title": "Rapid whole-genome sequencing in the pediatric intensive care unit: from etiologic diagnosis to precision management\u2014a narrative review"
+          },
+          {
+            "id": "42471198",
+            "source": "MED",
+            "pmid": "42471198",
+            "doi": "10.1016/j.ajogmf.2026.102067",
+            "pubYear": "2026",
+            "journalTitle": "Am J Obstet Gynecol MFM",
+            "authorString": "Boutin RCT, Lianoglou BR, Sahin Hodoglugil NN, Tick K, Santoli CMA, Hodoglugil U, Martin P",
+            "title": "Incremental yield of genome sequencing after exome sequencing for nonimmune hydrops fetalis spectrum."
+          },
+          {
+            "id": "42650317",
+            "source": "MED",
+            "pmid": "42650317",
+            "doi": "10.3390/children13080977",
+            "pubYear": "2026",
+            "journalTitle": "Children (Basel)",
+            "authorString": "Lee CY, Niu DM, Yang CF, Chen YJ.",
+            "title": "Second-Tier Whole Exome Sequencing Following Abnormal Newborn Screening: Diagnostic Yield, Secondary Findings, and Carrier Burden in a Taiwanese Neonatal Cohort."
+          },
+          {
+            "id": "PMC13299624",
+            "source": "PMC",
+            "pmid": null,
+            "doi": null,
+            "pubYear": "2026",
+            "journalTitle": "Int J Mol Sci",
+            "authorString": "",
+            "title": "Carrier Frequencies of Medically Actionable Pathogenic Variants in the Russian Population"
+          },
+          {
+            "id": "41842695",
+            "source": "MED",
+            "pmid": "41842695",
+            "doi": "10.1016/j.gim.2026.102552",
+            "pubYear": "2026",
+            "journalTitle": "Genet Med",
+            "authorString": "Johnston JJ, Lee K, Ritter DI, Harrison SM, Biesecker LG.",
+            "title": "Specification of frequency criteria for secondary findings genes to improve variant classification concordance."
+          },
+          {
+            "id": "41388734",
+            "source": "MED",
+            "pmid": "41388734",
+            "doi": "10.1002/pd.70037",
+            "pubYear": "2026",
+            "journalTitle": "Prenat Diagn",
+            "authorString": "Bedei I, Feresin A, Zemet R, Berner D, Polidori D, Fr\u00f6bius K, Skakkeb\u00e6k A, Axt-Fliedner R,",
+            "title": "Uncovering the Genetic Landscape of Spinal Dysraphism: A Retrospective Analysis of 150 Fetal Cases."
+          },
+          {
+            "id": "41708638",
+            "source": "MED",
+            "pmid": "41708638",
+            "doi": "10.1038/s41525-026-00552-5",
+            "pubYear": "2026",
+            "journalTitle": "NPJ Genom Med",
+            "authorString": "Kayaalp B, Kars ME, Itan Y, Ba\u015fak AN, Casanova JL, \u00d6z\u00e7elik T.",
+            "title": "Inherited burden for disease predisposition in diverse populations."
+          }
+        ]
+      },
+      "openalex": {
+        "query": "RYR1 secondary findings congenital myopathy recessive malignant hyperthermia",
+        "total_hits": 299,
+        "top_records": [
+          {
+            "id": "https://openalex.org/W1980941373",
+            "doi": "https://doi.org/10.1086/508500",
+            "year": 2006,
+            "venue": "The American Journal of Human Genetics",
+            "title": "Epigenetic Allele Silencing Unveils Recessive RYR1 Mutations in Core Myopathies",
+            "cited_by_count": 138
+          },
+          {
+            "id": "https://openalex.org/W2106731957",
+            "doi": "https://doi.org/10.1212/wnl.0b013e3182900380",
+            "year": 2013,
+            "venue": "Neurology",
+            "title": "Severe congenital RYR1 -associated myopathy: The expanding clinicopathologic and genetic spectrum",
+            "cited_by_count": 120
+          },
+          {
+            "id": "https://openalex.org/W2069563819",
+            "doi": "https://doi.org/10.1002/humu.22326",
+            "year": 2013,
+            "venue": "Human Mutation",
+            "title": "RyR1 Deficiency in Congenital Myopathies Disrupts Excitation-Contraction Coupling",
+            "cited_by_count": 60
+          },
+          {
+            "id": "https://openalex.org/W2915848125",
+            "doi": "https://doi.org/10.1007/s00415-019-09209-z",
+            "year": 2019,
+            "venue": "Journal of Neurology",
+            "title": "The histopathological spectrum of malignant hyperthermia and rhabdomyolysis due to RYR1 mutations",
+            "cited_by_count": 42
+          },
+          {
+            "id": "https://openalex.org/W4211223349",
+            "doi": "https://doi.org/10.1186/1750-1172-2-21",
+            "year": 2007,
+            "venue": "Orphanet Journal of Rare Diseases",
+            "title": "Malignant hyperthermia",
+            "cited_by_count": 520
+          },
+          {
+            "id": "https://openalex.org/W2146587884",
+            "doi": "https://doi.org/10.1186/s13023-015-0310-1",
+            "year": 2015,
+            "venue": "Orphanet Journal of Rare Diseases",
+            "title": "Malignant hyperthermia: a review",
+            "cited_by_count": 719
+          },
+          {
+            "id": "https://openalex.org/W1968887442",
+            "doi": "https://doi.org/10.1002/humu.21278",
+            "year": 2010,
+            "venue": "Human Mutation",
+            "title": "Recessive mutations in RYR1 are a common cause of congenital fiber type disproportion",
+            "cited_by_count": 190
+          },
+          {
+            "id": "https://openalex.org/W2889511132",
+            "doi": "https://doi.org/10.1002/humu.23635",
+            "year": 2018,
+            "venue": "Human Mutation",
+            "title": "STAC3 variants cause a congenital myopathy with distinctive dysmorphic features and malignant hyperthermia susceptibility",
+            "cited_by_count": 80
+          }
+        ]
+      }
+    },
+    {
+      "query_id": "A1X_Q4_apob_fhbl_sf",
+      "pubmed": {
+        "query": "APOB AND (\"secondary findings\" OR \"incidental findings\") AND (\"hypobetalipoproteinemia\" OR \"FHBL\" OR \"loss-of-function\") AND (\"familial hypercholesterolemia\")",
+        "total_hits": 1,
+        "top_records": [
+          {
+            "pmid": "42342634",
+            "pubdate": "2026 Jul 10",
+            "source": "Zhonghua Yi Xue Yi Chuan Xue Za Zhi",
+            "title": "[Analysis of gene variant spectrum associated with Familial hypercholesterolemia in a regional population: A retrospective study based on exome sequencing of 15 841 cases].",
+            "first_author": "Ding L"
+          }
+        ]
+      },
+      "europepmc": {
+        "query": "APOB AND (\"secondary findings\" OR \"incidental findings\") AND (\"hypobetalipoproteinemia\" OR \"FHBL\")",
+        "total_hits": 23,
+        "top_records": [
+          {
+            "id": "42587573",
+            "source": "MED",
+            "pmid": "42587573",
+            "doi": "10.3390/diagnostics16152335",
+            "pubYear": "2026",
+            "journalTitle": "Diagnostics (Basel)",
+            "authorString": "Conti A, Gabrielli F, Ferrari S, Vaisfeld A, De Masi C, Azzaroli F, Piscaglia F, Vitale G.",
+            "title": "Use of Next-Generation Sequencing and Whole-Exome Sequencing in the Diagnosis of Adult-Onset Familial Intrahepatic Cholestasis: Challenges in Interpreting Variants of Uncertain Significance."
+          },
+          {
+            "id": "42342634",
+            "source": "MED",
+            "pmid": "42342634",
+            "doi": "10.3760/cma.j.cn511374-20251013-00596",
+            "pubYear": "2026",
+            "journalTitle": "Zhonghua Yi Xue Yi Chuan Xue Za Zhi",
+            "authorString": "Ding L, Xie M, Li H, Chen C, Zhuang D.",
+            "title": "[Analysis of gene variant spectrum associated with Familial hypercholesterolemia in a regional population: A retrospective study based on exome sequencing of 15 841 cases]."
+          },
+          {
+            "id": "42255514",
+            "source": "MED",
+            "pmid": "42255514",
+            "doi": "10.1210/jendso/bvag091",
+            "pubYear": "2026",
+            "journalTitle": "J Endocr Soc",
+            "authorString": "Okur V, Marcus A, Falcone JN, Hurd MA, Stewart SL, Claudio K, Manohar J, Dealla F, Kumar S",
+            "title": "Genome sequencing identifies monogenic causes in adults with metabolic diseases."
+          },
+          {
+            "id": "42100254",
+            "source": "MED",
+            "pmid": "42100254",
+            "doi": "10.3389/fmed.2026.1720731",
+            "pubYear": "2026",
+            "journalTitle": "Front Med (Lausanne)",
+            "authorString": "Loberman Nachum N, Shteyer E, Cohen H, Chorin O, Granot M, Weiss B.",
+            "title": "Familial hypobetalipoproteinemia in pediatric patients with fatty liver: an under-recognized cause."
+          },
+          {
+            "id": "41767779",
+            "source": "MED",
+            "pmid": "41767779",
+            "doi": "10.3389/fped.2026.1684900",
+            "pubYear": "2026",
+            "journalTitle": "Front Pediatr",
+            "authorString": "Liu B, Zhang C.",
+            "title": "Case Report: Neonatal-onset chylomicron retention disease presenting as isolated failure to thrive with compound heterozygous &lt;i&gt;SAR1B&lt;/i&gt; variants: the value of early genetic testing and challenges of long-term management."
+          },
+          {
+            "id": "41188416",
+            "source": "MED",
+            "pmid": "41188416",
+            "doi": "10.1038/s41431-025-01934-6",
+            "pubYear": "2025",
+            "journalTitle": "Eur J Hum Genet",
+            "authorString": "",
+            "title": "Abstracts from the 58&lt;sup&gt;th&lt;/sup&gt; European Society of Human Genetics (ESHG) Conference: ePosters."
+          },
+          {
+            "id": "40171628",
+            "source": "MED",
+            "pmid": "40171628",
+            "doi": "10.1111/ahg.12594",
+            "pubYear": "2025",
+            "journalTitle": "Ann Hum Genet",
+            "authorString": "Humphries SE, Futema M.",
+            "title": "Genetic Determinants of the Familial Hypercholesterolaemia Phenotype."
+          },
+          {
+            "id": "40593689",
+            "source": "MED",
+            "pmid": "40593689",
+            "doi": "10.1038/s41525-025-00508-1",
+            "pubYear": "2025",
+            "journalTitle": "NPJ Genom Med",
+            "authorString": "Lucas Beckett IA, Emery KR, Wagner JT, Jade K, Cosgrove BA, Welle J, Rinaldi JB, Dickey L,",
+            "title": "Geno4ME Study: implementation of whole genome sequencing for population screening in a large healthcare system."
+          }
+        ]
+      },
+      "openalex": {
+        "query": "APOB secondary findings familial hypobetalipoproteinemia familial hypercholesterolemia",
+        "total_hits": 289,
+        "top_records": [
+          {
+            "id": "https://openalex.org/W4391940025",
+            "doi": "https://doi.org/10.2169/internalmedicine.3033-23",
+            "year": 2024,
+            "venue": "Internal Medicine",
+            "title": "A Family with Familial Hypobetalipoproteinemia Caused by a c.1468C>T in APOB",
+            "cited_by_count": 0
+          },
+          {
+            "id": "https://openalex.org/W4297820108",
+            "doi": "https://doi.org/10.1016/b978-0-12-387025-4.00004-2",
+            "year": 2011,
+            "venue": "Advances in clinical chemistry",
+            "title": "Hypobetalipoproteinemia",
+            "cited_by_count": 139
+          },
+          {
+            "id": "https://openalex.org/W2148771607",
+            "doi": "https://doi.org/10.1016/s0022-2275(20)30147-4",
+            "year": 2002,
+            "venue": "Journal of Lipid Research",
+            "title": "Replication of linkage of familial hypobetalipoproteinemia to chromosome 3p in six kindreds",
+            "cited_by_count": 27
+          },
+          {
+            "id": "https://openalex.org/W4396571448",
+            "doi": "https://doi.org/10.5551/jat.rv22018",
+            "year": 2024,
+            "venue": "Journal of Atherosclerosis and Thrombosis",
+            "title": "Current Diagnosis and Management of Familial Hypobetalipoproteinemia 1",
+            "cited_by_count": 16
+          },
+          {
+            "id": "https://openalex.org/W2143311896",
+            "doi": "https://doi.org/10.1172/jci109451",
+            "year": 1979,
+            "venue": "Journal of Clinical Investigation",
+            "title": "Metabolic Studies in an Unusual Case of Asymptomatic Familial Hypobetalipoproteinemia with Hypoalphalipoproteinemia and Fasting Chylomicronemia",
+            "cited_by_count": 81
+          },
+          {
+            "id": "https://openalex.org/W3088068966",
+            "doi": "https://doi.org/10.3389/fgene.2020.01020",
+            "year": 2020,
+            "venue": "Frontiers in Genetics",
+            "title": "PCSK9 Variants in Familial Hypercholesterolemia: A Comprehensive Synopsis",
+            "cited_by_count": 66
+          },
+          {
+            "id": "https://openalex.org/W4392168598",
+            "doi": "https://doi.org/10.3390/genes15030297",
+            "year": 2024,
+            "venue": "Genes",
+            "title": "Genetic Counseling and Genetic Testing for Familial Hypercholesterolemia",
+            "cited_by_count": 26
+          },
+          {
+            "id": "https://openalex.org/W2529748002",
+            "doi": null,
+            "year": 2016,
+            "venue": "UvA-DARE (University of Amsterdam)",
+            "title": "The extended phenotype of familial hypercholesterolemia",
+            "cited_by_count": 1
+          }
+        ]
+      }
+    },
+    {
+      "query_id": "A1X_Q5_pipeline_benchmark_sf",
+      "pubmed": {
+        "query": "(\"secondary findings\" OR \"ACMG\") AND (\"CPSR\" OR \"SFtool\" OR \"OwnGenome\" OR \"Talos\" OR \"open-source pipeline\") AND (\"benchmark\" OR \"audit\" OR \"false positive\")",
+        "total_hits": 0,
+        "top_records": []
+      },
+      "europepmc": {
+        "query": "(\"secondary findings\" OR \"ACMG\") AND (\"CPSR\" OR \"SFtool\" OR \"OwnGenome\" OR \"Talos\")",
+        "total_hits": 29,
+        "top_records": [
+          {
+            "id": "42794712",
+            "source": "MED",
+            "pmid": "42794712",
+            "doi": "10.3390/ijms27188284",
+            "pubYear": "2026",
+            "journalTitle": "Int J Mol Sci",
+            "authorString": "Ili\u0107 N, Krasi\u0107 S, Vukomanovi\u0107 V, Sarajlija A.",
+            "title": "Artificial Intelligence in Pediatric Cardiovascular Genetics: From Multimodal Diagnosis to Risk Prediction and Precision Therapeutics."
+          },
+          {
+            "id": "42792921",
+            "source": "MED",
+            "pmid": "42792921",
+            "doi": "10.3390/genes17091026",
+            "pubYear": "2026",
+            "journalTitle": "Genes (Basel)",
+            "authorString": "Goel H, Dudding-Byth T, Kamien B.",
+            "title": "AI-Guided Systems Neurogenomics in Neurodevelopmental Disorders."
+          },
+          {
+            "id": "42652125",
+            "source": "MED",
+            "pmid": "42652125",
+            "doi": "10.3390/biomedicines14081742",
+            "pubYear": "2026",
+            "journalTitle": "Biomedicines",
+            "authorString": "Shatalov PA, Bukaeva AA, Veselovsky EM, Traspov AA, Revkova MA, Mishakova PV, Kirillova EA",
+            "title": "Extended Germline Profiling of Cancer Predisposition and Homologous Recombination Repair Genes in 275 Russian Patients with Triple-Negative Breast Cancer."
+          },
+          {
+            "id": "42635851",
+            "source": "MED",
+            "pmid": "42635851",
+            "doi": "10.1007/s12022-026-09930-2",
+            "pubYear": "2026",
+            "journalTitle": "Endocr Pathol",
+            "authorString": "Purnaghshband H, Tuzlali E, Deka KB, Bruce JP, Farncombe KM, Gillies B, Prokopec SD, Pugh ",
+            "title": "Comprehensive Genomic Analysis in Hereditary Adrenal and Extra-Adrenal Paragangliomas."
+          },
+          {
+            "id": "42362369",
+            "source": "MED",
+            "pmid": "42362369",
+            "doi": "10.1136/jmg-2026-111501",
+            "pubYear": "2026",
+            "journalTitle": "J Med Genet",
+            "authorString": "Hertstein E, Bertrand M, Kopp J, Sczakiel HL, K\u00fcchler O, von K\u00fcgelgen N, Fischer-Zirnsak B",
+            "title": "Identification of biallelic loss-of-function &lt;i&gt;PREP&lt;/i&gt; variants in three individuals with syndromic intellectual disability."
+          },
+          {
+            "id": "42343115",
+            "source": "MED",
+            "pmid": "42343115",
+            "doi": "10.1038/s41591-026-04477-5",
+            "pubYear": "2026",
+            "journalTitle": "Nat Med",
+            "authorString": "Welland MJ, Ahlquist KD, De Fazio P, Austin-Tse C, Pais L, Wedd L, Bryen S, Rius R, Frankl",
+            "title": "Automated reanalysis of genomic data for rare disease diagnostics at scale."
+          },
+          {
+            "id": "42304195",
+            "source": "MED",
+            "pmid": "42304195",
+            "doi": "10.1186/s12859-026-06513-0",
+            "pubYear": "2026",
+            "journalTitle": "BMC Bioinformatics",
+            "authorString": "Scognamiglio D, Bonetti E, Moroni A, Sangiorgi L, Pedrini E.",
+            "title": "MuSA: a Nextflow pipeline for deep, reproducible annotation and clinical ranking of genomic variants."
+          },
+          {
+            "id": "41916967",
+            "source": "MED",
+            "pmid": "41916967",
+            "doi": "10.1038/s41421-026-00875-8",
+            "pubYear": "2026",
+            "journalTitle": "Cell Discov",
+            "authorString": "Huo C, Luo T, Yang S, Jiang Y, Guo M, Yang F, Xu Z, Xia J, Wu L, Xu W, Gui M, Zhou T, Xie ",
+            "title": "Loss-of-function variants in ODAD1 disrupt ODA docking and induce actin cytoskeletal remodeling in primary ciliary dyskinesia."
+          }
+        ]
+      },
+      "openalex": {
+        "query": "ACMG secondary findings pipeline benchmark CPSR SFtool OwnGenome",
+        "total_hits": 0,
+        "top_records": []
+      }
+    },
+    {
+      "query_id": "B2_Q1_fda_2026_sweep",
+      "pubmed": {
+        "query": "(ClinicalTrials.gov OR FDAAA) AND (\"2026\" OR \"notice of noncompliance\" OR \"reminder\") AND (\"results reporting\" OR \"overdue\" OR \"enforcement\")",
+        "total_hits": 59,
+        "top_records": [
+          {
+            "pmid": "43073890",
+            "pubdate": "2026 Aug 29",
+            "source": "BMC Pulm Med",
+            "title": "Results reporting and primary endpoint achievement in interventional therapeutic trials for pleural mesothelioma, 2005-2025: a cross-sectional analysis.",
+            "first_author": "Li N"
+          },
+          {
+            "pmid": "43044376",
+            "pubdate": "2026 Nov 13",
+            "source": "Clin Imaging",
+            "title": "Regulatory frameworks and liability for AI-enabled radiology devices: Analysis of U.S. and European Union approaches.",
+            "first_author": "Shabanan SH"
+          },
+          {
+            "pmid": "43010699",
+            "pubdate": "2026 Nov 10",
+            "source": "J Interpers Violence",
+            "title": "\"I Took the Charge\": Coercive Control, Legal Vulnerability, and Intimate Partner Violence Service Navigation Among Black Women Under Community Supervision: A Qualitative Study.",
+            "first_author": "Richer A"
+          },
+          {
+            "pmid": "42977969",
+            "pubdate": "2026 Aug 7",
+            "source": "BMC Public Health",
+            "title": "Impact of a health education intervention on knowledge, attitudes, and use of visibility materials among commercial motorcycle riders: a quasi-experimental study in Cameroon.",
+            "first_author": "Ukah CE"
+          },
+          {
+            "pmid": "42972567",
+            "pubdate": "2026 Jul 31",
+            "source": "BMC Med",
+            "title": "Reminder recall is associated with higher mammogram uptake among overdue repeat screeners: an exploratory telephone survey within a randomized trial.",
+            "first_author": "Lucky SS"
+          },
+          {
+            "pmid": "42919398",
+            "pubdate": "2026 Jul 28",
+            "source": "Trials",
+            "title": "Design, reporting, and research focus of neurology and psychiatry drug trials (2020-2023): a registry-based meta-epidemiological study using ClinicalTrials.gov and NLP.",
+            "first_author": "Doneva SE"
+          },
+          {
+            "pmid": "42845574",
+            "pubdate": "2026 Oct",
+            "source": "Cureus",
+            "title": "Results Reporting and Registry-Linked Publications Among Extracorporeal Membrane Oxygenation Studies Registered on ClinicalTrials.gov: A Cross-Sectional Meta-Research Study.",
+            "first_author": "Li OM"
+          },
+          {
+            "pmid": "42813420",
+            "pubdate": "2026 Sep 30",
+            "source": "Clin Otolaryngol",
+            "title": "Trial Design, Endpoints and Results Reporting in Interventional Laryngeal Cancer Trials: A Registry-Based Analysis.",
+            "first_author": "Wang J"
+          }
+        ]
+      },
+      "europepmc": {
+        "query": "(\"ClinicalTrials.gov\" OR \"FDAAA\") AND (\"noncompliance\" OR \"enforcement\" OR \"reminder\") AND \"results reporting\" AND PUB_YEAR:[2025 TO 2026]",
+        "total_hits": 29,
+        "top_records": [
+          {
+            "id": "42913880",
+            "source": "MED",
+            "pmid": "42913880",
+            "doi": "10.1016/j.chest.2026.10.019",
+            "pubYear": "2026",
+            "journalTitle": "Chest",
+            "authorString": "Palazzo L, Hansell L, Wernli KJ, Brown M, Snidarich M, Louie T, Long S, Walsh C, Coronado ",
+            "title": "Determinants of lung cancer screening follow-up care in community care settings: A qualitative multi-case study in the ACCELL trial."
+          },
+          {
+            "id": "42213338",
+            "source": "MED",
+            "pmid": "42213338",
+            "doi": "10.1007/s11239-026-03337-w",
+            "pubYear": "2026",
+            "journalTitle": "J Thromb Thrombolysis",
+            "authorString": "Becker RC.",
+            "title": "Regulatory challenges and current policy for cardiotoxicity detection in oncology drug development."
+          },
+          {
+            "id": "42489561",
+            "source": "MED",
+            "pmid": "42489561",
+            "doi": "10.57264/cer-2026-0058",
+            "pubYear": "2026",
+            "journalTitle": "J Comp Eff Res",
+            "authorString": "Kun\u010di\u0107 PS, Gujinovi\u0107 D, Pecoti\u0107 R, \u0110oga\u0161 Z, Maru\u0161i\u0107 A, Rogulji\u0107 M.",
+            "title": "Transparency in positive airway pressure therapy trials: an evaluation of reporting quality."
+          },
+          {
+            "id": "42291445",
+            "source": "MED",
+            "pmid": "42291445",
+            "doi": "10.1016/j.ijcha.2026.101949",
+            "pubYear": "2026",
+            "journalTitle": "Int J Cardiol Heart Vasc",
+            "authorString": "Khraisat O, Messer T, Harmouch K, Alqaseer A, Ismail W, Samardali H, Alkhawaldeh E, Hammad",
+            "title": "Discontinuation and non-publication of atrial fibrillation clinical trials: A retrospective analysis of 538 trials."
+          },
+          {
+            "id": "42082083",
+            "source": "MED",
+            "pmid": "42082083",
+            "doi": "10.1016/j.jclinepi.2026.112307",
+            "pubYear": "2026",
+            "journalTitle": "J Clin Epidemiol",
+            "authorString": "Curtin M, Wiltshire A, Nilsonne G, Siebert M.",
+            "title": "Results reporting in antimicrobial agent clinical trials: an analysis of compliance and timeliness under the 2017 FDA Amendments Act Final Rule."
+          },
+          {
+            "id": "41713515",
+            "source": "MED",
+            "pmid": "41713515",
+            "doi": "10.1016/j.ijrobp.2026.02.201",
+            "pubYear": "2026",
+            "journalTitle": "Int J Radiat Oncol Biol Phys",
+            "authorString": "Kovalchuk N, Simiele EA, LaRiviere M, Hiniker SM, Soike M, Han C, Wong J, Dandapani S, Kum",
+            "title": "Incorporating Intensity Modulated Total Body Irradiation (IMRT-TBI) Into Future Cooperative Group Clinical Trials: An NRG Hematologic Malignancies Working Group-Led Report From the National Clinical Trials Network."
+          },
+          {
+            "id": "41511388",
+            "source": "MED",
+            "pmid": "41511388",
+            "doi": "10.1097/qai.0000000000003830",
+            "pubYear": "2026",
+            "journalTitle": "J Acquir Immune Defic Syndr",
+            "authorString": "Kimmel AD, Stirratt M, Byrd KK, Bono RS, Mitchell A, Popoff E, Palmer C, Stallings R, Harr",
+            "title": "Brief Report: The Trials of Insurance-Based Data to Care-Rx: Low Enrollment in the Antiretroviral Improvement Among Medicaid EnrolleeS (AIMS) Study."
+          },
+          {
+            "id": "41853089",
+            "source": "MED",
+            "pmid": "41853089",
+            "doi": "10.1016/j.conctc.2026.101627",
+            "pubYear": "2026",
+            "journalTitle": "Contemp Clin Trials Commun",
+            "authorString": "Maschino L, Hirko KA, Heaney CD, Granger DA, Granger SW, Dawadi A, Rose L, Summers M, Pisa",
+            "title": "Rural targeted messaging, multiplex salivary measurement, and rural equity in SARS-CoV-2 antibody testing: Protocol overview of a SeroNet investigation."
+          }
+        ]
+      },
+      "openalex": {
+        "query": "FDAAA ClinicalTrials.gov FDA enforcement notice noncompliance 2026 results reporting",
+        "total_hits": 7,
+        "top_records": [
+          {
+            "id": "https://openalex.org/W7204948160",
+            "doi": "https://doi.org/10.3389/fped.2026.1846142",
+            "year": 2026,
+            "venue": "Frontiers in Pediatrics",
+            "title": "The global landscape of pediatric monoclonal antibody (mAb) clinical trials: an analysis of ClinicalTrials.gov",
+            "cited_by_count": 0
+          },
+          {
+            "id": "https://openalex.org/W7204273426",
+            "doi": "https://doi.org/10.1371/journal.pone.0342878",
+            "year": 2026,
+            "venue": "PLoS ONE",
+            "title": "Changes in evidence used for FDA Novel Drug Approvals: 2016-2024",
+            "cited_by_count": 1
+          },
+          {
+            "id": "https://openalex.org/W7133246893",
+            "doi": "https://doi.org/10.17918/00011274",
+            "year": 2026,
+            "venue": "iDEA - Drexel University Institutional Repository",
+            "title": "Examining characteristics of compliant clinical trials: results reporting pre & post punctuated regulatory rulings exploring transparency & accountability in clinical trials",
+            "cited_by_count": 0
+          },
+          {
+            "id": "https://openalex.org/W1969654508",
+            "doi": "https://doi.org/10.1056/nejmsr1414226",
+            "year": 2014,
+            "venue": "New England Journal of Medicine",
+            "title": "The Proposed Rule for U.S. Clinical Trial Registration and Results Submission",
+            "cited_by_count": 108
+          },
+          {
+            "id": "https://openalex.org/W2561055629",
+            "doi": "https://doi.org/10.1093/jnci/djw309",
+            "year": 2016,
+            "venue": "JNCI Journal of the National Cancer Institute",
+            "title": "Two Federal Agencies Tighten Rules for Clinical Trials",
+            "cited_by_count": 3
+          },
+          {
+            "id": "https://openalex.org/W7222948265",
+            "doi": "https://doi.org/10.48550/arxiv.2610.22426",
+            "year": 2026,
+            "venue": "arXiv",
+            "title": "PRIME: Towards Verifiable Evidence-Grounded Reasoning in LLM Agents",
+            "cited_by_count": 0
+          },
+          {
+            "id": "https://openalex.org/W7212776816",
+            "doi": "https://doi.org/10.63140/ulg36hfp9n",
+            "year": 2026,
+            "venue": "Utah law review",
+            "title": "Post-Approval Problems",
+            "cited_by_count": 0
+          }
+        ]
+      }
+    },
+    {
+      "query_id": "B2_Q2_fda_notice_causal_did",
+      "pubmed": {
+        "query": "(\"ClinicalTrials.gov\" OR \"FDAAA\") AND (\"difference-in-differences\" OR \"event study\" OR \"enforcement\" OR \"pre-notice\") AND (\"results reporting\")",
+        "total_hits": 2,
+        "top_records": [
+          {
+            "pmid": "42082083",
+            "pubdate": "2026 Aug",
+            "source": "J Clin Epidemiol",
+            "title": "Results reporting in antimicrobial agent clinical trials: an analysis of compliance and timeliness under the 2017 FDA Amendments Act Final Rule.",
+            "first_author": "Curtin M"
+          },
+          {
+            "pmid": "31958402",
+            "pubdate": "2020 Feb 1",
+            "source": "Lancet",
+            "title": "Compliance with legal requirement to report clinical trial results on ClinicalTrials.gov: a cohort study.",
+            "first_author": "DeVito NJ"
+          }
+        ]
+      },
+      "europepmc": {
+        "query": "(\"ClinicalTrials.gov\" OR \"FDAAA\") AND (\"difference-in-differences\" OR \"event study\" OR \"pre-notice\" OR \"enforcement\") AND \"results\"",
+        "total_hits": 2693,
+        "top_records": [
+          {
+            "id": "42714194",
+            "source": "MED",
+            "pmid": "42714194",
+            "doi": "10.4103/mgr.medgasres-d-25-00201",
+            "pubYear": "2027",
+            "journalTitle": "Med Gas Res",
+            "authorString": "Michou V, Tsamos D, Itziou A, Tsanaktsidis C.",
+            "title": "Breathing in harm: current insights into the effects of air pollution on cardiorespiratory health."
+          },
+          {
+            "id": "43036682",
+            "source": "MED",
+            "pmid": "43036682",
+            "doi": "10.1016/j.abrep.2026.100756",
+            "pubYear": "2026",
+            "journalTitle": "Addict Behav Rep",
+            "authorString": "Mwita WC, Vissoci JRN, de Souza JVP, Phillips AJ, Moshi B, Madundo K, Muro FJ, Mmbaga BT, ",
+            "title": "Age as a moderator of a brief alcohol intervention among injury patients in Northern Tanzania."
+          },
+          {
+            "id": "42999641",
+            "source": "MED",
+            "pmid": "42999641",
+            "doi": "10.1016/j.conctc.2026.101705",
+            "pubYear": "2026",
+            "journalTitle": "Contemp Clin Trials Commun",
+            "authorString": "Morland LA, Chargin B, Rothbaum B, Maples-Keller JL, Wachsman T, Norman SB, Adams SN, Peri",
+            "title": "Adapted Massed Exposure Therapy Enhanced with MDMA for PTSD (aMETEMP): A randomized, double-masked protocol adapted for Veterans Affairs healthcare system."
+          },
+          {
+            "id": "42964402",
+            "source": "MED",
+            "pmid": "42964402",
+            "doi": "10.1016/j.sleepx.2026.100204",
+            "pubYear": "2026",
+            "journalTitle": "Sleep Med X",
+            "authorString": "Forbes C, Lackey M, Corwin L, Harris T, Archer D, Hazlitt R, Elghzali A, Ford AI, Vassar M",
+            "title": "Assessing selective outcome reporting in sleep disorder trials: A registry-publication comparison study."
+          },
+          {
+            "id": "42834763",
+            "source": "MED",
+            "pmid": "42834763",
+            "doi": "10.1002/cpt.70510",
+            "pubYear": "2026",
+            "journalTitle": "Clin Pharmacol Ther",
+            "authorString": "DeCormier Plosky W, Silverman BC, Strauss DH, Bierer BE.",
+            "title": "Exclusion of Participants for Substance Use in Clinical Trials."
+          },
+          {
+            "id": "42699777",
+            "source": "MED",
+            "pmid": "42699777",
+            "doi": "10.1016/j.ijpx.2026.100650",
+            "pubYear": "2026",
+            "journalTitle": "Int J Pharm X",
+            "authorString": "Moon H, Jung SH, Bae S, Bae G, Lee A, Na JH, Kim JH, Choi JU, Lee S.",
+            "title": "A product control framework for extracellular vesicle therapeutics: Quality attributes, stability, analytical procedures, and biodistribution."
+          },
+          {
+            "id": "42605611",
+            "source": "MED",
+            "pmid": "42605611",
+            "doi": "10.1080/13880209.2026.2715806",
+            "pubYear": "2026",
+            "journalTitle": "Pharm Biol",
+            "authorString": "Kanumuri SRR, Gundeti M, Mukhopadhyay S, Zeilinger NZ, Zamarripa CA, Smith KE, McCurdy CR,",
+            "title": "Simultaneous quantification of seventeen kratom alkaloids and metabolites in human plasma and its application to clinical pharmacokinetic sample analysis."
+          },
+          {
+            "id": "42551729",
+            "source": "MED",
+            "pmid": "42551729",
+            "doi": "10.1016/j.jpeds.2026.115271",
+            "pubYear": "2026",
+            "journalTitle": "J Pediatr",
+            "authorString": "Hatoun J, Patane LB, Gould JB, Vernacchio L.",
+            "title": "Feedback with Education versus Digital Otoscopy for Acute Otitis Media Diagnosis and Treatment."
+          }
+        ]
+      },
+      "openalex": {
+        "query": "ClinicalTrials.gov FDAAA enforcement difference-in-differences results reporting",
+        "total_hits": 151,
+        "top_records": [
+          {
+            "id": "https://openalex.org/W1963526469",
+            "doi": "https://doi.org/10.1056/nejmsa1409364",
+            "year": 2015,
+            "venue": "New England Journal of Medicine",
+            "title": "Compliance with Results Reporting at ClinicalTrials.gov",
+            "cited_by_count": 428
+          },
+          {
+            "id": "https://openalex.org/W2017886618",
+            "doi": "https://doi.org/10.1371/journal.pone.0037847",
+            "year": 2012,
+            "venue": "PLoS ONE",
+            "title": "Results and Outcome Reporting In ClinicalTrials.gov, What Makes it Happen?",
+            "cited_by_count": 16
+          },
+          {
+            "id": "https://openalex.org/W1970223153",
+            "doi": "https://doi.org/10.1371/journal.pmed.1000144",
+            "year": 2009,
+            "venue": "PLoS Medicine",
+            "title": "Trial Publication after Registration in ClinicalTrials.Gov: A Cross-Sectional Analysis",
+            "cited_by_count": 429
+          },
+          {
+            "id": "https://openalex.org/W2070430141",
+            "doi": "https://doi.org/10.1371/journal.pone.0068409",
+            "year": 2013,
+            "venue": "PLoS ONE",
+            "title": "Linking ClinicalTrials.gov and PubMed to Track Results of Interventional Human Clinical Trials",
+            "cited_by_count": 101
+          },
+          {
+            "id": "https://openalex.org/W792525586",
+            "doi": "https://doi.org/10.7717/peerj.1015",
+            "year": 2015,
+            "venue": "PeerJ",
+            "title": "FDAAA legislation is working, but methodological flaws undermine the reliability of clinical trials: a cross-sectional study",
+            "cited_by_count": 12
+          },
+          {
+            "id": "https://openalex.org/W4404258376",
+            "doi": "https://doi.org/10.1038/s41598-024-79394-z",
+            "year": 2024,
+            "venue": "Scientific Reports",
+            "title": "Safety reporting in trials on glaucoma interventions registered in ClinicalTrials.gov and corresponding publications",
+            "cited_by_count": 13
+          },
+          {
+            "id": "https://openalex.org/W3117282762",
+            "doi": "https://doi.org/10.1038/s41597-020-00780-z",
+            "year": 2020,
+            "venue": "Scientific Data",
+            "title": "Obstacles to the reuse of study metadata in ClinicalTrials.gov",
+            "cited_by_count": 46
+          },
+          {
+            "id": "https://openalex.org/W2806763433",
+            "doi": "https://doi.org/10.1136/bmj.k2130",
+            "year": 2018,
+            "venue": "BMJ",
+            "title": "Clinical trial design and dissemination: comprehensive analysis of clinicaltrials.gov and PubMed data since 2005",
+            "cited_by_count": 139
+          }
+        ]
+      }
+    }
+  ]
+}

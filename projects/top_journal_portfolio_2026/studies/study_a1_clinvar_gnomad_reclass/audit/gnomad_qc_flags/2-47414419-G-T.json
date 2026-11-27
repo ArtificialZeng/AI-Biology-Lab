@@ -1,0 +1,36 @@
+{
+  "data": {
+    "variant": {
+      "variant_id": "2-47414419-G-T",
+      "flags": [
+        "lcr"
+      ],
+      "exome": {
+        "ac": 112,
+        "an": 474546,
+        "filters": [
+          "AS_VQSR"
+        ],
+        "flags": []
+      },
+      "genome": {
+        "ac": 0,
+        "an": 31320,
+        "filters": [
+          "AC0",
+          "AS_VQSR"
+        ],
+        "flags": []
+      },
+      "joint": {
+        "ac": 112,
+        "an": 505866,
+        "faf95": {
+          "popmax": 0.00017093,
+          "popmax_population": "nfe"
+        },
+        "faf99": null
+      }
+    }
+  }
+}

@@ -1,0 +1,3051 @@
+{
+  "executed_at": "2026-11-25 10:38:11 CST",
+  "r_version": "R version 4.5.3 (2026-03-11)",
+  "honestdid_version": "0.2.8",
+  "parallel_cores": 8,
+  "vignette_benchmark_BCdata": {
+    "delta_SD_FLCI": [
+      {
+        "lb": 0.131411,
+        "ub": 0.21617,
+        "method": "FLCI",
+        "Delta": "DeltaSD",
+        "M": 0
+      },
+      {
+        "lb": 0.154965,
+        "ub": 0.270385,
+        "method": "FLCI",
+        "Delta": "DeltaSD",
+        "M": 0.01
+      },
+      {
+        "lb": 0.177301,
+        "ub": 0.315956,
+        "method": "FLCI",
+        "Delta": "DeltaSD",
+        "M": 0.02
+      },
+      {
+        "lb": 0.169444,
+        "ub": 0.368508,
+        "method": "FLCI",
+        "Delta": "DeltaSD",
+        "M": 0.05
+      }
+    ],
+    "delta_RM_CLF": [
+      {
+        "lb": 0.118129,
+        "ub": 0.271584,
+        "method": "C-LF",
+        "Delta": "DeltaRM",
+        "Mbar": 0.5
+      },
+      {
+        "lb": 0.067231,
+        "ub": 0.318684,
+        "method": "C-LF",
+        "Delta": "DeltaRM",
+        "Mbar": 1
+      }
+    ]
+  },
+  "specs": {
+    "quarterly_ot_od_ind_only_ref2026Q1_Q2_impact": {
+      "description": "Quarterly ot_od_ind_only (ref=2026Q1, 3 pre + 2 post): 2026Q2 impact",
+      "ref_period": "2026Q1",
+      "periods": [
+        "2025Q2",
+        "2025Q3",
+        "2025Q4",
+        "2026Q2",
+        "2026Q3"
+      ],
+      "numPrePeriods": 3,
+      "numPostPeriods": 2,
+      "l_vec": [
+        1,
+        0
+      ],
+      "gridPoints_rm": 1000,
+      "theta_hat_log_irr": 0.48235,
+      "theta_hat_irr": 1.6199,
+      "se_theta": 0.19666,
+      "original_cs": [
+        {
+          "lb": [
+            0.096902
+          ],
+          "ub": [
+            0.867805
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.1018
+          ],
+          "ub_irr": [
+            2.3817
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.266255,
+          "ub": 1.090168,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.3051,
+          "ub_irr": 2.9748,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.252246,
+          "ub": 1.104177,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.2869,
+          "ub_irr": 3.0167,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.151485,
+          "ub": 1.116485,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 1.1636,
+          "ub_irr": 3.0541,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.054618,
+          "ub": 1.127049,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.9468,
+          "ub_irr": 3.0865,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.221831,
+          "ub": 1.134225,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.15,
+          "lb_irr": 0.8011,
+          "ub_irr": 3.1088,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.301033,
+          "ub": 1.205214,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.7401,
+          "ub_irr": 3.3375,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.449785,
+          "ub": 1.334436,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.3,
+          "lb_irr": 0.6378,
+          "ub_irr": 3.7979,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.106304,
+          "ub": 0.862244,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.1122,
+          "ub_irr": 2.3685,
+          "excludes_zero": true,
+          "grid_lb": -3.933251,
+          "grid_ub": 3.933251,
+          "gridPoints": 1000,
+          "grid_step": 0.007874,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.043309,
+          "ub": 0.917365,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 1.0443,
+          "ub_irr": 2.5027,
+          "excludes_zero": true,
+          "grid_lb": -3.933251,
+          "grid_ub": 3.933251,
+          "gridPoints": 1000,
+          "grid_step": 0.007874,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.02756,
+          "ub": 0.988234,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.9728,
+          "ub_irr": 2.6865,
+          "excludes_zero": false,
+          "grid_lb": -3.933251,
+          "grid_ub": 3.933251,
+          "gridPoints": 1000,
+          "grid_step": 0.007874,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.122053,
+          "ub": 1.074852,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.75,
+          "lb_irr": 0.8851,
+          "ub_irr": 2.9296,
+          "excludes_zero": false,
+          "grid_lb": -3.933251,
+          "grid_ub": 3.933251,
+          "gridPoints": 1000,
+          "grid_step": 0.007874,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.232294,
+          "ub": 1.185094,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.7927,
+          "ub_irr": 3.271,
+          "excludes_zero": false,
+          "grid_lb": -3.933251,
+          "grid_ub": 3.933251,
+          "gridPoints": 1000,
+          "grid_step": 0.007874,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.4764,
+          "ub": 1.429199,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1.5,
+          "lb_irr": 0.621,
+          "ub_irr": 4.1754,
+          "excludes_zero": false,
+          "grid_lb": -3.933251,
+          "grid_ub": 3.933251,
+          "gridPoints": 1000,
+          "grid_step": 0.007874,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.744129,
+          "ub": 1.696928,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 2,
+          "lb_irr": 0.4751,
+          "ub_irr": 5.4572,
+          "excludes_zero": false,
+          "grid_lb": -3.933251,
+          "grid_ub": 3.933251,
+          "gridPoints": 1000,
+          "grid_step": 0.007874,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "quarterly_ot_od_ind_only_ref2026Q1_Q2Q3_avg": {
+      "description": "Quarterly ot_od_ind_only (ref=2026Q1, 3 pre + 2 post): 2026Q2-Q3 avg",
+      "ref_period": "2026Q1",
+      "periods": [
+        "2025Q2",
+        "2025Q3",
+        "2025Q4",
+        "2026Q2",
+        "2026Q3"
+      ],
+      "numPrePeriods": 3,
+      "numPostPeriods": 2,
+      "l_vec": [
+        0.5,
+        0.5
+      ],
+      "gridPoints_rm": 1000,
+      "theta_hat_log_irr": 0.32551,
+      "theta_hat_irr": 1.3847,
+      "se_theta": 0.17337,
+      "original_cs": [
+        {
+          "lb": [
+            -0.014294
+          ],
+          "ub": [
+            0.665322
+          ],
+          "method": "Original",
+          "lb_irr": [
+            0.9858
+          ],
+          "ub_irr": [
+            1.9451
+          ],
+          "excludes_zero": [
+            false
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.133866,
+          "ub": 0.980468,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.1432,
+          "ub_irr": 2.6657,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.102703,
+          "ub": 1.011631,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.1082,
+          "ub_irr": 2.7501,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.072058,
+          "ub": 1.053188,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.9305,
+          "ub_irr": 2.8668,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.33818,
+          "ub": 1.160026,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.7131,
+          "ub_irr": 3.19,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.619808,
+          "ub": 1.19744,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.15,
+          "lb_irr": 0.538,
+          "ub_irr": 3.3116,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.766507,
+          "ub": 1.324581,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.4646,
+          "ub_irr": 3.7606,
+          "excludes_zero": false
+        },
+        {
+          "lb": -1.037455,
+          "ub": 1.573927,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.3,
+          "lb_irr": 0.3544,
+          "ub_irr": 4.8256,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": -0.010413,
+          "ub": 0.662954,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 0.9896,
+          "ub_irr": 1.9405,
+          "excludes_zero": false,
+          "grid_lb": -3.467493,
+          "grid_ub": 3.467493,
+          "gridPoints": 1000,
+          "grid_step": 0.006942,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.1076,
+          "ub": 0.753199,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.898,
+          "ub_irr": 2.1238,
+          "excludes_zero": false,
+          "grid_lb": -3.467493,
+          "grid_ub": 3.467493,
+          "gridPoints": 1000,
+          "grid_step": 0.006942,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.25338,
+          "ub": 0.885096,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.7762,
+          "ub_irr": 2.4232,
+          "excludes_zero": false,
+          "grid_lb": -3.467493,
+          "grid_ub": 3.467493,
+          "gridPoints": 1000,
+          "grid_step": 0.006942,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.426929,
+          "ub": 1.065586,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.75,
+          "lb_irr": 0.6525,
+          "ub_irr": 2.9025,
+          "excludes_zero": false,
+          "grid_lb": -3.467493,
+          "grid_ub": 3.467493,
+          "gridPoints": 1000,
+          "grid_step": 0.006942,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.621303,
+          "ub": 1.253018,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.5372,
+          "ub_irr": 3.5009,
+          "excludes_zero": false,
+          "grid_lb": -3.467493,
+          "grid_ub": 3.467493,
+          "gridPoints": 1000,
+          "grid_step": 0.006942,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.016993,
+          "ub": 1.648708,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1.5,
+          "lb_irr": 0.3617,
+          "ub_irr": 5.2003,
+          "excludes_zero": false,
+          "grid_lb": -3.467493,
+          "grid_ub": 3.467493,
+          "gridPoints": 1000,
+          "grid_step": 0.006942,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.426566,
+          "ub": 2.058282,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 2,
+          "lb_irr": 0.2401,
+          "ub_irr": 7.8325,
+          "excludes_zero": false,
+          "grid_lb": -3.467493,
+          "grid_ub": 3.467493,
+          "gridPoints": 1000,
+          "grid_step": 0.006942,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "quarterly_ot_od_ddd_ref2026Q1_Q2_impact": {
+      "description": "Quarterly ot_od_ddd (ref=2026Q1, 3 pre + 2 post): 2026Q2 impact",
+      "ref_period": "2026Q1",
+      "periods": [
+        "2025Q2",
+        "2025Q3",
+        "2025Q4",
+        "2026Q2",
+        "2026Q3"
+      ],
+      "numPrePeriods": 3,
+      "numPostPeriods": 2,
+      "l_vec": [
+        1,
+        0
+      ],
+      "gridPoints_rm": 1000,
+      "theta_hat_log_irr": 0.70459,
+      "theta_hat_irr": 2.023,
+      "se_theta": 0.26941,
+      "original_cs": [
+        {
+          "lb": [
+            0.176545
+          ],
+          "ub": [
+            1.232629
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.1931
+          ],
+          "ub_irr": [
+            3.4302
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.191614,
+          "ub": 1.374139,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.2112,
+          "ub_irr": 3.9517,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.183674,
+          "ub": 1.382079,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.2016,
+          "ub_irr": 3.9832,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.13922,
+          "ub": 1.414385,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 1.1494,
+          "ub_irr": 4.114,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.028238,
+          "ub": 1.490871,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 1.0286,
+          "ub_irr": 4.441,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.079593,
+          "ub": 1.564949,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.15,
+          "lb_irr": 0.9235,
+          "ub_irr": 4.7824,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.149428,
+          "ub": 1.648413,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.8612,
+          "ub_irr": 5.1987,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.210347,
+          "ub": 1.873811,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.3,
+          "lb_irr": 0.8103,
+          "ub_irr": 6.5131,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.188779,
+          "ub": 1.224365,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.2078,
+          "ub_irr": 3.402,
+          "excludes_zero": true,
+          "grid_lb": -5.388283,
+          "grid_ub": 5.388283,
+          "gridPoints": 1000,
+          "grid_step": 0.010787,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.10248,
+          "ub": 1.353813,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 1.1079,
+          "ub_irr": 3.8722,
+          "excludes_zero": true,
+          "grid_lb": -5.388283,
+          "grid_ub": 5.388283,
+          "gridPoints": 1000,
+          "grid_step": 0.010787,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.016181,
+          "ub": 1.504836,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.9839,
+          "ub_irr": 4.5034,
+          "excludes_zero": false,
+          "grid_lb": -5.388283,
+          "grid_ub": 5.388283,
+          "gridPoints": 1000,
+          "grid_step": 0.010787,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.156417,
+          "ub": 1.699008,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.75,
+          "lb_irr": 0.8552,
+          "ub_irr": 5.4685,
+          "excludes_zero": false,
+          "grid_lb": -5.388283,
+          "grid_ub": 5.388283,
+          "gridPoints": 1000,
+          "grid_step": 0.010787,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.329014,
+          "ub": 1.893181,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.7196,
+          "ub_irr": 6.6405,
+          "excludes_zero": false,
+          "grid_lb": -5.388283,
+          "grid_ub": 5.388283,
+          "gridPoints": 1000,
+          "grid_step": 0.010787,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.706572,
+          "ub": 2.324675,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1.5,
+          "lb_irr": 0.4933,
+          "ub_irr": 10.2234,
+          "excludes_zero": false,
+          "grid_lb": -5.388283,
+          "grid_ub": 5.388283,
+          "gridPoints": 1000,
+          "grid_step": 0.010787,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.105704,
+          "ub": 2.745382,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 2,
+          "lb_irr": 0.331,
+          "ub_irr": 15.5706,
+          "excludes_zero": false,
+          "grid_lb": -5.388283,
+          "grid_ub": 5.388283,
+          "gridPoints": 1000,
+          "grid_step": 0.010787,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "quarterly_ot_od_ddd_ref2026Q1_Q2Q3_avg": {
+      "description": "Quarterly ot_od_ddd (ref=2026Q1, 3 pre + 2 post): 2026Q2-Q3 avg",
+      "ref_period": "2026Q1",
+      "periods": [
+        "2025Q2",
+        "2025Q3",
+        "2025Q4",
+        "2026Q2",
+        "2026Q3"
+      ],
+      "numPrePeriods": 3,
+      "numPostPeriods": 2,
+      "l_vec": [
+        0.5,
+        0.5
+      ],
+      "gridPoints_rm": 1000,
+      "theta_hat_log_irr": 0.7583,
+      "theta_hat_irr": 2.1346,
+      "se_theta": 0.24126,
+      "original_cs": [
+        {
+          "lb": [
+            0.285444
+          ],
+          "ub": [
+            1.231157
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.3304
+          ],
+          "ub_irr": [
+            3.4252
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.291055,
+          "ub": 1.507527,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.3378,
+          "ub_irr": 4.5156,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.271734,
+          "ub": 1.526848,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.3122,
+          "ub_irr": 4.6036,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.177635,
+          "ub": 1.598972,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 1.1944,
+          "ub_irr": 4.9479,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.014387,
+          "ub": 1.75707,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.9857,
+          "ub_irr": 5.7954,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.196517,
+          "ub": 1.904172,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.15,
+          "lb_irr": 0.8216,
+          "ub_irr": 6.7138,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.35108,
+          "ub": 2.039052,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.7039,
+          "ub_irr": 7.6833,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.53362,
+          "ub": 2.39092,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.3,
+          "lb_irr": 0.5865,
+          "ub_irr": 10.9235,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.294629,
+          "ub": 1.221986,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.3426,
+          "ub_irr": 3.3939,
+          "excludes_zero": true,
+          "grid_lb": -4.825154,
+          "grid_ub": 4.825154,
+          "gridPoints": 1000,
+          "grid_step": 0.00966,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.149729,
+          "ub": 1.424845,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 1.1615,
+          "ub_irr": 4.1572,
+          "excludes_zero": true,
+          "grid_lb": -4.825154,
+          "grid_ub": 4.825154,
+          "gridPoints": 1000,
+          "grid_step": 0.00966,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.06279,
+          "ub": 1.704984,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.9391,
+          "ub_irr": 5.5013,
+          "excludes_zero": false,
+          "grid_lb": -4.825154,
+          "grid_ub": 4.825154,
+          "gridPoints": 1000,
+          "grid_step": 0.00966,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.333269,
+          "ub": 2.014103,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.75,
+          "lb_irr": 0.7166,
+          "ub_irr": 7.494,
+          "excludes_zero": false,
+          "grid_lb": -4.825154,
+          "grid_ub": 4.825154,
+          "gridPoints": 1000,
+          "grid_step": 0.00966,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.623068,
+          "ub": 2.332882,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.5363,
+          "ub_irr": 10.3076,
+          "excludes_zero": false,
+          "grid_lb": -4.825154,
+          "grid_ub": 4.825154,
+          "gridPoints": 1000,
+          "grid_step": 0.00966,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.221986,
+          "ub": 2.96078,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1.5,
+          "lb_irr": 0.2946,
+          "ub_irr": 19.313,
+          "excludes_zero": false,
+          "grid_lb": -4.825154,
+          "grid_ub": 4.825154,
+          "gridPoints": 1000,
+          "grid_step": 0.00966,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.849884,
+          "ub": 3.607998,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 2,
+          "lb_irr": 0.1573,
+          "ub_irr": 36.8921,
+          "excludes_zero": false,
+          "grid_lb": -4.825154,
+          "grid_ub": 4.825154,
+          "gridPoints": 1000,
+          "grid_step": 0.00966,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "quarterly_within_act_ref2026Q1_Q2_impact": {
+      "description": "Quarterly within_act (ref=2026Q1, 3 pre + 2 post): 2026Q2 impact",
+      "ref_period": "2026Q1",
+      "periods": [
+        "2025Q2",
+        "2025Q3",
+        "2025Q4",
+        "2026Q2",
+        "2026Q3"
+      ],
+      "numPrePeriods": 3,
+      "numPostPeriods": 2,
+      "l_vec": [
+        1,
+        0
+      ],
+      "gridPoints_rm": 1000,
+      "theta_hat_log_irr": 0.74386,
+      "theta_hat_irr": 2.104,
+      "se_theta": 0.2024,
+      "original_cs": [
+        {
+          "lb": [
+            0.347153
+          ],
+          "ub": [
+            1.140557
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.415
+          ],
+          "ub_irr": [
+            3.1285
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.308484,
+          "ub": 1.228161,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.3614,
+          "ub_irr": 3.4149,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.298745,
+          "ub": 1.2379,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.3482,
+          "ub_irr": 3.4484,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.307223,
+          "ub": 1.332556,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 1.3596,
+          "ub_irr": 3.7907,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.328955,
+          "ub": 1.541176,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 1.3895,
+          "ub_irr": 4.6701,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.32868,
+          "ub": 1.70525,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.15,
+          "lb_irr": 1.3891,
+          "ub_irr": 5.5028,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.350516,
+          "ub": 1.868846,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 1.4198,
+          "ub_irr": 6.4808,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.372624,
+          "ub": 2.157299,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.3,
+          "lb_irr": 1.4515,
+          "ub_irr": 8.6477,
+          "excludes_zero": true
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.352533,
+          "ub": 1.130538,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.4227,
+          "ub_irr": 3.0973,
+          "excludes_zero": true,
+          "grid_lb": -4.048054,
+          "grid_ub": 4.048054,
+          "gridPoints": 1000,
+          "grid_step": 0.008104,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.23097,
+          "ub": 1.333143,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 1.2598,
+          "ub_irr": 3.7929,
+          "excludes_zero": true,
+          "grid_lb": -4.048054,
+          "grid_ub": 4.048054,
+          "gridPoints": 1000,
+          "grid_step": 0.008104,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.060782,
+          "ub": 1.584374,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 1.0627,
+          "ub_irr": 4.8762,
+          "excludes_zero": true,
+          "grid_lb": -4.048054,
+          "grid_ub": 4.048054,
+          "gridPoints": 1000,
+          "grid_step": 0.008104,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.141824,
+          "ub": 1.851813,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.75,
+          "lb_irr": 0.8678,
+          "ub_irr": 6.3714,
+          "excludes_zero": false,
+          "grid_lb": -4.048054,
+          "grid_ub": 4.048054,
+          "gridPoints": 1000,
+          "grid_step": 0.008104,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.38495,
+          "ub": 2.127356,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.6805,
+          "ub_irr": 8.3926,
+          "excludes_zero": false,
+          "grid_lb": -4.048054,
+          "grid_ub": 4.048054,
+          "gridPoints": 1000,
+          "grid_step": 0.008104,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.90362,
+          "ub": 2.694651,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1.5,
+          "lb_irr": 0.4051,
+          "ub_irr": 14.8004,
+          "excludes_zero": false,
+          "grid_lb": -4.048054,
+          "grid_ub": 4.048054,
+          "gridPoints": 1000,
+          "grid_step": 0.008104,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.454706,
+          "ub": 3.261946,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 2,
+          "lb_irr": 0.2335,
+          "ub_irr": 26.1003,
+          "excludes_zero": false,
+          "grid_lb": -4.048054,
+          "grid_ub": 4.048054,
+          "gridPoints": 1000,
+          "grid_step": 0.008104,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "quarterly_within_act_ref2026Q1_Q2Q3_avg": {
+      "description": "Quarterly within_act (ref=2026Q1, 3 pre + 2 post): 2026Q2-Q3 avg",
+      "ref_period": "2026Q1",
+      "periods": [
+        "2025Q2",
+        "2025Q3",
+        "2025Q4",
+        "2026Q2",
+        "2026Q3"
+      ],
+      "numPrePeriods": 3,
+      "numPostPeriods": 2,
+      "l_vec": [
+        0.5,
+        0.5
+      ],
+      "gridPoints_rm": 1000,
+      "theta_hat_log_irr": 0.91977,
+      "theta_hat_irr": 2.5087,
+      "se_theta": 0.19133,
+      "original_cs": [
+        {
+          "lb": [
+            0.544765
+          ],
+          "ub": [
+            1.29478
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.7242
+          ],
+          "ub_irr": [
+            3.6502
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.530641,
+          "ub": 1.50222,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.7,
+          "ub_irr": 4.4916,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.51923,
+          "ub": 1.537846,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.6807,
+          "ub_irr": 4.6546,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.494118,
+          "ub": 1.699187,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 1.6391,
+          "ub_irr": 5.4695,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.416061,
+          "ub": 1.97099,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 1.516,
+          "ub_irr": 7.1778,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.384134,
+          "ub": 2.25239,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.15,
+          "lb_irr": 1.4683,
+          "ub_irr": 9.5104,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.346235,
+          "ub": 2.486854,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 1.4137,
+          "ub_irr": 12.0234,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.262592,
+          "ub": 2.919859,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.3,
+          "lb_irr": 1.3003,
+          "ub_irr": 18.5387,
+          "excludes_zero": true
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.555424,
+          "ub": 1.28322,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.7427,
+          "ub_irr": 3.6082,
+          "excludes_zero": true,
+          "grid_lb": -3.826676,
+          "grid_ub": 3.826676,
+          "gridPoints": 1000,
+          "grid_step": 0.007661,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.356237,
+          "ub": 1.620304,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 1.4279,
+          "ub_irr": 5.0546,
+          "excludes_zero": true,
+          "grid_lb": -3.826676,
+          "grid_ub": 3.826676,
+          "gridPoints": 1000,
+          "grid_step": 0.007661,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.057458,
+          "ub": 2.018677,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 1.0591,
+          "ub_irr": 7.5284,
+          "excludes_zero": true,
+          "grid_lb": -3.826676,
+          "grid_ub": 3.826676,
+          "gridPoints": 1000,
+          "grid_step": 0.007661,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.310271,
+          "ub": 2.432372,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.75,
+          "lb_irr": 0.7332,
+          "ub_irr": 11.3859,
+          "excludes_zero": false,
+          "grid_lb": -3.826676,
+          "grid_ub": 3.826676,
+          "gridPoints": 1000,
+          "grid_step": 0.007661,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.708644,
+          "ub": 2.853728,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.4923,
+          "ub_irr": 17.3523,
+          "excludes_zero": false,
+          "grid_lb": -3.826676,
+          "grid_ub": 3.826676,
+          "gridPoints": 1000,
+          "grid_step": 0.007661,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.536033,
+          "ub": 3.7041,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1.5,
+          "lb_irr": 0.2152,
+          "ub_irr": 40.6135,
+          "excludes_zero": false,
+          "grid_lb": -3.826676,
+          "grid_ub": 3.826676,
+          "gridPoints": 1000,
+          "grid_step": 0.007661,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.372539,
+          "ub": 4.561398,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 2,
+          "lb_irr": 0.0932,
+          "ub_irr": 95.7172,
+          "excludes_zero": false,
+          "grid_lb": -7.653353,
+          "grid_ub": 7.653353,
+          "gridPoints": 1001,
+          "grid_step": 0.015307,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": true,
+          "pre_fix_truncated_lb": -2.378745,
+          "pre_fix_truncated_ub": 3.826676
+        }
+      ]
+    },
+    "monthly_ot_od_ind_only_ref2602_apr_impact": {
+      "description": "Monthly ot_od_ind_only (ref=2026-02, contiguous incl 2026-03 at t=+1): April 2026 on-impact",
+      "ref_period": "2026-02",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 10,
+      "numPostPeriods": 8,
+      "l_vec": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 0.98525,
+      "theta_hat_irr": 2.6785,
+      "se_theta": 0.31714,
+      "original_cs": [
+        {
+          "lb": [
+            0.363664
+          ],
+          "ub": [
+            1.606834
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.4386
+          ],
+          "ub_irr": [
+            4.987
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.490771,
+          "ub": 1.458995,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.6336,
+          "ub_irr": 4.3016,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.15593,
+          "ub": 1.594284,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.1687,
+          "ub_irr": 4.9248,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.023624,
+          "ub": 1.918374,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.9767,
+          "ub_irr": 6.8099,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.193107,
+          "ub": 2.370309,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.8244,
+          "ub_irr": 10.7007,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.332491,
+          "ub": 3.167859,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.7171,
+          "ub_irr": 23.7566,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.448482,
+          "ub": 1.473585,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.5659,
+          "ub_irr": 4.3649,
+          "excludes_zero": true,
+          "grid_lb": -6.342822,
+          "grid_ub": 6.342822,
+          "gridPoints": 100,
+          "grid_step": 0.128138,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": 0.192207,
+          "ub": 1.857998,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 1.2119,
+          "ub_irr": 6.4109,
+          "excludes_zero": true,
+          "grid_lb": -6.342822,
+          "grid_ub": 6.342822,
+          "gridPoints": 100,
+          "grid_step": 0.128138,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.192207,
+          "ub": 2.242412,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.8251,
+          "ub_irr": 9.416,
+          "excludes_zero": false,
+          "grid_lb": -6.342822,
+          "grid_ub": 6.342822,
+          "gridPoints": 100,
+          "grid_step": 0.128138,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.217309,
+          "ub": 3.139376,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.296,
+          "ub_irr": 23.0895,
+          "excludes_zero": false,
+          "grid_lb": -6.342822,
+          "grid_ub": 6.342822,
+          "gridPoints": 100,
+          "grid_step": 0.128138,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "monthly_ot_od_ind_only_ref2602_apr_sep_avg": {
+      "description": "Monthly ot_od_ind_only (ref=2026-02, contiguous incl 2026-03 at t=+1): Apr-Sep 6m avg",
+      "ref_period": "2026-02",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 10,
+      "numPostPeriods": 8,
+      "l_vec": [
+        0,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 0.61877,
+      "theta_hat_irr": 1.8566,
+      "se_theta": 0.2907,
+      "original_cs": [
+        {
+          "lb": [
+            0.049011
+          ],
+          "ub": [
+            1.188536
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.0502
+          ],
+          "ub_irr": [
+            3.2823
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.22992,
+          "ub": 1.138954,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.2585,
+          "ub_irr": 3.1235,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.580245,
+          "ub": 1.74665,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 0.5598,
+          "ub_irr": 5.7354,
+          "excludes_zero": false
+        },
+        {
+          "lb": -1.325437,
+          "ub": 2.598223,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.2657,
+          "ub_irr": 13.4398,
+          "excludes_zero": false
+        },
+        {
+          "lb": -2.171728,
+          "ub": 3.905175,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.114,
+          "ub_irr": 49.6588,
+          "excludes_zero": false
+        },
+        {
+          "lb": -3.367513,
+          "ub": 6.26706,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.0345,
+          "ub_irr": 526.9259,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.058727,
+          "ub": 1.11582,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.0605,
+          "ub_irr": 3.0521,
+          "excludes_zero": true,
+          "grid_lb": -5.814011,
+          "grid_ub": 5.814011,
+          "gridPoints": 100,
+          "grid_step": 0.117455,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.646001,
+          "ub": 1.938004,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.5241,
+          "ub_irr": 6.9449,
+          "excludes_zero": false,
+          "grid_lb": -5.814011,
+          "grid_ub": 5.814011,
+          "gridPoints": 100,
+          "grid_step": 0.117455,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.820549,
+          "ub": 2.995096,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.1619,
+          "ub_irr": 19.9873,
+          "excludes_zero": false,
+          "grid_lb": -5.814011,
+          "grid_ub": 5.814011,
+          "gridPoints": 100,
+          "grid_step": 0.117455,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -4.169644,
+          "ub": 5.226737,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0155,
+          "ub_irr": 186.1843,
+          "excludes_zero": false,
+          "grid_lb": -5.814011,
+          "grid_ub": 5.814011,
+          "gridPoints": 100,
+          "grid_step": 0.117455,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "monthly_ot_od_ddd_ref2602_apr_impact": {
+      "description": "Monthly ot_od_ddd (ref=2026-02, contiguous incl 2026-03 at t=+1): April 2026 on-impact",
+      "ref_period": "2026-02",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 10,
+      "numPostPeriods": 8,
+      "l_vec": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 1.03038,
+      "theta_hat_irr": 2.8021,
+      "se_theta": 0.42157,
+      "original_cs": [
+        {
+          "lb": [
+            0.204124
+          ],
+          "ub": [
+            1.856638
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.2265
+          ],
+          "ub_irr": [
+            6.4022
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": -0.020912,
+          "ub": 1.385797,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 0.9793,
+          "ub_irr": 3.998,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.171544,
+          "ub": 1.610973,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 0.8424,
+          "ub_irr": 5.0077,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.228339,
+          "ub": 2.084204,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.7959,
+          "ub_irr": 8.0382,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.206276,
+          "ub": 2.804654,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.8136,
+          "ub_irr": 16.5214,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.028758,
+          "ub": 4.062937,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.9717,
+          "ub_irr": 58.1449,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.255495,
+          "ub": 1.788468,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.2911,
+          "ub_irr": 5.9803,
+          "excludes_zero": true,
+          "grid_lb": -8.431348,
+          "grid_ub": 8.431348,
+          "gridPoints": 100,
+          "grid_step": 0.17033,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.085165,
+          "ub": 2.299459,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.9184,
+          "ub_irr": 9.9688,
+          "excludes_zero": false,
+          "grid_lb": -8.431348,
+          "grid_ub": 8.431348,
+          "gridPoints": 100,
+          "grid_step": 0.17033,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.936816,
+          "ub": 2.98078,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.3919,
+          "ub_irr": 19.7032,
+          "excludes_zero": false,
+          "grid_lb": -8.431348,
+          "grid_ub": 8.431348,
+          "gridPoints": 100,
+          "grid_step": 0.17033,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.469789,
+          "ub": 4.684082,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0846,
+          "ub_irr": 108.2109,
+          "excludes_zero": false,
+          "grid_lb": -8.431348,
+          "grid_ub": 8.431348,
+          "gridPoints": 100,
+          "grid_step": 0.17033,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "monthly_ot_od_ddd_ref2602_apr_sep_avg": {
+      "description": "Monthly ot_od_ddd (ref=2026-02, contiguous incl 2026-03 at t=+1): Apr-Sep 6m avg",
+      "ref_period": "2026-02",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 10,
+      "numPostPeriods": 8,
+      "l_vec": [
+        0,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 1.26702,
+      "theta_hat_irr": 3.5503,
+      "se_theta": 0.36869,
+      "original_cs": [
+        {
+          "lb": [
+            0.544409
+          ],
+          "ub": [
+            1.989628
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.7236
+          ],
+          "ub_irr": [
+            7.3128
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.346416,
+          "ub": 1.669721,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.414,
+          "ub_irr": 5.3107,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.252711,
+          "ub": 2.390694,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 0.7767,
+          "ub_irr": 10.9211,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.879197,
+          "ub": 3.446757,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.4151,
+          "ub_irr": 31.3984,
+          "excludes_zero": false
+        },
+        {
+          "lb": -1.466199,
+          "ub": 5.149815,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.2308,
+          "ub_irr": 172.3996,
+          "excludes_zero": false
+        },
+        {
+          "lb": -2.149083,
+          "ub": 8.387116,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.1166,
+          "ub_irr": 4390.1403,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.670337,
+          "ub": 1.862047,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.9549,
+          "ub_irr": 6.4369,
+          "excludes_zero": true,
+          "grid_lb": -7.373707,
+          "grid_ub": 7.373707,
+          "gridPoints": 100,
+          "grid_step": 0.148964,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.819301,
+          "ub": 3.351685,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.4407,
+          "ub_irr": 28.5508,
+          "excludes_zero": false,
+          "grid_lb": -7.373707,
+          "grid_ub": 7.373707,
+          "gridPoints": 100,
+          "grid_step": 0.148964,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.75583,
+          "ub": 5.288214,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.0636,
+          "ub_irr": 197.9895,
+          "excludes_zero": false,
+          "grid_lb": -7.373707,
+          "grid_ub": 7.373707,
+          "gridPoints": 100,
+          "grid_step": 0.148964,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -6.754315,
+          "ub": 9.320365,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0012,
+          "ub_irr": 11163.0572,
+          "excludes_zero": false,
+          "grid_lb": -14.747413,
+          "grid_ub": 14.747413,
+          "gridPoints": 1001,
+          "grid_step": 0.029495,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": true,
+          "pre_fix_truncated_lb": -6.628888,
+          "pre_fix_truncated_ub": 7.373707
+        }
+      ]
+    },
+    "monthly_within_act_ref2602_apr_sep_avg": {
+      "description": "Monthly within_act (ref=2026-02, contiguous incl 2026-03 at t=+1): Apr-Sep 6m avg",
+      "ref_period": "2026-02",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 10,
+      "numPostPeriods": 8,
+      "l_vec": [
+        0,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 1.33563,
+      "theta_hat_irr": 3.8024,
+      "se_theta": 0.2986,
+      "original_cs": [
+        {
+          "lb": [
+            0.750396
+          ],
+          "ub": [
+            1.920868
+          ],
+          "method": "Original",
+          "lb_irr": [
+            2.1178
+          ],
+          "ub_irr": [
+            6.8269
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.517393,
+          "ub": 1.596117,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.6776,
+          "ub_irr": 4.9338,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.252528,
+          "ub": 2.648651,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.2873,
+          "ub_irr": 14.135,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.073703,
+          "ub": 3.920398,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.9289,
+          "ub_irr": 50.4205,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.390383,
+          "ub": 5.799204,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.6768,
+          "ub_irr": 330.0369,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.619928,
+          "ub": 9.261301,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.538,
+          "ub_irr": 10522.8131,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.78419,
+          "ub": 1.869991,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 2.1906,
+          "ub_irr": 6.4882,
+          "excludes_zero": true,
+          "grid_lb": -5.971906,
+          "grid_ub": 5.971906,
+          "gridPoints": 100,
+          "grid_step": 0.120645,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.78419,
+          "ub": 3.43837,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.4565,
+          "ub_irr": 31.1362,
+          "excludes_zero": false,
+          "grid_lb": -5.971906,
+          "grid_ub": 5.971906,
+          "gridPoints": 100,
+          "grid_step": 0.120645,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.714503,
+          "ub": 5.368683,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.0662,
+          "ub_irr": 214.58,
+          "excludes_zero": false,
+          "grid_lb": -5.971906,
+          "grid_ub": 5.971906,
+          "gridPoints": 100,
+          "grid_step": 0.120645,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -6.688534,
+          "ub": 9.34006,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0012,
+          "ub_irr": 11385.0951,
+          "excludes_zero": false,
+          "grid_lb": -11.943811,
+          "grid_ub": 11.943811,
+          "gridPoints": 1001,
+          "grid_step": 0.023888,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": true,
+          "pre_fix_truncated_lb": -5.971906,
+          "pre_fix_truncated_ub": 5.971906
+        }
+      ]
+    },
+    "monthly_ot_od_ind_only_ref2603_apr_sep_avg": {
+      "description": "Monthly ot_od_ind_only (ref=2026-03, contiguous 11 pre + 7 post): Apr-Sep 6m avg",
+      "ref_period": "2026-03",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-02",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 11,
+      "numPostPeriods": 7,
+      "l_vec": [
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 0.07224,
+      "theta_hat_irr": 1.0749,
+      "se_theta": 0.24297,
+      "original_cs": [
+        {
+          "lb": [
+            -0.403981
+          ],
+          "ub": [
+            0.548458
+          ],
+          "method": "Original",
+          "lb_irr": [
+            0.6677
+          ],
+          "ub_irr": [
+            1.7306
+          ],
+          "excludes_zero": [
+            false
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.109876,
+          "ub": 0.923774,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.1161,
+          "ub_irr": 2.5188,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.748636,
+          "ub": 1.111342,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 0.473,
+          "ub_irr": 3.0384,
+          "excludes_zero": false
+        },
+        {
+          "lb": -1.392075,
+          "ub": 1.50093,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.2486,
+          "ub_irr": 4.4859,
+          "excludes_zero": false
+        },
+        {
+          "lb": -2.045123,
+          "ub": 2.189091,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.1294,
+          "ub_irr": 8.9271,
+          "excludes_zero": false
+        },
+        {
+          "lb": -3.554723,
+          "ub": 3.162668,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.0286,
+          "ub_irr": 23.6336,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": -0.343599,
+          "ub": 0.539941,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 0.7092,
+          "ub_irr": 1.7159,
+          "excludes_zero": false,
+          "grid_lb": -4.859469,
+          "grid_ub": 4.859469,
+          "gridPoints": 100,
+          "grid_step": 0.098171,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.128967,
+          "ub": 1.030796,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.3234,
+          "ub_irr": 2.8033,
+          "excludes_zero": false,
+          "grid_lb": -4.859469,
+          "grid_ub": 4.859469,
+          "gridPoints": 100,
+          "grid_step": 0.098171,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.110678,
+          "ub": 1.914336,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.1212,
+          "ub_irr": 6.7824,
+          "excludes_zero": false,
+          "grid_lb": -4.859469,
+          "grid_ub": 4.859469,
+          "gridPoints": 100,
+          "grid_step": 0.098171,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -3.975929,
+          "ub": 3.779587,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0188,
+          "ub_irr": 43.7979,
+          "excludes_zero": false,
+          "grid_lb": -4.859469,
+          "grid_ub": 4.859469,
+          "gridPoints": 100,
+          "grid_step": 0.098171,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "monthly_ot_od_ddd_ref2603_apr_sep_avg": {
+      "description": "Monthly ot_od_ddd (ref=2026-03, contiguous 11 pre + 7 post): Apr-Sep 6m avg",
+      "ref_period": "2026-03",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-02",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 11,
+      "numPostPeriods": 7,
+      "l_vec": [
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 0.53769,
+      "theta_hat_irr": 1.712,
+      "se_theta": 0.3342,
+      "original_cs": [
+        {
+          "lb": [
+            -0.117325
+          ],
+          "ub": [
+            1.192698
+          ],
+          "method": "Original",
+          "lb_irr": [
+            0.8893
+          ],
+          "ub_irr": [
+            3.296
+          ],
+          "excludes_zero": [
+            false
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.354252,
+          "ub": 1.531409,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.4251,
+          "ub_irr": 4.6247,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.180471,
+          "ub": 2.006896,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 0.8349,
+          "ub_irr": 7.4402,
+          "excludes_zero": false
+        },
+        {
+          "lb": -0.545273,
+          "ub": 2.778332,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 0.5797,
+          "ub_irr": 16.0922,
+          "excludes_zero": false
+        },
+        {
+          "lb": -1.160709,
+          "ub": 3.623984,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.3133,
+          "ub_irr": 37.4866,
+          "excludes_zero": false
+        },
+        {
+          "lb": -2.80945,
+          "ub": 4.568835,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.0602,
+          "ub_irr": 96.4317,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": -0.067514,
+          "ub": 1.147742,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 0.9347,
+          "ub_irr": 3.1511,
+          "excludes_zero": false,
+          "grid_lb": -6.683911,
+          "grid_ub": 6.683911,
+          "gridPoints": 100,
+          "grid_step": 0.135029,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.147742,
+          "ub": 2.092942,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.3174,
+          "ub_irr": 8.1087,
+          "excludes_zero": false,
+          "grid_lb": -6.683911,
+          "grid_ub": 6.683911,
+          "gridPoints": 100,
+          "grid_step": 0.135029,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.633056,
+          "ub": 3.578256,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.0719,
+          "ub_irr": 35.811,
+          "excludes_zero": false,
+          "grid_lb": -6.683911,
+          "grid_ub": 6.683911,
+          "gridPoints": 100,
+          "grid_step": 0.135029,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -5.748164,
+          "ub": 6.710647,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0032,
+          "ub_irr": 821.1017,
+          "excludes_zero": false,
+          "grid_lb": -13.367823,
+          "grid_ub": 13.367823,
+          "gridPoints": 1001,
+          "grid_step": 0.026736,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": true,
+          "pre_fix_truncated_lb": -5.738712,
+          "pre_fix_truncated_ub": 6.683911
+        }
+      ]
+    },
+    "monthly_within_act_ref2602_apr_impact": {
+      "description": "Monthly within_act (ref=2026-02, contiguous incl 2026-03 at t=+1): April 2026 on-impact",
+      "ref_period": "2026-02",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 10,
+      "numPostPeriods": 8,
+      "l_vec": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 0.90154,
+      "theta_hat_irr": 2.4634,
+      "se_theta": 0.32868,
+      "original_cs": [
+        {
+          "lb": [
+            0.257339
+          ],
+          "ub": [
+            1.545741
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.2935
+          ],
+          "ub_irr": [
+            4.6914
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": -0.051252,
+          "ub": 1.042486,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 0.95,
+          "ub_irr": 2.8363,
+          "excludes_zero": false
+        },
+        {
+          "lb": 0.017184,
+          "ub": 1.506639,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.0173,
+          "ub_irr": 4.5115,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.091057,
+          "ub": 2.081827,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 1.0953,
+          "ub_irr": 8.0191,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.227237,
+          "ub": 2.876677,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 1.2551,
+          "ub_irr": 17.7552,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.461653,
+          "ub": 4.096492,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 1.5867,
+          "ub_irr": 60.129,
+          "excludes_zero": true
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.332,
+          "ub": 1.5272,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.3938,
+          "ub_irr": 4.6053,
+          "excludes_zero": true,
+          "grid_lb": -6.573602,
+          "grid_ub": 6.573602,
+          "gridPoints": 100,
+          "grid_step": 0.1328,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.1992,
+          "ub": 2.058401,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.8194,
+          "ub_irr": 7.8334,
+          "excludes_zero": false,
+          "grid_lb": -6.573602,
+          "grid_ub": 6.573602,
+          "gridPoints": 100,
+          "grid_step": 0.1328,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -0.996,
+          "ub": 2.855201,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.3694,
+          "ub_irr": 17.3779,
+          "excludes_zero": false,
+          "grid_lb": -6.573602,
+          "grid_ub": 6.573602,
+          "gridPoints": 100,
+          "grid_step": 0.1328,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.722401,
+          "ub": 4.448801,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0657,
+          "ub_irr": 85.5244,
+          "excludes_zero": false,
+          "grid_lb": -6.573602,
+          "grid_ub": 6.573602,
+          "gridPoints": 100,
+          "grid_step": 0.1328,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        }
+      ]
+    },
+    "monthly_within_act_ref2603_apr_sep_avg": {
+      "description": "Monthly within_act (ref=2026-03, contiguous 11 pre + 7 post): Apr-Sep 6m avg",
+      "ref_period": "2026-03",
+      "periods": [
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-02",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "numPrePeriods": 11,
+      "numPostPeriods": 7,
+      "l_vec": [
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0.166667,
+        0
+      ],
+      "gridPoints_rm": 100,
+      "theta_hat_log_irr": 0.61711,
+      "theta_hat_irr": 1.8536,
+      "se_theta": 0.26784,
+      "original_cs": [
+        {
+          "lb": [
+            0.092159
+          ],
+          "ub": [
+            1.142066
+          ],
+          "method": "Original",
+          "lb_irr": [
+            1.0965
+          ],
+          "ub_irr": [
+            3.1332
+          ],
+          "excludes_zero": [
+            true
+          ]
+        }
+      ],
+      "delta_SD_FLCI": [
+        {
+          "lb": 0.557003,
+          "ub": 1.51926,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0,
+          "lb_irr": 1.7454,
+          "ub_irr": 4.5688,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.321089,
+          "ub": 2.249436,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.02,
+          "lb_irr": 1.3786,
+          "ub_irr": 9.4824,
+          "excludes_zero": true
+        },
+        {
+          "lb": 0.06934,
+          "ub": 3.022029,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.05,
+          "lb_irr": 1.0718,
+          "ub_irr": 20.5329,
+          "excludes_zero": true
+        },
+        {
+          "lb": -0.710412,
+          "ub": 3.628187,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.1,
+          "lb_irr": 0.4914,
+          "ub_irr": 37.6445,
+          "excludes_zero": false
+        },
+        {
+          "lb": -2.566912,
+          "ub": 4.298291,
+          "method": "FLCI",
+          "Delta": "DeltaSD",
+          "M": 0.2,
+          "lb_irr": 0.0768,
+          "ub_irr": 73.5739,
+          "excludes_zero": false
+        }
+      ],
+      "delta_RM_CLF": [
+        {
+          "lb": 0.162326,
+          "ub": 1.136284,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0,
+          "lb_irr": 1.1762,
+          "ub_irr": 3.1152,
+          "excludes_zero": true,
+          "grid_lb": -5.356767,
+          "grid_ub": 5.356767,
+          "gridPoints": 100,
+          "grid_step": 0.108218,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -1.028066,
+          "ub": 2.218459,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.25,
+          "lb_irr": 0.3577,
+          "ub_irr": 9.1932,
+          "excludes_zero": false,
+          "grid_lb": -5.356767,
+          "grid_ub": 5.356767,
+          "gridPoints": 100,
+          "grid_step": 0.108218,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -2.543112,
+          "ub": 3.733504,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 0.5,
+          "lb_irr": 0.0786,
+          "ub_irr": 41.8254,
+          "excludes_zero": false,
+          "grid_lb": -5.356767,
+          "grid_ub": 5.356767,
+          "gridPoints": 100,
+          "grid_step": 0.108218,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": false
+        },
+        {
+          "lb": -5.613892,
+          "ub": 6.813807,
+          "method": "C-LF",
+          "Delta": "DeltaRM",
+          "Mbar": 1,
+          "lb_irr": 0.0036,
+          "ub_irr": 910.3303,
+          "excludes_zero": false,
+          "grid_lb": -10.713534,
+          "grid_ub": 10.713534,
+          "gridPoints": 1001,
+          "grid_step": 0.021427,
+          "hits_grid_boundary": false,
+          "expanded_grid_recomputed": true,
+          "pre_fix_truncated_lb": -5.356767,
+          "pre_fix_truncated_ub": 5.356767
+        }
+      ]
+    }
+  },
+  "n_specs_completed": 15,
+  "completed_all_15_at": "2026-11-25 11:01:44 CST",
+  "t10_grid_boundary_fix": {
+    "fixed_at": "2026-11-25 11:25:48 CST",
+    "n_specs_audited": 15,
+    "n_boundary_hits_before_fix": 5,
+    "n_boundary_hits_after_fix": 0,
+    "expanded_grid_note": "All 5 boundary-hitting C-LF entries recomputed on +-40*sdTheta with gridPoints=1001; both grid boundaries rejected on all 5. All C-LF endpoints are grid-resolution approximations rather than exact real-valued bounds.",
+    "convergence_check_1001_vs_2001": {
+      "spec": "quarterly_within_act_ref2026Q1_Q2Q3_avg",
+      "Mbar": 2,
+      "lb_1001": -2.372539,
+      "ub_1001": 4.561398,
+      "step_1001": 0.015307,
+      "lb_2001": -2.380193,
+      "ub_2001": 4.561398,
+      "step_2001": 0.007653,
+      "abs_lb_diff": 0.007653,
+      "abs_ub_diff": 0,
+      "within_one_step": true,
+      "accepted_left_boundary_2001": false,
+      "accepted_right_boundary_2001": false
+    }
+  }
+}

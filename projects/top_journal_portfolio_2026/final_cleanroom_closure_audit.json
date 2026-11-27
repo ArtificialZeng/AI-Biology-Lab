@@ -1,0 +1,221 @@
+{
+  "json_assertions": {
+    "a1_t08_chrx_max_an_exact_1213427": true,
+    "a1_t08_chrx_recovered_vus_406": true,
+    "a1_t08_h1_n_10058": true,
+    "a1_t08_tier1_327_ba1_21": true,
+    "a1_t08_all83_1388_ba1_246": true,
+    "b2_t00_zero_fallback_and_exact_100pct": true,
+    "b2_t07_invariance_lt_1e11": true,
+    "b2_t06_official_r_15_of_15_zero_na": true,
+    "b2_t10_all_5_expanded_0_hits_and_converged": true,
+    "b2_h4_mortality_tost5_and_efficacy_mde2286": true,
+    "b2_phase1_spillover_0893": true
+  },
+  "all_json_assertions_pass": true,
+  "a1_latex_audit": {
+    "undef_cites": 0,
+    "undef_refs": 0,
+    "overfull_all_count": 0,
+    "overfull_gt10_count": 0,
+    "overfull_gt10": [],
+    "overfull_vbox_count": 0,
+    "stray_markdown_bold": 0,
+    "resizebox_count": 1
+  },
+  "b2_latex_audit": {
+    "undef_cites": 0,
+    "undef_refs": 0,
+    "overfull_all_count": 0,
+    "overfull_gt10_count": 0,
+    "overfull_gt10": [],
+    "overfull_vbox_count": 0,
+    "stray_markdown_bold": 0,
+    "resizebox_count": 0
+  },
+  "a1_pdf_table_fonts": {
+    "method": "pypdf_cm_matrix_exact",
+    "page_count": 18,
+    "table_pages": [
+      4,
+      8,
+      11,
+      13
+    ],
+    "small_body_lt_6_8pt_count": 0,
+    "small_body_lt_6_8pt_samples": [],
+    "min_body_pt_all_pages": {
+      "pt": 6.9972,
+      "page": 11,
+      "sample": "Gene V ariant (GRCh38) HGVS / Stars Pop F req"
+    },
+    "min_body_pt_by_table_page": {
+      "4": {
+        "min_pt": 7.9701,
+        "sample": "Study Gene Scope &"
+      },
+      "8": {
+        "min_pt": 7.9701,
+        "sample": "Cohort / Specification Outcome Non-NFE NFE CMH OR CMH"
+      },
+      "11": {
+        "min_pt": 6.9972,
+        "sample": "Gene V ariant (GRCh38) HGVS / Stars Pop F req"
+      },
+      "13": {
+        "min_pt": 7.9701,
+        "sample": "Threshold Tier / Sensitivity Genes VUS"
+      }
+    }
+  },
+  "b2_pdf_table_fonts": {
+    "method": "pypdf_cm_matrix_exact",
+    "page_count": 16,
+    "table_pages": [
+      7,
+      10,
+      12
+    ],
+    "small_body_lt_6_8pt_count": 0,
+    "small_body_lt_6_8pt_samples": [],
+    "min_body_pt_all_pages": {
+      "pt": 8.9664,
+      "page": 7,
+      "sample": "Specification"
+    },
+    "min_body_pt_by_table_page": {
+      "7": {
+        "min_pt": 8.9664,
+        "sample": "Specification"
+      },
+      "10": {
+        "min_pt": 8.9664,
+        "sample": "Specification"
+      },
+      "12": {
+        "min_pt": 8.9664,
+        "sample": "(Spon.) FE Diff (pp) [95% CI]"
+      }
+    }
+  },
+  "a1_tex_consistency": {
+    "missing": [],
+    "active_violations": [],
+    "transparent_retraction_or_history_mentions": [
+      {
+        "pattern": "1,214,237",
+        "context": "\\item \\textbf{chrX Non-PAR (\\textit{ABCD1}, \\textit{GLA}, \\textit{OTC}):} $\\mathrm{AN}_{\\text{joint}} \\ge 0.80 \\times 1,213,427 = 970,741.6$"
+      }
+    ],
+    "ok": true
+  },
+  "a1_md_consistency": {
+    "missing": [],
+    "active_violations": [],
+    "transparent_retraction_or_history_mentions": [
+      {
+        "pattern": "1,214,237",
+        "context": "**Ploidy-Aware chrX Recovery & Verified CSpec/DAFT VUS Queue (`n = 51,190` VUS across 83 genes):** Fixing autosomal-vs-chrX callability reco"
+      }
+    ],
+    "ok": true
+  },
+  "b2_tex_consistency": {
+    "missing": [],
+    "active_violations": [],
+    "transparent_retraction_or_history_mentions": [
+      {
+        "pattern": "falsifying the strategic lemons",
+        "context": "We therefore \\textbf{explicitly retract} any broad claim of ``falsifying the strategic lemons hypothesis'': the observed safety CIs are narr"
+      }
+    ],
+    "ok": true
+  },
+  "b2_md_consistency": {
+    "missing": [],
+    "active_violations": [],
+    "transparent_retraction_or_history_mentions": [],
+    "ok": true
+  },
+  "a1_bib_check": {
+    "lai2026epilepsy_exact_6_authors": true,
+    "johnston2026daft_present": true,
+    "gnomadv41sex2024_present": true
+  },
+  "round16_isolation": {
+    "head": "80f7c17",
+    "tracked_diff_clean": true,
+    "newest_file_in_bioxarena": {
+      "path": "round16/status/MAIN.txt",
+      "mtime_local": "2026-11-24 13:03:05"
+    },
+    "note": "Non-destructive check: pre-existing untracked files and .gitignore outside projects/top_journal_portfolio_2026/ are intentionally untouched."
+  },
+  "deliverables_checksums": {
+    "studies/study_a1_clinvar_gnomad_reclass/manuscript/manuscript_a1.pdf": {
+      "exists": true,
+      "bytes": 1710591,
+      "sha256": "73e625710e011f09fb33c8a124ef9e7ed3d8e1ee3697615b436ec03610e7bceb"
+    },
+    "studies/study_a1_clinvar_gnomad_reclass/manuscript/references_a1.bib": {
+      "exists": true,
+      "bytes": 12208,
+      "sha256": "136b41ea949251413c3352c52afd67410ce58e73577b548fad83c272ca7714a6"
+    },
+    "studies/study_a1_clinvar_gnomad_reclass/audit/a1_acmg84_verified_cspec_johnston2026_rules.csv": {
+      "exists": true,
+      "bytes": 45144,
+      "sha256": "6c3b7257743d8fa55ae9c7f87234f100e1790a11c754aa217c006717097f716e"
+    },
+    "studies/study_a1_clinvar_gnomad_reclass/audit/a1_ad55_verified_t05_triage.csv": {
+      "exists": true,
+      "bytes": 37126,
+      "sha256": "c40e9f6bbe770d7c6c3fc2276250f7a5e61810c955afcc4b937e6ea4536acbcf"
+    },
+    "studies/study_a1_clinvar_gnomad_reclass/audit/a1_vus_verified_t05_t08_bs1_candidates.csv": {
+      "exists": true,
+      "bytes": 396593,
+      "sha256": "5b481bd314767c7020fda4c9d83392dec323ae826bf8d7be8be974ecdb38a41c"
+    },
+    "studies/study_a1_clinvar_gnomad_reclass/audit/a1_t08_chrx_ploidy_closure.json": {
+      "exists": true,
+      "bytes": 20076,
+      "sha256": "cf85dc70fd38398d20d8a6d736cc5905b66af4cb974698eb92ed13423a0b4ba9"
+    },
+    "studies/study_b2_fda_2026_sweep/manuscript/manuscript_b2.pdf": {
+      "exists": true,
+      "bytes": 1776233,
+      "sha256": "8ab4219b0171d2e4522c8d09904156cd3dc1d310d74c4482f73b59255ee70b47"
+    },
+    "studies/study_b2_fda_2026_sweep/manuscript/references_b2.bib": {
+      "exists": true,
+      "bytes": 7653,
+      "sha256": "ac17eb063dbdfd3a1b2f461cbaa30115270089532d4715b20da208684638083e"
+    },
+    "studies/study_b2_fda_2026_sweep/audit/b2_supp_monthly_combined_proxy_hazards.csv": {
+      "exists": true,
+      "bytes": 853,
+      "sha256": "6afeed1452dc6f0279b5590f17d164201504b240767ebb87816a6ad97a419baf"
+    },
+    "studies/study_b2_fda_2026_sweep/audit/b2_supp_t00_t07_master_estimates.csv": {
+      "exists": true,
+      "bytes": 9110,
+      "sha256": "45b70aaf4204aca0c92b86003629840549980f91fa833d55d662a98e3660d8e7"
+    },
+    "studies/study_b2_fda_2026_sweep/audit/b2_supp_t06_official_r_honestdid_all15.csv": {
+      "exists": true,
+      "bytes": 28961,
+      "sha256": "9f6a06397e178221547b8dab41c533c1894ea815889e7b131ec2a06924eeb492"
+    },
+    "studies/study_b2_fda_2026_sweep/audit/b2_t06_official_r_honestdid_results.json": {
+      "exists": true,
+      "bytes": 75912,
+      "sha256": "912812c6da52b551216b51078a7c2020e3da9b5d03d824808e72ec88a10297ae"
+    },
+    "studies/study_b2_fda_2026_sweep/audit/b2_t10_grid_boundary_and_convergence_audit.json": {
+      "exists": true,
+      "bytes": 2941,
+      "sha256": "913d01c3a44a39230931abe5f784b132295d73509ba2a3c33a6827ada9fe22ad"
+    }
+  }
+}

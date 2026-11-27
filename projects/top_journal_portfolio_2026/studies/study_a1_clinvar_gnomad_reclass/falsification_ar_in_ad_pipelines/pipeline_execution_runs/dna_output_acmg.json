@@ -1,0 +1,237 @@
+{
+  "acmg_findings": [
+    {
+      "variant_id": "17-43124027-ACT-A",
+      "gene": "BRCA1",
+      "rsid": "rs80357914",
+      "gold_stars": 3,
+      "genotype": "0/1",
+      "traits": "Inherited_ovarian_cancer_(without_breast_cancer)|Inherited_breast_cancer_and_ovarian_cancer|BRCA1-related_cancer_predisposition|Invasive_medullary_breast_carcinoma|Breast-ovarian_cancer,_familial,_susceptibility_to,_1|Fanconi_anemia,_complementation_group_S|Pancreatic_cancer,_susceptibility_to,_4|BRCA1-related_disorder|Breast_and/or_ovarian_cancer|Hereditary_cancer-predisposing_syndrome|Ovarian_neoplasm|not_provided|Familial_cancer_of_breast|Endometrial_carcinoma|Hereditary_breast_ovarian_cancer_syndrome|Malignant_tumor_of_breast|Triple-negative_breast_cancer",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Hereditary breast/ovarian cancer \u2014 increased surveillance, risk-reducing surgery options"
+    },
+    {
+      "variant_id": "17-80104542-T-G",
+      "gene": "GAA",
+      "rsid": "rs386834236",
+      "gold_stars": 3,
+      "genotype": "0/1",
+      "traits": "Glycogen_storage_disease_due_to_acid_maltase_deficiency,_late-onset|GAA-related_disorders|GAA-related_disorder|Glycogen_storage_disease,_type_II|Fetal_anomalies_with_a_likely_genetic_cause|Cardiovascular_phenotype|not_provided|Glycogen_storage_disease,_type_IV|Myopathy|Glycogen_storage_disease|See_cases",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Pompe disease \u2014 enzyme replacement therapy"
+    },
+    {
+      "variant_id": "19-11105599-C-G",
+      "gene": "LDLR",
+      "rsid": "rs121908035",
+      "gold_stars": 3,
+      "genotype": "0/1",
+      "traits": "Cardiovascular_phenotype|Familial_hypercholesterolemia|Hypercholesterolemia,_familial,_1",
+      "acmg_category": "likely_pathogenic",
+      "acmg_actionability": "Familial hypercholesterolemia \u2014 early statin therapy, lipid monitoring"
+    },
+    {
+      "variant_id": "19-38523211-C-G",
+      "gene": "RYR1",
+      "rsid": "rs193922837",
+      "gold_stars": 3,
+      "genotype": "0/1",
+      "traits": "Central_core_myopathy|Malignant_hyperthermia,_susceptibility_to,_1|King_Denborough_syndrome|Congenital_multicore_myopathy_with_external_ophthalmoplegia|RYR1-related_myopathy|Inborn_genetic_diseases|Myopathy,_RYR1-associated|RYR1-related_disorder|not_provided|Centronuclear_myopathy",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "19-38499993-G-A",
+      "gene": "RYR1",
+      "rsid": "rs121918593",
+      "gold_stars": 3,
+      "genotype": "0/1",
+      "traits": "King_Denborough_syndrome|Malignant_hyperthermia,_susceptibility_to,_1|Central_core_myopathy|Congenital_multicore_myopathy_with_external_ophthalmoplegia|RYR1-related_disorder|Inborn_genetic_diseases|Malignant_hyperthermia_of_anesthesia|not_provided|sevoflurane_response_-_Toxicity|succinylcholine_response_-_Toxicity|isoflurane_response_-_Toxicity|methoxyflurane_response_-_Toxicity|enflurane_response_-_Toxicity|halothane_response_-_Toxicity|desflurane_response_-_Toxicity",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "19-38527014-C-T",
+      "gene": "RYR1",
+      "rsid": "rs536304635",
+      "gold_stars": 3,
+      "genotype": "0/1",
+      "traits": "RYR1-related_myopathy|RYR1-related_disorder|King_Denborough_syndrome|Central_core_myopathy|Congenital_multicore_myopathy_with_external_ophthalmoplegia|Malignant_hyperthermia,_susceptibility_to,_1|Inborn_genetic_diseases|not_specified|not_provided",
+      "acmg_category": "likely_pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "2-21006019-CA-C",
+      "gene": "APOB",
+      "rsid": "rs982371659",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "APOB-related_disorder|Familial_hypobetalipoproteinemia_1|not_provided|Hypercholesterolemia,_autosomal_dominant,_type_B",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Familial hypercholesterolemia \u2014 early statin therapy, lipid monitoring"
+    },
+    {
+      "variant_id": "2-21032391-G-A",
+      "gene": "APOB",
+      "rsid": "rs142066904",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "Familial_hypobetalipoproteinemia_1|Hypercholesterolemia,_autosomal_dominant,_type_B|not_provided|Cardiovascular_phenotype",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Familial hypercholesterolemia \u2014 early statin therapy, lipid monitoring"
+    },
+    {
+      "variant_id": "13-51944145-G-T",
+      "gene": "ATP7B",
+      "rsid": "rs76151636",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "ATP7B-related_disorder|Inborn_genetic_diseases|not_provided|Wilson_disease",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Wilson disease \u2014 copper studies, chelation therapy"
+    },
+    {
+      "variant_id": "6-26092913-G-A",
+      "gene": "HFE",
+      "rsid": "rs1800562",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "Microvascular_complications_of_diabetes,_susceptibility_to,_7|Familial_porphyria_cutanea_tarda|Hemochromatosis_type_1|TRANSFERRIN_SERUM_LEVEL_QUANTITATIVE_TRAIT_LOCUS_2|Variegate_porphyria|Alzheimer_disease_type_1|Bronze_diabetes|HFE-related_disorder|Abnormality_of_the_male_genitalia|Pain|Atypical_behavior|Abdominal_pain|Peripheral_neuropathy|Abnormal_peripheral_nervous_system_morphology|Abnormality_of_the_nervous_system|Hereditary_hemochromatosis|Juvenile_hemochromatosis|Inborn_genetic_diseases|Neuroendocrine_neoplasm|Hereditary_cancer-predisposing_syndrome|not_provided|Cardiomyopathy|Porphyrinuria|Cutaneous_photosensitivity",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Hereditary hemochromatosis \u2014 iron/ferritin monitoring, phlebotomy"
+    },
+    {
+      "variant_id": "1-45331556-C-T",
+      "gene": "MUTYH",
+      "rsid": "rs36053993",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "Small_intestine_carcinoid|Inherited_polyposis_and_early_onset_colorectal_cancer_-_germline_testing|Ependymoma|Gastric_cancer|Familial_adenomatous_polyposis_2|Pleomorphic_xanthoastrocytoma_BRAF_mutant|Classic_or_attenuated_familial_adenomatous_polyposis|MUTYH-related_disorder|Diffuse_midline_glioma,_H3_K27-altered|Infant-type_hemispheric_glioma|Neoplasm_of_stomach|Pilomatrixoma|Hereditary_cancer-predisposing_syndrome|not_specified|not_provided|Pilocytic_astrocytoma|Familial_colorectal_cancer|Carcinoma_of_colon|Colorectal_adenomatous_polyposis,_autosomal_recessive,_with_pilomatricomas|Familial_cancer_of_breast|Ovarian_carcinoma|Endometrial_cancer|Colon_cancer|Breast_carcinoma",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Medically actionable \u2014 consult genetic counselor"
+    },
+    {
+      "variant_id": "19-38505338-CAT-C",
+      "gene": "RYR1",
+      "rsid": "rs758580075",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "Centronuclear_myopathy|Malignant_hyperthermia,_susceptibility_to,_1|Central_core_myopathy|Congenital_multicore_myopathy_with_external_ophthalmoplegia|King_Denborough_syndrome|not_provided|RYR1-related_disorder",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "19-38523867-G-A",
+      "gene": "RYR1",
+      "rsid": "rs200576795",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "not_provided|Congenital_multicore_myopathy_with_external_ophthalmoplegia",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "19-38490733-G-A",
+      "gene": "RYR1",
+      "rsid": "rs1283302989",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "RYR1-related_disorder|not_provided",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "19-38467654-C-T",
+      "gene": "RYR1",
+      "rsid": "rs573649990",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "Centronuclear_myopathy|RYR1-related_disorder|Congenital_multicore_myopathy_with_external_ophthalmoplegia",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "19-38543792-C-T",
+      "gene": "RYR1",
+      "rsid": "rs1447117024",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "RYR1-related_disorder|RYR1-related_myopathy|not_provided|Malignant_hyperthermia,_susceptibility_to,_1",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Malignant hyperthermia susceptibility \u2014 avoid triggering anesthetics"
+    },
+    {
+      "variant_id": "2-178664487-G-A",
+      "gene": "TTN",
+      "rsid": "rs1384922524",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "Autosomal_recessive_titinopathy|TTN-related_disorder|not_provided|Dilated_cardiomyopathy_1G|Autosomal_recessive_limb-girdle_muscular_dystrophy_type_2J",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Medically actionable \u2014 consult genetic counselor"
+    },
+    {
+      "variant_id": "2-178534401-A-G",
+      "gene": "TTN",
+      "rsid": "rs375159973",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "TTN-related_disorder|Autosomal_recessive_limb-girdle_muscular_dystrophy_type_2J|Dilated_cardiomyopathy_1G|Cardiovascular_phenotype|not_provided|Early-onset_myopathy_with_fatal_cardiomyopathy",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Medically actionable \u2014 consult genetic counselor"
+    },
+    {
+      "variant_id": "2-178589849-G-A",
+      "gene": "TTN",
+      "rsid": "rs72646846",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "TTN-related_disorder|Autosomal_recessive_titinopathy|Cardiovascular_phenotype|Dilated_cardiomyopathy_1G|Autosomal_recessive_limb-girdle_muscular_dystrophy_type_2J|Myopathy,_myofibrillar,_9,_with_early_respiratory_failure|Tibial_muscular_dystrophy|Early-onset_myopathy_with_fatal_cardiomyopathy|Hypertrophic_cardiomyopathy_9|not_provided|Cardiomyopathy|Primary_dilated_cardiomyopathy|Primary_familial_dilated_cardiomyopathy",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "Medically actionable \u2014 consult genetic counselor"
+    },
+    {
+      "variant_id": "2-178568947-T-A",
+      "gene": "TTN",
+      "rsid": "rs542074139",
+      "gold_stars": 2,
+      "genotype": "0/1",
+      "traits": "not_provided|Autosomal_recessive_limb-girdle_muscular_dystrophy_type_2J|Hypertrophic_cardiomyopathy_9|Dilated_cardiomyopathy_1G|Tibial_muscular_dystrophy|Early-onset_myopathy_with_fatal_cardiomyopathy|Myopathy,_myofibrillar,_9,_with_early_respiratory_failure",
+      "acmg_category": "likely_pathogenic",
+      "acmg_actionability": "Medically actionable \u2014 consult genetic counselor"
+    },
+    {
+      "variant_id": "1-156115060-C-G",
+      "gene": "LMNA",
+      "rsid": "rs769977710",
+      "gold_stars": 1,
+      "genotype": "0/1",
+      "traits": "Charcot-Marie-Tooth_disease_type_2",
+      "acmg_category": "likely_pathogenic",
+      "acmg_actionability": "Dilated cardiomyopathy/muscular dystrophy \u2014 cardiac monitoring"
+    },
+    {
+      "variant_id": "10-43105038-G-T",
+      "gene": "RET",
+      "rsid": "rs1588866040",
+      "gold_stars": 1,
+      "genotype": "0/1",
+      "traits": "Hirschsprung_disease,_susceptibility_to,_1",
+      "acmg_category": "pathogenic",
+      "acmg_actionability": "MEN2 \u2014 thyroid cancer screening, prophylactic thyroidectomy consideration"
+    },
+    {
+      "variant_id": "3-10149922-G-T",
+      "gene": "VHL",
+      "rsid": "rs754016774",
+      "gold_stars": 1,
+      "genotype": "0/1",
+      "traits": "Chuvash_polycythemia|Von_Hippel-Lindau_syndrome",
+      "acmg_category": "likely_pathogenic",
+      "acmg_actionability": "Von Hippel-Lindau \u2014 multi-organ surveillance"
+    }
+  ],
+  "genes_screened": 81,
+  "genes_with_variants": 12,
+  "summary": "23 variant(s) found in 12 ACMG-recommended gene(s). Genetic counseling recommended."
+}

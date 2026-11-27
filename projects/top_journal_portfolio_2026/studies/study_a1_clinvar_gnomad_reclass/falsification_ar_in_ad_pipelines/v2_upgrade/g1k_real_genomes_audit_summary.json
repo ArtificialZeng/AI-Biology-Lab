@@ -1,0 +1,3281 @@
+{
+  "canonical_2504": {
+    "cohort": "1000G_2504_Unrelated",
+    "N": 2504,
+    "total_allele_calls": 57,
+    "unique_carriers_any_plp": 57,
+    "multi_allele_carriers": 0,
+    "by_star_regime": {
+      "ALL_STARS": {
+        "unique_any_plp_persons": 57,
+        "unique_non_sf_persons": 7,
+        "unique_true_sf_persons": 48,
+        "unique_unmapped_persons": 2,
+        "non_sf_per_1k": 2.8,
+        "person_fdr_pct": 12.28,
+        "by_superpop": {
+          "AFR": {
+            "N": 661,
+            "any_plp_persons": 30,
+            "non_sf_persons": 1,
+            "true_sf_persons": 29,
+            "non_sf_per_1k": 1.51,
+            "person_fdr_pct": 3.33
+          },
+          "EAS": {
+            "N": 504,
+            "any_plp_persons": 9,
+            "non_sf_persons": 3,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 5.95,
+            "person_fdr_pct": 33.33
+          },
+          "EUR": {
+            "N": 503,
+            "any_plp_persons": 5,
+            "non_sf_persons": 0,
+            "true_sf_persons": 3,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "SAS": {
+            "N": 489,
+            "any_plp_persons": 6,
+            "non_sf_persons": 3,
+            "true_sf_persons": 3,
+            "non_sf_per_1k": 6.13,
+            "person_fdr_pct": 50.0
+          },
+          "AMR": {
+            "N": 347,
+            "any_plp_persons": 7,
+            "non_sf_persons": 0,
+            "true_sf_persons": 7,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          }
+        }
+      },
+      "STARS_1to4": {
+        "unique_any_plp_persons": 56,
+        "unique_non_sf_persons": 7,
+        "unique_true_sf_persons": 47,
+        "unique_unmapped_persons": 2,
+        "non_sf_per_1k": 2.8,
+        "person_fdr_pct": 12.5,
+        "by_superpop": {
+          "AFR": {
+            "N": 661,
+            "any_plp_persons": 30,
+            "non_sf_persons": 1,
+            "true_sf_persons": 29,
+            "non_sf_per_1k": 1.51,
+            "person_fdr_pct": 3.33
+          },
+          "EAS": {
+            "N": 504,
+            "any_plp_persons": 9,
+            "non_sf_persons": 3,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 5.95,
+            "person_fdr_pct": 33.33
+          },
+          "EUR": {
+            "N": 503,
+            "any_plp_persons": 5,
+            "non_sf_persons": 0,
+            "true_sf_persons": 3,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "SAS": {
+            "N": 489,
+            "any_plp_persons": 6,
+            "non_sf_persons": 3,
+            "true_sf_persons": 3,
+            "non_sf_per_1k": 6.13,
+            "person_fdr_pct": 50.0
+          },
+          "AMR": {
+            "N": 347,
+            "any_plp_persons": 6,
+            "non_sf_persons": 0,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          }
+        }
+      },
+      "HIGHCONF_2to4star": {
+        "unique_any_plp_persons": 51,
+        "unique_non_sf_persons": 4,
+        "unique_true_sf_persons": 45,
+        "unique_unmapped_persons": 2,
+        "non_sf_per_1k": 1.6,
+        "person_fdr_pct": 7.84,
+        "by_superpop": {
+          "AFR": {
+            "N": 661,
+            "any_plp_persons": 30,
+            "non_sf_persons": 1,
+            "true_sf_persons": 29,
+            "non_sf_per_1k": 1.51,
+            "person_fdr_pct": 3.33
+          },
+          "EAS": {
+            "N": 504,
+            "any_plp_persons": 5,
+            "non_sf_persons": 0,
+            "true_sf_persons": 5,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "EUR": {
+            "N": 503,
+            "any_plp_persons": 4,
+            "non_sf_persons": 0,
+            "true_sf_persons": 2,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "SAS": {
+            "N": 489,
+            "any_plp_persons": 6,
+            "non_sf_persons": 3,
+            "true_sf_persons": 3,
+            "non_sf_per_1k": 6.13,
+            "person_fdr_pct": 50.0
+          },
+          "AMR": {
+            "N": 347,
+            "any_plp_persons": 6,
+            "non_sf_persons": 0,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          }
+        }
+      }
+    }
+  },
+  "all_3202": {
+    "cohort": "1000G_3202_All",
+    "N": 3202,
+    "total_allele_calls": 92,
+    "unique_carriers_any_plp": 92,
+    "multi_allele_carriers": 0,
+    "by_star_regime": {
+      "ALL_STARS": {
+        "unique_any_plp_persons": 92,
+        "unique_non_sf_persons": 9,
+        "unique_true_sf_persons": 81,
+        "unique_unmapped_persons": 2,
+        "non_sf_per_1k": 2.81,
+        "person_fdr_pct": 9.78,
+        "by_superpop": {
+          "AFR": {
+            "N": 893,
+            "any_plp_persons": 45,
+            "non_sf_persons": 2,
+            "true_sf_persons": 43,
+            "non_sf_per_1k": 2.24,
+            "person_fdr_pct": 4.44
+          },
+          "EUR": {
+            "N": 633,
+            "any_plp_persons": 8,
+            "non_sf_persons": 0,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "SAS": {
+            "N": 601,
+            "any_plp_persons": 9,
+            "non_sf_persons": 3,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 4.99,
+            "person_fdr_pct": 33.33
+          },
+          "EAS": {
+            "N": 585,
+            "any_plp_persons": 14,
+            "non_sf_persons": 4,
+            "true_sf_persons": 10,
+            "non_sf_per_1k": 6.84,
+            "person_fdr_pct": 28.57
+          },
+          "AMR": {
+            "N": 490,
+            "any_plp_persons": 16,
+            "non_sf_persons": 0,
+            "true_sf_persons": 16,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          }
+        }
+      },
+      "STARS_1to4": {
+        "unique_any_plp_persons": 88,
+        "unique_non_sf_persons": 9,
+        "unique_true_sf_persons": 77,
+        "unique_unmapped_persons": 2,
+        "non_sf_per_1k": 2.81,
+        "person_fdr_pct": 10.23,
+        "by_superpop": {
+          "AFR": {
+            "N": 893,
+            "any_plp_persons": 45,
+            "non_sf_persons": 2,
+            "true_sf_persons": 43,
+            "non_sf_per_1k": 2.24,
+            "person_fdr_pct": 4.44
+          },
+          "EUR": {
+            "N": 633,
+            "any_plp_persons": 8,
+            "non_sf_persons": 0,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "SAS": {
+            "N": 601,
+            "any_plp_persons": 9,
+            "non_sf_persons": 3,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 4.99,
+            "person_fdr_pct": 33.33
+          },
+          "EAS": {
+            "N": 585,
+            "any_plp_persons": 14,
+            "non_sf_persons": 4,
+            "true_sf_persons": 10,
+            "non_sf_per_1k": 6.84,
+            "person_fdr_pct": 28.57
+          },
+          "AMR": {
+            "N": 490,
+            "any_plp_persons": 12,
+            "non_sf_persons": 0,
+            "true_sf_persons": 12,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          }
+        }
+      },
+      "HIGHCONF_2to4star": {
+        "unique_any_plp_persons": 80,
+        "unique_non_sf_persons": 5,
+        "unique_true_sf_persons": 73,
+        "unique_unmapped_persons": 2,
+        "non_sf_per_1k": 1.56,
+        "person_fdr_pct": 6.25,
+        "by_superpop": {
+          "AFR": {
+            "N": 893,
+            "any_plp_persons": 45,
+            "non_sf_persons": 2,
+            "true_sf_persons": 43,
+            "non_sf_per_1k": 2.24,
+            "person_fdr_pct": 4.44
+          },
+          "EUR": {
+            "N": 633,
+            "any_plp_persons": 6,
+            "non_sf_persons": 0,
+            "true_sf_persons": 4,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "SAS": {
+            "N": 601,
+            "any_plp_persons": 9,
+            "non_sf_persons": 3,
+            "true_sf_persons": 6,
+            "non_sf_per_1k": 4.99,
+            "person_fdr_pct": 33.33
+          },
+          "EAS": {
+            "N": 585,
+            "any_plp_persons": 8,
+            "non_sf_persons": 0,
+            "true_sf_persons": 8,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          },
+          "AMR": {
+            "N": 490,
+            "any_plp_persons": 12,
+            "non_sf_persons": 0,
+            "true_sf_persons": 12,
+            "non_sf_per_1k": 0.0,
+            "person_fdr_pct": 0.0
+          }
+        }
+      }
+    }
+  },
+  "xml_audit": {
+    "12964": {
+      "vid": 12964,
+      "name": "NM_000540.3(RYR1):c.1840C>T (p.Arg614Cys)",
+      "review_status": "reviewed by expert panel",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "RYR1-related disorders"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "drug response",
+          "moi": [],
+          "conditions": [
+            "desflurane response - Toxicity",
+            "Malignant Hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "drug response",
+          "moi": [],
+          "conditions": [
+            "enflurane response - Toxicity",
+            "Malignant Hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "drug response",
+          "moi": [],
+          "conditions": [
+            "halothane response - Toxicity",
+            "Malignant Hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "drug response",
+          "moi": [],
+          "conditions": [
+            "isoflurane response - Toxicity",
+            "Malignant Hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "drug response",
+          "moi": [],
+          "conditions": [
+            "methoxyflurane response - Toxicity",
+            "Malignant Hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "drug response",
+          "moi": [],
+          "conditions": [
+            "sevoflurane response - Toxicity",
+            "Malignant Hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "drug response",
+          "moi": [],
+          "conditions": [
+            "succinylcholine response - Toxicity",
+            "Malignant Hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "risk factor",
+          "moi": [],
+          "conditions": [
+            "MALIGNANT HYPERTHERMIA, SUSCEPTIBILITY TO, 1"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "RYR1-related condition"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": [
+            "Malignant hyperthermia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Malignant hyperthermia susceptibility"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "RYR1-Related Disorders"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "13426": {
+      "vid": 13426,
+      "name": "NM_000371.4(TTR):c.424G>A (p.Val142Ile)",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Charcot-Marie-Tooth disease"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "autosomal dominant"
+          ],
+          "conditions": [
+            "Isolated Cardiac Amyloidosis",
+            "ICA"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Hereditary transthyretin amyloidosis"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Amyloidosis, hereditary, transthyretin-related"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "AMYLOIDOSIS, HEREDITARY SYSTEMIC 1"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Amyloidosis"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": [
+            "Concentric left ventricular hypertrophy with heart failure",
+            "possible transthyretin amyloidosis"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "TTR-related condition"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Transthyretin related familial amyloid cardiomyopathy"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "limited range of motion of upper ankle"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "TTR-related disorders"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": [
+            "Family history of heart disease"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Hereditary transthyretin amyloidosis"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "13637": {
+      "vid": 13637,
+      "name": "NM_002667.5(PLN):c.116T>G (p.Leu39Ter)",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "CARDIOMYOPATHY, DILATED, 1P"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Sudden cardiac death"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Cardiac Arrest"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "PLN-related disorder"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "PLN-related condition"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Cardiomyopathy, dilated"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        }
+      ]
+    },
+    "14127": {
+      "vid": 14127,
+      "name": "NM_000257.4(MYH7):c.732+1G>A",
+      "review_status": "no assertion criteria provided",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Cardiomyopathy, left ventricular noncompaction"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "LEFT VENTRICULAR NONCOMPACTION 5"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "MYH7-related disorders"
+          ]
+        }
+      ]
+    },
+    "38612": {
+      "vid": 38612,
+      "name": "NM_020975.6(RET):c.2370G>T (p.Leu790Phe)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "40223": {
+      "vid": 40223,
+      "name": "NM_000384.3(APOB):c.10579C>T (p.Arg3527Trp)",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Dutch Lipid Clinic Network Criteria score",
+            "low-density lipoprotein cholesterol level",
+            "Dutch Lipid Clinic Network Criteria score",
+            "low-density lipoprotein cholesterol level"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "APOB-related disorder"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "APOB-related disorders"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Familial hypercholesterolaemia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "APOB-related disorders"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "APOB-related condition"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Familial hypercholesterolaemia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "52390": {
+      "vid": 52390,
+      "name": "NM_000059.4(BRCA2):c.7697dup (p.Asp2566fs)",
+      "review_status": "reviewed by expert panel",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "67927": {
+      "vid": 67927,
+      "name": "NM_000335.5(SCN5A):c.481G>A (p.Glu161Lys)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "SCN5A-related disorders"
+          ]
+        }
+      ]
+    },
+    "156288": {
+      "vid": 156288,
+      "name": "NM_000069.3(CACNA1S):c.3256C>A (p.Arg1086Ser)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        }
+      ]
+    },
+    "165533": {
+      "vid": 165533,
+      "name": "NM_001276345.2(TNNT2):c.851+1G>T",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "192319": {
+      "vid": 192319,
+      "name": "NM_002528.7(NTHL1):c.244C>T (p.Gln82Ter)",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "FAMILIAL ADENOMATOUS POLYPOSIS 3"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal recessive inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Hereditary cancer-predisposing syndrome"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Adenocarcinoma of the large intestine",
+            "Breast carcinoma",
+            "Adenocarcinoma of the large intestine",
+            "Laryngeal carcinoma",
+            "Intracranial meningioma",
+            "Adenocarcinoma of the large intestine",
+            "Hereditary cancer-predisposing syndrome"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "not provided",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal recessive inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "NTHL1-related disorders"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "NTHL1-related condition"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal recessive inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Inherited polyposis and early onset colorectal cancer - germline testing"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal recessive inheritance"
+          ],
+          "conditions": []
+        }
+      ]
+    },
+    "200084": {
+      "vid": 200084,
+      "name": "NM_000138.5(FBN1):c.6448C>T (p.Arg2150Cys)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "FBN1-related disorders"
+          ]
+        }
+      ]
+    },
+    "228798": {
+      "vid": 228798,
+      "name": "NM_000527.5(LDLR):c.1217G>A (p.Arg406Gln)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Familial hypercholesterolemia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "not specified"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [
+            "Semidominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely Pathogenic",
+          "moi": [
+            "Semidominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Hyperbetalipoproteinemia",
+            "Hypercholesterolemia",
+            "Familial Hypercholesterolemia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Familial hypercholesterolaemia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "242530": {
+      "vid": 242530,
+      "name": "NM_001267550.2(TTN):c.106954C>T (p.Arg35652Ter)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal recessive inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "254555": {
+      "vid": 254555,
+      "name": "NM_000059.4(BRCA2):c.5241_5242insTA (p.Ser1748Ter)",
+      "review_status": "reviewed by expert panel",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Inherited breast cancer and ovarian cancer"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "263926": {
+      "vid": 263926,
+      "name": "NM_001613.4(ACTA2):c.940C>T (p.Arg314Ter)",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "281479": {
+      "vid": 281479,
+      "name": "NM_000540.3(RYR1):c.10648C>T (p.Arg3550Trp)",
+      "review_status": "criteria provided, conflicting classifications",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely benign",
+          "moi": [],
+          "conditions": [
+            "not specified"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain Significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "congenital myopathy"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely benign",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely benign",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely Pathogenic",
+          "moi": [
+            "Autosomal recessive inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": [
+            "RYR1-related condition"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "430795": {
+      "vid": 430795,
+      "name": "NM_000527.5(LDLR):c.2230C>T (p.Arg744Ter)",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Familial hypercholesterolemia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Semidominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Hyperbetalipoproteinemia",
+            "Hypercholesterolemia",
+            "Familial Hypercholesterolemia"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Familial hypercholesterolaemia"
+          ]
+        }
+      ]
+    },
+    "573401": {
+      "vid": 573401,
+      "name": "NM_000540.3(RYR1):c.12822C>T (p.Gly4274=)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "636978": {
+      "vid": 636978,
+      "name": "NM_001267550.2(TTN):c.49171C>T (p.Arg16391Ter)",
+      "review_status": "criteria provided, multiple submitters, no conflicts",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "TTN-related disorders"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "949556": {
+      "vid": 949556,
+      "name": "NM_024675.4(PALB2):c.232_233del (p.Val78fs)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "954805": {
+      "vid": 954805,
+      "name": "NM_000540.3(RYR1):c.10453C>T (p.Gln3485Ter)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "960135": {
+      "vid": 960135,
+      "name": "NM_000257.4(MYH7):c.5769del (p.Ser1924fs)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Uncertain significance",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "1027323": {
+      "vid": 1027323,
+      "name": "NM_000238.4(KCNH2):c.2369T>C (p.Leu790Pro)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "1704617": {
+      "vid": 1704617,
+      "name": "NM_001267550.2(TTN):c.100766-1G>T",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely Pathogenic",
+          "moi": [
+            "Autosomal dominant inheritance"
+          ],
+          "conditions": []
+        }
+      ]
+    },
+    "2418894": {
+      "vid": 2418894,
+      "name": "NM_000090.4(COL3A1):c.1714C>T (p.Arg572Ter)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not provided"
+          ]
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "Not Provided"
+          ]
+        }
+      ]
+    },
+    "2573007": {
+      "vid": 2573007,
+      "name": "NM_001943.5(DSG2):c.1211C>G (p.Ser404Ter)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "2925389": {
+      "vid": 2925389,
+      "name": "NM_004415.4(DSP):c.5877G>A (p.Trp1959Ter)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "3362981": {
+      "vid": 3362981,
+      "name": "NM_001267550.2(TTN):c.81487G>T (p.Glu27163Ter)",
+      "review_status": "no assertion criteria provided",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "3382654": {
+      "vid": 3382654,
+      "name": "NM_001267550.2(TTN):c.10819G>T (p.Glu3607Ter)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "3636910": {
+      "vid": 3636910,
+      "name": "NM_000527.5(LDLR):c.1952A>G (p.Asp651Gly)",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "3703833": {
+      "vid": 3703833,
+      "name": "NM_000363.5(TNNI3):c.373-1G>T",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        }
+      ]
+    },
+    "3895455": {
+      "vid": 3895455,
+      "name": "NM_001613.4(ACTA2):c.130-2del",
+      "review_status": "criteria provided, single submitter",
+      "scvs": [
+        {
+          "submitter": "",
+          "class": "Likely pathogenic",
+          "moi": [],
+          "conditions": []
+        },
+        {
+          "submitter": "",
+          "class": "Pathogenic",
+          "moi": [],
+          "conditions": [
+            "ACTA2-related disorders"
+          ]
+        }
+      ]
+    }
+  }
+}

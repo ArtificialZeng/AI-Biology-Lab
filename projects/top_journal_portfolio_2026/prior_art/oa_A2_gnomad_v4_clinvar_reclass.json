@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "notice": "No API key, so this request shares one free daily budget ($0.10) with everyone on your network's IP address. Get a free key with its own $1/day at https://openalex.org/settings/api and add api_key=YOUR_KEY to your requests. An AI agent can get one for its user in one call: POST https://api.openalex.org/api-keys with {\"email\": \"<your user's email>\"}; we email them a link, and the key works once they click it. Docs for agents: https://help.openalex.org/llms.txt",
+    "count": 1,
+    "db_response_time_ms": 66,
+    "page": 1,
+    "per_page": 8,
+    "groups_count": null,
+    "x_query": {
+      "oql": "get works since 2022 with (gnomAD v4 ClinVar pathogenic reclassification grpmax ancestry) in the title, abstract, or full text",
+      "x_new_oql": "get works since 2022 with (gnomAD v4 ClinVar pathogenic reclassification grpmax ancestry) in the title, abstract, or full text",
+      "oqo": {
+        "get_rows": "works",
+        "filter_rows": [
+          {
+            "column_id": "fulltext.search",
+            "value": "gnomAD v4 ClinVar pathogenic reclassification grpmax ancestry",
+            "operator": "has"
+          },
+          {
+            "column_id": "publication_year",
+            "value": 2021,
+            "operator": ">"
+          }
+        ]
+      },
+      "url": "/works?filter=fulltext.search:gnomAD v4 ClinVar pathogenic reclassification grpmax ancestry,publication_year:%3E2021&per_page=8&page=1",
+      "order": "best matches first",
+      "order_default": true
+    },
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W7197278823",
+      "doi": null,
+      "display_name": "Genetik tan\u0131 i\u00e7in otomatik dizi de\u011fi\u015fkeni s\u0131n\u0131fland\u0131rma arac\u0131",
+      "publication_year": 2024,
+      "cited_by_count": 0,
+      "primary_location": {
+        "id": "pmh:oai:repository.bilkent.edu.tr:11693/115736",
+        "doi": null,
+        "is_oa": true,
+        "landing_page_url": "https://hdl.handle.net/11693/115736",
+        "pdf_url": "https://repository.bilkent.edu.tr/bitstreams/0402b519-f1d2-45e3-a123-5ebe4385ce56/download",
+        "source": {
+          "id": "https://openalex.org/S4306400079",
+          "display_name": "Bilkent University Institutional Repository (Bilkent University)",
+          "issn_l": null,
+          "issn": null,
+          "is_oa": false,
+          "is_in_doaj": false,
+          "is_core": false,
+          "listed_in": [],
+          "host_organization": "https://openalex.org/I168864056",
+          "host_organization_name": "Bilkent University",
+          "host_organization_lineage": [
+            "https://openalex.org/I168864056"
+          ],
+          "host_organization_lineage_names": [],
+          "type": "repository"
+        },
+        "license": "cc-by-nc-nd",
+        "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+        "version": "submittedVersion",
+        "is_accepted": false,
+        "is_published": false,
+        "raw_source_name": null,
+        "raw_type": "Thesis"
+      }
+    }
+  ],
+  "group_by": []
+}

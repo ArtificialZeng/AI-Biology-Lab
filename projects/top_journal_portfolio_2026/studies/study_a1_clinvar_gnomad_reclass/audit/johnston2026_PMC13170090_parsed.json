@@ -1,0 +1,1604 @@
+{
+  "title": "Specification of frequency criteria for secondary findings genes to improve variant classification concordance",
+  "supp_links": [
+    {
+      "text": "NIHMS2167024-supplement-1.xlsx",
+      "href": "/articles/instance/13170090/bin/NIHMS2167024-supplement-1.xlsx"
+    },
+    {
+      "text": "NIHMS2167024-supplement-1.xlsx",
+      "href": "/articles/instance/13170090/bin/NIHMS2167024-supplement-1.xlsx"
+    }
+  ],
+  "n_paras": 51,
+  "paras": [
+    "The return of secondary findings is well-established in clinical testing and is increasingly employed in clinical research testing. Variant classification can be challenging due to the lack of monogenic disease entity (MDE, defined as a gene-phenotype pair) specific variant classification recommendations. A key criterion for variant classification is disease allele frequency thresholds (DAFTs), which are not established for all MDEs recommended for the return of SF.",
+    "We calculated DAFTs for secondary finding MDEs considering prevalence, gene contribution, and penetrance. ACMG criterion BS1 was set at the calculated DAFT value, with BA1 set at ten times the calculated DAFT. For genes associated with multiple secondary finding MDEs without clear genotype-phenotype correlation, DAFT values were combined. GnomAD Grpmax filtering allele frequencies for pathogenic/likely pathogenic classified variants were compared to calculated thresholds.",
+    "We determined BS1 and BA1 values for 58 secondary findings MDEs (47 genes). No pathogenic/likely pathogenic variant Grpmax filtering allele frequency was greater than the relevant MDE-specific BA1.",
+    "Setting BA1 and BS1 thresholds should improve variant classification consistency and reduce misclassifications. For secondary finding MDEs without current ClinGen Variant Curation Expert Panel (VCEP) specifications, these frequency specifications can be used until full criteria are available.",
+    "Keywords: Secondary findings, ACMG criteria, BA1/BS1/DAFT",
+    "In 2013, the American College of Medical Genetics and Genomics (ACMG) recommended that secondary findings (SF) from clinical exome and genome sequencing be offered to individuals. Toward standardizing this process, the ACMG has put forward a list of monogenic disease entities (MDEs, defined as a gene-phenotype pair) for variant return, which is now updated annually. This work covers 94 MDEs (involving 83 genes) suggested for SF return (v3.3) [ 1 ]. In 2015 the ACMG and the Association for Molecular Pathology (AMP) put forward criteria for classifying the pathogenicity of sequence variants [ 2 ]. Subsequent work showed discordance in variant classification amongst laboratories using the ACMG/AMP classification criteria [ 3 ]. To increase concordance, ClinGen is providing additional guidance for applying these criteria through the Variant Classification Working Group (VC WG) and Variant Curation Expert Panels (VCEPs) for specific MDEs ( https://clinicalgenome.org/ ) [ 4 ]. To help laboratories determine which variants should be reportable as SF, ClinGen, in partnership with the ACMG Secondary Findings Maintenance Working Group (SFWG), is providing SF specific guidance ( https://search.clinicalgenome.org/kb/genes/acmgsf ). As part of this effort we set out to calculate maximum credible population disease allele frequency thresholds (DAFT), and specify values for BA1 (the rule code associated with variants too common to be pathogenic, stand-alone benign) and BS1 (the rule code associated with variants likely too common to be pathogenic, strong benign evidence) for SF MDEs that do not yet have specific classification criteria from a ClinGen VCEP. Harmonizing the classification of Benign and Likely Benign evidence should reduce the reporting burden on testing laboratories and increase consistency across labs.",
+    "For SF MDEs with available ClinGen VCEP specifications, BA1 and BS1 values and other relevant data are available on the ClinGen Specification Registry ( https://cspec.genome.network/ ). BA1 and BS1 values available in the ClinGen Specification Registry (as of June 15, 2025) are included in Table 1 . Note that because HFE -related hemochromatosis (MIM: 235200) is recommended for return of a single variant, it was not considered in this work. For MDEs in the planned scope of a ClinGen VCEP but without specifications available in the ClinGen Specification Registry, we consulted with the VCEP to determine if preliminary values for BA1 and BS1 could be provided for this project ( Table 1 ).",
+    "BA1 and BS1 provided by ClinGen Variant Curation Expert Panels.",
+    "DCM, Dilated cardiomyopathy; LQTS, Long QT syndrome; HCM, Hypertrophic cardiomyopathy.",
+    "Some ClinGen VCEPs have recommendations for BS1_supporting as well as additional instructions for BA1/BS1 use. Please access the ClinGen Criteria Specification Registry for the most complete and up to date information.",
+    "Preliminary ClinGen VCEP specifications not yet approved.",
+    "For 58 MDEs included on the ACMG SF list without available BA1/BS1 values from a ClinGen VCEP we first established a DAFT for pathogenic variants. In theory, the DAFT could be calculated using the sum of all pathogenic variant allele frequencies across each MDE for the gene. The DAFT can be estimated using the MDE prevalence and penetrance. When a heritable phenotype has locus heterogeneity, however, MDE prevalence can be difficult to estimate and one approach is to estimate the combined MDE prevalence for the condition and the individual gene contribution separately. Values for condition prevalence, gene contribution, and penetrance were identified from the following resources: GeneReviews, the ClinGen Actionability Working Groups ( https://clinicalgenome.org/working-groups/actionability/ ), and published literature ( Supplementary Table 1 ).",
+    "The MDE-specific DAFTs were calculated using the equations presented below. The allele frequency calculator on cardiodb.org [ 5 ] can be used to calculate the DAFT for autosomal monoallelic and biallelic MDEs with the \u201callelic heterogeneity\u201d slider set to 1.",
+    "The following equation was used to calculate the DAFT for MDEs expected to be inherited in an autosomal dominant pattern:",
+    "For MDEs expected to be inherited in an autosomal recessive pattern the following equation was used to determine the DAFT:",
+    "For MDEs inherited in an X-linked recessive pattern the following equation was used to determine the DAFT:",
+    "When considering SF variant classification for genes with multiple SF MDEs, genotype-phenotype correlation was taken into consideration to determine a combined DAFT for the gene. For genes where variants demonstrate strong correlation to an allelic MDE (i.e., loss of function variants in SCN5A (HGNC:10593) associated with Brugada syndrome (MIM:601144) and gain of function variants in SCN5A associated with Long QT syndrome (LQTS) (MIM:603830)), DAFT values were calculated for each SF MDE individually and the highest DAFT value was used. For genes where variants do not demonstrate strong correlation to a specific SF MDE (i.e., variants in DSP (HGNC: 3052) are associated with either arrhythmogenic right ventricular cardiomyopathy (MIM:607450) or dilated cardiomyopathy (MIM:605676)), DAFT values were calculated for each SF MDE individually and then summed. For genes where variants are associated with non-SF MDEs and SF MDEs (i.e., variants in RYR1 (HGNC: 10483) are associated with malignant hyperthermia (MIM:145600) and myopathy (MIM:117000, 255320)), only DAFTs for the SF MDEs (malignant hyperthermia) were considered. When possible, ClinGen VCEPs were consulted for input on setting these values.",
+    "The calculated DAFT values were used to generate BA1 and BS1 values with the goal of setting thresholds that would err on the side of being (numerically) too high, as this would minimize the chance that the variants are incorrectly classified as benign. The BA1 and BS1 values were set at ten times and one times the DAFT, respectively. This was done to minimize the error of a numerically low threshold inappropriately filtering out variants from full classification (BA1) or erroneously applying benign evidence (BS1).",
+    "Validation of BA1/BS1:",
+    "Calculated values for BA1 and BS1 were compared to gnomAD v4.1 continental group maximum (Grpmax) filtering allele frequencies (FAF) for the most common variants classified as pathogenic or likely pathogenic in ClinVar (P/LP variants, classifications from ClinVar as provided in gnomAD v4.1). ClinVar classification of pathogenicity was reviewed for P/LP variants with a Grpmax FAF > DAFT. For genes where loss of function is the mechanism for the SF MDE, Grpmax FAFs for putative loss of function (pLoF) variants in the MANE Select transcript, but not present in ClinVar, were also considered (novel pLoF flagged as low confidence pLoF in gnomAD were excluded). For TTN (HGNC:12403), pLoF variants were only considered in the A-band. The A-band is a protein domain that is incorporated into the cardiac isoforms of TTN (N2B and N2BA) and pLOF variants are overrepresented in the A-band in DCM (MIM:604145) (while pLOF variants in other regions of TTN may be pathogenic, they were not considered for this analysis) [ 6 ].",
+    "Twenty-eight MDEs (not considering HFE -related hemochromatosis) have ClinGen VCEP specifications available and preliminary specifications were provided by VCEPs for an additional eight MDEs ( Table1 , Supplementary Table 2 ). Of note, for the majority of the 28 MDEs with VCEP specified criteria, the methods presented here would result in numerically higher BA1 and BS1 thresholds with many VCEPs specifying BA1 (instead of BS1) to be set at the DAFT. For four MDEs the methods presented here would result in numerically lower BA1 and BS1 thresholds as compared to VCEP specified criteria. For KCNQ1 (HGNC:6294) and TP53 (HGNC:11998) the VCEP specified BS1 values are 4x and 2x the DAFT values we calculated, respectively. For TP53 the VCEP noted a lower penetrance resulting in a higher BS1. For ACVRL1 - and ENG -related hereditary hemorrhagic telangiectasia (MIM:600376,187300) the VCEP specified BA1 values were 200x the calculated DAFTs. The VCEP predicted that MDE prevalence is likely underestimated and they considered the FAF of a promoter variant that may contribute to disease.",
+    "Fifty-eight MDEs (47 genes), lack available VCEP specifications, seventeen of which are awaiting specifications by a VCEP and 41 do not have a currently active ClinGen VCEP. For these 58 SF MDEs, we calculated DAFT values using the provided equations and used these to determine values for BA1 and BS1 ( Tables 2 and 3 , Supplemental Table 2 ). These DAFT/BA1/BS1 values are only relevant for the SF MDE as listed and should not be used for other MDEs.",
+    "BA1 and BS1 values calculated for genes reported for a single secondary findings monogenic disease entity.",
+    "DAFT: Disease allele frequency threshold; ARVC, Arrhythmogenic right ventricular cardiomyopathy; CPVT, Catecholaminergic polymorphic ventricular tachycardia; DCM, Dilated cardiomyopathy; HCM, Hypertrophic cardiomyopathy; LQTS, long QT syndrome; MEN, Multiple endocrine neoplasia; PGL/PCC, Hereditary paraganglioma- pheochromocytoma syndrome; TS, Tuberous sclerosis. See supplemental Table for full list of references.",
+    "BA1 and BS1 values calculated for genes reported for multiple secondary finding monogenic disease entities.",
+    "DAFT: Disease allele frequency threshold; AR, Autosomal recessive; ARVC, Arrhythmogenic right ventricular cardiomyopathy; CPVT, Catecholaminergic polymorphic ventricular tachycardia; DCM, Dilated cardiomyopathy; LQTS, Long QT syndrome; HCM, Hypertrophic cardiomyopathy. See supplemental table for full list of references.",
+    "For nine genes included in this study, multiple MDEs are recommended for SF return. For eight of these genes, a clear genotype/phenotype correlation was not identified, and DAFT values were combined across the reportable allelic MDEs ( Table 3 ). Variants in SCN5A are recommended for return for three distinct MDEs. Loss of function variants are associated with Brugada syndrome and gain of function variants are associated with LQTS. SCN5A variants are also associated with DCM (MIM:601154), but without a clear genotype/phenotype correlation to distinguish them from the Brugada- or LQTS-associated variants. For SCN5A , the DAFTs for Brugada and LQTS were determined and the greater of the two was combined with the DAFT for DCM.",
+    "As the goal of this work was to set numerically conservative values for BA1/BS1 we compared gnomAD Grpmax FAF for ClinVar P/LP and novel pLoF variants to the calculated values for BA1/BS1. With regards to BA1 thresholds, we identified no P/LP or pLoF variant (in genes where loss of function is a mechanism for the SF MDEs) with a gnomAD Grpmax FAF greater than the calculated BA1 value for the relevant gene. With regards to BS1 thresholds, for 39 genes no P/LP or pLoF variant was identified with a Grpmax FAF higher than the calculated BS1 value. A total of nine P/LP or pLoF variants in eight genes had a Grpmax FAF greater than the calculated BS1 value for the relevant gene ( Table 4 ). These nine variants represent 0.2% of a total of 4,305 P/LP or pLoF variants.",
+    "Variants with gnomAD Grpmax filtering allele frequencies greater than calculated DAFT.",
+    "DAFT: Disease allele frequency threshold; ARVC, Arrhythmogenic right ventricular cardiomyopathy; hATTR, Hereditary transthyretin amyloidosis; MEN, Multiple endocrine neoplasia; MH, Malignant hyperthermia; PGL/PCC, Hereditary paraganglioma- pheochromocytoma syndrome",
+    "Variant is listed as having a drug response in ClinVar, not classified as pathogenic or likely pathogenic.",
+    "Variant classification using the ACMG criteria is facilitated when gene-specific criteria for MDEs are applied. In the 2015 ACMG/AMP classification criteria, a Grpmax minor allele frequency (MAF) threshold of 0.05 was set as a stand-alone benign criterion (BA1). Application of BA1 allowed a variant with a Grpmax MAF greater than 0.05 to be classified as benign without further analysis. It was later recognized that a few common pathogenic variants had a Grpmax MAF greater than 0.05, requiring caution to be taken when using this criterion [ 7 ]. It is important to note that if the BA1 threshold is set inappropriately low for an MDE, a variant that deserves full classification might be filtered out and not further considered. However, for many MDEs the most common pathogenic variant has a Grpmax MAF in gnomAD orders of magnitude below 0.05 and setting BA1 at 0.05 substantially increases the analysis burden of variants that are too common to be pathogenic for that MDE. An MDE-specific BA1 can decrease the variant set requiring full classification and protect against pathogenic variants being incorrectly classified as benign based on frequency alone. For the set of SF MDEs considered in this study, setting BA1 at ten times the DAFT allowed for filtering of common variants while retaining P/LP variants for full classification. Of note, we did not consider allelic heterogeneity when setting MDE-specific BA1 values. For MDE with many rare pathogenic variants the resulting BA1 may still be orders of magnitude higher than the Grpmax FAF for P/LP variants. When VCEPs determine gene-specific criteria for MDEs, allelic heterogeneity should be considered.",
+    "In addition to BA1, we set values for BS1, to allow for population frequency to be used as strong evidence against pathogenicity. An appropriate value for BS1 would minimize false negatives (true pathogenic variants awarded BS1) while providing strong benign evidence to variants that are more common than expected for an MDE. Unlike BA1, BS1 does not negate full variant classification, and the expectation is that BS1 will be set such that there is a small probability that a pathogenic variant will be awarded BS1. For the set of SF MDE included in this study nine out of 4,305 P/LP or pLoF variants in gnomAD, or 0.2%, had a Grpmax FAF that allowed for the use of BS1 ( Table 4 ). In theory, if a pathogenic variant has a Grpmax FAF greater than BS1, which is equal to the DAFT, then the DAFT must be incorrect since the DAFT should account for all pathogenic variants. However, to calculate the DAFT one must use values for MDE prevalence, gene contribution, and penetrance that are often not well defined. Conservative values (highest reasonable MDE prevalence and gene contribution and lowest reasonable penetrance) were used in this work to err on the side of setting a higher, and thus \u201csafer\u201d DAFT (less variants meet BA1/BS1 and more variants need full classification).",
+    "Inheritance patterns as defined for ACMG SF reporting were applied in this work and should be considered when using the calculated values for variant classification. DSC2 -related arrhythmogenic right ventricular cardiomyopathy (ARVC) (MIM:610476) is thought to generally be inherited in an autosomal dominant pattern and monoallelic inheritance is considered for ACMG SF reporting of DSC2 -related ARVC. Some variants in DSC2 (HGNC:3036), however, including the loss of function variant identified in the Hutterite population, ( NC_000018.10 :g.31079850G>A; NM_024422.6 :c.1660C>T; p.(Gln554Ter)), have been reported to only cause ARVC when biallelic [ 8 , 9 ]. The DSC2 P/LP variant identified here ( NC_000018.10 :g.31071646C>T; NM_024422.6 :c.2084G>A; p.(Trp695Ter)) with a Grpmax FAF (0.000036) greater than the BS1 threshold (0.000033) has not been reported to our knowledge in heterozygosity in an affected individual and may instead be associated with biallelic (autosomal recessive) inheritance of ARVC. Variants associated with biallelic inheritance for ARVC are not considered reportable as a SF when identified in heterozygotes. A biallelic inheritance model would result in a higher DAFT as compared to using a monoallelic inheritance model making it imperative that the inheritance model is considered when applying BA1/BS1.",
+    "For some disorders, including CACNA1S -related malignant hyperthermia (MH) (MIM:601887), setting an appropriate DAFT is complicated by disease attributes. An MH diagnosis is made when an individual has a reaction to inhaled anesthetics and since not all individuals are exposed to inhaled anesthetics, and one exposure may not trigger symptoms, it is very difficult to know the true prevalence of the disorder and the true penetrance. Here we have used the values for disease prevalence and penetrance as determined by the MH VCEP for RYR1 as best estimates [ 10 ]. An additional complicating factor for setting an accurate DAFT for CACNA1S -related MH, is that only a few P/LP variants have been identified so the true DAFT may be very close to the actual variant frequencies. One might consider increasing the BS1 value when few P/LP variants have been identified in a gene.",
+    "Even when using well-defined values for MDE prevalence, penetrance, and gene contribution to calculate the DAFT, variant-specific reduced penetrance can complicate the generalizability of our proposed BA1/BS1 thresholds. Variant-specific reduced penetrance may cause a variant to have a higher Grpmax FAF than would be expected based on the attributes of the relevant MDE. The NC_000010.11 :g.43119548G>A; NM_020975.6 :c.2410G>A; p.(Val804Met) RET (HGNC:9967) variant has reduced penetrance compared to other variants that contribute to RET -related medullary thyroid cancer (MIM:155240) [ 11 ] and the Grpmax FAF is approximately four times the relevant BS1 threshold. The NC_000018.10 :g.31598655G>A; NM_000371.4 :c.424G>A; p.(Val142Ile) variant in TTR (HGNC:12405) is thought to have reduced penetrance compared to other variants that contribute to TTR -related hereditary transthyretin amyloidosis (MIM:105210) and the Grpmax FAF is approximately nine times the relevant BS1. This variant is common in individuals of West African descent and while individuals with this variant have been shown to have transthyretin amyloid deposits by 65 years of age, the occurrence of a recognizable phenotype in these individuals is reduced [ 12 ]. While reports of reduced penetrance for the NC_000001.11 :g.161356812A>G; NM_003001.5 :c.377A>G; p.(Tyr126Cys) variant in SDHC (HGNC:10682) were not identified, this variant is relatively rare in pheochromocytoma/paraganglioma cohorts but has the highest gnomAD Grpmax FAF for ClinVar SDHC P/LP variants [ 13 ]. Variant frequency in affected cohorts is expected to reflect the frequency in the corresponding continental population, however, this relationship can be disrupted by variant-specific penetrance. Hypomorphic alleles can also have a Grpmax FAF higher than expected for the relevant MDE. The hypomorphic NC_000003.12 :g.15645186G>C; NM_001370658.1 :c.1270C>G; p.(Asp424His) variant in BTD (HGNC:1122) causes partial biotinidase deficiency (MIM:253260) when in trans to a second pathogenic variant [ 14 ]. Individuals who are homozygous for p.(Asp424His), however, do not demonstrate biotinidase deficiency allowing for an FAF higher than the calculated DAFT [ 15 ]. When applying BS1 the variant scientist needs to consider potential variant specific complicating factors including reduced penetrance and hypomorphic function.",
+    "The BS1 values in this study ranged from 0.000003 for WT1 -related Wilms tumor (MIM:194070) to 0.0058 for ATP7B -related Wilson disease (MIM:277900). The smaller the MDE-specific BS1 value the fewer alleles required in gnomAD to trigger its use and the more likely that random sampling error can lead to a FAF greater than BS1 by chance. For WT1 (HGNC:12796), two P/LP variants met the relevant BS1 with fewer than five alleles identified in gnomAD. Consideration might be given to requiring a minimum number of alleles for triggering BS1.",
+    "The variants discussed above demonstrate some of the limitations of comparing calculated DAFT values to Grpmax FAF for variant classification. For this work we used the highest gene contribution and disease prevalence and the lowest penetrance as identified in available sources with the goal of erring on the side of applying BA1/BS1 to fewer variants (higher Grpmax FAF required). We have not taken population-specific values into consideration with the understanding that the calculated DAFT may be higher than necessary for populations with low disease prevalence or limited contribution from the gene being considered. Similarly, variant-specific penetrance was not considered with the understanding that variant-specific reduced penetrance can lead to a higher than expected Grpmax FAF potentially triggering BS1 or BA1. This is demonstrated by the RET and TTR variants discussed above. When deciding to apply BA1 and BS1, variant analysts must consider reduced penetrance when a variant has a high Grpmax FAF but is identified in affected individuals more often than in the general population. When VCEPs set MDE-specific criteria, these limitations should be considered and noted when applicable. Finally, it is expected that the new ACMG criteria will be released in the near future. While the use of BA1/BS1 is not expected to be included in the new criteria, the concept of DAFT values is expected to be essential. This work provides a starting point for thinking about DAFT values and informs the factors that should be considered when using DAFT values in variant classification.",
+    "ClinGen VCEPs combine the expertise of geneticists, physician specialists, laboratory geneticists, genetic counselors and basic scientists to consider the genetics, biology, and the molecular diagnostic approach of the MDE to derive variant classification recommendations, specifically, adaptations of ACMG/AMP 2015 general recommendations. Few laboratories have the expertise or resources to set MDE-specific criteria for all SF genes. In the absence of VCEP specifications, one can rely on the original ACMG criteria with ClinGen Variant Classification working group (VC WG) recommendations. However, for criteria such as BA1, the VC WG does not set thresholds independently of VCEPs, leaving many laboratories to default to the general 5% recommendation from the ACMG/AMP recommendations [ 2 ], which increases the analysis burden, or developing in house estimated MAF that increase discordance between laboratories\u2019 variant classifications. We suggest a middle ground of setting numerically high values for BA1 and BS1, based on empirical data from DAFT calculations, sufficient to decrease the classification workload. In doing so, we deliberately err on the side of reduced filtering of variants that are benign (BA1) and missing some opportunities to add to evidence of benignity (BS1). When MDE-specific recommendations are not available, the laboratory geneticist is left to adapt the criteria for each variant, potentially leading to lower consistency across laboratories. We provide calculated SF MDE BA1/BS1 values with supporting prevalence, penetrance and gene contribution information as a resource for the community and plan to make them available on the ClinGen website ( https://search.clinicalgenome.org/kb/genes/acmgsf ). Importantly, VCEP specifications, when available will supersede this work. While full VCEP specifications are ideal, a set of available and consistent thresholds extracted from available published literature could improve accuracy and consistency across SF MDEs until they are developed for all genes.",
+    "Supplementary Material",
+    "Supplemental files: Supplementary Table 1 contains data and references. Supplementary Table 2 contains BA1 and BS1 values for secondary findings genes.",
+    "We thank the following ClinGen VCEPs for providing preliminary BA1/BS1 values: Familial Hypercholesterolemia VCEP, InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP, Pediatric Cataract VCEP, Peroxisomal Disorders VCEP, Urea Cycle Disorders VCEP. The following VCEPs provided helpful discussions around appropriate MDE prevalence, penetrance, and gene contributions: Desmosomal Cardiomyopathy VCEP, Endocrine Tumor Predisposition VCEP, InSight Hereditary Colorectal Cancer/Polyposis VCEP, Potassium Channel Arrhythmia VCEP. We thank the ClinGen Variant Classification Working Group for helpful comments and discussion. This work has been submitted to BioRxiv doi: https://doi.org/10.1101/2025.09.19.676605 .",
+    "This research was supported in part by the Intramural Research Program of the National Human Genome Research Institute, National Institutes of Health (NIH). JJJ and LGB were supported by NIH Intramural funding via grants HG200388-11 and HG200359-16. ClinGen is supported through the following grants: U24HG009649 (DIR), U24HG006834 and U24HG009650. DIR receives research support from the PTEN Research Foundation. KL receives research support from Foundation Fighting Blindness and Janssen Pharmaceuticals. The contributions of the NIH authors are considered Works of the United States Government. The findings and conclusions presented in this paper are those of the authors and do not necessarily reflect the views of the NIH or the U.S. Department of Health and Human Services.",
+    "Conflict of Interests:",
+    "LGB receives royalties from Wolters-Kluwer for editing a chapter on RYR1 genetics, is a member of the Illumina Medical Ethics Board, and receives research support from Merck, Inc. KL receives research support from Janssen Pharmaceuticals. No other authors declare conflicts.",
+    "Publisher's Disclaimer: This is a PDF file of an unedited manuscript that has been accepted for publication. As a service to our customers we are providing this early version of the manuscript. The manuscript will undergo copyediting, typesetting, and review of the resulting proof before it is published in its final form. Please note that during the production process errors may be discovered which could affect the content, and all legal disclaimers that apply to the journal pertain.",
+    "Data is available upon individual request.",
+    "This section collects any data citations, data availability statements, or supplementary materials included in this article.",
+    "Supplementary Materials",
+    "Data Availability Statement",
+    "Data is available upon individual request."
+  ],
+  "tables": [
+    {
+      "table_idx": 0,
+      "n_rows": 37,
+      "head": [
+        [
+          "Monogenic Disease Entity",
+          "Phenotype MIM Number",
+          "VCEP BA1 a",
+          "VCEP BS1 a",
+          "MANE Select ranscript",
+          "Variant Curation Expert Panel"
+        ],
+        [
+          "ABCD1 -related adrenal leukodystrophy",
+          "300100",
+          "0.00017 b",
+          "0.000017 b",
+          "NM_000033.4",
+          "Peroxisomal Disorders"
+        ],
+        [
+          "ACTC1 -related hypertrophic cardiomyopathy",
+          "612098",
+          "0.001",
+          "0.0001",
+          "NM_005159.5",
+          "Cardiomyopathy"
+        ],
+        [
+          "ACVRL1 -related hereditary hemorrhagic telangiectasia",
+          "600376",
+          "0.01",
+          "0.002",
+          "NM_000020.3",
+          "Hereditary Hemorrhagic Telangiectasia"
+        ],
+        [
+          "APC -related familial adenomatous polyposis",
+          "175100",
+          "0.001",
+          "0.00001",
+          "NM_000038.6",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "APOB -related familial hypercholesterolemia",
+          "144010",
+          "0.005 b",
+          "0.002 b",
+          "NM_000384.3",
+          "Familial Hypercholesterolemia"
+        ],
+        [
+          "BMPR1A -related juvenile polyposis syndrome",
+          "174900",
+          "0.0001 b",
+          "0.000001 b",
+          "NM_004329.3",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "BRCA1 -related breast and ovarian cancer syndrome",
+          "604370",
+          "0.001",
+          "0.0001",
+          "NM_007294.4",
+          "ENIGMA BRCA1 and BRCA2"
+        ],
+        [
+          "BRCA2 -related breast and ovarian cancer syndrome",
+          "612555",
+          "0.001",
+          "0.0001",
+          "NM_000059.4",
+          "ENIGMA BRCA1 and BRCA2"
+        ],
+        [
+          "CYP27A1 -related cerebrotendinous xanthomatosis",
+          "213700",
+          "0.0076 b",
+          "0.00076 b",
+          "NM_000784.4",
+          "Pediatric Cataract"
+        ],
+        [
+          "ENG -related hereditary hemorrhagic telangiectasia",
+          "187300",
+          "0.01",
+          "0.002",
+          "NM_001114753.3",
+          "Hereditary Hemorrhagic Telangiectasia"
+        ],
+        [
+          "FBN1 -related Marfan syndrome",
+          "154700",
+          "0.001",
+          "0.00005",
+          "NM_000138.5",
+          "FBN1"
+        ],
+        [
+          "GAA -related Pompe disease",
+          "232300",
+          "0.01",
+          "0.005",
+          "NM_000152.4",
+          "Lysosomal Storage Disorders"
+        ],
+        [
+          "HNF1A -related monogenic diabetes",
+          "600496",
+          "0.0001",
+          "0.000033",
+          "NM_000545.8",
+          "Monogenic Diabetes"
+        ],
+        [
+          "KCNQ1 -related long-QT syndrome",
+          "192500",
+          "0.004",
+          "0.0004",
+          "NM_000218.3",
+          "Potassium Channel Arrhythmia"
+        ]
+      ],
+      "all_rows": [
+        [
+          "Monogenic Disease Entity",
+          "Phenotype MIM Number",
+          "VCEP BA1 a",
+          "VCEP BS1 a",
+          "MANE Select ranscript",
+          "Variant Curation Expert Panel"
+        ],
+        [
+          "ABCD1 -related adrenal leukodystrophy",
+          "300100",
+          "0.00017 b",
+          "0.000017 b",
+          "NM_000033.4",
+          "Peroxisomal Disorders"
+        ],
+        [
+          "ACTC1 -related hypertrophic cardiomyopathy",
+          "612098",
+          "0.001",
+          "0.0001",
+          "NM_005159.5",
+          "Cardiomyopathy"
+        ],
+        [
+          "ACVRL1 -related hereditary hemorrhagic telangiectasia",
+          "600376",
+          "0.01",
+          "0.002",
+          "NM_000020.3",
+          "Hereditary Hemorrhagic Telangiectasia"
+        ],
+        [
+          "APC -related familial adenomatous polyposis",
+          "175100",
+          "0.001",
+          "0.00001",
+          "NM_000038.6",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "APOB -related familial hypercholesterolemia",
+          "144010",
+          "0.005 b",
+          "0.002 b",
+          "NM_000384.3",
+          "Familial Hypercholesterolemia"
+        ],
+        [
+          "BMPR1A -related juvenile polyposis syndrome",
+          "174900",
+          "0.0001 b",
+          "0.000001 b",
+          "NM_004329.3",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "BRCA1 -related breast and ovarian cancer syndrome",
+          "604370",
+          "0.001",
+          "0.0001",
+          "NM_007294.4",
+          "ENIGMA BRCA1 and BRCA2"
+        ],
+        [
+          "BRCA2 -related breast and ovarian cancer syndrome",
+          "612555",
+          "0.001",
+          "0.0001",
+          "NM_000059.4",
+          "ENIGMA BRCA1 and BRCA2"
+        ],
+        [
+          "CYP27A1 -related cerebrotendinous xanthomatosis",
+          "213700",
+          "0.0076 b",
+          "0.00076 b",
+          "NM_000784.4",
+          "Pediatric Cataract"
+        ],
+        [
+          "ENG -related hereditary hemorrhagic telangiectasia",
+          "187300",
+          "0.01",
+          "0.002",
+          "NM_001114753.3",
+          "Hereditary Hemorrhagic Telangiectasia"
+        ],
+        [
+          "FBN1 -related Marfan syndrome",
+          "154700",
+          "0.001",
+          "0.00005",
+          "NM_000138.5",
+          "FBN1"
+        ],
+        [
+          "GAA -related Pompe disease",
+          "232300",
+          "0.01",
+          "0.005",
+          "NM_000152.4",
+          "Lysosomal Storage Disorders"
+        ],
+        [
+          "HNF1A -related monogenic diabetes",
+          "600496",
+          "0.0001",
+          "0.000033",
+          "NM_000545.8",
+          "Monogenic Diabetes"
+        ],
+        [
+          "KCNQ1 -related long-QT syndrome",
+          "192500",
+          "0.004",
+          "0.0004",
+          "NM_000218.3",
+          "Potassium Channel Arrhythmia"
+        ],
+        [
+          "LDLR -related familial hypercholesterolemia",
+          "143890",
+          "0.005",
+          "0.002",
+          "NM_000527.5",
+          "Familial Hypercholesterolemia"
+        ],
+        [
+          "MLH1 -related Lynch syndrome",
+          "609310",
+          "0.001",
+          "0.0001",
+          "NM_000249.4",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "MSH2 -related Lynch syndrome",
+          "120435",
+          "0.001",
+          "0.0001",
+          "NM_000251.3",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "MSH6 -related Lynch syndrome",
+          "614350",
+          "0.0022",
+          "0.00022",
+          "NM_000179.3",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "MUTYH -related familial adenomatous polyposis",
+          "608456",
+          "0.01054 b",
+          "0.00105 b",
+          "NM_001048174.2",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "MYBPC3 -related hereditary cardiomyopathy",
+          "115197",
+          "0.001",
+          "0.0002",
+          "NM_000256.3",
+          "Cardiomyopathy"
+        ],
+        [
+          "MYH7 -related DCM/HCM combined",
+          "613426 192600",
+          "0.001",
+          "0.0001",
+          "NM_000257.4",
+          "Cardiomyopathy"
+        ],
+        [
+          "MYL2 -related hypertrophic cardiomyopathy",
+          "608758",
+          "0.001",
+          "0.0001",
+          "NM_000432.4",
+          "Cardiomyopathy"
+        ],
+        [
+          "MYL3 -related hypertrophic cardiomyopathy",
+          "608751",
+          "0.001",
+          "0.0001",
+          "NM_000258.3",
+          "Cardiomyopathy"
+        ],
+        [
+          "OTC -related ornithine transcarbamylase deficiency",
+          "311250",
+          "0.01 b",
+          "0.002 b",
+          "NM_000531.6",
+          "Urea Cycle Disorders"
+        ],
+        [
+          "PALB2 -related breast cancer predisposition",
+          "114480",
+          "0.001",
+          "0.0001",
+          "NM_024675.4",
+          "Hereditary Breast, Ovarian and Pancreatic Cancer"
+        ],
+        [
+          "PCSK9 -related familial hypercholesterolemia",
+          "603776",
+          "0.0002 b",
+          "0.0001 b",
+          "NM_174936.4",
+          "Familial Hypercholesterolemia"
+        ],
+        [
+          "PMS2 -related Lynch syndrome",
+          "614337",
+          "0.0028",
+          "0.0001",
+          "NM_000535.7",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "PTEN -related hamartoma tumor syndrome",
+          "158350",
+          "0.00056",
+          "0.000043",
+          "NM_000314.8",
+          "PTEN"
+        ],
+        [
+          "RPE65 -related retinopathy",
+          "204100 613794",
+          "0.008",
+          "0.0008",
+          "NM_000329.3",
+          "Leber Congenital Amaurosis/early onset Retinal Dystrophy"
+        ],
+        [
+          "RYR1 -related malignant hyperthermia",
+          "145600",
+          "0.0038",
+          "0.0008",
+          "NM_000540.3",
+          "Malignant Hyperthermia Susceptibility"
+        ],
+        [
+          "SMAD4 -related juvenile polyposis syndrome / hereditary hemorrhagic telangiectasia",
+          "175050",
+          "0.0001 b",
+          "0.000001 b",
+          "NM_005359.6",
+          "InSiGHT Hereditary Colorectal Cancer/Polyposis"
+        ],
+        [
+          "TNNI3 -related hypertrophic cardiomyopathy",
+          "613690",
+          "0.001",
+          "0.0001",
+          "NM_000363.5",
+          "Cardiomyopathy"
+        ],
+        [
+          "TNNT2 -related DCM/HCM",
+          "601494 115195",
+          "0.001",
+          "0.0001",
+          "NM_001276345.2",
+          "Cardiomyopathy"
+        ],
+        [
+          "TP53 -related Li-Fraumeni syndrome",
+          "151623",
+          "0.001",
+          "0.0003",
+          "NM_000546.6",
+          "TP53"
+        ],
+        [
+          "TPM1 -related hypertrophic cardiomyopathy",
+          "115196",
+          "0.001",
+          "0.0001",
+          "NM_001018005.2",
+          "Cardiomyopathy"
+        ],
+        [
+          "VHL -related von Hippel-Lindau syndrome",
+          "193300",
+          "0.000156",
+          "0.0000156",
+          "NM_000551.4",
+          "VHL"
+        ]
+      ]
+    },
+    {
+      "table_idx": 1,
+      "n_rows": 1,
+      "head": [
+        [
+          "DAFT = ( Prevalence * Gene Contribution Penetrance ) * 0.5"
+        ]
+      ],
+      "all_rows": [
+        [
+          "DAFT = ( Prevalence * Gene Contribution Penetrance ) * 0.5"
+        ]
+      ]
+    },
+    {
+      "table_idx": 2,
+      "n_rows": 1,
+      "head": [
+        [
+          "DAFT = sqrt ( Prevalence * Gene Contribution Penetrance )"
+        ]
+      ],
+      "all_rows": [
+        [
+          "DAFT = sqrt ( Prevalence * Gene Contribution Penetrance )"
+        ]
+      ]
+    },
+    {
+      "table_idx": 3,
+      "n_rows": 1,
+      "head": [
+        [
+          "DAFT = Prevalence in Males * Gene Contribution Penetrance"
+        ]
+      ],
+      "all_rows": [
+        [
+          "DAFT = Prevalence in Males * Gene Contribution Penetrance"
+        ]
+      ]
+    },
+    {
+      "table_idx": 4,
+      "n_rows": 39,
+      "head": [
+        [
+          "Monogenic Disease Entity",
+          "Phenotype MIM Numbers",
+          "Prevalence 1 in",
+          "Gene Contribution",
+          "Penetrance",
+          "BS1 (DAFT)",
+          "BA1 (10* DAFT)"
+        ],
+        [
+          "ACTA2 -related Aortopathies",
+          "611788",
+          "5,000",
+          "0.21",
+          "0.5",
+          "0.000042",
+          "0.00042"
+        ],
+        [
+          "ATP7B -related Wilson disease (AR)",
+          "277900",
+          "30,000",
+          "1",
+          "1",
+          "0.005774",
+          "0.05774"
+        ],
+        [
+          "BAG3 -related DCM",
+          "613881",
+          "220",
+          "0.03",
+          "0.35",
+          "0.000195",
+          "0.00195"
+        ],
+        [
+          "BTD -related Biotinodase deficiency (AR)",
+          "253260",
+          "61,000",
+          "1",
+          "0.5",
+          "0.005726",
+          "0.05726"
+        ],
+        [
+          "CACNA1S -related Malignant hyperthermia",
+          "601887",
+          "10,000",
+          "0.01",
+          "0.01",
+          "0.000050",
+          "0.00050"
+        ],
+        [
+          "CASQ2 -related CPVT (AR)",
+          "611938",
+          "10,000",
+          "0.05",
+          "1",
+          "0.002236",
+          "0.02236"
+        ],
+        [
+          "COL3A1 -related Ehlers-Danlos syndrome, vascular type",
+          "130050",
+          "50,000",
+          "1",
+          "0.5",
+          "0.000020",
+          "0.00020"
+        ],
+        [
+          "DES -related DCM",
+          "604765",
+          "220",
+          "0.01",
+          "0.35",
+          "0.000065",
+          "0.00065"
+        ],
+        [
+          "DSC2 -related ARVC",
+          "610476",
+          "1,000",
+          "0.02",
+          "0.3",
+          "0.000033",
+          "0.00033"
+        ],
+        [
+          "DSG2 -related ARVC",
+          "610193",
+          "1,000",
+          "0.26",
+          "0.3",
+          "0.000433",
+          "0.00433"
+        ],
+        [
+          "KCNH2 -related LQTS type 2",
+          "613688",
+          "2,500",
+          "0.3",
+          "0.49",
+          "0.000122",
+          "0.00122"
+        ],
+        [
+          "LMNA -related DCM",
+          "115200",
+          "220",
+          "0.13",
+          "0.9",
+          "0.000328",
+          "0.00328"
+        ],
+        [
+          "MAX -related PGL/PCC",
+          "171300",
+          "2,500",
+          "0.016",
+          "0.1",
+          "0.000032",
+          "0.00032"
+        ],
+        [
+          "MEN1 -related MEN type 1",
+          "131100",
+          "5,000",
+          "0.9",
+          "0.95",
+          "0.000095",
+          "0.00095"
+        ]
+      ],
+      "all_rows": [
+        [
+          "Monogenic Disease Entity",
+          "Phenotype MIM Numbers",
+          "Prevalence 1 in",
+          "Gene Contribution",
+          "Penetrance",
+          "BS1 (DAFT)",
+          "BA1 (10* DAFT)"
+        ],
+        [
+          "ACTA2 -related Aortopathies",
+          "611788",
+          "5,000",
+          "0.21",
+          "0.5",
+          "0.000042",
+          "0.00042"
+        ],
+        [
+          "ATP7B -related Wilson disease (AR)",
+          "277900",
+          "30,000",
+          "1",
+          "1",
+          "0.005774",
+          "0.05774"
+        ],
+        [
+          "BAG3 -related DCM",
+          "613881",
+          "220",
+          "0.03",
+          "0.35",
+          "0.000195",
+          "0.00195"
+        ],
+        [
+          "BTD -related Biotinodase deficiency (AR)",
+          "253260",
+          "61,000",
+          "1",
+          "0.5",
+          "0.005726",
+          "0.05726"
+        ],
+        [
+          "CACNA1S -related Malignant hyperthermia",
+          "601887",
+          "10,000",
+          "0.01",
+          "0.01",
+          "0.000050",
+          "0.00050"
+        ],
+        [
+          "CASQ2 -related CPVT (AR)",
+          "611938",
+          "10,000",
+          "0.05",
+          "1",
+          "0.002236",
+          "0.02236"
+        ],
+        [
+          "COL3A1 -related Ehlers-Danlos syndrome, vascular type",
+          "130050",
+          "50,000",
+          "1",
+          "0.5",
+          "0.000020",
+          "0.00020"
+        ],
+        [
+          "DES -related DCM",
+          "604765",
+          "220",
+          "0.01",
+          "0.35",
+          "0.000065",
+          "0.00065"
+        ],
+        [
+          "DSC2 -related ARVC",
+          "610476",
+          "1,000",
+          "0.02",
+          "0.3",
+          "0.000033",
+          "0.00033"
+        ],
+        [
+          "DSG2 -related ARVC",
+          "610193",
+          "1,000",
+          "0.26",
+          "0.3",
+          "0.000433",
+          "0.00433"
+        ],
+        [
+          "KCNH2 -related LQTS type 2",
+          "613688",
+          "2,500",
+          "0.3",
+          "0.49",
+          "0.000122",
+          "0.00122"
+        ],
+        [
+          "LMNA -related DCM",
+          "115200",
+          "220",
+          "0.13",
+          "0.9",
+          "0.000328",
+          "0.00328"
+        ],
+        [
+          "MAX -related PGL/PCC",
+          "171300",
+          "2,500",
+          "0.016",
+          "0.1",
+          "0.000032",
+          "0.00032"
+        ],
+        [
+          "MEN1 -related MEN type 1",
+          "131100",
+          "5,000",
+          "0.9",
+          "0.95",
+          "0.000095",
+          "0.00095"
+        ],
+        [
+          "MYH11 -related Aortopathies",
+          "132900",
+          "5,000",
+          "0.01",
+          "0.5",
+          "0.000002",
+          "0.00002"
+        ],
+        [
+          "NF2 -related Schwannomatosis",
+          "101000",
+          "50,000",
+          "1",
+          "1",
+          "0.000010",
+          "0.00010"
+        ],
+        [
+          "PKP2 -related ARVC",
+          "609040",
+          "1,000",
+          "0.46",
+          "0.3",
+          "0.000767",
+          "0.00767"
+        ],
+        [
+          "PRKAG2 -related HCM",
+          "600858",
+          "500",
+          "0.01",
+          "1",
+          "0.000010",
+          "0.00010"
+        ],
+        [
+          "RB1 -related Retinoblastoma predisposition",
+          "180200",
+          "15,000",
+          "0.4",
+          "0.25",
+          "0.000053",
+          "0.00053"
+        ],
+        [
+          "RBM20 -related DCM",
+          "613172",
+          "220",
+          "0.02",
+          "0.35",
+          "0.000130",
+          "0.00130"
+        ],
+        [
+          "RET -related MEN Type 2A/2B",
+          "155240 171400 162300",
+          "35,000",
+          "1",
+          "0.5",
+          "0.000029",
+          "0.00029"
+        ],
+        [
+          "RYR2 -related CPVT",
+          "604772",
+          "10,000",
+          "0.7",
+          "0.75",
+          "0.000047",
+          "0.00047"
+        ],
+        [
+          "SDHAF2 -related PGL-PCC",
+          "601650",
+          "2,500",
+          "0.004",
+          "0.1",
+          "0.000008",
+          "0.00008"
+        ],
+        [
+          "SDHB -related PGL-PCC",
+          "115310",
+          "2,500",
+          "0.22",
+          "0.22",
+          "0.000200",
+          "0.00200"
+        ],
+        [
+          "SDHC -related PGL-PCC",
+          "605373",
+          "2,500",
+          "0.032",
+          "0.16",
+          "0.000040",
+          "0.00040"
+        ],
+        [
+          "SDHD -related PGL-PCC",
+          "168000",
+          "2,500",
+          "0.1",
+          "0.2",
+          "0.000100",
+          "0.00100"
+        ],
+        [
+          "SMAD3 -related Aortopathies",
+          "613795",
+          "5,000",
+          "0.02",
+          "0.5",
+          "0.000004",
+          "0.00004"
+        ],
+        [
+          "STK11 -related Peutz-Jeghers syndrome",
+          "175200",
+          "25,000",
+          "1",
+          "1",
+          "0.000020",
+          "0.00020"
+        ],
+        [
+          "TGFBR1 -related Aortopathies",
+          "609192",
+          "5,000",
+          ".01",
+          "0.5",
+          "0.000002",
+          "0.00002"
+        ],
+        [
+          "TGFBR2 -related Aortopathies",
+          "610168",
+          "5,000",
+          "0.05",
+          "0.5",
+          "0.000010",
+          "0.00010"
+        ],
+        [
+          "TMEM127 -related PGL-PCC",
+          "171300",
+          "2,500",
+          "0.02",
+          "0.1",
+          "0.000040",
+          "0.00040"
+        ],
+        [
+          "TMEM43 -related ARVC",
+          "604400",
+          "1,000",
+          "0.01",
+          "1",
+          "0.000005",
+          "0.00005"
+        ],
+        [
+          "TNNC1 -related DCM",
+          "611879",
+          "220",
+          "0.01",
+          "0.35",
+          "0.000065",
+          "0.00065"
+        ],
+        [
+          "TSC1 -related TS",
+          "191100",
+          "5,800",
+          "0.26",
+          "1",
+          "0.000022",
+          "0.00022"
+        ],
+        [
+          "TSC2 -related TS",
+          "613254",
+          "5,800",
+          "0.69",
+          "1",
+          "0.000059",
+          "0.00059"
+        ],
+        [
+          "TTN -related DCM",
+          "604145",
+          "220",
+          "0.2",
+          "0.35",
+          "0.001299",
+          "0.01299"
+        ],
+        [
+          "TTR -related Hereditary transthyretin amyloidosis",
+          "105210",
+          "538",
+          "1",
+          "0.5",
+          "0.001859",
+          "0.01859"
+        ],
+        [
+          "WT1 -related Wilms tumor predisposition",
+          "194070",
+          "8,000",
+          "0.05",
+          "0.9",
+          "0.000003",
+          "0.00003"
+        ]
+      ]
+    },
+    {
+      "table_idx": 5,
+      "n_rows": 30,
+      "head": [
+        [
+          "Monogenic Disease",
+          "Phenotype MIM Numbers",
+          "Prevalence 1 in",
+          "Gene Contribution",
+          "Penetrance",
+          "BS1 (DAFT)",
+          "BA1 (10* DAFT)"
+        ],
+        [
+          "CALM1 -related LQTS",
+          "616247",
+          "2,500",
+          "0.01",
+          "0.4",
+          "0.000005",
+          "0.00005"
+        ],
+        [
+          "CALM1 -related CPVT",
+          "614916",
+          "10,000",
+          "0.01",
+          "0.63",
+          "0.000001",
+          "0.00001"
+        ],
+        [
+          "CALM1 COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000006",
+          "0.00006"
+        ],
+        [
+          "CALM2 -related LQTS",
+          "616249",
+          "2,500",
+          "0.01",
+          "0.4",
+          "0.000005",
+          "0.00005"
+        ],
+        [
+          "CALM2 -related CPVT",
+          "NA",
+          "10,000",
+          "0.01",
+          "0.63",
+          "0.000001",
+          "0.00001"
+        ],
+        [
+          "CALM2 COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000006",
+          "0.00006"
+        ],
+        [
+          "CALM3 -related LQTS",
+          "618782",
+          "2,500",
+          "0.01",
+          "0.4",
+          "0.000005",
+          "0.00005"
+        ],
+        [
+          "CALM3 -related CPVT",
+          "NA",
+          "10,000",
+          "0.01",
+          "0.63",
+          "0.000001",
+          "0.00001"
+        ],
+        [
+          "CALM3 COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000006",
+          "0.00006"
+        ],
+        [
+          "DSP -related ARVC",
+          "607450",
+          "1,000",
+          "0.39",
+          "0.3",
+          "0.000650",
+          "0.00650"
+        ],
+        [
+          "DSP -related DCM",
+          "615821",
+          "220",
+          "0.02",
+          "0.35",
+          "0.000130",
+          "0.00130"
+        ],
+        [
+          "DSP COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000780",
+          "0.00780"
+        ],
+        [
+          "FLNC -related DCM",
+          "617047",
+          "220",
+          "0.04",
+          "0.35",
+          "0.000260",
+          "0.00260"
+        ],
+        [
+          "FLNC -related HCM",
+          "NA",
+          "500",
+          "0.02",
+          "0.75",
+          "0.000027",
+          "0.00027"
+        ]
+      ],
+      "all_rows": [
+        [
+          "Monogenic Disease",
+          "Phenotype MIM Numbers",
+          "Prevalence 1 in",
+          "Gene Contribution",
+          "Penetrance",
+          "BS1 (DAFT)",
+          "BA1 (10* DAFT)"
+        ],
+        [
+          "CALM1 -related LQTS",
+          "616247",
+          "2,500",
+          "0.01",
+          "0.4",
+          "0.000005",
+          "0.00005"
+        ],
+        [
+          "CALM1 -related CPVT",
+          "614916",
+          "10,000",
+          "0.01",
+          "0.63",
+          "0.000001",
+          "0.00001"
+        ],
+        [
+          "CALM1 COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000006",
+          "0.00006"
+        ],
+        [
+          "CALM2 -related LQTS",
+          "616249",
+          "2,500",
+          "0.01",
+          "0.4",
+          "0.000005",
+          "0.00005"
+        ],
+        [
+          "CALM2 -related CPVT",
+          "NA",
+          "10,000",
+          "0.01",
+          "0.63",
+          "0.000001",
+          "0.00001"
+        ],
+        [
+          "CALM2 COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000006",
+          "0.00006"
+        ],
+        [
+          "CALM3 -related LQTS",
+          "618782",
+          "2,500",
+          "0.01",
+          "0.4",
+          "0.000005",
+          "0.00005"
+        ],
+        [
+          "CALM3 -related CPVT",
+          "NA",
+          "10,000",
+          "0.01",
+          "0.63",
+          "0.000001",
+          "0.00001"
+        ],
+        [
+          "CALM3 COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000006",
+          "0.00006"
+        ],
+        [
+          "DSP -related ARVC",
+          "607450",
+          "1,000",
+          "0.39",
+          "0.3",
+          "0.000650",
+          "0.00650"
+        ],
+        [
+          "DSP -related DCM",
+          "615821",
+          "220",
+          "0.02",
+          "0.35",
+          "0.000130",
+          "0.00130"
+        ],
+        [
+          "DSP COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000780",
+          "0.00780"
+        ],
+        [
+          "FLNC -related DCM",
+          "617047",
+          "220",
+          "0.04",
+          "0.35",
+          "0.000260",
+          "0.00260"
+        ],
+        [
+          "FLNC -related HCM",
+          "NA",
+          "500",
+          "0.02",
+          "0.75",
+          "0.000027",
+          "0.00027"
+        ],
+        [
+          "FLNC COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000286",
+          "0.00286"
+        ],
+        [
+          "GLA -related Fabry disease",
+          "301500",
+          "3,100",
+          "1",
+          "1",
+          "0.000323",
+          "0.00323"
+        ],
+        [
+          "GLA -related HCM",
+          "NA",
+          "500",
+          "0.01",
+          ".5",
+          "0.000040",
+          "0.00040"
+        ],
+        [
+          "GLA COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000363",
+          "0.003626"
+        ],
+        [
+          "PLN -related ARVC",
+          "NA",
+          "1,000",
+          "0.01",
+          "0.3",
+          "0.000017",
+          "0.00017"
+        ],
+        [
+          "PLN -related HCM",
+          "613874",
+          "500",
+          "0.03",
+          "0.5",
+          "0.000060",
+          "0.00060"
+        ],
+        [
+          "PLN -related DCM",
+          "609909",
+          "220",
+          "0.01",
+          "0.35",
+          "0.000065",
+          "0.00065"
+        ],
+        [
+          "PLN COMBINED VALUES",
+          "",
+          "",
+          "",
+          "",
+          "0.000142",
+          "0.00142"
+        ],
+        [
+          "SCN5A -related Brugada syndrome",
+          "601144",
+          "830",
+          "0.3",
+          "0.2",
+          "0.000904",
+          "0.00904"
+        ],
+        [
+          "SCN5A -related LQTS",
+          "603830",
+          "2,500",
+          "0.10",
+          "0.42",
+          "0.000190",
+          "0.00190"
+        ],
+        [
+          "SCN5A -related DCM",
+          "601154",
+          "220",
+          "0.02",
+          "0.35",
+          "0.000130",
+          "0.00130"
+        ],
+        [
+          "SCN5A COMBINED VALUES Brugada and DCM",
+          "",
+          "",
+          "",
+          "",
+          "0.00103",
+          "0.01033"
+        ],
+        [
+          "TRDN -related CPVT (AR)",
+          "615441",
+          "10,000",
+          "0.02",
+          "0.75",
+          "0.001633",
+          "0.016329932"
+        ],
+        [
+          "TRDN -related LQTS (AR)",
+          "NA",
+          "2,500",
+          "0.01",
+          "0.41",
+          "0.003123",
+          "0.03123"
+        ],
+        [
+          "TRDN COMBINED VALUES (AR)",
+          "",
+          "",
+          "",
+          "",
+          "0.004756",
+          "0.04756"
+        ]
+      ]
+    },
+    {
+      "table_idx": 6,
+      "n_rows": 11,
+      "head": [
+        [
+          "Monogenic Disease",
+          "pLoF and ClinGen P/LP Variants",
+          "BS1 (DAFT)",
+          "Variant Grpmax FAF",
+          "BA1 (10* DAFT)"
+        ],
+        [
+          "BTD -related Biotinodase deficiency (AR)",
+          "NC_000003.12 :g.15645186G>C; NM_001370658.1 :c.1270G>C; p.(Asp424His) (P/LP)",
+          "0.005726",
+          "0.0416000",
+          "0.05726"
+        ],
+        [
+          "CACNA1S -related MH",
+          "NC_000001.11 :g.201091993G>A; NM_000069.3 :c.520C>T; p.(Arg174Trp) (Drug Response) a",
+          "0.000050",
+          "0.000332",
+          "0.00050"
+        ],
+        [
+          "CACNA1S -related MH",
+          "NC_000001.11 :g.201060816G>T; NM_000069.3 :c.3256C>A; p.(Arg1086Ser) (P/LP)",
+          "0.000050",
+          "0.0002280",
+          "0.00050"
+        ],
+        [
+          "DSC2 -related ARVC",
+          "NC_000018.10 :g.31071646C>T; NM_024422.6 :c.2084G>A; p.(Trp695Ter) (P/LP)",
+          "0.000033",
+          "0.0000359",
+          "0.00033"
+        ],
+        [
+          "RET -related MEN Type 2A/2B",
+          "NC_000010.11 :g.43119548G>A; NM_020975.6 :c.2410G>A; p.(Val804Met) (P/LP)",
+          "0.000029",
+          "0.0001060",
+          "0.00029"
+        ],
+        [
+          "SDHC -related PGL-PCC",
+          "NC_000001.11 : g.161356812A>G; NM_003001.5 :c.377A>G; p.(Tyr126Cys) (P/LP)",
+          "0.000040",
+          "0.0000519",
+          "0.00040"
+        ],
+        [
+          "TMEM127 -related PGL-PCC",
+          "NC_000002.12 :g.96254998C>G; NM_017849.4 :c.245\u20131G>C; p.? (P/LP)",
+          "0.000040",
+          "0.0000437",
+          "0.00040"
+        ],
+        [
+          "TTR -related hATTR",
+          "NC_000018.10 :g.31598655G>A; NM_000371.4 :c.424G>A; p.(Val142Ile) (P/LP)",
+          "0.001859",
+          "0.0162000",
+          "0.01859"
+        ],
+        [
+          "WT1 -related Wilms tumor predisposition",
+          "NC_000011.10 :g.32396401G>A; NM_024426.6 :c.1120C>T; p.(Arg374Ter) (P/LP)",
+          "0.000003",
+          "0.0000055",
+          "0.00003"
+        ],
+        [
+          "WT1 -related Wilms tumor predisposition",
+          "NC_000011.10 .32435334_32435343del; NM_024426.6 :c.20_29del; p.(Gln7LeufsTer39) (novel pLoF)",
+          "0.000003",
+          "0.00000814",
+          "0.00003"
+        ]
+      ],
+      "all_rows": [
+        [
+          "Monogenic Disease",
+          "pLoF and ClinGen P/LP Variants",
+          "BS1 (DAFT)",
+          "Variant Grpmax FAF",
+          "BA1 (10* DAFT)"
+        ],
+        [
+          "BTD -related Biotinodase deficiency (AR)",
+          "NC_000003.12 :g.15645186G>C; NM_001370658.1 :c.1270G>C; p.(Asp424His) (P/LP)",
+          "0.005726",
+          "0.0416000",
+          "0.05726"
+        ],
+        [
+          "CACNA1S -related MH",
+          "NC_000001.11 :g.201091993G>A; NM_000069.3 :c.520C>T; p.(Arg174Trp) (Drug Response) a",
+          "0.000050",
+          "0.000332",
+          "0.00050"
+        ],
+        [
+          "CACNA1S -related MH",
+          "NC_000001.11 :g.201060816G>T; NM_000069.3 :c.3256C>A; p.(Arg1086Ser) (P/LP)",
+          "0.000050",
+          "0.0002280",
+          "0.00050"
+        ],
+        [
+          "DSC2 -related ARVC",
+          "NC_000018.10 :g.31071646C>T; NM_024422.6 :c.2084G>A; p.(Trp695Ter) (P/LP)",
+          "0.000033",
+          "0.0000359",
+          "0.00033"
+        ],
+        [
+          "RET -related MEN Type 2A/2B",
+          "NC_000010.11 :g.43119548G>A; NM_020975.6 :c.2410G>A; p.(Val804Met) (P/LP)",
+          "0.000029",
+          "0.0001060",
+          "0.00029"
+        ],
+        [
+          "SDHC -related PGL-PCC",
+          "NC_000001.11 : g.161356812A>G; NM_003001.5 :c.377A>G; p.(Tyr126Cys) (P/LP)",
+          "0.000040",
+          "0.0000519",
+          "0.00040"
+        ],
+        [
+          "TMEM127 -related PGL-PCC",
+          "NC_000002.12 :g.96254998C>G; NM_017849.4 :c.245\u20131G>C; p.? (P/LP)",
+          "0.000040",
+          "0.0000437",
+          "0.00040"
+        ],
+        [
+          "TTR -related hATTR",
+          "NC_000018.10 :g.31598655G>A; NM_000371.4 :c.424G>A; p.(Val142Ile) (P/LP)",
+          "0.001859",
+          "0.0162000",
+          "0.01859"
+        ],
+        [
+          "WT1 -related Wilms tumor predisposition",
+          "NC_000011.10 :g.32396401G>A; NM_024426.6 :c.1120C>T; p.(Arg374Ter) (P/LP)",
+          "0.000003",
+          "0.0000055",
+          "0.00003"
+        ],
+        [
+          "WT1 -related Wilms tumor predisposition",
+          "NC_000011.10 .32435334_32435343del; NM_024426.6 :c.20_29del; p.(Gln7LeufsTer39) (novel pLoF)",
+          "0.000003",
+          "0.00000814",
+          "0.00003"
+        ]
+      ]
+    }
+  ]
+}

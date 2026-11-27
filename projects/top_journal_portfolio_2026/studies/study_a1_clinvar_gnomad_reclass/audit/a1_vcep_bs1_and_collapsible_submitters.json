@@ -1,0 +1,838 @@
+{
+  "executed_at": "2026-11-25 10:03:27 CST",
+  "elapsed_sec": 162.5,
+  "n_vcep_published_genes": 29,
+  "vus_gene_specific_bs1_ba1": {
+    "vcep_published_29_genes_only": {
+      "tag": "29 ACMG SF v3.3 Genes with Published ClinGen VCEP BS1/BA1",
+      "n_genes": 29,
+      "n_hc_vus": 18112,
+      "bs1_candidates": {
+        "n": 122,
+        "n_nfe_invisible": 96,
+        "nfe_invisible_share": 0.7869,
+        "by_pop5": {
+          "eas": 31,
+          "sas": 30,
+          "nfe": 25,
+          "afr": 20,
+          "amr": 16
+        },
+        "by_domain": {
+          "Cancer": 48,
+          "Cardiovascular": 47,
+          "Miscellaneous": 27
+        },
+        "top_genes": {
+          "FBN1": 25,
+          "HNF1A": 22,
+          "VHL": 13,
+          "PTEN": 10,
+          "MYBPC3": 6,
+          "APC": 5,
+          "BRCA2": 5,
+          "MLH1": 4,
+          "MSH2": 3,
+          "ACTC1": 3
+        }
+      },
+      "ba1_candidates": {
+        "n": 16,
+        "n_nfe_invisible": 14,
+        "nfe_invisible_share": 0.875,
+        "by_pop5": {
+          "eas": 6,
+          "afr": 5,
+          "amr": 2,
+          "nfe": 2,
+          "sas": 1
+        },
+        "by_domain": {
+          "Miscellaneous": 8,
+          "Cancer": 5,
+          "Cardiovascular": 3
+        },
+        "top_genes": {
+          "HNF1A": 7,
+          "PMS2": 2,
+          "MSH6": 1,
+          "VHL": 1,
+          "PTEN": 1,
+          "MYBPC3": 1,
+          "ACTC1": 1,
+          "FBN1": 1,
+          "RYR1": 1
+        }
+      }
+    },
+    "all_72_ad_genes_vcep_plus_whiffin": {
+      "tag": "All 72 AD ACMG SF v3.3 Genes (VCEP + Whiffin)",
+      "n_genes": 72,
+      "n_hc_vus": 47940,
+      "bs1_candidates": {
+        "n": 311,
+        "n_nfe_invisible": 273,
+        "nfe_invisible_share": 0.8778,
+        "by_pop5": {
+          "eas": 101,
+          "sas": 87,
+          "afr": 50,
+          "amr": 38,
+          "nfe": 35
+        },
+        "by_domain": {
+          "Cardiovascular": 221,
+          "Cancer": 63,
+          "Miscellaneous": 27
+        },
+        "top_genes": {
+          "TTN": 90,
+          "FBN1": 25,
+          "HNF1A": 22,
+          "VHL": 13,
+          "MYH11": 13,
+          "PTEN": 10,
+          "RYR2": 9,
+          "SCN5A": 8,
+          "DSG2": 6,
+          "FLNC": 6
+        }
+      },
+      "ba1_candidates": {
+        "n": 43,
+        "n_nfe_invisible": 39,
+        "nfe_invisible_share": 0.907,
+        "by_pop5": {
+          "eas": 20,
+          "afr": 9,
+          "sas": 6,
+          "amr": 5,
+          "nfe": 3
+        },
+        "by_domain": {
+          "Cardiovascular": 27,
+          "Miscellaneous": 9,
+          "Cancer": 7
+        },
+        "top_genes": {
+          "TTN": 18,
+          "HNF1A": 7,
+          "RYR2": 2,
+          "PMS2": 2,
+          "RET": 2,
+          "MYH11": 2,
+          "CACNA1S": 1,
+          "APOB": 1,
+          "MSH6": 1,
+          "VHL": 1
+        }
+      }
+    },
+    "all_84_genes_vcep_plus_whiffin": {
+      "tag": "All 84 ACMG SF v3.3 Genes (VCEP + Whiffin)",
+      "n_genes": 81,
+      "n_hc_vus": 50861,
+      "bs1_candidates": {
+        "n": 313,
+        "n_nfe_invisible": 275,
+        "nfe_invisible_share": 0.8786,
+        "by_pop5": {
+          "eas": 102,
+          "sas": 87,
+          "afr": 51,
+          "amr": 38,
+          "nfe": 35
+        },
+        "by_domain": {
+          "Cardiovascular": 221,
+          "Cancer": 63,
+          "Miscellaneous": 29
+        },
+        "top_genes": {
+          "TTN": 90,
+          "FBN1": 25,
+          "HNF1A": 22,
+          "VHL": 13,
+          "MYH11": 13,
+          "PTEN": 10,
+          "RYR2": 9,
+          "SCN5A": 8,
+          "FLNC": 6,
+          "MYBPC3": 6
+        }
+      },
+      "ba1_candidates": {
+        "n": 44,
+        "n_nfe_invisible": 40,
+        "nfe_invisible_share": 0.9091,
+        "by_pop5": {
+          "eas": 20,
+          "afr": 10,
+          "sas": 6,
+          "amr": 5,
+          "nfe": 3
+        },
+        "by_domain": {
+          "Cardiovascular": 27,
+          "Miscellaneous": 10,
+          "Cancer": 7
+        },
+        "top_genes": {
+          "TTN": 18,
+          "HNF1A": 7,
+          "MYH11": 2,
+          "PMS2": 2,
+          "RYR2": 2,
+          "RET": 2,
+          "CACNA1S": 1,
+          "MYBPC3": 1,
+          "FBN1": 1,
+          "ACTC1": 1
+        }
+      }
+    }
+  },
+  "vus_bs1_live_qc_spotcheck_20": {
+    "n_checked": 20,
+    "n_pass": 18,
+    "n_fail": 2,
+    "pass_rate": 0.9,
+    "details": [
+      {
+        "variant_id": "13-32346927-A-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "11-47335943-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "15-48510145-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "10-87864456-A-G",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "19-11129564-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "15-63065936-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "3-36993506-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "10-87864404-A-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "3-37048938-G-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "13-32355156-C-G",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "2-178594457-A-G",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "6-7580261-G-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "2-178727728-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "11-2445279-CCCGCGCCCCCTGCGTCCCCGGCCGCGCCCG-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [
+          "lcr"
+        ],
+        "qc_fail": true
+      },
+      {
+        "variant_id": "16-15704121-C-CGAA",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "7-150951862-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "9-132897613-G-GAAAAAA",
+        "exome_filters": [
+          "AS_VQSR"
+        ],
+        "genome_filters": [],
+        "flags": [
+          "lcr"
+        ],
+        "qc_fail": true
+      },
+      {
+        "variant_id": "16-15724595-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "2-178624539-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "2-178751174-CA-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [
+          "lc_lof"
+        ],
+        "qc_fail": false
+      }
+    ]
+  },
+  "ad55_revised_triage_counts": {
+    "L2_BottleneckFounder_FIN_ASJ": 22,
+    "L3_EstablishedContinentalFounder_LowPen": 14,
+    "L1_QC_or_Callability_Artifact": 8,
+    "L4a_BelowGeneSpecificBS1_TrueADPathogenic": 7,
+    "L4b_AR_in_DualMode_AD_Gene_ReturnHazard": 4
+  },
+  "ad55_l4_all11_revised": [
+    {
+      "variant_id": "19-38527014-C-T",
+      "gene": "RYR1",
+      "stars": 3,
+      "hgvs_name": "NM_000540.3(RYR1):c.10648C>T (p.Arg3550Trp)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.0014425383871802,
+      "faf95_nfe": 3.078243216989918e-05,
+      "gene_bs1": 0.0008,
+      "gene_ba1": 0.0038,
+      "rule_source": "ClinGen_VCEP",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "19-38523211-C-G",
+      "gene": "RYR1",
+      "stars": 3,
+      "hgvs_name": "NM_000540.3(RYR1):c.10348-6C>G",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0003217012835649,
+      "faf95_nfe": 0.0,
+      "gene_bs1": 0.0008,
+      "gene_ba1": 0.0038,
+      "rule_source": "ClinGen_VCEP",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "19-11116900-C-T",
+      "gene": "LDLR",
+      "stars": 3,
+      "hgvs_name": "NM_000527.5(LDLR):c.1747C>T (p.His583Tyr)",
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.0003134360466041,
+      "faf95_nfe": 0.0,
+      "gene_bs1": 0.002,
+      "gene_ba1": 0.005,
+      "rule_source": "ClinGen_VCEP",
+      "hom_joint": 1,
+      "revised_triage_layer": "L4a_BelowGeneSpecificBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "19-11102741-G-A",
+      "gene": "LDLR",
+      "stars": 3,
+      "hgvs_name": "NM_000527.5(LDLR):c.268G>A (p.Asp90Asn)",
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.0001713440503505,
+      "faf95_nfe": 7.173278258307087e-06,
+      "gene_bs1": 0.002,
+      "gene_ba1": 0.005,
+      "rule_source": "ClinGen_VCEP",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4a_BelowGeneSpecificBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "1-201060816-G-T",
+      "gene": "CACNA1S",
+      "stars": 2,
+      "hgvs_name": "NM_000069.3(CACNA1S):c.3256C>A (p.Arg1086Ser)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.000218481861268,
+      "faf95_nfe": 0.0,
+      "gene_bs1": 0.0008,
+      "gene_ba1": 0.0038,
+      "rule_source": "Whiffin_AD_MH",
+      "hom_joint": 1,
+      "revised_triage_layer": "L4a_BelowGeneSpecificBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "11-47333189-C-G",
+      "gene": "MYBPC3",
+      "stars": 2,
+      "hgvs_name": "NM_000256.3(MYBPC3):c.3330+5G>C",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0001882293305021,
+      "faf95_nfe": 0.0,
+      "gene_bs1": 0.0002,
+      "gene_ba1": 0.001,
+      "rule_source": "ClinGen_VCEP",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4a_BelowGeneSpecificBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "11-2445461-A-AT",
+      "gene": "KCNQ1",
+      "stars": 2,
+      "hgvs_name": "NM_000218.3(KCNQ1):c.364dup (p.Cys122fs)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.0001640677095819,
+      "faf95_nfe": 0.0,
+      "gene_bs1": 0.0002,
+      "gene_ba1": 0.001,
+      "rule_source": "Whiffin_AD_Cardio",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4a_BelowGeneSpecificBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "2-178568947-T-A",
+      "gene": "TTN",
+      "stars": 2,
+      "hgvs_name": "NM_001267550.2(TTN):c.77185A>T (p.Lys25729Ter)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.0001455499483709,
+      "faf95_nfe": 0.0,
+      "gene_bs1": 0.0004,
+      "gene_ba1": 0.001,
+      "rule_source": "Whiffin_AD_DCM",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "19-38505338-CAT-C",
+      "gene": "RYR1",
+      "stars": 2,
+      "hgvs_name": "NM_000540.3(RYR1):c.8342_8343del (p.Ile2781fs)",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0001130514708849,
+      "faf95_nfe": 0.0,
+      "gene_bs1": 0.0008,
+      "gene_ba1": 0.0038,
+      "rule_source": "ClinGen_VCEP",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "11-47337534-C-T",
+      "gene": "MYBPC3",
+      "stars": 2,
+      "hgvs_name": "NM_000256.3(MYBPC3):c.2459G>A (p.Arg820Gln)",
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.0001045847449624,
+      "faf95_nfe": 1.974517682968557e-05,
+      "gene_bs1": 0.0002,
+      "gene_ba1": 0.001,
+      "rule_source": "ClinGen_VCEP",
+      "hom_joint": 0,
+      "revised_triage_layer": "L4a_BelowGeneSpecificBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "3-38613773-G-A",
+      "gene": "SCN5A",
+      "stars": 2,
+      "hgvs_name": "NM_000335.5(SCN5A):c.673C>T (p.Arg225Trp)",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0001027221979164,
+      "faf95_nfe": 1.6896249166222877e-05,
+      "gene_bs1": 0.0002,
+      "gene_ba1": 0.001,
+      "rule_source": "Whiffin_AD_Cardio",
+      "hom_joint": 1,
+      "revised_triage_layer": "L4a_BelowGeneSpecificBS1_TrueADPathogenic"
+    }
+  ],
+  "collapsible_attenuation_acmg84": {
+    "label": "ACMG SF v3.3 (84 Genes, FAF95>=1e-4, AN>=80%)",
+    "n_total": 9974,
+    "n_non_nfe": 9387,
+    "n_nfe": 587,
+    "median_subs_nn": 7.0,
+    "median_subs_nfe": 11.0,
+    "outcomes": {
+      "VUS": {
+        "raw_rate_nn_pct": 12.01,
+        "raw_rate_nfe_pct": 6.47,
+        "lpm_base_rd_pp": 9.136,
+        "lpm_base_se_pp": 1.039,
+        "lpm_base_p": 1.4250765183195511e-18,
+        "lpm_logsubs_rd_pp": 0.094,
+        "lpm_logsubs_se_pp": 1.113,
+        "lpm_logsubs_p": 0.9325243967997154,
+        "lpm_subsbin_rd_pp": 4.292,
+        "lpm_subsbin_se_pp": 1.091,
+        "lpm_subsbin_p": 8.379704944341827e-05,
+        "lpm_rd_attenuation_logsubs_pct": 99.0,
+        "lpm_rd_attenuation_subsbin_pct": 53.0,
+        "logit_base_or": 3.607,
+        "logit_base_p": 2.676947499671126e-11,
+        "logit_logsubs_or": 1.207,
+        "logit_logsubs_p": 0.3781554176842886,
+        "logit_ame_base_pp": 7.391,
+        "logit_ame_logsubs_pp": 1.148,
+        "logit_ame_attenuation_pct": 84.5
+      },
+      "CONFLICTING": {
+        "raw_rate_nn_pct": 43.32,
+        "raw_rate_nfe_pct": 64.22,
+        "lpm_base_rd_pp": -18.26,
+        "lpm_base_se_pp": 1.882,
+        "lpm_base_p": 2.9315038145156833e-22,
+        "lpm_logsubs_rd_pp": -1.518,
+        "lpm_logsubs_se_pp": 1.953,
+        "lpm_logsubs_p": 0.4370651450571673,
+        "lpm_subsbin_rd_pp": -10.6,
+        "lpm_subsbin_se_pp": 1.915,
+        "lpm_subsbin_p": 3.1081631019461335e-08,
+        "lpm_rd_attenuation_logsubs_pct": 91.7,
+        "lpm_rd_attenuation_subsbin_pct": 41.9,
+        "logit_base_or": 0.392,
+        "logit_base_p": 1.6554581532653108e-20,
+        "logit_logsubs_or": 0.953,
+        "logit_logsubs_p": 0.6626695790832311,
+        "logit_ame_base_pp": -17.72,
+        "logit_ame_logsubs_pp": -0.85,
+        "logit_ame_attenuation_pct": 95.2
+      },
+      "B_LB": {
+        "raw_rate_nn_pct": 43.86,
+        "raw_rate_nfe_pct": 28.62,
+        "lpm_base_rd_pp": 8.871,
+        "lpm_base_se_pp": 1.655,
+        "lpm_base_p": 8.363758287080474e-08,
+        "lpm_logsubs_rd_pp": -0.866,
+        "lpm_logsubs_se_pp": 1.725,
+        "lpm_logsubs_p": 0.6155644155807516,
+        "lpm_subsbin_rd_pp": 3.834,
+        "lpm_subsbin_se_pp": 1.721,
+        "lpm_subsbin_p": 0.025879707377300082,
+        "lpm_rd_attenuation_logsubs_pct": 109.8,
+        "lpm_rd_attenuation_subsbin_pct": 56.8,
+        "logit_base_or": 1.931,
+        "logit_base_p": 5.243403410595293e-08,
+        "logit_logsubs_or": 0.9,
+        "logit_logsubs_p": 0.4226651402196536,
+        "logit_ame_base_pp": 8.678,
+        "logit_ame_logsubs_pp": -1.352,
+        "logit_ame_attenuation_pct": 115.6
+      },
+      "P_LP": {
+        "raw_rate_nn_pct": 0.82,
+        "raw_rate_nfe_pct": 0.68,
+        "lpm_base_rd_pp": 0.252,
+        "lpm_base_se_pp": 0.361,
+        "lpm_base_p": 0.48419775710797763,
+        "lpm_logsubs_rd_pp": 2.289,
+        "lpm_logsubs_se_pp": 0.442,
+        "lpm_logsubs_p": 2.285356672940285e-07,
+        "lpm_subsbin_rd_pp": 2.474,
+        "lpm_subsbin_se_pp": 0.431,
+        "lpm_subsbin_p": 9.734595769163242e-09,
+        "lpm_rd_attenuation_logsubs_pct": -807.3,
+        "lpm_rd_attenuation_subsbin_pct": -880.4,
+        "logit_base_or": 1.232,
+        "logit_base_p": 0.7136622989697072,
+        "logit_logsubs_or": 5.96,
+        "logit_logsubs_p": 0.0157654684780959,
+        "logit_ame_base_pp": 0.182,
+        "logit_ame_logsubs_pp": 0.856,
+        "logit_ame_attenuation_pct": -370.2
+      }
+    },
+    "stratified_by_submitter_tier": {
+      "1": {
+        "n_nn": 548,
+        "n_nfe": 6,
+        "vus_nn_pct": 44.89,
+        "vus_nfe_pct": 50.0,
+        "vus_fisher_p": 1.0,
+        "conf_nn_pct": 2.37,
+        "conf_nfe_pct": 0.0,
+        "conf_fisher_p": 1.0
+      },
+      "2_3": {
+        "n_nn": 1530,
+        "n_nfe": 24,
+        "vus_nn_pct": 25.1,
+        "vus_nfe_pct": 12.5,
+        "vus_fisher_p": 0.23245053052272657,
+        "conf_nn_pct": 31.44,
+        "conf_nfe_pct": 37.5,
+        "conf_fisher_p": 0.5134403469418375
+      },
+      "4_9": {
+        "n_nn": 4305,
+        "n_nfe": 195,
+        "vus_nn_pct": 9.62,
+        "vus_nfe_pct": 10.77,
+        "vus_fisher_p": 0.6193583460082814,
+        "conf_nn_pct": 52.38,
+        "conf_nfe_pct": 60.0,
+        "conf_fisher_p": 0.03997908723297032
+      },
+      "10_19": {
+        "n_nn": 2562,
+        "n_nfe": 271,
+        "vus_nn_pct": 2.93,
+        "vus_nfe_pct": 3.69,
+        "vus_fisher_p": 0.4539887159363116,
+        "conf_nn_pct": 46.96,
+        "conf_nfe_pct": 75.28,
+        "conf_fisher_p": 2.218368300313134e-19
+      },
+      "20p": {
+        "n_nn": 442,
+        "n_nfe": 91,
+        "vus_nn_pct": 1.81,
+        "vus_nfe_pct": 1.1,
+        "vus_fisher_p": 1.0,
+        "conf_nn_pct": 25.79,
+        "conf_nfe_pct": 51.65,
+        "conf_fisher_p": 2.537626477145956e-06
+      }
+    },
+    "last_evaluated_audit": {
+      "median_year_nn": 2026.0,
+      "median_year_nfe": 2026.0,
+      "mean_year_nn": 2024.94,
+      "mean_year_nfe": 2025.15,
+      "post_2023_share_nn": 0.8975,
+      "post_2023_share_nfe": 0.9302,
+      "mw_p": 2.0752522606692497e-08,
+      "ols_year_diff_nn_vs_nfe": -0.313,
+      "ols_year_se": 0.082,
+      "ols_year_p": 0.0001384300171262725
+    }
+  },
+  "collapsible_attenuation_unseen20": {
+    "label": "Prospective Unseen 20 Non-ACMG AD Genes (FAF95>=1e-4, AN>=80%)",
+    "n_total": 2522,
+    "n_non_nfe": 2371,
+    "n_nfe": 151,
+    "median_subs_nn": 4.0,
+    "median_subs_nfe": 8.0,
+    "outcomes": {
+      "VUS": {
+        "raw_rate_nn_pct": 16.45,
+        "raw_rate_nfe_pct": 9.93,
+        "lpm_base_rd_pp": 10.839,
+        "lpm_base_se_pp": 2.393,
+        "lpm_base_p": 5.931729713586907e-06,
+        "lpm_logsubs_rd_pp": 2.871,
+        "lpm_logsubs_se_pp": 2.501,
+        "lpm_logsubs_p": 0.2509162920385226,
+        "lpm_subsbin_rd_pp": 5.421,
+        "lpm_subsbin_se_pp": 2.435,
+        "lpm_subsbin_p": 0.02601374335438046,
+        "lpm_rd_attenuation_logsubs_pct": 73.5,
+        "lpm_rd_attenuation_subsbin_pct": 50.0,
+        "logit_base_or": 3.483,
+        "logit_base_p": 0.00023054699818597575,
+        "logit_logsubs_or": 1.228,
+        "logit_logsubs_p": 0.592144176435444,
+        "logit_ame_base_pp": 7.917,
+        "logit_ame_logsubs_pp": 1.301,
+        "logit_ame_attenuation_pct": 83.6
+      },
+      "CONFLICTING": {
+        "raw_rate_nn_pct": 28.13,
+        "raw_rate_nfe_pct": 50.33,
+        "lpm_base_rd_pp": -19.723,
+        "lpm_base_se_pp": 3.691,
+        "lpm_base_p": 9.144496576237835e-08,
+        "lpm_logsubs_rd_pp": -4.519,
+        "lpm_logsubs_se_pp": 3.819,
+        "lpm_logsubs_p": 0.2367204513499246,
+        "lpm_subsbin_rd_pp": -9.325,
+        "lpm_subsbin_se_pp": 3.767,
+        "lpm_subsbin_p": 0.013316180195677303,
+        "lpm_rd_attenuation_logsubs_pct": 77.1,
+        "lpm_rd_attenuation_subsbin_pct": 52.7,
+        "logit_base_or": 0.333,
+        "logit_base_p": 3.1105172046746704e-08,
+        "logit_logsubs_or": 0.845,
+        "logit_logsubs_p": 0.4517937203167467,
+        "logit_ame_base_pp": -18.738,
+        "logit_ame_logsubs_pp": -2.435,
+        "logit_ame_attenuation_pct": 87.0
+      },
+      "B_LB": {
+        "raw_rate_nn_pct": 54.96,
+        "raw_rate_nfe_pct": 38.41,
+        "lpm_base_rd_pp": 9.397,
+        "lpm_base_se_pp": 3.259,
+        "lpm_base_p": 0.003928654337372107,
+        "lpm_logsubs_rd_pp": 1.495,
+        "lpm_logsubs_se_pp": 3.451,
+        "lpm_logsubs_p": 0.6648726337969089,
+        "lpm_subsbin_rd_pp": 3.692,
+        "lpm_subsbin_se_pp": 3.437,
+        "lpm_subsbin_p": 0.28281180787439264,
+        "lpm_rd_attenuation_logsubs_pct": 84.1,
+        "lpm_rd_attenuation_subsbin_pct": 60.7,
+        "logit_base_or": 2.16,
+        "logit_base_p": 0.0015995653106953404,
+        "logit_logsubs_or": 1.199,
+        "logit_logsubs_p": 0.4924586081178395,
+        "logit_ame_base_pp": 9.347,
+        "logit_ame_logsubs_pp": 2.158,
+        "logit_ame_attenuation_pct": 76.9
+      },
+      "P_LP": {
+        "raw_rate_nn_pct": 0.46,
+        "raw_rate_nfe_pct": 1.32,
+        "lpm_base_rd_pp": -0.513,
+        "lpm_base_se_pp": 0.512,
+        "lpm_base_p": 0.3166536257545598,
+        "lpm_logsubs_rd_pp": 0.153,
+        "lpm_logsubs_se_pp": 0.583,
+        "lpm_logsubs_p": 0.7928102620846262,
+        "lpm_subsbin_rd_pp": 0.212,
+        "lpm_subsbin_se_pp": 0.632,
+        "lpm_subsbin_p": 0.7367937942341615,
+        "lpm_rd_attenuation_logsubs_pct": 129.8,
+        "lpm_rd_attenuation_subsbin_pct": 141.4,
+        "logit_base_or": null,
+        "logit_base_p": null,
+        "logit_logsubs_or": null,
+        "logit_logsubs_p": null,
+        "logit_ame_base_pp": null,
+        "logit_ame_logsubs_pp": null,
+        "logit_ame_attenuation_pct": null
+      }
+    },
+    "stratified_by_submitter_tier": {
+      "1": {
+        "n_nn": 363,
+        "n_nfe": 8,
+        "vus_nn_pct": 38.29,
+        "vus_nfe_pct": 62.5,
+        "vus_fisher_p": 0.2699836295280955,
+        "conf_nn_pct": 0.28,
+        "conf_nfe_pct": 0.0,
+        "conf_fisher_p": 1.0
+      },
+      "2_3": {
+        "n_nn": 655,
+        "n_nfe": 19,
+        "vus_nn_pct": 25.04,
+        "vus_nfe_pct": 31.58,
+        "vus_fisher_p": 0.5916107312405621,
+        "conf_nn_pct": 24.73,
+        "conf_nfe_pct": 26.32,
+        "conf_fisher_p": 0.7936941186346915
+      },
+      "4_9": {
+        "n_nn": 883,
+        "n_nfe": 64,
+        "vus_nn_pct": 7.7,
+        "vus_nfe_pct": 6.25,
+        "vus_fisher_p": 1.0,
+        "conf_nn_pct": 35.11,
+        "conf_nfe_pct": 54.69,
+        "conf_fisher_p": 0.0027953621541897044
+      },
+      "10_19": {
+        "n_nn": 380,
+        "n_nfe": 42,
+        "vus_nn_pct": 4.47,
+        "vus_nfe_pct": 0.0,
+        "vus_fisher_p": 0.3958593866319428,
+        "conf_nn_pct": 41.05,
+        "conf_nfe_pct": 57.14,
+        "conf_fisher_p": 0.04970762845032009
+      },
+      "20p": {
+        "n_nn": 90,
+        "n_nfe": 18,
+        "vus_nn_pct": 2.22,
+        "vus_nfe_pct": 0.0,
+        "vus_fisher_p": 1.0,
+        "conf_nn_pct": 42.22,
+        "conf_nfe_pct": 66.67,
+        "conf_fisher_p": 0.07211866140381257
+      }
+    },
+    "last_evaluated_audit": {
+      "median_year_nn": 2025.0,
+      "median_year_nfe": 2026.0,
+      "mean_year_nn": 2024.91,
+      "mean_year_nfe": 2025.36,
+      "post_2023_share_nn": 0.8718,
+      "post_2023_share_nfe": 0.9139,
+      "mw_p": 6.198265433026902e-07,
+      "ols_year_diff_nn_vs_nfe": -0.54,
+      "ols_year_se": 0.1,
+      "ols_year_p": 5.985395385985352e-08
+    }
+  }
+}

@@ -1,0 +1,806 @@
+{
+  "executed_at": "2026-11-25 10:28:54 CST",
+  "elapsed_sec": 151.9,
+  "tier_gene_counts": {
+    "Tier3_Johnston2026_Published_DAFT": 47,
+    "Tier1_ClinGen_CSpec_Released_VCEP": 30,
+    "Tier2_Johnston2026_Prelim_VCEP": 6,
+    "Tier4_ACMG_SF_SingleVariant_Excluded": 1
+  },
+  "ad55_verified_t05_counts": {
+    "L2_BottleneckFounder_FIN_ASJ": 22,
+    "L3_EstablishedContinentalFounder_LowPen": 14,
+    "L1_QC_or_Callability_Artifact": 8,
+    "L4a_BelowVerifiedBS1_TrueADPathogenic": 6,
+    "L4b_AR_in_DualMode_AD_Gene_ReturnHazard": 4,
+    "L4c_ExceedsVerifiedBS1_BelowBA1_ReducedPenOrReview": 1
+  },
+  "ad55_l4_all11_verified": [
+    {
+      "variant_id": "19-38527014-C-T",
+      "gene": "RYR1",
+      "stars": 3,
+      "hgvs_name": "NM_000540.3(RYR1):c.10648C>T (p.Arg3550Trp)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.0014425383871802,
+      "eval_freq_faithful": 0.0016690457889535523,
+      "gene_bs1": 0.0008,
+      "gene_ba1": 0.0038,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN012",
+      "freq_metric": "Grpmax_AF_5cont",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "19-38523211-C-G",
+      "gene": "RYR1",
+      "stars": 3,
+      "hgvs_name": "NM_000540.3(RYR1):c.10348-6C>G",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0003217012835649,
+      "eval_freq_faithful": 0.00045286235648259144,
+      "gene_bs1": 0.0008,
+      "gene_ba1": 0.0038,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN012",
+      "freq_metric": "Grpmax_AF_5cont",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "19-11116900-C-T",
+      "gene": "LDLR",
+      "stars": 3,
+      "hgvs_name": "NM_000527.5(LDLR):c.1747C>T (p.His583Tyr)",
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.0003134360466041,
+      "eval_freq_faithful": 0.00031343604660418107,
+      "gene_bs1": 0.002,
+      "gene_ba1": 0.005,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN013",
+      "freq_metric": "Grpmax_FAF95",
+      "hom_joint": 1,
+      "verified_t05_layer": "L4a_BelowVerifiedBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "19-11102741-G-A",
+      "gene": "LDLR",
+      "stars": 3,
+      "hgvs_name": "NM_000527.5(LDLR):c.268G>A (p.Asp90Asn)",
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.0001713440503505,
+      "eval_freq_faithful": 0.00017134405035052519,
+      "gene_bs1": 0.002,
+      "gene_ba1": 0.005,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN013",
+      "freq_metric": "Grpmax_FAF95",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4a_BelowVerifiedBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "1-201060816-G-T",
+      "gene": "CACNA1S",
+      "stars": 2,
+      "hgvs_name": "NM_000069.3(CACNA1S):c.3256C>A (p.Arg1086Ser)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.000218481861268,
+      "eval_freq_faithful": 0.00021848186126809422,
+      "gene_bs1": 5e-05,
+      "gene_ba1": 0.0005,
+      "tier_source": "Tier3_Johnston2026_Published_DAFT",
+      "cspec_id": "DAFT_NoReleasedVCEP",
+      "freq_metric": "Grpmax_FAF95",
+      "hom_joint": 1,
+      "verified_t05_layer": "L4c_ExceedsVerifiedBS1_BelowBA1_ReducedPenOrReview"
+    },
+    {
+      "variant_id": "11-47333189-C-G",
+      "gene": "MYBPC3",
+      "stars": 2,
+      "hgvs_name": "NM_000256.3(MYBPC3):c.3330+5G>C",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0001882293305021,
+      "eval_freq_faithful": 0.00018822933050215775,
+      "gene_bs1": 0.0002,
+      "gene_ba1": 0.001,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN095",
+      "freq_metric": "Grpmax_FAF95",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4a_BelowVerifiedBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "11-2445461-A-AT",
+      "gene": "KCNQ1",
+      "stars": 2,
+      "hgvs_name": "NM_000218.3(KCNQ1):c.364dup (p.Cys122fs)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.0001640677095819,
+      "eval_freq_faithful": 0.0002533653528387935,
+      "gene_bs1": 0.0004,
+      "gene_ba1": 0.004,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN112",
+      "freq_metric": "Grpmax_AF_5cont",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4a_BelowVerifiedBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "2-178568947-T-A",
+      "gene": "TTN",
+      "stars": 2,
+      "hgvs_name": "NM_001267550.2(TTN):c.77185A>T (p.Lys25729Ter)",
+      "faf95_pop8": "sas",
+      "faf95_max8": 0.0001455499483709,
+      "eval_freq_faithful": 0.0001455499483709239,
+      "gene_bs1": 0.001299,
+      "gene_ba1": 0.01299,
+      "tier_source": "Tier3_Johnston2026_Published_DAFT",
+      "cspec_id": "DAFT_NoReleasedVCEP",
+      "freq_metric": "Grpmax_FAF95",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "19-38505338-CAT-C",
+      "gene": "RYR1",
+      "stars": 2,
+      "hgvs_name": "NM_000540.3(RYR1):c.8342_8343del (p.Ile2781fs)",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0001130514708849,
+      "eval_freq_faithful": 0.0002003526206122776,
+      "gene_bs1": 0.0008,
+      "gene_ba1": 0.0038,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN012",
+      "freq_metric": "Grpmax_AF_5cont",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4b_AR_in_DualMode_AD_Gene_ReturnHazard"
+    },
+    {
+      "variant_id": "11-47337534-C-T",
+      "gene": "MYBPC3",
+      "stars": 2,
+      "hgvs_name": "NM_000256.3(MYBPC3):c.2459G>A (p.Arg820Gln)",
+      "faf95_pop8": "eas",
+      "faf95_max8": 0.0001045847449624,
+      "eval_freq_faithful": 0.00010458474496245583,
+      "gene_bs1": 0.0002,
+      "gene_ba1": 0.001,
+      "tier_source": "Tier1_ClinGen_CSpec_Released_VCEP",
+      "cspec_id": "GN095",
+      "freq_metric": "Grpmax_FAF95",
+      "hom_joint": 0,
+      "verified_t05_layer": "L4a_BelowVerifiedBS1_TrueADPathogenic"
+    },
+    {
+      "variant_id": "3-38613773-G-A",
+      "gene": "SCN5A",
+      "stars": 2,
+      "hgvs_name": "NM_000335.5(SCN5A):c.673C>T (p.Arg225Trp)",
+      "faf95_pop8": "afr",
+      "faf95_max8": 0.0001027221979164,
+      "eval_freq_faithful": 0.00010272219791646677,
+      "gene_bs1": 0.00103,
+      "gene_ba1": 0.01033,
+      "tier_source": "Tier3_Johnston2026_Published_DAFT",
+      "cspec_id": "DAFT_NoReleasedVCEP",
+      "freq_metric": "Grpmax_FAF95",
+      "hom_joint": 1,
+      "verified_t05_layer": "L4a_BelowVerifiedBS1_TrueADPathogenic"
+    }
+  ],
+  "vus_t05_verified_summary": {
+    "tier1_cspec_30_faithful": {
+      "label": "Tier 1: 30 Officially Released ClinGen CSpec VCEP Genes (Rule-Faithful AF/FAF)",
+      "mode": "faithful",
+      "n_genes": 28,
+      "n_hc_vus": 17719,
+      "bs1": {
+        "n": 311,
+        "n_nfe_invisible": 243,
+        "nfe_invisible_pct": 78.1,
+        "by_pop5": {
+          "sas": 79,
+          "eas": 66,
+          "nfe": 66,
+          "afr": 59,
+          "amr": 41
+        },
+        "top_genes": {
+          "APC": 107,
+          "FBN1": 93,
+          "HNF1A": 22,
+          "VHL": 13,
+          "PTEN": 10,
+          "MYH7": 10,
+          "RYR1": 8,
+          "MYBPC3": 6,
+          "BRCA2": 5,
+          "MLH1": 4,
+          "ACTC1": 4,
+          "MYL2": 3
+        }
+      },
+      "ba1": {
+        "n": 15,
+        "n_nfe_invisible": 13,
+        "nfe_invisible_pct": 86.7,
+        "by_pop5": {
+          "eas": 6,
+          "afr": 5,
+          "amr": 2,
+          "nfe": 2
+        },
+        "top_genes": {
+          "HNF1A": 7,
+          "MSH6": 1,
+          "VHL": 1,
+          "PMS2": 1,
+          "PTEN": 1,
+          "MYBPC3": 1,
+          "ACTC1": 1,
+          "FBN1": 1,
+          "RYR1": 1
+        }
+      }
+    },
+    "tier1_cspec_30_faf95_uniform": {
+      "label": "Tier 1: 30 Officially Released ClinGen CSpec VCEP Genes (Conservative FAF95 Only)",
+      "mode": "faf95",
+      "n_genes": 28,
+      "n_hc_vus": 17719,
+      "bs1": {
+        "n": 236,
+        "n_nfe_invisible": 173,
+        "nfe_invisible_pct": 73.3,
+        "by_pop5": {
+          "sas": 62,
+          "nfe": 61,
+          "afr": 50,
+          "eas": 39,
+          "amr": 24
+        },
+        "top_genes": {
+          "APC": 107,
+          "FBN1": 25,
+          "HNF1A": 22,
+          "VHL": 13,
+          "PTEN": 10,
+          "MYH7": 10,
+          "MYBPC3": 6,
+          "BRCA2": 5,
+          "MLH1": 4,
+          "ACTC1": 4,
+          "MYL2": 3,
+          "LDLR": 3
+        }
+      },
+      "ba1": {
+        "n": 15,
+        "n_nfe_invisible": 13,
+        "nfe_invisible_pct": 86.7,
+        "by_pop5": {
+          "eas": 6,
+          "afr": 5,
+          "amr": 2,
+          "nfe": 2
+        },
+        "top_genes": {
+          "HNF1A": 7,
+          "MSH6": 1,
+          "VHL": 1,
+          "PMS2": 1,
+          "PTEN": 1,
+          "MYBPC3": 1,
+          "ACTC1": 1,
+          "FBN1": 1,
+          "RYR1": 1
+        }
+      }
+    },
+    "tier1_cspec_28_excl_brca_noncancer": {
+      "label": "Tier 1 Sensitivity: 28 Released CSpec Genes Excl. BRCA1/2 Non-Cancer Caveat",
+      "mode": "faithful",
+      "n_genes": 26,
+      "n_hc_vus": 16320,
+      "bs1": {
+        "n": 304,
+        "n_nfe_invisible": 236,
+        "nfe_invisible_pct": 77.6,
+        "by_pop5": {
+          "sas": 75,
+          "nfe": 66,
+          "eas": 65,
+          "afr": 58,
+          "amr": 40
+        },
+        "top_genes": {
+          "APC": 107,
+          "FBN1": 93,
+          "HNF1A": 22,
+          "VHL": 13,
+          "PTEN": 10,
+          "MYH7": 10,
+          "RYR1": 8,
+          "MYBPC3": 6,
+          "MLH1": 4,
+          "ACTC1": 4,
+          "LDLR": 3,
+          "TPM1": 3
+        }
+      },
+      "ba1": {
+        "n": 15,
+        "n_nfe_invisible": 13,
+        "nfe_invisible_pct": 86.7,
+        "by_pop5": {
+          "eas": 6,
+          "afr": 5,
+          "amr": 2,
+          "nfe": 2
+        },
+        "top_genes": {
+          "HNF1A": 7,
+          "MSH6": 1,
+          "VHL": 1,
+          "PMS2": 1,
+          "PTEN": 1,
+          "MYBPC3": 1,
+          "ACTC1": 1,
+          "FBN1": 1,
+          "RYR1": 1
+        }
+      }
+    },
+    "tier2_prelim_vcep_6": {
+      "label": "Tier 2: 6 Preliminary VCEP Genes (Johnston 2026 Table 1)",
+      "mode": "faithful",
+      "n_genes": 6,
+      "n_hc_vus": 2854,
+      "bs1": {
+        "n": 99,
+        "n_nfe_invisible": 42,
+        "nfe_invisible_pct": 42.4,
+        "by_pop5": {
+          "nfe": 54,
+          "sas": 17,
+          "eas": 10,
+          "amr": 9,
+          "afr": 9
+        },
+        "top_genes": {
+          "BMPR1A": 48,
+          "SMAD4": 28,
+          "PCSK9": 19,
+          "CYP27A1": 3,
+          "APOB": 1
+        }
+      },
+      "ba1": {
+        "n": 9,
+        "n_nfe_invisible": 7,
+        "nfe_invisible_pct": 77.8,
+        "by_pop5": {
+          "sas": 2,
+          "amr": 2,
+          "eas": 2,
+          "nfe": 2,
+          "afr": 1
+        },
+        "top_genes": {
+          "PCSK9": 6,
+          "BMPR1A": 2,
+          "APOB": 1
+        }
+      }
+    },
+    "tier3_johnston_daft_47": {
+      "label": "Tier 3: 47 Published DAFT Genes (Johnston 2026 Tables 2-3)",
+      "mode": "faithful",
+      "n_genes": 46,
+      "n_hc_vus": 30211,
+      "bs1": {
+        "n": 961,
+        "n_nfe_invisible": 468,
+        "nfe_invisible_pct": 48.7,
+        "by_pop5": {
+          "nfe": 418,
+          "sas": 172,
+          "afr": 147,
+          "amr": 113,
+          "eas": 111
+        },
+        "top_genes": {
+          "MYH11": 413,
+          "WT1": 60,
+          "TMEM43": 56,
+          "RYR2": 53,
+          "TGFBR1": 41,
+          "COL3A1": 40,
+          "SMAD3": 30,
+          "TGFBR2": 29,
+          "SDHAF2": 25,
+          "PRKAG2": 23,
+          "CACNA1S": 22,
+          "RET": 21
+        }
+      },
+      "ba1": {
+        "n": 216,
+        "n_nfe_invisible": 164,
+        "nfe_invisible_pct": 75.9,
+        "by_pop5": {
+          "sas": 48,
+          "afr": 48,
+          "nfe": 46,
+          "amr": 37,
+          "eas": 37
+        },
+        "top_genes": {
+          "MYH11": 146,
+          "TGFBR1": 13,
+          "WT1": 12,
+          "TMEM43": 11,
+          "RET": 5,
+          "SDHAF2": 5,
+          "SMAD3": 5,
+          "NF2": 4,
+          "CACNA1S": 3,
+          "CALM2": 3,
+          "TGFBR2": 3,
+          "RYR2": 2
+        }
+      }
+    },
+    "all_83_verified_faithful": {
+      "label": "All 83 Thresholded ACMG SF v3.3 Genes (30 CSpec + 6 Prelim + 47 Johnston DAFT; Faithful)",
+      "mode": "faithful",
+      "n_genes": 80,
+      "n_hc_vus": 50784,
+      "bs1": {
+        "n": 1371,
+        "n_nfe_invisible": 753,
+        "nfe_invisible_pct": 54.9,
+        "by_pop5": {
+          "nfe": 538,
+          "sas": 268,
+          "afr": 215,
+          "eas": 187,
+          "amr": 163
+        },
+        "top_genes": {
+          "MYH11": 413,
+          "APC": 107,
+          "FBN1": 93,
+          "WT1": 60,
+          "TMEM43": 56,
+          "RYR2": 53,
+          "BMPR1A": 48,
+          "TGFBR1": 41,
+          "COL3A1": 40,
+          "SMAD3": 30,
+          "TGFBR2": 29,
+          "SMAD4": 28
+        }
+      },
+      "ba1": {
+        "n": 240,
+        "n_nfe_invisible": 184,
+        "nfe_invisible_pct": 76.7,
+        "by_pop5": {
+          "afr": 54,
+          "sas": 50,
+          "nfe": 50,
+          "eas": 45,
+          "amr": 41
+        },
+        "top_genes": {
+          "MYH11": 146,
+          "TGFBR1": 13,
+          "WT1": 12,
+          "TMEM43": 11,
+          "HNF1A": 7,
+          "PCSK9": 6,
+          "SMAD3": 5,
+          "SDHAF2": 5,
+          "RET": 5,
+          "NF2": 4,
+          "TGFBR2": 3,
+          "CACNA1S": 3
+        }
+      }
+    },
+    "all_83_verified_faf95_uniform": {
+      "label": "All 83 Thresholded ACMG SF v3.3 Genes (Conservative FAF95 Only)",
+      "mode": "faf95",
+      "n_genes": 80,
+      "n_hc_vus": 50784,
+      "bs1": {
+        "n": 1296,
+        "n_nfe_invisible": 683,
+        "nfe_invisible_pct": 52.7,
+        "by_pop5": {
+          "nfe": 533,
+          "sas": 251,
+          "afr": 206,
+          "eas": 160,
+          "amr": 146
+        },
+        "top_genes": {
+          "MYH11": 413,
+          "APC": 107,
+          "WT1": 60,
+          "TMEM43": 56,
+          "RYR2": 53,
+          "BMPR1A": 48,
+          "TGFBR1": 41,
+          "COL3A1": 40,
+          "SMAD3": 30,
+          "TGFBR2": 29,
+          "SMAD4": 28,
+          "FBN1": 25
+        }
+      },
+      "ba1": {
+        "n": 240,
+        "n_nfe_invisible": 184,
+        "nfe_invisible_pct": 76.7,
+        "by_pop5": {
+          "afr": 54,
+          "sas": 50,
+          "nfe": 50,
+          "eas": 45,
+          "amr": 41
+        },
+        "top_genes": {
+          "MYH11": 146,
+          "TGFBR1": 13,
+          "WT1": 12,
+          "TMEM43": 11,
+          "HNF1A": 7,
+          "PCSK9": 6,
+          "SMAD3": 5,
+          "SDHAF2": 5,
+          "RET": 5,
+          "NF2": 4,
+          "TGFBR2": 3,
+          "CACNA1S": 3
+        }
+      }
+    }
+  },
+  "vus_t05_live_qc_spotcheck_20": {
+    "n_checked": 20,
+    "n_pass": 20,
+    "n_fail": 0,
+    "pass_rate": 1.0,
+    "details": [
+      {
+        "variant_id": "5-112842294-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "15-48428432-T-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "10-87958026-A-G",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "19-55151790-T-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "19-11105250-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "5-112842722-GAACCTTACCAAACAA-G",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "12-120979013-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "15-48446778-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "10-87864404-A-C",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "5-112840660-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "16-15745173-A-G",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "15-67138094-TG-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "16-15708831-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "2-189008101-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "7-150948477-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "16-15724778-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "3-30606858-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "3-14131575-T-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "16-15763816-G-A",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      },
+      {
+        "variant_id": "16-15735436-C-T",
+        "exome_filters": [],
+        "genome_filters": [],
+        "flags": [],
+        "qc_fail": false
+      }
+    ]
+  },
+  "vus_ac_ge5_sensitivity": {
+    "Tier1_ClinGen_CSpec_Released_VCEP": {
+      "all_n": 311,
+      "all_nfe_inv_pct": 78.1,
+      "all_by_pop5": {
+        "sas": 79,
+        "eas": 66,
+        "nfe": 66,
+        "afr": 59,
+        "amr": 41
+      },
+      "ac_ge5_n": 262,
+      "ac_ge5_nfe_inv_pct": 74.0,
+      "ac_ge5_by_pop5": {
+        "sas": 79,
+        "nfe": 66,
+        "eas": 47,
+        "afr": 41,
+        "amr": 29
+      }
+    },
+    "Tier2_Johnston2026_Prelim_VCEP": {
+      "all_n": 99,
+      "all_nfe_inv_pct": 42.4,
+      "all_by_pop5": {
+        "nfe": 54,
+        "sas": 17,
+        "eas": 10,
+        "afr": 9,
+        "amr": 9
+      },
+      "ac_ge5_n": 76,
+      "ac_ge5_nfe_inv_pct": 25.0,
+      "ac_ge5_by_pop5": {
+        "nfe": 54,
+        "sas": 7,
+        "amr": 6,
+        "afr": 5,
+        "eas": 4
+      }
+    },
+    "Tier3_Johnston2026_Published_DAFT": {
+      "all_n": 961,
+      "all_nfe_inv_pct": 48.7,
+      "all_by_pop5": {
+        "nfe": 418,
+        "sas": 172,
+        "afr": 147,
+        "amr": 113,
+        "eas": 111
+      },
+      "ac_ge5_n": 869,
+      "ac_ge5_nfe_inv_pct": 43.3,
+      "ac_ge5_by_pop5": {
+        "nfe": 418,
+        "sas": 151,
+        "afr": 112,
+        "eas": 95,
+        "amr": 93
+      }
+    },
+    "ALL_83": {
+      "all_n": 1371,
+      "all_nfe_inv_pct": 54.9,
+      "all_by_pop5": {
+        "nfe": 538,
+        "sas": 268,
+        "afr": 215,
+        "eas": 187,
+        "amr": 163
+      },
+      "ac_ge5_n": 1207,
+      "ac_ge5_nfe_inv_pct": 48.8,
+      "ac_ge5_by_pop5": {
+        "nfe": 538,
+        "sas": 237,
+        "afr": 158,
+        "eas": 146,
+        "amr": 128
+      }
+    }
+  }
+}

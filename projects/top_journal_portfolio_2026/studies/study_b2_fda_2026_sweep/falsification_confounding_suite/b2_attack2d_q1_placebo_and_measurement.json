@@ -1,0 +1,846 @@
+{
+  "classification": "POST_HOC_EXPLORATORY_FALSIFICATION",
+  "sponsor_fe_causal_boundary": "Sponsor x Month (or Sponsor x Period) fixed effects absorb ONLY shocks common across all status cells (Overdue and On-Time) within the same sponsor-period. Status-differential shocks within a sponsor-period, dynamic risk-set selection (into Overdue vs On-Time and into dual-status multi-trial firms), and reporting/eligibility measurement error remain unabsorbed; thus neither a significant nor a null Sponsor x Period FE estimate alone guarantees causal identification.",
+  "q1_calendar_placebo_2024_2025_vs_2026": [
+    {
+      "year": 2024,
+      "window": "Feb 1-28",
+      "start_md": "02-01",
+      "end_md": "02-28",
+      "days": 28,
+      "ind_od_events": 33,
+      "ind_od_rate30_pct": 3.818,
+      "ind_ot_events": 39,
+      "ind_ot_rate30_pct": 3.9149,
+      "acad_od_events": 37,
+      "acad_od_rate30_pct": 6.4258,
+      "acad_ot_events": 42,
+      "acad_ot_rate30_pct": 5.0344,
+      "ind_od_ot_ratio": 0.9752,
+      "acad_od_ot_ratio": 1.2764
+    },
+    {
+      "year": 2024,
+      "window": "Mar 1-29 (Pre-Mar30)",
+      "start_md": "03-01",
+      "end_md": "03-29",
+      "days": 29,
+      "ind_od_events": 64,
+      "ind_od_rate30_pct": 7.0849,
+      "ind_ot_events": 48,
+      "ind_ot_rate30_pct": 4.6607,
+      "acad_od_events": 56,
+      "acad_od_rate30_pct": 9.7433,
+      "acad_ot_events": 38,
+      "acad_ot_rate30_pct": 4.3494,
+      "ind_od_ot_ratio": 1.5201,
+      "acad_od_ot_ratio": 2.2401
+    },
+    {
+      "year": 2024,
+      "window": "Mar 30-31 (Q1 Final 2d)",
+      "start_md": "03-30",
+      "end_md": "03-31",
+      "days": 2,
+      "ind_od_events": 0,
+      "ind_od_rate30_pct": 0.0,
+      "ind_ot_events": 0,
+      "ind_ot_rate30_pct": 0.0,
+      "acad_od_events": 1,
+      "acad_od_rate30_pct": 2.5773,
+      "acad_ot_events": 0,
+      "acad_ot_rate30_pct": 0.0,
+      "ind_od_ot_ratio": null,
+      "acad_od_ot_ratio": null
+    },
+    {
+      "year": 2024,
+      "window": "Apr 1-12 (Q1-Donut Pure Window)",
+      "start_md": "04-01",
+      "end_md": "04-12",
+      "days": 12,
+      "ind_od_events": 40,
+      "ind_od_rate30_pct": 10.7867,
+      "ind_ot_events": 13,
+      "ind_ot_rate30_pct": 3.1147,
+      "acad_od_events": 19,
+      "acad_od_rate30_pct": 8.1361,
+      "acad_ot_events": 22,
+      "acad_ot_rate30_pct": 6.0765,
+      "ind_od_ot_ratio": 3.4632,
+      "acad_od_ot_ratio": 1.3389
+    },
+    {
+      "year": 2024,
+      "window": "Mar 30-Apr 12 (Full 14d Window)",
+      "start_md": "03-30",
+      "end_md": "04-12",
+      "days": 14,
+      "ind_od_events": 40,
+      "ind_od_rate30_pct": 9.2333,
+      "ind_ot_events": 13,
+      "ind_ot_rate30_pct": 2.6691,
+      "acad_od_events": 20,
+      "acad_od_rate30_pct": 7.3441,
+      "acad_ot_events": 22,
+      "acad_ot_rate30_pct": 5.216,
+      "ind_od_ot_ratio": 3.4593,
+      "acad_od_ot_ratio": 1.408
+    },
+    {
+      "year": 2024,
+      "window": "Apr 13-30 (Post-Apr13 Window)",
+      "start_md": "04-13",
+      "end_md": "04-30",
+      "days": 18,
+      "ind_od_events": 25,
+      "ind_od_rate30_pct": 4.5253,
+      "ind_ot_events": 25,
+      "ind_ot_rate30_pct": 3.9736,
+      "acad_od_events": 19,
+      "acad_od_rate30_pct": 5.3642,
+      "acad_ot_events": 27,
+      "acad_ot_rate30_pct": 5.0396,
+      "ind_od_ot_ratio": 1.1388,
+      "acad_od_ot_ratio": 1.0644
+    },
+    {
+      "year": 2025,
+      "window": "Feb 1-28",
+      "start_md": "02-01",
+      "end_md": "02-28",
+      "days": 28,
+      "ind_od_events": 51,
+      "ind_od_rate30_pct": 5.6745,
+      "ind_ot_events": 29,
+      "ind_ot_rate30_pct": 3.0565,
+      "acad_od_events": 41,
+      "acad_od_rate30_pct": 6.8354,
+      "acad_ot_events": 43,
+      "acad_ot_rate30_pct": 5.9003,
+      "ind_od_ot_ratio": 1.8565,
+      "acad_od_ot_ratio": 1.1585
+    },
+    {
+      "year": 2025,
+      "window": "Mar 1-29 (Pre-Mar30)",
+      "start_md": "03-01",
+      "end_md": "03-29",
+      "days": 29,
+      "ind_od_events": 35,
+      "ind_od_rate30_pct": 3.7147,
+      "ind_ot_events": 57,
+      "ind_ot_rate30_pct": 5.9846,
+      "acad_od_events": 49,
+      "acad_od_rate30_pct": 7.9361,
+      "acad_ot_events": 37,
+      "acad_ot_rate30_pct": 4.9503,
+      "ind_od_ot_ratio": 0.6207,
+      "acad_od_ot_ratio": 1.6032
+    },
+    {
+      "year": 2025,
+      "window": "Mar 30-31 (Q1 Final 2d)",
+      "start_md": "03-30",
+      "end_md": "03-31",
+      "days": 2,
+      "ind_od_events": 1,
+      "ind_od_rate30_pct": 1.5411,
+      "ind_ot_events": 0,
+      "ind_ot_rate30_pct": 0.0,
+      "acad_od_events": 4,
+      "acad_od_rate30_pct": 9.6017,
+      "acad_ot_events": 3,
+      "acad_ot_rate30_pct": 5.8609,
+      "ind_od_ot_ratio": null,
+      "acad_od_ot_ratio": 1.6383
+    },
+    {
+      "year": 2025,
+      "window": "Apr 1-12 (Q1-Donut Pure Window)",
+      "start_md": "04-01",
+      "end_md": "04-12",
+      "days": 12,
+      "ind_od_events": 14,
+      "ind_od_rate30_pct": 3.6005,
+      "ind_ot_events": 27,
+      "ind_ot_rate30_pct": 6.8559,
+      "acad_od_events": 21,
+      "acad_od_rate30_pct": 8.4181,
+      "acad_ot_events": 30,
+      "acad_ot_rate30_pct": 9.7975,
+      "ind_od_ot_ratio": 0.5252,
+      "acad_od_ot_ratio": 0.8592
+    },
+    {
+      "year": 2025,
+      "window": "Mar 30-Apr 12 (Full 14d Window)",
+      "start_md": "03-30",
+      "end_md": "04-12",
+      "days": 14,
+      "ind_od_events": 15,
+      "ind_od_rate30_pct": 3.306,
+      "ind_ot_events": 27,
+      "ind_ot_rate30_pct": 5.8835,
+      "acad_od_events": 25,
+      "acad_od_rate30_pct": 8.5875,
+      "acad_ot_events": 33,
+      "acad_ot_rate30_pct": 9.2337,
+      "ind_od_ot_ratio": 0.5619,
+      "acad_od_ot_ratio": 0.93
+    },
+    {
+      "year": 2025,
+      "window": "Apr 13-30 (Post-Apr13 Window)",
+      "start_md": "04-13",
+      "end_md": "04-30",
+      "days": 18,
+      "ind_od_events": 21,
+      "ind_od_rate30_pct": 3.5952,
+      "ind_ot_events": 24,
+      "ind_ot_rate30_pct": 4.0785,
+      "acad_od_events": 20,
+      "acad_od_rate30_pct": 5.4217,
+      "acad_ot_events": 23,
+      "acad_ot_rate30_pct": 5.1219,
+      "ind_od_ot_ratio": 0.8815,
+      "acad_od_ot_ratio": 1.0585
+    },
+    {
+      "year": 2026,
+      "window": "Feb 1-28",
+      "start_md": "02-01",
+      "end_md": "02-28",
+      "days": 28,
+      "ind_od_events": 20,
+      "ind_od_rate30_pct": 2.1198,
+      "ind_ot_events": 36,
+      "ind_ot_rate30_pct": 4.5834,
+      "acad_od_events": 44,
+      "acad_od_rate30_pct": 8.2665,
+      "acad_ot_events": 41,
+      "acad_ot_rate30_pct": 6.8621,
+      "ind_od_ot_ratio": 0.4625,
+      "acad_od_ot_ratio": 1.2047
+    },
+    {
+      "year": 2026,
+      "window": "Mar 1-29 (Pre-Mar30)",
+      "start_md": "03-01",
+      "end_md": "03-29",
+      "days": 29,
+      "ind_od_events": 30,
+      "ind_od_rate30_pct": 3.0471,
+      "ind_ot_events": 42,
+      "ind_ot_rate30_pct": 5.3208,
+      "acad_od_events": 36,
+      "acad_od_rate30_pct": 6.6887,
+      "acad_ot_events": 40,
+      "acad_ot_rate30_pct": 6.6136,
+      "ind_od_ot_ratio": 0.5727,
+      "acad_od_ot_ratio": 1.0114
+    },
+    {
+      "year": 2026,
+      "window": "Mar 30-31 (Q1 Final 2d)",
+      "start_md": "03-30",
+      "end_md": "03-31",
+      "days": 2,
+      "ind_od_events": 9,
+      "ind_od_rate30_pct": 13.285,
+      "ind_ot_events": 3,
+      "ind_ot_rate30_pct": 5.5307,
+      "acad_od_events": 8,
+      "acad_od_rate30_pct": 21.8975,
+      "acad_ot_events": 8,
+      "acad_ot_rate30_pct": 19.574,
+      "ind_od_ot_ratio": 2.402,
+      "acad_od_ot_ratio": 1.1187
+    },
+    {
+      "year": 2026,
+      "window": "Apr 1-12 (Q1-Donut Pure Window)",
+      "start_md": "04-01",
+      "end_md": "04-12",
+      "days": 12,
+      "ind_od_events": 23,
+      "ind_od_rate30_pct": 5.6837,
+      "ind_ot_events": 14,
+      "ind_ot_rate30_pct": 4.3297,
+      "acad_od_events": 23,
+      "acad_od_rate30_pct": 10.607,
+      "acad_ot_events": 17,
+      "acad_ot_rate30_pct": 7.0047,
+      "ind_od_ot_ratio": 1.3127,
+      "acad_od_ot_ratio": 1.5143
+    },
+    {
+      "year": 2026,
+      "window": "Mar 30-Apr 12 (Full 14d Window)",
+      "start_md": "03-30",
+      "end_md": "04-12",
+      "days": 14,
+      "ind_od_events": 32,
+      "ind_od_rate30_pct": 6.7738,
+      "ind_ot_events": 17,
+      "ind_ot_rate30_pct": 4.5022,
+      "acad_od_events": 31,
+      "acad_od_rate30_pct": 12.235,
+      "acad_ot_events": 25,
+      "acad_ot_rate30_pct": 8.8163,
+      "ind_od_ot_ratio": 1.5046,
+      "acad_od_ot_ratio": 1.3878
+    },
+    {
+      "year": 2026,
+      "window": "Apr 13-30 (Post-Apr13 Window)",
+      "start_md": "04-13",
+      "end_md": "04-30",
+      "days": 18,
+      "ind_od_events": 34,
+      "ind_od_rate30_pct": 5.6668,
+      "ind_ot_events": 27,
+      "ind_ot_rate30_pct": 5.6265,
+      "acad_od_events": 29,
+      "acad_od_rate30_pct": 9.236,
+      "acad_ot_events": 29,
+      "acad_ot_rate30_pct": 8.0929,
+      "ind_od_ot_ratio": 1.0072,
+      "acad_od_ot_ratio": 1.1412
+    }
+  ],
+  "other_quarter_ends_2024_2025": [
+    {
+      "quarter_end": "2024 Q2-end (Jun 28-30)",
+      "ind_od_qe_ev": 2,
+      "ind_od_qe_rate30": 2.1196,
+      "ind_od_base_rate30": 4.1442,
+      "ind_od_qe_to_base_ratio": 0.511,
+      "ind_ot_qe_ev": 3,
+      "ind_ot_qe_rate30": 2.8933,
+      "ind_ot_base_rate30": 4.2859,
+      "ind_ot_qe_to_base_ratio": 0.675,
+      "acad_od_qe_ev": 4,
+      "acad_od_qe_rate30": 6.6712,
+      "acad_od_base_rate30": 8.1493,
+      "acad_od_qe_to_base_ratio": 0.819
+    },
+    {
+      "quarter_end": "2024 Q3-end (Sep 29-30)",
+      "ind_od_qe_ev": 1,
+      "ind_od_qe_rate30": 1.5986,
+      "ind_od_base_rate30": 4.152,
+      "ind_od_qe_to_base_ratio": 0.385,
+      "ind_ot_qe_ev": 2,
+      "ind_ot_qe_rate30": 2.9239,
+      "ind_ot_base_rate30": 4.0286,
+      "ind_ot_qe_to_base_ratio": 0.726,
+      "acad_od_qe_ev": 2,
+      "acad_od_qe_rate30": 4.9291,
+      "acad_od_base_rate30": 5.8558,
+      "acad_od_qe_to_base_ratio": 0.842
+    },
+    {
+      "quarter_end": "2024 Q4-end (Dec 30-31)",
+      "ind_od_qe_ev": 3,
+      "ind_od_qe_rate30": 4.6164,
+      "ind_od_base_rate30": 5.4246,
+      "ind_od_qe_to_base_ratio": 0.851,
+      "ind_ot_qe_ev": 0,
+      "ind_ot_qe_rate30": 0.0,
+      "ind_ot_base_rate30": 4.7754,
+      "ind_ot_qe_to_base_ratio": 0.0,
+      "acad_od_qe_ev": 4,
+      "acad_od_qe_rate30": 9.3726,
+      "acad_od_base_rate30": 5.4681,
+      "acad_od_qe_to_base_ratio": 1.714
+    },
+    {
+      "quarter_end": "2025 Q2-end (Jun 29-30)",
+      "ind_od_qe_ev": 4,
+      "ind_od_qe_rate30": 6.2276,
+      "ind_od_base_rate30": 5.4075,
+      "ind_od_qe_to_base_ratio": 1.152,
+      "ind_ot_qe_ev": 5,
+      "ind_ot_qe_rate30": 7.91,
+      "ind_ot_base_rate30": 6.2767,
+      "ind_ot_qe_to_base_ratio": 1.26,
+      "acad_od_qe_ev": 5,
+      "acad_od_qe_rate30": 12.3229,
+      "acad_od_base_rate30": 6.5863,
+      "acad_od_qe_to_base_ratio": 1.871
+    },
+    {
+      "quarter_end": "2025 Q3-end (Sep 29-30)",
+      "ind_od_qe_ev": 3,
+      "ind_od_qe_rate30": 4.6659,
+      "ind_od_base_rate30": 2.8979,
+      "ind_od_qe_to_base_ratio": 1.61,
+      "ind_ot_qe_ev": 6,
+      "ind_ot_qe_rate30": 9.9361,
+      "ind_ot_base_rate30": 5.3124,
+      "ind_ot_qe_to_base_ratio": 1.87,
+      "acad_od_qe_ev": 2,
+      "acad_od_qe_rate30": 5.031,
+      "acad_od_base_rate30": 5.7119,
+      "acad_od_qe_to_base_ratio": 0.881
+    },
+    {
+      "quarter_end": "2025 Q4-end (Dec 30-31)",
+      "ind_od_qe_ev": 1,
+      "ind_od_qe_rate30": 1.538,
+      "ind_od_base_rate30": 5.175,
+      "ind_od_qe_to_base_ratio": 0.297,
+      "ind_ot_qe_ev": 0,
+      "ind_ot_qe_rate30": 0.0,
+      "ind_ot_base_rate30": 6.1308,
+      "ind_ot_qe_to_base_ratio": 0.0,
+      "acad_od_qe_ev": 2,
+      "acad_od_qe_rate30": 5.0771,
+      "acad_od_base_rate30": 5.0359,
+      "acad_od_qe_to_base_ratio": 1.008
+    }
+  ],
+  "q1_donut_2026_combined_proxy": {
+    "label": "Combined Proxy (Posted + Unposted Tracking)",
+    "sub_col": "sub_combined_proxy",
+    "period_fe": {
+      "PRE_MAR": {
+        "ot_od_ddd": {
+          "irr": 0.7739,
+          "ci95": [
+            0.3896,
+            1.5372
+          ],
+          "p": 0.46416220610861103
+        },
+        "ind_od_ot": {
+          "irr": 1.0353,
+          "ci95": [
+            0.6252,
+            1.7145
+          ],
+          "p": 0.8927631235569087
+        },
+        "acad_od_ot": {
+          "irr": 1.3424,
+          "ci95": [
+            0.8422,
+            2.1398
+          ],
+          "p": 0.21577538396644236
+        }
+      },
+      "MAR30_31_Q1END": {
+        "ot_od_ddd": {
+          "irr": 2.6746,
+          "ci95": [
+            0.4111,
+            17.4022
+          ],
+          "p": 0.30319256907700454
+        },
+        "ind_od_ot": {
+          "irr": 4.4627,
+          "ci95": [
+            0.898,
+            22.1774
+          ],
+          "p": 0.06747511685015464
+        },
+        "acad_od_ot": {
+          "irr": 1.6744,
+          "ci95": [
+            0.635,
+            4.4152
+          ],
+          "p": 0.2974148674450563
+        }
+      },
+      "APR01_12_PUREPRIV": {
+        "ot_od_ddd": {
+          "irr": 1.1166,
+          "ci95": [
+            0.4109,
+            3.0342
+          ],
+          "p": 0.8287505817389377
+        },
+        "ind_od_ot": {
+          "irr": 2.3605,
+          "ci95": [
+            1.1716,
+            4.7559
+          ],
+          "p": 0.01626082279940542
+        },
+        "acad_od_ot": {
+          "irr": 2.1213,
+          "ci95": [
+            1.0393,
+            4.33
+          ],
+          "p": 0.03884791055554608
+        }
+      },
+      "PUBLIC_PRESS": {
+        "ot_od_ddd": {
+          "irr": 1.6879,
+          "ci95": [
+            1.1647,
+            2.4463
+          ],
+          "p": 0.0056912302737594485
+        },
+        "ind_od_ot": {
+          "irr": 1.2786,
+          "ci95": [
+            1.0189,
+            1.6047
+          ],
+          "p": 0.0339069352583109
+        },
+        "acad_od_ot": {
+          "irr": 0.7633,
+          "ci95": [
+            0.5689,
+            1.0242
+          ],
+          "p": 0.0717502515193149
+        }
+      }
+    },
+    "sponsor_period_fe": {
+      "PRE_MAR": {
+        "ind_od_ot": {
+          "irr": 0.6814,
+          "ci95": [
+            0.2469,
+            1.88
+          ],
+          "p": 0.4587436257086335
+        },
+        "acad_od_ot": {
+          "irr": 1.7046,
+          "ci95": [
+            0.9307,
+            3.1222
+          ],
+          "p": 0.08410351633828084
+        }
+      },
+      "MAR30_31_Q1END": {
+        "ind_od_ot": {
+          "irr": 19140629990.3064,
+          "ci95": [
+            4068875075.3376,
+            90040541830.9426
+          ],
+          "p": 0.0
+        },
+        "acad_od_ot": {
+          "irr": 1.8979,
+          "ci95": [
+            0.4686,
+            7.6872
+          ],
+          "p": 0.3692815475423017
+        }
+      },
+      "APR01_12_PUREPRIV": {
+        "ind_od_ot": {
+          "irr": 0.801,
+          "ci95": [
+            0.1633,
+            3.9297
+          ],
+          "p": 0.7844843463475442
+        },
+        "acad_od_ot": {
+          "irr": 4.5145,
+          "ci95": [
+            1.0069,
+            20.2407
+          ],
+          "p": 0.048951203957443123
+        }
+      },
+      "PUBLIC_PRESS": {
+        "ind_od_ot": {
+          "irr": 1.1098,
+          "ci95": [
+            0.7084,
+            1.7387
+          ],
+          "p": 0.6490946611973518
+        },
+        "acad_od_ot": {
+          "irr": 0.9565,
+          "ci95": [
+            0.6313,
+            1.449
+          ],
+          "p": 0.8336285836174473
+        }
+      }
+    }
+  },
+  "q1_donut_2026_posted_only": {
+    "label": "Posted-Only (posted_first_submit_dt)",
+    "sub_col": "posted_first_submit_dt",
+    "period_fe": {
+      "PRE_MAR": {
+        "ot_od_ddd": {
+          "irr": 0.862,
+          "ci95": [
+            0.4158,
+            1.7872
+          ],
+          "p": 0.6897730720495114
+        },
+        "ind_od_ot": {
+          "irr": 1.028,
+          "ci95": [
+            0.606,
+            1.7439
+          ],
+          "p": 0.9183719893300115
+        },
+        "acad_od_ot": {
+          "irr": 1.1979,
+          "ci95": [
+            0.7242,
+            1.9814
+          ],
+          "p": 0.48182203510689314
+        }
+      },
+      "MAR30_31_Q1END": {
+        "ot_od_ddd": {
+          "irr": 2.5286,
+          "ci95": [
+            0.3927,
+            16.2818
+          ],
+          "p": 0.3289194862007845
+        },
+        "ind_od_ot": {
+          "irr": 4.2913,
+          "ci95": [
+            0.8751,
+            21.0423
+          ],
+          "p": 0.07255976432281255
+        },
+        "acad_od_ot": {
+          "irr": 1.7048,
+          "ci95": [
+            0.6456,
+            4.5016
+          ],
+          "p": 0.2815860741754609
+        }
+      },
+      "APR01_12_PUREPRIV": {
+        "ot_od_ddd": {
+          "irr": 1.4346,
+          "ci95": [
+            0.506,
+            4.0669
+          ],
+          "p": 0.49730406121072845
+        },
+        "ind_od_ot": {
+          "irr": 2.6575,
+          "ci95": [
+            1.284,
+            5.5002
+          ],
+          "p": 0.008447684753062104
+        },
+        "acad_od_ot": {
+          "irr": 1.8608,
+          "ci95": [
+            0.8826,
+            3.9232
+          ],
+          "p": 0.10270173661709057
+        }
+      },
+      "PUBLIC_PRESS": {
+        "ot_od_ddd": {
+          "irr": 1.9254,
+          "ci95": [
+            1.2506,
+            2.9644
+          ],
+          "p": 0.002924340970176209
+        },
+        "ind_od_ot": {
+          "irr": 1.2131,
+          "ci95": [
+            0.9383,
+            1.5683
+          ],
+          "p": 0.14045101021175824
+        },
+        "acad_od_ot": {
+          "irr": 0.6407,
+          "ci95": [
+            0.453,
+            0.9062
+          ],
+          "p": 0.01183618958696207
+        }
+      }
+    },
+    "sponsor_period_fe": {
+      "PRE_MAR": {
+        "ind_od_ot": {
+          "irr": 0.7266,
+          "ci95": [
+            0.2754,
+            1.9172
+          ],
+          "p": 0.5188615777853656
+        },
+        "acad_od_ot": {
+          "irr": 1.1717,
+          "ci95": [
+            0.6787,
+            2.0228
+          ],
+          "p": 0.569428521958405
+        }
+      },
+      "MAR30_31_Q1END": {
+        "ind_od_ot": {
+          "irr": 19194583208.3896,
+          "ci95": [
+            3259540380.9512,
+            113031894526.2712
+          ],
+          "p": 0.0
+        },
+        "acad_od_ot": {
+          "irr": 1.7898,
+          "ci95": [
+            0.5067,
+            6.3227
+          ],
+          "p": 0.36597552519024834
+        }
+      },
+      "APR01_12_PUREPRIV": {
+        "ind_od_ot": {
+          "irr": 0.9883,
+          "ci95": [
+            0.2004,
+            4.8743
+          ],
+          "p": 0.9884743279111272
+        },
+        "acad_od_ot": {
+          "irr": 3.1224,
+          "ci95": [
+            0.7966,
+            12.2391
+          ],
+          "p": 0.10233084244011215
+        }
+      },
+      "PUBLIC_PRESS": {
+        "ind_od_ot": {
+          "irr": 1.2162,
+          "ci95": [
+            0.7752,
+            1.908
+          ],
+          "p": 0.3942794752147254
+        },
+        "acad_od_ot": {
+          "irr": 0.5686,
+          "ci95": [
+            0.354,
+            0.9133
+          ],
+          "p": 0.019533647662271836
+        }
+      }
+    }
+  },
+  "historical_placebo_2025_same_calendar_dates": {
+    "PRE_MAR": {
+      "ind_od_ot": {
+        "irr": 0.6871,
+        "ci95": [
+          0.4258,
+          1.1087
+        ],
+        "p": 0.12423132545369896
+      },
+      "acad_od_ot": {
+        "irr": 1.2535,
+        "ci95": [
+          0.8225,
+          1.9106
+        ],
+        "p": 0.2932658718157862
+      }
+    },
+    "MAR30_31_Q1END": {
+      "ind_od_ot": {
+        "irr": 595663449.5995,
+        "ci95": [
+          939969.2035,
+          377475074578.5752
+        ],
+        "p": 8.337610271017776e-10
+      },
+      "acad_od_ot": {
+        "irr": 1.6684,
+        "ci95": [
+          0.3684,
+          7.5561
+        ],
+        "p": 0.5065570106378263
+      }
+    },
+    "APR01_12_PURE": {
+      "ind_od_ot": {
+        "irr": 0.5622,
+        "ci95": [
+          0.2706,
+          1.1678
+        ],
+        "p": 0.12257514584790666
+      },
+      "acad_od_ot": {
+        "irr": 0.9398,
+        "ci95": [
+          0.5521,
+          1.5996
+        ],
+        "p": 0.8189473548464561
+      }
+    },
+    "POST_PLACEBO": {
+      "ind_od_ot": {
+        "irr": 0.8375,
+        "ci95": [
+          0.5268,
+          1.3317
+        ],
+        "p": 0.45366992872178435
+      },
+      "acad_od_ot": {
+        "irr": 0.7955,
+        "ci95": [
+          0.4841,
+          1.3071
+        ],
+        "p": 0.3664625860122146
+      }
+    }
+  }
+}

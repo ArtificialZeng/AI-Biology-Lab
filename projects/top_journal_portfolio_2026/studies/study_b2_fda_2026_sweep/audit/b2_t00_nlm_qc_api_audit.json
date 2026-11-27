@@ -1,0 +1,4481 @@
+{
+  "executed_at": "2026-11-25 09:55:51 CST",
+  "metadata_matching_fields": [
+    {
+      "path": "protocolSection.statusModule.delayedPosting",
+      "type": "boolean",
+      "piece": "DelayedPosting",
+      "title": "Delayed Posting"
+    },
+    {
+      "path": "protocolSection.statusModule.studyFirstSubmitDate",
+      "type": "NormalizedDate",
+      "piece": "StudyFirstSubmitDate",
+      "title": "Study First Submitted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.studyFirstSubmitQcDate",
+      "type": "NormalizedDate",
+      "piece": "StudyFirstSubmitQCDate",
+      "title": "Study First Submission Date that Met QC Criteria"
+    },
+    {
+      "path": "protocolSection.statusModule.studyFirstPostDateStruct",
+      "type": "DateStruct",
+      "piece": "StudyFirstPostDateStruct",
+      "title": null
+    },
+    {
+      "path": "protocolSection.statusModule.studyFirstPostDateStruct.date",
+      "type": "NormalizedDate",
+      "piece": "StudyFirstPostDate",
+      "title": "Study First Posted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.studyFirstPostDateStruct.type",
+      "type": "DateType",
+      "piece": "StudyFirstPostDateType",
+      "title": "First Study Posted Date Type"
+    },
+    {
+      "path": "protocolSection.statusModule.resultsWaived",
+      "type": "boolean",
+      "piece": "ResultsWaived",
+      "title": null
+    },
+    {
+      "path": "protocolSection.statusModule.resultsFirstSubmitDate",
+      "type": "NormalizedDate",
+      "piece": "ResultsFirstSubmitDate",
+      "title": "Results First Submitted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.resultsFirstSubmitQcDate",
+      "type": "NormalizedDate",
+      "piece": "ResultsFirstSubmitQCDate",
+      "title": "Results First Submitted that Met QC Criteria"
+    },
+    {
+      "path": "protocolSection.statusModule.resultsFirstPostDateStruct",
+      "type": "DateStruct",
+      "piece": "ResultsFirstPostDateStruct",
+      "title": null
+    },
+    {
+      "path": "protocolSection.statusModule.resultsFirstPostDateStruct.date",
+      "type": "NormalizedDate",
+      "piece": "ResultsFirstPostDate",
+      "title": "Results First Posted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.resultsFirstPostDateStruct.type",
+      "type": "DateType",
+      "piece": "ResultsFirstPostDateType",
+      "title": "Results First Posted Date Type"
+    },
+    {
+      "path": "protocolSection.statusModule.dispFirstSubmitDate",
+      "type": "NormalizedDate",
+      "piece": "DispFirstSubmitDate",
+      "title": "Certification/Extension (aka Delayed Results) First Submitted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.dispFirstSubmitQcDate",
+      "type": "NormalizedDate",
+      "piece": "DispFirstSubmitQCDate",
+      "title": "Certification/Extension First Submitted that Passed QC Review"
+    },
+    {
+      "path": "protocolSection.statusModule.dispFirstPostDateStruct",
+      "type": "DateStruct",
+      "piece": "DispFirstPostDateStruct",
+      "title": null
+    },
+    {
+      "path": "protocolSection.statusModule.dispFirstPostDateStruct.date",
+      "type": "NormalizedDate",
+      "piece": "DispFirstPostDate",
+      "title": "Certification/Extension First Posted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.dispFirstPostDateStruct.type",
+      "type": "DateType",
+      "piece": "DispFirstPostDateType",
+      "title": "Certification/Extension First Posted Date Type"
+    },
+    {
+      "path": "protocolSection.statusModule.lastUpdateSubmitDate",
+      "type": "NormalizedDate",
+      "piece": "LastUpdateSubmitDate",
+      "title": "Last Update Submitted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.lastUpdatePostDateStruct",
+      "type": "DateStruct",
+      "piece": "LastUpdatePostDateStruct",
+      "title": null
+    },
+    {
+      "path": "protocolSection.statusModule.lastUpdatePostDateStruct.date",
+      "type": "NormalizedDate",
+      "piece": "LastUpdatePostDate",
+      "title": "Last Update Posted Date"
+    },
+    {
+      "path": "protocolSection.statusModule.lastUpdatePostDateStruct.type",
+      "type": "DateType",
+      "piece": "LastUpdatePostDateType",
+      "title": "Last Update Posted Date Type"
+    },
+    {
+      "path": "protocolSection.oversightModule.fdaaa801Violation",
+      "type": "boolean",
+      "piece": "FDAAA801Violation",
+      "title": null
+    },
+    {
+      "path": "resultsSection",
+      "type": "ResultsSection",
+      "piece": "ResultsSection",
+      "title": "Study Results"
+    },
+    {
+      "path": "resultsSection.participantFlowModule",
+      "type": "ParticipantFlowModule",
+      "piece": "ParticipantFlowModule",
+      "title": "Participant Flow Module"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.preAssignmentDetails",
+      "type": "markup",
+      "piece": "FlowPreAssignmentDetails",
+      "title": "Pre-assignment Details"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.recruitmentDetails",
+      "type": "markup",
+      "piece": "FlowRecruitmentDetails",
+      "title": "Recruitment Details"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.typeUnitsAnalyzed",
+      "type": "text",
+      "piece": "FlowTypeUnitsAnalyzed",
+      "title": "Type of Unit Analyzed"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.groups",
+      "type": "FlowGroup[]",
+      "piece": "FlowGroup",
+      "title": "Arm/Group Information"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.groups.id",
+      "type": "text",
+      "piece": "FlowGroupId",
+      "title": "Arm/Group ID"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.groups.title",
+      "type": "text",
+      "piece": "FlowGroupTitle",
+      "title": "Arm/Group Title"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.groups.description",
+      "type": "markup",
+      "piece": "FlowGroupDescription",
+      "title": "Arm/Group Description"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods",
+      "type": "FlowPeriod[]",
+      "piece": "FlowPeriod",
+      "title": "Period"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.title",
+      "type": "text",
+      "piece": "FlowPeriodTitle",
+      "title": "Period Title"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones",
+      "type": "FlowMilestone[]",
+      "piece": "FlowMilestone",
+      "title": "Milestone"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones.type",
+      "type": "text",
+      "piece": "FlowMilestoneType",
+      "title": "Milestone Title"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones.comment",
+      "type": "markup",
+      "piece": "FlowMilestoneComment",
+      "title": "Milestone Comment"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones.achievements",
+      "type": "FlowStats[]",
+      "piece": "FlowAchievement",
+      "title": "Milestone Data"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones.achievements.groupId",
+      "type": "text",
+      "piece": "FlowAchievementGroupId",
+      "title": "Milestone Arm/Group ID"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones.achievements.comment",
+      "type": "markup",
+      "piece": "FlowAchievementComment",
+      "title": "Milestone Arm/Group Comment"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones.achievements.numSubjects",
+      "type": "text",
+      "piece": "FlowAchievementNumSubjects",
+      "title": "Number of Milestone Arm/Group Participants"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.milestones.achievements.numUnits",
+      "type": "text",
+      "piece": "FlowAchievementNumUnits",
+      "title": "Number of Units"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.dropWithdraws",
+      "type": "DropWithdraw[]",
+      "piece": "FlowDropWithdraw",
+      "title": "Reason Not Completed"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.dropWithdraws.type",
+      "type": "text",
+      "piece": "FlowDropWithdrawType",
+      "title": "Reason Not Completed Type"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.dropWithdraws.comment",
+      "type": "markup",
+      "piece": "FlowDropWithdrawComment",
+      "title": "Description of Reason Not Completed"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.dropWithdraws.reasons",
+      "type": "FlowStats[]",
+      "piece": "FlowReason",
+      "title": null
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.dropWithdraws.reasons.groupId",
+      "type": "text",
+      "piece": "FlowReasonGroupId",
+      "title": "Reason Group ID"
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.dropWithdraws.reasons.comment",
+      "type": "markup",
+      "piece": "FlowReasonComment",
+      "title": null
+    },
+    {
+      "path": "resultsSection.participantFlowModule.periods.dropWithdraws.reasons.numSubjects",
+      "type": "text",
+      "piece": "FlowReasonNumSubjects",
+      "title": "Reason Group Number of Subjects"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule",
+      "type": "BaselineCharacteristicsModule",
+      "piece": "BaselineCharacteristicsModule",
+      "title": "Baseline Measure Module"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.populationDescription",
+      "type": "markup",
+      "piece": "BaselinePopulationDescription",
+      "title": "Baseline Analysis Population Description"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.typeUnitsAnalyzed",
+      "type": "text",
+      "piece": "BaselineTypeUnitsAnalyzed",
+      "title": "Type of Units Analyzed"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.groups",
+      "type": "MeasureGroup[]",
+      "piece": "BaselineGroup",
+      "title": "Arm/Group Information"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.groups.id",
+      "type": "text",
+      "piece": "BaselineGroupId",
+      "title": "Arm/Group ID"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.groups.title",
+      "type": "text",
+      "piece": "BaselineGroupTitle",
+      "title": "Arm/Group Title"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.groups.description",
+      "type": "markup",
+      "piece": "BaselineGroupDescription",
+      "title": "Arm/Group Description"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.denoms",
+      "type": "Denom[]",
+      "piece": "BaselineDenom",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.denoms.units",
+      "type": "text",
+      "piece": "BaselineDenomUnits",
+      "title": "Overall Number of Units Analyzed"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.denoms.counts",
+      "type": "DenomCount[]",
+      "piece": "BaselineDenomCount",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.denoms.counts.groupId",
+      "type": "text",
+      "piece": "BaselineDenomCountGroupId",
+      "title": "Arm/Group ID"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.denoms.counts.value",
+      "type": "text",
+      "piece": "BaselineDenomCountValue",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures",
+      "type": "BaselineMeasure[]",
+      "piece": "BaselineMeasure",
+      "title": "Baseline Measure"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.title",
+      "type": "text",
+      "piece": "BaselineMeasureTitle",
+      "title": "Baseline Measure Title"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.description",
+      "type": "markup",
+      "piece": "BaselineMeasureDescription",
+      "title": "Baseline Measure Title for Study-Specified Measure"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.populationDescription",
+      "type": "markup",
+      "piece": "BaselineMeasurePopulationDescription",
+      "title": "Baseline Measure Description"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.paramType",
+      "type": "MeasureParam",
+      "piece": "BaselineMeasureParamType",
+      "title": "Baseline Measure Type"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.dispersionType",
+      "type": "MeasureDispersionType",
+      "piece": "BaselineMeasureDispersionType",
+      "title": "Baseline Measure Dispersion/Precision"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.unitOfMeasure",
+      "type": "text",
+      "piece": "BaselineMeasureUnitOfMeasure",
+      "title": "Unit of Measure"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.calculatePct",
+      "type": "boolean",
+      "piece": "BaselineMeasureCalculatePct",
+      "title": "Calculated Percentage"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.denomUnitsSelected",
+      "type": "text",
+      "piece": "BaselineMeasureDenomUnitsSelected",
+      "title": "Type of Units Selected"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.denoms",
+      "type": "Denom[]",
+      "piece": "BaselineMeasureDenom",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.denoms.units",
+      "type": "text",
+      "piece": "BaselineMeasureDenomUnits",
+      "title": "Analysis Population Type"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.denoms.counts",
+      "type": "DenomCount[]",
+      "piece": "BaselineMeasureDenomCount",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.denoms.counts.groupId",
+      "type": "text",
+      "piece": "BaselineMeasureDenomCountGroupId",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.denoms.counts.value",
+      "type": "text",
+      "piece": "BaselineMeasureDenomCountValue",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes",
+      "type": "MeasureClass[]",
+      "piece": "BaselineClass",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.title",
+      "type": "text",
+      "piece": "BaselineClassTitle",
+      "title": "Baseline RowTitle"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.denoms",
+      "type": "Denom[]",
+      "piece": "BaselineClassDenom",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.denoms.units",
+      "type": "text",
+      "piece": "BaselineClassDenomUnits",
+      "title": "Baseline Row Unit of Measure"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.denoms.counts",
+      "type": "DenomCount[]",
+      "piece": "BaselineClassDenomCount",
+      "title": "Number of Baseline Row Participants"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.denoms.counts.groupId",
+      "type": "text",
+      "piece": "BaselineClassDenomCountGroupId",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.denoms.counts.value",
+      "type": "text",
+      "piece": "BaselineClassDenomCountValue",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories",
+      "type": "MeasureCategory[]",
+      "piece": "BaselineCategory",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.title",
+      "type": "text",
+      "piece": "BaselineCategoryTitle",
+      "title": "Category Title"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.measurements",
+      "type": "Measurement[]",
+      "piece": "BaselineMeasurement",
+      "title": null
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.measurements.groupId",
+      "type": "text",
+      "piece": "BaselineMeasurementGroupId",
+      "title": "Arm/Group ID"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.measurements.value",
+      "type": "text",
+      "piece": "BaselineMeasurementValue",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.measurements.spread",
+      "type": "text",
+      "piece": "BaselineMeasurementSpread",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.measurements.lowerLimit",
+      "type": "text",
+      "piece": "BaselineMeasurementLowerLimit",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.measurements.upperLimit",
+      "type": "text",
+      "piece": "BaselineMeasurementUpperLimit",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.baselineCharacteristicsModule.measures.classes.categories.measurements.comment",
+      "type": "markup",
+      "piece": "BaselineMeasurementComment",
+      "title": "Comments for N/A values"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule",
+      "type": "OutcomeMeasuresModule",
+      "piece": "OutcomeMeasuresModule",
+      "title": "Outcome Measure Module"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures",
+      "type": "OutcomeMeasure[]",
+      "piece": "OutcomeMeasure",
+      "title": "Outcome Measure"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.type",
+      "type": "OutcomeMeasureType",
+      "piece": "OutcomeMeasureType",
+      "title": "Outcome Measure Type"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.title",
+      "type": "text",
+      "piece": "OutcomeMeasureTitle",
+      "title": "Outcome Measure title"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.description",
+      "type": "markup",
+      "piece": "OutcomeMeasureDescription",
+      "title": "Outcome Measure Description"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.populationDescription",
+      "type": "markup",
+      "piece": "OutcomeMeasurePopulationDescription",
+      "title": "Analysis Population Description"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.reportingStatus",
+      "type": "ReportingStatus",
+      "piece": "OutcomeMeasureReportingStatus",
+      "title": "Reporting Status"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.anticipatedPostingDate",
+      "type": "PartialDate",
+      "piece": "OutcomeMeasureAnticipatedPostingDate",
+      "title": "Anticipated Reporting Date"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.paramType",
+      "type": "MeasureParam",
+      "piece": "OutcomeMeasureParamType",
+      "title": "Outcome Measure Data Type"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.dispersionType",
+      "type": "text",
+      "piece": "OutcomeMeasureDispersionType",
+      "title": "Outcome Measure Dispersion/Precision"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.unitOfMeasure",
+      "type": "text",
+      "piece": "OutcomeMeasureUnitOfMeasure",
+      "title": "Unit of Measure"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.calculatePct",
+      "type": "boolean",
+      "piece": "OutcomeMeasureCalculatePct",
+      "title": "Calculated Percentage"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.timeFrame",
+      "type": "text",
+      "piece": "OutcomeMeasureTimeFrame",
+      "title": "Outcome Measure Time Frame"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.typeUnitsAnalyzed",
+      "type": "text",
+      "piece": "OutcomeMeasureTypeUnitsAnalyzed",
+      "title": "Units Analyzed"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.denomUnitsSelected",
+      "type": "text",
+      "piece": "OutcomeMeasureDenomUnitsSelected",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.groups",
+      "type": "MeasureGroup[]",
+      "piece": "OutcomeGroup",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.groups.id",
+      "type": "text",
+      "piece": "OutcomeGroupId",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.groups.title",
+      "type": "text",
+      "piece": "OutcomeGroupTitle",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.groups.description",
+      "type": "markup",
+      "piece": "OutcomeGroupDescription",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.denoms",
+      "type": "Denom[]",
+      "piece": "OutcomeDenom",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.denoms.units",
+      "type": "text",
+      "piece": "OutcomeDenomUnits",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.denoms.counts",
+      "type": "DenomCount[]",
+      "piece": "OutcomeDenomCount",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.denoms.counts.groupId",
+      "type": "text",
+      "piece": "OutcomeDenomCountGroupId",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.denoms.counts.value",
+      "type": "text",
+      "piece": "OutcomeDenomCountValue",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes",
+      "type": "MeasureClass[]",
+      "piece": "OutcomeClass",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.title",
+      "type": "text",
+      "piece": "OutcomeClassTitle",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.denoms",
+      "type": "Denom[]",
+      "piece": "OutcomeClassDenom",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.denoms.units",
+      "type": "text",
+      "piece": "OutcomeClassDenomUnits",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.denoms.counts",
+      "type": "DenomCount[]",
+      "piece": "OutcomeClassDenomCount",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.denoms.counts.groupId",
+      "type": "text",
+      "piece": "OutcomeClassDenomCountGroupId",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.denoms.counts.value",
+      "type": "text",
+      "piece": "OutcomeClassDenomCountValue",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories",
+      "type": "MeasureCategory[]",
+      "piece": "OutcomeCategory",
+      "title": "Outcome Category"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.title",
+      "type": "text",
+      "piece": "OutcomeCategoryTitle",
+      "title": "Category Title"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.measurements",
+      "type": "Measurement[]",
+      "piece": "OutcomeMeasurement",
+      "title": null
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.measurements.groupId",
+      "type": "text",
+      "piece": "OutcomeMeasurementGroupId",
+      "title": "Group ID"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.measurements.value",
+      "type": "text",
+      "piece": "OutcomeMeasurementValue",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.measurements.spread",
+      "type": "text",
+      "piece": "OutcomeMeasurementSpread",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.measurements.lowerLimit",
+      "type": "text",
+      "piece": "OutcomeMeasurementLowerLimit",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.measurements.upperLimit",
+      "type": "text",
+      "piece": "OutcomeMeasurementUpperLimit",
+      "title": "data"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.classes.categories.measurements.comment",
+      "type": "markup",
+      "piece": "OutcomeMeasurementComment",
+      "title": "Comments for N/A values"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses",
+      "type": "MeasureAnalysis[]",
+      "piece": "OutcomeAnalysis",
+      "title": "Outcome Measure Analysis"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.paramType",
+      "type": "text",
+      "piece": "OutcomeAnalysisParamType",
+      "title": "Estimation Parameter"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.paramValue",
+      "type": "text",
+      "piece": "OutcomeAnalysisParamValue",
+      "title": "Estimated Value"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.dispersionType",
+      "type": "AnalysisDispersionType",
+      "piece": "OutcomeAnalysisDispersionType",
+      "title": "Estimation Dispersion Type"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.dispersionValue",
+      "type": "text",
+      "piece": "OutcomeAnalysisDispersionValue",
+      "title": "Parameter Dispersion Value"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.statisticalMethod",
+      "type": "text",
+      "piece": "OutcomeAnalysisStatisticalMethod",
+      "title": "Statistical Method"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.statisticalComment",
+      "type": "markup",
+      "piece": "OutcomeAnalysisStatisticalComment",
+      "title": "Statistical Comment"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.pValue",
+      "type": "text",
+      "piece": "OutcomeAnalysisPValue",
+      "title": "P-Value"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.pValueComment",
+      "type": "markup",
+      "piece": "OutcomeAnalysisPValueComment",
+      "title": "P-Value Comment"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.ciNumSides",
+      "type": "ConfidenceIntervalNumSides",
+      "piece": "OutcomeAnalysisCINumSides",
+      "title": "Number of Sides for Confidence Interval"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.ciPctValue",
+      "type": "text",
+      "piece": "OutcomeAnalysisCIPctValue",
+      "title": "Percentage for Confidence Interval"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.ciLowerLimit",
+      "type": "text",
+      "piece": "OutcomeAnalysisCILowerLimit",
+      "title": "Lower Limit for 2-sided Confidence Interval"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.ciUpperLimit",
+      "type": "text",
+      "piece": "OutcomeAnalysisCIUpperLimit",
+      "title": "Upper Limit for 2-sided Confidence Interval"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.ciLowerLimitComment",
+      "type": "markup",
+      "piece": "OutcomeAnalysisCILowerLimitComment",
+      "title": "Lower Limit Comment"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.ciUpperLimitComment",
+      "type": "markup",
+      "piece": "OutcomeAnalysisCIUpperLimitComment",
+      "title": "Upper Limit Comment"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.estimateComment",
+      "type": "markup",
+      "piece": "OutcomeAnalysisEstimateComment",
+      "title": "Estimation Comment"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.testedNonInferiority",
+      "type": "boolean",
+      "piece": "OutcomeAnalysisTestedNonInferiority",
+      "title": "Non-inferiority or Equivalence Test Type"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.nonInferiorityType",
+      "type": "NonInferiorityType",
+      "piece": "OutcomeAnalysisNonInferiorityType",
+      "title": "Type of Statistical Test"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.nonInferiorityComment",
+      "type": "markup",
+      "piece": "OutcomeAnalysisNonInferiorityComment",
+      "title": "Non-inferiority or Equivalence Comment"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.otherAnalysisDescription",
+      "type": "markup",
+      "piece": "OutcomeAnalysisOtherAnalysisDescription",
+      "title": "Other Statistical Analysis"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.groupDescription",
+      "type": "markup",
+      "piece": "OutcomeAnalysisGroupDescription",
+      "title": "Selected Comparison Group Description"
+    },
+    {
+      "path": "resultsSection.outcomeMeasuresModule.outcomeMeasures.analyses.groupIds",
+      "type": "text[]",
+      "piece": "OutcomeAnalysisGroupId",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule",
+      "type": "AdverseEventsModule",
+      "piece": "AdverseEventsModule",
+      "title": "Adverse Events"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.frequencyThreshold",
+      "type": "text",
+      "piece": "EventsFrequencyThreshold",
+      "title": "Frequency Threshold"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.timeFrame",
+      "type": "text",
+      "piece": "EventsTimeFrame",
+      "title": "Adverse Event Time Frame"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.description",
+      "type": "markup",
+      "piece": "EventsDescription",
+      "title": "Adverse Event Reporting Description"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.allCauseMortalityComment",
+      "type": "markup",
+      "piece": "EventsAllCauseMortalityComment",
+      "title": "All Cause Mortality Comment"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups",
+      "type": "EventGroup[]",
+      "piece": "EventGroup",
+      "title": "Arm/Group"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.id",
+      "type": "text",
+      "piece": "EventGroupId",
+      "title": "Arm/Group ID"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.title",
+      "type": "text",
+      "piece": "EventGroupTitle",
+      "title": "Arm/Group Title"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.description",
+      "type": "markup",
+      "piece": "EventGroupDescription",
+      "title": "Arm/Group Description"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.deathsNumAffected",
+      "type": "integer",
+      "piece": "EventGroupDeathsNumAffected",
+      "title": "Total Number Affected by All-Cause Mortality"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.deathsNumAtRisk",
+      "type": "integer",
+      "piece": "EventGroupDeathsNumAtRisk",
+      "title": "Total Number at Risk for All-Cause Mortality"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.seriousNumAffected",
+      "type": "integer",
+      "piece": "EventGroupSeriousNumAffected",
+      "title": "Number Affected by a Serious Adverse Event"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.seriousNumAtRisk",
+      "type": "integer",
+      "piece": "EventGroupSeriousNumAtRisk",
+      "title": "Number at Risk for a Serious Adverse Event"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.otherNumAffected",
+      "type": "integer",
+      "piece": "EventGroupOtherNumAffected",
+      "title": "Number Affected by Any Other Adverse Event"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.eventGroups.otherNumAtRisk",
+      "type": "integer",
+      "piece": "EventGroupOtherNumAtRisk",
+      "title": "Number at Risk for Any Other Adverse Event"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents",
+      "type": "AdverseEvent[]",
+      "piece": "SeriousEvent",
+      "title": "Serious Adverse Event"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.term",
+      "type": "text",
+      "piece": "SeriousEventTerm",
+      "title": "Adverse Event Term"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.organSystem",
+      "type": "text",
+      "piece": "SeriousEventOrganSystem",
+      "title": "Organ System"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.sourceVocabulary",
+      "type": "text",
+      "piece": "SeriousEventSourceVocabulary",
+      "title": "Source Vocabulary Name for Serious Adverse Event"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.assessmentType",
+      "type": "EventAssessment",
+      "piece": "SeriousEventAssessmentType",
+      "title": "Collection Approach (or Collection Approach for Table Default required)"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.notes",
+      "type": "markup",
+      "piece": "SeriousEventNotes",
+      "title": "Serious Adverse Event Term Additional Description"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.stats",
+      "type": "EventStats[]",
+      "piece": "SeriousEventStats",
+      "title": "Statistical information"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.stats.groupId",
+      "type": "text",
+      "piece": "SeriousEventStatsGroupId",
+      "title": "Group ID"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.stats.numEvents",
+      "type": "integer",
+      "piece": "SeriousEventStatsNumEvents",
+      "title": "Number of Serious Events in an Arm/Group"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.stats.numAffected",
+      "type": "integer",
+      "piece": "SeriousEventStatsNumAffected",
+      "title": "Number of Participants Affected"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.seriousEvents.stats.numAtRisk",
+      "type": "integer",
+      "piece": "SeriousEventStatsNumAtRisk",
+      "title": "Number of Participants at Risk"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents",
+      "type": "AdverseEvent[]",
+      "piece": "OtherEvent",
+      "title": "Other Adverse Events"
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.term",
+      "type": "text",
+      "piece": "OtherEventTerm",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.organSystem",
+      "type": "text",
+      "piece": "OtherEventOrganSystem",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.sourceVocabulary",
+      "type": "text",
+      "piece": "OtherEventSourceVocabulary",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.assessmentType",
+      "type": "EventAssessment",
+      "piece": "OtherEventAssessmentType",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.notes",
+      "type": "markup",
+      "piece": "OtherEventNotes",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.stats",
+      "type": "EventStats[]",
+      "piece": "OtherEventStats",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.stats.groupId",
+      "type": "text",
+      "piece": "OtherEventStatsGroupId",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.stats.numEvents",
+      "type": "integer",
+      "piece": "OtherEventStatsNumEvents",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.stats.numAffected",
+      "type": "integer",
+      "piece": "OtherEventStatsNumAffected",
+      "title": null
+    },
+    {
+      "path": "resultsSection.adverseEventsModule.otherEvents.stats.numAtRisk",
+      "type": "integer",
+      "piece": "OtherEventStatsNumAtRisk",
+      "title": null
+    },
+    {
+      "path": "resultsSection.moreInfoModule",
+      "type": "MoreInfoModule",
+      "piece": "MoreInfoModule",
+      "title": "More Information Module"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.limitationsAndCaveats",
+      "type": "LimitationsAndCaveats",
+      "piece": "LimitationsAndCaveats",
+      "title": "Limitations and Caveats"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.limitationsAndCaveats.description",
+      "type": "markup",
+      "piece": "LimitationsAndCaveatsDescription",
+      "title": "Limitations and Caveats Description"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.certainAgreement",
+      "type": "CertainAgreement",
+      "piece": "CertainAgreement",
+      "title": "Certain Agreement"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.certainAgreement.piSponsorEmployee",
+      "type": "boolean",
+      "piece": "AgreementPISponsorEmployee",
+      "title": "Agreement PI Sponsor Employee"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.certainAgreement.restrictionType",
+      "type": "AgreementRestrictionType",
+      "piece": "AgreementRestrictionType",
+      "title": "Agreement Restriction Type"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.certainAgreement.restrictiveAgreement",
+      "type": "boolean",
+      "piece": "AgreementRestrictiveAgreement",
+      "title": "Agreement Restrictive Agreement"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.certainAgreement.otherDetails",
+      "type": "markup",
+      "piece": "AgreementOtherDetails",
+      "title": "Agreement Other Details"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.pointOfContact",
+      "type": "PointOfContact",
+      "piece": "PointOfContact",
+      "title": "Point of Contact"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.pointOfContact.title",
+      "type": "text",
+      "piece": "PointOfContactTitle",
+      "title": "Point of Contact Title"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.pointOfContact.organization",
+      "type": "text",
+      "piece": "PointOfContactOrganization",
+      "title": "Point of Contact Organization"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.pointOfContact.email",
+      "type": "text",
+      "piece": "PointOfContactEMail",
+      "title": "Point of Contact Email"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.pointOfContact.phone",
+      "type": "text",
+      "piece": "PointOfContactPhone",
+      "title": "Point of Contact Phone"
+    },
+    {
+      "path": "resultsSection.moreInfoModule.pointOfContact.phoneExt",
+      "type": "text",
+      "piece": "PointOfContactPhoneExt",
+      "title": "Point of Contact Phone Extension"
+    },
+    {
+      "path": "annotationSection.annotationModule.unpostedAnnotation",
+      "type": "UnpostedAnnotation",
+      "piece": "UnpostedAnnotation",
+      "title": "Unposted Annotation"
+    },
+    {
+      "path": "annotationSection.annotationModule.unpostedAnnotation.unpostedResponsibleParty",
+      "type": "text",
+      "piece": "UnpostedResponsibleParty",
+      "title": "Responsible Party for Unposted Events"
+    },
+    {
+      "path": "annotationSection.annotationModule.unpostedAnnotation.unpostedEvents",
+      "type": "UnpostedEvent[]",
+      "piece": "UnpostedEvent",
+      "title": "Unposted Event"
+    },
+    {
+      "path": "annotationSection.annotationModule.unpostedAnnotation.unpostedEvents.type",
+      "type": "UnpostedEventType",
+      "piece": "UnpostedEventType",
+      "title": "Study Results Submission Type"
+    },
+    {
+      "path": "annotationSection.annotationModule.unpostedAnnotation.unpostedEvents.date",
+      "type": "NormalizedDate",
+      "piece": "UnpostedEventDate",
+      "title": "Study Results Submission Date"
+    },
+    {
+      "path": "annotationSection.annotationModule.unpostedAnnotation.unpostedEvents.dateUnknown",
+      "type": "boolean",
+      "piece": "UnpostedEventDateUnknown",
+      "title": "Unposted Event Date is Unknown"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation",
+      "type": "ViolationAnnotation",
+      "piece": "ViolationAnnotation",
+      "title": "FDAAA 801 Violations"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation.violationEvents",
+      "type": "ViolationEvent[]",
+      "piece": "ViolationEvent",
+      "title": "Violation Event"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation.violationEvents.type",
+      "type": "ViolationEventType",
+      "piece": "ViolationEventType",
+      "title": "Violation Event Type"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation.violationEvents.description",
+      "type": "text",
+      "piece": "ViolationEventDescription",
+      "title": "Violation Event Type Description"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation.violationEvents.creationDate",
+      "type": "NormalizedDate",
+      "piece": "ViolationEventCreationDate",
+      "title": "Violation Event Creation Date"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation.violationEvents.issuedDate",
+      "type": "NormalizedDate",
+      "piece": "ViolationEventIssuedDate",
+      "title": "Violation Event Issued Date"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation.violationEvents.releaseDate",
+      "type": "NormalizedDate",
+      "piece": "ViolationEventReleaseDate",
+      "title": "Violation Event Released Date"
+    },
+    {
+      "path": "annotationSection.annotationModule.violationAnnotation.violationEvents.postedDate",
+      "type": "NormalizedDate",
+      "piece": "ViolationEventPostedDate",
+      "title": "Violation Event Posted Date"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking",
+      "type": "SubmissionTracking",
+      "piece": "SubmissionTracking",
+      "title": "Submission Tracking"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.estimatedResultsFirstSubmitDate",
+      "type": "NormalizedDate",
+      "piece": "EstimatedResultsFirstSubmitDate",
+      "title": "Estimated Results First Submitted Date"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.firstMcpInfo",
+      "type": "FirstMcpInfo",
+      "piece": "FirstMCPInfo",
+      "title": "First MCP Info"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.firstMcpInfo.postDateStruct",
+      "type": "DateStruct",
+      "piece": "FirstMCPPostDateStruct",
+      "title": null
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.firstMcpInfo.postDateStruct.date",
+      "type": "NormalizedDate",
+      "piece": "FirstMCPPostDate",
+      "title": "First MCP Posted Date"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.firstMcpInfo.postDateStruct.type",
+      "type": "DateType",
+      "piece": "FirstMCPPostDateType",
+      "title": "First MCP Posted Date Type"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.submissionInfos",
+      "type": "SubmissionInfo[]",
+      "piece": "SubmissionInfo",
+      "title": "Study Results Submission Info"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.submissionInfos.releaseDate",
+      "type": "NormalizedDate",
+      "piece": "SubmissionReleaseDate",
+      "title": "Release Date"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.submissionInfos.unreleaseDate",
+      "type": "NormalizedDate",
+      "piece": "SubmissionUnreleaseDate",
+      "title": "Unrelease Date"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.submissionInfos.unreleaseDateUnknown",
+      "type": "boolean",
+      "piece": "SubmissionUnreleaseDateUnknown",
+      "title": null
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.submissionInfos.resetDate",
+      "type": "NormalizedDate",
+      "piece": "SubmissionResetDate",
+      "title": "Reset Date"
+    },
+    {
+      "path": "derivedSection.miscInfoModule.submissionTracking.submissionInfos.mcpReleaseN",
+      "type": "integer",
+      "piece": "SubmissionMCPReleaseN",
+      "title": "Number of MCPs"
+    },
+    {
+      "path": "hasResults",
+      "type": "boolean",
+      "piece": "HasResults",
+      "title": "Has Results"
+    }
+  ],
+  "api_query_counts": {
+    "sub_2026_11": {
+      "totalCount": 1,
+      "returned": 1
+    },
+    "sub_2026_10": {
+      "totalCount": 105,
+      "returned": 25
+    },
+    "sub_2026_09": {
+      "totalCount": 156,
+      "returned": 5
+    },
+    "sub_2026_08": {
+      "totalCount": 224,
+      "returned": 5
+    },
+    "sub_2026_04_07": {
+      "totalCount": 1726,
+      "returned": 5
+    },
+    "post_2026_11": {
+      "totalCount": 354,
+      "returned": 25
+    },
+    "post_2026_10": {
+      "totalCount": 485,
+      "returned": 5
+    },
+    "sub_hasResults_false_all": {
+      "totalCount": 0,
+      "returned": 0
+    },
+    "sub_hasResults_true_2026_11": {
+      "totalCount": 1,
+      "returned": 1
+    },
+    "qc_null_but_sub_2026": {
+      "error": "HTTP Error 400: Bad Request"
+    },
+    "qc_null_but_post_2026": {
+      "error": "HTTP Error 400: Bad Request"
+    },
+    "unposted_2026_10_11": {
+      "totalCount": 189,
+      "returned": 25
+    }
+  },
+  "api_samples": {
+    "sub_2026_11": [
+      {
+        "nctId": "NCT03209531",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-11-24",
+        "resultsFirstSubmitDate": "2026-11-02",
+        "resultsFirstSubmitQcDate": "2026-11-02",
+        "resultsFirstPostDate": "2026-11-24",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-24",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      }
+    ],
+    "sub_2026_10": [
+      {
+        "nctId": "NCT05891613",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-06",
+        "resultsFirstSubmitDate": "2026-10-06",
+        "resultsFirstSubmitQcDate": "2026-10-06",
+        "resultsFirstPostDate": "2026-10-29",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-29",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06220669",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "TERMINATED",
+        "pcd": "2025-10-18",
+        "resultsFirstSubmitDate": "2026-10-16",
+        "resultsFirstSubmitQcDate": "2026-10-16",
+        "resultsFirstPostDate": "2026-11-12",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-12",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT03177577",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-06",
+        "resultsFirstSubmitDate": "2026-10-14",
+        "resultsFirstSubmitQcDate": "2026-11-09",
+        "resultsFirstPostDate": "2026-11-10",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-10",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06272981",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-28",
+        "resultsFirstSubmitDate": "2026-10-26",
+        "resultsFirstSubmitQcDate": "2026-10-26",
+        "resultsFirstPostDate": "2026-11-17",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-17",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04165083",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-31",
+        "resultsFirstSubmitDate": "2026-10-07",
+        "resultsFirstSubmitQcDate": "2026-10-07",
+        "resultsFirstPostDate": "2026-10-29",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-29",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT03994796",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "ACTIVE_NOT_RECRUITING",
+        "pcd": "2025-11-13",
+        "resultsFirstSubmitDate": "2026-10-05",
+        "resultsFirstSubmitQcDate": "2026-10-29",
+        "resultsFirstPostDate": "2026-10-30",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-30",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-10-27",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04500899",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "TERMINATED",
+        "pcd": "2022-07-19",
+        "resultsFirstSubmitDate": "2026-10-22",
+        "resultsFirstSubmitQcDate": "2026-11-12",
+        "resultsFirstPostDate": "2026-11-16",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-16",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-11-13",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT07365735",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2026-05-19",
+        "resultsFirstSubmitDate": "2026-10-19",
+        "resultsFirstSubmitQcDate": "2026-11-12",
+        "resultsFirstPostDate": "2026-11-13",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-13",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-11-12",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06109428",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2022-03-29",
+        "resultsFirstSubmitDate": "2026-10-05",
+        "resultsFirstSubmitQcDate": "2026-10-05",
+        "resultsFirstPostDate": "2026-10-28",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-28",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT07226752",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "ACTIVE_NOT_RECRUITING",
+        "pcd": "2025-10-13",
+        "resultsFirstSubmitDate": "2026-10-12",
+        "resultsFirstSubmitQcDate": "2026-11-09",
+        "resultsFirstPostDate": "2026-11-10",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-10",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-11-03",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04916470",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2023-10-11",
+        "resultsFirstSubmitDate": "2026-10-08",
+        "resultsFirstSubmitQcDate": "2026-10-08",
+        "resultsFirstPostDate": "2026-11-02",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": "2024-10-08",
+        "dispFirstPostDate": "2024-03-15",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-02",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04753879",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2026-05-07",
+        "resultsFirstSubmitDate": "2026-10-13",
+        "resultsFirstSubmitQcDate": "2026-10-13",
+        "resultsFirstPostDate": "2026-11-04",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-04",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT07116499",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "TERMINATED",
+        "pcd": "2025-11-18",
+        "resultsFirstSubmitDate": "2026-10-15",
+        "resultsFirstSubmitQcDate": "2026-10-15",
+        "resultsFirstPostDate": "2026-11-05",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-05",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06290648",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2026-02-05",
+        "resultsFirstSubmitDate": "2026-10-05",
+        "resultsFirstSubmitQcDate": "2026-11-16",
+        "resultsFirstPostDate": "2026-11-18",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-18",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT03955211",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2021-12-03",
+        "resultsFirstSubmitDate": "2026-10-05",
+        "resultsFirstSubmitQcDate": "2026-10-05",
+        "resultsFirstPostDate": "2026-10-27",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-13",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05605340",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-14",
+        "resultsFirstSubmitDate": "2026-10-12",
+        "resultsFirstSubmitQcDate": "2026-10-12",
+        "resultsFirstPostDate": "2026-11-04",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-04",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06664034",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-09-30",
+        "resultsFirstSubmitDate": "2026-10-11",
+        "resultsFirstSubmitQcDate": "2026-10-11",
+        "resultsFirstPostDate": "2026-11-03",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-03",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05178992",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-31",
+        "resultsFirstSubmitDate": "2026-10-01",
+        "resultsFirstSubmitQcDate": "2026-10-01",
+        "resultsFirstPostDate": "2026-10-23",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-23",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04111627",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-08-11",
+        "resultsFirstSubmitDate": "2026-10-06",
+        "resultsFirstSubmitQcDate": "2026-10-06",
+        "resultsFirstPostDate": "2026-10-29",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-29",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05575037",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "ACTIVE_NOT_RECRUITING",
+        "pcd": "2026-04-30",
+        "resultsFirstSubmitDate": "2026-10-21",
+        "resultsFirstSubmitQcDate": "2026-10-21",
+        "resultsFirstPostDate": "2026-11-13",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-13",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04257500",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-08-22",
+        "resultsFirstSubmitDate": "2026-10-05",
+        "resultsFirstSubmitQcDate": "2026-11-02",
+        "resultsFirstPostDate": "2026-11-24",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": "2026-08-17",
+        "dispFirstPostDate": "2026-11-24",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-24",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-10-28",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT07071415",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-20",
+        "resultsFirstSubmitDate": "2026-10-15",
+        "resultsFirstSubmitQcDate": "2026-10-15",
+        "resultsFirstPostDate": "2026-11-09",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-09",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04168008",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-09-08",
+        "resultsFirstSubmitDate": "2026-10-09",
+        "resultsFirstSubmitQcDate": "2026-10-09",
+        "resultsFirstPostDate": "2026-11-03",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": "2026-08-27",
+        "dispFirstPostDate": "2026-04-16",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-03",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04968912",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2023-10-23",
+        "resultsFirstSubmitDate": "2026-10-15",
+        "resultsFirstSubmitQcDate": "2026-10-15",
+        "resultsFirstPostDate": "2026-11-05",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": "2024-10-18",
+        "dispFirstPostDate": "2024-10-21",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-05",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04708782",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2026-02-02",
+        "resultsFirstSubmitDate": "2026-10-19",
+        "resultsFirstSubmitQcDate": "2026-11-18",
+        "resultsFirstPostDate": "2026-11-20",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-20",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-11-12",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      }
+    ],
+    "post_2026_11": [
+      {
+        "nctId": "NCT05762952",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-08-05",
+        "resultsFirstSubmitDate": "2026-09-03",
+        "resultsFirstSubmitQcDate": "2026-11-04",
+        "resultsFirstPostDate": "2026-11-06",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-06",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04683042",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-03-11",
+        "resultsFirstSubmitDate": "2026-03-31",
+        "resultsFirstSubmitQcDate": "2026-10-13",
+        "resultsFirstPostDate": "2026-11-04",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-04",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-04-21",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05842954",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-06-27",
+        "resultsFirstSubmitDate": "2026-05-24",
+        "resultsFirstSubmitQcDate": "2026-10-30",
+        "resultsFirstPostDate": "2026-11-04",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-04",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04502030",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-09-19",
+        "resultsFirstSubmitDate": "2026-09-18",
+        "resultsFirstSubmitQcDate": "2026-10-28",
+        "resultsFirstPostDate": "2026-11-02",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-02",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-10-14",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05458128",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-01",
+        "resultsFirstSubmitDate": "2026-09-30",
+        "resultsFirstSubmitQcDate": "2026-10-21",
+        "resultsFirstPostDate": "2026-11-13",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-13",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-10-21",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04531670",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2023-06-22",
+        "resultsFirstSubmitDate": "2024-05-17",
+        "resultsFirstSubmitQcDate": "2026-11-02",
+        "resultsFirstPostDate": "2026-11-24",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-24",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04875078",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2023-03-31",
+        "resultsFirstSubmitDate": "2025-10-21",
+        "resultsFirstSubmitQcDate": "2026-10-07",
+        "resultsFirstPostDate": "2026-11-02",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-02",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2025-11-03",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06220669",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "TERMINATED",
+        "pcd": "2025-10-18",
+        "resultsFirstSubmitDate": "2026-10-16",
+        "resultsFirstSubmitQcDate": "2026-10-16",
+        "resultsFirstPostDate": "2026-11-12",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-12",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06447337",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2026-06-30",
+        "resultsFirstSubmitDate": "2026-07-22",
+        "resultsFirstSubmitQcDate": "2026-11-03",
+        "resultsFirstPostDate": "2026-11-04",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-04",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT03177577",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-06",
+        "resultsFirstSubmitDate": "2026-10-14",
+        "resultsFirstSubmitQcDate": "2026-11-09",
+        "resultsFirstPostDate": "2026-11-10",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-10",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04917575",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2024-05-01",
+        "resultsFirstSubmitDate": "2026-01-12",
+        "resultsFirstSubmitQcDate": "2026-08-21",
+        "resultsFirstPostDate": "2026-11-16",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-16",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04320030",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2021-07-21",
+        "resultsFirstSubmitDate": "2026-06-04",
+        "resultsFirstSubmitQcDate": "2026-11-09",
+        "resultsFirstPostDate": "2026-11-10",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-10",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06272981",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-28",
+        "resultsFirstSubmitDate": "2026-10-26",
+        "resultsFirstSubmitQcDate": "2026-10-26",
+        "resultsFirstPostDate": "2026-11-17",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-17",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04929379",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-05-01",
+        "resultsFirstSubmitDate": "2026-09-16",
+        "resultsFirstSubmitQcDate": "2026-10-16",
+        "resultsFirstPostDate": "2026-11-10",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-10",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-10-08",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT06032546",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "TERMINATED",
+        "pcd": "2025-09-22",
+        "resultsFirstSubmitDate": "2026-09-02",
+        "resultsFirstSubmitQcDate": "2026-11-04",
+        "resultsFirstPostDate": "2026-11-06",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-06",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-09-28",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04373512",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-02-14",
+        "resultsFirstSubmitDate": "2026-05-06",
+        "resultsFirstSubmitQcDate": "2026-10-12",
+        "resultsFirstPostDate": "2026-11-03",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-03",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-06-02",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT07289594",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2026-01-15",
+        "resultsFirstSubmitDate": "2026-06-23",
+        "resultsFirstSubmitQcDate": "2026-08-17",
+        "resultsFirstPostDate": "2026-11-09",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-10",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05297201",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-01-13",
+        "resultsFirstSubmitDate": "2025-12-08",
+        "resultsFirstSubmitQcDate": "2026-11-10",
+        "resultsFirstPostDate": "2026-11-12",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-12",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05071716",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-12-23",
+        "resultsFirstSubmitDate": "2026-07-27",
+        "resultsFirstSubmitQcDate": "2026-11-18",
+        "resultsFirstPostDate": "2026-11-19",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-19",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-08-20",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04500899",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "TERMINATED",
+        "pcd": "2022-07-19",
+        "resultsFirstSubmitDate": "2026-10-22",
+        "resultsFirstSubmitQcDate": "2026-11-12",
+        "resultsFirstPostDate": "2026-11-16",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-16",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-11-13",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT01552434",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "TERMINATED",
+        "pcd": "2026-05-08",
+        "resultsFirstSubmitDate": "2026-08-12",
+        "resultsFirstSubmitQcDate": "2026-11-03",
+        "resultsFirstPostDate": "2026-11-05",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-05",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT05442190",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-10-22",
+        "resultsFirstSubmitDate": "2026-08-20",
+        "resultsFirstSubmitQcDate": "2026-10-26",
+        "resultsFirstPostDate": "2026-11-17",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-17",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-09-15",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT04541446",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-12-31",
+        "resultsFirstSubmitDate": "2026-07-01",
+        "resultsFirstSubmitQcDate": "2026-10-09",
+        "resultsFirstPostDate": "2026-11-04",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": "2026-06-02",
+        "dispFirstPostDate": "2025-10-30",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-04",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT02918435",
+        "hasResults": true,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2023-09-26",
+        "resultsFirstSubmitDate": "2024-10-30",
+        "resultsFirstSubmitQcDate": "2026-11-05",
+        "resultsFirstPostDate": "2026-11-06",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": "2024-09-24",
+        "dispFirstPostDate": "2024-01-05",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-06",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      },
+      {
+        "nctId": "NCT07365735",
+        "hasResults": true,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2026-05-19",
+        "resultsFirstSubmitDate": "2026-10-19",
+        "resultsFirstSubmitQcDate": "2026-11-12",
+        "resultsFirstPostDate": "2026-11-13",
+        "resultsFirstPostType": "ACTUAL",
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-13",
+        "submissionTracking": {
+          "firstMcpInfo": {
+            "postDateStruct": {
+              "date": "2026-11-12",
+              "type": "ACTUAL"
+            }
+          }
+        },
+        "hasResultsSectionKeys": [
+          "adverseEventsModule",
+          "baselineCharacteristicsModule",
+          "moreInfoModule",
+          "outcomeMeasuresModule",
+          "participantFlowModule"
+        ]
+      }
+    ],
+    "unposted_2026_10_11": [
+      {
+        "nctId": "NCT02639273",
+        "hasResults": false,
+        "sponsorClass": "NIH",
+        "overallStatus": "COMPLETED",
+        "pcd": "2023-12-08",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-29",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06975436",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-06-30",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-16",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT01961557",
+        "hasResults": false,
+        "sponsorClass": "NIH",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-06-05",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-23",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT04485416",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "TERMINATED",
+        "pcd": "2025-01-20",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-09",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT03955783",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2024-09-01",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-29",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06588738",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-09-23",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": "2026-08-06",
+        "dispFirstPostDate": "2026-08-10",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-28",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06576765",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2024-11-08",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-10",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT02868567",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-05",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-13",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT05548556",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-05-02",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": "2026-04-24",
+        "dispFirstPostDate": "2026-03-20",
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-15",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT05539157",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "TERMINATED",
+        "pcd": "2023-04-17",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-05",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT04052880",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-05-20",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-07",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06053684",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "TERMINATED",
+        "pcd": "2025-05-25",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-13",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT03214029",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2022-12-31",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-15",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT01087294",
+        "hasResults": false,
+        "sponsorClass": "NIH",
+        "overallStatus": "COMPLETED",
+        "pcd": "2024-03-08",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-24",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT07215962",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-07-01",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-02",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT01747213",
+        "hasResults": false,
+        "sponsorClass": "NIH",
+        "overallStatus": "COMPLETED",
+        "pcd": "2018-09-21",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-23",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06529146",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2024-09-06",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-29",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06491758",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2022-03-22",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-16",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT07116135",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-07-08",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-19",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT07870018",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2021-12-18",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-13",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06378632",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-08-03",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-06",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT04280926",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2021-10-13",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-15",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT05143554",
+        "hasResults": false,
+        "sponsorClass": "OTHER",
+        "overallStatus": "COMPLETED",
+        "pcd": "2025-09-23",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-09",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT06275841",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "COMPLETED",
+        "pcd": "2024-05-03",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-11-20",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      },
+      {
+        "nctId": "NCT05879744",
+        "hasResults": false,
+        "sponsorClass": "INDUSTRY",
+        "overallStatus": "TERMINATED",
+        "pcd": "2024-06-01",
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "resultsFirstPostType": null,
+        "dispFirstSubmitDate": null,
+        "dispFirstPostDate": null,
+        "delayedPosting": null,
+        "resultsWaived": null,
+        "lastUpdatePostDate": "2026-10-22",
+        "submissionTracking": null,
+        "hasResultsSectionKeys": []
+      }
+    ]
+  },
+  "local_dataset_lag_decomposition": {
+    "ALL_2024_2026": {
+      "n": 5467,
+      "has_results_true": 5467,
+      "qc_date_missing": 0,
+      "post_date_missing": 0,
+      "post_before_qc_count": 0,
+      "post_within_30d_pct": 25.63,
+      "lag_post_minus_sub_quantiles": {
+        "0.1": 22.0,
+        "0.25": 30.0,
+        "0.5": 57.0,
+        "0.75": 99.0,
+        "0.9": 178.0
+      },
+      "lag_qc_minus_sub_quantiles": {
+        "0.1": 0.0,
+        "0.25": 21.0,
+        "0.5": 42.0,
+        "0.75": 84.0,
+        "0.9": 162.0
+      },
+      "lag_post_minus_qc_quantiles": {
+        "0.1": 2.0,
+        "0.25": 6.0,
+        "0.5": 19.0,
+        "0.75": 23.0,
+        "0.9": 27.0
+      }
+    },
+    "INDUSTRY_2024_2025": {
+      "n": 2211,
+      "has_results_true": 2211,
+      "qc_date_missing": 0,
+      "post_date_missing": 0,
+      "post_before_qc_count": 0,
+      "post_within_30d_pct": 29.9,
+      "lag_post_minus_sub_quantiles": {
+        "0.1": 21.0,
+        "0.25": 27.0,
+        "0.5": 54.0,
+        "0.75": 90.0,
+        "0.9": 166.0
+      },
+      "lag_qc_minus_sub_quantiles": {
+        "0.1": 0.0,
+        "0.25": 0.0,
+        "0.5": 40.0,
+        "0.75": 78.0,
+        "0.9": 149.0
+      },
+      "lag_post_minus_qc_quantiles": {
+        "0.1": 2.0,
+        "0.25": 6.0,
+        "0.5": 18.0,
+        "0.75": 23.0,
+        "0.9": 27.0
+      }
+    },
+    "ACADEMIC_2024_2025": {
+      "n": 2037,
+      "has_results_true": 2037,
+      "qc_date_missing": 0,
+      "post_date_missing": 0,
+      "post_before_qc_count": 0,
+      "post_within_30d_pct": 20.08,
+      "lag_post_minus_sub_quantiles": {
+        "0.1": 24.0,
+        "0.25": 37.0,
+        "0.5": 65.0,
+        "0.75": 119.0,
+        "0.9": 244.0
+      },
+      "lag_qc_minus_sub_quantiles": {
+        "0.1": 0.0,
+        "0.25": 25.0,
+        "0.5": 49.0,
+        "0.75": 104.0,
+        "0.9": 229.0
+      },
+      "lag_post_minus_qc_quantiles": {
+        "0.1": 2.0,
+        "0.25": 5.0,
+        "0.5": 17.0,
+        "0.75": 22.0,
+        "0.9": 26.0
+      }
+    },
+    "INDUSTRY_2026_04_09": {
+      "n": 412,
+      "has_results_true": 412,
+      "qc_date_missing": 0,
+      "post_date_missing": 0,
+      "post_before_qc_count": 0,
+      "post_within_30d_pct": 33.74,
+      "lag_post_minus_sub_quantiles": {
+        "0.1": 23.0,
+        "0.25": 27.0,
+        "0.5": 53.0,
+        "0.75": 72.0,
+        "0.9": 106.90000000000003
+      },
+      "lag_qc_minus_sub_quantiles": {
+        "0.1": 0.0,
+        "0.25": 0.0,
+        "0.5": 35.0,
+        "0.75": 50.0,
+        "0.9": 87.80000000000007
+      },
+      "lag_post_minus_qc_quantiles": {
+        "0.1": 2.0,
+        "0.25": 18.0,
+        "0.5": 23.0,
+        "0.75": 26.0,
+        "0.9": 27.0
+      }
+    },
+    "ACADEMIC_2026_04_09": {
+      "n": 314,
+      "has_results_true": 314,
+      "qc_date_missing": 0,
+      "post_date_missing": 0,
+      "post_before_qc_count": 0,
+      "post_within_30d_pct": 19.11,
+      "lag_post_minus_sub_quantiles": {
+        "0.1": 25.0,
+        "0.25": 43.0,
+        "0.5": 61.5,
+        "0.75": 97.75,
+        "0.9": 128.7
+      },
+      "lag_qc_minus_sub_quantiles": {
+        "0.1": 0.0,
+        "0.25": 25.0,
+        "0.5": 44.0,
+        "0.75": 81.5,
+        "0.9": 112.69999999999999
+      },
+      "lag_post_minus_qc_quantiles": {
+        "0.1": 2.0,
+        "0.25": 7.25,
+        "0.5": 22.0,
+        "0.75": 25.0,
+        "0.9": 28.0
+      }
+    }
+  },
+  "local_2026_monthly_qc_decomposition": [
+    {
+      "ym": "2026-01",
+      "n_total": 137,
+      "n_ind": 55,
+      "n_acad": 82,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 55.0,
+      "median_qc_minus_sub": 38.0,
+      "median_post_minus_qc": 19.0
+    },
+    {
+      "ym": "2026-02",
+      "n_total": 144,
+      "n_ind": 54,
+      "n_acad": 90,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 54.5,
+      "median_qc_minus_sub": 37.5,
+      "median_post_minus_qc": 20.0
+    },
+    {
+      "ym": "2026-03",
+      "n_total": 189,
+      "n_ind": 85,
+      "n_acad": 104,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 59.0,
+      "median_qc_minus_sub": 41.0,
+      "median_post_minus_qc": 21.0
+    },
+    {
+      "ym": "2026-04",
+      "n_total": 175,
+      "n_ind": 87,
+      "n_acad": 88,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 57.0,
+      "median_qc_minus_sub": 40.0,
+      "median_post_minus_qc": 22.0
+    },
+    {
+      "ym": "2026-05",
+      "n_total": 148,
+      "n_ind": 74,
+      "n_acad": 74,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 63.5,
+      "median_qc_minus_sub": 46.0,
+      "median_post_minus_qc": 25.0
+    },
+    {
+      "ym": "2026-06",
+      "n_total": 144,
+      "n_ind": 85,
+      "n_acad": 59,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 60.0,
+      "median_qc_minus_sub": 41.0,
+      "median_post_minus_qc": 23.0
+    },
+    {
+      "ym": "2026-07",
+      "n_total": 113,
+      "n_ind": 71,
+      "n_acad": 42,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 63.0,
+      "median_qc_minus_sub": 41.0,
+      "median_post_minus_qc": 23.0
+    },
+    {
+      "ym": "2026-08",
+      "n_total": 83,
+      "n_ind": 53,
+      "n_acad": 30,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 49.0,
+      "median_qc_minus_sub": 29.0,
+      "median_post_minus_qc": 22.0
+    },
+    {
+      "ym": "2026-09",
+      "n_total": 63,
+      "n_ind": 42,
+      "n_acad": 21,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 29.0,
+      "median_qc_minus_sub": 24.0,
+      "median_post_minus_qc": 22.0
+    },
+    {
+      "ym": "2026-10",
+      "n_total": 23,
+      "n_ind": 14,
+      "n_acad": 9,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": 23.0,
+      "median_qc_minus_sub": 0.0,
+      "median_post_minus_qc": 22.0
+    },
+    {
+      "ym": "2026-11",
+      "n_total": 0,
+      "n_ind": 0,
+      "n_acad": 0,
+      "n_has_results_false": 0,
+      "n_qc_missing": 0,
+      "n_post_before_qc": 0,
+      "median_post_minus_sub": null,
+      "median_qc_minus_sub": null,
+      "median_post_minus_qc": null
+    }
+  ],
+  "overdue_no_res_updated_post_mar26_total": 340,
+  "overdue_no_res_submissionTracking_audit": {
+    "checked_ncts": 340,
+    "n_with_tracking_or_submit": 201,
+    "n_industry": 158,
+    "n_academic": 43,
+    "n_with_estimatedResultsFirstSubmitDate": 62,
+    "n_with_firstMcpInfo": 0,
+    "n_with_submissionInfos": 62,
+    "examples": [
+      {
+        "nctId": "NCT05242471",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-05-21",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT06588738",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-08-06",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05379634",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-09-03",
+        "submissionTracking": {
+          "estimatedResultsFirstSubmitDate": "2026-11-05",
+          "submissionInfos": [
+            {
+              "releaseDate": "2026-11-05"
+            }
+          ]
+        }
+      },
+      {
+        "nctId": "NCT05296837",
+        "sponsorClass": "OTHER",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-07-09",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05536973",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2025-08-20",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05885555",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-01-27",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05306340",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-04-24",
+        "submissionTracking": {
+          "estimatedResultsFirstSubmitDate": "2026-11-19",
+          "submissionInfos": [
+            {
+              "releaseDate": "2026-11-19"
+            }
+          ]
+        }
+      },
+      {
+        "nctId": "NCT05126758",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-06-03",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05153772",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-04-09",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05878119",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-04-14",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT04495153",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2025-08-19",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05731544",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2025-11-05",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT03992404",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-06-17",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05052801",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-02-17",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05712707",
+        "sponsorClass": "OTHER",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-04-02",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05144256",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2025-05-01",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05186753",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-05-15",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05083169",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": null,
+        "submissionTracking": {
+          "estimatedResultsFirstSubmitDate": "2026-11-04",
+          "submissionInfos": [
+            {
+              "releaseDate": "2026-11-04"
+            }
+          ]
+        }
+      },
+      {
+        "nctId": "NCT05997264",
+        "sponsorClass": "FED",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-01-21",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05175105",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2025-11-26",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05601752",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-09-21",
+        "submissionTracking": {
+          "estimatedResultsFirstSubmitDate": "2026-10-30",
+          "submissionInfos": [
+            {
+              "releaseDate": "2026-10-30",
+              "resetDate": "2026-11-20",
+              "mcpReleaseN": 12
+            }
+          ]
+        }
+      },
+      {
+        "nctId": "NCT04675788",
+        "sponsorClass": "OTHER",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-03-06",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05070858",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-07-01",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT06013241",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-09-29",
+        "submissionTracking": null
+      },
+      {
+        "nctId": "NCT05242484",
+        "sponsorClass": "INDUSTRY",
+        "hasResults": false,
+        "resultsFirstSubmitDate": null,
+        "resultsFirstSubmitQcDate": null,
+        "resultsFirstPostDate": null,
+        "dispFirstSubmitDate": "2026-05-14",
+        "submissionTracking": null
+      }
+    ]
+  },
+  "posted_2026_fast_vs_slow_submissionTracking": [
+    {
+      "nctId": "NCT04099667",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-28",
+      "resultsFirstSubmitQcDate": "2026-04-28",
+      "resultsFirstPostDate": "2026-05-22",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05605964",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-03",
+      "resultsFirstSubmitQcDate": "2026-06-11",
+      "resultsFirstPostDate": "2026-06-15",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-04-23",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05655299",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-09-11",
+      "resultsFirstSubmitQcDate": "2026-10-29",
+      "resultsFirstPostDate": "2026-11-19",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-10-06",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05915702",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-16",
+      "resultsFirstSubmitQcDate": "2026-09-15",
+      "resultsFirstPostDate": "2026-10-08",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-07-14",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT06444529",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-10-16",
+      "resultsFirstSubmitQcDate": "2026-10-16",
+      "resultsFirstPostDate": "2026-11-10",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT02799277",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-06",
+      "resultsFirstSubmitQcDate": "2026-09-02",
+      "resultsFirstPostDate": "2026-09-28",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-04-22",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04980222",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-11",
+      "resultsFirstSubmitQcDate": "2026-07-26",
+      "resultsFirstPostDate": "2026-08-18",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-07-08",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT02977299",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-08",
+      "resultsFirstSubmitQcDate": "2026-06-12",
+      "resultsFirstPostDate": "2026-07-09",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-06-04",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04686175",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-07-15",
+      "resultsFirstSubmitQcDate": "2026-10-26",
+      "resultsFirstPostDate": "2026-10-27",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-08-07",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04374630",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-23",
+      "resultsFirstSubmitQcDate": "2026-10-16",
+      "resultsFirstPostDate": "2026-10-19",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-05-15",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT06015217",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-20",
+      "resultsFirstSubmitQcDate": "2026-04-20",
+      "resultsFirstPostDate": "2026-05-12",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05704738",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-08-06",
+      "resultsFirstSubmitQcDate": "2026-08-06",
+      "resultsFirstPostDate": "2026-08-28",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05620836",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-10-15",
+      "resultsFirstSubmitQcDate": "2026-10-15",
+      "resultsFirstPostDate": "2026-11-05",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05071664",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-25",
+      "resultsFirstSubmitQcDate": "2026-06-25",
+      "resultsFirstPostDate": "2026-07-23",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05773053",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-10-16",
+      "resultsFirstSubmitQcDate": "2026-10-16",
+      "resultsFirstPostDate": "2026-11-10",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05156047",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-08-28",
+      "resultsFirstSubmitQcDate": "2026-09-24",
+      "resultsFirstPostDate": "2026-09-25",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-09-23",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT02819856",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-31",
+      "resultsFirstSubmitQcDate": "2026-05-31",
+      "resultsFirstPostDate": "2026-06-25",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05598320",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-16",
+      "resultsFirstSubmitQcDate": "2026-06-16",
+      "resultsFirstPostDate": "2026-07-14",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05345457",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-26",
+      "resultsFirstSubmitQcDate": "2026-05-26",
+      "resultsFirstPostDate": "2026-06-18",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT02983734",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-08-17",
+      "resultsFirstSubmitQcDate": "2026-08-17",
+      "resultsFirstPostDate": "2026-09-09",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT06518577",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-09",
+      "resultsFirstSubmitQcDate": "2026-06-30",
+      "resultsFirstPostDate": "2026-07-28",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-04-30",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05074420",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-29",
+      "resultsFirstSubmitQcDate": "2026-07-18",
+      "resultsFirstPostDate": "2026-08-11",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-06-25",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT03756389",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-13",
+      "resultsFirstSubmitQcDate": "2026-10-15",
+      "resultsFirstPostDate": "2026-11-05",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-05-01",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04666688",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-17",
+      "resultsFirstSubmitQcDate": "2026-10-23",
+      "resultsFirstPostDate": "2026-11-16",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-07-15",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04072354",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-04",
+      "resultsFirstSubmitQcDate": "2026-05-04",
+      "resultsFirstPostDate": "2026-05-28",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05273567",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-30",
+      "resultsFirstSubmitQcDate": "2026-07-24",
+      "resultsFirstPostDate": "2026-08-18",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-05-28",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT02928978",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-15",
+      "resultsFirstSubmitQcDate": "2026-09-23",
+      "resultsFirstPostDate": "2026-10-16",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-05-06",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04980495",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-01",
+      "resultsFirstSubmitQcDate": "2026-05-01",
+      "resultsFirstPostDate": "2026-05-27",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT03991130",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-30",
+      "resultsFirstSubmitQcDate": "2026-07-15",
+      "resultsFirstPostDate": "2026-08-06",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-05-28",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05868122",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-08-21",
+      "resultsFirstSubmitQcDate": "2026-10-10",
+      "resultsFirstPostDate": "2026-11-03",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-09-16",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04040049",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-04",
+      "resultsFirstSubmitQcDate": "2026-07-14",
+      "resultsFirstPostDate": "2026-08-06",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-06-30",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04123613",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-08-27",
+      "resultsFirstSubmitQcDate": "2026-10-16",
+      "resultsFirstPostDate": "2026-11-10",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-09-24",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05153434",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-26",
+      "resultsFirstSubmitQcDate": "2026-09-03",
+      "resultsFirstPostDate": "2026-09-08",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-06-22",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT01542879",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-10",
+      "resultsFirstSubmitQcDate": "2026-09-28",
+      "resultsFirstPostDate": "2026-10-06",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05640245",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-08-17",
+      "resultsFirstSubmitQcDate": "2026-08-17",
+      "resultsFirstPostDate": "2026-09-10",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05523440",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-02",
+      "resultsFirstSubmitQcDate": "2026-05-07",
+      "resultsFirstPostDate": "2026-06-03",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-04-23",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05545150",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-08",
+      "resultsFirstSubmitQcDate": "2026-07-28",
+      "resultsFirstPostDate": "2026-08-19",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-04-29",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT06149455",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-10-16",
+      "resultsFirstSubmitQcDate": "2026-10-16",
+      "resultsFirstPostDate": "2026-11-12",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT03872401",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-01",
+      "resultsFirstSubmitQcDate": "2026-06-01",
+      "resultsFirstPostDate": "2026-06-25",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05695352",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-01",
+      "resultsFirstSubmitQcDate": "2026-05-20",
+      "resultsFirstPostDate": "2026-06-17",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-04-22",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05176639",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-07-22",
+      "resultsFirstSubmitQcDate": "2026-07-22",
+      "resultsFirstPostDate": "2026-08-13",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT04469686",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-07",
+      "resultsFirstSubmitQcDate": "2026-07-14",
+      "resultsFirstPostDate": "2026-08-06",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-04-28",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT04814537",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-19",
+      "resultsFirstSubmitQcDate": "2026-07-10",
+      "resultsFirstPostDate": "2026-08-04",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-05-12",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05018806",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-15",
+      "resultsFirstSubmitQcDate": "2026-06-15",
+      "resultsFirstPostDate": "2026-07-13",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05160532",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-06-02",
+      "resultsFirstSubmitQcDate": "2026-06-25",
+      "resultsFirstPostDate": "2026-06-30",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-06-26",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT05911321",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-04-27",
+      "resultsFirstSubmitQcDate": "2026-04-27",
+      "resultsFirstPostDate": "2026-05-20",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT04370704",
+      "sponsorClass": "INDUSTRY",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-07-22",
+      "resultsFirstSubmitQcDate": "2026-08-14",
+      "resultsFirstPostDate": "2026-08-17",
+      "submissionTracking": {
+        "firstMcpInfo": {
+          "postDateStruct": {
+            "date": "2026-08-13",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "nctId": "NCT06444399",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-08-04",
+      "resultsFirstSubmitQcDate": "2026-08-04",
+      "resultsFirstPostDate": "2026-08-26",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT06112834",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-21",
+      "resultsFirstSubmitQcDate": "2026-05-21",
+      "resultsFirstPostDate": "2026-06-18",
+      "submissionTracking": null
+    },
+    {
+      "nctId": "NCT05732532",
+      "sponsorClass": "OTHER",
+      "hasResults": true,
+      "resultsFirstSubmitDate": "2026-05-27",
+      "resultsFirstSubmitQcDate": "2026-05-27",
+      "resultsFirstPostDate": "2026-06-24",
+      "submissionTracking": null
+    }
+  ],
+  "api_search_area_probes": {
+    "SubmissionTracking": {
+      "ok": false,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    "EstimatedResultsFirstSubmitDate": {
+      "ok": true,
+      "totalCount": 3157
+    },
+    "FirstMcpPostDate": {
+      "ok": false,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    "ResultsFirstSubmitDate": {
+      "ok": true,
+      "totalCount": 2212
+    },
+    "ResultsFirstSubmitQcDate": {
+      "ok": false,
+      "error": "HTTP Error 400: Bad Request"
+    },
+    "DispFirstSubmitDate": {
+      "ok": true,
+      "totalCount": 254
+    },
+    "UnpostedEvent": {
+      "ok": false,
+      "error": "HTTP Error 400: Bad Request"
+    }
+  },
+  "elapsed_sec": 56.6
+}

@@ -1,0 +1,18 @@
+# Local .gitignore for Portfolio 1 freeze (never touches parent repo .gitignore)
+# Exclude third-party cloned repositories, raw bulk public data caches, and build intermediates
+**/cloned_pipelines/
+**/data/raw/
+**/data/clean/*.parquet
+**/data/pilot_*/
+**/audit/gnomad_v4_unseen20/
+**/rendered_pages*/
+**/*.aux
+**/*.bbl
+**/*.blg
+**/*.fls
+**/*.fdb_latexmk
+**/*.log
+**/*.out
+**/*.synctex.gz
+**/__pycache__/
+**/.DS_Store

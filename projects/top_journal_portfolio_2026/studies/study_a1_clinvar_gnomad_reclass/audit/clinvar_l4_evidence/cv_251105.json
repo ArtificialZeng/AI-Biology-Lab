@@ -1,0 +1,393 @@
+{
+  "variant_id": "251105",
+  "allele_info": {
+    "chromosome": "19",
+    "position_start": "11089463",
+    "position_stop": "11133820",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "19p13.2",
+    "dbsnp_rsid": "rs749038326"
+  },
+  "conditions": [
+    {
+      "name": "LDLR-related disorder",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Homozygous familial hypercholesterolemia",
+      "medgen_cui": "C0342881",
+      "omim_id": null,
+      "orphanet_id": "391665",
+      "hpo_terms": []
+    },
+    {
+      "name": "Cardiovascular phenotype",
+      "medgen_cui": "CN230736",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Familial hypercholesterolemia",
+      "medgen_cui": "C0020445",
+      "omim_id": "PS143890",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Hypercholesterolemia, familial, 1",
+      "medgen_cui": "C0745103",
+      "omim_id": "143890",
+      "orphanet_id": "391665",
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": "C0020445",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Dutch Lipid Clinic Network Criteria score",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "low-density lipoprotein cholesterol level",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Hyperbetalipoproteinemia",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": [
+        "HP:0003141"
+      ]
+    },
+    {
+      "name": "Hypercholesterolemia",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": [
+        "HP:0003124"
+      ]
+    },
+    {
+      "name": "Familial Hypercholesterolemia",
+      "medgen_cui": null,
+      "omim_id": "143890",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Familial hypercholesterolaemia",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "LDLR-related disorders",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "10933493",
+    "11005141",
+    "12436241",
+    "12837857",
+    "1301956",
+    "15823276",
+    "16205024",
+    "16250003",
+    "16343504",
+    "19026292",
+    "20538126",
+    "20809525",
+    "21376320",
+    "22353362",
+    "22390909",
+    "23375686",
+    "24404629",
+    "24956927",
+    "25187945",
+    "25962062",
+    "26343872",
+    "26608663",
+    "27206935",
+    "27578108",
+    "27765764",
+    "28349240",
+    "28502495",
+    "30270083",
+    "30592178",
+    "30649024",
+    "31345425",
+    "31686828",
+    "32759540",
+    "33994402",
+    "34456200",
+    "34573395",
+    "39731075",
+    "8347689",
+    "9259195",
+    "9763532"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "LDLR-LOVD, British Heart Foundation",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACGS Guidelines, 2013",
+      "date_last_evaluated": "2016-03-25"
+    },
+    {
+      "submitter_name": "Robarts Research Institute, Western University",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "Wang et al. (Arterioscler Thromb Vasc Biol. 2016)",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Centre de G\u00e9n\u00e9tique Mol\u00e9culaire et Chromosomique, Unit\u00e9 de g\u00e9n\u00e9tique de l'Ob\u00e9sit\u00e9 et des Dyslipid\u00e9mies, APHP, GH H\u00f4pitaux Universitaires Piti\u00e9-Salp\u00eatri\u00e8re / Charles-Foix",
+      "classification": "Likely benign",
+      "curator_notes": "subject mutated among 2600 FH index cases screened = 1 , family members = 2 with co-segregation / other mutations at same codon / Software predictions: Damaging",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2016-12-16"
+    },
+    {
+      "submitter_name": "Women's Health and Genetics/Laboratory Corporation of America, LabCorp",
+      "classification": "Pathogenic",
+      "curator_notes": "Variant summary: LDLR c.268G>A (p.Asp90Asn) results in a conservative amino acid change in the encoded protein sequence. Three of five in-silico tools predict a damaging effect of the variant on protein function. The variant allele was found at a frequency of 5.6e-05 in 251486 control chromosomes. This frequency is not significantly higher than expected for a pathogenic variant in LDLR causing Familial Hypercholesterolemia (5.6e-05 vs 0.0013), allowing no conclusion about variant significance. c.268G>A has been reported in the literature in multiple individuals affected with Familial Hypercholesterolemia (Mak_1998, Chiou_2016, Fouchier_2005, Chiou_2010). Functional studies have shown the variant to impact LDLR subcellular localization and reduces LDLR activity (Chang_2003). Other variants have been reported in association with Hypercholesterolemia (D90A, D90E, D90G, D90Y). Eight clinical diagnostic laboratories have submitted clinical-significance assessments for this variant to ClinVar after 2014 without evidence for independent evaluation. Seven submitters classified as likely pathogenic/pathogenic while one classified as likely benign. Based on the evidence outlined above, the variant was classified as pathogenic.",
+      "assertion_criteria": "LabCorp Variant Classification Summary - May 2015",
+      "date_last_evaluated": "2021-09-08"
+    },
+    {
+      "submitter_name": "Laboratory for Molecular Medicine, Mass General Brigham Personalized Medicine",
+      "classification": "Pathogenic",
+      "curator_notes": "The p.Asp90Asn variant in LDLR has been identified in at least 15 individuals with familial hypercholesterolemia (FH): In 12 individuals in the heterozygous state (Day 1997, Mak 1998, Amsellem 2002, Chang 2003, Sozen 2005, Chiou 2011, Bertolini 2013, Norsworthy 2014, Han 2015, Wang 2016, Hsiung 2018) and in 3 invididuals in the compound heterozygous state who had significantly higher serum LDL levels (Bertonlini 2013, Hsiung 2018). It has also been reported by other clinical laboratories in ClinVar (Variation ID 251105) and has been identified in 0.08% (16/19952) of East Asian chromosomes by gnomAD (http://gnomad.broadinstitute.org). An in vitro functional study (Chang 2003) and computational and conservation analysis support an impact on protein function. Additionally, several other variants involving this codon (p.Asp90Tyr, p.Asp90Ala, p.Asp90Gly, and p.Asp90Glu) have been identified in individuals with FH (Stenson 2017), suggesting that changes as this position are not tolerated. In summary, this variant meets criteria to be classified as pathogenic for autosomal dominant FH based upon case observations and functional and computational evidence. ACMG/AMP criteria applied: PM3_Strong, PS4_Moderate, PP3, PS3_Supporting.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2019-04-08"
+    },
+    {
+      "submitter_name": "Ambry Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.268G>A (p.D90N) alteration is located in exon 3 (coding exon 3) of the LDLR gene. This alteration results from a G to A substitution at nucleotide position 268, causing the aspartic acid (D) at amino acid position 90 to be replaced by an asparagine (N). Based on data from gnomAD, the A allele has an overall frequency of 0.006% (17/282878) total alleles studied. The highest observed frequency was 0.08% (16/19952) of East Asian alleles. This alteration, also known as p.D69N, has been reported in multiple individuals with familial hypercholesterolemia (FH) and in FH cohorts from a variety of ethnic backgrounds (Day, 1997; Mak, 1998; Khoo, 2000; Chang, 2003; Fouchier, 2005; Norsworthy, 2014). Other amino acid substitutions at this position have also been reported in individuals with FH, including D90A (Kolansky, 2008), D90E (Marduel, 2010), D90G (Hobbs, 1992), and D90Y (Rubinsztein, 1993). This amino acid position is highly conserved in available vertebrate species. Based on internal structural analysis, this alteration occurs in a known motif in a region of known function with an effect that matches known phenotype (Kurniawan, 2000). The results of functional studies demonstrated that protein product is retained in the endoplasmic reticulum and enzyme activity is reduced (Chang, 2003). The in silico prediction for this alteration is inconclusive. Based on the available evidence, this alteration is classified as pathogenic.",
+      "assertion_criteria": "Ambry Variant Classification Scheme 2023",
+      "date_last_evaluated": "2023-05-04"
+    },
+    {
+      "submitter_name": "Revvity Omics, Revvity",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-06-28"
+    },
+    {
+      "submitter_name": "Color Diagnostics, LLC DBA Color Health",
+      "classification": "Pathogenic",
+      "curator_notes": "This missense variant replaces aspartic acid with asparagine at codon 90 in the second LDLR type A of the ligand binding domain of the LDLR protein. This variant is also known as p.Asp69Asn in the mature protein. Computational prediction suggests that this variant may have a deleterious impact on protein structure and function. A functional study has shown that the mutant protein is trapped in the endoplasmic reticulum, resulting in decreased LDLR expression at the cell surface (PMID: 12837857). Cells from an individual compound heterozygous for this variant and p.Cys222* showed no detectable LDLR activity (PMID: 16343504). This variant has been reported in over thirty individuals of varying ethnicities affected with familial hypercholesterolemia (PMID: 9259195, 9763532, 12436241, 12837857, 15823276, 16250003, 16343504, 21376320, 23375686, 25962062, 27206935, 31345425) and is thought to be one of the most common pathogenic mutations in the Chinese population (PMID: 27206935, 30592178, 31686828). This variant has been reported to segregate with disease in a family study (PMID: 12837857). This variant has been identified in 17/282878 chromosomes in the general population by the Genome Aggregation Database (gnomAD). Different missense variants occurring at this codon, p.Asp90Gly and p.Asp90AGlu, are known to cause disease (ClinVar variation ID: 226313, 251107), indicating functional and clinical importance of this position. Based on the available evidence, this variant is classified as Pathogenic.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-09-08"
+    },
+    {
+      "submitter_name": "Cardiovascular Research Group, Instituto Nacional de Saude Doutor Ricardo Jorge",
+      "classification": "Likely pathogenic",
+      "curator_notes": "%MAF(ExAC):0.004942; Assay Description:Heterologous cells (COS-7), FACS assays",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2016-03-01"
+    },
+    {
+      "submitter_name": "Laboratorium voor Moleculaire Diagnostiek Experimentele Vasculaire Geneeskunde, Academisch Medisch Centrum",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Brunham Lab, Centre for Heart and Lung Innovation, University of British Columbia",
+      "classification": "Pathogenic",
+      "curator_notes": "15 (clinical Dutch Lipid Clinic Network Criteria score); 6.72 mmol/L (calculated low-density lipoprotein cholesterol level); 11 (clinical Dutch Lipid Clinic Network Criteria score); 5.81 mmol/L (calculated low-density lipoprotein cholesterol level)",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2019-01-15"
+    },
+    {
+      "submitter_name": "Clinical Genetics, Academic Medical Center",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Mayo Clinic Laboratories, Mayo Clinic",
+      "classification": "Pathogenic",
+      "curator_notes": "PM5, PS3, PS4",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2021-12-29"
+    },
+    {
+      "submitter_name": "ClinGen Familial Hypercholesterolemia Variant Curation Expert Panel",
+      "classification": "Pathogenic",
+      "curator_notes": "The NM_000527.5(LDLR):c.268G>A (p.Asp90Asn) variant is classified as Pathogenic for Familial Hypercholesterolemia by applying evidence codes PM5_Strong, PM2, PP1_Moderate, PS3_Moderate, PS4_Moderate and PP4 as defined by the ClinGen Familial Hypercholesterolemia Expert Panel LDLR-specific variant curation guidelines (https://doi.org/10.1101/2021.03.17.21252755). The supporting evidence is as follows: PM5_strong - there are 4 other missense variants is the same codon: - NM_000527.5(LDLR):c.268G>T (p.Asp90Tyr) - classified as Likely pathogenic by the FH VCEP, with these guidelines - NM_000527.5(LDLR):c.269A>C (p.Asp90Ala) - Likely pathogenic by these guidelines - NM_000527.5(LDLR):c.269A>G (p.Asp90Gly) - Pathogenic by these guidelines - NM_000527.5(LDLR):c.270T>A (p.Asp90Glu) - Pathogenic by these guidelines --- There are 2 variants classified as Pathogenic, so PM5_Strong is met. PP1_moderate - Variant segregates with phenotype in 4 informative meiosis from different labs: - 1 unaffected family member does not have the variant, from Molecular Genetics Laboratory (Centre for Cardiovascular Surgery and Transplantation); - 3 informative meiosis from 1 family from PMID 12837857 (Chang et al. 2003): 1 relative has the variant and phenotype (III:1), plus 2 relatives do not have the variant and do not have the phenotype (II:1 and III:2) 4 informative meiosis, so PP1_Moderate is met. PM2 - PopMax MAF = 0.0008019 (0.08019%) in East Asian (gnomAD v2.1.1), but this is a founder variant in East Asian populations, so PM2 can be met in this instance. PS3_moderate - Level 2 FS: Chang et al., 2003 (PMID:12837857): Heterologous cells (COS-7), FACS assays - results: 55% LDLR cell surface and uptake. Binding is not studied, so not all cycle is studied (level 2 and not level 1) ---- functional study is consistent with damaging effect, activity is below 70% of wild-type, so PS3_Moderate is met. PS4_moderate - variant meets PM2 and was identified in: - 1 index case who fulfills Simon Broome criteria of possible FH from Molecular Genetics Laboratory (Centre for Cardiovascular Surgery and Transplantation), Czech Republic; - 3 unrelated index cases, all with Dutch lipid clinic network >=6, from Robarts Research Institute, Canada; - at least 1 index case with DLCN score of definite FH from U4M - Lille University & CHRU Lille, Universit\u00e9 de Lille - CHRU de Lille (SCV000583645.1 in ClinVar), France; - 1 index case who fulfills SB criteria of at least possible FH from PMID 9259195 (Day et al., 1997), UK; - 1 index case who fulfills SB criteria of at least possible FH from PMID 25962062 (Han et al., 2015), Korea; - 2 unrelated index cases who fulfill SB criteria of possible FH (TC>8mmol/L, plus CAD) from PMID 12837857 (Chang et al., 2003), Taiwan, China; 9 cases, so PS4_Moderate is met. PP4 - variant meets PM2 and was identified in 9 unrelated index cases from different labs (see PS4 for details), so PP4 is met.",
+      "assertion_criteria": "ClinGen FH ACMG Specifications v1-2",
+      "date_last_evaluated": "2022-08-28"
+    },
+    {
+      "submitter_name": "Victorian Clinical Genetics Services, Murdoch Childrens Research Institute",
+      "classification": "Pathogenic",
+      "curator_notes": "Based on the classification scheme VCGS_Germline_v1.3.2, this variant is classified as Pathogenic. Following criteria are met: 0102 - Loss of function is a known mechanism of disease in this gene and is associated with familial hypercholesterolemia. (I) 0107 - This gene is associated with autosomal dominant disease. (I) 0112 - The condition associated with this gene has incomplete penetrance (Gene Reviews). (I) 0200 - Variant is predicted to result in a missense amino acid change from aspartic acid to asparagine (exon 3). (I) 0251 - This variant is heterozygous. (I) 0302 - Variant is present in gnomAD (v2) <0.001 for a dominant condition (17 heterozygotes, 0 homozygotes). (SP) 0501 - Missense variant consistently predicted to be damaging by multiple in silico tools or highly conserved with a minor amino acid change. (SP) 0600 - Variant is located in the annotated calcium binding site of low-density lipoprotein receptor domain class A (NCBI). (I) 0701 - Other missense variants comparable to the one identified in this case have very strong previous evidence for pathogenicity. Four different variants in the same codon resulting in changes to tyrosine, alanine, glutamic acid and glycine have all been shown to cause familial hypercholesterolemia (ClinVar). (SP) 0801 - This variant has strong previous evidence of pathogenicity in unrelated individuals. The variant has been previously reported in patients with familial hypercholesterolemia (ClinVar, PMID: 30649024). (SP) 1002 - This variant has moderate functional evidence supporting abnormal protein function. Functional studies using COS7 cells show that this variant causes retention in the endoplasmic reticulum and reduction in LDLR activity (PMID: 12837857). (SP) 1208 - Inheritance information for this variant is not currently available in this individual. (I) Legend: (SP) - Supporting pathogenic, (I) - Information, (SB) - Supporting benign",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2020-10-19"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Pathogenic",
+      "curator_notes": "Described as one of the most frequent variants associated with FH in the Han Chinese population (Chiou and Charng, 2016); Not observed at significant frequency in large population cohorts (gnomAD); Published functional studies demonstrate reduced receptor protein on cell surface and reduced LDL binding and internalization (Chang et al., 2003); In silico analysis supports that this missense variant has a deleterious effect on protein structure/function; Also known as p.(Asp69Asn); This variant is associated with the following publications: (PMID: 22390909, 9259195, 24956927, 28235710, 34037665, 12837857, 32977124, 32041611, 33391346, 33994402, 32759540, 23375686, 27206935)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2023-02-17"
+    },
+    {
+      "submitter_name": "Medical Laboratory Center, Huzhou Maternal and Child Health Hospital",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "All of Us Research Program, National Institutes of Health",
+      "classification": "Pathogenic",
+      "curator_notes": "This missense variant replaces aspartic acid with asparagine at codon 90 in the second LDLR type A of the ligand binding domain of the LDLR protein. This variant is also known as p.Asp69Asn in the mature protein. Computational prediction suggests that this variant may have a deleterious impact on protein structure and function (internally defined REVEL score threshold >= 0.7, PMID: 27666373). A functional study has shown that the mutant protein is trapped in the endoplasmic reticulum and shows weak cell surface expression (PMID: 12837857). Cells from an individual compound heterozygous for this variant and p.Cys222* showed no detectable LDLR activity (PMID: 16343504). This variant has been reported in over thirty individuals of varying ethnicities affected with familial hypercholesterolemia (PMID: 9259195, 9763532, 12436241, 12837857, 15823276, 16250003, 16343504, 21376320, 23375686, 25962062, 27206935, 31345425) and is thought to be one of the most common pathogenic mutation in the Chinese population (PMID: 27206935, 30592178, 31686828). This variant has been reported to segregate with disease in one family (PMID: 12837857). This variant has been identified in 17/282878 chromosomes in the general population by the Genome Aggregation Database (gnomAD). Different missense variants occurring at this codon, p.Asp90Gly and p.Asp90AGlu, are known to cause disease (ClinVar variation ID: 226313, 251107), suggesting that aspartic acid at this position is important for LDLR protein function. Based on the available evidence, this variant is classified as Pathogenic.; This study involves interpretation of variants in research participants for the purpose of population health screening. Participant phenotype was not available at the time of variant classification. Additional details can be found in publication PMID: 35346344, PMCID: PMC8962531",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-01-06"
+    },
+    {
+      "submitter_name": "Clinical Genetics Laboratory, Skane University Hospital Lund",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-11-28"
+    },
+    {
+      "submitter_name": "Quest Diagnostics Nichols Institute San Juan Capistrano",
+      "classification": "pathogenic",
+      "curator_notes": "The LDLR c.268G>A (p.Asp90Asn) variant has been reported in the published literature in individuals with Familial Hypercholesteremia (PMID: 34573395 (2021), 34456200 (2021), 27765764 (2016), 25962062 (2015), 25187945 (2014), 22353362 (2012), 20538126 (2010), 16205024 (2005), 12436241 (2002), 9763532 (1998)). Assessment of experimental evidence suggests this variant results in abnormal protein function (PMID: 12837857 (2003)). At least one other missense variant at this codon is considered to be likely pathogenic, suggesting this variant may also cause disease (Quest Diagnostics internal data). The frequency of this variant in the general population, 0.0008 (16/19952 chromosomes (Genome Aggregation Database, http://gnomad.broadinstitute.org)), is uninformative in the assessment of its pathogenicity. Analysis of this variant using bioinformatics tools for the prediction of the effect of amino acid changes on protein structure and function yielded predictions that this variant is damaging. Based on the available information, this variant is classified as pathogenic.",
+      "assertion_criteria": "Quest Diagnostics criteria",
+      "date_last_evaluated": "2024-01-10"
+    },
+    {
+      "submitter_name": "Center for Genomic Medicine, Rigshospitalet, Copenhagen University Hospital",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2025-03-04"
+    },
+    {
+      "submitter_name": "U4M - Lille University & CHRU Lille, Universit\u00e9 de Lille - CHRU de Lille",
+      "classification": "Pathogenic",
+      "curator_notes": "\"Dutch Lipid Clinic\" Diagnostic Scoring ESC/EAS Guidelines 2016 - PMID: 27567407; Dutch Lipid Clinic Scoring : Definite FH; ACMG Guidelines: Pathogenic (ii)",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2017-03-30"
+    },
+    {
+      "submitter_name": "Clinical Genetics Laboratory, University Hospital Schleswig-Holstein",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": "2024-03-06"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change replaces aspartic acid, which is acidic and polar, with asparagine, which is neutral and polar, at codon 90 of the LDLR protein (p.Asp90Asn). This variant is present in population databases (rs749038326, gnomAD 0.08%). This missense change has been observed in individuals with familial hypercholesterolemia (PMID: 9259195, 9763532, 12436241, 12837857, 15823276, 16343504, 21376320, 22390909, 23375686, 25962062, 27206935, 27765764). Invitae Evidence Modeling of clinical and family history, age, sex, and reported ancestry of multiple individuals with this LDLR variant has been performed. This variant is expected to be pathogenic with a positive predictive value of at least 99%. This is a validated machine learning model that incorporates the clinical features of 377,766 individuals referred to our laboratory for LDLR testing. This variant is also known as p.Asp69Asn. ClinVar contains an entry for this variant (Variation ID: 251105). Invitae Evidence Modeling of protein sequence and biophysical properties (such as structural, functional, and spatial information, amino acid conservation, physicochemical variation, residue mobility, and thermodynamic stability) indicates that this missense variant is expected to disrupt LDLR protein function with a positive predictive value of 95%. Experimental studies have shown that this missense change affects LDLR function (PMID: 12837857). This variant disrupts the p.Asp90 amino acid residue in LDLR. Other variant(s) that disrupt this residue have been determined to be pathogenic (PMID: 1301956, 8347689, 19026292). This suggests that this residue is clinically significant, and that variants that disrupt this residue are likely to be disease-causing. For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2025-12-22"
+    },
+    {
+      "submitter_name": "Cambridge Genomics Laboratory, East Genomic Laboratory Hub, NHS Genomic Medicine Service",
+      "classification": "Pathogenic",
+      "curator_notes": "PM2, PP1_Moderate, PS4_Moderate, PM5_Strong, PS3_Moderate, PP4The rare missense variant c.268G>A p.(Asp90Asn) has already been described in several individuals affected with familial hypercholesterolemia (Day et al. 1997, Hum Mutat 10:116; Chang et al. 2003, J Lipid Res. 44:1850, Han et al. 2015, PloS One 11:10 and many more). Functional study is consistent with damaging effect and showing that the activity is below 70% of wild-type and has been been observed to segregate with disease in individuals as well (Chang et al. 2003, J Lipid Res. 44:1850). There are 2 other alternative variants in the same amio acide position which have been classified as pathogenic variants. The patient's phenotype and family history is highly specific for a disease caused by variants in this gene.",
+      "assertion_criteria": "ACGS Best Practice Guidelines for Variant Classification in Rare Disease 2020",
+      "date_last_evaluated": "2025-07-11"
+    },
+    {
+      "submitter_name": "Natera, Inc.",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.268G>A variant in LDLR is a missense variant predicted to cause substitution of aspartic acid to asparagine at amino acid 90. This variant has been observed in one or more individuals affected with the associated recessive disease, as either homozygous or compound heterozygous with a second variant (PMID: 23375686, 39731075). A different variant at the same position has been determined to be Pathogenic or Likely Pathogenic. Computational prediction algorithms indicate this variant is likely to affect gene or protein function. Given the available evidence, this variant is classified as Pathogenic.",
+      "assertion_criteria": "Natera Variant Classification Schema (03/2026)",
+      "date_last_evaluated": "2026-01-28"
+    },
+    {
+      "submitter_name": "Cardiovascular Genetics Laboratory, PathWest Laboratory Medicine WA - Fiona Stanley Hospital",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-09-11"
+    },
+    {
+      "submitter_name": "Blueprint Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-06-14"
+    },
+    {
+      "submitter_name": "Juno Genomics, Hangzhou Juno Genomics, Inc",
+      "classification": "Pathogenic",
+      "curator_notes": "Novel missense change at an amino acid residue where a different missense change determined to be pathogenic has been seen before.;Well-established in vitro or in vivo functional studies supportive of a damaging effect on the gene or gene product.;The prevalence of the variant in affected individuals is significantly increased compared to the prevalence in controls.;Co-segregation with disease in multiple affected family members.;Patient's phenotype or family history is highly specific for a disease with a single genetic etiology.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Diagnostic Laboratory, Department of Genetics, University Medical Center Groningen",
+      "classification": "Pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "no assertion criteria provided",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Institute of Immunology and Genetics Kaiserslautern",
+      "classification": "Pathogenic",
+      "curator_notes": "ACMG Criteria: PS3_M, PS4, PM2_P, PM5_S, PP1; Variant was found in heterozygous state.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2026-01-09"
+    }
+  ]
+}

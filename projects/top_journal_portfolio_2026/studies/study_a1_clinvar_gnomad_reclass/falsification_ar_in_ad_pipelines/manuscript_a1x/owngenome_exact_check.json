@@ -1,0 +1,235 @@
+{
+  "nr_keys": [
+    "gene",
+    "variant",
+    "genotype",
+    "source",
+    "reason"
+  ],
+  "ch_keys": [
+    "gene",
+    "variant",
+    "genotype",
+    "significance",
+    "stars",
+    "low_confidence",
+    "clinvar_condition",
+    "clinvar_condition_ids",
+    "acmg_phenotype",
+    "condition_not_acmg",
+    "rule",
+    "rule_note",
+    "severity"
+  ],
+  "nr_all": [
+    {
+      "gene": "TTN",
+      "variant": "chr2:178664487 G>A",
+      "source": "ClinVar",
+      "reason": "SF v3.2 footnote f: TTN is reported only for a nonsense, frameshift or canonical splice variant in an exon with high PSI, and OwnGenome counts one only in the TTN exons with PSI over 90%: this variant lies outside them"
+    },
+    {
+      "gene": "TTN",
+      "variant": "chr2:178534401 A>G",
+      "source": "ClinVar",
+      "reason": "SF v3.2 footnote f: TTN is reported only for a nonsense, frameshift or canonical splice variant in an exon with high PSI, and OwnGenome counts one only in the TTN exons with PSI over 90%: its record in the clinical VCF does not truncate the protein"
+    },
+    {
+      "gene": "MUTYH",
+      "variant": "chr1:45331556 C>T",
+      "source": "ClinVar",
+      "reason": "one heterozygous variant; MUTYH is reported with P and LP (2 variants)"
+    },
+    {
+      "gene": "ATP7B",
+      "variant": "chr13:51944145 G>T",
+      "source": "ClinVar",
+      "reason": "one heterozygous variant; ATP7B is reported with P and LP (2 variants)"
+    },
+    {
+      "gene": "HFE",
+      "variant": "chr6:26092913 G>A",
+      "source": "ClinVar",
+      "reason": "HFE is reported only for: HFE p.C282Y homozygotes only"
+    },
+    {
+      "gene": "GAA",
+      "variant": "chr17:80104542 T>G",
+      "source": "ClinVar",
+      "reason": "one heterozygous variant; GAA is reported with P and LP (2 variants)"
+    },
+    {
+      "gene": "RET",
+      "variant": "chr10:43105038 G>T",
+      "source": "HIGH impact",
+      "reason": "a predicted loss-of-function call does not count in RET: loss of function is not how RET causes the disease ACMG lists it for (lof no in assets/acmg_sf.tsv, from ClinGen's haploinsufficiency score); only a ClinVar P/LP variant counts"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38490733 G>A",
+      "source": "HIGH impact",
+      "reason": "a predicted loss-of-function call does not count in RYR1: loss of function is not how RYR1 causes the disease ACMG lists it for (lof no in assets/acmg_sf.tsv, from ClinGen's haploinsufficiency score); only a ClinVar P/LP variant counts"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38505338 CAT>C",
+      "source": "HIGH impact",
+      "reason": "a predicted loss-of-function call does not count in RYR1: loss of function is not how RYR1 causes the disease ACMG lists it for (lof no in assets/acmg_sf.tsv, from ClinGen's haploinsufficiency score); only a ClinVar P/LP variant counts"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38543792 C>T",
+      "source": "HIGH impact",
+      "reason": "a predicted loss-of-function call does not count in RYR1: loss of function is not how RYR1 causes the disease ACMG lists it for (lof no in assets/acmg_sf.tsv, from ClinGen's haploinsufficiency score); only a ClinVar P/LP variant counts"
+    },
+    {
+      "gene": "APOB",
+      "variant": "chr2:21006019 CA>C",
+      "source": "HIGH impact",
+      "reason": "a predicted loss-of-function call does not count in APOB: loss of function is not how APOB causes the disease ACMG lists it for (lof no in assets/acmg_sf.tsv, from ClinGen's haploinsufficiency score); only a ClinVar P/LP variant counts"
+    },
+    {
+      "gene": "APOB",
+      "variant": "chr2:21032391 G>A",
+      "source": "HIGH impact",
+      "reason": "a predicted loss-of-function call does not count in APOB: loss of function is not how APOB causes the disease ACMG lists it for (lof no in assets/acmg_sf.tsv, from ClinGen's haploinsufficiency score); only a ClinVar P/LP variant counts"
+    },
+    {
+      "gene": "TTN",
+      "variant": "chr2:178664487 G>A",
+      "source": "HIGH impact",
+      "reason": "SF v3.2 footnote f: TTN is reported only for a nonsense, frameshift or canonical splice variant in an exon with high PSI, and OwnGenome counts one only in the TTN exons with PSI over 90%: this variant lies outside them"
+    },
+    {
+      "gene": "DES",
+      "variant": "chr2:219418687 GA>G",
+      "source": "HIGH impact",
+      "reason": "a predicted loss-of-function call does not count in DES: loss of function is not how DES causes the disease ACMG lists it for (lof no in assets/acmg_sf.tsv, from ClinGen's haploinsufficiency score); only a ClinVar P/LP variant counts"
+    }
+  ],
+  "ch_all": [
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38527014 C>T",
+      "condition_not_acmg": false,
+      "clinvar_condition": "RYR1-related myopathy / RYR1-related disorder / King Denborough syndrome / Central core myopathy / Congenital multicore myopathy with external ophthalmoplegia / Malignant hyperthermia, susceptibility to, 1 / Inborn genetic diseases"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38523211 C>G",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Central core myopathy / Malignant hyperthermia, susceptibility to, 1 / King Denborough syndrome / Congenital multicore myopathy with external ophthalmoplegia / RYR1-related myopathy / Inborn genetic diseases / Myopathy, RYR1-associated / RYR1-related disorder / Centronuclear myopathy"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38505338 CAT>C",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Centronuclear myopathy / Malignant hyperthermia, susceptibility to, 1 / Central core myopathy / Congenital multicore myopathy with external ophthalmoplegia / King Denborough syndrome / RYR1-related disorder"
+    },
+    {
+      "gene": "TTN",
+      "variant": "chr2:178568947 T>A",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Autosomal recessive limb-girdle muscular dystrophy type 2J / Hypertrophic cardiomyopathy 9 / Dilated cardiomyopathy 1G / Tibial muscular dystrophy / Early-onset myopathy with fatal cardiomyopathy / Myopathy, myofibrillar, 9, with early respiratory failure"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38523867 G>A",
+      "condition_not_acmg": true,
+      "clinvar_condition": "Congenital multicore myopathy with external ophthalmoplegia"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38490733 G>A",
+      "condition_not_acmg": false,
+      "clinvar_condition": "RYR1-related disorder"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38467654 C>T",
+      "condition_not_acmg": true,
+      "clinvar_condition": "Centronuclear myopathy / RYR1-related disorder / Congenital multicore myopathy with external ophthalmoplegia"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38543792 C>T",
+      "condition_not_acmg": false,
+      "clinvar_condition": "RYR1-related disorder / RYR1-related myopathy / Malignant hyperthermia, susceptibility to, 1"
+    },
+    {
+      "gene": "APOB",
+      "variant": "chr2:21006019 CA>C",
+      "condition_not_acmg": false,
+      "clinvar_condition": "APOB-related disorder / Familial hypobetalipoproteinemia 1 / Hypercholesterolemia, autosomal dominant, type B"
+    },
+    {
+      "gene": "APOB",
+      "variant": "chr2:21032391 G>A",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Familial hypobetalipoproteinemia 1 / Hypercholesterolemia, autosomal dominant, type B / Cardiovascular phenotype"
+    },
+    {
+      "gene": "RET",
+      "variant": "chr10:43105038 G>T",
+      "condition_not_acmg": true,
+      "clinvar_condition": "Hirschsprung disease, susceptibility to, 1"
+    },
+    {
+      "gene": "DES",
+      "variant": "chr2:219418687 GA>G",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Neurogenic scapuloperoneal syndrome, Kaeser type / Dilated cardiomyopathy 1I / Desmin-related myofibrillar myopathy / DES-related disorder / DES-related disorders"
+    },
+    {
+      "gene": "LMNA",
+      "variant": "chr1:156115060 C>G",
+      "condition_not_acmg": true,
+      "clinvar_condition": "Charcot-Marie-Tooth disease type 2"
+    },
+    {
+      "gene": "VHL",
+      "variant": "chr3:10149922 G>T",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Chuvash polycythemia / Von Hippel-Lindau syndrome"
+    },
+    {
+      "gene": "RYR1",
+      "variant": "chr19:38499993 G>A",
+      "condition_not_acmg": false,
+      "clinvar_condition": "King Denborough syndrome / Malignant hyperthermia, susceptibility to, 1 / Central core myopathy / Congenital multicore myopathy with external ophthalmoplegia / RYR1-related disorder / Inborn genetic diseases / Malignant hyperthermia of anesthesia / sevoflurane response - Toxicity / succinylcholine response - Toxicity / isoflurane response - Toxicity / methoxyflurane response - Toxicity / enflurane response - Toxicity / halothane response - Toxicity / desflurane response - Toxicity"
+    },
+    {
+      "gene": "TTN",
+      "variant": "chr2:178589849 G>A",
+      "condition_not_acmg": false,
+      "clinvar_condition": "TTN-related disorder / Autosomal recessive titinopathy / Cardiovascular phenotype / Dilated cardiomyopathy 1G / Autosomal recessive limb-girdle muscular dystrophy type 2J / Myopathy, myofibrillar, 9, with early respiratory failure / Tibial muscular dystrophy / Early-onset myopathy with fatal cardiomyopathy / Hypertrophic cardiomyopathy 9 / Cardiomyopathy / Primary dilated cardiomyopathy / Primary familial dilated cardiomyopathy"
+    },
+    {
+      "gene": "BRCA1",
+      "variant": "chr17:43124027 ACT>A",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Inherited ovarian cancer (without breast cancer) / Inherited breast cancer and ovarian cancer / BRCA1-related cancer predisposition / Invasive medullary breast carcinoma / Breast-ovarian cancer, familial, susceptibility to, 1 / Fanconi anemia, complementation group S / Pancreatic cancer, susceptibility to, 4 / BRCA1-related disorder / Breast and/or ovarian cancer / Hereditary cancer-predisposing syndrome / Ovarian neoplasm / Familial cancer of breast / Endometrial carcinoma / Hereditary breast ovarian cancer syndrome / Malignant tumor of breast / Triple-negative breast cancer"
+    },
+    {
+      "gene": "LDLR",
+      "variant": "chr19:11105599 C>G",
+      "condition_not_acmg": false,
+      "clinvar_condition": "Cardiovascular phenotype / Familial hypercholesterolemia / Hypercholesterolemia, familial, 1"
+    }
+  ],
+  "ryr1_12996": {
+    "variant_id": "19-38565341-TCTGGGCAGCAGTGACGCGCG-T",
+    "ref": "TCTGGGCAGCAGTGACGCGCG",
+    "alt": "T",
+    "len_ref": 21,
+    "len_alt": 1,
+    "hgvs": "NM_000540.3(RYR1):c.13013_13032del (p.Ala4338fs)",
+    "clndn": "RYR1-related_disorder|RYR1-related_myopathy|not_provided|Neuromuscular_disease,_congenital,_with_uniform_type_1_fiber|Congenital_multicore_myopathy_with_external_ophthalmoplegia|Central_core_myopathy"
+  },
+  "pa_summary": [
+    "og_executed",
+    "og_binary",
+    "n_panel",
+    "pipelines"
+  ]
+}

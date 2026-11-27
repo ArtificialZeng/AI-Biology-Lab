@@ -1,0 +1,387 @@
+{
+  "opentargets_apob": {
+    "2_21006019_CA_C": {
+      "data": {
+        "variant": {
+          "id": "2_21006019_CA_C",
+          "rsIds": [
+            "rs982371659"
+          ],
+          "mostSevereConsequence": {
+            "label": "frameshift_variant"
+          },
+          "credibleSets": {
+            "count": 14,
+            "rows": [
+              {
+                "study": {
+                  "id": "GCST90497178",
+                  "traitFromSource": "Total cholines levels",
+                  "nSamples": 434646
+                },
+                "beta": -1.195,
+                "pValueMantissa": 1.0360000133514404,
+                "pValueExponent": -27,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90498120",
+                  "traitFromSource": "Cholesterol to Total Lipids in Large VLDL percentage (PGS-adjusted)",
+                  "nSamples": 434646
+                },
+                "beta": -1.35465,
+                "pValueMantissa": 5.355000019073486,
+                "pValueExponent": -33,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499256",
+                  "traitFromSource": "Phosphoglycerides levels",
+                  "nSamples": 434646
+                },
+                "beta": -1.25948,
+                "pValueMantissa": 2.2309999465942383,
+                "pValueExponent": -30,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90079024",
+                  "traitFromSource": "Cholesterol levels (UKB data field 30690)",
+                  "nSamples": 412075
+                },
+                "beta": -2.06449,
+                "pValueMantissa": 2.302000045776367,
+                "pValueExponent": -74,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499022",
+                  "traitFromSource": "Phospholipids to Total Lipids in Medium VLDL percentage (PGS-adjusted)",
+                  "nSamples": 434646
+                },
+                "beta": -1.59388,
+                "pValueMantissa": 1.5260000228881836,
+                "pValueExponent": -46,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499198",
+                  "traitFromSource": "Omega-6 fatty acids to omega-3 fatty acids ratio",
+                  "nSamples": 434646
+                },
+                "beta": 1.41076,
+                "pValueMantissa": 1.9730000495910645,
+                "pValueExponent": -38,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90079021",
+                  "traitFromSource": "Direct bilirubin levels (UKB data field 30660)",
+                  "nSamples": 351671
+                },
+                "beta": 0.712299,
+                "pValueMantissa": 4.145999908447266,
+                "pValueExponent": -10,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90500579",
+                  "traitFromSource": "Free Cholesterol to Total Lipids in Very Large VLDL percentage (PGS-adjusted)",
+                  "nSamples": 434646
+                },
+                "beta": -1.09773,
+                "pValueMantissa": 1.715999960899353,
+                "pValueExponent": -22,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499242",
+                  "traitFromSource": "Phosphatidylcholine levels",
+                  "nSamples": 434646
+                },
+                "beta": -1.27139,
+                "pValueMantissa": 1.1629999876022339,
+                "pValueExponent": -31,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499140",
+                  "traitFromSource": "Omega-3 fatty acids to total fatty acids percentage (PGS-adjusted)",
+                  "nSamples": 434646
+                },
+                "beta": -1.26161,
+                "pValueMantissa": 2.38700008392334,
+                "pValueExponent": -31,
+                "finemappingMethod": "PICS"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "2_21032391_G_A": {
+      "data": {
+        "variant": {
+          "id": "2_21032391_G_A",
+          "rsIds": [
+            "rs142066904"
+          ],
+          "mostSevereConsequence": {
+            "label": "stop_gained"
+          },
+          "credibleSets": {
+            "count": 4,
+            "rows": [
+              {
+                "study": {
+                  "id": "GCST90499476",
+                  "traitFromSource": "Concentration of small HDL particles (PGS-adjusted)",
+                  "nSamples": 434646
+                },
+                "beta": -1.38026,
+                "pValueMantissa": 2.2799999713897705,
+                "pValueExponent": -24,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499437",
+                  "traitFromSource": "Free cholesterol in small HDL",
+                  "nSamples": 434646
+                },
+                "beta": -1.53299,
+                "pValueMantissa": 7.574999809265137,
+                "pValueExponent": -31,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499454",
+                  "traitFromSource": "Total lipids in small HDL (PGS-adjusted)",
+                  "nSamples": 434646
+                },
+                "beta": -1.28679,
+                "pValueMantissa": 1.4709999561309814,
+                "pValueExponent": -21,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90499474",
+                  "traitFromSource": "Concentration of small HDL particles",
+                  "nSamples": 434646
+                },
+                "beta": -1.3768,
+                "pValueMantissa": 3.244999885559082,
+                "pValueExponent": -24,
+                "finemappingMethod": "PICS"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "2_21009304_G_A": {
+      "data": {
+        "variant": {
+          "id": "2_21009304_G_A",
+          "rsIds": [
+            "rs121918390"
+          ],
+          "mostSevereConsequence": {
+            "label": "stop_gained"
+          },
+          "credibleSets": {
+            "count": 0,
+            "rows": []
+          }
+        }
+      }
+    },
+    "2_21006288_C_T": {
+      "data": {
+        "variant": {
+          "id": "2_21006288_C_T",
+          "rsIds": [
+            "rs5742904"
+          ],
+          "mostSevereConsequence": {
+            "label": "missense_variant"
+          },
+          "credibleSets": {
+            "count": 129,
+            "rows": [
+              {
+                "study": {
+                  "id": "GCST90102117",
+                  "traitFromSource": "Sphingomyelin (d33:1) levels",
+                  "nSamples": 650
+                },
+                "beta": 1.06299,
+                "pValueMantissa": 1,
+                "pValueExponent": -18,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90102140",
+                  "traitFromSource": "Sphingomyelin (d42:2)A levels",
+                  "nSamples": 650
+                },
+                "beta": 1.0360055,
+                "pValueMantissa": 5,
+                "pValueExponent": -18,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90692159",
+                  "traitFromSource": "Illnesses of father - Heart disease (UKB data field 20107)",
+                  "nSamples": 7200
+                },
+                "beta": 0.9756,
+                "pValueMantissa": 1.8969999551773071,
+                "pValueExponent": -10,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90102096",
+                  "traitFromSource": "Phosphatidylcholines (o-32:0) levels",
+                  "nSamples": 650
+                },
+                "beta": 0.7393471,
+                "pValueMantissa": 4,
+                "pValueExponent": -9,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90692468",
+                  "traitFromSource": "Illnesses of father - Heart disease (UKB data field 20107)",
+                  "nSamples": 2089
+                },
+                "beta": 0.9756,
+                "pValueMantissa": 1.8969999551773071,
+                "pValueExponent": -10,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90102118",
+                  "traitFromSource": "Sphingomyelin (d34:0) levels",
+                  "nSamples": 650
+                },
+                "beta": 1.2181222,
+                "pValueMantissa": 1,
+                "pValueExponent": -24,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90449407",
+                  "traitFromSource": "Cholesteryl Esters in LDL",
+                  "nSamples": 185352
+                },
+                "beta": 0.044558761128565154,
+                "pValueMantissa": 2.0707509517669678,
+                "pValueExponent": -83,
+                "finemappingMethod": "SuSiE-inf"
+              },
+              {
+                "study": {
+                  "id": "GCST90449434",
+                  "traitFromSource": "Total lipids in large LDL",
+                  "nSamples": 185352
+                },
+                "beta": 0.04705818479395107,
+                "pValueMantissa": 3.8082051277160645,
+                "pValueExponent": -92,
+                "finemappingMethod": "SuSiE-inf"
+              },
+              {
+                "study": {
+                  "id": "GCST90692027",
+                  "traitFromSource": "Illnesses of father - Heart disease (UKB data field 20107)",
+                  "nSamples": 4554
+                },
+                "beta": 0.9756,
+                "pValueMantissa": 1.8969999551773071,
+                "pValueExponent": -10,
+                "finemappingMethod": "PICS"
+              },
+              {
+                "study": {
+                  "id": "GCST90102130",
+                  "traitFromSource": "Sphingomyelin (d40:1) levels",
+                  "nSamples": 650
+                },
+                "beta": 0.91480005,
+                "pValueMantissa": 8,
+                "pValueExponent": -14,
+                "finemappingMethod": "PICS"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "phewas_probes": {
+    "https://azphewas.com/api/v1/variant/2-21006019-CA-C": {
+      "status": 200,
+      "snippet": "<!doctype html><html><head><meta charset=\"utf-8\"/><meta name=\"app-version\" content=\"1.6.5.33.0.0\"/><link rel=\"shortcut icon\" href=\"/favicon.ico\"/><title>AstraZeneca PheWAS Portal</title><script defer=\"defer\" src=\"/assets/js/runtime.4c5bc57b.js\"></script><script defer=\"defer\" src=\"/assets/js/shared.5241278a.js\"></script><script defer=\"defer\" src=\"/assets/js/vendors.00d5b391.js\"></script><script def"
+    },
+    "https://azphewas.com/api/v1/gene/APOB": {
+      "status": 200,
+      "snippet": "<!doctype html><html><head><meta charset=\"utf-8\"/><meta name=\"app-version\" content=\"1.6.5.33.0.0\"/><link rel=\"shortcut icon\" href=\"/favicon.ico\"/><title>AstraZeneca PheWAS Portal</title><script defer=\"defer\" src=\"/assets/js/runtime.4c5bc57b.js\"></script><script defer=\"defer\" src=\"/assets/js/shared.5241278a.js\"></script><script defer=\"defer\" src=\"/assets/js/vendors.00d5b391.js\"></script><script def"
+    },
+    "https://r12.finngen.fi/api/variant/2-21006019-CA-C": {
+      "error": "HTTP Error 404: Not Found"
+    },
+    "https://r12.finngen.fi/api/variant/2-21032391-G-A": {
+      "error": "HTTP Error 404: Not Found"
+    },
+    "https://r12.finngen.fi/api/variant/2-21006288-C-T": {
+      "error": "HTTP Error 404: Not Found"
+    },
+    "https://r11.finngen.fi/api/variant/2-21006019-CA-C": {
+      "error": "HTTP Error 404: Not Found"
+    }
+  },
+  "g1k_probes": [
+    {
+      "url": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20220422_3202_phased_SNV_INDEL_SV/1kGP_high_coverage_Illumina.chr19.filtered.SNV_INDEL_SV_phased_panel.vcf.gz.tbi",
+      "status": 200,
+      "size": "57005"
+    },
+    {
+      "url": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/working/20201028_3202_phased/CCDG_14151_B01_GRM_WGS_2020-08-05_chr19.filtered.shapeit2-duohmm-phased.vcf.gz.tbi",
+      "status": 200,
+      "size": "53726"
+    }
+  ],
+  "gh_exomiser/Exomiser": {
+    "stars": 273,
+    "pushed_at": "2026-11-04T17:01:02Z",
+    "desc": "A Tool to Annotate and Prioritize Exome Variants"
+  },
+  "gh_diskin-lab-chop/AutoGVP": {
+    "error": "HTTP Error 403: rate limit exceeded"
+  },
+  "gh_WGLab/InterVar": {
+    "error": "HTTP Error 403: rate limit exceeded"
+  },
+  "gh_broadinstitute/seqr": {
+    "error": "HTTP Error 403: rate limit exceeded"
+  }
+}

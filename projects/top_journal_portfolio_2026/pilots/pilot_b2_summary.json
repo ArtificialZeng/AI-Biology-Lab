@@ -1,0 +1,294 @@
+{
+  "SEMAGLUTIDE": {
+    "role": "viral",
+    "periods": {
+      "pre_2019_2021": {
+        "qual_counts": {},
+        "total_with_qual": 0,
+        "consumer_plus_lawyer_share": null,
+        "lawyer_share": null,
+        "physician_share": null,
+        "death_all": 0,
+        "death_md": 0,
+        "death_cons": 0,
+        "death_rate_all": null,
+        "death_rate_md": null,
+        "death_rate_cons": null,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": null,
+        "gastroparesis_rate_lawyer": null,
+        "pancreatitis_all": 0,
+        "pancreatitis_md": 0,
+        "pancreatitis_rate_all": null,
+        "pancreatitis_rate_md": null
+      },
+      "post_2023_2026": {
+        "qual_counts": {},
+        "total_with_qual": 0,
+        "consumer_plus_lawyer_share": null,
+        "lawyer_share": null,
+        "physician_share": null,
+        "death_all": 0,
+        "death_md": 0,
+        "death_cons": 0,
+        "death_rate_all": null,
+        "death_rate_md": null,
+        "death_rate_cons": null,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": null,
+        "gastroparesis_rate_lawyer": null,
+        "pancreatitis_all": 0,
+        "pancreatitis_md": 0,
+        "pancreatitis_rate_all": null,
+        "pancreatitis_rate_md": null
+      }
+    }
+  },
+  "TIRZEPATIDE": {
+    "role": "viral",
+    "periods": {
+      "pre_2019_2021": {
+        "qual_counts": {
+          "consumer": 57,
+          "other_hp": 25,
+          "physician": 13,
+          "pharmacist": 4
+        },
+        "total_with_qual": 99,
+        "consumer_plus_lawyer_share": 0.5758,
+        "lawyer_share": 0.0,
+        "physician_share": 0.1313,
+        "death_all": 1,
+        "death_md": 0,
+        "death_cons": 0,
+        "death_rate_all": 0.0101,
+        "death_rate_md": 0.0,
+        "death_rate_cons": 0.0,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": null,
+        "pancreatitis_all": 2,
+        "pancreatitis_md": 0,
+        "pancreatitis_rate_all": 0.0202,
+        "pancreatitis_rate_md": 0.0
+      },
+      "post_2023_2026": {
+        "qual_counts": {
+          "consumer": 159314,
+          "other_hp": 7780,
+          "physician": 5465,
+          "pharmacist": 2193,
+          "lawyer": 962
+        },
+        "total_with_qual": 175714,
+        "consumer_plus_lawyer_share": 0.9121,
+        "lawyer_share": 0.0055,
+        "physician_share": 0.0311,
+        "death_all": 1042,
+        "death_md": 152,
+        "death_cons": 676,
+        "death_rate_all": 0.00593,
+        "death_rate_md": 0.02781,
+        "death_rate_cons": 0.00424,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": 0.0,
+        "pancreatitis_all": 1407,
+        "pancreatitis_md": 91,
+        "pancreatitis_rate_all": 0.00801,
+        "pancreatitis_rate_md": 0.01665
+      }
+    }
+  },
+  "EMPAGLIFLOZIN": {
+    "role": "control",
+    "periods": {
+      "pre_2019_2021": {
+        "qual_counts": {
+          "consumer": 7485,
+          "physician": 5137,
+          "other_hp": 2616,
+          "pharmacist": 1380,
+          "lawyer": 61
+        },
+        "total_with_qual": 16679,
+        "consumer_plus_lawyer_share": 0.4524,
+        "lawyer_share": 0.0037,
+        "physician_share": 0.308,
+        "death_all": 616,
+        "death_md": 272,
+        "death_cons": 165,
+        "death_rate_all": 0.03693,
+        "death_rate_md": 0.05295,
+        "death_rate_cons": 0.02204,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": 0.0,
+        "pancreatitis_all": 161,
+        "pancreatitis_md": 74,
+        "pancreatitis_rate_all": 0.00965,
+        "pancreatitis_rate_md": 0.01441
+      },
+      "post_2023_2026": {
+        "qual_counts": {
+          "consumer": 18140,
+          "physician": 8724,
+          "other_hp": 5897,
+          "pharmacist": 3045,
+          "lawyer": 260
+        },
+        "total_with_qual": 36066,
+        "consumer_plus_lawyer_share": 0.5102,
+        "lawyer_share": 0.0072,
+        "physician_share": 0.2419,
+        "death_all": 2255,
+        "death_md": 668,
+        "death_cons": 873,
+        "death_rate_all": 0.06252,
+        "death_rate_md": 0.07657,
+        "death_rate_cons": 0.04813,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": 0.0,
+        "pancreatitis_all": 273,
+        "pancreatitis_md": 88,
+        "pancreatitis_rate_all": 0.00757,
+        "pancreatitis_rate_md": 0.01009
+      }
+    }
+  },
+  "SITAGLIPTIN": {
+    "role": "control",
+    "periods": {
+      "pre_2019_2021": {
+        "qual_counts": {
+          "consumer": 4613,
+          "physician": 3529,
+          "other_hp": 2686,
+          "pharmacist": 1694,
+          "lawyer": 271
+        },
+        "total_with_qual": 12793,
+        "consumer_plus_lawyer_share": 0.3818,
+        "lawyer_share": 0.0212,
+        "physician_share": 0.2759,
+        "death_all": 1276,
+        "death_md": 393,
+        "death_cons": 335,
+        "death_rate_all": 0.09974,
+        "death_rate_md": 0.11136,
+        "death_rate_cons": 0.07262,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": 0.0,
+        "pancreatitis_all": 113,
+        "pancreatitis_md": 19,
+        "pancreatitis_rate_all": 0.00883,
+        "pancreatitis_rate_md": 0.00538
+      },
+      "post_2023_2026": {
+        "qual_counts": {
+          "consumer": 3812,
+          "physician": 3087,
+          "other_hp": 2157,
+          "pharmacist": 1351,
+          "lawyer": 96
+        },
+        "total_with_qual": 10503,
+        "consumer_plus_lawyer_share": 0.3721,
+        "lawyer_share": 0.0091,
+        "physician_share": 0.2939,
+        "death_all": 862,
+        "death_md": 340,
+        "death_cons": 217,
+        "death_rate_all": 0.08207,
+        "death_rate_md": 0.11014,
+        "death_rate_cons": 0.05693,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": 0.0,
+        "pancreatitis_all": 81,
+        "pancreatitis_md": 17,
+        "pancreatitis_rate_all": 0.00771,
+        "pancreatitis_rate_md": 0.00551
+      }
+    }
+  },
+  "DULAGLUTIDE": {
+    "role": "control",
+    "periods": {
+      "pre_2019_2021": {
+        "qual_counts": {
+          "consumer": 26309,
+          "other_hp": 2421,
+          "physician": 2420,
+          "pharmacist": 1235,
+          "lawyer": 97
+        },
+        "total_with_qual": 32482,
+        "consumer_plus_lawyer_share": 0.8129,
+        "lawyer_share": 0.003,
+        "physician_share": 0.0745,
+        "death_all": 626,
+        "death_md": 159,
+        "death_cons": 292,
+        "death_rate_all": 0.01927,
+        "death_rate_md": 0.0657,
+        "death_rate_cons": 0.0111,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": 0.0,
+        "pancreatitis_all": 610,
+        "pancreatitis_md": 96,
+        "pancreatitis_rate_all": 0.01878,
+        "pancreatitis_rate_md": 0.03967
+      },
+      "post_2023_2026": {
+        "qual_counts": {
+          "consumer": 20862,
+          "physician": 1749,
+          "other_hp": 1649,
+          "lawyer": 1197,
+          "pharmacist": 835
+        },
+        "total_with_qual": 26292,
+        "consumer_plus_lawyer_share": 0.839,
+        "lawyer_share": 0.0455,
+        "physician_share": 0.0665,
+        "death_all": 535,
+        "death_md": 86,
+        "death_cons": 266,
+        "death_rate_all": 0.02035,
+        "death_rate_md": 0.04917,
+        "death_rate_cons": 0.01275,
+        "gastroparesis_md": 0,
+        "gastroparesis_lawyer": 0,
+        "gastroparesis_consumer": 0,
+        "gastroparesis_rate_md": 0.0,
+        "gastroparesis_rate_lawyer": 0.0,
+        "pancreatitis_all": 233,
+        "pancreatitis_md": 14,
+        "pancreatitis_rate_all": 0.00886,
+        "pancreatitis_rate_md": 0.008
+      }
+    }
+  }
+}

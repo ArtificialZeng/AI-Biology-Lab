@@ -1,0 +1,544 @@
+{
+  "classification": "POST_HOC_EXPLORATORY_FALSIFICATION",
+  "locked_in": "NOVELTY_IDENTIFICATION_GATE.md (2026-11-25)",
+  "dual_status_sponsor_months_total": 3593,
+  "dual_status_sponsor_months_with_events": 908,
+  "test_2a_sub_window_daily_diagnostics": [
+    {
+      "window": "Feb 1-28 (Pre-Sweep)",
+      "start": "2026-02-01",
+      "end": "2026-02-28",
+      "days": 28,
+      "ind_od_events": 20,
+      "ind_od_rate30_pct": 2.1198,
+      "acad_od_events": 44,
+      "acad_od_rate30_pct": 8.2665,
+      "ind_ot_events": 36,
+      "ind_ot_rate30_pct": 4.5834,
+      "ind_to_acad_od_ratio": 0.2564,
+      "ind_od_to_ot_ratio": 0.4625
+    },
+    {
+      "window": "Mar 1-15 (Pre-Sweep Early Mar)",
+      "start": "2026-03-01",
+      "end": "2026-03-15",
+      "days": 15,
+      "ind_od_events": 15,
+      "ind_od_rate30_pct": 2.9435,
+      "acad_od_events": 20,
+      "acad_od_rate30_pct": 7.1508,
+      "ind_ot_events": 23,
+      "ind_ot_rate30_pct": 5.6131,
+      "ind_to_acad_od_ratio": 0.4116,
+      "ind_od_to_ot_ratio": 0.5244
+    },
+    {
+      "window": "Mar 16-29 (Pre-Sweep Late Mar)",
+      "start": "2026-03-16",
+      "end": "2026-03-29",
+      "days": 14,
+      "ind_od_events": 15,
+      "ind_od_rate30_pct": 3.1583,
+      "acad_od_events": 16,
+      "acad_od_rate30_pct": 6.1888,
+      "ind_ot_events": 19,
+      "ind_ot_rate30_pct": 5.0053,
+      "ind_to_acad_od_ratio": 0.5103,
+      "ind_od_to_ot_ratio": 0.631
+    },
+    {
+      "window": "Mar 1-29 (ALL Pre-Sweep Mar)",
+      "start": "2026-03-01",
+      "end": "2026-03-29",
+      "days": 29,
+      "ind_od_events": 30,
+      "ind_od_rate30_pct": 3.0471,
+      "acad_od_events": 36,
+      "acad_od_rate30_pct": 6.6887,
+      "ind_ot_events": 42,
+      "ind_ot_rate30_pct": 5.3208,
+      "ind_to_acad_od_ratio": 0.4556,
+      "ind_od_to_ot_ratio": 0.5727
+    },
+    {
+      "window": "Mar 30-31 (Email Days 1-2)",
+      "start": "2026-03-30",
+      "end": "2026-03-31",
+      "days": 2,
+      "ind_od_events": 9,
+      "ind_od_rate30_pct": 13.285,
+      "acad_od_events": 8,
+      "acad_od_rate30_pct": 21.8975,
+      "ind_ot_events": 3,
+      "ind_ot_rate30_pct": 5.5307,
+      "ind_to_acad_od_ratio": 0.6067,
+      "ind_od_to_ot_ratio": 2.402
+    },
+    {
+      "window": "Mar 30-Apr 12 (Private Email Only)",
+      "start": "2026-03-30",
+      "end": "2026-04-12",
+      "days": 14,
+      "ind_od_events": 32,
+      "ind_od_rate30_pct": 6.7738,
+      "acad_od_events": 31,
+      "acad_od_rate30_pct": 12.235,
+      "ind_ot_events": 17,
+      "ind_ot_rate30_pct": 4.5022,
+      "ind_to_acad_od_ratio": 0.5536,
+      "ind_od_to_ot_ratio": 1.5045
+    },
+    {
+      "window": "Apr 13-30 (Post-Public Press Apr)",
+      "start": "2026-04-13",
+      "end": "2026-04-30",
+      "days": 18,
+      "ind_od_events": 34,
+      "ind_od_rate30_pct": 5.6668,
+      "acad_od_events": 29,
+      "acad_od_rate30_pct": 9.236,
+      "ind_ot_events": 27,
+      "ind_ot_rate30_pct": 5.6265,
+      "ind_to_acad_od_ratio": 0.6136,
+      "ind_od_to_ot_ratio": 1.0072
+    },
+    {
+      "window": "May 1-15 (Post-Public Press May)",
+      "start": "2026-05-01",
+      "end": "2026-05-15",
+      "days": 15,
+      "ind_od_events": 17,
+      "ind_od_rate30_pct": 3.4114,
+      "acad_od_events": 18,
+      "acad_od_rate30_pct": 6.9998,
+      "ind_ot_events": 21,
+      "ind_ot_rate30_pct": 5.3493,
+      "ind_to_acad_od_ratio": 0.4874,
+      "ind_od_to_ot_ratio": 0.6377
+    }
+  ],
+  "test_2a_formal_regime_regressions": {
+    "ot_od_ddd": {
+      "PRE_MAR": {
+        "irr": 0.774,
+        "ci95": [
+          0.3897,
+          1.5373
+        ],
+        "p": 0.46429089439651994
+      },
+      "PRIVATE_EMAIL": {
+        "irr": 1.5135,
+        "ci95": [
+          0.629,
+          3.6416
+        ],
+        "p": 0.35487939807751934
+      },
+      "PUBLIC_PRESS": {
+        "irr": 1.6883,
+        "ci95": [
+          1.165,
+          2.4466
+        ],
+        "p": 0.005659116274227348
+      }
+    },
+    "ind_od_ot": {
+      "PRE_MAR": {
+        "irr": 1.035,
+        "ci95": [
+          0.625,
+          1.714
+        ],
+        "p": 0.8935837883090472
+      },
+      "PRIVATE_EMAIL": {
+        "irr": 2.712,
+        "ci95": [
+          1.3975,
+          5.2629
+        ],
+        "p": 0.0031841070942481915
+      },
+      "PUBLIC_PRESS": {
+        "irr": 1.2785,
+        "ci95": [
+          1.0188,
+          1.6045
+        ],
+        "p": 0.033957364729374405
+      }
+    }
+  },
+  "test_2b_high_dim_fe_results": {
+    "baseline_month_fe": {
+      "fe_col": "ym",
+      "ot_od_ddd": {
+        "irr": 1.5984,
+        "ci95": [
+          1.1285,
+          2.264
+        ],
+        "p": 0.008276628886549009,
+        "n_events": 2902,
+        "n_fe": 18,
+        "n_clusters": 2067
+      },
+      "ind_od_ot": {
+        "irr": 1.3612,
+        "ci95": [
+          1.1025,
+          1.6807
+        ],
+        "p": 0.0041415973171061715,
+        "n_events": 1544,
+        "n_fe": 18,
+        "n_clusters": 1284
+      },
+      "acad_od_ot": {
+        "irr": 0.8585,
+        "ci95": [
+          0.651,
+          1.1321
+        ],
+        "p": 0.279634718930339,
+        "n_events": 1358,
+        "n_fe": 18,
+        "n_clusters": 783
+      }
+    },
+    "sponsor_x_month_fe": {
+      "fe_col": "sponsor_ym",
+      "ot_od_ddd": {
+        "irr": 1.0975,
+        "ci95": [
+          0.6244,
+          1.9292
+        ],
+        "p": 0.7464444398154959,
+        "n_events": 2902,
+        "n_fe": 2125,
+        "n_clusters": 1001
+      },
+      "ind_od_ot": {
+        "irr": 1.1991,
+        "ci95": [
+          0.8091,
+          1.7771
+        ],
+        "p": 0.36565503185082093,
+        "n_events": 1544,
+        "n_fe": 1137,
+        "n_clusters": 603
+      },
+      "acad_od_ot": {
+        "irr": 1.0926,
+        "ci95": [
+          0.7289,
+          1.6375
+        ],
+        "p": 0.6680993099744621,
+        "n_events": 1358,
+        "n_fe": 988,
+        "n_clusters": 398
+      }
+    },
+    "ta_x_month_fe": {
+      "fe_col": "ta_ym",
+      "ot_od_ddd": {
+        "irr": 1.59,
+        "ci95": [
+          1.1262,
+          2.2448
+        ],
+        "p": 0.008408166601196587,
+        "n_events": 2902,
+        "n_fe": 126,
+        "n_clusters": 2067
+      },
+      "ind_od_ot": {
+        "irr": 1.3803,
+        "ci95": [
+          1.1161,
+          1.7071
+        ],
+        "p": 0.002944514036430812,
+        "n_events": 1544,
+        "n_fe": 125,
+        "n_clusters": 1284
+      },
+      "acad_od_ot": {
+        "irr": 0.8596,
+        "ci95": [
+          0.6594,
+          1.1204
+        ],
+        "p": 0.2631015462788522,
+        "n_events": 1358,
+        "n_fe": 122,
+        "n_clusters": 782
+      }
+    },
+    "phase_intv_x_month_fe": {
+      "fe_col": "phase_intv_ym",
+      "ot_od_ddd": {
+        "irr": 1.6364,
+        "ci95": [
+          1.1617,
+          2.3051
+        ],
+        "p": 0.004842688432485698,
+        "n_events": 2902,
+        "n_fe": 310,
+        "n_clusters": 2060
+      },
+      "ind_od_ot": {
+        "irr": 1.3586,
+        "ci95": [
+          1.0993,
+          1.6791
+        ],
+        "p": 0.00457274670699892,
+        "n_events": 1544,
+        "n_fe": 200,
+        "n_clusters": 1276
+      },
+      "acad_od_ot": {
+        "irr": 0.878,
+        "ci95": [
+          0.6716,
+          1.1479
+        ],
+        "p": 0.34142594951740035,
+        "n_events": 1358,
+        "n_fe": 260,
+        "n_clusters": 776
+      }
+    }
+  },
+  "test_2c_cliff_donut_fineage_results": {
+    "cliff_free_ot_0_9m_month_fe": {
+      "fe_col": "ym",
+      "ot_od_ddd": {
+        "irr": 1.3179,
+        "ci95": [
+          0.7446,
+          2.3325
+        ],
+        "p": 0.34326266414680084,
+        "n_events": 1560,
+        "n_fe": 18,
+        "n_clusters": 2037
+      },
+      "ind_od_ot": {
+        "irr": 1.3569,
+        "ci95": [
+          0.9154,
+          2.0114
+        ],
+        "p": 0.12858384040863058,
+        "n_events": 809,
+        "n_fe": 18,
+        "n_clusters": 1270
+      },
+      "acad_od_ot": {
+        "irr": 1.0343,
+        "ci95": [
+          0.6844,
+          1.5632
+        ],
+        "p": 0.8728032820800424,
+        "n_events": 751,
+        "n_fe": 18,
+        "n_clusters": 767
+      }
+    },
+    "cliff_free_ot_0_9m_sponsor_ym_fe": {
+      "fe_col": "sponsor_ym",
+      "ot_od_ddd": {
+        "irr": 0.6627,
+        "ci95": [
+          0.2683,
+          1.6367
+        ],
+        "p": 0.37238863598272265,
+        "n_events": 1560,
+        "n_fe": 1278,
+        "n_clusters": 723
+      },
+      "ind_od_ot": {
+        "irr": 0.8382,
+        "ci95": [
+          0.4674,
+          1.5034
+        ],
+        "p": 0.5538351373382464,
+        "n_events": 809,
+        "n_fe": 676,
+        "n_clusters": 455
+      },
+      "acad_od_ot": {
+        "irr": 1.265,
+        "ci95": [
+          0.6337,
+          2.525
+        ],
+        "p": 0.5050520468501569,
+        "n_events": 751,
+        "n_fe": 602,
+        "n_clusters": 268
+      }
+    },
+    "cliff_free_ot_0_6m_month_fe": {
+      "fe_col": "ym",
+      "ot_od_ddd": {
+        "irr": 1.2499,
+        "ci95": [
+          0.5561,
+          2.8092
+        ],
+        "p": 0.5893590235399331,
+        "n_events": 1364,
+        "n_fe": 18,
+        "n_clusters": 1995
+      },
+      "ind_od_ot": {
+        "irr": 1.2117,
+        "ci95": [
+          0.7261,
+          2.0221
+        ],
+        "p": 0.46234563418708463,
+        "n_events": 724,
+        "n_fe": 18,
+        "n_clusters": 1247
+      },
+      "acad_od_ot": {
+        "irr": 0.9736,
+        "ci95": [
+          0.5218,
+          1.8166
+        ],
+        "p": 0.9329431326786102,
+        "n_events": 640,
+        "n_fe": 18,
+        "n_clusters": 748
+      }
+    },
+    "donut_march_month_fe": {
+      "fe_col": "ym",
+      "ot_od_ddd": {
+        "irr": 1.5895,
+        "ci95": [
+          1.1104,
+          2.2752
+        ],
+        "p": 0.011329661835635996,
+        "n_events": 2726,
+        "n_fe": 17,
+        "n_clusters": 2067
+      },
+      "ind_od_ot": {
+        "irr": 1.3868,
+        "ci95": [
+          1.1187,
+          1.7192
+        ],
+        "p": 0.00285593839031284,
+        "n_events": 1460,
+        "n_fe": 17,
+        "n_clusters": 1284
+      },
+      "acad_od_ot": {
+        "irr": 0.88,
+        "ci95": [
+          0.6604,
+          1.1727
+        ],
+        "p": 0.38304584020303967,
+        "n_events": 1266,
+        "n_fe": 17,
+        "n_clusters": 783
+      }
+    },
+    "donut_march_sponsor_ym_fe": {
+      "fe_col": "sponsor_ym",
+      "ot_od_ddd": {
+        "irr": 1.0291,
+        "ci95": [
+          0.5728,
+          1.8487
+        ],
+        "p": 0.9236709701423553,
+        "n_events": 2726,
+        "n_fe": 1995,
+        "n_clusters": 958
+      },
+      "ind_od_ot": {
+        "irr": 1.1757,
+        "ci95": [
+          0.7817,
+          1.7684
+        ],
+        "p": 0.43699031779774633,
+        "n_events": 1460,
+        "n_fe": 1068,
+        "n_clusters": 577
+      },
+      "acad_od_ot": {
+        "irr": 1.1425,
+        "ci95": [
+          0.7502,
+          1.74
+        ],
+        "p": 0.5347104225824273,
+        "n_events": 1266,
+        "n_fe": 927,
+        "n_clusters": 381
+      }
+    },
+    "fine_1month_age_fe": {
+      "fe_col": "ym",
+      "ot_od_ddd": {
+        "irr": 1.5838,
+        "ci95": [
+          1.1171,
+          2.2456
+        ],
+        "p": 0.009832882414309463,
+        "n_events": 2902,
+        "n_fe": 18,
+        "n_clusters": 2067
+      },
+      "ind_od_ot": {
+        "irr": 1.3294,
+        "ci95": [
+          1.0778,
+          1.6398
+        ],
+        "p": 0.007817311581510333,
+        "n_events": 1544,
+        "n_fe": 18,
+        "n_clusters": 1284
+      },
+      "acad_od_ot": {
+        "irr": 0.8525,
+        "ci95": [
+          0.6452,
+          1.1265
+        ],
+        "p": 0.2618370401049823,
+        "n_events": 1358,
+        "n_fe": 18,
+        "n_clusters": 783
+      }
+    }
+  },
+  "test_2c_loso_top20_summary": {
+    "min_ddd_irr": 1.5161,
+    "max_ddd_irr": 1.6463,
+    "max_ddd_p": 0.016523,
+    "all_p_lt_005": true
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "variant_id": "142189",
+  "allele_info": {
+    "chromosome": "5",
+    "position_start": "112707498",
+    "position_stop": "112846239",
+    "reference_allele": null,
+    "alternate_allele": null,
+    "cytogenetic_band": "5q22.2",
+    "dbsnp_rsid": "rs587782293"
+  },
+  "conditions": [
+    {
+      "name": "Hereditary cancer-predisposing syndrome",
+      "medgen_cui": "C0027672",
+      "omim_id": null,
+      "orphanet_id": "140162",
+      "hpo_terms": []
+    },
+    {
+      "name": "not provided",
+      "medgen_cui": "C3661900",
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Familial adenomatous polyposis 1",
+      "medgen_cui": "C2713442",
+      "omim_id": "175100",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Unknown",
+      "medgen_cui": null,
+      "omim_id": "175100",
+      "orphanet_id": null,
+      "hpo_terms": []
+    },
+    {
+      "name": "Not Provided",
+      "medgen_cui": null,
+      "omim_id": null,
+      "orphanet_id": null,
+      "hpo_terms": []
+    }
+  ],
+  "functional_consequences": [],
+  "structural_variant_details": null,
+  "citation_references": [
+    "17576681",
+    "20223039",
+    "23159591",
+    "30580288",
+    "33011440",
+    "9536098"
+  ],
+  "submissions": [
+    {
+      "submitter_name": "Mayo Clinic Laboratories, Mayo Clinic",
+      "classification": "Likely pathogenic",
+      "curator_notes": "SCV000256993 was merged into SCV001714738 because sCV000256993 was merged into SCV001714738 to remove duplication; PS3+PS4_mod",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2024-05-14"
+    },
+    {
+      "submitter_name": "Department of Pathology and Laboratory Medicine, Sinai Health System",
+      "classification": "Uncertain significance",
+      "curator_notes": "The APC c.423-3T>A variant was identified in 1 of 2332 proband chromosomes (frequency: 0.0004) from German individuals or families with FAP (Friedl 2005). The variant was identified in the ClinVar database with conflicting classifications. Ambry Genetics classified it as likely pathogenic and the Mayo Clinic Testing Laboratories as of uncertain significance. The InSight Colon Cancer Database identified it 1x with no classification and it was identified in the LOVD database 2x as having splicing effect. The c.423-3T>A variant was not identified in dbSNP, NHLBI Exome Sequencing Project (Exome Variant Server), Exome Aggregation Consortium (ExAC) database, Clinvitae database, COSMIC, \u00e2\u20ac\u0161\u00c3\u201e\u00c3\u00baZhejiang Colon Cancer Database\u00e2\u20ac\u0161\u00c3\u201e\u00c3\u00b9, GeneInsight COGR database, MutDB or UMD. The c.423-3T>A variant is located in the 3' splice region but does not affect the invariant -1 and -2 positions. However, positions -3 and -5 to -12 are part of the splicing consensus sequence and variants involving these positions sometimes affect splicing. In addition 2 of 5 in silico or computational prediction software programs (SpliceSiteFinder, MaxEntScan, NNSPLICE, GeneSplicer, HumanSpliceFinder) predict a greater than 10% chance of the loss of the splice acceptor site, and 1 of 5 of the above programs predict a greater than 10% chance that this variant alters a cryptic splice donor site. In summary, based on the above information, the clinical significance of this variant cannot be determined with certainty at this time. This variant is classified as a variant of uncertain significance.; Notes: None; Reason: Claim with insufficient supporting evidence",
+      "assertion_criteria": "flagged submission",
+      "date_last_evaluated": null
+    },
+    {
+      "submitter_name": "Myriad Genetics, Inc.",
+      "classification": "Likely pathogenic",
+      "curator_notes": "This variant is considered likely pathogenic. mRNA analysis has demonstrated abnormal mRNA splicing occurs [Myriad internal data]. This variant has been reported in multiple individuals with clinical features of gene-specific disease [PMID: 20223039, 23159591, 30580288, Myriad internal data].",
+      "assertion_criteria": "Myriad Autosomal Dominant, Autosomal Recessive and X-Linked Classification Criteria (2023)",
+      "date_last_evaluated": "2023-04-26"
+    },
+    {
+      "submitter_name": "Baylor Genetics",
+      "classification": "Likely pathogenic",
+      "curator_notes": null,
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2022-06-29"
+    },
+    {
+      "submitter_name": "Ambry Genetics",
+      "classification": "Pathogenic",
+      "curator_notes": "The c.423-3T>A intronic pathogenic mutation results from a T to A substitution 3 nucleotides upstream from coding exon 4 in the APC gene. This alteration has been observed in multiple individuals with a personal and/or family history that is consistent with APC-related disease (Friedl W et al. Hered Cancer Clin Pract, 2005 Sep;3:95-114; Kerr SE et al. J Mol Diagn, 2013 Jan;15:31-43; Ambry internal data). This nucleotide position is poorly conserved in available vertebrate species. In silico splice site analysis predicts that this alteration will weaken the native splice acceptor site. RNA studies have demonstrated that this alteration results in abnormal splicing in the set of samples tested (Rofes P et al. J Mol Diagn, 2020 12;22:1453-1468; Ambry internal data). Based on the supporting evidence, this alteration is interpreted as a disease-causing mutation.",
+      "assertion_criteria": "Ambry Variant Classification Scheme 2023",
+      "date_last_evaluated": "2023-01-20"
+    },
+    {
+      "submitter_name": "GeneDx",
+      "classification": "Likely pathogenic",
+      "curator_notes": "Published functional studies demonstrate skipping of exon 5 (Rofes 2020); In silico analysis supports a deleterious effect on splicing; This variant is associated with the following publications: (PMID: 28051113, 28152038, 29570743, 20223039, 23159591, 33011440, 30580288)",
+      "assertion_criteria": "GeneDx Variant Classification Process June 2021",
+      "date_last_evaluated": "2022-05-11"
+    },
+    {
+      "submitter_name": "Quest Diagnostics Nichols Institute San Juan Capistrano",
+      "classification": "pathogenic",
+      "curator_notes": "The APC c.423-3T>A variant has been reported in the published literature in individuals with familial adenomatous polyposis (FAP) (PMID: 20223039 (2005), 23159591 (2013), 30580288 (2019), 33011440 (2020)). In addition, this variant has been observed to segregate with disease in individuals affected with FAP from a single family (PMID: 33011440 (2020)). Published functional studies showed that this variant results in abnormal splicing leading to skipping of exon 5 and a truncated protein (PMID: 33011440 (2020)). The frequency of this variant in the general population, 0.000 (0/67410 chromosomes) (Genome Aggregation Database, http://gnomad.broadinstitute.org)), is uninformative in the assessment of its pathogenicity due to the removal of low-quality genotypes at this site. Analysis of this variant using software algorithms for the prediction of the effect of nucleotide changes on APC mRNA splicing yielded inconclusive findings. Based on the available information, this variant is classified as pathogenic.",
+      "assertion_criteria": "Quest Diagnostics criteria",
+      "date_last_evaluated": "2024-09-11"
+    },
+    {
+      "submitter_name": "Color Diagnostics, LLC DBA Color Health",
+      "classification": "Likely pathogenic",
+      "curator_notes": "This variant causes a T to A nucleotide substitution at the -3 position of intron 4 of the APC gene. RNA studies report that this variant results in exon 5 skipping predicted to lead to a frameshift truncation (p.Arg141Serfs*8), although the amount of aberrant RNA was not quantified (PMID: 33011440). This variant is highly similar to c.423-3_423-2delAT in terms of the variant acceptor site and its predicted splicing impact, and it may be reported as this alternate cDNA variant description by external laboratories and databases. This variant has been reported in multiple individuals affected with familial adenomatous polyposis (PMID: 20223039, 30580288; External laboratory communication). It has been shown that this variant segregates with disease in multiple members of a family affected by polyposis or colorectal cancer (PMID: 30580288). This variant has not been identified in the general population by the Genome Aggregation Database (gnomAD). Based on the available evidence, this variant is classified as Likely Pathogenic.",
+      "assertion_criteria": "ACMG Guidelines, 2015",
+      "date_last_evaluated": "2023-05-10"
+    },
+    {
+      "submitter_name": "Labcorp Genetics (formerly Invitae), Labcorp",
+      "classification": "Pathogenic",
+      "curator_notes": "This sequence change falls in intron 4 of the APC gene. It does not directly change the encoded amino acid sequence of the APC protein. RNA analysis indicates that this variant induces altered splicing and may result in an absent or altered protein product. The frequency data for this variant in the population databases is considered unreliable, as metrics indicate poor data quality at this position in the gnomAD database. This variant has been observed in individuals with familial adenomatous polyposis and/or typical or attenuated FAP and individuals undergoing APC testing (PMID: 20223039, 23159591, 33011440; internal data). It has also been observed to segregate with disease in related individuals. ClinVar contains an entry for this variant (Variation ID: 142189). Variants that disrupt the consensus splice site are a relatively common cause of aberrant splicing (PMID: 17576681, 9536098). Studies have shown that this variant results in skipping of exon 5, and produces a non-functional protein and/or introduces a premature termination codon (PMID: 33011440; internal data). For these reasons, this variant has been classified as Pathogenic.",
+      "assertion_criteria": "Invitae Variant Classification Sherloc (09022015)",
+      "date_last_evaluated": "2025-01-26"
+    }
+  ]
+}
