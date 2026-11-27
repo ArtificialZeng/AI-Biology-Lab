@@ -1,0 +1,39 @@
+{
+  "audit_utc": "2026-11-25T09:26:28Z",
+  "n_sampled_pmcids": 240,
+  "n_live_on_s3": 240,
+  "n_has_txt": 240,
+  "n_has_xml": 240,
+  "txt_front_mentions_retract_n": 235,
+  "txt_front_mentions_retract_pct": 97.92,
+  "txt_body_silent_no_retract_n": 240,
+  "txt_body_silent_no_retract_pct": 100.0,
+  "xml_has_related_retraction_tag_n": 235,
+  "xml_has_related_retraction_tag_pct": 97.92,
+  "xml_article_type_counts": {
+    "research-article": 218,
+    "review-article": 8,
+    "other": 5,
+    "case-report": 4,
+    "editorial": 1,
+    "brief-report": 1,
+    "letter": 1,
+    "systematic-review": 1,
+    "data-paper": 1
+  },
+  "xml_title_silent_pct": 90.83,
+  "xml_abstract_silent_pct": 99.58,
+  "xml_body_silent_pct": 97.92,
+  "llm_standard_jats_extractor_completely_silent_n": 211,
+  "llm_standard_jats_extractor_completely_silent_pct": 87.92,
+  "median_xml_body_chars": 26946,
+  "mean_xml_body_chars": 29882,
+  "median_txt_body_chars": 0,
+  "example_txt_front_snippets": [
+    ": PLOS ARTICLE INFORMATION ============================== RETRACTED ARTICLE PMCID: PMC3656040 PMID: 23696846 DOI: 10.1371/journal.pone.0063680 Article ID: PONE-D-12-37052 Article v",
+    " Wiley ARTICLE INFORMATION ============================== RETRACTED ARTICLE PMCID: PMC3958763 PMID: 24723962 DOI: 10.1155/2014/724764 Article version: 1 Subjects: Research Article ",
+    " Wiley ARTICLE INFORMATION ============================== RETRACTED ARTICLE PMCID: PMC4274715 PMID: 25548771 DOI: 10.1155/2014/467063 Article version: 1 Subjects: Research Article ",
+    "sevier ARTICLE INFORMATION ============================== RETRACTED ARTICLE PMCID: PMC9478766 PMID: 25528576 DOI: 10.1016/j.bjid.2014.10.007 Article ID: S1413-8670(14)00213-X Artic",
+    "ations ARTICLE INFORMATION ============================== RETRACTED ARTICLE PMCID: PMC4296451 PMID: 25624623 DOI: 10.4103/0972-124X.147399 Article ID: JISP-18-693 Article version: "
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "rw_csv_sha256": "6db839a1b0a8b213253ddff086a89f7a2f92189aa2c0ad8595599ed30c8a656a",
+  "rw_total_rows": 74070,
+  "rw_true_retractions": 68607,
+  "rw_unique_valid_pmids": 30771,
+  "rw_unique_valid_dois": 62559,
+  "pubmed_retracted_pt_pmids": 9999,
+  "union_unique_retracted_pmids": 33507,
+  "reason_class_counts": {
+    "OTHER_MISCONDUCT_OR_ADMIN": 25564,
+    "DATA_FABRICATION_OR_PAPER_MILL": 13796,
+    "ERROR_OR_UNRELIABLE_RESULTS": 11897,
+    "PEER_REVIEW_MANIPULATION": 8102,
+    "PLAGIARISM_OR_TEXT_DUPLICATION": 5917,
+    "IMAGE_MANIPULATION_OR_DUPLICATION": 3331
+  },
+  "median_retraction_lag_days": 496.0
+}

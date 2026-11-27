@@ -1,0 +1,7 @@
+target_chembl_id,target_name,reasons,n_retracted_mols,n_clean_mols,retracted_share_pct,median_pchembl_ret,median_pchembl_clean,delta_median_pchembl,mw_p,global_rmse_clean,global_rmse_contam,delta_rmse,n_clean_analogs_tani_ge_04,mean_abs_pred_shift_analogs_log10,max_abs_pred_shift_log10
+CHEMBL5402,Signal transducer and activator of transcription 3,IMAGE_MANIPULATION_OR_DUPLICATION,32,98,24.62,5.257,5.3,-0.042,0.852074137413155,0.3871,0.3943,0.0072,0,,0.554
+CHEMBL249,Substance-P receptor,OTHER_MISCONDUCT_OR_ADMIN,29,1295,2.19,8.18,7.77,0.41,0.19464823614551574,0.8064,0.8061,-0.0002,12,0.126,0.345
+CHEMBL4630,Serine/threonine-protein kinase Chk1,PLAGIARISM_OR_TEXT_DUPLICATION,17,1346,1.25,7.89,7.28,0.61,0.003283668700290448,0.756,0.7579,0.0019,5,0.026,0.368
+CHEMBL384,HT-29,PLAGIARISM_OR_TEXT_DUPLICATION,16,1294,1.22,7.68,5.8,1.88,8.592734730846839e-07,0.8048,0.805,0.0002,0,,0.396
+CHEMBL240,Voltage-gated inwardly rectifying potassium channel KCNH2,PLAGIARISM_OR_TEXT_DUPLICATION,16,1133,1.39,5.055,5.68,-0.625,0.00014073780180576674,0.6727,0.672,-0.0007,0,,0.144
+CHEMBL3706566,MGC-803,OTHER_MISCONDUCT_OR_ADMIN;PUBMED_RETRACTED_ONLY,15,1405,1.06,4.65,4.97,-0.32,0.21954290299446155,0.4291,0.4297,0.0007,2,0.156,0.271

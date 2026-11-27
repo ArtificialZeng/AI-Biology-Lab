@@ -1,0 +1,92 @@
+{
+  "audit_utc": "2026-11-25T08:33:01Z",
+  "master_retracted_pmids": 37666,
+  "master_retracted_dois": 62557,
+  "pillar1_clinvar": {
+    "total_clinvar_pubmed_citation_links": 4249104,
+    "retracted_citation_links": 95,
+    "unique_retracted_pmids_in_clinvar": 46,
+    "unique_variants_citing_retracted": 92,
+    "unique_plp_variants_citing_retracted": 57,
+    "unique_plp_sole_pmid_retracted": 0,
+    "plp_by_review_status": {
+      "criteria provided, multiple submitters, no conflicts": 26,
+      "criteria provided, single submitter": 26,
+      "reviewed by expert panel": 3,
+      "no assertion criteria provided": 2
+    },
+    "plp_by_reason_class": {
+      "DATA_FABRICATION_OR_PAPER_MILL": 24,
+      "OTHER_MISCONDUCT_OR_ADMIN": 16,
+      "ERROR_OR_UNRELIABLE_RESULTS": 7,
+      "IMAGE_MANIPULATION_OR_DUPLICATION": 5,
+      "PUBMED_RETRACTED_ONLY": 5
+    },
+    "top_genes_plp_retracted": {
+      "BLOC1S6": 17,
+      "ABCD1": 7,
+      "PALB2": 4,
+      "ERCC5": 3,
+      "DNAH11": 2,
+      "KCNQ1": 2,
+      "EDA": 2,
+      "LDB3": 1,
+      "CCNO": 1,
+      "IL7": 1,
+      "STK11": 1,
+      "COL2A1": 1,
+      "STAG2": 1,
+      "PTEN": 1,
+      "GCK": 1
+    }
+  },
+  "pillar2_rcsb_pdb": {
+    "active_non_obsolete_pdb_entries": 25,
+    "unique_retracted_papers": 12,
+    "in_af2_training_cutoff_le_2018_04": 18,
+    "in_af3_boltz_training_cutoff_le_2021_09": 23,
+    "by_reason_class": {
+      "ERROR_OR_UNRELIABLE_RESULTS": 11,
+      "OTHER_MISCONDUCT_OR_ADMIN": 11,
+      "PEER_REVIEW_MANIPULATION": 2,
+      "IMAGE_MANIPULATION_OR_DUPLICATION": 1
+    },
+    "by_method": {
+      "X-RAY DIFFRACTION": 25
+    }
+  },
+  "pillar3_uniprot_swissprot": {
+    "total_reviewed_human_proteins": 20429,
+    "retracted_citation_links_in_human_swissprot": 172,
+    "unique_reviewed_human_proteins_citing_retracted": 160,
+    "unique_retracted_pmids_in_human_swissprot": 105,
+    "by_reason_class": {
+      "OTHER_MISCONDUCT_OR_ADMIN": 65,
+      "IMAGE_MANIPULATION_OR_DUPLICATION": 43,
+      "ERROR_OR_UNRELIABLE_RESULTS": 29,
+      "DATA_FABRICATION_OR_PAPER_MILL": 28,
+      "PUBMED_RETRACTED_ONLY": 7
+    }
+  },
+  "pillar4_chembl": {
+    "active_retracted_chembl_documents": 32,
+    "total_active_bioactivity_records": 2663,
+    "total_active_pchembl_ml_ready_records": 460,
+    "by_reason_class_docs": {
+      "OTHER_MISCONDUCT_OR_ADMIN": 11,
+      "PLAGIARISM_OR_TEXT_DUPLICATION": 7,
+      "DATA_FABRICATION_OR_PAPER_MILL": 6,
+      "PUBMED_RETRACTED_ONLY": 4,
+      "ERROR_OR_UNRELIABLE_RESULTS": 3,
+      "IMAGE_MANIPULATION_OR_DUPLICATION": 1
+    },
+    "by_reason_class_activities": {
+      "DATA_FABRICATION_OR_PAPER_MILL": 348,
+      "ERROR_OR_UNRELIABLE_RESULTS": 249,
+      "IMAGE_MANIPULATION_OR_DUPLICATION": 150,
+      "OTHER_MISCONDUCT_OR_ADMIN": 730,
+      "PLAGIARISM_OR_TEXT_DUPLICATION": 991,
+      "PUBMED_RETRACTED_ONLY": 195
+    }
+  }
+}

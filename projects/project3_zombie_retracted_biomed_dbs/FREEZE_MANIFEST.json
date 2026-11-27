@@ -1,0 +1,367 @@
+{
+  "project": "project3_zombie_retracted_biomed_dbs",
+  "study_id": "C2-ZOMBIE",
+  "freeze_utc": "2026-11-25T09:54:12Z",
+  "branch": "freeze/project3-c2-zombie-20261125",
+  "n_files": 72,
+  "total_bytes_excl_manifest": 9666100,
+  "max_file_bytes": 2629255,
+  "manuscript_pdf_sha256": "1e342819e2736df24012a28bebf2518dc42184bcd789d9503ce372a0bd2a4b7f",
+  "files": [
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/.gitignore",
+      "bytes": 366,
+      "sha256": "5cdf261979e6f78d56f7a07ea6f147190cf8f45b83e9da70565a94b9d867bad1"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/FREEZE_DECISION.md",
+      "bytes": 4189,
+      "sha256": "0f24ab143f7af54ef03da5bf616434a108ecd22996ccc73df08c052aa8c3b1c1"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/NOVELTY_GATE_C2_ZOMBIE.md",
+      "bytes": 6739,
+      "sha256": "c9c470d7c05138f430003f45bc45ba8aaf2b0bc5484f88fc3d52919d8331beab"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/data/master_retracted_pmids_100pct.json",
+      "bytes": 924007,
+      "sha256": "a93f0306395354d5ac1d92c11440b6159d5bef4b1a9a4ea1a0c4737bcfb70c73"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/data/pubmed_all_retracted_pmids.json",
+      "bytes": 356680,
+      "sha256": "11df10645bbe600f1552616a9f6d87e5df0e899c7ca33cf54085b3a2bb8ab924"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/data/pubmed_retracted_pmids.json",
+      "bytes": 334436,
+      "sha256": "409cc19c4c7bdffcc56ad34e014a63279e5b75acfcfbddad390eccff0e983113"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/data/retraction_master_summary.json",
+      "bytes": 618,
+      "sha256": "b5edbbd3013562a59f85cc414b29d27ae999b0de105b401145b8e55e5139a7b7"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/figures/fig1_automated_amplification_paradox.png",
+      "bytes": 693997,
+      "sha256": "cd8ccdef98cb82af7c3f9010757a5563f477781ecc09584d90b669df94f5a39e"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/figures/fig2_pmcoa_enrichment_and_s3_llm_silence.png",
+      "bytes": 767974,
+      "sha256": "8bfacfc07ca7914f8955e8cf55acfedef28e716af4776fa3d96e24109613dbd0"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/figures/fig3_pubtator3_kg_and_curated_persistence.png",
+      "bytes": 736804,
+      "sha256": "61516256e306a42a5ba5a7ebb6a60d2b0cd94a4fa692de806429b265c4af69b9"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/figures/fig4_clinical_cascade_and_retraction_guard.png",
+      "bytes": 779191,
+      "sha256": "313e77fca86d80911900dc92fd98420fffbfb3e7b33fa36e4acf43a8c635b6cb"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/manuscript_c2_zombie.pdf",
+      "bytes": 2629255,
+      "sha256": "1e342819e2736df24012a28bebf2518dc42184bcd789d9503ce372a0bd2a4b7f"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/manuscript_c2_zombie.tex",
+      "bytes": 41674,
+      "sha256": "a32d99f53ddced941205df61b194c3778a498c67d0f3afcf747ca89f612cc762"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/references_c2_zombie.bib",
+      "bytes": 9668,
+      "sha256": "5d0358c50d528139b195f5ca1573a1ea94cb71777d10d175165bf405d42837e8"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/analysis1_registry_and_pmcoa_summary.json",
+      "bytes": 624,
+      "sha256": "01c11aa0ff6d805a602a8717c2a67c9bff633aad27c8b061db04db241cd7599a"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/analysis2_s3_llm_corpus_audit_summary.json",
+      "bytes": 1916,
+      "sha256": "3a7d9c27427c3c08363753374d5c3f7821adc0102759945d2ad95a757a500e21"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/analysis3_pubtator3_and_opentargets_summary.json",
+      "bytes": 2155,
+      "sha256": "18826c62da52c54b2374d31c7e69048763a667e80ab574bd80a2541012319c34"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/analysis4_8_curated_dbs_persistence_summary.csv",
+      "bytes": 732,
+      "sha256": "c612380d104869115ee8fbb65beea0d011e4cc2c4b2be4b592fd3b7df3f3202c"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/analysis4_curated_persistence_and_qsar_summary.json",
+      "bytes": 487,
+      "sha256": "e485557ca058cc8cbfc7ab3f053b3bfc46ff7051bf6ed2de7d6178a4f1577910"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/analysis5_clinical_cascade_summary.json",
+      "bytes": 1304,
+      "sha256": "5f944374ac6050399ea39f7cad243c751edc2d75ff3d73c51b54f1be126f4520"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/c2_zombie_4db_pilot_summary.json",
+      "bytes": 2862,
+      "sha256": "1330193d3a4a81ff05dd68cf7c09c364346e3c513efc9edf69e6ea2f63ac8f03"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/c2_zombie_part2_verified_summary.json",
+      "bytes": 1590,
+      "sha256": "57aff0879e7ce1524d98830f39c9891ee68a612a2de95bca684b5affa4e81641"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/clinical_all_retracted_rcts_icite.csv",
+      "bytes": 361639,
+      "sha256": "c4e15d87dfb592863df92046850f15f6ff74fa16e659e2e7ee9ac5c9415d13b5"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/clinical_all_retracted_rcts_openalex.csv",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/clinical_contagion_context_audit.json",
+      "bytes": 196,
+      "sha256": "747da0bd3950d13f860cd28e3c3253ffbb2c5a09657dbe8cca226d1ed931cdef"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/clinical_downstream_post_retraction_ma_guideline_citations.csv",
+      "bytes": 341810,
+      "sha256": "f20c2dbed70e8f026ae83a76c02fb232ffaa2e80482e0f7232ca417a14d50b0d"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/clinical_rct_event_study_panel.csv",
+      "bytes": 541995,
+      "sha256": "36124d8af124d47bd86473e9bb20db7502be2df6d73c6d7ca52abb8ff041fdb9"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/clinical_rct_event_study_summary.csv",
+      "bytes": 1619,
+      "sha256": "f0906c235e76c5b4cd1d54d7ac836232c497e16b1e30c24207048bbfb88a43b7"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/clinical_sensitivity_fraud_and_predimed.json",
+      "bytes": 476,
+      "sha256": "114ec596d1194192d68c0917471ca3e3c666858695992fd6ad1d46ff189810de"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/opentargets_europepmc_12targets_retracted_audit.csv",
+      "bytes": 1431,
+      "sha256": "a46f5d52968d75320c14e155ecf93ac78d531dc4a9bb97272d81c6caba1141f0"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pdf_compile_and_font_audit.json",
+      "bytes": 1961,
+      "sha256": "73f79d286e509a5f908cb36c22829aec597ef45fbae8aa9a544b021bc48fe772"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar10_intact_human_ppi_retracted.csv",
+      "bytes": 36438,
+      "sha256": "167e1fa26430797472d9acd9e92aa4109e6d9edf7997423006ae675d74eaffc5"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar1_clinvar_retracted_citations.csv",
+      "bytes": 27360,
+      "sha256": "64efe8b8bd0143bfd0bbdf6c48af837d4566fedfc505e8e0f3ee0c75fba33e0e"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar2_rcsb_pdb_active_retracted.csv",
+      "bytes": 7142,
+      "sha256": "f25577633d8b069903241b7f3a4a907afe91827a152f40e56f623b21a5f07d9f"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar2_rcsb_pdb_quality_and_validation.csv",
+      "bytes": 3153,
+      "sha256": "d8cc8a527f91b3fa82874f57d66c9fc4a8b6aae070f101e777cdc75e1b016d3f"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar3_uniprot_human_swissprot_retracted.csv",
+      "bytes": 18682,
+      "sha256": "3bdab9669a58d6192d3f4e65d7548bfb09a4d668b3ef5dea1547bb97611cd1a8"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar4_chembl_qsar_perturbation_benchmark.csv",
+      "bytes": 1226,
+      "sha256": "8107788942c23d65b1c6db861d382911f8ad7987958233383fcd1baad8d9a512"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar4_chembl_retracted_docs_and_activities.csv",
+      "bytes": 8940,
+      "sha256": "dc0d33676c058f1b702356af7ff1f2ef10bbe5cb152b341f771abb83a7f9d9d1"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar4_chembl_retracted_pchembl_activities.csv",
+      "bytes": 80933,
+      "sha256": "8ca8c9b864db9ba23e5c6c9c893163dd4875cd309925a8fd33f0332f898318c4"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar5_goa_human_retracted.csv",
+      "bytes": 13001,
+      "sha256": "9266172985d7352311b2d51e311ebec963dda163a49188150b59553f83613b25"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar6_gwas_catalog_retracted.csv",
+      "bytes": 120,
+      "sha256": "fe2dd4ea05a95af2fea9cfdf5ba4d9ea797de4fc5b5f7254b442de69c80977d3"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar7_civic_oncology_retracted.csv",
+      "bytes": 959,
+      "sha256": "1f6c474f7b2da30e9ee343a73ccc9d528207f5d999cded77976d9c22aff20223"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar8_clinicaltrials_nct_live_audit.csv",
+      "bytes": 28579,
+      "sha256": "04b4ba502d584926b94c84aa1a501ee0fbca195fc52921f39d92079c1419b941"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pillar8_clinicaltrials_retracted_rct_links.csv",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pmc_oa_enrichment_by_year_2010_2025.csv",
+      "bytes": 1154,
+      "sha256": "ccc70569dc8303578cb3fe1176cefed2b5f0d39a59fad86a4415bbc3ea7344b7"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pmc_oa_enrichment_with_hindawi_sensitivity_2010_2025.csv",
+      "bytes": 2892,
+      "sha256": "560351954253875e6ccfb7694dbda9c35a1c6d7d5528b0c454e75a1c61149399"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pmc_oa_s3_live_fulltext_sample30.csv",
+      "bytes": 3742,
+      "sha256": "bba5bc0c54eb2256ebe6c20974ef76b37d543f4e61e1d92b9eed9f4984a9eba3"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pmc_oa_s3_stratified_240_audit.csv",
+      "bytes": 125488,
+      "sha256": "6211cd52f9599dcc85823ead7789e60dd05f1b6b36f416c4307e07e310bfe34e"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pmcoa_enrichment_by_mechanism.csv",
+      "bytes": 754,
+      "sha256": "0769fd43b9b9a060de0d409149fd7cfcb121cb62f033de332fd4c08873fee004"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pmcoa_enrichment_by_publisher.csv",
+      "bytes": 988,
+      "sha256": "a7d36f2ae1fa142ce30e9e145d0a0bb4ddb1d7b5645a957d1ba27eebd8e2a66c"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/prior_art_clean_verified_log_c2.json",
+      "bytes": 12291,
+      "sha256": "9d89760bc04730c9bc81b34faaead5c78688837b8595a20c4cf781b5c5efe587"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/prior_art_search_log_c2.json",
+      "bytes": 2940,
+      "sha256": "0c231f6c900fca2206770c2e0c5b27f3cafaf36efe8da4186ff4b9a0d063a32e"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pubtator3_relations_by_entity_pair.csv",
+      "bytes": 699,
+      "sha256": "4bc09f2b860da1a68ff7fc1130e412e46d9d4a6d974a642ca2dfc96be5c3034b"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pubtator3_relations_by_type.csv",
+      "bytes": 496,
+      "sha256": "c59ce09268723780afba35fb12ac32922fd2e7baae7fefe00da7d25db78b280c"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/pubtator3_sole_source_retracted_triples_top5000.csv",
+      "bytes": 488670,
+      "sha256": "3d16f588375e25e7649f8256f88e7fc880096e9d52ca3965e95c7504b219485d"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/retraction_guard_benchmark.json",
+      "bytes": 703,
+      "sha256": "040217039c5c4505dc18f6d19f1c8451b800e6ef549c163323df909bd8103201"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/results/verified_references_c2.json",
+      "bytes": 12815,
+      "sha256": "7601564a888069b6c298fbcca7bfae2475f3377dd77310c3641c2ed9dbb58557"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/audit_8_curated_dbs_persistence_and_ml_perturbation.py",
+      "bytes": 25496,
+      "sha256": "bf187ebc7201782bb1926d2a3dac6a99191645b706fe9d395b04a47111d605c3"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/audit_pubtator3_bulk_kg_and_opentargets.py",
+      "bytes": 18931,
+      "sha256": "9b72e34f800200422267b095d7483a04c7fa294003a5bb2b57eaaaf07214b94a"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/audit_s3_llm_corpus_240.py",
+      "bytes": 10849,
+      "sha256": "36a21d1e805f729e7d22013ea038d1032b96a51e87ffeef3ef613c6d99d4e027"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/build_100pct_registry_and_pmcoa_enrichment.py",
+      "bytes": 17203,
+      "sha256": "a8fc6ae081278b9f291c2a2a19bffa8860d7df469f6f56f6928c407bd4333451"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/ingest_retraction_watch_and_pubmed.py",
+      "bytes": 5775,
+      "sha256": "1606f74e9f95e7f7bfc236aa8c7e5782e16f3b55fd8f26ee9665a43e719cc2ab"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/make_4_nature_figures_c2.py",
+      "bytes": 25137,
+      "sha256": "0a5ca45ec06ad38404083bc7a80a2204c8458fb75848c126b1d77234ba02a589"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/probe_automated_ai_and_clinical_amplification.py",
+      "bytes": 10406,
+      "sha256": "7caccd649ca8b1f1e54b2489a7adf3041e8951707f80af8653a699ac3a1743c6"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/probe_novelty_pmcoa_enrichment_and_pubtator3.py",
+      "bytes": 11726,
+      "sha256": "ee6f4ce5759e15615c33f31209beb5cda790b3545c002ba6b1bc5265c4a6fb23"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/retraction_guard.py",
+      "bytes": 7135,
+      "sha256": "f9a35231adc17afd0f07ff26cd729717364520712dfca26bad2e907b8fdbda2b"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/run_10db_laundering_sweep.py",
+      "bytes": 18670,
+      "sha256": "9762e803841078f40bf089a63daedd6d8c95744a689a03ddb0b8d6a40faf07d9"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/run_10db_part2_ai_and_networks.py",
+      "bytes": 19773,
+      "sha256": "3123d071b48c04ac360019a5b3c3216a1dcdae3533577217985fca20675ec25a"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/run_10db_part2_verified.py",
+      "bytes": 20052,
+      "sha256": "406515edfa355523cf8de664ad9439517c9c4c724d35250ee5f740a18bf1d7f4"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/run_4db_zombie_pilot.py",
+      "bytes": 23422,
+      "sha256": "f171b3d64620ea7aa3040e9847f8fe3c456423b6b2af8f4248a01fd53bee3b73"
+    },
+    {
+      "path": "projects/project3_zombie_retracted_biomed_dbs/scripts/run_clinical_rct_event_study_and_ctgov.py",
+      "bytes": 22963,
+      "sha256": "cdf51883d1ae41e5026259e4a3f7b1399c2ddf6f02380f506210a537b9e13c1a"
+    }
+  ]
+}

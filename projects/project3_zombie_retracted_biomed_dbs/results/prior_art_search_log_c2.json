@@ -1,0 +1,106 @@
+{
+  "retrieved_utc": "2026-11-25T09:19:19Z",
+  "queries": [
+    {
+      "name": "Q1_Retracted_LLM_Corpus_PMCOA",
+      "query": "retracted AND (\"PubMed Central\" OR \"PMC Open Access\" OR \"open access\") AND (\"large language model\" OR \"language model\" OR \"training corpus\" OR \"foundation model\")",
+      "pubmed_count": 1,
+      "pubmed_top_pmids": [
+        "43062537"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    },
+    {
+      "name": "Q2_Retracted_Biomed_DBs_Cross",
+      "query": "retracted AND (\"ClinVar\" OR \"UniProt\" OR \"ChEMBL\" OR \"RCSB\" OR \"Protein Data Bank\") AND (\"database\" OR \"knowledge base\")",
+      "pubmed_count": 8,
+      "pubmed_top_pmids": [
+        "42103119",
+        "41359665",
+        "40466611",
+        "36071733",
+        "35720023"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    },
+    {
+      "name": "Q3_Retracted_PubTator_KG",
+      "query": "retracted AND (\"PubTator\" OR \"Open Targets\" OR \"knowledge graph\") AND (\"biomedical\" OR \"gene\" OR \"drug\")",
+      "pubmed_count": 3,
+      "pubmed_top_pmids": [
+        "41251150",
+        "39455647",
+        "34976109"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    },
+    {
+      "name": "Q4_PaperMill_OpenAccess_AI",
+      "query": "\"paper mill\" AND (\"open access\" OR \"PubMed Central\") AND (\"training\" OR \"language model\" OR \"database\")",
+      "pubmed_count": 3,
+      "pubmed_top_pmids": [
+        "43062537",
+        "41740900",
+        "41029804"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    },
+    {
+      "name": "Q5_Retracted_ClinVar_Specific",
+      "query": "retracted AND \"ClinVar\"",
+      "pubmed_count": 5,
+      "pubmed_top_pmids": [
+        "43059394",
+        "41753091",
+        "35179219",
+        "33004823",
+        "26865835"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    },
+    {
+      "name": "Q6_Retracted_ChEMBL_Specific",
+      "query": "retracted AND \"ChEMBL\"",
+      "pubmed_count": 4,
+      "pubmed_top_pmids": [
+        "42103119",
+        "41359665",
+        "40466611",
+        "30804389"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    },
+    {
+      "name": "Q7_Retracted_PDB_AlphaFold",
+      "query": "retracted AND \"Protein Data Bank\" AND (\"AlphaFold\" OR \"obsolete\" OR \"retraction\")",
+      "pubmed_count": 3,
+      "pubmed_top_pmids": [
+        "39497285",
+        "29113027",
+        "11207370"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    },
+    {
+      "name": "Q8_Retracted_UniProt_GOA_IntAct",
+      "query": "retracted AND (\"UniProt\" OR \"Swiss-Prot\" OR \"Gene Ontology\" OR \"IntAct\")",
+      "pubmed_count": 1234,
+      "pubmed_top_pmids": [
+        "43036663",
+        "42997156",
+        "42996414",
+        "42945502",
+        "42934875"
+      ],
+      "openalex_count": 0,
+      "openalex_top3": []
+    }
+  ]
+}
