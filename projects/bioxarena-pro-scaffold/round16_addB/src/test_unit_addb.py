@@ -80,6 +80,7 @@ from raw_controls_addb import (  # noqa: E402
     load_locked_r16_barcodes,
     load_nadig_controls_by_barcodes,
     read_h5ad_table_col,
+    strip_ensembl_version,
 )
 
 
@@ -984,6 +985,38 @@ class TestAddendumBModelFreeAdapter(unittest.TestCase):
                         mod == "occam" or mod.startswith("occam."),
                         msg=f"Forbidden Occam import from {mod!r} in {fp.name}",
                     )
+
+    def test_10_d4_strip_ensembl_version_preserves_dotted_clone_symbols(self) -> None:
+        """DEVIATION_R16_ADDB_D4: strip `.N` only on `ENS*` IDs; preserve dotted non-Ensembl symbols."""
+        self.assertEqual(strip_ensembl_version("ENSG00000123456.12"), "ENSG00000123456")
+        self.assertEqual(strip_ensembl_version("  ENSG00000123456.12  "), "ENSG00000123456")
+        self.assertEqual(strip_ensembl_version("ENST00000123456.4"), "ENST00000123456")
+        self.assertEqual(strip_ensembl_version("ENSG00000123456"), "ENSG00000123456")
+        self.assertEqual(strip_ensembl_version("AL031178.1"), "AL031178.1")
+        self.assertEqual(strip_ensembl_version("AL031178.2"), "AL031178.2")
+        self.assertEqual(strip_ensembl_version("  AL031178.1 "), "AL031178.1")
+        self.assertNotEqual(strip_ensembl_version("AL031178.1"), strip_ensembl_version("AL031178.2"))
+        self.assertEqual(strip_ensembl_version("AC004233.4"), "AC004233.4")
+        self.assertEqual(strip_ensembl_version("   "), "")
+
+        # Verify scatter_rhj_6983_to_encoder and scatter_full_44728_api keep AL031178.1 and AL031178.2 distinct
+        enc_genes = ["AL031178.1", "AL031178.2", "ENSG00000123456", "ENSG00000999999"]
+        rhj_axis = ["ENSG00000123456"]
+        raw_ids = ["AL031178.1", "AL031178.2", "ENSG00000123456.12"]
+        raw_x = np.array([[10.0, 30.0, 60.0]], dtype=np.float32)
+
+        x_rhj, aud_rhj = scatter_rhj_6983_to_encoder(raw_x, raw_ids, rhj_axis, enc_genes)
+        self.assertEqual(x_rhj.shape, (1, 4))
+        self.assertEqual(aud_rhj["n_active_rhj_populated"], 1)
+        self.assertEqual(float(x_rhj[0, 0]), 0.0)
+        self.assertEqual(float(x_rhj[0, 1]), 0.0)
+        self.assertGreater(float(x_rhj[0, 2]), 0.0)
+
+        x_full, aud_full = scatter_full_44728_api(raw_x, raw_ids, enc_genes)
+        self.assertEqual(aud_full["n_matched_encoder_genes"], 3)
+        self.assertGreater(float(x_full[0, 0]), 0.0)
+        self.assertGreater(float(x_full[0, 1]), float(x_full[0, 0]))
+        self.assertGreater(float(x_full[0, 2]), float(x_full[0, 1]))
 
 
 if __name__ == "__main__":

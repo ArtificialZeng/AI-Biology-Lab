@@ -71,11 +71,15 @@ def decode_hdf5_str_array(arr: Any) -> List[str]:
 
 
 def strip_ensembl_version(ens_id: str) -> str:
-    """Strip Ensembl `.N` version suffix (e.g., `ENSG00000187634.13` -> `ENSG00000187634`)."""
+    """Strip Ensembl `.N` version suffix only on `ENS*` IDs (DEVIATION_R16_ADDB_D4)."""
     s = str(ens_id).strip()
     if not s:
         return ""
-    return s.split(".", 1)[0]
+    if s.startswith("ENS") and "." in s:
+        head, tail = s.rsplit(".", 1)
+        if tail.isdigit():
+            return head
+    return s
 
 
 def read_h5ad_table_col(

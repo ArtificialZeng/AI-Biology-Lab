@@ -1,3 +1,4 @@
+# SUPERSEDED 2026-11-27 14:40 +0800 by R16_ADDB_CODE_FREEZE_v2.txt (DEVIATION_R16_ADDB_D4).
 # R16_ADDB_CODE_FREEZE — controller Claude 2026-11-27 12:59 +0800. Main-line Addendum B (Occam) code frozen before any real-target Occam inference.
 # Controller checks: test_eval_addb + test_unit_addb OK (controller rerun); Gate 5A items 1-2 + Gate 5B Case A (controller-verified vs author table); Gate 5A item 3 -> CPU float32 locked (CB1.1); CB1 + CB1.2a applied. Format: sha256  path
 26499d3f9b9d1a7e39b5358010ef0e053fe8cbd3d33ce004b6afb0b65b04e6f6  round16_addB/src/__init__.py
