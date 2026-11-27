@@ -297,3 +297,7 @@
     - C2.4: barcodes compared after removing party-specific prefixes.
     - C2.5: the observed-NTC profile definition.
   - Next: A-T3 patches for C2.1/C2.2 (`R17_AT3_C2_PATCHED`) → controller freeze `R17_CODE_FREEZE_AT3.txt` → `R17_GO_AT3.txt`.
+- 08:20–08:27 (Round 17): A-T3 `R17_AT3_C2_PATCHED` (Holm changed per C2.1; its permutation p already followed C2.2). Hashes match its report. Controller rerun of the tests: 8/8 OK.
+  - Frozen as `round17/status/R17_CODE_FREEZE_AT3.txt` (12 entries, 0 failures). `R17_GO_AT3.txt`: A-T3 starts after its R16 Group 3 run.
+  - Both parties' Round 17 code is now frozen before either has touched real cells.
+  - A controller subagent is writing `controller/checks/r17_check.py`: independent of both codebases, validated on both parties' synthetic exports.

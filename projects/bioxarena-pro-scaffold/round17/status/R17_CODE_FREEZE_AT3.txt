@@ -1,0 +1,15 @@
+# R17_CODE_FREEZE_AT3 — controller Claude 2026-11-27 08:23 +0800. A-T3 clean-room Round 17 implementation frozen before any Round 17 real-cell inference by A-T3.
+# Controller checks: unit tests 8/8 OK (controller rerun, 127 s), synthetic end-to-end recompute exact (A-T3 report), independence 2.3% shared lines (schema keys, paths). C2 patch (Holm C2.1) verified by hash. Frozen R16 audit code reused read-only: FREEZE_MANIFEST_R16_D5 (0 failures).
+# Format: sha256  path
+80a72b17de70fb934dce29eccd70847ba06a071e6ea1d02d876d2c6044fcaa13  round17/audit/__init__.py
+97a4ade8c5c8295294987e29e17f09ff10839aecdfe9cd6f612cc18abc64c3ee  round17/audit/audit_r17_controls.py
+11879f6b00929a28b770e8856b51f8bde41e260c0eb258c8384fc91dd606f7e5  round17/audit/audit_r17_stats.py
+6bf5712f97ae217555084392b6b0cc05f6cd8abdc0ce8be211633113428370e5  round17/audit/run_audit_r17.py
+0dc113fe4e566f9041c23c4dcada9580fb60ea04cff31192b088f7a6af02afdf  round17/audit/test_audit_r17.py
+7033337d1f42588ee9277804c6a803eb940312fe95a4ee31e2c000555b0fb85b  round17/prereg/PREREG_J_DRAFT_v2.md
+7933d338a4773afeff59748311b925393ff49eaeed0c31df6584f12ae167e0be  round17/prereg/PREREG_J_LOCK.md
+c20aa773e6651edaf897724cd7ec617ab0b42fa41771080389770dccae264d9b  round17/prereg/PREREG_J_CLARIFICATIONS_C1.md
+ab8e39049d23472b106ba9cde3b97cd9d94658933ce3bfe2f2044734170f7ada  round17/prereg/PREREG_J_CLARIFICATIONS_C2.md
+041bbfc8953ae548d7a791d4148eede09f494c9204e2900e8f96e3ee0c1db8e2  round17/src/R17_ARRAY_SCHEMA.md
+35e41ab80d513242e8710a5c0eb52e9ffd1a16b4710975927a145df6ef6683c3  round17/src/pfizer_telohaec_reader_r17.py
+320b1d196f414d8ee034d78412a73dd48bd39b2df627cffe541f3cb4623ab7ea  round16/status/FREEZE_MANIFEST_R16_D5.txt

@@ -1,0 +1,9 @@
+[Master Controller -> A-T3] Your Round 17 code is frozen (round17/status/R17_CODE_FREEZE_AT3.txt). The controller reran your tests: 8/8 OK. Your GO is round17/status/R17_GO_AT3.txt.
+
+Start when your R16 Group 3 run has finished and you have written R16_AT3_G3_DONE:
+  mkdir -p round17/audit/results
+  PYTHONUNBUFFERED=1 round16/.venv/bin/python round17/audit/run_audit_r17.py --phase real_r17 --cohort all --models STATE_SE STATE_HVG --output-dir round17/audit/results --raw-nadig-dir /Users/mac/.cache/r9_p2_raw/nadig2025 --raw-gse295214-dir /Users/mac/.cache/r16_gse295214/raw --pfizer-h5ad /Users/mac/.cache/r17_telohaec_pfizer/imru_full.h5ad --device mps --n-ctrl 512 --n-boot 4000 --n-boot-bonf56 20000 --n-perm 10000 --n-splits-diag 20 --seed 20261701 --ctrl-seed 20261701 --ctrl-resample-seed 20261702 > round17/audit/results/run_r17.log 2>&1
+
+- MPS will be shared with the main line's Round 17 run. SE-600M takes about 5 min per pool or more; judge progress by log lines and never stop for slowness.
+- Marker: R17_AT3_DONE in round16/status/A-T3.txt, with the per-line H-J1/H-J2/H-J3 calls for both models, k/K_conf, and every output sha256. On a crash: R17_AT3_DEVIATION, then wait.
+- Boundaries are unchanged: do not read round17/src/*.py (except the locked reader), round17/results/, round16/results/group3/ or MAIN.txt; no commits; no frozen-file edits.
