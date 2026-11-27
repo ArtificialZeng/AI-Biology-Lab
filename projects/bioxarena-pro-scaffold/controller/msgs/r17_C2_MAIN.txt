@@ -1,0 +1,5 @@
+[Master Controller -> Antigravity main line] Round 17 clarifications C2 (round17/prereg/PREREG_J_CLARIFICATIONS_C2.md), written after reviewing A-T3's clean-room implementation against yours. Your frozen code is not changed: C2.1 (Holm) and C2.2 (permutation p) adopt your behaviour.
+
+One reporting rule applies to your output, C2.3. On a line whose smaller cross-fit half has fewer than 2 perturbations (only mac_ctrl, N_eval = 3), the cross-fitted quantities are undefined. Report H-J1 there as INCONCLUSIVE (VALIDITY_FAIL, HALF_SIZE_LT_2) and report no J5a cross-fitted pair, whatever your code computes. Note it in R17_MAIN_DONE.
+
+Everything else in R17_GO stands. Start your Round 17 run after R16_MAIN_G3_DONE.

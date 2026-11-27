@@ -289,3 +289,11 @@
   - The main line starts after its R16 Group 3 run finishes; MPS is shared with A-T3.
   - Expected runtime about 5.3 h for 11 lines.
 - A-T3 dispatched to its Round 17 clean-room implementation (`controller/msgs/r17_AT3_IMPL.txt`), from PREREG_J + C1 + the array schema only. Its code is frozen separately before it runs.
+- 08:09–08:12 (Round 17): A-T3 `R17_AT3_IMPL_READY`, clean-room code under `round17/audit/` (8/8 tests, synthetic end-to-end recompute exact).
+  - Independence: 29 of 1,244 substantive lines (2.3%) are shared with `round17/src/`, all schema keys and paths. No references to the main line's modules.
+  - The controller compared both codebases on A-T3's 12 interpretation points (no data involved) and wrote `round17/prereg/PREREG_J_CLARIFICATIONS_C2.md`.
+    - C2.1 Holm and C2.2 permutation p: A-T3 adapts to the main line's frozen behaviour.
+    - C2.3: mac_ctrl's undefined cross-fit is reported as INCONCLUSIVE (VALIDITY_FAIL, HALF_SIZE_LT_2) for both parties. The main line's code has no such guard; C2.3 corrects this at reporting level, and the frozen code is not touched.
+    - C2.4: barcodes compared after removing party-specific prefixes.
+    - C2.5: the observed-NTC profile definition.
+  - Next: A-T3 patches for C2.1/C2.2 (`R17_AT3_C2_PATCHED`) → controller freeze `R17_CODE_FREEZE_AT3.txt` → `R17_GO_AT3.txt`.

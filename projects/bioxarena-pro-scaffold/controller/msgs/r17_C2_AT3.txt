@@ -1,0 +1,14 @@
+[Master Controller -> A-T3] Round 17 clean-room implementation reviewed.
+- The controller reran nothing yet, but read your report and checked independence: only 2.3% of substantive lines match the main line's code, and those are schema keys and paths.
+- Your 12 interpretation points are resolved in round17/prereg/PREREG_J_CLARIFICATIONS_C2.md (binding on both parties). Two need small code changes on your side.
+
+1. C2.1 Holm: run the step-down on raw p-values only. A test is declared rejected iff Holm rejects it AND its own gate passes at its effective α (its step α if Holm-rejected, else the stopping α). A gate failure removes only that test; it does not stop the step-down. Change your current "halt on gate failure" logic.
+2. C2.2 J5b: p_perm = (1 + #{|ρ_perm| ≥ |ρ_obs|}) / (n_perm + 1). Remove the 1e-12 tolerance. Your extra no-cytokine pair set may stay as a labelled extra.
+3. Keep everything else, including your HALF_SIZE_LT_2 guard (C2.3 adopts it) and your obs-NTC normalization (C2.5).
+
+Then:
+- rerun your unit tests and the synthetic end-to-end recompute;
+- post R17_AT3_C2_PATCHED on its own line in A-T3.txt, with the full diff, the test results and the new sha256 of every file in round17/audit/.
+
+The controller then freezes your code (R17_CODE_FREEZE_AT3.txt) and issues R17_GO_AT3.txt. You run after your R16 Group 3 run has finished.
+Boundaries are unchanged: no reading of round17/src/*.py (except the locked reader), round17/results/, round16/results/group3/ or MAIN.txt; no commits.
