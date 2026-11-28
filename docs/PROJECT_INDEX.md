@@ -1,10 +1,23 @@
 # Complete project index / 完整项目索引
 
-Research is inactive as of 2026-10-31. This index covers the 54 retained top-level project directories, rather than a count of biological discoveries. Follow each packet for its evidence, source credit, reproduction commands, and limits.
+Featured research appears first, followed by the remaining project archive. Each project links to its evidence, sources and reproduction route.
 
-项目已停止研究。本表是全部项目目录，不是生物学突破数量；证据范围、来源与复现方式以各研究包为准。
+代表成果按首页顺序置顶，其余项目保留完整索引。证据、来源与复现方式见各研究包。
 
-| Project | Directory | Laboratory PR |
+## Featured results / 代表成果
+
+| Project | Directory | Research record |
+| --- | --- | --- |
+| [Embryonic cell division timing](../projects/embryo-division-timing/README.md) | `embryo-division-timing` | v7 manuscript and figures |
+| [BioXArena-Pro benchmark](../projects/bioxarena-pro-scaffold/docs/preprint/BioXArena_xatlas_preprint_v2.2.pdf) | `bioxarena-pro-scaffold` | Preprint and audit ledger |
+| [Mixed-mechanism phosphorylation: exact instability and validated attracting cycles](../projects/mixed-phosphorylation/README.md) | `mixed-phosphorylation` | Baseline main |
+| [How many calibrated sensors remove parameter ambiguity in a leaking tree?](../projects/tree-sensor-linkages/README.md) | `tree-sensor-linkages` | [#2](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/2) |
+| [Complete-graph fixation bounds: regular graphs and matching deletions](../projects/two-graph-moran-matching/README.md) | `two-graph-moran-matching` | [#18](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/18) |
+| [Periodic forcing changes the mean of a reversible adapting motif](../projects/periodic-adaptation/README.md) | `periodic-adaptation` | [#25](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/25) |
+
+## Other projects / 其他项目
+
+| Project | Directory | Research record |
 | --- | --- | --- |
 | [Adjacent-port catenary singular-locus auditor](../projects/adjacent-catenary-auditor/README.md) | `adjacent-catenary-auditor` | [#11](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/11) |
 | [Ancestral current: N3 sign classification and N4 reversal](../projects/ancestral-circulation-classification/README.md) | `ancestral-circulation-classification` | [#14](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/14) |
@@ -32,14 +45,12 @@ Research is inactive as of 2026-10-31. This index covers the 54 retained top-lev
 | [Finite conditioned stationary-law support in Mantis](../projects/mantis-stationary-auditor/README.md) | `mantis-stationary-auditor` | [#16](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/16) |
 | [MEMOTE sequential API cache audit](../projects/memote-cache-auditor/README.md) | `memote-cache-auditor` | [#6](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/6) |
 | [MEMOTE reaction-direction audit](../projects/memote-direction-auditor/README.md) | `memote-direction-auditor` | Baseline main |
-| [Mixed-mechanism phosphorylation: exact instability and validated attracting cycles](../projects/mixed-phosphorylation/README.md) | `mixed-phosphorylation` | Baseline main |
 | [msprime terminal hazard auditor](../projects/msprime-terminal-hazard-auditor/README.md) | `msprime-terminal-hazard-auditor` | [#33](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/33) |
 | [Mixed-Moran ordering on complete multipartite graphs](../projects/multipartite-moran-order/README.md) | `multipartite-moran-order` | [#44](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/44) |
 | [Exact audit of a multipathogen coexistence conjecture](../projects/multipathogen-coexistence/README.md) | `multipathogen-coexistence` | [#21](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/21) |
 | [Finite response jets and full biochemical response curves](../projects/nonreciprocal-response-audit/README.md) | `nonreciprocal-response-audit` | [#26](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/26) |
 | [ORD Data Auditor: checksum validation without guessing chemical identity](../projects/ord-data-auditor/README.md) | `ord-data-auditor` | Baseline main |
 | [Paper-Code Auditor: executable evidence and scoped reconstruction](../projects/paper-code-auditor/README.md) | `paper-code-auditor` | Baseline main |
-| [Periodic forcing changes the mean of a reversible adapting motif](../projects/periodic-adaptation/README.md) | `periodic-adaptation` | [#25](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/25) |
 | [Proportional recruitment: a scoped stability counterexample](../projects/proportional-scaling-auditor/README.md) | `proportional-scaling-auditor` | [#12](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/12) |
 | [Protein Metric Auditor](../projects/protein-metric-auditor/README.md) | `protein-metric-auditor` | Baseline main |
 | [Measured model failures are not missing observations](../projects/pypesto-relative-nan-auditor/README.md) | `pypesto-relative-nan-auditor` | [#32](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/32) |
@@ -53,10 +64,8 @@ Research is inactive as of 2026-10-31. This index covers the 54 retained top-lev
 | [Local damping in a six-species chemical clock](../projects/six-clock-local-damping/README.md) | `six-clock-local-damping` | [#30](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/30) |
 | [A common support need not sustain a switching population](../projects/switching-common-support/README.md) | `switching-common-support` | [#23](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/23) |
 | [Shared-species branching under random environment switching](../projects/switching-transience/README.md) | `switching-transience` | [#23](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/23) |
-| [How many calibrated sensors remove parameter ambiguity in a leaking tree?](../projects/tree-sensor-linkages/README.md) | `tree-sensor-linkages` | [#2](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/2) |
 | [Where should one extra sensor go in a two-leak tree?](../projects/tree-two-leak-sensors/README.md) | `tree-two-leak-sensors` | [#2](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/2) |
 | [TreeSwift gamma calculation audit](../projects/treeswift-gamma/README.md) | `treeswift-gamma` | [#19](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/19) |
 | [tskit trait-correlation: large-offset native variance audit](../projects/tskit-trait-correlation/README.md) | `tskit-trait-correlation` | [#38](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/38) |
-| [Complete-graph fixation bounds: regular graphs and matching deletions](../projects/two-graph-moran-matching/README.md) | `two-graph-moran-matching` | [#18](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/18) |
 | [Coexistence with arbitrary waning immunity](../projects/waning-coexistence-auditor/README.md) | `waning-coexistence-auditor` | [#10](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/10) |
 | [Fixed-target switching-rate example for clarification](../projects/white-noise-switching-monotonicity/README.md) | `white-noise-switching-monotonicity` | [#40](https://github.com/ArtificialZeng/AI-Biology-Lab/pull/40) |
